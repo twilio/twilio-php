@@ -193,6 +193,6 @@ class IpAccessControlListTest extends HolodeckTestCase {
         $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->ipAccessControlLists->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

@@ -34,7 +34,7 @@ class WebhookList extends ListResource {
         // Path Solution
         $this->solution = array('conversationSid' => $conversationSid, );
 
-        $this->uri = '/Conversations/' . rawurlencode($conversationSid) . '/Webhooks';
+        $this->uri = '/Conversations/' . \rawurlencode($conversationSid) . '/Webhooks';
     }
 
     /**
@@ -79,7 +79,7 @@ class WebhookList extends ListResource {
      * @return WebhookInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

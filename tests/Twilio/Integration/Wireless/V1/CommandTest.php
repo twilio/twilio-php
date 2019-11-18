@@ -156,7 +156,7 @@ class CommandTest extends HolodeckTestCase {
 
         $actual = $this->twilio->wireless->v1->commands->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadIpResponse() {

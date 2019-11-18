@@ -33,7 +33,7 @@ class DeploymentList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Environments/' . rawurlencode($environmentSid) . '/Deployments';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Deployments';
     }
 
     /**
@@ -78,7 +78,7 @@ class DeploymentList extends ListResource {
      * @return DeploymentInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

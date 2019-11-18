@@ -29,7 +29,7 @@ class TranscriptionList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'recordingSid' => $recordingSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($recordingSid) . '/Transcriptions.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($recordingSid) . '/Transcriptions.json';
     }
 
     /**
@@ -74,7 +74,7 @@ class TranscriptionList extends ListResource {
      * @return TranscriptionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

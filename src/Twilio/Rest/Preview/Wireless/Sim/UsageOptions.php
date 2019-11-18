@@ -70,6 +70,6 @@ class FetchUsageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Wireless.FetchUsageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Wireless.FetchUsageOptions ' . \implode(' ', $options) . ']';
     }
 }

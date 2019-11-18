@@ -33,7 +33,7 @@ class BuildContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Builds/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Builds/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -79,6 +79,6 @@ class BuildContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.BuildContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.BuildContext ' . \implode(' ', $context) . ']';
     }
 }

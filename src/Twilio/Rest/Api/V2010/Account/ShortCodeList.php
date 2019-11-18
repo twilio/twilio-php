@@ -28,7 +28,7 @@ class ShortCodeList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SMS/ShortCodes.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SMS/ShortCodes.json';
     }
 
     /**
@@ -75,7 +75,7 @@ class ShortCodeList extends ListResource {
      * @return ShortCodeInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

@@ -86,7 +86,7 @@ class TodayTest extends HolodeckTestCase {
                                            ->records
                                            ->today->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -31,7 +31,7 @@ class CredentialListMappingContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/CredentialListMappings/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/CredentialListMappings/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -78,6 +78,6 @@ class CredentialListMappingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.CredentialListMappingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.CredentialListMappingContext ' . \implode(' ', $context) . ']';
     }
 }

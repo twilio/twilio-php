@@ -161,7 +161,7 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
                                            ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->ipAccessControlListMappings->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

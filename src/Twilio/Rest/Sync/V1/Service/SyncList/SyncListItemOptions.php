@@ -111,7 +111,7 @@ class CreateSyncListItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.CreateSyncListItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.CreateSyncListItemOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -174,7 +174,7 @@ class ReadSyncListItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.ReadSyncListItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.ReadSyncListItemOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -252,6 +252,6 @@ class UpdateSyncListItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.UpdateSyncListItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.UpdateSyncListItemOptions ' . \implode(' ', $options) . ']';
     }
 }

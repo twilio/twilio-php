@@ -146,7 +146,7 @@ class CreateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Conversations.V1.CreateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Conversations.V1.CreateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -237,6 +237,6 @@ class UpdateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Conversations.V1.UpdateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Conversations.V1.UpdateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }

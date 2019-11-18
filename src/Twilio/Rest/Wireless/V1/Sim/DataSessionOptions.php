@@ -73,6 +73,6 @@ class ReadDataSessionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Wireless.V1.ReadDataSessionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Wireless.V1.ReadDataSessionOptions ' . \implode(' ', $options) . ']';
     }
 }

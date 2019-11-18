@@ -28,7 +28,7 @@ class CommandContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Commands/' . rawurlencode($sid) . '';
+        $this->uri = '/Commands/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -69,6 +69,6 @@ class CommandContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Wireless.V1.CommandContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Wireless.V1.CommandContext ' . \implode(' ', $context) . ']';
     }
 }

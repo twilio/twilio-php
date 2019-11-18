@@ -31,7 +31,7 @@ class ExportAssistantContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Export';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Export';
     }
 
     /**
@@ -62,6 +62,6 @@ class ExportAssistantContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.ExportAssistantContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.ExportAssistantContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -64,7 +64,7 @@ class CreateRateLimitOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Verify.V2.CreateRateLimitOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Verify.V2.CreateRateLimitOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -99,6 +99,6 @@ class UpdateRateLimitOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Verify.V2.UpdateRateLimitOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Verify.V2.UpdateRateLimitOptions ' . \implode(' ', $options) . ']';
     }
 }

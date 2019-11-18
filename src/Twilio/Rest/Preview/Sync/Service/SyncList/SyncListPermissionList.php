@@ -31,7 +31,7 @@ class SyncListPermissionList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Permissions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Permissions';
     }
 
     /**
@@ -77,7 +77,7 @@ class SyncListPermissionList extends ListResource {
      * @return SyncListPermissionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

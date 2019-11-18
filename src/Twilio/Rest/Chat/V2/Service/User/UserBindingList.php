@@ -31,7 +31,7 @@ class UserBindingList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Bindings';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Bindings';
     }
 
     /**
@@ -78,7 +78,7 @@ class UserBindingList extends ListResource {
      * @return UserBindingInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

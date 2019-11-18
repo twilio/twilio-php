@@ -28,7 +28,7 @@ class DependentPhoneNumberList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses/' . rawurlencode($addressSid) . '/DependentPhoneNumbers.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Addresses/' . \rawurlencode($addressSid) . '/DependentPhoneNumbers.json';
     }
 
     /**
@@ -74,7 +74,7 @@ class DependentPhoneNumberList extends ListResource {
      * @return DependentPhoneNumberInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

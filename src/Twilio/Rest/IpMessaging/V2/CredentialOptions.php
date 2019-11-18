@@ -166,7 +166,7 @@ class CreateCredentialOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.CreateCredentialOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.CreateCredentialOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -284,6 +284,6 @@ class UpdateCredentialOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.UpdateCredentialOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.UpdateCredentialOptions ' . \implode(' ', $options) . ']';
     }
 }

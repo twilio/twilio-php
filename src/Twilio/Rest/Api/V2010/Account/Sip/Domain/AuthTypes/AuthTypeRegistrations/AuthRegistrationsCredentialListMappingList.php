@@ -29,7 +29,7 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/Auth/Registrations/CredentialListMappings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/Auth/Registrations/CredentialListMappings.json';
     }
 
     /**
@@ -103,7 +103,7 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
      * @return AuthRegistrationsCredentialListMappingInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

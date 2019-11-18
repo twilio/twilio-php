@@ -29,7 +29,7 @@ class AuthCallsCredentialListMappingList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/Auth/Calls/CredentialListMappings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/Auth/Calls/CredentialListMappings.json';
     }
 
     /**
@@ -102,7 +102,7 @@ class AuthCallsCredentialListMappingList extends ListResource {
      * @return AuthCallsCredentialListMappingInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

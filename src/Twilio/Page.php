@@ -46,7 +46,7 @@ abstract class Page implements \Iterator {
 
             $content = $response->getContent();
 
-            if (is_array($content)) {
+            if (\is_array($content)) {
                 $message .= isset($content['message']) ? ': ' . $content['message'] : '';
                 $code = isset($content['code']) ? $content['code'] : $code;
             }
@@ -57,11 +57,11 @@ abstract class Page implements \Iterator {
     }
 
     protected function isPagingEol($content) {
-        return !is_null($content) && array_key_exists('code', $content) && $content['code'] == 20006;
+        return !\is_null($content) && \array_key_exists('code', $content) && $content['code'] == 20006;
     }
 
     protected function hasMeta($key) {
-        return array_key_exists('meta', $this->payload) && array_key_exists($key, $this->payload['meta']);
+        return \array_key_exists('meta', $this->payload) && \array_key_exists($key, $this->payload['meta']);
     }
 
     protected function getMeta($key, $default=null) {
@@ -73,11 +73,11 @@ abstract class Page implements \Iterator {
         if ($key) {
             return $this->payload[$key];
         } else {
-            $keys = array_keys($this->payload);
-            $key = array_diff($keys, self::$metaKeys);
-            $key = array_values($key);
+            $keys = \array_keys($this->payload);
+            $key = \array_diff($keys, self::$metaKeys);
+            $key = \array_values($key);
 
-            if (count($key) == 1) {
+            if (\count($key) == 1) {
                 return $this->payload[$key[0]];
             }
         }
@@ -93,7 +93,7 @@ abstract class Page implements \Iterator {
     public function getPreviousPageUrl() {
         if ($this->hasMeta('previous_page_url')) {
             return $this->getMeta('previous_page_url');
-        } else if (array_key_exists('previous_page_uri', $this->payload) && $this->payload['previous_page_uri']) {
+        } else if (\array_key_exists('previous_page_uri', $this->payload) && $this->payload['previous_page_uri']) {
             return $this->getVersion()->getDomain()->absoluteUrl($this->payload['previous_page_uri']);
         }
         return null;
@@ -102,7 +102,7 @@ abstract class Page implements \Iterator {
     public function getNextPageUrl() {
         if ($this->hasMeta('next_page_url')) {
             return $this->getMeta('next_page_url');
-        } else if (array_key_exists('next_page_uri', $this->payload) && $this->payload['next_page_uri']) {
+        } else if (\array_key_exists('next_page_uri', $this->payload) && $this->payload['next_page_uri']) {
             return $this->getVersion()->getDomain()->absoluteUrl($this->payload['next_page_uri']);
         }
         return null;

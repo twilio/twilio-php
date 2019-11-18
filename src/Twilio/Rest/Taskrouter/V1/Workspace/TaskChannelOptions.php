@@ -79,7 +79,7 @@ class UpdateTaskChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateTaskChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateTaskChannelOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -116,6 +116,6 @@ class CreateTaskChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.CreateTaskChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.CreateTaskChannelOptions ' . \implode(' ', $options) . ']';
     }
 }

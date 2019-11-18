@@ -31,7 +31,7 @@ class DocumentPermissionList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'documentSid' => $documentSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents/' . rawurlencode($documentSid) . '/Permissions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($documentSid) . '/Permissions';
     }
 
     /**
@@ -77,7 +77,7 @@ class DocumentPermissionList extends ListResource {
      * @return DocumentPermissionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

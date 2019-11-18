@@ -98,7 +98,7 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                      ->extensions->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

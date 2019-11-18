@@ -171,7 +171,7 @@ class CreateTrunkOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Trunking.V1.CreateTrunkOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Trunking.V1.CreateTrunkOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -294,6 +294,6 @@ class UpdateTrunkOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Trunking.V1.UpdateTrunkOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Trunking.V1.UpdateTrunkOptions ' . \implode(' ', $options) . ']';
     }
 }

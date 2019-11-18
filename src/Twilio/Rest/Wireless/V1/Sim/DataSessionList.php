@@ -30,7 +30,7 @@ class DataSessionList extends ListResource {
         // Path Solution
         $this->solution = array('simSid' => $simSid, );
 
-        $this->uri = '/Sims/' . rawurlencode($simSid) . '/DataSessions';
+        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/DataSessions';
     }
 
     /**
@@ -77,7 +77,7 @@ class DataSessionList extends ListResource {
      * @return DataSessionInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

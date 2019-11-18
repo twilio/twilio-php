@@ -257,7 +257,7 @@ class TriggerTest extends HolodeckTestCase {
                                            ->usage
                                            ->triggers->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

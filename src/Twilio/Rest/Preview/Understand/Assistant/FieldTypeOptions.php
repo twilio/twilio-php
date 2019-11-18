@@ -75,7 +75,7 @@ class CreateFieldTypeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateFieldTypeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateFieldTypeOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -131,6 +131,6 @@ class UpdateFieldTypeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateFieldTypeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateFieldTypeOptions ' . \implode(' ', $options) . ']';
     }
 }

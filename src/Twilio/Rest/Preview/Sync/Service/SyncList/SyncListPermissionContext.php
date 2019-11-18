@@ -39,7 +39,7 @@ class SyncListPermissionContext extends InstanceContext {
             'identity' => $identity,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Permissions/' . rawurlencode($identity) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Permissions/' . \rawurlencode($identity) . '';
     }
 
     /**
@@ -118,6 +118,6 @@ class SyncListPermissionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Sync.SyncListPermissionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Sync.SyncListPermissionContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -107,7 +107,7 @@ class ReadFlexFlowOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.ReadFlexFlowOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.ReadFlexFlowOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -317,7 +317,7 @@ class CreateFlexFlowOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.CreateFlexFlowOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.CreateFlexFlowOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -566,6 +566,6 @@ class UpdateFlexFlowOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.UpdateFlexFlowOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.UpdateFlexFlowOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -122,8 +122,8 @@ class WorkflowTest extends UnitTest {
 			}";
 
 		// getting a trimmed, simple string
-		$jsonObject = json_decode($expectedJsonString);
-		$expectedJson = json_encode($jsonObject);
+		$jsonObject = \json_decode($expectedJsonString);
+		$expectedJson = \json_encode($jsonObject);
 
 		$this->assertEquals($json, $expectedJson);
 	}
@@ -220,8 +220,8 @@ class WorkflowTest extends UnitTest {
 			}";
 
 		// getting a trimmed, simple string
-		$jsonObject = json_decode($expectedJsonString);
-		$expectedJson = json_encode($jsonObject);
+		$jsonObject = \json_decode($expectedJsonString);
+		$expectedJson = \json_encode($jsonObject);
 
 		$this->assertEquals($json, $expectedJson);
 	}
@@ -285,13 +285,13 @@ class WorkflowTest extends UnitTest {
 		$config = WorkflowConfiguration::fromJson($json);
 		$taskRoutingConfig = WorkflowConfiguration::parse($json)->task_routing;
 
-		$this->assertEquals(3, count($taskRoutingConfig->filters));
-		$this->assertEquals(3, count($config->filters));
-		$this->assertEquals(1, count((array)$config->default_filter));
+		$this->assertEquals(3, \count($taskRoutingConfig->filters));
+		$this->assertEquals(3, \count($config->filters));
+		$this->assertEquals(1, \count((array)$config->default_filter));
 		// sales assertions
 		$this->assertEquals("type=='sales'", $config->filters[0]->expression);
 		$this->assertEquals("Sales", $config->filters[0]->friendly_name);
-		$this->assertEquals(2, count($config->filters[0]->targets));
+		$this->assertEquals(2, \count($config->filters[0]->targets));
 		$this->assertEquals("WQf6724bd5005b30eeb6ea990c3e59e536", $config->filters[0]->targets[0]->queue);
 		$this->assertEquals(5, $config->filters[0]->targets[0]->priority);
 		$this->assertEquals(30, $config->filters[0]->targets[0]->timeout);
@@ -300,7 +300,7 @@ class WorkflowTest extends UnitTest {
 		// marketing assertions
 		$this->assertEquals("type=='marketing'", $config->filters[1]->expression);
 		$this->assertEquals("Marketing", $config->filters[1]->friendly_name);
-		$this->assertEquals(2, count($config->filters[1]->targets));
+		$this->assertEquals(2, \count($config->filters[1]->targets));
 		$this->assertEquals("WQ8c62f84b61ccfa6a333757cd508f0aae", $config->filters[1]->targets[0]->queue);
 		$this->assertEquals(1, $config->filters[1]->targets[0]->priority);
 		$this->assertEquals(120, $config->filters[1]->targets[0]->timeout);
@@ -309,7 +309,7 @@ class WorkflowTest extends UnitTest {
 		// support assertions
 		$this->assertEquals("type=='support'", $config->filters[2]->expression);
 		$this->assertEquals("Support", $config->filters[2]->friendly_name);
-		$this->assertEquals(2, count($config->filters[2]->targets));
+		$this->assertEquals(2, \count($config->filters[2]->targets));
 		$this->assertEquals("WQ5940dc0da87eaf6e3321d62041d4403b", $config->filters[2]->targets[0]->queue);
 		$this->assertEquals(10, $config->filters[2]->targets[0]->priority);
 		$this->assertEquals(30, $config->filters[2]->targets[0]->timeout);
@@ -378,13 +378,13 @@ class WorkflowTest extends UnitTest {
 		$config = WorkflowConfiguration::fromJson($json);
 		$taskRoutingConfig = WorkflowConfiguration::parse($json)->task_routing;
 
-		$this->assertEquals(3, count($taskRoutingConfig->filters));
-		$this->assertEquals(3, count($config->filters));
-		$this->assertEquals(1, count((array)$config->default_filter));
+		$this->assertEquals(3, \count($taskRoutingConfig->filters));
+		$this->assertEquals(3, \count($config->filters));
+		$this->assertEquals(1, \count((array)$config->default_filter));
 		// sales assertions
 		$this->assertEquals("type=='sales'", $config->filters[0]->expression);
 		$this->assertEquals("Sales", $config->filters[0]->friendly_name);
-		$this->assertEquals(2, count($config->filters[0]->targets));
+		$this->assertEquals(2, \count($config->filters[0]->targets));
 		$this->assertEquals("WQf6724bd5005b30eeb6ea990c3e59e536", $config->filters[0]->targets[0]->queue);
 		$this->assertEquals(5, $config->filters[0]->targets[0]->priority);
 		$this->assertEquals(30, $config->filters[0]->targets[0]->timeout);
@@ -393,7 +393,7 @@ class WorkflowTest extends UnitTest {
 		// marketing assertions
 		$this->assertEquals("type=='marketing'", $config->filters[1]->expression);
 		$this->assertEquals("Marketing", $config->filters[1]->friendly_name);
-		$this->assertEquals(2, count($config->filters[1]->targets));
+		$this->assertEquals(2, \count($config->filters[1]->targets));
 		$this->assertEquals("WQ8c62f84b61ccfa6a333757cd508f0aae", $config->filters[1]->targets[0]->queue);
 		$this->assertEquals(1, $config->filters[1]->targets[0]->priority);
 		$this->assertEquals(120, $config->filters[1]->targets[0]->timeout);
@@ -402,7 +402,7 @@ class WorkflowTest extends UnitTest {
 		// support assertions
 		$this->assertEquals("type=='support'", $config->filters[2]->expression);
 		$this->assertEquals("Support", $config->filters[2]->friendly_name);
-		$this->assertEquals(2, count($config->filters[2]->targets));
+		$this->assertEquals(2, \count($config->filters[2]->targets));
 		$this->assertEquals("WQ5940dc0da87eaf6e3321d62041d4403b", $config->filters[2]->targets[0]->queue);
 		$this->assertEquals(10, $config->filters[2]->targets[0]->priority);
 		$this->assertEquals(30, $config->filters[2]->targets[0]->timeout);

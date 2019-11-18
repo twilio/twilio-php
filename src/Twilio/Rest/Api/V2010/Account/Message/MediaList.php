@@ -30,7 +30,7 @@ class MediaList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'messageSid' => $messageSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Media.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Messages/' . \rawurlencode($messageSid) . '/Media.json';
     }
 
     /**
@@ -77,7 +77,7 @@ class MediaList extends ListResource {
      * @return MediaInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

@@ -32,7 +32,7 @@ class PublishedTrackContext extends InstanceContext {
         // Path Solution
         $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, 'sid' => $sid, );
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/PublishedTracks/' . rawurlencode($sid) . '';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/PublishedTracks/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -69,6 +69,6 @@ class PublishedTrackContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.PublishedTrackContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.PublishedTrackContext ' . \implode(' ', $context) . ']';
     }
 }

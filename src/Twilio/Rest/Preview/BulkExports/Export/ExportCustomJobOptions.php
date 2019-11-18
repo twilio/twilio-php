@@ -83,7 +83,7 @@ class ReadExportCustomJobOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.BulkExports.ReadExportCustomJobOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.BulkExports.ReadExportCustomJobOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -183,6 +183,6 @@ class CreateExportCustomJobOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.BulkExports.CreateExportCustomJobOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.BulkExports.CreateExportCustomJobOptions ' . \implode(' ', $options) . ']';
     }
 }

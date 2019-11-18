@@ -28,7 +28,7 @@ class MemberList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'queueSid' => $queueSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues/' . rawurlencode($queueSid) . '/Members.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Queues/' . \rawurlencode($queueSid) . '/Members.json';
     }
 
     /**
@@ -73,7 +73,7 @@ class MemberList extends ListResource {
      * @return MemberInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

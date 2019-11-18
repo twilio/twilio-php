@@ -30,7 +30,7 @@ class ThisMonthList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/ThisMonth.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Usage/Records/ThisMonth.json';
     }
 
     /**
@@ -77,7 +77,7 @@ class ThisMonthList extends ListResource {
      * @return ThisMonthInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

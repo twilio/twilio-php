@@ -30,7 +30,7 @@ class SigningKeyContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SigningKeys/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SigningKeys/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -103,6 +103,6 @@ class SigningKeyContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.SigningKeyContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.SigningKeyContext ' . \implode(' ', $context) . ']';
     }
 }

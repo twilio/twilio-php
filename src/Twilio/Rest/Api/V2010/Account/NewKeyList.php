@@ -30,7 +30,7 @@ class NewKeyList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Keys.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Keys.json';
     }
 
     /**

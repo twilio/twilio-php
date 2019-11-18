@@ -56,6 +56,6 @@ class UpdateAssistantInitiationActionsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateAssistantInitiationActionsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateAssistantInitiationActionsOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -31,7 +31,7 @@ class CompositionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Compositions/' . rawurlencode($sid) . '';
+        $this->uri = '/Compositions/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -72,6 +72,6 @@ class CompositionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.CompositionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.CompositionContext ' . \implode(' ', $context) . ']';
     }
 }

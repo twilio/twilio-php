@@ -160,7 +160,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -208,7 +208,7 @@ class ReadAuthorizationDocumentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -243,6 +243,6 @@ class CreateAuthorizationDocumentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.CreateAuthorizationDocumentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.CreateAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
     }
 }

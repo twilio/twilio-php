@@ -327,6 +327,6 @@ class ReadSharedCostOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadSharedCostOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadSharedCostOptions ' . \implode(' ', $options) . ']';
     }
 }

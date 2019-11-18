@@ -135,7 +135,7 @@ class MediaTest extends HolodeckTestCase {
                                            ->messages("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->media->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

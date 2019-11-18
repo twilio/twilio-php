@@ -115,6 +115,6 @@ class UpdateOriginationUrlOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Trunking.V1.UpdateOriginationUrlOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Trunking.V1.UpdateOriginationUrlOptions ' . \implode(' ', $options) . ']';
     }
 }

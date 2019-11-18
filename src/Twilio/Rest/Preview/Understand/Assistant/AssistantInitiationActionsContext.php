@@ -33,7 +33,7 @@ class AssistantInitiationActionsContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/InitiationActions';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/InitiationActions';
     }
 
     /**
@@ -98,6 +98,6 @@ class AssistantInitiationActionsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Understand.AssistantInitiationActionsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Understand.AssistantInitiationActionsContext ' . \implode(' ', $context) . ']';
     }
 }

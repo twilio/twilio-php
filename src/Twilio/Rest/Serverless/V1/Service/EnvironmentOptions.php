@@ -59,6 +59,6 @@ class CreateEnvironmentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Serverless.V1.CreateEnvironmentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Serverless.V1.CreateEnvironmentOptions ' . \implode(' ', $options) . ']';
     }
 }

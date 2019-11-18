@@ -59,6 +59,6 @@ class UpdateTaskActionsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateTaskActionsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateTaskActionsOptions ' . \implode(' ', $options) . ']';
     }
 }

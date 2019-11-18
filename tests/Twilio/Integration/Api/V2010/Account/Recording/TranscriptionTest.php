@@ -147,7 +147,7 @@ class TranscriptionTest extends HolodeckTestCase {
                                            ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->transcriptions->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

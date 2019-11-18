@@ -134,7 +134,7 @@ class ReadTollFreeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadTollFreeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadTollFreeOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -401,6 +401,6 @@ class CreateTollFreeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateTollFreeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateTollFreeOptions ' . \implode(' ', $options) . ']';
     }
 }

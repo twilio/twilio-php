@@ -68,7 +68,7 @@ class ReadFieldValueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.ReadFieldValueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.ReadFieldValueOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -105,6 +105,6 @@ class CreateFieldValueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateFieldValueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateFieldValueOptions ' . \implode(' ', $options) . ']';
     }
 }

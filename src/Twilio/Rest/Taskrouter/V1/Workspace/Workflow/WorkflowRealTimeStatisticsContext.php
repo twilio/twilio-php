@@ -33,7 +33,7 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows/' . rawurlencode($workflowSid) . '/RealTimeStatistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workflows/' . \rawurlencode($workflowSid) . '/RealTimeStatistics';
     }
 
     /**
@@ -73,6 +73,6 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Taskrouter.V1.WorkflowRealTimeStatisticsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.WorkflowRealTimeStatisticsContext ' . \implode(' ', $context) . ']';
     }
 }

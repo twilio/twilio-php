@@ -56,6 +56,6 @@ class UpdateAssistantFallbackActionsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateAssistantFallbackActionsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateAssistantFallbackActionsOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -32,7 +32,7 @@ class SyncMapList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps';
     }
 
     /**
@@ -99,7 +99,7 @@ class SyncMapList extends ListResource {
      * @return SyncMapInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

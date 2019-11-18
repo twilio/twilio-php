@@ -33,7 +33,7 @@ class DialogueContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Dialogues/' . rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Dialogues/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -69,6 +69,6 @@ class DialogueContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.DialogueContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.DialogueContext ' . \implode(' ', $context) . ']';
     }
 }

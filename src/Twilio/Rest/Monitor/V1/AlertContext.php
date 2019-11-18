@@ -28,7 +28,7 @@ class AlertContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Alerts/' . rawurlencode($sid) . '';
+        $this->uri = '/Alerts/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -59,6 +59,6 @@ class AlertContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Monitor.V1.AlertContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Monitor.V1.AlertContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -68,7 +68,7 @@ class ReadFieldValueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.ReadFieldValueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.ReadFieldValueOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -105,6 +105,6 @@ class CreateFieldValueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.CreateFieldValueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.CreateFieldValueOptions ' . \implode(' ', $options) . ']';
     }
 }

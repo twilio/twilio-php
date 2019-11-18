@@ -174,7 +174,7 @@ class CreateChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V2.CreateChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V2.CreateChannelOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -209,7 +209,7 @@ class ReadChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V2.ReadChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V2.ReadChannelOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -317,6 +317,6 @@ class UpdateChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V2.UpdateChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V2.UpdateChannelOptions ' . \implode(' ', $options) . ']';
     }
 }

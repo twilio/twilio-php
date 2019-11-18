@@ -61,7 +61,7 @@ class CreateInviteOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.CreateInviteOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.CreateInviteOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -96,6 +96,6 @@ class ReadInviteOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.ReadInviteOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.ReadInviteOptions ' . \implode(' ', $options) . ']';
     }
 }

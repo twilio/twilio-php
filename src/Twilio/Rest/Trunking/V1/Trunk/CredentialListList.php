@@ -29,7 +29,7 @@ class CredentialListList extends ListResource {
         // Path Solution
         $this->solution = array('trunkSid' => $trunkSid, );
 
-        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/CredentialLists';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/CredentialLists';
     }
 
     /**
@@ -95,7 +95,7 @@ class CredentialListList extends ListResource {
      * @return CredentialListInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

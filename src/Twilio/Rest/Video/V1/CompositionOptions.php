@@ -132,7 +132,7 @@ class ReadCompositionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.ReadCompositionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.ReadCompositionOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -286,6 +286,6 @@ class CreateCompositionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.CreateCompositionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.CreateCompositionOptions ' . \implode(' ', $options) . ']';
     }
 }

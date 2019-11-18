@@ -28,7 +28,7 @@ class IpAccessControlListList extends ListResource {
         // Path Solution
         $this->solution = array('trunkSid' => $trunkSid, );
 
-        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/IpAccessControlLists';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/IpAccessControlLists';
     }
 
     /**
@@ -96,7 +96,7 @@ class IpAccessControlListList extends ListResource {
      * @return IpAccessControlListInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

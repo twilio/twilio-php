@@ -32,7 +32,7 @@ class IpAccessControlListMappingContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/IpAccessControlListMappings/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/IpAccessControlListMappings/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -80,6 +80,6 @@ class IpAccessControlListMappingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.IpAccessControlListMappingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.IpAccessControlListMappingContext ' . \implode(' ', $context) . ']';
     }
 }

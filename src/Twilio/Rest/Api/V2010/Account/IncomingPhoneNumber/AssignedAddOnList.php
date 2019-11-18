@@ -33,7 +33,7 @@ class AssignedAddOnList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'resourceSid' => $resourceSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . rawurlencode($resourceSid) . '/AssignedAddOns.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($resourceSid) . '/AssignedAddOns.json';
     }
 
     /**
@@ -78,7 +78,7 @@ class AssignedAddOnList extends ListResource {
      * @return AssignedAddOnInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

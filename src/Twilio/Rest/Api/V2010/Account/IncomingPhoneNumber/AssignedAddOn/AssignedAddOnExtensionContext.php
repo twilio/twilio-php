@@ -42,7 +42,7 @@ class AssignedAddOnExtensionContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . rawurlencode($resourceSid) . '/AssignedAddOns/' . rawurlencode($assignedAddOnSid) . '/Extensions/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($resourceSid) . '/AssignedAddOns/' . \rawurlencode($assignedAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -80,6 +80,6 @@ class AssignedAddOnExtensionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.AssignedAddOnExtensionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.AssignedAddOnExtensionContext ' . \implode(' ', $context) . ']';
     }
 }

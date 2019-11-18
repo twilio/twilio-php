@@ -73,7 +73,7 @@ class UpdateActivityOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateActivityOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateActivityOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -125,7 +125,7 @@ class ReadActivityOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadActivityOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadActivityOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -162,6 +162,6 @@ class CreateActivityOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.CreateActivityOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.CreateActivityOptions ' . \implode(' ', $options) . ']';
     }
 }

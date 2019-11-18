@@ -37,7 +37,7 @@ class SyncMapItemContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'key' => $key, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Items/' . rawurlencode($key) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps/' . \rawurlencode($mapSid) . '/Items/' . \rawurlencode($key) . '';
     }
 
     /**
@@ -117,6 +117,6 @@ class SyncMapItemContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Sync.V1.SyncMapItemContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Sync.V1.SyncMapItemContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -34,7 +34,7 @@ class QueryContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Queries/' . rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Queries/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -107,6 +107,6 @@ class QueryContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Understand.QueryContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Understand.QueryContext ' . \implode(' ', $context) . ']';
     }
 }

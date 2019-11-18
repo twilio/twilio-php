@@ -256,7 +256,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
 
         $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

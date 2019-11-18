@@ -103,7 +103,7 @@ class UpdateTriggerOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateTriggerOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateTriggerOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -179,7 +179,7 @@ class CreateTriggerOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateTriggerOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateTriggerOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -240,6 +240,6 @@ class ReadTriggerOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadTriggerOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadTriggerOptions ' . \implode(' ', $options) . ']';
     }
 }

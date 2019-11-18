@@ -65,6 +65,6 @@ class UpdateSettingsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Voice.V1.UpdateSettingsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Voice.V1.UpdateSettingsOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -34,7 +34,7 @@ class StreamMessageList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'streamSid' => $streamSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Streams/' . rawurlencode($streamSid) . '/Messages';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Streams/' . \rawurlencode($streamSid) . '/Messages';
     }
 
     /**

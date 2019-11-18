@@ -69,7 +69,7 @@ class CreateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Serverless.V1.CreateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Serverless.V1.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -119,6 +119,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Serverless.V1.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Serverless.V1.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -59,6 +59,6 @@ class CreateEngagementOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Studio.V1.CreateEngagementOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Studio.V1.CreateEngagementOptions ' . \implode(' ', $options) . ']';
     }
 }

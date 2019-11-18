@@ -212,7 +212,7 @@ class SyncMapItemTest extends HolodeckTestCase {
                                               ->syncMaps("MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->syncMapItems->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

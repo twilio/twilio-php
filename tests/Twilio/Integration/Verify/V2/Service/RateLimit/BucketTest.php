@@ -220,7 +220,7 @@ class BucketTest extends HolodeckTestCase {
                                            ->rateLimits("RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->buckets->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testDeleteRequest() {

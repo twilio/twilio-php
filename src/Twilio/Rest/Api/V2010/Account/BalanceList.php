@@ -28,7 +28,7 @@ class BalanceList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Balance.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Balance.json';
     }
 
     /**

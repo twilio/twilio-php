@@ -75,7 +75,7 @@ class UpdateQueueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateQueueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateQueueOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -110,6 +110,6 @@ class CreateQueueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateQueueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateQueueOptions ' . \implode(' ', $options) . ']';
     }
 }

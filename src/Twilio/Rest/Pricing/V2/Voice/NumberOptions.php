@@ -56,6 +56,6 @@ class FetchNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Pricing.V2.FetchNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Pricing.V2.FetchNumberOptions ' . \implode(' ', $options) . ']';
     }
 }

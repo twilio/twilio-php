@@ -38,7 +38,7 @@ class SyncMapPermissionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'identity' => $identity, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Permissions/' . rawurlencode($identity) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps/' . \rawurlencode($mapSid) . '/Permissions/' . \rawurlencode($identity) . '';
     }
 
     /**
@@ -117,6 +117,6 @@ class SyncMapPermissionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Sync.V1.SyncMapPermissionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Sync.V1.SyncMapPermissionContext ' . \implode(' ', $context) . ']';
     }
 }

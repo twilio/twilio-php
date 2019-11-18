@@ -104,6 +104,6 @@ class FetchWorkerStatisticsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.FetchWorkerStatisticsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.FetchWorkerStatisticsOptions ' . \implode(' ', $options) . ']';
     }
 }

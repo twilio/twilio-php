@@ -34,7 +34,7 @@ class VerificationList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Verifications';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Verifications';
     }
 
     /**

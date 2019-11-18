@@ -118,6 +118,6 @@ class ReadRecordingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadRecordingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadRecordingOptions ' . \implode(' ', $options) . ']';
     }
 }

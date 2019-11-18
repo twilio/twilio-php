@@ -32,7 +32,7 @@ class BindingContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Bindings/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Bindings/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -78,6 +78,6 @@ class BindingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Notify.V1.BindingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Notify.V1.BindingContext ' . \implode(' ', $context) . ']';
     }
 }

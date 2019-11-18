@@ -31,7 +31,7 @@ class TriggerContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Triggers/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Usage/Triggers/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -108,6 +108,6 @@ class TriggerContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.TriggerContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.TriggerContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -30,7 +30,7 @@ class NotificationList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Notifications.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Notifications.json';
     }
 
     /**
@@ -77,7 +77,7 @@ class NotificationList extends ListResource {
      * @return NotificationInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

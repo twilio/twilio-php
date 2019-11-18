@@ -4,8 +4,8 @@ namespace Twilio\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-if (version_compare(PHP_VERSION, '7.1.0') >= 0) {
-    require dirname(__DIR__) . '/Php7UnitTest.php';
+if (\version_compare(PHP_VERSION, '7.1.0') >= 0) {
+    require \dirname(__DIR__) . '/Php7UnitTest.php';
 
     return;
 }
@@ -17,14 +17,14 @@ abstract class UnitTest extends TestCase
 {
     protected function setUp()
     {
-        if (method_exists($this, 'doSetUp')) {
+        if (\method_exists($this, 'doSetUp')) {
             $this->doSetUp();
         }
     }
 
     protected function tearDown()
     {
-        if (method_exists($this, 'doTearDown')) {
+        if (\method_exists($this, 'doTearDown')) {
             $this->doTearDown();
         }
     }
@@ -69,6 +69,6 @@ abstract class UnitTest extends TestCase
      */
     protected function isLegacyPHPUnit()
     {
-        return method_exists('PHPUnit_Runner_Version', 'id');
+        return \method_exists('PHPUnit_Runner_Version', 'id');
     }
 }

@@ -191,7 +191,7 @@ class CreateRatePlanOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Wireless.CreateRatePlanOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Wireless.CreateRatePlanOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -239,6 +239,6 @@ class UpdateRatePlanOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Wireless.UpdateRatePlanOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Wireless.UpdateRatePlanOptions ' . \implode(' ', $options) . ']';
     }
 }

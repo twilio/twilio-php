@@ -219,6 +219,6 @@ class ConversationTest extends HolodeckTestCase {
 
         $actual = $this->twilio->conversations->v1->conversations->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

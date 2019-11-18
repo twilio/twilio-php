@@ -39,7 +39,7 @@ class DeploymentContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Environments/' . rawurlencode($environmentSid) . '/Deployments/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Deployments/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -76,6 +76,6 @@ class DeploymentContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.DeploymentContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.DeploymentContext ' . \implode(' ', $context) . ']';
     }
 }

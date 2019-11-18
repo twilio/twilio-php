@@ -31,7 +31,7 @@ class JobContext extends InstanceContext {
         // Path Solution
         $this->solution = array('jobSid' => $jobSid, );
 
-        $this->uri = '/Exports/Jobs/' . rawurlencode($jobSid) . '';
+        $this->uri = '/Exports/Jobs/' . \rawurlencode($jobSid) . '';
     }
 
     /**
@@ -72,6 +72,6 @@ class JobContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.BulkExports.JobContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.BulkExports.JobContext ' . \implode(' ', $context) . ']';
     }
 }

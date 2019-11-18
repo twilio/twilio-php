@@ -90,6 +90,6 @@ class CreateParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Proxy.V1.CreateParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Proxy.V1.CreateParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }

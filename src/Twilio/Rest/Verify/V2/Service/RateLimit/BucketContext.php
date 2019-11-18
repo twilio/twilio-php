@@ -39,7 +39,7 @@ class BucketContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/RateLimits/' . rawurlencode($rateLimitSid) . '/Buckets/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/RateLimits/' . \rawurlencode($rateLimitSid) . '/Buckets/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -114,6 +114,6 @@ class BucketContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Verify.V2.BucketContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Verify.V2.BucketContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -104,6 +104,6 @@ class CreateVerificationCheckOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Verify.V2.CreateVerificationCheckOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Verify.V2.CreateVerificationCheckOptions ' . \implode(' ', $options) . ']';
     }
 }

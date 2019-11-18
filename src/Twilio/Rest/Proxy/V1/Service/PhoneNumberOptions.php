@@ -92,7 +92,7 @@ class CreatePhoneNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Proxy.V1.CreatePhoneNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Proxy.V1.CreatePhoneNumberOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -127,6 +127,6 @@ class UpdatePhoneNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Proxy.V1.UpdatePhoneNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Proxy.V1.UpdatePhoneNumberOptions ' . \implode(' ', $options) . ']';
     }
 }

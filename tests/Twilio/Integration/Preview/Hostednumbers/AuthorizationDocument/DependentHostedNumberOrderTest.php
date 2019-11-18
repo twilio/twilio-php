@@ -112,6 +112,6 @@ class DependentHostedNumberOrderTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments("PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                        ->dependentHostedNumberOrders->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

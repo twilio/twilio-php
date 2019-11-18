@@ -29,7 +29,7 @@ class PhoneNumberList extends ListResource {
         // Path Solution
         $this->solution = array('trunkSid' => $trunkSid, );
 
-        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/PhoneNumbers';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/PhoneNumbers';
     }
 
     /**
@@ -95,7 +95,7 @@ class PhoneNumberList extends ListResource {
      * @return PhoneNumberInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

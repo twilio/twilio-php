@@ -40,7 +40,7 @@ class PayloadContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults/' . rawurlencode($addOnResultSid) . '/Payloads/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults/' . \rawurlencode($addOnResultSid) . '/Payloads/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -88,6 +88,6 @@ class PayloadContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.PayloadContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.PayloadContext ' . \implode(' ', $context) . ']';
     }
 }

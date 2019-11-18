@@ -98,7 +98,7 @@ class CreateChallengeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Authy.V1.CreateChallengeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Authy.V1.CreateChallengeOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -133,6 +133,6 @@ class UpdateChallengeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Authy.V1.UpdateChallengeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Authy.V1.UpdateChallengeOptions ' . \implode(' ', $options) . ']';
     }
 }

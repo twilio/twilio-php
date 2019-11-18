@@ -32,7 +32,7 @@ class ConnectAppContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/ConnectApps/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/ConnectApps/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -114,6 +114,6 @@ class ConnectAppContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ConnectAppContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.ConnectAppContext ' . \implode(' ', $context) . ']';
     }
 }

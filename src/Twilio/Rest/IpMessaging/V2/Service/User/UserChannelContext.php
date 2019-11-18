@@ -37,7 +37,7 @@ class UserChannelContext extends InstanceContext {
             'channelSid' => $channelSid,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Channels/' . rawurlencode($channelSid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Channels/' . \rawurlencode($channelSid) . '';
     }
 
     /**
@@ -101,6 +101,6 @@ class UserChannelContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.IpMessaging.V2.UserChannelContext ' . implode(' ', $context) . ']';
+        return '[Twilio.IpMessaging.V2.UserChannelContext ' . \implode(' ', $context) . ']';
     }
 }

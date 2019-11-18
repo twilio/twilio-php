@@ -28,7 +28,7 @@ class EventContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Events/' . rawurlencode($sid) . '';
+        $this->uri = '/Events/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -59,6 +59,6 @@ class EventContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Monitor.V1.EventContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Monitor.V1.EventContext ' . \implode(' ', $context) . ']';
     }
 }

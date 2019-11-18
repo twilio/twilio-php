@@ -135,7 +135,7 @@ class ReadSimOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Wireless.ReadSimOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Wireless.ReadSimOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -365,6 +365,6 @@ class UpdateSimOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Wireless.UpdateSimOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Wireless.UpdateSimOptions ' . \implode(' ', $options) . ']';
     }
 }

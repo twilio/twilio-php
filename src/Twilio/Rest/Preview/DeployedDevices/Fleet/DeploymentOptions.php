@@ -83,7 +83,7 @@ class CreateDeploymentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.CreateDeploymentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.CreateDeploymentOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -133,6 +133,6 @@ class UpdateDeploymentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.UpdateDeploymentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.UpdateDeploymentOptions ' . \implode(' ', $options) . ']';
     }
 }

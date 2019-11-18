@@ -183,7 +183,7 @@ class CreateDomainOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateDomainOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateDomainOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -330,6 +330,6 @@ class UpdateDomainOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateDomainOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateDomainOptions ' . \implode(' ', $options) . ']';
     }
 }

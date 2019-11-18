@@ -107,6 +107,6 @@ class ReadAllTimeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadAllTimeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadAllTimeOptions ' . \implode(' ', $options) . ']';
     }
 }

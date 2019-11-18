@@ -160,6 +160,6 @@ class MetricTest extends HolodeckTestCase {
         $actual = $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->metrics->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

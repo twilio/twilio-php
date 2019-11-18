@@ -141,14 +141,14 @@ class Client {
      * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct($username = null, $password = null, $accountSid = null, $region = null, HttpClient $httpClient = null, $environment = null) {
-        if (is_null($environment)) {
+        if (\is_null($environment)) {
             $environment = $_ENV;
         }
 
         if ($username) {
             $this->username = $username;
         } else {
-            if (array_key_exists(self::ENV_ACCOUNT_SID, $environment)) {
+            if (\array_key_exists(self::ENV_ACCOUNT_SID, $environment)) {
                 $this->username = $environment[self::ENV_ACCOUNT_SID];
             }
         }
@@ -156,7 +156,7 @@ class Client {
         if ($password) {
             $this->password = $password;
         } else {
-            if (array_key_exists(self::ENV_AUTH_TOKEN, $environment)) {
+            if (\array_key_exists(self::ENV_AUTH_TOKEN, $environment)) {
                 $this->password = $environment[self::ENV_AUTH_TOKEN];
             }
         }
@@ -194,22 +194,22 @@ class Client {
         $password = $password ? $password : $this->password;
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
-                                 ' (PHP ' . phpversion() . ')';
+                                 ' (PHP ' . \phpversion() . ')';
         $headers['Accept-Charset'] = 'utf-8';
 
-        if ($method == 'POST' && !array_key_exists('Content-Type', $headers)) {
+        if ($method == 'POST' && !\array_key_exists('Content-Type', $headers)) {
             $headers['Content-Type'] = 'application/x-www-form-urlencoded';
         }
 
-        if (!array_key_exists('Accept', $headers)) {
+        if (!\array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
         }
 
         if ($this->region) {
-            list($head, $tail) = explode('.', $uri, 2);
+            list($head, $tail) = \explode('.', $uri, 2);
 
-            if (strpos($tail, $this->region) !== 0) {
-                $uri = implode('.', array($head, $this->region, $tail));
+            if (\strpos($tail, $this->region) !== 0) {
+                $uri = \implode('.', array($head, $this->region, $tail));
             }
         }
 
@@ -912,8 +912,8 @@ class Client {
      * @throws TwilioException For unknown domains
      */
     public function __get($name) {
-        $method = 'get' . ucfirst($name);
-        if (method_exists($this, $method)) {
+        $method = 'get' . \ucfirst($name);
+        if (\method_exists($this, $method)) {
             return $this->$method();
         }
 
@@ -929,9 +929,9 @@ class Client {
      * @throws TwilioException For unknown contexts
      */
     public function __call($name, $arguments) {
-        $method = 'context' . ucfirst($name);
-        if (method_exists($this, $method)) {
-            return call_user_func_array(array($this, $method), $arguments);
+        $method = 'context' . \ucfirst($name);
+        if (\method_exists($this, $method)) {
+            return \call_user_func_array(array($this, $method), $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);

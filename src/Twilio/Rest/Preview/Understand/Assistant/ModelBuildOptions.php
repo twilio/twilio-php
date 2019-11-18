@@ -86,7 +86,7 @@ class CreateModelBuildOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateModelBuildOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateModelBuildOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -125,6 +125,6 @@ class UpdateModelBuildOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateModelBuildOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateModelBuildOptions ' . \implode(' ', $options) . ']';
     }
 }

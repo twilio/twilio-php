@@ -104,6 +104,6 @@ class ReadRoomRecordingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.ReadRoomRecordingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.ReadRoomRecordingOptions ' . \implode(' ', $options) . ']';
     }
 }

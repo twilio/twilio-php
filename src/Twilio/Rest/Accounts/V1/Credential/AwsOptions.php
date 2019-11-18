@@ -78,7 +78,7 @@ class CreateAwsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Accounts.V1.CreateAwsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Accounts.V1.CreateAwsOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -113,6 +113,6 @@ class UpdateAwsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Accounts.V1.UpdateAwsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Accounts.V1.UpdateAwsOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -136,7 +136,7 @@ class SampleTest extends HolodeckTestCase {
                                                     ->tasks("UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                     ->samples->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

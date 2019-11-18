@@ -127,6 +127,6 @@ class FetchTaskQueueCumulativeStatisticsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.FetchTaskQueueCumulativeStatisticsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.FetchTaskQueueCumulativeStatisticsOptions ' . \implode(' ', $options) . ']';
     }
 }

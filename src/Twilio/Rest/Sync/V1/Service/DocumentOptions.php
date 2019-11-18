@@ -104,7 +104,7 @@ class CreateDocumentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.CreateDocumentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.CreateDocumentOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -156,6 +156,6 @@ class UpdateDocumentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.UpdateDocumentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.UpdateDocumentOptions ' . \implode(' ', $options) . ']';
     }
 }

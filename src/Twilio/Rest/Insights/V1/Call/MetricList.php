@@ -31,7 +31,7 @@ class MetricList extends ListResource {
         // Path Solution
         $this->solution = array('callSid' => $callSid, );
 
-        $this->uri = '/Voice/' . rawurlencode($callSid) . '/Metrics';
+        $this->uri = '/Voice/' . \rawurlencode($callSid) . '/Metrics';
     }
 
     /**
@@ -78,7 +78,7 @@ class MetricList extends ListResource {
      * @return MetricInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

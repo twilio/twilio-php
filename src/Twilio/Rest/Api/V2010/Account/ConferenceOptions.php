@@ -177,7 +177,7 @@ class ReadConferenceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadConferenceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadConferenceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -240,6 +240,6 @@ class UpdateConferenceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateConferenceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateConferenceOptions ' . \implode(' ', $options) . ']';
     }
 }

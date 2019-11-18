@@ -32,7 +32,7 @@ class RatePlanContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/RatePlans/' . rawurlencode($sid) . '';
+        $this->uri = '/RatePlans/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -98,6 +98,6 @@ class RatePlanContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Wireless.RatePlanContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.RatePlanContext ' . \implode(' ', $context) . ']';
     }
 }

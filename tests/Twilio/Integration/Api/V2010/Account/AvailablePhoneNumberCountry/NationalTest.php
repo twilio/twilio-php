@@ -77,7 +77,7 @@ class NationalTest extends HolodeckTestCase {
                                            ->availablePhoneNumbers("US")
                                            ->national->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

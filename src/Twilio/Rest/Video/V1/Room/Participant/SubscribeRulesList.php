@@ -35,7 +35,7 @@ class SubscribeRulesList extends ListResource {
         // Path Solution
         $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, );
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/SubscribeRules';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/SubscribeRules';
     }
 
     /**

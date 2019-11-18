@@ -28,7 +28,7 @@ class CountryContext extends InstanceContext {
         // Path Solution
         $this->solution = array('isoCountry' => $isoCountry, );
 
-        $this->uri = '/PhoneNumbers/Countries/' . rawurlencode($isoCountry) . '';
+        $this->uri = '/PhoneNumbers/Countries/' . \rawurlencode($isoCountry) . '';
     }
 
     /**
@@ -59,6 +59,6 @@ class CountryContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Pricing.V1.CountryContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Pricing.V1.CountryContext ' . \implode(' ', $context) . ']';
     }
 }

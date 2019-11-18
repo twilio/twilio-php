@@ -32,7 +32,7 @@ class CredentialList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'credentialListSid' => $credentialListSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/CredentialLists/' . rawurlencode($credentialListSid) . '/Credentials.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/CredentialLists/' . \rawurlencode($credentialListSid) . '/Credentials.json';
     }
 
     /**
@@ -77,7 +77,7 @@ class CredentialList extends ListResource {
      * @return CredentialInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

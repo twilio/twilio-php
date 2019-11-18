@@ -221,7 +221,7 @@ class CreateAssistantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateAssistantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateAssistantOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -373,6 +373,6 @@ class UpdateAssistantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateAssistantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateAssistantOptions ' . \implode(' ', $options) . ']';
     }
 }

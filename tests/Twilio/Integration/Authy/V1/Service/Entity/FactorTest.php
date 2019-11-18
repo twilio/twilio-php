@@ -230,7 +230,7 @@ class FactorTest extends HolodeckTestCase {
                                           ->entities("identity")
                                           ->factors->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

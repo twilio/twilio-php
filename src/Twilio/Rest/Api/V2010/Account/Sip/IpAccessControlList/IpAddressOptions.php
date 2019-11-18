@@ -79,7 +79,7 @@ class CreateIpAddressOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateIpAddressOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateIpAddressOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -154,6 +154,6 @@ class UpdateIpAddressOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateIpAddressOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateIpAddressOptions ' . \implode(' ', $options) . ']';
     }
 }

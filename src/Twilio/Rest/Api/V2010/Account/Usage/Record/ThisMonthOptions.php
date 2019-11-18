@@ -107,6 +107,6 @@ class ReadThisMonthOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadThisMonthOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadThisMonthOptions ' . \implode(' ', $options) . ']';
     }
 }

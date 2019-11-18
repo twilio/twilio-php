@@ -96,7 +96,7 @@ class CreateCertificateOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.CreateCertificateOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.CreateCertificateOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -133,7 +133,7 @@ class ReadCertificateOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.ReadCertificateOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.ReadCertificateOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -185,6 +185,6 @@ class UpdateCertificateOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.UpdateCertificateOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.UpdateCertificateOptions ' . \implode(' ', $options) . ']';
     }
 }

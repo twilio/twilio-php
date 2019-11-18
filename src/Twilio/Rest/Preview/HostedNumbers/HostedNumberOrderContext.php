@@ -33,7 +33,7 @@ class HostedNumberOrderContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/HostedNumberOrders/' . rawurlencode($sid) . '';
+        $this->uri = '/HostedNumberOrders/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -107,6 +107,6 @@ class HostedNumberOrderContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.HostedNumbers.HostedNumberOrderContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.HostedNumbers.HostedNumberOrderContext ' . \implode(' ', $context) . ']';
     }
 }

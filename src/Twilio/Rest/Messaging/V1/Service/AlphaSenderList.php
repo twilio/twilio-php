@@ -32,7 +32,7 @@ class AlphaSenderList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/AlphaSenders';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/AlphaSenders';
     }
 
     /**
@@ -97,7 +97,7 @@ class AlphaSenderList extends ListResource {
      * @return AlphaSenderInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

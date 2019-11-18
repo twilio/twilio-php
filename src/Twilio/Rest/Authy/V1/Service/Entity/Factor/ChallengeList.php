@@ -39,7 +39,7 @@ class ChallengeList extends ListResource {
             'factorSid' => $factorSid,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Entities/' . rawurlencode($identity) . '/Factors/' . rawurlencode($factorSid) . '/Challenges';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors/' . \rawurlencode($factorSid) . '/Challenges';
     }
 
     /**

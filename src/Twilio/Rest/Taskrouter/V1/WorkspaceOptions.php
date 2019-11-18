@@ -182,7 +182,7 @@ class UpdateWorkspaceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateWorkspaceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateWorkspaceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -219,7 +219,7 @@ class ReadWorkspaceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadWorkspaceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadWorkspaceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -312,6 +312,6 @@ class CreateWorkspaceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.CreateWorkspaceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.CreateWorkspaceOptions ' . \implode(' ', $options) . ']';
     }
 }

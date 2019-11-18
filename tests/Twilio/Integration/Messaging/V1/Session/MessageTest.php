@@ -208,7 +208,7 @@ class MessageTest extends HolodeckTestCase {
         $actual = $this->twilio->messaging->v1->sessions("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->messages->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testDeleteRequest() {

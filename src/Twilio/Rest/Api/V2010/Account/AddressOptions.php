@@ -117,7 +117,7 @@ class CreateAddressOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateAddressOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateAddressOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -247,7 +247,7 @@ class UpdateAddressOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateAddressOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateAddressOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -314,6 +314,6 @@ class ReadAddressOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadAddressOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadAddressOptions ' . \implode(' ', $options) . ']';
     }
 }

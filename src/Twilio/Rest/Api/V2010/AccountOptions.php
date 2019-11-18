@@ -71,7 +71,7 @@ class CreateAccountOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateAccountOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateAccountOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -119,7 +119,7 @@ class ReadAccountOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadAccountOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadAccountOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -167,6 +167,6 @@ class UpdateAccountOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateAccountOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateAccountOptions ' . \implode(' ', $options) . ']';
     }
 }

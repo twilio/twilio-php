@@ -28,7 +28,7 @@ class CurlClientTest extends UnitTest {
 
         $authorization = null;
         foreach ($headers as $header) {
-            $parse = explode(':', $header);
+            $parse = \explode(':', $header);
             $headerKey = $parse[0];
             if ($headerKey == 'Authorization') {
                 $authorization = $header;
@@ -38,9 +38,9 @@ class CurlClientTest extends UnitTest {
 
         $this->assertNotNull($authorization);
 
-        $authorizationPayload = explode(' ', $authorization);
-        $encodedAuthorization = array_pop($authorizationPayload);
-        $decodedAuthorization = base64_decode($encodedAuthorization);
+        $authorizationPayload = \explode(' ', $authorization);
+        $encodedAuthorization = \array_pop($authorizationPayload);
+        $decodedAuthorization = \base64_decode($encodedAuthorization);
 
         $this->assertEquals('test-user:test-password', $decodedAuthorization);
     }
@@ -232,7 +232,7 @@ class CurlClientTest extends UnitTest {
         $client = new CurlClient();
         $actual = $client->options('PUT', 'url', array(), array('a' => 1, 'b' => 2));
         $this->assertNotNull($actual[CURLOPT_INFILE]);
-        $this->assertEquals('a=1&b=2', fread($actual[CURLOPT_INFILE], $actual[CURLOPT_INFILESIZE]));
+        $this->assertEquals('a=1&b=2', \fread($actual[CURLOPT_INFILE], $actual[CURLOPT_INFILESIZE]));
         $this->assertEquals(7, $actual[CURLOPT_INFILESIZE]);
     }
 
@@ -308,7 +308,7 @@ class CurlClientTest extends UnitTest {
                     CURLOPT_HTTPHEADER => array(
                         'injected-key: injected-value',
                         'header-key: header-value',
-                        'Authorization: Basic ' . base64_encode('user:password'),
+                        'Authorization: Basic ' . \base64_encode('user:password'),
                     ),
                 ),
             ),

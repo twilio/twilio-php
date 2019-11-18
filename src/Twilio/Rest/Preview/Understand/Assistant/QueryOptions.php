@@ -118,7 +118,7 @@ class ReadQueryOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.ReadQueryOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.ReadQueryOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -193,7 +193,7 @@ class CreateQueryOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateQueryOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateQueryOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -245,6 +245,6 @@ class UpdateQueryOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateQueryOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateQueryOptions ' . \implode(' ', $options) . ']';
     }
 }

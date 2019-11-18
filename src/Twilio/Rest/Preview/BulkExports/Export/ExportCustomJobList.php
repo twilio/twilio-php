@@ -32,7 +32,7 @@ class ExportCustomJobList extends ListResource {
         // Path Solution
         $this->solution = array('resourceType' => $resourceType, );
 
-        $this->uri = '/Exports/' . rawurlencode($resourceType) . '/Jobs';
+        $this->uri = '/Exports/' . \rawurlencode($resourceType) . '/Jobs';
     }
 
     /**
@@ -79,7 +79,7 @@ class ExportCustomJobList extends ListResource {
      * @return ExportCustomJobInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

@@ -13,14 +13,14 @@ abstract class UnitTest extends TestCase
 {
     protected function setUp(): void
     {
-        if (method_exists($this, 'doSetUp')) {
+        if (\method_exists($this, 'doSetUp')) {
             $this->doSetUp();
         }
     }
 
     protected function tearDown(): void
     {
-        if (method_exists($this, 'doTearDown')) {
+        if (\method_exists($this, 'doTearDown')) {
             $this->doTearDown();
         }
     }
@@ -31,6 +31,6 @@ abstract class UnitTest extends TestCase
      */
     protected function isLegacyPHPUnit()
     {
-        return method_exists('PHPUnit_Runner_Version', 'id');
+        return \method_exists('PHPUnit_Runner_Version', 'id');
     }
 }

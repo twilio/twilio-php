@@ -40,7 +40,7 @@ class EngagementContext extends InstanceContext {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, 'sid' => $sid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements/' . rawurlencode($sid) . '';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -114,8 +114,8 @@ class EngagementContext extends InstanceContext {
      * @throws TwilioException For unknown subresources
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
 
@@ -132,8 +132,8 @@ class EngagementContext extends InstanceContext {
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -149,6 +149,6 @@ class EngagementContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.EngagementContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.EngagementContext ' . \implode(' ', $context) . ']';
     }
 }

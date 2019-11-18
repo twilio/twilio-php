@@ -30,7 +30,7 @@ class BindingList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Bindings';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Bindings';
     }
 
     /**
@@ -77,7 +77,7 @@ class BindingList extends ListResource {
      * @return BindingInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

@@ -78,7 +78,7 @@ class CreatePublicKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Accounts.V1.CreatePublicKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Accounts.V1.CreatePublicKeyOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -113,6 +113,6 @@ class UpdatePublicKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Accounts.V1.UpdatePublicKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Accounts.V1.UpdatePublicKeyOptions ' . \implode(' ', $options) . ']';
     }
 }

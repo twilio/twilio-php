@@ -39,7 +39,7 @@ class InstalledAddOnContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/InstalledAddOns/' . rawurlencode($sid) . '';
+        $this->uri = '/InstalledAddOns/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -116,8 +116,8 @@ class InstalledAddOnContext extends InstanceContext {
      * @throws TwilioException For unknown subresources
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
 
@@ -134,8 +134,8 @@ class InstalledAddOnContext extends InstanceContext {
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -151,6 +151,6 @@ class InstalledAddOnContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Marketplace.InstalledAddOnContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Marketplace.InstalledAddOnContext ' . \implode(' ', $context) . ']';
     }
 }

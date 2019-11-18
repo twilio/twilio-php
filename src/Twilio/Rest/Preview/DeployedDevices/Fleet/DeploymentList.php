@@ -32,7 +32,7 @@ class DeploymentList extends ListResource {
         // Path Solution
         $this->solution = array('fleetSid' => $fleetSid, );
 
-        $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Deployments';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Deployments';
     }
 
     /**
@@ -102,7 +102,7 @@ class DeploymentList extends ListResource {
      * @return DeploymentInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

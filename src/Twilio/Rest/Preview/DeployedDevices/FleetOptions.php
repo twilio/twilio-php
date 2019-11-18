@@ -65,7 +65,7 @@ class CreateFleetOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.CreateFleetOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.CreateFleetOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -113,6 +113,6 @@ class UpdateFleetOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.UpdateFleetOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.UpdateFleetOptions ' . \implode(' ', $options) . ']';
     }
 }

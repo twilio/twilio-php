@@ -70,6 +70,6 @@ class UpdateVariableOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Serverless.V1.UpdateVariableOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Serverless.V1.UpdateVariableOptions ' . \implode(' ', $options) . ']';
     }
 }

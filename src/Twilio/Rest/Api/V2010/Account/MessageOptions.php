@@ -237,7 +237,7 @@ class CreateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -324,6 +324,6 @@ class ReadMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadMessageOptions ' . \implode(' ', $options) . ']';
     }
 }

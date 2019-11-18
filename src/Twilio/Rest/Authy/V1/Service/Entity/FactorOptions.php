@@ -59,6 +59,6 @@ class UpdateFactorOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Authy.V1.UpdateFactorOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Authy.V1.UpdateFactorOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -23,7 +23,7 @@ class AccessToken {
         $this->secret = $secret;
         $this->ttl = $ttl;
 
-        if (!is_null($identity)) {
+        if (!\is_null($identity)) {
             $this->identity = $identity;
         }
 
@@ -101,7 +101,7 @@ class AccessToken {
             'typ' => 'JWT'
         );
 
-        $now = time();
+        $now = \time();
 
         $grants = array();
         if ($this->identity) {
@@ -111,17 +111,17 @@ class AccessToken {
         foreach ($this->grants as $grant) {
             $payload = $grant->getPayload();
             if (empty($payload)) {
-                $payload = json_decode('{}');
+                $payload = \json_decode('{}');
             }
 
             $grants[$grant->getGrantKey()] = $payload;
         }
 
         if (empty($grants)) {
-            $grants = json_decode('{}');
+            $grants = \json_decode('{}');
         }
 
-        $payload = array_merge($this->customClaims, array(
+        $payload = \array_merge($this->customClaims, array(
             'jti' => $this->signingKeySid . '-' . $now,
             'iss' => $this->signingKeySid,
             'sub' => $this->accountSid,
@@ -129,7 +129,7 @@ class AccessToken {
             'grants' => $grants
         ));
 
-        if (!is_null($this->nbf)) {
+        if (!\is_null($this->nbf)) {
             $payload['nbf'] = $this->nbf;
         }
 

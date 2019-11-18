@@ -33,7 +33,7 @@ class ExportConfigurationContext extends InstanceContext {
         // Path Solution
         $this->solution = array('resourceType' => $resourceType, );
 
-        $this->uri = '/Exports/' . rawurlencode($resourceType) . '/Configuration';
+        $this->uri = '/Exports/' . \rawurlencode($resourceType) . '/Configuration';
     }
 
     /**
@@ -90,6 +90,6 @@ class ExportConfigurationContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.BulkExports.ExportConfigurationContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.BulkExports.ExportConfigurationContext ' . \implode(' ', $context) . ']';
     }
 }

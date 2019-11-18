@@ -66,7 +66,7 @@ class CreateFieldTypeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.CreateFieldTypeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.CreateFieldTypeOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -116,6 +116,6 @@ class UpdateFieldTypeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateFieldTypeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateFieldTypeOptions ' . \implode(' ', $options) . ']';
     }
 }

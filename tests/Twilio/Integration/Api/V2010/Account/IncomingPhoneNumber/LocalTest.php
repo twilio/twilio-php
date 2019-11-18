@@ -92,7 +92,7 @@ class LocalTest extends HolodeckTestCase {
                                            ->incomingPhoneNumbers
                                            ->local->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -30,7 +30,7 @@ class PublishedTrackList extends ListResource {
         // Path Solution
         $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, );
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/PublishedTracks';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/PublishedTracks';
     }
 
     /**
@@ -75,7 +75,7 @@ class PublishedTrackList extends ListResource {
      * @return PublishedTrackInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -85,7 +85,7 @@ class CreateSyncStreamOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.CreateSyncStreamOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.CreateSyncStreamOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -122,6 +122,6 @@ class UpdateSyncStreamOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.UpdateSyncStreamOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.UpdateSyncStreamOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -231,7 +231,7 @@ class InstalledAddOnTest extends HolodeckTestCase {
 
         $actual = $this->twilio->preview->marketplace->installedAddOns->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

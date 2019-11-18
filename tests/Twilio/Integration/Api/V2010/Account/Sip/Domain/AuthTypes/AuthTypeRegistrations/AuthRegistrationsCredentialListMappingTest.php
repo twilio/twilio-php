@@ -143,7 +143,7 @@ class AuthRegistrationsCredentialListMappingTest extends HolodeckTestCase {
                                            ->registrations
                                            ->credentialListMappings->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testFetchRequest() {

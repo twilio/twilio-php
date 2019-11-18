@@ -29,7 +29,7 @@ class ChannelContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Channels/' . rawurlencode($sid) . '';
+        $this->uri = '/Channels/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -70,6 +70,6 @@ class ChannelContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.ChannelContext ' . implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.ChannelContext ' . \implode(' ', $context) . ']';
     }
 }

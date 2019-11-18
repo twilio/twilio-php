@@ -10,6 +10,6 @@ class VersionInfo {
     const PATCH = 0;
 
     public static function string() {
-        return implode('.', array(self::MAJOR, self::MINOR, self::PATCH));
+        return \implode('.', array(self::MAJOR, self::MINOR, self::PATCH));
     }
 }

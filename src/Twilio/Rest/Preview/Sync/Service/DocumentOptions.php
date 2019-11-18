@@ -70,6 +70,6 @@ class CreateDocumentOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Sync.CreateDocumentOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Sync.CreateDocumentOptions ' . \implode(' ', $options) . ']';
     }
 }

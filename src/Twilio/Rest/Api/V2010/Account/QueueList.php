@@ -29,7 +29,7 @@ class QueueList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Queues.json';
     }
 
     /**
@@ -74,7 +74,7 @@ class QueueList extends ListResource {
      * @return QueueInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

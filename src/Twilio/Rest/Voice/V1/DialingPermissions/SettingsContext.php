@@ -87,6 +87,6 @@ class SettingsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Voice.V1.SettingsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Voice.V1.SettingsContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -210,7 +210,7 @@ class MessagingConfigurationTest extends HolodeckTestCase {
         $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->messagingConfigurations->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testDeleteRequest() {

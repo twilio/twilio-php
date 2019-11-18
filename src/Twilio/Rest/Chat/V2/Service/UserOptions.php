@@ -95,7 +95,7 @@ class CreateUserOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V2.CreateUserOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V2.CreateUserOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -158,6 +158,6 @@ class UpdateUserOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V2.UpdateUserOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V2.UpdateUserOptions ' . \implode(' ', $options) . ']';
     }
 }

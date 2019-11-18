@@ -87,7 +87,7 @@ class PublicKeyTest extends HolodeckTestCase {
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

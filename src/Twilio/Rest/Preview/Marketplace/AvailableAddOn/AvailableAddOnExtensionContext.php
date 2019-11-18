@@ -33,7 +33,7 @@ class AvailableAddOnExtensionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('availableAddOnSid' => $availableAddOnSid, 'sid' => $sid, );
 
-        $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions/' . rawurlencode($sid) . '';
+        $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -70,6 +70,6 @@ class AvailableAddOnExtensionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Marketplace.AvailableAddOnExtensionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Marketplace.AvailableAddOnExtensionContext ' . \implode(' ', $context) . ']';
     }
 }

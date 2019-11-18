@@ -33,7 +33,7 @@ class SyncStreamList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Streams';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Streams';
     }
 
     /**
@@ -100,7 +100,7 @@ class SyncStreamList extends ListResource {
      * @return SyncStreamInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

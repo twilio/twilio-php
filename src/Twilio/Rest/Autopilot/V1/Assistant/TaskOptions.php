@@ -103,7 +103,7 @@ class CreateTaskOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.CreateTaskOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.CreateTaskOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -181,6 +181,6 @@ class UpdateTaskOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateTaskOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateTaskOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -33,7 +33,7 @@ class KeyContext extends InstanceContext {
         // Path Solution
         $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid, );
 
-        $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Keys/' . rawurlencode($sid) . '';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Keys/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -109,6 +109,6 @@ class KeyContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.DeployedDevices.KeyContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.DeployedDevices.KeyContext ' . \implode(' ', $context) . ']';
     }
 }

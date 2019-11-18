@@ -35,7 +35,7 @@ class PhoneNumberContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/PhoneNumbers/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/PhoneNumbers/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -108,6 +108,6 @@ class PhoneNumberContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Proxy.V1.PhoneNumberContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Proxy.V1.PhoneNumberContext ' . \implode(' ', $context) . ']';
     }
 }

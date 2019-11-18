@@ -308,7 +308,7 @@ class CreateApplicationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateApplicationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateApplicationOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -345,7 +345,7 @@ class ReadApplicationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadApplicationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadApplicationOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -576,6 +576,6 @@ class UpdateApplicationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateApplicationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateApplicationOptions ' . \implode(' ', $options) . ']';
     }
 }

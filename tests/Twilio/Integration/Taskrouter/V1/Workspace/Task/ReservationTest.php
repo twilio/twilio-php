@@ -73,7 +73,7 @@ class ReservationTest extends HolodeckTestCase {
                                                ->tasks("WTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->reservations->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

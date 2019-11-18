@@ -90,6 +90,6 @@ class ReadUsageRecordOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Wireless.V1.ReadUsageRecordOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Wireless.V1.ReadUsageRecordOptions ' . \implode(' ', $options) . ']';
     }
 }

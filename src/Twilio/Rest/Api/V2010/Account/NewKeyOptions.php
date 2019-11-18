@@ -53,6 +53,6 @@ class CreateNewKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateNewKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateNewKeyOptions ' . \implode(' ', $options) . ']';
     }
 }

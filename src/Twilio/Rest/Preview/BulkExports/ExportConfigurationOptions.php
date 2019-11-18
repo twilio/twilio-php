@@ -84,6 +84,6 @@ class UpdateExportConfigurationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.BulkExports.UpdateExportConfigurationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.BulkExports.UpdateExportConfigurationOptions ' . \implode(' ', $options) . ']';
     }
 }

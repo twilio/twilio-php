@@ -30,7 +30,7 @@ class EngagementList extends ListResource {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements';
     }
 
     /**
@@ -75,7 +75,7 @@ class EngagementList extends ListResource {
      * @return EngagementInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

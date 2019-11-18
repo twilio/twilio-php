@@ -88,7 +88,7 @@ class CreateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V1.CreateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V1.CreateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -123,7 +123,7 @@ class ReadMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V1.ReadMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V1.ReadMessageOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -173,6 +173,6 @@ class UpdateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V1.UpdateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V1.UpdateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }

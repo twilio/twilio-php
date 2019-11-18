@@ -30,7 +30,7 @@ class RoleContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Roles/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Roles/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -101,6 +101,6 @@ class RoleContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Chat.V2.RoleContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Chat.V2.RoleContext ' . \implode(' ', $context) . ']';
     }
 }

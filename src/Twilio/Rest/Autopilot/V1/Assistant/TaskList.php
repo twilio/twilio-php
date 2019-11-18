@@ -34,7 +34,7 @@ class TaskList extends ListResource {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Tasks';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks';
     }
 
     /**
@@ -79,7 +79,7 @@ class TaskList extends ListResource {
      * @return TaskInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

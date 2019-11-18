@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__DIR__) . '/../src/Services/Twilio.php';
+require \dirname(__DIR__) . '/../src/Services/Twilio.php';
 
 class TwilioTest extends \Twilio\Tests\Unit\UnitTest {
 

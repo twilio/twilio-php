@@ -76,7 +76,7 @@ class TollFreeTest extends HolodeckTestCase {
                                            ->availablePhoneNumbers("US")
                                            ->tollFree->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

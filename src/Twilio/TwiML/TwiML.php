@@ -106,14 +106,14 @@ abstract class TwiML {
     	$element = $document->createElement($twiml->name);
 
         foreach ($twiml->attributes as $name => $value) {
-            if (is_bool($value)) {
+            if (\is_bool($value)) {
                 $value = ($value === true) ? 'true' : 'false';
             }
             $element->setAttribute($name, $value);
         }
 
         foreach ($twiml->children as $child) {
-            if (is_string($child)) {
+            if (\is_string($child)) {
                 $element->appendChild($document->createTextNode($child));
             } else {
                $element->appendChild($this->buildElement($child, $document));

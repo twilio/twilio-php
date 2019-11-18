@@ -160,7 +160,7 @@ class CreateWebhookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.CreateWebhookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.CreateWebhookOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -272,6 +272,6 @@ class UpdateWebhookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.UpdateWebhookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.UpdateWebhookOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -59,6 +59,6 @@ class UpdateStyleSheetOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateStyleSheetOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateStyleSheetOptions ' . \implode(' ', $options) . ']';
     }
 }

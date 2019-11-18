@@ -327,6 +327,6 @@ class ReadLocalOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadLocalOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadLocalOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -77,7 +77,7 @@ class SharedCostTest extends HolodeckTestCase {
                                            ->availablePhoneNumbers("US")
                                            ->sharedCost->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

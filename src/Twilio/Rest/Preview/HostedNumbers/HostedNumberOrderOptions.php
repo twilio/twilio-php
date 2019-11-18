@@ -227,7 +227,7 @@ class UpdateHostedNumberOrderOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.UpdateHostedNumberOrderOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.UpdateHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -316,7 +316,7 @@ class ReadHostedNumberOrderOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.ReadHostedNumberOrderOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.ReadHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -535,6 +535,6 @@ class CreateHostedNumberOrderOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.CreateHostedNumberOrderOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.CreateHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
     }
 }

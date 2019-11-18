@@ -14,17 +14,17 @@ class Holodeck implements Client {
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
                             $timeout = null) {
-        array_push($this->requests, new Request($method, $url, $params, $data, $headers, $user, $password));
+        \array_push($this->requests, new Request($method, $url, $params, $data, $headers, $user, $password));
 
-        if (count($this->responses) === 0) {
+        if (\count($this->responses) === 0) {
             return new Response(404, null, null);
         } else {
-            return array_shift($this->responses);
+            return \array_shift($this->responses);
         }
     }
 
     public function mock($response) {
-        array_push($this->responses, $response);
+        \array_push($this->responses, $response);
     }
 
     public function assertRequest($request) {
@@ -34,7 +34,7 @@ class Holodeck implements Client {
 
         $message = "Failed asserting that the following request exists: \n";
         $message .= ' - ' . $this->printRequest($request);
-        $message .= "\n" . str_repeat('-', 3) . "\n";
+        $message .= "\n" . \str_repeat('-', 3) . "\n";
         $message .= "Candidate Requests:\n";
         foreach ($this->requests as $candidate) {
             $message .= ' + ' . $this->printRequest($candidate) . "\n";
@@ -44,9 +44,9 @@ class Holodeck implements Client {
     }
 
     public function hasRequest($request) {
-        for ($i = 0; $i < count($this->requests); $i++) {
+        for ($i = 0; $i < \count($this->requests); $i++) {
             $c = $this->requests[$i];
-            if (strtolower($request->method) == strtolower($c->method) &&
+            if (\strtolower($request->method) == \strtolower($c->method) &&
                 $request->url == $c->url &&
                 $request->params == $c->params &&
                 $request->data == $c->data) {
@@ -60,14 +60,14 @@ class Holodeck implements Client {
     protected function printRequest($request) {
         $url = $request->url;
         if ($request->params) {
-            $url .= '?' . http_build_query($request->params);
+            $url .= '?' . \http_build_query($request->params);
         }
 
 
         $data = $request->data
-              ? '-d ' . http_build_query($request->data)
+              ? '-d ' . \http_build_query($request->data)
               : '';
 
-        return implode(' ', array(strtoupper($request->method), $url, $data));
+        return \implode(' ', array(\strtoupper($request->method), $url, $data));
     }
 }

@@ -35,7 +35,7 @@ class InteractionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Interactions/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Interactions/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -82,6 +82,6 @@ class InteractionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Proxy.V1.InteractionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Proxy.V1.InteractionContext ' . \implode(' ', $context) . ']';
     }
 }

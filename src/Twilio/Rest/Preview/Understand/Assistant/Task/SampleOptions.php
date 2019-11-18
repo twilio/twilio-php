@@ -81,7 +81,7 @@ class ReadSampleOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.ReadSampleOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.ReadSampleOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -122,7 +122,7 @@ class CreateSampleOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateSampleOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateSampleOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -191,6 +191,6 @@ class UpdateSampleOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateSampleOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateSampleOptions ' . \implode(' ', $options) . ']';
     }
 }

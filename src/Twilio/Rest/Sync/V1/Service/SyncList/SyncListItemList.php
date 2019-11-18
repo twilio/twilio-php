@@ -35,7 +35,7 @@ class SyncListItemList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Items';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Items';
     }
 
     /**
@@ -116,7 +116,7 @@ class SyncListItemList extends ListResource {
      * @return SyncListItemInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

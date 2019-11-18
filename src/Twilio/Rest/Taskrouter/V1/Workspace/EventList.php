@@ -29,7 +29,7 @@ class EventList extends ListResource {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Events';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Events';
     }
 
     /**
@@ -76,7 +76,7 @@ class EventList extends ListResource {
      * @return EventInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

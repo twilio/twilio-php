@@ -1077,6 +1077,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V1.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V1.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

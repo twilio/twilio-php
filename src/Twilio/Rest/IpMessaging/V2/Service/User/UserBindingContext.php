@@ -30,7 +30,7 @@ class UserBindingContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Bindings/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Bindings/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -77,6 +77,6 @@ class UserBindingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.IpMessaging.V2.UserBindingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.IpMessaging.V2.UserBindingContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -171,7 +171,7 @@ class ReadWorkerOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadWorkerOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadWorkerOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -221,7 +221,7 @@ class CreateWorkerOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.CreateWorkerOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.CreateWorkerOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -297,6 +297,6 @@ class UpdateWorkerOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateWorkerOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateWorkerOptions ' . \implode(' ', $options) . ']';
     }
 }

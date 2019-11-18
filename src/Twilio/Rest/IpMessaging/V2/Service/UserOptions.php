@@ -95,7 +95,7 @@ class CreateUserOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.CreateUserOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.CreateUserOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -158,6 +158,6 @@ class UpdateUserOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.UpdateUserOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.UpdateUserOptions ' . \implode(' ', $options) . ']';
     }
 }

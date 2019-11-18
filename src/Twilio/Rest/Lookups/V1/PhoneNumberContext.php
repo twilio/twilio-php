@@ -30,7 +30,7 @@ class PhoneNumberContext extends InstanceContext {
         // Path Solution
         $this->solution = array('phoneNumber' => $phoneNumber, );
 
-        $this->uri = '/PhoneNumbers/' . rawurlencode($phoneNumber) . '';
+        $this->uri = '/PhoneNumbers/' . \rawurlencode($phoneNumber) . '';
     }
 
     /**
@@ -49,7 +49,7 @@ class PhoneNumberContext extends InstanceContext {
             'AddOns' => Serialize::map($options['addOns'], function($e) { return $e; }),
         ));
 
-        $params = array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));
+        $params = \array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
@@ -69,6 +69,6 @@ class PhoneNumberContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Lookups.V1.PhoneNumberContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Lookups.V1.PhoneNumberContext ' . \implode(' ', $context) . ']';
     }
 }

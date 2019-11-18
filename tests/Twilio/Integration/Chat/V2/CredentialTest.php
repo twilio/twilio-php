@@ -62,7 +62,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $actual = $this->twilio->chat->v2->credentials->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

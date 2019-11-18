@@ -127,6 +127,6 @@ class FetchWorkflowCumulativeStatisticsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.FetchWorkflowCumulativeStatisticsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.FetchWorkflowCumulativeStatisticsOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -119,7 +119,7 @@ class AssignedAddOnTest extends HolodeckTestCase {
                                            ->incomingPhoneNumbers("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->assignedAddOns->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

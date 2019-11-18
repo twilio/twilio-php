@@ -33,7 +33,7 @@ class AssetVersionList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'assetSid' => $assetSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Assets/' . rawurlencode($assetSid) . '/Versions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets/' . \rawurlencode($assetSid) . '/Versions';
     }
 
     /**
@@ -78,7 +78,7 @@ class AssetVersionList extends ListResource {
      * @return AssetVersionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

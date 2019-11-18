@@ -39,7 +39,7 @@ class MessageInteractionContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Participants/' . rawurlencode($participantSid) . '/MessageInteractions/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Participants/' . \rawurlencode($participantSid) . '/MessageInteractions/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -77,6 +77,6 @@ class MessageInteractionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Proxy.V1.MessageInteractionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Proxy.V1.MessageInteractionContext ' . \implode(' ', $context) . ']';
     }
 }

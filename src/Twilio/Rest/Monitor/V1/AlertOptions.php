@@ -87,6 +87,6 @@ class ReadAlertOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Monitor.V1.ReadAlertOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Monitor.V1.ReadAlertOptions ' . \implode(' ', $options) . ']';
     }
 }

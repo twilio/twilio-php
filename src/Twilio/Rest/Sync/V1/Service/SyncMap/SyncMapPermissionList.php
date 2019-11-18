@@ -32,7 +32,7 @@ class SyncMapPermissionList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Permissions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps/' . \rawurlencode($mapSid) . '/Permissions';
     }
 
     /**
@@ -77,7 +77,7 @@ class SyncMapPermissionList extends ListResource {
      * @return SyncMapPermissionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

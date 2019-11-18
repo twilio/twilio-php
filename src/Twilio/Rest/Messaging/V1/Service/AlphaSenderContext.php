@@ -33,7 +33,7 @@ class AlphaSenderContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/AlphaSenders/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/AlphaSenders/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -79,6 +79,6 @@ class AlphaSenderContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.AlphaSenderContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.AlphaSenderContext ' . \implode(' ', $context) . ']';
     }
 }
