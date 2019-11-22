@@ -42,8 +42,8 @@ class CurlClient implements Client {
             }
 
             $parts = \explode("\r\n\r\n", $response, 3);
-            list($head, $body) = ($parts[0] == 'HTTP/1.1 100 Continue'
-                            || $parts[0] == 'HTTP/1.1 200 Connection established')
+            list($head, $body) = (\preg_match('/\AHTTP\/1.\d 100 Continue\Z/', $parts[0])
+                               || \preg_match('/\AHTTP\/1.\d 200 Connection established\Z/', $parts[0]))
                                ? array($parts[1], $parts[2])
                                : array($parts[0], $parts[1]);
 
