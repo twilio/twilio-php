@@ -19,7 +19,7 @@ The PHP library documentation can be found [here][libdocs].
 
 **On January 1, 2020, Twilio will no longer support PHP version 5 via this helper library.** Please see [this issue](https://github.com/twilio/twilio-php/issues/582) for details.
 
-This library supports the following Python implementations:
+This library supports the following PHP implementations:
 
 * PHP 5.5
 * PHP 5.6
