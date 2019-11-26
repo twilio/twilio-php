@@ -11,28 +11,29 @@ The documentation for the Twilio API can be found [here][apidocs].
 
 The PHP library documentation can be found [here][libdocs].
 
-## Recent Update
+## Versions
+
+`twilio-php` uses a modified version of [Semantic Versioning](https://semver.org) for all changes. [See this document](VERSIONS.md) for details.
+
+### Supported PHP Versions
 
 **On January 1, 2020, Twilio will no longer support PHP version 5 via this helper library.** Please see [this issue](https://github.com/twilio/twilio-php/issues/582) for details.
 
-As of release 5.13.0, Beta and Developer Preview products are now exposed via
-the main `twilio-php` artifact. Releases of the `alpha` branch have been
-discontinued.
+This library supports the following PHP implementations:
 
-If you were using the `alpha` release line, you should be able to switch back
-to the normal release line without issue.
-
-If you were using the normal release line, you should now see several new
-product lines that were historically hidden from you due to their Beta or
-Developer Preview status. Such products are explicitly documented as
-Beta/Developer Preview both in the Twilio docs and console, as well as through
-in-line code documentation here in the library.
+* PHP 5.5
+* PHP 5.6
+* PHP 7.0
+* PHP 7.1
+* PHP 7.2
+* PHP 7.3
+* PHP 7.4
 
 ## Installation
 
 You can install **twilio-php** via composer or by downloading the source.
 
-#### Via Composer:
+### Via Composer:
 
 **twilio-php** is available on Packagist as the
 [`twilio/sdk`](https://packagist.org/packages/twilio/sdk) package:
@@ -40,10 +41,6 @@ You can install **twilio-php** via composer or by downloading the source.
 ```
 composer require twilio/sdk
 ```
-
-## Versions
-
-`twilio-php` uses a modified version of [Semantic Versioning](https://semver.org) for all changes. [See this document](VERSIONS.md) for details.
 
 ## Quickstart
 
@@ -109,11 +106,6 @@ That will output XML that looks like this:
     <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
 </Response>
 ```
-
-## Prerequisites
-
-* PHP >= 7.1.32
-* The PHP JSON extension
 
 ## Docker Image
 
