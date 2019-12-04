@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class BuildOptions {
     /**
-     * @param string $assetVersions The list of AssetVersion resource SIDs to
+     * @param string $assetVersions The list of Asset Version resource SIDs to
      *                              include in the build
      * @param string $functionVersions The list of the Variable resource SIDs to
      *                                 include in the build
@@ -32,7 +32,7 @@ abstract class BuildOptions {
 
 class CreateBuildOptions extends Options {
     /**
-     * @param string $assetVersions The list of AssetVersion resource SIDs to
+     * @param string $assetVersions The list of Asset Version resource SIDs to
      *                              include in the build
      * @param string $functionVersions The list of the Variable resource SIDs to
      *                                 include in the build
@@ -46,9 +46,9 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * The list of AssetVersion resource SIDs to include in the build.
+     * The list of Asset Version resource SIDs to include in the build.
      *
-     * @param string $assetVersions The list of AssetVersion resource SIDs to
+     * @param string $assetVersions The list of Asset Version resource SIDs to
      *                              include in the build
      * @return $this Fluent Builder
      */

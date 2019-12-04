@@ -22,11 +22,11 @@ class FunctionVersionContext extends InstanceContext {
      * Initialize the FunctionVersionContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service to fetch the
-     *                           FunctionVersion resource from
+     * @param string $serviceSid The SID of the Service to fetch the Function
+     *                           Version resource from
      * @param string $functionSid The SID of the function that is the parent of the
-     *                            FunctionVersion resource to fetch
-     * @param string $sid The SID that identifies the FunctionVersion resource to
+     *                            Function Version resource to fetch
+     * @param string $sid The SID that identifies the Function Version resource to
      *                    fetch
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext
      */

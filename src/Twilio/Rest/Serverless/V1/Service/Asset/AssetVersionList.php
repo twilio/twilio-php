@@ -21,7 +21,7 @@ class AssetVersionList extends ListResource {
      * Construct the AssetVersionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the AssetVersion
+     * @param string $serviceSid The SID of the Service that the Asset Version
      *                           resource is associated with
      * @param string $assetSid The SID of the Asset resource that is the parent of
      *                         the asset version
@@ -125,7 +125,8 @@ class AssetVersionList extends ListResource {
     /**
      * Constructs a AssetVersionContext
      *
-     * @param string $sid The SID that identifies the AssetVersion resource to fetch
+     * @param string $sid The SID that identifies the Asset Version resource to
+     *                    fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext
      */
     public function getContext($sid) {

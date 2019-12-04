@@ -52,7 +52,7 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is on month before the `end` parameter value.
+     * Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is one month before the `end` parameter value.
      *
      * @param \DateTime $start Only include usage that has occurred on or after
      *                         this date

@@ -39,10 +39,11 @@ abstract class NotificationOptions {
      * @param string $segment A Segment to notify
      * @param array $alexa Deprecated
      * @param string $toBinding The destination address specified as a JSON string
+     * @param string $deliveryCallbackUrl URL to send webhooks
      * @return CreateNotificationOptions Options builder
      */
-    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE) {
-        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding);
+    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE, $deliveryCallbackUrl = Values::NONE) {
+        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding, $deliveryCallbackUrl);
     }
 }
 
@@ -70,8 +71,9 @@ class CreateNotificationOptions extends Options {
      * @param string $segment A Segment to notify
      * @param array $alexa Deprecated
      * @param string $toBinding The destination address specified as a JSON string
+     * @param string $deliveryCallbackUrl URL to send webhooks
      */
-    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE) {
+    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE, $deliveryCallbackUrl = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -89,6 +91,7 @@ class CreateNotificationOptions extends Options {
         $this->options['segment'] = $segment;
         $this->options['alexa'] = $alexa;
         $this->options['toBinding'] = $toBinding;
+        $this->options['deliveryCallbackUrl'] = $deliveryCallbackUrl;
     }
 
     /**
@@ -280,6 +283,17 @@ class CreateNotificationOptions extends Options {
      */
     public function setToBinding($toBinding) {
         $this->options['toBinding'] = $toBinding;
+        return $this;
+    }
+
+    /**
+     * URL to send webhooks.
+     *
+     * @param string $deliveryCallbackUrl URL to send webhooks
+     * @return $this Fluent Builder
+     */
+    public function setDeliveryCallbackUrl($deliveryCallbackUrl) {
+        $this->options['deliveryCallbackUrl'] = $deliveryCallbackUrl;
         return $this;
     }
 

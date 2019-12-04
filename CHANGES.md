@@ -1,6 +1,30 @@
 twilio-php Changelog
 ====================
 
+[2019-12-04] Version 5.40.0
+---------------------------
+**Library**
+- [PR #588](https://github.com/twilio/twilio-php/pull/588): docs: add supported language versions to README. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #586](https://github.com/twilio/twilio-php/pull/586): fix: Curl client now handles proxy responses over HTTP/1.0. Thanks to [@ytetsuro](https://github.com/ytetsuro)!
+- [PR #584](https://github.com/twilio/twilio-php/pull/584): fix: update native_function_invocation calls to be fully qualified. Thanks to [@draco2003](https://github.com/draco2003)!
+
+**Api**
+- Add optional `twiml` parameter for call create
+
+**Chat**
+- Added `delete` method in UserChannel resource
+
+**Conversations**
+- Allow Messaging Service update
+
+**Taskrouter**
+- Support ReEvaluateTasks parameter on Workflow update
+
+**Twiml**
+- Remove unsupported `mixed_track` value from `<Stream>` **(breaking change)**
+- Add missing fax `<Receive>` optional attributes
+
+
 [2019-11-13] Version 5.39.0
 ---------------------------
 **Library**

@@ -88,6 +88,7 @@ class WorkflowContext extends InstanceContext {
             'FallbackAssignmentCallbackUrl' => $options['fallbackAssignmentCallbackUrl'],
             'Configuration' => $options['configuration'],
             'TaskReservationTimeout' => $options['taskReservationTimeout'],
+            'ReEvaluateTasks' => $options['reEvaluateTasks'],
         ));
 
         $payload = $this->version->update(

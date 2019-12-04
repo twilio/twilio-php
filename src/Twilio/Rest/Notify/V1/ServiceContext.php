@@ -96,6 +96,8 @@ class ServiceContext extends InstanceContext {
             'LogEnabled' => Serialize::booleanToString($options['logEnabled']),
             'AlexaSkillId' => $options['alexaSkillId'],
             'DefaultAlexaNotificationProtocolVersion' => $options['defaultAlexaNotificationProtocolVersion'],
+            'DeliveryCallbackUrl' => $options['deliveryCallbackUrl'],
+            'DeliveryCallbackEnabled' => Serialize::booleanToString($options['deliveryCallbackEnabled']),
         ));
 
         $payload = $this->version->update(

@@ -27,10 +27,11 @@ abstract class WorkflowOptions {
      *                                    confirmation response from your
      *                                    application after it assigns a Task to a
      *                                    Worker
+     * @param string $reEvaluateTasks Whether or not to re-evaluate Tasks
      * @return UpdateWorkflowOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
-        return new UpdateWorkflowOptions($friendlyName, $assignmentCallbackUrl, $fallbackAssignmentCallbackUrl, $configuration, $taskReservationTimeout);
+    public static function update($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE, $reEvaluateTasks = Values::NONE) {
+        return new UpdateWorkflowOptions($friendlyName, $assignmentCallbackUrl, $fallbackAssignmentCallbackUrl, $configuration, $taskReservationTimeout, $reEvaluateTasks);
     }
 
     /**
@@ -74,13 +75,15 @@ class UpdateWorkflowOptions extends Options {
      *                                    confirmation response from your
      *                                    application after it assigns a Task to a
      *                                    Worker
+     * @param string $reEvaluateTasks Whether or not to re-evaluate Tasks
      */
-    public function __construct($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE, $reEvaluateTasks = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
         $this->options['configuration'] = $configuration;
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
+        $this->options['reEvaluateTasks'] = $reEvaluateTasks;
     }
 
     /**
@@ -143,6 +146,17 @@ class UpdateWorkflowOptions extends Options {
      */
     public function setTaskReservationTimeout($taskReservationTimeout) {
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
+        return $this;
+    }
+
+    /**
+     * Whether or not to re-evaluate Tasks. The default is `false`, which means Tasks in the Workflow will not be processed through the assignment loop again.
+     *
+     * @param string $reEvaluateTasks Whether or not to re-evaluate Tasks
+     * @return $this Fluent Builder
+     */
+    public function setReEvaluateTasks($reEvaluateTasks) {
+        $this->options['reEvaluateTasks'] = $reEvaluateTasks;
         return $this;
     }
 

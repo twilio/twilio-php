@@ -65,6 +65,16 @@ class UserChannelContext extends InstanceContext {
     }
 
     /**
+     * Deletes the UserChannelInstance
+     *
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
      * Update the UserChannelInstance
      *
      * @param string $notificationLevel The push notification level to assign to

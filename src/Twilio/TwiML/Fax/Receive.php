@@ -40,4 +40,36 @@ class Receive extends TwiML {
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
     }
+
+    /**
+     * Add MediaType attribute.
+     *
+     * @param string $mediaType The media type used to store media in the fax media
+     *                          store
+     * @return static $this.
+     */
+    public function setMediaType($mediaType) {
+        return $this->setAttribute('mediaType', $mediaType);
+    }
+
+    /**
+     * Add PageSize attribute.
+     *
+     * @param string $pageSize What size to interpret received pages as
+     * @return static $this.
+     */
+    public function setPageSize($pageSize) {
+        return $this->setAttribute('pageSize', $pageSize);
+    }
+
+    /**
+     * Add StoreMedia attribute.
+     *
+     * @param bool $storeMedia Whether or not to store received media in the fax
+     *                         media store
+     * @return static $this.
+     */
+    public function setStoreMedia($storeMedia) {
+        return $this->setAttribute('storeMedia', $storeMedia);
+    }
 }
