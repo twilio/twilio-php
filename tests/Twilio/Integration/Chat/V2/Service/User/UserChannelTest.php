@@ -182,21 +182,17 @@ class UserChannelTest extends HolodeckTestCase {
         try {
             $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                    ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("default");
+                                   ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('NotificationLevel' => "default", );
-
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            null,
-            $values
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateNotificationLevelResponse() {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -221,7 +217,37 @@ class UserChannelTest extends HolodeckTestCase {
 
         $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("default");
+                                         ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateLastConsumedMessageIndexResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "user_sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "member_sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "joined",
+                "last_consumed_message_index": 10,
+                "unread_messages_count": 5,
+                "notification_level": "muted",
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "channel": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "member": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

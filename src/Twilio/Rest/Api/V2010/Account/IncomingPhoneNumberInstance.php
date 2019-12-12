@@ -47,6 +47,7 @@ use Twilio\Version;
  * @property string $voiceUrl
  * @property string $emergencyStatus
  * @property string $emergencyAddressSid
+ * @property string $bundleSid
  */
 class IncomingPhoneNumberInstance extends InstanceResource {
     protected $_assignedAddOns = null;
@@ -95,6 +96,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
             'emergencyStatus' => Values::array_get($payload, 'emergency_status'),
             'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
+            'bundleSid' => Values::array_get($payload, 'bundle_sid'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );

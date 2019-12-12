@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V2\Service\User;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -109,13 +110,12 @@ class UserChannelInstance extends InstanceResource {
     /**
      * Update the UserChannelInstance
      *
-     * @param string $notificationLevel The push notification level to assign to
-     *                                  the User Channel
+     * @param array|Options $options Optional Arguments
      * @return UserChannelInstance Updated UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($notificationLevel) {
-        return $this->proxy()->update($notificationLevel);
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
     }
 
     /**

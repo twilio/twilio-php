@@ -157,6 +157,11 @@ class MobileList extends ListResource {
             'VoiceUrl' => $options['voiceUrl'],
             'IdentitySid' => $options['identitySid'],
             'AddressSid' => $options['addressSid'],
+            'EmergencyStatus' => $options['emergencyStatus'],
+            'EmergencyAddressSid' => $options['emergencyAddressSid'],
+            'TrunkSid' => $options['trunkSid'],
+            'VoiceReceiveMode' => $options['voiceReceiveMode'],
+            'BundleSid' => $options['bundleSid'],
         ));
 
         $payload = $this->version->create(

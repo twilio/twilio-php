@@ -88,9 +88,7 @@ class EventTest extends HolodeckTestCase {
                         },
                         "client_edge": null,
                         "carrier_edge": null,
-                        "sip_edge": null,
-                        "gateway": null,
-                        "client": null
+                        "sip_edge": null
                     }
                 ]
             }
@@ -160,9 +158,7 @@ class EventTest extends HolodeckTestCase {
                         },
                         "client_edge": null,
                         "carrier_edge": null,
-                        "sip_edge": null,
-                        "gateway": null,
-                        "client": null
+                        "sip_edge": null
                     }
                 ]
             }

@@ -22,8 +22,6 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $edge
  * @property string $direction
- * @property array $gateway
- * @property array $client
  * @property array $carrierEdge
  * @property array $sipEdge
  * @property array $sdkEdge
@@ -48,8 +46,6 @@ class MetricInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'edge' => Values::array_get($payload, 'edge'),
             'direction' => Values::array_get($payload, 'direction'),
-            'gateway' => Values::array_get($payload, 'gateway'),
-            'client' => Values::array_get($payload, 'client'),
             'carrierEdge' => Values::array_get($payload, 'carrier_edge'),
             'sipEdge' => Values::array_get($payload, 'sip_edge'),
             'sdkEdge' => Values::array_get($payload, 'sdk_edge'),

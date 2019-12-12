@@ -56,6 +56,7 @@ class CallList extends ListResource {
             'To' => $to,
             'From' => $from,
             'Url' => $options['url'],
+            'Twiml' => $options['twiml'],
             'ApplicationSid' => $options['applicationSid'],
             'Method' => $options['method'],
             'FallbackUrl' => $options['fallbackUrl'],
@@ -79,7 +80,6 @@ class CallList extends ListResource {
             'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
             'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
             'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
-            'Twiml' => $options['twiml'],
         ));
 
         $payload = $this->version->create(

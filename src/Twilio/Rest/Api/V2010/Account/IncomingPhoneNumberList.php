@@ -174,6 +174,7 @@ class IncomingPhoneNumberList extends ListResource {
             'IdentitySid' => $options['identitySid'],
             'AddressSid' => $options['addressSid'],
             'VoiceReceiveMode' => $options['voiceReceiveMode'],
+            'BundleSid' => $options['bundleSid'],
         ));
 
         $payload = $this->version->create(

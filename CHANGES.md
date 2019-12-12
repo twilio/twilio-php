@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+[2019-12-12] Version 5.41.0
+---------------------------
+**Api**
+- Make `twiml` conditional for create. One of `url`, `twiml`, or `application_sid` is now required.
+- Add `bundle_sid` parameter to /IncomingPhoneNumbers API
+- Removed discard / obfuscate parameters from ContentRetention, AddressRetention **(breaking change)**
+
+**Chat**
+- Added `last_consumed_message_index` and `last_consumption_timestamp` parameters in update method for UserChannel resource **(breaking change)**
+
+**Conversations**
+- Add Participant SID to Message properties
+
+**Messaging**
+- Fix incorrectly typed capabilities property for ShortCodes. **(breaking change)**
+
+
 [2019-12-04] Version 5.40.0
 ---------------------------
 **Library**

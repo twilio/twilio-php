@@ -11,6 +11,8 @@ namespace Twilio\Rest\IpMessaging\V2\Service\User;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -77,13 +79,18 @@ class UserChannelContext extends InstanceContext {
     /**
      * Update the UserChannelInstance
      *
-     * @param string $notificationLevel The push notification level to assign to
-     *                                  the User Channel
+     * @param array|Options $options Optional Arguments
      * @return UserChannelInstance Updated UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($notificationLevel) {
-        $data = Values::of(array('NotificationLevel' => $notificationLevel, ));
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'NotificationLevel' => $options['notificationLevel'],
+            'LastConsumedMessageIndex' => $options['lastConsumedMessageIndex'],
+            'LastConsumptionTimestamp' => Serialize::iso8601DateTime($options['lastConsumptionTimestamp']),
+        ));
 
         $payload = $this->version->update(
             'POST',

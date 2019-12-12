@@ -51,10 +51,12 @@ abstract class IncomingPhoneNumberOptions {
      *                            associated with number
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
      * @return UpdateIncomingPhoneNumberOptions Options builder
      */
-    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
-        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode, $identitySid, $addressSid);
+    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $bundleSid = Values::NONE) {
+        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode, $identitySid, $addressSid, $bundleSid);
     }
 
     /**
@@ -110,10 +112,12 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
      * @param string $voiceReceiveMode Incoming call type: fax or voice
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
      * @return CreateIncomingPhoneNumberOptions Options builder
      */
-    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
-        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $identitySid, $addressSid, $voiceReceiveMode);
+    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $voiceReceiveMode = Values::NONE, $bundleSid = Values::NONE) {
+        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $identitySid, $addressSid, $voiceReceiveMode, $bundleSid);
     }
 }
 
@@ -156,8 +160,10 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      *                            associated with number
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
      */
-    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
+    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $bundleSid = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
@@ -180,6 +186,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
         $this->options['voiceReceiveMode'] = $voiceReceiveMode;
         $this->options['identitySid'] = $identitySid;
         $this->options['addressSid'] = $addressSid;
+        $this->options['bundleSid'] = $bundleSid;
     }
 
     /**
@@ -440,6 +447,18 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
+     * The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+     *
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
+     * @return $this Fluent Builder
+     */
+    public function setBundleSid($bundleSid) {
+        $this->options['bundleSid'] = $bundleSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -575,8 +594,10 @@ class CreateIncomingPhoneNumberOptions extends Options {
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
      * @param string $voiceReceiveMode Incoming call type: fax or voice
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
      */
-    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
+    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $voiceReceiveMode = Values::NONE, $bundleSid = Values::NONE) {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['areaCode'] = $areaCode;
         $this->options['apiVersion'] = $apiVersion;
@@ -600,6 +621,7 @@ class CreateIncomingPhoneNumberOptions extends Options {
         $this->options['identitySid'] = $identitySid;
         $this->options['addressSid'] = $addressSid;
         $this->options['voiceReceiveMode'] = $voiceReceiveMode;
+        $this->options['bundleSid'] = $bundleSid;
     }
 
     /**
@@ -867,6 +889,18 @@ class CreateIncomingPhoneNumberOptions extends Options {
      */
     public function setVoiceReceiveMode($voiceReceiveMode) {
         $this->options['voiceReceiveMode'] = $voiceReceiveMode;
+        return $this;
+    }
+
+    /**
+     * The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+     *
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
+     * @return $this Fluent Builder
+     */
+    public function setBundleSid($bundleSid) {
+        $this->options['bundleSid'] = $bundleSid;
         return $this;
     }
 

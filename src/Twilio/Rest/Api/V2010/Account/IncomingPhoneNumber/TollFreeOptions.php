@@ -55,10 +55,19 @@ abstract class TollFreeOptions {
      *                            with the new phone number
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
+     * @param string $emergencyStatus Status determining whether the new phone
+     *                                number is enabled for emergency calling
+     * @param string $emergencyAddressSid The emergency address configuration to
+     *                                    use for emergency calling
+     * @param string $trunkSid SID of the trunk to handle calls to the new phone
+     *                         number
+     * @param string $voiceReceiveMode Incoming call type: fax or voice
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
      * @return CreateTollFreeOptions Options builder
      */
-    public static function create($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
-        return new CreateTollFreeOptions($apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $identitySid, $addressSid);
+    public static function create($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $bundleSid = Values::NONE) {
+        return new CreateTollFreeOptions($apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $identitySid, $addressSid, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode, $bundleSid);
     }
 }
 
@@ -169,8 +178,17 @@ class CreateTollFreeOptions extends Options {
      *                            with the new phone number
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
+     * @param string $emergencyStatus Status determining whether the new phone
+     *                                number is enabled for emergency calling
+     * @param string $emergencyAddressSid The emergency address configuration to
+     *                                    use for emergency calling
+     * @param string $trunkSid SID of the trunk to handle calls to the new phone
+     *                         number
+     * @param string $voiceReceiveMode Incoming call type: fax or voice
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
      */
-    public function __construct($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
+    public function __construct($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $bundleSid = Values::NONE) {
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['smsApplicationSid'] = $smsApplicationSid;
@@ -188,6 +206,11 @@ class CreateTollFreeOptions extends Options {
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['identitySid'] = $identitySid;
         $this->options['addressSid'] = $addressSid;
+        $this->options['emergencyStatus'] = $emergencyStatus;
+        $this->options['emergencyAddressSid'] = $emergencyAddressSid;
+        $this->options['trunkSid'] = $trunkSid;
+        $this->options['voiceReceiveMode'] = $voiceReceiveMode;
+        $this->options['bundleSid'] = $bundleSid;
     }
 
     /**
@@ -386,6 +409,65 @@ class CreateTollFreeOptions extends Options {
      */
     public function setAddressSid($addressSid) {
         $this->options['addressSid'] = $addressSid;
+        return $this;
+    }
+
+    /**
+     * The configuration status parameter that determines whether the new phone number is enabled for emergency calling.
+     *
+     * @param string $emergencyStatus Status determining whether the new phone
+     *                                number is enabled for emergency calling
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyStatus($emergencyStatus) {
+        $this->options['emergencyStatus'] = $emergencyStatus;
+        return $this;
+    }
+
+    /**
+     * The SID of the emergency address configuration to use for emergency calling from the new phone number.
+     *
+     * @param string $emergencyAddressSid The emergency address configuration to
+     *                                    use for emergency calling
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyAddressSid($emergencyAddressSid) {
+        $this->options['emergencyAddressSid'] = $emergencyAddressSid;
+        return $this;
+    }
+
+    /**
+     * The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+     *
+     * @param string $trunkSid SID of the trunk to handle calls to the new phone
+     *                         number
+     * @return $this Fluent Builder
+     */
+    public function setTrunkSid($trunkSid) {
+        $this->options['trunkSid'] = $trunkSid;
+        return $this;
+    }
+
+    /**
+     * The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+     *
+     * @param string $voiceReceiveMode Incoming call type: fax or voice
+     * @return $this Fluent Builder
+     */
+    public function setVoiceReceiveMode($voiceReceiveMode) {
+        $this->options['voiceReceiveMode'] = $voiceReceiveMode;
+        return $this;
+    }
+
+    /**
+     * The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+     *
+     * @param string $bundleSid The SID of the Bundle resource associated with
+     *                          number
+     * @return $this Fluent Builder
+     */
+    public function setBundleSid($bundleSid) {
+        $this->options['bundleSid'] = $bundleSid;
         return $this;
     }
 
