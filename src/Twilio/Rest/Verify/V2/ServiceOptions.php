@@ -12,9 +12,6 @@ namespace Twilio\Rest\Verify\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class ServiceOptions {
     /**
      * @param int $codeLength The length of the verification code to generate

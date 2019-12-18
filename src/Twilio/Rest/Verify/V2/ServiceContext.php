@@ -21,8 +21,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property \Twilio\Rest\Verify\V2\Service\VerificationList $verifications
  * @property \Twilio\Rest\Verify\V2\Service\VerificationCheckList $verificationChecks
  * @property \Twilio\Rest\Verify\V2\Service\RateLimitList $rateLimits

@@ -12,9 +12,6 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class VerificationOptions {
     /**
      * @param string $customMessage The text of a custom message to use for the
@@ -143,7 +140,7 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * Channel specific configuration in json format: For email must include 'from' and 'from_name'.
+     * `email` channel configuration in json format. Must include 'from' and 'from_name'.
      *
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.

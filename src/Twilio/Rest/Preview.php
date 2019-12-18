@@ -44,6 +44,7 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList $ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList $sims
  * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\BusinessList $businesses
  * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
  * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
@@ -60,6 +61,7 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
+ * @method \Twilio\Rest\Preview\TrustedComms\BusinessContext businesses(string $sid)
  * @method \Twilio\Rest\Preview\TrustedComms\CpsContext cps()
  * @method \Twilio\Rest\Preview\TrustedComms\CurrentCallContext currentCalls()
  */
@@ -397,6 +399,21 @@ class Preview extends Domain {
      */
     protected function getBrandedCalls() {
         return $this->trustedComms->brandedCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\BusinessList
+     */
+    protected function getBusinesses() {
+        return $this->trustedComms->businesses;
+    }
+
+    /**
+     * @param string $sid A string that uniquely identifies this Business.
+     * @return \Twilio\Rest\Preview\TrustedComms\BusinessContext
+     */
+    protected function contextBusinesses($sid) {
+        return $this->trustedComms->businesses($sid);
     }
 
     /**

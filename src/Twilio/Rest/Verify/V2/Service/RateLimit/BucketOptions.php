@@ -12,9 +12,6 @@ namespace Twilio\Rest\Verify\V2\Service\RateLimit;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class BucketOptions {
     /**
      * @param int $max Max number of requests.

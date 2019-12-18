@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Preview\TrustedComms\BrandedCallList;
+use Twilio\Rest\Preview\TrustedComms\BusinessList;
 use Twilio\Rest\Preview\TrustedComms\CpsList;
 use Twilio\Rest\Preview\TrustedComms\CurrentCallList;
 use Twilio\Rest\Preview\TrustedComms\DeviceList;
@@ -20,13 +21,16 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\BusinessList $businesses
  * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
  * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
  * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
+ * @method \Twilio\Rest\Preview\TrustedComms\BusinessContext businesses(string $sid)
  */
 class TrustedComms extends Version {
     protected $_brandedCalls = null;
+    protected $_businesses = null;
     protected $_cps = null;
     protected $_currentCalls = null;
     protected $_devices = null;
@@ -51,6 +55,16 @@ class TrustedComms extends Version {
             $this->_brandedCalls = new BrandedCallList($this);
         }
         return $this->_brandedCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\BusinessList
+     */
+    protected function getBusinesses() {
+        if (!$this->_businesses) {
+            $this->_businesses = new BusinessList($this);
+        }
+        return $this->_businesses;
     }
 
     /**

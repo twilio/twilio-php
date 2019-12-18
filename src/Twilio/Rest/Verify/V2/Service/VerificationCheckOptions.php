@@ -12,12 +12,9 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class VerificationCheckOptions {
     /**
-     * @param string $to The phone number to verify
+     * @param string $to The phone number or email to verify
      * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
      * @param string $amount The amount of the associated PSD2 compliant
@@ -32,7 +29,7 @@ abstract class VerificationCheckOptions {
 
 class CreateVerificationCheckOptions extends Options {
     /**
-     * @param string $to The phone number to verify
+     * @param string $to The phone number or email to verify
      * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
      * @param string $amount The amount of the associated PSD2 compliant
@@ -47,9 +44,9 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * The phone number to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * The phone number or [email](https://www.twilio.com/docs/verify/tutorials/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      *
-     * @param string $to The phone number to verify
+     * @param string $to The phone number or email to verify
      * @return $this Fluent Builder
      */
     public function setTo($to) {
@@ -58,7 +55,7 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number must be specified.
+     * A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/tutorials/email) must be specified.
      *
      * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
