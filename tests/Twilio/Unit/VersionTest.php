@@ -22,7 +22,7 @@ class TestDomain extends Domain {
      * @param string $uri Version relative URI
      * @return string Absolute URL for this domain
      */
-    public function absoluteUrl($uri) {
+    public function absoluteUrl($uri): string {
         return "domain:$uri";
     }
 
@@ -36,36 +36,35 @@ class TestVersion extends Version {
     /**
      * @return string
      */
-    public function getVersion() {
+    public function getVersion(): string {
         return $this->version;
     }
 
     /**
      * @param string $version
      */
-    public function setVersion($version) {
+    public function setVersion($version): void {
         $this->version = $version;
     }
 }
 
 class VersionTest extends UnitTest {
-    /** @var \Twilio\Rest\Client $client*/
+    /** @var Client $client */
     protected $client;
-    /** @var \Twilio\Tests\Unit\TestDomain $domain */
+    /** @var TestDomain $domain */
     protected $domain;
-    /** @var \Twilio\Tests\Unit\TestVersion $version */
+    /** @var TestVersion $version */
     protected $version;
 
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
-    protected function doSetUp() {
+    protected function setUp(): void {
         $this->client = new Client('username', 'password');
         $this->domain = new TestDomain($this->client);
         $this->version = new TestVersion($this->domain);
     }
-
 
     /**
      * @param string $message Case message to display on assertion error
@@ -76,14 +75,14 @@ class VersionTest extends UnitTest {
      * @param int|Values::NONe $expectedPageLimit Expected page limit returned by readLimits
      * @dataProvider readLimitProvider
      */
-    public function testReadLimits($message, $limit, $pageSize, $expectedLimit, $expectedPageSize, $expectedPageLimit) {
+    public function testReadLimits($message, $limit, $pageSize, $expectedLimit, $expectedPageSize, $expectedPageLimit): void {
         $actual = $this->version->readLimits($limit, $pageSize);
         $this->assertEquals($expectedLimit, $actual['limit'], "$message: Limit does not match");
         $this->assertEquals($expectedPageSize, $actual['pageSize'], "$message: PageSize does not match");
         $this->assertEquals($expectedPageLimit, $actual['pageLimit'], "$message: PageLimit does not match");
     }
 
-    public function readLimitProvider() {
+    public function readLimitProvider(): array {
         return array(
             array(
                 'Nothing Specified',
@@ -150,20 +149,20 @@ class VersionTest extends UnitTest {
      * @param string $expected Expected relative URI
      * @dataProvider relativeUriProvider
      */
-    public function testRelativeUri($message, $prefix, $uri, $expected) {
+    public function testRelativeUri($message, $prefix, $uri, $expected): void {
         $this->version->setVersion($prefix);
         $actual = $this->version->relativeUri($uri);
         $this->assertEquals($expected, $actual, $message);
     }
 
-    public function relativeUriProvider() {
+    public function relativeUriProvider(): array {
         $cases = array();
 
         $modes = array(
-            'normal' => function($x) { return $x; },
-            'prepend' => function($x) { return "/$x"; },
-            'append' => function($x) { return "$x/"; },
-            'surround' => function($x) { return "/$x/"; },
+            'normal' => static function($x) { return $x; },
+            'prepend' => static function($x) { return "/$x"; },
+            'append' => static function($x) { return "$x/"; },
+            'surround' => static function($x) { return "/$x/"; },
         );
 
         foreach ($modes as $prefixMode => $prefixFunc) {
@@ -218,13 +217,13 @@ class VersionTest extends UnitTest {
      * @param string $expected Expected absolute URL
      * @dataProvider absoluteUrlProvider
      */
-    public function testAbsoluteUrl($message, $prefix, $uri, $expected) {
+    public function testAbsoluteUrl($message, $prefix, $uri, $expected): void {
         $this->version->setVersion($prefix);
         $actual = $this->version->absoluteUrl($uri);
         $this->assertEquals($expected, $actual, $message);
     }
 
-    public function absoluteUrlProvider() {
+    public function absoluteUrlProvider(): array {
         $cases = $this->relativeUriProvider();
         foreach ($cases as &$case) {
             $case[3] = "domain:{$case[3]}";

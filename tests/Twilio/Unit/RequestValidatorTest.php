@@ -19,26 +19,26 @@ class RequestValidatorTest extends UnitTest {
     private $body = '{"property": "value", "boolean": true}';
     private $bodyHash = '0a1ff7634d9ab3b95db5c9a2dfe9416e41502b283a80c7cf19632632f96e6620';
 
-    public function doSetUp() {
+    public function setUp(): void {
         $this->validator = new RequestValidator('12345');
     }
 
-    public function testValidate() {
+    public function testValidate(): void {
         $isValid = $this->validator->validate($this->signature, $this->url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testFailsWhenIncorrect() {
-        $isValid = $this->validator->validate("FAIL", $this->url, $this->params);
+    public function testFailsWhenIncorrect(): void {
+        $isValid = $this->validator->validate('FAIL', $this->url, $this->params);
         $this->assertFalse($isValid);
     }
 
-    public function testValidateBody() {
+    public function testValidateBody(): void {
         $hash = $this->validator->computeBodyHash($this->body);
         $this->assertEquals($this->bodyHash, $hash);
     }
 
-    public function testValidateWithBody() {
+    public function testValidateWithBody(): void {
         $url = $this->url . '&bodySHA256=' . $this->bodyHash;
         $signatureWithHash = 'a9nBmqA0ju/hNViExpshrM61xv4=';
 
@@ -46,54 +46,54 @@ class RequestValidatorTest extends UnitTest {
         $this->assertTrue($isValid);
     }
 
-    public function testValidateBodyWithoutSignature() {
+    public function testValidateBodyWithoutSignature(): void {
         $isValid = $this->validator->validate($this->signature, $this->url, $this->body);
 
         $this->assertFalse($isValid);
     }
 
-    public function testValidateRemovesPortHttps() {
+    public function testValidateRemovesPortHttps(): void {
         $url = \str_replace('.com', '.com:1234', $this->url);
         $isValid = $this->validator->validate($this->signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testValidateRemovesPortHttp() {
+    public function testValidateRemovesPortHttp(): void {
         $url = \str_replace('.com', '.com:1234', $this->url);
         $url = \str_replace('https', 'http', $url);
-        $signature =  'Zmvh+3yNM1Phv2jhDCwEM3q5ebU=';  // hash of http url with port 1234
+        $signature = 'Zmvh+3yNM1Phv2jhDCwEM3q5ebU=';  // hash of http url with port 1234
         $isValid = $this->validator->validate($signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testValidateAddsPortHttps() {
-        $signature =  'kvajT1Ptam85bY51eRf/AJRuM3w=';  // hash of https url with port 443
+    public function testValidateAddsPortHttps(): void {
+        $signature = 'kvajT1Ptam85bY51eRf/AJRuM3w=';  // hash of https url with port 443
         $isValid = $this->validator->validate($signature, $this->url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testValidateAddsPortHttp() {
+    public function testValidateAddsPortHttp(): void {
         $url = \str_replace('https', 'http', $this->url);
-        $signature =  '0ZXoZLH/DfblKGATFgpif+LLRf4=';  // hash of http url with port 80
+        $signature = '0ZXoZLH/DfblKGATFgpif+LLRf4=';  // hash of http url with port 80
         $isValid = $this->validator->validate($signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testBuildUrlCreds() {
+    public function testBuildUrlCreds(): void {
         $url = 'https://user:pass@mycompany.com/myapp.php?foo=1&bar=2';
         $signature = 'CukzLTc1tT5dXEDIHm/tKBanW10='; // hash of this url
         $isValid = $this->validator->validate($signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testBuildUrlWithUser() {
+    public function testBuildUrlWithUser(): void {
         $url = 'https://user@mycompany.com/myapp.php?foo=1&bar=2';
         $signature = '2YRLlVAflCqxaNicjMpJcSTgzSs='; // hash of this url
         $isValid = $this->validator->validate($signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
 
-    public function testBuildUrlCredsAddsPort() {
+    public function testBuildUrlCredsAddsPort(): void {
         $url = 'https://user:pass@mycompany.com/myapp.php?foo=1&bar=2';
         $signature = 'ZQFR1PTIZXF2MXB8ZnKCvnnA+rI='; // hash of this url with port 443
         $isValid = $this->validator->validate($signature, $url, $this->params);
