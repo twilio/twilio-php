@@ -9,7 +9,7 @@ class Serialize {
             if (\is_array($value)) {
                 $result = self::flatten($value, $result, \array_merge($previous, array($key)));
             } else {
-                $result[\join(".", \array_merge($previous, array($key)))] = $value;
+                $result[\implode('.', \array_merge($previous, array($key)))] = $value;
             }
         }
 
@@ -17,7 +17,7 @@ class Serialize {
     }
 
     public static function prefixedCollapsibleMap($map, $prefix) {
-        if (\is_null($map) || $map == \Twilio\Values::NONE) {
+        if ($map === null || $map === \Twilio\Values::NONE) {
             return array();
         }
 
@@ -31,7 +31,7 @@ class Serialize {
     }
 
     public static function iso8601Date($dateTime) {
-        if (\is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
+        if ($dateTime === null || $dateTime === \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
         }
 
@@ -45,7 +45,7 @@ class Serialize {
     }
 
     public static function iso8601DateTime($dateTime) {
-        if (\is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
+        if ($dateTime === null || $dateTime === \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
         }
 
@@ -59,16 +59,11 @@ class Serialize {
     }
 
     public static function booleanToString($boolOrStr) {
-        if (\is_null($boolOrStr) || \is_string($boolOrStr)) {
+        if ($boolOrStr === null || \is_string($boolOrStr)) {
             return $boolOrStr;
         }
 
         return $boolOrStr ? 'True' : 'False';
-    }
-
-    public static function json_object($object) {
-        \trigger_error("Serialize::json_object has been deprecated in favor of Serialize::jsonObject", E_USER_NOTICE);
-        return Serialize::jsonObject($object);
     }
 
     public static function jsonObject($object) {

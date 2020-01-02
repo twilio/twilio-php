@@ -2,16 +2,14 @@
 
 namespace Twilio\Tests\Unit\Jwt;
 
+use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\ChatGrant;
-use Twilio\Jwt\Grants\ConversationsGrant;
-use Twilio\Jwt\Grants\IpMessagingGrant;
-use Twilio\Jwt\Grants\VideoGrant;
-use Twilio\Jwt\Grants\VoiceGrant;
 use Twilio\Jwt\Grants\SyncGrant;
 use Twilio\Jwt\Grants\TaskRouterGrant;
+use Twilio\Jwt\Grants\VideoGrant;
+use Twilio\Jwt\Grants\VoiceGrant;
 use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
-use Twilio\Jwt\AccessToken;
 
 class AccessTokenTest extends UnitTest {
     const SIGNING_KEY_SID = 'SK123';
@@ -32,7 +30,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertNotNull($payload->grants);
     }
 
-    function testEmptyGrants() {
+    public function testEmptyGrants() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $token = $scat->toJWT();
         $this->assertNotNull($token);
@@ -42,7 +40,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('{}', \json_encode($payload->grants));
     }
 
-    function testNbf() {
+    public function testNbf() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
 
         $now = \time();
@@ -57,30 +55,11 @@ class AccessTokenTest extends UnitTest {
         $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
 
-    function testIpMessagingGrant() {
-        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        @$grant = new IpMessagingGrant();
-        $grant->setEndpointId("EP123");
-        $grant->setServiceSid("IS123");
-        $scat->addGrant($grant);
-
-        $token = $scat->toJWT();
-        $this->assertNotNull($token);
-        $payload = JWT::decode($token, 'secret');
-        $this->validateClaims($payload);
-
-        $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(1, \count($grants));
-        $this->assertArrayHasKey("ip_messaging", $grants);
-        $this->assertEquals("EP123", $grants['ip_messaging']['endpoint_id']);
-        $this->assertEquals("IS123", $grants['ip_messaging']['service_sid']);
-    }
-
-    function testChatGrant() {
+    public function testChatGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new ChatGrant();
-        $grant->setEndpointId("EP123");
-        $grant->setServiceSid("IS123");
+        $grant->setEndpointId('EP123');
+        $grant->setServiceSid('IS123');
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
@@ -89,18 +68,17 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(1, \count($grants));
-        $this->assertArrayHasKey("chat", $grants);
-        $this->assertEquals("EP123", $grants['chat']['endpoint_id']);
-        $this->assertEquals("IS123", $grants['chat']['service_sid']);
+        $this->assertCount(1, $grants);
+        $this->assertArrayHasKey('chat', $grants);
+        $this->assertEquals('EP123', $grants['chat']['endpoint_id']);
+        $this->assertEquals('IS123', $grants['chat']['service_sid']);
     }
 
-    function testSyncGrant()
-    {
+    public function testSyncGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new SyncGrant();
-        $grant->setEndpointId("EP123");
-        $grant->setServiceSid("IS123");
+        $grant->setEndpointId('EP123');
+        $grant->setServiceSid('IS123');
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
@@ -109,17 +87,16 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(1, \count($grants));
-        $this->assertArrayHasKey("data_sync", $grants);
-        $this->assertEquals("EP123", $grants['data_sync']['endpoint_id']);
-        $this->assertEquals("IS123", $grants['data_sync']['service_sid']);
+        $this->assertCount(1, $grants);
+        $this->assertArrayHasKey('data_sync', $grants);
+        $this->assertEquals('EP123', $grants['data_sync']['endpoint_id']);
+        $this->assertEquals('IS123', $grants['data_sync']['service_sid']);
     }
 
-    function testVideoGrant()
-    {
+    public function testVideoGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new VideoGrant();
-        $grant->setRoom("RM123");
+        $grant->setRoom('RM123');
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
@@ -128,15 +105,14 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(1, \count($grants));
-        $this->assertArrayHasKey("video", $grants);
-        $this->assertEquals("RM123", $grants['video']['room']);
+        $this->assertCount(1, $grants);
+        $this->assertArrayHasKey('video', $grants);
+        $this->assertEquals('RM123', $grants['video']['room']);
     }
 
-    function testGrants() {
+    public function testGrants() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
-        @$scat->addGrant(new IpMessagingGrant());
         $scat->addGrant(new VideoGrant());
         $scat->addGrant(new TaskRouterGrant());
 
@@ -147,14 +123,13 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(4, \count($grants));
+        $this->assertCount(3, $grants);
         $this->assertEquals('test identity', $payload->grants->identity);
-        $this->assertEquals('{}', \json_encode($payload->grants->ip_messaging));
         $this->assertEquals('{}', \json_encode($payload->grants->video));
         $this->assertEquals('{}', \json_encode($payload->grants->task_router));
     }
 
-    function testVoiceGrant() {
+    public function testVoiceGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
 
@@ -171,7 +146,7 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(2, \count($grants));
+        $this->assertCount(2, $grants);
         $this->assertEquals('test identity', $payload->grants->identity);
 
         $decodedGrant = $grants['voice'];
@@ -185,12 +160,12 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('bar', $params['foo']);
     }
 
-    function testTaskRouterGrant() {
+    public function testTaskRouterGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new TaskRouterGrant();
-        $grant->setWorkspaceSid("WS123");
-        $grant->setWorkerSid("WK123");
-        $grant->setRole("worker");
+        $grant->setWorkspaceSid('WS123');
+        $grant->setWorkerSid('WK123');
+        $grant->setRole('worker');
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
@@ -199,11 +174,11 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = \json_decode(\json_encode($payload->grants), true);
-        $this->assertEquals(1, \count($grants));
-        $this->assertArrayHasKey("task_router", $grants);
-        $this->assertEquals("WS123", $grants['task_router']['workspace_sid']);
-        $this->assertEquals("WK123", $grants['task_router']['worker_sid']);
-        $this->assertEquals("worker", $grants['task_router']['role']);
+        $this->assertCount(1, $grants);
+        $this->assertArrayHasKey('task_router', $grants);
+        $this->assertEquals('WS123', $grants['task_router']['workspace_sid']);
+        $this->assertEquals('WK123', $grants['task_router']['worker_sid']);
+        $this->assertEquals('worker', $grants['task_router']['role']);
     }
 
     public function testCustomClaims() {
@@ -214,5 +189,4 @@ class AccessTokenTest extends UnitTest {
         $this->assertSame('me', $payload->find);
         $this->assertNotSame('redefined', $payload->sub);
     }
-
 }

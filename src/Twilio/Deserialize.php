@@ -9,7 +9,7 @@ class Deserialize {
      *
      * @param string $s A date or date and time, can be iso8601, rfc2822,
      *                  YYYY-MM-DD format.
-     * @return \DateTime DateTime corresponding to the input string, in UTC time.
+     * @return \DateTime|string DateTime corresponding to the input string, in UTC time.
      */
     public static function dateTime($s) {
         try {
