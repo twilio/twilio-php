@@ -18,15 +18,14 @@ class NumberContext extends InstanceContext {
     /**
      * Initialize the NumberContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $number The phone number to fetch
-     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext
      */
     public function __construct(Version $version, $number) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('number' => $number, );
+        $this->solution = ['number' => $number, ];
 
         $this->uri = '/Voice/Numbers/' . \rawurlencode($number) . '';
     }
@@ -37,8 +36,8 @@ class NumberContext extends InstanceContext {
      * @return NumberInstance Fetched NumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): NumberInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -54,8 +53,8 @@ class NumberContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class CurrentCallTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -30,7 +30,7 @@ class CurrentCallTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFoundResponse() {
+    public function testReadFoundResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

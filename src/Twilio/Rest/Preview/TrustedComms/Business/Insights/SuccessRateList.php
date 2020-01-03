@@ -21,21 +21,18 @@ class SuccessRateList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $businessSid A string that uniquely identifies this Business.
-     * @return \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateList
      */
     public function __construct(Version $version, $businessSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('businessSid' => $businessSid, );
+        $this->solution = ['businessSid' => $businessSid, ];
     }
 
     /**
      * Constructs a SuccessRateContext
-     *
-     * @return \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateContext
      */
-    public function getContext() {
+    public function getContext(): SuccessRateContext {
         return new SuccessRateContext($this->version, $this->solution['businessSid']);
     }
 
@@ -44,7 +41,7 @@ class SuccessRateList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.SuccessRateList]';
     }
 }

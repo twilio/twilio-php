@@ -18,16 +18,15 @@ class TerminatingSipDomainContext extends InstanceContext {
     /**
      * Initialize the TerminatingSipDomainContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk with the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid, );
+        $this->solution = ['trunkSid' => $trunkSid, 'sid' => $sid, ];
 
         $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/TerminatingSipDomains/' . \rawurlencode($sid) . '';
     }
@@ -38,8 +37,8 @@ class TerminatingSipDomainContext extends InstanceContext {
      * @return TerminatingSipDomainInstance Fetched TerminatingSipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): TerminatingSipDomainInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -58,10 +57,10 @@ class TerminatingSipDomainContext extends InstanceContext {
     /**
      * Deletes the TerminatingSipDomainInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -70,8 +69,8 @@ class TerminatingSipDomainContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

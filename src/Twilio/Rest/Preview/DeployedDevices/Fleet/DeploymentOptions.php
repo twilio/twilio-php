@@ -22,7 +22,7 @@ abstract class DeploymentOptions {
      *                               instance.
      * @return CreateDeploymentOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $syncServiceSid = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $syncServiceSid = Values::NONE): CreateDeploymentOptions {
         return new CreateDeploymentOptions($friendlyName, $syncServiceSid);
     }
 
@@ -32,7 +32,7 @@ abstract class DeploymentOptions {
      *                               instance.
      * @return UpdateDeploymentOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $syncServiceSid = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $syncServiceSid = Values::NONE): UpdateDeploymentOptions {
         return new UpdateDeploymentOptions($friendlyName, $syncServiceSid);
     }
 }
@@ -54,7 +54,7 @@ class CreateDeploymentOptions extends Options {
      * @param string $friendlyName A human readable description for this Deployment.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -66,7 +66,7 @@ class CreateDeploymentOptions extends Options {
      *                               instance.
      * @return $this Fluent Builder
      */
-    public function setSyncServiceSid($syncServiceSid) {
+    public function setSyncServiceSid($syncServiceSid): self {
         $this->options['syncServiceSid'] = $syncServiceSid;
         return $this;
     }
@@ -76,10 +76,10 @@ class CreateDeploymentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -104,7 +104,7 @@ class UpdateDeploymentOptions extends Options {
      * @param string $friendlyName A human readable description for this Deployment.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -116,7 +116,7 @@ class UpdateDeploymentOptions extends Options {
      *                               instance.
      * @return $this Fluent Builder
      */
-    public function setSyncServiceSid($syncServiceSid) {
+    public function setSyncServiceSid($syncServiceSid): self {
         $this->options['syncServiceSid'] = $syncServiceSid;
         return $this;
     }
@@ -126,10 +126,10 @@ class UpdateDeploymentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

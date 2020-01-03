@@ -28,18 +28,17 @@ class MediaInstance extends InstanceResource {
     /**
      * Initialize the MediaInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $messageSid The unique string that identifies the resource
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'contentType' => Values::array_get($payload, 'content_type'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
@@ -47,23 +46,22 @@ class MediaInstance extends InstanceResource {
             'parentSid' => Values::array_get($payload, 'parent_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'messageSid' => $messageSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext Context for this
-     *                                                             MediaInstance
+     * @return MediaContext Context for this MediaInstance
      */
-    protected function proxy() {
+    protected function proxy(): MediaContext {
         if (!$this->context) {
             $this->context = new MediaContext(
                 $this->version,
@@ -79,10 +77,10 @@ class MediaInstance extends InstanceResource {
     /**
      * Deletes the MediaInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -92,7 +90,7 @@ class MediaInstance extends InstanceResource {
      * @return MediaInstance Fetched MediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): MediaInstance {
         return $this->proxy()->fetch();
     }
 
@@ -121,8 +119,8 @@ class MediaInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -19,7 +19,7 @@ abstract class EngagementOptions {
      *                          flow
      * @return CreateEngagementOptions Options builder
      */
-    public static function create($parameters = Values::NONE) {
+    public static function create($parameters = Values::NONE): CreateEngagementOptions {
         return new CreateEngagementOptions($parameters);
     }
 }
@@ -42,7 +42,7 @@ class CreateEngagementOptions extends Options {
      *                          flow
      * @return $this Fluent Builder
      */
-    public function setParameters($parameters) {
+    public function setParameters($parameters): self {
         $this->options['parameters'] = $parameters;
         return $this;
     }
@@ -52,10 +52,10 @@ class CreateEngagementOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

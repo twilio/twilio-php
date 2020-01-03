@@ -41,7 +41,7 @@ abstract class RatePlanOptions {
      *                                           United States
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE, $nationalRoamingDataLimit = Values::NONE, $internationalRoamingDataLimit = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE, $nationalRoamingDataLimit = Values::NONE, $internationalRoamingDataLimit = Values::NONE): CreateRatePlanOptions {
         return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $nationalRoamingEnabled, $internationalRoaming, $nationalRoamingDataLimit, $internationalRoamingDataLimit);
     }
 
@@ -51,7 +51,7 @@ abstract class RatePlanOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdateRatePlanOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $friendlyName = Values::NONE) {
+    public static function update($uniqueName = Values::NONE, $friendlyName = Values::NONE): UpdateRatePlanOptions {
         return new UpdateRatePlanOptions($uniqueName, $friendlyName);
     }
 }
@@ -105,7 +105,7 @@ class CreateRatePlanOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -116,7 +116,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -128,7 +128,7 @@ class CreateRatePlanOptions extends Options {
      *                          connectivity
      * @return $this Fluent Builder
      */
-    public function setDataEnabled($dataEnabled) {
+    public function setDataEnabled($dataEnabled): self {
         $this->options['dataEnabled'] = $dataEnabled;
         return $this;
     }
@@ -140,7 +140,7 @@ class CreateRatePlanOptions extends Options {
      *                       allows during one month on the home network
      * @return $this Fluent Builder
      */
-    public function setDataLimit($dataLimit) {
+    public function setDataLimit($dataLimit): self {
         $this->options['dataLimit'] = $dataLimit;
         return $this;
     }
@@ -151,7 +151,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $dataMetering The model used to meter data usage
      * @return $this Fluent Builder
      */
-    public function setDataMetering($dataMetering) {
+    public function setDataMetering($dataMetering): self {
         $this->options['dataMetering'] = $dataMetering;
         return $this;
     }
@@ -163,7 +163,7 @@ class CreateRatePlanOptions extends Options {
      *                               using Commands
      * @return $this Fluent Builder
      */
-    public function setMessagingEnabled($messagingEnabled) {
+    public function setMessagingEnabled($messagingEnabled): self {
         $this->options['messagingEnabled'] = $messagingEnabled;
         return $this;
     }
@@ -174,7 +174,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $voiceEnabled Whether SIMs can make and receive voice calls
      * @return $this Fluent Builder
      */
-    public function setVoiceEnabled($voiceEnabled) {
+    public function setVoiceEnabled($voiceEnabled): self {
         $this->options['voiceEnabled'] = $voiceEnabled;
         return $this;
     }
@@ -187,7 +187,7 @@ class CreateRatePlanOptions extends Options {
      *                                     States
      * @return $this Fluent Builder
      */
-    public function setNationalRoamingEnabled($nationalRoamingEnabled) {
+    public function setNationalRoamingEnabled($nationalRoamingEnabled): self {
         $this->options['nationalRoamingEnabled'] = $nationalRoamingEnabled;
         return $this;
     }
@@ -200,7 +200,7 @@ class CreateRatePlanOptions extends Options {
      *                                     outside of the United States
      * @return $this Fluent Builder
      */
-    public function setInternationalRoaming($internationalRoaming) {
+    public function setInternationalRoaming($internationalRoaming): self {
         $this->options['internationalRoaming'] = $internationalRoaming;
         return $this;
     }
@@ -213,7 +213,7 @@ class CreateRatePlanOptions extends Options {
      *                                      non-home networks in the United States
      * @return $this Fluent Builder
      */
-    public function setNationalRoamingDataLimit($nationalRoamingDataLimit) {
+    public function setNationalRoamingDataLimit($nationalRoamingDataLimit): self {
         $this->options['nationalRoamingDataLimit'] = $nationalRoamingDataLimit;
         return $this;
     }
@@ -228,7 +228,7 @@ class CreateRatePlanOptions extends Options {
      *                                           United States
      * @return $this Fluent Builder
      */
-    public function setInternationalRoamingDataLimit($internationalRoamingDataLimit) {
+    public function setInternationalRoamingDataLimit($internationalRoamingDataLimit): self {
         $this->options['internationalRoamingDataLimit'] = $internationalRoamingDataLimit;
         return $this;
     }
@@ -238,10 +238,10 @@ class CreateRatePlanOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -267,7 +267,7 @@ class UpdateRatePlanOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -278,7 +278,7 @@ class UpdateRatePlanOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -288,10 +288,10 @@ class UpdateRatePlanOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

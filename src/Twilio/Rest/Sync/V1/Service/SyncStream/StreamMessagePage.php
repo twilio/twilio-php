@@ -22,7 +22,7 @@ class StreamMessagePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): StreamMessageInstance {
         return new StreamMessageInstance(
             $this->version,
             $payload,
@@ -36,7 +36,7 @@ class StreamMessagePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Sync.V1.StreamMessagePage]';
     }
 }

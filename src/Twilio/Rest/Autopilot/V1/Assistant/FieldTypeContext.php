@@ -11,6 +11,7 @@ namespace Twilio\Rest\Autopilot\V1\Assistant;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList;
 use Twilio\Values;
@@ -19,26 +20,25 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList $fieldValues
+ * @property FieldValueList $fieldValues
  * @method \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext fieldValues(string $sid)
  */
 class FieldTypeContext extends InstanceContext {
-    protected $_fieldValues = null;
+    protected $_fieldValues;
 
     /**
      * Initialize the FieldTypeContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext
      */
     public function __construct(Version $version, $assistantSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'sid' => $sid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($sid) . '';
     }
@@ -49,8 +49,8 @@ class FieldTypeContext extends InstanceContext {
      * @return FieldTypeInstance Fetched FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FieldTypeInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -73,18 +73,18 @@ class FieldTypeContext extends InstanceContext {
      * @return FieldTypeInstance Updated FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): FieldTypeInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -99,19 +99,17 @@ class FieldTypeContext extends InstanceContext {
     /**
      * Deletes the FieldTypeInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the fieldValues
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList
      */
-    protected function getFieldValues() {
+    protected function getFieldValues(): FieldValueList {
         if (!$this->_fieldValues) {
             $this->_fieldValues = new FieldValueList(
                 $this->version,
@@ -127,10 +125,10 @@ class FieldTypeContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -144,13 +142,13 @@ class FieldTypeContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -161,8 +159,8 @@ class FieldTypeContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

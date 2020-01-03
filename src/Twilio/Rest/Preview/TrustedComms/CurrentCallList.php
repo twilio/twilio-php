@@ -20,21 +20,18 @@ class CurrentCallList extends ListResource {
      * Construct the CurrentCallList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a CurrentCallContext
-     *
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext
      */
-    public function getContext() {
+    public function getContext(): CurrentCallContext {
         return new CurrentCallContext($this->version);
     }
 
@@ -43,7 +40,7 @@ class CurrentCallList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.CurrentCallList]';
     }
 }

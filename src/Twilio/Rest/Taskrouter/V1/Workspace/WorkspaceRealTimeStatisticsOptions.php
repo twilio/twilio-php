@@ -18,7 +18,7 @@ abstract class WorkspaceRealTimeStatisticsOptions {
      *                            TaskChannel
      * @return FetchWorkspaceRealTimeStatisticsOptions Options builder
      */
-    public static function fetch($taskChannel = Values::NONE) {
+    public static function fetch($taskChannel = Values::NONE): FetchWorkspaceRealTimeStatisticsOptions {
         return new FetchWorkspaceRealTimeStatisticsOptions($taskChannel);
     }
 }
@@ -39,7 +39,7 @@ class FetchWorkspaceRealTimeStatisticsOptions extends Options {
      *                            TaskChannel
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel) {
+    public function setTaskChannel($taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -49,10 +49,10 @@ class FetchWorkspaceRealTimeStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

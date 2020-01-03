@@ -18,21 +18,16 @@ class StepContextContext extends InstanceContext {
     /**
      * Initialize the StepContextContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $flowSid The SID of the Flow
      * @param string $engagementSid The SID of the Engagement
      * @param string $stepSid Step SID
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext
      */
     public function __construct(Version $version, $flowSid, $engagementSid, $stepSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'flowSid' => $flowSid,
-            'engagementSid' => $engagementSid,
-            'stepSid' => $stepSid,
-        );
+        $this->solution = ['flowSid' => $flowSid, 'engagementSid' => $engagementSid, 'stepSid' => $stepSid, ];
 
         $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($engagementSid) . '/Steps/' . \rawurlencode($stepSid) . '/Context';
     }
@@ -43,8 +38,8 @@ class StepContextContext extends InstanceContext {
      * @return StepContextInstance Fetched StepContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): StepContextInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -66,8 +61,8 @@ class StepContextContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

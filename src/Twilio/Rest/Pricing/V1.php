@@ -17,50 +17,40 @@ use Twilio\Rest\Pricing\V1\VoiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V1\MessagingList $messaging
- * @property \Twilio\Rest\Pricing\V1\PhoneNumberList $phoneNumbers
- * @property \Twilio\Rest\Pricing\V1\VoiceList $voice
+ * @property MessagingList $messaging
+ * @property PhoneNumberList $phoneNumbers
+ * @property VoiceList $voice
  */
 class V1 extends Version {
-    protected $_messaging = null;
-    protected $_phoneNumbers = null;
-    protected $_voice = null;
+    protected $_messaging;
+    protected $_phoneNumbers;
+    protected $_voice;
 
     /**
      * Construct the V1 version of Pricing
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Pricing\V1 V1 version of Pricing
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Pricing\V1\MessagingList
-     */
-    protected function getMessaging() {
+    protected function getMessaging(): MessagingList {
         if (!$this->_messaging) {
             $this->_messaging = new MessagingList($this);
         }
         return $this->_messaging;
     }
 
-    /**
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumberList
-     */
-    protected function getPhoneNumbers() {
+    protected function getPhoneNumbers(): PhoneNumberList {
         if (!$this->_phoneNumbers) {
             $this->_phoneNumbers = new PhoneNumberList($this);
         }
         return $this->_phoneNumbers;
     }
 
-    /**
-     * @return \Twilio\Rest\Pricing\V1\VoiceList
-     */
-    protected function getVoice() {
+    protected function getVoice(): VoiceList {
         if (!$this->_voice) {
             $this->_voice = new VoiceList($this);
         }
@@ -94,7 +84,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -105,7 +95,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V1]';
     }
 }

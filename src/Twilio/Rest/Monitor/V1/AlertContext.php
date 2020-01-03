@@ -18,15 +18,14 @@ class AlertContext extends InstanceContext {
     /**
      * Initialize the AlertContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Alerts/' . \rawurlencode($sid) . '';
     }
@@ -37,8 +36,8 @@ class AlertContext extends InstanceContext {
      * @return AlertInstance Fetched AlertInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AlertInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -54,8 +53,8 @@ class AlertContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

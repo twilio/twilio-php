@@ -23,7 +23,7 @@ abstract class ParticipantOptions {
      *                                     before this date in ISO 8601 format
      * @return ReadParticipantOptions Options builder
      */
-    public static function read($status = Values::NONE, $identity = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public static function read($status = Values::NONE, $identity = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE): ReadParticipantOptions {
         return new ReadParticipantOptions($status, $identity, $dateCreatedAfter, $dateCreatedBefore);
     }
 
@@ -31,7 +31,7 @@ abstract class ParticipantOptions {
      * @param string $status The new status of the resource
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($status = Values::NONE) {
+    public static function update($status = Values::NONE): UpdateParticipantOptions {
         return new UpdateParticipantOptions($status);
     }
 }
@@ -59,7 +59,7 @@ class ReadParticipantOptions extends Options {
      * @param string $status Read only the participants with this status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -71,7 +71,7 @@ class ReadParticipantOptions extends Options {
      *                         value
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -83,7 +83,7 @@ class ReadParticipantOptions extends Options {
      *                                    this date in UTC ISO 8601 format
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -95,7 +95,7 @@ class ReadParticipantOptions extends Options {
      *                                     before this date in ISO 8601 format
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -105,10 +105,10 @@ class ReadParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -130,7 +130,7 @@ class UpdateParticipantOptions extends Options {
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -140,10 +140,10 @@ class UpdateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

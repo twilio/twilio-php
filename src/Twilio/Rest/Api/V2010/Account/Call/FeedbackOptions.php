@@ -17,7 +17,7 @@ abstract class FeedbackOptions {
      * @param string $issue Issues experienced during the call
      * @return CreateFeedbackOptions Options builder
      */
-    public static function create($issue = Values::NONE) {
+    public static function create($issue = Values::NONE): CreateFeedbackOptions {
         return new CreateFeedbackOptions($issue);
     }
 
@@ -25,7 +25,7 @@ abstract class FeedbackOptions {
      * @param string $issue Issues experienced during the call
      * @return UpdateFeedbackOptions Options builder
      */
-    public static function update($issue = Values::NONE) {
+    public static function update($issue = Values::NONE): UpdateFeedbackOptions {
         return new UpdateFeedbackOptions($issue);
     }
 }
@@ -44,7 +44,7 @@ class CreateFeedbackOptions extends Options {
      * @param string $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
-    public function setIssue($issue) {
+    public function setIssue($issue): self {
         $this->options['issue'] = $issue;
         return $this;
     }
@@ -54,10 +54,10 @@ class CreateFeedbackOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -79,7 +79,7 @@ class UpdateFeedbackOptions extends Options {
      * @param string $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
-    public function setIssue($issue) {
+    public function setIssue($issue): self {
         $this->options['issue'] = $issue;
         return $this;
     }
@@ -89,10 +89,10 @@ class UpdateFeedbackOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,13 +24,12 @@ class EventList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\Call\EventList
      */
     public function __construct(Version $version, $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('callSid' => $callSid, );
+        $this->solution = ['callSid' => $callSid, ];
 
         $this->uri = '/Voice/' . \rawurlencode($callSid) . '/Events';
     }
@@ -51,9 +51,9 @@ class EventList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -77,7 +77,7 @@ class EventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EventInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -89,16 +89,16 @@ class EventList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of EventInstance
+     * @return EventPage Page of EventInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): EventPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'Edge' => $options['edge'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -114,9 +114,9 @@ class EventList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of EventInstance
+     * @return EventPage Page of EventInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): EventPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -130,7 +130,7 @@ class EventList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Insights.V1.EventList]';
     }
 }

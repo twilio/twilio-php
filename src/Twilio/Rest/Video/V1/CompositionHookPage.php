@@ -22,7 +22,7 @@ class CompositionHookPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): CompositionHookInstance {
         return new CompositionHookInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class CompositionHookPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Video.V1.CompositionHookPage]';
     }
 }

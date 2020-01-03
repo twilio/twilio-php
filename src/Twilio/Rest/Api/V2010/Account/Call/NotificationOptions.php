@@ -20,7 +20,7 @@ abstract class NotificationOptions {
      * @param string $messageDateAfter Filter by date
      * @return ReadNotificationOptions Options builder
      */
-    public static function read($log = Values::NONE, $messageDateBefore = Values::NONE, $messageDate = Values::NONE, $messageDateAfter = Values::NONE) {
+    public static function read($log = Values::NONE, $messageDateBefore = Values::NONE, $messageDate = Values::NONE, $messageDateAfter = Values::NONE): ReadNotificationOptions {
         return new ReadNotificationOptions($log, $messageDateBefore, $messageDate, $messageDateAfter);
     }
 }
@@ -45,7 +45,7 @@ class ReadNotificationOptions extends Options {
      * @param int $log Filter by log level
      * @return $this Fluent Builder
      */
-    public function setLog($log) {
+    public function setLog($log): self {
         $this->options['log'] = $log;
         return $this;
     }
@@ -56,7 +56,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDateBefore Filter by date
      * @return $this Fluent Builder
      */
-    public function setMessageDateBefore($messageDateBefore) {
+    public function setMessageDateBefore($messageDateBefore): self {
         $this->options['messageDateBefore'] = $messageDateBefore;
         return $this;
     }
@@ -67,7 +67,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDate Filter by date
      * @return $this Fluent Builder
      */
-    public function setMessageDate($messageDate) {
+    public function setMessageDate($messageDate): self {
         $this->options['messageDate'] = $messageDate;
         return $this;
     }
@@ -78,7 +78,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDateAfter Filter by date
      * @return $this Fluent Builder
      */
-    public function setMessageDateAfter($messageDateAfter) {
+    public function setMessageDateAfter($messageDateAfter): self {
         $this->options['messageDateAfter'] = $messageDateAfter;
         return $this;
     }
@@ -88,10 +88,10 @@ class ReadNotificationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

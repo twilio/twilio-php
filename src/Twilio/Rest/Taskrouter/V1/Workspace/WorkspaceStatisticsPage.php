@@ -19,7 +19,7 @@ class WorkspaceStatisticsPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): WorkspaceStatisticsInstance {
         return new WorkspaceStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
@@ -28,7 +28,7 @@ class WorkspaceStatisticsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.WorkspaceStatisticsPage]';
     }
 }

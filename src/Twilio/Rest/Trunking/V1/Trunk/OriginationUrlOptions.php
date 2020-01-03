@@ -23,7 +23,7 @@ abstract class OriginationUrlOptions {
      *                       Origination calls to
      * @return UpdateOriginationUrlOptions Options builder
      */
-    public static function update($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE) {
+    public static function update($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE): UpdateOriginationUrlOptions {
         return new UpdateOriginationUrlOptions($weight, $priority, $enabled, $friendlyName, $sipUrl);
     }
 }
@@ -53,7 +53,7 @@ class UpdateOriginationUrlOptions extends Options {
      *                    should receive compared to others with the same priority
      * @return $this Fluent Builder
      */
-    public function setWeight($weight) {
+    public function setWeight($weight): self {
         $this->options['weight'] = $weight;
         return $this;
     }
@@ -64,7 +64,7 @@ class UpdateOriginationUrlOptions extends Options {
      * @param int $priority The relative importance of the URI
      * @return $this Fluent Builder
      */
-    public function setPriority($priority) {
+    public function setPriority($priority): self {
         $this->options['priority'] = $priority;
         return $this;
     }
@@ -75,7 +75,7 @@ class UpdateOriginationUrlOptions extends Options {
      * @param bool $enabled Whether the URL is enabled
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -86,7 +86,7 @@ class UpdateOriginationUrlOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -98,7 +98,7 @@ class UpdateOriginationUrlOptions extends Options {
      *                       Origination calls to
      * @return $this Fluent Builder
      */
-    public function setSipUrl($sipUrl) {
+    public function setSipUrl($sipUrl): self {
         $this->options['sipUrl'] = $sipUrl;
         return $this;
     }
@@ -108,10 +108,10 @@ class UpdateOriginationUrlOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

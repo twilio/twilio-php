@@ -22,7 +22,7 @@ class DependentHostedNumberOrderPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): DependentHostedNumberOrderInstance {
         return new DependentHostedNumberOrderInstance(
             $this->version,
             $payload,
@@ -35,7 +35,7 @@ class DependentHostedNumberOrderPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.HostedNumbers.DependentHostedNumberOrderPage]';
     }
 }

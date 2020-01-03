@@ -19,7 +19,7 @@ class BucketPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): BucketInstance {
         return new BucketInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class BucketPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Verify.V2.BucketPage]';
     }
 }

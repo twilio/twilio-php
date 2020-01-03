@@ -12,6 +12,8 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList;
+use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,23 +38,22 @@ use Twilio\Version;
  * @property array $subresourceUris
  */
 class RecordingInstance extends InstanceResource {
-    protected $_transcriptions = null;
-    protected $_addOnResults = null;
+    protected $_transcriptions;
+    protected $_addOnResults;
 
     /**
      * Initialize the RecordingInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'callSid' => Values::array_get($payload, 'call_sid'),
@@ -71,19 +72,18 @@ class RecordingInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
             'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingContext Context for this
-     *                                                         RecordingInstance
+     * @return RecordingContext Context for this RecordingInstance
      */
-    protected function proxy() {
+    protected function proxy(): RecordingContext {
         if (!$this->context) {
             $this->context = new RecordingContext(
                 $this->version,
@@ -101,35 +101,31 @@ class RecordingInstance extends InstanceResource {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): RecordingInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the RecordingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the transcriptions
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList
      */
-    protected function getTranscriptions() {
+    protected function getTranscriptions(): TranscriptionList {
         return $this->proxy()->transcriptions;
     }
 
     /**
      * Access the addOnResults
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList
      */
-    protected function getAddOnResults() {
+    protected function getAddOnResults(): AddOnResultList {
         return $this->proxy()->addOnResults;
     }
 
@@ -158,8 +154,8 @@ class RecordingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -23,7 +23,7 @@ abstract class ServiceOptions {
      * @param bool $aclEnabled The acl_enabled
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE): CreateServiceOptions {
         return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled);
     }
 
@@ -34,7 +34,7 @@ abstract class ServiceOptions {
      * @param bool $aclEnabled The acl_enabled
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
+    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled);
     }
 }
@@ -59,7 +59,7 @@ class CreateServiceOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -70,7 +70,7 @@ class CreateServiceOptions extends Options {
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -81,7 +81,7 @@ class CreateServiceOptions extends Options {
      * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
-    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
+    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled): self {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         return $this;
     }
@@ -92,7 +92,7 @@ class CreateServiceOptions extends Options {
      * @param bool $aclEnabled The acl_enabled
      * @return $this Fluent Builder
      */
-    public function setAclEnabled($aclEnabled) {
+    public function setAclEnabled($aclEnabled): self {
         $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
@@ -102,10 +102,10 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -133,7 +133,7 @@ class UpdateServiceOptions extends Options {
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -144,7 +144,7 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -155,7 +155,7 @@ class UpdateServiceOptions extends Options {
      * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
-    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
+    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled): self {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         return $this;
     }
@@ -166,7 +166,7 @@ class UpdateServiceOptions extends Options {
      * @param bool $aclEnabled The acl_enabled
      * @return $this Fluent Builder
      */
-    public function setAclEnabled($aclEnabled) {
+    public function setAclEnabled($aclEnabled): self {
         $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
@@ -176,10 +176,10 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

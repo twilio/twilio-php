@@ -17,7 +17,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class AuthorizationDocumentTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -59,7 +59,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -73,7 +73,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -101,7 +101,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -115,7 +115,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -139,7 +139,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -180,21 +180,21 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, \count($actual));
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->hostedNumbers->authorizationDocuments->create(array("hosted_number_order_sids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email", "contact_title", "contact_phone_number");
+            $this->twilio->preview->hostedNumbers->authorizationDocuments->create(["hosted_number_order_sids"], "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email", "contact_title", "contact_phone_number");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'HostedNumberOrderSids' => Serialize::map(array("hosted_number_order_sids"), function($e) { return $e; }),
+        $values = [
+            'HostedNumberOrderSids' => Serialize::map(["hosted_number_order_sids"], function($e) { return $e; }),
             'AddressSid' => "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             'Email' => "email",
             'ContactTitle' => "contact_title",
             'ContactPhoneNumber' => "contact_phone_number",
-        );
+        ];
 
         $this->assertRequest(new Request(
             'post',
@@ -204,7 +204,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -227,7 +227,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments->create(array("hosted_number_order_sids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email", "contact_title", "contact_phone_number");
+        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments->create(["hosted_number_order_sids"], "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email", "contact_title", "contact_phone_number");
 
         $this->assertNotNull($actual);
     }

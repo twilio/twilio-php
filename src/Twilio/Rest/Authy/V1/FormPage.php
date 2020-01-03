@@ -22,7 +22,7 @@ class FormPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FormInstance {
         return new FormInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class FormPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Authy.V1.FormPage]';
     }
 }

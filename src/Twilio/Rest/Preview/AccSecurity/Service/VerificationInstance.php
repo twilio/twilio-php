@@ -32,16 +32,15 @@ class VerificationInstance extends InstanceResource {
     /**
      * Initialize the VerificationInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -51,9 +50,9 @@ class VerificationInstance extends InstanceResource {
             'valid' => Values::array_get($payload, 'valid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
     }
 
     /**
@@ -81,7 +80,7 @@ class VerificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.AccSecurity.VerificationInstance]';
     }
 }

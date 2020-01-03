@@ -31,18 +31,17 @@ class AlphaSenderInstance extends InstanceResource {
     /**
      * Initialize the AlphaSenderInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -51,20 +50,18 @@ class AlphaSenderInstance extends InstanceResource {
             'alphaSender' => Values::array_get($payload, 'alpha_sender'),
             'capabilities' => Values::array_get($payload, 'capabilities'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext Context for
-     *                                                              this
-     *                                                              AlphaSenderInstance
+     * @return AlphaSenderContext Context for this AlphaSenderInstance
      */
-    protected function proxy() {
+    protected function proxy(): AlphaSenderContext {
         if (!$this->context) {
             $this->context = new AlphaSenderContext(
                 $this->version,
@@ -82,17 +79,17 @@ class AlphaSenderInstance extends InstanceResource {
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AlphaSenderInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the AlphaSenderInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -121,8 +118,8 @@ class AlphaSenderInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

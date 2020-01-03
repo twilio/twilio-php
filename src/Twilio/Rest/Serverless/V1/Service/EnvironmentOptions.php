@@ -21,7 +21,7 @@ abstract class EnvironmentOptions {
      *                             environment
      * @return CreateEnvironmentOptions Options builder
      */
-    public static function create($domainSuffix = Values::NONE) {
+    public static function create($domainSuffix = Values::NONE): CreateEnvironmentOptions {
         return new CreateEnvironmentOptions($domainSuffix);
     }
 }
@@ -42,7 +42,7 @@ class CreateEnvironmentOptions extends Options {
      *                             environment
      * @return $this Fluent Builder
      */
-    public function setDomainSuffix($domainSuffix) {
+    public function setDomainSuffix($domainSuffix): self {
         $this->options['domainSuffix'] = $domainSuffix;
         return $this;
     }
@@ -52,10 +52,10 @@ class CreateEnvironmentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

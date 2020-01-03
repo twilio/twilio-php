@@ -17,7 +17,7 @@ class Prompt extends TwiML {
      *
      * @param array $attributes Optional attributes
      */
-    public function __construct($attributes = array()) {
+    public function __construct($attributes = []) {
         parent::__construct('Prompt', null, $attributes);
     }
 
@@ -28,7 +28,7 @@ class Prompt extends TwiML {
      * @param array $attributes Optional attributes
      * @return Say Child element.
      */
-    public function say($message, $attributes = array()) {
+    public function say($message, $attributes = []): Say {
         return $this->nest(new Say($message, $attributes));
     }
 
@@ -39,7 +39,7 @@ class Prompt extends TwiML {
      * @param array $attributes Optional attributes
      * @return Play Child element.
      */
-    public function play($url = null, $attributes = array()) {
+    public function play($url = null, $attributes = []): Play {
         return $this->nest(new Play($url, $attributes));
     }
 
@@ -49,7 +49,7 @@ class Prompt extends TwiML {
      * @param array $attributes Optional attributes
      * @return Pause Child element.
      */
-    public function pause($attributes = array()) {
+    public function pause($attributes = []): Pause {
         return $this->nest(new Pause($attributes));
     }
 
@@ -57,9 +57,8 @@ class Prompt extends TwiML {
      * Add For_ attribute.
      *
      * @param string $for_ Name of the payment source data element
-     * @return static $this.
      */
-    public function setFor_($for_) {
+    public function setFor_($for_): self {
         return $this->setAttribute('for_', $for_);
     }
 
@@ -67,9 +66,8 @@ class Prompt extends TwiML {
      * Add ErrorType attribute.
      *
      * @param string $errorType Type of error
-     * @return static $this.
      */
-    public function setErrorType($errorType) {
+    public function setErrorType($errorType): self {
         return $this->setAttribute('errorType', $errorType);
     }
 
@@ -77,9 +75,8 @@ class Prompt extends TwiML {
      * Add CardType attribute.
      *
      * @param string $cardType Type of the credit card
-     * @return static $this.
      */
-    public function setCardType($cardType) {
+    public function setCardType($cardType): self {
         return $this->setAttribute('cardType', $cardType);
     }
 
@@ -87,9 +84,8 @@ class Prompt extends TwiML {
      * Add Attempt attribute.
      *
      * @param int $attempt Current attempt count
-     * @return static $this.
      */
-    public function setAttempt($attempt) {
+    public function setAttempt($attempt): self {
         return $this->setAttribute('attempt', $attempt);
     }
 }

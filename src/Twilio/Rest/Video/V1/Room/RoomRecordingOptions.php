@@ -23,7 +23,7 @@ abstract class RoomRecordingOptions {
      *                                     this ISO 8601 date-time with time zone
      * @return ReadRoomRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE): ReadRoomRecordingOptions {
         return new ReadRoomRecordingOptions($status, $sourceSid, $dateCreatedAfter, $dateCreatedBefore);
     }
 }
@@ -51,7 +51,7 @@ class ReadRoomRecordingOptions extends Options {
      * @param string $status Read only the recordings with this status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -62,7 +62,7 @@ class ReadRoomRecordingOptions extends Options {
      * @param string $sourceSid Read only the recordings that have this source_sid
      * @return $this Fluent Builder
      */
-    public function setSourceSid($sourceSid) {
+    public function setSourceSid($sourceSid): self {
         $this->options['sourceSid'] = $sourceSid;
         return $this;
     }
@@ -75,7 +75,7 @@ class ReadRoomRecordingOptions extends Options {
      *                                    zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -87,7 +87,7 @@ class ReadRoomRecordingOptions extends Options {
      *                                     this ISO 8601 date-time with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -97,10 +97,10 @@ class ReadRoomRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

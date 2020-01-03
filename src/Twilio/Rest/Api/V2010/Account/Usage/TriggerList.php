@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Usage;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -22,13 +23,12 @@ class TriggerList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Usage/Triggers.json';
     }
@@ -43,10 +43,10 @@ class TriggerList extends ListResource {
      * @return TriggerInstance Newly created TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($callbackUrl, $triggerValue, $usageCategory, $options = array()) {
+    public function create($callbackUrl, $triggerValue, $usageCategory, $options = []): TriggerInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'CallbackUrl' => $callbackUrl,
             'TriggerValue' => $triggerValue,
             'UsageCategory' => $usageCategory,
@@ -54,12 +54,12 @@ class TriggerList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'Recurring' => $options['recurring'],
             'TriggerBy' => $options['triggerBy'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -83,9 +83,9 @@ class TriggerList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -109,7 +109,7 @@ class TriggerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TriggerInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -121,18 +121,18 @@ class TriggerList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of TriggerInstance
+     * @return TriggerPage Page of TriggerInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TriggerPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'Recurring' => $options['recurring'],
             'TriggerBy' => $options['triggerBy'],
             'UsageCategory' => $options['usageCategory'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -148,9 +148,9 @@ class TriggerList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of TriggerInstance
+     * @return TriggerPage Page of TriggerInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): TriggerPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -163,9 +163,8 @@ class TriggerList extends ListResource {
      * Constructs a TriggerContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): TriggerContext {
         return new TriggerContext($this->version, $this->solution['accountSid'], $sid);
     }
 
@@ -174,7 +173,7 @@ class TriggerList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.TriggerList]';
     }
 }

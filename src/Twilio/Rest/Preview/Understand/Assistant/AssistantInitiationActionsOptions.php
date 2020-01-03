@@ -20,7 +20,7 @@ abstract class AssistantInitiationActionsOptions {
      * @param array $initiationActions The initiation_actions
      * @return UpdateAssistantInitiationActionsOptions Options builder
      */
-    public static function update($initiationActions = Values::NONE) {
+    public static function update($initiationActions = Values::NONE): UpdateAssistantInitiationActionsOptions {
         return new UpdateAssistantInitiationActionsOptions($initiationActions);
     }
 }
@@ -39,7 +39,7 @@ class UpdateAssistantInitiationActionsOptions extends Options {
      * @param array $initiationActions The initiation_actions
      * @return $this Fluent Builder
      */
-    public function setInitiationActions($initiationActions) {
+    public function setInitiationActions($initiationActions): self {
         $this->options['initiationActions'] = $initiationActions;
         return $this;
     }
@@ -49,10 +49,10 @@ class UpdateAssistantInitiationActionsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

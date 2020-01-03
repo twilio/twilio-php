@@ -21,7 +21,7 @@ abstract class DocumentOptions {
      * @param array $data The data
      * @return CreateDocumentOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $data = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $data = Values::NONE): CreateDocumentOptions {
         return new CreateDocumentOptions($uniqueName, $data);
     }
 }
@@ -42,7 +42,7 @@ class CreateDocumentOptions extends Options {
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -53,7 +53,7 @@ class CreateDocumentOptions extends Options {
      * @param array $data The data
      * @return $this Fluent Builder
      */
-    public function setData($data) {
+    public function setData($data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -63,10 +63,10 @@ class CreateDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

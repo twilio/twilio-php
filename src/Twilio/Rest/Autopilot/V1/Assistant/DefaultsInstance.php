@@ -27,34 +27,32 @@ class DefaultsInstance extends InstanceResource {
     /**
      * Initialize the DefaultsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assistantSid' => Values::array_get($payload, 'assistant_sid'),
             'url' => Values::array_get($payload, 'url'),
             'data' => Values::array_get($payload, 'data'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext Context for this
-     *                                                             DefaultsInstance
+     * @return DefaultsContext Context for this DefaultsInstance
      */
-    protected function proxy() {
+    protected function proxy(): DefaultsContext {
         if (!$this->context) {
             $this->context = new DefaultsContext($this->version, $this->solution['assistantSid']);
         }
@@ -68,7 +66,7 @@ class DefaultsInstance extends InstanceResource {
      * @return DefaultsInstance Fetched DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): DefaultsInstance {
         return $this->proxy()->fetch();
     }
 
@@ -79,7 +77,7 @@ class DefaultsInstance extends InstanceResource {
      * @return DefaultsInstance Updated DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): DefaultsInstance {
         return $this->proxy()->update($options);
     }
 
@@ -108,8 +106,8 @@ class DefaultsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

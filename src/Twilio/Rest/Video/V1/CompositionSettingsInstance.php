@@ -31,15 +31,14 @@ class CompositionSettingsInstance extends InstanceResource {
     /**
      * Initialize the CompositionSettingsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Video\V1\CompositionSettingsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'awsCredentialsSid' => Values::array_get($payload, 'aws_credentials_sid'),
@@ -48,19 +47,19 @@ class CompositionSettingsInstance extends InstanceResource {
             'encryptionKeySid' => Values::array_get($payload, 'encryption_key_sid'),
             'encryptionEnabled' => Values::array_get($payload, 'encryption_enabled'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Video\V1\CompositionSettingsContext Context for this
-     *                                                          CompositionSettingsInstance
+     * @return CompositionSettingsContext Context for this
+     *                                    CompositionSettingsInstance
      */
-    protected function proxy() {
+    protected function proxy(): CompositionSettingsContext {
         if (!$this->context) {
             $this->context = new CompositionSettingsContext($this->version);
         }
@@ -74,7 +73,7 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CompositionSettingsInstance {
         return $this->proxy()->fetch();
     }
 
@@ -87,7 +86,7 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = array()) {
+    public function create($friendlyName, $options = []): CompositionSettingsInstance {
         return $this->proxy()->create($friendlyName, $options);
     }
 
@@ -116,8 +115,8 @@ class CompositionSettingsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

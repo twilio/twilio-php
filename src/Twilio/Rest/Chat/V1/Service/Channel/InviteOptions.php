@@ -17,7 +17,7 @@ abstract class InviteOptions {
      * @param string $roleSid The Role assigned to the new member
      * @return CreateInviteOptions Options builder
      */
-    public static function create($roleSid = Values::NONE) {
+    public static function create($roleSid = Values::NONE): CreateInviteOptions {
         return new CreateInviteOptions($roleSid);
     }
 
@@ -25,7 +25,7 @@ abstract class InviteOptions {
      * @param string $identity The `identity` value of the resources to read
      * @return ReadInviteOptions Options builder
      */
-    public static function read($identity = Values::NONE) {
+    public static function read($identity = Values::NONE): ReadInviteOptions {
         return new ReadInviteOptions($identity);
     }
 }
@@ -44,7 +44,7 @@ class CreateInviteOptions extends Options {
      * @param string $roleSid The Role assigned to the new member
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid) {
+    public function setRoleSid($roleSid): self {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -54,10 +54,10 @@ class CreateInviteOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -79,7 +79,7 @@ class ReadInviteOptions extends Options {
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -89,10 +89,10 @@ class ReadInviteOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

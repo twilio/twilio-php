@@ -43,19 +43,18 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskQueueCumulativeStatisticsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             TaskQueue
      * @param string $taskQueueSid The SID of the TaskQueue from which these
      *                             statistics were calculated
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'avgTaskAcceptanceTime' => Values::array_get($payload, 'avg_task_acceptance_time'),
             'startTime' => Deserialize::dateTime(Values::array_get($payload, 'start_time')),
@@ -77,19 +76,19 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
             'tasksMoved' => Values::array_get($payload, 'tasks_moved'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsContext Context for this
-     *                                                                                             TaskQueueCumulativeStatisticsInstance
+     * @return TaskQueueCumulativeStatisticsContext Context for this
+     *                                              TaskQueueCumulativeStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy(): TaskQueueCumulativeStatisticsContext {
         if (!$this->context) {
             $this->context = new TaskQueueCumulativeStatisticsContext(
                 $this->version,
@@ -109,7 +108,7 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
      *                                               TaskQueueCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): TaskQueueCumulativeStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -138,8 +137,8 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

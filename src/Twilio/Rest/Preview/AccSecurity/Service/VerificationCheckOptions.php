@@ -20,7 +20,7 @@ abstract class VerificationCheckOptions {
      * @param string $to To phonenumber
      * @return CreateVerificationCheckOptions Options builder
      */
-    public static function create($to = Values::NONE) {
+    public static function create($to = Values::NONE): CreateVerificationCheckOptions {
         return new CreateVerificationCheckOptions($to);
     }
 }
@@ -39,7 +39,7 @@ class CreateVerificationCheckOptions extends Options {
      * @param string $to To phonenumber
      * @return $this Fluent Builder
      */
-    public function setTo($to) {
+    public function setTo($to): self {
         $this->options['to'] = $to;
         return $this;
     }
@@ -49,10 +49,10 @@ class CreateVerificationCheckOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

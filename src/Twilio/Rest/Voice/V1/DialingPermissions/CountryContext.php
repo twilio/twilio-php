@@ -11,6 +11,7 @@ namespace Twilio\Rest\Voice\V1\DialingPermissions;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList;
 use Twilio\Values;
 use Twilio\Version;
@@ -18,23 +19,22 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList $highriskSpecialPrefixes
+ * @property HighriskSpecialPrefixList $highriskSpecialPrefixes
  */
 class CountryContext extends InstanceContext {
-    protected $_highriskSpecialPrefixes = null;
+    protected $_highriskSpecialPrefixes;
 
     /**
      * Initialize the CountryContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext
      */
     public function __construct(Version $version, $isoCode) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('isoCode' => $isoCode, );
+        $this->solution = ['isoCode' => $isoCode, ];
 
         $this->uri = '/DialingPermissions/Countries/' . \rawurlencode($isoCode) . '';
     }
@@ -45,8 +45,8 @@ class CountryContext extends InstanceContext {
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): CountryInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -59,10 +59,8 @@ class CountryContext extends InstanceContext {
 
     /**
      * Access the highriskSpecialPrefixes
-     *
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList
      */
-    protected function getHighriskSpecialPrefixes() {
+    protected function getHighriskSpecialPrefixes(): HighriskSpecialPrefixList {
         if (!$this->_highriskSpecialPrefixes) {
             $this->_highriskSpecialPrefixes = new HighriskSpecialPrefixList(
                 $this->version,
@@ -77,10 +75,10 @@ class CountryContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -94,13 +92,13 @@ class CountryContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -111,8 +109,8 @@ class CountryContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

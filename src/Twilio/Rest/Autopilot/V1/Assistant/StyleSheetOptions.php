@@ -21,7 +21,7 @@ abstract class StyleSheetOptions {
      *                          object
      * @return UpdateStyleSheetOptions Options builder
      */
-    public static function update($styleSheet = Values::NONE) {
+    public static function update($styleSheet = Values::NONE): UpdateStyleSheetOptions {
         return new UpdateStyleSheetOptions($styleSheet);
     }
 }
@@ -42,7 +42,7 @@ class UpdateStyleSheetOptions extends Options {
      *                          object
      * @return $this Fluent Builder
      */
-    public function setStyleSheet($styleSheet) {
+    public function setStyleSheet($styleSheet): self {
         $this->options['styleSheet'] = $styleSheet;
         return $this;
     }
@@ -52,10 +52,10 @@ class UpdateStyleSheetOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

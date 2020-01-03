@@ -13,6 +13,30 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\AddressList;
+use Twilio\Rest\Api\V2010\Account\ApplicationList;
+use Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList;
+use Twilio\Rest\Api\V2010\Account\BalanceList;
+use Twilio\Rest\Api\V2010\Account\CallList;
+use Twilio\Rest\Api\V2010\Account\ConferenceList;
+use Twilio\Rest\Api\V2010\Account\ConnectAppList;
+use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList;
+use Twilio\Rest\Api\V2010\Account\KeyList;
+use Twilio\Rest\Api\V2010\Account\MessageList;
+use Twilio\Rest\Api\V2010\Account\NewKeyList;
+use Twilio\Rest\Api\V2010\Account\NewSigningKeyList;
+use Twilio\Rest\Api\V2010\Account\NotificationList;
+use Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList;
+use Twilio\Rest\Api\V2010\Account\QueueList;
+use Twilio\Rest\Api\V2010\Account\RecordingList;
+use Twilio\Rest\Api\V2010\Account\ShortCodeList;
+use Twilio\Rest\Api\V2010\Account\SigningKeyList;
+use Twilio\Rest\Api\V2010\Account\SipList;
+use Twilio\Rest\Api\V2010\Account\TokenList;
+use Twilio\Rest\Api\V2010\Account\TranscriptionList;
+use Twilio\Rest\Api\V2010\Account\UsageList;
+use Twilio\Rest\Api\V2010\Account\ValidationRequestList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -29,44 +53,43 @@ use Twilio\Version;
  * @property string $uri
  */
 class AccountInstance extends InstanceResource {
-    protected $_addresses = null;
-    protected $_applications = null;
-    protected $_authorizedConnectApps = null;
-    protected $_availablePhoneNumbers = null;
-    protected $_balance = null;
-    protected $_calls = null;
-    protected $_conferences = null;
-    protected $_connectApps = null;
-    protected $_incomingPhoneNumbers = null;
-    protected $_keys = null;
-    protected $_messages = null;
-    protected $_newKeys = null;
-    protected $_newSigningKeys = null;
-    protected $_notifications = null;
-    protected $_outgoingCallerIds = null;
-    protected $_queues = null;
-    protected $_recordings = null;
-    protected $_signingKeys = null;
-    protected $_sip = null;
-    protected $_shortCodes = null;
-    protected $_tokens = null;
-    protected $_transcriptions = null;
-    protected $_usage = null;
-    protected $_validationRequests = null;
+    protected $_addresses;
+    protected $_applications;
+    protected $_authorizedConnectApps;
+    protected $_availablePhoneNumbers;
+    protected $_balance;
+    protected $_calls;
+    protected $_conferences;
+    protected $_connectApps;
+    protected $_incomingPhoneNumbers;
+    protected $_keys;
+    protected $_messages;
+    protected $_newKeys;
+    protected $_newSigningKeys;
+    protected $_notifications;
+    protected $_outgoingCallerIds;
+    protected $_queues;
+    protected $_recordings;
+    protected $_signingKeys;
+    protected $_sip;
+    protected $_shortCodes;
+    protected $_tokens;
+    protected $_transcriptions;
+    protected $_usage;
+    protected $_validationRequests;
 
     /**
      * Initialize the AccountInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid Fetch by unique Account Sid
-     * @return \Twilio\Rest\Api\V2010\AccountInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'authToken' => Values::array_get($payload, 'auth_token'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -77,19 +100,18 @@ class AccountInstance extends InstanceResource {
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
             'type' => Values::array_get($payload, 'type'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\AccountContext Context for this
-     *                                               AccountInstance
+     * @return AccountContext Context for this AccountInstance
      */
-    protected function proxy() {
+    protected function proxy(): AccountContext {
         if (!$this->context) {
             $this->context = new AccountContext($this->version, $this->solution['sid']);
         }
@@ -103,7 +125,7 @@ class AccountInstance extends InstanceResource {
      * @return AccountInstance Fetched AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AccountInstance {
         return $this->proxy()->fetch();
     }
 
@@ -114,223 +136,175 @@ class AccountInstance extends InstanceResource {
      * @return AccountInstance Updated AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): AccountInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the addresses
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AddressList
      */
-    protected function getAddresses() {
+    protected function getAddresses(): AddressList {
         return $this->proxy()->addresses;
     }
 
     /**
      * Access the applications
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList
      */
-    protected function getApplications() {
+    protected function getApplications(): ApplicationList {
         return $this->proxy()->applications;
     }
 
     /**
      * Access the authorizedConnectApps
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList
      */
-    protected function getAuthorizedConnectApps() {
+    protected function getAuthorizedConnectApps(): AuthorizedConnectAppList {
         return $this->proxy()->authorizedConnectApps;
     }
 
     /**
      * Access the availablePhoneNumbers
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList
      */
-    protected function getAvailablePhoneNumbers() {
+    protected function getAvailablePhoneNumbers(): AvailablePhoneNumberCountryList {
         return $this->proxy()->availablePhoneNumbers;
     }
 
     /**
      * Access the balance
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\BalanceList
      */
-    protected function getBalance() {
+    protected function getBalance(): BalanceList {
         return $this->proxy()->balance;
     }
 
     /**
      * Access the calls
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\CallList
      */
-    protected function getCalls() {
+    protected function getCalls(): CallList {
         return $this->proxy()->calls;
     }
 
     /**
      * Access the conferences
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList
      */
-    protected function getConferences() {
+    protected function getConferences(): ConferenceList {
         return $this->proxy()->conferences;
     }
 
     /**
      * Access the connectApps
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList
      */
-    protected function getConnectApps() {
+    protected function getConnectApps(): ConnectAppList {
         return $this->proxy()->connectApps;
     }
 
     /**
      * Access the incomingPhoneNumbers
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList
      */
-    protected function getIncomingPhoneNumbers() {
+    protected function getIncomingPhoneNumbers(): IncomingPhoneNumberList {
         return $this->proxy()->incomingPhoneNumbers;
     }
 
     /**
      * Access the keys
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\KeyList
      */
-    protected function getKeys() {
+    protected function getKeys(): KeyList {
         return $this->proxy()->keys;
     }
 
     /**
      * Access the messages
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\MessageList
      */
-    protected function getMessages() {
+    protected function getMessages(): MessageList {
         return $this->proxy()->messages;
     }
 
     /**
      * Access the newKeys
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList
      */
-    protected function getNewKeys() {
+    protected function getNewKeys(): NewKeyList {
         return $this->proxy()->newKeys;
     }
 
     /**
      * Access the newSigningKeys
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList
      */
-    protected function getNewSigningKeys() {
+    protected function getNewSigningKeys(): NewSigningKeyList {
         return $this->proxy()->newSigningKeys;
     }
 
     /**
      * Access the notifications
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationList
      */
-    protected function getNotifications() {
+    protected function getNotifications(): NotificationList {
         return $this->proxy()->notifications;
     }
 
     /**
      * Access the outgoingCallerIds
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList
      */
-    protected function getOutgoingCallerIds() {
+    protected function getOutgoingCallerIds(): OutgoingCallerIdList {
         return $this->proxy()->outgoingCallerIds;
     }
 
     /**
      * Access the queues
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\QueueList
      */
-    protected function getQueues() {
+    protected function getQueues(): QueueList {
         return $this->proxy()->queues;
     }
 
     /**
      * Access the recordings
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings(): RecordingList {
         return $this->proxy()->recordings;
     }
 
     /**
      * Access the signingKeys
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList
      */
-    protected function getSigningKeys() {
+    protected function getSigningKeys(): SigningKeyList {
         return $this->proxy()->signingKeys;
     }
 
     /**
      * Access the sip
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\SipList
      */
-    protected function getSip() {
+    protected function getSip(): SipList {
         return $this->proxy()->sip;
     }
 
     /**
      * Access the shortCodes
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList
      */
-    protected function getShortCodes() {
+    protected function getShortCodes(): ShortCodeList {
         return $this->proxy()->shortCodes;
     }
 
     /**
      * Access the tokens
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\TokenList
      */
-    protected function getTokens() {
+    protected function getTokens(): TokenList {
         return $this->proxy()->tokens;
     }
 
     /**
      * Access the transcriptions
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList
      */
-    protected function getTranscriptions() {
+    protected function getTranscriptions(): TranscriptionList {
         return $this->proxy()->transcriptions;
     }
 
     /**
      * Access the usage
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\UsageList
      */
-    protected function getUsage() {
+    protected function getUsage(): UsageList {
         return $this->proxy()->usage;
     }
 
     /**
      * Access the validationRequests
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList
      */
-    protected function getValidationRequests() {
+    protected function getValidationRequests(): ValidationRequestList {
         return $this->proxy()->validationRequests;
     }
 
@@ -359,8 +333,8 @@ class AccountInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

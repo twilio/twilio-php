@@ -31,16 +31,15 @@ class ExportCustomJobInstance extends InstanceResource {
     /**
      * Initialize the ExportCustomJobInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages, Calls
-     * @return \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobInstance
      */
     public function __construct(Version $version, array $payload, $resourceType) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'resourceType' => Values::array_get($payload, 'resource_type'),
             'startDay' => Values::array_get($payload, 'start_day'),
@@ -50,9 +49,9 @@ class ExportCustomJobInstance extends InstanceResource {
             'email' => Values::array_get($payload, 'email'),
             'jobSid' => Values::array_get($payload, 'job_sid'),
             'details' => Values::array_get($payload, 'details'),
-        );
+        ];
 
-        $this->solution = array('resourceType' => $resourceType, );
+        $this->solution = ['resourceType' => $resourceType, ];
     }
 
     /**
@@ -80,7 +79,7 @@ class ExportCustomJobInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.BulkExports.ExportCustomJobInstance]';
     }
 }

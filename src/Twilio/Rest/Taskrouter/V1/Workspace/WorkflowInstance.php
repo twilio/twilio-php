@@ -13,6 +13,9 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -32,25 +35,24 @@ use Twilio\Version;
  * @property array $links
  */
 class WorkflowInstance extends InstanceResource {
-    protected $_statistics = null;
-    protected $_realTimeStatistics = null;
-    protected $_cumulativeStatistics = null;
+    protected $_statistics;
+    protected $_realTimeStatistics;
+    protected $_cumulativeStatistics;
 
     /**
      * Initialize the WorkflowInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Workflow
      * @param string $sid The SID of the resource
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assignmentCallbackUrl' => Values::array_get($payload, 'assignment_callback_url'),
             'configuration' => Values::array_get($payload, 'configuration'),
@@ -64,20 +66,18 @@ class WorkflowInstance extends InstanceResource {
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext Context for
-     *                                                              this
-     *                                                              WorkflowInstance
+     * @return WorkflowContext Context for this WorkflowInstance
      */
-    protected function proxy() {
+    protected function proxy(): WorkflowContext {
         if (!$this->context) {
             $this->context = new WorkflowContext(
                 $this->version,
@@ -95,7 +95,7 @@ class WorkflowInstance extends InstanceResource {
      * @return WorkflowInstance Fetched WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): WorkflowInstance {
         return $this->proxy()->fetch();
     }
 
@@ -106,44 +106,38 @@ class WorkflowInstance extends InstanceResource {
      * @return WorkflowInstance Updated WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WorkflowInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the WorkflowInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the statistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsList
      */
-    protected function getStatistics() {
+    protected function getStatistics(): WorkflowStatisticsList {
         return $this->proxy()->statistics;
     }
 
     /**
      * Access the realTimeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList
      */
-    protected function getRealTimeStatistics() {
+    protected function getRealTimeStatistics(): WorkflowRealTimeStatisticsList {
         return $this->proxy()->realTimeStatistics;
     }
 
     /**
      * Access the cumulativeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList
      */
-    protected function getCumulativeStatistics() {
+    protected function getCumulativeStatistics(): WorkflowCumulativeStatisticsList {
         return $this->proxy()->cumulativeStatistics;
     }
 
@@ -172,8 +166,8 @@ class WorkflowInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

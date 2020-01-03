@@ -19,7 +19,7 @@ class EngagementPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): EngagementInstance {
         return new EngagementInstance($this->version, $payload, $this->solution['flowSid']);
     }
 
@@ -28,7 +28,7 @@ class EngagementPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1.EngagementPage]';
     }
 }

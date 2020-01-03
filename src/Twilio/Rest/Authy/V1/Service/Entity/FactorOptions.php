@@ -21,7 +21,7 @@ abstract class FactorOptions {
      *                            first time
      * @return UpdateFactorOptions Options builder
      */
-    public static function update($authPayload = Values::NONE) {
+    public static function update($authPayload = Values::NONE): UpdateFactorOptions {
         return new UpdateFactorOptions($authPayload);
     }
 }
@@ -42,7 +42,7 @@ class UpdateFactorOptions extends Options {
      *                            first time
      * @return $this Fluent Builder
      */
-    public function setAuthPayload($authPayload) {
+    public function setAuthPayload($authPayload): self {
         $this->options['authPayload'] = $authPayload;
         return $this;
     }
@@ -52,10 +52,10 @@ class UpdateFactorOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

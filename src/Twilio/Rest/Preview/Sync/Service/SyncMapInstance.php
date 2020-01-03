@@ -12,6 +12,8 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList;
+use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -30,23 +32,22 @@ use Twilio\Version;
  * @property string $createdBy
  */
 class SyncMapInstance extends InstanceResource {
-    protected $_syncMapItems = null;
-    protected $_syncMapPermissions = null;
+    protected $_syncMapItems;
+    protected $_syncMapPermissions;
 
     /**
      * Initialize the SyncMapInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMapInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -57,19 +58,18 @@ class SyncMapInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'createdBy' => Values::array_get($payload, 'created_by'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMapContext Context for this
-     *                                                          SyncMapInstance
+     * @return SyncMapContext Context for this SyncMapInstance
      */
-    protected function proxy() {
+    protected function proxy(): SyncMapContext {
         if (!$this->context) {
             $this->context = new SyncMapContext(
                 $this->version,
@@ -87,35 +87,31 @@ class SyncMapInstance extends InstanceResource {
      * @return SyncMapInstance Fetched SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SyncMapInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the SyncMapInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the syncMapItems
-     *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList
      */
-    protected function getSyncMapItems() {
+    protected function getSyncMapItems(): SyncMapItemList {
         return $this->proxy()->syncMapItems;
     }
 
     /**
      * Access the syncMapPermissions
-     *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList
      */
-    protected function getSyncMapPermissions() {
+    protected function getSyncMapPermissions(): SyncMapPermissionList {
         return $this->proxy()->syncMapPermissions;
     }
 
@@ -144,8 +140,8 @@ class SyncMapInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

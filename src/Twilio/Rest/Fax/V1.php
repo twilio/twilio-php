@@ -15,27 +15,23 @@ use Twilio\Rest\Fax\V1\FaxList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Fax\V1\FaxList $faxes
+ * @property FaxList $faxes
  * @method \Twilio\Rest\Fax\V1\FaxContext faxes(string $sid)
  */
 class V1 extends Version {
-    protected $_faxes = null;
+    protected $_faxes;
 
     /**
      * Construct the V1 version of Fax
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Fax\V1 V1 version of Fax
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Fax\V1\FaxList
-     */
-    protected function getFaxes() {
+    protected function getFaxes(): FaxList {
         if (!$this->_faxes) {
             $this->_faxes = new FaxList($this);
         }
@@ -69,7 +65,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -80,7 +76,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Fax.V1]';
     }
 }

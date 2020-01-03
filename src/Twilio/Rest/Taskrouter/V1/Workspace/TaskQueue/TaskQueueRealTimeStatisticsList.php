@@ -21,21 +21,18 @@ class TaskQueueRealTimeStatisticsList extends ListResource {
      *                             TaskQueue
      * @param string $taskQueueSid The SID of the TaskQueue from which these
      *                             statistics were calculated
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, ];
     }
 
     /**
      * Constructs a TaskQueueRealTimeStatisticsContext
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsContext
      */
-    public function getContext() {
+    public function getContext(): TaskQueueRealTimeStatisticsContext {
         return new TaskQueueRealTimeStatisticsContext(
             $this->version,
             $this->solution['workspaceSid'],
@@ -48,7 +45,7 @@ class TaskQueueRealTimeStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.TaskQueueRealTimeStatisticsList]';
     }
 }

@@ -21,7 +21,7 @@ abstract class WebhookOptions {
      *                              webhook's URL.
      * @return CreateWebhookOptions Options builder
      */
-    public static function create($webhookMethod = Values::NONE) {
+    public static function create($webhookMethod = Values::NONE): CreateWebhookOptions {
         return new CreateWebhookOptions($webhookMethod);
     }
 
@@ -35,7 +35,7 @@ abstract class WebhookOptions {
      *                              webhook's URL.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $events = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE) {
+    public static function update($uniqueName = Values::NONE, $events = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($uniqueName, $events, $webhookUrl, $webhookMethod);
     }
 }
@@ -56,7 +56,7 @@ class CreateWebhookOptions extends Options {
      *                              webhook's URL.
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod) {
+    public function setWebhookMethod($webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -66,10 +66,10 @@ class CreateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -101,7 +101,7 @@ class UpdateWebhookOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -113,7 +113,7 @@ class UpdateWebhookOptions extends Options {
      *                       will subscribe to.
      * @return $this Fluent Builder
      */
-    public function setEvents($events) {
+    public function setEvents($events): self {
         $this->options['events'] = $events;
         return $this;
     }
@@ -124,7 +124,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $webhookUrl The URL associated with this Webhook.
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -136,7 +136,7 @@ class UpdateWebhookOptions extends Options {
      *                              webhook's URL.
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod) {
+    public function setWebhookMethod($webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -146,10 +146,10 @@ class UpdateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

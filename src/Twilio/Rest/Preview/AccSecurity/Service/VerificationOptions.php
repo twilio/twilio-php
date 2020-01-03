@@ -20,7 +20,7 @@ abstract class VerificationOptions {
      * @param string $customMessage A custom message for this verification
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE) {
+    public static function create($customMessage = Values::NONE): CreateVerificationOptions {
         return new CreateVerificationOptions($customMessage);
     }
 }
@@ -39,7 +39,7 @@ class CreateVerificationOptions extends Options {
      * @param string $customMessage A custom message for this verification
      * @return $this Fluent Builder
      */
-    public function setCustomMessage($customMessage) {
+    public function setCustomMessage($customMessage): self {
         $this->options['customMessage'] = $customMessage;
         return $this;
     }
@@ -49,10 +49,10 @@ class CreateVerificationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Sync\V1\Service\Document;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class DocumentPermissionList extends ListResource {
      * @param string $serviceSid The SID of the Sync Service that the resource is
      *                           associated with
      * @param string $documentSid The Sync Document SID
-     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList
      */
     public function __construct(Version $version, $serviceSid, $documentSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'documentSid' => $documentSid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'documentSid' => $documentSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($documentSid) . '/Permissions';
     }
@@ -52,9 +52,9 @@ class DocumentPermissionList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class DocumentPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DocumentPermissionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -88,14 +88,10 @@ class DocumentPermissionList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of DocumentPermissionInstance
+     * @return DocumentPermissionPage Page of DocumentPermissionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): DocumentPermissionPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -111,9 +107,9 @@ class DocumentPermissionList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of DocumentPermissionInstance
+     * @return DocumentPermissionPage Page of DocumentPermissionInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): DocumentPermissionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,9 +124,8 @@ class DocumentPermissionList extends ListResource {
      * @param string $identity The application-defined string that uniquely
      *                         identifies the User's Document Permission resource
      *                         to fetch
-     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext
      */
-    public function getContext($identity) {
+    public function getContext($identity): DocumentPermissionContext {
         return new DocumentPermissionContext(
             $this->version,
             $this->solution['serviceSid'],
@@ -144,7 +139,7 @@ class DocumentPermissionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Sync.V1.DocumentPermissionList]';
     }
 }

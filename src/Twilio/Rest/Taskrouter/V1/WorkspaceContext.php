@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\ActivityList;
 use Twilio\Rest\Taskrouter\V1\Workspace\EventList;
@@ -27,16 +28,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList $activities
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\EventList $events
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskList $tasks
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList $taskQueues
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList $workers
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList $workflows
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList $statistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList $realTimeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList $cumulativeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList $taskChannels
+ * @property ActivityList $activities
+ * @property EventList $events
+ * @property TaskList $tasks
+ * @property TaskQueueList $taskQueues
+ * @property WorkerList $workers
+ * @property WorkflowList $workflows
+ * @property WorkspaceStatisticsList $statistics
+ * @property WorkspaceRealTimeStatisticsList $realTimeStatistics
+ * @property WorkspaceCumulativeStatisticsList $cumulativeStatistics
+ * @property TaskChannelList $taskChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext tasks(string $sid)
@@ -49,29 +50,28 @@ use Twilio\Version;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext taskChannels(string $sid)
  */
 class WorkspaceContext extends InstanceContext {
-    protected $_activities = null;
-    protected $_events = null;
-    protected $_tasks = null;
-    protected $_taskQueues = null;
-    protected $_workers = null;
-    protected $_workflows = null;
-    protected $_statistics = null;
-    protected $_realTimeStatistics = null;
-    protected $_cumulativeStatistics = null;
-    protected $_taskChannels = null;
+    protected $_activities;
+    protected $_events;
+    protected $_tasks;
+    protected $_taskQueues;
+    protected $_workers;
+    protected $_workflows;
+    protected $_statistics;
+    protected $_realTimeStatistics;
+    protected $_cumulativeStatistics;
+    protected $_taskChannels;
 
     /**
      * Initialize the WorkspaceContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($sid) . '';
     }
@@ -82,8 +82,8 @@ class WorkspaceContext extends InstanceContext {
      * @return WorkspaceInstance Fetched WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): WorkspaceInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -101,10 +101,10 @@ class WorkspaceContext extends InstanceContext {
      * @return WorkspaceInstance Updated WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WorkspaceInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'DefaultActivitySid' => $options['defaultActivitySid'],
             'EventCallbackUrl' => $options['eventCallbackUrl'],
             'EventsFilter' => $options['eventsFilter'],
@@ -112,12 +112,12 @@ class WorkspaceContext extends InstanceContext {
             'MultiTaskEnabled' => Serialize::booleanToString($options['multiTaskEnabled']),
             'TimeoutActivitySid' => $options['timeoutActivitySid'],
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -127,19 +127,17 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Deletes the WorkspaceInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the activities
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList
      */
-    protected function getActivities() {
+    protected function getActivities(): ActivityList {
         if (!$this->_activities) {
             $this->_activities = new ActivityList($this->version, $this->solution['sid']);
         }
@@ -149,10 +147,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the events
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList
      */
-    protected function getEvents() {
+    protected function getEvents(): EventList {
         if (!$this->_events) {
             $this->_events = new EventList($this->version, $this->solution['sid']);
         }
@@ -162,10 +158,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the tasks
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList
      */
-    protected function getTasks() {
+    protected function getTasks(): TaskList {
         if (!$this->_tasks) {
             $this->_tasks = new TaskList($this->version, $this->solution['sid']);
         }
@@ -175,10 +169,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the taskQueues
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList
      */
-    protected function getTaskQueues() {
+    protected function getTaskQueues(): TaskQueueList {
         if (!$this->_taskQueues) {
             $this->_taskQueues = new TaskQueueList($this->version, $this->solution['sid']);
         }
@@ -188,10 +180,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the workers
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList
      */
-    protected function getWorkers() {
+    protected function getWorkers(): WorkerList {
         if (!$this->_workers) {
             $this->_workers = new WorkerList($this->version, $this->solution['sid']);
         }
@@ -201,10 +191,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the workflows
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList
      */
-    protected function getWorkflows() {
+    protected function getWorkflows(): WorkflowList {
         if (!$this->_workflows) {
             $this->_workflows = new WorkflowList($this->version, $this->solution['sid']);
         }
@@ -214,10 +202,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the statistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList
      */
-    protected function getStatistics() {
+    protected function getStatistics(): WorkspaceStatisticsList {
         if (!$this->_statistics) {
             $this->_statistics = new WorkspaceStatisticsList($this->version, $this->solution['sid']);
         }
@@ -227,10 +213,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the realTimeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList
      */
-    protected function getRealTimeStatistics() {
+    protected function getRealTimeStatistics(): WorkspaceRealTimeStatisticsList {
         if (!$this->_realTimeStatistics) {
             $this->_realTimeStatistics = new WorkspaceRealTimeStatisticsList(
                 $this->version,
@@ -243,10 +227,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the cumulativeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList
      */
-    protected function getCumulativeStatistics() {
+    protected function getCumulativeStatistics(): WorkspaceCumulativeStatisticsList {
         if (!$this->_cumulativeStatistics) {
             $this->_cumulativeStatistics = new WorkspaceCumulativeStatisticsList(
                 $this->version,
@@ -259,10 +241,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the taskChannels
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList
      */
-    protected function getTaskChannels() {
+    protected function getTaskChannels(): TaskChannelList {
         if (!$this->_taskChannels) {
             $this->_taskChannels = new TaskChannelList($this->version, $this->solution['sid']);
         }
@@ -274,10 +254,10 @@ class WorkspaceContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -291,13 +271,13 @@ class WorkspaceContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -308,8 +288,8 @@ class WorkspaceContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

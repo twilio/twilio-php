@@ -19,7 +19,7 @@ class CredentialListPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): CredentialListInstance {
         return new CredentialListInstance($this->version, $payload, $this->solution['trunkSid']);
     }
 
@@ -28,7 +28,7 @@ class CredentialListPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Trunking.V1.CredentialListPage]';
     }
 }

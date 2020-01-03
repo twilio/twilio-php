@@ -16,8 +16,8 @@ use Twilio\Rest\Api\V2010\Account\Usage\TriggerList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Usage\RecordList $records
- * @property \Twilio\Rest\Api\V2010\Account\Usage\TriggerList $triggers
+ * @property RecordList $records
+ * @property TriggerList $triggers
  * @method \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext triggers(string $sid)
  */
 class UsageList extends ListResource {
@@ -30,19 +30,18 @@ class UsageList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\UsageList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
     }
 
     /**
      * Access the records
      */
-    protected function getRecords() {
+    protected function getRecords(): RecordList {
         if (!$this->_records) {
             $this->_records = new RecordList($this->version, $this->solution['accountSid']);
         }
@@ -53,7 +52,7 @@ class UsageList extends ListResource {
     /**
      * Access the triggers
      */
-    protected function getTriggers() {
+    protected function getTriggers(): TriggerList {
         if (!$this->_triggers) {
             $this->_triggers = new TriggerList($this->version, $this->solution['accountSid']);
         }
@@ -88,7 +87,7 @@ class UsageList extends ListResource {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -99,7 +98,7 @@ class UsageList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.UsageList]';
     }
 }

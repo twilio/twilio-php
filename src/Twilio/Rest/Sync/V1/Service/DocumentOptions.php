@@ -25,7 +25,7 @@ abstract class DocumentOptions {
      *                 is deleted
      * @return CreateDocumentOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE): CreateDocumentOptions {
         return new CreateDocumentOptions($uniqueName, $data, $ttl);
     }
 
@@ -36,7 +36,7 @@ abstract class DocumentOptions {
      *                 and is deleted
      * @return UpdateDocumentOptions Options builder
      */
-    public static function update($data = Values::NONE, $ttl = Values::NONE) {
+    public static function update($data = Values::NONE, $ttl = Values::NONE): UpdateDocumentOptions {
         return new UpdateDocumentOptions($data, $ttl);
     }
 }
@@ -63,7 +63,7 @@ class CreateDocumentOptions extends Options {
      *                           identifies the Sync Document
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -75,7 +75,7 @@ class CreateDocumentOptions extends Options {
      *                    object that the Sync Document stores
      * @return $this Fluent Builder
      */
-    public function setData($data) {
+    public function setData($data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -87,7 +87,7 @@ class CreateDocumentOptions extends Options {
      *                 is deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -97,10 +97,10 @@ class CreateDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -127,7 +127,7 @@ class UpdateDocumentOptions extends Options {
      *                    object that the Sync Document stores
      * @return $this Fluent Builder
      */
-    public function setData($data) {
+    public function setData($data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -139,7 +139,7 @@ class UpdateDocumentOptions extends Options {
      *                 and is deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -149,10 +149,10 @@ class UpdateDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

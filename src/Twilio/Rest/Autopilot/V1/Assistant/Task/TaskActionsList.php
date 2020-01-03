@@ -23,21 +23,18 @@ class TaskActionsList extends ListResource {
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the Task associated with the resource
      * @param string $taskSid The SID of the Task associated with the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
     }
 
     /**
      * Constructs a TaskActionsContext
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsContext
      */
-    public function getContext() {
+    public function getContext(): TaskActionsContext {
         return new TaskActionsContext(
             $this->version,
             $this->solution['assistantSid'],
@@ -50,7 +47,7 @@ class TaskActionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.TaskActionsList]';
     }
 }

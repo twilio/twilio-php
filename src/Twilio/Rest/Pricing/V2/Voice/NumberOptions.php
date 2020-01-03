@@ -18,7 +18,7 @@ abstract class NumberOptions {
      *                                  pricing information
      * @return FetchNumberOptions Options builder
      */
-    public static function fetch($originationNumber = Values::NONE) {
+    public static function fetch($originationNumber = Values::NONE): FetchNumberOptions {
         return new FetchNumberOptions($originationNumber);
     }
 }
@@ -39,7 +39,7 @@ class FetchNumberOptions extends Options {
      *                                  pricing information
      * @return $this Fluent Builder
      */
-    public function setOriginationNumber($originationNumber) {
+    public function setOriginationNumber($originationNumber): self {
         $this->options['originationNumber'] = $originationNumber;
         return $this;
     }
@@ -49,10 +49,10 @@ class FetchNumberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

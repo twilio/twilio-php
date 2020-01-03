@@ -20,21 +20,18 @@ class CpsList extends ListResource {
      * Construct the CpsList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a CpsContext
-     *
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext
      */
-    public function getContext() {
+    public function getContext(): CpsContext {
         return new CpsContext($this->version);
     }
 
@@ -43,7 +40,7 @@ class CpsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.CpsList]';
     }
 }

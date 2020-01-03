@@ -21,7 +21,7 @@ abstract class MediaOptions {
      *                                 date
      * @return ReadMediaOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
+    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE): ReadMediaOptions {
         return new ReadMediaOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter);
     }
 }
@@ -47,7 +47,7 @@ class ReadMediaOptions extends Options {
      *                                  date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -58,7 +58,7 @@ class ReadMediaOptions extends Options {
      * @param string $dateCreated Only include media that was created on this date
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadMediaOptions extends Options {
      *                                 date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -80,10 +80,10 @@ class ReadMediaOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -22,23 +22,18 @@ class VariableContext extends InstanceContext {
     /**
      * Initialize the VariableContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Variable
      *                           resource from
      * @param string $environmentSid The SID of the environment with the Variable
      *                               resource to fetch
      * @param string $sid The SID of the Variable resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext
      */
     public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'environmentSid' => $environmentSid,
-            'sid' => $sid,
-        );
+        $this->solution = ['serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Variables/' . \rawurlencode($sid) . '';
     }
@@ -49,8 +44,8 @@ class VariableContext extends InstanceContext {
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): VariableInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -74,15 +69,15 @@ class VariableContext extends InstanceContext {
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): VariableInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Key' => $options['key'], 'Value' => $options['value'], ));
+        $data = Values::of(['Key' => $options['key'], 'Value' => $options['value'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -98,10 +93,10 @@ class VariableContext extends InstanceContext {
     /**
      * Deletes the VariableInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -110,8 +105,8 @@ class VariableContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -29,7 +29,7 @@ abstract class WorkersStatisticsOptions {
      * @param string $taskChannel Only calculate statistics on this TaskChannel
      * @return FetchWorkersStatisticsOptions Options builder
      */
-    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $friendlyName = Values::NONE, $taskChannel = Values::NONE) {
+    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $friendlyName = Values::NONE, $taskChannel = Values::NONE): FetchWorkersStatisticsOptions {
         return new FetchWorkersStatisticsOptions($minutes, $startDate, $endDate, $taskQueueSid, $taskQueueName, $friendlyName, $taskChannel);
     }
 }
@@ -67,7 +67,7 @@ class FetchWorkersStatisticsOptions extends Options {
      *                     past
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes) {
+    public function setMinutes($minutes): self {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -79,7 +79,7 @@ class FetchWorkersStatisticsOptions extends Options {
      *                             date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -91,7 +91,7 @@ class FetchWorkersStatisticsOptions extends Options {
      *                           and earlier
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -103,7 +103,7 @@ class FetchWorkersStatisticsOptions extends Options {
      *                             Worker statistics
      * @return $this Fluent Builder
      */
-    public function setTaskQueueSid($taskQueueSid) {
+    public function setTaskQueueSid($taskQueueSid): self {
         $this->options['taskQueueSid'] = $taskQueueSid;
         return $this;
     }
@@ -115,7 +115,7 @@ class FetchWorkersStatisticsOptions extends Options {
      *                              fetch Worker statistics
      * @return $this Fluent Builder
      */
-    public function setTaskQueueName($taskQueueName) {
+    public function setTaskQueueName($taskQueueName): self {
         $this->options['taskQueueName'] = $taskQueueName;
         return $this;
     }
@@ -127,7 +127,7 @@ class FetchWorkersStatisticsOptions extends Options {
      *                             that match this parameter
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -138,7 +138,7 @@ class FetchWorkersStatisticsOptions extends Options {
      * @param string $taskChannel Only calculate statistics on this TaskChannel
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel) {
+    public function setTaskChannel($taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -148,10 +148,10 @@ class FetchWorkersStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

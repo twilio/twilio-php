@@ -23,7 +23,7 @@ abstract class ChannelOptions {
      * @param bool $longLived Whether to create the channel as long-lived
      * @return CreateChannelOptions Options builder
      */
-    public static function create($target = Values::NONE, $chatUniqueName = Values::NONE, $preEngagementData = Values::NONE, $taskSid = Values::NONE, $taskAttributes = Values::NONE, $longLived = Values::NONE) {
+    public static function create($target = Values::NONE, $chatUniqueName = Values::NONE, $preEngagementData = Values::NONE, $taskSid = Values::NONE, $taskAttributes = Values::NONE, $longLived = Values::NONE): CreateChannelOptions {
         return new CreateChannelOptions($target, $chatUniqueName, $preEngagementData, $taskSid, $taskAttributes, $longLived);
     }
 }
@@ -53,7 +53,7 @@ class CreateChannelOptions extends Options {
      * @param string $target The Target Contact Identity
      * @return $this Fluent Builder
      */
-    public function setTarget($target) {
+    public function setTarget($target): self {
         $this->options['target'] = $target;
         return $this;
     }
@@ -64,7 +64,7 @@ class CreateChannelOptions extends Options {
      * @param string $chatUniqueName The chat channel's unique name
      * @return $this Fluent Builder
      */
-    public function setChatUniqueName($chatUniqueName) {
+    public function setChatUniqueName($chatUniqueName): self {
         $this->options['chatUniqueName'] = $chatUniqueName;
         return $this;
     }
@@ -75,7 +75,7 @@ class CreateChannelOptions extends Options {
      * @param string $preEngagementData The pre-engagement data
      * @return $this Fluent Builder
      */
-    public function setPreEngagementData($preEngagementData) {
+    public function setPreEngagementData($preEngagementData): self {
         $this->options['preEngagementData'] = $preEngagementData;
         return $this;
     }
@@ -86,7 +86,7 @@ class CreateChannelOptions extends Options {
      * @param string $taskSid The SID of the TaskRouter task
      * @return $this Fluent Builder
      */
-    public function setTaskSid($taskSid) {
+    public function setTaskSid($taskSid): self {
         $this->options['taskSid'] = $taskSid;
         return $this;
     }
@@ -98,7 +98,7 @@ class CreateChannelOptions extends Options {
      *                               TaskRouter Task
      * @return $this Fluent Builder
      */
-    public function setTaskAttributes($taskAttributes) {
+    public function setTaskAttributes($taskAttributes): self {
         $this->options['taskAttributes'] = $taskAttributes;
         return $this;
     }
@@ -109,7 +109,7 @@ class CreateChannelOptions extends Options {
      * @param bool $longLived Whether to create the channel as long-lived
      * @return $this Fluent Builder
      */
-    public function setLongLived($longLived) {
+    public function setLongLived($longLived): self {
         $this->options['longLived'] = $longLived;
         return $this;
     }
@@ -119,10 +119,10 @@ class CreateChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -18,7 +18,7 @@ class SsmlSub extends TwiML {
      * @param string $words Words to be substituted
      * @param array $attributes Optional attributes
      */
-    public function __construct($words, $attributes = array()) {
+    public function __construct($words, $attributes = []) {
         parent::__construct('sub', $words, $attributes);
     }
 
@@ -27,9 +27,8 @@ class SsmlSub extends TwiML {
      *
      * @param string $alias Substitute a different word (or pronunciation) for
      *                      selected text such as an acronym or abbreviation
-     * @return static $this.
      */
-    public function setAlias($alias) {
+    public function setAlias($alias): self {
         return $this->setAttribute('alias', $alias);
     }
 }

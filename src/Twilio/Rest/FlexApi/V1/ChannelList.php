@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,13 +22,12 @@ class ChannelList extends ListResource {
      * Construct the ChannelList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\FlexApi\V1\ChannelList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Channels';
     }
@@ -48,9 +48,9 @@ class ChannelList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -73,7 +73,7 @@ class ChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ChannelInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -84,14 +84,10 @@ class ChannelList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ChannelInstance
+     * @return ChannelPage Page of ChannelInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ChannelPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -107,9 +103,9 @@ class ChannelList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ChannelInstance
+     * @return ChannelPage Page of ChannelInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): ChannelPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -130,10 +126,10 @@ class ChannelList extends ListResource {
      * @return ChannelInstance Newly created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($flexFlowSid, $identity, $chatUserFriendlyName, $chatFriendlyName, $options = array()) {
+    public function create($flexFlowSid, $identity, $chatUserFriendlyName, $chatFriendlyName, $options = []): ChannelInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FlexFlowSid' => $flexFlowSid,
             'Identity' => $identity,
             'ChatUserFriendlyName' => $chatUserFriendlyName,
@@ -144,12 +140,12 @@ class ChannelList extends ListResource {
             'TaskSid' => $options['taskSid'],
             'TaskAttributes' => $options['taskAttributes'],
             'LongLived' => Serialize::booleanToString($options['longLived']),
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -161,9 +157,8 @@ class ChannelList extends ListResource {
      *
      * @param string $sid The SID that identifies the Flex chat channel resource to
      *                    fetch
-     * @return \Twilio\Rest\FlexApi\V1\ChannelContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): ChannelContext {
         return new ChannelContext($this->version, $sid);
     }
 
@@ -172,7 +167,7 @@ class ChannelList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.FlexApi.V1.ChannelList]';
     }
 }

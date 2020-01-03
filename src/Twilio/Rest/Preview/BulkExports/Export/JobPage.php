@@ -22,7 +22,7 @@ class JobPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): JobInstance {
         return new JobInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class JobPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.BulkExports.JobPage]';
     }
 }

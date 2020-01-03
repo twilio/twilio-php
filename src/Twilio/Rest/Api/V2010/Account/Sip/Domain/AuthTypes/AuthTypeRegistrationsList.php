@@ -15,7 +15,7 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\Aut
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingList $credentialListMappings
+ * @property AuthRegistrationsCredentialListMappingList $credentialListMappings
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingContext credentialListMappings(string $sid)
  */
 class AuthTypeRegistrationsList extends ListResource {
@@ -27,19 +27,18 @@ class AuthTypeRegistrationsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
+        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
     }
 
     /**
      * Access the credentialListMappings
      */
-    protected function getCredentialListMappings() {
+    protected function getCredentialListMappings(): AuthRegistrationsCredentialListMappingList {
         if (!$this->_credentialListMappings) {
             $this->_credentialListMappings = new AuthRegistrationsCredentialListMappingList(
                 $this->version,
@@ -78,7 +77,7 @@ class AuthTypeRegistrationsList extends ListResource {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -89,7 +88,7 @@ class AuthTypeRegistrationsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AuthTypeRegistrationsList]';
     }
 }

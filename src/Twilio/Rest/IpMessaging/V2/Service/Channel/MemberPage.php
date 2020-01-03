@@ -19,7 +19,7 @@ class MemberPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): MemberInstance {
         return new MemberInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class MemberPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.IpMessaging.V2.MemberPage]';
     }
 }

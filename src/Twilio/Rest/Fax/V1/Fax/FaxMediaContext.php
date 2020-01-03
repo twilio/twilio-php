@@ -21,16 +21,15 @@ class FaxMediaContext extends InstanceContext {
     /**
      * Initialize the FaxMediaContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $faxSid The SID of the fax with the FaxMedia resource to fetch
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaContext
      */
     public function __construct(Version $version, $faxSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('faxSid' => $faxSid, 'sid' => $sid, );
+        $this->solution = ['faxSid' => $faxSid, 'sid' => $sid, ];
 
         $this->uri = '/Faxes/' . \rawurlencode($faxSid) . '/Media/' . \rawurlencode($sid) . '';
     }
@@ -41,8 +40,8 @@ class FaxMediaContext extends InstanceContext {
      * @return FaxMediaInstance Fetched FaxMediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FaxMediaInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -61,10 +60,10 @@ class FaxMediaContext extends InstanceContext {
     /**
      * Deletes the FaxMediaInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -73,8 +72,8 @@ class FaxMediaContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

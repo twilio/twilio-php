@@ -19,7 +19,7 @@ class VoipPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): VoipInstance {
         return new VoipInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class VoipPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.VoipPage]';
     }
 }

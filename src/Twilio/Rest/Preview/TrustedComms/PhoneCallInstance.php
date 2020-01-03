@@ -41,15 +41,14 @@ class PhoneCallInstance extends InstanceResource {
     /**
      * Initialize the PhoneCallInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'bgColor' => Values::array_get($payload, 'bg_color'),
             'brandSid' => Values::array_get($payload, 'brand_sid'),
@@ -68,9 +67,9 @@ class PhoneCallInstance extends InstanceResource {
             'to' => Values::array_get($payload, 'to'),
             'url' => Values::array_get($payload, 'url'),
             'useCase' => Values::array_get($payload, 'use_case'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
@@ -98,7 +97,7 @@ class PhoneCallInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.PhoneCallInstance]';
     }
 }

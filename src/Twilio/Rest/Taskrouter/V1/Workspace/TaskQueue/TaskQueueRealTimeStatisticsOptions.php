@@ -17,7 +17,7 @@ abstract class TaskQueueRealTimeStatisticsOptions {
      * @param string $taskChannel The TaskChannel for which to fetch statistics
      * @return FetchTaskQueueRealTimeStatisticsOptions Options builder
      */
-    public static function fetch($taskChannel = Values::NONE) {
+    public static function fetch($taskChannel = Values::NONE): FetchTaskQueueRealTimeStatisticsOptions {
         return new FetchTaskQueueRealTimeStatisticsOptions($taskChannel);
     }
 }
@@ -36,7 +36,7 @@ class FetchTaskQueueRealTimeStatisticsOptions extends Options {
      * @param string $taskChannel The TaskChannel for which to fetch statistics
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel) {
+    public function setTaskChannel($taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -46,10 +46,10 @@ class FetchTaskQueueRealTimeStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

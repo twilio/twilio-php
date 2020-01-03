@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class VerificationCheckTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -25,7 +25,7 @@ class VerificationCheckTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Code' => "code", );
+        $values = ['Code' => "code", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -35,7 +35,7 @@ class VerificationCheckTest extends HolodeckTestCase {
         ));
     }
 
-    public function testVerificationChecksResponse() {
+    public function testVerificationChecksResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

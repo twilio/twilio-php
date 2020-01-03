@@ -22,7 +22,7 @@ abstract class ExportConfigurationOptions {
      * @param string $webhookMethod The webhook_method
      * @return UpdateExportConfigurationOptions Options builder
      */
-    public static function update($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE) {
+    public static function update($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE): UpdateExportConfigurationOptions {
         return new UpdateExportConfigurationOptions($enabled, $webhookUrl, $webhookMethod);
     }
 }
@@ -45,7 +45,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -56,7 +56,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -67,7 +67,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookMethod The webhook_method
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod) {
+    public function setWebhookMethod($webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -77,10 +77,10 @@ class UpdateExportConfigurationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

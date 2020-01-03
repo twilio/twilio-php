@@ -21,20 +21,19 @@ class FunctionVersionContext extends InstanceContext {
     /**
      * Initialize the FunctionVersionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Function
      *                           Version resource from
      * @param string $functionSid The SID of the function that is the parent of the
      *                            Function Version resource to fetch
      * @param string $sid The SID that identifies the Function Version resource to
      *                    fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext
      */
     public function __construct(Version $version, $serviceSid, $functionSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'functionSid' => $functionSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'functionSid' => $functionSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Functions/' . \rawurlencode($functionSid) . '/Versions/' . \rawurlencode($sid) . '';
     }
@@ -45,8 +44,8 @@ class FunctionVersionContext extends InstanceContext {
      * @return FunctionVersionInstance Fetched FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FunctionVersionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,8 +67,8 @@ class FunctionVersionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

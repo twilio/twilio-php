@@ -12,6 +12,7 @@ namespace Twilio\Rest\Proxy\V1\Service\Session;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -33,23 +34,22 @@ use Twilio\Version;
  * @property array $links
  */
 class ParticipantInstance extends InstanceResource {
-    protected $_messageInteractions = null;
+    protected $_messageInteractions;
 
     /**
      * Initialize the ParticipantInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the resource's parent Service
      * @param string $sessionSid The SID of the resource's parent Session
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sessionSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'sessionSid' => Values::array_get($payload, 'session_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -63,24 +63,22 @@ class ParticipantInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'sessionSid' => $sessionSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext Context for
-     *                                                                  this
-     *                                                                  ParticipantInstance
+     * @return ParticipantContext Context for this ParticipantInstance
      */
-    protected function proxy() {
+    protected function proxy(): ParticipantContext {
         if (!$this->context) {
             $this->context = new ParticipantContext(
                 $this->version,
@@ -99,26 +97,24 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ParticipantInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the ParticipantInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the messageInteractions
-     *
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList
      */
-    protected function getMessageInteractions() {
+    protected function getMessageInteractions(): MessageInteractionList {
         return $this->proxy()->messageInteractions;
     }
 
@@ -147,8 +143,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

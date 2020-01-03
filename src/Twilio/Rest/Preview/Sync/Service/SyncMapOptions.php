@@ -20,7 +20,7 @@ abstract class SyncMapOptions {
      * @param string $uniqueName The unique_name
      * @return CreateSyncMapOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE) {
+    public static function create($uniqueName = Values::NONE): CreateSyncMapOptions {
         return new CreateSyncMapOptions($uniqueName);
     }
 }
@@ -39,7 +39,7 @@ class CreateSyncMapOptions extends Options {
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -49,10 +49,10 @@ class CreateSyncMapOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

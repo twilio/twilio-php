@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class PhoneNumberTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -30,7 +30,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -52,7 +52,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchCarrierResponse() {
+    public function testFetchCarrierResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -80,7 +80,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchCarrierInternationalResponse() {
+    public function testFetchCarrierInternationalResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -108,7 +108,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchCallerNameResponse() {
+    public function testFetchCallerNameResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -134,7 +134,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchCarrierAndCallerNameResponse() {
+    public function testFetchCarrierAndCallerNameResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -171,7 +171,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchAddonsWhitepagesProResponse() {
+    public function testFetchAddonsWhitepagesProResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -246,7 +246,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchAddonsNomoroboResponse() {
+    public function testFetchAddonsNomoroboResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -291,7 +291,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchAddonsPayfoneResponse() {
+    public function testFetchAddonsPayfoneResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

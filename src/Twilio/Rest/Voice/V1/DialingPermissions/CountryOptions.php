@@ -35,7 +35,7 @@ abstract class CountryOptions {
      *                                              enabled
      * @return ReadCountryOptions Options builder
      */
-    public static function read($isoCode = Values::NONE, $continent = Values::NONE, $countryCode = Values::NONE, $lowRiskNumbersEnabled = Values::NONE, $highRiskSpecialNumbersEnabled = Values::NONE, $highRiskTollfraudNumbersEnabled = Values::NONE) {
+    public static function read($isoCode = Values::NONE, $continent = Values::NONE, $countryCode = Values::NONE, $lowRiskNumbersEnabled = Values::NONE, $highRiskSpecialNumbersEnabled = Values::NONE, $highRiskTollfraudNumbersEnabled = Values::NONE): ReadCountryOptions {
         return new ReadCountryOptions($isoCode, $continent, $countryCode, $lowRiskNumbersEnabled, $highRiskSpecialNumbersEnabled, $highRiskTollfraudNumbersEnabled);
     }
 }
@@ -75,7 +75,7 @@ class ReadCountryOptions extends Options {
      *                        specifying the ISO country code
      * @return $this Fluent Builder
      */
-    public function setIsoCode($isoCode) {
+    public function setIsoCode($isoCode): self {
         $this->options['isoCode'] = $isoCode;
         return $this;
     }
@@ -87,7 +87,7 @@ class ReadCountryOptions extends Options {
      *                          specifying the continent
      * @return $this Fluent Builder
      */
-    public function setContinent($continent) {
+    public function setContinent($continent): self {
         $this->options['continent'] = $continent;
         return $this;
     }
@@ -98,7 +98,7 @@ class ReadCountryOptions extends Options {
      * @param string $countryCode Country code filter
      * @return $this Fluent Builder
      */
-    public function setCountryCode($countryCode) {
+    public function setCountryCode($countryCode): self {
         $this->options['countryCode'] = $countryCode;
         return $this;
     }
@@ -111,7 +111,7 @@ class ReadCountryOptions extends Options {
      *                                    numbers enabled
      * @return $this Fluent Builder
      */
-    public function setLowRiskNumbersEnabled($lowRiskNumbersEnabled) {
+    public function setLowRiskNumbersEnabled($lowRiskNumbersEnabled): self {
         $this->options['lowRiskNumbersEnabled'] = $lowRiskNumbersEnabled;
         return $this;
     }
@@ -125,7 +125,7 @@ class ReadCountryOptions extends Options {
      *                                            enabled
      * @return $this Fluent Builder
      */
-    public function setHighRiskSpecialNumbersEnabled($highRiskSpecialNumbersEnabled) {
+    public function setHighRiskSpecialNumbersEnabled($highRiskSpecialNumbersEnabled): self {
         $this->options['highRiskSpecialNumbersEnabled'] = $highRiskSpecialNumbersEnabled;
         return $this;
     }
@@ -139,7 +139,7 @@ class ReadCountryOptions extends Options {
      *                                              enabled
      * @return $this Fluent Builder
      */
-    public function setHighRiskTollfraudNumbersEnabled($highRiskTollfraudNumbersEnabled) {
+    public function setHighRiskTollfraudNumbersEnabled($highRiskTollfraudNumbersEnabled): self {
         $this->options['highRiskTollfraudNumbersEnabled'] = $highRiskTollfraudNumbersEnabled;
         return $this;
     }
@@ -149,10 +149,10 @@ class ReadCountryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

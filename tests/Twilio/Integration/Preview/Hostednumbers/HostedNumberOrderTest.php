@@ -17,7 +17,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class HostedNumberOrderTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -77,7 +77,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -91,7 +91,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -102,7 +102,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -116,7 +116,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -162,7 +162,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -176,7 +176,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -200,7 +200,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -259,7 +259,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, \count($actual));
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -267,10 +267,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'PhoneNumber' => "+15017122661",
-            'SmsCapability' => Serialize::booleanToString(True),
-        );
+        $values = ['PhoneNumber' => "+15017122661", 'SmsCapability' => Serialize::booleanToString(True), ];
 
         $this->assertRequest(new Request(
             'post',
@@ -280,7 +277,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -320,7 +317,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateWithoutOptionalLoaFieldsResponse() {
+    public function testCreateWithoutOptionalLoaFieldsResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -360,7 +357,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateWithPhoneBillVerificationResponse() {
+    public function testCreateWithPhoneBillVerificationResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

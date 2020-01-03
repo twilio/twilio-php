@@ -21,7 +21,7 @@ abstract class UsageOptions {
      * @param string $start The start
      * @return FetchUsageOptions Options builder
      */
-    public static function fetch($end = Values::NONE, $start = Values::NONE) {
+    public static function fetch($end = Values::NONE, $start = Values::NONE): FetchUsageOptions {
         return new FetchUsageOptions($end, $start);
     }
 }
@@ -42,7 +42,7 @@ class FetchUsageOptions extends Options {
      * @param string $end The end
      * @return $this Fluent Builder
      */
-    public function setEnd($end) {
+    public function setEnd($end): self {
         $this->options['end'] = $end;
         return $this;
     }
@@ -53,7 +53,7 @@ class FetchUsageOptions extends Options {
      * @param string $start The start
      * @return $this Fluent Builder
      */
-    public function setStart($start) {
+    public function setStart($start): self {
         $this->options['start'] = $start;
         return $this;
     }
@@ -63,10 +63,10 @@ class FetchUsageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

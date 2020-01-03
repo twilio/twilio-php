@@ -32,17 +32,16 @@ class WebhookInstance extends InstanceResource {
     /**
      * Initialize the WebhookInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sessionSid The SID of the Session for the webhook
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Session\WebhookInstance
      */
     public function __construct(Version $version, array $payload, $sessionSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'sessionSid' => Values::array_get($payload, 'session_sid'),
@@ -51,19 +50,18 @@ class WebhookInstance extends InstanceResource {
             'configuration' => Values::array_get($payload, 'configuration'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-        );
+        ];
 
-        $this->solution = array('sessionSid' => $sessionSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sessionSid' => $sessionSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Messaging\V1\Session\WebhookContext Context for this
-     *                                                          WebhookInstance
+     * @return WebhookContext Context for this WebhookInstance
      */
-    protected function proxy() {
+    protected function proxy(): WebhookContext {
         if (!$this->context) {
             $this->context = new WebhookContext(
                 $this->version,
@@ -81,7 +79,7 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): WebhookInstance {
         return $this->proxy()->fetch();
     }
 
@@ -92,17 +90,17 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WebhookInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the WebhookInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -131,8 +129,8 @@ class WebhookInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

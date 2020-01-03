@@ -22,7 +22,7 @@ abstract class FeedbackSummaryOptions {
      *                                     to the StatusCallback URL
      * @return CreateFeedbackSummaryOptions Options builder
      */
-    public static function create($includeSubaccounts = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
+    public static function create($includeSubaccounts = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE): CreateFeedbackSummaryOptions {
         return new CreateFeedbackSummaryOptions($includeSubaccounts, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -49,7 +49,7 @@ class CreateFeedbackSummaryOptions extends Options {
      *                                 account and its subaccounts
      * @return $this Fluent Builder
      */
-    public function setIncludeSubaccounts($includeSubaccounts) {
+    public function setIncludeSubaccounts($includeSubaccounts): self {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         return $this;
     }
@@ -61,7 +61,7 @@ class CreateFeedbackSummaryOptions extends Options {
      *                               summary is complete
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -73,7 +73,7 @@ class CreateFeedbackSummaryOptions extends Options {
      *                                     to the StatusCallback URL
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -83,10 +83,10 @@ class CreateFeedbackSummaryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

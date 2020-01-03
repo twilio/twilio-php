@@ -19,7 +19,7 @@ class DependentPhoneNumberPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): DependentPhoneNumberInstance {
         return new DependentPhoneNumberInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class DependentPhoneNumberPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.DependentPhoneNumberPage]';
     }
 }

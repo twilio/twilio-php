@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class VerificationTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -25,7 +25,7 @@ class VerificationTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('To' => "to", 'Channel' => "channel", );
+        $values = ['To' => "to", 'Channel' => "channel", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -35,7 +35,7 @@ class VerificationTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateVerificationResponse() {
+    public function testCreateVerificationResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -71,7 +71,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateVerificationEmailResponse() {
+    public function testCreateVerificationEmailResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -107,7 +107,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateVerificationWithRateLimitsResponse() {
+    public function testCreateVerificationWithRateLimitsResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -143,7 +143,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -152,7 +152,7 @@ class VerificationTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Status' => "canceled", );
+        $values = ['Status' => "canceled", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -162,7 +162,7 @@ class VerificationTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateVerificationResponse() {
+    public function testUpdateVerificationResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -198,7 +198,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testApproveVerificationWithPnResponse() {
+    public function testApproveVerificationWithPnResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -234,7 +234,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -249,7 +249,7 @@ class VerificationTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchVerificationResponse() {
+    public function testFetchVerificationResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

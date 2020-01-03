@@ -15,26 +15,22 @@ use Twilio\Rest\Accounts\V1\CredentialList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Accounts\V1\CredentialList $credentials
+ * @property CredentialList $credentials
  */
 class V1 extends Version {
-    protected $_credentials = null;
+    protected $_credentials;
 
     /**
      * Construct the V1 version of Accounts
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Accounts\V1 V1 version of Accounts
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Accounts\V1\CredentialList
-     */
-    protected function getCredentials() {
+    protected function getCredentials(): CredentialList {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
@@ -68,7 +64,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -79,7 +75,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Accounts.V1]';
     }
 }

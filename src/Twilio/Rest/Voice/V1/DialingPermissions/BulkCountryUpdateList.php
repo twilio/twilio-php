@@ -22,13 +22,12 @@ class BulkCountryUpdateList extends ListResource {
      * Construct the BulkCountryUpdateList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/DialingPermissions/BulkCountryUpdates';
     }
@@ -40,13 +39,13 @@ class BulkCountryUpdateList extends ListResource {
      * @return BulkCountryUpdateInstance Newly created BulkCountryUpdateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($updateRequest) {
-        $data = Values::of(array('UpdateRequest' => $updateRequest, ));
+    public function create($updateRequest): BulkCountryUpdateInstance {
+        $data = Values::of(['UpdateRequest' => $updateRequest, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -58,7 +57,7 @@ class BulkCountryUpdateList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.BulkCountryUpdateList]';
     }
 }

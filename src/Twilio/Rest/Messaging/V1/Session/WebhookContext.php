@@ -23,17 +23,16 @@ class WebhookContext extends InstanceContext {
     /**
      * Initialize the WebhookContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sessionSid The SID of the Session with the Webhook resource
      *                           to fetch
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Session\WebhookContext
      */
     public function __construct(Version $version, $sessionSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sessionSid' => $sessionSid, 'sid' => $sid, );
+        $this->solution = ['sessionSid' => $sessionSid, 'sid' => $sid, ];
 
         $this->uri = '/Sessions/' . \rawurlencode($sessionSid) . '/Webhooks/' . \rawurlencode($sid) . '';
     }
@@ -44,8 +43,8 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): WebhookInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,10 +67,10 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WebhookInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Configuration.Url' => $options['configurationUrl'],
             'Configuration.Method' => $options['configurationMethod'],
             'Configuration.Filters' => Serialize::map($options['configurationFilters'], function($e) { return $e; }),
@@ -80,12 +79,12 @@ class WebhookContext extends InstanceContext {
             'Configuration.RetryCount' => $options['configurationRetryCount'],
             'Configuration.BufferMessages' => Serialize::booleanToString($options['configurationBufferMessages']),
             'Configuration.BufferWindow' => $options['configurationBufferWindow'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -100,10 +99,10 @@ class WebhookContext extends InstanceContext {
     /**
      * Deletes the WebhookInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -112,8 +111,8 @@ class WebhookContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

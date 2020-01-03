@@ -16,40 +16,33 @@ use Twilio\Rest\Authy\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Authy\V1\FormList $forms
- * @property \Twilio\Rest\Authy\V1\ServiceList $services
+ * @property FormList $forms
+ * @property ServiceList $services
  * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
  * @method \Twilio\Rest\Authy\V1\ServiceContext services(string $sid)
  */
 class V1 extends Version {
-    protected $_forms = null;
-    protected $_services = null;
+    protected $_forms;
+    protected $_services;
 
     /**
      * Construct the V1 version of Authy
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Authy\V1 V1 version of Authy
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Authy\V1\FormList
-     */
-    protected function getForms() {
+    protected function getForms(): FormList {
         if (!$this->_forms) {
             $this->_forms = new FormList($this);
         }
         return $this->_forms;
     }
 
-    /**
-     * @return \Twilio\Rest\Authy\V1\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): ServiceList {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
@@ -83,7 +76,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -94,7 +87,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Authy.V1]';
     }
 }

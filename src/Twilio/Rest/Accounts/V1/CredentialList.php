@@ -16,8 +16,8 @@ use Twilio\Rest\Accounts\V1\Credential\PublicKeyList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Accounts\V1\Credential\PublicKeyList $publicKey
- * @property \Twilio\Rest\Accounts\V1\Credential\AwsList $aws
+ * @property PublicKeyList $publicKey
+ * @property AwsList $aws
  * @method \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext publicKey(string $sid)
  * @method \Twilio\Rest\Accounts\V1\Credential\AwsContext aws(string $sid)
  */
@@ -29,19 +29,18 @@ class CredentialList extends ListResource {
      * Construct the CredentialList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Accounts\V1\CredentialList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Access the publicKey
      */
-    protected function getPublicKey() {
+    protected function getPublicKey(): PublicKeyList {
         if (!$this->_publicKey) {
             $this->_publicKey = new PublicKeyList($this->version);
         }
@@ -52,7 +51,7 @@ class CredentialList extends ListResource {
     /**
      * Access the aws
      */
-    protected function getAws() {
+    protected function getAws(): AwsList {
         if (!$this->_aws) {
             $this->_aws = new AwsList($this->version);
         }
@@ -87,7 +86,7 @@ class CredentialList extends ListResource {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -98,7 +97,7 @@ class CredentialList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Accounts.V1.CredentialList]';
     }
 }

@@ -18,7 +18,7 @@ abstract class UserBindingOptions {
      *                            resources to read
      * @return ReadUserBindingOptions Options builder
      */
-    public static function read($bindingType = Values::NONE) {
+    public static function read($bindingType = Values::NONE): ReadUserBindingOptions {
         return new ReadUserBindingOptions($bindingType);
     }
 }
@@ -39,7 +39,7 @@ class ReadUserBindingOptions extends Options {
      *                            resources to read
      * @return $this Fluent Builder
      */
-    public function setBindingType($bindingType) {
+    public function setBindingType($bindingType): self {
         $this->options['bindingType'] = $bindingType;
         return $this;
     }
@@ -49,10 +49,10 @@ class ReadUserBindingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

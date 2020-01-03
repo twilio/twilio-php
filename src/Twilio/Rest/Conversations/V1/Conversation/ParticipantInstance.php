@@ -33,19 +33,18 @@ class ParticipantInstance extends InstanceResource {
     /**
      * Initialize the ParticipantInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $conversationSid The unique id of the Conversation for this
      *                                participant.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantInstance
      */
     public function __construct(Version $version, array $payload, $conversationSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'conversationSid' => Values::array_get($payload, 'conversation_sid'),
             'sid' => Values::array_get($payload, 'sid'),
@@ -55,21 +54,21 @@ class ParticipantInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'conversationSid' => $conversationSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext Context for this ParticipantInstance
+     * @return ParticipantContext Context for this ParticipantInstance
      */
-    protected function proxy() {
+    protected function proxy(): ParticipantContext {
         if (!$this->context) {
             $this->context = new ParticipantContext(
                 $this->version,
@@ -88,17 +87,17 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ParticipantInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the ParticipantInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -108,7 +107,7 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ParticipantInstance {
         return $this->proxy()->fetch();
     }
 
@@ -137,8 +136,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

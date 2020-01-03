@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class BulkCountryUpdateTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -25,7 +25,7 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UpdateRequest' => "update_request", );
+        $values = ['UpdateRequest' => "update_request", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -35,7 +35,7 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

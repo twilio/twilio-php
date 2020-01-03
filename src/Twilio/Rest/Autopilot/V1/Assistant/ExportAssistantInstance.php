@@ -30,16 +30,15 @@ class ExportAssistantInstance extends InstanceResource {
     /**
      * Initialize the ExportAssistantInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the Assistant to export.
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assistantSid' => Values::array_get($payload, 'assistant_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
@@ -47,20 +46,18 @@ class ExportAssistantInstance extends InstanceResource {
             'errorCode' => Values::array_get($payload, 'error_code'),
             'url' => Values::array_get($payload, 'url'),
             'schema' => Values::array_get($payload, 'schema'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantContext Context
-     *                                                                    for this
-     *                                                                    ExportAssistantInstance
+     * @return ExportAssistantContext Context for this ExportAssistantInstance
      */
-    protected function proxy() {
+    protected function proxy(): ExportAssistantContext {
         if (!$this->context) {
             $this->context = new ExportAssistantContext($this->version, $this->solution['assistantSid']);
         }
@@ -74,7 +71,7 @@ class ExportAssistantInstance extends InstanceResource {
      * @return ExportAssistantInstance Fetched ExportAssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ExportAssistantInstance {
         return $this->proxy()->fetch();
     }
 
@@ -103,8 +100,8 @@ class ExportAssistantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

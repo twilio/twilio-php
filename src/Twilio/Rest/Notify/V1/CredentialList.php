@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class CredentialList extends ListResource {
      * Construct the CredentialList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Notify\V1\CredentialList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Credentials';
     }
@@ -51,9 +51,9 @@ class CredentialList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class CredentialList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -87,14 +87,10 @@ class CredentialList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of CredentialInstance
+     * @return CredentialPage Page of CredentialInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -110,9 +106,9 @@ class CredentialList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of CredentialInstance
+     * @return CredentialPage Page of CredentialInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): CredentialPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -129,10 +125,10 @@ class CredentialList extends ListResource {
      * @return CredentialInstance Newly created CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($type, $options = array()) {
+    public function create($type, $options = []): CredentialInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Type' => $type,
             'FriendlyName' => $options['friendlyName'],
             'Certificate' => $options['certificate'],
@@ -140,12 +136,12 @@ class CredentialList extends ListResource {
             'Sandbox' => Serialize::booleanToString($options['sandbox']),
             'ApiKey' => $options['apiKey'],
             'Secret' => $options['secret'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -156,9 +152,8 @@ class CredentialList extends ListResource {
      * Constructs a CredentialContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Notify\V1\CredentialContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): CredentialContext {
         return new CredentialContext($this->version, $sid);
     }
 
@@ -167,7 +162,7 @@ class CredentialList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Notify.V1.CredentialList]';
     }
 }

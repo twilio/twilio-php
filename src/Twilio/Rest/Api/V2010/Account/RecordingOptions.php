@@ -24,7 +24,7 @@ abstract class RecordingOptions {
      * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $callSid = Values::NONE, $conferenceSid = Values::NONE) {
+    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $callSid = Values::NONE, $conferenceSid = Values::NONE): ReadRecordingOptions {
         return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $callSid, $conferenceSid);
     }
 }
@@ -55,7 +55,7 @@ class ReadRecordingOptions extends Options {
      *                                  on this date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -67,7 +67,7 @@ class ReadRecordingOptions extends Options {
      *                            date
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -79,7 +79,7 @@ class ReadRecordingOptions extends Options {
      *                                 this date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -90,7 +90,7 @@ class ReadRecordingOptions extends Options {
      * @param string $callSid The Call SID of the resources to read
      * @return $this Fluent Builder
      */
-    public function setCallSid($callSid) {
+    public function setCallSid($callSid): self {
         $this->options['callSid'] = $callSid;
         return $this;
     }
@@ -101,7 +101,7 @@ class ReadRecordingOptions extends Options {
      * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return $this Fluent Builder
      */
-    public function setConferenceSid($conferenceSid) {
+    public function setConferenceSid($conferenceSid): self {
         $this->options['conferenceSid'] = $conferenceSid;
         return $this;
     }
@@ -111,10 +111,10 @@ class ReadRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

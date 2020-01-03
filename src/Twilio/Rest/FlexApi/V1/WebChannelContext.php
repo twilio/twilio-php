@@ -19,15 +19,14 @@ class WebChannelContext extends InstanceContext {
     /**
      * Initialize the WebChannelContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The SID of the WebChannel resource to fetch
-     * @return \Twilio\Rest\FlexApi\V1\WebChannelContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/WebChannels/' . \rawurlencode($sid) . '';
     }
@@ -38,8 +37,8 @@ class WebChannelContext extends InstanceContext {
      * @return WebChannelInstance Fetched WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): WebChannelInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -57,18 +56,18 @@ class WebChannelContext extends InstanceContext {
      * @return WebChannelInstance Updated WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WebChannelInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'ChatStatus' => $options['chatStatus'],
             'PostEngagementData' => $options['postEngagementData'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -78,10 +77,10 @@ class WebChannelContext extends InstanceContext {
     /**
      * Deletes the WebChannelInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -90,8 +89,8 @@ class WebChannelContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

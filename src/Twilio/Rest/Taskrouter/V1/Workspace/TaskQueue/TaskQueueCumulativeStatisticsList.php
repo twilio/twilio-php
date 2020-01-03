@@ -21,21 +21,18 @@ class TaskQueueCumulativeStatisticsList extends ListResource {
      *                             TaskQueue
      * @param string $taskQueueSid The SID of the TaskQueue from which these
      *                             statistics were calculated
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, ];
     }
 
     /**
      * Constructs a TaskQueueCumulativeStatisticsContext
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsContext
      */
-    public function getContext() {
+    public function getContext(): TaskQueueCumulativeStatisticsContext {
         return new TaskQueueCumulativeStatisticsContext(
             $this->version,
             $this->solution['workspaceSid'],
@@ -48,7 +45,7 @@ class TaskQueueCumulativeStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.TaskQueueCumulativeStatisticsList]';
     }
 }

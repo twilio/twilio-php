@@ -21,7 +21,7 @@ abstract class ServiceOptions {
      *                                 function invocation context
      * @return CreateServiceOptions Options builder
      */
-    public static function create($includeCredentials = Values::NONE) {
+    public static function create($includeCredentials = Values::NONE): CreateServiceOptions {
         return new CreateServiceOptions($includeCredentials);
     }
 
@@ -31,7 +31,7 @@ abstract class ServiceOptions {
      * @param string $friendlyName A string to describe the Service resource
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($includeCredentials = Values::NONE, $friendlyName = Values::NONE) {
+    public static function update($includeCredentials = Values::NONE, $friendlyName = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($includeCredentials, $friendlyName);
     }
 }
@@ -52,7 +52,7 @@ class CreateServiceOptions extends Options {
      *                                 function invocation context
      * @return $this Fluent Builder
      */
-    public function setIncludeCredentials($includeCredentials) {
+    public function setIncludeCredentials($includeCredentials): self {
         $this->options['includeCredentials'] = $includeCredentials;
         return $this;
     }
@@ -62,10 +62,10 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -91,7 +91,7 @@ class UpdateServiceOptions extends Options {
      *                                 function invocation context
      * @return $this Fluent Builder
      */
-    public function setIncludeCredentials($includeCredentials) {
+    public function setIncludeCredentials($includeCredentials): self {
         $this->options['includeCredentials'] = $includeCredentials;
         return $this;
     }
@@ -102,7 +102,7 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName A string to describe the Service resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -112,10 +112,10 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

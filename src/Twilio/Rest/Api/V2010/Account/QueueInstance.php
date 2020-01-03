@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\Queue\MemberList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -28,22 +29,21 @@ use Twilio\Version;
  * @property string $uri
  */
 class QueueInstance extends InstanceResource {
-    protected $_members = null;
+    protected $_members;
 
     /**
      * Initialize the QueueInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\QueueInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'averageWaitTime' => Values::array_get($payload, 'average_wait_time'),
             'currentSize' => Values::array_get($payload, 'current_size'),
@@ -53,19 +53,18 @@ class QueueInstance extends InstanceResource {
             'maxSize' => Values::array_get($payload, 'max_size'),
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\QueueContext Context for this
-     *                                                     QueueInstance
+     * @return QueueContext Context for this QueueInstance
      */
-    protected function proxy() {
+    protected function proxy(): QueueContext {
         if (!$this->context) {
             $this->context = new QueueContext(
                 $this->version,
@@ -83,7 +82,7 @@ class QueueInstance extends InstanceResource {
      * @return QueueInstance Fetched QueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): QueueInstance {
         return $this->proxy()->fetch();
     }
 
@@ -94,26 +93,24 @@ class QueueInstance extends InstanceResource {
      * @return QueueInstance Updated QueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): QueueInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the QueueInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the members
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList
      */
-    protected function getMembers() {
+    protected function getMembers(): MemberList {
         return $this->proxy()->members;
     }
 
@@ -142,8 +139,8 @@ class QueueInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

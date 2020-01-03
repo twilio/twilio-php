@@ -29,16 +29,15 @@ class JobInstance extends InstanceResource {
     /**
      * Initialize the JobInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $jobSid The job_sid
-     * @return \Twilio\Rest\Preview\BulkExports\Export\JobInstance
      */
     public function __construct(Version $version, array $payload, $jobSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'resourceType' => Values::array_get($payload, 'resource_type'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'details' => Values::array_get($payload, 'details'),
@@ -46,19 +45,18 @@ class JobInstance extends InstanceResource {
             'endDay' => Values::array_get($payload, 'end_day'),
             'jobSid' => Values::array_get($payload, 'job_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('jobSid' => $jobSid ?: $this->properties['jobSid'], );
+        $this->solution = ['jobSid' => $jobSid ?: $this->properties['jobSid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\BulkExports\Export\JobContext Context for this
-     *                                                            JobInstance
+     * @return JobContext Context for this JobInstance
      */
-    protected function proxy() {
+    protected function proxy(): JobContext {
         if (!$this->context) {
             $this->context = new JobContext($this->version, $this->solution['jobSid']);
         }
@@ -72,17 +70,17 @@ class JobInstance extends InstanceResource {
      * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): JobInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the JobInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -111,8 +109,8 @@ class JobInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

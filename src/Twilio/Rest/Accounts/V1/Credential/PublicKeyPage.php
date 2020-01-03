@@ -19,7 +19,7 @@ class PublicKeyPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): PublicKeyInstance {
         return new PublicKeyInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class PublicKeyPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Accounts.V1.PublicKeyPage]';
     }
 }

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -50,22 +51,21 @@ use Twilio\Version;
  * @property string $bundleSid
  */
 class IncomingPhoneNumberInstance extends InstanceResource {
-    protected $_assignedAddOns = null;
+    protected $_assignedAddOns;
 
     /**
      * Initialize the IncomingPhoneNumberInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'addressSid' => Values::array_get($payload, 'address_sid'),
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
@@ -97,20 +97,19 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'emergencyStatus' => Values::array_get($payload, 'emergency_status'),
             'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
             'bundleSid' => Values::array_get($payload, 'bundle_sid'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext Context
-     *                                                                   for this
-     *                                                                   IncomingPhoneNumberInstance
+     * @return IncomingPhoneNumberContext Context for this
+     *                                    IncomingPhoneNumberInstance
      */
-    protected function proxy() {
+    protected function proxy(): IncomingPhoneNumberContext {
         if (!$this->context) {
             $this->context = new IncomingPhoneNumberContext(
                 $this->version,
@@ -129,7 +128,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): IncomingPhoneNumberInstance {
         return $this->proxy()->update($options);
     }
 
@@ -139,26 +138,24 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): IncomingPhoneNumberInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the IncomingPhoneNumberInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the assignedAddOns
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList
      */
-    protected function getAssignedAddOns() {
+    protected function getAssignedAddOns(): AssignedAddOnList {
         return $this->proxy()->assignedAddOns;
     }
 
@@ -187,8 +184,8 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

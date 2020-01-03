@@ -24,7 +24,7 @@ abstract class ParticipantOptions {
      * @param string $proxyIdentifierSid The Proxy Identifier Sid
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE): CreateParticipantOptions {
         return new CreateParticipantOptions($friendlyName, $proxyIdentifier, $proxyIdentifierSid);
     }
 }
@@ -50,7 +50,7 @@ class CreateParticipantOptions extends Options {
      *                             participant
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -62,7 +62,7 @@ class CreateParticipantOptions extends Options {
      *                                Participant
      * @return $this Fluent Builder
      */
-    public function setProxyIdentifier($proxyIdentifier) {
+    public function setProxyIdentifier($proxyIdentifier): self {
         $this->options['proxyIdentifier'] = $proxyIdentifier;
         return $this;
     }
@@ -73,7 +73,7 @@ class CreateParticipantOptions extends Options {
      * @param string $proxyIdentifierSid The Proxy Identifier Sid
      * @return $this Fluent Builder
      */
-    public function setProxyIdentifierSid($proxyIdentifierSid) {
+    public function setProxyIdentifierSid($proxyIdentifierSid): self {
         $this->options['proxyIdentifierSid'] = $proxyIdentifierSid;
         return $this;
     }
@@ -83,10 +83,10 @@ class CreateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -18,19 +18,18 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
     /**
      * Initialize the AuthCallsCredentialListMappingContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $domainSid The SID of the SIP domain that contains the
      *                          resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsCredentialListMappingContext
      */
     public function __construct(Version $version, $accountSid, $domainSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, 'sid' => $sid, );
+        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/Auth/Calls/CredentialListMappings/' . \rawurlencode($sid) . '.json';
     }
@@ -42,8 +41,8 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
      *                                                AuthCallsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AuthCallsCredentialListMappingInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -63,10 +62,10 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
     /**
      * Deletes the AuthCallsCredentialListMappingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -75,8 +74,8 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

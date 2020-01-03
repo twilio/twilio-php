@@ -16,40 +16,33 @@ use Twilio\Rest\IpMessaging\V2\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V2\CredentialList $credentials
- * @property \Twilio\Rest\IpMessaging\V2\ServiceList $services
+ * @property CredentialList $credentials
+ * @property ServiceList $services
  * @method \Twilio\Rest\IpMessaging\V2\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\ServiceContext services(string $sid)
  */
 class V2 extends Version {
-    protected $_credentials = null;
-    protected $_services = null;
+    protected $_credentials;
+    protected $_services;
 
     /**
      * Construct the V2 version of IpMessaging
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\IpMessaging\V2 V2 version of IpMessaging
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v2';
     }
 
-    /**
-     * @return \Twilio\Rest\IpMessaging\V2\CredentialList
-     */
-    protected function getCredentials() {
+    protected function getCredentials(): CredentialList {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
         return $this->_credentials;
     }
 
-    /**
-     * @return \Twilio\Rest\IpMessaging\V2\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): ServiceList {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
@@ -83,7 +76,7 @@ class V2 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -94,7 +87,7 @@ class V2 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.IpMessaging.V2]';
     }
 }

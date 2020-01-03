@@ -15,27 +15,23 @@ use Twilio\Rest\Autopilot\V1\AssistantList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Autopilot\V1\AssistantList $assistants
+ * @property AssistantList $assistants
  * @method \Twilio\Rest\Autopilot\V1\AssistantContext assistants(string $sid)
  */
 class V1 extends Version {
-    protected $_assistants = null;
+    protected $_assistants;
 
     /**
      * Construct the V1 version of Autopilot
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Autopilot\V1 V1 version of Autopilot
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Autopilot\V1\AssistantList
-     */
-    protected function getAssistants() {
+    protected function getAssistants(): AssistantList {
         if (!$this->_assistants) {
             $this->_assistants = new AssistantList($this);
         }
@@ -69,7 +65,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -80,7 +76,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1]';
     }
 }

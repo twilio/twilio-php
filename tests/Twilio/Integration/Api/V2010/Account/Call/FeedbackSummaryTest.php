@@ -17,7 +17,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class FeedbackSummaryTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -27,10 +27,10 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
+        $values = [
             'StartDate' => Serialize::iso8601Date(new \DateTime('2008-01-02')),
             'EndDate' => Serialize::iso8601Date(new \DateTime('2008-01-02')),
-        );
+        ];
 
         $this->assertRequest(new Request(
             'post',
@@ -40,7 +40,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -76,7 +76,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -92,7 +92,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -128,7 +128,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -144,7 +144,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null

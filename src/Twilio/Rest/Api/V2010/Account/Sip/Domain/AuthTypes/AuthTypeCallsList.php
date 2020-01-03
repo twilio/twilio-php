@@ -16,8 +16,8 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsIp
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsCredentialListMappingList $credentialListMappings
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsIpAccessControlListMappingList $ipAccessControlListMappings
+ * @property AuthCallsCredentialListMappingList $credentialListMappings
+ * @property AuthCallsIpAccessControlListMappingList $ipAccessControlListMappings
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsCredentialListMappingContext credentialListMappings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsIpAccessControlListMappingContext ipAccessControlListMappings(string $sid)
  */
@@ -31,19 +31,18 @@ class AuthTypeCallsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsList
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
+        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
     }
 
     /**
      * Access the credentialListMappings
      */
-    protected function getCredentialListMappings() {
+    protected function getCredentialListMappings(): AuthCallsCredentialListMappingList {
         if (!$this->_credentialListMappings) {
             $this->_credentialListMappings = new AuthCallsCredentialListMappingList(
                 $this->version,
@@ -58,7 +57,7 @@ class AuthTypeCallsList extends ListResource {
     /**
      * Access the ipAccessControlListMappings
      */
-    protected function getIpAccessControlListMappings() {
+    protected function getIpAccessControlListMappings(): AuthCallsIpAccessControlListMappingList {
         if (!$this->_ipAccessControlListMappings) {
             $this->_ipAccessControlListMappings = new AuthCallsIpAccessControlListMappingList(
                 $this->version,
@@ -97,7 +96,7 @@ class AuthTypeCallsList extends ListResource {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -108,7 +107,7 @@ class AuthTypeCallsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AuthTypeCallsList]';
     }
 }

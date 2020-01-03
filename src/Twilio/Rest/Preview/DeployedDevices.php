@@ -15,28 +15,23 @@ use Twilio\Rest\Preview\DeployedDevices\FleetList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\DeployedDevices\FleetList $fleets
+ * @property FleetList $fleets
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  */
 class DeployedDevices extends Version {
-    protected $_fleets = null;
+    protected $_fleets;
 
     /**
      * Construct the DeployedDevices version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\DeployedDevices DeployedDevices version of
-     *                                              Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'DeployedDevices';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList
-     */
-    protected function getFleets() {
+    protected function getFleets(): FleetList {
         if (!$this->_fleets) {
             $this->_fleets = new FleetList($this);
         }
@@ -70,7 +65,7 @@ class DeployedDevices extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -81,7 +76,7 @@ class DeployedDevices extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.DeployedDevices]';
     }
 }

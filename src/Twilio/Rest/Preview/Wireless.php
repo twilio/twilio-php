@@ -17,53 +17,43 @@ use Twilio\Rest\Preview\Wireless\SimList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Wireless\CommandList $commands
- * @property \Twilio\Rest\Preview\Wireless\RatePlanList $ratePlans
- * @property \Twilio\Rest\Preview\Wireless\SimList $sims
+ * @property CommandList $commands
+ * @property RatePlanList $ratePlans
+ * @property SimList $sims
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
  */
 class Wireless extends Version {
-    protected $_commands = null;
-    protected $_ratePlans = null;
-    protected $_sims = null;
+    protected $_commands;
+    protected $_ratePlans;
+    protected $_sims;
 
     /**
      * Construct the Wireless version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\Wireless Wireless version of Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'wireless';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Wireless\CommandList
-     */
-    protected function getCommands() {
+    protected function getCommands(): CommandList {
         if (!$this->_commands) {
             $this->_commands = new CommandList($this);
         }
         return $this->_commands;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Wireless\RatePlanList
-     */
-    protected function getRatePlans() {
+    protected function getRatePlans(): RatePlanList {
         if (!$this->_ratePlans) {
             $this->_ratePlans = new RatePlanList($this);
         }
         return $this->_ratePlans;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Wireless\SimList
-     */
-    protected function getSims() {
+    protected function getSims(): SimList {
         if (!$this->_sims) {
             $this->_sims = new SimList($this);
         }
@@ -97,7 +87,7 @@ class Wireless extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -108,7 +98,7 @@ class Wireless extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Wireless]';
     }
 }

@@ -13,6 +13,8 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Wireless\V1\Sim\DataSessionList;
+use Twilio\Rest\Wireless\V1\Sim\UsageRecordList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -43,22 +45,21 @@ use Twilio\Version;
  * @property string $ipAddress
  */
 class SimInstance extends InstanceResource {
-    protected $_usageRecords = null;
-    protected $_dataSessions = null;
+    protected $_usageRecords;
+    protected $_dataSessions;
 
     /**
      * Initialize the SimInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Sim resource to fetch
-     * @return \Twilio\Rest\Wireless\V1\SimInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -83,18 +84,18 @@ class SimInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
             'ipAddress' => Values::array_get($payload, 'ip_address'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Wireless\V1\SimContext Context for this SimInstance
+     * @return SimContext Context for this SimInstance
      */
-    protected function proxy() {
+    protected function proxy(): SimContext {
         if (!$this->context) {
             $this->context = new SimContext($this->version, $this->solution['sid']);
         }
@@ -108,7 +109,7 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SimInstance {
         return $this->proxy()->fetch();
     }
 
@@ -119,35 +120,31 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): SimInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the SimInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the usageRecords
-     *
-     * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordList
      */
-    protected function getUsageRecords() {
+    protected function getUsageRecords(): UsageRecordList {
         return $this->proxy()->usageRecords;
     }
 
     /**
      * Access the dataSessions
-     *
-     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList
      */
-    protected function getDataSessions() {
+    protected function getDataSessions(): DataSessionList {
         return $this->proxy()->dataSessions;
     }
 
@@ -176,8 +173,8 @@ class SimInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

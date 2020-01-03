@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Sip;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,23 +26,22 @@ use Twilio\Version;
  * @property string $uri
  */
 class CredentialListInstance extends InstanceResource {
-    protected $_credentials = null;
+    protected $_credentials;
 
     /**
      * Initialize the CredentialListInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid Fetch by unique credential list Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -49,20 +49,18 @@ class CredentialListInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext Context for
-     *                                                                  this
-     *                                                                  CredentialListInstance
+     * @return CredentialListContext Context for this CredentialListInstance
      */
-    protected function proxy() {
+    protected function proxy(): CredentialListContext {
         if (!$this->context) {
             $this->context = new CredentialListContext(
                 $this->version,
@@ -80,7 +78,7 @@ class CredentialListInstance extends InstanceResource {
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CredentialListInstance {
         return $this->proxy()->fetch();
     }
 
@@ -91,26 +89,24 @@ class CredentialListInstance extends InstanceResource {
      * @return CredentialListInstance Updated CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName) {
+    public function update($friendlyName): CredentialListInstance {
         return $this->proxy()->update($friendlyName);
     }
 
     /**
      * Deletes the CredentialListInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the credentials
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList
      */
-    protected function getCredentials() {
+    protected function getCredentials(): CredentialList {
         return $this->proxy()->credentials;
     }
 
@@ -139,8 +135,8 @@ class CredentialListInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

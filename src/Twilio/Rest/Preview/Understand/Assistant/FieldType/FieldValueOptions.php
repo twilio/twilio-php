@@ -21,7 +21,7 @@ abstract class FieldValueOptions {
      *                         example: en-US
      * @return ReadFieldValueOptions Options builder
      */
-    public static function read($language = Values::NONE) {
+    public static function read($language = Values::NONE): ReadFieldValueOptions {
         return new ReadFieldValueOptions($language);
     }
 
@@ -30,7 +30,7 @@ abstract class FieldValueOptions {
      *                          synonym of. Empty if the value is not a synonym.
      * @return CreateFieldValueOptions Options builder
      */
-    public static function create($synonymOf = Values::NONE) {
+    public static function create($synonymOf = Values::NONE): CreateFieldValueOptions {
         return new CreateFieldValueOptions($synonymOf);
     }
 }
@@ -51,7 +51,7 @@ class ReadFieldValueOptions extends Options {
      *                         example: en-US
      * @return $this Fluent Builder
      */
-    public function setLanguage($language) {
+    public function setLanguage($language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -61,10 +61,10 @@ class ReadFieldValueOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -88,7 +88,7 @@ class CreateFieldValueOptions extends Options {
      *                          synonym of. Empty if the value is not a synonym.
      * @return $this Fluent Builder
      */
-    public function setSynonymOf($synonymOf) {
+    public function setSynonymOf($synonymOf): self {
         $this->options['synonymOf'] = $synonymOf;
         return $this;
     }
@@ -98,10 +98,10 @@ class CreateFieldValueOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

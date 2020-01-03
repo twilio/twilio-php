@@ -21,7 +21,7 @@ class AssignedAddOnExtensionContext extends InstanceContext {
     /**
      * Initialize the AssignedAddOnExtensionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $resourceSid The SID of the Phone Number to which the Add-on
@@ -29,18 +29,17 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      * @param string $assignedAddOnSid The SID that uniquely identifies the
      *                                 assigned Add-on installation
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext
      */
     public function __construct(Version $version, $accountSid, $resourceSid, $assignedAddOnSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'resourceSid' => $resourceSid,
             'assignedAddOnSid' => $assignedAddOnSid,
             'sid' => $sid,
-        );
+        ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($resourceSid) . '/AssignedAddOns/' . \rawurlencode($assignedAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '.json';
     }
@@ -51,8 +50,8 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AssignedAddOnExtensionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -75,8 +74,8 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

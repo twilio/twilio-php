@@ -23,15 +23,14 @@ class SuccessRateContext extends InstanceContext {
     /**
      * Initialize the SuccessRateContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $businessSid Business Sid.
-     * @return \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateContext
      */
     public function __construct(Version $version, $businessSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('businessSid' => $businessSid, );
+        $this->solution = ['businessSid' => $businessSid, ];
 
         $this->uri = '/Businesses/' . \rawurlencode($businessSid) . '/Insights/SuccessRate';
     }
@@ -43,10 +42,10 @@ class SuccessRateContext extends InstanceContext {
      * @return SuccessRateInstance Fetched SuccessRateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): SuccessRateInstance {
         $options = new Values($options);
 
-        $params = Values::of(array(
+        $params = Values::of([
             'BrandSid' => $options['brandSid'],
             'BrandedChannelSid' => $options['brandedChannelSid'],
             'PhoneNumberSid' => $options['phoneNumberSid'],
@@ -54,7 +53,7 @@ class SuccessRateContext extends InstanceContext {
             'Start' => Serialize::iso8601DateTime($options['start']),
             'End' => Serialize::iso8601DateTime($options['end']),
             'Interval' => $options['interval'],
-        ));
+        ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -70,8 +69,8 @@ class SuccessRateContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Video\V1\Room;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList;
 use Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList;
@@ -19,31 +20,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList $publishedTracks
- * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList $subscribedTracks
- * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList $subscribeRules
+ * @property PublishedTrackList $publishedTracks
+ * @property SubscribedTrackList $subscribedTracks
+ * @property SubscribeRulesList $subscribeRules
  * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext subscribedTracks(string $sid)
  */
 class ParticipantContext extends InstanceContext {
-    protected $_publishedTracks = null;
-    protected $_subscribedTracks = null;
-    protected $_subscribeRules = null;
+    protected $_publishedTracks;
+    protected $_subscribedTracks;
+    protected $_subscribeRules;
 
     /**
      * Initialize the ParticipantContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $roomSid The SID of the room with the Participant resource to
      *                        fetch
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid, );
+        $this->solution = ['roomSid' => $roomSid, 'sid' => $sid, ];
 
         $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($sid) . '';
     }
@@ -54,8 +54,8 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ParticipantInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -78,15 +78,15 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ParticipantInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Status' => $options['status'], ));
+        $data = Values::of(['Status' => $options['status'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -100,10 +100,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the publishedTracks
-     *
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList
      */
-    protected function getPublishedTracks() {
+    protected function getPublishedTracks(): PublishedTrackList {
         if (!$this->_publishedTracks) {
             $this->_publishedTracks = new PublishedTrackList(
                 $this->version,
@@ -117,10 +115,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the subscribedTracks
-     *
-     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList
      */
-    protected function getSubscribedTracks() {
+    protected function getSubscribedTracks(): SubscribedTrackList {
         if (!$this->_subscribedTracks) {
             $this->_subscribedTracks = new SubscribedTrackList(
                 $this->version,
@@ -134,10 +130,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the subscribeRules
-     *
-     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList
      */
-    protected function getSubscribeRules() {
+    protected function getSubscribeRules(): SubscribeRulesList {
         if (!$this->_subscribeRules) {
             $this->_subscribeRules = new SubscribeRulesList(
                 $this->version,
@@ -153,10 +147,10 @@ class ParticipantContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -170,13 +164,13 @@ class ParticipantContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -187,8 +181,8 @@ class ParticipantContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

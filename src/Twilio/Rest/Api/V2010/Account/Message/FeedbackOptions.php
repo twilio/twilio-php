@@ -17,7 +17,7 @@ abstract class FeedbackOptions {
      * @param string $outcome Whether the feedback has arrived
      * @return CreateFeedbackOptions Options builder
      */
-    public static function create($outcome = Values::NONE) {
+    public static function create($outcome = Values::NONE): CreateFeedbackOptions {
         return new CreateFeedbackOptions($outcome);
     }
 }
@@ -36,7 +36,7 @@ class CreateFeedbackOptions extends Options {
      * @param string $outcome Whether the feedback has arrived
      * @return $this Fluent Builder
      */
-    public function setOutcome($outcome) {
+    public function setOutcome($outcome): self {
         $this->options['outcome'] = $outcome;
         return $this;
     }
@@ -46,10 +46,10 @@ class CreateFeedbackOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

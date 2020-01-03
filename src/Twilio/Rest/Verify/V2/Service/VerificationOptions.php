@@ -28,7 +28,7 @@ abstract class VerificationOptions {
      *                                    format.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE, $channelConfiguration = Values::NONE) {
+    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE, $channelConfiguration = Values::NONE): CreateVerificationOptions {
         return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration);
     }
 }
@@ -66,7 +66,7 @@ class CreateVerificationOptions extends Options {
      *                              verification
      * @return $this Fluent Builder
      */
-    public function setCustomMessage($customMessage) {
+    public function setCustomMessage($customMessage): self {
         $this->options['customMessage'] = $customMessage;
         return $this;
     }
@@ -77,7 +77,7 @@ class CreateVerificationOptions extends Options {
      * @param string $sendDigits The digits to send after a phone call is answered
      * @return $this Fluent Builder
      */
-    public function setSendDigits($sendDigits) {
+    public function setSendDigits($sendDigits): self {
         $this->options['sendDigits'] = $sendDigits;
         return $this;
     }
@@ -88,7 +88,7 @@ class CreateVerificationOptions extends Options {
      * @param string $locale The locale to use for the verification SMS or call
      * @return $this Fluent Builder
      */
-    public function setLocale($locale) {
+    public function setLocale($locale): self {
         $this->options['locale'] = $locale;
         return $this;
     }
@@ -99,7 +99,7 @@ class CreateVerificationOptions extends Options {
      * @param string $customCode A pre-generated code
      * @return $this Fluent Builder
      */
-    public function setCustomCode($customCode) {
+    public function setCustomCode($customCode): self {
         $this->options['customCode'] = $customCode;
         return $this;
     }
@@ -111,7 +111,7 @@ class CreateVerificationOptions extends Options {
      *                       transaction.
      * @return $this Fluent Builder
      */
-    public function setAmount($amount) {
+    public function setAmount($amount): self {
         $this->options['amount'] = $amount;
         return $this;
     }
@@ -122,7 +122,7 @@ class CreateVerificationOptions extends Options {
      * @param string $payee The payee of the associated PSD2 compliant transaction
      * @return $this Fluent Builder
      */
-    public function setPayee($payee) {
+    public function setPayee($payee): self {
         $this->options['payee'] = $payee;
         return $this;
     }
@@ -134,7 +134,7 @@ class CreateVerificationOptions extends Options {
      *                          Limits.
      * @return $this Fluent Builder
      */
-    public function setRateLimits($rateLimits) {
+    public function setRateLimits($rateLimits): self {
         $this->options['rateLimits'] = $rateLimits;
         return $this;
     }
@@ -146,7 +146,7 @@ class CreateVerificationOptions extends Options {
      *                                    format.
      * @return $this Fluent Builder
      */
-    public function setChannelConfiguration($channelConfiguration) {
+    public function setChannelConfiguration($channelConfiguration): self {
         $this->options['channelConfiguration'] = $channelConfiguration;
         return $this;
     }
@@ -156,10 +156,10 @@ class CreateVerificationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

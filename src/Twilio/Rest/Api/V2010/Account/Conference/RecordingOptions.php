@@ -17,7 +17,7 @@ abstract class RecordingOptions {
      * @param string $pauseBehavior Whether to record during a pause
      * @return UpdateRecordingOptions Options builder
      */
-    public static function update($pauseBehavior = Values::NONE) {
+    public static function update($pauseBehavior = Values::NONE): UpdateRecordingOptions {
         return new UpdateRecordingOptions($pauseBehavior);
     }
 
@@ -29,7 +29,7 @@ abstract class RecordingOptions {
      *                                 read
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
+    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE): ReadRecordingOptions {
         return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter);
     }
 }
@@ -48,7 +48,7 @@ class UpdateRecordingOptions extends Options {
      * @param string $pauseBehavior Whether to record during a pause
      * @return $this Fluent Builder
      */
-    public function setPauseBehavior($pauseBehavior) {
+    public function setPauseBehavior($pauseBehavior): self {
         $this->options['pauseBehavior'] = $pauseBehavior;
         return $this;
     }
@@ -58,10 +58,10 @@ class UpdateRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -90,7 +90,7 @@ class ReadRecordingOptions extends Options {
      *                                  read
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -101,7 +101,7 @@ class ReadRecordingOptions extends Options {
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -113,7 +113,7 @@ class ReadRecordingOptions extends Options {
      *                                 read
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -123,10 +123,10 @@ class ReadRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

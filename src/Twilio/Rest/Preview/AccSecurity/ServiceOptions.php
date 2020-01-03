@@ -20,7 +20,7 @@ abstract class ServiceOptions {
      * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return CreateServiceOptions Options builder
      */
-    public static function create($codeLength = Values::NONE) {
+    public static function create($codeLength = Values::NONE): CreateServiceOptions {
         return new CreateServiceOptions($codeLength);
     }
 
@@ -29,7 +29,7 @@ abstract class ServiceOptions {
      * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($name = Values::NONE, $codeLength = Values::NONE) {
+    public static function update($name = Values::NONE, $codeLength = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($name, $codeLength);
     }
 }
@@ -48,7 +48,7 @@ class CreateServiceOptions extends Options {
      * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return $this Fluent Builder
      */
-    public function setCodeLength($codeLength) {
+    public function setCodeLength($codeLength): self {
         $this->options['codeLength'] = $codeLength;
         return $this;
     }
@@ -58,10 +58,10 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -85,7 +85,7 @@ class UpdateServiceOptions extends Options {
      * @param string $name Friendly name of the service
      * @return $this Fluent Builder
      */
-    public function setName($name) {
+    public function setName($name): self {
         $this->options['name'] = $name;
         return $this;
     }
@@ -96,7 +96,7 @@ class UpdateServiceOptions extends Options {
      * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return $this Fluent Builder
      */
-    public function setCodeLength($codeLength) {
+    public function setCodeLength($codeLength): self {
         $this->options['codeLength'] = $codeLength;
         return $this;
     }
@@ -106,10 +106,10 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

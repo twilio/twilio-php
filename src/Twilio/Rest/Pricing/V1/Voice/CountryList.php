@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Pricing\V1\Voice;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -18,13 +19,12 @@ class CountryList extends ListResource {
      * Construct the CountryList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V1\Voice\CountryList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Voice/Countries';
     }
@@ -45,9 +45,9 @@ class CountryList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -70,7 +70,7 @@ class CountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CountryInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -81,14 +81,10 @@ class CountryList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of CountryInstance
+     * @return CountryPage Page of CountryInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CountryPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -104,9 +100,9 @@ class CountryList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of CountryInstance
+     * @return CountryPage Page of CountryInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): CountryPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -119,9 +115,8 @@ class CountryList extends ListResource {
      * Constructs a CountryContext
      *
      * @param string $isoCountry The ISO country code
-     * @return \Twilio\Rest\Pricing\V1\Voice\CountryContext
      */
-    public function getContext($isoCountry) {
+    public function getContext($isoCountry): CountryContext {
         return new CountryContext($this->version, $isoCountry);
     }
 
@@ -130,7 +125,7 @@ class CountryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V1.CountryList]';
     }
 }

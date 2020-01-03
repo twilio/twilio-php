@@ -21,7 +21,7 @@ abstract class AlertOptions {
      *                           this date
      * @return ReadAlertOptions Options builder
      */
-    public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE): ReadAlertOptions {
         return new ReadAlertOptions($logLevel, $startDate, $endDate);
     }
 }
@@ -46,7 +46,7 @@ class ReadAlertOptions extends Options {
      * @param string $logLevel Only show alerts for this log-level
      * @return $this Fluent Builder
      */
-    public function setLogLevel($logLevel) {
+    public function setLogLevel($logLevel): self {
         $this->options['logLevel'] = $logLevel;
         return $this;
     }
@@ -58,7 +58,7 @@ class ReadAlertOptions extends Options {
      *                             this date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadAlertOptions extends Options {
      *                           this date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -80,10 +80,10 @@ class ReadAlertOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

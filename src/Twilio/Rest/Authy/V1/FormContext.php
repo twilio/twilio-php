@@ -21,15 +21,14 @@ class FormContext extends InstanceContext {
     /**
      * Initialize the FormContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $formType The Type of this Form
-     * @return \Twilio\Rest\Authy\V1\FormContext
      */
     public function __construct(Version $version, $formType) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('formType' => $formType, );
+        $this->solution = ['formType' => $formType, ];
 
         $this->uri = '/Forms/' . \rawurlencode($formType) . '';
     }
@@ -40,8 +39,8 @@ class FormContext extends InstanceContext {
      * @return FormInstance Fetched FormInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FormInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -57,8 +56,8 @@ class FormContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

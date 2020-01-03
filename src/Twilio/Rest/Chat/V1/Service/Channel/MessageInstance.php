@@ -35,20 +35,19 @@ class MessageInstance extends InstanceResource {
     /**
      * Initialize the MessageInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $channelSid The unique ID of the Channel the Message resource
      *                           belongs to
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'attributes' => Values::array_get($payload, 'attributes'),
@@ -62,23 +61,22 @@ class MessageInstance extends InstanceResource {
             'body' => Values::array_get($payload, 'body'),
             'index' => Values::array_get($payload, 'index'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageContext Context for this
-     *                                                             MessageInstance
+     * @return MessageContext Context for this MessageInstance
      */
-    protected function proxy() {
+    protected function proxy(): MessageContext {
         if (!$this->context) {
             $this->context = new MessageContext(
                 $this->version,
@@ -97,17 +95,17 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): MessageInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the MessageInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -118,7 +116,7 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): MessageInstance {
         return $this->proxy()->update($options);
     }
 
@@ -147,8 +145,8 @@ class MessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

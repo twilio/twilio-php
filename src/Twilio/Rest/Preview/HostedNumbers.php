@@ -16,40 +16,33 @@ use Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList $authorizationDocuments
- * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList $hostedNumberOrders
+ * @property AuthorizationDocumentList $authorizationDocuments
+ * @property HostedNumberOrderList $hostedNumberOrders
  * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */
 class HostedNumbers extends Version {
-    protected $_authorizationDocuments = null;
-    protected $_hostedNumberOrders = null;
+    protected $_authorizationDocuments;
+    protected $_hostedNumberOrders;
 
     /**
      * Construct the HostedNumbers version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\HostedNumbers HostedNumbers version of Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'HostedNumbers';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList
-     */
-    protected function getAuthorizationDocuments() {
+    protected function getAuthorizationDocuments(): AuthorizationDocumentList {
         if (!$this->_authorizationDocuments) {
             $this->_authorizationDocuments = new AuthorizationDocumentList($this);
         }
         return $this->_authorizationDocuments;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList
-     */
-    protected function getHostedNumberOrders() {
+    protected function getHostedNumberOrders(): HostedNumberOrderList {
         if (!$this->_hostedNumberOrders) {
             $this->_hostedNumberOrders = new HostedNumberOrderList($this);
         }
@@ -83,7 +76,7 @@ class HostedNumbers extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -94,7 +87,7 @@ class HostedNumbers extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.HostedNumbers]';
     }
 }

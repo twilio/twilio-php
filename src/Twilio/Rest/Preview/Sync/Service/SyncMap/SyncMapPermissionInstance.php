@@ -30,19 +30,18 @@ class SyncMapPermissionInstance extends InstanceResource {
     /**
      * Initialize the SyncMapPermissionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Sync Service Instance SID.
      * @param string $mapSid Sync Map SID.
      * @param string $identity Identity of the user to whom the Sync Map Permission
      *                         applies.
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $identity = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'mapSid' => Values::array_get($payload, 'map_sid'),
@@ -51,22 +50,22 @@ class SyncMapPermissionInstance extends InstanceResource {
             'write' => Values::array_get($payload, 'write'),
             'manage' => Values::array_get($payload, 'manage'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'mapSid' => $mapSid,
             'identity' => $identity ?: $this->properties['identity'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext Context for this SyncMapPermissionInstance
+     * @return SyncMapPermissionContext Context for this SyncMapPermissionInstance
      */
-    protected function proxy() {
+    protected function proxy(): SyncMapPermissionContext {
         if (!$this->context) {
             $this->context = new SyncMapPermissionContext(
                 $this->version,
@@ -85,17 +84,17 @@ class SyncMapPermissionInstance extends InstanceResource {
      * @return SyncMapPermissionInstance Fetched SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SyncMapPermissionInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the SyncMapPermissionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -108,7 +107,7 @@ class SyncMapPermissionInstance extends InstanceResource {
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage) {
+    public function update($read, $write, $manage): SyncMapPermissionInstance {
         return $this->proxy()->update($read, $write, $manage);
     }
 
@@ -137,8 +136,8 @@ class SyncMapPermissionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

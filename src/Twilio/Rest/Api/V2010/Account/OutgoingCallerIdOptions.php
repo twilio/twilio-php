@@ -17,7 +17,7 @@ abstract class OutgoingCallerIdOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdateOutgoingCallerIdOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE): UpdateOutgoingCallerIdOptions {
         return new UpdateOutgoingCallerIdOptions($friendlyName);
     }
 
@@ -28,7 +28,7 @@ abstract class OutgoingCallerIdOptions {
      *                             resources to read
      * @return ReadOutgoingCallerIdOptions Options builder
      */
-    public static function read($phoneNumber = Values::NONE, $friendlyName = Values::NONE) {
+    public static function read($phoneNumber = Values::NONE, $friendlyName = Values::NONE): ReadOutgoingCallerIdOptions {
         return new ReadOutgoingCallerIdOptions($phoneNumber, $friendlyName);
     }
 }
@@ -47,7 +47,7 @@ class UpdateOutgoingCallerIdOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -57,10 +57,10 @@ class UpdateOutgoingCallerIdOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -87,7 +87,7 @@ class ReadOutgoingCallerIdOptions extends Options {
      *                            resources to read
      * @return $this Fluent Builder
      */
-    public function setPhoneNumber($phoneNumber) {
+    public function setPhoneNumber($phoneNumber): self {
         $this->options['phoneNumber'] = $phoneNumber;
         return $this;
     }
@@ -99,7 +99,7 @@ class ReadOutgoingCallerIdOptions extends Options {
      *                             resources to read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -109,10 +109,10 @@ class ReadOutgoingCallerIdOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

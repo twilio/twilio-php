@@ -15,26 +15,22 @@ use Twilio\Rest\Pricing\V2\VoiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V2\VoiceList $voice
+ * @property VoiceList $voice
  */
 class V2 extends Version {
-    protected $_voice = null;
+    protected $_voice;
 
     /**
      * Construct the V2 version of Pricing
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Pricing\V2 V2 version of Pricing
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v2';
     }
 
-    /**
-     * @return \Twilio\Rest\Pricing\V2\VoiceList
-     */
-    protected function getVoice() {
+    protected function getVoice(): VoiceList {
         if (!$this->_voice) {
             $this->_voice = new VoiceList($this);
         }
@@ -68,7 +64,7 @@ class V2 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -79,7 +75,7 @@ class V2 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V2]';
     }
 }

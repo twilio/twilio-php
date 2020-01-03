@@ -19,7 +19,7 @@ class SigningKeyPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SigningKeyInstance {
         return new SigningKeyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
@@ -28,7 +28,7 @@ class SigningKeyPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.SigningKeyPage]';
     }
 }

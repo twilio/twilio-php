@@ -22,7 +22,7 @@ class FaxMediaPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FaxMediaInstance {
         return new FaxMediaInstance($this->version, $payload, $this->solution['faxSid']);
     }
 
@@ -31,7 +31,7 @@ class FaxMediaPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Fax.V1.FaxMediaPage]';
     }
 }

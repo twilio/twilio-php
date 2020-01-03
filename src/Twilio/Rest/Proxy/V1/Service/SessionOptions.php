@@ -27,7 +27,7 @@ abstract class SessionOptions {
      *                            session
      * @return CreateSessionOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE): CreateSessionOptions {
         return new CreateSessionOptions($uniqueName, $dateExpiry, $ttl, $mode, $status, $participants);
     }
 
@@ -37,7 +37,7 @@ abstract class SessionOptions {
      * @param string $status The new status of the resource
      * @return UpdateSessionOptions Options builder
      */
-    public static function update($dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE) {
+    public static function update($dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE): UpdateSessionOptions {
         return new UpdateSessionOptions($dateExpiry, $ttl, $status);
     }
 }
@@ -69,7 +69,7 @@ class CreateSessionOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -80,7 +80,7 @@ class CreateSessionOptions extends Options {
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @return $this Fluent Builder
      */
-    public function setDateExpiry($dateExpiry) {
+    public function setDateExpiry($dateExpiry): self {
         $this->options['dateExpiry'] = $dateExpiry;
         return $this;
     }
@@ -91,7 +91,7 @@ class CreateSessionOptions extends Options {
      * @param int $ttl When the session will expire
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -102,7 +102,7 @@ class CreateSessionOptions extends Options {
      * @param string $mode The Mode of the Session
      * @return $this Fluent Builder
      */
-    public function setMode($mode) {
+    public function setMode($mode): self {
         $this->options['mode'] = $mode;
         return $this;
     }
@@ -113,7 +113,7 @@ class CreateSessionOptions extends Options {
      * @param string $status Session status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -125,7 +125,7 @@ class CreateSessionOptions extends Options {
      *                            session
      * @return $this Fluent Builder
      */
-    public function setParticipants($participants) {
+    public function setParticipants($participants): self {
         $this->options['participants'] = $participants;
         return $this;
     }
@@ -135,10 +135,10 @@ class CreateSessionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -164,7 +164,7 @@ class UpdateSessionOptions extends Options {
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @return $this Fluent Builder
      */
-    public function setDateExpiry($dateExpiry) {
+    public function setDateExpiry($dateExpiry): self {
         $this->options['dateExpiry'] = $dateExpiry;
         return $this;
     }
@@ -175,7 +175,7 @@ class UpdateSessionOptions extends Options {
      * @param int $ttl When the session will expire
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -186,7 +186,7 @@ class UpdateSessionOptions extends Options {
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -196,10 +196,10 @@ class UpdateSessionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

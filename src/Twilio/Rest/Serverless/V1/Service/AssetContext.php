@@ -11,6 +11,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList;
 use Twilio\Values;
 use Twilio\Version;
@@ -18,26 +19,25 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList $assetVersions
+ * @property AssetVersionList $assetVersions
  * @method \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext assetVersions(string $sid)
  */
 class AssetContext extends InstanceContext {
-    protected $_assetVersions = null;
+    protected $_assetVersions;
 
     /**
      * Initialize the AssetContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Asset resource
      *                           from
      * @param string $sid The SID that identifies the Asset resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\AssetContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets/' . \rawurlencode($sid) . '';
     }
@@ -48,8 +48,8 @@ class AssetContext extends InstanceContext {
      * @return AssetInstance Fetched AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AssetInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,10 +68,10 @@ class AssetContext extends InstanceContext {
     /**
      * Deletes the AssetInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -82,13 +82,13 @@ class AssetContext extends InstanceContext {
      * @return AssetInstance Updated AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName, ));
+    public function update($friendlyName): AssetInstance {
+        $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -102,10 +102,8 @@ class AssetContext extends InstanceContext {
 
     /**
      * Access the assetVersions
-     *
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList
      */
-    protected function getAssetVersions() {
+    protected function getAssetVersions(): AssetVersionList {
         if (!$this->_assetVersions) {
             $this->_assetVersions = new AssetVersionList(
                 $this->version,
@@ -121,10 +119,10 @@ class AssetContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -138,13 +136,13 @@ class AssetContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -155,8 +153,8 @@ class AssetContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

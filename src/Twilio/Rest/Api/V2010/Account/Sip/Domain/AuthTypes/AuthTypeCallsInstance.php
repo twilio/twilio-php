@@ -18,16 +18,15 @@ class AuthTypeCallsInstance extends InstanceResource {
     /**
      * Initialize the AuthTypeCallsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $domainSid) {
         parent::__construct($version);
 
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
+        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
     }
 
     /**
@@ -55,7 +54,7 @@ class AuthTypeCallsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AuthTypeCallsInstance]';
     }
 }

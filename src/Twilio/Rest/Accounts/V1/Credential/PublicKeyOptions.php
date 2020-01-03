@@ -19,7 +19,7 @@ abstract class PublicKeyOptions {
      *                           associated with.
      * @return CreatePublicKeyOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $accountSid = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $accountSid = Values::NONE): CreatePublicKeyOptions {
         return new CreatePublicKeyOptions($friendlyName, $accountSid);
     }
 
@@ -27,7 +27,7 @@ abstract class PublicKeyOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdatePublicKeyOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE): UpdatePublicKeyOptions {
         return new UpdatePublicKeyOptions($friendlyName);
     }
 }
@@ -49,7 +49,7 @@ class CreatePublicKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -61,7 +61,7 @@ class CreatePublicKeyOptions extends Options {
      *                           associated with.
      * @return $this Fluent Builder
      */
-    public function setAccountSid($accountSid) {
+    public function setAccountSid($accountSid): self {
         $this->options['accountSid'] = $accountSid;
         return $this;
     }
@@ -71,10 +71,10 @@ class CreatePublicKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -96,7 +96,7 @@ class UpdatePublicKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -106,10 +106,10 @@ class UpdatePublicKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

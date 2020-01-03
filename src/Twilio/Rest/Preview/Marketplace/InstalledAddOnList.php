@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class InstalledAddOnList extends ListResource {
      * Construct the InstalledAddOnList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/InstalledAddOns';
     }
@@ -44,20 +44,20 @@ class InstalledAddOnList extends ListResource {
      * @return InstalledAddOnInstance Newly created InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($availableAddOnSid, $acceptTermsOfService, $options = array()) {
+    public function create($availableAddOnSid, $acceptTermsOfService, $options = []): InstalledAddOnInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'AvailableAddOnSid' => $availableAddOnSid,
             'AcceptTermsOfService' => Serialize::booleanToString($acceptTermsOfService),
             'Configuration' => Serialize::jsonObject($options['configuration']),
             'UniqueName' => $options['uniqueName'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -80,9 +80,9 @@ class InstalledAddOnList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -105,7 +105,7 @@ class InstalledAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return InstalledAddOnInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -116,14 +116,10 @@ class InstalledAddOnList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of InstalledAddOnInstance
+     * @return InstalledAddOnPage Page of InstalledAddOnInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): InstalledAddOnPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -139,9 +135,9 @@ class InstalledAddOnList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of InstalledAddOnInstance
+     * @return InstalledAddOnPage Page of InstalledAddOnInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): InstalledAddOnPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,9 +150,8 @@ class InstalledAddOnList extends ListResource {
      * Constructs a InstalledAddOnContext
      *
      * @param string $sid The SID of the InstalledAddOn resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): InstalledAddOnContext {
         return new InstalledAddOnContext($this->version, $sid);
     }
 
@@ -165,7 +160,7 @@ class InstalledAddOnList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Marketplace.InstalledAddOnList]';
     }
 }

@@ -18,65 +18,52 @@ use Twilio\Rest\Wireless\V1\UsageRecordList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Wireless\V1\UsageRecordList $usageRecords
- * @property \Twilio\Rest\Wireless\V1\CommandList $commands
- * @property \Twilio\Rest\Wireless\V1\RatePlanList $ratePlans
- * @property \Twilio\Rest\Wireless\V1\SimList $sims
+ * @property UsageRecordList $usageRecords
+ * @property CommandList $commands
+ * @property RatePlanList $ratePlans
+ * @property SimList $sims
  * @method \Twilio\Rest\Wireless\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Wireless\V1\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Wireless\V1\SimContext sims(string $sid)
  */
 class V1 extends Version {
-    protected $_usageRecords = null;
-    protected $_commands = null;
-    protected $_ratePlans = null;
-    protected $_sims = null;
+    protected $_usageRecords;
+    protected $_commands;
+    protected $_ratePlans;
+    protected $_sims;
 
     /**
      * Construct the V1 version of Wireless
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Wireless\V1 V1 version of Wireless
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Wireless\V1\UsageRecordList
-     */
-    protected function getUsageRecords() {
+    protected function getUsageRecords(): UsageRecordList {
         if (!$this->_usageRecords) {
             $this->_usageRecords = new UsageRecordList($this);
         }
         return $this->_usageRecords;
     }
 
-    /**
-     * @return \Twilio\Rest\Wireless\V1\CommandList
-     */
-    protected function getCommands() {
+    protected function getCommands(): CommandList {
         if (!$this->_commands) {
             $this->_commands = new CommandList($this);
         }
         return $this->_commands;
     }
 
-    /**
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList
-     */
-    protected function getRatePlans() {
+    protected function getRatePlans(): RatePlanList {
         if (!$this->_ratePlans) {
             $this->_ratePlans = new RatePlanList($this);
         }
         return $this->_ratePlans;
     }
 
-    /**
-     * @return \Twilio\Rest\Wireless\V1\SimList
-     */
-    protected function getSims() {
+    protected function getSims(): SimList {
         if (!$this->_sims) {
             $this->_sims = new SimList($this);
         }
@@ -110,7 +97,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -121,7 +108,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Wireless.V1]';
     }
 }

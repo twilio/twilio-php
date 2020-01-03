@@ -25,34 +25,33 @@ class EngagementContextInstance extends InstanceResource {
     /**
      * Initialize the EngagementContextInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid Flow SID
      * @param string $engagementSid Engagement SID
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $engagementSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'context' => Values::array_get($payload, 'context'),
             'engagementSid' => Values::array_get($payload, 'engagement_sid'),
             'flowSid' => Values::array_get($payload, 'flow_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, );
+        $this->solution = ['flowSid' => $flowSid, 'engagementSid' => $engagementSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext Context for this EngagementContextInstance
+     * @return EngagementContextContext Context for this EngagementContextInstance
      */
-    protected function proxy() {
+    protected function proxy(): EngagementContextContext {
         if (!$this->context) {
             $this->context = new EngagementContextContext(
                 $this->version,
@@ -70,7 +69,7 @@ class EngagementContextInstance extends InstanceResource {
      * @return EngagementContextInstance Fetched EngagementContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): EngagementContextInstance {
         return $this->proxy()->fetch();
     }
 
@@ -99,8 +98,8 @@ class EngagementContextInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

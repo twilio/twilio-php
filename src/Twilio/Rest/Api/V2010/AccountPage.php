@@ -19,7 +19,7 @@ class AccountPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): AccountInstance {
         return new AccountInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class AccountPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AccountPage]';
     }
 }

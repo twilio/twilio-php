@@ -25,34 +25,33 @@ class ExecutionContextInstance extends InstanceResource {
     /**
      * Initialize the ExecutionContextInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $executionSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'context' => Values::array_get($payload, 'context'),
             'flowSid' => Values::array_get($payload, 'flow_sid'),
             'executionSid' => Values::array_get($payload, 'execution_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('flowSid' => $flowSid, 'executionSid' => $executionSid, );
+        $this->solution = ['flowSid' => $flowSid, 'executionSid' => $executionSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextContext Context for this ExecutionContextInstance
+     * @return ExecutionContextContext Context for this ExecutionContextInstance
      */
-    protected function proxy() {
+    protected function proxy(): ExecutionContextContext {
         if (!$this->context) {
             $this->context = new ExecutionContextContext(
                 $this->version,
@@ -70,7 +69,7 @@ class ExecutionContextInstance extends InstanceResource {
      * @return ExecutionContextInstance Fetched ExecutionContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ExecutionContextInstance {
         return $this->proxy()->fetch();
     }
 
@@ -99,8 +98,8 @@ class ExecutionContextInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

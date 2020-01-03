@@ -19,7 +19,7 @@ abstract class BindingOptions {
      * @param string $identity The `identity` value of the resources to read
      * @return ReadBindingOptions Options builder
      */
-    public static function read($bindingType = Values::NONE, $identity = Values::NONE) {
+    public static function read($bindingType = Values::NONE, $identity = Values::NONE): ReadBindingOptions {
         return new ReadBindingOptions($bindingType, $identity);
     }
 }
@@ -42,7 +42,7 @@ class ReadBindingOptions extends Options {
      *                            to read
      * @return $this Fluent Builder
      */
-    public function setBindingType($bindingType) {
+    public function setBindingType($bindingType): self {
         $this->options['bindingType'] = $bindingType;
         return $this;
     }
@@ -53,7 +53,7 @@ class ReadBindingOptions extends Options {
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -63,10 +63,10 @@ class ReadBindingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

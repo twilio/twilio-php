@@ -23,7 +23,7 @@ abstract class SyncStreamOptions {
      *                 deleted
      * @return CreateSyncStreamOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE): CreateSyncStreamOptions {
         return new CreateSyncStreamOptions($uniqueName, $ttl);
     }
 
@@ -32,7 +32,7 @@ abstract class SyncStreamOptions {
      *                 deleted
      * @return UpdateSyncStreamOptions Options builder
      */
-    public static function update($ttl = Values::NONE) {
+    public static function update($ttl = Values::NONE): UpdateSyncStreamOptions {
         return new UpdateSyncStreamOptions($ttl);
     }
 }
@@ -56,7 +56,7 @@ class CreateSyncStreamOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -68,7 +68,7 @@ class CreateSyncStreamOptions extends Options {
      *                 deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -78,10 +78,10 @@ class CreateSyncStreamOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -105,7 +105,7 @@ class UpdateSyncStreamOptions extends Options {
      *                 deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -115,10 +115,10 @@ class UpdateSyncStreamOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

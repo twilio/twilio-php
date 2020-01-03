@@ -11,34 +11,34 @@ namespace Twilio\Rest\Studio\V1\Flow;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList;
 use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList $steps
- * @property \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList $executionContext
+ * @property ExecutionStepList $steps
+ * @property ExecutionContextList $executionContext
  * @method \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext steps(string $sid)
  * @method \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextContext executionContext()
  */
 class ExecutionContext extends InstanceContext {
-    protected $_steps = null;
-    protected $_executionContext = null;
+    protected $_steps;
+    protected $_executionContext;
 
     /**
      * Initialize the ExecutionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $flowSid The SID of the Flow
      * @param string $sid The SID of the Execution resource to fetch
-     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionContext
      */
     public function __construct(Version $version, $flowSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid, );
+        $this->solution = ['flowSid' => $flowSid, 'sid' => $sid, ];
 
         $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($sid) . '';
     }
@@ -49,8 +49,8 @@ class ExecutionContext extends InstanceContext {
      * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ExecutionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -69,19 +69,17 @@ class ExecutionContext extends InstanceContext {
     /**
      * Deletes the ExecutionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the steps
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList
      */
-    protected function getSteps() {
+    protected function getSteps(): ExecutionStepList {
         if (!$this->_steps) {
             $this->_steps = new ExecutionStepList(
                 $this->version,
@@ -95,10 +93,8 @@ class ExecutionContext extends InstanceContext {
 
     /**
      * Access the executionContext
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList
      */
-    protected function getExecutionContext() {
+    protected function getExecutionContext(): ExecutionContextList {
         if (!$this->_executionContext) {
             $this->_executionContext = new ExecutionContextList(
                 $this->version,
@@ -114,10 +110,10 @@ class ExecutionContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -131,13 +127,13 @@ class ExecutionContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -148,8 +144,8 @@ class ExecutionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

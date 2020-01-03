@@ -24,7 +24,7 @@ abstract class WorkersCumulativeStatisticsOptions {
      *                            TaskChannel
      * @return FetchWorkersCumulativeStatisticsOptions Options builder
      */
-    public static function fetch($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE, $taskChannel = Values::NONE) {
+    public static function fetch($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE, $taskChannel = Values::NONE): FetchWorkersCumulativeStatisticsOptions {
         return new FetchWorkersCumulativeStatisticsOptions($endDate, $minutes, $startDate, $taskChannel);
     }
 }
@@ -54,7 +54,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                           date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -66,7 +66,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                     past
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes) {
+    public function setMinutes($minutes): self {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -78,7 +78,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                             date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -90,7 +90,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                            TaskChannel
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel) {
+    public function setTaskChannel($taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -100,10 +100,10 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

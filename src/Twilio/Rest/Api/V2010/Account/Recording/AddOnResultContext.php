@@ -11,37 +11,33 @@ namespace Twilio\Rest\Api\V2010\Account\Recording;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList $payloads
+ * @property PayloadList $payloads
  * @method \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext payloads(string $sid)
  */
 class AddOnResultContext extends InstanceContext {
-    protected $_payloads = null;
+    protected $_payloads;
 
     /**
      * Initialize the AddOnResultContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $referenceSid The SID of the recording to which the result to
      *                             fetch belongs
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'referenceSid' => $referenceSid,
-            'sid' => $sid,
-        );
+        $this->solution = ['accountSid' => $accountSid, 'referenceSid' => $referenceSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults/' . \rawurlencode($sid) . '.json';
     }
@@ -52,8 +48,8 @@ class AddOnResultContext extends InstanceContext {
      * @return AddOnResultInstance Fetched AddOnResultInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AddOnResultInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -73,19 +69,17 @@ class AddOnResultContext extends InstanceContext {
     /**
      * Deletes the AddOnResultInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the payloads
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList
      */
-    protected function getPayloads() {
+    protected function getPayloads(): PayloadList {
         if (!$this->_payloads) {
             $this->_payloads = new PayloadList(
                 $this->version,
@@ -102,10 +96,10 @@ class AddOnResultContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -119,13 +113,13 @@ class AddOnResultContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -136,8 +130,8 @@ class AddOnResultContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

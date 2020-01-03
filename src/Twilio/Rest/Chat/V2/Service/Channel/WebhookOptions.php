@@ -28,7 +28,7 @@ abstract class WebhookOptions {
      *                                     if the first attempt fails
      * @return CreateWebhookOptions Options builder
      */
-    public static function create($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE) {
+    public static function create($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE): CreateWebhookOptions {
         return new CreateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationRetryCount);
     }
 
@@ -47,7 +47,7 @@ abstract class WebhookOptions {
      *                                     if the first attempt fails
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE) {
+    public static function update($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationRetryCount);
     }
 }
@@ -82,7 +82,7 @@ class CreateWebhookOptions extends Options {
      * @param string $configurationUrl The URL of the webhook to call
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl($configurationUrl) {
+    public function setConfigurationUrl($configurationUrl): self {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
@@ -94,7 +94,7 @@ class CreateWebhookOptions extends Options {
      *                                    `configuration.url`
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod($configurationMethod) {
+    public function setConfigurationMethod($configurationMethod): self {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -106,7 +106,7 @@ class CreateWebhookOptions extends Options {
      *                                     Channel Webhook
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters($configurationFilters) {
+    public function setConfigurationFilters($configurationFilters): self {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -119,7 +119,7 @@ class CreateWebhookOptions extends Options {
      *                                      body
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers($configurationTriggers) {
+    public function setConfigurationTriggers($configurationTriggers): self {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -131,7 +131,7 @@ class CreateWebhookOptions extends Options {
      *                                     an event occurs
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid($configurationFlowSid) {
+    public function setConfigurationFlowSid($configurationFlowSid): self {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -143,7 +143,7 @@ class CreateWebhookOptions extends Options {
      *                                     if the first attempt fails
      * @return $this Fluent Builder
      */
-    public function setConfigurationRetryCount($configurationRetryCount) {
+    public function setConfigurationRetryCount($configurationRetryCount): self {
         $this->options['configurationRetryCount'] = $configurationRetryCount;
         return $this;
     }
@@ -153,10 +153,10 @@ class CreateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -194,7 +194,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $configurationUrl The URL of the webhook to call
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl($configurationUrl) {
+    public function setConfigurationUrl($configurationUrl): self {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
@@ -206,7 +206,7 @@ class UpdateWebhookOptions extends Options {
      *                                    `configuration.url`
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod($configurationMethod) {
+    public function setConfigurationMethod($configurationMethod): self {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -218,7 +218,7 @@ class UpdateWebhookOptions extends Options {
      *                                     Channel Webhook
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters($configurationFilters) {
+    public function setConfigurationFilters($configurationFilters): self {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -231,7 +231,7 @@ class UpdateWebhookOptions extends Options {
      *                                      body
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers($configurationTriggers) {
+    public function setConfigurationTriggers($configurationTriggers): self {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -243,7 +243,7 @@ class UpdateWebhookOptions extends Options {
      *                                     an event occurs
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid($configurationFlowSid) {
+    public function setConfigurationFlowSid($configurationFlowSid): self {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -255,7 +255,7 @@ class UpdateWebhookOptions extends Options {
      *                                     if the first attempt fails
      * @return $this Fluent Builder
      */
-    public function setConfigurationRetryCount($configurationRetryCount) {
+    public function setConfigurationRetryCount($configurationRetryCount): self {
         $this->options['configurationRetryCount'] = $configurationRetryCount;
         return $this;
     }
@@ -265,10 +265,10 @@ class UpdateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -16,40 +16,33 @@ use Twilio\Rest\Preview\Marketplace\InstalledAddOnList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList $availableAddOns
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList $installedAddOns
+ * @property AvailableAddOnList $availableAddOns
+ * @property InstalledAddOnList $installedAddOns
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  */
 class Marketplace extends Version {
-    protected $_availableAddOns = null;
-    protected $_installedAddOns = null;
+    protected $_availableAddOns;
+    protected $_installedAddOns;
 
     /**
      * Construct the Marketplace version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\Marketplace Marketplace version of Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'marketplace';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList
-     */
-    protected function getAvailableAddOns() {
+    protected function getAvailableAddOns(): AvailableAddOnList {
         if (!$this->_availableAddOns) {
             $this->_availableAddOns = new AvailableAddOnList($this);
         }
         return $this->_availableAddOns;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList
-     */
-    protected function getInstalledAddOns() {
+    protected function getInstalledAddOns(): InstalledAddOnList {
         if (!$this->_installedAddOns) {
             $this->_installedAddOns = new InstalledAddOnList($this);
         }
@@ -83,7 +76,7 @@ class Marketplace extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -94,7 +87,7 @@ class Marketplace extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Marketplace]';
     }
 }

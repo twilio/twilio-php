@@ -18,7 +18,7 @@ abstract class WebChannelOptions {
      * @param string $preEngagementData The pre-engagement data
      * @return CreateWebChannelOptions Options builder
      */
-    public static function create($chatUniqueName = Values::NONE, $preEngagementData = Values::NONE) {
+    public static function create($chatUniqueName = Values::NONE, $preEngagementData = Values::NONE): CreateWebChannelOptions {
         return new CreateWebChannelOptions($chatUniqueName, $preEngagementData);
     }
 
@@ -27,7 +27,7 @@ abstract class WebChannelOptions {
      * @param string $postEngagementData The post-engagement data
      * @return UpdateWebChannelOptions Options builder
      */
-    public static function update($chatStatus = Values::NONE, $postEngagementData = Values::NONE) {
+    public static function update($chatStatus = Values::NONE, $postEngagementData = Values::NONE): UpdateWebChannelOptions {
         return new UpdateWebChannelOptions($chatStatus, $postEngagementData);
     }
 }
@@ -48,7 +48,7 @@ class CreateWebChannelOptions extends Options {
      * @param string $chatUniqueName The chat channel's unique name
      * @return $this Fluent Builder
      */
-    public function setChatUniqueName($chatUniqueName) {
+    public function setChatUniqueName($chatUniqueName): self {
         $this->options['chatUniqueName'] = $chatUniqueName;
         return $this;
     }
@@ -59,7 +59,7 @@ class CreateWebChannelOptions extends Options {
      * @param string $preEngagementData The pre-engagement data
      * @return $this Fluent Builder
      */
-    public function setPreEngagementData($preEngagementData) {
+    public function setPreEngagementData($preEngagementData): self {
         $this->options['preEngagementData'] = $preEngagementData;
         return $this;
     }
@@ -69,10 +69,10 @@ class CreateWebChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -96,7 +96,7 @@ class UpdateWebChannelOptions extends Options {
      * @param string $chatStatus The chat status
      * @return $this Fluent Builder
      */
-    public function setChatStatus($chatStatus) {
+    public function setChatStatus($chatStatus): self {
         $this->options['chatStatus'] = $chatStatus;
         return $this;
     }
@@ -107,7 +107,7 @@ class UpdateWebChannelOptions extends Options {
      * @param string $postEngagementData The post-engagement data
      * @return $this Fluent Builder
      */
-    public function setPostEngagementData($postEngagementData) {
+    public function setPostEngagementData($postEngagementData): self {
         $this->options['postEngagementData'] = $postEngagementData;
         return $this;
     }
@@ -117,10 +117,10 @@ class UpdateWebChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

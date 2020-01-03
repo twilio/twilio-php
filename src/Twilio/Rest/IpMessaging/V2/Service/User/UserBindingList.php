@@ -12,6 +12,7 @@ namespace Twilio\Rest\IpMessaging\V2\Service\User;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,13 +24,12 @@ class UserBindingList extends ListResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $userSid The SID of the User with the binding
-     * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingList
      */
     public function __construct(Version $version, $serviceSid, $userSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'userSid' => $userSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Bindings';
     }
@@ -51,9 +51,9 @@ class UserBindingList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -77,7 +77,7 @@ class UserBindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UserBindingInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -89,16 +89,16 @@ class UserBindingList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of UserBindingInstance
+     * @return UserBindingPage Page of UserBindingInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): UserBindingPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'BindingType' => Serialize::map($options['bindingType'], function($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -114,9 +114,9 @@ class UserBindingList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of UserBindingInstance
+     * @return UserBindingPage Page of UserBindingInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): UserBindingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -129,9 +129,8 @@ class UserBindingList extends ListResource {
      * Constructs a UserBindingContext
      *
      * @param string $sid The SID of the User Binding resource to fetch
-     * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): UserBindingContext {
         return new UserBindingContext(
             $this->version,
             $this->solution['serviceSid'],
@@ -145,7 +144,7 @@ class UserBindingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.IpMessaging.V2.UserBindingList]';
     }
 }

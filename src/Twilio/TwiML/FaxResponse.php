@@ -23,7 +23,7 @@ class FaxResponse extends TwiML {
      * @param array $attributes Optional attributes
      * @return Fax\Receive Child element.
      */
-    public function receive($attributes = array()) {
+    public function receive($attributes = []): Fax\Receive {
         return $this->nest(new Fax\Receive($attributes));
     }
 }

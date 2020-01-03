@@ -24,7 +24,7 @@ abstract class SyncListOptions {
      *                           and is deleted
      * @return CreateSyncListOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE): CreateSyncListOptions {
         return new CreateSyncListOptions($uniqueName, $ttl, $collectionTtl);
     }
 
@@ -34,7 +34,7 @@ abstract class SyncListOptions {
      *                           and is deleted
      * @return UpdateSyncListOptions Options builder
      */
-    public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE) {
+    public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE): UpdateSyncListOptions {
         return new UpdateSyncListOptions($ttl, $collectionTtl);
     }
 }
@@ -60,7 +60,7 @@ class CreateSyncListOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -71,7 +71,7 @@ class CreateSyncListOptions extends Options {
      * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -83,7 +83,7 @@ class CreateSyncListOptions extends Options {
      *                           and is deleted
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl) {
+    public function setCollectionTtl($collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -93,10 +93,10 @@ class CreateSyncListOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -121,7 +121,7 @@ class UpdateSyncListOptions extends Options {
      * @param int $ttl An alias for collection_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -133,7 +133,7 @@ class UpdateSyncListOptions extends Options {
      *                           and is deleted
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl) {
+    public function setCollectionTtl($collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -143,10 +143,10 @@ class UpdateSyncListOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

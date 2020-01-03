@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Fax\V1\Fax\FaxMediaList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -39,21 +40,20 @@ use Twilio\Version;
  * @property string $url
  */
 class FaxInstance extends InstanceResource {
-    protected $_media = null;
+    protected $_media;
 
     /**
      * Initialize the FaxInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Fax\V1\FaxInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'from' => Values::array_get($payload, 'from'),
@@ -72,18 +72,18 @@ class FaxInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'links' => Values::array_get($payload, 'links'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Fax\V1\FaxContext Context for this FaxInstance
+     * @return FaxContext Context for this FaxInstance
      */
-    protected function proxy() {
+    protected function proxy(): FaxContext {
         if (!$this->context) {
             $this->context = new FaxContext($this->version, $this->solution['sid']);
         }
@@ -97,7 +97,7 @@ class FaxInstance extends InstanceResource {
      * @return FaxInstance Fetched FaxInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): FaxInstance {
         return $this->proxy()->fetch();
     }
 
@@ -108,26 +108,24 @@ class FaxInstance extends InstanceResource {
      * @return FaxInstance Updated FaxInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): FaxInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the FaxInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the media
-     *
-     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList
      */
-    protected function getMedia() {
+    protected function getMedia(): FaxMediaList {
         return $this->proxy()->media;
     }
 
@@ -156,8 +154,8 @@ class FaxInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -19,14 +19,12 @@ use Twilio\Rest\Sync\V1;
  * @method \Twilio\Rest\Sync\V1\ServiceContext services(string $sid)
  */
 class Sync extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the Sync Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Sync Domain for Sync
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -35,9 +33,9 @@ class Sync extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Sync\V1 Version v1 of sync
+     * @return V1 Version v1 of sync
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -71,24 +69,20 @@ class Sync extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Sync\V1\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): \Twilio\Rest\Sync\V1\ServiceList {
         return $this->v1->services;
     }
 
     /**
      * @param string $sid The SID of the Service resource to fetch
-     * @return \Twilio\Rest\Sync\V1\ServiceContext
      */
-    protected function contextServices($sid) {
+    protected function contextServices($sid): \Twilio\Rest\Sync\V1\ServiceContext {
         return $this->v1->services($sid);
     }
 
@@ -97,7 +91,7 @@ class Sync extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Sync]';
     }
 }

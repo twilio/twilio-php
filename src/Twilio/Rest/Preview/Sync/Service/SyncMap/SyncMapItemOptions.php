@@ -22,7 +22,7 @@ abstract class SyncMapItemOptions {
      * @param string $bounds The bounds
      * @return ReadSyncMapItemOptions Options builder
      */
-    public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
+    public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE): ReadSyncMapItemOptions {
         return new ReadSyncMapItemOptions($order, $from, $bounds);
     }
 }
@@ -45,7 +45,7 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $order The order
      * @return $this Fluent Builder
      */
-    public function setOrder($order) {
+    public function setOrder($order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -56,7 +56,7 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $from The from
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -67,7 +67,7 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $bounds The bounds
      * @return $this Fluent Builder
      */
-    public function setBounds($bounds) {
+    public function setBounds($bounds): self {
         $this->options['bounds'] = $bounds;
         return $this;
     }
@@ -77,10 +77,10 @@ class ReadSyncMapItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = []];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

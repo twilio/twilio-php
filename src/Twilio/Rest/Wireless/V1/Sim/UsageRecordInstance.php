@@ -25,25 +25,24 @@ class UsageRecordInstance extends InstanceResource {
     /**
      * Initialize the UsageRecordInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $simSid The SID of the Sim resource that this Usage Record is
      *                       for
-     * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordInstance
      */
     public function __construct(Version $version, array $payload, $simSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'simSid' => Values::array_get($payload, 'sim_sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'period' => Values::array_get($payload, 'period'),
             'commands' => Values::array_get($payload, 'commands'),
             'data' => Values::array_get($payload, 'data'),
-        );
+        ];
 
-        $this->solution = array('simSid' => $simSid, );
+        $this->solution = ['simSid' => $simSid, ];
     }
 
     /**
@@ -71,7 +70,7 @@ class UsageRecordInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Wireless.V1.UsageRecordInstance]';
     }
 }

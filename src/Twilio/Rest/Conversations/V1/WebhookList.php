@@ -20,21 +20,18 @@ class WebhookList extends ListResource {
      * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Conversations\V1\WebhookList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a WebhookContext
-     *
-     * @return \Twilio\Rest\Conversations\V1\WebhookContext
      */
-    public function getContext() {
+    public function getContext(): WebhookContext {
         return new WebhookContext($this->version);
     }
 
@@ -43,7 +40,7 @@ class WebhookList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Conversations.V1.WebhookList]';
     }
 }

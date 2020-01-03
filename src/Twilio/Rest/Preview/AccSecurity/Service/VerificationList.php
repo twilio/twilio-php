@@ -24,13 +24,12 @@ class VerificationList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Verifications';
     }
@@ -44,19 +43,19 @@ class VerificationList extends ListResource {
      * @return VerificationInstance Newly created VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $channel, $options = array()) {
+    public function create($to, $channel, $options = []): VerificationInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'To' => $to,
             'Channel' => $channel,
             'CustomMessage' => $options['customMessage'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -68,7 +67,7 @@ class VerificationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.AccSecurity.VerificationList]';
     }
 }

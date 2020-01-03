@@ -11,31 +11,31 @@ namespace Twilio\Rest\Studio\V1\Flow\Execution;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList $stepContext
+ * @property ExecutionStepContextList $stepContext
  * @method \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextContext stepContext()
  */
 class ExecutionStepContext extends InstanceContext {
-    protected $_stepContext = null;
+    protected $_stepContext;
 
     /**
      * Initialize the ExecutionStepContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext
      */
     public function __construct(Version $version, $flowSid, $executionSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid, 'executionSid' => $executionSid, 'sid' => $sid, );
+        $this->solution = ['flowSid' => $flowSid, 'executionSid' => $executionSid, 'sid' => $sid, ];
 
         $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($executionSid) . '/Steps/' . \rawurlencode($sid) . '';
     }
@@ -46,8 +46,8 @@ class ExecutionStepContext extends InstanceContext {
      * @return ExecutionStepInstance Fetched ExecutionStepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ExecutionStepInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -66,10 +66,8 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Access the stepContext
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList
      */
-    protected function getStepContext() {
+    protected function getStepContext(): ExecutionStepContextList {
         if (!$this->_stepContext) {
             $this->_stepContext = new ExecutionStepContextList(
                 $this->version,
@@ -86,10 +84,10 @@ class ExecutionStepContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -103,13 +101,13 @@ class ExecutionStepContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -120,8 +118,8 @@ class ExecutionStepContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -15,27 +15,23 @@ use Twilio\Rest\Studio\V1\FlowList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V1\FlowList $flows
+ * @property FlowList $flows
  * @method \Twilio\Rest\Studio\V1\FlowContext flows(string $sid)
  */
 class V1 extends Version {
-    protected $_flows = null;
+    protected $_flows;
 
     /**
      * Construct the V1 version of Studio
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Studio\V1 V1 version of Studio
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Studio\V1\FlowList
-     */
-    protected function getFlows() {
+    protected function getFlows(): FlowList {
         if (!$this->_flows) {
             $this->_flows = new FlowList($this);
         }
@@ -69,7 +65,7 @@ class V1 extends Version {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -80,7 +76,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1]';
     }
 }

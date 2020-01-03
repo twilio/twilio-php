@@ -19,9 +19,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\CountryList $countries
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList $settings
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList $bulkCountryUpdates
+ * @property CountryList $countries
+ * @property SettingsList $settings
+ * @property BulkCountryUpdateList $bulkCountryUpdates
  * @method \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext countries(string $isoCode)
  * @method \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext settings()
  */
@@ -34,19 +34,18 @@ class DialingPermissionsList extends ListResource {
      * Construct the DialingPermissionsList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Access the countries
      */
-    protected function getCountries() {
+    protected function getCountries(): CountryList {
         if (!$this->_countries) {
             $this->_countries = new CountryList($this->version);
         }
@@ -57,7 +56,7 @@ class DialingPermissionsList extends ListResource {
     /**
      * Access the settings
      */
-    protected function getSettings() {
+    protected function getSettings(): SettingsList {
         if (!$this->_settings) {
             $this->_settings = new SettingsList($this->version);
         }
@@ -68,7 +67,7 @@ class DialingPermissionsList extends ListResource {
     /**
      * Access the bulkCountryUpdates
      */
-    protected function getBulkCountryUpdates() {
+    protected function getBulkCountryUpdates(): BulkCountryUpdateList {
         if (!$this->_bulkCountryUpdates) {
             $this->_bulkCountryUpdates = new BulkCountryUpdateList($this->version);
         }
@@ -103,7 +102,7 @@ class DialingPermissionsList extends ListResource {
     public function __call($name, $arguments) {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
-            return \call_user_func_array(array($property, 'getContext'), $arguments);
+            return \call_user_func_array([$property, 'getContext'], $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -114,7 +113,7 @@ class DialingPermissionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.DialingPermissionsList]';
     }
 }

@@ -19,7 +19,7 @@ class UserPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): UserInstance {
         return new UserInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -28,7 +28,7 @@ class UserPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Chat.V2.UserPage]';
     }
 }

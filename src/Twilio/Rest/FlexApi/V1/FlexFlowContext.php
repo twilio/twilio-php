@@ -20,15 +20,14 @@ class FlexFlowContext extends InstanceContext {
     /**
      * Initialize the FlexFlowContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/FlexFlows/' . \rawurlencode($sid) . '';
     }
@@ -39,8 +38,8 @@ class FlexFlowContext extends InstanceContext {
      * @return FlexFlowInstance Fetched FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FlexFlowInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -58,10 +57,10 @@ class FlexFlowContext extends InstanceContext {
      * @return FlexFlowInstance Updated FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): FlexFlowInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'ChatServiceSid' => $options['chatServiceSid'],
             'ChannelType' => $options['channelType'],
@@ -79,12 +78,12 @@ class FlexFlowContext extends InstanceContext {
             'LongLived' => Serialize::booleanToString($options['longLived']),
             'JanitorEnabled' => Serialize::booleanToString($options['janitorEnabled']),
             'Integration.RetryCount' => $options['integrationRetryCount'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -94,10 +93,10 @@ class FlexFlowContext extends InstanceContext {
     /**
      * Deletes the FlexFlowInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -106,8 +105,8 @@ class FlexFlowContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

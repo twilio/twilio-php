@@ -26,33 +26,33 @@ class WorkspaceStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceStatisticsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'realtime' => Values::array_get($payload, 'realtime'),
             'cumulative' => Values::array_get($payload, 'cumulative'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext Context for this WorkspaceStatisticsInstance
+     * @return WorkspaceStatisticsContext Context for this
+     *                                    WorkspaceStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy(): WorkspaceStatisticsContext {
         if (!$this->context) {
             $this->context = new WorkspaceStatisticsContext($this->version, $this->solution['workspaceSid']);
         }
@@ -67,7 +67,7 @@ class WorkspaceStatisticsInstance extends InstanceResource {
      * @return WorkspaceStatisticsInstance Fetched WorkspaceStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkspaceStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -96,8 +96,8 @@ class WorkspaceStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
