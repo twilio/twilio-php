@@ -9,60 +9,60 @@ use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
 
 class ClientTokenTest extends UnitTest {
-    public function testNoPermissions() {
+    public function testNoPermissions(): void {
         $token = new ClientToken('AC123', 'foo');
         $payload = JWT::decode($token->generateToken(), 'foo');
-        $this->assertEquals($payload->iss, "AC123");
+        $this->assertEquals($payload->iss, 'AC123');
         $this->assertEquals($payload->scope, '');
     }
 
-    public function testInboundPermissions() {
+    public function testInboundPermissions(): void {
         $token = new ClientToken('AC123', 'foo');
-        $token->allowClientIncoming("andy");
+        $token->allowClientIncoming('andy');
         $payload = JWT::decode($token->generateToken(), 'foo');
 
-        $eurl = "scope:client:incoming?clientName=andy";
+        $eurl = 'scope:client:incoming?clientName=andy';
         $this->assertEquals($payload->scope, $eurl);
     }
 
-    public function testOutboundPermissions() {
+    public function testOutboundPermissions(): void {
         $token = new ClientToken('AC123', 'foo');
-        $token->allowClientOutgoing("AP123");
-        $payload = JWT::decode($token->generateToken(), 'foo');;
-        $eurl = "scope:client:outgoing?appSid=AP123";
-        $this->assertContains($eurl, $payload->scope);
+        $token->allowClientOutgoing('AP123');
+        $payload = JWT::decode($token->generateToken(), 'foo');
+        $eurl = 'scope:client:outgoing?appSid=AP123';
+        $this->assertStringContainsString($eurl, $payload->scope);
     }
 
-    public function testOutboundPermissionsParams() {
+    public function testOutboundPermissionsParams(): void {
         $token = new ClientToken('AC123', 'foo');
-        $token->allowClientOutgoing("AP123", array("foobar" => 3));
+        $token->allowClientOutgoing('AP123', ['foobar' => 3]);
         $payload = JWT::decode($token->generateToken(), 'foo');
 
-        $eurl = "scope:client:outgoing?appSid=AP123&appParams=foobar%3D3";
+        $eurl = 'scope:client:outgoing?appSid=AP123&appParams=foobar%3D3';
         $this->assertEquals($payload->scope, $eurl);
     }
 
-    public function testEvents() {
+    public function testEvents(): void {
         $token = new ClientToken('AC123', 'foo');
         $token->allowEventStream();
         $payload = JWT::decode($token->generateToken(), 'foo');
 
-        $event_uri = "scope:stream:subscribe?path=%2F2010"
-            . "-04-01%2FEvents&params=";
+        $event_uri = 'scope:stream:subscribe?path=%2F2010'
+            . '-04-01%2FEvents&params=';
         $this->assertEquals($payload->scope, $event_uri);
     }
 
-    public function testEventsWithFilters() {
+    public function testEventsWithFilters(): void {
         $token = new ClientToken('AC123', 'foo');
-        $token->allowEventStream(array("foobar" => "hey"));
+        $token->allowEventStream(['foobar' => 'hey']);
         $payload = JWT::decode($token->generateToken(), 'foo');
 
-        $event_uri = "scope:stream:subscribe?path=%2F2010-"
-            . "04-01%2FEvents&params=foobar%3Dhey";
+        $event_uri = 'scope:stream:subscribe?path=%2F2010-'
+            . '04-01%2FEvents&params=foobar%3Dhey';
         $this->assertEquals($payload->scope, $event_uri);
     }
 
-    public function testCustomClaims() {
+    public function testCustomClaims(): void {
         $token = new ClientToken('AC123', 'foo');
         $token->addClaim('find', 'me');
         $token->addClaim('iss', 'redefined');
@@ -72,27 +72,27 @@ class ClientTokenTest extends UnitTest {
     }
 
 
-    public function testDecode() {
+    public function testDecode(): void {
         $token = new ClientToken('AC123', 'foo');
-        $token->allowClientOutgoing("AP123", array("foobar"=> 3));
-        $token->allowClientIncoming("andy");
+        $token->allowClientOutgoing('AP123', ['foobar' => 3]);
+        $token->allowClientIncoming('andy');
         $token->allowEventStream();
 
-        $outgoing_uri = "scope:client:outgoing?appSid="
-            . "AP123&appParams=foobar%3D3&clientName=andy";
-        $incoming_uri = "scope:client:incoming?clientName=andy";
-        $event_uri = "scope:stream:subscribe?path=%2F2010-04-01%2FEvents";
+        $outgoing_uri = 'scope:client:outgoing?appSid='
+            . 'AP123&appParams=foobar%3D3&clientName=andy';
+        $incoming_uri = 'scope:client:incoming?clientName=andy';
+        $event_uri = 'scope:stream:subscribe?path=%2F2010-04-01%2FEvents';
 
         $payload = JWT::decode($token->generateToken(), 'foo');
         $scope = $payload->scope;
 
-        $this->assertContains($outgoing_uri, $scope);
-        $this->assertContains($incoming_uri, $scope);
-        $this->assertContains($event_uri, $scope);
+        $this->assertStringContainsString($outgoing_uri, $scope);
+        $this->assertStringContainsString($incoming_uri, $scope);
+        $this->assertStringContainsString($event_uri, $scope);
     }
 
 
-    function testDecodeWithAuthToken() {
+    public function testDecodeWithAuthToken(): void {
         try {
             $token = new ClientToken('AC123', 'foo');
             $payload = JWT::decode($token->generateToken(), 'foo');
@@ -102,17 +102,17 @@ class ClientTokenTest extends UnitTest {
         }
     }
 
-    function testClientNameValidation() {
+    public function testClientNameValidation(): void {
         $this->expectException('InvalidArgumentException');
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientIncoming('@');
         $this->fail('exception should have been raised');
     }
 
-    function zeroLengthNameInvalid() {
+    public function zeroLengthNameInvalid(): void {
         $this->expectException('InvalidArgumentException');
         $token = new ClientToken('AC123', 'foo');
-        $token->allowClientIncoming("");
+        $token->allowClientIncoming('');
         $this->fail('exception should have been raised');
     }
 }

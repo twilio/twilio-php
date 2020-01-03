@@ -8,26 +8,26 @@ use Twilio\Http\Client;
 use Twilio\Http\Response;
 
 class Holodeck implements Client {
-    private $requests = array();
-    private $responses = array();
+    private $requests = [];
+    private $responses = [];
 
-    public function request($method, $url, $params = array(), $data = array(),
-                            $headers = array(), $user = null, $password = null,
-                            $timeout = null) {
-        \array_push($this->requests, new Request($method, $url, $params, $data, $headers, $user, $password));
+    public function request($method, $url, $params = [], $data = [],
+                            $headers = [], $user = null, $password = null,
+                            $timeout = null): Response {
+        $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password);
 
         if (\count($this->responses) === 0) {
             return new Response(404, null, null);
-        } else {
-            return \array_shift($this->responses);
         }
+
+        return \array_shift($this->responses);
     }
 
-    public function mock($response) {
-        \array_push($this->responses, $response);
+    public function mock($response): void {
+        $this->responses[] = $response;
     }
 
-    public function assertRequest($request) {
+    public function assertRequest($request): void {
         if ($this->hasRequest($request)) {
             return;
         }
@@ -40,12 +40,11 @@ class Holodeck implements Client {
             $message .= ' + ' . $this->printRequest($candidate) . "\n";
         }
 
-        throw new \PHPUnit_Framework_ExpectationFailedException($message);
+        throw new \RuntimeException($message);
     }
 
-    public function hasRequest($request) {
-        for ($i = 0; $i < \count($this->requests); $i++) {
-            $c = $this->requests[$i];
+    public function hasRequest($request): bool {
+        foreach ($this->requests as $c) {
             if (\strtolower($request->method) == \strtolower($c->method) &&
                 $request->url == $c->url &&
                 $request->params == $c->params &&
@@ -57,7 +56,7 @@ class Holodeck implements Client {
         return false;
     }
 
-    protected function printRequest($request) {
+    protected function printRequest($request): string {
         $url = $request->url;
         if ($request->params) {
             $url .= '?' . \http_build_query($request->params);
@@ -65,9 +64,9 @@ class Holodeck implements Client {
 
 
         $data = $request->data
-              ? '-d ' . \http_build_query($request->data)
-              : '';
+            ? '-d ' . \http_build_query($request->data)
+            : '';
 
-        return \implode(' ', array(\strtoupper($request->method), $url, $data));
+        return \implode(' ', [\strtoupper($request->method), $url, $data]);
     }
 }

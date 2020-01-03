@@ -83,63 +83,63 @@ class VersionTest extends UnitTest {
     }
 
     public function readLimitProvider(): array {
-        return array(
-            array(
+        return [
+            [
                 'Nothing Specified',
                 null, null,
                 Values::NONE, Values::NONE, Values::NONE,
-            ),
-            array(
+            ],
+            [
                 'Limit Specified - Under Max Page Size',
                 Version::MAX_PAGE_SIZE - 1, null,
                 Version::MAX_PAGE_SIZE - 1, Version::MAX_PAGE_SIZE - 1, 1,
-            ),
-            array(
+            ],
+            [
                 'Limit Specified - At Max Page Size',
                 Version::MAX_PAGE_SIZE, null,
                 Version::MAX_PAGE_SIZE, Version::MAX_PAGE_SIZE, 1,
-            ),
-            array(
+            ],
+            [
                 'Limit Specified - Over Max Page Size',
                 Version::MAX_PAGE_SIZE + 1, null,
                 Version::MAX_PAGE_SIZE + 1, Version::MAX_PAGE_SIZE, 2,
-            ),
-            array(
+            ],
+            [
                 'Page Size Specified - Under Max Page Size',
                 null, Version::MAX_PAGE_SIZE - 1,
                 Values::NONE, Version::MAX_PAGE_SIZE - 1, Values::NONE,
-            ),
-            array(
+            ],
+            [
                 'Page Size Specified - At Max Page Size',
                 null, Version::MAX_PAGE_SIZE,
                 Values::NONE, Version::MAX_PAGE_SIZE, Values::NONE,
-            ),
-            array(
+            ],
+            [
                 'Page Size Specified - Over Max Page Size',
                 null, Version::MAX_PAGE_SIZE + 1,
                 Values::NONE, Version::MAX_PAGE_SIZE, Values::NONE
-            ),
-            array(
+            ],
+            [
                 'Limit less than Page Size',
                 50, 100,
                 50, 100, 1,
-            ),
-            array(
+            ],
+            [
                 'Limit equal to Page Size',
                 100, 100,
                 100, 100, 1,
-            ),
-            array(
+            ],
+            [
                 'Limit greater than Page Size - evenly divisible',
                 100, 50,
                 100, 50, 2,
-            ),
-            array(
+            ],
+            [
                 'Limit greater than Page Size - not evenly divisible',
                 100, 30,
                 100, 30, 4
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -156,26 +156,26 @@ class VersionTest extends UnitTest {
     }
 
     public function relativeUriProvider(): array {
-        $cases = array();
+        $cases = [];
 
-        $modes = array(
+        $modes = [
             'normal' => static function($x) { return $x; },
             'prepend' => static function($x) { return "/$x"; },
             'append' => static function($x) { return "$x/"; },
             'surround' => static function($x) { return "/$x/"; },
-        );
+        ];
 
         foreach ($modes as $prefixMode => $prefixFunc) {
             foreach ($modes as $pathMode => $pathFunc) {
                 $prefix = $prefixFunc('v1');
                 $path = $pathFunc('path');
 
-                $cases[] = array(
+                $cases[] = [
                     "Scalar - Prefix $prefixMode - Path $pathMode",
                     $prefix,
                     $path,
                     'v1/path',
-                );
+                ];
             }
         }
 
@@ -184,12 +184,12 @@ class VersionTest extends UnitTest {
                 $prefix = $prefixFunc('v2');
                 $path = $pathFunc('path/to/resource');
 
-                $cases[] = array(
+                $cases[] = [
                     "Multipart Path - Prefix $prefixMode - Path $pathMode",
                     $prefix,
                     $path,
                     'v2/path/to/resource',
-                );
+                ];
             }
         }
 
@@ -198,12 +198,12 @@ class VersionTest extends UnitTest {
                 $prefix = $prefixFunc('v3');
                 $path = $pathFunc('path/to/resource.json');
 
-                $cases[] = array(
+                $cases[] = [
                     "Multipart Path with Extension - Prefix $prefixMode - Path $pathMode",
                     $prefix,
                     $path,
                     'v3/path/to/resource.json',
-                );
+                ];
             }
         }
 

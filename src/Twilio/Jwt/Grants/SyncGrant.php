@@ -2,8 +2,7 @@
 
 namespace Twilio\Jwt\Grants;
 
-class SyncGrant implements Grant
-{
+class SyncGrant implements Grant {
     private $serviceSid;
     private $endpointId;
     private $deploymentRoleSid;
@@ -14,8 +13,7 @@ class SyncGrant implements Grant
      *
      * @return string the service sid
      */
-    public function getServiceSid()
-    {
+    public function getServiceSid(): string {
         return $this->serviceSid;
     }
 
@@ -24,10 +22,9 @@ class SyncGrant implements Grant
      *
      * @param string $serviceSid service sid of the grant
      *
-     * @return Services_Twilio_Auth_SyncGrant updated grant
+     * @return $this updated grant
      */
-    public function setServiceSid($serviceSid)
-    {
+    public function setServiceSid($serviceSid): self {
         $this->serviceSid = $serviceSid;
         return $this;
     }
@@ -37,8 +34,7 @@ class SyncGrant implements Grant
      *
      * @return string the endpoint id
      */
-    public function getEndpointId()
-    {
+    public function getEndpointId(): string {
         return $this->endpointId;
     }
 
@@ -47,10 +43,9 @@ class SyncGrant implements Grant
      *
      * @param string $endpointId endpoint id of the grant
      *
-     * @return Services_Twilio_Auth_SyncGrant updated grant
+     * @return $this updated grant
      */
-    public function setEndpointId($endpointId)
-    {
+    public function setEndpointId($endpointId): self {
         $this->endpointId = $endpointId;
         return $this;
     }
@@ -60,8 +55,7 @@ class SyncGrant implements Grant
      *
      * @return string the deployment role sid
      */
-    public function getDeploymentRoleSid()
-    {
+    public function getDeploymentRoleSid(): string {
         return $this->deploymentRoleSid;
     }
 
@@ -70,10 +64,9 @@ class SyncGrant implements Grant
      *
      * @param string $deploymentRoleSid role sid of the grant
      *
-     * @return Services_Twilio_Auth_SyncGrant updated grant
+     * @return $this updated grant
      */
-    public function setDeploymentRoleSid($deploymentRoleSid)
-    {
+    public function setDeploymentRoleSid($deploymentRoleSid): self {
         $this->deploymentRoleSid = $deploymentRoleSid;
         return $this;
     }
@@ -83,8 +76,7 @@ class SyncGrant implements Grant
      *
      * @return string the push credential sid
      */
-    public function getPushCredentialSid()
-    {
+    public function getPushCredentialSid(): string {
         return $this->pushCredentialSid;
     }
 
@@ -93,10 +85,9 @@ class SyncGrant implements Grant
      *
      * @param string $pushCredentialSid push credential sid of the grant
      *
-     * @return Services_Twilio_Auth_SyncGrant updated grant
+     * @return $this updated grant
      */
-    public function setPushCredentialSid($pushCredentialSid)
-    {
+    public function setPushCredentialSid($pushCredentialSid): self {
         $this->pushCredentialSid = $pushCredentialSid;
         return $this;
     }
@@ -106,9 +97,8 @@ class SyncGrant implements Grant
      *
      * @return string type of the grant
      */
-    public function getGrantKey()
-    {
-        return "data_sync";
+    public function getGrantKey(): string {
+        return 'data_sync';
     }
 
     /**
@@ -116,9 +106,8 @@ class SyncGrant implements Grant
      *
      * @return array data of the grant
      */
-    public function getPayload()
-    {
-        $payload = array();
+    public function getPayload(): array {
+        $payload = [];
         if ($this->serviceSid) {
             $payload['service_sid'] = $this->serviceSid;
         }
@@ -134,5 +123,4 @@ class SyncGrant implements Grant
 
         return $payload;
     }
-
 }

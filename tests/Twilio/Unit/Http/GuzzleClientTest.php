@@ -15,8 +15,7 @@ use Twilio\Exceptions\HttpException;
 use Twilio\Http\GuzzleClient;
 use Twilio\Tests\Unit\UnitTest;
 
-final class GuzzleClientTest extends UnitTest
-{
+final class GuzzleClientTest extends UnitTest {
     /**
      * @var GuzzleClient
      */
@@ -27,8 +26,7 @@ final class GuzzleClientTest extends UnitTest
      */
     private $mockHandler;
 
-    public function setUp(): void
-    {
+    public function setUp(): void {
         parent::setUp();
         $this->mockHandler = new MockHandler();
         $this->client = new GuzzleClient(new Client([
@@ -36,11 +34,10 @@ final class GuzzleClientTest extends UnitTest
         ]));
     }
 
-    public function testPostMethod()
-    {
+    public function testPostMethod(): void {
         $this->mockHandler->append(new Response());
         $response = $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
-        $this->assertSame(null, $response->getContent());
+        $this->assertNull($response->getContent());
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame([], $response->getHeaders());
 
@@ -51,11 +48,10 @@ final class GuzzleClientTest extends UnitTest
         $this->assertSame('https://www.whatever.com?myquerykey=myqueryvalue', (string)$request->getUri());
     }
 
-    public function testPostMethodThatThrowsBadResponseException()
-    {
+    public function testPostMethodThatThrowsBadResponseException(): void {
         $this->mockHandler->append(new BadResponseException('Not found', new Request('get', 'https://www.whatever.com'), new Response(404)));
         $response = $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
-        $this->assertSame(null, $response->getContent());
+        $this->assertNull($response->getContent());
         $this->assertSame(404, $response->getStatusCode());
         $this->assertSame([], $response->getHeaders());
 
@@ -66,8 +62,7 @@ final class GuzzleClientTest extends UnitTest
         $this->assertSame('https://www.whatever.com?myquerykey=myqueryvalue', (string)$request->getUri());
     }
 
-    public function testPostMethodThatThrowsException()
-    {
+    public function testPostMethodThatThrowsException(): void {
         $this->mockHandler->append(new RequestException('Not found', new Request('get', 'https://www.whatever.com')));
         $this->expectException(HttpException::class, 'Unable to complete the HTTP request');
         $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);

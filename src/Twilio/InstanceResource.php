@@ -6,19 +6,19 @@ namespace Twilio;
 
 class InstanceResource {
     protected $version;
-    protected $context = null;
-    protected $properties = array();
-    protected $solution = array();
+    protected $context;
+    protected $properties = [];
+    protected $solution = [];
 
     public function __construct(Version $version) {
         $this->version = $version;
     }
 
-    public function toArray() {
+    public function toArray(): array {
         return $this->properties;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         return '[InstanceResource]';
     }
 }

@@ -9,7 +9,7 @@ class VersionInfo {
     const MINOR = 41;
     const PATCH = 1;
 
-    public static function string() {
-        return implode('.', array(self::MAJOR, self::MINOR, self::PATCH));
+    public static function string(): string {
+        return implode('.', [self::MAJOR, self::MINOR, self::PATCH]);
     }
 }

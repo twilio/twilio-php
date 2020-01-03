@@ -5,7 +5,7 @@ namespace Twilio;
 
 
 class Values implements \ArrayAccess {
-    const NONE = 'Twilio\\Values\\NONE';
+    public const NONE = 'Twilio\\Values\\NONE';
 
     protected $options;
 
@@ -16,8 +16,8 @@ class Values implements \ArrayAccess {
         return $default;
     }
 
-    public static function of($array) {
-        $result = array();
+    public static function of($array): array {
+        $result = [];
         foreach ($array as $key => $value) {
             if ($value === self::NONE) {
                 continue;
@@ -28,7 +28,7 @@ class Values implements \ArrayAccess {
     }
 
     public function __construct($options) {
-        $this->options = array();
+        $this->options = [];
         foreach ($options as $key => $value) {
             $this->options[\strtolower($key)] = $value;
         }
@@ -41,12 +41,12 @@ class Values implements \ArrayAccess {
      * @param mixed $offset <p>
      * An offset to check for.
      * </p>
-     * @return boolean true on success or false on failure.
+     * @return bool true on success or false on failure.
      * </p>
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
      */
-    public function offsetExists($offset) {
+    public function offsetExists($offset): bool {
         return true;
     }
 
@@ -76,7 +76,7 @@ class Values implements \ArrayAccess {
      * </p>
      * @return void
      */
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value): void {
         $this->options[\strtolower($offset)] = $value;
     }
 
@@ -89,9 +89,7 @@ class Values implements \ArrayAccess {
      * </p>
      * @return void
      */
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset): void {
         unset($this->options[$offset]);
     }
-
-
 }

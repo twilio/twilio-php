@@ -9,7 +9,7 @@ class WorkspaceCapability extends CapabilityToken {
         parent::__construct($accountSid, $authToken, $workspaceSid, $workspaceSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
     }
 
-    protected function setupResource() {
+    protected function setupResource(): void {
         $this->resourceUrl = $this->baseUrl;
     }
 }

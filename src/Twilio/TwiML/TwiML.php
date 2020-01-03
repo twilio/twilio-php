@@ -39,7 +39,7 @@ abstract class TwiML {
      * @param TwiML|string $twiml TwiML element to add
      * @return TwiML $this
      */
-    public function append($twiml) {
+    public function append($twiml): TwiML {
         $this->children[] = $twiml;
         return $this;
     }
@@ -50,7 +50,7 @@ abstract class TwiML {
      * @param TwiML $twiml TwiML element to add
      * @return TwiML added TwiML element
      */
-    public function nest($twiml) {
+    public function nest($twiml): TwiML {
         $this->children[] = $twiml;
         return $twiml;
     }
@@ -62,7 +62,7 @@ abstract class TwiML {
      * @param string $value value of attribute
      * @return static $this
      */
-    public function setAttribute($key, $value) {
+    public function setAttribute($key, $value): TwiML {
         $this->attributes[$key] = $value;
         return $this;
     }
@@ -71,9 +71,9 @@ abstract class TwiML {
      * @param string $name XML element name
      * @param string $value XML value
      * @param array $attributes XML attributes
-     * @return GenericNode
+     * @return TwiML
      */
-    public function addChild($name, $value = null, $attributes = []) {
+    public function addChild($name, $value = null, $attributes = []): TwiML {
         return $this->nest(new GenericNode($name, $value, $attributes));
     }
 
@@ -82,8 +82,8 @@ abstract class TwiML {
      *
      * @return string TwiML XML representation
      */
-    public function asXML() {
-        return $this->__toString();
+    public function asXML(): string {
+        return (string)$this;
     }
 
     /**
@@ -91,7 +91,7 @@ abstract class TwiML {
      *
      * @return string TwiML XML representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return $this->xml()->saveXML();
     }
 
@@ -102,8 +102,8 @@ abstract class TwiML {
      * @param DOMDocument $document XML document for the element
      * @return DOMElement $element
      */
-    private function buildElement($twiml, $document) {
-    	$element = $document->createElement($twiml->name);
+    private function buildElement($twiml, $document): DOMElement {
+        $element = $document->createElement($twiml->name);
 
         foreach ($twiml->attributes as $name => $value) {
             if (\is_bool($value)) {
@@ -116,7 +116,7 @@ abstract class TwiML {
             if (\is_string($child)) {
                 $element->appendChild($document->createTextNode($child));
             } else {
-               $element->appendChild($this->buildElement($child, $document));
+                $element->appendChild($this->buildElement($child, $document));
             }
         }
 
@@ -128,10 +128,9 @@ abstract class TwiML {
      *
      * @return DOMDocument Build TwiML element
      */
-    private function xml() {
-    	$document = new DOMDocument('1.0', 'UTF-8');
-    	$document->appendChild($this->buildElement($this, $document));
-    	return $document;
+    private function xml(): DOMDocument {
+        $document = new DOMDocument('1.0', 'UTF-8');
+        $document->appendChild($this->buildElement($this, $document));
+        return $document;
     }
-
 }
