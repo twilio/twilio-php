@@ -27,7 +27,7 @@ class ClientToken {
      * @param string $authToken the secret key used to sign the token. Note,
      *        this auth token is not visible to the user of the token.
      */
-    public function __construct($accountSid, $authToken) {
+    public function __construct(string $accountSid, string $authToken) {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->scopes = [];
@@ -40,10 +40,10 @@ class ClientToken {
      * connections then configure the TwilioCapability through this method and
      * specify the client name.
      *
-     * @param $clientName
+     * @param string $clientName
      * @throws \InvalidArgumentException
      */
-    public function allowClientIncoming($clientName): void {
+    public function allowClientIncoming(string $clientName): void {
         // clientName must be a non-zero length alphanumeric string
         if (\preg_match('/\W/', $clientName)) {
             throw new \InvalidArgumentException(
@@ -66,7 +66,7 @@ class ClientToken {
      * @param mixed[] $appParams signed parameters that the user of this token
      *        cannot overwrite.
      */
-    public function allowClientOutgoing($appSid, array $appParams = []): void {
+    public function allowClientOutgoing(string $appSid, array $appParams = []): void {
         $this->allow('client', 'outgoing', [
             'appSid' => $appSid,
             'appParams' => \http_build_query($appParams, '', '&')
@@ -91,7 +91,7 @@ class ClientToken {
      * @param string $name
      * @param string $value
      */
-    public function addClaim($name, $value): void {
+    public function addClaim(string $name, string $value): void {
         $this->customClaims[$name] = $value;
     }
 
@@ -103,7 +103,7 @@ class ClientToken {
      *        value is 3600 (1hr)
      * @return string the newly generated token that is valid for $ttl seconds
      */
-    public function generateToken($ttl = 3600): string {
+    public function generateToken(int $ttl = 3600): string {
         $payload = \array_merge($this->customClaims, [
             'scope' => [],
             'iss' => $this->accountSid,
@@ -122,7 +122,7 @@ class ClientToken {
         return JWT::encode($payload, $this->authToken, 'HS256');
     }
 
-    protected function allow($service, $privilege, $params): void {
+    protected function allow(string $service, string $privilege, array $params): void {
         $this->scopes[] = new ScopeURI($service, $privilege, $params);
     }
 }

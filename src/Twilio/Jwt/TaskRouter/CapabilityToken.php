@@ -30,7 +30,8 @@ class CapabilityToken {
     protected $required = ['required' => true];
     protected $optional = ['required' => false];
 
-    public function __construct($accountSid, $authToken, $workspaceSid, $channelId, $resourceUrl = null, $overrideBaseUrl = null, $overrideBaseWSUrl = null) {
+    public function __construct(string $accountSid, string $authToken, string $workspaceSid, string $channelId,
+                                string $resourceUrl = null, string $overrideBaseUrl = null, string $overrideBaseWSUrl = null) {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->friendlyName = $channelId;
@@ -61,20 +62,19 @@ class CapabilityToken {
     }
 
     protected function setupResource(): void {
-
     }
 
-    public function addPolicyDeconstructed($url, $method, $queryFilter = [], $postFilter = [], $allow = true): Policy {
+    public function addPolicyDeconstructed(string $url, string $method, ?array $queryFilter = [], ?array $postFilter = [], bool $allow = true): Policy {
         $policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
         $this->policies[] = $policy;
         return $policy;
     }
 
-    public function allow($url, $method, $queryFilter = [], $postFilter = []): void {
+    public function allow(string $url, string $method, ?array $queryFilter = [], ?array $postFilter = []): void {
         $this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, true);
     }
 
-    public function deny($url, $method, $queryFilter = [], $postFilter = []): void {
+    public function deny(string $url, string $method, array $queryFilter = [], array $postFilter = []): void {
         $this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, false);
     }
 
@@ -129,7 +129,7 @@ class CapabilityToken {
         $this->allow($this->resourceUrl . '/**', $method, $queryFilter, $postFilter);
     }
 
-    public function generateToken($ttl = 3600, $extraAttributes = []): string {
+    public function generateToken(int $ttl = 3600, array $extraAttributes = []): string {
         $payload = [
             'version' => $this->version,
             'friendly_name' => $this->friendlyName,

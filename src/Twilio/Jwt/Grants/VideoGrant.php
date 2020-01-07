@@ -23,7 +23,7 @@ class VideoGrant implements Grant {
      * @param string $roomSidOrName room sid or name
      * @return $this updated grant
      */
-    public function setRoom($roomSidOrName): self {
+    public function setRoom(string $roomSidOrName): self {
         $this->room = $roomSidOrName;
         return $this;
     }

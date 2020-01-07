@@ -24,7 +24,7 @@ class SyncGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setServiceSid($serviceSid): self {
+    public function setServiceSid(string $serviceSid): self {
         $this->serviceSid = $serviceSid;
         return $this;
     }
@@ -45,7 +45,7 @@ class SyncGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setEndpointId($endpointId): self {
+    public function setEndpointId(string $endpointId): self {
         $this->endpointId = $endpointId;
         return $this;
     }
@@ -66,7 +66,7 @@ class SyncGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setDeploymentRoleSid($deploymentRoleSid): self {
+    public function setDeploymentRoleSid(string $deploymentRoleSid): self {
         $this->deploymentRoleSid = $deploymentRoleSid;
         return $this;
     }
@@ -87,7 +87,7 @@ class SyncGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setPushCredentialSid($pushCredentialSid): self {
+    public function setPushCredentialSid(string $pushCredentialSid): self {
         $this->pushCredentialSid = $pushCredentialSid;
         return $this;
     }

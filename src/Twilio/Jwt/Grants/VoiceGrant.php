@@ -24,11 +24,11 @@ class VoiceGrant implements Grant {
     /**
      * Set whether incoming is allowed
      *
-     * @param boolean $incomingAllow whether incoming is allowed
+     * @param bool $incomingAllow whether incoming is allowed
      *
      * @return $this updated grant
      */
-    public function setIncomingAllow($incomingAllow): self {
+    public function setIncomingAllow(bool $incomingAllow): self {
         $this->incomingAllow = $incomingAllow;
         return $this;
     }
@@ -49,7 +49,7 @@ class VoiceGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setOutgoingApplicationSid($outgoingApplicationSid): self {
+    public function setOutgoingApplicationSid(string $outgoingApplicationSid): self {
         $this->outgoingApplicationSid = $outgoingApplicationSid;
         return $this;
     }
@@ -67,11 +67,11 @@ class VoiceGrant implements Grant {
      * Set the outgoing application of the the grant
      *
      * @param string $sid outgoing application sid of the grant
-     * @param string $params params to pass the the application
+     * @param array $params params to pass the the application
      *
      * @return $this updated grant
      */
-    public function setOutgoingApplication($sid, $params): self {
+    public function setOutgoingApplication(string $sid, array $params): self {
         $this->outgoingApplicationSid = $sid;
         $this->outgoingApplicationParams = $params;
         return $this;
@@ -93,7 +93,7 @@ class VoiceGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setPushCredentialSid($pushCredentialSid): self {
+    public function setPushCredentialSid(string $pushCredentialSid): self {
         $this->pushCredentialSid = $pushCredentialSid;
         return $this;
     }
@@ -114,7 +114,7 @@ class VoiceGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setEndpointId($endpointId): self {
+    public function setEndpointId(string $endpointId): self {
         $this->endpointId = $endpointId;
         return $this;
     }

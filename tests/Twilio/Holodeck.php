@@ -11,9 +11,10 @@ class Holodeck implements Client {
     private $requests = [];
     private $responses = [];
 
-    public function request($method, $url, $params = [], $data = [],
-                            $headers = [], $user = null, $password = null,
-                            $timeout = null): Response {
+    public function request(string $method, string $url,
+                            array $params = [], array $data = [], array $headers = [],
+                            string $user = null, string $password = null,
+                            int $timeout = null): Response {
         $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password);
 
         if (\count($this->responses) === 0) {
@@ -23,11 +24,11 @@ class Holodeck implements Client {
         return \array_shift($this->responses);
     }
 
-    public function mock($response): void {
+    public function mock(Response $response): void {
         $this->responses[] = $response;
     }
 
-    public function assertRequest($request): void {
+    public function assertRequest(Request $request): void {
         if ($this->hasRequest($request)) {
             return;
         }
@@ -43,7 +44,7 @@ class Holodeck implements Client {
         throw new \RuntimeException($message);
     }
 
-    public function hasRequest($request): bool {
+    public function hasRequest(Request $request): bool {
         foreach ($this->requests as $c) {
             if (\strtolower($request->method) == \strtolower($c->method) &&
                 $request->url == $c->url &&
@@ -56,7 +57,7 @@ class Holodeck implements Client {
         return false;
     }
 
-    protected function printRequest($request): string {
+    protected function printRequest(Request $request): string {
         $url = $request->url;
         if ($request->params) {
             $url .= '?' . \http_build_query($request->params);

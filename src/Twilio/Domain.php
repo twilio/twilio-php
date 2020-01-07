@@ -38,7 +38,7 @@ abstract class Domain {
      * @param string $uri Version relative URI
      * @return string Absolute URL for this domain
      */
-    public function absoluteUrl($uri): string {
+    public function absoluteUrl(string $uri): string {
         return \implode('/', [\trim($this->baseUrl, '/'), \trim($uri, '/')]);
     }
 
@@ -52,12 +52,13 @@ abstract class Domain {
      * @param array $headers HTTP headers to send with the request
      * @param string $user User to authenticate as
      * @param string $password Password
-     * @param null $timeout Request timeout
+     * @param int $timeout Request timeout
      * @return Response the response for the request
      */
-    public function request($method, $uri, $params = [], $data = [],
-                            $headers = [], $user = null, $password = null,
-                            $timeout = null): Response {
+    public function request(string $method, string $uri,
+                            array $params = [], array $data = [], array $headers = [],
+                            string $user = null, string $password = null,
+                            int $timeout = null): Response {
         $url = $this->absoluteUrl($uri);
         return $this->client->request(
             $method,

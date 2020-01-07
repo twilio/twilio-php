@@ -17,7 +17,7 @@ class Policy {
     private $postFilter;
     private $allow;
 
-    public function __construct($url, $method, $queryFilter = [], $postFilter = [], $allow = true) {
+    public function __construct(string $url, string $method, ?array $queryFilter = [], ?array $postFilter = [], bool $allow = true) {
         $this->url = $url;
         $this->method = $method;
         $this->queryFilter = $queryFilter;

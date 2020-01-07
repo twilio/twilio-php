@@ -22,7 +22,7 @@ class TestDomain extends Domain {
      * @param string $uri Version relative URI
      * @return string Absolute URL for this domain
      */
-    public function absoluteUrl($uri): string {
+    public function absoluteUrl(string $uri): string {
         return "domain:$uri";
     }
 
@@ -43,7 +43,7 @@ class TestVersion extends Version {
     /**
      * @param string $version
      */
-    public function setVersion($version): void {
+    public function setVersion(string $version): void {
         $this->version = $version;
     }
 }
@@ -75,7 +75,7 @@ class VersionTest extends UnitTest {
      * @param int|Values::NONe $expectedPageLimit Expected page limit returned by readLimits
      * @dataProvider readLimitProvider
      */
-    public function testReadLimits($message, $limit, $pageSize, $expectedLimit, $expectedPageSize, $expectedPageLimit): void {
+    public function testReadLimits(string $message, ?int $limit, ?int $pageSize, $expectedLimit, $expectedPageSize, $expectedPageLimit): void {
         $actual = $this->version->readLimits($limit, $pageSize);
         $this->assertEquals($expectedLimit, $actual['limit'], "$message: Limit does not match");
         $this->assertEquals($expectedPageSize, $actual['pageSize'], "$message: PageSize does not match");
@@ -149,7 +149,7 @@ class VersionTest extends UnitTest {
      * @param string $expected Expected relative URI
      * @dataProvider relativeUriProvider
      */
-    public function testRelativeUri($message, $prefix, $uri, $expected): void {
+    public function testRelativeUri(string $message, string $prefix, string $uri, string $expected): void {
         $this->version->setVersion($prefix);
         $actual = $this->version->relativeUri($uri);
         $this->assertEquals($expected, $actual, $message);
@@ -217,7 +217,7 @@ class VersionTest extends UnitTest {
      * @param string $expected Expected absolute URL
      * @dataProvider absoluteUrlProvider
      */
-    public function testAbsoluteUrl($message, $prefix, $uri, $expected): void {
+    public function testAbsoluteUrl(string $message, string $prefix, string $uri, string $expected): void {
         $this->version->setVersion($prefix);
         $actual = $this->version->absoluteUrl($uri);
         $this->assertEquals($expected, $actual, $message);

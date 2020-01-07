@@ -4,7 +4,7 @@ namespace Twilio;
 
 class Serialize {
 
-    private static function flatten($map, $result = [], $previous = []): array {
+    private static function flatten(array $map, array $result = [], array $previous = []): array {
         foreach ($map as $key => $value) {
             if (\is_array($value)) {
                 $result = self::flatten($value, $result, \array_merge($previous, [$key]));
@@ -16,8 +16,8 @@ class Serialize {
         return $result;
     }
 
-    public static function prefixedCollapsibleMap($map, $prefix): array {
-        if ($map === null || $map === \Twilio\Values::NONE) {
+    public static function prefixedCollapsibleMap($map, string $prefix): array {
+        if ($map === null || $map === Values::NONE) {
             return [];
         }
 
@@ -31,8 +31,8 @@ class Serialize {
     }
 
     public static function iso8601Date($dateTime): string {
-        if ($dateTime === null || $dateTime === \Twilio\Values::NONE) {
-            return \Twilio\Values::NONE;
+        if ($dateTime === null || $dateTime === Values::NONE) {
+            return Values::NONE;
         }
 
         if (\is_string($dateTime)) {
@@ -45,8 +45,8 @@ class Serialize {
     }
 
     public static function iso8601DateTime($dateTime): string {
-        if ($dateTime === null || $dateTime === \Twilio\Values::NONE) {
-            return \Twilio\Values::NONE;
+        if ($dateTime === null || $dateTime === Values::NONE) {
+            return Values::NONE;
         }
 
         if (\is_string($dateTime)) {

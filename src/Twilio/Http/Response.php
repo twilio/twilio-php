@@ -9,7 +9,7 @@ class Response {
     protected $content;
     protected $statusCode;
 
-    public function __construct($statusCode, $content, $headers = []) {
+    public function __construct(int $statusCode, ?string $content, ?array $headers = []) {
         $this->statusCode = $statusCode;
         $this->content = $content;
         $this->headers = $headers;

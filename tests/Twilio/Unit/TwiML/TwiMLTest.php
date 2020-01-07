@@ -6,7 +6,7 @@ use DOMDocument;
 use Twilio\Tests\Unit\UnitTest;
 
 abstract class TwiMLTest extends UnitTest {
-    public function compareXml($expected, $result): void {
+    public function compareXml(string $expected, string $result): void {
         $expectedDom = new DOMDocument();
         $expectedDom->loadXML($expected);
 

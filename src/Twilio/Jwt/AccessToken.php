@@ -17,7 +17,7 @@ class AccessToken {
     /** @var string[] $customClaims */
     private $customClaims;
 
-    public function __construct($accountSid, $signingKeySid, $secret, $ttl = 3600, $identity = null) {
+    public function __construct(string $accountSid, string $signingKeySid, string $secret, int $ttl = 3600, string $identity = null) {
         $this->signingKeySid = $signingKeySid;
         $this->accountSid = $accountSid;
         $this->secret = $secret;
@@ -38,7 +38,7 @@ class AccessToken {
      *
      * @return $this updated access token
      */
-    public function setIdentity($identity): self {
+    public function setIdentity(string $identity): self {
         $this->identity = $identity;
         return $this;
     }
@@ -55,11 +55,11 @@ class AccessToken {
     /**
      * Set the nbf of this access token
      *
-     * @param integer $nbf nbf in epoch seconds of the grant
+     * @param int $nbf nbf in epoch seconds of the grant
      *
      * @return $this updated access token
      */
-    public function setNbf($nbf): self {
+    public function setNbf(int $nbf): self {
         $this->nbf = $nbf;
         return $this;
     }
@@ -67,7 +67,7 @@ class AccessToken {
     /**
      * Returns the nbf of the grant
      *
-     * @return integer the nbf in epoch seconds
+     * @return int the nbf in epoch seconds
      */
     public function getNbf(): int {
         return $this->nbf;
@@ -91,11 +91,11 @@ class AccessToken {
      * @param string $name
      * @param string $value
      */
-    public function addClaim($name, $value): void {
+    public function addClaim(string $name, string $value): void {
         $this->customClaims[$name] = $value;
     }
 
-    public function toJWT($algorithm = 'HS256'): string {
+    public function toJWT(string $algorithm = 'HS256'): string {
         $header = [
             'cty' => 'twilio-fpa;v=1',
             'typ' => 'JWT'

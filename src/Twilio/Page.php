@@ -56,15 +56,15 @@ abstract class Page implements \Iterator {
         return $response->getContent();
     }
 
-    protected function isPagingEol($content): bool {
+    protected function isPagingEol(?array $content): bool {
         return $content !== null && \array_key_exists('code', $content) && $content['code'] === 20006;
     }
 
-    protected function hasMeta($key): bool {
+    protected function hasMeta(string $key): bool {
         return \array_key_exists('meta', $this->payload) && \array_key_exists($key, $this->payload['meta']);
     }
 
-    protected function getMeta($key, $default = null): ?string {
+    protected function getMeta(string $key, string $default = null): ?string {
         return $this->hasMeta($key) ? $this->payload['meta'][$key] : $default;
     }
 

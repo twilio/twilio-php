@@ -15,7 +15,7 @@ class RestException extends TwilioException {
      * @param int $statusCode [optional] The HTTP Status code.
      * @since 5.1.0
      */
-    public function __construct($message, $code, $statusCode) {
+    public function __construct(string $message, int $code, int $statusCode) {
         $this->statusCode = $statusCode;
         parent::__construct($message, $code);
     }
