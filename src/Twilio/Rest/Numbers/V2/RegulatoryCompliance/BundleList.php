@@ -7,39 +7,65 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service\Environment;
+namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
-class LogList extends ListResource {
+class BundleList extends ListResource {
     /**
-     * Construct the LogList
+     * Construct the BundleList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the Log resource is
-     *                           associated with
-     * @param string $environmentSid The SID of the environment in which the log
-     *                               occurred
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogList
+     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList
      */
-    public function __construct(Version $version, $serviceSid, $environmentSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, );
+        $this->solution = array();
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Logs';
+        $this->uri = '/RegulatoryCompliance/Bundles';
     }
 
     /**
-     * Streams LogInstance records from the API as a generator stream.
+     * Create a new BundleInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the
+     *                             resource
+     * @param string $email The email address
+     * @param array|Options $options Optional Arguments
+     * @return BundleInstance Newly created BundleInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create($friendlyName, $email, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'FriendlyName' => $friendlyName,
+            'Email' => $email,
+            'StatusCallback' => $options['statusCallback'],
+            'RegulationSid' => $options['regulationSid'],
+            'IsoCountry' => $options['isoCountry'],
+            'EndUserType' => $options['endUserType'],
+            'NumberType' => $options['numberType'],
+        ));
+
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new BundleInstance($this->version, $payload);
+    }
+
+    /**
+     * Streams BundleInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -66,7 +92,7 @@ class LogList extends ListResource {
     }
 
     /**
-     * Reads LogInstance records from the API as a list.
+     * Reads BundleInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -79,28 +105,30 @@ class LogList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return LogInstance[] Array of results
+     * @return BundleInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of LogInstance records from the API.
+     * Retrieve a single page of BundleInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of LogInstance
+     * @return \Twilio\Page Page of BundleInstance
      */
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'FunctionSid' => $options['functionSid'],
-            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
-            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
+            'Status' => $options['status'],
+            'FriendlyName' => $options['friendlyName'],
+            'RegulationSid' => $options['regulationSid'],
+            'IsoCountry' => $options['isoCountry'],
+            'NumberType' => $options['numberType'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -112,15 +140,15 @@ class LogList extends ListResource {
             $params
         );
 
-        return new LogPage($this->version, $response, $this->solution);
+        return new BundlePage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of LogInstance records from the API.
+     * Retrieve a specific page of BundleInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of LogInstance
+     * @return \Twilio\Page Page of BundleInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -128,22 +156,17 @@ class LogList extends ListResource {
             $targetUrl
         );
 
-        return new LogPage($this->version, $response, $this->solution);
+        return new BundlePage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a LogContext
+     * Constructs a BundleContext
      *
-     * @param string $sid The SID that identifies the Log resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogContext
+     * @param string $sid The unique string that identifies the resource.
+     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext
      */
     public function getContext($sid) {
-        return new LogContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $this->solution['environmentSid'],
-            $sid
-        );
+        return new BundleContext($this->version, $sid);
     }
 
     /**
@@ -152,6 +175,6 @@ class LogList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Serverless.V1.LogList]';
+        return '[Twilio.Numbers.V2.BundleList]';
     }
 }

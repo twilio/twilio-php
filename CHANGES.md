@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2020-01-08] Version 5.42.0
+---------------------------
+**Library - Chore**
+- [PR #594](https://github.com/twilio/twilio-php/pull/594): remove deprecated code. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Numbers**
+- Add Regulatory Compliance CRUD APIs
+
+**Studio**
+- Add parameter validation for Studio v2 Flows API
+
+**Twiml**
+- Add support for `speech_model` to `Gather` verb
+
+
 [2019-12-18] Version 5.41.1
 ---------------------------
 **Preview**

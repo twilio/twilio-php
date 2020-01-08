@@ -11,45 +11,30 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Studio\V1;
-use Twilio\Rest\Studio\V2;
+use Twilio\Rest\Numbers\V2;
 
 /**
- * @property \Twilio\Rest\Studio\V1 $v1
- * @property \Twilio\Rest\Studio\V2 $v2
- * @property \Twilio\Rest\Studio\V2\FlowList $flows
- * @property \Twilio\Rest\Studio\V2\FlowValidateList $flowValid
- * @method \Twilio\Rest\Studio\V2\FlowContext flows(string $sid)
+ * @property \Twilio\Rest\Numbers\V2 $v2
+ * @property \Twilio\Rest\Numbers\V2\RegulatoryComplianceList $regulatoryCompliance
  */
-class Studio extends Domain {
-    protected $_v1 = null;
+class Numbers extends Domain {
     protected $_v2 = null;
 
     /**
-     * Construct the Studio Domain
+     * Construct the Numbers Domain
      *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
-     * @return \Twilio\Rest\Studio Domain for Studio
+     * @return \Twilio\Rest\Numbers Domain for Numbers
      */
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://studio.twilio.com';
+        $this->baseUrl = 'https://numbers.twilio.com';
     }
 
     /**
-     * @return \Twilio\Rest\Studio\V1 Version v1 of studio
-     */
-    protected function getV1() {
-        if (!$this->_v1) {
-            $this->_v1 = new V1($this);
-        }
-        return $this->_v1;
-    }
-
-    /**
-     * @return \Twilio\Rest\Studio\V2 Version v2 of studio
+     * @return \Twilio\Rest\Numbers\V2 Version v2 of numbers
      */
     protected function getV2() {
         if (!$this->_v2) {
@@ -92,25 +77,10 @@ class Studio extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Studio\V2\FlowList
+     * @return \Twilio\Rest\Numbers\V2\RegulatoryComplianceList
      */
-    protected function getFlows() {
-        return $this->v2->flows;
-    }
-
-    /**
-     * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Studio\V2\FlowContext
-     */
-    protected function contextFlows($sid) {
-        return $this->v2->flows($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Studio\V2\FlowValidateList
-     */
-    protected function getFlowValid() {
-        return $this->v2->flowValid;
+    protected function getRegulatoryCompliance() {
+        return $this->v2->regulatoryCompliance;
     }
 
     /**
@@ -119,6 +89,6 @@ class Studio extends Domain {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Studio]';
+        return '[Twilio.Numbers]';
     }
 }

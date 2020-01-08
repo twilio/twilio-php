@@ -214,4 +214,15 @@ class Gather extends TwiML {
     public function setActionOnEmptyResult($actionOnEmptyResult) {
         return $this->setAttribute('actionOnEmptyResult', $actionOnEmptyResult);
     }
+
+    /**
+     * Add SpeechModel attribute.
+     *
+     * @param string $speechModel Specify the model that is best suited for your
+     *                            use case
+     * @return static $this.
+     */
+    public function setSpeechModel($speechModel) {
+        return $this->setAttribute('speechModel', $speechModel);
+    }
 }

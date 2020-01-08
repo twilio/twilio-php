@@ -7,46 +7,71 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service\Environment;
+namespace Twilio\Rest\Studio\V2;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class LogList extends ListResource {
+class FlowList extends ListResource {
     /**
-     * Construct the LogList
+     * Construct the FlowList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the Log resource is
-     *                           associated with
-     * @param string $environmentSid The SID of the environment in which the log
-     *                               occurred
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogList
+     * @return \Twilio\Rest\Studio\V2\FlowList
      */
-    public function __construct(Version $version, $serviceSid, $environmentSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, );
+        $this->solution = array();
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Logs';
+        $this->uri = '/Flows';
     }
 
     /**
-     * Streams LogInstance records from the API as a generator stream.
+     * Create a new FlowInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the Flow
+     * @param string $status The status of the Flow
+     * @param string $definition JSON representation of flow definition
+     * @param array|Options $options Optional Arguments
+     * @return FlowInstance Newly created FlowInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create($friendlyName, $status, $definition, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'FriendlyName' => $friendlyName,
+            'Status' => $status,
+            'Definition' => $definition,
+            'CommitMessage' => $options['commitMessage'],
+        ));
+
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new FlowInstance($this->version, $payload);
+    }
+
+    /**
+     * Streams FlowInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -57,20 +82,19 @@ class LogList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads LogInstance records from the API as a list.
+     * Reads FlowInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -79,28 +103,23 @@ class LogList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return LogInstance[] Array of results
+     * @return FlowInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
-        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read($limit = null, $pageSize = null) {
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of LogInstance records from the API.
+     * Retrieve a single page of FlowInstance records from the API.
      * Request is executed immediately
      *
-     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of LogInstance
+     * @return \Twilio\Page Page of FlowInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $options = new Values($options);
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
-            'FunctionSid' => $options['functionSid'],
-            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
-            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -112,15 +131,15 @@ class LogList extends ListResource {
             $params
         );
 
-        return new LogPage($this->version, $response, $this->solution);
+        return new FlowPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of LogInstance records from the API.
+     * Retrieve a specific page of FlowInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of LogInstance
+     * @return \Twilio\Page Page of FlowInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -128,22 +147,17 @@ class LogList extends ListResource {
             $targetUrl
         );
 
-        return new LogPage($this->version, $response, $this->solution);
+        return new FlowPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a LogContext
+     * Constructs a FlowContext
      *
-     * @param string $sid The SID that identifies the Log resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogContext
+     * @param string $sid The SID that identifies the resource to fetch
+     * @return \Twilio\Rest\Studio\V2\FlowContext
      */
     public function getContext($sid) {
-        return new LogContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $this->solution['environmentSid'],
-            $sid
-        );
+        return new FlowContext($this->version, $sid);
     }
 
     /**
@@ -152,6 +166,6 @@ class LogList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Serverless.V1.LogList]';
+        return '[Twilio.Studio.V2.FlowList]';
     }
 }
