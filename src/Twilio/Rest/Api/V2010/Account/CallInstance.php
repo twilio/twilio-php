@@ -47,6 +47,7 @@ class CallInstance extends InstanceResource {
     protected $_recordings = null;
     protected $_notifications = null;
     protected $_feedback = null;
+    protected $_payments = null;
 
     /**
      * Initialize the CallInstance
@@ -167,6 +168,15 @@ class CallInstance extends InstanceResource {
      */
     protected function getFeedback() {
         return $this->proxy()->feedback;
+    }
+
+    /**
+     * Access the payments
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentList
+     */
+    protected function getPayments() {
+        return $this->proxy()->payments;
     }
 
     /**

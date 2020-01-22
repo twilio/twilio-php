@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\AccSecurity;
+namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -19,97 +19,79 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $sid
  * @property string $accountSid
- * @property string $name
- * @property int $codeLength
+ * @property string $callSid
+ * @property string $sid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string $uri
  */
-class ServiceInstance extends InstanceResource {
-    protected $_verifications = null;
-    protected $_verificationChecks = null;
-
+class PaymentInstance extends InstanceResource {
     /**
-     * Initialize the ServiceInstance
+     * Initialize the PaymentInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid Verification Service Instance SID.
-     * @return \Twilio\Rest\Preview\AccSecurity\ServiceInstance
+     * @param string $accountSid The SID of the Account that created the Payments
+     *                           resource.
+     * @param string $callSid The SID of the Call the resource is associated with.
+     * @param string $sid The SID of Payments session
+     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'name' => Values::array_get($payload, 'name'),
-            'codeLength' => Values::array_get($payload, 'code_length'),
+            'callSid' => Values::array_get($payload, 'call_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = array(
+            'accountSid' => $accountSid,
+            'callSid' => $callSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\AccSecurity\ServiceContext Context for this
-     *                                                         ServiceInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentContext Context for this
+     *                                                            PaymentInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ServiceContext($this->version, $this->solution['sid']);
+            $this->context = new PaymentContext(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['callSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a ServiceInstance
+     * Update the PaymentInstance
      *
-     * @return ServiceInstance Fetched ServiceInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch() {
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the ServiceInstance
-     *
+     * @param string $idempotencyKey A unique token for each payment session that
+     *                               should be provided to maintain idempotency of
+     *                               the session.
+     * @param string $statusCallback The URL we should call to send status of
+     *                               payment session.
      * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Updated ServiceInstance
+     * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
-        return $this->proxy()->update($options);
-    }
-
-    /**
-     * Access the verifications
-     *
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationList
-     */
-    protected function getVerifications() {
-        return $this->proxy()->verifications;
-    }
-
-    /**
-     * Access the verificationChecks
-     *
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationCheckList
-     */
-    protected function getVerificationChecks() {
-        return $this->proxy()->verificationChecks;
+    public function update($idempotencyKey, $statusCallback, $options = array()) {
+        return $this->proxy()->update($idempotencyKey, $statusCallback, $options);
     }
 
     /**
@@ -142,6 +124,6 @@ class ServiceInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.AccSecurity.ServiceInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.PaymentInstance ' . \implode(' ', $context) . ']';
     }
 }

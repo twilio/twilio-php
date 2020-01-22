@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Studio\V2\Flow\FlowRevisionList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -55,7 +56,7 @@ class FlowContext extends InstanceContext {
         $data = Values::of(array(
             'Status' => $status,
             'FriendlyName' => $options['friendlyName'],
-            'Definition' => $options['definition'],
+            'Definition' => Serialize::jsonObject($options['definition']),
             'CommitMessage' => $options['commitMessage'],
         ));
 

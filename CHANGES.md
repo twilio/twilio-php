@@ -1,6 +1,34 @@
 twilio-php Changelog
 ====================
 
+[2020-01-22] Version 5.42.1
+---------------------------
+**Library - Docs**
+- [PR #597](https://github.com/twilio/twilio-php/pull/597): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add payments public APIs
+- Add optional parameter `byoc` to call create request.
+
+**Flex**
+- Updating a Flex Flow `creation_on_message` parameter documentation
+
+**Preview**
+-
+- Removed Verify v2 from preview in favor of its own namespace as GA **(breaking change)**
+
+**Studio**
+- Flow definition type update from string to object
+
+**Verify**
+- Add `AppHash` parameter when creating a Verification.
+- Add `DoNotShareWarningEnabled` parameter to the Service resource.
+
+**Twiml**
+- Add `track` attribute to siprec noun.
+- Add attribute `byoc` to `<Number>`
+
+
 [2020-01-08] Version 5.42.0
 ---------------------------
 **Library - Chore**

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Studio\V2;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -39,7 +40,7 @@ class FlowList extends ListResource {
      *
      * @param string $friendlyName The string that you assigned to describe the Flow
      * @param string $status The status of the Flow
-     * @param string $definition JSON representation of flow definition
+     * @param array $definition JSON representation of flow definition
      * @param array|Options $options Optional Arguments
      * @return FlowInstance Newly created FlowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -50,7 +51,7 @@ class FlowList extends ListResource {
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Status' => $status,
-            'Definition' => $definition,
+            'Definition' => Serialize::jsonObject($definition),
             'CommitMessage' => $options['commitMessage'],
         ));
 

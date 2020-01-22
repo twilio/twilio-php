@@ -12,6 +12,7 @@ namespace Twilio\Tests\Integration\Studio\V2;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -20,14 +21,14 @@ class FlowTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->studio->v2->flows->create("friendly_name", "draft", "definition");
+            $this->twilio->studio->v2->flows->create("friendly_name", "draft", array());
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
             'FriendlyName' => "friendly_name",
             'Status' => "draft",
-            'Definition' => "definition",
+            'Definition' => Serialize::jsonObject(array()),
         );
 
         $this->assertRequest(new Request(
@@ -64,7 +65,7 @@ class FlowTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->studio->v2->flows->create("friendly_name", "draft", "definition");
+        $actual = $this->twilio->studio->v2->flows->create("friendly_name", "draft", array());
 
         $this->assertNotNull($actual);
     }

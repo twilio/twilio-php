@@ -12,6 +12,7 @@ namespace Twilio\Rest\Studio\V2;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -39,7 +40,7 @@ class FlowValidateList extends ListResource {
      *
      * @param string $friendlyName The friendly_name
      * @param string $status The status
-     * @param string $definition The definition
+     * @param array $definition The definition
      * @param array|Options $options Optional Arguments
      * @return FlowValidateInstance Updated FlowValidateInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -50,7 +51,7 @@ class FlowValidateList extends ListResource {
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Status' => $status,
-            'Definition' => $definition,
+            'Definition' => Serialize::jsonObject($definition),
             'CommitMessage' => $options['commitMessage'],
         ));
 

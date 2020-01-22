@@ -26,7 +26,7 @@ abstract class FlowOptions {
 
     /**
      * @param string $friendlyName The string that you assigned to describe the Flow
-     * @param string $definition JSON representation of flow definition
+     * @param array $definition JSON representation of flow definition
      * @param string $commitMessage Description on change made in the revision
      * @return UpdateFlowOptions Options builder
      */
@@ -73,7 +73,7 @@ class CreateFlowOptions extends Options {
 class UpdateFlowOptions extends Options {
     /**
      * @param string $friendlyName The string that you assigned to describe the Flow
-     * @param string $definition JSON representation of flow definition
+     * @param array $definition JSON representation of flow definition
      * @param string $commitMessage Description on change made in the revision
      */
     public function __construct($friendlyName = Values::NONE, $definition = Values::NONE, $commitMessage = Values::NONE) {
@@ -96,7 +96,7 @@ class UpdateFlowOptions extends Options {
     /**
      * JSON representation of flow definition.
      *
-     * @param string $definition JSON representation of flow definition
+     * @param array $definition JSON representation of flow definition
      * @return $this Fluent Builder
      */
     public function setDefinition($definition) {

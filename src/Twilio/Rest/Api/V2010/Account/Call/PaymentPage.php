@@ -7,14 +7,14 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\AccSecurity;
+namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\Page;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class ServicePage extends Page {
+class PaymentPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
 
@@ -23,7 +23,12 @@ class ServicePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ServiceInstance($this->version, $payload);
+        return new PaymentInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid']
+        );
     }
 
     /**
@@ -32,6 +37,6 @@ class ServicePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.AccSecurity.ServicePage]';
+        return '[Twilio.Api.V2010.PaymentPage]';
     }
 }
