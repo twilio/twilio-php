@@ -143,7 +143,7 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * `email` channel configuration in json format. Must include 'from' and 'from_name'.
+     * [`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. Must include 'from' and 'from_name'.
      *
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.

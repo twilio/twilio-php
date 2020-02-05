@@ -1,6 +1,31 @@
 twilio-php Changelog
 ====================
 
+[2020-02-05] Version 5.42.2
+---------------------------
+**Library - Fix**
+- [PR #599](https://github.com/twilio/twilio-php/pull/599): handle '200 Tunnel established header'. Thanks to [@alimohammad1995](https://github.com/alimohammad1995)!
+
+**Api**
+- Making content retention and address retention public
+- Update `status` enum for Messages to include 'partially_delivered'
+
+**Authy**
+- Added support for push factors
+
+**Autopilot**
+- Add one new property in Query i.e dialogue_sid
+
+**Verify**
+- Add `SendCodeAttempts` to create verification response.
+
+**Video**
+- Clarification in composition creation documentation: one source is mandatory, either `audio_sources` or `video_layout`, but on of them has to be provided
+
+**Twiml**
+- Add Polly Neural voices.
+
+
 [2020-01-22] Version 5.42.1
 ---------------------------
 **Library - Docs**
