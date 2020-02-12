@@ -6,14 +6,14 @@ use Twilio\TwiML\MessagingResponse;
 
 class MessagingResponseTest extends TwiMLTest {
 
-    public function testTextNode() {
+    public function testTextNode(): void {
         $response = new MessagingResponse();
         $response->append('Hey no tags!');
 
         $this->compareXml('<Response>Hey no tags!</Response>', $response);
     }
 
-    public function testMixedText() {
+    public function testMixedText(): void {
         $response = new MessagingResponse();
         $response->append('before');
 
@@ -25,27 +25,27 @@ class MessagingResponseTest extends TwiMLTest {
         $this->compareXml('<Response>before<Message key="value">Content</Message>after</Response>', $response);
     }
 
-    public function testEmptyResponse() {
+    public function testEmptyResponse(): void {
         $this->compareXml('<Response/>', new MessagingResponse());
     }
 
-	public function testAllowGenericChildNodes() {
-		$response = new MessagingResponse();
-		$response->addChild('generic-node', 'Generic Node', ['tag' => true]);
+    public function testAllowGenericChildNodes(): void {
+        $response = new MessagingResponse();
+        $response->addChild('generic-node', 'Generic Node', ['tag' => true]);
 
-		$this->compareXml('<Response><generic-node tag="true">Generic Node</generic-node></Response>', $response);
-	}
+        $this->compareXml('<Response><generic-node tag="true">Generic Node</generic-node></Response>', $response);
+    }
 
-	public function testAllowGenericChildrenOfChildNodes() {
-		$response = new MessagingResponse();
-		$response->message('Content')
-			->setAttribute('key', 'value')
-			->addChild('generic-node', 'Generic Node', ['tag' => true]);
+    public function testAllowGenericChildrenOfChildNodes(): void {
+        $response = new MessagingResponse();
+        $response->message('Content')
+            ->setAttribute('key', 'value')
+            ->addChild('generic-node', 'Generic Node', ['tag' => true]);
 
-		$this->compareXml('<Response><Message key="value">Content<generic-node tag="true">Generic Node</generic-node></Message></Response>', $response);
-	}
+        $this->compareXml('<Response><Message key="value">Content<generic-node tag="true">Generic Node</generic-node></Message></Response>', $response);
+    }
 
-	public function testGenericMixedText() {
+    public function testGenericMixedText(): void {
         $response = new MessagingResponse();
         $response->append('before')
             ->addChild('Child')->append('content');

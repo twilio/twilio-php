@@ -21,7 +21,7 @@ class JWT {
      */
     public static function decode($jwt, $key = null, $verify = true) {
         $tks = \explode('.', $jwt);
-        if (\count($tks) != 3) {
+        if (\count($tks) !== 3) {
             throw new \UnexpectedValueException('Wrong number of segments');
         }
         list($headb64, $payloadb64, $cryptob64) = $tks;
@@ -38,7 +38,7 @@ class JWT {
             if (empty($header->alg)) {
                 throw new \DomainException('Empty algorithm');
             }
-            if ($sig != self::sign("$headb64.$payloadb64", $key, $header->alg)) {
+            if ($sig !== self::sign("$headb64.$payloadb64", $key, $header->alg)) {
                 throw new \UnexpectedValueException('Signature verification failed');
             }
         }
@@ -53,11 +53,11 @@ class JWT {
      *
      * @return string A JWT
      */
-    public static function encode($payload, $key, $algo = 'HS256', $additionalHeaders = array()) {
-        $header = array('typ' => 'JWT', 'alg' => $algo);
-        $header = $header + $additionalHeaders;
+    public static function encode($payload, $key, $algo = 'HS256', $additionalHeaders = []): string {
+        $header = ['typ' => 'JWT', 'alg' => $algo];
+        $header += $additionalHeaders;
 
-        $segments = array();
+        $segments = [];
         $segments[] = self::urlsafeB64Encode(self::jsonEncode($header));
         $segments[] = self::urlsafeB64Encode(self::jsonEncode($payload));
         $signing_input = \implode('.', $segments);
@@ -75,12 +75,12 @@ class JWT {
      * @return string An encrypted message
      * @throws \DomainException
      */
-    public static function sign($msg, $key, $method = 'HS256') {
-        $methods = array(
+    public static function sign($msg, $key, $method = 'HS256'): string {
+        $methods = [
             'HS256' => 'sha256',
             'HS384' => 'sha384',
             'HS512' => 'sha512',
-        );
+        ];
         if (empty($methods[$method])) {
             throw new \DomainException('Algorithm not supported');
         }
@@ -107,7 +107,7 @@ class JWT {
      * @return string JSON representation of the PHP object or array
      * @throws \DomainException
      */
-    public static function jsonEncode($input) {
+    public static function jsonEncode($input): string {
         $json = \json_encode($input);
         if (\function_exists('json_last_error') && $errno = \json_last_error()) {
             self::handleJsonError($errno);
@@ -122,9 +122,9 @@ class JWT {
      *
      * @return string A decoded string
      */
-    public static function urlsafeB64Decode($input) {
-        $padlen = 4 - \strlen($input) % 4;
-        $input .= \str_repeat('=', $padlen);
+    public static function urlsafeB64Decode($input): string {
+        $padLen = 4 - \strlen($input) % 4;
+        $input .= \str_repeat('=', $padLen);
         return \base64_decode(\strtr($input, '-_', '+/'));
     }
 
@@ -133,7 +133,7 @@ class JWT {
      *
      * @return string The base64 encode of what you passed in
      */
-    public static function urlsafeB64Encode($input) {
+    public static function urlsafeB64Encode($input): string {
         return \str_replace('=', '', \strtr(\base64_encode($input), '+/', '-_'));
     }
 
@@ -142,15 +142,12 @@ class JWT {
      *
      * @throws \DomainException
      */
-    private static function handleJsonError($errno) {
-        $messages = array(
+    private static function handleJsonError($errno): void {
+        $messages = [
             JSON_ERROR_DEPTH => 'Maximum stack depth exceeded',
             JSON_ERROR_CTRL_CHAR => 'Unexpected control character found',
             JSON_ERROR_SYNTAX => 'Syntax error, malformed JSON'
-        );
-        throw new \DomainException(isset($messages[$errno])
-            ? $messages[$errno]
-            : 'Unknown JSON error: ' . $errno
-        );
+        ];
+        throw new \DomainException($messages[$errno] ?? 'Unknown JSON error: ' . $errno);
     }
 }

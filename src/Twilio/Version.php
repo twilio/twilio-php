@@ -13,7 +13,7 @@ abstract class Version {
     const MAX_PAGE_SIZE = 1000;
 
     /**
-     * @var \Twilio\Domain $domain
+     * @var Domain $domain
      */
     protected $domain;
 
@@ -23,7 +23,7 @@ abstract class Version {
     protected $version;
 
     /**
-     * @param \Twilio\Domain $domain
+     * @param Domain $domain
      */
     public function __construct(Domain $domain) {
         $this->domain = $domain;
@@ -35,7 +35,7 @@ abstract class Version {
      * @param string $uri Version relative uri
      * @return string Absolute URL
      */
-    public function absoluteUrl($uri) {
+    public function absoluteUrl($uri): string {
         return $this->getDomain()->absoluteUrl($this->relativeUri($uri));
     }
 
@@ -44,13 +44,13 @@ abstract class Version {
      * @param string $uri Version relative uri
      * @return string Domain relative uri
      */
-    public function relativeUri($uri) {
+    public function relativeUri($uri): string {
         return \trim($this->version, '/') . '/' . \trim($uri, '/');
     }
 
-    public function request($method, $uri, $params = array(), $data = array(),
-                            $headers = array(), $username = null,
-                            $password = null, $timeout = null) {
+    public function request($method, $uri, $params = [], $data = [],
+                            $headers = [], $username = null,
+                            $password = null, $timeout = null): Response {
         $uri = $this->relativeUri($uri);
         return $this->getDomain()->request(
             $method,
@@ -75,7 +75,7 @@ abstract class Version {
      * @param string $header Header for exception message
      * @return TwilioException
      */
-    protected function exception($response, $header) {
+    protected function exception($response, $header): TwilioException {
         $message = '[HTTP ' . $response->getStatusCode() . '] ' . $header;
 
         $content = $response->getContent();
@@ -83,16 +83,16 @@ abstract class Version {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
             $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
             return new RestException($message, $code, $response->getStatusCode());
-        } else {
-            return new RestException($message, $response->getStatusCode(), $response->getStatusCode());
         }
+
+        return new RestException($message, $response->getStatusCode(), $response->getStatusCode());
     }
 
     /**
      * @throws TwilioException
      */
-    public function fetch($method, $uri, $params = array(), $data = array(),
-                          $headers = array(), $username = null,
+    public function fetch($method, $uri, $params = [], $data = [],
+                          $headers = [], $username = null,
                           $password = null, $timeout = null) {
         $response = $this->request(
             $method,
@@ -115,8 +115,8 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
-    public function update($method, $uri, $params = array(), $data = array(),
-                           $headers = array(), $username = null,
+    public function update($method, $uri, $params = [], $data = [],
+                           $headers = [], $username = null,
                            $password = null, $timeout = null) {
         $response = $this->request(
             $method,
@@ -139,9 +139,9 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
-    public function delete($method, $uri, $params = array(), $data = array(),
-                           $headers = array(), $username = null,
-                           $password = null, $timeout = null) {
+    public function delete($method, $uri, $params = [], $data = [],
+                           $headers = [], $username = null,
+                           $password = null, $timeout = null): bool {
         $response = $this->request(
             $method,
             $uri,
@@ -157,14 +157,14 @@ abstract class Version {
             throw $this->exception($response, 'Unable to delete record');
         }
 
-        return $response->getStatusCode() == 204;
+        return $response->getStatusCode() === 204;
     }
 
-    public function readLimits($limit = null, $pageSize = null) {
+    public function readLimits($limit = null, $pageSize = null): array {
         $pageLimit = Values::NONE;
 
         if ($limit) {
-            if (\is_null($pageSize)) {
+            if ($pageSize === null) {
                 $pageSize = \min($limit, self::MAX_PAGE_SIZE);
             }
             $pageLimit = (int)(\ceil($limit / (float)$pageSize));
@@ -172,16 +172,16 @@ abstract class Version {
 
         $pageSize = \min($pageSize, self::MAX_PAGE_SIZE);
 
-        return array(
+        return [
             'limit' => $limit ?: Values::NONE,
             'pageSize' => $pageSize ?: Values::NONE,
             'pageLimit' => $pageLimit,
-        );
+        ];
     }
 
-    public function page($method, $uri, $params = array(), $data = array(),
-                         $headers = array(), $username = null,
-                         $password = null, $timeout = null) {
+    public function page($method, $uri, $params = [], $data = [],
+                         $headers = [], $username = null,
+                         $password = null, $timeout = null): Response {
         return $this->request(
             $method,
             $uri,
@@ -194,15 +194,15 @@ abstract class Version {
         );
     }
 
-    public function stream($page, $limit = null, $pageLimit = null) {
+    public function stream($page, $limit = null, $pageLimit = null): Stream {
         return new Stream($page, $limit, $pageLimit);
     }
 
     /**
      * @throws TwilioException
      */
-    public function create($method, $uri, $params = array(), $data = array(),
-                           $headers = array(), $username = null,
+    public function create($method, $uri, $params = [], $data = [],
+                           $headers = [], $username = null,
                            $password = null, $timeout = null) {
         $response = $this->request(
             $method,
@@ -222,10 +222,7 @@ abstract class Version {
         return $response->getContent();
     }
 
-    /**
-     * @return \Twilio\Domain $domain
-     */
-    public function getDomain() {
+    public function getDomain(): Domain {
         return $this->domain;
     }
 

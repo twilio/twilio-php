@@ -24,7 +24,7 @@ class RestException extends TwilioException {
      * Get the HTTP Status Code of the RestException
      * @return int HTTP Status Code
      */
-    public function getStatusCode() {
+    public function getStatusCode(): int {
         return $this->statusCode;
     }
 

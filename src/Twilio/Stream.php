@@ -12,7 +12,7 @@ class Stream implements \Iterator {
     public $pageLimit;
     public $currentPage;
 
-    function __construct(Page $page, $limit, $pageLimit) {
+    public function __construct(Page $page, $limit, $pageLimit) {
         $this->page = $page;
         $this->firstPage = $page;
         $this->limit = $limit;
@@ -37,7 +37,7 @@ class Stream implements \Iterator {
      * @link http://php.net/manual/en/iterator.next.php
      * @return void Any returned value is ignored.
      */
-    public function next() {
+    public function next(): void {
         $this->page->next();
         $this->currentRecord++;
 
@@ -68,10 +68,10 @@ class Stream implements \Iterator {
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Checks if current position is valid
      * @link http://php.net/manual/en/iterator.valid.php
-     * @return boolean The return value will be casted to boolean and then evaluated.
+     * @return bool The return value will be casted to boolean and then evaluated.
      * Returns true on success or false on failure.
      */
-    public function valid() {
+    public function valid(): bool {
         return $this->page && $this->page->valid() && !$this->overLimit() && !$this->overPageLimit();
     }
 
@@ -81,20 +81,20 @@ class Stream implements \Iterator {
      * @link http://php.net/manual/en/iterator.rewind.php
      * @return void Any returned value is ignored.
      */
-    public function rewind() {
+    public function rewind(): void {
         $this->page = $this->firstPage;
         $this->page->rewind();
         $this->currentPage = 1;
         $this->currentRecord = 1;
     }
 
-    protected function overLimit() {
+    protected function overLimit(): bool {
         return ($this->limit !== null
             && $this->limit !== Values::NONE
             && $this->limit < $this->currentRecord);
     }
 
-    protected function overPageLimit() {
+    protected function overPageLimit(): bool {
         return ($this->pageLimit !== null
             && $this->pageLimit !== Values::NONE
             && $this->pageLimit < $this->currentPage);

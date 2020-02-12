@@ -9,7 +9,7 @@ use Twilio\Exceptions\RestException;
 use Twilio\Http\Response;
 
 abstract class Page implements \Iterator {
-    protected static $metaKeys = array(
+    protected static $metaKeys = [
         'end',
         'first_page_uri',
         'next_page_uri',
@@ -21,7 +21,7 @@ abstract class Page implements \Iterator {
         'num_pages',
         'start',
         'uri',
-    );
+    ];
 
     protected $version;
     protected $payload;
@@ -35,12 +35,12 @@ abstract class Page implements \Iterator {
 
         $this->version = $version;
         $this->payload = $payload;
-        $this->solution = array();
+        $this->solution = [];
         $this->records = new \ArrayIterator($this->loadPage());
     }
 
     protected function processResponse(Response $response) {
-        if ($response->getStatusCode() != 200 && !$this->isPagingEol($response->getContent())) {
+        if ($response->getStatusCode() !== 200 && !$this->isPagingEol($response->getContent())) {
             $message = '[HTTP ' . $response->getStatusCode() . '] Unable to fetch page';
             $code = $response->getStatusCode();
 
@@ -48,7 +48,7 @@ abstract class Page implements \Iterator {
 
             if (\is_array($content)) {
                 $message .= isset($content['message']) ? ': ' . $content['message'] : '';
-                $code = isset($content['code']) ? $content['code'] : $code;
+                $code = $content['code'] ?? $code;
             }
 
             throw new RestException($message, $code, $response->getStatusCode());
@@ -56,41 +56,41 @@ abstract class Page implements \Iterator {
         return $response->getContent();
     }
 
-    protected function isPagingEol($content) {
-        return !\is_null($content) && \array_key_exists('code', $content) && $content['code'] == 20006;
+    protected function isPagingEol($content): bool {
+        return $content !== null && \array_key_exists('code', $content) && $content['code'] === 20006;
     }
 
-    protected function hasMeta($key) {
+    protected function hasMeta($key): bool {
         return \array_key_exists('meta', $this->payload) && \array_key_exists($key, $this->payload['meta']);
     }
 
-    protected function getMeta($key, $default=null) {
+    protected function getMeta($key, $default = null): ?string {
         return $this->hasMeta($key) ? $this->payload['meta'][$key] : $default;
     }
 
-    protected function loadPage() {
+    protected function loadPage(): array {
         $key = $this->getMeta('key');
         if ($key) {
             return $this->payload[$key];
-        } else {
-            $keys = \array_keys($this->payload);
-            $key = \array_diff($keys, self::$metaKeys);
-            $key = \array_values($key);
+        }
 
-            if (\count($key) == 1) {
-                return $this->payload[$key[0]];
-            }
+        $keys = \array_keys($this->payload);
+        $key = \array_diff($keys, self::$metaKeys);
+        $key = \array_values($key);
+
+        if (\count($key) === 1) {
+            return $this->payload[$key[0]];
         }
 
         // handle end of results error code
         if ($this->isPagingEol($this->payload)) {
-            return array();
+            return [];
         }
 
         throw new DeserializeException('Page Records can not be deserialized');
     }
 
-    public function getPreviousPageUrl() {
+    public function getPreviousPageUrl(): ?string {
         if ($this->hasMeta('previous_page_url')) {
             return $this->getMeta('previous_page_url');
         } else if (\array_key_exists('previous_page_uri', $this->payload) && $this->payload['previous_page_uri']) {
@@ -99,7 +99,7 @@ abstract class Page implements \Iterator {
         return null;
     }
 
-    public function getNextPageUrl() {
+    public function getNextPageUrl(): ?string {
         if ($this->hasMeta('next_page_url')) {
             return $this->getMeta('next_page_url');
         } else if (\array_key_exists('next_page_uri', $this->payload) && $this->payload['next_page_uri']) {
@@ -108,7 +108,7 @@ abstract class Page implements \Iterator {
         return null;
     }
 
-    public function nextPage() {
+    public function nextPage(): ?Page {
         if (!$this->getNextPageUrl()) {
             return null;
         }
@@ -117,7 +117,7 @@ abstract class Page implements \Iterator {
         return new static($this->getVersion(), $response, $this->solution);
     }
 
-    public function previousPage() {
+    public function previousPage(): ?Page {
         if (!$this->getPreviousPageUrl()) {
             return null;
         }
@@ -142,7 +142,7 @@ abstract class Page implements \Iterator {
      * @link http://php.net/manual/en/iterator.next.php
      * @return void Any returned value is ignored.
      */
-    public function next() {
+    public function next(): void {
         $this->records->next();
     }
 
@@ -160,10 +160,10 @@ abstract class Page implements \Iterator {
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Checks if current position is valid
      * @link http://php.net/manual/en/iterator.valid.php
-     * @return boolean The return value will be casted to boolean and then evaluated.
+     * @return bool The return value will be casted to boolean and then evaluated.
      * Returns true on success or false on failure.
      */
-    public function valid() {
+    public function valid(): bool {
         return $this->records->valid();
     }
 
@@ -173,15 +173,12 @@ abstract class Page implements \Iterator {
      * @link http://php.net/manual/en/iterator.rewind.php
      * @return void Any returned value is ignored.
      */
-    public function rewind() {
+    public function rewind(): void {
         $this->records->rewind();
     }
 
 
-    /**
-     * @return Version
-     */
-    public function getVersion() {
+    public function getVersion(): Version {
         return $this->version;
     }
 

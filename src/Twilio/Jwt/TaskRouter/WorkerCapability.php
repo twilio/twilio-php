@@ -22,26 +22,26 @@ class WorkerCapability extends CapabilityToken {
         $this->workerReservationsUrl = $this->resourceUrl . '/Reservations/**';
 
         //add permissions to fetch the list of activities, tasks, and worker reservations
-        $this->allow($this->activityUrl, "GET", null, null);
-        $this->allow($this->tasksUrl, "GET", null, null);
-        $this->allow($this->workerReservationsUrl, "GET", null, null);
+        $this->allow($this->activityUrl, 'GET', null, null);
+        $this->allow($this->tasksUrl, 'GET', null, null);
+        $this->allow($this->workerReservationsUrl, 'GET', null, null);
     }
 
-    protected function setupResource() {
+    protected function setupResource(): void {
         $this->resourceUrl = $this->baseUrl . '/Workers/' . $this->channelId;
     }
 
-    public function allowActivityUpdates() {
+    public function allowActivityUpdates(): void {
         $method = 'POST';
-        $queryFilter = array();
-        $postFilter = array("ActivitySid" => $this->required);
+        $queryFilter = [];
+        $postFilter = ['ActivitySid' => $this->required];
         $this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
     }
 
-    public function allowReservationUpdates() {
+    public function allowReservationUpdates(): void {
         $method = 'POST';
-        $queryFilter = array();
-        $postFilter = array();
+        $queryFilter = [];
+        $postFilter = [];
         $this->allow($this->tasksUrl, $method, $queryFilter, $postFilter);
         $this->allow($this->workerReservationsUrl, $method, $queryFilter, $postFilter);
     }

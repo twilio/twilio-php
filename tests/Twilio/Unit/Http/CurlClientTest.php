@@ -9,15 +9,15 @@ use Twilio\Tests\Unit\UnitTest;
 
 class CurlClientTest extends UnitTest {
 
-    public function testPreemptiveAuthorization() {
+    public function testPreemptiveAuthorization(): void {
         $client = new CurlClient();
 
         $options = $client->options(
             'GET',
             'http://api.twilio.com',
-            array(),
-            array(),
-            array(),
+            [],
+            [],
+            [],
             'test-user',
             'test-password'
         );
@@ -30,7 +30,7 @@ class CurlClientTest extends UnitTest {
         foreach ($headers as $header) {
             $parse = \explode(':', $header);
             $headerKey = $parse[0];
-            if ($headerKey == 'Authorization') {
+            if ($headerKey === 'Authorization') {
                 $authorization = $header;
                 break;
             }
@@ -52,77 +52,77 @@ class CurlClientTest extends UnitTest {
      * @param string $expected Expected query string
      * @dataProvider buildQueryProvider
      */
-    public function testBuildQuery($message, $params, $expected) {
+    public function testBuildQuery($message, $params, $expected): void {
         $client = new CurlClient();
         $actual = $client->buildQuery($params);
         $this->assertEquals($expected, $actual, $message);
     }
 
-    public function buildQueryProvider() {
-        return array(
-            array(
+    public function buildQueryProvider(): array {
+        return [
+            [
                 'Null Params',
                 null,
                 ''
-            ),
-            array(
+            ],
+            [
                 'Empty Params',
-                array(),
+                [],
                 '',
-            ),
-            array(
+            ],
+            [
                 'Single Scalar',
-                array('a' => 'z'),
+                ['a' => 'z'],
                 'a=z',
-            ),
-            array(
+            ],
+            [
                 'Multiple Scalars',
-                array(
+                [
                     'a' => 'z',
                     'b' => 'y',
-                ),
+                ],
                 'a=z&b=y',
-            ),
-            array(
+            ],
+            [
                 'Type Coercion: Booleans',
-                array(
+                [
                     'a' => true,
                     'b' => false,
-                ),
+                ],
                 'a=1&b=',
-            ),
-            array(
+            ],
+            [
                 'Type Coercion: Integers',
-                array(
+                [
                     'a' => 7,
                     'b' => -14,
                     'c' => 0,
-                ),
+                ],
                 'a=7&b=-14&c=0',
-            ),
-            array(
+            ],
+            [
                 'Nested Arrays',
-                array(
-                    'a' => array(1, 2, 3),
-                    'b' => array('x', 'y', 'z'),
-                ),
+                [
+                    'a' => [1, 2, 3],
+                    'b' => ['x', 'y', 'z'],
+                ],
                 'a=1&a=2&a=3&b=x&b=y&b=z',
-            ),
-            array(
+            ],
+            [
                 'URL Safety',
-                array(
+                [
                     'a' => 'un$afe:// value!',
-                ),
+                ],
                 'a=un%24afe%3A%2F%2F+value%21',
-            ),
-            array(
+            ],
+            [
                 'Encoded Key',
-                array(
+                [
                     'StartTime>' => '2012-06-14',
-                ),
+                ],
                 'StartTime%3E=2012-06-14',
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -132,7 +132,7 @@ class CurlClientTest extends UnitTest {
      * @dataProvider queryStringProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testQueryString($method, $params, $expected) {
+    public function testQueryString($method, $params, $expected): void {
         $client = new CurlClient();
 
         $actual = $client->options($method, 'url', $params);
@@ -140,26 +140,26 @@ class CurlClientTest extends UnitTest {
         $this->assertEquals($expected, $actual[CURLOPT_URL]);
     }
 
-    public function queryStringProvider() {
-        $methods = array('GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'CUSTOM');
-        $cases = array();
+    public function queryStringProvider(): array {
+        $methods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'CUSTOM'];
+        $cases = [];
 
         foreach ($methods as $method) {
-            $cases[] = array(
+            $cases[] = [
                 $method,
-                array(),
+                [],
                 'url',
-            );
+            ];
 
-            $cases[] = array(
+            $cases[] = [
                 $method,
-                array(
+                [
                     'a' => '$z',
                     'b' => 7,
-                    'c' => array(1, 'x', 2),
-                ),
+                    'c' => [1, 'x', 2],
+                ],
                 'url?a=%24z&b=7&c=1&c=x&c=2',
-            );
+            ];
         }
 
         return $cases;
@@ -172,7 +172,7 @@ class CurlClientTest extends UnitTest {
      * @dataProvider postFieldsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testPostFields($params, $data, $expected) {
+    public function testPostFields($params, $data, $expected): void {
         $client = new CurlClient();
 
         $actual = $client->options('POST', 'url', $params, $data);
@@ -180,57 +180,43 @@ class CurlClientTest extends UnitTest {
         $this->assertEquals($expected, $actual[CURLOPT_POSTFIELDS]);
     }
 
-    public function postFieldsProvider() {
-        return array(
-            array(
-                array(),
-                array(),
+    public function postFieldsProvider(): array {
+        return [
+            [
+                [],
+                [],
                 '',
-            ),
-
-            array(
-                array(
-                    'a' => 'x',
-                ),
-                array(
-                    'a' => 'b',
-                ),
+            ],
+            [
+                ['a' => 'x'],
+                ['a' => 'b'],
                 'a=b'
-            ),
-
-            array(
-                array(
-                    'a' => 'x',
-                ),
-                array(
-                    'a' => 'x',
-                ),
+            ],
+            [
+                ['a' => 'x'],
+                ['a' => 'x'],
                 'a=x'
-            ),
-
-            array(
-                array(
-                    'a' => 'x',
-                ),
-                array(
+            ],
+            [
+                ['a' => 'x'],
+                [
                     'a' => 'z',
                     'b' => 7,
-                    'c' => array(1, 2, 3),
-                ),
+                    'c' => [1, 2, 3],
+                ],
                 'a=z&b=7&c=1&c=2&c=3',
-            ),
-
-            array(
+            ],
+            [
                 '',
                 'a=x&b=z',
                 'a=x&b=z',
-            ),
-        );
+            ],
+        ];
     }
 
-    public function testPutFile() {
+    public function testPutFile(): void {
         $client = new CurlClient();
-        $actual = $client->options('PUT', 'url', array(), array('a' => 1, 'b' => 2));
+        $actual = $client->options('PUT', 'url', [], ['a' => 1, 'b' => 2]);
         $this->assertNotNull($actual[CURLOPT_INFILE]);
         $this->assertEquals('a=1&b=2', \fread($actual[CURLOPT_INFILE], $actual[CURLOPT_INFILESIZE]));
         $this->assertEquals(7, $actual[CURLOPT_INFILESIZE]);
@@ -241,15 +227,16 @@ class CurlClientTest extends UnitTest {
      * @param mixed[] $options Options to inject
      * @param mixed[] $expected Partial array to expect
      * @dataProvider userInjectedOptionsProvider
+     * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testUserInjectedOptions($message, $options, $expected) {
+    public function testUserInjectedOptions($message, $options, $expected): void {
         $client = new CurlClient($options);
         $actual = $client->options(
             'GET',
             'url',
-            array('param-key' => 'param-value'),
-            array('data-key' => 'data-value'),
-            array('header-key' => 'header-value'),
+            ['param-key' => 'param-value'],
+            ['data-key' => 'data-value'],
+            ['header-key' => 'header-value'],
             'user',
             'password',
             20
@@ -259,60 +246,43 @@ class CurlClientTest extends UnitTest {
         }
     }
 
-    public function userInjectedOptionsProvider() {
-        return array(
-            array(
+    public function userInjectedOptionsProvider(): array {
+        return [
+            [
                 'No Conflict Options',
-                array(
-                    CURLOPT_VERBOSE => true,
-                ),
-                array(
-                    CURLOPT_VERBOSE => true,
-                ),
-            ),
-            array(
+                [CURLOPT_VERBOSE => true],
+                [CURLOPT_VERBOSE => true],
+            ],
+            [
                 'Options preferred over Defaults',
-                array(
-                    CURLOPT_TIMEOUT => 1000,
-                ),
-                array(
-                    CURLOPT_TIMEOUT => 1000,
-                ),
-            ),
-            array(
+                [CURLOPT_TIMEOUT => 1000],
+                [CURLOPT_TIMEOUT => 1000],
+            ],
+            [
                 'Required Options can not be injected',
-                array(
-                    CURLOPT_HTTPGET => false,
-                ),
-                array(
-                    CURLOPT_HTTPGET => true,
-                ),
-            ),
-            array(
+                [CURLOPT_HTTPGET => false],
+                [CURLOPT_HTTPGET => true],
+            ],
+            [
                 'Injected URL decorated with Query String',
-                array(
-                    CURLOPT_URL => 'user-provided-url',
-                ),
-                array(
-                    CURLOPT_URL => 'user-provided-url?param-key=param-value',
-                ),
-            ),
-            array(
+                [CURLOPT_URL => 'user-provided-url'],
+                [CURLOPT_URL => 'user-provided-url?param-key=param-value'],
+            ],
+            [
                 'Injected Headers are additive',
-                array(
-                    CURLOPT_HTTPHEADER => array(
+                [
+                    CURLOPT_HTTPHEADER => [
                         'injected-key: injected-value',
-                    ),
-                ),
-                array(
-                    CURLOPT_HTTPHEADER => array(
+                    ],
+                ],
+                [
+                    CURLOPT_HTTPHEADER => [
                         'injected-key: injected-value',
                         'header-key: header-value',
                         'Authorization: Basic ' . \base64_encode('user:password'),
-                    ),
-                ),
-            ),
-        );
+                    ],
+                ],
+            ],
+        ];
     }
-
 }

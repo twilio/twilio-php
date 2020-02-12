@@ -14,7 +14,7 @@ class TaskQueueCapability extends CapabilityToken {
         parent::__construct($accountSid, $authToken, $workspaceSid, $taskQueueSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
     }
 
-    protected function setupResource() {
+    protected function setupResource(): void {
         $this->resourceUrl = $this->baseUrl . '/TaskQueues/' . $this->channelId;
     }
 }

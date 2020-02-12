@@ -12,8 +12,7 @@ class TaskRouterGrant implements Grant {
      *
      * @return string the workspace sid
      */
-    public function getWorkspaceSid()
-    {
+    public function getWorkspaceSid(): string {
         return $this->workspaceSid;
     }
 
@@ -22,10 +21,9 @@ class TaskRouterGrant implements Grant {
      *
      * @param string $workspaceSid workspace sid of the grant
      *
-     * @return Services_Twilio_Auth_TaskRouterGrant updated grant
+     * @return $this updated grant
      */
-    public function setWorkspaceSid($workspaceSid)
-    {
+    public function setWorkspaceSid($workspaceSid): self {
         $this->workspaceSid = $workspaceSid;
         return $this;
     }
@@ -35,20 +33,18 @@ class TaskRouterGrant implements Grant {
      *
      * @return string the worker sid
      */
-    public function getWorkerSid()
-    {
+    public function getWorkerSid(): string {
         return $this->workerSid;
     }
 
     /**
      * Set the worker sid of this grant
      *
-     * @param string $worker worker sid of the grant
+     * @param string $workerSid worker sid of the grant
      *
-     * @return Services_Twilio_Auth_TaskRouterGrant updated grant
+     * @return $this updated grant
      */
-    public function setWorkerSid($workerSid)
-    {
+    public function setWorkerSid($workerSid): self {
         $this->workerSid = $workerSid;
         return $this;
     }
@@ -58,8 +54,7 @@ class TaskRouterGrant implements Grant {
      *
      * @return string the role
      */
-    public function getRole()
-    {
+    public function getRole(): string {
         return $this->role;
     }
 
@@ -68,10 +63,9 @@ class TaskRouterGrant implements Grant {
      *
      * @param string $role role of the grant
      *
-     * @return Services_Twilio_Auth_TaskRouterGrant updated grant
+     * @return $this updated grant
      */
-    public function setRole($role)
-    {
+    public function setRole($role): self {
         $this->role = $role;
         return $this;
     }
@@ -81,9 +75,8 @@ class TaskRouterGrant implements Grant {
      *
      * @return string type of the grant
      */
-    public function getGrantKey()
-    {
-        return "task_router";
+    public function getGrantKey(): string {
+        return 'task_router';
     }
 
     /**
@@ -91,9 +84,8 @@ class TaskRouterGrant implements Grant {
      *
      * @return array data of the grant
      */
-    public function getPayload()
-    {
-        $payload = array();
+    public function getPayload(): array {
+        $payload = [];
         if ($this->workspaceSid) {
             $payload['workspace_sid'] = $this->workspaceSid;
         }
@@ -106,5 +98,4 @@ class TaskRouterGrant implements Grant {
 
         return $payload;
     }
-
 }

@@ -6,42 +6,42 @@ use Twilio\TwiML\VoiceResponse;
 
 class VoiceResponseTest extends TwiMLTest {
 
-	public function testTextNode() {
-		$response = new VoiceResponse();
-		$response->append('Hey no tags!');
+    public function testTextNode(): void {
+        $response = new VoiceResponse();
+        $response->append('Hey no tags!');
 
-		$this->compareXml('<Response>Hey no tags!</Response>', $response);
-	}
+        $this->compareXml('<Response>Hey no tags!</Response>', $response);
+    }
 
-	public function testMixedText() {
-		$response = new VoiceResponse();
-		$response->append('before');
+    public function testMixedText(): void {
+        $response = new VoiceResponse();
+        $response->append('before');
 
-		$response->dial('Content')
-			->setAttribute('key', 'value');
+        $response->dial('Content')
+            ->setAttribute('key', 'value');
 
-		$response->append('after');
+        $response->append('after');
 
-		$this->compareXml('<Response>before<Dial key="value">Content</Dial>after</Response>', $response);
-	}
+        $this->compareXml('<Response>before<Dial key="value">Content</Dial>after</Response>', $response);
+    }
 
-	public function testEmptyResponse() {
-		$this->compareXml('<Response/>', new VoiceResponse());
-	}
+    public function testEmptyResponse(): void {
+        $this->compareXml('<Response/>', new VoiceResponse());
+    }
 
-	public function testAllowGenericChildNodes() {
-		$response = new VoiceResponse();
-		$response->addChild('generic-node', 'Generic Node', ['tag' => true]);
+    public function testAllowGenericChildNodes(): void {
+        $response = new VoiceResponse();
+        $response->addChild('generic-node', 'Generic Node', ['tag' => true]);
 
-		$this->compareXml('<Response><generic-node tag="true">Generic Node</generic-node></Response>', $response);
-	}
+        $this->compareXml('<Response><generic-node tag="true">Generic Node</generic-node></Response>', $response);
+    }
 
-	public function testAllowGenericChildrenOfChildNodes() {
-		$response = new VoiceResponse();
-		$response->dial('Content')
-			->setAttribute('key', 'value')
-			->addChild('generic-node', 'Generic Node', ['tag' => true]);
+    public function testAllowGenericChildrenOfChildNodes(): void {
+        $response = new VoiceResponse();
+        $response->dial('Content')
+            ->setAttribute('key', 'value')
+            ->addChild('generic-node', 'Generic Node', ['tag' => true]);
 
-		$this->compareXml('<Response><Dial key="value">Content<generic-node tag="true">Generic Node</generic-node></Dial></Response>', $response);
-	}
+        $this->compareXml('<Response><Dial key="value">Content<generic-node tag="true">Generic Node</generic-node></Dial></Response>', $response);
+    }
 }

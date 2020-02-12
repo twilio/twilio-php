@@ -6,7 +6,7 @@ namespace Twilio;
 
 class InstanceContext {
     protected $version;
-    protected $solution = array();
+    protected $solution = [];
     protected $uri;
 
     public function __construct(Version $version) {

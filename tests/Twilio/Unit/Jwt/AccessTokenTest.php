@@ -12,11 +12,11 @@ use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
 
 class AccessTokenTest extends UnitTest {
-    const SIGNING_KEY_SID = 'SK123';
+    public const SIGNING_KEY_SID = 'SK123';
 
-    const ACCOUNT_SID = 'AC123';
+    public const ACCOUNT_SID = 'AC123';
 
-    protected function validateClaims($payload) {
+    protected function validateClaims($payload): void {
         $this->assertEquals(self::SIGNING_KEY_SID, $payload->iss);
         $this->assertEquals(self::ACCOUNT_SID, $payload->sub);
 
@@ -30,7 +30,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertNotNull($payload->grants);
     }
 
-    public function testEmptyGrants() {
+    public function testEmptyGrants(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $token = $scat->toJWT();
         $this->assertNotNull($token);
@@ -40,7 +40,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('{}', \json_encode($payload->grants));
     }
 
-    public function testNbf() {
+    public function testNbf(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
 
         $now = \time();
@@ -55,7 +55,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
 
-    public function testChatGrant() {
+    public function testChatGrant(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new ChatGrant();
         $grant->setEndpointId('EP123');
@@ -74,7 +74,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('IS123', $grants['chat']['service_sid']);
     }
 
-    public function testSyncGrant() {
+    public function testSyncGrant(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new SyncGrant();
         $grant->setEndpointId('EP123');
@@ -93,7 +93,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('IS123', $grants['data_sync']['service_sid']);
     }
 
-    public function testVideoGrant() {
+    public function testVideoGrant(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new VideoGrant();
         $grant->setRoom('RM123');
@@ -110,7 +110,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('RM123', $grants['video']['room']);
     }
 
-    public function testGrants() {
+    public function testGrants(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
         $scat->addGrant(new VideoGrant());
@@ -129,13 +129,13 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('{}', \json_encode($payload->grants->task_router));
     }
 
-    public function testVoiceGrant() {
+    public function testVoiceGrant(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
 
         $pvg = new VoiceGrant();
         $pvg->setIncomingAllow(true);
-        $pvg->setOutgoingApplication('AP123', array('foo' => 'bar'));
+        $pvg->setOutgoingApplication('AP123', ['foo' => 'bar']);
 
         $scat->addGrant($pvg);
 
@@ -160,7 +160,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('bar', $params['foo']);
     }
 
-    public function testTaskRouterGrant() {
+    public function testTaskRouterGrant(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new TaskRouterGrant();
         $grant->setWorkspaceSid('WS123');
@@ -181,7 +181,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('worker', $grants['task_router']['role']);
     }
 
-    public function testCustomClaims() {
+    public function testCustomClaims(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->addClaim('find', 'me');
         $scat->addClaim('sub', 'redefined');

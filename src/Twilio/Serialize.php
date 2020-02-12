@@ -4,25 +4,25 @@ namespace Twilio;
 
 class Serialize {
 
-    private static function flatten($map, $result = array(), $previous = array()) {
+    private static function flatten($map, $result = [], $previous = []): array {
         foreach ($map as $key => $value) {
             if (\is_array($value)) {
-                $result = self::flatten($value, $result, \array_merge($previous, array($key)));
+                $result = self::flatten($value, $result, \array_merge($previous, [$key]));
             } else {
-                $result[\implode('.', \array_merge($previous, array($key)))] = $value;
+                $result[\implode('.', \array_merge($previous, [$key]))] = $value;
             }
         }
 
         return $result;
     }
 
-    public static function prefixedCollapsibleMap($map, $prefix) {
+    public static function prefixedCollapsibleMap($map, $prefix): array {
         if ($map === null || $map === \Twilio\Values::NONE) {
-            return array();
+            return [];
         }
 
         $flattened = self::flatten($map);
-        $result = array();
+        $result = [];
         foreach ($flattened as $key => $value) {
             $result[$prefix . '.' . $key] = $value;
         }
@@ -30,7 +30,7 @@ class Serialize {
         return $result;
     }
 
-    public static function iso8601Date($dateTime) {
+    public static function iso8601Date($dateTime): string {
         if ($dateTime === null || $dateTime === \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
         }
@@ -44,7 +44,7 @@ class Serialize {
         return $utcDate->format('Y-m-d');
     }
 
-    public static function iso8601DateTime($dateTime) {
+    public static function iso8601DateTime($dateTime): string {
         if ($dateTime === null || $dateTime === \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
         }

@@ -8,24 +8,24 @@ use Twilio\Values;
 
 class ValuesTest extends UnitTest {
 
-    public function testDirectKeyAccess() {
-        $values = new Values(array(
+    public function testDirectKeyAccess(): void {
+        $values = new Values([
             'a' => 1,
             'b' => 2,
             'c' => 3,
-        ));
+        ]);
 
         $this->assertEquals(1, $values['a']);
         $this->assertEquals(2, $values['b']);
         $this->assertEquals(3, $values['c']);
     }
 
-    public function testCaseInsensitiveAccess() {
-        $values = new Values(array(
+    public function testCaseInsensitiveAccess(): void {
+        $values = new Values([
             'lowercase' => 1,
             'UPPERCASE' => 2,
             'MixedCase' => 3,
-        ));
+        ]);
 
         $this->assertEquals(1, $values['lowercase']);
         $this->assertEquals(1, $values['LOWERCASE']);
@@ -40,25 +40,25 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(3, $values['MixedCase']);
     }
 
-    public function testUnknownKeySentinel() {
-        $values = new Values(array(
+    public function testUnknownKeySentinel(): void {
+        $values = new Values([
             'known' => 1,
-        ));
+        ]);
 
         $this->assertEquals(1, $values['known']);
         $this->assertEquals(Values::NONE, $values['unknown']);
     }
 
-    public function testUnknownValuesRemoved() {
-        $values = new Values(array(
+    public function testUnknownValuesRemoved(): void {
+        $values = new Values([
             'known' => 1,
-        ));
+        ]);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Known' => $values['known'],
             'Unknown' => $values['unknown'],
-        ));
+        ]);
 
-        $this->assertEquals(array('Known' => 1), $data);
+        $this->assertEquals(['Known' => 1], $data);
     }
 }

@@ -9,15 +9,13 @@ use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Request;
 use Twilio\Exceptions\HttpException;
 
-final class GuzzleClient implements Client
-{
+final class GuzzleClient implements Client {
     /**
      * @var ClientInterface
      */
     private $client;
 
-    public function __construct(ClientInterface $client)
-    {
+    public function __construct(ClientInterface $client) {
         $this->client = $client;
     }
 
@@ -30,7 +28,7 @@ final class GuzzleClient implements Client
         $user = null,
         $password = null,
         $timeout = null
-    ) {
+    ): Response {
         try {
             $options = [
                 'timeout' => $timeout,
@@ -50,6 +48,6 @@ final class GuzzleClient implements Client
         }
         // Casting the body (stream) to a string performs a rewind, ensuring we return the entire response.
         // See https://stackoverflow.com/a/30549372/86696
-        return new Response($response->getStatusCode(), (string) $response->getBody(), $response->getHeaders());
+        return new Response($response->getStatusCode(), (string)$response->getBody(), $response->getHeaders());
     }
 }

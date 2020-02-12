@@ -5,9 +5,9 @@ namespace Twilio;
 
 
 abstract class Options implements \IteratorAggregate {
-    protected $options = array();
+    protected $options = [];
 
-    public function getIterator() {
+    public function getIterator(): \Traversable {
         return new \ArrayIterator($this->options);
     }
 }
