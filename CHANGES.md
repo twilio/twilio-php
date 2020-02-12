@@ -1,6 +1,74 @@
 twilio-php Changelog
 ====================
 
+[2020-02-05] Version 5.42.2
+---------------------------
+**Library - Fix**
+- [PR #599](https://github.com/twilio/twilio-php/pull/599): handle '200 Tunnel established header'. Thanks to [@alimohammad1995](https://github.com/alimohammad1995)!
+
+**Api**
+- Making content retention and address retention public
+- Update `status` enum for Messages to include 'partially_delivered'
+
+**Authy**
+- Added support for push factors
+
+**Autopilot**
+- Add one new property in Query i.e dialogue_sid
+
+**Verify**
+- Add `SendCodeAttempts` to create verification response.
+
+**Video**
+- Clarification in composition creation documentation: one source is mandatory, either `audio_sources` or `video_layout`, but on of them has to be provided
+
+**Twiml**
+- Add Polly Neural voices.
+
+
+[2020-01-22] Version 5.42.1
+---------------------------
+**Library - Docs**
+- [PR #597](https://github.com/twilio/twilio-php/pull/597): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add payments public APIs
+- Add optional parameter `byoc` to call create request.
+
+**Flex**
+- Updating a Flex Flow `creation_on_message` parameter documentation
+
+**Preview**
+-
+- Removed Verify v2 from preview in favor of its own namespace as GA **(breaking change)**
+
+**Studio**
+- Flow definition type update from string to object
+
+**Verify**
+- Add `AppHash` parameter when creating a Verification.
+- Add `DoNotShareWarningEnabled` parameter to the Service resource.
+
+**Twiml**
+- Add `track` attribute to siprec noun.
+- Add attribute `byoc` to `<Number>`
+
+
+[2020-01-08] Version 5.42.0
+---------------------------
+**Library - Chore**
+- [PR #594](https://github.com/twilio/twilio-php/pull/594): remove deprecated code. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Numbers**
+- Add Regulatory Compliance CRUD APIs
+
+**Studio**
+- Add parameter validation for Studio v2 Flows API
+
+**Twiml**
+- Add support for `speech_model` to `Gather` verb
+
+
 [2019-12-18] Version 5.41.1
 ---------------------------
 **Preview**

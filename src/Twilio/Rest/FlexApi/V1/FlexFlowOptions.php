@@ -259,7 +259,7 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel.
+     * Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.
      *
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
@@ -282,7 +282,7 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * Boolean flag for enabling or disabling the Janitor
+     * Boolean flag for enabling or disabling the Janitor.
      *
      * @param bool $janitorEnabled Boolean flag for enabling or disabling the
      *                             Janitor
@@ -508,7 +508,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel.
+     * Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.
      *
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
@@ -531,7 +531,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * Boolean flag for enabling or disabling the Janitor
+     * Boolean flag for enabling or disabling the Janitor.
      *
      * @param bool $janitorEnabled Boolean flag for enabling or disabling the
      *                             Janitor

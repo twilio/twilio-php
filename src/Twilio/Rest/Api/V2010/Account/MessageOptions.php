@@ -29,13 +29,17 @@ abstract class MessageOptions {
      * @param int $validityPeriod The number of seconds that the message can remain
      *                            in our outgoing queue.
      * @param bool $forceDelivery Reserved
+     * @param string $contentRetention Determines if the message content can be
+     *                                 stored or redacted based on privacy settings
+     * @param string $addressRetention Determines if the address can be stored or
+     *                                 obfuscated based on privacy settings
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
      * @param string $persistentAction Rich actions for Channels Messages.
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $persistentAction = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $smartEncoded, $persistentAction);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $persistentAction = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction);
     }
 
     /**
@@ -68,11 +72,15 @@ class CreateMessageOptions extends Options {
      * @param int $validityPeriod The number of seconds that the message can remain
      *                            in our outgoing queue.
      * @param bool $forceDelivery Reserved
+     * @param string $contentRetention Determines if the message content can be
+     *                                 stored or redacted based on privacy settings
+     * @param string $addressRetention Determines if the address can be stored or
+     *                                 obfuscated based on privacy settings
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
      * @param string $persistentAction Rich actions for Channels Messages.
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $persistentAction = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $persistentAction = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -83,6 +91,8 @@ class CreateMessageOptions extends Options {
         $this->options['provideFeedback'] = $provideFeedback;
         $this->options['validityPeriod'] = $validityPeriod;
         $this->options['forceDelivery'] = $forceDelivery;
+        $this->options['contentRetention'] = $contentRetention;
+        $this->options['addressRetention'] = $addressRetention;
         $this->options['smartEncoded'] = $smartEncoded;
         $this->options['persistentAction'] = $persistentAction;
     }
@@ -199,6 +209,30 @@ class CreateMessageOptions extends Options {
      */
     public function setForceDelivery($forceDelivery) {
         $this->options['forceDelivery'] = $forceDelivery;
+        return $this;
+    }
+
+    /**
+     * Determines if the message content can be stored or redacted based on privacy settings
+     *
+     * @param string $contentRetention Determines if the message content can be
+     *                                 stored or redacted based on privacy settings
+     * @return $this Fluent Builder
+     */
+    public function setContentRetention($contentRetention) {
+        $this->options['contentRetention'] = $contentRetention;
+        return $this;
+    }
+
+    /**
+     * Determines if the address can be stored or obfuscated based on privacy settings
+     *
+     * @param string $addressRetention Determines if the address can be stored or
+     *                                 obfuscated based on privacy settings
+     * @return $this Fluent Builder
+     */
+    public function setAddressRetention($addressRetention) {
+        $this->options['addressRetention'] = $addressRetention;
         return $this;
     }
 

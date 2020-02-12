@@ -11,6 +11,7 @@ namespace Twilio\Rest\Serverless\V1\Service\Environment;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -98,6 +99,8 @@ class LogList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'FunctionSid' => $options['functionSid'],
+            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
+            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

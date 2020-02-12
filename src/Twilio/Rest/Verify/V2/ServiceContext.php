@@ -97,6 +97,7 @@ class ServiceContext extends InstanceContext {
             'DtmfInputRequired' => Serialize::booleanToString($options['dtmfInputRequired']),
             'TtsName' => $options['ttsName'],
             'Psd2Enabled' => Serialize::booleanToString($options['psd2Enabled']),
+            'DoNotShareWarningEnabled' => Serialize::booleanToString($options['doNotShareWarningEnabled']),
         ));
 
         $payload = $this->version->update(

@@ -50,4 +50,14 @@ class Siprec extends TwiML {
     public function setConnectorName($connectorName) {
         return $this->setAttribute('connectorName', $connectorName);
     }
+
+    /**
+     * Add Track attribute.
+     *
+     * @param string $track Track to be streamed to remote service
+     * @return static $this.
+     */
+    public function setTrack($track) {
+        return $this->setAttribute('track', $track);
+    }
 }

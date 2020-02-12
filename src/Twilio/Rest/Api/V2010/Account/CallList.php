@@ -80,6 +80,7 @@ class CallList extends ListResource {
             'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
             'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
             'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
+            'Byoc' => $options['byoc'],
         ));
 
         $payload = $this->version->create(

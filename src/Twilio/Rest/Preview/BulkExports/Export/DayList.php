@@ -21,7 +21,7 @@ class DayList extends ListResource {
      * Construct the DayList
      *
      * @param Version $version Version that contains the resource
-     * @param string $resourceType The resource_type
+     * @param string $resourceType The type of communication – Messages, Calls
      * @return \Twilio\Rest\Preview\BulkExports\Export\DayList
      */
     public function __construct(Version $version, $resourceType) {
