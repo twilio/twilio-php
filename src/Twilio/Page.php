@@ -182,7 +182,7 @@ abstract class Page implements \Iterator {
         return $this->version;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         return '[Page]';
     }
 

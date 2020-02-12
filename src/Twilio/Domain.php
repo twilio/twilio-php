@@ -75,7 +75,7 @@ abstract class Domain {
         return $this->client;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         return '[Domain]';
     }
 }

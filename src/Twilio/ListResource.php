@@ -13,7 +13,7 @@ class ListResource {
         $this->version = $version;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         return '[ListResource]';
     }
 }

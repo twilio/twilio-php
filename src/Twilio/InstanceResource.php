@@ -18,7 +18,7 @@ class InstanceResource {
         return $this->properties;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         return '[InstanceResource]';
     }
 }
