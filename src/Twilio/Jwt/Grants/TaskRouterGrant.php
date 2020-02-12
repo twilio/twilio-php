@@ -23,7 +23,7 @@ class TaskRouterGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setWorkspaceSid($workspaceSid): self {
+    public function setWorkspaceSid(string $workspaceSid): self {
         $this->workspaceSid = $workspaceSid;
         return $this;
     }
@@ -44,7 +44,7 @@ class TaskRouterGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setWorkerSid($workerSid): self {
+    public function setWorkerSid(string $workerSid): self {
         $this->workerSid = $workerSid;
         return $this;
     }
@@ -65,7 +65,7 @@ class TaskRouterGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setRole($role): self {
+    public function setRole(string $role): self {
         $this->role = $role;
         return $this;
     }

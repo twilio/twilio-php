@@ -5,7 +5,8 @@ namespace Twilio\Http;
 
 
 interface Client {
-    public function request($method, $url, $params = [], $data = [],
-                            $headers = [], $user = null, $password = null,
-                            $timeout = null): Response;
+    public function request(string $method, string $url,
+                            array $params = [], array $data = [], array $headers = [],
+                            string $user = null, string $password = null,
+                            int $timeout = null): Response;
 }

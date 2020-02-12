@@ -20,7 +20,7 @@ class ScopeURI {
     public $privilege;
     public $params;
 
-    public function __construct($service, $privilege, $params = []) {
+    public function __construct(string $service, string $privilege, array $params = []) {
         $this->service = $service;
         $this->privilege = $privilege;
         $this->params = $params;
@@ -41,7 +41,7 @@ class ScopeURI {
      * @return ScopeURI The parsed scope uri
      * @throws \UnexpectedValueException
      */
-    public static function parse($uri): ScopeURI {
+    public static function parse(string $uri): ScopeURI {
         if (\strpos($uri, 'scope:') !== 0) {
             throw new \UnexpectedValueException(
                 'Not a scope URI according to scheme');
@@ -61,7 +61,7 @@ class ScopeURI {
                 'Not enough parts for scope URI');
         }
 
-        list($scheme, $service, $privilege) = $parts;
+        [$scheme, $service, $privilege] = $parts;
         return new ScopeURI($service, $privilege, $params);
     }
 }

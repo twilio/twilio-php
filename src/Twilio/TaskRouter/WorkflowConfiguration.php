@@ -12,7 +12,7 @@ class WorkflowConfiguration implements \JsonSerializable {
     public $filters;
     public $default_filter;
 
-    public function __construct($filters, $default_filter = null) {
+    public function __construct(array $filters, $default_filter = null) {
         $this->filters = $filters;
         $this->default_filter = $default_filter;
     }
@@ -21,11 +21,11 @@ class WorkflowConfiguration implements \JsonSerializable {
         return \json_encode($this);
     }
 
-    public static function parse($json) {
+    public static function parse(string $json) {
         return \json_decode($json);
     }
 
-    public static function fromJson($json): WorkflowConfiguration {
+    public static function fromJson(string $json): WorkflowConfiguration {
         $configJSON = self::parse($json);
         $default_filter = $configJSON->task_routing->default_filter;
         $filters = [];

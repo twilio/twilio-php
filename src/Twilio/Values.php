@@ -9,14 +9,14 @@ class Values implements \ArrayAccess {
 
     protected $options;
 
-    public static function array_get($array, $key, $default = null) {
+    public static function array_get(array $array, string $key, string $default = null) {
         if (\array_key_exists($key, $array)) {
             return $array[$key];
         }
         return $default;
     }
 
-    public static function of($array): array {
+    public static function of(array $array): array {
         $result = [];
         foreach ($array as $key => $value) {
             if ($value === self::NONE) {
@@ -27,7 +27,7 @@ class Values implements \ArrayAccess {
         return $result;
     }
 
-    public function __construct($options) {
+    public function __construct(array $options) {
         $this->options = [];
         foreach ($options as $key => $value) {
             $this->options[\strtolower($key)] = $value;

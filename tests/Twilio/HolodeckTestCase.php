@@ -7,9 +7,9 @@ use Twilio\Tests\Unit\UnitTest;
 
 class HolodeckTestCase extends UnitTest {
     /** @var Holodeck $holodeck */
-    protected $holodeck = null;
+    protected $holodeck;
     /** @var Client $twilio */
-    protected $twilio = null;
+    protected $twilio;
 
     protected function setUp(): void {
         $this->holodeck = new Holodeck();
@@ -21,7 +21,7 @@ class HolodeckTestCase extends UnitTest {
         $this->holodeck = null;
     }
 
-    public function assertRequest($request): void {
+    public function assertRequest(Request $request): void {
         $this->holodeck->assertRequest($request);
         $this->assertTrue(true);
     }

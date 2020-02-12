@@ -14,7 +14,8 @@ class WorkerCapability extends CapabilityToken {
     private $workerReservationsUrl;
     private $activityUrl;
 
-    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null) {
+    public function __construct(string $accountSid, string $authToken, string $workspaceSid, string $workerSid,
+                                string $overrideBaseUrl = null, string $overrideBaseWSUrl = null) {
         parent::__construct($accountSid, $authToken, $workspaceSid, $workerSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
 
         $this->tasksUrl = $this->baseUrl . '/Tasks/**';

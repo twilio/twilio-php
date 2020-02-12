@@ -25,7 +25,7 @@ final class RequestValidator {
      * @param string $authToken the auth token of the Twilio user's account
      * Sets the account auth token to be used by the rest of the class
      */
-    public function __construct($authToken) {
+    public function __construct(string $authToken) {
         $this->authToken = $authToken;
     }
 
@@ -36,7 +36,7 @@ final class RequestValidator {
      * @param array $data the Twilio parameters the request was made with
      * @return string
      */
-    public function computeSignature($url, $data = []): string {
+    public function computeSignature(string $url, array $data = []): string {
         // sort the array by keys
         \ksort($data);
 
@@ -56,7 +56,7 @@ final class RequestValidator {
      * @param string $data
      * @return string
      */
-    public static function computeBodyHash($data = ''): string {
+    public static function computeBodyHash(string $data = ''): string {
         return \bin2hex(\hash('sha256', $data, true));
     }
 
@@ -65,10 +65,10 @@ final class RequestValidator {
      *
      * @param string $expectedSignature
      * @param string $url
-     * @param array $data
+     * @param array|string $data
      * @return bool
      */
-    public function validate($expectedSignature, $url, $data = []): bool {
+    public function validate(string $expectedSignature, string $url, $data = []): bool {
         $parsedUrl = \parse_url($url);
 
         $urlWithPort = self::addPort($parsedUrl);
@@ -109,7 +109,7 @@ final class RequestValidator {
      * @param string $b Second part of the comparison pair
      * @return bool True if $a === $b, false otherwise.
      */
-    public static function compare($a, $b): bool {
+    public static function compare(?string $a, ?string $b): bool {
         // if the strings are different lengths, obviously they're invalid
         if (\strlen($a) !== \strlen($b)) {
             return false;
@@ -138,7 +138,7 @@ final class RequestValidator {
      * @param array $parsedUrl
      * @return string Full URL without the port number
      */
-    private static function removePort($parsedUrl): string {
+    private static function removePort(array $parsedUrl): string {
         unset($parsedUrl['port']);
         return self::buildUrl($parsedUrl);
     }
@@ -149,7 +149,7 @@ final class RequestValidator {
      * @param array $parsedUrl
      * @return string Full URL with the port number
      */
-    private static function addPort($parsedUrl): string {
+    private static function addPort(array $parsedUrl): string {
         if (!isset($parsedUrl['port'])) {
             $port = ($parsedUrl['scheme'] === 'https') ? 443 : 80;
             $parsedUrl['port'] = $port;
@@ -163,7 +163,7 @@ final class RequestValidator {
      * @param array $parsedUrl
      * @return string Full URL
      */
-    private static function buildUrl($parsedUrl): string {
+    private static function buildUrl(array $parsedUrl): string {
         $parts = [];
 
         $parts['scheme'] = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : '';

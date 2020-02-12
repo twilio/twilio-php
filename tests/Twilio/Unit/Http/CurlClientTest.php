@@ -52,7 +52,7 @@ class CurlClientTest extends UnitTest {
      * @param string $expected Expected query string
      * @dataProvider buildQueryProvider
      */
-    public function testBuildQuery($message, $params, $expected): void {
+    public function testBuildQuery(string $message, ?array $params, string $expected): void {
         $client = new CurlClient();
         $actual = $client->buildQuery($params);
         $this->assertEquals($expected, $actual, $message);
@@ -132,7 +132,7 @@ class CurlClientTest extends UnitTest {
      * @dataProvider queryStringProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testQueryString($method, $params, $expected): void {
+    public function testQueryString(string $method, array $params, string $expected): void {
         $client = new CurlClient();
 
         $actual = $client->options($method, 'url', $params);
@@ -166,13 +166,13 @@ class CurlClientTest extends UnitTest {
     }
 
     /**
-     * @param mixed[] $params Parameters to post
-     * @param mixed[] $data Data to post
+     * @param array|string $params Parameters to post
+     * @param array|string $data Data to post
      * @param string $expected Expected POSTFIELDS
      * @dataProvider postFieldsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testPostFields($params, $data, $expected): void {
+    public function testPostFields($params, $data, string $expected): void {
         $client = new CurlClient();
 
         $actual = $client->options('POST', 'url', $params, $data);
@@ -206,11 +206,6 @@ class CurlClientTest extends UnitTest {
                 ],
                 'a=z&b=7&c=1&c=2&c=3',
             ],
-            [
-                '',
-                'a=x&b=z',
-                'a=x&b=z',
-            ],
         ];
     }
 
@@ -229,7 +224,7 @@ class CurlClientTest extends UnitTest {
      * @dataProvider userInjectedOptionsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testUserInjectedOptions($message, $options, $expected): void {
+    public function testUserInjectedOptions(string $message, array $options, array $expected): void {
         $client = new CurlClient($options);
         $actual = $client->options(
             'GET',

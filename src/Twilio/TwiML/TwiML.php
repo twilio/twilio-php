@@ -23,7 +23,7 @@ abstract class TwiML {
      * @param string $value XML value
      * @param array $attributes XML attributes
      */
-    public function __construct($name, $value = null, $attributes = []) {
+    public function __construct(string $name, string $value = null, array $attributes = []) {
         $this->name = $name;
         $this->attributes = $attributes;
         $this->children = [];
@@ -50,7 +50,7 @@ abstract class TwiML {
      * @param TwiML $twiml TwiML element to add
      * @return TwiML added TwiML element
      */
-    public function nest($twiml): TwiML {
+    public function nest(TwiML $twiml): TwiML {
         $this->children[] = $twiml;
         return $twiml;
     }
@@ -62,7 +62,7 @@ abstract class TwiML {
      * @param string $value value of attribute
      * @return static $this
      */
-    public function setAttribute($key, $value): TwiML {
+    public function setAttribute(string $key, string $value): TwiML {
         $this->attributes[$key] = $value;
         return $this;
     }
@@ -73,7 +73,7 @@ abstract class TwiML {
      * @param array $attributes XML attributes
      * @return TwiML
      */
-    public function addChild($name, $value = null, $attributes = []): TwiML {
+    public function addChild(string $name, string $value = null, array $attributes = []): TwiML {
         return $this->nest(new GenericNode($name, $value, $attributes));
     }
 
@@ -102,7 +102,7 @@ abstract class TwiML {
      * @param DOMDocument $document XML document for the element
      * @return DOMElement $element
      */
-    private function buildElement($twiml, $document): DOMElement {
+    private function buildElement(TwiML $twiml, DOMDocument $document): DOMElement {
         $element = $document->createElement($twiml->name);
 
         foreach ($twiml->attributes as $name => $value) {

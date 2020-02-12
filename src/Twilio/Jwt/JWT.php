@@ -19,7 +19,7 @@ class JWT {
      * @throws \DomainException
      * @throws \UnexpectedValueException
      */
-    public static function decode($jwt, $key = null, $verify = true) {
+    public static function decode(string $jwt, string $key = null, bool $verify = true) {
         $tks = \explode('.', $jwt);
         if (\count($tks) !== 3) {
             throw new \UnexpectedValueException('Wrong number of segments');
@@ -53,7 +53,7 @@ class JWT {
      *
      * @return string A JWT
      */
-    public static function encode($payload, $key, $algo = 'HS256', $additionalHeaders = []): string {
+    public static function encode($payload, string $key, string $algo = 'HS256', array $additionalHeaders = []): string {
         $header = ['typ' => 'JWT', 'alg' => $algo];
         $header += $additionalHeaders;
 
@@ -75,7 +75,7 @@ class JWT {
      * @return string An encrypted message
      * @throws \DomainException
      */
-    public static function sign($msg, $key, $method = 'HS256'): string {
+    public static function sign(string $msg, string $key, string $method = 'HS256'): string {
         $methods = [
             'HS256' => 'sha256',
             'HS384' => 'sha384',
@@ -92,7 +92,7 @@ class JWT {
      * @return object Object representation of JSON string
      * @throws \DomainException
      */
-    public static function jsonDecode($input) {
+    public static function jsonDecode(string $input) {
         $obj = \json_decode($input);
         if (\function_exists('json_last_error') && $errno = \json_last_error()) {
             self::handleJsonError($errno);
@@ -122,7 +122,7 @@ class JWT {
      *
      * @return string A decoded string
      */
-    public static function urlsafeB64Decode($input): string {
+    public static function urlsafeB64Decode(string $input): string {
         $padLen = 4 - \strlen($input) % 4;
         $input .= \str_repeat('=', $padLen);
         return \base64_decode(\strtr($input, '-_', '+/'));
@@ -133,7 +133,7 @@ class JWT {
      *
      * @return string The base64 encode of what you passed in
      */
-    public static function urlsafeB64Encode($input): string {
+    public static function urlsafeB64Encode(string $input): string {
         return \str_replace('=', '', \strtr(\base64_encode($input), '+/', '-_'));
     }
 
@@ -142,7 +142,7 @@ class JWT {
      *
      * @throws \DomainException
      */
-    private static function handleJsonError($errno): void {
+    private static function handleJsonError(int $errno): void {
         $messages = [
             JSON_ERROR_DEPTH => 'Maximum stack depth exceeded',
             JSON_ERROR_CTRL_CHAR => 'Unexpected control character found',

@@ -19,9 +19,10 @@ class CurlClient implements Client {
         $this->debugHttp = \getenv('DEBUG_HTTP_TRAFFIC') === 'true';
     }
 
-    public function request($method, $url, $params = [], $data = [],
-                            $headers = [], $user = null, $password = null,
-                            $timeout = null): Response {
+    public function request(string $method, string $url,
+                            array $params = [], array $data = [], array $headers = [],
+                            string $user = null, string $password = null,
+                            int $timeout = null): Response {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
@@ -54,7 +55,7 @@ class CurlClient implements Client {
             if ($this->debugHttp) {
                 $u = \parse_url($url);
                 $hdrLine = $method . ' ' . $u['path'];
-                if (isset($u['query']) && \strlen($u['query']) > 0 ) {
+                if (isset($u['query']) && \strlen($u['query']) > 0) {
                     $hdrLine = $hdrLine . '?' . $u['query'];
                 }
                 \error_log($hdrLine);
@@ -105,9 +106,10 @@ class CurlClient implements Client {
         }
     }
 
-    public function options($method, $url, $params = [], $data = [],
-                            $headers = [], $user = null, $password = null,
-                            $timeout = null): array {
+    public function options(string $method, string $url,
+                            array $params = [], array $data = [], array $headers = [],
+                            string $user = null, string $password = null,
+                            int $timeout = null): array {
         $timeout = $timeout ?? self::DEFAULT_TIMEOUT;
         $options = $this->curlOptions + [
             CURLOPT_URL => $url,
@@ -164,13 +166,8 @@ class CurlClient implements Client {
         return $options;
     }
 
-    public function buildQuery($params): string {
+    public function buildQuery(?array $params): string {
         $parts = [];
-
-        if (\is_string($params)) {
-            return $params;
-        }
-
         $params = $params ?: [];
 
         foreach ($params as $key => $value) {

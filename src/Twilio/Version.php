@@ -10,7 +10,7 @@ abstract class Version {
     /**
      * @const int MAX_PAGE_SIZE largest page the Twilio API will return
      */
-    const MAX_PAGE_SIZE = 1000;
+    public const MAX_PAGE_SIZE = 1000;
 
     /**
      * @var Domain $domain
@@ -35,7 +35,7 @@ abstract class Version {
      * @param string $uri Version relative uri
      * @return string Absolute URL
      */
-    public function absoluteUrl($uri): string {
+    public function absoluteUrl(string $uri): string {
         return $this->getDomain()->absoluteUrl($this->relativeUri($uri));
     }
 
@@ -44,13 +44,14 @@ abstract class Version {
      * @param string $uri Version relative uri
      * @return string Domain relative uri
      */
-    public function relativeUri($uri): string {
+    public function relativeUri(string $uri): string {
         return \trim($this->version, '/') . '/' . \trim($uri, '/');
     }
 
-    public function request($method, $uri, $params = [], $data = [],
-                            $headers = [], $username = null,
-                            $password = null, $timeout = null): Response {
+    public function request(string $method, string $uri,
+                            array $params = [], array $data = [], array $headers = [],
+                            string $username = null, string $password = null,
+                            int $timeout = null): Response {
         $uri = $this->relativeUri($uri);
         return $this->getDomain()->request(
             $method,
@@ -75,7 +76,7 @@ abstract class Version {
      * @param string $header Header for exception message
      * @return TwilioException
      */
-    protected function exception($response, $header): TwilioException {
+    protected function exception(Response $response, string $header): TwilioException {
         $message = '[HTTP ' . $response->getStatusCode() . '] ' . $header;
 
         $content = $response->getContent();
@@ -91,9 +92,10 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
-    public function fetch($method, $uri, $params = [], $data = [],
-                          $headers = [], $username = null,
-                          $password = null, $timeout = null) {
+    public function fetch(string $method, string $uri,
+                          array $params = [], array $data = [], array $headers = [],
+                          string $username = null, string $password = null,
+                          int $timeout = null) {
         $response = $this->request(
             $method,
             $uri,
@@ -115,9 +117,10 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
-    public function update($method, $uri, $params = [], $data = [],
-                           $headers = [], $username = null,
-                           $password = null, $timeout = null) {
+    public function update(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           string $username = null, string $password = null,
+                           int $timeout = null) {
         $response = $this->request(
             $method,
             $uri,
@@ -139,9 +142,10 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
-    public function delete($method, $uri, $params = [], $data = [],
-                           $headers = [], $username = null,
-                           $password = null, $timeout = null): bool {
+    public function delete(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           string $username = null, string $password = null,
+                           int $timeout = null): bool {
         $response = $this->request(
             $method,
             $uri,
@@ -160,7 +164,7 @@ abstract class Version {
         return $response->getStatusCode() === 204;
     }
 
-    public function readLimits($limit = null, $pageSize = null): array {
+    public function readLimits(int $limit = null, int $pageSize = null): array {
         $pageLimit = Values::NONE;
 
         if ($limit) {
@@ -179,9 +183,10 @@ abstract class Version {
         ];
     }
 
-    public function page($method, $uri, $params = [], $data = [],
-                         $headers = [], $username = null,
-                         $password = null, $timeout = null): Response {
+    public function page(string $method, string $uri,
+                         array $params = [], array $data = [], array $headers = [],
+                         string $username = null, string $password = null,
+                         int $timeout = null): Response {
         return $this->request(
             $method,
             $uri,
@@ -194,16 +199,17 @@ abstract class Version {
         );
     }
 
-    public function stream($page, $limit = null, $pageLimit = null): Stream {
+    public function stream(Page $page, $limit = null, $pageLimit = null): Stream {
         return new Stream($page, $limit, $pageLimit);
     }
 
     /**
      * @throws TwilioException
      */
-    public function create($method, $uri, $params = [], $data = [],
-                           $headers = [], $username = null,
-                           $password = null, $timeout = null) {
+    public function create(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           string $username = null, string $password = null,
+                           int $timeout = null) {
         $response = $this->request(
             $method,
             $uri,
