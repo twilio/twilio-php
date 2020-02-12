@@ -19,7 +19,7 @@ abstract class AwsOptions {
      *                           associated with.
      * @return CreateAwsOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $accountSid = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $accountSid = Values::NONE): CreateAwsOptions {
         return new CreateAwsOptions($friendlyName, $accountSid);
     }
 
@@ -27,7 +27,7 @@ abstract class AwsOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdateAwsOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE): UpdateAwsOptions {
         return new UpdateAwsOptions($friendlyName);
     }
 }
@@ -49,7 +49,7 @@ class CreateAwsOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -61,7 +61,7 @@ class CreateAwsOptions extends Options {
      *                           associated with.
      * @return $this Fluent Builder
      */
-    public function setAccountSid($accountSid) {
+    public function setAccountSid($accountSid): self {
         $this->options['accountSid'] = $accountSid;
         return $this;
     }
@@ -71,10 +71,10 @@ class CreateAwsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -96,7 +96,7 @@ class UpdateAwsOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -106,10 +106,10 @@ class UpdateAwsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

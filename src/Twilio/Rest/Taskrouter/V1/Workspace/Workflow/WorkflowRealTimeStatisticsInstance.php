@@ -30,20 +30,19 @@ class WorkflowRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkflowRealTimeStatisticsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Workflow.
      * @param string $workflowSid Returns the list of Tasks that are being
      *                            controlled by the Workflow with the specified SID
      *                            value
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workflowSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'longestTaskWaitingAge' => Values::array_get($payload, 'longest_task_waiting_age'),
             'longestTaskWaitingSid' => Values::array_get($payload, 'longest_task_waiting_sid'),
@@ -53,19 +52,19 @@ class WorkflowRealTimeStatisticsInstance extends InstanceResource {
             'workflowSid' => Values::array_get($payload, 'workflow_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsContext Context for this
-     *                                                                                         WorkflowRealTimeStatisticsInstance
+     * @return WorkflowRealTimeStatisticsContext Context for this
+     *                                           WorkflowRealTimeStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy(): WorkflowRealTimeStatisticsContext {
         if (!$this->context) {
             $this->context = new WorkflowRealTimeStatisticsContext(
                 $this->version,
@@ -85,7 +84,7 @@ class WorkflowRealTimeStatisticsInstance extends InstanceResource {
      *                                            WorkflowRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkflowRealTimeStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -114,8 +113,8 @@ class WorkflowRealTimeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

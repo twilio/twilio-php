@@ -22,17 +22,16 @@ class InstalledAddOnExtensionContext extends InstanceContext {
     /**
      * Initialize the InstalledAddOnExtensionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $installedAddOnSid The SID of the InstalledAddOn resource with
      *                                  the extension to fetch
      * @param string $sid The SID of the InstalledAddOn Extension resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext
      */
     public function __construct(Version $version, $installedAddOnSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('installedAddOnSid' => $installedAddOnSid, 'sid' => $sid, );
+        $this->solution = ['installedAddOnSid' => $installedAddOnSid, 'sid' => $sid, ];
 
         $this->uri = '/InstalledAddOns/' . \rawurlencode($installedAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '';
     }
@@ -44,8 +43,8 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): InstalledAddOnExtensionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -69,13 +68,13 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($enabled) {
-        $data = Values::of(array('Enabled' => Serialize::booleanToString($enabled), ));
+    public function update($enabled): InstalledAddOnExtensionInstance {
+        $data = Values::of(['Enabled' => Serialize::booleanToString($enabled), ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -92,8 +91,8 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

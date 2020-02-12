@@ -18,21 +18,18 @@ class WorkspaceCumulativeStatisticsList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
     }
 
     /**
      * Constructs a WorkspaceCumulativeStatisticsContext
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsContext
      */
-    public function getContext() {
+    public function getContext(): WorkspaceCumulativeStatisticsContext {
         return new WorkspaceCumulativeStatisticsContext($this->version, $this->solution['workspaceSid']);
     }
 
@@ -41,7 +38,7 @@ class WorkspaceCumulativeStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.WorkspaceCumulativeStatisticsList]';
     }
 }

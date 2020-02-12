@@ -17,19 +17,19 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class FlowValidateTest extends HolodeckTestCase {
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->studio->v2->flowValid->update("friendly_name", "draft", array());
+            $this->twilio->studio->v2->flowValid->update("friendly_name", "draft", []);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
+        $values = [
             'FriendlyName' => "friendly_name",
             'Status' => "draft",
-            'Definition' => Serialize::jsonObject(array()),
-        );
+            'Definition' => Serialize::jsonObject([]),
+        ];
 
         $this->assertRequest(new Request(
             'post',
@@ -39,7 +39,7 @@ class FlowValidateTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -49,7 +49,7 @@ class FlowValidateTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->studio->v2->flowValid->update("friendly_name", "draft", array());
+        $actual = $this->twilio->studio->v2->flowValid->update("friendly_name", "draft", []);
 
         $this->assertNotNull($actual);
     }

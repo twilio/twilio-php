@@ -20,22 +20,20 @@ class JobList extends ListResource {
      * Construct the JobList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\BulkExports\Export\JobList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a JobContext
      *
      * @param string $jobSid The job_sid
-     * @return \Twilio\Rest\Preview\BulkExports\Export\JobContext
      */
-    public function getContext($jobSid) {
+    public function getContext($jobSid): JobContext {
         return new JobContext($this->version, $jobSid);
     }
 
@@ -44,7 +42,7 @@ class JobList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.BulkExports.JobList]';
     }
 }

@@ -23,7 +23,7 @@ abstract class CertificateOptions {
      *                          authenticated.
      * @return CreateCertificateOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $deviceSid = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $deviceSid = Values::NONE): CreateCertificateOptions {
         return new CreateCertificateOptions($friendlyName, $deviceSid);
     }
 
@@ -32,7 +32,7 @@ abstract class CertificateOptions {
      *                          Device.
      * @return ReadCertificateOptions Options builder
      */
-    public static function read($deviceSid = Values::NONE) {
+    public static function read($deviceSid = Values::NONE): ReadCertificateOptions {
         return new ReadCertificateOptions($deviceSid);
     }
 
@@ -43,7 +43,7 @@ abstract class CertificateOptions {
      *                          authenticated.
      * @return UpdateCertificateOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $deviceSid = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $deviceSid = Values::NONE): UpdateCertificateOptions {
         return new UpdateCertificateOptions($friendlyName, $deviceSid);
     }
 }
@@ -67,7 +67,7 @@ class CreateCertificateOptions extends Options {
      *                             Certificate.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -79,7 +79,7 @@ class CreateCertificateOptions extends Options {
      *                          authenticated.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid($deviceSid) {
+    public function setDeviceSid($deviceSid): self {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -89,10 +89,10 @@ class CreateCertificateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -116,7 +116,7 @@ class ReadCertificateOptions extends Options {
      *                          Device.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid($deviceSid) {
+    public function setDeviceSid($deviceSid): self {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -126,10 +126,10 @@ class ReadCertificateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -156,7 +156,7 @@ class UpdateCertificateOptions extends Options {
      *                             Certificate.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -168,7 +168,7 @@ class UpdateCertificateOptions extends Options {
      *                          authenticated.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid($deviceSid) {
+    public function setDeviceSid($deviceSid): self {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -178,10 +178,10 @@ class UpdateCertificateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -20,15 +20,14 @@ class WorkspaceStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkspaceStatisticsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Statistics';
     }
@@ -40,16 +39,16 @@ class WorkspaceStatisticsContext extends InstanceContext {
      * @return WorkspaceStatisticsInstance Fetched WorkspaceStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkspaceStatisticsInstance {
         $options = new Values($options);
 
-        $params = Values::of(array(
+        $params = Values::of([
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'TaskChannel' => $options['taskChannel'],
             'SplitByWaitTime' => $options['splitByWaitTime'],
-        ));
+        ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -65,8 +64,8 @@ class WorkspaceStatisticsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

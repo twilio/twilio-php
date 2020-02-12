@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -20,13 +21,12 @@ class TerminatingSipDomainList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk to which we should route calls
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList
      */
     public function __construct(Version $version, $trunkSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('trunkSid' => $trunkSid, );
+        $this->solution = ['trunkSid' => $trunkSid, ];
 
         $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/TerminatingSipDomains';
     }
@@ -40,13 +40,13 @@ class TerminatingSipDomainList extends ListResource {
      *                                      TerminatingSipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($sipDomainSid) {
-        $data = Values::of(array('SipDomainSid' => $sipDomainSid, ));
+    public function create($sipDomainSid): TerminatingSipDomainInstance {
+        $data = Values::of(['SipDomainSid' => $sipDomainSid, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -70,9 +70,9 @@ class TerminatingSipDomainList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -95,7 +95,7 @@ class TerminatingSipDomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TerminatingSipDomainInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,14 +106,10 @@ class TerminatingSipDomainList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of TerminatingSipDomainInstance
+     * @return TerminatingSipDomainPage Page of TerminatingSipDomainInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TerminatingSipDomainPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -130,9 +126,9 @@ class TerminatingSipDomainList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of TerminatingSipDomainInstance
+     * @return TerminatingSipDomainPage Page of TerminatingSipDomainInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): TerminatingSipDomainPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -145,9 +141,8 @@ class TerminatingSipDomainList extends ListResource {
      * Constructs a TerminatingSipDomainContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): TerminatingSipDomainContext {
         return new TerminatingSipDomainContext($this->version, $this->solution['trunkSid'], $sid);
     }
 
@@ -156,7 +151,7 @@ class TerminatingSipDomainList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Trunking.V1.TerminatingSipDomainList]';
     }
 }

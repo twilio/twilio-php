@@ -19,15 +19,14 @@ class AwsContext extends InstanceContext {
     /**
      * Initialize the AwsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Accounts\V1\Credential\AwsContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Credentials/AWS/' . \rawurlencode($sid) . '';
     }
@@ -38,8 +37,8 @@ class AwsContext extends InstanceContext {
      * @return AwsInstance Fetched AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AwsInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -57,15 +56,15 @@ class AwsContext extends InstanceContext {
      * @return AwsInstance Updated AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): AwsInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $options['friendlyName'], ));
+        $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -75,10 +74,10 @@ class AwsContext extends InstanceContext {
     /**
      * Deletes the AwsInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -87,8 +86,8 @@ class AwsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

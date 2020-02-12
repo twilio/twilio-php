@@ -11,6 +11,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList;
 use Twilio\Values;
 use Twilio\Version;
@@ -18,26 +19,25 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList $functionVersions
+ * @property FunctionVersionList $functionVersions
  * @method \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext functionVersions(string $sid)
  */
 class FunctionContext extends InstanceContext {
-    protected $_functionVersions = null;
+    protected $_functionVersions;
 
     /**
      * Initialize the FunctionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Function
      *                           resource from
      * @param string $sid The SID of the Function resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Functions/' . \rawurlencode($sid) . '';
     }
@@ -48,8 +48,8 @@ class FunctionContext extends InstanceContext {
      * @return FunctionInstance Fetched FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FunctionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,10 +68,10 @@ class FunctionContext extends InstanceContext {
     /**
      * Deletes the FunctionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -82,13 +82,13 @@ class FunctionContext extends InstanceContext {
      * @return FunctionInstance Updated FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName, ));
+    public function update($friendlyName): FunctionInstance {
+        $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -102,10 +102,8 @@ class FunctionContext extends InstanceContext {
 
     /**
      * Access the functionVersions
-     *
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList
      */
-    protected function getFunctionVersions() {
+    protected function getFunctionVersions(): FunctionVersionList {
         if (!$this->_functionVersions) {
             $this->_functionVersions = new FunctionVersionList(
                 $this->version,
@@ -121,10 +119,10 @@ class FunctionContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -138,10 +136,10 @@ class FunctionContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -155,8 +153,8 @@ class FunctionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

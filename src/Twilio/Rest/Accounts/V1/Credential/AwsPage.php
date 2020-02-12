@@ -19,7 +19,7 @@ class AwsPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): AwsInstance {
         return new AwsInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class AwsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Accounts.V1.AwsPage]';
     }
 }

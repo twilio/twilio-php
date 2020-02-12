@@ -23,13 +23,12 @@ class BrandedCallList extends ListResource {
      * Construct the BrandedCallList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\BrandedCallList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Business/BrandedCalls';
     }
@@ -44,20 +43,20 @@ class BrandedCallList extends ListResource {
      * @return BrandedCallInstance Newly created BrandedCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($from, $to, $reason, $options = array()) {
+    public function create($from, $to, $reason, $options = []): BrandedCallInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'From' => $from,
             'To' => $to,
             'Reason' => $reason,
             'CallSid' => $options['callSid'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -69,7 +68,7 @@ class BrandedCallList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.BrandedCallList]';
     }
 }

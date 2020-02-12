@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class CountryTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class CountryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -59,7 +59,7 @@ class CountryTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -74,7 +74,7 @@ class CountryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadUsResponse() {
+    public function testReadUsResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

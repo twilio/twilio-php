@@ -31,16 +31,15 @@ class SuccessRateInstance extends InstanceResource {
     /**
      * Initialize the SuccessRateInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $businessSid A string that uniquely identifies this Business.
-     * @return \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateInstance
      */
     public function __construct(Version $version, array $payload, $businessSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'businessSid' => Values::array_get($payload, 'business_sid'),
             'end' => Deserialize::dateTime(Values::array_get($payload, 'end')),
@@ -48,19 +47,18 @@ class SuccessRateInstance extends InstanceResource {
             'reports' => Values::array_get($payload, 'reports'),
             'start' => Deserialize::dateTime(Values::array_get($payload, 'start')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('businessSid' => $businessSid, );
+        $this->solution = ['businessSid' => $businessSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateContext Context for this
-     *                                                                                SuccessRateInstance
+     * @return SuccessRateContext Context for this SuccessRateInstance
      */
-    protected function proxy() {
+    protected function proxy(): SuccessRateContext {
         if (!$this->context) {
             $this->context = new SuccessRateContext($this->version, $this->solution['businessSid']);
         }
@@ -75,7 +73,7 @@ class SuccessRateInstance extends InstanceResource {
      * @return SuccessRateInstance Fetched SuccessRateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): SuccessRateInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -104,8 +102,8 @@ class SuccessRateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

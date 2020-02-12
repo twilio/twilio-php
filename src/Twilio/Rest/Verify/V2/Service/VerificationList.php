@@ -23,13 +23,12 @@ class VerificationList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @return \Twilio\Rest\Verify\V2\Service\VerificationList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Verifications';
     }
@@ -43,10 +42,10 @@ class VerificationList extends ListResource {
      * @return VerificationInstance Newly created VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $channel, $options = array()) {
+    public function create($to, $channel, $options = []): VerificationInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'To' => $to,
             'Channel' => $channel,
             'CustomMessage' => $options['customMessage'],
@@ -58,12 +57,12 @@ class VerificationList extends ListResource {
             'RateLimits' => Serialize::jsonObject($options['rateLimits']),
             'ChannelConfiguration' => Serialize::jsonObject($options['channelConfiguration']),
             'AppHash' => $options['appHash'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -74,9 +73,8 @@ class VerificationList extends ListResource {
      * Constructs a VerificationContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Verify\V2\Service\VerificationContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): VerificationContext {
         return new VerificationContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
@@ -85,7 +83,7 @@ class VerificationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Verify.V2.VerificationList]';
     }
 }

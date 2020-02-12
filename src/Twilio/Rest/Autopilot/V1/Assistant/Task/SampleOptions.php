@@ -21,7 +21,7 @@ abstract class SampleOptions {
      *                         language used for the sample
      * @return ReadSampleOptions Options builder
      */
-    public static function read($language = Values::NONE) {
+    public static function read($language = Values::NONE): ReadSampleOptions {
         return new ReadSampleOptions($language);
     }
 
@@ -30,7 +30,7 @@ abstract class SampleOptions {
      *                              sample was captured
      * @return CreateSampleOptions Options builder
      */
-    public static function create($sourceChannel = Values::NONE) {
+    public static function create($sourceChannel = Values::NONE): CreateSampleOptions {
         return new CreateSampleOptions($sourceChannel);
     }
 
@@ -43,7 +43,7 @@ abstract class SampleOptions {
      *                              was captured
      * @return UpdateSampleOptions Options builder
      */
-    public static function update($language = Values::NONE, $taggedText = Values::NONE, $sourceChannel = Values::NONE) {
+    public static function update($language = Values::NONE, $taggedText = Values::NONE, $sourceChannel = Values::NONE): UpdateSampleOptions {
         return new UpdateSampleOptions($language, $taggedText, $sourceChannel);
     }
 }
@@ -64,7 +64,7 @@ class ReadSampleOptions extends Options {
      *                         language used for the sample
      * @return $this Fluent Builder
      */
-    public function setLanguage($language) {
+    public function setLanguage($language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -74,10 +74,10 @@ class ReadSampleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -101,7 +101,7 @@ class CreateSampleOptions extends Options {
      *                              sample was captured
      * @return $this Fluent Builder
      */
-    public function setSourceChannel($sourceChannel) {
+    public function setSourceChannel($sourceChannel): self {
         $this->options['sourceChannel'] = $sourceChannel;
         return $this;
     }
@@ -111,10 +111,10 @@ class CreateSampleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -144,7 +144,7 @@ class UpdateSampleOptions extends Options {
      *                         language used for the sample
      * @return $this Fluent Builder
      */
-    public function setLanguage($language) {
+    public function setLanguage($language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -156,7 +156,7 @@ class UpdateSampleOptions extends Options {
      *                           the task
      * @return $this Fluent Builder
      */
-    public function setTaggedText($taggedText) {
+    public function setTaggedText($taggedText): self {
         $this->options['taggedText'] = $taggedText;
         return $this;
     }
@@ -168,7 +168,7 @@ class UpdateSampleOptions extends Options {
      *                              was captured
      * @return $this Fluent Builder
      */
-    public function setSourceChannel($sourceChannel) {
+    public function setSourceChannel($sourceChannel): self {
         $this->options['sourceChannel'] = $sourceChannel;
         return $this;
     }
@@ -178,10 +178,10 @@ class UpdateSampleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

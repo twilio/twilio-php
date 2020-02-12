@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class RoomTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -30,7 +30,7 @@ class RoomTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -67,7 +67,7 @@ class RoomTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -81,7 +81,7 @@ class RoomTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -118,7 +118,7 @@ class RoomTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -132,7 +132,7 @@ class RoomTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -156,7 +156,7 @@ class RoomTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadWithStatusResponse() {
+    public function testReadWithStatusResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -206,7 +206,7 @@ class RoomTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -214,7 +214,7 @@ class RoomTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Status' => "in-progress", );
+        $values = ['Status' => "in-progress", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -224,7 +224,7 @@ class RoomTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

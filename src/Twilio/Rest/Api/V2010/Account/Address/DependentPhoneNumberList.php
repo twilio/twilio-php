@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Address;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -20,13 +21,12 @@ class DependentPhoneNumberList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $addressSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList
      */
     public function __construct(Version $version, $accountSid, $addressSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid, );
+        $this->solution = ['accountSid' => $accountSid, 'addressSid' => $addressSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Addresses/' . \rawurlencode($addressSid) . '/DependentPhoneNumbers.json';
     }
@@ -48,9 +48,9 @@ class DependentPhoneNumberList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -73,7 +73,7 @@ class DependentPhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DependentPhoneNumberInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -84,14 +84,10 @@ class DependentPhoneNumberList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of DependentPhoneNumberInstance
+     * @return DependentPhoneNumberPage Page of DependentPhoneNumberInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): DependentPhoneNumberPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -108,9 +104,9 @@ class DependentPhoneNumberList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of DependentPhoneNumberInstance
+     * @return DependentPhoneNumberPage Page of DependentPhoneNumberInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): DependentPhoneNumberPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -124,7 +120,7 @@ class DependentPhoneNumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.DependentPhoneNumberList]';
     }
 }

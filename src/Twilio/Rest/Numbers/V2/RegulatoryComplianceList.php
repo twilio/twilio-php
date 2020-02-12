@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Numbers\V2;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserList;
@@ -19,11 +20,11 @@ use Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList $bundles
- * @property \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserList $endUsers
- * @property \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeList $endUserTypes
- * @property \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentList $supportingDocuments
- * @property \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeList $supportingDocumentTypes
+ * @property BundleList $bundles
+ * @property EndUserList $endUsers
+ * @property EndUserTypeList $endUserTypes
+ * @property SupportingDocumentList $supportingDocuments
+ * @property SupportingDocumentTypeList $supportingDocumentTypes
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext bundles(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserContext endUsers(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext endUserTypes(string $sid)
@@ -41,19 +42,18 @@ class RegulatoryComplianceList extends ListResource {
      * Construct the RegulatoryComplianceList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryComplianceList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Access the bundles
      */
-    protected function getBundles() {
+    protected function getBundles(): BundleList {
         if (!$this->_bundles) {
             $this->_bundles = new BundleList($this->version);
         }
@@ -64,7 +64,7 @@ class RegulatoryComplianceList extends ListResource {
     /**
      * Access the endUsers
      */
-    protected function getEndUsers() {
+    protected function getEndUsers(): EndUserList {
         if (!$this->_endUsers) {
             $this->_endUsers = new EndUserList($this->version);
         }
@@ -75,7 +75,7 @@ class RegulatoryComplianceList extends ListResource {
     /**
      * Access the endUserTypes
      */
-    protected function getEndUserTypes() {
+    protected function getEndUserTypes(): EndUserTypeList {
         if (!$this->_endUserTypes) {
             $this->_endUserTypes = new EndUserTypeList($this->version);
         }
@@ -86,7 +86,7 @@ class RegulatoryComplianceList extends ListResource {
     /**
      * Access the supportingDocuments
      */
-    protected function getSupportingDocuments() {
+    protected function getSupportingDocuments(): SupportingDocumentList {
         if (!$this->_supportingDocuments) {
             $this->_supportingDocuments = new SupportingDocumentList($this->version);
         }
@@ -97,7 +97,7 @@ class RegulatoryComplianceList extends ListResource {
     /**
      * Access the supportingDocumentTypes
      */
-    protected function getSupportingDocumentTypes() {
+    protected function getSupportingDocumentTypes(): SupportingDocumentTypeList {
         if (!$this->_supportingDocumentTypes) {
             $this->_supportingDocumentTypes = new SupportingDocumentTypeList($this->version);
         }
@@ -126,10 +126,10 @@ class RegulatoryComplianceList extends ListResource {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -143,7 +143,7 @@ class RegulatoryComplianceList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Numbers.V2.RegulatoryComplianceList]';
     }
 }

@@ -20,7 +20,7 @@ abstract class DataSessionOptions {
      *                         in ISO 8601 format
      * @return ReadDataSessionOptions Options builder
      */
-    public static function read($end = Values::NONE, $start = Values::NONE) {
+    public static function read($end = Values::NONE, $start = Values::NONE): ReadDataSessionOptions {
         return new ReadDataSessionOptions($end, $start);
     }
 }
@@ -44,7 +44,7 @@ class ReadDataSessionOptions extends Options {
      *                       8601 format
      * @return $this Fluent Builder
      */
-    public function setEnd($end) {
+    public function setEnd($end): self {
         $this->options['end'] = $end;
         return $this;
     }
@@ -56,7 +56,7 @@ class ReadDataSessionOptions extends Options {
      *                         in ISO 8601 format
      * @return $this Fluent Builder
      */
-    public function setStart($start) {
+    public function setStart($start): self {
         $this->options['start'] = $start;
         return $this;
     }
@@ -66,10 +66,10 @@ class ReadDataSessionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

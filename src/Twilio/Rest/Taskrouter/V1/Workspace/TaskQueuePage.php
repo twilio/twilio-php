@@ -19,7 +19,7 @@ class TaskQueuePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): TaskQueueInstance {
         return new TaskQueueInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
@@ -28,7 +28,7 @@ class TaskQueuePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.TaskQueuePage]';
     }
 }

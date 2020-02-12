@@ -27,27 +27,26 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Initialize the FeedbackInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $messageSid The SID of the Message resource for which the
      *                           feedback was provided
-     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'messageSid' => Values::array_get($payload, 'message_sid'),
             'outcome' => Values::array_get($payload, 'outcome'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'messageSid' => $messageSid, );
+        $this->solution = ['accountSid' => $accountSid, 'messageSid' => $messageSid, ];
     }
 
     /**
@@ -75,7 +74,7 @@ class FeedbackInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.FeedbackInstance]';
     }
 }

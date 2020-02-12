@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
 use Twilio\Serialize;
 use Twilio\Values;
@@ -19,25 +20,24 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList $documentPermissions
+ * @property DocumentPermissionList $documentPermissions
  * @method \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionContext documentPermissions(string $identity)
  */
 class DocumentContext extends InstanceContext {
-    protected $_documentPermissions = null;
+    protected $_documentPermissions;
 
     /**
      * Initialize the DocumentContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\Service\DocumentContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($sid) . '';
     }
@@ -48,8 +48,8 @@ class DocumentContext extends InstanceContext {
      * @return DocumentInstance Fetched DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): DocumentInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,10 +68,10 @@ class DocumentContext extends InstanceContext {
     /**
      * Deletes the DocumentInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -82,13 +82,13 @@ class DocumentContext extends InstanceContext {
      * @return DocumentInstance Updated DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($data) {
-        $data = Values::of(array('Data' => Serialize::jsonObject($data), ));
+    public function update($data): DocumentInstance {
+        $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -102,10 +102,8 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Access the documentPermissions
-     *
-     * @return \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList
      */
-    protected function getDocumentPermissions() {
+    protected function getDocumentPermissions(): DocumentPermissionList {
         if (!$this->_documentPermissions) {
             $this->_documentPermissions = new DocumentPermissionList(
                 $this->version,
@@ -121,10 +119,10 @@ class DocumentContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -138,10 +136,10 @@ class DocumentContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -155,8 +153,8 @@ class DocumentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

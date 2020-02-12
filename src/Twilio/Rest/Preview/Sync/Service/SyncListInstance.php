@@ -12,6 +12,8 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList;
+use Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -30,23 +32,22 @@ use Twilio\Version;
  * @property string $createdBy
  */
 class SyncListInstance extends InstanceResource {
-    protected $_syncListItems = null;
-    protected $_syncListPermissions = null;
+    protected $_syncListItems;
+    protected $_syncListPermissions;
 
     /**
      * Initialize the SyncListInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncListInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -57,19 +58,18 @@ class SyncListInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'createdBy' => Values::array_get($payload, 'created_by'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncListContext Context for this
-     *                                                           SyncListInstance
+     * @return SyncListContext Context for this SyncListInstance
      */
-    protected function proxy() {
+    protected function proxy(): SyncListContext {
         if (!$this->context) {
             $this->context = new SyncListContext(
                 $this->version,
@@ -87,35 +87,31 @@ class SyncListInstance extends InstanceResource {
      * @return SyncListInstance Fetched SyncListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SyncListInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the SyncListInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the syncListItems
-     *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList
      */
-    protected function getSyncListItems() {
+    protected function getSyncListItems(): SyncListItemList {
         return $this->proxy()->syncListItems;
     }
 
     /**
      * Access the syncListPermissions
-     *
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList
      */
-    protected function getSyncListPermissions() {
+    protected function getSyncListPermissions(): SyncListPermissionList {
         return $this->proxy()->syncListPermissions;
     }
 
@@ -144,8 +140,8 @@ class SyncListInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

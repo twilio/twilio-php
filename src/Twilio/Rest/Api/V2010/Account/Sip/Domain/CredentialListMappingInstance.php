@@ -28,19 +28,18 @@ class CredentialListMappingInstance extends InstanceResource {
     /**
      * Initialize the CredentialListMappingInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
      * @param string $domainSid The unique string that identifies the resource
      * @param string $sid A string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $domainSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -48,23 +47,23 @@ class CredentialListMappingInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'domainSid' => $domainSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext Context for this
-     *                                                                                CredentialListMappingInstance
+     * @return CredentialListMappingContext Context for this
+     *                                      CredentialListMappingInstance
      */
-    protected function proxy() {
+    protected function proxy(): CredentialListMappingContext {
         if (!$this->context) {
             $this->context = new CredentialListMappingContext(
                 $this->version,
@@ -83,17 +82,17 @@ class CredentialListMappingInstance extends InstanceResource {
      * @return CredentialListMappingInstance Fetched CredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CredentialListMappingInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the CredentialListMappingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -122,8 +121,8 @@ class CredentialListMappingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

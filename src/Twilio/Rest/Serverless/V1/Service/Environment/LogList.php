@@ -12,6 +12,7 @@ namespace Twilio\Rest\Serverless\V1\Service\Environment;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -27,13 +28,12 @@ class LogList extends ListResource {
      *                           associated with
      * @param string $environmentSid The SID of the environment in which the log
      *                               occurred
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogList
      */
     public function __construct(Version $version, $serviceSid, $environmentSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Logs';
     }
@@ -55,9 +55,9 @@ class LogList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -81,7 +81,7 @@ class LogList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return LogInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -93,18 +93,18 @@ class LogList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of LogInstance
+     * @return LogPage Page of LogInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): LogPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'FunctionSid' => $options['functionSid'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -120,9 +120,9 @@ class LogList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of LogInstance
+     * @return LogPage Page of LogInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): LogPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -135,9 +135,8 @@ class LogList extends ListResource {
      * Constructs a LogContext
      *
      * @param string $sid The SID that identifies the Log resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): LogContext {
         return new LogContext(
             $this->version,
             $this->solution['serviceSid'],
@@ -151,7 +150,7 @@ class LogList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Serverless.V1.LogList]';
     }
 }

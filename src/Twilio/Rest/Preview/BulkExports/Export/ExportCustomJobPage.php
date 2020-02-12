@@ -22,7 +22,7 @@ class ExportCustomJobPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): ExportCustomJobInstance {
         return new ExportCustomJobInstance($this->version, $payload, $this->solution['resourceType']);
     }
 
@@ -31,7 +31,7 @@ class ExportCustomJobPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.BulkExports.ExportCustomJobPage]';
     }
 }

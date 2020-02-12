@@ -19,7 +19,7 @@ class SupportingDocumentPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SupportingDocumentInstance {
         return new SupportingDocumentInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class SupportingDocumentPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Numbers.V2.SupportingDocumentPage]';
     }
 }

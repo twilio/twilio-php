@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class PaymentTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -26,7 +26,7 @@ class PaymentTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('IdempotencyKey' => "idempotency_key", 'StatusCallback' => "https://example.com", );
+        $values = ['IdempotencyKey' => "idempotency_key", 'StatusCallback' => "https://example.com", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -36,7 +36,7 @@ class PaymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testStartPaymentSessionSuccessResponse() {
+    public function testStartPaymentSessionSuccessResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -58,7 +58,7 @@ class PaymentTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -68,7 +68,7 @@ class PaymentTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('IdempotencyKey' => "idempotency_key", 'StatusCallback' => "https://example.com", );
+        $values = ['IdempotencyKey' => "idempotency_key", 'StatusCallback' => "https://example.com", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -78,7 +78,7 @@ class PaymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCollectCreditCardNumberResponse() {
+    public function testCollectCreditCardNumberResponse(): void {
         $this->holodeck->mock(new Response(
             202,
             '
@@ -100,7 +100,7 @@ class PaymentTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCollectCreditCardExpiryDateResponse() {
+    public function testCollectCreditCardExpiryDateResponse(): void {
         $this->holodeck->mock(new Response(
             202,
             '
@@ -122,7 +122,7 @@ class PaymentTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCompletePaymentResponse() {
+    public function testCompletePaymentResponse(): void {
         $this->holodeck->mock(new Response(
             202,
             '

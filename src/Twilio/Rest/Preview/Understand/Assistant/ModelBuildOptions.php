@@ -23,7 +23,7 @@ abstract class ModelBuildOptions {
      *                           up to 64 characters long. For example: v0.1
      * @return CreateModelBuildOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $uniqueName = Values::NONE) {
+    public static function create($statusCallback = Values::NONE, $uniqueName = Values::NONE): CreateModelBuildOptions {
         return new CreateModelBuildOptions($statusCallback, $uniqueName);
     }
 
@@ -33,7 +33,7 @@ abstract class ModelBuildOptions {
      *                           up to 64 characters long. For example: v0.1
      * @return UpdateModelBuildOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE) {
+    public static function update($uniqueName = Values::NONE): UpdateModelBuildOptions {
         return new UpdateModelBuildOptions($uniqueName);
     }
 }
@@ -56,7 +56,7 @@ class CreateModelBuildOptions extends Options {
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -69,7 +69,7 @@ class CreateModelBuildOptions extends Options {
      *                           up to 64 characters long. For example: v0.1
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -79,10 +79,10 @@ class CreateModelBuildOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -108,7 +108,7 @@ class UpdateModelBuildOptions extends Options {
      *                           up to 64 characters long. For example: v0.1
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -118,10 +118,10 @@ class UpdateModelBuildOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -22,16 +22,15 @@ class DeploymentContext extends InstanceContext {
     /**
      * Initialize the DeploymentContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $fleetSid The fleet_sid
      * @param string $sid A string that uniquely identifies the Deployment.
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext
      */
     public function __construct(Version $version, $fleetSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid, );
+        $this->solution = ['fleetSid' => $fleetSid, 'sid' => $sid, ];
 
         $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Deployments/' . \rawurlencode($sid) . '';
     }
@@ -42,8 +41,8 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): DeploymentInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -62,10 +61,10 @@ class DeploymentContext extends InstanceContext {
     /**
      * Deletes the DeploymentInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -76,18 +75,18 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Updated DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): DeploymentInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'SyncServiceSid' => $options['syncServiceSid'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -104,8 +103,8 @@ class DeploymentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

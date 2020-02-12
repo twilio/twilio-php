@@ -11,31 +11,28 @@ namespace Twilio\Rest\Taskrouter;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Taskrouter\V1\WorkspaceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList $workspaces
+ * @property WorkspaceList $workspaces
  * @method \Twilio\Rest\Taskrouter\V1\WorkspaceContext workspaces(string $sid)
  */
 class V1 extends Version {
-    protected $_workspaces = null;
+    protected $_workspaces;
 
     /**
      * Construct the V1 version of Taskrouter
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Taskrouter\V1 V1 version of Taskrouter
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList
-     */
-    protected function getWorkspaces() {
+    protected function getWorkspaces(): WorkspaceList {
         if (!$this->_workspaces) {
             $this->_workspaces = new WorkspaceList($this);
         }
@@ -63,10 +60,10 @@ class V1 extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -80,7 +77,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1]';
     }
 }

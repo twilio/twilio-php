@@ -11,32 +11,28 @@ namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Preview\DeployedDevices\FleetList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\DeployedDevices\FleetList $fleets
+ * @property FleetList $fleets
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  */
 class DeployedDevices extends Version {
-    protected $_fleets = null;
+    protected $_fleets;
 
     /**
      * Construct the DeployedDevices version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\DeployedDevices DeployedDevices version of
-     *                                              Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'DeployedDevices';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList
-     */
-    protected function getFleets() {
+    protected function getFleets(): FleetList {
         if (!$this->_fleets) {
             $this->_fleets = new FleetList($this);
         }
@@ -64,10 +60,10 @@ class DeployedDevices extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -81,7 +77,7 @@ class DeployedDevices extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.DeployedDevices]';
     }
 }

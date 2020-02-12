@@ -21,17 +21,16 @@ class AlphaSenderContext extends InstanceContext {
     /**
      * Initialize the AlphaSenderContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Messaging Service to fetch the
      *                           resource from
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/AlphaSenders/' . \rawurlencode($sid) . '';
     }
@@ -42,8 +41,8 @@ class AlphaSenderContext extends InstanceContext {
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AlphaSenderInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -62,10 +61,10 @@ class AlphaSenderContext extends InstanceContext {
     /**
      * Deletes the AlphaSenderInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -74,8 +73,8 @@ class AlphaSenderContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

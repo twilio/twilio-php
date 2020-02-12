@@ -24,7 +24,7 @@ abstract class AllTimeOptions {
      *                                 account and all its subaccounts
      * @return ReadAllTimeOptions Options builder
      */
-    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
+    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE): ReadAllTimeOptions {
         return new ReadAllTimeOptions($category, $startDate, $endDate, $includeSubaccounts);
     }
 }
@@ -54,7 +54,7 @@ class ReadAllTimeOptions extends Options {
      *                         read
      * @return $this Fluent Builder
      */
-    public function setCategory($category) {
+    public function setCategory($category): self {
         $this->options['category'] = $category;
         return $this;
     }
@@ -66,7 +66,7 @@ class ReadAllTimeOptions extends Options {
      *                             this date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -78,7 +78,7 @@ class ReadAllTimeOptions extends Options {
      *                           date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -90,7 +90,7 @@ class ReadAllTimeOptions extends Options {
      *                                 account and all its subaccounts
      * @return $this Fluent Builder
      */
-    public function setIncludeSubaccounts($includeSubaccounts) {
+    public function setIncludeSubaccounts($includeSubaccounts): self {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         return $this;
     }
@@ -100,10 +100,10 @@ class ReadAllTimeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

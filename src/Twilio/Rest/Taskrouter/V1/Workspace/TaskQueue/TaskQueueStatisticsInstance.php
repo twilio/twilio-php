@@ -27,38 +27,37 @@ class TaskQueueStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskQueueStatisticsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             TaskQueue
      * @param string $taskQueueSid The SID of the TaskQueue from which these
      *                             statistics were calculated
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'cumulative' => Values::array_get($payload, 'cumulative'),
             'realtime' => Values::array_get($payload, 'realtime'),
             'taskQueueSid' => Values::array_get($payload, 'task_queue_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext Context for this
-     *                                                                                   TaskQueueStatisticsInstance
+     * @return TaskQueueStatisticsContext Context for this
+     *                                    TaskQueueStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy(): TaskQueueStatisticsContext {
         if (!$this->context) {
             $this->context = new TaskQueueStatisticsContext(
                 $this->version,
@@ -77,7 +76,7 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): TaskQueueStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -106,8 +105,8 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

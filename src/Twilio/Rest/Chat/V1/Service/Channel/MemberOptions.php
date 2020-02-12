@@ -17,7 +17,7 @@ abstract class MemberOptions {
      * @param string $roleSid The SID of the Role to assign to the member
      * @return CreateMemberOptions Options builder
      */
-    public static function create($roleSid = Values::NONE) {
+    public static function create($roleSid = Values::NONE): CreateMemberOptions {
         return new CreateMemberOptions($roleSid);
     }
 
@@ -25,7 +25,7 @@ abstract class MemberOptions {
      * @param string $identity The `identity` value of the resources to read
      * @return ReadMemberOptions Options builder
      */
-    public static function read($identity = Values::NONE) {
+    public static function read($identity = Values::NONE): ReadMemberOptions {
         return new ReadMemberOptions($identity);
     }
 
@@ -35,7 +35,7 @@ abstract class MemberOptions {
      *                                      for the Channel for the Member
      * @return UpdateMemberOptions Options builder
      */
-    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
+    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE): UpdateMemberOptions {
         return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex);
     }
 }
@@ -54,7 +54,7 @@ class CreateMemberOptions extends Options {
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid) {
+    public function setRoleSid($roleSid): self {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -64,10 +64,10 @@ class CreateMemberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -89,7 +89,7 @@ class ReadMemberOptions extends Options {
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -99,10 +99,10 @@ class ReadMemberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -127,7 +127,7 @@ class UpdateMemberOptions extends Options {
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid) {
+    public function setRoleSid($roleSid): self {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -139,7 +139,7 @@ class UpdateMemberOptions extends Options {
      *                                      for the Channel for the Member
      * @return $this Fluent Builder
      */
-    public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
+    public function setLastConsumedMessageIndex($lastConsumedMessageIndex): self {
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         return $this;
     }
@@ -149,10 +149,10 @@ class UpdateMemberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -18,7 +18,7 @@ class SsmlLang extends TwiML {
      * @param string $words Words to speak
      * @param array $attributes Optional attributes
      */
-    public function __construct($words, $attributes = array()) {
+    public function __construct($words, $attributes = []) {
         parent::__construct('lang', $words, $attributes);
     }
 
@@ -26,9 +26,8 @@ class SsmlLang extends TwiML {
      * Add Xml:Lang attribute.
      *
      * @param string $xmlLang Specify the language
-     * @return static $this.
      */
-    public function setXmlLang($xmlLang) {
+    public function setXmlLang($xmlLang): self {
         return $this->setAttribute('xml:Lang', $xmlLang);
     }
 }

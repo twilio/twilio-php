@@ -30,42 +30,40 @@ class PaymentInstance extends InstanceResource {
     /**
      * Initialize the PaymentInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the Payments
      *                           resource.
      * @param string $callSid The SID of the Call the resource is associated with.
      * @param string $sid The SID of Payments session
-     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'callSid' => Values::array_get($payload, 'call_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'callSid' => $callSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentContext Context for this
-     *                                                            PaymentInstance
+     * @return PaymentContext Context for this PaymentInstance
      */
-    protected function proxy() {
+    protected function proxy(): PaymentContext {
         if (!$this->context) {
             $this->context = new PaymentContext(
                 $this->version,
@@ -90,7 +88,7 @@ class PaymentInstance extends InstanceResource {
      * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($idempotencyKey, $statusCallback, $options = array()) {
+    public function update($idempotencyKey, $statusCallback, $options = []): PaymentInstance {
         return $this->proxy()->update($idempotencyKey, $statusCallback, $options);
     }
 
@@ -119,8 +117,8 @@ class PaymentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

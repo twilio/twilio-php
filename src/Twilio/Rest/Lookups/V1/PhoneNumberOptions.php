@@ -21,7 +21,7 @@ abstract class PhoneNumberOptions {
      *                           invoke
      * @return FetchPhoneNumberOptions Options builder
      */
-    public static function fetch($countryCode = Values::NONE, $type = Values::NONE, $addOns = Values::NONE, $addOnsData = Values::NONE) {
+    public static function fetch($countryCode = Values::NONE, $type = Values::NONE, $addOns = Values::NONE, $addOnsData = Values::NONE): FetchPhoneNumberOptions {
         return new FetchPhoneNumberOptions($countryCode, $type, $addOns, $addOnsData);
     }
 }
@@ -47,7 +47,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $countryCode The ISO country code of the phone number
      * @return $this Fluent Builder
      */
-    public function setCountryCode($countryCode) {
+    public function setCountryCode($countryCode): self {
         $this->options['countryCode'] = $countryCode;
         return $this;
     }
@@ -58,7 +58,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $type The type of information to return
      * @return $this Fluent Builder
      */
-    public function setType($type) {
+    public function setType($type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -69,7 +69,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addOns The unique_name of an Add-on you would like to invoke
      * @return $this Fluent Builder
      */
-    public function setAddOns($addOns) {
+    public function setAddOns($addOns): self {
         $this->options['addOns'] = $addOns;
         return $this;
     }
@@ -81,7 +81,7 @@ class FetchPhoneNumberOptions extends Options {
      *                           invoke
      * @return $this Fluent Builder
      */
-    public function setAddOnsData($addOnsData) {
+    public function setAddOnsData($addOnsData): self {
         $this->options['addOnsData'] = $addOnsData;
         return $this;
     }
@@ -91,10 +91,10 @@ class FetchPhoneNumberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

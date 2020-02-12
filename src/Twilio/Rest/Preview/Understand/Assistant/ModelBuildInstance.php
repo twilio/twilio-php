@@ -34,17 +34,16 @@ class ModelBuildInstance extends InstanceResource {
     /**
      * Initialize the ModelBuildInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\ModelBuildInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -55,20 +54,18 @@ class ModelBuildInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'buildDuration' => Values::array_get($payload, 'build_duration'),
             'errorCode' => Values::array_get($payload, 'error_code'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\ModelBuildContext Context
-     *                                                                     for this
-     *                                                                     ModelBuildInstance
+     * @return ModelBuildContext Context for this ModelBuildInstance
      */
-    protected function proxy() {
+    protected function proxy(): ModelBuildContext {
         if (!$this->context) {
             $this->context = new ModelBuildContext(
                 $this->version,
@@ -86,7 +83,7 @@ class ModelBuildInstance extends InstanceResource {
      * @return ModelBuildInstance Fetched ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ModelBuildInstance {
         return $this->proxy()->fetch();
     }
 
@@ -97,17 +94,17 @@ class ModelBuildInstance extends InstanceResource {
      * @return ModelBuildInstance Updated ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ModelBuildInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the ModelBuildInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -136,8 +133,8 @@ class ModelBuildInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

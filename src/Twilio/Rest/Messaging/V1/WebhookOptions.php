@@ -30,7 +30,7 @@ abstract class WebhookOptions {
      * @param string $target The routing target of the webhook
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $preWebhookRetryCount = Values::NONE, $postWebhookRetryCount = Values::NONE, $target = Values::NONE) {
+    public static function update($webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $preWebhookRetryCount = Values::NONE, $postWebhookRetryCount = Values::NONE, $target = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($webhookMethod, $webhookFilters, $preWebhookUrl, $postWebhookUrl, $preWebhookRetryCount, $postWebhookRetryCount, $target);
     }
 }
@@ -66,7 +66,7 @@ class UpdateWebhookOptions extends Options {
      *                              request
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod) {
+    public function setWebhookMethod($webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -78,7 +78,7 @@ class UpdateWebhookOptions extends Options {
      *                               enabled for the Service
      * @return $this Fluent Builder
      */
-    public function setWebhookFilters($webhookFilters) {
+    public function setWebhookFilters($webhookFilters): self {
         $this->options['webhookFilters'] = $webhookFilters;
         return $this;
     }
@@ -89,7 +89,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $preWebhookUrl The absolute URL of the pre-event webhook
      * @return $this Fluent Builder
      */
-    public function setPreWebhookUrl($preWebhookUrl) {
+    public function setPreWebhookUrl($preWebhookUrl): self {
         $this->options['preWebhookUrl'] = $preWebhookUrl;
         return $this;
     }
@@ -100,7 +100,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $postWebhookUrl The absolute URL of the post-event webhook
      * @return $this Fluent Builder
      */
-    public function setPostWebhookUrl($postWebhookUrl) {
+    public function setPostWebhookUrl($postWebhookUrl): self {
         $this->options['postWebhookUrl'] = $postWebhookUrl;
         return $this;
     }
@@ -112,7 +112,7 @@ class UpdateWebhookOptions extends Options {
      *                                  webhook request if the first attempt fails
      * @return $this Fluent Builder
      */
-    public function setPreWebhookRetryCount($preWebhookRetryCount) {
+    public function setPreWebhookRetryCount($preWebhookRetryCount): self {
         $this->options['preWebhookRetryCount'] = $preWebhookRetryCount;
         return $this;
     }
@@ -124,7 +124,7 @@ class UpdateWebhookOptions extends Options {
      *                                   webhook request if the first attempt fails
      * @return $this Fluent Builder
      */
-    public function setPostWebhookRetryCount($postWebhookRetryCount) {
+    public function setPostWebhookRetryCount($postWebhookRetryCount): self {
         $this->options['postWebhookRetryCount'] = $postWebhookRetryCount;
         return $this;
     }
@@ -135,7 +135,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $target The routing target of the webhook
      * @return $this Fluent Builder
      */
-    public function setTarget($target) {
+    public function setTarget($target): self {
         $this->options['target'] = $target;
         return $this;
     }
@@ -145,10 +145,10 @@ class UpdateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

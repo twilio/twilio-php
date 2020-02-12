@@ -27,13 +27,12 @@ class PaymentList extends ListResource {
      * @param string $accountSid The SID of the Account that created the Payments
      *                           resource.
      * @param string $callSid The SID of the Call the resource is associated with.
-     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentList
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
+        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Payments.json';
     }
@@ -50,10 +49,10 @@ class PaymentList extends ListResource {
      * @return PaymentInstance Newly created PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($idempotencyKey, $statusCallback, $options = array()) {
+    public function create($idempotencyKey, $statusCallback, $options = []): PaymentInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'IdempotencyKey' => $idempotencyKey,
             'StatusCallback' => $statusCallback,
             'BankAccountType' => $options['bankAccountType'],
@@ -70,12 +69,12 @@ class PaymentList extends ListResource {
             'Timeout' => $options['timeout'],
             'TokenType' => $options['tokenType'],
             'ValidCardTypes' => $options['validCardTypes'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -91,9 +90,8 @@ class PaymentList extends ListResource {
      * Constructs a PaymentContext
      *
      * @param string $sid The SID of Payments session
-     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): PaymentContext {
         return new PaymentContext(
             $this->version,
             $this->solution['accountSid'],
@@ -107,7 +105,7 @@ class PaymentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.PaymentList]';
     }
 }

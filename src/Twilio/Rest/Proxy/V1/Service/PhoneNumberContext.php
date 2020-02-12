@@ -23,17 +23,16 @@ class PhoneNumberContext extends InstanceContext {
     /**
      * Initialize the PhoneNumberContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the parent Service resource of the
      *                           PhoneNumber resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/PhoneNumbers/' . \rawurlencode($sid) . '';
     }
@@ -41,10 +40,10 @@ class PhoneNumberContext extends InstanceContext {
     /**
      * Deletes the PhoneNumberInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -54,8 +53,8 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): PhoneNumberInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -78,15 +77,15 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Updated PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): PhoneNumberInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('IsReserved' => Serialize::booleanToString($options['isReserved']), ));
+        $data = Values::of(['IsReserved' => Serialize::booleanToString($options['isReserved']), ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -103,8 +102,8 @@ class PhoneNumberContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

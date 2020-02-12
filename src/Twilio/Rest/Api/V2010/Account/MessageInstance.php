@@ -12,6 +12,8 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Api\V2010\Account\Message\FeedbackList;
+use Twilio\Rest\Api\V2010\Account\Message\MediaList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -38,23 +40,22 @@ use Twilio\Version;
  * @property string $uri
  */
 class MessageInstance extends InstanceResource {
-    protected $_media = null;
-    protected $_feedback = null;
+    protected $_media;
+    protected $_feedback;
 
     /**
      * Initialize the MessageInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\MessageInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'body' => Values::array_get($payload, 'body'),
@@ -75,19 +76,18 @@ class MessageInstance extends InstanceResource {
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
             'to' => Values::array_get($payload, 'to'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\MessageContext Context for this
-     *                                                       MessageInstance
+     * @return MessageContext Context for this MessageInstance
      */
-    protected function proxy() {
+    protected function proxy(): MessageContext {
         if (!$this->context) {
             $this->context = new MessageContext(
                 $this->version,
@@ -102,10 +102,10 @@ class MessageInstance extends InstanceResource {
     /**
      * Deletes the MessageInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -115,7 +115,7 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): MessageInstance {
         return $this->proxy()->fetch();
     }
 
@@ -126,25 +126,21 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($body) {
+    public function update($body): MessageInstance {
         return $this->proxy()->update($body);
     }
 
     /**
      * Access the media
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList
      */
-    protected function getMedia() {
+    protected function getMedia(): MediaList {
         return $this->proxy()->media;
     }
 
     /**
      * Access the feedback
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList
      */
-    protected function getFeedback() {
+    protected function getFeedback(): FeedbackList {
         return $this->proxy()->feedback;
     }
 
@@ -173,8 +169,8 @@ class MessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

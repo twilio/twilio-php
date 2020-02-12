@@ -19,7 +19,7 @@ class SimPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SimInstance {
         return new SimInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class SimPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Wireless.V1.SimPage]';
     }
 }

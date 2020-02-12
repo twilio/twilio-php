@@ -22,17 +22,16 @@ class SyncListItemContext extends InstanceContext {
     /**
      * Initialize the SyncListItemContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $listSid The list_sid
      * @param int $index The index
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext
      */
     public function __construct(Version $version, $serviceSid, $listSid, $index) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, 'index' => $index, );
+        $this->solution = ['serviceSid' => $serviceSid, 'listSid' => $listSid, 'index' => $index, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Items/' . \rawurlencode($index) . '';
     }
@@ -43,8 +42,8 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): SyncListItemInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -64,10 +63,10 @@ class SyncListItemContext extends InstanceContext {
     /**
      * Deletes the SyncListItemInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -78,13 +77,13 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($data) {
-        $data = Values::of(array('Data' => Serialize::jsonObject($data), ));
+    public function update($data): SyncListItemInstance {
+        $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -102,8 +101,8 @@ class SyncListItemContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

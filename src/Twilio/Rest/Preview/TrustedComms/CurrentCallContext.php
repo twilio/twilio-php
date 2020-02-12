@@ -21,14 +21,13 @@ class CurrentCallContext extends InstanceContext {
     /**
      * Initialize the CurrentCallContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext
+     * @param Version $version Version that contains the resource
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/CurrentCall';
     }
@@ -39,8 +38,8 @@ class CurrentCallContext extends InstanceContext {
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): CurrentCallInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -56,8 +55,8 @@ class CurrentCallContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

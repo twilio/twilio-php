@@ -29,17 +29,16 @@ class OutgoingCallerIdInstance extends InstanceResource {
     /**
      * Initialize the OutgoingCallerIdInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -47,20 +46,18 @@ class OutgoingCallerIdInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext Context for
-     *                                                                this
-     *                                                                OutgoingCallerIdInstance
+     * @return OutgoingCallerIdContext Context for this OutgoingCallerIdInstance
      */
-    protected function proxy() {
+    protected function proxy(): OutgoingCallerIdContext {
         if (!$this->context) {
             $this->context = new OutgoingCallerIdContext(
                 $this->version,
@@ -78,7 +75,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): OutgoingCallerIdInstance {
         return $this->proxy()->fetch();
     }
 
@@ -89,17 +86,17 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): OutgoingCallerIdInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the OutgoingCallerIdInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -128,8 +125,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

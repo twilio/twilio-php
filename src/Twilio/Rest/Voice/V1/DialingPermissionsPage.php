@@ -22,7 +22,7 @@ class DialingPermissionsPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): DialingPermissionsInstance {
         return new DialingPermissionsInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class DialingPermissionsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.DialingPermissionsPage]';
     }
 }

@@ -22,7 +22,7 @@ class CertificatePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): CertificateInstance {
         return new CertificateInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
@@ -31,7 +31,7 @@ class CertificatePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.DeployedDevices.CertificatePage]';
     }
 }

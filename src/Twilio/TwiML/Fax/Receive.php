@@ -17,7 +17,7 @@ class Receive extends TwiML {
      *
      * @param array $attributes Optional attributes
      */
-    public function __construct($attributes = array()) {
+    public function __construct($attributes = []) {
         parent::__construct('Receive', null, $attributes);
     }
 
@@ -25,9 +25,8 @@ class Receive extends TwiML {
      * Add Action attribute.
      *
      * @param string $action Receive action URL
-     * @return static $this.
      */
-    public function setAction($action) {
+    public function setAction($action): self {
         return $this->setAttribute('action', $action);
     }
 
@@ -35,9 +34,8 @@ class Receive extends TwiML {
      * Add Method attribute.
      *
      * @param string $method Receive action URL method
-     * @return static $this.
      */
-    public function setMethod($method) {
+    public function setMethod($method): self {
         return $this->setAttribute('method', $method);
     }
 
@@ -46,9 +44,8 @@ class Receive extends TwiML {
      *
      * @param string $mediaType The media type used to store media in the fax media
      *                          store
-     * @return static $this.
      */
-    public function setMediaType($mediaType) {
+    public function setMediaType($mediaType): self {
         return $this->setAttribute('mediaType', $mediaType);
     }
 
@@ -56,9 +53,8 @@ class Receive extends TwiML {
      * Add PageSize attribute.
      *
      * @param string $pageSize What size to interpret received pages as
-     * @return static $this.
      */
-    public function setPageSize($pageSize) {
+    public function setPageSize($pageSize): self {
         return $this->setAttribute('pageSize', $pageSize);
     }
 
@@ -67,9 +63,8 @@ class Receive extends TwiML {
      *
      * @param bool $storeMedia Whether or not to store received media in the fax
      *                         media store
-     * @return static $this.
      */
-    public function setStoreMedia($storeMedia) {
+    public function setStoreMedia($storeMedia): self {
         return $this->setAttribute('storeMedia', $storeMedia);
     }
 }

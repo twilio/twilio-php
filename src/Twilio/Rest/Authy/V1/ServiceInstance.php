@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Authy\V1\Service\EntityList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -28,21 +29,20 @@ use Twilio\Version;
  * @property array $links
  */
 class ServiceInstance extends InstanceResource {
-    protected $_entities = null;
+    protected $_entities;
 
     /**
      * Initialize the ServiceInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A string that uniquely identifies this Service.
-     * @return \Twilio\Rest\Authy\V1\ServiceInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -50,18 +50,18 @@ class ServiceInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Authy\V1\ServiceContext Context for this ServiceInstance
+     * @return ServiceContext Context for this ServiceInstance
      */
-    protected function proxy() {
+    protected function proxy(): ServiceContext {
         if (!$this->context) {
             $this->context = new ServiceContext($this->version, $this->solution['sid']);
         }
@@ -72,10 +72,10 @@ class ServiceInstance extends InstanceResource {
     /**
      * Deletes the ServiceInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -85,7 +85,7 @@ class ServiceInstance extends InstanceResource {
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ServiceInstance {
         return $this->proxy()->fetch();
     }
 
@@ -96,16 +96,14 @@ class ServiceInstance extends InstanceResource {
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ServiceInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the entities
-     *
-     * @return \Twilio\Rest\Authy\V1\Service\EntityList
      */
-    protected function getEntities() {
+    protected function getEntities(): EntityList {
         return $this->proxy()->entities;
     }
 
@@ -134,8 +132,8 @@ class ServiceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

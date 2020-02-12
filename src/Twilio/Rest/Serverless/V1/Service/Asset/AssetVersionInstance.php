@@ -31,7 +31,7 @@ class AssetVersionInstance extends InstanceResource {
     /**
      * Initialize the AssetVersionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the Asset Version
      *                           resource is associated with
@@ -39,13 +39,12 @@ class AssetVersionInstance extends InstanceResource {
      *                         the asset version
      * @param string $sid The SID that identifies the Asset Version resource to
      *                    fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $assetSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -54,25 +53,22 @@ class AssetVersionInstance extends InstanceResource {
             'visibility' => Values::array_get($payload, 'visibility'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'assetSid' => $assetSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext Context
-     *                                                                      for
-     *                                                                      this
-     *                                                                      AssetVersionInstance
+     * @return AssetVersionContext Context for this AssetVersionInstance
      */
-    protected function proxy() {
+    protected function proxy(): AssetVersionContext {
         if (!$this->context) {
             $this->context = new AssetVersionContext(
                 $this->version,
@@ -91,7 +87,7 @@ class AssetVersionInstance extends InstanceResource {
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AssetVersionInstance {
         return $this->proxy()->fetch();
     }
 
@@ -120,8 +116,8 @@ class AssetVersionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

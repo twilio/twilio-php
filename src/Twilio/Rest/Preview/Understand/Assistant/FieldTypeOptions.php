@@ -22,7 +22,7 @@ abstract class FieldTypeOptions {
      *                             characters long.
      * @return CreateFieldTypeOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE) {
+    public static function create($friendlyName = Values::NONE): CreateFieldTypeOptions {
         return new CreateFieldTypeOptions($friendlyName);
     }
 
@@ -35,7 +35,7 @@ abstract class FieldTypeOptions {
      *                           up to 64 characters long.
      * @return UpdateFieldTypeOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE): UpdateFieldTypeOptions {
         return new UpdateFieldTypeOptions($friendlyName, $uniqueName);
     }
 }
@@ -58,7 +58,7 @@ class CreateFieldTypeOptions extends Options {
      *                             characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -68,10 +68,10 @@ class CreateFieldTypeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -101,7 +101,7 @@ class UpdateFieldTypeOptions extends Options {
      *                             characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -114,7 +114,7 @@ class UpdateFieldTypeOptions extends Options {
      *                           up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -124,10 +124,10 @@ class UpdateFieldTypeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -19,19 +19,18 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkflowRealTimeStatisticsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace with the Workflow to
      *                             fetch
      * @param string $workflowSid Returns the list of Tasks that are being
      *                            controlled by the Workflow with the specified SID
      *                            value
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid, $workflowSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workflows/' . \rawurlencode($workflowSid) . '/RealTimeStatistics';
     }
@@ -44,10 +43,10 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
      *                                            WorkflowRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkflowRealTimeStatisticsInstance {
         $options = new Values($options);
 
-        $params = Values::of(array('TaskChannel' => $options['taskChannel'], ));
+        $params = Values::of(['TaskChannel' => $options['taskChannel'], ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,8 +67,8 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

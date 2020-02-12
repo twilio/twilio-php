@@ -22,21 +22,18 @@ class StyleSheetList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Constructs a StyleSheetContext
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetContext
      */
-    public function getContext() {
+    public function getContext(): StyleSheetContext {
         return new StyleSheetContext($this->version, $this->solution['assistantSid']);
     }
 
@@ -45,7 +42,7 @@ class StyleSheetList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.StyleSheetList]';
     }
 }

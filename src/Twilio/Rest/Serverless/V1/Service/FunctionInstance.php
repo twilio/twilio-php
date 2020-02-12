@@ -12,6 +12,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -28,23 +29,22 @@ use Twilio\Version;
  * @property array $links
  */
 class FunctionInstance extends InstanceResource {
-    protected $_functionVersions = null;
+    protected $_functionVersions;
 
     /**
      * Initialize the FunctionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the Function resource
      *                           is associated with
      * @param string $sid The SID of the Function resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -53,19 +53,18 @@ class FunctionInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext Context for this
-     *                                                            FunctionInstance
+     * @return FunctionContext Context for this FunctionInstance
      */
-    protected function proxy() {
+    protected function proxy(): FunctionContext {
         if (!$this->context) {
             $this->context = new FunctionContext(
                 $this->version,
@@ -83,17 +82,17 @@ class FunctionInstance extends InstanceResource {
      * @return FunctionInstance Fetched FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): FunctionInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the FunctionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -104,16 +103,14 @@ class FunctionInstance extends InstanceResource {
      * @return FunctionInstance Updated FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName) {
+    public function update($friendlyName): FunctionInstance {
         return $this->proxy()->update($friendlyName);
     }
 
     /**
      * Access the functionVersions
-     *
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList
      */
-    protected function getFunctionVersions() {
+    protected function getFunctionVersions(): FunctionVersionList {
         return $this->proxy()->functionVersions;
     }
 
@@ -142,8 +139,8 @@ class FunctionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

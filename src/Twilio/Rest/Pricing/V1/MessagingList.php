@@ -10,12 +10,13 @@
 namespace Twilio\Rest\Pricing\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Pricing\V1\Messaging\CountryList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V1\Messaging\CountryList $countries
+ * @property CountryList $countries
  * @method \Twilio\Rest\Pricing\V1\Messaging\CountryContext countries(string $isoCountry)
  */
 class MessagingList extends ListResource {
@@ -25,19 +26,18 @@ class MessagingList extends ListResource {
      * Construct the MessagingList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V1\MessagingList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Access the countries
      */
-    protected function getCountries() {
+    protected function getCountries(): CountryList {
         if (!$this->_countries) {
             $this->_countries = new CountryList($this->version);
         }
@@ -66,10 +66,10 @@ class MessagingList extends ListResource {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -83,7 +83,7 @@ class MessagingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V1.MessagingList]';
     }
 }

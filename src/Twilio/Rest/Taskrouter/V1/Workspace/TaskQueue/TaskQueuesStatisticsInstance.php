@@ -25,25 +25,24 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskQueuesStatisticsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             TaskQueue
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'cumulative' => Values::array_get($payload, 'cumulative'),
             'realtime' => Values::array_get($payload, 'realtime'),
             'taskQueueSid' => Values::array_get($payload, 'task_queue_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
     }
 
     /**
@@ -71,7 +70,7 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.TaskQueuesStatisticsInstance]';
     }
 }

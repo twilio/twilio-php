@@ -21,19 +21,18 @@ class FieldContext extends InstanceContext {
     /**
      * Initialize the FieldContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the Task associated with the resource to fetch
      * @param string $taskSid The SID of the
      *                        [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldContext
      */
     public function __construct(Version $version, $assistantSid, $taskSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, 'sid' => $sid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, 'sid' => $sid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Fields/' . \rawurlencode($sid) . '';
     }
@@ -44,8 +43,8 @@ class FieldContext extends InstanceContext {
      * @return FieldInstance Fetched FieldInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FieldInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -65,10 +64,10 @@ class FieldContext extends InstanceContext {
     /**
      * Deletes the FieldInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -77,8 +76,8 @@ class FieldContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -39,22 +40,21 @@ use Twilio\Version;
  * @property array $links
  */
 class TaskInstance extends InstanceResource {
-    protected $_reservations = null;
+    protected $_reservations;
 
     /**
      * Initialize the TaskInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the Task
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'age' => Values::array_get($payload, 'age'),
             'assignmentStatus' => Values::array_get($payload, 'assignment_status'),
@@ -75,19 +75,18 @@ class TaskInstance extends InstanceResource {
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext Context for this
-     *                                                          TaskInstance
+     * @return TaskContext Context for this TaskInstance
      */
-    protected function proxy() {
+    protected function proxy(): TaskContext {
         if (!$this->context) {
             $this->context = new TaskContext(
                 $this->version,
@@ -105,7 +104,7 @@ class TaskInstance extends InstanceResource {
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): TaskInstance {
         return $this->proxy()->fetch();
     }
 
@@ -116,26 +115,24 @@ class TaskInstance extends InstanceResource {
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): TaskInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the TaskInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the reservations
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList
      */
-    protected function getReservations() {
+    protected function getReservations(): ReservationList {
         return $this->proxy()->reservations;
     }
 
@@ -164,8 +161,8 @@ class TaskInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

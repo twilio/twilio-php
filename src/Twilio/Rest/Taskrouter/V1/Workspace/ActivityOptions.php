@@ -17,7 +17,7 @@ abstract class ActivityOptions {
      * @param string $friendlyName A string to describe the Activity resource
      * @return UpdateActivityOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE): UpdateActivityOptions {
         return new UpdateActivityOptions($friendlyName);
     }
 
@@ -28,7 +28,7 @@ abstract class ActivityOptions {
      *                          unavailable
      * @return ReadActivityOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE, $available = Values::NONE) {
+    public static function read($friendlyName = Values::NONE, $available = Values::NONE): ReadActivityOptions {
         return new ReadActivityOptions($friendlyName, $available);
     }
 
@@ -37,7 +37,7 @@ abstract class ActivityOptions {
      *                        Task when it occupies the Activity
      * @return CreateActivityOptions Options builder
      */
-    public static function create($available = Values::NONE) {
+    public static function create($available = Values::NONE): CreateActivityOptions {
         return new CreateActivityOptions($available);
     }
 }
@@ -56,7 +56,7 @@ class UpdateActivityOptions extends Options {
      * @param string $friendlyName A string to describe the Activity resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -66,10 +66,10 @@ class UpdateActivityOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -96,7 +96,7 @@ class ReadActivityOptions extends Options {
      *                             read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -108,7 +108,7 @@ class ReadActivityOptions extends Options {
      *                          unavailable
      * @return $this Fluent Builder
      */
-    public function setAvailable($available) {
+    public function setAvailable($available): self {
         $this->options['available'] = $available;
         return $this;
     }
@@ -118,10 +118,10 @@ class ReadActivityOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -145,7 +145,7 @@ class CreateActivityOptions extends Options {
      *                        Task when it occupies the Activity
      * @return $this Fluent Builder
      */
-    public function setAvailable($available) {
+    public function setAvailable($available): self {
         $this->options['available'] = $available;
         return $this;
     }
@@ -155,10 +155,10 @@ class CreateActivityOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

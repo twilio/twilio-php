@@ -12,6 +12,7 @@ namespace Twilio\Rest\Sync\V1\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,13 +26,12 @@ class SyncStreamList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Sync Service that the resource is
      *                           associated with
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Streams';
     }
@@ -43,15 +43,15 @@ class SyncStreamList extends ListResource {
      * @return SyncStreamInstance Newly created SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($options = []): SyncStreamInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $options['uniqueName'], 'Ttl' => $options['ttl'], ));
+        $data = Values::of(['UniqueName' => $options['uniqueName'], 'Ttl' => $options['ttl'], ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -74,9 +74,9 @@ class SyncStreamList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -99,7 +99,7 @@ class SyncStreamList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncStreamInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -110,14 +110,10 @@ class SyncStreamList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of SyncStreamInstance
+     * @return SyncStreamPage Page of SyncStreamInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncStreamPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -133,9 +129,9 @@ class SyncStreamList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of SyncStreamInstance
+     * @return SyncStreamPage Page of SyncStreamInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): SyncStreamPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -148,9 +144,8 @@ class SyncStreamList extends ListResource {
      * Constructs a SyncStreamContext
      *
      * @param string $sid The SID of the Stream resource to fetch
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): SyncStreamContext {
         return new SyncStreamContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
@@ -159,7 +154,7 @@ class SyncStreamList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Sync.V1.SyncStreamList]';
     }
 }

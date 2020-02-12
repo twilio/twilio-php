@@ -34,17 +34,16 @@ class ShortCodeInstance extends InstanceResource {
     /**
      * Initialize the ShortCodeInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
@@ -57,19 +56,18 @@ class ShortCodeInstance extends InstanceResource {
             'smsMethod' => Values::array_get($payload, 'sms_method'),
             'smsUrl' => Values::array_get($payload, 'sms_url'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext Context for this
-     *                                                         ShortCodeInstance
+     * @return ShortCodeContext Context for this ShortCodeInstance
      */
-    protected function proxy() {
+    protected function proxy(): ShortCodeContext {
         if (!$this->context) {
             $this->context = new ShortCodeContext(
                 $this->version,
@@ -87,7 +85,7 @@ class ShortCodeInstance extends InstanceResource {
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ShortCodeInstance {
         return $this->proxy()->fetch();
     }
 
@@ -98,7 +96,7 @@ class ShortCodeInstance extends InstanceResource {
      * @return ShortCodeInstance Updated ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ShortCodeInstance {
         return $this->proxy()->update($options);
     }
 
@@ -127,8 +125,8 @@ class ShortCodeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

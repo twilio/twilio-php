@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class BucketTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -26,7 +26,7 @@ class BucketTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Max' => 1, 'Interval' => 1, );
+        $values = ['Max' => 1, 'Interval' => 1, ];
 
         $this->assertRequest(new Request(
             'post',
@@ -36,7 +36,7 @@ class BucketTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateBucketResponse() {
+    public function testCreateBucketResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -61,7 +61,7 @@ class BucketTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -77,7 +77,7 @@ class BucketTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateBucketResponse() {
+    public function testUpdateBucketResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -102,7 +102,7 @@ class BucketTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -118,7 +118,7 @@ class BucketTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchBucketResponse() {
+    public function testFetchBucketResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -143,7 +143,7 @@ class BucketTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -159,7 +159,7 @@ class BucketTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -185,7 +185,7 @@ class BucketTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -223,7 +223,7 @@ class BucketTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, \count($actual));
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -239,7 +239,7 @@ class BucketTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null

@@ -35,20 +35,19 @@ class WorkerChannelInstance extends InstanceResource {
     /**
      * Initialize the WorkerChannelInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             WorkerChannel
      * @param string $workerSid The SID of the Worker that contains the
      *                          WorkerChannel
      * @param string $sid The SID of the to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assignedTasks' => Values::array_get($payload, 'assigned_tasks'),
             'available' => Values::array_get($payload, 'available'),
@@ -62,22 +61,22 @@ class WorkerChannelInstance extends InstanceResource {
             'workerSid' => Values::array_get($payload, 'worker_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'workspaceSid' => $workspaceSid,
             'workerSid' => $workerSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext Context for this WorkerChannelInstance
+     * @return WorkerChannelContext Context for this WorkerChannelInstance
      */
-    protected function proxy() {
+    protected function proxy(): WorkerChannelContext {
         if (!$this->context) {
             $this->context = new WorkerChannelContext(
                 $this->version,
@@ -96,7 +95,7 @@ class WorkerChannelInstance extends InstanceResource {
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): WorkerChannelInstance {
         return $this->proxy()->fetch();
     }
 
@@ -107,7 +106,7 @@ class WorkerChannelInstance extends InstanceResource {
      * @return WorkerChannelInstance Updated WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WorkerChannelInstance {
         return $this->proxy()->update($options);
     }
 
@@ -136,8 +135,8 @@ class WorkerChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

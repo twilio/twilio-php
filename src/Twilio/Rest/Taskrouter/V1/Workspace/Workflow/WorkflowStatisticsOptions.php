@@ -27,7 +27,7 @@ abstract class WorkflowStatisticsOptions {
      *                                statistics on
      * @return FetchWorkflowStatisticsOptions Options builder
      */
-    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskChannel = Values::NONE, $splitByWaitTime = Values::NONE) {
+    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskChannel = Values::NONE, $splitByWaitTime = Values::NONE): FetchWorkflowStatisticsOptions {
         return new FetchWorkflowStatisticsOptions($minutes, $startDate, $endDate, $taskChannel, $splitByWaitTime);
     }
 }
@@ -61,7 +61,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                     past
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes) {
+    public function setMinutes($minutes): self {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -73,7 +73,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                             date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -85,7 +85,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                           and earlier
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -97,7 +97,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                            TaskChannel.
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel) {
+    public function setTaskChannel($taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -110,7 +110,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                                statistics on
      * @return $this Fluent Builder
      */
-    public function setSplitByWaitTime($splitByWaitTime) {
+    public function setSplitByWaitTime($splitByWaitTime): self {
         $this->options['splitByWaitTime'] = $splitByWaitTime;
         return $this;
     }
@@ -120,10 +120,10 @@ class FetchWorkflowStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

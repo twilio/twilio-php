@@ -18,19 +18,18 @@ class PublishedTrackContext extends InstanceContext {
     /**
      * Initialize the PublishedTrackContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $roomSid The SID of the Room resource where the Track resource
      *                        to fetch is published
      * @param string $participantSid The SID of the Participant resource with the
      *                               published track to fetch
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext
      */
     public function __construct(Version $version, $roomSid, $participantSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, 'sid' => $sid, );
+        $this->solution = ['roomSid' => $roomSid, 'participantSid' => $participantSid, 'sid' => $sid, ];
 
         $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/PublishedTracks/' . \rawurlencode($sid) . '';
     }
@@ -41,8 +40,8 @@ class PublishedTrackContext extends InstanceContext {
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): PublishedTrackInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -64,8 +63,8 @@ class PublishedTrackContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

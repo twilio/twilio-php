@@ -33,20 +33,19 @@ class VariableInstance extends InstanceResource {
     /**
      * Initialize the VariableInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the Variable resource
      *                           is associated with
      * @param string $environmentSid The SID of the environment in which the
      *                               variable exists
      * @param string $sid The SID of the Variable resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $environmentSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -56,22 +55,22 @@ class VariableInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'environmentSid' => $environmentSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext Context for this VariableInstance
+     * @return VariableContext Context for this VariableInstance
      */
-    protected function proxy() {
+    protected function proxy(): VariableContext {
         if (!$this->context) {
             $this->context = new VariableContext(
                 $this->version,
@@ -90,7 +89,7 @@ class VariableInstance extends InstanceResource {
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): VariableInstance {
         return $this->proxy()->fetch();
     }
 
@@ -101,17 +100,17 @@ class VariableInstance extends InstanceResource {
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): VariableInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the VariableInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -140,8 +139,8 @@ class VariableInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

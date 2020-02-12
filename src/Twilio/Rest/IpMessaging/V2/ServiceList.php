@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,13 +20,12 @@ class ServiceList extends ListResource {
      * Construct the ServiceList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\IpMessaging\V2\ServiceList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Services';
     }
@@ -37,13 +37,13 @@ class ServiceList extends ListResource {
      * @return ServiceInstance Newly created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName, ));
+    public function create($friendlyName): ServiceInstance {
+        $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -66,9 +66,9 @@ class ServiceList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -91,7 +91,7 @@ class ServiceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ServiceInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -102,14 +102,10 @@ class ServiceList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ServiceInstance
+     * @return ServicePage Page of ServiceInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ServicePage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -125,9 +121,9 @@ class ServiceList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ServiceInstance
+     * @return ServicePage Page of ServiceInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): ServicePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -140,9 +136,8 @@ class ServiceList extends ListResource {
      * Constructs a ServiceContext
      *
      * @param string $sid The SID of the Service resource to fetch
-     * @return \Twilio\Rest\IpMessaging\V2\ServiceContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): ServiceContext {
         return new ServiceContext($this->version, $sid);
     }
 
@@ -151,7 +146,7 @@ class ServiceList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.IpMessaging.V2.ServiceList]';
     }
 }

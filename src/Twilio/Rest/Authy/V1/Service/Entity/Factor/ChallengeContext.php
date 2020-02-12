@@ -22,24 +22,23 @@ class ChallengeContext extends InstanceContext {
     /**
      * Initialize the ChallengeContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $identity Unique identity of the Entity
      * @param string $factorSid Factor Sid.
      * @param string $sid A string that uniquely identifies this Challenge, or
      *                    `latest`.
-     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeContext
      */
     public function __construct(Version $version, $serviceSid, $identity, $factorSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'identity' => $identity,
             'factorSid' => $factorSid,
             'sid' => $sid,
-        );
+        ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors/' . \rawurlencode($factorSid) . '/Challenges/' . \rawurlencode($sid) . '';
     }
@@ -47,10 +46,10 @@ class ChallengeContext extends InstanceContext {
     /**
      * Deletes the ChallengeInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -60,8 +59,8 @@ class ChallengeContext extends InstanceContext {
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ChallengeInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -86,15 +85,15 @@ class ChallengeContext extends InstanceContext {
      * @return ChallengeInstance Updated ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ChallengeInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('AuthPayload' => $options['authPayload'], ));
+        $data = Values::of(['AuthPayload' => $options['authPayload'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -113,8 +112,8 @@ class ChallengeContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

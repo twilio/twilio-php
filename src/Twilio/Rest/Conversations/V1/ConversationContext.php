@@ -11,6 +11,7 @@ namespace Twilio\Rest\Conversations\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Conversations\V1\Conversation\MessageList;
 use Twilio\Rest\Conversations\V1\Conversation\ParticipantList;
@@ -22,31 +23,30 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Conversations\V1\Conversation\ParticipantList $participants
- * @property \Twilio\Rest\Conversations\V1\Conversation\MessageList $messages
- * @property \Twilio\Rest\Conversations\V1\Conversation\WebhookList $webhooks
+ * @property ParticipantList $participants
+ * @property MessageList $messages
+ * @property WebhookList $webhooks
  * @method \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext participants(string $sid)
  * @method \Twilio\Rest\Conversations\V1\Conversation\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Conversations\V1\Conversation\WebhookContext webhooks(string $sid)
  */
 class ConversationContext extends InstanceContext {
-    protected $_participants = null;
-    protected $_messages = null;
-    protected $_webhooks = null;
+    protected $_participants;
+    protected $_messages;
+    protected $_webhooks;
 
     /**
      * Initialize the ConversationContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Conversations\V1\ConversationContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Conversations/' . \rawurlencode($sid) . '';
     }
@@ -58,21 +58,21 @@ class ConversationContext extends InstanceContext {
      * @return ConversationInstance Updated ConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ConversationInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' => $options['attributes'],
             'MessagingServiceSid' => $options['messagingServiceSid'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -82,10 +82,10 @@ class ConversationContext extends InstanceContext {
     /**
      * Deletes the ConversationInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -95,8 +95,8 @@ class ConversationContext extends InstanceContext {
      * @return ConversationInstance Fetched ConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ConversationInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -109,10 +109,8 @@ class ConversationContext extends InstanceContext {
 
     /**
      * Access the participants
-     *
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantList
      */
-    protected function getParticipants() {
+    protected function getParticipants(): ParticipantList {
         if (!$this->_participants) {
             $this->_participants = new ParticipantList($this->version, $this->solution['sid']);
         }
@@ -122,10 +120,8 @@ class ConversationContext extends InstanceContext {
 
     /**
      * Access the messages
-     *
-     * @return \Twilio\Rest\Conversations\V1\Conversation\MessageList
      */
-    protected function getMessages() {
+    protected function getMessages(): MessageList {
         if (!$this->_messages) {
             $this->_messages = new MessageList($this->version, $this->solution['sid']);
         }
@@ -135,10 +131,8 @@ class ConversationContext extends InstanceContext {
 
     /**
      * Access the webhooks
-     *
-     * @return \Twilio\Rest\Conversations\V1\Conversation\WebhookList
      */
-    protected function getWebhooks() {
+    protected function getWebhooks(): WebhookList {
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList($this->version, $this->solution['sid']);
         }
@@ -150,10 +144,10 @@ class ConversationContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -167,10 +161,10 @@ class ConversationContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -184,8 +178,8 @@ class ConversationContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

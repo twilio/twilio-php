@@ -24,7 +24,7 @@ abstract class ChallengeOptions {
      *                              Challenge
      * @return CreateChallengeOptions Options builder
      */
-    public static function create($expirationDate = Values::NONE, $details = Values::NONE, $hiddenDetails = Values::NONE) {
+    public static function create($expirationDate = Values::NONE, $details = Values::NONE, $hiddenDetails = Values::NONE): CreateChallengeOptions {
         return new CreateChallengeOptions($expirationDate, $details, $hiddenDetails);
     }
 
@@ -32,7 +32,7 @@ abstract class ChallengeOptions {
      * @param string $authPayload Optional payload to verify the Challenge
      * @return UpdateChallengeOptions Options builder
      */
-    public static function update($authPayload = Values::NONE) {
+    public static function update($authPayload = Values::NONE): UpdateChallengeOptions {
         return new UpdateChallengeOptions($authPayload);
     }
 }
@@ -58,7 +58,7 @@ class CreateChallengeOptions extends Options {
      *                                  will expire
      * @return $this Fluent Builder
      */
-    public function setExpirationDate($expirationDate) {
+    public function setExpirationDate($expirationDate): self {
         $this->options['expirationDate'] = $expirationDate;
         return $this;
     }
@@ -69,7 +69,7 @@ class CreateChallengeOptions extends Options {
      * @param string $details Public details provided to contextualize the Challenge
      * @return $this Fluent Builder
      */
-    public function setDetails($details) {
+    public function setDetails($details): self {
         $this->options['details'] = $details;
         return $this;
     }
@@ -81,7 +81,7 @@ class CreateChallengeOptions extends Options {
      *                              Challenge
      * @return $this Fluent Builder
      */
-    public function setHiddenDetails($hiddenDetails) {
+    public function setHiddenDetails($hiddenDetails): self {
         $this->options['hiddenDetails'] = $hiddenDetails;
         return $this;
     }
@@ -91,10 +91,10 @@ class CreateChallengeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -116,7 +116,7 @@ class UpdateChallengeOptions extends Options {
      * @param string $authPayload Optional payload to verify the Challenge
      * @return $this Fluent Builder
      */
-    public function setAuthPayload($authPayload) {
+    public function setAuthPayload($authPayload): self {
         $this->options['authPayload'] = $authPayload;
         return $this;
     }
@@ -126,10 +126,10 @@ class UpdateChallengeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

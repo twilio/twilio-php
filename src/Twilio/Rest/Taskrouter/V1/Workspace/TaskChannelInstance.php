@@ -32,18 +32,17 @@ class TaskChannelInstance extends InstanceResource {
     /**
      * Initialize the TaskChannelInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             TaskChannel
      * @param string $sid The SID of the TaskChannel resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -54,20 +53,18 @@ class TaskChannelInstance extends InstanceResource {
             'channelOptimizedRouting' => Values::array_get($payload, 'channel_optimized_routing'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext Context for
-     *                                                                 this
-     *                                                                 TaskChannelInstance
+     * @return TaskChannelContext Context for this TaskChannelInstance
      */
-    protected function proxy() {
+    protected function proxy(): TaskChannelContext {
         if (!$this->context) {
             $this->context = new TaskChannelContext(
                 $this->version,
@@ -85,7 +82,7 @@ class TaskChannelInstance extends InstanceResource {
      * @return TaskChannelInstance Fetched TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): TaskChannelInstance {
         return $this->proxy()->fetch();
     }
 
@@ -96,17 +93,17 @@ class TaskChannelInstance extends InstanceResource {
      * @return TaskChannelInstance Updated TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): TaskChannelInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the TaskChannelInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -135,8 +132,8 @@ class TaskChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

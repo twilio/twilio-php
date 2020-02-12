@@ -21,14 +21,13 @@ class DialingPermissionsInstance extends InstanceResource {
     /**
      * Initialize the DialingPermissionsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
@@ -56,7 +55,7 @@ class DialingPermissionsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.DialingPermissionsInstance]';
     }
 }

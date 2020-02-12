@@ -10,14 +10,15 @@
 namespace Twilio\Rest\Pricing\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Pricing\V1\Voice\CountryList;
 use Twilio\Rest\Pricing\V1\Voice\NumberList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V1\Voice\NumberList $numbers
- * @property \Twilio\Rest\Pricing\V1\Voice\CountryList $countries
+ * @property NumberList $numbers
+ * @property CountryList $countries
  * @method \Twilio\Rest\Pricing\V1\Voice\NumberContext numbers(string $number)
  * @method \Twilio\Rest\Pricing\V1\Voice\CountryContext countries(string $isoCountry)
  */
@@ -29,19 +30,18 @@ class VoiceList extends ListResource {
      * Construct the VoiceList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V1\VoiceList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Access the numbers
      */
-    protected function getNumbers() {
+    protected function getNumbers(): NumberList {
         if (!$this->_numbers) {
             $this->_numbers = new NumberList($this->version);
         }
@@ -52,7 +52,7 @@ class VoiceList extends ListResource {
     /**
      * Access the countries
      */
-    protected function getCountries() {
+    protected function getCountries(): CountryList {
         if (!$this->_countries) {
             $this->_countries = new CountryList($this->version);
         }
@@ -81,10 +81,10 @@ class VoiceList extends ListResource {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -98,7 +98,7 @@ class VoiceList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V1.VoiceList]';
     }
 }

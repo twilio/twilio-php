@@ -12,6 +12,7 @@ namespace Twilio\Rest\Studio\V1\Flow\Execution;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -30,23 +31,22 @@ use Twilio\Version;
  * @property array $links
  */
 class ExecutionStepInstance extends InstanceResource {
-    protected $_stepContext = null;
+    protected $_stepContext;
 
     /**
      * Initialize the ExecutionStepInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $executionSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'flowSid' => Values::array_get($payload, 'flow_sid'),
@@ -59,24 +59,22 @@ class ExecutionStepInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'flowSid' => $flowSid,
             'executionSid' => $executionSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext Context
-     *                                                                    for this
-     *                                                                    ExecutionStepInstance
+     * @return ExecutionStepContext Context for this ExecutionStepInstance
      */
-    protected function proxy() {
+    protected function proxy(): ExecutionStepContext {
         if (!$this->context) {
             $this->context = new ExecutionStepContext(
                 $this->version,
@@ -95,16 +93,14 @@ class ExecutionStepInstance extends InstanceResource {
      * @return ExecutionStepInstance Fetched ExecutionStepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ExecutionStepInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the stepContext
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList
      */
-    protected function getStepContext() {
+    protected function getStepContext(): ExecutionStepContextList {
         return $this->proxy()->stepContext;
     }
 
@@ -133,8 +129,8 @@ class ExecutionStepInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

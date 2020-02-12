@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -26,17 +27,16 @@ class AssignedAddOnExtensionList extends ListResource {
      *                            is assigned
      * @param string $assignedAddOnSid The SID that uniquely identifies the
      *                                 assigned Add-on installation
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionList
      */
     public function __construct(Version $version, $accountSid, $resourceSid, $assignedAddOnSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'resourceSid' => $resourceSid,
             'assignedAddOnSid' => $assignedAddOnSid,
-        );
+        ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($resourceSid) . '/AssignedAddOns/' . \rawurlencode($assignedAddOnSid) . '/Extensions.json';
     }
@@ -58,9 +58,9 @@ class AssignedAddOnExtensionList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -83,7 +83,7 @@ class AssignedAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssignedAddOnExtensionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -95,14 +95,10 @@ class AssignedAddOnExtensionList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of AssignedAddOnExtensionInstance
+     * @return AssignedAddOnExtensionPage Page of AssignedAddOnExtensionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnExtensionPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -119,9 +115,9 @@ class AssignedAddOnExtensionList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AssignedAddOnExtensionInstance
+     * @return AssignedAddOnExtensionPage Page of AssignedAddOnExtensionInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): AssignedAddOnExtensionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,9 +130,8 @@ class AssignedAddOnExtensionList extends ListResource {
      * Constructs a AssignedAddOnExtensionContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): AssignedAddOnExtensionContext {
         return new AssignedAddOnExtensionContext(
             $this->version,
             $this->solution['accountSid'],
@@ -151,7 +146,7 @@ class AssignedAddOnExtensionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AssignedAddOnExtensionList]';
     }
 }

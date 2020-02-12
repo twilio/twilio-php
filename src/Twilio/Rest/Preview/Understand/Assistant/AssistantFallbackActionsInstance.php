@@ -27,33 +27,32 @@ class AssistantFallbackActionsInstance extends InstanceResource {
     /**
      * Initialize the AssistantFallbackActionsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assistantSid' => Values::array_get($payload, 'assistant_sid'),
             'url' => Values::array_get($payload, 'url'),
             'data' => Values::array_get($payload, 'data'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsContext Context for this
-     *                                                                                   AssistantFallbackActionsInstance
+     * @return AssistantFallbackActionsContext Context for this
+     *                                         AssistantFallbackActionsInstance
      */
-    protected function proxy() {
+    protected function proxy(): AssistantFallbackActionsContext {
         if (!$this->context) {
             $this->context = new AssistantFallbackActionsContext(
                 $this->version,
@@ -71,7 +70,7 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      *                                          AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AssistantFallbackActionsInstance {
         return $this->proxy()->fetch();
     }
 
@@ -83,7 +82,7 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      *                                          AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): AssistantFallbackActionsInstance {
         return $this->proxy()->update($options);
     }
 
@@ -112,8 +111,8 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

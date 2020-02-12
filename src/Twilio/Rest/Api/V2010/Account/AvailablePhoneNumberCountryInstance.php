@@ -11,6 +11,13 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -22,50 +29,50 @@ use Twilio\Version;
  * @property array $subresourceUris
  */
 class AvailablePhoneNumberCountryInstance extends InstanceResource {
-    protected $_local = null;
-    protected $_tollFree = null;
-    protected $_mobile = null;
-    protected $_national = null;
-    protected $_voip = null;
-    protected $_sharedCost = null;
-    protected $_machineToMachine = null;
+    protected $_local;
+    protected $_tollFree;
+    protected $_mobile;
+    protected $_national;
+    protected $_voip;
+    protected $_sharedCost;
+    protected $_machineToMachine;
 
     /**
      * Initialize the AvailablePhoneNumberCountryInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $countryCode The ISO country code of the country to fetch
      *                            available phone number information about
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'countryCode' => Values::array_get($payload, 'country_code'),
             'country' => Values::array_get($payload, 'country'),
             'uri' => Values::array_get($payload, 'uri'),
             'beta' => Values::array_get($payload, 'beta'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'countryCode' => $countryCode ?: $this->properties['countryCode'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext Context for this AvailablePhoneNumberCountryInstance
+     * @return AvailablePhoneNumberCountryContext Context for this
+     *                                            AvailablePhoneNumberCountryInstance
      */
-    protected function proxy() {
+    protected function proxy(): AvailablePhoneNumberCountryContext {
         if (!$this->context) {
             $this->context = new AvailablePhoneNumberCountryContext(
                 $this->version,
@@ -84,70 +91,56 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      *                                             AvailablePhoneNumberCountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AvailablePhoneNumberCountryInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the local
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList
      */
-    protected function getLocal() {
+    protected function getLocal(): LocalList {
         return $this->proxy()->local;
     }
 
     /**
      * Access the tollFree
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList
      */
-    protected function getTollFree() {
+    protected function getTollFree(): TollFreeList {
         return $this->proxy()->tollFree;
     }
 
     /**
      * Access the mobile
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList
      */
-    protected function getMobile() {
+    protected function getMobile(): MobileList {
         return $this->proxy()->mobile;
     }
 
     /**
      * Access the national
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList
      */
-    protected function getNational() {
+    protected function getNational(): NationalList {
         return $this->proxy()->national;
     }
 
     /**
      * Access the voip
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList
      */
-    protected function getVoip() {
+    protected function getVoip(): VoipList {
         return $this->proxy()->voip;
     }
 
     /**
      * Access the sharedCost
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList
      */
-    protected function getSharedCost() {
+    protected function getSharedCost(): SharedCostList {
         return $this->proxy()->sharedCost;
     }
 
     /**
      * Access the machineToMachine
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList
      */
-    protected function getMachineToMachine() {
+    protected function getMachineToMachine(): MachineToMachineList {
         return $this->proxy()->machineToMachine;
     }
 
@@ -176,8 +169,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

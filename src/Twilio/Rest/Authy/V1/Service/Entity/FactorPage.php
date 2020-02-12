@@ -22,7 +22,7 @@ class FactorPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FactorInstance {
         return new FactorInstance(
             $this->version,
             $payload,
@@ -36,7 +36,7 @@ class FactorPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Authy.V1.FactorPage]';
     }
 }

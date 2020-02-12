@@ -19,7 +19,7 @@ class OriginationUrlPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): OriginationUrlInstance {
         return new OriginationUrlInstance($this->version, $payload, $this->solution['trunkSid']);
     }
 
@@ -28,7 +28,7 @@ class OriginationUrlPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Trunking.V1.OriginationUrlPage]';
     }
 }

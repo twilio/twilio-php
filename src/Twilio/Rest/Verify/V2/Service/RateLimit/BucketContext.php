@@ -19,22 +19,17 @@ class BucketContext extends InstanceContext {
     /**
      * Initialize the BucketContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $rateLimitSid Rate Limit Sid.
      * @param string $sid A string that uniquely identifies this Bucket.
-     * @return \Twilio\Rest\Verify\V2\Service\RateLimit\BucketContext
      */
     public function __construct(Version $version, $serviceSid, $rateLimitSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'rateLimitSid' => $rateLimitSid,
-            'sid' => $sid,
-        );
+        $this->solution = ['serviceSid' => $serviceSid, 'rateLimitSid' => $rateLimitSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/RateLimits/' . \rawurlencode($rateLimitSid) . '/Buckets/' . \rawurlencode($sid) . '';
     }
@@ -46,15 +41,15 @@ class BucketContext extends InstanceContext {
      * @return BucketInstance Updated BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): BucketInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Max' => $options['max'], 'Interval' => $options['interval'], ));
+        $data = Values::of(['Max' => $options['max'], 'Interval' => $options['interval'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -73,8 +68,8 @@ class BucketContext extends InstanceContext {
      * @return BucketInstance Fetched BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): BucketInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -94,10 +89,10 @@ class BucketContext extends InstanceContext {
     /**
      * Deletes the BucketInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -106,8 +101,8 @@ class BucketContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

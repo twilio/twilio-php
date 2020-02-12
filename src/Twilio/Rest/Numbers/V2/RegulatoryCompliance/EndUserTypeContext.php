@@ -18,16 +18,15 @@ class EndUserTypeContext extends InstanceContext {
     /**
      * Initialize the EndUserTypeContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the End-User Type
      *                    resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/RegulatoryCompliance/EndUserTypes/' . \rawurlencode($sid) . '';
     }
@@ -38,8 +37,8 @@ class EndUserTypeContext extends InstanceContext {
      * @return EndUserTypeInstance Fetched EndUserTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): EndUserTypeInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -55,8 +54,8 @@ class EndUserTypeContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

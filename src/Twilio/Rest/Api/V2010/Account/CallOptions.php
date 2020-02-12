@@ -64,7 +64,7 @@ abstract class CallOptions {
      * @param string $byoc BYOC trunk SID (Beta)
      * @return CreateCallOptions Options builder
      */
-    public static function create($url = Values::NONE, $twiml = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE, $byoc = Values::NONE) {
+    public static function create($url = Values::NONE, $twiml = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE, $byoc = Values::NONE): CreateCallOptions {
         return new CreateCallOptions($url, $twiml, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout, $byoc);
     }
 
@@ -81,7 +81,7 @@ abstract class CallOptions {
      * @param string $endTimeAfter Only include calls that ended on this date
      * @return ReadCallOptions Options builder
      */
-    public static function read($to = Values::NONE, $from = Values::NONE, $parentCallSid = Values::NONE, $status = Values::NONE, $startTimeBefore = Values::NONE, $startTime = Values::NONE, $startTimeAfter = Values::NONE, $endTimeBefore = Values::NONE, $endTime = Values::NONE, $endTimeAfter = Values::NONE) {
+    public static function read($to = Values::NONE, $from = Values::NONE, $parentCallSid = Values::NONE, $status = Values::NONE, $startTimeBefore = Values::NONE, $startTime = Values::NONE, $startTimeAfter = Values::NONE, $endTimeBefore = Values::NONE, $endTime = Values::NONE, $endTimeAfter = Values::NONE): ReadCallOptions {
         return new ReadCallOptions($to, $from, $parentCallSid, $status, $startTimeBefore, $startTime, $startTimeAfter, $endTimeBefore, $endTime, $endTimeAfter);
     }
 
@@ -98,7 +98,7 @@ abstract class CallOptions {
      * @param string $twiml TwiML instructions for the call
      * @return UpdateCallOptions Options builder
      */
-    public static function update($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $twiml = Values::NONE) {
+    public static function update($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $twiml = Values::NONE): UpdateCallOptions {
         return new UpdateCallOptions($url, $method, $status, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackMethod, $twiml);
     }
 }
@@ -189,7 +189,7 @@ class CreateCallOptions extends Options {
      * @param string $url The absolute URL that returns TwiML for this call
      * @return $this Fluent Builder
      */
-    public function setUrl($url) {
+    public function setUrl($url): self {
         $this->options['url'] = $url;
         return $this;
     }
@@ -200,7 +200,7 @@ class CreateCallOptions extends Options {
      * @param string $twiml TwiML instructions for the call
      * @return $this Fluent Builder
      */
-    public function setTwiml($twiml) {
+    public function setTwiml($twiml): self {
         $this->options['twiml'] = $twiml;
         return $this;
     }
@@ -212,7 +212,7 @@ class CreateCallOptions extends Options {
      *                               handle the call
      * @return $this Fluent Builder
      */
-    public function setApplicationSid($applicationSid) {
+    public function setApplicationSid($applicationSid): self {
         $this->options['applicationSid'] = $applicationSid;
         return $this;
     }
@@ -223,7 +223,7 @@ class CreateCallOptions extends Options {
      * @param string $method HTTP method to use to fetch TwiML
      * @return $this Fluent Builder
      */
-    public function setMethod($method) {
+    public function setMethod($method): self {
         $this->options['method'] = $method;
         return $this;
     }
@@ -234,7 +234,7 @@ class CreateCallOptions extends Options {
      * @param string $fallbackUrl Fallback URL in case of error
      * @return $this Fluent Builder
      */
-    public function setFallbackUrl($fallbackUrl) {
+    public function setFallbackUrl($fallbackUrl): self {
         $this->options['fallbackUrl'] = $fallbackUrl;
         return $this;
     }
@@ -245,7 +245,7 @@ class CreateCallOptions extends Options {
      * @param string $fallbackMethod HTTP Method to use with fallback_url
      * @return $this Fluent Builder
      */
-    public function setFallbackMethod($fallbackMethod) {
+    public function setFallbackMethod($fallbackMethod): self {
         $this->options['fallbackMethod'] = $fallbackMethod;
         return $this;
     }
@@ -257,7 +257,7 @@ class CreateCallOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -269,7 +269,7 @@ class CreateCallOptions extends Options {
      *                                    the `status_callback` URL.
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackEvent($statusCallbackEvent) {
+    public function setStatusCallbackEvent($statusCallbackEvent): self {
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
         return $this;
     }
@@ -280,7 +280,7 @@ class CreateCallOptions extends Options {
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -291,7 +291,7 @@ class CreateCallOptions extends Options {
      * @param string $sendDigits The digits to dial after connecting to the number
      * @return $this Fluent Builder
      */
-    public function setSendDigits($sendDigits) {
+    public function setSendDigits($sendDigits): self {
         $this->options['sendDigits'] = $sendDigits;
         return $this;
     }
@@ -302,7 +302,7 @@ class CreateCallOptions extends Options {
      * @param int $timeout Number of seconds to wait for an answer
      * @return $this Fluent Builder
      */
-    public function setTimeout($timeout) {
+    public function setTimeout($timeout): self {
         $this->options['timeout'] = $timeout;
         return $this;
     }
@@ -313,7 +313,7 @@ class CreateCallOptions extends Options {
      * @param bool $record Whether to record the call
      * @return $this Fluent Builder
      */
-    public function setRecord($record) {
+    public function setRecord($record): self {
         $this->options['record'] = $record;
         return $this;
     }
@@ -325,7 +325,7 @@ class CreateCallOptions extends Options {
      *                                  recording
      * @return $this Fluent Builder
      */
-    public function setRecordingChannels($recordingChannels) {
+    public function setRecordingChannels($recordingChannels): self {
         $this->options['recordingChannels'] = $recordingChannels;
         return $this;
     }
@@ -337,7 +337,7 @@ class CreateCallOptions extends Options {
      *                                        recording is available to be accessed
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallback($recordingStatusCallback) {
+    public function setRecordingStatusCallback($recordingStatusCallback): self {
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         return $this;
     }
@@ -350,7 +350,7 @@ class CreateCallOptions extends Options {
      *                                              `recording_status_callback` URL
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
+    public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod): self {
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
         return $this;
     }
@@ -362,7 +362,7 @@ class CreateCallOptions extends Options {
      *                                making a SIP call
      * @return $this Fluent Builder
      */
-    public function setSipAuthUsername($sipAuthUsername) {
+    public function setSipAuthUsername($sipAuthUsername): self {
         $this->options['sipAuthUsername'] = $sipAuthUsername;
         return $this;
     }
@@ -374,7 +374,7 @@ class CreateCallOptions extends Options {
      *                                user account specified in `sip_auth_username`.
      * @return $this Fluent Builder
      */
-    public function setSipAuthPassword($sipAuthPassword) {
+    public function setSipAuthPassword($sipAuthPassword): self {
         $this->options['sipAuthPassword'] = $sipAuthPassword;
         return $this;
     }
@@ -386,7 +386,7 @@ class CreateCallOptions extends Options {
      *                                 detection
      * @return $this Fluent Builder
      */
-    public function setMachineDetection($machineDetection) {
+    public function setMachineDetection($machineDetection): self {
         $this->options['machineDetection'] = $machineDetection;
         return $this;
     }
@@ -398,7 +398,7 @@ class CreateCallOptions extends Options {
      *                                     detection
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionTimeout($machineDetectionTimeout) {
+    public function setMachineDetectionTimeout($machineDetectionTimeout): self {
         $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
         return $this;
     }
@@ -412,7 +412,7 @@ class CreateCallOptions extends Options {
      *                                             `recording_status_callback`
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
+    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent): self {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         return $this;
     }
@@ -424,7 +424,7 @@ class CreateCallOptions extends Options {
      *                     recording.
      * @return $this Fluent Builder
      */
-    public function setTrim($trim) {
+    public function setTrim($trim): self {
         $this->options['trim'] = $trim;
         return $this;
     }
@@ -438,7 +438,7 @@ class CreateCallOptions extends Options {
      *                         formatted as `name@company.com`.
      * @return $this Fluent Builder
      */
-    public function setCallerId($callerId) {
+    public function setCallerId($callerId): self {
         $this->options['callerId'] = $callerId;
         return $this;
     }
@@ -451,7 +451,7 @@ class CreateCallOptions extends Options {
      *                                             of the speech activity
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionSpeechThreshold($machineDetectionSpeechThreshold) {
+    public function setMachineDetectionSpeechThreshold($machineDetectionSpeechThreshold): self {
         $this->options['machineDetectionSpeechThreshold'] = $machineDetectionSpeechThreshold;
         return $this;
     }
@@ -463,7 +463,7 @@ class CreateCallOptions extends Options {
      *                                                silence after speech activity
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionSpeechEndThreshold($machineDetectionSpeechEndThreshold) {
+    public function setMachineDetectionSpeechEndThreshold($machineDetectionSpeechEndThreshold): self {
         $this->options['machineDetectionSpeechEndThreshold'] = $machineDetectionSpeechEndThreshold;
         return $this;
     }
@@ -475,7 +475,7 @@ class CreateCallOptions extends Options {
      *                                            silence
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionSilenceTimeout($machineDetectionSilenceTimeout) {
+    public function setMachineDetectionSilenceTimeout($machineDetectionSilenceTimeout): self {
         $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
         return $this;
     }
@@ -486,7 +486,7 @@ class CreateCallOptions extends Options {
      * @param string $byoc BYOC trunk SID (Beta)
      * @return $this Fluent Builder
      */
-    public function setByoc($byoc) {
+    public function setByoc($byoc): self {
         $this->options['byoc'] = $byoc;
         return $this;
     }
@@ -496,10 +496,10 @@ class CreateCallOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -539,7 +539,7 @@ class ReadCallOptions extends Options {
      * @param string $to Phone number or Client identifier of calls to include
      * @return $this Fluent Builder
      */
-    public function setTo($to) {
+    public function setTo($to): self {
         $this->options['to'] = $to;
         return $this;
     }
@@ -550,7 +550,7 @@ class ReadCallOptions extends Options {
      * @param string $from Phone number or Client identifier to filter `from` on
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -561,7 +561,7 @@ class ReadCallOptions extends Options {
      * @param string $parentCallSid Parent call SID to filter on
      * @return $this Fluent Builder
      */
-    public function setParentCallSid($parentCallSid) {
+    public function setParentCallSid($parentCallSid): self {
         $this->options['parentCallSid'] = $parentCallSid;
         return $this;
     }
@@ -572,7 +572,7 @@ class ReadCallOptions extends Options {
      * @param string $status The status of the resources to read
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -583,7 +583,7 @@ class ReadCallOptions extends Options {
      * @param string $startTimeBefore Only include calls that started on this date
      * @return $this Fluent Builder
      */
-    public function setStartTimeBefore($startTimeBefore) {
+    public function setStartTimeBefore($startTimeBefore): self {
         $this->options['startTimeBefore'] = $startTimeBefore;
         return $this;
     }
@@ -594,7 +594,7 @@ class ReadCallOptions extends Options {
      * @param string $startTime Only include calls that started on this date
      * @return $this Fluent Builder
      */
-    public function setStartTime($startTime) {
+    public function setStartTime($startTime): self {
         $this->options['startTime'] = $startTime;
         return $this;
     }
@@ -605,7 +605,7 @@ class ReadCallOptions extends Options {
      * @param string $startTimeAfter Only include calls that started on this date
      * @return $this Fluent Builder
      */
-    public function setStartTimeAfter($startTimeAfter) {
+    public function setStartTimeAfter($startTimeAfter): self {
         $this->options['startTimeAfter'] = $startTimeAfter;
         return $this;
     }
@@ -616,7 +616,7 @@ class ReadCallOptions extends Options {
      * @param string $endTimeBefore Only include calls that ended on this date
      * @return $this Fluent Builder
      */
-    public function setEndTimeBefore($endTimeBefore) {
+    public function setEndTimeBefore($endTimeBefore): self {
         $this->options['endTimeBefore'] = $endTimeBefore;
         return $this;
     }
@@ -627,7 +627,7 @@ class ReadCallOptions extends Options {
      * @param string $endTime Only include calls that ended on this date
      * @return $this Fluent Builder
      */
-    public function setEndTime($endTime) {
+    public function setEndTime($endTime): self {
         $this->options['endTime'] = $endTime;
         return $this;
     }
@@ -638,7 +638,7 @@ class ReadCallOptions extends Options {
      * @param string $endTimeAfter Only include calls that ended on this date
      * @return $this Fluent Builder
      */
-    public function setEndTimeAfter($endTimeAfter) {
+    public function setEndTimeAfter($endTimeAfter): self {
         $this->options['endTimeAfter'] = $endTimeAfter;
         return $this;
     }
@@ -648,10 +648,10 @@ class ReadCallOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -689,7 +689,7 @@ class UpdateCallOptions extends Options {
      * @param string $url The absolute URL that returns TwiML for this call
      * @return $this Fluent Builder
      */
-    public function setUrl($url) {
+    public function setUrl($url): self {
         $this->options['url'] = $url;
         return $this;
     }
@@ -700,7 +700,7 @@ class UpdateCallOptions extends Options {
      * @param string $method HTTP method to use to fetch TwiML
      * @return $this Fluent Builder
      */
-    public function setMethod($method) {
+    public function setMethod($method): self {
         $this->options['method'] = $method;
         return $this;
     }
@@ -711,7 +711,7 @@ class UpdateCallOptions extends Options {
      * @param string $status The new status to update the call with.
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -722,7 +722,7 @@ class UpdateCallOptions extends Options {
      * @param string $fallbackUrl Fallback URL in case of error
      * @return $this Fluent Builder
      */
-    public function setFallbackUrl($fallbackUrl) {
+    public function setFallbackUrl($fallbackUrl): self {
         $this->options['fallbackUrl'] = $fallbackUrl;
         return $this;
     }
@@ -733,7 +733,7 @@ class UpdateCallOptions extends Options {
      * @param string $fallbackMethod HTTP Method to use with fallback_url
      * @return $this Fluent Builder
      */
-    public function setFallbackMethod($fallbackMethod) {
+    public function setFallbackMethod($fallbackMethod): self {
         $this->options['fallbackMethod'] = $fallbackMethod;
         return $this;
     }
@@ -745,7 +745,7 @@ class UpdateCallOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -757,7 +757,7 @@ class UpdateCallOptions extends Options {
      *                                     status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -768,7 +768,7 @@ class UpdateCallOptions extends Options {
      * @param string $twiml TwiML instructions for the call
      * @return $this Fluent Builder
      */
-    public function setTwiml($twiml) {
+    public function setTwiml($twiml): self {
         $this->options['twiml'] = $twiml;
         return $this;
     }
@@ -778,10 +778,10 @@ class UpdateCallOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -19,24 +19,23 @@ class CredentialContext extends InstanceContext {
     /**
      * Initialize the CredentialContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
      * @param string $credentialListSid The unique id that identifies the
      *                                  credential list that contains the desired
      *                                  credential
      * @param string $sid The unique id that identifies the resource to fetch.
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext
      */
     public function __construct(Version $version, $accountSid, $credentialListSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'credentialListSid' => $credentialListSid,
             'sid' => $sid,
-        );
+        ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/CredentialLists/' . \rawurlencode($credentialListSid) . '/Credentials/' . \rawurlencode($sid) . '.json';
     }
@@ -47,8 +46,8 @@ class CredentialContext extends InstanceContext {
      * @return CredentialInstance Fetched CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): CredentialInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -72,15 +71,15 @@ class CredentialContext extends InstanceContext {
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): CredentialInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Password' => $options['password'], ));
+        $data = Values::of(['Password' => $options['password'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -96,10 +95,10 @@ class CredentialContext extends InstanceContext {
     /**
      * Deletes the CredentialInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -108,8 +107,8 @@ class CredentialContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

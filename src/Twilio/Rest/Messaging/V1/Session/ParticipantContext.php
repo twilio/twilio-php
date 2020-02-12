@@ -23,17 +23,16 @@ class ParticipantContext extends InstanceContext {
     /**
      * Initialize the ParticipantContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sessionSid The SID of the Session with the participant to
      *                           fetch
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Session\ParticipantContext
      */
     public function __construct(Version $version, $sessionSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sessionSid' => $sessionSid, 'sid' => $sid, );
+        $this->solution = ['sessionSid' => $sessionSid, 'sid' => $sid, ];
 
         $this->uri = '/Sessions/' . \rawurlencode($sessionSid) . '/Participants/' . \rawurlencode($sid) . '';
     }
@@ -45,19 +44,19 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ParticipantInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Attributes' => $options['attributes'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -75,8 +74,8 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ParticipantInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -95,10 +94,10 @@ class ParticipantContext extends InstanceContext {
     /**
      * Deletes the ParticipantInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -107,8 +106,8 @@ class ParticipantContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

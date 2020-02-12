@@ -22,7 +22,7 @@ class PhoneNumberPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): PhoneNumberInstance {
         return new PhoneNumberInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -31,7 +31,7 @@ class PhoneNumberPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Proxy.V1.PhoneNumberPage]';
     }
 }

@@ -11,45 +11,39 @@ namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Preview\Marketplace\AvailableAddOnList;
 use Twilio\Rest\Preview\Marketplace\InstalledAddOnList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList $availableAddOns
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList $installedAddOns
+ * @property AvailableAddOnList $availableAddOns
+ * @property InstalledAddOnList $installedAddOns
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  */
 class Marketplace extends Version {
-    protected $_availableAddOns = null;
-    protected $_installedAddOns = null;
+    protected $_availableAddOns;
+    protected $_installedAddOns;
 
     /**
      * Construct the Marketplace version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\Marketplace Marketplace version of Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'marketplace';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList
-     */
-    protected function getAvailableAddOns() {
+    protected function getAvailableAddOns(): AvailableAddOnList {
         if (!$this->_availableAddOns) {
             $this->_availableAddOns = new AvailableAddOnList($this);
         }
         return $this->_availableAddOns;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList
-     */
-    protected function getInstalledAddOns() {
+    protected function getInstalledAddOns(): InstalledAddOnList {
         if (!$this->_installedAddOns) {
             $this->_installedAddOns = new InstalledAddOnList($this);
         }
@@ -77,10 +71,10 @@ class Marketplace extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -94,7 +88,7 @@ class Marketplace extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Marketplace]';
     }
 }

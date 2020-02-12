@@ -19,7 +19,7 @@ abstract class MessageOptions {
      *                           application-specific data
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $attributes = Values::NONE) {
+    public static function create($from = Values::NONE, $attributes = Values::NONE): CreateMessageOptions {
         return new CreateMessageOptions($from, $attributes);
     }
 
@@ -27,7 +27,7 @@ abstract class MessageOptions {
      * @param string $order The sort order of the returned messages
      * @return ReadMessageOptions Options builder
      */
-    public static function read($order = Values::NONE) {
+    public static function read($order = Values::NONE): ReadMessageOptions {
         return new ReadMessageOptions($order);
     }
 
@@ -37,7 +37,7 @@ abstract class MessageOptions {
      *                           application-specific data
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($body = Values::NONE, $attributes = Values::NONE) {
+    public static function update($body = Values::NONE, $attributes = Values::NONE): UpdateMessageOptions {
         return new UpdateMessageOptions($body, $attributes);
     }
 }
@@ -59,7 +59,7 @@ class CreateMessageOptions extends Options {
      * @param string $from The identity of the new message's author
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -71,7 +71,7 @@ class CreateMessageOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -81,10 +81,10 @@ class CreateMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -106,7 +106,7 @@ class ReadMessageOptions extends Options {
      * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
-    public function setOrder($order) {
+    public function setOrder($order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -116,10 +116,10 @@ class ReadMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -144,7 +144,7 @@ class UpdateMessageOptions extends Options {
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
-    public function setBody($body) {
+    public function setBody($body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -156,7 +156,7 @@ class UpdateMessageOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -166,10 +166,10 @@ class UpdateMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

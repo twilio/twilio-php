@@ -22,22 +22,21 @@ class DocumentPermissionContext extends InstanceContext {
     /**
      * Initialize the DocumentPermissionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $documentSid Sync Document SID or unique name.
      * @param string $identity Identity of the user to whom the Sync Document
      *                         Permission applies.
-     * @return \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionContext
      */
     public function __construct(Version $version, $serviceSid, $documentSid, $identity) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'documentSid' => $documentSid,
             'identity' => $identity,
-        );
+        ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($documentSid) . '/Permissions/' . \rawurlencode($identity) . '';
     }
@@ -48,8 +47,8 @@ class DocumentPermissionContext extends InstanceContext {
      * @return DocumentPermissionInstance Fetched DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): DocumentPermissionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -69,10 +68,10 @@ class DocumentPermissionContext extends InstanceContext {
     /**
      * Deletes the DocumentPermissionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -85,17 +84,17 @@ class DocumentPermissionContext extends InstanceContext {
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage) {
-        $data = Values::of(array(
+    public function update($read, $write, $manage): DocumentPermissionInstance {
+        $data = Values::of([
             'Read' => Serialize::booleanToString($read),
             'Write' => Serialize::booleanToString($write),
             'Manage' => Serialize::booleanToString($manage),
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -113,8 +112,8 @@ class DocumentPermissionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

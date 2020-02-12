@@ -17,13 +17,12 @@ class NumberList extends ListResource {
      * Construct the NumberList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V2\Voice\NumberList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
@@ -31,9 +30,8 @@ class NumberList extends ListResource {
      *
      * @param string $destinationNumber The destination number for which to fetch
      *                                  pricing information
-     * @return \Twilio\Rest\Pricing\V2\Voice\NumberContext
      */
-    public function getContext($destinationNumber) {
+    public function getContext($destinationNumber): NumberContext {
         return new NumberContext($this->version, $destinationNumber);
     }
 
@@ -42,7 +40,7 @@ class NumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V2.NumberList]';
     }
 }

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList;
@@ -22,11 +23,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList $realTimeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList $cumulativeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList $statistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList $reservations
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList $workerChannels
+ * @property WorkersRealTimeStatisticsList $realTimeStatistics
+ * @property WorkersCumulativeStatisticsList $cumulativeStatistics
+ * @property WorkerStatisticsList $statistics
+ * @property ReservationList $reservations
+ * @property WorkerChannelList $workerChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext realTimeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext cumulativeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext statistics()
@@ -34,25 +35,24 @@ use Twilio\Version;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext workerChannels(string $sid)
  */
 class WorkerContext extends InstanceContext {
-    protected $_realTimeStatistics = null;
-    protected $_cumulativeStatistics = null;
-    protected $_statistics = null;
-    protected $_reservations = null;
-    protected $_workerChannels = null;
+    protected $_realTimeStatistics;
+    protected $_cumulativeStatistics;
+    protected $_statistics;
+    protected $_reservations;
+    protected $_workerChannels;
 
     /**
      * Initialize the WorkerContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace with the Worker to fetch
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/' . \rawurlencode($sid) . '';
     }
@@ -63,8 +63,8 @@ class WorkerContext extends InstanceContext {
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): WorkerInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -87,20 +87,20 @@ class WorkerContext extends InstanceContext {
      * @return WorkerInstance Updated WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WorkerInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'ActivitySid' => $options['activitySid'],
             'Attributes' => $options['attributes'],
             'FriendlyName' => $options['friendlyName'],
             'RejectPendingReservations' => Serialize::booleanToString($options['rejectPendingReservations']),
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -115,19 +115,17 @@ class WorkerContext extends InstanceContext {
     /**
      * Deletes the WorkerInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the realTimeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList
      */
-    protected function getRealTimeStatistics() {
+    protected function getRealTimeStatistics(): WorkersRealTimeStatisticsList {
         if (!$this->_realTimeStatistics) {
             $this->_realTimeStatistics = new WorkersRealTimeStatisticsList(
                 $this->version,
@@ -140,10 +138,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the cumulativeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList
      */
-    protected function getCumulativeStatistics() {
+    protected function getCumulativeStatistics(): WorkersCumulativeStatisticsList {
         if (!$this->_cumulativeStatistics) {
             $this->_cumulativeStatistics = new WorkersCumulativeStatisticsList(
                 $this->version,
@@ -156,10 +152,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the statistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList
      */
-    protected function getStatistics() {
+    protected function getStatistics(): WorkerStatisticsList {
         if (!$this->_statistics) {
             $this->_statistics = new WorkerStatisticsList(
                 $this->version,
@@ -173,10 +167,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the reservations
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList
      */
-    protected function getReservations() {
+    protected function getReservations(): ReservationList {
         if (!$this->_reservations) {
             $this->_reservations = new ReservationList(
                 $this->version,
@@ -190,10 +182,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the workerChannels
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList
      */
-    protected function getWorkerChannels() {
+    protected function getWorkerChannels(): WorkerChannelList {
         if (!$this->_workerChannels) {
             $this->_workerChannels = new WorkerChannelList(
                 $this->version,
@@ -209,10 +199,10 @@ class WorkerContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -226,10 +216,10 @@ class WorkerContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -243,8 +233,8 @@ class WorkerContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

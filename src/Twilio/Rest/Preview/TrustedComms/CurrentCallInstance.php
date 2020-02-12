@@ -37,15 +37,14 @@ class CurrentCallInstance extends InstanceResource {
     /**
      * Initialize the CurrentCallInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'bgColor' => Values::array_get($payload, 'bg_color'),
             'caller' => Values::array_get($payload, 'caller'),
             'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'created_at')),
@@ -60,20 +59,18 @@ class CurrentCallInstance extends InstanceResource {
             'to' => Values::array_get($payload, 'to'),
             'url' => Values::array_get($payload, 'url'),
             'useCase' => Values::array_get($payload, 'use_case'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext Context for
-     *                                                              this
-     *                                                              CurrentCallInstance
+     * @return CurrentCallContext Context for this CurrentCallInstance
      */
-    protected function proxy() {
+    protected function proxy(): CurrentCallContext {
         if (!$this->context) {
             $this->context = new CurrentCallContext($this->version);
         }
@@ -87,7 +84,7 @@ class CurrentCallInstance extends InstanceResource {
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CurrentCallInstance {
         return $this->proxy()->fetch();
     }
 
@@ -116,8 +113,8 @@ class CurrentCallInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -35,18 +35,17 @@ class FeedbackSummaryInstance extends InstanceResource {
     /**
      * Initialize the FeedbackSummaryInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $sid A string that uniquely identifies this feedback summary
      *                    resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'callCount' => Values::array_get($payload, 'call_count'),
             'callFeedbackCount' => Values::array_get($payload, 'call_feedback_count'),
@@ -61,20 +60,18 @@ class FeedbackSummaryInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'startDate' => Deserialize::dateTime(Values::array_get($payload, 'start_date')),
             'status' => Values::array_get($payload, 'status'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext Context
-     *                                                                    for this
-     *                                                                    FeedbackSummaryInstance
+     * @return FeedbackSummaryContext Context for this FeedbackSummaryInstance
      */
-    protected function proxy() {
+    protected function proxy(): FeedbackSummaryContext {
         if (!$this->context) {
             $this->context = new FeedbackSummaryContext(
                 $this->version,
@@ -92,17 +89,17 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @return FeedbackSummaryInstance Fetched FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): FeedbackSummaryInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the FeedbackSummaryInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -131,8 +128,8 @@ class FeedbackSummaryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

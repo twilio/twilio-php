@@ -19,17 +19,16 @@ class TriggerContext extends InstanceContext {
     /**
      * Initialize the TriggerContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Usage/Triggers/' . \rawurlencode($sid) . '.json';
     }
@@ -40,8 +39,8 @@ class TriggerContext extends InstanceContext {
      * @return TriggerInstance Fetched TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): TriggerInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -64,19 +63,19 @@ class TriggerContext extends InstanceContext {
      * @return TriggerInstance Updated TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): TriggerInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'CallbackMethod' => $options['callbackMethod'],
             'CallbackUrl' => $options['callbackUrl'],
             'FriendlyName' => $options['friendlyName'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -91,10 +90,10 @@ class TriggerContext extends InstanceContext {
     /**
      * Deletes the TriggerInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -103,8 +102,8 @@ class TriggerContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

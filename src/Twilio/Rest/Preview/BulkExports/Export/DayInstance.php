@@ -26,23 +26,22 @@ class DayInstance extends InstanceResource {
     /**
      * Initialize the DayInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages, Calls
-     * @return \Twilio\Rest\Preview\BulkExports\Export\DayInstance
      */
     public function __construct(Version $version, array $payload, $resourceType) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'redirectTo' => Values::array_get($payload, 'redirect_to'),
             'day' => Values::array_get($payload, 'day'),
             'size' => Values::array_get($payload, 'size'),
             'resourceType' => Values::array_get($payload, 'resource_type'),
-        );
+        ];
 
-        $this->solution = array('resourceType' => $resourceType, );
+        $this->solution = ['resourceType' => $resourceType, ];
     }
 
     /**
@@ -70,7 +69,7 @@ class DayInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.BulkExports.DayInstance]';
     }
 }

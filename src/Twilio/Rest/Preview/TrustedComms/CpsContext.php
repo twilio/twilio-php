@@ -21,14 +21,13 @@ class CpsContext extends InstanceContext {
     /**
      * Initialize the CpsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext
+     * @param Version $version Version that contains the resource
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/CPS';
     }
@@ -39,8 +38,8 @@ class CpsContext extends InstanceContext {
      * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): CpsInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -56,8 +55,8 @@ class CpsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

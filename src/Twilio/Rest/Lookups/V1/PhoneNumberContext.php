@@ -20,15 +20,14 @@ class PhoneNumberContext extends InstanceContext {
     /**
      * Initialize the PhoneNumberContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $phoneNumber The phone number to fetch in E.164 format
-     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext
      */
     public function __construct(Version $version, $phoneNumber) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('phoneNumber' => $phoneNumber, );
+        $this->solution = ['phoneNumber' => $phoneNumber, ];
 
         $this->uri = '/PhoneNumbers/' . \rawurlencode($phoneNumber) . '';
     }
@@ -40,14 +39,14 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): PhoneNumberInstance {
         $options = new Values($options);
 
-        $params = Values::of(array(
+        $params = Values::of([
             'CountryCode' => $options['countryCode'],
             'Type' => Serialize::map($options['type'], function($e) { return $e; }),
             'AddOns' => Serialize::map($options['addOns'], function($e) { return $e; }),
-        ));
+        ]);
 
         $params = \array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));
         $payload = $this->version->fetch(
@@ -64,8 +63,8 @@ class PhoneNumberContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -21,7 +21,7 @@ abstract class ShortCodeOptions {
      *                         assignment to participants only
      * @return UpdateShortCodeOptions Options builder
      */
-    public static function update($isReserved = Values::NONE) {
+    public static function update($isReserved = Values::NONE): UpdateShortCodeOptions {
         return new UpdateShortCodeOptions($isReserved);
     }
 }
@@ -42,7 +42,7 @@ class UpdateShortCodeOptions extends Options {
      *                         assignment to participants only
      * @return $this Fluent Builder
      */
-    public function setIsReserved($isReserved) {
+    public function setIsReserved($isReserved): self {
         $this->options['isReserved'] = $isReserved;
         return $this;
     }
@@ -52,10 +52,10 @@ class UpdateShortCodeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

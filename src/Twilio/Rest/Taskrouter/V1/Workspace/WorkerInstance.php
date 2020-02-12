@@ -13,6 +13,11 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -32,26 +37,25 @@ use Twilio\Version;
  * @property array $links
  */
 class WorkerInstance extends InstanceResource {
-    protected $_realTimeStatistics = null;
-    protected $_cumulativeStatistics = null;
-    protected $_statistics = null;
-    protected $_reservations = null;
-    protected $_workerChannels = null;
+    protected $_realTimeStatistics;
+    protected $_cumulativeStatistics;
+    protected $_statistics;
+    protected $_reservations;
+    protected $_workerChannels;
 
     /**
      * Initialize the WorkerInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the Worker
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'activityName' => Values::array_get($payload, 'activity_name'),
             'activitySid' => Values::array_get($payload, 'activity_sid'),
@@ -65,19 +69,18 @@ class WorkerInstance extends InstanceResource {
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext Context for this
-     *                                                            WorkerInstance
+     * @return WorkerContext Context for this WorkerInstance
      */
-    protected function proxy() {
+    protected function proxy(): WorkerContext {
         if (!$this->context) {
             $this->context = new WorkerContext(
                 $this->version,
@@ -95,7 +98,7 @@ class WorkerInstance extends InstanceResource {
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): WorkerInstance {
         return $this->proxy()->fetch();
     }
 
@@ -106,62 +109,52 @@ class WorkerInstance extends InstanceResource {
      * @return WorkerInstance Updated WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): WorkerInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the WorkerInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the realTimeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList
      */
-    protected function getRealTimeStatistics() {
+    protected function getRealTimeStatistics(): WorkersRealTimeStatisticsList {
         return $this->proxy()->realTimeStatistics;
     }
 
     /**
      * Access the cumulativeStatistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList
      */
-    protected function getCumulativeStatistics() {
+    protected function getCumulativeStatistics(): WorkersCumulativeStatisticsList {
         return $this->proxy()->cumulativeStatistics;
     }
 
     /**
      * Access the statistics
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList
      */
-    protected function getStatistics() {
+    protected function getStatistics(): WorkerStatisticsList {
         return $this->proxy()->statistics;
     }
 
     /**
      * Access the reservations
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList
      */
-    protected function getReservations() {
+    protected function getReservations(): ReservationList {
         return $this->proxy()->reservations;
     }
 
     /**
      * Access the workerChannels
-     *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList
      */
-    protected function getWorkerChannels() {
+    protected function getWorkerChannels(): WorkerChannelList {
         return $this->proxy()->workerChannels;
     }
 
@@ -190,8 +183,8 @@ class WorkerInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

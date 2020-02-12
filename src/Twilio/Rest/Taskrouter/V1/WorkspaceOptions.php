@@ -30,7 +30,7 @@ abstract class WorkspaceOptions {
      *                                     types of TaskQueues
      * @return UpdateWorkspaceOptions Options builder
      */
-    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE): UpdateWorkspaceOptions {
         return new UpdateWorkspaceOptions($defaultActivitySid, $eventCallbackUrl, $eventsFilter, $friendlyName, $multiTaskEnabled, $timeoutActivitySid, $prioritizeQueueOrder);
     }
 
@@ -39,7 +39,7 @@ abstract class WorkspaceOptions {
      *                             read
      * @return ReadWorkspaceOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE) {
+    public static function read($friendlyName = Values::NONE): ReadWorkspaceOptions {
         return new ReadWorkspaceOptions($friendlyName);
     }
 
@@ -54,7 +54,7 @@ abstract class WorkspaceOptions {
      *                                     types of TaskQueues
      * @return CreateWorkspaceOptions Options builder
      */
-    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE): CreateWorkspaceOptions {
         return new CreateWorkspaceOptions($eventCallbackUrl, $eventsFilter, $multiTaskEnabled, $template, $prioritizeQueueOrder);
     }
 }
@@ -94,7 +94,7 @@ class UpdateWorkspaceOptions extends Options {
      *                                   Workspace
      * @return $this Fluent Builder
      */
-    public function setDefaultActivitySid($defaultActivitySid) {
+    public function setDefaultActivitySid($defaultActivitySid): self {
         $this->options['defaultActivitySid'] = $defaultActivitySid;
         return $this;
     }
@@ -105,7 +105,7 @@ class UpdateWorkspaceOptions extends Options {
      * @param string $eventCallbackUrl The URL we should call when an event occurs
      * @return $this Fluent Builder
      */
-    public function setEventCallbackUrl($eventCallbackUrl) {
+    public function setEventCallbackUrl($eventCallbackUrl): self {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         return $this;
     }
@@ -117,7 +117,7 @@ class UpdateWorkspaceOptions extends Options {
      *                             event_callback_url
      * @return $this Fluent Builder
      */
-    public function setEventsFilter($eventsFilter) {
+    public function setEventsFilter($eventsFilter): self {
         $this->options['eventsFilter'] = $eventsFilter;
         return $this;
     }
@@ -128,7 +128,7 @@ class UpdateWorkspaceOptions extends Options {
      * @param string $friendlyName A string to describe the Workspace resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -139,7 +139,7 @@ class UpdateWorkspaceOptions extends Options {
      * @param bool $multiTaskEnabled Whether multi-tasking is enabled
      * @return $this Fluent Builder
      */
-    public function setMultiTaskEnabled($multiTaskEnabled) {
+    public function setMultiTaskEnabled($multiTaskEnabled): self {
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         return $this;
     }
@@ -152,7 +152,7 @@ class UpdateWorkspaceOptions extends Options {
      *                                   reservation times out without a response
      * @return $this Fluent Builder
      */
-    public function setTimeoutActivitySid($timeoutActivitySid) {
+    public function setTimeoutActivitySid($timeoutActivitySid): self {
         $this->options['timeoutActivitySid'] = $timeoutActivitySid;
         return $this;
     }
@@ -165,7 +165,7 @@ class UpdateWorkspaceOptions extends Options {
      *                                     types of TaskQueues
      * @return $this Fluent Builder
      */
-    public function setPrioritizeQueueOrder($prioritizeQueueOrder) {
+    public function setPrioritizeQueueOrder($prioritizeQueueOrder): self {
         $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
         return $this;
     }
@@ -175,10 +175,10 @@ class UpdateWorkspaceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -202,7 +202,7 @@ class ReadWorkspaceOptions extends Options {
      *                             read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -212,10 +212,10 @@ class ReadWorkspaceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -248,7 +248,7 @@ class CreateWorkspaceOptions extends Options {
      * @param string $eventCallbackUrl The URL we should call when an event occurs
      * @return $this Fluent Builder
      */
-    public function setEventCallbackUrl($eventCallbackUrl) {
+    public function setEventCallbackUrl($eventCallbackUrl): self {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         return $this;
     }
@@ -260,7 +260,7 @@ class CreateWorkspaceOptions extends Options {
      *                             event_callback_url
      * @return $this Fluent Builder
      */
-    public function setEventsFilter($eventsFilter) {
+    public function setEventsFilter($eventsFilter): self {
         $this->options['eventsFilter'] = $eventsFilter;
         return $this;
     }
@@ -271,7 +271,7 @@ class CreateWorkspaceOptions extends Options {
      * @param bool $multiTaskEnabled Whether multi-tasking is enabled
      * @return $this Fluent Builder
      */
-    public function setMultiTaskEnabled($multiTaskEnabled) {
+    public function setMultiTaskEnabled($multiTaskEnabled): self {
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         return $this;
     }
@@ -282,7 +282,7 @@ class CreateWorkspaceOptions extends Options {
      * @param string $template An available template name
      * @return $this Fluent Builder
      */
-    public function setTemplate($template) {
+    public function setTemplate($template): self {
         $this->options['template'] = $template;
         return $this;
     }
@@ -295,7 +295,7 @@ class CreateWorkspaceOptions extends Options {
      *                                     types of TaskQueues
      * @return $this Fluent Builder
      */
-    public function setPrioritizeQueueOrder($prioritizeQueueOrder) {
+    public function setPrioritizeQueueOrder($prioritizeQueueOrder): self {
         $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
         return $this;
     }
@@ -305,10 +305,10 @@ class CreateWorkspaceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

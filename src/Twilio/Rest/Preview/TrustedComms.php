@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Preview\TrustedComms\BrandedCallList;
 use Twilio\Rest\Preview\TrustedComms\BusinessList;
 use Twilio\Rest\Preview\TrustedComms\CpsList;
@@ -20,87 +21,68 @@ use Twilio\Rest\Preview\TrustedComms\PhoneCallList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
- * @property \Twilio\Rest\Preview\TrustedComms\BusinessList $businesses
- * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
- * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
- * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
- * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
+ * @property BrandedCallList $brandedCalls
+ * @property BusinessList $businesses
+ * @property CpsList $cps
+ * @property CurrentCallList $currentCalls
+ * @property DeviceList $devices
+ * @property PhoneCallList $phoneCalls
  * @method \Twilio\Rest\Preview\TrustedComms\BusinessContext businesses(string $sid)
  */
 class TrustedComms extends Version {
-    protected $_brandedCalls = null;
-    protected $_businesses = null;
-    protected $_cps = null;
-    protected $_currentCalls = null;
-    protected $_devices = null;
-    protected $_phoneCalls = null;
+    protected $_brandedCalls;
+    protected $_businesses;
+    protected $_cps;
+    protected $_currentCalls;
+    protected $_devices;
+    protected $_phoneCalls;
 
     /**
      * Construct the TrustedComms version of Preview
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\TrustedComms TrustedComms version of Preview
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'TrustedComms';
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\BrandedCallList
-     */
-    protected function getBrandedCalls() {
+    protected function getBrandedCalls(): BrandedCallList {
         if (!$this->_brandedCalls) {
             $this->_brandedCalls = new BrandedCallList($this);
         }
         return $this->_brandedCalls;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\BusinessList
-     */
-    protected function getBusinesses() {
+    protected function getBusinesses(): BusinessList {
         if (!$this->_businesses) {
             $this->_businesses = new BusinessList($this);
         }
         return $this->_businesses;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
-     */
-    protected function getCps() {
+    protected function getCps(): CpsList {
         if (!$this->_cps) {
             $this->_cps = new CpsList($this);
         }
         return $this->_cps;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
-     */
-    protected function getCurrentCalls() {
+    protected function getCurrentCalls(): CurrentCallList {
         if (!$this->_currentCalls) {
             $this->_currentCalls = new CurrentCallList($this);
         }
         return $this->_currentCalls;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList
-     */
-    protected function getDevices() {
+    protected function getDevices(): DeviceList {
         if (!$this->_devices) {
             $this->_devices = new DeviceList($this);
         }
         return $this->_devices;
     }
 
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList
-     */
-    protected function getPhoneCalls() {
+    protected function getPhoneCalls(): PhoneCallList {
         if (!$this->_phoneCalls) {
             $this->_phoneCalls = new PhoneCallList($this);
         }
@@ -128,10 +110,10 @@ class TrustedComms extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -145,7 +127,7 @@ class TrustedComms extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms]';
     }
 }

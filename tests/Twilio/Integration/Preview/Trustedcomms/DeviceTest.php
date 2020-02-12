@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class DeviceTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -24,7 +24,7 @@ class DeviceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('PhoneNumber' => "phone_number", 'PushToken' => "push_token", );
+        $values = ['PhoneNumber' => "phone_number", 'PushToken' => "push_token", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -34,7 +34,7 @@ class DeviceTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

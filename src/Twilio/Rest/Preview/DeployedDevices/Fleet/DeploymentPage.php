@@ -22,7 +22,7 @@ class DeploymentPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): DeploymentInstance {
         return new DeploymentInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
@@ -31,7 +31,7 @@ class DeploymentPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.DeployedDevices.DeploymentPage]';
     }
 }

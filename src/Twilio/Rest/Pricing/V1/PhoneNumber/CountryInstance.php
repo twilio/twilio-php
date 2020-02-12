@@ -25,34 +25,32 @@ class CountryInstance extends InstanceResource {
     /**
      * Initialize the CountryInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $isoCountry The ISO country code
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumber\CountryInstance
      */
     public function __construct(Version $version, array $payload, $isoCountry = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'country' => Values::array_get($payload, 'country'),
             'isoCountry' => Values::array_get($payload, 'iso_country'),
             'phoneNumberPrices' => Values::array_get($payload, 'phone_number_prices'),
             'priceUnit' => Values::array_get($payload, 'price_unit'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('isoCountry' => $isoCountry ?: $this->properties['isoCountry'], );
+        $this->solution = ['isoCountry' => $isoCountry ?: $this->properties['isoCountry'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumber\CountryContext Context for this
-     *                                                            CountryInstance
+     * @return CountryContext Context for this CountryInstance
      */
-    protected function proxy() {
+    protected function proxy(): CountryContext {
         if (!$this->context) {
             $this->context = new CountryContext($this->version, $this->solution['isoCountry']);
         }
@@ -66,7 +64,7 @@ class CountryInstance extends InstanceResource {
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CountryInstance {
         return $this->proxy()->fetch();
     }
 
@@ -95,8 +93,8 @@ class CountryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

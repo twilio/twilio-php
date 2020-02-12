@@ -33,17 +33,16 @@ class CertificateInstance extends InstanceResource {
     /**
      * Initialize the CertificateInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $fleetSid The unique identifier of the Fleet.
      * @param string $sid A string that uniquely identifies the Certificate.
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateInstance
      */
     public function __construct(Version $version, array $payload, $fleetSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'url' => Values::array_get($payload, 'url'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
@@ -53,18 +52,18 @@ class CertificateInstance extends InstanceResource {
             'thumbprint' => Values::array_get($payload, 'thumbprint'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-        );
+        ];
 
-        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext Context for this CertificateInstance
+     * @return CertificateContext Context for this CertificateInstance
      */
-    protected function proxy() {
+    protected function proxy(): CertificateContext {
         if (!$this->context) {
             $this->context = new CertificateContext(
                 $this->version,
@@ -82,17 +81,17 @@ class CertificateInstance extends InstanceResource {
      * @return CertificateInstance Fetched CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CertificateInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the CertificateInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -103,7 +102,7 @@ class CertificateInstance extends InstanceResource {
      * @return CertificateInstance Updated CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): CertificateInstance {
         return $this->proxy()->update($options);
     }
 
@@ -132,8 +131,8 @@ class CertificateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

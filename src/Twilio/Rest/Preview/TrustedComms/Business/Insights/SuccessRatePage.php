@@ -22,7 +22,7 @@ class SuccessRatePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SuccessRateInstance {
         return new SuccessRateInstance($this->version, $payload, $this->solution['businessSid']);
     }
 
@@ -31,7 +31,7 @@ class SuccessRatePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.SuccessRatePage]';
     }
 }

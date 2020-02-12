@@ -19,16 +19,15 @@ class RoleContext extends InstanceContext {
     /**
      * Initialize the RoleContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Roles/' . \rawurlencode($sid) . '';
     }
@@ -39,8 +38,8 @@ class RoleContext extends InstanceContext {
      * @return RoleInstance Fetched RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): RoleInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -59,10 +58,10 @@ class RoleContext extends InstanceContext {
     /**
      * Deletes the RoleInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -73,13 +72,13 @@ class RoleContext extends InstanceContext {
      * @return RoleInstance Updated RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($permission) {
-        $data = Values::of(array('Permission' => Serialize::map($permission, function($e) { return $e; }), ));
+    public function update($permission): RoleInstance {
+        $data = Values::of(['Permission' => Serialize::map($permission, function($e) { return $e; }), ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -96,8 +95,8 @@ class RoleContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
