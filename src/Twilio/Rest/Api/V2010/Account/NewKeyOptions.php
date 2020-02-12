@@ -17,7 +17,7 @@ abstract class NewKeyOptions {
      * @param string $friendlyName A string to describe the resource
      * @return CreateNewKeyOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE): CreateNewKeyOptions {
+    public static function create(string $friendlyName = Values::NONE): CreateNewKeyOptions {
         return new CreateNewKeyOptions($friendlyName);
     }
 }
@@ -26,7 +26,7 @@ class CreateNewKeyOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the resource
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -36,7 +36,7 @@ class CreateNewKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }

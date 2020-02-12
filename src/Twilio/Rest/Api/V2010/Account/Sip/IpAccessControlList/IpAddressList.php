@@ -27,7 +27,7 @@ class IpAddressList extends ListResource {
      *                                       IpAccessControlList resource that
      *                                       includes this resource.
      */
-    public function __construct(Version $version, $accountSid, $ipAccessControlListSid) {
+    public function __construct(Version $version, string $accountSid, string $ipAccessControlListSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -57,7 +57,7 @@ class IpAddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -80,7 +80,7 @@ class IpAddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return IpAddressInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -93,7 +93,7 @@ class IpAddressList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return IpAddressPage Page of IpAddressInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAddressPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAddressPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -112,7 +112,7 @@ class IpAddressList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return IpAddressPage Page of IpAddressInstance
      */
-    public function getPage($targetUrl): IpAddressPage {
+    public function getPage(string $targetUrl): IpAddressPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,7 +134,7 @@ class IpAddressList extends ListResource {
      * @return IpAddressInstance Newly created IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $ipAddress, $options = []): IpAddressInstance {
+    public function create(string $friendlyName, string $ipAddress, array $options = []): IpAddressInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -163,7 +163,7 @@ class IpAddressList extends ListResource {
      *
      * @param string $sid A string that identifies the IpAddress resource to fetch
      */
-    public function getContext($sid): IpAddressContext {
+    public function getContext(string $sid): IpAddressContext {
         return new IpAddressContext(
             $this->version,
             $this->solution['accountSid'],

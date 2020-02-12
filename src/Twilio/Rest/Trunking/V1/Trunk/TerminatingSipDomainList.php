@@ -22,7 +22,7 @@ class TerminatingSipDomainList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk to which we should route calls
      */
-    public function __construct(Version $version, $trunkSid) {
+    public function __construct(Version $version, string $trunkSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -40,7 +40,7 @@ class TerminatingSipDomainList extends ListResource {
      *                                      TerminatingSipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($sipDomainSid): TerminatingSipDomainInstance {
+    public function create(string $sipDomainSid): TerminatingSipDomainInstance {
         $data = Values::of(['SipDomainSid' => $sipDomainSid, ]);
 
         $payload = $this->version->create(
@@ -72,7 +72,7 @@ class TerminatingSipDomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -95,7 +95,7 @@ class TerminatingSipDomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TerminatingSipDomainInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -108,7 +108,7 @@ class TerminatingSipDomainList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TerminatingSipDomainPage Page of TerminatingSipDomainInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TerminatingSipDomainPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TerminatingSipDomainPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -128,7 +128,7 @@ class TerminatingSipDomainList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TerminatingSipDomainPage Page of TerminatingSipDomainInstance
      */
-    public function getPage($targetUrl): TerminatingSipDomainPage {
+    public function getPage(string $targetUrl): TerminatingSipDomainPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -142,7 +142,7 @@ class TerminatingSipDomainList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): TerminatingSipDomainContext {
+    public function getContext(string $sid): TerminatingSipDomainContext {
         return new TerminatingSipDomainContext($this->version, $this->solution['trunkSid'], $sid);
     }
 

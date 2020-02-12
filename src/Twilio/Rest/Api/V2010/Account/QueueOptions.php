@@ -18,7 +18,7 @@ abstract class QueueOptions {
      * @param int $maxSize The max number of calls allowed in the queue
      * @return UpdateQueueOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $maxSize = Values::NONE): UpdateQueueOptions {
+    public static function update(string $friendlyName = Values::NONE, int $maxSize = Values::NONE): UpdateQueueOptions {
         return new UpdateQueueOptions($friendlyName, $maxSize);
     }
 
@@ -26,7 +26,7 @@ abstract class QueueOptions {
      * @param int $maxSize The max number of calls allowed in the queue
      * @return CreateQueueOptions Options builder
      */
-    public static function create($maxSize = Values::NONE): CreateQueueOptions {
+    public static function create(int $maxSize = Values::NONE): CreateQueueOptions {
         return new CreateQueueOptions($maxSize);
     }
 }
@@ -36,7 +36,7 @@ class UpdateQueueOptions extends Options {
      * @param string $friendlyName A string to describe this resource
      * @param int $maxSize The max number of calls allowed in the queue
      */
-    public function __construct($friendlyName = Values::NONE, $maxSize = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, int $maxSize = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['maxSize'] = $maxSize;
     }
@@ -47,7 +47,7 @@ class UpdateQueueOptions extends Options {
      * @param string $friendlyName A string to describe this resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -58,7 +58,7 @@ class UpdateQueueOptions extends Options {
      * @param int $maxSize The max number of calls allowed in the queue
      * @return $this Fluent Builder
      */
-    public function setMaxSize($maxSize): self {
+    public function setMaxSize(int $maxSize): self {
         $this->options['maxSize'] = $maxSize;
         return $this;
     }
@@ -83,7 +83,7 @@ class CreateQueueOptions extends Options {
     /**
      * @param int $maxSize The max number of calls allowed in the queue
      */
-    public function __construct($maxSize = Values::NONE) {
+    public function __construct(int $maxSize = Values::NONE) {
         $this->options['maxSize'] = $maxSize;
     }
 
@@ -93,7 +93,7 @@ class CreateQueueOptions extends Options {
      * @param int $maxSize The max number of calls allowed in the queue
      * @return $this Fluent Builder
      */
-    public function setMaxSize($maxSize): self {
+    public function setMaxSize(int $maxSize): self {
         $this->options['maxSize'] = $maxSize;
         return $this;
     }

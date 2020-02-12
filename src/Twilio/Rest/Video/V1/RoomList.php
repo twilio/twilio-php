@@ -39,7 +39,7 @@ class RoomList extends ListResource {
      * @return RoomInstance Newly created RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): RoomInstance {
+    public function create(array $options = []): RoomInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -83,7 +83,7 @@ class RoomList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -107,7 +107,7 @@ class RoomList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RoomInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -121,7 +121,7 @@ class RoomList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RoomPage Page of RoomInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): RoomPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RoomPage {
         $options = new Values($options);
         $params = Values::of([
             'Status' => $options['status'],
@@ -149,7 +149,7 @@ class RoomList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RoomPage Page of RoomInstance
      */
-    public function getPage($targetUrl): RoomPage {
+    public function getPage(string $targetUrl): RoomPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -163,7 +163,7 @@ class RoomList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): RoomContext {
+    public function getContext(string $sid): RoomContext {
         return new RoomContext($this->version, $sid);
     }
 

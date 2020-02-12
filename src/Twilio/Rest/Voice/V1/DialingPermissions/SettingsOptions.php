@@ -23,7 +23,7 @@ abstract class SettingsOptions {
      *                                            otherwise `false`
      * @return UpdateSettingsOptions Options builder
      */
-    public static function update($dialingPermissionsInheritance = Values::NONE): UpdateSettingsOptions {
+    public static function update(bool $dialingPermissionsInheritance = Values::NONE): UpdateSettingsOptions {
         return new UpdateSettingsOptions($dialingPermissionsInheritance);
     }
 }
@@ -35,7 +35,7 @@ class UpdateSettingsOptions extends Options {
      *                                            from the Master Project;
      *                                            otherwise `false`
      */
-    public function __construct($dialingPermissionsInheritance = Values::NONE) {
+    public function __construct(bool $dialingPermissionsInheritance = Values::NONE) {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
     }
 
@@ -48,7 +48,7 @@ class UpdateSettingsOptions extends Options {
      *                                            otherwise `false`
      * @return $this Fluent Builder
      */
-    public function setDialingPermissionsInheritance($dialingPermissionsInheritance): self {
+    public function setDialingPermissionsInheritance(bool $dialingPermissionsInheritance): self {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
         return $this;
     }

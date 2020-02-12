@@ -30,7 +30,7 @@ class ExecutionContextInstance extends InstanceResource {
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
      */
-    public function __construct(Version $version, array $payload, $flowSid, $executionSid) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -80,7 +80,7 @@ class ExecutionContextInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

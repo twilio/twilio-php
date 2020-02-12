@@ -27,7 +27,7 @@ class WebhookList extends ListResource {
      * @param string $channelSid The SID of the Channel the Channel Webhook
      *                           resource belongs to
      */
-    public function __construct(Version $version, $serviceSid, $channelSid) {
+    public function __construct(Version $version, string $serviceSid, string $channelSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -54,7 +54,7 @@ class WebhookList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class WebhookList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WebhookInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class WebhookList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return WebhookPage Page of WebhookInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): WebhookPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WebhookPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -109,7 +109,7 @@ class WebhookList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return WebhookPage Page of WebhookInstance
      */
-    public function getPage($targetUrl): WebhookPage {
+    public function getPage(string $targetUrl): WebhookPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class WebhookList extends ListResource {
      * @return WebhookInstance Newly created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($type, $options = []): WebhookInstance {
+    public function create(string $type, array $options = []): WebhookInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -159,7 +159,7 @@ class WebhookList extends ListResource {
      *
      * @param string $sid The SID of the Channel Webhook resource to fetch
      */
-    public function getContext($sid): WebhookContext {
+    public function getContext(string $sid): WebhookContext {
         return new WebhookContext(
             $this->version,
             $this->solution['serviceSid'],

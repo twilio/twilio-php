@@ -28,7 +28,7 @@ class BuildList extends ListResource {
      * @param string $serviceSid The SID of the Service that the Build resource is
      *                           associated with
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +55,7 @@ class BuildList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -78,7 +78,7 @@ class BuildList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BuildInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -91,7 +91,7 @@ class BuildList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return BuildPage Page of BuildInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): BuildPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BuildPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -110,7 +110,7 @@ class BuildList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return BuildPage Page of BuildInstance
      */
-    public function getPage($targetUrl): BuildPage {
+    public function getPage(string $targetUrl): BuildPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class BuildList extends ListResource {
      * @return BuildInstance Newly created BuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): BuildInstance {
+    public function create(array $options = []): BuildInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -150,7 +150,7 @@ class BuildList extends ListResource {
      *
      * @param string $sid The SID of the Build resource to fetch
      */
-    public function getContext($sid): BuildContext {
+    public function getContext(string $sid): BuildContext {
         return new BuildContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

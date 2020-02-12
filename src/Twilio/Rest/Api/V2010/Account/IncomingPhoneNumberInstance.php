@@ -61,7 +61,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -128,7 +128,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): IncomingPhoneNumberInstance {
+    public function update(array $options = []): IncomingPhoneNumberInstance {
         return $this->proxy()->update($options);
     }
 
@@ -166,7 +166,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

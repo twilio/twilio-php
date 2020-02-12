@@ -28,7 +28,7 @@ class AssignedAddOnExtensionList extends ListResource {
      * @param string $assignedAddOnSid The SID that uniquely identifies the
      *                                 assigned Add-on installation
      */
-    public function __construct(Version $version, $accountSid, $resourceSid, $assignedAddOnSid) {
+    public function __construct(Version $version, string $accountSid, string $resourceSid, string $assignedAddOnSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -60,7 +60,7 @@ class AssignedAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -83,7 +83,7 @@ class AssignedAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssignedAddOnExtensionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -97,7 +97,7 @@ class AssignedAddOnExtensionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AssignedAddOnExtensionPage Page of AssignedAddOnExtensionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnExtensionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnExtensionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -117,7 +117,7 @@ class AssignedAddOnExtensionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AssignedAddOnExtensionPage Page of AssignedAddOnExtensionInstance
      */
-    public function getPage($targetUrl): AssignedAddOnExtensionPage {
+    public function getPage(string $targetUrl): AssignedAddOnExtensionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -131,7 +131,7 @@ class AssignedAddOnExtensionList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): AssignedAddOnExtensionContext {
+    public function getContext(string $sid): AssignedAddOnExtensionContext {
         return new AssignedAddOnExtensionContext(
             $this->version,
             $this->solution['accountSid'],

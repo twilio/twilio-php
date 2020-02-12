@@ -29,7 +29,7 @@ class MessageInteractionList extends ListResource {
      * @param string $sessionSid The SID of the resource's parent Session
      * @param string $participantSid The SID of the Participant resource
      */
-    public function __construct(Version $version, $serviceSid, $sessionSid, $participantSid) {
+    public function __construct(Version $version, string $serviceSid, string $sessionSid, string $participantSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -49,7 +49,7 @@ class MessageInteractionList extends ListResource {
      * @return MessageInteractionInstance Newly created MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): MessageInteractionInstance {
+    public function create(array $options = []): MessageInteractionInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -92,7 +92,7 @@ class MessageInteractionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -115,7 +115,7 @@ class MessageInteractionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MessageInteractionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -128,7 +128,7 @@ class MessageInteractionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MessageInteractionPage Page of MessageInteractionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): MessageInteractionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessageInteractionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -147,7 +147,7 @@ class MessageInteractionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MessageInteractionPage Page of MessageInteractionInstance
      */
-    public function getPage($targetUrl): MessageInteractionPage {
+    public function getPage(string $targetUrl): MessageInteractionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -161,7 +161,7 @@ class MessageInteractionList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): MessageInteractionContext {
+    public function getContext(string $sid): MessageInteractionContext {
         return new MessageInteractionContext(
             $this->version,
             $this->solution['serviceSid'],

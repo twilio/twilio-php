@@ -36,7 +36,7 @@ class IpAccessControlListMappingInstance extends InstanceResource {
      * @param string $sid A 34 character string that uniquely identifies the
      *                    resource to fetch.
      */
-    public function __construct(Version $version, array $payload, $accountSid, $domainSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -105,7 +105,7 @@ class IpAccessControlListMappingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

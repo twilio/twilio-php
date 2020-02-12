@@ -20,7 +20,7 @@ abstract class AssistantFallbackActionsOptions {
      * @param array $fallbackActions The fallback_actions
      * @return UpdateAssistantFallbackActionsOptions Options builder
      */
-    public static function update($fallbackActions = Values::NONE): UpdateAssistantFallbackActionsOptions {
+    public static function update(array $fallbackActions = Values::NONE): UpdateAssistantFallbackActionsOptions {
         return new UpdateAssistantFallbackActionsOptions($fallbackActions);
     }
 }
@@ -29,7 +29,7 @@ class UpdateAssistantFallbackActionsOptions extends Options {
     /**
      * @param array $fallbackActions The fallback_actions
      */
-    public function __construct($fallbackActions = Values::NONE) {
+    public function __construct(array $fallbackActions = Values::NONE) {
         $this->options['fallbackActions'] = $fallbackActions;
     }
 
@@ -39,7 +39,7 @@ class UpdateAssistantFallbackActionsOptions extends Options {
      * @param array $fallbackActions The fallback_actions
      * @return $this Fluent Builder
      */
-    public function setFallbackActions($fallbackActions): self {
+    public function setFallbackActions(array $fallbackActions): self {
         $this->options['fallbackActions'] = $fallbackActions;
         return $this;
     }

@@ -34,7 +34,7 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @param string $taskQueueSid The SID of the TaskQueue from which these
      *                             statistics were calculated
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $taskQueueSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskQueueSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +76,7 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): TaskQueueStatisticsInstance {
+    public function fetch(array $options = []): TaskQueueStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -87,7 +87,7 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

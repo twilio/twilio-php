@@ -66,7 +66,7 @@ class AssistantFallbackActionsContext extends InstanceContext {
      *                                          AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): AssistantFallbackActionsInstance {
+    public function update(array $options = []): AssistantFallbackActionsInstance {
         $options = new Values($options);
 
         $data = Values::of(['FallbackActions' => Serialize::jsonObject($options['fallbackActions']), ]);

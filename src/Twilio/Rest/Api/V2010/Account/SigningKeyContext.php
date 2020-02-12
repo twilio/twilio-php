@@ -62,7 +62,7 @@ class SigningKeyContext extends InstanceContext {
      * @return SigningKeyInstance Updated SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SigningKeyInstance {
+    public function update(array $options = []): SigningKeyInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);

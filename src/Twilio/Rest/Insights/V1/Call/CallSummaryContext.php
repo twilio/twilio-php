@@ -41,7 +41,7 @@ class CallSummaryContext extends InstanceContext {
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): CallSummaryInstance {
+    public function fetch(array $options = []): CallSummaryInstance {
         $options = new Values($options);
 
         $params = Values::of(['ProcessingState' => $options['processingState'], ]);

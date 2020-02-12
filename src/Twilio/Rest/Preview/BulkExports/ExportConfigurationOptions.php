@@ -22,7 +22,7 @@ abstract class ExportConfigurationOptions {
      * @param string $webhookMethod Whether to GET or POST to the webhook url
      * @return UpdateExportConfigurationOptions Options builder
      */
-    public static function update($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE): UpdateExportConfigurationOptions {
+    public static function update(bool $enabled = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE): UpdateExportConfigurationOptions {
         return new UpdateExportConfigurationOptions($enabled, $webhookUrl, $webhookMethod);
     }
 }
@@ -33,7 +33,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookUrl URL targeted at export
      * @param string $webhookMethod Whether to GET or POST to the webhook url
      */
-    public function __construct($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['webhookMethod'] = $webhookMethod;
@@ -45,7 +45,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param bool $enabled Whether files are automatically generated
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled): self {
+    public function setEnabled(bool $enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -56,7 +56,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookUrl URL targeted at export
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -67,7 +67,7 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookMethod Whether to GET or POST to the webhook url
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod): self {
+    public function setWebhookMethod(string $webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }

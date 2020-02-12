@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property \DateTime $endDate
  * @property bool $includeSubaccounts
- * @property string $issues
+ * @property string[] $issues
  * @property string $qualityScoreAverage
  * @property string $qualityScoreMedian
  * @property string $qualityScoreStandardDeviation
@@ -41,7 +41,7 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @param string $sid A string that uniquely identifies this feedback summary
      *                    resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -110,7 +110,7 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

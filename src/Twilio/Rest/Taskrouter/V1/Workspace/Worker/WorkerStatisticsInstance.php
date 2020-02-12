@@ -33,7 +33,7 @@ class WorkerStatisticsInstance extends InstanceResource {
      * @param string $workerSid The SID of the Worker that contains the
      *                          WorkerChannel
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $workerSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +73,7 @@ class WorkerStatisticsInstance extends InstanceResource {
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkerStatisticsInstance {
+    public function fetch(array $options = []): WorkerStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -84,7 +84,7 @@ class WorkerStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

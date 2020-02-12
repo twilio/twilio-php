@@ -44,7 +44,7 @@ class NotificationInstance extends InstanceResource {
      * @param string $callSid The SID of the Call the resource is associated with
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -111,7 +111,7 @@ class NotificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

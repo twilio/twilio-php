@@ -22,7 +22,7 @@ class UsageList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $simSid The sim_sid
      */
-    public function __construct(Version $version, $simSid) {
+    public function __construct(Version $version, string $simSid) {
         parent::__construct($version);
 
         // Path Solution

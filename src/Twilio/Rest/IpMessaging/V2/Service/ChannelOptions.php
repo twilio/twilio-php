@@ -27,15 +27,15 @@ abstract class ChannelOptions {
      * @param string $createdBy The identity of the User that created the Channel
      * @return CreateChannelOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE): CreateChannelOptions {
+    public static function create(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE): CreateChannelOptions {
         return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type, $dateCreated, $dateUpdated, $createdBy);
     }
 
     /**
-     * @param string $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      * @return ReadChannelOptions Options builder
      */
-    public static function read($type = Values::NONE): ReadChannelOptions {
+    public static function read(string[] $type = Values::NONE): ReadChannelOptions {
         return new ReadChannelOptions($type);
     }
 
@@ -52,7 +52,7 @@ abstract class ChannelOptions {
      * @param string $createdBy The identity of the User that created the Channel
      * @return UpdateChannelOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE): UpdateChannelOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE): UpdateChannelOptions {
         return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes, $dateCreated, $dateUpdated, $createdBy);
     }
 }
@@ -71,7 +71,7 @@ class CreateChannelOptions extends Options {
      *                               resource was updated
      * @param string $createdBy The identity of the User that created the Channel
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -87,7 +87,7 @@ class CreateChannelOptions extends Options {
      * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -99,7 +99,7 @@ class CreateChannelOptions extends Options {
      *                           identifies the Channel resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -111,7 +111,7 @@ class CreateChannelOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -122,7 +122,7 @@ class CreateChannelOptions extends Options {
      * @param string $type The visibility of the channel
      * @return $this Fluent Builder
      */
-    public function setType($type): self {
+    public function setType(string $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -134,7 +134,7 @@ class CreateChannelOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -146,7 +146,7 @@ class CreateChannelOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -157,7 +157,7 @@ class CreateChannelOptions extends Options {
      * @param string $createdBy The identity of the User that created the Channel
      * @return $this Fluent Builder
      */
-    public function setCreatedBy($createdBy): self {
+    public function setCreatedBy(string $createdBy): self {
         $this->options['createdBy'] = $createdBy;
         return $this;
     }
@@ -180,19 +180,19 @@ class CreateChannelOptions extends Options {
 
 class ReadChannelOptions extends Options {
     /**
-     * @param string $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      */
-    public function __construct($type = Values::NONE) {
+    public function __construct(string[] $type = Values::NONE) {
         $this->options['type'] = $type;
     }
 
     /**
      * The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      *
-     * @param string $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
-    public function setType($type): self {
+    public function setType(string[] $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -226,7 +226,7 @@ class UpdateChannelOptions extends Options {
      *                               resource was updated
      * @param string $createdBy The identity of the User that created the Channel
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -241,7 +241,7 @@ class UpdateChannelOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -253,7 +253,7 @@ class UpdateChannelOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -265,7 +265,7 @@ class UpdateChannelOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -277,7 +277,7 @@ class UpdateChannelOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -289,7 +289,7 @@ class UpdateChannelOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -300,7 +300,7 @@ class UpdateChannelOptions extends Options {
      * @param string $createdBy The identity of the User that created the Channel
      * @return $this Fluent Builder
      */
-    public function setCreatedBy($createdBy): self {
+    public function setCreatedBy(string $createdBy): self {
         $this->options['createdBy'] = $createdBy;
         return $this;
     }

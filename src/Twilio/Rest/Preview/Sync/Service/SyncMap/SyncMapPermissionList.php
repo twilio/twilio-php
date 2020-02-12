@@ -25,7 +25,7 @@ class SyncMapPermissionList extends ListResource {
      * @param string $serviceSid Sync Service Instance SID.
      * @param string $mapSid Sync Map SID.
      */
-    public function __construct(Version $version, $serviceSid, $mapSid) {
+    public function __construct(Version $version, string $serviceSid, string $mapSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class SyncMapPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -75,7 +75,7 @@ class SyncMapPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapPermissionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -88,7 +88,7 @@ class SyncMapPermissionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncMapPermissionPage Page of SyncMapPermissionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapPermissionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapPermissionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -107,7 +107,7 @@ class SyncMapPermissionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncMapPermissionPage Page of SyncMapPermissionInstance
      */
-    public function getPage($targetUrl): SyncMapPermissionPage {
+    public function getPage(string $targetUrl): SyncMapPermissionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -122,7 +122,7 @@ class SyncMapPermissionList extends ListResource {
      * @param string $identity Identity of the user to whom the Sync Map Permission
      *                         applies.
      */
-    public function getContext($identity): SyncMapPermissionContext {
+    public function getContext(string $identity): SyncMapPermissionContext {
         return new SyncMapPermissionContext(
             $this->version,
             $this->solution['serviceSid'],

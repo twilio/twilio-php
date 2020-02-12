@@ -23,7 +23,7 @@ class ItemAssignmentList extends ListResource {
      * @param string $bundleSid The unique string that identifies the Bundle
      *                          resource.
      */
-    public function __construct(Version $version, $bundleSid) {
+    public function __construct(Version $version, string $bundleSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -39,7 +39,7 @@ class ItemAssignmentList extends ListResource {
      * @return ItemAssignmentInstance Newly created ItemAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($objectSid): ItemAssignmentInstance {
+    public function create(string $objectSid): ItemAssignmentInstance {
         $data = Values::of(['ObjectSid' => $objectSid, ]);
 
         $payload = $this->version->create(
@@ -70,7 +70,7 @@ class ItemAssignmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +93,7 @@ class ItemAssignmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ItemAssignmentInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,7 +106,7 @@ class ItemAssignmentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ItemAssignmentPage Page of ItemAssignmentInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ItemAssignmentPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ItemAssignmentPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -125,7 +125,7 @@ class ItemAssignmentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ItemAssignmentPage Page of ItemAssignmentInstance
      */
-    public function getPage($targetUrl): ItemAssignmentPage {
+    public function getPage(string $targetUrl): ItemAssignmentPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,7 +139,7 @@ class ItemAssignmentList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): ItemAssignmentContext {
+    public function getContext(string $sid): ItemAssignmentContext {
         return new ItemAssignmentContext($this->version, $this->solution['bundleSid'], $sid);
     }
 

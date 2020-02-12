@@ -61,7 +61,7 @@ class CompositionSettingsContext extends InstanceContext {
      * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = []): CompositionSettingsInstance {
+    public function create(string $friendlyName, array $options = []): CompositionSettingsInstance {
         $options = new Values($options);
 
         $data = Values::of([

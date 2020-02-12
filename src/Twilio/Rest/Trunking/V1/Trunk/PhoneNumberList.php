@@ -23,7 +23,7 @@ class PhoneNumberList extends ListResource {
      * @param string $trunkSid The SID of the Trunk that handles calls to the phone
      *                         number
      */
-    public function __construct(Version $version, $trunkSid) {
+    public function __construct(Version $version, string $trunkSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -40,7 +40,7 @@ class PhoneNumberList extends ListResource {
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($phoneNumberSid): PhoneNumberInstance {
+    public function create(string $phoneNumberSid): PhoneNumberInstance {
         $data = Values::of(['PhoneNumberSid' => $phoneNumberSid, ]);
 
         $payload = $this->version->create(
@@ -71,7 +71,7 @@ class PhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -94,7 +94,7 @@ class PhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return PhoneNumberInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -107,7 +107,7 @@ class PhoneNumberList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return PhoneNumberPage Page of PhoneNumberInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): PhoneNumberPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PhoneNumberPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -126,7 +126,7 @@ class PhoneNumberList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return PhoneNumberPage Page of PhoneNumberInstance
      */
-    public function getPage($targetUrl): PhoneNumberPage {
+    public function getPage(string $targetUrl): PhoneNumberPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -140,7 +140,7 @@ class PhoneNumberList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): PhoneNumberContext {
+    public function getContext(string $sid): PhoneNumberContext {
         return new PhoneNumberContext($this->version, $this->solution['trunkSid'], $sid);
     }
 

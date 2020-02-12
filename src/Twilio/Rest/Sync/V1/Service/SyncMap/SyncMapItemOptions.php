@@ -23,7 +23,7 @@ abstract class SyncMapItemOptions {
      *                           Sync Map expires and is deleted
      * @return CreateSyncMapItemOptions Options builder
      */
-    public static function create($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE): CreateSyncMapItemOptions {
+    public static function create(int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): CreateSyncMapItemOptions {
         return new CreateSyncMapItemOptions($ttl, $itemTtl, $collectionTtl);
     }
 
@@ -34,7 +34,7 @@ abstract class SyncMapItemOptions {
      *                       parameter
      * @return ReadSyncMapItemOptions Options builder
      */
-    public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE): ReadSyncMapItemOptions {
+    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE): ReadSyncMapItemOptions {
         return new ReadSyncMapItemOptions($order, $from, $bounds);
     }
 
@@ -47,7 +47,7 @@ abstract class SyncMapItemOptions {
      *                           Sync Map expires and is deleted
      * @return UpdateSyncMapItemOptions Options builder
      */
-    public static function update($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE): UpdateSyncMapItemOptions {
+    public static function update(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncMapItemOptions {
         return new UpdateSyncMapItemOptions($data, $ttl, $itemTtl, $collectionTtl);
     }
 }
@@ -59,7 +59,7 @@ class CreateSyncMapItemOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the Map Item's parent
      *                           Sync Map expires and is deleted
      */
-    public function __construct($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
+    public function __construct(int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;
         $this->options['collectionTtl'] = $collectionTtl;
@@ -71,7 +71,7 @@ class CreateSyncMapItemOptions extends Options {
      * @param int $ttl An alias for item_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -82,7 +82,7 @@ class CreateSyncMapItemOptions extends Options {
      * @param int $itemTtl How long, in seconds, before the Map Item expires
      * @return $this Fluent Builder
      */
-    public function setItemTtl($itemTtl): self {
+    public function setItemTtl(int $itemTtl): self {
         $this->options['itemTtl'] = $itemTtl;
         return $this;
     }
@@ -94,7 +94,7 @@ class CreateSyncMapItemOptions extends Options {
      *                           Sync Map expires and is deleted
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl): self {
+    public function setCollectionTtl(int $collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -122,7 +122,7 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $bounds Whether to include the Map Item referenced by the from
      *                       parameter
      */
-    public function __construct($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
+    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE) {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
@@ -134,7 +134,7 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $order How to order the Map Items returned by their key value
      * @return $this Fluent Builder
      */
-    public function setOrder($order): self {
+    public function setOrder(string $order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -145,7 +145,7 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $from The index of the first Sync Map Item resource to read
      * @return $this Fluent Builder
      */
-    public function setFrom($from): self {
+    public function setFrom(string $from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -157,7 +157,7 @@ class ReadSyncMapItemOptions extends Options {
      *                       parameter
      * @return $this Fluent Builder
      */
-    public function setBounds($bounds): self {
+    public function setBounds(string $bounds): self {
         $this->options['bounds'] = $bounds;
         return $this;
     }
@@ -187,7 +187,7 @@ class UpdateSyncMapItemOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the Map Item's parent
      *                           Sync Map expires and is deleted
      */
-    public function __construct($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
+    public function __construct(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;
@@ -201,7 +201,7 @@ class UpdateSyncMapItemOptions extends Options {
      *                    object that the Map Item stores
      * @return $this Fluent Builder
      */
-    public function setData($data): self {
+    public function setData(array $data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -212,7 +212,7 @@ class UpdateSyncMapItemOptions extends Options {
      * @param int $ttl An alias for item_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -223,7 +223,7 @@ class UpdateSyncMapItemOptions extends Options {
      * @param int $itemTtl How long, in seconds, before the Map Item expires
      * @return $this Fluent Builder
      */
-    public function setItemTtl($itemTtl): self {
+    public function setItemTtl(int $itemTtl): self {
         $this->options['itemTtl'] = $itemTtl;
         return $this;
     }
@@ -235,7 +235,7 @@ class UpdateSyncMapItemOptions extends Options {
      *                           Sync Map expires and is deleted
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl): self {
+    public function setCollectionTtl(int $collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }

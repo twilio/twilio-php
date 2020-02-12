@@ -57,7 +57,7 @@ class EndUserContext extends InstanceContext {
      * @return EndUserInstance Updated EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): EndUserInstance {
+    public function update(array $options = []): EndUserInstance {
         $options = new Values($options);
 
         $data = Values::of([

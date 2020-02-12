@@ -75,7 +75,7 @@ class KeyContext extends InstanceContext {
      * @return KeyInstance Updated KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): KeyInstance {
+    public function update(array $options = []): KeyInstance {
         $options = new Values($options);
 
         $data = Values::of([

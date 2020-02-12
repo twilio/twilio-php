@@ -52,7 +52,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $addressSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $addressSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $addressSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +95,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

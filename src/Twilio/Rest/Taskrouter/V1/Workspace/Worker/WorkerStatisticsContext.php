@@ -42,7 +42,7 @@ class WorkerStatisticsContext extends InstanceContext {
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkerStatisticsInstance {
+    public function fetch(array $options = []): WorkerStatisticsInstance {
         $options = new Values($options);
 
         $params = Values::of([

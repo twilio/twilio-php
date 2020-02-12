@@ -34,7 +34,7 @@ class MediaInstance extends InstanceResource {
      * @param string $messageSid The unique string that identifies the resource
      * @param string $sid The unique string that identifies this resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $messageSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -101,7 +101,7 @@ class MediaInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

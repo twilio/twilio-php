@@ -40,7 +40,7 @@ class DeviceList extends ListResource {
      * @return DeviceInstance Newly created DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($phoneNumber, $pushToken): DeviceInstance {
+    public function create(string $phoneNumber, string $pushToken): DeviceInstance {
         $data = Values::of(['PhoneNumber' => $phoneNumber, 'PushToken' => $pushToken, ]);
 
         $payload = $this->version->create(

@@ -75,7 +75,7 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Updated DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): DeploymentInstance {
+    public function update(array $options = []): DeploymentInstance {
         $options = new Values($options);
 
         $data = Values::of([

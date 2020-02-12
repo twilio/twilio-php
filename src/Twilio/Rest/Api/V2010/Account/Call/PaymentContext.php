@@ -49,7 +49,7 @@ class PaymentContext extends InstanceContext {
      * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($idempotencyKey, $statusCallback, $options = []): PaymentInstance {
+    public function update(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance {
         $options = new Values($options);
 
         $data = Values::of([

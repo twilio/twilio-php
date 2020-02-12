@@ -20,7 +20,7 @@ abstract class SyncListOptions {
      * @param string $uniqueName The unique_name
      * @return CreateSyncListOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE): CreateSyncListOptions {
+    public static function create(string $uniqueName = Values::NONE): CreateSyncListOptions {
         return new CreateSyncListOptions($uniqueName);
     }
 }
@@ -29,7 +29,7 @@ class CreateSyncListOptions extends Options {
     /**
      * @param string $uniqueName The unique_name
      */
-    public function __construct($uniqueName = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
     }
 
@@ -39,7 +39,7 @@ class CreateSyncListOptions extends Options {
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }

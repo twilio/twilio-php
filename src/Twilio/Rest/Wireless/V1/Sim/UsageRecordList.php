@@ -24,7 +24,7 @@ class UsageRecordList extends ListResource {
      * @param string $simSid The SID of the Sim resource that this Usage Record is
      *                       for
      */
-    public function __construct(Version $version, $simSid) {
+    public function __construct(Version $version, string $simSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class UsageRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class UsageRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UsageRecordInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class UsageRecordList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UsageRecordPage Page of UsageRecordInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): UsageRecordPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UsageRecordPage {
         $options = new Values($options);
         $params = Values::of([
             'End' => Serialize::iso8601DateTime($options['end']),
@@ -117,7 +117,7 @@ class UsageRecordList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UsageRecordPage Page of UsageRecordInstance
      */
-    public function getPage($targetUrl): UsageRecordPage {
+    public function getPage(string $targetUrl): UsageRecordPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

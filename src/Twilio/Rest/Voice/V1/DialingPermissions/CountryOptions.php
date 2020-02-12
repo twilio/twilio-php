@@ -35,7 +35,7 @@ abstract class CountryOptions {
      *                                              enabled
      * @return ReadCountryOptions Options builder
      */
-    public static function read($isoCode = Values::NONE, $continent = Values::NONE, $countryCode = Values::NONE, $lowRiskNumbersEnabled = Values::NONE, $highRiskSpecialNumbersEnabled = Values::NONE, $highRiskTollfraudNumbersEnabled = Values::NONE): ReadCountryOptions {
+    public static function read(string $isoCode = Values::NONE, string $continent = Values::NONE, string $countryCode = Values::NONE, bool $lowRiskNumbersEnabled = Values::NONE, bool $highRiskSpecialNumbersEnabled = Values::NONE, bool $highRiskTollfraudNumbersEnabled = Values::NONE): ReadCountryOptions {
         return new ReadCountryOptions($isoCode, $continent, $countryCode, $lowRiskNumbersEnabled, $highRiskSpecialNumbersEnabled, $highRiskTollfraudNumbersEnabled);
     }
 }
@@ -59,7 +59,7 @@ class ReadCountryOptions extends Options {
      *                                              high-risk toll fraud numbers
      *                                              enabled
      */
-    public function __construct($isoCode = Values::NONE, $continent = Values::NONE, $countryCode = Values::NONE, $lowRiskNumbersEnabled = Values::NONE, $highRiskSpecialNumbersEnabled = Values::NONE, $highRiskTollfraudNumbersEnabled = Values::NONE) {
+    public function __construct(string $isoCode = Values::NONE, string $continent = Values::NONE, string $countryCode = Values::NONE, bool $lowRiskNumbersEnabled = Values::NONE, bool $highRiskSpecialNumbersEnabled = Values::NONE, bool $highRiskTollfraudNumbersEnabled = Values::NONE) {
         $this->options['isoCode'] = $isoCode;
         $this->options['continent'] = $continent;
         $this->options['countryCode'] = $countryCode;
@@ -75,7 +75,7 @@ class ReadCountryOptions extends Options {
      *                        specifying the ISO country code
      * @return $this Fluent Builder
      */
-    public function setIsoCode($isoCode): self {
+    public function setIsoCode(string $isoCode): self {
         $this->options['isoCode'] = $isoCode;
         return $this;
     }
@@ -87,7 +87,7 @@ class ReadCountryOptions extends Options {
      *                          specifying the continent
      * @return $this Fluent Builder
      */
-    public function setContinent($continent): self {
+    public function setContinent(string $continent): self {
         $this->options['continent'] = $continent;
         return $this;
     }
@@ -98,7 +98,7 @@ class ReadCountryOptions extends Options {
      * @param string $countryCode Country code filter
      * @return $this Fluent Builder
      */
-    public function setCountryCode($countryCode): self {
+    public function setCountryCode(string $countryCode): self {
         $this->options['countryCode'] = $countryCode;
         return $this;
     }
@@ -111,7 +111,7 @@ class ReadCountryOptions extends Options {
      *                                    numbers enabled
      * @return $this Fluent Builder
      */
-    public function setLowRiskNumbersEnabled($lowRiskNumbersEnabled): self {
+    public function setLowRiskNumbersEnabled(bool $lowRiskNumbersEnabled): self {
         $this->options['lowRiskNumbersEnabled'] = $lowRiskNumbersEnabled;
         return $this;
     }
@@ -125,7 +125,7 @@ class ReadCountryOptions extends Options {
      *                                            enabled
      * @return $this Fluent Builder
      */
-    public function setHighRiskSpecialNumbersEnabled($highRiskSpecialNumbersEnabled): self {
+    public function setHighRiskSpecialNumbersEnabled(bool $highRiskSpecialNumbersEnabled): self {
         $this->options['highRiskSpecialNumbersEnabled'] = $highRiskSpecialNumbersEnabled;
         return $this;
     }
@@ -139,7 +139,7 @@ class ReadCountryOptions extends Options {
      *                                              enabled
      * @return $this Fluent Builder
      */
-    public function setHighRiskTollfraudNumbersEnabled($highRiskTollfraudNumbersEnabled): self {
+    public function setHighRiskTollfraudNumbersEnabled(bool $highRiskTollfraudNumbersEnabled): self {
         $this->options['highRiskTollfraudNumbersEnabled'] = $highRiskTollfraudNumbersEnabled;
         return $this;
     }

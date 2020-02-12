@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string $description
  * @property string $friendlyName
  * @property string $homepageUrl
- * @property string $permissions
+ * @property string[] $permissions
  * @property string $sid
  * @property string $uri
  */
@@ -37,7 +37,7 @@ class ConnectAppInstance extends InstanceResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +93,7 @@ class ConnectAppInstance extends InstanceResource {
      * @return ConnectAppInstance Updated ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ConnectAppInstance {
+    public function update(array $options = []): ConnectAppInstance {
         return $this->proxy()->update($options);
     }
 
@@ -114,7 +114,7 @@ class ConnectAppInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

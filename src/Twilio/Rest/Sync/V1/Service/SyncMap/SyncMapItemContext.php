@@ -80,7 +80,7 @@ class SyncMapItemContext extends InstanceContext {
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SyncMapItemInstance {
+    public function update(array $options = []): SyncMapItemInstance {
         $options = new Values($options);
 
         $data = Values::of([

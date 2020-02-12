@@ -14,37 +14,37 @@ use Twilio\Values;
 
 abstract class FeedbackOptions {
     /**
-     * @param string $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      * @return CreateFeedbackOptions Options builder
      */
-    public static function create($issue = Values::NONE): CreateFeedbackOptions {
+    public static function create(string[] $issue = Values::NONE): CreateFeedbackOptions {
         return new CreateFeedbackOptions($issue);
     }
 
     /**
-     * @param string $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      * @return UpdateFeedbackOptions Options builder
      */
-    public static function update($issue = Values::NONE): UpdateFeedbackOptions {
+    public static function update(string[] $issue = Values::NONE): UpdateFeedbackOptions {
         return new UpdateFeedbackOptions($issue);
     }
 }
 
 class CreateFeedbackOptions extends Options {
     /**
-     * @param string $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      */
-    public function __construct($issue = Values::NONE) {
+    public function __construct(string[] $issue = Values::NONE) {
         $this->options['issue'] = $issue;
     }
 
     /**
      * A list of one or more issues experienced during the call. Issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
      *
-     * @param string $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
-    public function setIssue($issue): self {
+    public function setIssue(string[] $issue): self {
         $this->options['issue'] = $issue;
         return $this;
     }
@@ -67,19 +67,19 @@ class CreateFeedbackOptions extends Options {
 
 class UpdateFeedbackOptions extends Options {
     /**
-     * @param string $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      */
-    public function __construct($issue = Values::NONE) {
+    public function __construct(string[] $issue = Values::NONE) {
         $this->options['issue'] = $issue;
     }
 
     /**
      * One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
      *
-     * @param string $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
-    public function setIssue($issue): self {
+    public function setIssue(string[] $issue): self {
         $this->options['issue'] = $issue;
         return $this;
     }

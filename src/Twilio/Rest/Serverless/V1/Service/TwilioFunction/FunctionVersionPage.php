@@ -9,19 +9,30 @@
 
 namespace Twilio\Rest\Serverless\V1\Service\TwilioFunction;
 
+use Twilio\Http\Response;
 use Twilio\Page;
+use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
 class FunctionVersionPage extends Page {
-    public function __construct($version, $response, $solution) {
+    /**
+     * @param Version $version Version that contains the resource
+     * @param Response $response Response from the API
+     * @param array $solution The context solution
+     */
+    public function __construct(Version $version, Response $response, array $solution) {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
+    /**
+     * @param array $payload Payload response from the API
+     * @return FunctionVersionInstance \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionInstance
+     */
     public function buildInstance(array $payload): FunctionVersionInstance {
         return new FunctionVersionInstance(
             $this->version,

@@ -26,7 +26,7 @@ abstract class SessionOptions {
      * @param string $createdBy The Identity of the session's creator
      * @return CreateSessionOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE): CreateSessionOptions {
+    public static function create(string $friendlyName = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE): CreateSessionOptions {
         return new CreateSessionOptions($friendlyName, $attributes, $dateCreated, $dateUpdated, $createdBy);
     }
 
@@ -40,7 +40,7 @@ abstract class SessionOptions {
      * @param string $createdBy The Identity of the session's creator
      * @return UpdateSessionOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE): UpdateSessionOptions {
+    public static function update(string $friendlyName = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE): UpdateSessionOptions {
         return new UpdateSessionOptions($friendlyName, $attributes, $dateCreated, $dateUpdated, $createdBy);
     }
 }
@@ -55,7 +55,7 @@ class CreateSessionOptions extends Options {
      *                               resource was updated
      * @param string $createdBy The Identity of the session's creator
      */
-    public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -69,7 +69,7 @@ class CreateSessionOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -80,7 +80,7 @@ class CreateSessionOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -92,7 +92,7 @@ class CreateSessionOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -104,7 +104,7 @@ class CreateSessionOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -115,7 +115,7 @@ class CreateSessionOptions extends Options {
      * @param string $createdBy The Identity of the session's creator
      * @return $this Fluent Builder
      */
-    public function setCreatedBy($createdBy): self {
+    public function setCreatedBy(string $createdBy): self {
         $this->options['createdBy'] = $createdBy;
         return $this;
     }
@@ -146,7 +146,7 @@ class UpdateSessionOptions extends Options {
      *                               resource was updated
      * @param string $createdBy The Identity of the session's creator
      */
-    public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -160,7 +160,7 @@ class UpdateSessionOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -171,7 +171,7 @@ class UpdateSessionOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -183,7 +183,7 @@ class UpdateSessionOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -195,7 +195,7 @@ class UpdateSessionOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -206,7 +206,7 @@ class UpdateSessionOptions extends Options {
      * @param string $createdBy The Identity of the session's creator
      * @return $this Fluent Builder
      */
-    public function setCreatedBy($createdBy): self {
+    public function setCreatedBy(string $createdBy): self {
         $this->options['createdBy'] = $createdBy;
         return $this;
     }

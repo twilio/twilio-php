@@ -66,7 +66,7 @@ class QueryContext extends InstanceContext {
      * @return QueryInstance Updated QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): QueryInstance {
+    public function update(array $options = []): QueryInstance {
         $options = new Values($options);
 
         $data = Values::of(['SampleSid' => $options['sampleSid'], 'Status' => $options['status'], ]);

@@ -45,7 +45,7 @@ class FlowList extends ListResource {
      * @return FlowInstance Newly created FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $status, $definition, $options = []): FlowInstance {
+    public function create(string $friendlyName, string $status, array $definition, array $options = []): FlowInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -83,7 +83,7 @@ class FlowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -106,7 +106,7 @@ class FlowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FlowInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -119,7 +119,7 @@ class FlowList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FlowPage Page of FlowInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FlowPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FlowPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -138,7 +138,7 @@ class FlowList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FlowPage Page of FlowInstance
      */
-    public function getPage($targetUrl): FlowPage {
+    public function getPage(string $targetUrl): FlowPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -152,7 +152,7 @@ class FlowList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): FlowContext {
+    public function getContext(string $sid): FlowContext {
         return new FlowContext($this->version, $sid);
     }
 

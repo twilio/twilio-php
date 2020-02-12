@@ -26,7 +26,7 @@ class FieldList extends ListResource {
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Field.
      */
-    public function __construct(Version $version, $assistantSid, $taskSid) {
+    public function __construct(Version $version, string $assistantSid, string $taskSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -53,7 +53,7 @@ class FieldList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class FieldList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FieldInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -89,7 +89,7 @@ class FieldList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FieldPage Page of FieldInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -108,7 +108,7 @@ class FieldList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FieldPage Page of FieldInstance
      */
-    public function getPage($targetUrl): FieldPage {
+    public function getPage(string $targetUrl): FieldPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -129,7 +129,7 @@ class FieldList extends ListResource {
      * @return FieldInstance Newly created FieldInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($fieldType, $uniqueName): FieldInstance {
+    public function create(string $fieldType, string $uniqueName): FieldInstance {
         $data = Values::of(['FieldType' => $fieldType, 'UniqueName' => $uniqueName, ]);
 
         $payload = $this->version->create(
@@ -153,7 +153,7 @@ class FieldList extends ListResource {
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
-    public function getContext($sid): FieldContext {
+    public function getContext(string $sid): FieldContext {
         return new FieldContext(
             $this->version,
             $this->solution['assistantSid'],

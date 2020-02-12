@@ -57,7 +57,7 @@ class FlexFlowContext extends InstanceContext {
      * @return FlexFlowInstance Updated FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): FlexFlowInstance {
+    public function update(array $options = []): FlexFlowInstance {
         $options = new Values($options);
 
         $data = Values::of([

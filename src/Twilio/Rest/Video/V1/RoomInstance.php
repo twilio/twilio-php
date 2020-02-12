@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string $type
  * @property int $maxParticipants
  * @property bool $recordParticipantsOnConnect
- * @property string $videoCodecs
+ * @property string[] $videoCodecs
  * @property string $mediaRegion
  * @property string $url
  * @property array $links
@@ -48,7 +48,7 @@ class RoomInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -107,7 +107,7 @@ class RoomInstance extends InstanceResource {
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status): RoomInstance {
+    public function update(string $status): RoomInstance {
         return $this->proxy()->update($status);
     }
 
@@ -132,7 +132,7 @@ class RoomInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

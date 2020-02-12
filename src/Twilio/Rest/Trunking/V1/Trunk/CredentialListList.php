@@ -23,7 +23,7 @@ class CredentialListList extends ListResource {
      * @param string $trunkSid The SID of the Trunk the credential list in
      *                         associated with
      */
-    public function __construct(Version $version, $trunkSid) {
+    public function __construct(Version $version, string $trunkSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -40,7 +40,7 @@ class CredentialListList extends ListResource {
      * @return CredentialListInstance Newly created CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($credentialListSid): CredentialListInstance {
+    public function create(string $credentialListSid): CredentialListInstance {
         $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
 
         $payload = $this->version->create(
@@ -71,7 +71,7 @@ class CredentialListList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -94,7 +94,7 @@ class CredentialListList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialListInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -107,7 +107,7 @@ class CredentialListList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CredentialListPage Page of CredentialListInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -126,7 +126,7 @@ class CredentialListList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CredentialListPage Page of CredentialListInstance
      */
-    public function getPage($targetUrl): CredentialListPage {
+    public function getPage(string $targetUrl): CredentialListPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -140,7 +140,7 @@ class CredentialListList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): CredentialListContext {
+    public function getContext(string $sid): CredentialListContext {
         return new CredentialListContext($this->version, $this->solution['trunkSid'], $sid);
     }
 

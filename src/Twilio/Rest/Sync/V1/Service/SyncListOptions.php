@@ -24,7 +24,7 @@ abstract class SyncListOptions {
      *                           and is deleted
      * @return CreateSyncListOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE): CreateSyncListOptions {
+    public static function create(string $uniqueName = Values::NONE, int $ttl = Values::NONE, int $collectionTtl = Values::NONE): CreateSyncListOptions {
         return new CreateSyncListOptions($uniqueName, $ttl, $collectionTtl);
     }
 
@@ -34,7 +34,7 @@ abstract class SyncListOptions {
      *                           and is deleted
      * @return UpdateSyncListOptions Options builder
      */
-    public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE): UpdateSyncListOptions {
+    public static function update(int $ttl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncListOptions {
         return new UpdateSyncListOptions($ttl, $collectionTtl);
     }
 }
@@ -47,7 +47,7 @@ class CreateSyncListOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the Sync List expires
      *                           and is deleted
      */
-    public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, int $ttl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
         $this->options['collectionTtl'] = $collectionTtl;
@@ -60,7 +60,7 @@ class CreateSyncListOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -71,7 +71,7 @@ class CreateSyncListOptions extends Options {
      * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -83,7 +83,7 @@ class CreateSyncListOptions extends Options {
      *                           and is deleted
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl): self {
+    public function setCollectionTtl(int $collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -110,7 +110,7 @@ class UpdateSyncListOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the Sync List expires
      *                           and is deleted
      */
-    public function __construct($ttl = Values::NONE, $collectionTtl = Values::NONE) {
+    public function __construct(int $ttl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
         $this->options['collectionTtl'] = $collectionTtl;
     }
@@ -121,7 +121,7 @@ class UpdateSyncListOptions extends Options {
      * @param int $ttl An alias for collection_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -133,7 +133,7 @@ class UpdateSyncListOptions extends Options {
      *                           and is deleted
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl): self {
+    public function setCollectionTtl(int $collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }

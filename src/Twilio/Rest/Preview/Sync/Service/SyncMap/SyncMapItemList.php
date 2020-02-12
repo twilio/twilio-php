@@ -28,7 +28,7 @@ class SyncMapItemList extends ListResource {
      * @param string $serviceSid The service_sid
      * @param string $mapSid The map_sid
      */
-    public function __construct(Version $version, $serviceSid, $mapSid) {
+    public function __construct(Version $version, string $serviceSid, string $mapSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -45,7 +45,7 @@ class SyncMapItemList extends ListResource {
      * @return SyncMapItemInstance Newly created SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($key, $data): SyncMapItemInstance {
+    public function create(string $key, array $data): SyncMapItemInstance {
         $data = Values::of(['Key' => $key, 'Data' => Serialize::jsonObject($data), ]);
 
         $payload = $this->version->create(
@@ -82,7 +82,7 @@ class SyncMapItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -106,7 +106,7 @@ class SyncMapItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapItemInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -120,7 +120,7 @@ class SyncMapItemList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncMapItemPage Page of SyncMapItemInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapItemPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapItemPage {
         $options = new Values($options);
         $params = Values::of([
             'Order' => $options['order'],
@@ -147,7 +147,7 @@ class SyncMapItemList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncMapItemPage Page of SyncMapItemInstance
      */
-    public function getPage($targetUrl): SyncMapItemPage {
+    public function getPage(string $targetUrl): SyncMapItemPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -161,7 +161,7 @@ class SyncMapItemList extends ListResource {
      *
      * @param string $key The key
      */
-    public function getContext($key): SyncMapItemContext {
+    public function getContext(string $key): SyncMapItemContext {
         return new SyncMapItemContext(
             $this->version,
             $this->solution['serviceSid'],

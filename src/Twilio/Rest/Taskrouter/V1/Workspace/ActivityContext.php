@@ -63,7 +63,7 @@ class ActivityContext extends InstanceContext {
      * @return ActivityInstance Updated ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ActivityInstance {
+    public function update(array $options = []): ActivityInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);

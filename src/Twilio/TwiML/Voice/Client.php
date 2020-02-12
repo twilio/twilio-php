@@ -63,7 +63,7 @@ class Client extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param string $statusCallbackEvent Events to trigger status callback
+     * @param string[] $statusCallbackEvent Events to trigger status callback
      */
     public function setStatusCallbackEvent($statusCallbackEvent): self {
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);

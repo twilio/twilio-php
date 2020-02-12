@@ -27,7 +27,7 @@ class AssignedAddOnList extends ListResource {
      * @param string $resourceSid The SID of the Phone Number that installed this
      *                            Add-on
      */
-    public function __construct(Version $version, $accountSid, $resourceSid) {
+    public function __construct(Version $version, string $accountSid, string $resourceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -54,7 +54,7 @@ class AssignedAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class AssignedAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssignedAddOnInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class AssignedAddOnList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AssignedAddOnPage Page of AssignedAddOnInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -109,7 +109,7 @@ class AssignedAddOnList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AssignedAddOnPage Page of AssignedAddOnInstance
      */
-    public function getPage($targetUrl): AssignedAddOnPage {
+    public function getPage(string $targetUrl): AssignedAddOnPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class AssignedAddOnList extends ListResource {
      * @return AssignedAddOnInstance Newly created AssignedAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($installedAddOnSid): AssignedAddOnInstance {
+    public function create(string $installedAddOnSid): AssignedAddOnInstance {
         $data = Values::of(['InstalledAddOnSid' => $installedAddOnSid, ]);
 
         $payload = $this->version->create(
@@ -149,7 +149,7 @@ class AssignedAddOnList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): AssignedAddOnContext {
+    public function getContext(string $sid): AssignedAddOnContext {
         return new AssignedAddOnContext(
             $this->version,
             $this->solution['accountSid'],

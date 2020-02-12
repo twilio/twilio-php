@@ -26,7 +26,7 @@ class SyncMapList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -42,7 +42,7 @@ class SyncMapList extends ListResource {
      * @return SyncMapInstance Newly created SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): SyncMapInstance {
+    public function create(array $options = []): SyncMapInstance {
         $options = new Values($options);
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], ]);
@@ -75,7 +75,7 @@ class SyncMapList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -98,7 +98,7 @@ class SyncMapList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -111,7 +111,7 @@ class SyncMapList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncMapPage Page of SyncMapInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -130,7 +130,7 @@ class SyncMapList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncMapPage Page of SyncMapInstance
      */
-    public function getPage($targetUrl): SyncMapPage {
+    public function getPage(string $targetUrl): SyncMapPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -144,7 +144,7 @@ class SyncMapList extends ListResource {
      *
      * @param string $sid The sid
      */
-    public function getContext($sid): SyncMapContext {
+    public function getContext(string $sid): SyncMapContext {
         return new SyncMapContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string $sid
  * @property string $friendlyName
  * @property string $machineName
- * @property array $fields
+ * @property array[] $fields
  * @property string $url
  */
 class SupportingDocumentTypeInstance extends InstanceResource {
@@ -30,7 +30,7 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      * @param string $sid The unique string that identifies the Supporting Document
      *                    Type resource
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -77,7 +77,7 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -21,17 +21,17 @@ abstract class WebhookOptions {
      *                                 be sent to.
      * @param string $configurationMethod The HTTP method to be used when sending a
      *                                    webhook request.
-     * @param string $configurationFilters The list of events, firing webhook event
-     *                                     for this Conversation.
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      * @param int $configurationReplayAfter The message index for which and it's
      *                                      successors the webhook will be replayed.
      * @return CreateWebhookOptions Options builder
      */
-    public static function create($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationReplayAfter = Values::NONE): CreateWebhookOptions {
+    public static function create(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationReplayAfter = Values::NONE): CreateWebhookOptions {
         return new CreateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationReplayAfter);
     }
 
@@ -40,15 +40,15 @@ abstract class WebhookOptions {
      *                                 be sent to.
      * @param string $configurationMethod The HTTP method to be used when sending a
      *                                    webhook request.
-     * @param string $configurationFilters The list of events, firing webhook event
-     *                                     for this Conversation.
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE): UpdateWebhookOptions {
+    public static function update(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid);
     }
 }
@@ -59,16 +59,16 @@ class CreateWebhookOptions extends Options {
      *                                 be sent to.
      * @param string $configurationMethod The HTTP method to be used when sending a
      *                                    webhook request.
-     * @param string $configurationFilters The list of events, firing webhook event
-     *                                     for this Conversation.
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      * @param int $configurationReplayAfter The message index for which and it's
      *                                      successors the webhook will be replayed.
      */
-    public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationReplayAfter = Values::NONE) {
+    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationReplayAfter = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -84,7 +84,7 @@ class CreateWebhookOptions extends Options {
      *                                 be sent to.
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl($configurationUrl): self {
+    public function setConfigurationUrl(string $configurationUrl): self {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
@@ -96,7 +96,7 @@ class CreateWebhookOptions extends Options {
      *                                    webhook request.
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod($configurationMethod): self {
+    public function setConfigurationMethod(string $configurationMethod): self {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -104,11 +104,11 @@ class CreateWebhookOptions extends Options {
     /**
      * The list of events, firing webhook event for this Conversation.
      *
-     * @param string $configurationFilters The list of events, firing webhook event
-     *                                     for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters($configurationFilters): self {
+    public function setConfigurationFilters(string[] $configurationFilters): self {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -116,11 +116,11 @@ class CreateWebhookOptions extends Options {
     /**
      * The list of keywords, firing webhook event for this Conversation.
      *
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers($configurationTriggers): self {
+    public function setConfigurationTriggers(string[] $configurationTriggers): self {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -132,7 +132,7 @@ class CreateWebhookOptions extends Options {
      *                                     should be sent to.
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid($configurationFlowSid): self {
+    public function setConfigurationFlowSid(string $configurationFlowSid): self {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -144,7 +144,7 @@ class CreateWebhookOptions extends Options {
      *                                      successors the webhook will be replayed.
      * @return $this Fluent Builder
      */
-    public function setConfigurationReplayAfter($configurationReplayAfter): self {
+    public function setConfigurationReplayAfter(int $configurationReplayAfter): self {
         $this->options['configurationReplayAfter'] = $configurationReplayAfter;
         return $this;
     }
@@ -171,14 +171,14 @@ class UpdateWebhookOptions extends Options {
      *                                 be sent to.
      * @param string $configurationMethod The HTTP method to be used when sending a
      *                                    webhook request.
-     * @param string $configurationFilters The list of events, firing webhook event
-     *                                     for this Conversation.
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      */
-    public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE) {
+    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -193,7 +193,7 @@ class UpdateWebhookOptions extends Options {
      *                                 be sent to.
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl($configurationUrl): self {
+    public function setConfigurationUrl(string $configurationUrl): self {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
@@ -205,7 +205,7 @@ class UpdateWebhookOptions extends Options {
      *                                    webhook request.
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod($configurationMethod): self {
+    public function setConfigurationMethod(string $configurationMethod): self {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -213,11 +213,11 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of events, firing webhook event for this Conversation.
      *
-     * @param string $configurationFilters The list of events, firing webhook event
-     *                                     for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters($configurationFilters): self {
+    public function setConfigurationFilters(string[] $configurationFilters): self {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -225,11 +225,11 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of keywords, firing webhook event for this Conversation.
      *
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers($configurationTriggers): self {
+    public function setConfigurationTriggers(string[] $configurationTriggers): self {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -241,7 +241,7 @@ class UpdateWebhookOptions extends Options {
      *                                     should be sent to.
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid($configurationFlowSid): self {
+    public function setConfigurationFlowSid(string $configurationFlowSid): self {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }

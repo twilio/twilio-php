@@ -23,7 +23,7 @@ abstract class SyncStreamOptions {
      *                 deleted
      * @return CreateSyncStreamOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE): CreateSyncStreamOptions {
+    public static function create(string $uniqueName = Values::NONE, int $ttl = Values::NONE): CreateSyncStreamOptions {
         return new CreateSyncStreamOptions($uniqueName, $ttl);
     }
 
@@ -32,7 +32,7 @@ abstract class SyncStreamOptions {
      *                 deleted
      * @return UpdateSyncStreamOptions Options builder
      */
-    public static function update($ttl = Values::NONE): UpdateSyncStreamOptions {
+    public static function update(int $ttl = Values::NONE): UpdateSyncStreamOptions {
         return new UpdateSyncStreamOptions($ttl);
     }
 }
@@ -44,7 +44,7 @@ class CreateSyncStreamOptions extends Options {
      * @param int $ttl How long, in seconds, before the Stream expires and is
      *                 deleted
      */
-    public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, int $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
     }
@@ -56,7 +56,7 @@ class CreateSyncStreamOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -68,7 +68,7 @@ class CreateSyncStreamOptions extends Options {
      *                 deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -94,7 +94,7 @@ class UpdateSyncStreamOptions extends Options {
      * @param int $ttl How long, in seconds, before the Stream expires and is
      *                 deleted
      */
-    public function __construct($ttl = Values::NONE) {
+    public function __construct(int $ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
@@ -105,7 +105,7 @@ class UpdateSyncStreamOptions extends Options {
      *                 deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }

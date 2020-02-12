@@ -40,7 +40,7 @@ class SyncListPermissionInstance extends InstanceResource {
      *                         identifies the User's Sync List Permission resource
      *                         to fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $listSid, $identity = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, string $identity = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -110,7 +110,7 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage): SyncListPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): SyncListPermissionInstance {
         return $this->proxy()->update($read, $write, $manage);
     }
 
@@ -121,7 +121,7 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

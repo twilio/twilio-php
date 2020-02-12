@@ -22,7 +22,7 @@ abstract class BundleOptions {
      * @param string $numberType The type of phone number
      * @return CreateBundleOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $endUserType = Values::NONE, $numberType = Values::NONE): CreateBundleOptions {
+    public static function create(string $statusCallback = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $endUserType = Values::NONE, string $numberType = Values::NONE): CreateBundleOptions {
         return new CreateBundleOptions($statusCallback, $regulationSid, $isoCountry, $endUserType, $numberType);
     }
 
@@ -35,7 +35,7 @@ abstract class BundleOptions {
      * @param string $numberType The type of phone number
      * @return ReadBundleOptions Options builder
      */
-    public static function read($status = Values::NONE, $friendlyName = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $numberType = Values::NONE): ReadBundleOptions {
+    public static function read(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE): ReadBundleOptions {
         return new ReadBundleOptions($status, $friendlyName, $regulationSid, $isoCountry, $numberType);
     }
 
@@ -48,7 +48,7 @@ abstract class BundleOptions {
      * @param string $email The email address
      * @return UpdateBundleOptions Options builder
      */
-    public static function update($status = Values::NONE, $statusCallback = Values::NONE, $friendlyName = Values::NONE, $email = Values::NONE): UpdateBundleOptions {
+    public static function update(string $status = Values::NONE, string $statusCallback = Values::NONE, string $friendlyName = Values::NONE, string $email = Values::NONE): UpdateBundleOptions {
         return new UpdateBundleOptions($status, $statusCallback, $friendlyName, $email);
     }
 }
@@ -62,7 +62,7 @@ class CreateBundleOptions extends Options {
      * @param string $endUserType The type of End User of the Bundle resource
      * @param string $numberType The type of phone number
      */
-    public function __construct($statusCallback = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $endUserType = Values::NONE, $numberType = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $endUserType = Values::NONE, string $numberType = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['regulationSid'] = $regulationSid;
         $this->options['isoCountry'] = $isoCountry;
@@ -77,7 +77,7 @@ class CreateBundleOptions extends Options {
      *                               status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -88,7 +88,7 @@ class CreateBundleOptions extends Options {
      * @param string $regulationSid The unique string of a regulation.
      * @return $this Fluent Builder
      */
-    public function setRegulationSid($regulationSid): self {
+    public function setRegulationSid(string $regulationSid): self {
         $this->options['regulationSid'] = $regulationSid;
         return $this;
     }
@@ -99,7 +99,7 @@ class CreateBundleOptions extends Options {
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
      */
-    public function setIsoCountry($isoCountry): self {
+    public function setIsoCountry(string $isoCountry): self {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
@@ -110,7 +110,7 @@ class CreateBundleOptions extends Options {
      * @param string $endUserType The type of End User of the Bundle resource
      * @return $this Fluent Builder
      */
-    public function setEndUserType($endUserType): self {
+    public function setEndUserType(string $endUserType): self {
         $this->options['endUserType'] = $endUserType;
         return $this;
     }
@@ -121,7 +121,7 @@ class CreateBundleOptions extends Options {
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder
      */
-    public function setNumberType($numberType): self {
+    public function setNumberType(string $numberType): self {
         $this->options['numberType'] = $numberType;
         return $this;
     }
@@ -151,7 +151,7 @@ class ReadBundleOptions extends Options {
      * @param string $isoCountry The ISO country code of the country
      * @param string $numberType The type of phone number
      */
-    public function __construct($status = Values::NONE, $friendlyName = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $numberType = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['regulationSid'] = $regulationSid;
@@ -165,7 +165,7 @@ class ReadBundleOptions extends Options {
      * @param string $status The verification status of the Bundle resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -177,7 +177,7 @@ class ReadBundleOptions extends Options {
      *                             resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -188,7 +188,7 @@ class ReadBundleOptions extends Options {
      * @param string $regulationSid The unique string of a regulation.
      * @return $this Fluent Builder
      */
-    public function setRegulationSid($regulationSid): self {
+    public function setRegulationSid(string $regulationSid): self {
         $this->options['regulationSid'] = $regulationSid;
         return $this;
     }
@@ -199,7 +199,7 @@ class ReadBundleOptions extends Options {
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
      */
-    public function setIsoCountry($isoCountry): self {
+    public function setIsoCountry(string $isoCountry): self {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
@@ -210,7 +210,7 @@ class ReadBundleOptions extends Options {
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder
      */
-    public function setNumberType($numberType): self {
+    public function setNumberType(string $numberType): self {
         $this->options['numberType'] = $numberType;
         return $this;
     }
@@ -240,7 +240,7 @@ class UpdateBundleOptions extends Options {
      *                             resource
      * @param string $email The email address
      */
-    public function __construct($status = Values::NONE, $statusCallback = Values::NONE, $friendlyName = Values::NONE, $email = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $statusCallback = Values::NONE, string $friendlyName = Values::NONE, string $email = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['friendlyName'] = $friendlyName;
@@ -253,7 +253,7 @@ class UpdateBundleOptions extends Options {
      * @param string $status The verification status of the Bundle resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -265,7 +265,7 @@ class UpdateBundleOptions extends Options {
      *                               status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -277,7 +277,7 @@ class UpdateBundleOptions extends Options {
      *                             resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -288,7 +288,7 @@ class UpdateBundleOptions extends Options {
      * @param string $email The email address
      * @return $this Fluent Builder
      */
-    public function setEmail($email): self {
+    public function setEmail(string $email): self {
         $this->options['email'] = $email;
         return $this;
     }

@@ -60,7 +60,7 @@ class CredentialContext extends InstanceContext {
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): CredentialInstance {
+    public function update(array $options = []): CredentialInstance {
         $options = new Values($options);
 
         $data = Values::of([

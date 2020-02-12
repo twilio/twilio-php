@@ -50,7 +50,7 @@ class AlertList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -74,7 +74,7 @@ class AlertList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AlertInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -88,7 +88,7 @@ class AlertList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AlertPage Page of AlertInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AlertPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AlertPage {
         $options = new Values($options);
         $params = Values::of([
             'LogLevel' => $options['logLevel'],
@@ -115,7 +115,7 @@ class AlertList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AlertPage Page of AlertInstance
      */
-    public function getPage($targetUrl): AlertPage {
+    public function getPage(string $targetUrl): AlertPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -129,7 +129,7 @@ class AlertList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): AlertContext {
+    public function getContext(string $sid): AlertContext {
         return new AlertContext($this->version, $sid);
     }
 

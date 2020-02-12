@@ -51,7 +51,7 @@ class Monitor extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -68,7 +68,7 @@ class Monitor extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -84,7 +84,7 @@ class Monitor extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextAlerts($sid): \Twilio\Rest\Monitor\V1\AlertContext {
+    protected function contextAlerts(string $sid): \Twilio\Rest\Monitor\V1\AlertContext {
         return $this->v1->alerts($sid);
     }
 
@@ -95,7 +95,7 @@ class Monitor extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextEvents($sid): \Twilio\Rest\Monitor\V1\EventContext {
+    protected function contextEvents(string $sid): \Twilio\Rest\Monitor\V1\EventContext {
         return $this->v1->events($sid);
     }
 

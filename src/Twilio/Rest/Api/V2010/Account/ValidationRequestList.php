@@ -22,7 +22,7 @@ class ValidationRequestList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -39,7 +39,7 @@ class ValidationRequestList extends ListResource {
      * @return ValidationRequestInstance Newly created ValidationRequestInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($phoneNumber, $options = []): ValidationRequestInstance {
+    public function create(string $phoneNumber, array $options = []): ValidationRequestInstance {
         $options = new Values($options);
 
         $data = Values::of([

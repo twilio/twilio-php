@@ -19,7 +19,7 @@ abstract class EngagementOptions {
      *                          flow
      * @return CreateEngagementOptions Options builder
      */
-    public static function create($parameters = Values::NONE): CreateEngagementOptions {
+    public static function create(array $parameters = Values::NONE): CreateEngagementOptions {
         return new CreateEngagementOptions($parameters);
     }
 }
@@ -30,7 +30,7 @@ class CreateEngagementOptions extends Options {
      *                          and that you can access as variables inside your
      *                          flow
      */
-    public function __construct($parameters = Values::NONE) {
+    public function __construct(array $parameters = Values::NONE) {
         $this->options['parameters'] = $parameters;
     }
 
@@ -42,7 +42,7 @@ class CreateEngagementOptions extends Options {
      *                          flow
      * @return $this Fluent Builder
      */
-    public function setParameters($parameters): self {
+    public function setParameters(array $parameters): self {
         $this->options['parameters'] = $parameters;
         return $this;
     }

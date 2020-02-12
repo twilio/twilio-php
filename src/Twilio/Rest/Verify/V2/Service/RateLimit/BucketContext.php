@@ -41,7 +41,7 @@ class BucketContext extends InstanceContext {
      * @return BucketInstance Updated BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): BucketInstance {
+    public function update(array $options = []): BucketInstance {
         $options = new Values($options);
 
         $data = Values::of(['Max' => $options['max'], 'Interval' => $options['interval'], ]);

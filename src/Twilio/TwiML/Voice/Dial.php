@@ -181,7 +181,8 @@ class Dial extends TwiML {
     /**
      * Add RecordingStatusCallbackEvent attribute.
      *
-     * @param string $recordingStatusCallbackEvent Recording status callback events
+     * @param string[] $recordingStatusCallbackEvent Recording status callback
+     *                                               events
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent): self {
         return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);

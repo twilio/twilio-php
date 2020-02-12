@@ -24,7 +24,7 @@ class MediaList extends ListResource {
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $messageSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $accountSid, $messageSid) {
+    public function __construct(Version $version, string $accountSid, string $messageSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class MediaList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class MediaList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MediaInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class MediaList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MediaPage Page of MediaInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaPage {
         $options = new Values($options);
         $params = Values::of([
             'DateCreated<' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
@@ -117,7 +117,7 @@ class MediaList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MediaPage Page of MediaInstance
      */
-    public function getPage($targetUrl): MediaPage {
+    public function getPage(string $targetUrl): MediaPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -131,7 +131,7 @@ class MediaList extends ListResource {
      *
      * @param string $sid The unique string that identifies this resource
      */
-    public function getContext($sid): MediaContext {
+    public function getContext(string $sid): MediaContext {
         return new MediaContext(
             $this->version,
             $this->solution['accountSid'],

@@ -24,7 +24,7 @@ class MobileList extends ListResource {
      * @param string $accountSid The account_sid
      * @param string $countryCode The ISO-3166-1 country code of the country.
      */
-    public function __construct(Version $version, $accountSid, $countryCode) {
+    public function __construct(Version $version, string $accountSid, string $countryCode) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class MobileList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class MobileList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MobileInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class MobileList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MobilePage Page of MobileInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): MobilePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MobilePage {
         $options = new Values($options);
         $params = Values::of([
             'AreaCode' => $options['areaCode'],
@@ -132,7 +132,7 @@ class MobileList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MobilePage Page of MobileInstance
      */
-    public function getPage($targetUrl): MobilePage {
+    public function getPage(string $targetUrl): MobilePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

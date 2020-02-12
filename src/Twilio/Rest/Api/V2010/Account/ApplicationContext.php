@@ -74,7 +74,7 @@ class ApplicationContext extends InstanceContext {
      * @return ApplicationInstance Updated ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ApplicationInstance {
+    public function update(array $options = []): ApplicationInstance {
         $options = new Values($options);
 
         $data = Values::of([

@@ -42,7 +42,7 @@ class SupportingDocumentList extends ListResource {
      * @return SupportingDocumentInstance Newly created SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $type, $options = []): SupportingDocumentInstance {
+    public function create(string $friendlyName, string $type, array $options = []): SupportingDocumentInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,7 +80,7 @@ class SupportingDocumentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -103,7 +103,7 @@ class SupportingDocumentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SupportingDocumentInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -116,7 +116,7 @@ class SupportingDocumentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SupportingDocumentPage Page of SupportingDocumentInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SupportingDocumentPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SupportingDocumentPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -135,7 +135,7 @@ class SupportingDocumentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SupportingDocumentPage Page of SupportingDocumentInstance
      */
-    public function getPage($targetUrl): SupportingDocumentPage {
+    public function getPage(string $targetUrl): SupportingDocumentPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -149,7 +149,7 @@ class SupportingDocumentList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): SupportingDocumentContext {
+    public function getContext(string $sid): SupportingDocumentContext {
         return new SupportingDocumentContext($this->version, $sid);
     }
 

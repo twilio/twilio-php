@@ -17,7 +17,7 @@ abstract class TaskQueueRealTimeStatisticsOptions {
      * @param string $taskChannel The TaskChannel for which to fetch statistics
      * @return FetchTaskQueueRealTimeStatisticsOptions Options builder
      */
-    public static function fetch($taskChannel = Values::NONE): FetchTaskQueueRealTimeStatisticsOptions {
+    public static function fetch(string $taskChannel = Values::NONE): FetchTaskQueueRealTimeStatisticsOptions {
         return new FetchTaskQueueRealTimeStatisticsOptions($taskChannel);
     }
 }
@@ -26,7 +26,7 @@ class FetchTaskQueueRealTimeStatisticsOptions extends Options {
     /**
      * @param string $taskChannel The TaskChannel for which to fetch statistics
      */
-    public function __construct($taskChannel = Values::NONE) {
+    public function __construct(string $taskChannel = Values::NONE) {
         $this->options['taskChannel'] = $taskChannel;
     }
 
@@ -36,7 +36,7 @@ class FetchTaskQueueRealTimeStatisticsOptions extends Options {
      * @param string $taskChannel The TaskChannel for which to fetch statistics
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }

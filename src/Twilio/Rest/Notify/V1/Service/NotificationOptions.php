@@ -17,9 +17,9 @@ use Twilio\Values;
  */
 abstract class NotificationOptions {
     /**
-     * @param string $identity The `identity` value that identifies the new
-     *                         resource's User
-     * @param string $tag A tag that selects the Bindings to notify
+     * @param string[] $identity The `identity` value that identifies the new
+     *                           resource's User
+     * @param string[] $tag A tag that selects the Bindings to notify
      * @param string $body The notification body text
      * @param string $priority The priority of the notification
      * @param int $ttl How long, in seconds, the notification is valid
@@ -36,22 +36,22 @@ abstract class NotificationOptions {
      * @param array $facebookMessenger Deprecated
      * @param array $fcm The FCM-specific payload that overrides corresponding
      *                   attributes in generic payload for FCM Bindings
-     * @param string $segment A Segment to notify
+     * @param string[] $segment A Segment to notify
      * @param array $alexa Deprecated
-     * @param string $toBinding The destination address specified as a JSON string
+     * @param string[] $toBinding The destination address specified as a JSON string
      * @param string $deliveryCallbackUrl URL to send webhooks
      * @return CreateNotificationOptions Options builder
      */
-    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE, $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
+    public static function create(string[] $identity = Values::NONE, string[] $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, string[] $segment = Values::NONE, array $alexa = Values::NONE, string[] $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
         return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding, $deliveryCallbackUrl);
     }
 }
 
 class CreateNotificationOptions extends Options {
     /**
-     * @param string $identity The `identity` value that identifies the new
-     *                         resource's User
-     * @param string $tag A tag that selects the Bindings to notify
+     * @param string[] $identity The `identity` value that identifies the new
+     *                           resource's User
+     * @param string[] $tag A tag that selects the Bindings to notify
      * @param string $body The notification body text
      * @param string $priority The priority of the notification
      * @param int $ttl How long, in seconds, the notification is valid
@@ -68,12 +68,12 @@ class CreateNotificationOptions extends Options {
      * @param array $facebookMessenger Deprecated
      * @param array $fcm The FCM-specific payload that overrides corresponding
      *                   attributes in generic payload for FCM Bindings
-     * @param string $segment A Segment to notify
+     * @param string[] $segment A Segment to notify
      * @param array $alexa Deprecated
-     * @param string $toBinding The destination address specified as a JSON string
+     * @param string[] $toBinding The destination address specified as a JSON string
      * @param string $deliveryCallbackUrl URL to send webhooks
      */
-    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE, $deliveryCallbackUrl = Values::NONE) {
+    public function __construct(string[] $identity = Values::NONE, string[] $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, string[] $segment = Values::NONE, array $alexa = Values::NONE, string[] $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -97,11 +97,11 @@ class CreateNotificationOptions extends Options {
     /**
      * The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list.
      *
-     * @param string $identity The `identity` value that identifies the new
-     *                         resource's User
+     * @param string[] $identity The `identity` value that identifies the new
+     *                           resource's User
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity): self {
+    public function setIdentity(string[] $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -109,10 +109,10 @@ class CreateNotificationOptions extends Options {
     /**
      * A tag that selects the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 5 tags. The implicit tag `all` is available to notify all Bindings in a Service instance. Similarly, the implicit tags `apn`, `fcm`, `gcm`, `sms` and `facebook-messenger` are available to notify all Bindings in a specific channel.
      *
-     * @param string $tag A tag that selects the Bindings to notify
+     * @param string[] $tag A tag that selects the Bindings to notify
      * @return $this Fluent Builder
      */
-    public function setTag($tag): self {
+    public function setTag(string[] $tag): self {
         $this->options['tag'] = $tag;
         return $this;
     }
@@ -123,7 +123,7 @@ class CreateNotificationOptions extends Options {
      * @param string $body The notification body text
      * @return $this Fluent Builder
      */
-    public function setBody($body): self {
+    public function setBody(string $body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -134,7 +134,7 @@ class CreateNotificationOptions extends Options {
      * @param string $priority The priority of the notification
      * @return $this Fluent Builder
      */
-    public function setPriority($priority): self {
+    public function setPriority(string $priority): self {
         $this->options['priority'] = $priority;
         return $this;
     }
@@ -145,7 +145,7 @@ class CreateNotificationOptions extends Options {
      * @param int $ttl How long, in seconds, the notification is valid
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -156,7 +156,7 @@ class CreateNotificationOptions extends Options {
      * @param string $title The notification title
      * @return $this Fluent Builder
      */
-    public function setTitle($title): self {
+    public function setTitle(string $title): self {
         $this->options['title'] = $title;
         return $this;
     }
@@ -167,7 +167,7 @@ class CreateNotificationOptions extends Options {
      * @param string $sound The name of the sound to be played for the notification
      * @return $this Fluent Builder
      */
-    public function setSound($sound): self {
+    public function setSound(string $sound): self {
         $this->options['sound'] = $sound;
         return $this;
     }
@@ -178,7 +178,7 @@ class CreateNotificationOptions extends Options {
      * @param string $action The actions to display for the notification
      * @return $this Fluent Builder
      */
-    public function setAction($action): self {
+    public function setAction(string $action): self {
         $this->options['action'] = $action;
         return $this;
     }
@@ -189,7 +189,7 @@ class CreateNotificationOptions extends Options {
      * @param array $data The custom key-value pairs of the notification's payload
      * @return $this Fluent Builder
      */
-    public function setData($data): self {
+    public function setData(array $data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -201,7 +201,7 @@ class CreateNotificationOptions extends Options {
      *                   attributes in a generic payload for APNS Bindings
      * @return $this Fluent Builder
      */
-    public function setApn($apn): self {
+    public function setApn(array $apn): self {
         $this->options['apn'] = $apn;
         return $this;
     }
@@ -213,7 +213,7 @@ class CreateNotificationOptions extends Options {
      *                   attributes in generic payload for GCM Bindings
      * @return $this Fluent Builder
      */
-    public function setGcm($gcm): self {
+    public function setGcm(array $gcm): self {
         $this->options['gcm'] = $gcm;
         return $this;
     }
@@ -225,7 +225,7 @@ class CreateNotificationOptions extends Options {
      *                   attributes in generic payload for SMS Bindings
      * @return $this Fluent Builder
      */
-    public function setSms($sms): self {
+    public function setSms(array $sms): self {
         $this->options['sms'] = $sms;
         return $this;
     }
@@ -236,7 +236,7 @@ class CreateNotificationOptions extends Options {
      * @param array $facebookMessenger Deprecated
      * @return $this Fluent Builder
      */
-    public function setFacebookMessenger($facebookMessenger): self {
+    public function setFacebookMessenger(array $facebookMessenger): self {
         $this->options['facebookMessenger'] = $facebookMessenger;
         return $this;
     }
@@ -248,7 +248,7 @@ class CreateNotificationOptions extends Options {
      *                   attributes in generic payload for FCM Bindings
      * @return $this Fluent Builder
      */
-    public function setFcm($fcm): self {
+    public function setFcm(array $fcm): self {
         $this->options['fcm'] = $fcm;
         return $this;
     }
@@ -256,10 +256,10 @@ class CreateNotificationOptions extends Options {
     /**
      * The Segment resource is deprecated. Use the `tag` parameter, instead.
      *
-     * @param string $segment A Segment to notify
+     * @param string[] $segment A Segment to notify
      * @return $this Fluent Builder
      */
-    public function setSegment($segment): self {
+    public function setSegment(string[] $segment): self {
         $this->options['segment'] = $segment;
         return $this;
     }
@@ -270,7 +270,7 @@ class CreateNotificationOptions extends Options {
      * @param array $alexa Deprecated
      * @return $this Fluent Builder
      */
-    public function setAlexa($alexa): self {
+    public function setAlexa(array $alexa): self {
         $this->options['alexa'] = $alexa;
         return $this;
     }
@@ -278,10 +278,10 @@ class CreateNotificationOptions extends Options {
     /**
      * The destination address specified as a JSON string.  Multiple `to_binding` parameters can be included but the total size of the request entity should not exceed 1MB. This is typically sufficient for 10,000 phone numbers.
      *
-     * @param string $toBinding The destination address specified as a JSON string
+     * @param string[] $toBinding The destination address specified as a JSON string
      * @return $this Fluent Builder
      */
-    public function setToBinding($toBinding): self {
+    public function setToBinding(string[] $toBinding): self {
         $this->options['toBinding'] = $toBinding;
         return $this;
     }
@@ -292,7 +292,7 @@ class CreateNotificationOptions extends Options {
      * @param string $deliveryCallbackUrl URL to send webhooks
      * @return $this Fluent Builder
      */
-    public function setDeliveryCallbackUrl($deliveryCallbackUrl): self {
+    public function setDeliveryCallbackUrl(string $deliveryCallbackUrl): self {
         $this->options['deliveryCallbackUrl'] = $deliveryCallbackUrl;
         return $this;
     }

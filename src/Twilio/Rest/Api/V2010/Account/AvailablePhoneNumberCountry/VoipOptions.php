@@ -46,7 +46,7 @@ abstract class VoipOptions {
      * @param bool $faxEnabled Whether the phone numbers can receive faxes
      * @return ReadVoipOptions Options builder
      */
-    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE, $faxEnabled = Values::NONE): ReadVoipOptions {
+    public static function read(int $areaCode = Values::NONE, string $contains = Values::NONE, bool $smsEnabled = Values::NONE, bool $mmsEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $excludeAllAddressRequired = Values::NONE, bool $excludeLocalAddressRequired = Values::NONE, bool $excludeForeignAddressRequired = Values::NONE, bool $beta = Values::NONE, string $nearNumber = Values::NONE, string $nearLatLong = Values::NONE, int $distance = Values::NONE, string $inPostalCode = Values::NONE, string $inRegion = Values::NONE, string $inRateCenter = Values::NONE, string $inLata = Values::NONE, string $inLocality = Values::NONE, bool $faxEnabled = Values::NONE): ReadVoipOptions {
         return new ReadVoipOptions($areaCode, $contains, $smsEnabled, $mmsEnabled, $voiceEnabled, $excludeAllAddressRequired, $excludeLocalAddressRequired, $excludeForeignAddressRequired, $beta, $nearNumber, $nearLatLong, $distance, $inPostalCode, $inRegion, $inRateCenter, $inLata, $inLocality, $faxEnabled);
     }
 }
@@ -84,7 +84,7 @@ class ReadVoipOptions extends Options {
      * @param string $inLocality Limit results to a particular locality
      * @param bool $faxEnabled Whether the phone numbers can receive faxes
      */
-    public function __construct($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE, $faxEnabled = Values::NONE) {
+    public function __construct(int $areaCode = Values::NONE, string $contains = Values::NONE, bool $smsEnabled = Values::NONE, bool $mmsEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $excludeAllAddressRequired = Values::NONE, bool $excludeLocalAddressRequired = Values::NONE, bool $excludeForeignAddressRequired = Values::NONE, bool $beta = Values::NONE, string $nearNumber = Values::NONE, string $nearLatLong = Values::NONE, int $distance = Values::NONE, string $inPostalCode = Values::NONE, string $inRegion = Values::NONE, string $inRateCenter = Values::NONE, string $inLata = Values::NONE, string $inLocality = Values::NONE, bool $faxEnabled = Values::NONE) {
         $this->options['areaCode'] = $areaCode;
         $this->options['contains'] = $contains;
         $this->options['smsEnabled'] = $smsEnabled;
@@ -111,7 +111,7 @@ class ReadVoipOptions extends Options {
      * @param int $areaCode The area code of the phone numbers to read
      * @return $this Fluent Builder
      */
-    public function setAreaCode($areaCode): self {
+    public function setAreaCode(int $areaCode): self {
         $this->options['areaCode'] = $areaCode;
         return $this;
     }
@@ -122,7 +122,7 @@ class ReadVoipOptions extends Options {
      * @param string $contains The pattern on which to match phone numbers
      * @return $this Fluent Builder
      */
-    public function setContains($contains): self {
+    public function setContains(string $contains): self {
         $this->options['contains'] = $contains;
         return $this;
     }
@@ -133,7 +133,7 @@ class ReadVoipOptions extends Options {
      * @param bool $smsEnabled Whether the phone numbers can receive text messages
      * @return $this Fluent Builder
      */
-    public function setSmsEnabled($smsEnabled): self {
+    public function setSmsEnabled(bool $smsEnabled): self {
         $this->options['smsEnabled'] = $smsEnabled;
         return $this;
     }
@@ -144,7 +144,7 @@ class ReadVoipOptions extends Options {
      * @param bool $mmsEnabled Whether the phone numbers can receive MMS messages
      * @return $this Fluent Builder
      */
-    public function setMmsEnabled($mmsEnabled): self {
+    public function setMmsEnabled(bool $mmsEnabled): self {
         $this->options['mmsEnabled'] = $mmsEnabled;
         return $this;
     }
@@ -155,7 +155,7 @@ class ReadVoipOptions extends Options {
      * @param bool $voiceEnabled Whether the phone numbers can receive calls.
      * @return $this Fluent Builder
      */
-    public function setVoiceEnabled($voiceEnabled): self {
+    public function setVoiceEnabled(bool $voiceEnabled): self {
         $this->options['voiceEnabled'] = $voiceEnabled;
         return $this;
     }
@@ -167,7 +167,7 @@ class ReadVoipOptions extends Options {
      *                                        require an Address
      * @return $this Fluent Builder
      */
-    public function setExcludeAllAddressRequired($excludeAllAddressRequired): self {
+    public function setExcludeAllAddressRequired(bool $excludeAllAddressRequired): self {
         $this->options['excludeAllAddressRequired'] = $excludeAllAddressRequired;
         return $this;
     }
@@ -179,7 +179,7 @@ class ReadVoipOptions extends Options {
      *                                          that require a local address
      * @return $this Fluent Builder
      */
-    public function setExcludeLocalAddressRequired($excludeLocalAddressRequired): self {
+    public function setExcludeLocalAddressRequired(bool $excludeLocalAddressRequired): self {
         $this->options['excludeLocalAddressRequired'] = $excludeLocalAddressRequired;
         return $this;
     }
@@ -191,7 +191,7 @@ class ReadVoipOptions extends Options {
      *                                            that require a foreign address
      * @return $this Fluent Builder
      */
-    public function setExcludeForeignAddressRequired($excludeForeignAddressRequired): self {
+    public function setExcludeForeignAddressRequired(bool $excludeForeignAddressRequired): self {
         $this->options['excludeForeignAddressRequired'] = $excludeForeignAddressRequired;
         return $this;
     }
@@ -202,7 +202,7 @@ class ReadVoipOptions extends Options {
      * @param bool $beta Whether to read phone numbers new to the Twilio platform
      * @return $this Fluent Builder
      */
-    public function setBeta($beta): self {
+    public function setBeta(bool $beta): self {
         $this->options['beta'] = $beta;
         return $this;
     }
@@ -214,7 +214,7 @@ class ReadVoipOptions extends Options {
      *                           number within distance miles. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setNearNumber($nearNumber): self {
+    public function setNearNumber(string $nearNumber): self {
         $this->options['nearNumber'] = $nearNumber;
         return $this;
     }
@@ -227,7 +227,7 @@ class ReadVoipOptions extends Options {
      *                            miles. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setNearLatLong($nearLatLong): self {
+    public function setNearLatLong(string $nearLatLong): self {
         $this->options['nearLatLong'] = $nearLatLong;
         return $this;
     }
@@ -239,7 +239,7 @@ class ReadVoipOptions extends Options {
      *                      (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setDistance($distance): self {
+    public function setDistance(int $distance): self {
         $this->options['distance'] = $distance;
         return $this;
     }
@@ -251,7 +251,7 @@ class ReadVoipOptions extends Options {
      *                             (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setInPostalCode($inPostalCode): self {
+    public function setInPostalCode(string $inPostalCode): self {
         $this->options['inPostalCode'] = $inPostalCode;
         return $this;
     }
@@ -263,7 +263,7 @@ class ReadVoipOptions extends Options {
      *                         only)
      * @return $this Fluent Builder
      */
-    public function setInRegion($inRegion): self {
+    public function setInRegion(string $inRegion): self {
         $this->options['inRegion'] = $inRegion;
         return $this;
     }
@@ -276,7 +276,7 @@ class ReadVoipOptions extends Options {
      *                             center as that number. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setInRateCenter($inRateCenter): self {
+    public function setInRateCenter(string $inRateCenter): self {
         $this->options['inRateCenter'] = $inRateCenter;
         return $this;
     }
@@ -288,7 +288,7 @@ class ReadVoipOptions extends Options {
      *                       area. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setInLata($inLata): self {
+    public function setInLata(string $inLata): self {
         $this->options['inLata'] = $inLata;
         return $this;
     }
@@ -299,7 +299,7 @@ class ReadVoipOptions extends Options {
      * @param string $inLocality Limit results to a particular locality
      * @return $this Fluent Builder
      */
-    public function setInLocality($inLocality): self {
+    public function setInLocality(string $inLocality): self {
         $this->options['inLocality'] = $inLocality;
         return $this;
     }
@@ -310,7 +310,7 @@ class ReadVoipOptions extends Options {
      * @param bool $faxEnabled Whether the phone numbers can receive faxes
      * @return $this Fluent Builder
      */
-    public function setFaxEnabled($faxEnabled): self {
+    public function setFaxEnabled(bool $faxEnabled): self {
         $this->options['faxEnabled'] = $faxEnabled;
         return $this;
     }

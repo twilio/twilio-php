@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string $sid
  * @property string $friendlyName
  * @property string $machineName
- * @property array $fields
+ * @property array[] $fields
  * @property string $url
  */
 class EndUserTypeInstance extends InstanceResource {
@@ -30,7 +30,7 @@ class EndUserTypeInstance extends InstanceResource {
      * @param string $sid The unique string that identifies the End-User Type
      *                    resource
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +76,7 @@ class EndUserTypeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

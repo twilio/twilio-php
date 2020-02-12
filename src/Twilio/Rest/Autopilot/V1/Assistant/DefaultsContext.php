@@ -61,7 +61,7 @@ class DefaultsContext extends InstanceContext {
      * @return DefaultsInstance Updated DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): DefaultsInstance {
+    public function update(array $options = []): DefaultsInstance {
         $options = new Values($options);
 
         $data = Values::of(['Defaults' => Serialize::jsonObject($options['defaults']), ]);

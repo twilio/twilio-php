@@ -41,7 +41,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
      *                                             WorkersCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkersCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkersCumulativeStatisticsInstance {
         $options = new Values($options);
 
         $params = Values::of([

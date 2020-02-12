@@ -22,7 +22,7 @@ class SuccessRateList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $businessSid A string that uniquely identifies this Business.
      */
-    public function __construct(Version $version, $businessSid) {
+    public function __construct(Version $version, string $businessSid) {
         parent::__construct($version);
 
         // Path Solution

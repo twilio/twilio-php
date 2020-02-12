@@ -80,7 +80,7 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SyncListItemInstance {
+    public function update(array $options = []): SyncListItemInstance {
         $options = new Values($options);
 
         $data = Values::of([

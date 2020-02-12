@@ -24,7 +24,7 @@ abstract class QueryOptions {
      *                       can be: pending_review, reviewed, discarded
      * @return ReadQueryOptions Options builder
      */
-    public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE): ReadQueryOptions {
+    public static function read(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE): ReadQueryOptions {
         return new ReadQueryOptions($language, $modelBuild, $status);
     }
 
@@ -41,7 +41,7 @@ abstract class QueryOptions {
      *                      task-unique-name-1:field-unique-name
      * @return CreateQueryOptions Options builder
      */
-    public static function create($tasks = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE): CreateQueryOptions {
+    public static function create(string $tasks = Values::NONE, string $modelBuild = Values::NONE, string $field = Values::NONE): CreateQueryOptions {
         return new CreateQueryOptions($tasks, $modelBuild, $field);
     }
 
@@ -52,7 +52,7 @@ abstract class QueryOptions {
      *                       can be: pending_review, reviewed, discarded
      * @return UpdateQueryOptions Options builder
      */
-    public static function update($sampleSid = Values::NONE, $status = Values::NONE): UpdateQueryOptions {
+    public static function update(string $sampleSid = Values::NONE, string $status = Values::NONE): UpdateQueryOptions {
         return new UpdateQueryOptions($sampleSid, $status);
     }
 }
@@ -65,7 +65,7 @@ class ReadQueryOptions extends Options {
      * @param string $status A string that described the query status. The values
      *                       can be: pending_review, reviewed, discarded
      */
-    public function __construct($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
+    public function __construct(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE) {
         $this->options['language'] = $language;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['status'] = $status;
@@ -77,7 +77,7 @@ class ReadQueryOptions extends Options {
      * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
-    public function setLanguage($language): self {
+    public function setLanguage(string $language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -89,7 +89,7 @@ class ReadQueryOptions extends Options {
      *                           Build to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild($modelBuild): self {
+    public function setModelBuild(string $modelBuild): self {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -101,7 +101,7 @@ class ReadQueryOptions extends Options {
      *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -135,7 +135,7 @@ class CreateQueryOptions extends Options {
      *                      accepts one field in the format
      *                      task-unique-name-1:field-unique-name
      */
-    public function __construct($tasks = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
+    public function __construct(string $tasks = Values::NONE, string $modelBuild = Values::NONE, string $field = Values::NONE) {
         $this->options['tasks'] = $tasks;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['field'] = $field;
@@ -150,7 +150,7 @@ class CreateQueryOptions extends Options {
      *                      task-unique-name-2
      * @return $this Fluent Builder
      */
-    public function setTasks($tasks): self {
+    public function setTasks(string $tasks): self {
         $this->options['tasks'] = $tasks;
         return $this;
     }
@@ -162,7 +162,7 @@ class CreateQueryOptions extends Options {
      *                           Build to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild($modelBuild): self {
+    public function setModelBuild(string $modelBuild): self {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -176,7 +176,7 @@ class CreateQueryOptions extends Options {
      *                      task-unique-name-1:field-unique-name
      * @return $this Fluent Builder
      */
-    public function setField($field): self {
+    public function setField(string $field): self {
         $this->options['field'] = $field;
         return $this;
     }
@@ -204,7 +204,7 @@ class UpdateQueryOptions extends Options {
      * @param string $status A string that described the query status. The values
      *                       can be: pending_review, reviewed, discarded
      */
-    public function __construct($sampleSid = Values::NONE, $status = Values::NONE) {
+    public function __construct(string $sampleSid = Values::NONE, string $status = Values::NONE) {
         $this->options['sampleSid'] = $sampleSid;
         $this->options['status'] = $status;
     }
@@ -216,7 +216,7 @@ class UpdateQueryOptions extends Options {
      *                          this query.
      * @return $this Fluent Builder
      */
-    public function setSampleSid($sampleSid): self {
+    public function setSampleSid(string $sampleSid): self {
         $this->options['sampleSid'] = $sampleSid;
         return $this;
     }
@@ -228,7 +228,7 @@ class UpdateQueryOptions extends Options {
      *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }

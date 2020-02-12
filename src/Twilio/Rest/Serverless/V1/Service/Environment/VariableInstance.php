@@ -41,7 +41,7 @@ class VariableInstance extends InstanceResource {
      *                               variable exists
      * @param string $sid The SID of the Variable resource to fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $environmentSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -100,7 +100,7 @@ class VariableInstance extends InstanceResource {
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): VariableInstance {
+    public function update(array $options = []): VariableInstance {
         return $this->proxy()->update($options);
     }
 
@@ -121,7 +121,7 @@ class VariableInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

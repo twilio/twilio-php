@@ -28,7 +28,7 @@ abstract class TrunkOptions {
      *                                be enabled for the trunk
      * @return CreateTrunkOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
+    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
         return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $secure, $cnamLookupEnabled);
     }
 
@@ -47,7 +47,7 @@ abstract class TrunkOptions {
      *                                be enabled for the trunk
      * @return UpdateTrunkOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
+    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
         return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $secure, $cnamLookupEnabled);
     }
 }
@@ -67,7 +67,7 @@ class CreateTrunkOptions extends Options {
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      */
-    public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -83,7 +83,7 @@ class CreateTrunkOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -95,7 +95,7 @@ class CreateTrunkOptions extends Options {
      *                           you route your SIP traffic
      * @return $this Fluent Builder
      */
-    public function setDomainName($domainName): self {
+    public function setDomainName(string $domainName): self {
         $this->options['domainName'] = $domainName;
         return $this;
     }
@@ -108,7 +108,7 @@ class CreateTrunkOptions extends Options {
      *                                    towards your configured Origination URL
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryUrl($disasterRecoveryUrl): self {
+    public function setDisasterRecoveryUrl(string $disasterRecoveryUrl): self {
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         return $this;
     }
@@ -120,7 +120,7 @@ class CreateTrunkOptions extends Options {
      *                                       the disaster_recovery_url
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryMethod($disasterRecoveryMethod): self {
+    public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self {
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
         return $this;
     }
@@ -131,7 +131,7 @@ class CreateTrunkOptions extends Options {
      * @param string $recording The recording settings for the trunk
      * @return $this Fluent Builder
      */
-    public function setRecording($recording): self {
+    public function setRecording(string $recording): self {
         $this->options['recording'] = $recording;
         return $this;
     }
@@ -142,7 +142,7 @@ class CreateTrunkOptions extends Options {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @return $this Fluent Builder
      */
-    public function setSecure($secure): self {
+    public function setSecure(bool $secure): self {
         $this->options['secure'] = $secure;
         return $this;
     }
@@ -154,7 +154,7 @@ class CreateTrunkOptions extends Options {
      *                                be enabled for the trunk
      * @return $this Fluent Builder
      */
-    public function setCnamLookupEnabled($cnamLookupEnabled): self {
+    public function setCnamLookupEnabled(bool $cnamLookupEnabled): self {
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
         return $this;
     }
@@ -190,7 +190,7 @@ class UpdateTrunkOptions extends Options {
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      */
-    public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -206,7 +206,7 @@ class UpdateTrunkOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -218,7 +218,7 @@ class UpdateTrunkOptions extends Options {
      *                           you route your SIP traffic
      * @return $this Fluent Builder
      */
-    public function setDomainName($domainName): self {
+    public function setDomainName(string $domainName): self {
         $this->options['domainName'] = $domainName;
         return $this;
     }
@@ -231,7 +231,7 @@ class UpdateTrunkOptions extends Options {
      *                                    towards your configured Origination URL
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryUrl($disasterRecoveryUrl): self {
+    public function setDisasterRecoveryUrl(string $disasterRecoveryUrl): self {
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         return $this;
     }
@@ -243,7 +243,7 @@ class UpdateTrunkOptions extends Options {
      *                                       the disaster_recovery_url
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryMethod($disasterRecoveryMethod): self {
+    public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self {
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
         return $this;
     }
@@ -254,7 +254,7 @@ class UpdateTrunkOptions extends Options {
      * @param string $recording The recording settings for the trunk
      * @return $this Fluent Builder
      */
-    public function setRecording($recording): self {
+    public function setRecording(string $recording): self {
         $this->options['recording'] = $recording;
         return $this;
     }
@@ -265,7 +265,7 @@ class UpdateTrunkOptions extends Options {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @return $this Fluent Builder
      */
-    public function setSecure($secure): self {
+    public function setSecure(bool $secure): self {
         $this->options['secure'] = $secure;
         return $this;
     }
@@ -277,7 +277,7 @@ class UpdateTrunkOptions extends Options {
      *                                be enabled for the trunk
      * @return $this Fluent Builder
      */
-    public function setCnamLookupEnabled($cnamLookupEnabled): self {
+    public function setCnamLookupEnabled(bool $cnamLookupEnabled): self {
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
         return $this;
     }

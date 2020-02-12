@@ -20,7 +20,7 @@ abstract class DefaultsOptions {
      * @param array $defaults A JSON string that describes the default task links.
      * @return UpdateDefaultsOptions Options builder
      */
-    public static function update($defaults = Values::NONE): UpdateDefaultsOptions {
+    public static function update(array $defaults = Values::NONE): UpdateDefaultsOptions {
         return new UpdateDefaultsOptions($defaults);
     }
 }
@@ -29,7 +29,7 @@ class UpdateDefaultsOptions extends Options {
     /**
      * @param array $defaults A JSON string that describes the default task links.
      */
-    public function __construct($defaults = Values::NONE) {
+    public function __construct(array $defaults = Values::NONE) {
         $this->options['defaults'] = $defaults;
     }
 
@@ -39,7 +39,7 @@ class UpdateDefaultsOptions extends Options {
      * @param array $defaults A JSON string that describes the default task links.
      * @return $this Fluent Builder
      */
-    public function setDefaults($defaults): self {
+    public function setDefaults(array $defaults): self {
         $this->options['defaults'] = $defaults;
         return $this;
     }

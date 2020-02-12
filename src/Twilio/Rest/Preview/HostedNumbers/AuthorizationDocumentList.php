@@ -55,7 +55,7 @@ class AuthorizationDocumentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -79,7 +79,7 @@ class AuthorizationDocumentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AuthorizationDocumentInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -93,7 +93,7 @@ class AuthorizationDocumentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AuthorizationDocumentPage Page of AuthorizationDocumentInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthorizationDocumentPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthorizationDocumentPage {
         $options = new Values($options);
         $params = Values::of([
             'Email' => $options['email'],
@@ -120,7 +120,7 @@ class AuthorizationDocumentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AuthorizationDocumentPage Page of AuthorizationDocumentInstance
      */
-    public function getPage($targetUrl): AuthorizationDocumentPage {
+    public function getPage(string $targetUrl): AuthorizationDocumentPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -132,7 +132,7 @@ class AuthorizationDocumentList extends ListResource {
     /**
      * Create a new AuthorizationDocumentInstance
      *
-     * @param string $hostedNumberOrderSids A list of HostedNumberOrder sids.
+     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids.
      * @param string $addressSid Address sid.
      * @param string $email Email.
      * @param string $contactTitle Title of signee of this Authorization Document.
@@ -143,7 +143,7 @@ class AuthorizationDocumentList extends ListResource {
      *                                       AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($hostedNumberOrderSids, $addressSid, $email, $contactTitle, $contactPhoneNumber, $options = []): AuthorizationDocumentInstance {
+    public function create(array $hostedNumberOrderSids, string $addressSid, string $email, string $contactTitle, string $contactPhoneNumber, array $options = []): AuthorizationDocumentInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -170,7 +170,7 @@ class AuthorizationDocumentList extends ListResource {
      *
      * @param string $sid AuthorizationDocument sid.
      */
-    public function getContext($sid): AuthorizationDocumentContext {
+    public function getContext(string $sid): AuthorizationDocumentContext {
         return new AuthorizationDocumentContext($this->version, $sid);
     }
 

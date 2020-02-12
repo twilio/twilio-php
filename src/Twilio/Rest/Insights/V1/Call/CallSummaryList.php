@@ -22,7 +22,7 @@ class CallSummaryList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $callSid The call_sid
      */
-    public function __construct(Version $version, $callSid) {
+    public function __construct(Version $version, string $callSid) {
         parent::__construct($version);
 
         // Path Solution

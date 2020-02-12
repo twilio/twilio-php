@@ -69,7 +69,7 @@ class VariableContext extends InstanceContext {
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): VariableInstance {
+    public function update(array $options = []): VariableInstance {
         $options = new Values($options);
 
         $data = Values::of(['Key' => $options['key'], 'Value' => $options['value'], ]);

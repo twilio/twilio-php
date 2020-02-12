@@ -25,8 +25,8 @@ use Twilio\Version;
  * @property string $taskrouterWorkspaceSid
  * @property string $taskrouterTargetWorkflowSid
  * @property string $taskrouterTargetTaskqueueSid
- * @property array $taskrouterTaskqueues
- * @property array $taskrouterSkills
+ * @property array[] $taskrouterTaskqueues
+ * @property array[] $taskrouterSkills
  * @property array $taskrouterWorkerChannels
  * @property array $taskrouterWorkerAttributes
  * @property string $taskrouterOfflineActivitySid
@@ -47,9 +47,9 @@ use Twilio\Version;
  * @property array $publicAttributes
  * @property bool $pluginServiceEnabled
  * @property array $pluginServiceAttributes
- * @property array $integrations
+ * @property array[] $integrations
  * @property array $outboundCallFlows
- * @property string $serverlessServiceSids
+ * @property string[] $serverlessServiceSids
  * @property string $url
  */
 class ConfigurationInstance extends InstanceResource {
@@ -124,7 +124,7 @@ class ConfigurationInstance extends InstanceResource {
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): ConfigurationInstance {
+    public function fetch(array $options = []): ConfigurationInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -155,7 +155,7 @@ class ConfigurationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

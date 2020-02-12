@@ -66,7 +66,7 @@ class AssistantInitiationActionsContext extends InstanceContext {
      *                                            AssistantInitiationActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): AssistantInitiationActionsInstance {
+    public function update(array $options = []): AssistantInitiationActionsInstance {
         $options = new Values($options);
 
         $data = Values::of(['InitiationActions' => Serialize::jsonObject($options['initiationActions']), ]);

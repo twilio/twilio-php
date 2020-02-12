@@ -46,7 +46,7 @@ class ParticipantInstance extends InstanceResource {
      * @param string $roomSid The SID of the participant's room
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $roomSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -103,7 +103,7 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ParticipantInstance {
+    public function update(array $options = []): ParticipantInstance {
         return $this->proxy()->update($options);
     }
 
@@ -135,7 +135,7 @@ class ParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

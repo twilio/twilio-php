@@ -49,7 +49,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): IncomingPhoneNumberInstance {
+    public function update(array $options = []): IncomingPhoneNumberInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -148,7 +148,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name): ListResource {
+    public function __get(string $name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -165,7 +165,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);

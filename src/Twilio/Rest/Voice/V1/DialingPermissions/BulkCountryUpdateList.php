@@ -39,7 +39,7 @@ class BulkCountryUpdateList extends ListResource {
      * @return BulkCountryUpdateInstance Newly created BulkCountryUpdateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($updateRequest): BulkCountryUpdateInstance {
+    public function create(string $updateRequest): BulkCountryUpdateInstance {
         $data = Values::of(['UpdateRequest' => $updateRequest, ]);
 
         $payload = $this->version->create(

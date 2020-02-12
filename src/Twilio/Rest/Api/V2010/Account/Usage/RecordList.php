@@ -53,7 +53,7 @@ class RecordList extends ListResource {
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +81,7 @@ class RecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -105,7 +105,7 @@ class RecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RecordInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -119,7 +119,7 @@ class RecordList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RecordPage Page of RecordInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): RecordPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RecordPage {
         $options = new Values($options);
         $params = Values::of([
             'Category' => $options['category'],
@@ -147,7 +147,7 @@ class RecordList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RecordPage Page of RecordInstance
      */
-    public function getPage($targetUrl): RecordPage {
+    public function getPage(string $targetUrl): RecordPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -251,7 +251,7 @@ class RecordList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -268,7 +268,7 @@ class RecordList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);

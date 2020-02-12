@@ -34,7 +34,7 @@ class ExportAssistantInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the Assistant to export.
      */
-    public function __construct(Version $version, array $payload, $assistantSid) {
+    public function __construct(Version $version, array $payload, string $assistantSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -82,7 +82,7 @@ class ExportAssistantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

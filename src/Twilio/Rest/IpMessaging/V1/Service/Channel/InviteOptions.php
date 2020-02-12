@@ -17,15 +17,15 @@ abstract class InviteOptions {
      * @param string $roleSid The Role assigned to the new member
      * @return CreateInviteOptions Options builder
      */
-    public static function create($roleSid = Values::NONE): CreateInviteOptions {
+    public static function create(string $roleSid = Values::NONE): CreateInviteOptions {
         return new CreateInviteOptions($roleSid);
     }
 
     /**
-     * @param string $identity The `identity` value of the resources to read
+     * @param string[] $identity The `identity` value of the resources to read
      * @return ReadInviteOptions Options builder
      */
-    public static function read($identity = Values::NONE): ReadInviteOptions {
+    public static function read(string[] $identity = Values::NONE): ReadInviteOptions {
         return new ReadInviteOptions($identity);
     }
 }
@@ -34,7 +34,7 @@ class CreateInviteOptions extends Options {
     /**
      * @param string $roleSid The Role assigned to the new member
      */
-    public function __construct($roleSid = Values::NONE) {
+    public function __construct(string $roleSid = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
     }
 
@@ -44,7 +44,7 @@ class CreateInviteOptions extends Options {
      * @param string $roleSid The Role assigned to the new member
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid): self {
+    public function setRoleSid(string $roleSid): self {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -67,19 +67,19 @@ class CreateInviteOptions extends Options {
 
 class ReadInviteOptions extends Options {
     /**
-     * @param string $identity The `identity` value of the resources to read
+     * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct($identity = Values::NONE) {
+    public function __construct(string[] $identity = Values::NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
      * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
      *
-     * @param string $identity The `identity` value of the resources to read
+     * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity): self {
+    public function setIdentity(string[] $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }

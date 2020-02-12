@@ -66,7 +66,7 @@ class MemberContext extends InstanceContext {
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($url, $options = []): MemberInstance {
+    public function update(string $url, array $options = []): MemberInstance {
         $options = new Values($options);
 
         $data = Values::of(['Url' => $url, 'Method' => $options['method'], ]);

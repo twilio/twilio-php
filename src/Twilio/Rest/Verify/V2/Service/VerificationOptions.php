@@ -29,7 +29,7 @@ abstract class VerificationOptions {
      * @param string $appHash App Hash to be included at the end of an SMS.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE, $channelConfiguration = Values::NONE, $appHash = Values::NONE): CreateVerificationOptions {
+    public static function create(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::NONE, array $channelConfiguration = Values::NONE, string $appHash = Values::NONE): CreateVerificationOptions {
         return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash);
     }
 }
@@ -50,7 +50,7 @@ class CreateVerificationOptions extends Options {
      *                                    format.
      * @param string $appHash App Hash to be included at the end of an SMS.
      */
-    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE, $channelConfiguration = Values::NONE, $appHash = Values::NONE) {
+    public function __construct(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::NONE, array $channelConfiguration = Values::NONE, string $appHash = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
@@ -69,7 +69,7 @@ class CreateVerificationOptions extends Options {
      *                              verification
      * @return $this Fluent Builder
      */
-    public function setCustomMessage($customMessage): self {
+    public function setCustomMessage(string $customMessage): self {
         $this->options['customMessage'] = $customMessage;
         return $this;
     }
@@ -80,7 +80,7 @@ class CreateVerificationOptions extends Options {
      * @param string $sendDigits The digits to send after a phone call is answered
      * @return $this Fluent Builder
      */
-    public function setSendDigits($sendDigits): self {
+    public function setSendDigits(string $sendDigits): self {
         $this->options['sendDigits'] = $sendDigits;
         return $this;
     }
@@ -91,7 +91,7 @@ class CreateVerificationOptions extends Options {
      * @param string $locale The locale to use for the verification SMS or call
      * @return $this Fluent Builder
      */
-    public function setLocale($locale): self {
+    public function setLocale(string $locale): self {
         $this->options['locale'] = $locale;
         return $this;
     }
@@ -102,7 +102,7 @@ class CreateVerificationOptions extends Options {
      * @param string $customCode A pre-generated code
      * @return $this Fluent Builder
      */
-    public function setCustomCode($customCode): self {
+    public function setCustomCode(string $customCode): self {
         $this->options['customCode'] = $customCode;
         return $this;
     }
@@ -114,7 +114,7 @@ class CreateVerificationOptions extends Options {
      *                       transaction.
      * @return $this Fluent Builder
      */
-    public function setAmount($amount): self {
+    public function setAmount(string $amount): self {
         $this->options['amount'] = $amount;
         return $this;
     }
@@ -125,7 +125,7 @@ class CreateVerificationOptions extends Options {
      * @param string $payee The payee of the associated PSD2 compliant transaction
      * @return $this Fluent Builder
      */
-    public function setPayee($payee): self {
+    public function setPayee(string $payee): self {
         $this->options['payee'] = $payee;
         return $this;
     }
@@ -137,7 +137,7 @@ class CreateVerificationOptions extends Options {
      *                          Limits.
      * @return $this Fluent Builder
      */
-    public function setRateLimits($rateLimits): self {
+    public function setRateLimits(array $rateLimits): self {
         $this->options['rateLimits'] = $rateLimits;
         return $this;
     }
@@ -149,7 +149,7 @@ class CreateVerificationOptions extends Options {
      *                                    format.
      * @return $this Fluent Builder
      */
-    public function setChannelConfiguration($channelConfiguration): self {
+    public function setChannelConfiguration(array $channelConfiguration): self {
         $this->options['channelConfiguration'] = $channelConfiguration;
         return $this;
     }
@@ -160,7 +160,7 @@ class CreateVerificationOptions extends Options {
      * @param string $appHash App Hash to be included at the end of an SMS.
      * @return $this Fluent Builder
      */
-    public function setAppHash($appHash): self {
+    public function setAppHash(string $appHash): self {
         $this->options['appHash'] = $appHash;
         return $this;
     }

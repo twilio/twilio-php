@@ -41,7 +41,7 @@ class MessageInstance extends InstanceResource {
      * @param string $sessionSid The SID of the Session for the message
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $sessionSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sessionSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -98,7 +98,7 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): MessageInstance {
+    public function update(array $options = []): MessageInstance {
         return $this->proxy()->update($options);
     }
 
@@ -119,7 +119,7 @@ class MessageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

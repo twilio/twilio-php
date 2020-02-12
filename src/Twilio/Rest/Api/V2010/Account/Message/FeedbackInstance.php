@@ -33,7 +33,7 @@ class FeedbackInstance extends InstanceResource {
      * @param string $messageSid The SID of the Message resource for which the
      *                           feedback was provided
      */
-    public function __construct(Version $version, array $payload, $accountSid, $messageSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -56,7 +56,7 @@ class FeedbackInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

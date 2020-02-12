@@ -46,7 +46,7 @@ class RecordingInstance extends InstanceResource {
      *                              conference associated with the recording
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -104,7 +104,7 @@ class RecordingInstance extends InstanceResource {
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status, $options = []): RecordingInstance {
+    public function update(string $status, array $options = []): RecordingInstance {
         return $this->proxy()->update($status, $options);
     }
 
@@ -135,7 +135,7 @@ class RecordingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

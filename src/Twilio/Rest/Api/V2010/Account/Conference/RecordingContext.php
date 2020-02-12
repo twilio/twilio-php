@@ -42,7 +42,7 @@ class RecordingContext extends InstanceContext {
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status, $options = []): RecordingInstance {
+    public function update(string $status, array $options = []): RecordingInstance {
         $options = new Values($options);
 
         $data = Values::of(['Status' => $status, 'PauseBehavior' => $options['pauseBehavior'], ]);

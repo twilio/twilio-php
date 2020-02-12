@@ -50,7 +50,7 @@ class SessionInstance extends InstanceResource {
      * @param string $serviceSid The SID of the resource's parent Service
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -121,7 +121,7 @@ class SessionInstance extends InstanceResource {
      * @return SessionInstance Updated SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SessionInstance {
+    public function update(array $options = []): SessionInstance {
         return $this->proxy()->update($options);
     }
 
@@ -146,7 +146,7 @@ class SessionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -33,7 +33,7 @@ class FormList extends ListResource {
      *
      * @param string $formType The Type of this Form
      */
-    public function getContext($formType): FormContext {
+    public function getContext(string $formType): FormContext {
         return new FormContext($this->version, $formType);
     }
 

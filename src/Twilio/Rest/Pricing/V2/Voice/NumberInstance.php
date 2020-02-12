@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string $originationNumber
  * @property string $country
  * @property string $isoCountry
- * @property string $outboundCallPrices
+ * @property string[] $outboundCallPrices
  * @property string $inboundCallPrice
  * @property string $priceUnit
  * @property string $url
@@ -34,7 +34,7 @@ class NumberInstance extends InstanceResource {
      * @param string $destinationNumber The destination number for which to fetch
      *                                  pricing information
      */
-    public function __construct(Version $version, array $payload, $destinationNumber = null) {
+    public function __construct(Version $version, array $payload, string $destinationNumber = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -75,7 +75,7 @@ class NumberInstance extends InstanceResource {
      * @return NumberInstance Fetched NumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): NumberInstance {
+    public function fetch(array $options = []): NumberInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -86,7 +86,7 @@ class NumberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

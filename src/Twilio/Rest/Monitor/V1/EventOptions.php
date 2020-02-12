@@ -25,7 +25,7 @@ abstract class EventOptions {
      *                           this date
      * @return ReadEventOptions Options builder
      */
-    public static function read($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE): ReadEventOptions {
+    public static function read(string $actorSid = Values::NONE, string $eventType = Values::NONE, string $resourceSid = Values::NONE, string $sourceIpAddress = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE): ReadEventOptions {
         return new ReadEventOptions($actorSid, $eventType, $resourceSid, $sourceIpAddress, $startDate, $endDate);
     }
 }
@@ -42,7 +42,7 @@ class ReadEventOptions extends Options {
      * @param \DateTime $endDate Only include events that occurred on or before
      *                           this date
      */
-    public function __construct($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct(string $actorSid = Values::NONE, string $eventType = Values::NONE, string $resourceSid = Values::NONE, string $sourceIpAddress = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE) {
         $this->options['actorSid'] = $actorSid;
         $this->options['eventType'] = $eventType;
         $this->options['resourceSid'] = $resourceSid;
@@ -57,7 +57,7 @@ class ReadEventOptions extends Options {
      * @param string $actorSid Only include events initiated by this Actor
      * @return $this Fluent Builder
      */
-    public function setActorSid($actorSid): self {
+    public function setActorSid(string $actorSid): self {
         $this->options['actorSid'] = $actorSid;
         return $this;
     }
@@ -68,7 +68,7 @@ class ReadEventOptions extends Options {
      * @param string $eventType Only include events of this Event Type
      * @return $this Fluent Builder
      */
-    public function setEventType($eventType): self {
+    public function setEventType(string $eventType): self {
         $this->options['eventType'] = $eventType;
         return $this;
     }
@@ -79,7 +79,7 @@ class ReadEventOptions extends Options {
      * @param string $resourceSid Only include events that refer to this resource
      * @return $this Fluent Builder
      */
-    public function setResourceSid($resourceSid): self {
+    public function setResourceSid(string $resourceSid): self {
         $this->options['resourceSid'] = $resourceSid;
         return $this;
     }
@@ -91,7 +91,7 @@ class ReadEventOptions extends Options {
      *                                IP address
      * @return $this Fluent Builder
      */
-    public function setSourceIpAddress($sourceIpAddress): self {
+    public function setSourceIpAddress(string $sourceIpAddress): self {
         $this->options['sourceIpAddress'] = $sourceIpAddress;
         return $this;
     }
@@ -103,7 +103,7 @@ class ReadEventOptions extends Options {
      *                             this date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate): self {
+    public function setStartDate(\DateTime $startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -115,7 +115,7 @@ class ReadEventOptions extends Options {
      *                           this date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate): self {
+    public function setEndDate(\DateTime $endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }

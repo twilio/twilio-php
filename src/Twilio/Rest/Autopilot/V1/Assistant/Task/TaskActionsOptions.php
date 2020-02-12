@@ -21,7 +21,7 @@ abstract class TaskActionsOptions {
      *                       instruct the Assistant on how to perform the task
      * @return UpdateTaskActionsOptions Options builder
      */
-    public static function update($actions = Values::NONE): UpdateTaskActionsOptions {
+    public static function update(array $actions = Values::NONE): UpdateTaskActionsOptions {
         return new UpdateTaskActionsOptions($actions);
     }
 }
@@ -31,7 +31,7 @@ class UpdateTaskActionsOptions extends Options {
      * @param array $actions The JSON string that specifies the actions that
      *                       instruct the Assistant on how to perform the task
      */
-    public function __construct($actions = Values::NONE) {
+    public function __construct(array $actions = Values::NONE) {
         $this->options['actions'] = $actions;
     }
 
@@ -42,7 +42,7 @@ class UpdateTaskActionsOptions extends Options {
      *                       instruct the Assistant on how to perform the task
      * @return $this Fluent Builder
      */
-    public function setActions($actions): self {
+    public function setActions(array $actions): self {
         $this->options['actions'] = $actions;
         return $this;
     }

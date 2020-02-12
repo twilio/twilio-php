@@ -19,7 +19,7 @@ abstract class BucketOptions {
      *                      over.
      * @return UpdateBucketOptions Options builder
      */
-    public static function update($max = Values::NONE, $interval = Values::NONE): UpdateBucketOptions {
+    public static function update(int $max = Values::NONE, int $interval = Values::NONE): UpdateBucketOptions {
         return new UpdateBucketOptions($max, $interval);
     }
 }
@@ -30,7 +30,7 @@ class UpdateBucketOptions extends Options {
      * @param int $interval Number of seconds that the rate limit will be enforced
      *                      over.
      */
-    public function __construct($max = Values::NONE, $interval = Values::NONE) {
+    public function __construct(int $max = Values::NONE, int $interval = Values::NONE) {
         $this->options['max'] = $max;
         $this->options['interval'] = $interval;
     }
@@ -41,7 +41,7 @@ class UpdateBucketOptions extends Options {
      * @param int $max Max number of requests.
      * @return $this Fluent Builder
      */
-    public function setMax($max): self {
+    public function setMax(int $max): self {
         $this->options['max'] = $max;
         return $this;
     }
@@ -53,7 +53,7 @@ class UpdateBucketOptions extends Options {
      *                      over.
      * @return $this Fluent Builder
      */
-    public function setInterval($interval): self {
+    public function setInterval(int $interval): self {
         $this->options['interval'] = $interval;
         return $this;
     }

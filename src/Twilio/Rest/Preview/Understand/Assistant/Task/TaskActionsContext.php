@@ -66,7 +66,7 @@ class TaskActionsContext extends InstanceContext {
      * @return TaskActionsInstance Updated TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): TaskActionsInstance {
+    public function update(array $options = []): TaskActionsInstance {
         $options = new Values($options);
 
         $data = Values::of(['Actions' => Serialize::jsonObject($options['actions']), ]);

@@ -43,7 +43,7 @@ abstract class PaymentOptions {
      *                               types separated by space.
      * @return CreatePaymentOptions Options builder
      */
-    public static function create($bankAccountType = Values::NONE, $chargeAmount = Values::NONE, $currency = Values::NONE, $description = Values::NONE, $input = Values::NONE, $minPostalCodeLength = Values::NONE, $parameter = Values::NONE, $paymentConnector = Values::NONE, $paymentMethod = Values::NONE, $postalCode = Values::NONE, $securityCode = Values::NONE, $timeout = Values::NONE, $tokenType = Values::NONE, $validCardTypes = Values::NONE): CreatePaymentOptions {
+    public static function create(string $bankAccountType = Values::NONE, string $chargeAmount = Values::NONE, string $currency = Values::NONE, string $description = Values::NONE, string $input = Values::NONE, int $minPostalCodeLength = Values::NONE, array $parameter = Values::NONE, string $paymentConnector = Values::NONE, string $paymentMethod = Values::NONE, bool $postalCode = Values::NONE, bool $securityCode = Values::NONE, int $timeout = Values::NONE, string $tokenType = Values::NONE, string $validCardTypes = Values::NONE): CreatePaymentOptions {
         return new CreatePaymentOptions($bankAccountType, $chargeAmount, $currency, $description, $input, $minPostalCodeLength, $parameter, $paymentConnector, $paymentMethod, $postalCode, $securityCode, $timeout, $tokenType, $validCardTypes);
     }
 
@@ -52,7 +52,7 @@ abstract class PaymentOptions {
      * @param string $status Instruction to complete or cancel the transaction.
      * @return UpdatePaymentOptions Options builder
      */
-    public static function update($capture = Values::NONE, $status = Values::NONE): UpdatePaymentOptions {
+    public static function update(string $capture = Values::NONE, string $status = Values::NONE): UpdatePaymentOptions {
         return new UpdatePaymentOptions($capture, $status);
     }
 }
@@ -84,7 +84,7 @@ class CreatePaymentOptions extends Options {
      * @param string $validCardTypes List of card types accepted with each card
      *                               types separated by space.
      */
-    public function __construct($bankAccountType = Values::NONE, $chargeAmount = Values::NONE, $currency = Values::NONE, $description = Values::NONE, $input = Values::NONE, $minPostalCodeLength = Values::NONE, $parameter = Values::NONE, $paymentConnector = Values::NONE, $paymentMethod = Values::NONE, $postalCode = Values::NONE, $securityCode = Values::NONE, $timeout = Values::NONE, $tokenType = Values::NONE, $validCardTypes = Values::NONE) {
+    public function __construct(string $bankAccountType = Values::NONE, string $chargeAmount = Values::NONE, string $currency = Values::NONE, string $description = Values::NONE, string $input = Values::NONE, int $minPostalCodeLength = Values::NONE, array $parameter = Values::NONE, string $paymentConnector = Values::NONE, string $paymentMethod = Values::NONE, bool $postalCode = Values::NONE, bool $securityCode = Values::NONE, int $timeout = Values::NONE, string $tokenType = Values::NONE, string $validCardTypes = Values::NONE) {
         $this->options['bankAccountType'] = $bankAccountType;
         $this->options['chargeAmount'] = $chargeAmount;
         $this->options['currency'] = $currency;
@@ -108,7 +108,7 @@ class CreatePaymentOptions extends Options {
      *                                account.
      * @return $this Fluent Builder
      */
-    public function setBankAccountType($bankAccountType): self {
+    public function setBankAccountType(string $bankAccountType): self {
         $this->options['bankAccountType'] = $bankAccountType;
         return $this;
     }
@@ -120,7 +120,7 @@ class CreatePaymentOptions extends Options {
      *                             payment source will be charged.
      * @return $this Fluent Builder
      */
-    public function setChargeAmount($chargeAmount): self {
+    public function setChargeAmount(string $chargeAmount): self {
         $this->options['chargeAmount'] = $chargeAmount;
         return $this;
     }
@@ -131,7 +131,7 @@ class CreatePaymentOptions extends Options {
      * @param string $currency Currency `charge_amount` is in.
      * @return $this Fluent Builder
      */
-    public function setCurrency($currency): self {
+    public function setCurrency(string $currency): self {
         $this->options['currency'] = $currency;
         return $this;
     }
@@ -142,7 +142,7 @@ class CreatePaymentOptions extends Options {
      * @param string $description Decription of the charge.
      * @return $this Fluent Builder
      */
-    public function setDescription($description): self {
+    public function setDescription(string $description): self {
         $this->options['description'] = $description;
         return $this;
     }
@@ -154,7 +154,7 @@ class CreatePaymentOptions extends Options {
      *                      information in.
      * @return $this Fluent Builder
      */
-    public function setInput($input): self {
+    public function setInput(string $input): self {
         $this->options['input'] = $input;
         return $this;
     }
@@ -166,7 +166,7 @@ class CreatePaymentOptions extends Options {
      *                                 of the postal code.
      * @return $this Fluent Builder
      */
-    public function setMinPostalCodeLength($minPostalCodeLength): self {
+    public function setMinPostalCodeLength(int $minPostalCodeLength): self {
         $this->options['minPostalCodeLength'] = $minPostalCodeLength;
         return $this;
     }
@@ -177,7 +177,7 @@ class CreatePaymentOptions extends Options {
      * @param array $parameter Additonal data to be sent over to payment provider.
      * @return $this Fluent Builder
      */
-    public function setParameter($parameter): self {
+    public function setParameter(array $parameter): self {
         $this->options['parameter'] = $parameter;
         return $this;
     }
@@ -189,7 +189,7 @@ class CreatePaymentOptions extends Options {
      *                                 to use for processing payments.
      * @return $this Fluent Builder
      */
-    public function setPaymentConnector($paymentConnector): self {
+    public function setPaymentConnector(string $paymentConnector): self {
         $this->options['paymentConnector'] = $paymentConnector;
         return $this;
     }
@@ -200,7 +200,7 @@ class CreatePaymentOptions extends Options {
      * @param string $paymentMethod Payment source type.
      * @return $this Fluent Builder
      */
-    public function setPaymentMethod($paymentMethod): self {
+    public function setPaymentMethod(string $paymentMethod): self {
         $this->options['paymentMethod'] = $paymentMethod;
         return $this;
     }
@@ -212,7 +212,7 @@ class CreatePaymentOptions extends Options {
      *                         data gathering.
      * @return $this Fluent Builder
      */
-    public function setPostalCode($postalCode): self {
+    public function setPostalCode(bool $postalCode): self {
         $this->options['postalCode'] = $postalCode;
         return $this;
     }
@@ -224,7 +224,7 @@ class CreatePaymentOptions extends Options {
      *                           source data gathering.
      * @return $this Fluent Builder
      */
-    public function setSecurityCode($securityCode): self {
+    public function setSecurityCode(bool $securityCode): self {
         $this->options['securityCode'] = $securityCode;
         return $this;
     }
@@ -236,7 +236,7 @@ class CreatePaymentOptions extends Options {
      *                     enter payment information
      * @return $this Fluent Builder
      */
-    public function setTimeout($timeout): self {
+    public function setTimeout(int $timeout): self {
         $this->options['timeout'] = $timeout;
         return $this;
     }
@@ -248,7 +248,7 @@ class CreatePaymentOptions extends Options {
      *                          represents type of token.
      * @return $this Fluent Builder
      */
-    public function setTokenType($tokenType): self {
+    public function setTokenType(string $tokenType): self {
         $this->options['tokenType'] = $tokenType;
         return $this;
     }
@@ -260,7 +260,7 @@ class CreatePaymentOptions extends Options {
      *                               types separated by space.
      * @return $this Fluent Builder
      */
-    public function setValidCardTypes($validCardTypes): self {
+    public function setValidCardTypes(string $validCardTypes): self {
         $this->options['validCardTypes'] = $validCardTypes;
         return $this;
     }
@@ -286,7 +286,7 @@ class UpdatePaymentOptions extends Options {
      * @param string $capture Specific payment source information to expect.
      * @param string $status Instruction to complete or cancel the transaction.
      */
-    public function __construct($capture = Values::NONE, $status = Values::NONE) {
+    public function __construct(string $capture = Values::NONE, string $status = Values::NONE) {
         $this->options['capture'] = $capture;
         $this->options['status'] = $status;
     }
@@ -297,7 +297,7 @@ class UpdatePaymentOptions extends Options {
      * @param string $capture Specific payment source information to expect.
      * @return $this Fluent Builder
      */
-    public function setCapture($capture): self {
+    public function setCapture(string $capture): self {
         $this->options['capture'] = $capture;
         return $this;
     }
@@ -308,7 +308,7 @@ class UpdatePaymentOptions extends Options {
      * @param string $status Instruction to complete or cancel the transaction.
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }

@@ -68,7 +68,7 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($enabled): InstalledAddOnExtensionInstance {
+    public function update(bool $enabled): InstalledAddOnExtensionInstance {
         $data = Values::of(['Enabled' => Serialize::booleanToString($enabled), ]);
 
         $payload = $this->version->update(

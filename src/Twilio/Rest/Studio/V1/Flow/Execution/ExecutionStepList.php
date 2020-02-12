@@ -22,7 +22,7 @@ class ExecutionStepList extends ListResource {
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
      */
-    public function __construct(Version $version, $flowSid, $executionSid) {
+    public function __construct(Version $version, string $flowSid, string $executionSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -49,7 +49,7 @@ class ExecutionStepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -72,7 +72,7 @@ class ExecutionStepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ExecutionStepInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -85,7 +85,7 @@ class ExecutionStepList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ExecutionStepPage Page of ExecutionStepInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ExecutionStepPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ExecutionStepPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -104,7 +104,7 @@ class ExecutionStepList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ExecutionStepPage Page of ExecutionStepInstance
      */
-    public function getPage($targetUrl): ExecutionStepPage {
+    public function getPage(string $targetUrl): ExecutionStepPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -118,7 +118,7 @@ class ExecutionStepList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): ExecutionStepContext {
+    public function getContext(string $sid): ExecutionStepContext {
         return new ExecutionStepContext(
             $this->version,
             $this->solution['flowSid'],

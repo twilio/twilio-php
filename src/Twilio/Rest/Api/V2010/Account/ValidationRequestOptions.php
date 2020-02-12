@@ -25,7 +25,7 @@ abstract class ValidationRequestOptions {
      *                                     status_callback
      * @return CreateValidationRequestOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $callDelay = Values::NONE, $extension = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE): CreateValidationRequestOptions {
+    public static function create(string $friendlyName = Values::NONE, int $callDelay = Values::NONE, string $extension = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): CreateValidationRequestOptions {
         return new CreateValidationRequestOptions($friendlyName, $callDelay, $extension, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -42,7 +42,7 @@ class CreateValidationRequestOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method we should use to call
      *                                     status_callback
      */
-    public function __construct($friendlyName = Values::NONE, $callDelay = Values::NONE, $extension = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, int $callDelay = Values::NONE, string $extension = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['callDelay'] = $callDelay;
         $this->options['extension'] = $extension;
@@ -56,7 +56,7 @@ class CreateValidationRequestOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -68,7 +68,7 @@ class CreateValidationRequestOptions extends Options {
      *                       verification call
      * @return $this Fluent Builder
      */
-    public function setCallDelay($callDelay): self {
+    public function setCallDelay(int $callDelay): self {
         $this->options['callDelay'] = $callDelay;
         return $this;
     }
@@ -80,7 +80,7 @@ class CreateValidationRequestOptions extends Options {
      *                          verification call
      * @return $this Fluent Builder
      */
-    public function setExtension($extension): self {
+    public function setExtension(string $extension): self {
         $this->options['extension'] = $extension;
         return $this;
     }
@@ -92,7 +92,7 @@ class CreateValidationRequestOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -104,7 +104,7 @@ class CreateValidationRequestOptions extends Options {
      *                                     status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }

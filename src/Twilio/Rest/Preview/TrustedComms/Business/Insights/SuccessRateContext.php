@@ -42,7 +42,7 @@ class SuccessRateContext extends InstanceContext {
      * @return SuccessRateInstance Fetched SuccessRateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): SuccessRateInstance {
+    public function fetch(array $options = []): SuccessRateInstance {
         $options = new Values($options);
 
         $params = Values::of([

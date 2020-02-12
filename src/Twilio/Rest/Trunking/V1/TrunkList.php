@@ -39,7 +39,7 @@ class TrunkList extends ListResource {
      * @return TrunkInstance Newly created TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): TrunkInstance {
+    public function create(array $options = []): TrunkInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,7 +80,7 @@ class TrunkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -103,7 +103,7 @@ class TrunkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TrunkInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -116,7 +116,7 @@ class TrunkList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TrunkPage Page of TrunkInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TrunkPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TrunkPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -135,7 +135,7 @@ class TrunkList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TrunkPage Page of TrunkInstance
      */
-    public function getPage($targetUrl): TrunkPage {
+    public function getPage(string $targetUrl): TrunkPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -149,7 +149,7 @@ class TrunkList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): TrunkContext {
+    public function getContext(string $sid): TrunkContext {
         return new TrunkContext($this->version, $sid);
     }
 

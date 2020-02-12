@@ -35,7 +35,7 @@ class TaskStatisticsInstance extends InstanceResource {
      * @param string $taskSid The SID of the Task for which the statistics were
      *                        collected
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $taskSid) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $taskSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -86,7 +86,7 @@ class TaskStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -17,7 +17,7 @@ abstract class MemberOptions {
      * @param string $method How to pass the update request data
      * @return UpdateMemberOptions Options builder
      */
-    public static function update($method = Values::NONE): UpdateMemberOptions {
+    public static function update(string $method = Values::NONE): UpdateMemberOptions {
         return new UpdateMemberOptions($method);
     }
 }
@@ -26,7 +26,7 @@ class UpdateMemberOptions extends Options {
     /**
      * @param string $method How to pass the update request data
      */
-    public function __construct($method = Values::NONE) {
+    public function __construct(string $method = Values::NONE) {
         $this->options['method'] = $method;
     }
 
@@ -36,7 +36,7 @@ class UpdateMemberOptions extends Options {
      * @param string $method How to pass the update request data
      * @return $this Fluent Builder
      */
-    public function setMethod($method): self {
+    public function setMethod(string $method): self {
         $this->options['method'] = $method;
         return $this;
     }

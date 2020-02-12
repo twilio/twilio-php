@@ -20,7 +20,7 @@ abstract class ServiceOptions {
      * @param string $friendlyName A human readable description of this resource.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE): UpdateServiceOptions {
+    public static function update(string $friendlyName = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($friendlyName);
     }
 }
@@ -29,7 +29,7 @@ class UpdateServiceOptions extends Options {
     /**
      * @param string $friendlyName A human readable description of this resource.
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -39,7 +39,7 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName A human readable description of this resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }

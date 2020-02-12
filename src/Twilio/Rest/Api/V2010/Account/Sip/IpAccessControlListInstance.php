@@ -37,7 +37,7 @@ class IpAccessControlListInstance extends InstanceResource {
      *                           this resource.
      * @param string $sid A string that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -90,7 +90,7 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return IpAccessControlListInstance Updated IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName): IpAccessControlListInstance {
+    public function update(string $friendlyName): IpAccessControlListInstance {
         return $this->proxy()->update($friendlyName);
     }
 
@@ -118,7 +118,7 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

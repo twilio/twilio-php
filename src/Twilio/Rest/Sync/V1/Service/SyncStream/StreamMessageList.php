@@ -27,7 +27,7 @@ class StreamMessageList extends ListResource {
      *                           associated with
      * @param string $streamSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $serviceSid, $streamSid) {
+    public function __construct(Version $version, string $serviceSid, string $streamSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -44,7 +44,7 @@ class StreamMessageList extends ListResource {
      * @return StreamMessageInstance Newly created StreamMessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($data): StreamMessageInstance {
+    public function create(array $data): StreamMessageInstance {
         $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
         $payload = $this->version->create(

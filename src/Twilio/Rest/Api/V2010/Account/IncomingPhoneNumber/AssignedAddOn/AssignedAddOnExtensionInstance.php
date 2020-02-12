@@ -40,7 +40,7 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      *                                 assigned Add-on installation
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $resourceSid, $assignedAddOnSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $assignedAddOnSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -102,7 +102,7 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

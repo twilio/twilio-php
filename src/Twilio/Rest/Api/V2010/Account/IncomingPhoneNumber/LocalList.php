@@ -24,7 +24,7 @@ class LocalList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class LocalList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class LocalList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return LocalInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class LocalList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return LocalPage Page of LocalInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): LocalPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): LocalPage {
         $options = new Values($options);
         $params = Values::of([
             'Beta' => Serialize::booleanToString($options['beta']),
@@ -118,7 +118,7 @@ class LocalList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return LocalPage Page of LocalInstance
      */
-    public function getPage($targetUrl): LocalPage {
+    public function getPage(string $targetUrl): LocalPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -135,7 +135,7 @@ class LocalList extends ListResource {
      * @return LocalInstance Newly created LocalInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($phoneNumber, $options = []): LocalInstance {
+    public function create(string $phoneNumber, array $options = []): LocalInstance {
         $options = new Values($options);
 
         $data = Values::of([

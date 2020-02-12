@@ -46,7 +46,7 @@ class FactorInstance extends InstanceResource {
      * @param string $identity Unique identity of the Entity
      * @param string $sid A string that uniquely identifies this Factor.
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $identity, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $identity, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -119,7 +119,7 @@ class FactorInstance extends InstanceResource {
      * @return FactorInstance Updated FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): FactorInstance {
+    public function update(array $options = []): FactorInstance {
         return $this->proxy()->update($options);
     }
 
@@ -137,7 +137,7 @@ class FactorInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

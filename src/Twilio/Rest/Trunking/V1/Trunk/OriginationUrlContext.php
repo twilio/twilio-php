@@ -74,7 +74,7 @@ class OriginationUrlContext extends InstanceContext {
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): OriginationUrlInstance {
+    public function update(array $options = []): OriginationUrlInstance {
         $options = new Values($options);
 
         $data = Values::of([

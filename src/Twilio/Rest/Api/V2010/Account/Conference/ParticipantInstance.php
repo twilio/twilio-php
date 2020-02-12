@@ -41,7 +41,7 @@ class ParticipantInstance extends InstanceResource {
      * @param string $conferenceSid The SID of the conference the participant is in
      * @param string $callSid The Call SID of the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $callSid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, string $callSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -104,7 +104,7 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ParticipantInstance {
+    public function update(array $options = []): ParticipantInstance {
         return $this->proxy()->update($options);
     }
 
@@ -125,7 +125,7 @@ class ParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

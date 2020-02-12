@@ -49,7 +49,7 @@ class ChallengeInstance extends InstanceResource {
      * @param string $sid A string that uniquely identifies this Challenge, or
      *                    `latest`.
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $identity, $factorSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $identity, string $factorSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -128,7 +128,7 @@ class ChallengeInstance extends InstanceResource {
      * @return ChallengeInstance Updated ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ChallengeInstance {
+    public function update(array $options = []): ChallengeInstance {
         return $this->proxy()->update($options);
     }
 
@@ -139,7 +139,7 @@ class ChallengeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

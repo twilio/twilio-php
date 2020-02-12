@@ -24,7 +24,7 @@ class DayList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $resourceType The type of communication – Messages, Calls
      */
-    public function __construct(Version $version, $resourceType) {
+    public function __construct(Version $version, string $resourceType) {
         parent::__construct($version);
 
         // Path Solution
@@ -51,7 +51,7 @@ class DayList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -74,7 +74,7 @@ class DayList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DayInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -87,7 +87,7 @@ class DayList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DayPage Page of DayInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): DayPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DayPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -106,7 +106,7 @@ class DayList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DayPage Page of DayInstance
      */
-    public function getPage($targetUrl): DayPage {
+    public function getPage(string $targetUrl): DayPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

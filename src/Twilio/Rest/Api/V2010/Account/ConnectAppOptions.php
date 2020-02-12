@@ -25,11 +25,11 @@ abstract class ConnectAppOptions {
      * @param string $friendlyName A string to describe the resource
      * @param string $homepageUrl A public URL where users can obtain more
      *                            information
-     * @param string $permissions The set of permissions that your ConnectApp will
-     *                            request
+     * @param string[] $permissions The set of permissions that your ConnectApp
+     *                              will request
      * @return UpdateConnectAppOptions Options builder
      */
-    public static function update($authorizeRedirectUrl = Values::NONE, $companyName = Values::NONE, $deauthorizeCallbackMethod = Values::NONE, $deauthorizeCallbackUrl = Values::NONE, $description = Values::NONE, $friendlyName = Values::NONE, $homepageUrl = Values::NONE, $permissions = Values::NONE): UpdateConnectAppOptions {
+    public static function update(string $authorizeRedirectUrl = Values::NONE, string $companyName = Values::NONE, string $deauthorizeCallbackMethod = Values::NONE, string $deauthorizeCallbackUrl = Values::NONE, string $description = Values::NONE, string $friendlyName = Values::NONE, string $homepageUrl = Values::NONE, string[] $permissions = Values::NONE): UpdateConnectAppOptions {
         return new UpdateConnectAppOptions($authorizeRedirectUrl, $companyName, $deauthorizeCallbackMethod, $deauthorizeCallbackUrl, $description, $friendlyName, $homepageUrl, $permissions);
     }
 }
@@ -47,10 +47,10 @@ class UpdateConnectAppOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @param string $homepageUrl A public URL where users can obtain more
      *                            information
-     * @param string $permissions The set of permissions that your ConnectApp will
-     *                            request
+     * @param string[] $permissions The set of permissions that your ConnectApp
+     *                              will request
      */
-    public function __construct($authorizeRedirectUrl = Values::NONE, $companyName = Values::NONE, $deauthorizeCallbackMethod = Values::NONE, $deauthorizeCallbackUrl = Values::NONE, $description = Values::NONE, $friendlyName = Values::NONE, $homepageUrl = Values::NONE, $permissions = Values::NONE) {
+    public function __construct(string $authorizeRedirectUrl = Values::NONE, string $companyName = Values::NONE, string $deauthorizeCallbackMethod = Values::NONE, string $deauthorizeCallbackUrl = Values::NONE, string $description = Values::NONE, string $friendlyName = Values::NONE, string $homepageUrl = Values::NONE, string[] $permissions = Values::NONE) {
         $this->options['authorizeRedirectUrl'] = $authorizeRedirectUrl;
         $this->options['companyName'] = $companyName;
         $this->options['deauthorizeCallbackMethod'] = $deauthorizeCallbackMethod;
@@ -68,7 +68,7 @@ class UpdateConnectAppOptions extends Options {
      *                                     authorization
      * @return $this Fluent Builder
      */
-    public function setAuthorizeRedirectUrl($authorizeRedirectUrl): self {
+    public function setAuthorizeRedirectUrl(string $authorizeRedirectUrl): self {
         $this->options['authorizeRedirectUrl'] = $authorizeRedirectUrl;
         return $this;
     }
@@ -79,7 +79,7 @@ class UpdateConnectAppOptions extends Options {
      * @param string $companyName The company name to set for the Connect App
      * @return $this Fluent Builder
      */
-    public function setCompanyName($companyName): self {
+    public function setCompanyName(string $companyName): self {
         $this->options['companyName'] = $companyName;
         return $this;
     }
@@ -91,7 +91,7 @@ class UpdateConnectAppOptions extends Options {
      *                                          deauthorize_callback_url
      * @return $this Fluent Builder
      */
-    public function setDeauthorizeCallbackMethod($deauthorizeCallbackMethod): self {
+    public function setDeauthorizeCallbackMethod(string $deauthorizeCallbackMethod): self {
         $this->options['deauthorizeCallbackMethod'] = $deauthorizeCallbackMethod;
         return $this;
     }
@@ -103,7 +103,7 @@ class UpdateConnectAppOptions extends Options {
      *                                       Connect App
      * @return $this Fluent Builder
      */
-    public function setDeauthorizeCallbackUrl($deauthorizeCallbackUrl): self {
+    public function setDeauthorizeCallbackUrl(string $deauthorizeCallbackUrl): self {
         $this->options['deauthorizeCallbackUrl'] = $deauthorizeCallbackUrl;
         return $this;
     }
@@ -114,7 +114,7 @@ class UpdateConnectAppOptions extends Options {
      * @param string $description A description of the Connect App
      * @return $this Fluent Builder
      */
-    public function setDescription($description): self {
+    public function setDescription(string $description): self {
         $this->options['description'] = $description;
         return $this;
     }
@@ -125,7 +125,7 @@ class UpdateConnectAppOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -137,7 +137,7 @@ class UpdateConnectAppOptions extends Options {
      *                            information
      * @return $this Fluent Builder
      */
-    public function setHomepageUrl($homepageUrl): self {
+    public function setHomepageUrl(string $homepageUrl): self {
         $this->options['homepageUrl'] = $homepageUrl;
         return $this;
     }
@@ -145,11 +145,11 @@ class UpdateConnectAppOptions extends Options {
     /**
      * A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`.
      *
-     * @param string $permissions The set of permissions that your ConnectApp will
-     *                            request
+     * @param string[] $permissions The set of permissions that your ConnectApp
+     *                              will request
      * @return $this Fluent Builder
      */
-    public function setPermissions($permissions): self {
+    public function setPermissions(string[] $permissions): self {
         $this->options['permissions'] = $permissions;
         return $this;
     }

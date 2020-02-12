@@ -56,7 +56,7 @@ class AwsContext extends InstanceContext {
      * @return AwsInstance Updated AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): AwsInstance {
+    public function update(array $options = []): AwsInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);

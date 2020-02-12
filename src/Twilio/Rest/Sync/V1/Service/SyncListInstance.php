@@ -46,7 +46,7 @@ class SyncListInstance extends InstanceResource {
      *                           associated with
      * @param string $sid The SID of the Sync List resource to fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -112,7 +112,7 @@ class SyncListInstance extends InstanceResource {
      * @return SyncListInstance Updated SyncListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SyncListInstance {
+    public function update(array $options = []): SyncListInstance {
         return $this->proxy()->update($options);
     }
 
@@ -137,7 +137,7 @@ class SyncListInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

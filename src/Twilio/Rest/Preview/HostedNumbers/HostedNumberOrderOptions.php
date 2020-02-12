@@ -21,7 +21,7 @@ abstract class HostedNumberOrderOptions {
      * @param string $uniqueName A unique, developer assigned name of this
      *                           HostedNumberOrder.
      * @param string $email Email.
-     * @param string $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @param string $status The Status of this HostedNumberOrder.
      * @param string $verificationCode A verification code.
      * @param string $verificationType Verification Type.
@@ -32,7 +32,7 @@ abstract class HostedNumberOrderOptions {
      *                       before initiating the verification call.
      * @return UpdateHostedNumberOrderOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE, $extension = Values::NONE, $callDelay = Values::NONE): UpdateHostedNumberOrderOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $email = Values::NONE, string[] $ccEmails = Values::NONE, string $status = Values::NONE, string $verificationCode = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE, string $extension = Values::NONE, int $callDelay = Values::NONE): UpdateHostedNumberOrderOptions {
         return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode, $verificationType, $verificationDocumentSid, $extension, $callDelay);
     }
 
@@ -45,7 +45,7 @@ abstract class HostedNumberOrderOptions {
      *                           HostedNumberOrder.
      * @return ReadHostedNumberOrderOptions Options builder
      */
-    public static function read($status = Values::NONE, $phoneNumber = Values::NONE, $incomingPhoneNumberSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE): ReadHostedNumberOrderOptions {
+    public static function read(string $status = Values::NONE, string $phoneNumber = Values::NONE, string $incomingPhoneNumberSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE): ReadHostedNumberOrderOptions {
         return new ReadHostedNumberOrderOptions($status, $phoneNumber, $incomingPhoneNumberSid, $friendlyName, $uniqueName);
     }
 
@@ -54,7 +54,7 @@ abstract class HostedNumberOrderOptions {
      * @param string $friendlyName A human readable description of this resource.
      * @param string $uniqueName A unique, developer assigned name of this
      *                           HostedNumberOrder.
-     * @param string $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @param string $smsUrl SMS URL.
      * @param string $smsMethod SMS Method.
      * @param string $smsFallbackUrl SMS Fallback URL.
@@ -68,7 +68,7 @@ abstract class HostedNumberOrderOptions {
      * @param string $verificationDocumentSid Verification Document Sid
      * @return CreateHostedNumberOrderOptions Options builder
      */
-    public static function create($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE, $smsApplicationSid = Values::NONE, $addressSid = Values::NONE, $email = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE): CreateHostedNumberOrderOptions {
+    public static function create(string $accountSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string[] $ccEmails = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $statusCallbackUrl = Values::NONE, string $statusCallbackMethod = Values::NONE, string $smsApplicationSid = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE): CreateHostedNumberOrderOptions {
         return new CreateHostedNumberOrderOptions($accountSid, $friendlyName, $uniqueName, $ccEmails, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $statusCallbackUrl, $statusCallbackMethod, $smsApplicationSid, $addressSid, $email, $verificationType, $verificationDocumentSid);
     }
 }
@@ -79,7 +79,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $uniqueName A unique, developer assigned name of this
      *                           HostedNumberOrder.
      * @param string $email Email.
-     * @param string $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @param string $status The Status of this HostedNumberOrder.
      * @param string $verificationCode A verification code.
      * @param string $verificationType Verification Type.
@@ -89,7 +89,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param int $callDelay The number of seconds, between 0 and 60, to delay
      *                       before initiating the verification call.
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE, $extension = Values::NONE, $callDelay = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $email = Values::NONE, string[] $ccEmails = Values::NONE, string $status = Values::NONE, string $verificationCode = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE, string $extension = Values::NONE, int $callDelay = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['email'] = $email;
@@ -108,7 +108,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $friendlyName A human readable description of this resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -120,7 +120,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      *                           HostedNumberOrder.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -131,7 +131,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $email Email.
      * @return $this Fluent Builder
      */
-    public function setEmail($email): self {
+    public function setEmail(string $email): self {
         $this->options['email'] = $email;
         return $this;
     }
@@ -139,10 +139,10 @@ class UpdateHostedNumberOrderOptions extends Options {
     /**
      * Optional. A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
      *
-     * @param string $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
-    public function setCcEmails($ccEmails): self {
+    public function setCcEmails(string[] $ccEmails): self {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
@@ -153,7 +153,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $status The Status of this HostedNumberOrder.
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -164,7 +164,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $verificationCode A verification code.
      * @return $this Fluent Builder
      */
-    public function setVerificationCode($verificationCode): self {
+    public function setVerificationCode(string $verificationCode): self {
         $this->options['verificationCode'] = $verificationCode;
         return $this;
     }
@@ -175,7 +175,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $verificationType Verification Type.
      * @return $this Fluent Builder
      */
-    public function setVerificationType($verificationType): self {
+    public function setVerificationType(string $verificationType): self {
         $this->options['verificationType'] = $verificationType;
         return $this;
     }
@@ -186,7 +186,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $verificationDocumentSid Verification Document Sid
      * @return $this Fluent Builder
      */
-    public function setVerificationDocumentSid($verificationDocumentSid): self {
+    public function setVerificationDocumentSid(string $verificationDocumentSid): self {
         $this->options['verificationDocumentSid'] = $verificationDocumentSid;
         return $this;
     }
@@ -198,7 +198,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      *                          call.
      * @return $this Fluent Builder
      */
-    public function setExtension($extension): self {
+    public function setExtension(string $extension): self {
         $this->options['extension'] = $extension;
         return $this;
     }
@@ -210,7 +210,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      *                       before initiating the verification call.
      * @return $this Fluent Builder
      */
-    public function setCallDelay($callDelay): self {
+    public function setCallDelay(int $callDelay): self {
         $this->options['callDelay'] = $callDelay;
         return $this;
     }
@@ -240,7 +240,7 @@ class ReadHostedNumberOrderOptions extends Options {
      * @param string $uniqueName A unique, developer assigned name of this
      *                           HostedNumberOrder.
      */
-    public function __construct($status = Values::NONE, $phoneNumber = Values::NONE, $incomingPhoneNumberSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $phoneNumber = Values::NONE, string $incomingPhoneNumberSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['incomingPhoneNumberSid'] = $incomingPhoneNumberSid;
@@ -254,7 +254,7 @@ class ReadHostedNumberOrderOptions extends Options {
      * @param string $status The Status of this HostedNumberOrder.
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -265,7 +265,7 @@ class ReadHostedNumberOrderOptions extends Options {
      * @param string $phoneNumber An E164 formatted phone number.
      * @return $this Fluent Builder
      */
-    public function setPhoneNumber($phoneNumber): self {
+    public function setPhoneNumber(string $phoneNumber): self {
         $this->options['phoneNumber'] = $phoneNumber;
         return $this;
     }
@@ -276,7 +276,7 @@ class ReadHostedNumberOrderOptions extends Options {
      * @param string $incomingPhoneNumberSid IncomingPhoneNumber sid.
      * @return $this Fluent Builder
      */
-    public function setIncomingPhoneNumberSid($incomingPhoneNumberSid): self {
+    public function setIncomingPhoneNumberSid(string $incomingPhoneNumberSid): self {
         $this->options['incomingPhoneNumberSid'] = $incomingPhoneNumberSid;
         return $this;
     }
@@ -287,7 +287,7 @@ class ReadHostedNumberOrderOptions extends Options {
      * @param string $friendlyName A human readable description of this resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -299,7 +299,7 @@ class ReadHostedNumberOrderOptions extends Options {
      *                           HostedNumberOrder.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -326,7 +326,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $friendlyName A human readable description of this resource.
      * @param string $uniqueName A unique, developer assigned name of this
      *                           HostedNumberOrder.
-     * @param string $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @param string $smsUrl SMS URL.
      * @param string $smsMethod SMS Method.
      * @param string $smsFallbackUrl SMS Fallback URL.
@@ -339,7 +339,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $verificationType Verification Type.
      * @param string $verificationDocumentSid Verification Document Sid
      */
-    public function __construct($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE, $smsApplicationSid = Values::NONE, $addressSid = Values::NONE, $email = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
+    public function __construct(string $accountSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string[] $ccEmails = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $statusCallbackUrl = Values::NONE, string $statusCallbackMethod = Values::NONE, string $smsApplicationSid = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
@@ -363,7 +363,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $accountSid Account Sid.
      * @return $this Fluent Builder
      */
-    public function setAccountSid($accountSid): self {
+    public function setAccountSid(string $accountSid): self {
         $this->options['accountSid'] = $accountSid;
         return $this;
     }
@@ -374,7 +374,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $friendlyName A human readable description of this resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -386,7 +386,7 @@ class CreateHostedNumberOrderOptions extends Options {
      *                           HostedNumberOrder.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -394,10 +394,10 @@ class CreateHostedNumberOrderOptions extends Options {
     /**
      * Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.
      *
-     * @param string $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
-    public function setCcEmails($ccEmails): self {
+    public function setCcEmails(string[] $ccEmails): self {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
@@ -408,7 +408,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsUrl SMS URL.
      * @return $this Fluent Builder
      */
-    public function setSmsUrl($smsUrl): self {
+    public function setSmsUrl(string $smsUrl): self {
         $this->options['smsUrl'] = $smsUrl;
         return $this;
     }
@@ -419,7 +419,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsMethod SMS Method.
      * @return $this Fluent Builder
      */
-    public function setSmsMethod($smsMethod): self {
+    public function setSmsMethod(string $smsMethod): self {
         $this->options['smsMethod'] = $smsMethod;
         return $this;
     }
@@ -430,7 +430,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsFallbackUrl SMS Fallback URL.
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackUrl($smsFallbackUrl): self {
+    public function setSmsFallbackUrl(string $smsFallbackUrl): self {
         $this->options['smsFallbackUrl'] = $smsFallbackUrl;
         return $this;
     }
@@ -441,7 +441,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsFallbackMethod SMS Fallback Method.
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackMethod($smsFallbackMethod): self {
+    public function setSmsFallbackMethod(string $smsFallbackMethod): self {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
         return $this;
     }
@@ -452,7 +452,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $statusCallbackUrl Status Callback URL.
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackUrl($statusCallbackUrl): self {
+    public function setStatusCallbackUrl(string $statusCallbackUrl): self {
         $this->options['statusCallbackUrl'] = $statusCallbackUrl;
         return $this;
     }
@@ -463,7 +463,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $statusCallbackMethod Status Callback Method.
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -474,7 +474,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsApplicationSid SMS Application Sid.
      * @return $this Fluent Builder
      */
-    public function setSmsApplicationSid($smsApplicationSid): self {
+    public function setSmsApplicationSid(string $smsApplicationSid): self {
         $this->options['smsApplicationSid'] = $smsApplicationSid;
         return $this;
     }
@@ -485,7 +485,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $addressSid Address sid.
      * @return $this Fluent Builder
      */
-    public function setAddressSid($addressSid): self {
+    public function setAddressSid(string $addressSid): self {
         $this->options['addressSid'] = $addressSid;
         return $this;
     }
@@ -496,7 +496,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $email Email.
      * @return $this Fluent Builder
      */
-    public function setEmail($email): self {
+    public function setEmail(string $email): self {
         $this->options['email'] = $email;
         return $this;
     }
@@ -507,7 +507,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $verificationType Verification Type.
      * @return $this Fluent Builder
      */
-    public function setVerificationType($verificationType): self {
+    public function setVerificationType(string $verificationType): self {
         $this->options['verificationType'] = $verificationType;
         return $this;
     }
@@ -518,7 +518,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $verificationDocumentSid Verification Document Sid
      * @return $this Fluent Builder
      */
-    public function setVerificationDocumentSid($verificationDocumentSid): self {
+    public function setVerificationDocumentSid(string $verificationDocumentSid): self {
         $this->options['verificationDocumentSid'] = $verificationDocumentSid;
         return $this;
     }

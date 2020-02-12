@@ -23,15 +23,15 @@ abstract class TaskOptions {
      *                            TaskChannel with the task to update
      * @return UpdateTaskOptions Options builder
      */
-    public static function update($attributes = Values::NONE, $assignmentStatus = Values::NONE, $reason = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE): UpdateTaskOptions {
+    public static function update(string $attributes = Values::NONE, string $assignmentStatus = Values::NONE, string $reason = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE): UpdateTaskOptions {
         return new UpdateTaskOptions($attributes, $assignmentStatus, $reason, $priority, $taskChannel);
     }
 
     /**
      * @param int $priority The priority value of the Tasks to read
-     * @param string $assignmentStatus Returns the list of all Tasks in the
-     *                                 Workspace with the specified
-     *                                 assignment_status
+     * @param string[] $assignmentStatus Returns the list of all Tasks in the
+     *                                   Workspace with the specified
+     *                                   assignment_status
      * @param string $workflowSid The SID of the Workflow with the Tasks to read
      * @param string $workflowName The friendly name of the Workflow with the Tasks
      *                             to read
@@ -44,7 +44,7 @@ abstract class TaskOptions {
      * @param bool $hasAddons Whether to read Tasks with addons
      * @return ReadTaskOptions Options builder
      */
-    public static function read($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE): ReadTaskOptions {
+    public static function read(int $priority = Values::NONE, string[] $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
         return new ReadTaskOptions($priority, $assignmentStatus, $workflowSid, $workflowName, $taskQueueSid, $taskQueueName, $evaluateTaskAttributes, $ordering, $hasAddons);
     }
 
@@ -61,7 +61,7 @@ abstract class TaskOptions {
      *                           attributes of the task
      * @return CreateTaskOptions Options builder
      */
-    public static function create($timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE, $workflowSid = Values::NONE, $attributes = Values::NONE): CreateTaskOptions {
+    public static function create(int $timeout = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE, string $workflowSid = Values::NONE, string $attributes = Values::NONE): CreateTaskOptions {
         return new CreateTaskOptions($timeout, $priority, $taskChannel, $workflowSid, $attributes);
     }
 }
@@ -76,7 +76,7 @@ class UpdateTaskOptions extends Options {
      * @param string $taskChannel When MultiTasking is enabled, specify the
      *                            TaskChannel with the task to update
      */
-    public function __construct($attributes = Values::NONE, $assignmentStatus = Values::NONE, $reason = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE) {
+    public function __construct(string $attributes = Values::NONE, string $assignmentStatus = Values::NONE, string $reason = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE) {
         $this->options['attributes'] = $attributes;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['reason'] = $reason;
@@ -91,7 +91,7 @@ class UpdateTaskOptions extends Options {
      *                           attributes of the task
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -102,7 +102,7 @@ class UpdateTaskOptions extends Options {
      * @param string $assignmentStatus The new status of the task
      * @return $this Fluent Builder
      */
-    public function setAssignmentStatus($assignmentStatus): self {
+    public function setAssignmentStatus(string $assignmentStatus): self {
         $this->options['assignmentStatus'] = $assignmentStatus;
         return $this;
     }
@@ -113,7 +113,7 @@ class UpdateTaskOptions extends Options {
      * @param string $reason The reason that the Task was canceled or complete
      * @return $this Fluent Builder
      */
-    public function setReason($reason): self {
+    public function setReason(string $reason): self {
         $this->options['reason'] = $reason;
         return $this;
     }
@@ -124,7 +124,7 @@ class UpdateTaskOptions extends Options {
      * @param int $priority The Task's new priority value
      * @return $this Fluent Builder
      */
-    public function setPriority($priority): self {
+    public function setPriority(int $priority): self {
         $this->options['priority'] = $priority;
         return $this;
     }
@@ -136,7 +136,7 @@ class UpdateTaskOptions extends Options {
      *                            TaskChannel with the task to update
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -160,9 +160,9 @@ class UpdateTaskOptions extends Options {
 class ReadTaskOptions extends Options {
     /**
      * @param int $priority The priority value of the Tasks to read
-     * @param string $assignmentStatus Returns the list of all Tasks in the
-     *                                 Workspace with the specified
-     *                                 assignment_status
+     * @param string[] $assignmentStatus Returns the list of all Tasks in the
+     *                                   Workspace with the specified
+     *                                   assignment_status
      * @param string $workflowSid The SID of the Workflow with the Tasks to read
      * @param string $workflowName The friendly name of the Workflow with the Tasks
      *                             to read
@@ -174,7 +174,7 @@ class ReadTaskOptions extends Options {
      * @param string $ordering Controls the order of the Tasks returned
      * @param bool $hasAddons Whether to read Tasks with addons
      */
-    public function __construct($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE) {
+    public function __construct(int $priority = Values::NONE, string[] $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
         $this->options['priority'] = $priority;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['workflowSid'] = $workflowSid;
@@ -192,7 +192,7 @@ class ReadTaskOptions extends Options {
      * @param int $priority The priority value of the Tasks to read
      * @return $this Fluent Builder
      */
-    public function setPriority($priority): self {
+    public function setPriority(int $priority): self {
         $this->options['priority'] = $priority;
         return $this;
     }
@@ -200,12 +200,12 @@ class ReadTaskOptions extends Options {
     /**
      * The `assignment_status` of the Tasks to read. Can be: `pending`, `reserved`, `assigned`, `canceled`, and `completed`. Returns all Tasks in the Workspace with the specified `assignment_status`.
      *
-     * @param string $assignmentStatus Returns the list of all Tasks in the
-     *                                 Workspace with the specified
-     *                                 assignment_status
+     * @param string[] $assignmentStatus Returns the list of all Tasks in the
+     *                                   Workspace with the specified
+     *                                   assignment_status
      * @return $this Fluent Builder
      */
-    public function setAssignmentStatus($assignmentStatus): self {
+    public function setAssignmentStatus(string[] $assignmentStatus): self {
         $this->options['assignmentStatus'] = $assignmentStatus;
         return $this;
     }
@@ -216,7 +216,7 @@ class ReadTaskOptions extends Options {
      * @param string $workflowSid The SID of the Workflow with the Tasks to read
      * @return $this Fluent Builder
      */
-    public function setWorkflowSid($workflowSid): self {
+    public function setWorkflowSid(string $workflowSid): self {
         $this->options['workflowSid'] = $workflowSid;
         return $this;
     }
@@ -228,7 +228,7 @@ class ReadTaskOptions extends Options {
      *                             to read
      * @return $this Fluent Builder
      */
-    public function setWorkflowName($workflowName): self {
+    public function setWorkflowName(string $workflowName): self {
         $this->options['workflowName'] = $workflowName;
         return $this;
     }
@@ -239,7 +239,7 @@ class ReadTaskOptions extends Options {
      * @param string $taskQueueSid The SID of the TaskQueue with the Tasks to read
      * @return $this Fluent Builder
      */
-    public function setTaskQueueSid($taskQueueSid): self {
+    public function setTaskQueueSid(string $taskQueueSid): self {
         $this->options['taskQueueSid'] = $taskQueueSid;
         return $this;
     }
@@ -251,7 +251,7 @@ class ReadTaskOptions extends Options {
      *                              Tasks to read
      * @return $this Fluent Builder
      */
-    public function setTaskQueueName($taskQueueName): self {
+    public function setTaskQueueName(string $taskQueueName): self {
         $this->options['taskQueueName'] = $taskQueueName;
         return $this;
     }
@@ -263,7 +263,7 @@ class ReadTaskOptions extends Options {
      *                                       read
      * @return $this Fluent Builder
      */
-    public function setEvaluateTaskAttributes($evaluateTaskAttributes): self {
+    public function setEvaluateTaskAttributes(string $evaluateTaskAttributes): self {
         $this->options['evaluateTaskAttributes'] = $evaluateTaskAttributes;
         return $this;
     }
@@ -274,7 +274,7 @@ class ReadTaskOptions extends Options {
      * @param string $ordering Controls the order of the Tasks returned
      * @return $this Fluent Builder
      */
-    public function setOrdering($ordering): self {
+    public function setOrdering(string $ordering): self {
         $this->options['ordering'] = $ordering;
         return $this;
     }
@@ -285,7 +285,7 @@ class ReadTaskOptions extends Options {
      * @param bool $hasAddons Whether to read Tasks with addons
      * @return $this Fluent Builder
      */
-    public function setHasAddons($hasAddons): self {
+    public function setHasAddons(bool $hasAddons): self {
         $this->options['hasAddons'] = $hasAddons;
         return $this;
     }
@@ -319,7 +319,7 @@ class CreateTaskOptions extends Options {
      * @param string $attributes A URL-encoded JSON string describing the
      *                           attributes of the task
      */
-    public function __construct($timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE, $workflowSid = Values::NONE, $attributes = Values::NONE) {
+    public function __construct(int $timeout = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE, string $workflowSid = Values::NONE, string $attributes = Values::NONE) {
         $this->options['timeout'] = $timeout;
         $this->options['priority'] = $priority;
         $this->options['taskChannel'] = $taskChannel;
@@ -333,7 +333,7 @@ class CreateTaskOptions extends Options {
      * @param int $timeout The amount of time in seconds the task is allowed to live
      * @return $this Fluent Builder
      */
-    public function setTimeout($timeout): self {
+    public function setTimeout(int $timeout): self {
         $this->options['timeout'] = $timeout;
         return $this;
     }
@@ -345,7 +345,7 @@ class CreateTaskOptions extends Options {
      *                      default
      * @return $this Fluent Builder
      */
-    public function setPriority($priority): self {
+    public function setPriority(int $priority): self {
         $this->options['priority'] = $priority;
         return $this;
     }
@@ -358,7 +358,7 @@ class CreateTaskOptions extends Options {
      *                            SID
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -370,7 +370,7 @@ class CreateTaskOptions extends Options {
      *                            handle routing for the new Task
      * @return $this Fluent Builder
      */
-    public function setWorkflowSid($workflowSid): self {
+    public function setWorkflowSid(string $workflowSid): self {
         $this->options['workflowSid'] = $workflowSid;
         return $this;
     }
@@ -382,7 +382,7 @@ class CreateTaskOptions extends Options {
      *                           attributes of the task
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }

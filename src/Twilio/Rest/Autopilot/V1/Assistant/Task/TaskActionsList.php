@@ -24,7 +24,7 @@ class TaskActionsList extends ListResource {
      *                             the Task associated with the resource
      * @param string $taskSid The SID of the Task associated with the resource
      */
-    public function __construct(Version $version, $assistantSid, $taskSid) {
+    public function __construct(Version $version, string $assistantSid, string $taskSid) {
         parent::__construct($version);
 
         // Path Solution

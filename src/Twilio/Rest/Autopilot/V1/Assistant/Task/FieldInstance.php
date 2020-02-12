@@ -40,7 +40,7 @@ class FieldInstance extends InstanceResource {
      *                        [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with this Field
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $taskSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $taskSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -109,7 +109,7 @@ class FieldInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

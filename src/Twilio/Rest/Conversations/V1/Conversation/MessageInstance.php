@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property int $index
  * @property string $author
  * @property string $body
- * @property array $media
+ * @property array[] $media
  * @property string $attributes
  * @property string $participantSid
  * @property \DateTime $dateCreated
@@ -43,7 +43,7 @@ class MessageInstance extends InstanceResource {
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
-    public function __construct(Version $version, array $payload, $conversationSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $conversationSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +93,7 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): MessageInstance {
+    public function update(array $options = []): MessageInstance {
         return $this->proxy()->update($options);
     }
 
@@ -124,7 +124,7 @@ class MessageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

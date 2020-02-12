@@ -70,7 +70,7 @@ class HostedNumberOrderContext extends InstanceContext {
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): HostedNumberOrderInstance {
+    public function update(array $options = []): HostedNumberOrderInstance {
         $options = new Values($options);
 
         $data = Values::of([

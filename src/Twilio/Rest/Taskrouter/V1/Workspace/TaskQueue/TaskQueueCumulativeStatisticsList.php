@@ -22,7 +22,7 @@ class TaskQueueCumulativeStatisticsList extends ListResource {
      * @param string $taskQueueSid The SID of the TaskQueue from which these
      *                             statistics were calculated
      */
-    public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
+    public function __construct(Version $version, string $workspaceSid, string $taskQueueSid) {
         parent::__construct($version);
 
         // Path Solution

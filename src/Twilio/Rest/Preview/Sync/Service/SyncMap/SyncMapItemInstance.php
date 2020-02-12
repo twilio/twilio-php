@@ -39,7 +39,7 @@ class SyncMapItemInstance extends InstanceResource {
      * @param string $mapSid The map_sid
      * @param string $key The key
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $key = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, string $key = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -109,7 +109,7 @@ class SyncMapItemInstance extends InstanceResource {
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($data): SyncMapItemInstance {
+    public function update(array $data): SyncMapItemInstance {
         return $this->proxy()->update($data);
     }
 
@@ -120,7 +120,7 @@ class SyncMapItemInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

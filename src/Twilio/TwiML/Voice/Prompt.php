@@ -65,7 +65,7 @@ class Prompt extends TwiML {
     /**
      * Add ErrorType attribute.
      *
-     * @param string $errorType Type of error
+     * @param string[] $errorType Type of error
      */
     public function setErrorType($errorType): self {
         return $this->setAttribute('errorType', $errorType);
@@ -74,7 +74,7 @@ class Prompt extends TwiML {
     /**
      * Add CardType attribute.
      *
-     * @param string $cardType Type of the credit card
+     * @param string[] $cardType Type of the credit card
      */
     public function setCardType($cardType): self {
         return $this->setAttribute('cardType', $cardType);
@@ -83,7 +83,7 @@ class Prompt extends TwiML {
     /**
      * Add Attempt attribute.
      *
-     * @param int $attempt Current attempt count
+     * @param int[] $attempt Current attempt count
      */
     public function setAttempt($attempt): self {
         return $this->setAttribute('attempt', $attempt);

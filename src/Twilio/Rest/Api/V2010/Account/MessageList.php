@@ -24,7 +24,7 @@ class MessageList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +41,7 @@ class MessageList extends ListResource {
      * @return MessageInstance Newly created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $options = []): MessageInstance {
+    public function create(string $to, array $options = []): MessageInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -91,7 +91,7 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -115,7 +115,7 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MessageInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -129,7 +129,7 @@ class MessageList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MessagePage Page of MessageInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagePage {
         $options = new Values($options);
         $params = Values::of([
             'To' => $options['to'],
@@ -158,7 +158,7 @@ class MessageList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MessagePage Page of MessageInstance
      */
-    public function getPage($targetUrl): MessagePage {
+    public function getPage(string $targetUrl): MessagePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -172,7 +172,7 @@ class MessageList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): MessageContext {
+    public function getContext(string $sid): MessageContext {
         return new MessageContext($this->version, $this->solution['accountSid'], $sid);
     }
 

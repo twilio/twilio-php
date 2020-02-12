@@ -21,7 +21,7 @@ abstract class AlertOptions {
      *                           this date and time
      * @return ReadAlertOptions Options builder
      */
-    public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE): ReadAlertOptions {
+    public static function read(string $logLevel = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE): ReadAlertOptions {
         return new ReadAlertOptions($logLevel, $startDate, $endDate);
     }
 }
@@ -34,7 +34,7 @@ class ReadAlertOptions extends Options {
      * @param \DateTime $endDate Only include alerts that occurred on or before
      *                           this date and time
      */
-    public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct(string $logLevel = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE) {
         $this->options['logLevel'] = $logLevel;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
@@ -46,7 +46,7 @@ class ReadAlertOptions extends Options {
      * @param string $logLevel Only show alerts for this log-level
      * @return $this Fluent Builder
      */
-    public function setLogLevel($logLevel): self {
+    public function setLogLevel(string $logLevel): self {
         $this->options['logLevel'] = $logLevel;
         return $this;
     }
@@ -58,7 +58,7 @@ class ReadAlertOptions extends Options {
      *                             this date and time
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate): self {
+    public function setStartDate(\DateTime $startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadAlertOptions extends Options {
      *                           this date and time
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate): self {
+    public function setEndDate(\DateTime $endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }

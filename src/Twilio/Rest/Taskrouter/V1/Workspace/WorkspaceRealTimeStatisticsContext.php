@@ -39,7 +39,7 @@ class WorkspaceRealTimeStatisticsContext extends InstanceContext {
      *                                             WorkspaceRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkspaceRealTimeStatisticsInstance {
+    public function fetch(array $options = []): WorkspaceRealTimeStatisticsInstance {
         $options = new Values($options);
 
         $params = Values::of(['TaskChannel' => $options['taskChannel'], ]);

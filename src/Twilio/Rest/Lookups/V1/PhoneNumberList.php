@@ -30,7 +30,7 @@ class PhoneNumberList extends ListResource {
      *
      * @param string $phoneNumber The phone number to fetch in E.164 format
      */
-    public function getContext($phoneNumber): PhoneNumberContext {
+    public function getContext(string $phoneNumber): PhoneNumberContext {
         return new PhoneNumberContext($this->version, $phoneNumber);
     }
 

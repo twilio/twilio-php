@@ -24,7 +24,7 @@ class EngagementList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $flowSid The SID of the Flow
      */
-    public function __construct(Version $version, $flowSid) {
+    public function __construct(Version $version, string $flowSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -51,7 +51,7 @@ class EngagementList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -74,7 +74,7 @@ class EngagementList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EngagementInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -87,7 +87,7 @@ class EngagementList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return EngagementPage Page of EngagementInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): EngagementPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EngagementPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -106,7 +106,7 @@ class EngagementList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return EngagementPage Page of EngagementInstance
      */
-    public function getPage($targetUrl): EngagementPage {
+    public function getPage(string $targetUrl): EngagementPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -125,7 +125,7 @@ class EngagementList extends ListResource {
      * @return EngagementInstance Newly created EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $from, $options = []): EngagementInstance {
+    public function create(string $to, string $from, array $options = []): EngagementInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -149,7 +149,7 @@ class EngagementList extends ListResource {
      *
      * @param string $sid The SID of the Engagement resource to fetch
      */
-    public function getContext($sid): EngagementContext {
+    public function getContext(string $sid): EngagementContext {
         return new EngagementContext($this->version, $this->solution['flowSid'], $sid);
     }
 

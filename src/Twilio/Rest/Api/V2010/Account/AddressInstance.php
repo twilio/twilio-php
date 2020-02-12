@@ -46,7 +46,7 @@ class AddressInstance extends InstanceResource {
      *                           resource
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -116,7 +116,7 @@ class AddressInstance extends InstanceResource {
      * @return AddressInstance Updated AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): AddressInstance {
+    public function update(array $options = []): AddressInstance {
         return $this->proxy()->update($options);
     }
 
@@ -134,7 +134,7 @@ class AddressInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

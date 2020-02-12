@@ -36,7 +36,7 @@ class JobInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $jobSid The job_sid
      */
-    public function __construct(Version $version, array $payload, $jobSid = null) {
+    public function __construct(Version $version, array $payload, string $jobSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -97,7 +97,7 @@ class JobInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

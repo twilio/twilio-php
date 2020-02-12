@@ -29,7 +29,7 @@ abstract class EventOptions {
      * @param string $sid The unique string that identifies the resource
      * @return ReadEventOptions Options builder
      */
-    public static function read($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE, $taskChannel = Values::NONE, $sid = Values::NONE): ReadEventOptions {
+    public static function read(\DateTime $endDate = Values::NONE, string $eventType = Values::NONE, int $minutes = Values::NONE, string $reservationSid = Values::NONE, \DateTime $startDate = Values::NONE, string $taskQueueSid = Values::NONE, string $taskSid = Values::NONE, string $workerSid = Values::NONE, string $workflowSid = Values::NONE, string $taskChannel = Values::NONE, string $sid = Values::NONE): ReadEventOptions {
         return new ReadEventOptions($endDate, $eventType, $minutes, $reservationSid, $startDate, $taskQueueSid, $taskSid, $workerSid, $workflowSid, $taskChannel, $sid);
     }
 }
@@ -50,7 +50,7 @@ class ReadEventOptions extends Options {
      * @param string $taskChannel The TaskChannel with the Events to read
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE, $taskChannel = Values::NONE, $sid = Values::NONE) {
+    public function __construct(\DateTime $endDate = Values::NONE, string $eventType = Values::NONE, int $minutes = Values::NONE, string $reservationSid = Values::NONE, \DateTime $startDate = Values::NONE, string $taskQueueSid = Values::NONE, string $taskSid = Values::NONE, string $workerSid = Values::NONE, string $workflowSid = Values::NONE, string $taskChannel = Values::NONE, string $sid = Values::NONE) {
         $this->options['endDate'] = $endDate;
         $this->options['eventType'] = $eventType;
         $this->options['minutes'] = $minutes;
@@ -71,7 +71,7 @@ class ReadEventOptions extends Options {
      *                           date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate): self {
+    public function setEndDate(\DateTime $endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -82,7 +82,7 @@ class ReadEventOptions extends Options {
      * @param string $eventType The type of Events to read
      * @return $this Fluent Builder
      */
-    public function setEventType($eventType): self {
+    public function setEventType(string $eventType): self {
         $this->options['eventType'] = $eventType;
         return $this;
     }
@@ -93,7 +93,7 @@ class ReadEventOptions extends Options {
      * @param int $minutes The period of events to read in minutes
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes): self {
+    public function setMinutes(int $minutes): self {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -105,7 +105,7 @@ class ReadEventOptions extends Options {
      *                               read
      * @return $this Fluent Builder
      */
-    public function setReservationSid($reservationSid): self {
+    public function setReservationSid(string $reservationSid): self {
         $this->options['reservationSid'] = $reservationSid;
         return $this;
     }
@@ -116,7 +116,7 @@ class ReadEventOptions extends Options {
      * @param \DateTime $startDate Only include Events from on or after this date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate): self {
+    public function setStartDate(\DateTime $startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -127,7 +127,7 @@ class ReadEventOptions extends Options {
      * @param string $taskQueueSid The SID of the TaskQueue with the Events to read
      * @return $this Fluent Builder
      */
-    public function setTaskQueueSid($taskQueueSid): self {
+    public function setTaskQueueSid(string $taskQueueSid): self {
         $this->options['taskQueueSid'] = $taskQueueSid;
         return $this;
     }
@@ -138,7 +138,7 @@ class ReadEventOptions extends Options {
      * @param string $taskSid The SID of the Task with the Events to read
      * @return $this Fluent Builder
      */
-    public function setTaskSid($taskSid): self {
+    public function setTaskSid(string $taskSid): self {
         $this->options['taskSid'] = $taskSid;
         return $this;
     }
@@ -149,7 +149,7 @@ class ReadEventOptions extends Options {
      * @param string $workerSid The SID of the Worker with the Events to read
      * @return $this Fluent Builder
      */
-    public function setWorkerSid($workerSid): self {
+    public function setWorkerSid(string $workerSid): self {
         $this->options['workerSid'] = $workerSid;
         return $this;
     }
@@ -160,7 +160,7 @@ class ReadEventOptions extends Options {
      * @param string $workflowSid The SID of the Worker with the Events to read
      * @return $this Fluent Builder
      */
-    public function setWorkflowSid($workflowSid): self {
+    public function setWorkflowSid(string $workflowSid): self {
         $this->options['workflowSid'] = $workflowSid;
         return $this;
     }
@@ -171,7 +171,7 @@ class ReadEventOptions extends Options {
      * @param string $taskChannel The TaskChannel with the Events to read
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -182,7 +182,7 @@ class ReadEventOptions extends Options {
      * @param string $sid The unique string that identifies the resource
      * @return $this Fluent Builder
      */
-    public function setSid($sid): self {
+    public function setSid(string $sid): self {
         $this->options['sid'] = $sid;
         return $this;
     }

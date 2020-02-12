@@ -84,7 +84,7 @@ class RecordingSettingsInstance extends InstanceResource {
      * @return RecordingSettingsInstance Newly created RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = []): RecordingSettingsInstance {
+    public function create(string $friendlyName, array $options = []): RecordingSettingsInstance {
         return $this->proxy()->create($friendlyName, $options);
     }
 
@@ -95,7 +95,7 @@ class RecordingSettingsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

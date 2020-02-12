@@ -42,7 +42,7 @@ class FieldTypeInstance extends InstanceResource {
      *                             the resource
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -96,7 +96,7 @@ class FieldTypeInstance extends InstanceResource {
      * @return FieldTypeInstance Updated FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): FieldTypeInstance {
+    public function update(array $options = []): FieldTypeInstance {
         return $this->proxy()->update($options);
     }
 
@@ -124,7 +124,7 @@ class FieldTypeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

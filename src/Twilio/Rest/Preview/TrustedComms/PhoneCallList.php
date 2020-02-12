@@ -43,7 +43,7 @@ class PhoneCallList extends ListResource {
      * @return PhoneCallInstance Newly created PhoneCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($from, $to, $options = []): PhoneCallInstance {
+    public function create(string $from, string $to, array $options = []): PhoneCallInstance {
         $options = new Values($options);
 
         $data = Values::of([

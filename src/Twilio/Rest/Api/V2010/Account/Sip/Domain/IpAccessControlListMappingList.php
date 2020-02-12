@@ -24,7 +24,7 @@ class IpAccessControlListMappingList extends ListResource {
      *                           for this resource.
      * @param string $domainSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $accountSid, $domainSid) {
+    public function __construct(Version $version, string $accountSid, string $domainSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -42,7 +42,7 @@ class IpAccessControlListMappingList extends ListResource {
      *                                            IpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($ipAccessControlListSid): IpAccessControlListMappingInstance {
+    public function create(string $ipAccessControlListSid): IpAccessControlListMappingInstance {
         $data = Values::of(['IpAccessControlListSid' => $ipAccessControlListSid, ]);
 
         $payload = $this->version->create(
@@ -79,7 +79,7 @@ class IpAccessControlListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -102,7 +102,7 @@ class IpAccessControlListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return IpAccessControlListMappingInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -117,7 +117,7 @@ class IpAccessControlListMappingList extends ListResource {
      * @return IpAccessControlListMappingPage Page of
      *                                        IpAccessControlListMappingInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAccessControlListMappingPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAccessControlListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -138,7 +138,7 @@ class IpAccessControlListMappingList extends ListResource {
      * @return IpAccessControlListMappingPage Page of
      *                                        IpAccessControlListMappingInstance
      */
-    public function getPage($targetUrl): IpAccessControlListMappingPage {
+    public function getPage(string $targetUrl): IpAccessControlListMappingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -153,7 +153,7 @@ class IpAccessControlListMappingList extends ListResource {
      * @param string $sid A 34 character string that uniquely identifies the
      *                    resource to fetch.
      */
-    public function getContext($sid): IpAccessControlListMappingContext {
+    public function getContext(string $sid): IpAccessControlListMappingContext {
         return new IpAccessControlListMappingContext(
             $this->version,
             $this->solution['accountSid'],

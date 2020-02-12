@@ -23,7 +23,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $accountSid, $domainSid) {
+    public function __construct(Version $version, string $accountSid, string $domainSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +41,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      *                                                     AuthCallsIpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($ipAccessControlListSid): AuthCallsIpAccessControlListMappingInstance {
+    public function create(string $ipAccessControlListSid): AuthCallsIpAccessControlListMappingInstance {
         $data = Values::of(['IpAccessControlListSid' => $ipAccessControlListSid, ]);
 
         $payload = $this->version->create(
@@ -78,7 +78,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -102,7 +102,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AuthCallsIpAccessControlListMappingInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -117,7 +117,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      * @return AuthCallsIpAccessControlListMappingPage Page of
      *                                                 AuthCallsIpAccessControlListMappingInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthCallsIpAccessControlListMappingPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthCallsIpAccessControlListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -138,7 +138,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      * @return AuthCallsIpAccessControlListMappingPage Page of
      *                                                 AuthCallsIpAccessControlListMappingInstance
      */
-    public function getPage($targetUrl): AuthCallsIpAccessControlListMappingPage {
+    public function getPage(string $targetUrl): AuthCallsIpAccessControlListMappingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -152,7 +152,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): AuthCallsIpAccessControlListMappingContext {
+    public function getContext(string $sid): AuthCallsIpAccessControlListMappingContext {
         return new AuthCallsIpAccessControlListMappingContext(
             $this->version,
             $this->solution['accountSid'],

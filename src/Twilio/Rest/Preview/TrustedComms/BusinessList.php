@@ -33,7 +33,7 @@ class BusinessList extends ListResource {
      *
      * @param string $sid A string that uniquely identifies this Business.
      */
-    public function getContext($sid): BusinessContext {
+    public function getContext(string $sid): BusinessContext {
         return new BusinessContext($this->version, $sid);
     }
 

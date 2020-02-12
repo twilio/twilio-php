@@ -70,7 +70,7 @@ class IpAddressContext extends InstanceContext {
      * @return IpAddressInstance Updated IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): IpAddressInstance {
+    public function update(array $options = []): IpAddressInstance {
         $options = new Values($options);
 
         $data = Values::of([

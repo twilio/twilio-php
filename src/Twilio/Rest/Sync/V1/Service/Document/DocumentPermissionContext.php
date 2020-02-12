@@ -87,7 +87,7 @@ class DocumentPermissionContext extends InstanceContext {
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage): DocumentPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): DocumentPermissionInstance {
         $data = Values::of([
             'Read' => Serialize::booleanToString($read),
             'Write' => Serialize::booleanToString($write),

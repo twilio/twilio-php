@@ -27,7 +27,7 @@ class QueryList extends ListResource {
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
      */
-    public function __construct(Version $version, $assistantSid) {
+    public function __construct(Version $version, string $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +55,7 @@ class QueryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -79,7 +79,7 @@ class QueryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return QueryInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -93,7 +93,7 @@ class QueryList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return QueryPage Page of QueryInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): QueryPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): QueryPage {
         $options = new Values($options);
         $params = Values::of([
             'Language' => $options['language'],
@@ -120,7 +120,7 @@ class QueryList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return QueryPage Page of QueryInstance
      */
-    public function getPage($targetUrl): QueryPage {
+    public function getPage(string $targetUrl): QueryPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,7 +139,7 @@ class QueryList extends ListResource {
      * @return QueryInstance Newly created QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($language, $query, $options = []): QueryInstance {
+    public function create(string $language, string $query, array $options = []): QueryInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -164,7 +164,7 @@ class QueryList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): QueryContext {
+    public function getContext(string $sid): QueryContext {
         return new QueryContext($this->version, $this->solution['assistantSid'], $sid);
     }
 

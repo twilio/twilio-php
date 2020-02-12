@@ -39,7 +39,7 @@ class QueueInstance extends InstanceResource {
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $sid The unique string that identifies this resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +93,7 @@ class QueueInstance extends InstanceResource {
      * @return QueueInstance Updated QueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): QueueInstance {
+    public function update(array $options = []): QueueInstance {
         return $this->proxy()->update($options);
     }
 
@@ -121,7 +121,7 @@ class QueueInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -22,7 +22,7 @@ abstract class PhoneNumberOptions {
      * @param bool $isReserved Whether the new phone number should be reserved
      * @return CreatePhoneNumberOptions Options builder
      */
-    public static function create($sid = Values::NONE, $phoneNumber = Values::NONE, $isReserved = Values::NONE): CreatePhoneNumberOptions {
+    public static function create(string $sid = Values::NONE, string $phoneNumber = Values::NONE, bool $isReserved = Values::NONE): CreatePhoneNumberOptions {
         return new CreatePhoneNumberOptions($sid, $phoneNumber, $isReserved);
     }
 
@@ -30,7 +30,7 @@ abstract class PhoneNumberOptions {
      * @param bool $isReserved Whether the new phone number should be reserved
      * @return UpdatePhoneNumberOptions Options builder
      */
-    public static function update($isReserved = Values::NONE): UpdatePhoneNumberOptions {
+    public static function update(bool $isReserved = Values::NONE): UpdatePhoneNumberOptions {
         return new UpdatePhoneNumberOptions($isReserved);
     }
 }
@@ -41,7 +41,7 @@ class CreatePhoneNumberOptions extends Options {
      * @param string $phoneNumber The phone number in E.164 format
      * @param bool $isReserved Whether the new phone number should be reserved
      */
-    public function __construct($sid = Values::NONE, $phoneNumber = Values::NONE, $isReserved = Values::NONE) {
+    public function __construct(string $sid = Values::NONE, string $phoneNumber = Values::NONE, bool $isReserved = Values::NONE) {
         $this->options['sid'] = $sid;
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['isReserved'] = $isReserved;
@@ -53,7 +53,7 @@ class CreatePhoneNumberOptions extends Options {
      * @param string $sid The SID of a Twilio IncomingPhoneNumber resource
      * @return $this Fluent Builder
      */
-    public function setSid($sid): self {
+    public function setSid(string $sid): self {
         $this->options['sid'] = $sid;
         return $this;
     }
@@ -64,7 +64,7 @@ class CreatePhoneNumberOptions extends Options {
      * @param string $phoneNumber The phone number in E.164 format
      * @return $this Fluent Builder
      */
-    public function setPhoneNumber($phoneNumber): self {
+    public function setPhoneNumber(string $phoneNumber): self {
         $this->options['phoneNumber'] = $phoneNumber;
         return $this;
     }
@@ -75,7 +75,7 @@ class CreatePhoneNumberOptions extends Options {
      * @param bool $isReserved Whether the new phone number should be reserved
      * @return $this Fluent Builder
      */
-    public function setIsReserved($isReserved): self {
+    public function setIsReserved(bool $isReserved): self {
         $this->options['isReserved'] = $isReserved;
         return $this;
     }
@@ -100,7 +100,7 @@ class UpdatePhoneNumberOptions extends Options {
     /**
      * @param bool $isReserved Whether the new phone number should be reserved
      */
-    public function __construct($isReserved = Values::NONE) {
+    public function __construct(bool $isReserved = Values::NONE) {
         $this->options['isReserved'] = $isReserved;
     }
 
@@ -110,7 +110,7 @@ class UpdatePhoneNumberOptions extends Options {
      * @param bool $isReserved Whether the new phone number should be reserved
      * @return $this Fluent Builder
      */
-    public function setIsReserved($isReserved): self {
+    public function setIsReserved(bool $isReserved): self {
         $this->options['isReserved'] = $isReserved;
         return $this;
     }

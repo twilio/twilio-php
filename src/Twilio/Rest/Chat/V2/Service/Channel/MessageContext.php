@@ -76,7 +76,7 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): MessageInstance {
+    public function update(array $options = []): MessageInstance {
         $options = new Values($options);
 
         $data = Values::of([

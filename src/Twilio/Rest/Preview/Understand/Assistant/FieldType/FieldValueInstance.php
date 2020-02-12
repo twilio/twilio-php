@@ -40,7 +40,7 @@ class FieldValueInstance extends InstanceResource {
      *                             this Field Value.
      * @param string $sid The sid
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $fieldTypeSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $fieldTypeSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -110,7 +110,7 @@ class FieldValueInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

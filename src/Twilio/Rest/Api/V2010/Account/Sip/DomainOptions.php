@@ -28,7 +28,7 @@ abstract class DomainOptions {
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @return CreateDomainOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $sipRegistration = Values::NONE): CreateDomainOptions {
+    public static function create(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE): CreateDomainOptions {
         return new CreateDomainOptions($friendlyName, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $voiceStatusCallbackUrl, $voiceStatusCallbackMethod, $sipRegistration);
     }
 
@@ -48,7 +48,7 @@ abstract class DomainOptions {
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @return UpdateDomainOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceUrl = Values::NONE, $sipRegistration = Values::NONE, $domainName = Values::NONE): UpdateDomainOptions {
+    public static function update(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE): UpdateDomainOptions {
         return new UpdateDomainOptions($friendlyName, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceStatusCallbackMethod, $voiceStatusCallbackUrl, $voiceUrl, $sipRegistration, $domainName);
     }
 }
@@ -68,7 +68,7 @@ class CreateDomainOptions extends Options {
      *                                          call `voice_status_callback_url`
      * @param bool $sipRegistration Whether SIP registration is allowed
      */
-    public function __construct($friendlyName = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $sipRegistration = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -85,7 +85,7 @@ class CreateDomainOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -96,7 +96,7 @@ class CreateDomainOptions extends Options {
      * @param string $voiceUrl The URL we should call when receiving a call
      * @return $this Fluent Builder
      */
-    public function setVoiceUrl($voiceUrl): self {
+    public function setVoiceUrl(string $voiceUrl): self {
         $this->options['voiceUrl'] = $voiceUrl;
         return $this;
     }
@@ -107,7 +107,7 @@ class CreateDomainOptions extends Options {
      * @param string $voiceMethod The HTTP method to use with voice_url
      * @return $this Fluent Builder
      */
-    public function setVoiceMethod($voiceMethod): self {
+    public function setVoiceMethod(string $voiceMethod): self {
         $this->options['voiceMethod'] = $voiceMethod;
         return $this;
     }
@@ -119,7 +119,7 @@ class CreateDomainOptions extends Options {
      *                                 in executing TwiML
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackUrl($voiceFallbackUrl): self {
+    public function setVoiceFallbackUrl(string $voiceFallbackUrl): self {
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         return $this;
     }
@@ -131,7 +131,7 @@ class CreateDomainOptions extends Options {
      *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackMethod($voiceFallbackMethod): self {
+    public function setVoiceFallbackMethod(string $voiceFallbackMethod): self {
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         return $this;
     }
@@ -143,7 +143,7 @@ class CreateDomainOptions extends Options {
      *                                       status updates
      * @return $this Fluent Builder
      */
-    public function setVoiceStatusCallbackUrl($voiceStatusCallbackUrl): self {
+    public function setVoiceStatusCallbackUrl(string $voiceStatusCallbackUrl): self {
         $this->options['voiceStatusCallbackUrl'] = $voiceStatusCallbackUrl;
         return $this;
     }
@@ -155,7 +155,7 @@ class CreateDomainOptions extends Options {
      *                                          call `voice_status_callback_url`
      * @return $this Fluent Builder
      */
-    public function setVoiceStatusCallbackMethod($voiceStatusCallbackMethod): self {
+    public function setVoiceStatusCallbackMethod(string $voiceStatusCallbackMethod): self {
         $this->options['voiceStatusCallbackMethod'] = $voiceStatusCallbackMethod;
         return $this;
     }
@@ -166,7 +166,7 @@ class CreateDomainOptions extends Options {
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
-    public function setSipRegistration($sipRegistration): self {
+    public function setSipRegistration(bool $sipRegistration): self {
         $this->options['sipRegistration'] = $sipRegistration;
         return $this;
     }
@@ -203,7 +203,7 @@ class UpdateDomainOptions extends Options {
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @param string $domainName The unique address on Twilio to route SIP traffic
      */
-    public function __construct($friendlyName = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceUrl = Values::NONE, $sipRegistration = Values::NONE, $domainName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
@@ -221,7 +221,7 @@ class UpdateDomainOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -233,7 +233,7 @@ class UpdateDomainOptions extends Options {
      *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackMethod($voiceFallbackMethod): self {
+    public function setVoiceFallbackMethod(string $voiceFallbackMethod): self {
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         return $this;
     }
@@ -245,7 +245,7 @@ class UpdateDomainOptions extends Options {
      *                                 in executing TwiML
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackUrl($voiceFallbackUrl): self {
+    public function setVoiceFallbackUrl(string $voiceFallbackUrl): self {
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         return $this;
     }
@@ -256,7 +256,7 @@ class UpdateDomainOptions extends Options {
      * @param string $voiceMethod The HTTP method we should use with voice_url
      * @return $this Fluent Builder
      */
-    public function setVoiceMethod($voiceMethod): self {
+    public function setVoiceMethod(string $voiceMethod): self {
         $this->options['voiceMethod'] = $voiceMethod;
         return $this;
     }
@@ -268,7 +268,7 @@ class UpdateDomainOptions extends Options {
      *                                          call voice_status_callback_url
      * @return $this Fluent Builder
      */
-    public function setVoiceStatusCallbackMethod($voiceStatusCallbackMethod): self {
+    public function setVoiceStatusCallbackMethod(string $voiceStatusCallbackMethod): self {
         $this->options['voiceStatusCallbackMethod'] = $voiceStatusCallbackMethod;
         return $this;
     }
@@ -280,7 +280,7 @@ class UpdateDomainOptions extends Options {
      *                                       status updates
      * @return $this Fluent Builder
      */
-    public function setVoiceStatusCallbackUrl($voiceStatusCallbackUrl): self {
+    public function setVoiceStatusCallbackUrl(string $voiceStatusCallbackUrl): self {
         $this->options['voiceStatusCallbackUrl'] = $voiceStatusCallbackUrl;
         return $this;
     }
@@ -291,7 +291,7 @@ class UpdateDomainOptions extends Options {
      * @param string $voiceUrl The URL we should call when receiving a call
      * @return $this Fluent Builder
      */
-    public function setVoiceUrl($voiceUrl): self {
+    public function setVoiceUrl(string $voiceUrl): self {
         $this->options['voiceUrl'] = $voiceUrl;
         return $this;
     }
@@ -302,7 +302,7 @@ class UpdateDomainOptions extends Options {
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
-    public function setSipRegistration($sipRegistration): self {
+    public function setSipRegistration(bool $sipRegistration): self {
         $this->options['sipRegistration'] = $sipRegistration;
         return $this;
     }
@@ -313,7 +313,7 @@ class UpdateDomainOptions extends Options {
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @return $this Fluent Builder
      */
-    public function setDomainName($domainName): self {
+    public function setDomainName(string $domainName): self {
         $this->options['domainName'] = $domainName;
         return $this;
     }

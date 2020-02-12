@@ -22,7 +22,7 @@ class DependentPhoneNumberList extends ListResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $addressSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $accountSid, $addressSid) {
+    public function __construct(Version $version, string $accountSid, string $addressSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -50,7 +50,7 @@ class DependentPhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -73,7 +73,7 @@ class DependentPhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DependentPhoneNumberInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -86,7 +86,7 @@ class DependentPhoneNumberList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DependentPhoneNumberPage Page of DependentPhoneNumberInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): DependentPhoneNumberPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DependentPhoneNumberPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -106,7 +106,7 @@ class DependentPhoneNumberList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DependentPhoneNumberPage Page of DependentPhoneNumberInstance
      */
-    public function getPage($targetUrl): DependentPhoneNumberPage {
+    public function getPage(string $targetUrl): DependentPhoneNumberPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

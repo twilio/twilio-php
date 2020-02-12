@@ -27,7 +27,7 @@ class SyncListPermissionList extends ListResource {
      * @param string $listSid The SID of the Sync List to which the Permission
      *                        applies
      */
-    public function __construct(Version $version, $serviceSid, $listSid) {
+    public function __construct(Version $version, string $serviceSid, string $listSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +55,7 @@ class SyncListPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -78,7 +78,7 @@ class SyncListPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncListPermissionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -91,7 +91,7 @@ class SyncListPermissionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncListPermissionPage Page of SyncListPermissionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncListPermissionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncListPermissionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -110,7 +110,7 @@ class SyncListPermissionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncListPermissionPage Page of SyncListPermissionInstance
      */
-    public function getPage($targetUrl): SyncListPermissionPage {
+    public function getPage(string $targetUrl): SyncListPermissionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class SyncListPermissionList extends ListResource {
      *                         identifies the User's Sync List Permission resource
      *                         to fetch
      */
-    public function getContext($identity): SyncListPermissionContext {
+    public function getContext(string $identity): SyncListPermissionContext {
         return new SyncListPermissionContext(
             $this->version,
             $this->solution['serviceSid'],

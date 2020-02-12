@@ -40,7 +40,7 @@ class FunctionVersionInstance extends InstanceResource {
      * @param string $sid The SID that identifies the Function Version resource to
      *                    fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $functionSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -98,7 +98,7 @@ class FunctionVersionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

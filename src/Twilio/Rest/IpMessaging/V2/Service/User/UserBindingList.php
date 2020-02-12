@@ -25,7 +25,7 @@ class UserBindingList extends ListResource {
      *                           associated with
      * @param string $userSid The SID of the User with the binding
      */
-    public function __construct(Version $version, $serviceSid, $userSid) {
+    public function __construct(Version $version, string $serviceSid, string $userSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -53,7 +53,7 @@ class UserBindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -77,7 +77,7 @@ class UserBindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UserBindingInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -91,7 +91,7 @@ class UserBindingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UserBindingPage Page of UserBindingInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): UserBindingPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UserBindingPage {
         $options = new Values($options);
         $params = Values::of([
             'BindingType' => Serialize::map($options['bindingType'], function($e) { return $e; }),
@@ -116,7 +116,7 @@ class UserBindingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UserBindingPage Page of UserBindingInstance
      */
-    public function getPage($targetUrl): UserBindingPage {
+    public function getPage(string $targetUrl): UserBindingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -130,7 +130,7 @@ class UserBindingList extends ListResource {
      *
      * @param string $sid The SID of the User Binding resource to fetch
      */
-    public function getContext($sid): UserBindingContext {
+    public function getContext(string $sid): UserBindingContext {
         return new UserBindingContext(
             $this->version,
             $this->solution['serviceSid'],

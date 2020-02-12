@@ -32,7 +32,7 @@ class CallList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created this resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -50,7 +50,7 @@ class CallList extends ListResource {
      * @return CallInstance Newly created CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $from, $options = []): CallInstance {
+    public function create(string $to, string $from, array $options = []): CallInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -113,7 +113,7 @@ class CallList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -137,7 +137,7 @@ class CallList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CallInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -151,7 +151,7 @@ class CallList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CallPage Page of CallInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CallPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CallPage {
         $options = new Values($options);
         $params = Values::of([
             'To' => $options['to'],
@@ -185,7 +185,7 @@ class CallList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CallPage Page of CallInstance
      */
-    public function getPage($targetUrl): CallPage {
+    public function getPage(string $targetUrl): CallPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -210,7 +210,7 @@ class CallList extends ListResource {
      *
      * @param string $sid The SID of the Call resource to fetch
      */
-    public function getContext($sid): CallContext {
+    public function getContext(string $sid): CallContext {
         return new CallContext($this->version, $this->solution['accountSid'], $sid);
     }
 
@@ -221,7 +221,7 @@ class CallList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -238,7 +238,7 @@ class CallList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);

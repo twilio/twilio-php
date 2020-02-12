@@ -46,7 +46,7 @@ class FleetInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid A string that uniquely identifies the Fleet.
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -106,7 +106,7 @@ class FleetInstance extends InstanceResource {
      * @return FleetInstance Updated FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): FleetInstance {
+    public function update(array $options = []): FleetInstance {
         return $this->proxy()->update($options);
     }
 
@@ -145,7 +145,7 @@ class FleetInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -30,7 +30,7 @@ class NumberList extends ListResource {
      *
      * @param string $number The phone number to fetch
      */
-    public function getContext($number): NumberContext {
+    public function getContext(string $number): NumberContext {
         return new NumberContext($this->version, $number);
     }
 

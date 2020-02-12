@@ -59,7 +59,7 @@ class Video extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -76,7 +76,7 @@ class Video extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -92,7 +92,7 @@ class Video extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextCompositions($sid): \Twilio\Rest\Video\V1\CompositionContext {
+    protected function contextCompositions(string $sid): \Twilio\Rest\Video\V1\CompositionContext {
         return $this->v1->compositions($sid);
     }
 
@@ -103,7 +103,7 @@ class Video extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextCompositionHooks($sid): \Twilio\Rest\Video\V1\CompositionHookContext {
+    protected function contextCompositionHooks(string $sid): \Twilio\Rest\Video\V1\CompositionHookContext {
         return $this->v1->compositionHooks($sid);
     }
 
@@ -122,7 +122,7 @@ class Video extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextRecordings($sid): \Twilio\Rest\Video\V1\RecordingContext {
+    protected function contextRecordings(string $sid): \Twilio\Rest\Video\V1\RecordingContext {
         return $this->v1->recordings($sid);
     }
 
@@ -141,7 +141,7 @@ class Video extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextRooms($sid): \Twilio\Rest\Video\V1\RoomContext {
+    protected function contextRooms(string $sid): \Twilio\Rest\Video\V1\RoomContext {
         return $this->v1->rooms($sid);
     }
 

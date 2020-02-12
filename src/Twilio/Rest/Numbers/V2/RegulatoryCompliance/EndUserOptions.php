@@ -18,7 +18,7 @@ abstract class EndUserOptions {
      *                          resource
      * @return CreateEndUserOptions Options builder
      */
-    public static function create($attributes = Values::NONE): CreateEndUserOptions {
+    public static function create(array $attributes = Values::NONE): CreateEndUserOptions {
         return new CreateEndUserOptions($attributes);
     }
 
@@ -29,7 +29,7 @@ abstract class EndUserOptions {
      *                          resource
      * @return UpdateEndUserOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $attributes = Values::NONE): UpdateEndUserOptions {
+    public static function update(string $friendlyName = Values::NONE, array $attributes = Values::NONE): UpdateEndUserOptions {
         return new UpdateEndUserOptions($friendlyName, $attributes);
     }
 }
@@ -39,7 +39,7 @@ class CreateEndUserOptions extends Options {
      * @param array $attributes The set of parameters that compose the End User
      *                          resource
      */
-    public function __construct($attributes = Values::NONE) {
+    public function __construct(array $attributes = Values::NONE) {
         $this->options['attributes'] = $attributes;
     }
 
@@ -50,7 +50,7 @@ class CreateEndUserOptions extends Options {
      *                          resource
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(array $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -78,7 +78,7 @@ class UpdateEndUserOptions extends Options {
      * @param array $attributes The set of parameters that compose the End User
      *                          resource
      */
-    public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $attributes = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
     }
@@ -90,7 +90,7 @@ class UpdateEndUserOptions extends Options {
      *                             resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -102,7 +102,7 @@ class UpdateEndUserOptions extends Options {
      *                          resource
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(array $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }

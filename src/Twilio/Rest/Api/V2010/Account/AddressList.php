@@ -25,7 +25,7 @@ class AddressList extends ListResource {
      * @param string $accountSid The SID of the Account that is responsible for the
      *                           resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -47,7 +47,7 @@ class AddressList extends ListResource {
      * @return AddressInstance Newly created AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($customerName, $street, $city, $region, $postalCode, $isoCountry, $options = []): AddressInstance {
+    public function create(string $customerName, string $street, string $city, string $region, string $postalCode, string $isoCountry, array $options = []): AddressInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -91,7 +91,7 @@ class AddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -115,7 +115,7 @@ class AddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AddressInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -129,7 +129,7 @@ class AddressList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AddressPage Page of AddressInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AddressPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AddressPage {
         $options = new Values($options);
         $params = Values::of([
             'CustomerName' => $options['customerName'],
@@ -156,7 +156,7 @@ class AddressList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AddressPage Page of AddressInstance
      */
-    public function getPage($targetUrl): AddressPage {
+    public function getPage(string $targetUrl): AddressPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -170,7 +170,7 @@ class AddressList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): AddressContext {
+    public function getContext(string $sid): AddressContext {
         return new AddressContext($this->version, $this->solution['accountSid'], $sid);
     }
 

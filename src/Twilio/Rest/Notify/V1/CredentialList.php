@@ -53,7 +53,7 @@ class CredentialList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class CredentialList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -89,7 +89,7 @@ class CredentialList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CredentialPage Page of CredentialInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -108,7 +108,7 @@ class CredentialList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CredentialPage Page of CredentialInstance
      */
-    public function getPage($targetUrl): CredentialPage {
+    public function getPage(string $targetUrl): CredentialPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -125,7 +125,7 @@ class CredentialList extends ListResource {
      * @return CredentialInstance Newly created CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($type, $options = []): CredentialInstance {
+    public function create(string $type, array $options = []): CredentialInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -153,7 +153,7 @@ class CredentialList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): CredentialContext {
+    public function getContext(string $sid): CredentialContext {
         return new CredentialContext($this->version, $sid);
     }
 

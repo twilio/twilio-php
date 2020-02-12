@@ -23,7 +23,7 @@ class FeedbackSummaryList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created this resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +41,7 @@ class FeedbackSummaryList extends ListResource {
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($startDate, $endDate, $options = []): FeedbackSummaryInstance {
+    public function create(\DateTime $startDate, \DateTime $endDate, array $options = []): FeedbackSummaryInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -68,7 +68,7 @@ class FeedbackSummaryList extends ListResource {
      * @param string $sid A string that uniquely identifies this feedback summary
      *                    resource
      */
-    public function getContext($sid): FeedbackSummaryContext {
+    public function getContext(string $sid): FeedbackSummaryContext {
         return new FeedbackSummaryContext($this->version, $this->solution['accountSid'], $sid);
     }
 

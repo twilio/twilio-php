@@ -41,7 +41,7 @@ class FeedbackContext extends InstanceContext {
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($qualityScore, $options = []): FeedbackInstance {
+    public function create(int $qualityScore, array $options = []): FeedbackInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -95,7 +95,7 @@ class FeedbackContext extends InstanceContext {
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($qualityScore, $options = []): FeedbackInstance {
+    public function update(int $qualityScore, array $options = []): FeedbackInstance {
         $options = new Values($options);
 
         $data = Values::of([

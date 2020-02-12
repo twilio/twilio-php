@@ -22,7 +22,7 @@ class StyleSheetList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the Assistant
      */
-    public function __construct(Version $version, $assistantSid) {
+    public function __construct(Version $version, string $assistantSid) {
         parent::__construct($version);
 
         // Path Solution

@@ -20,7 +20,7 @@ class EngagementContextList extends ListResource {
      * @param string $flowSid Flow SID
      * @param string $engagementSid Engagement SID
      */
-    public function __construct(Version $version, $flowSid, $engagementSid) {
+    public function __construct(Version $version, string $flowSid, string $engagementSid) {
         parent::__construct($version);
 
         // Path Solution

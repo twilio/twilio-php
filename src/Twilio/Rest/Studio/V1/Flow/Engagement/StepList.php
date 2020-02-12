@@ -22,7 +22,7 @@ class StepList extends ListResource {
      * @param string $flowSid The SID of the Flow
      * @param string $engagementSid The SID of the Engagement
      */
-    public function __construct(Version $version, $flowSid, $engagementSid) {
+    public function __construct(Version $version, string $flowSid, string $engagementSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -49,7 +49,7 @@ class StepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -72,7 +72,7 @@ class StepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return StepInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -85,7 +85,7 @@ class StepList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return StepPage Page of StepInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): StepPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): StepPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -104,7 +104,7 @@ class StepList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return StepPage Page of StepInstance
      */
-    public function getPage($targetUrl): StepPage {
+    public function getPage(string $targetUrl): StepPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -118,7 +118,7 @@ class StepList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): StepContext {
+    public function getContext(string $sid): StepContext {
         return new StepContext(
             $this->version,
             $this->solution['flowSid'],

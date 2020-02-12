@@ -28,7 +28,7 @@ class SubscribeRulesList extends ListResource {
      * @param string $participantSid The SID of the Participant resource for the
      *                               Subscribe Rules
      */
-    public function __construct(Version $version, $roomSid, $participantSid) {
+    public function __construct(Version $version, string $roomSid, string $participantSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +67,7 @@ class SubscribeRulesList extends ListResource {
      * @return SubscribeRulesInstance Updated SubscribeRulesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SubscribeRulesInstance {
+    public function update(array $options = []): SubscribeRulesInstance {
         $options = new Values($options);
 
         $data = Values::of(['Rules' => Serialize::jsonObject($options['rules']), ]);

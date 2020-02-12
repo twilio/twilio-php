@@ -28,7 +28,7 @@ class BindingList extends ListResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -48,7 +48,7 @@ class BindingList extends ListResource {
      * @return BindingInstance Newly created BindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($identity, $bindingType, $address, $options = []): BindingInstance {
+    public function create(string $identity, string $bindingType, string $address, array $options = []): BindingInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -90,7 +90,7 @@ class BindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -114,7 +114,7 @@ class BindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BindingInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -128,7 +128,7 @@ class BindingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return BindingPage Page of BindingInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): BindingPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BindingPage {
         $options = new Values($options);
         $params = Values::of([
             'StartDate' => Serialize::iso8601Date($options['startDate']),
@@ -156,7 +156,7 @@ class BindingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return BindingPage Page of BindingInstance
      */
-    public function getPage($targetUrl): BindingPage {
+    public function getPage(string $targetUrl): BindingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -170,7 +170,7 @@ class BindingList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): BindingContext {
+    public function getContext(string $sid): BindingContext {
         return new BindingContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

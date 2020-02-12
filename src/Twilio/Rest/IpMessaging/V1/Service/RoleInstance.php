@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string $serviceSid
  * @property string $friendlyName
  * @property string $type
- * @property string $permissions
+ * @property string[] $permissions
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -36,7 +36,7 @@ class RoleInstance extends InstanceResource {
      *                           associated with
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -96,11 +96,11 @@ class RoleInstance extends InstanceResource {
     /**
      * Update the RoleInstance
      *
-     * @param string $permission A permission the role should have
+     * @param string[] $permission A permission the role should have
      * @return RoleInstance Updated RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($permission): RoleInstance {
+    public function update(array $permission): RoleInstance {
         return $this->proxy()->update($permission);
     }
 
@@ -111,7 +111,7 @@ class RoleInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
