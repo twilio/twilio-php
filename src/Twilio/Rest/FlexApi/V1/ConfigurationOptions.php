@@ -18,7 +18,7 @@ abstract class ConfigurationOptions {
      *                          to fetch
      * @return FetchConfigurationOptions Options builder
      */
-    public static function fetch($uiVersion = Values::NONE): FetchConfigurationOptions {
+    public static function fetch(string $uiVersion = Values::NONE): FetchConfigurationOptions {
         return new FetchConfigurationOptions($uiVersion);
     }
 }
@@ -28,7 +28,7 @@ class FetchConfigurationOptions extends Options {
      * @param string $uiVersion The Pinned UI version of the Configuration resource
      *                          to fetch
      */
-    public function __construct($uiVersion = Values::NONE) {
+    public function __construct(string $uiVersion = Values::NONE) {
         $this->options['uiVersion'] = $uiVersion;
     }
 
@@ -39,7 +39,7 @@ class FetchConfigurationOptions extends Options {
      *                          to fetch
      * @return $this Fluent Builder
      */
-    public function setUiVersion($uiVersion): self {
+    public function setUiVersion(string $uiVersion): self {
         $this->options['uiVersion'] = $uiVersion;
         return $this;
     }

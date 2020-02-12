@@ -68,7 +68,7 @@ class SampleContext extends InstanceContext {
      * @return SampleInstance Updated SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SampleInstance {
+    public function update(array $options = []): SampleInstance {
         $options = new Values($options);
 
         $data = Values::of([

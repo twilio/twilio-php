@@ -25,7 +25,7 @@ abstract class DocumentOptions {
      *                 is deleted
      * @return CreateDocumentOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE): CreateDocumentOptions {
+    public static function create(string $uniqueName = Values::NONE, array $data = Values::NONE, int $ttl = Values::NONE): CreateDocumentOptions {
         return new CreateDocumentOptions($uniqueName, $data, $ttl);
     }
 
@@ -36,7 +36,7 @@ abstract class DocumentOptions {
      *                 and is deleted
      * @return UpdateDocumentOptions Options builder
      */
-    public static function update($data = Values::NONE, $ttl = Values::NONE): UpdateDocumentOptions {
+    public static function update(array $data = Values::NONE, int $ttl = Values::NONE): UpdateDocumentOptions {
         return new UpdateDocumentOptions($data, $ttl);
     }
 }
@@ -50,7 +50,7 @@ class CreateDocumentOptions extends Options {
      * @param int $ttl How long, in seconds, before the Sync Document expires and
      *                 is deleted
      */
-    public function __construct($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, array $data = Values::NONE, int $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
@@ -63,7 +63,7 @@ class CreateDocumentOptions extends Options {
      *                           identifies the Sync Document
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -75,7 +75,7 @@ class CreateDocumentOptions extends Options {
      *                    object that the Sync Document stores
      * @return $this Fluent Builder
      */
-    public function setData($data): self {
+    public function setData(array $data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -87,7 +87,7 @@ class CreateDocumentOptions extends Options {
      *                 is deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -115,7 +115,7 @@ class UpdateDocumentOptions extends Options {
      * @param int $ttl How long, in seconds, before the Document resource expires
      *                 and is deleted
      */
-    public function __construct($data = Values::NONE, $ttl = Values::NONE) {
+    public function __construct(array $data = Values::NONE, int $ttl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
     }
@@ -127,7 +127,7 @@ class UpdateDocumentOptions extends Options {
      *                    object that the Sync Document stores
      * @return $this Fluent Builder
      */
-    public function setData($data): self {
+    public function setData(array $data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -139,7 +139,7 @@ class UpdateDocumentOptions extends Options {
      *                 and is deleted
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }

@@ -80,7 +80,7 @@ class SyncListPermissionContext extends InstanceContext {
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage): SyncListPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): SyncListPermissionInstance {
         $data = Values::of([
             'Read' => Serialize::booleanToString($read),
             'Write' => Serialize::booleanToString($write),

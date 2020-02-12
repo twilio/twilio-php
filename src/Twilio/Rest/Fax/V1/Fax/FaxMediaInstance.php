@@ -36,7 +36,7 @@ class FaxMediaInstance extends InstanceResource {
      *                       with
      * @param string $sid The unique string that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $faxSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $faxSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -98,7 +98,7 @@ class FaxMediaInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

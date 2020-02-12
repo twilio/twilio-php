@@ -37,7 +37,7 @@ class ConfigurationContext extends InstanceContext {
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): ConfigurationInstance {
+    public function fetch(array $options = []): ConfigurationInstance {
         $options = new Values($options);
 
         $params = Values::of(['UiVersion' => $options['uiVersion'], ]);

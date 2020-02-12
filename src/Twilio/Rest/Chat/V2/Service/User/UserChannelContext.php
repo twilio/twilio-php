@@ -78,7 +78,7 @@ class UserChannelContext extends InstanceContext {
      * @return UserChannelInstance Updated UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): UserChannelInstance {
+    public function update(array $options = []): UserChannelInstance {
         $options = new Values($options);
 
         $data = Values::of([

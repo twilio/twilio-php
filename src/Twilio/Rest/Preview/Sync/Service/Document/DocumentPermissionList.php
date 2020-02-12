@@ -25,7 +25,7 @@ class DocumentPermissionList extends ListResource {
      * @param string $serviceSid Sync Service Instance SID.
      * @param string $documentSid Sync Document SID.
      */
-    public function __construct(Version $version, $serviceSid, $documentSid) {
+    public function __construct(Version $version, string $serviceSid, string $documentSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -53,7 +53,7 @@ class DocumentPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class DocumentPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DocumentPermissionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -89,7 +89,7 @@ class DocumentPermissionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DocumentPermissionPage Page of DocumentPermissionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): DocumentPermissionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DocumentPermissionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -108,7 +108,7 @@ class DocumentPermissionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DocumentPermissionPage Page of DocumentPermissionInstance
      */
-    public function getPage($targetUrl): DocumentPermissionPage {
+    public function getPage(string $targetUrl): DocumentPermissionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -123,7 +123,7 @@ class DocumentPermissionList extends ListResource {
      * @param string $identity Identity of the user to whom the Sync Document
      *                         Permission applies.
      */
-    public function getContext($identity): DocumentPermissionContext {
+    public function getContext(string $identity): DocumentPermissionContext {
         return new DocumentPermissionContext(
             $this->version,
             $this->solution['serviceSid'],

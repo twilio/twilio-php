@@ -40,7 +40,7 @@ class ModelBuildInstance extends InstanceResource {
      *                             the resource
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +95,7 @@ class ModelBuildInstance extends InstanceResource {
      * @return ModelBuildInstance Updated ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ModelBuildInstance {
+    public function update(array $options = []): ModelBuildInstance {
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +116,7 @@ class ModelBuildInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -9,16 +9,27 @@
 
 namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 
+use Twilio\Http\Response;
 use Twilio\Page;
+use Twilio\Version;
 
 class EndUserPage extends Page {
-    public function __construct($version, $response, $solution) {
+    /**
+     * @param Version $version Version that contains the resource
+     * @param Response $response Response from the API
+     * @param array $solution The context solution
+     */
+    public function __construct(Version $version, Response $response, array $solution) {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
+    /**
+     * @param array $payload Payload response from the API
+     * @return EndUserInstance \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserInstance
+     */
     public function buildInstance(array $payload): EndUserInstance {
         return new EndUserInstance($this->version, $payload);
     }

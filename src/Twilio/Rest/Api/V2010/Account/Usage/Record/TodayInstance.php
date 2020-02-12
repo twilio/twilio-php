@@ -41,7 +41,7 @@ class TodayInstance extends InstanceResource {
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      */
-    public function __construct(Version $version, array $payload, $accountSid) {
+    public function __construct(Version $version, array $payload, string $accountSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +73,7 @@ class TodayInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

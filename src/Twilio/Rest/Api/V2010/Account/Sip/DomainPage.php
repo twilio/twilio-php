@@ -9,16 +9,27 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip;
 
+use Twilio\Http\Response;
 use Twilio\Page;
+use Twilio\Version;
 
 class DomainPage extends Page {
-    public function __construct($version, $response, $solution) {
+    /**
+     * @param Version $version Version that contains the resource
+     * @param Response $response Response from the API
+     * @param array $solution The context solution
+     */
+    public function __construct(Version $version, Response $response, array $solution) {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
+    /**
+     * @param array $payload Payload response from the API
+     * @return DomainInstance \Twilio\Rest\Api\V2010\Account\Sip\DomainInstance
+     */
     public function buildInstance(array $payload): DomainInstance {
         return new DomainInstance($this->version, $payload, $this->solution['accountSid']);
     }

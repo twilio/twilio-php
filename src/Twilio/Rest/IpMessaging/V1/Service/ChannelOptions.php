@@ -22,15 +22,15 @@ abstract class ChannelOptions {
      * @param string $type The visibility of the channel
      * @return CreateChannelOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE): CreateChannelOptions {
+    public static function create(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE): CreateChannelOptions {
         return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type);
     }
 
     /**
-     * @param string $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      * @return ReadChannelOptions Options builder
      */
-    public static function read($type = Values::NONE): ReadChannelOptions {
+    public static function read(string[] $type = Values::NONE): ReadChannelOptions {
         return new ReadChannelOptions($type);
     }
 
@@ -42,7 +42,7 @@ abstract class ChannelOptions {
      *                           application-specific data
      * @return UpdateChannelOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE): UpdateChannelOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE): UpdateChannelOptions {
         return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes);
     }
 }
@@ -56,7 +56,7 @@ class CreateChannelOptions extends Options {
      *                           application-specific data
      * @param string $type The visibility of the channel
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -69,7 +69,7 @@ class CreateChannelOptions extends Options {
      * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -81,7 +81,7 @@ class CreateChannelOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -93,7 +93,7 @@ class CreateChannelOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -104,7 +104,7 @@ class CreateChannelOptions extends Options {
      * @param string $type The visibility of the channel
      * @return $this Fluent Builder
      */
-    public function setType($type): self {
+    public function setType(string $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -127,19 +127,19 @@ class CreateChannelOptions extends Options {
 
 class ReadChannelOptions extends Options {
     /**
-     * @param string $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      */
-    public function __construct($type = Values::NONE) {
+    public function __construct(string[] $type = Values::NONE) {
         $this->options['type'] = $type;
     }
 
     /**
      * The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      *
-     * @param string $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
-    public function setType($type): self {
+    public function setType(string[] $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -168,7 +168,7 @@ class UpdateChannelOptions extends Options {
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -180,7 +180,7 @@ class UpdateChannelOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -192,7 +192,7 @@ class UpdateChannelOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -204,7 +204,7 @@ class UpdateChannelOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }

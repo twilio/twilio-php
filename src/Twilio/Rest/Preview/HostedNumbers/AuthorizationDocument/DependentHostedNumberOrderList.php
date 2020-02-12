@@ -25,7 +25,7 @@ class DependentHostedNumberOrderList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $signingDocumentSid LOA document sid.
      */
-    public function __construct(Version $version, $signingDocumentSid) {
+    public function __construct(Version $version, string $signingDocumentSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -54,7 +54,7 @@ class DependentHostedNumberOrderList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -78,7 +78,7 @@ class DependentHostedNumberOrderList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DependentHostedNumberOrderInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -94,7 +94,7 @@ class DependentHostedNumberOrderList extends ListResource {
      * @return DependentHostedNumberOrderPage Page of
      *                                        DependentHostedNumberOrderInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): DependentHostedNumberOrderPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DependentHostedNumberOrderPage {
         $options = new Values($options);
         $params = Values::of([
             'Status' => $options['status'],
@@ -125,7 +125,7 @@ class DependentHostedNumberOrderList extends ListResource {
      * @return DependentHostedNumberOrderPage Page of
      *                                        DependentHostedNumberOrderInstance
      */
-    public function getPage($targetUrl): DependentHostedNumberOrderPage {
+    public function getPage(string $targetUrl): DependentHostedNumberOrderPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

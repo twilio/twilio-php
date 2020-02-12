@@ -23,7 +23,7 @@ class AuthTypeCallsInstance extends InstanceResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $domainSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid) {
         parent::__construct($version);
 
         $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
@@ -36,7 +36,7 @@ class AuthTypeCallsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

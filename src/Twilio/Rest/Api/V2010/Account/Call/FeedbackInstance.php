@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string $accountSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $issues
+ * @property string[] $issues
  * @property int $qualityScore
  * @property string $sid
  */
@@ -33,7 +33,7 @@ class FeedbackInstance extends InstanceResource {
      * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The unique string that identifies this resource
      */
-    public function __construct(Version $version, array $payload, $accountSid, $callSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -75,7 +75,7 @@ class FeedbackInstance extends InstanceResource {
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($qualityScore, $options = []): FeedbackInstance {
+    public function create(int $qualityScore, array $options = []): FeedbackInstance {
         return $this->proxy()->create($qualityScore, $options);
     }
 
@@ -97,7 +97,7 @@ class FeedbackInstance extends InstanceResource {
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($qualityScore, $options = []): FeedbackInstance {
+    public function update(int $qualityScore, array $options = []): FeedbackInstance {
         return $this->proxy()->update($qualityScore, $options);
     }
 
@@ -108,7 +108,7 @@ class FeedbackInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

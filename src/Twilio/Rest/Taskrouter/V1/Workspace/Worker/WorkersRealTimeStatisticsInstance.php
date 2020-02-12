@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property string $accountSid
- * @property array $activityStatistics
+ * @property array[] $activityStatistics
  * @property int $totalWorkers
  * @property string $workspaceSid
  * @property string $url
@@ -31,7 +31,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Workers
      */
-    public function __construct(Version $version, array $payload, $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +72,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      *                                           WorkersRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkersRealTimeStatisticsInstance {
+    public function fetch(array $options = []): WorkersRealTimeStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -83,7 +83,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -25,7 +25,7 @@ class InstalledAddOnExtensionList extends ListResource {
      * @param string $installedAddOnSid The SID of the InstalledAddOn resource to
      *                                  which this extension applies
      */
-    public function __construct(Version $version, $installedAddOnSid) {
+    public function __construct(Version $version, string $installedAddOnSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -53,7 +53,7 @@ class InstalledAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class InstalledAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return InstalledAddOnExtensionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class InstalledAddOnExtensionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return InstalledAddOnExtensionPage Page of InstalledAddOnExtensionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): InstalledAddOnExtensionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): InstalledAddOnExtensionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -110,7 +110,7 @@ class InstalledAddOnExtensionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return InstalledAddOnExtensionPage Page of InstalledAddOnExtensionInstance
      */
-    public function getPage($targetUrl): InstalledAddOnExtensionPage {
+    public function getPage(string $targetUrl): InstalledAddOnExtensionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -124,7 +124,7 @@ class InstalledAddOnExtensionList extends ListResource {
      *
      * @param string $sid The SID of the InstalledAddOn Extension resource to fetch
      */
-    public function getContext($sid): InstalledAddOnExtensionContext {
+    public function getContext(string $sid): InstalledAddOnExtensionContext {
         return new InstalledAddOnExtensionContext(
             $this->version,
             $this->solution['installedAddOnSid'],

@@ -26,7 +26,7 @@ class FactorList extends ListResource {
      * @param string $serviceSid Service Sid.
      * @param string $identity Unique identity of the Entity
      */
-    public function __construct(Version $version, $serviceSid, $identity) {
+    public function __construct(Version $version, string $serviceSid, string $identity) {
         parent::__construct($version);
 
         // Path Solution
@@ -44,7 +44,7 @@ class FactorList extends ListResource {
      * @return FactorInstance Newly created FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($binding, $friendlyName, $factorType): FactorInstance {
+    public function create(string $binding, string $friendlyName, string $factorType): FactorInstance {
         $data = Values::of([
             'Binding' => $binding,
             'FriendlyName' => $friendlyName,
@@ -84,7 +84,7 @@ class FactorList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -107,7 +107,7 @@ class FactorList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FactorInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -120,7 +120,7 @@ class FactorList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FactorPage Page of FactorInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FactorPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FactorPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -139,7 +139,7 @@ class FactorList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FactorPage Page of FactorInstance
      */
-    public function getPage($targetUrl): FactorPage {
+    public function getPage(string $targetUrl): FactorPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -153,7 +153,7 @@ class FactorList extends ListResource {
      *
      * @param string $sid A string that uniquely identifies this Factor.
      */
-    public function getContext($sid): FactorContext {
+    public function getContext(string $sid): FactorContext {
         return new FactorContext(
             $this->version,
             $this->solution['serviceSid'],

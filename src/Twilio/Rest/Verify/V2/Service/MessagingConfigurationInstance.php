@@ -34,7 +34,7 @@ class MessagingConfigurationInstance extends InstanceResource {
      *                           associated with
      * @param string $country The ISO-3166-1 country code of the country or `all`.
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $country = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $country = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +81,7 @@ class MessagingConfigurationInstance extends InstanceResource {
      * @return MessagingConfigurationInstance Updated MessagingConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($messagingServiceSid): MessagingConfigurationInstance {
+    public function update(string $messagingServiceSid): MessagingConfigurationInstance {
         return $this->proxy()->update($messagingServiceSid);
     }
 
@@ -112,7 +112,7 @@ class MessagingConfigurationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

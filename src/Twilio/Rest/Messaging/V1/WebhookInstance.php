@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $serviceSid
  * @property string $webhookMethod
- * @property string $webhookFilters
+ * @property string[] $webhookFilters
  * @property string $preWebhookUrl
  * @property string $postWebhookUrl
  * @property int $preWebhookRetryCount
@@ -87,7 +87,7 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance {
         return $this->proxy()->update($options);
     }
 
@@ -98,7 +98,7 @@ class WebhookInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

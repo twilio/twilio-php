@@ -27,7 +27,7 @@ abstract class TaskOptions {
      *                           assistant fetches actions
      * @return CreateTaskOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE): CreateTaskOptions {
+    public static function create(string $friendlyName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE): CreateTaskOptions {
         return new CreateTaskOptions($friendlyName, $actions, $actionsUrl);
     }
 
@@ -45,7 +45,7 @@ abstract class TaskOptions {
      *                           assistant fetches actions
      * @return UpdateTaskOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE): UpdateTaskOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE): UpdateTaskOptions {
         return new UpdateTaskOptions($friendlyName, $uniqueName, $actions, $actionsUrl);
     }
 }
@@ -61,7 +61,7 @@ class CreateTaskOptions extends Options {
      * @param string $actionsUrl User-provided HTTP endpoint where from the
      *                           assistant fetches actions
      */
-    public function __construct($friendlyName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['actions'] = $actions;
         $this->options['actionsUrl'] = $actionsUrl;
@@ -75,7 +75,7 @@ class CreateTaskOptions extends Options {
      *                             characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -88,7 +88,7 @@ class CreateTaskOptions extends Options {
      *                       non-unique.
      * @return $this Fluent Builder
      */
-    public function setActions($actions): self {
+    public function setActions(array $actions): self {
         $this->options['actions'] = $actions;
         return $this;
     }
@@ -100,7 +100,7 @@ class CreateTaskOptions extends Options {
      *                           assistant fetches actions
      * @return $this Fluent Builder
      */
-    public function setActionsUrl($actionsUrl): self {
+    public function setActionsUrl(string $actionsUrl): self {
         $this->options['actionsUrl'] = $actionsUrl;
         return $this;
     }
@@ -135,7 +135,7 @@ class UpdateTaskOptions extends Options {
      * @param string $actionsUrl User-provided HTTP endpoint where from the
      *                           assistant fetches actions
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['actions'] = $actions;
@@ -150,7 +150,7 @@ class UpdateTaskOptions extends Options {
      *                             characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -163,7 +163,7 @@ class UpdateTaskOptions extends Options {
      *                           up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -176,7 +176,7 @@ class UpdateTaskOptions extends Options {
      *                       non-unique.
      * @return $this Fluent Builder
      */
-    public function setActions($actions): self {
+    public function setActions(array $actions): self {
         $this->options['actions'] = $actions;
         return $this;
     }
@@ -188,7 +188,7 @@ class UpdateTaskOptions extends Options {
      *                           assistant fetches actions
      * @return $this Fluent Builder
      */
-    public function setActionsUrl($actionsUrl): self {
+    public function setActionsUrl(string $actionsUrl): self {
         $this->options['actionsUrl'] = $actionsUrl;
         return $this;
     }

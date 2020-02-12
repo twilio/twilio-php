@@ -64,7 +64,7 @@ class ConnectAppContext extends InstanceContext {
      * @return ConnectAppInstance Updated ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ConnectAppInstance {
+    public function update(array $options = []): ConnectAppInstance {
         $options = new Values($options);
 
         $data = Values::of([

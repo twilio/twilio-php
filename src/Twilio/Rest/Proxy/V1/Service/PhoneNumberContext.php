@@ -77,7 +77,7 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Updated PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): PhoneNumberInstance {
+    public function update(array $options = []): PhoneNumberInstance {
         $options = new Values($options);
 
         $data = Values::of(['IsReserved' => Serialize::booleanToString($options['isReserved']), ]);

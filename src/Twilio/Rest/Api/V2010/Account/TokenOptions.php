@@ -17,7 +17,7 @@ abstract class TokenOptions {
      * @param int $ttl The duration in seconds the credentials are valid
      * @return CreateTokenOptions Options builder
      */
-    public static function create($ttl = Values::NONE): CreateTokenOptions {
+    public static function create(int $ttl = Values::NONE): CreateTokenOptions {
         return new CreateTokenOptions($ttl);
     }
 }
@@ -26,7 +26,7 @@ class CreateTokenOptions extends Options {
     /**
      * @param int $ttl The duration in seconds the credentials are valid
      */
-    public function __construct($ttl = Values::NONE) {
+    public function __construct(int $ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
@@ -36,7 +36,7 @@ class CreateTokenOptions extends Options {
      * @param int $ttl The duration in seconds the credentials are valid
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }

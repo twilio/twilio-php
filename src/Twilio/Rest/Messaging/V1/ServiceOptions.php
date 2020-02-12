@@ -45,7 +45,7 @@ abstract class ServiceOptions {
      * @param bool $synchronousValidation Reserved
      * @return CreateServiceOptions Options builder
      */
-    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE): CreateServiceOptions {
+    public static function create(string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE): CreateServiceOptions {
         return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation);
     }
 
@@ -79,7 +79,7 @@ abstract class ServiceOptions {
      * @param bool $synchronousValidation Reserved
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE): UpdateServiceOptions {
+    public static function update(string $friendlyName = Values::NONE, string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation);
     }
 }
@@ -113,7 +113,7 @@ class CreateServiceOptions extends Options {
      *                            Service are valid
      * @param bool $synchronousValidation Reserved
      */
-    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
+    public function __construct(string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
         $this->options['fallbackUrl'] = $fallbackUrl;
@@ -137,7 +137,7 @@ class CreateServiceOptions extends Options {
      *                                  short code in the Service
      * @return $this Fluent Builder
      */
-    public function setInboundRequestUrl($inboundRequestUrl): self {
+    public function setInboundRequestUrl(string $inboundRequestUrl): self {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         return $this;
     }
@@ -149,7 +149,7 @@ class CreateServiceOptions extends Options {
      *                              inbound_request_url
      * @return $this Fluent Builder
      */
-    public function setInboundMethod($inboundMethod): self {
+    public function setInboundMethod(string $inboundMethod): self {
         $this->options['inboundMethod'] = $inboundMethod;
         return $this;
     }
@@ -162,7 +162,7 @@ class CreateServiceOptions extends Options {
      *                            TwiML from the Inbound Request URL
      * @return $this Fluent Builder
      */
-    public function setFallbackUrl($fallbackUrl): self {
+    public function setFallbackUrl(string $fallbackUrl): self {
         $this->options['fallbackUrl'] = $fallbackUrl;
         return $this;
     }
@@ -174,7 +174,7 @@ class CreateServiceOptions extends Options {
      *                               fallback_url
      * @return $this Fluent Builder
      */
-    public function setFallbackMethod($fallbackMethod): self {
+    public function setFallbackMethod(string $fallbackMethod): self {
         $this->options['fallbackMethod'] = $fallbackMethod;
         return $this;
     }
@@ -186,7 +186,7 @@ class CreateServiceOptions extends Options {
      *                               about message delivery
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -198,7 +198,7 @@ class CreateServiceOptions extends Options {
      *                           instance
      * @return $this Fluent Builder
      */
-    public function setStickySender($stickySender): self {
+    public function setStickySender(bool $stickySender): self {
         $this->options['stickySender'] = $stickySender;
         return $this;
     }
@@ -210,7 +210,7 @@ class CreateServiceOptions extends Options {
      *                           sent through the Service instance
      * @return $this Fluent Builder
      */
-    public function setMmsConverter($mmsConverter): self {
+    public function setMmsConverter(bool $mmsConverter): self {
         $this->options['mmsConverter'] = $mmsConverter;
         return $this;
     }
@@ -222,7 +222,7 @@ class CreateServiceOptions extends Options {
      *                            through the Service instance
      * @return $this Fluent Builder
      */
-    public function setSmartEncoding($smartEncoding): self {
+    public function setSmartEncoding(bool $smartEncoding): self {
         $this->options['smartEncoding'] = $smartEncoding;
         return $this;
     }
@@ -233,7 +233,7 @@ class CreateServiceOptions extends Options {
      * @param string $scanMessageContent Reserved
      * @return $this Fluent Builder
      */
-    public function setScanMessageContent($scanMessageContent): self {
+    public function setScanMessageContent(string $scanMessageContent): self {
         $this->options['scanMessageContent'] = $scanMessageContent;
         return $this;
     }
@@ -245,7 +245,7 @@ class CreateServiceOptions extends Options {
      *                                 messages sent through the Service instance
      * @return $this Fluent Builder
      */
-    public function setFallbackToLongCode($fallbackToLongCode): self {
+    public function setFallbackToLongCode(bool $fallbackToLongCode): self {
         $this->options['fallbackToLongCode'] = $fallbackToLongCode;
         return $this;
     }
@@ -257,7 +257,7 @@ class CreateServiceOptions extends Options {
      *                               Service Instance
      * @return $this Fluent Builder
      */
-    public function setAreaCodeGeomatch($areaCodeGeomatch): self {
+    public function setAreaCodeGeomatch(bool $areaCodeGeomatch): self {
         $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
         return $this;
     }
@@ -269,7 +269,7 @@ class CreateServiceOptions extends Options {
      *                            Service are valid
      * @return $this Fluent Builder
      */
-    public function setValidityPeriod($validityPeriod): self {
+    public function setValidityPeriod(int $validityPeriod): self {
         $this->options['validityPeriod'] = $validityPeriod;
         return $this;
     }
@@ -280,7 +280,7 @@ class CreateServiceOptions extends Options {
      * @param bool $synchronousValidation Reserved
      * @return $this Fluent Builder
      */
-    public function setSynchronousValidation($synchronousValidation): self {
+    public function setSynchronousValidation(bool $synchronousValidation): self {
         $this->options['synchronousValidation'] = $synchronousValidation;
         return $this;
     }
@@ -331,7 +331,7 @@ class UpdateServiceOptions extends Options {
      *                            Service are valid
      * @param bool $synchronousValidation Reserved
      */
-    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
@@ -354,7 +354,7 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -367,7 +367,7 @@ class UpdateServiceOptions extends Options {
      *                                  short code in the Service
      * @return $this Fluent Builder
      */
-    public function setInboundRequestUrl($inboundRequestUrl): self {
+    public function setInboundRequestUrl(string $inboundRequestUrl): self {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         return $this;
     }
@@ -379,7 +379,7 @@ class UpdateServiceOptions extends Options {
      *                              inbound_request_url
      * @return $this Fluent Builder
      */
-    public function setInboundMethod($inboundMethod): self {
+    public function setInboundMethod(string $inboundMethod): self {
         $this->options['inboundMethod'] = $inboundMethod;
         return $this;
     }
@@ -392,7 +392,7 @@ class UpdateServiceOptions extends Options {
      *                            TwiML from the Inbound Request URL
      * @return $this Fluent Builder
      */
-    public function setFallbackUrl($fallbackUrl): self {
+    public function setFallbackUrl(string $fallbackUrl): self {
         $this->options['fallbackUrl'] = $fallbackUrl;
         return $this;
     }
@@ -404,7 +404,7 @@ class UpdateServiceOptions extends Options {
      *                               fallback_url
      * @return $this Fluent Builder
      */
-    public function setFallbackMethod($fallbackMethod): self {
+    public function setFallbackMethod(string $fallbackMethod): self {
         $this->options['fallbackMethod'] = $fallbackMethod;
         return $this;
     }
@@ -416,7 +416,7 @@ class UpdateServiceOptions extends Options {
      *                               about message delivery
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -428,7 +428,7 @@ class UpdateServiceOptions extends Options {
      *                           instance
      * @return $this Fluent Builder
      */
-    public function setStickySender($stickySender): self {
+    public function setStickySender(bool $stickySender): self {
         $this->options['stickySender'] = $stickySender;
         return $this;
     }
@@ -440,7 +440,7 @@ class UpdateServiceOptions extends Options {
      *                           sent through the Service instance
      * @return $this Fluent Builder
      */
-    public function setMmsConverter($mmsConverter): self {
+    public function setMmsConverter(bool $mmsConverter): self {
         $this->options['mmsConverter'] = $mmsConverter;
         return $this;
     }
@@ -452,7 +452,7 @@ class UpdateServiceOptions extends Options {
      *                            through the Service instance
      * @return $this Fluent Builder
      */
-    public function setSmartEncoding($smartEncoding): self {
+    public function setSmartEncoding(bool $smartEncoding): self {
         $this->options['smartEncoding'] = $smartEncoding;
         return $this;
     }
@@ -463,7 +463,7 @@ class UpdateServiceOptions extends Options {
      * @param string $scanMessageContent Reserved
      * @return $this Fluent Builder
      */
-    public function setScanMessageContent($scanMessageContent): self {
+    public function setScanMessageContent(string $scanMessageContent): self {
         $this->options['scanMessageContent'] = $scanMessageContent;
         return $this;
     }
@@ -475,7 +475,7 @@ class UpdateServiceOptions extends Options {
      *                                 messages sent through the Service instance
      * @return $this Fluent Builder
      */
-    public function setFallbackToLongCode($fallbackToLongCode): self {
+    public function setFallbackToLongCode(bool $fallbackToLongCode): self {
         $this->options['fallbackToLongCode'] = $fallbackToLongCode;
         return $this;
     }
@@ -487,7 +487,7 @@ class UpdateServiceOptions extends Options {
      *                               Service Instance
      * @return $this Fluent Builder
      */
-    public function setAreaCodeGeomatch($areaCodeGeomatch): self {
+    public function setAreaCodeGeomatch(bool $areaCodeGeomatch): self {
         $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
         return $this;
     }
@@ -499,7 +499,7 @@ class UpdateServiceOptions extends Options {
      *                            Service are valid
      * @return $this Fluent Builder
      */
-    public function setValidityPeriod($validityPeriod): self {
+    public function setValidityPeriod(int $validityPeriod): self {
         $this->options['validityPeriod'] = $validityPeriod;
         return $this;
     }
@@ -510,7 +510,7 @@ class UpdateServiceOptions extends Options {
      * @param bool $synchronousValidation Reserved
      * @return $this Fluent Builder
      */
-    public function setSynchronousValidation($synchronousValidation): self {
+    public function setSynchronousValidation(bool $synchronousValidation): self {
         $this->options['synchronousValidation'] = $synchronousValidation;
         return $this;
     }

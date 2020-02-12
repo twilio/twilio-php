@@ -20,7 +20,7 @@ abstract class NotificationOptions {
      * @param string $messageDateAfter Filter by date
      * @return ReadNotificationOptions Options builder
      */
-    public static function read($log = Values::NONE, $messageDateBefore = Values::NONE, $messageDate = Values::NONE, $messageDateAfter = Values::NONE): ReadNotificationOptions {
+    public static function read(int $log = Values::NONE, string $messageDateBefore = Values::NONE, string $messageDate = Values::NONE, string $messageDateAfter = Values::NONE): ReadNotificationOptions {
         return new ReadNotificationOptions($log, $messageDateBefore, $messageDate, $messageDateAfter);
     }
 }
@@ -32,7 +32,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDate Filter by date
      * @param string $messageDateAfter Filter by date
      */
-    public function __construct($log = Values::NONE, $messageDateBefore = Values::NONE, $messageDate = Values::NONE, $messageDateAfter = Values::NONE) {
+    public function __construct(int $log = Values::NONE, string $messageDateBefore = Values::NONE, string $messageDate = Values::NONE, string $messageDateAfter = Values::NONE) {
         $this->options['log'] = $log;
         $this->options['messageDateBefore'] = $messageDateBefore;
         $this->options['messageDate'] = $messageDate;
@@ -45,7 +45,7 @@ class ReadNotificationOptions extends Options {
      * @param int $log Filter by log level
      * @return $this Fluent Builder
      */
-    public function setLog($log): self {
+    public function setLog(int $log): self {
         $this->options['log'] = $log;
         return $this;
     }
@@ -56,7 +56,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDateBefore Filter by date
      * @return $this Fluent Builder
      */
-    public function setMessageDateBefore($messageDateBefore): self {
+    public function setMessageDateBefore(string $messageDateBefore): self {
         $this->options['messageDateBefore'] = $messageDateBefore;
         return $this;
     }
@@ -67,7 +67,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDate Filter by date
      * @return $this Fluent Builder
      */
-    public function setMessageDate($messageDate): self {
+    public function setMessageDate(string $messageDate): self {
         $this->options['messageDate'] = $messageDate;
         return $this;
     }
@@ -78,7 +78,7 @@ class ReadNotificationOptions extends Options {
      * @param string $messageDateAfter Filter by date
      * @return $this Fluent Builder
      */
-    public function setMessageDateAfter($messageDateAfter): self {
+    public function setMessageDateAfter(string $messageDateAfter): self {
         $this->options['messageDateAfter'] = $messageDateAfter;
         return $this;
     }

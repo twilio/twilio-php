@@ -43,7 +43,7 @@ class EventInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace that contains the Event
      * @param string $sid The SID of the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -105,7 +105,7 @@ class EventInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

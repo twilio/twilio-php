@@ -38,7 +38,7 @@ class KeyInstance extends InstanceResource {
      * @param string $fleetSid The unique identifier of the Fleet.
      * @param string $sid A string that uniquely identifies the Key.
      */
-    public function __construct(Version $version, array $payload, $fleetSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $fleetSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -102,7 +102,7 @@ class KeyInstance extends InstanceResource {
      * @return KeyInstance Updated KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): KeyInstance {
+    public function update(array $options = []): KeyInstance {
         return $this->proxy()->update($options);
     }
 
@@ -113,7 +113,7 @@ class KeyInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

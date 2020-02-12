@@ -22,7 +22,7 @@ class KeyList extends ListResource {
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -49,7 +49,7 @@ class KeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -72,7 +72,7 @@ class KeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return KeyInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -85,7 +85,7 @@ class KeyList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return KeyPage Page of KeyInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): KeyPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): KeyPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -104,7 +104,7 @@ class KeyList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return KeyPage Page of KeyInstance
      */
-    public function getPage($targetUrl): KeyPage {
+    public function getPage(string $targetUrl): KeyPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -118,7 +118,7 @@ class KeyList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): KeyContext {
+    public function getContext(string $sid): KeyContext {
         return new KeyContext($this->version, $this->solution['accountSid'], $sid);
     }
 

@@ -77,7 +77,7 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($data): SyncListItemInstance {
+    public function update(array $data): SyncListItemInstance {
         $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
         $payload = $this->version->update(

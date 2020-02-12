@@ -59,7 +59,7 @@ class SettingsContext extends InstanceContext {
      * @return SettingsInstance Updated SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SettingsInstance {
+    public function update(array $options = []): SettingsInstance {
         $options = new Values($options);
 
         $data = Values::of([

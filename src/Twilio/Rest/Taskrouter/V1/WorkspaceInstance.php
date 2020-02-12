@@ -62,7 +62,7 @@ class WorkspaceInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -118,7 +118,7 @@ class WorkspaceInstance extends InstanceResource {
      * @return WorkspaceInstance Updated WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): WorkspaceInstance {
+    public function update(array $options = []): WorkspaceInstance {
         return $this->proxy()->update($options);
     }
 
@@ -209,7 +209,7 @@ class WorkspaceInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

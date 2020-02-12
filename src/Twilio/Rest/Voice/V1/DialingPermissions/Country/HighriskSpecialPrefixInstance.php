@@ -27,7 +27,7 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $isoCode The ISO country code
      */
-    public function __construct(Version $version, array $payload, $isoCode) {
+    public function __construct(Version $version, array $payload, string $isoCode) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -43,7 +43,7 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

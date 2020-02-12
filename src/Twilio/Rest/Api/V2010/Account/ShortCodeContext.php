@@ -63,7 +63,7 @@ class ShortCodeContext extends InstanceContext {
      * @return ShortCodeInstance Updated ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ShortCodeInstance {
+    public function update(array $options = []): ShortCodeInstance {
         $options = new Values($options);
 
         $data = Values::of([

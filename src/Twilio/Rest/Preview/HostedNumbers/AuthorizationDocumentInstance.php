@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string $addressSid
  * @property string $status
  * @property string $email
- * @property string $ccEmails
+ * @property string[] $ccEmails
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -40,7 +40,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid AuthorizationDocument sid.
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -91,7 +91,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      * @return AuthorizationDocumentInstance Updated AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): AuthorizationDocumentInstance {
+    public function update(array $options = []): AuthorizationDocumentInstance {
         return $this->proxy()->update($options);
     }
 
@@ -109,7 +109,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

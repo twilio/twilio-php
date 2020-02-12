@@ -28,7 +28,7 @@ class PaymentList extends ListResource {
      *                           resource.
      * @param string $callSid The SID of the Call the resource is associated with.
      */
-    public function __construct(Version $version, $accountSid, $callSid) {
+    public function __construct(Version $version, string $accountSid, string $callSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -49,7 +49,7 @@ class PaymentList extends ListResource {
      * @return PaymentInstance Newly created PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($idempotencyKey, $statusCallback, $options = []): PaymentInstance {
+    public function create(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -91,7 +91,7 @@ class PaymentList extends ListResource {
      *
      * @param string $sid The SID of Payments session
      */
-    public function getContext($sid): PaymentContext {
+    public function getContext(string $sid): PaymentContext {
         return new PaymentContext(
             $this->version,
             $this->solution['accountSid'],

@@ -20,7 +20,7 @@ abstract class BrandedCallOptions {
      * @param string $callSid The Call sid this Branded Call should link to
      * @return CreateBrandedCallOptions Options builder
      */
-    public static function create($callSid = Values::NONE): CreateBrandedCallOptions {
+    public static function create(string $callSid = Values::NONE): CreateBrandedCallOptions {
         return new CreateBrandedCallOptions($callSid);
     }
 }
@@ -29,7 +29,7 @@ class CreateBrandedCallOptions extends Options {
     /**
      * @param string $callSid The Call sid this Branded Call should link to
      */
-    public function __construct($callSid = Values::NONE) {
+    public function __construct(string $callSid = Values::NONE) {
         $this->options['callSid'] = $callSid;
     }
 
@@ -39,7 +39,7 @@ class CreateBrandedCallOptions extends Options {
      * @param string $callSid The Call sid this Branded Call should link to
      * @return $this Fluent Builder
      */
-    public function setCallSid($callSid): self {
+    public function setCallSid(string $callSid): self {
         $this->options['callSid'] = $callSid;
         return $this;
     }

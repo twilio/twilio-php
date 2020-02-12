@@ -77,7 +77,7 @@ class SyncMapItemContext extends InstanceContext {
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($data): SyncMapItemInstance {
+    public function update(array $data): SyncMapItemInstance {
         $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
         $payload = $this->version->update(

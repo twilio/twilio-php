@@ -21,7 +21,7 @@ class ExecutionStepContextList extends ListResource {
      * @param string $executionSid The SID of the Execution
      * @param string $stepSid Step SID
      */
-    public function __construct(Version $version, $flowSid, $executionSid, $stepSid) {
+    public function __construct(Version $version, string $flowSid, string $executionSid, string $stepSid) {
         parent::__construct($version);
 
         // Path Solution

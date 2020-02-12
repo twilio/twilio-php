@@ -41,7 +41,7 @@ class UsageContext extends InstanceContext {
      * @return UsageInstance Fetched UsageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): UsageInstance {
+    public function fetch(array $options = []): UsageInstance {
         $options = new Values($options);
 
         $params = Values::of(['End' => $options['end'], 'Start' => $options['start'], ]);

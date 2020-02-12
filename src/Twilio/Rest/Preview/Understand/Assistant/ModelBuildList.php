@@ -26,7 +26,7 @@ class ModelBuildList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the parent Assistant.
      */
-    public function __construct(Version $version, $assistantSid) {
+    public function __construct(Version $version, string $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -53,7 +53,7 @@ class ModelBuildList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class ModelBuildList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ModelBuildInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -89,7 +89,7 @@ class ModelBuildList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ModelBuildPage Page of ModelBuildInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ModelBuildPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ModelBuildPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -108,7 +108,7 @@ class ModelBuildList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ModelBuildPage Page of ModelBuildInstance
      */
-    public function getPage($targetUrl): ModelBuildPage {
+    public function getPage(string $targetUrl): ModelBuildPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -124,7 +124,7 @@ class ModelBuildList extends ListResource {
      * @return ModelBuildInstance Newly created ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): ModelBuildInstance {
+    public function create(array $options = []): ModelBuildInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -147,7 +147,7 @@ class ModelBuildList extends ListResource {
      *
      * @param string $sid The sid
      */
-    public function getContext($sid): ModelBuildContext {
+    public function getContext(string $sid): ModelBuildContext {
         return new ModelBuildContext($this->version, $this->solution['assistantSid'], $sid);
     }
 

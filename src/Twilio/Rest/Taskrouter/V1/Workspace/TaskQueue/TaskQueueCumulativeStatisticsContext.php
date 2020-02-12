@@ -43,7 +43,7 @@ class TaskQueueCumulativeStatisticsContext extends InstanceContext {
      *                                               TaskQueueCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): TaskQueueCumulativeStatisticsInstance {
+    public function fetch(array $options = []): TaskQueueCumulativeStatisticsInstance {
         $options = new Values($options);
 
         $params = Values::of([

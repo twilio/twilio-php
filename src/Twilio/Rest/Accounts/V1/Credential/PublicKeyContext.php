@@ -56,7 +56,7 @@ class PublicKeyContext extends InstanceContext {
      * @return PublicKeyInstance Updated PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): PublicKeyInstance {
+    public function update(array $options = []): PublicKeyInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);

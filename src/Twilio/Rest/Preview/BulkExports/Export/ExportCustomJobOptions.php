@@ -21,7 +21,7 @@ abstract class ExportCustomJobOptions {
      * @param string $previousToken The token for the previous page of result
      * @return ReadExportCustomJobOptions Options builder
      */
-    public static function read($nextToken = Values::NONE, $previousToken = Values::NONE): ReadExportCustomJobOptions {
+    public static function read(string $nextToken = Values::NONE, string $previousToken = Values::NONE): ReadExportCustomJobOptions {
         return new ReadExportCustomJobOptions($nextToken, $previousToken);
     }
 
@@ -34,7 +34,7 @@ abstract class ExportCustomJobOptions {
      * @param string $email The email
      * @return CreateExportCustomJobOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $startDay = Values::NONE, $endDay = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE, $email = Values::NONE): CreateExportCustomJobOptions {
+    public static function create(string $friendlyName = Values::NONE, string $startDay = Values::NONE, string $endDay = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE, string $email = Values::NONE): CreateExportCustomJobOptions {
         return new CreateExportCustomJobOptions($friendlyName, $startDay, $endDay, $webhookUrl, $webhookMethod, $email);
     }
 }
@@ -44,7 +44,7 @@ class ReadExportCustomJobOptions extends Options {
      * @param string $nextToken The token for the next page of job results
      * @param string $previousToken The token for the previous page of result
      */
-    public function __construct($nextToken = Values::NONE, $previousToken = Values::NONE) {
+    public function __construct(string $nextToken = Values::NONE, string $previousToken = Values::NONE) {
         $this->options['nextToken'] = $nextToken;
         $this->options['previousToken'] = $previousToken;
     }
@@ -55,7 +55,7 @@ class ReadExportCustomJobOptions extends Options {
      * @param string $nextToken The token for the next page of job results
      * @return $this Fluent Builder
      */
-    public function setNextToken($nextToken): self {
+    public function setNextToken(string $nextToken): self {
         $this->options['nextToken'] = $nextToken;
         return $this;
     }
@@ -66,7 +66,7 @@ class ReadExportCustomJobOptions extends Options {
      * @param string $previousToken The token for the previous page of result
      * @return $this Fluent Builder
      */
-    public function setPreviousToken($previousToken): self {
+    public function setPreviousToken(string $previousToken): self {
         $this->options['previousToken'] = $previousToken;
         return $this;
     }
@@ -96,7 +96,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $webhookMethod The webhook_method
      * @param string $email The email
      */
-    public function __construct($friendlyName = Values::NONE, $startDay = Values::NONE, $endDay = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE, $email = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $startDay = Values::NONE, string $endDay = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE, string $email = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['startDay'] = $startDay;
         $this->options['endDay'] = $endDay;
@@ -111,7 +111,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -122,7 +122,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $startDay The start_day
      * @return $this Fluent Builder
      */
-    public function setStartDay($startDay): self {
+    public function setStartDay(string $startDay): self {
         $this->options['startDay'] = $startDay;
         return $this;
     }
@@ -133,7 +133,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $endDay The end_day
      * @return $this Fluent Builder
      */
-    public function setEndDay($endDay): self {
+    public function setEndDay(string $endDay): self {
         $this->options['endDay'] = $endDay;
         return $this;
     }
@@ -144,7 +144,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -155,7 +155,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $webhookMethod The webhook_method
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod): self {
+    public function setWebhookMethod(string $webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -166,7 +166,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $email The email
      * @return $this Fluent Builder
      */
-    public function setEmail($email): self {
+    public function setEmail(string $email): self {
         $this->options['email'] = $email;
         return $this;
     }

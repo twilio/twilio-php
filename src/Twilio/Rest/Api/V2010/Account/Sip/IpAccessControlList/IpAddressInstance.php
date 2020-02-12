@@ -40,7 +40,7 @@ class IpAddressInstance extends InstanceResource {
      *                                       includes this resource.
      * @param string $sid A string that identifies the IpAddress resource to fetch
      */
-    public function __construct(Version $version, array $payload, $accountSid, $ipAccessControlListSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $ipAccessControlListSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -99,7 +99,7 @@ class IpAddressInstance extends InstanceResource {
      * @return IpAddressInstance Updated IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): IpAddressInstance {
+    public function update(array $options = []): IpAddressInstance {
         return $this->proxy()->update($options);
     }
 
@@ -120,7 +120,7 @@ class IpAddressInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

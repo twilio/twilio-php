@@ -32,7 +32,7 @@ class ExecutionStepContextInstance extends InstanceResource {
      * @param string $executionSid The SID of the Execution
      * @param string $stepSid Step SID
      */
-    public function __construct(Version $version, array $payload, $flowSid, $executionSid, $stepSid) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, string $stepSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +85,7 @@ class ExecutionStepContextInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

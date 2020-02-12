@@ -57,7 +57,7 @@ class SupportingDocumentContext extends InstanceContext {
      * @return SupportingDocumentInstance Updated SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SupportingDocumentInstance {
+    public function update(array $options = []): SupportingDocumentInstance {
         $options = new Values($options);
 
         $data = Values::of([

@@ -27,7 +27,7 @@ abstract class WorkflowStatisticsOptions {
      *                                statistics on
      * @return FetchWorkflowStatisticsOptions Options builder
      */
-    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskChannel = Values::NONE, $splitByWaitTime = Values::NONE): FetchWorkflowStatisticsOptions {
+    public static function fetch(int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE, string $taskChannel = Values::NONE, string $splitByWaitTime = Values::NONE): FetchWorkflowStatisticsOptions {
         return new FetchWorkflowStatisticsOptions($minutes, $startDate, $endDate, $taskChannel, $splitByWaitTime);
     }
 }
@@ -46,7 +46,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                                describes the thresholds to calculate
      *                                statistics on
      */
-    public function __construct($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskChannel = Values::NONE, $splitByWaitTime = Values::NONE) {
+    public function __construct(int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE, string $taskChannel = Values::NONE, string $splitByWaitTime = Values::NONE) {
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
@@ -61,7 +61,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                     past
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes): self {
+    public function setMinutes(int $minutes): self {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -73,7 +73,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                             date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate): self {
+    public function setStartDate(\DateTime $startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -85,7 +85,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                           and earlier
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate): self {
+    public function setEndDate(\DateTime $endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -97,7 +97,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                            TaskChannel.
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -110,7 +110,7 @@ class FetchWorkflowStatisticsOptions extends Options {
      *                                statistics on
      * @return $this Fluent Builder
      */
-    public function setSplitByWaitTime($splitByWaitTime): self {
+    public function setSplitByWaitTime(string $splitByWaitTime): self {
         $this->options['splitByWaitTime'] = $splitByWaitTime;
         return $this;
     }

@@ -51,7 +51,7 @@ class CommandList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -75,7 +75,7 @@ class CommandList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CommandInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -89,7 +89,7 @@ class CommandList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CommandPage Page of CommandInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CommandPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CommandPage {
         $options = new Values($options);
         $params = Values::of([
             'Sim' => $options['sim'],
@@ -117,7 +117,7 @@ class CommandList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CommandPage Page of CommandInstance
      */
-    public function getPage($targetUrl): CommandPage {
+    public function getPage(string $targetUrl): CommandPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -135,7 +135,7 @@ class CommandList extends ListResource {
      * @return CommandInstance Newly created CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($command, $options = []): CommandInstance {
+    public function create(string $command, array $options = []): CommandInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -163,7 +163,7 @@ class CommandList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): CommandContext {
+    public function getContext(string $sid): CommandContext {
         return new CommandContext($this->version, $sid);
     }
 

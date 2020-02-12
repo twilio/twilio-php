@@ -55,7 +55,7 @@ class FlexApi extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -72,7 +72,7 @@ class FlexApi extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -89,7 +89,7 @@ class FlexApi extends Domain {
      * @param string $sid The SID that identifies the Flex chat channel resource to
      *                    fetch
      */
-    protected function contextChannel($sid): \Twilio\Rest\FlexApi\V1\ChannelContext {
+    protected function contextChannel(string $sid): \Twilio\Rest\FlexApi\V1\ChannelContext {
         return $this->v1->channel($sid);
     }
 
@@ -108,7 +108,7 @@ class FlexApi extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextFlexFlow($sid): \Twilio\Rest\FlexApi\V1\FlexFlowContext {
+    protected function contextFlexFlow(string $sid): \Twilio\Rest\FlexApi\V1\FlexFlowContext {
         return $this->v1->flexFlow($sid);
     }
 
@@ -119,7 +119,7 @@ class FlexApi extends Domain {
     /**
      * @param string $sid The SID of the WebChannel resource to fetch
      */
-    protected function contextWebChannel($sid): \Twilio\Rest\FlexApi\V1\WebChannelContext {
+    protected function contextWebChannel(string $sid): \Twilio\Rest\FlexApi\V1\WebChannelContext {
         return $this->v1->webChannel($sid);
     }
 

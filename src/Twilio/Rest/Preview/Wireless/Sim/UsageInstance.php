@@ -36,7 +36,7 @@ class UsageInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $simSid The sim_sid
      */
-    public function __construct(Version $version, array $payload, $simSid) {
+    public function __construct(Version $version, array $payload, string $simSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +76,7 @@ class UsageInstance extends InstanceResource {
      * @return UsageInstance Fetched UsageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): UsageInstance {
+    public function fetch(array $options = []): UsageInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -87,7 +87,7 @@ class UsageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

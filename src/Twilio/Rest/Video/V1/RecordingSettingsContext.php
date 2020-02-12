@@ -60,7 +60,7 @@ class RecordingSettingsContext extends InstanceContext {
      * @return RecordingSettingsInstance Newly created RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = []): RecordingSettingsInstance {
+    public function create(string $friendlyName, array $options = []): RecordingSettingsInstance {
         $options = new Values($options);
 
         $data = Values::of([

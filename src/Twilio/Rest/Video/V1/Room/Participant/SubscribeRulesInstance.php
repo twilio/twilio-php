@@ -20,7 +20,7 @@ use Twilio\Version;
  *
  * @property string $participantSid
  * @property string $roomSid
- * @property string $rules
+ * @property string[] $rules
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
@@ -34,7 +34,7 @@ class SubscribeRulesInstance extends InstanceResource {
      * @param string $participantSid The SID of the Participant resource for the
      *                               Subscribe Rules
      */
-    public function __construct(Version $version, array $payload, $roomSid, $participantSid) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -56,7 +56,7 @@ class SubscribeRulesInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

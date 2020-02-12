@@ -39,7 +39,7 @@ class VerificationContext extends InstanceContext {
      * @return VerificationInstance Updated VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status): VerificationInstance {
+    public function update(string $status): VerificationInstance {
         $data = Values::of(['Status' => $status, ]);
 
         $payload = $this->version->update(

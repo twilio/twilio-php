@@ -20,7 +20,7 @@ abstract class SubscribeRulesOptions {
      * @param array $rules A JSON-encoded array of subscribe rules
      * @return UpdateSubscribeRulesOptions Options builder
      */
-    public static function update($rules = Values::NONE): UpdateSubscribeRulesOptions {
+    public static function update(array $rules = Values::NONE): UpdateSubscribeRulesOptions {
         return new UpdateSubscribeRulesOptions($rules);
     }
 }
@@ -29,7 +29,7 @@ class UpdateSubscribeRulesOptions extends Options {
     /**
      * @param array $rules A JSON-encoded array of subscribe rules
      */
-    public function __construct($rules = Values::NONE) {
+    public function __construct(array $rules = Values::NONE) {
         $this->options['rules'] = $rules;
     }
 
@@ -39,7 +39,7 @@ class UpdateSubscribeRulesOptions extends Options {
      * @param array $rules A JSON-encoded array of subscribe rules
      * @return $this Fluent Builder
      */
-    public function setRules($rules): self {
+    public function setRules(array $rules): self {
         $this->options['rules'] = $rules;
         return $this;
     }

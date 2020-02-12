@@ -21,7 +21,7 @@ abstract class FactorOptions {
      *                            first time
      * @return UpdateFactorOptions Options builder
      */
-    public static function update($authPayload = Values::NONE): UpdateFactorOptions {
+    public static function update(string $authPayload = Values::NONE): UpdateFactorOptions {
         return new UpdateFactorOptions($authPayload);
     }
 }
@@ -31,7 +31,7 @@ class UpdateFactorOptions extends Options {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      */
-    public function __construct($authPayload = Values::NONE) {
+    public function __construct(string $authPayload = Values::NONE) {
         $this->options['authPayload'] = $authPayload;
     }
 
@@ -42,7 +42,7 @@ class UpdateFactorOptions extends Options {
      *                            first time
      * @return $this Fluent Builder
      */
-    public function setAuthPayload($authPayload): self {
+    public function setAuthPayload(string $authPayload): self {
         $this->options['authPayload'] = $authPayload;
         return $this;
     }

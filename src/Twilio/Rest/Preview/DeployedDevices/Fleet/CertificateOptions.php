@@ -23,7 +23,7 @@ abstract class CertificateOptions {
      *                          authenticated.
      * @return CreateCertificateOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $deviceSid = Values::NONE): CreateCertificateOptions {
+    public static function create(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE): CreateCertificateOptions {
         return new CreateCertificateOptions($friendlyName, $deviceSid);
     }
 
@@ -32,7 +32,7 @@ abstract class CertificateOptions {
      *                          Device.
      * @return ReadCertificateOptions Options builder
      */
-    public static function read($deviceSid = Values::NONE): ReadCertificateOptions {
+    public static function read(string $deviceSid = Values::NONE): ReadCertificateOptions {
         return new ReadCertificateOptions($deviceSid);
     }
 
@@ -43,7 +43,7 @@ abstract class CertificateOptions {
      *                          authenticated.
      * @return UpdateCertificateOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $deviceSid = Values::NONE): UpdateCertificateOptions {
+    public static function update(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE): UpdateCertificateOptions {
         return new UpdateCertificateOptions($friendlyName, $deviceSid);
     }
 }
@@ -55,7 +55,7 @@ class CreateCertificateOptions extends Options {
      * @param string $deviceSid The unique identifier of a Device to be
      *                          authenticated.
      */
-    public function __construct($friendlyName = Values::NONE, $deviceSid = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -67,7 +67,7 @@ class CreateCertificateOptions extends Options {
      *                             Certificate.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -79,7 +79,7 @@ class CreateCertificateOptions extends Options {
      *                          authenticated.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid($deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -105,7 +105,7 @@ class ReadCertificateOptions extends Options {
      * @param string $deviceSid Find all Certificates authenticating specified
      *                          Device.
      */
-    public function __construct($deviceSid = Values::NONE) {
+    public function __construct(string $deviceSid = Values::NONE) {
         $this->options['deviceSid'] = $deviceSid;
     }
 
@@ -116,7 +116,7 @@ class ReadCertificateOptions extends Options {
      *                          Device.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid($deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -144,7 +144,7 @@ class UpdateCertificateOptions extends Options {
      * @param string $deviceSid The unique identifier of a Device to be
      *                          authenticated.
      */
-    public function __construct($friendlyName = Values::NONE, $deviceSid = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -156,7 +156,7 @@ class UpdateCertificateOptions extends Options {
      *                             Certificate.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -168,7 +168,7 @@ class UpdateCertificateOptions extends Options {
      *                          authenticated.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid($deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }

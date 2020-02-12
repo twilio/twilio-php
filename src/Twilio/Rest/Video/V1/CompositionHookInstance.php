@@ -25,8 +25,8 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $sid
- * @property string $audioSources
- * @property string $audioSourcesExcluded
+ * @property string[] $audioSources
+ * @property string[] $audioSourcesExcluded
  * @property array $videoLayout
  * @property string $resolution
  * @property bool $trim
@@ -43,7 +43,7 @@ class CompositionHookInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -110,7 +110,7 @@ class CompositionHookInstance extends InstanceResource {
      * @return CompositionHookInstance Updated CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName, $options = []): CompositionHookInstance {
+    public function update(string $friendlyName, array $options = []): CompositionHookInstance {
         return $this->proxy()->update($friendlyName, $options);
     }
 
@@ -121,7 +121,7 @@ class CompositionHookInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

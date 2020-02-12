@@ -59,7 +59,7 @@ class RatePlanContext extends InstanceContext {
      * @return RatePlanInstance Updated RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): RatePlanInstance {
+    public function update(array $options = []): RatePlanInstance {
         $options = new Values($options);
 
         $data = Values::of([

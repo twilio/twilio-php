@@ -61,7 +61,7 @@ class Sip extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param string $statusCallbackEvent Status callback events
+     * @param string[] $statusCallbackEvent Status callback events
      */
     public function setStatusCallbackEvent($statusCallbackEvent): self {
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);

@@ -34,7 +34,7 @@ use Twilio\Version;
  * @property array $clientEdge
  * @property array $sdkEdge
  * @property array $sipEdge
- * @property string $tags
+ * @property string[] $tags
  * @property string $url
  * @property array $attributes
  * @property array $properties
@@ -47,7 +47,7 @@ class CallSummaryInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $callSid The call_sid
      */
-    public function __construct(Version $version, array $payload, $callSid) {
+    public function __construct(Version $version, array $payload, string $callSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -97,7 +97,7 @@ class CallSummaryInstance extends InstanceResource {
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): CallSummaryInstance {
+    public function fetch(array $options = []): CallSummaryInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -108,7 +108,7 @@ class CallSummaryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -25,7 +25,7 @@ class ShortCodeList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the resource's parent Service
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +41,7 @@ class ShortCodeList extends ListResource {
      * @return ShortCodeInstance Newly created ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($sid): ShortCodeInstance {
+    public function create(string $sid): ShortCodeInstance {
         $data = Values::of(['Sid' => $sid, ]);
 
         $payload = $this->version->create(
@@ -72,7 +72,7 @@ class ShortCodeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -95,7 +95,7 @@ class ShortCodeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ShortCodeInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -108,7 +108,7 @@ class ShortCodeList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ShortCodePage Page of ShortCodeInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ShortCodePage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ShortCodePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -127,7 +127,7 @@ class ShortCodeList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ShortCodePage Page of ShortCodeInstance
      */
-    public function getPage($targetUrl): ShortCodePage {
+    public function getPage(string $targetUrl): ShortCodePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -141,7 +141,7 @@ class ShortCodeList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): ShortCodeContext {
+    public function getContext(string $sid): ShortCodeContext {
         return new ShortCodeContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

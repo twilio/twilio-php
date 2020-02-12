@@ -124,7 +124,7 @@ class Conference extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param string $statusCallbackEvent Events to call status callback URL
+     * @param string[] $statusCallbackEvent Events to call status callback URL
      */
     public function setStatusCallbackEvent($statusCallbackEvent): self {
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);
@@ -170,7 +170,8 @@ class Conference extends TwiML {
     /**
      * Add RecordingStatusCallbackEvent attribute.
      *
-     * @param string $recordingStatusCallbackEvent Recording status callback events
+     * @param string[] $recordingStatusCallbackEvent Recording status callback
+     *                                               events
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent): self {
         return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);

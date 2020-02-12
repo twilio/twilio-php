@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string $isoCode
  * @property string $name
  * @property string $continent
- * @property string $countryCodes
+ * @property string[] $countryCodes
  * @property bool $lowRiskNumbersEnabled
  * @property bool $highRiskSpecialNumbersEnabled
  * @property bool $highRiskTollfraudNumbersEnabled
@@ -38,7 +38,7 @@ class CountryInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $isoCode The ISO country code
      */
-    public function __construct(Version $version, array $payload, $isoCode = null) {
+    public function __construct(Version $version, array $payload, string $isoCode = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +95,7 @@ class CountryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

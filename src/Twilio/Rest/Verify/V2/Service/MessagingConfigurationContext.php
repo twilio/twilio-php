@@ -40,7 +40,7 @@ class MessagingConfigurationContext extends InstanceContext {
      * @return MessagingConfigurationInstance Updated MessagingConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($messagingServiceSid): MessagingConfigurationInstance {
+    public function update(string $messagingServiceSid): MessagingConfigurationInstance {
         $data = Values::of(['MessagingServiceSid' => $messagingServiceSid, ]);
 
         $payload = $this->version->update(

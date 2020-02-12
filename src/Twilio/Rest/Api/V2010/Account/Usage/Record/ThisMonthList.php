@@ -24,7 +24,7 @@ class ThisMonthList extends ListResource {
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class ThisMonthList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class ThisMonthList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ThisMonthInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class ThisMonthList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ThisMonthPage Page of ThisMonthInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ThisMonthPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ThisMonthPage {
         $options = new Values($options);
         $params = Values::of([
             'Category' => $options['category'],
@@ -118,7 +118,7 @@ class ThisMonthList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ThisMonthPage Page of ThisMonthInstance
      */
-    public function getPage($targetUrl): ThisMonthPage {
+    public function getPage(string $targetUrl): ThisMonthPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

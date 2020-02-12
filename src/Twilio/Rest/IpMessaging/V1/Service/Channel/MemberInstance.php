@@ -40,7 +40,7 @@ class MemberInstance extends InstanceResource {
      * @param string $channelSid The unique ID of the Channel for the member
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -111,7 +111,7 @@ class MemberInstance extends InstanceResource {
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): MemberInstance {
+    public function update(array $options = []): MemberInstance {
         return $this->proxy()->update($options);
     }
 
@@ -122,7 +122,7 @@ class MemberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

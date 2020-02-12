@@ -56,7 +56,7 @@ class WebChannelContext extends InstanceContext {
      * @return WebChannelInstance Updated WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): WebChannelInstance {
+    public function update(array $options = []): WebChannelInstance {
         $options = new Values($options);
 
         $data = Values::of([

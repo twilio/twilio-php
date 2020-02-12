@@ -33,13 +33,13 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property int $verificationAttempts
  * @property string $email
- * @property string $ccEmails
+ * @property string[] $ccEmails
  * @property string $verificationType
  * @property string $verificationDocumentSid
  * @property string $extension
  * @property int $callDelay
  * @property string $verificationCode
- * @property string $verificationCallSids
+ * @property string[] $verificationCallSids
  */
 class DependentHostedNumberOrderInstance extends InstanceResource {
     /**
@@ -49,7 +49,7 @@ class DependentHostedNumberOrderInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $signingDocumentSid LOA document sid.
      */
-    public function __construct(Version $version, array $payload, $signingDocumentSid) {
+    public function __construct(Version $version, array $payload, string $signingDocumentSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -88,7 +88,7 @@ class DependentHostedNumberOrderInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -67,7 +67,7 @@ class ReservationContext extends InstanceContext {
      * @return ReservationInstance Updated ReservationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ReservationInstance {
+    public function update(array $options = []): ReservationInstance {
         $options = new Values($options);
 
         $data = Values::of([

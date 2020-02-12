@@ -43,7 +43,7 @@ class SyncStreamInstance extends InstanceResource {
      *                           associated with
      * @param string $sid The SID of the Stream resource to fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -108,7 +108,7 @@ class SyncStreamInstance extends InstanceResource {
      * @return SyncStreamInstance Updated SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SyncStreamInstance {
+    public function update(array $options = []): SyncStreamInstance {
         return $this->proxy()->update($options);
     }
 
@@ -126,7 +126,7 @@ class SyncStreamInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -19,7 +19,7 @@ abstract class TriggerOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdateTriggerOptions Options builder
      */
-    public static function update($callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE): UpdateTriggerOptions {
+    public static function update(string $callbackMethod = Values::NONE, string $callbackUrl = Values::NONE, string $friendlyName = Values::NONE): UpdateTriggerOptions {
         return new UpdateTriggerOptions($callbackMethod, $callbackUrl, $friendlyName);
     }
 
@@ -31,7 +31,7 @@ abstract class TriggerOptions {
      *                          the trigger
      * @return CreateTriggerOptions Options builder
      */
-    public static function create($callbackMethod = Values::NONE, $friendlyName = Values::NONE, $recurring = Values::NONE, $triggerBy = Values::NONE): CreateTriggerOptions {
+    public static function create(string $callbackMethod = Values::NONE, string $friendlyName = Values::NONE, string $recurring = Values::NONE, string $triggerBy = Values::NONE): CreateTriggerOptions {
         return new CreateTriggerOptions($callbackMethod, $friendlyName, $recurring, $triggerBy);
     }
 
@@ -41,7 +41,7 @@ abstract class TriggerOptions {
      * @param string $usageCategory The usage category of the UsageTriggers to read
      * @return ReadTriggerOptions Options builder
      */
-    public static function read($recurring = Values::NONE, $triggerBy = Values::NONE, $usageCategory = Values::NONE): ReadTriggerOptions {
+    public static function read(string $recurring = Values::NONE, string $triggerBy = Values::NONE, string $usageCategory = Values::NONE): ReadTriggerOptions {
         return new ReadTriggerOptions($recurring, $triggerBy, $usageCategory);
     }
 }
@@ -52,7 +52,7 @@ class UpdateTriggerOptions extends Options {
      * @param string $callbackUrl The URL we call when the trigger fires
      * @param string $friendlyName A string to describe the resource
      */
-    public function __construct($callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE) {
+    public function __construct(string $callbackMethod = Values::NONE, string $callbackUrl = Values::NONE, string $friendlyName = Values::NONE) {
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['friendlyName'] = $friendlyName;
@@ -64,7 +64,7 @@ class UpdateTriggerOptions extends Options {
      * @param string $callbackMethod The HTTP method to use to call callback_url
      * @return $this Fluent Builder
      */
-    public function setCallbackMethod($callbackMethod): self {
+    public function setCallbackMethod(string $callbackMethod): self {
         $this->options['callbackMethod'] = $callbackMethod;
         return $this;
     }
@@ -75,7 +75,7 @@ class UpdateTriggerOptions extends Options {
      * @param string $callbackUrl The URL we call when the trigger fires
      * @return $this Fluent Builder
      */
-    public function setCallbackUrl($callbackUrl): self {
+    public function setCallbackUrl(string $callbackUrl): self {
         $this->options['callbackUrl'] = $callbackUrl;
         return $this;
     }
@@ -86,7 +86,7 @@ class UpdateTriggerOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -115,7 +115,7 @@ class CreateTriggerOptions extends Options {
      * @param string $triggerBy The field in the UsageRecord resource that fires
      *                          the trigger
      */
-    public function __construct($callbackMethod = Values::NONE, $friendlyName = Values::NONE, $recurring = Values::NONE, $triggerBy = Values::NONE) {
+    public function __construct(string $callbackMethod = Values::NONE, string $friendlyName = Values::NONE, string $recurring = Values::NONE, string $triggerBy = Values::NONE) {
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['recurring'] = $recurring;
@@ -128,7 +128,7 @@ class CreateTriggerOptions extends Options {
      * @param string $callbackMethod The HTTP method to use to call callback_url
      * @return $this Fluent Builder
      */
-    public function setCallbackMethod($callbackMethod): self {
+    public function setCallbackMethod(string $callbackMethod): self {
         $this->options['callbackMethod'] = $callbackMethod;
         return $this;
     }
@@ -139,7 +139,7 @@ class CreateTriggerOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -150,7 +150,7 @@ class CreateTriggerOptions extends Options {
      * @param string $recurring The frequency of a recurring UsageTrigger
      * @return $this Fluent Builder
      */
-    public function setRecurring($recurring): self {
+    public function setRecurring(string $recurring): self {
         $this->options['recurring'] = $recurring;
         return $this;
     }
@@ -162,7 +162,7 @@ class CreateTriggerOptions extends Options {
      *                          the trigger
      * @return $this Fluent Builder
      */
-    public function setTriggerBy($triggerBy): self {
+    public function setTriggerBy(string $triggerBy): self {
         $this->options['triggerBy'] = $triggerBy;
         return $this;
     }
@@ -189,7 +189,7 @@ class ReadTriggerOptions extends Options {
      * @param string $triggerBy The trigger field of the UsageTriggers to read
      * @param string $usageCategory The usage category of the UsageTriggers to read
      */
-    public function __construct($recurring = Values::NONE, $triggerBy = Values::NONE, $usageCategory = Values::NONE) {
+    public function __construct(string $recurring = Values::NONE, string $triggerBy = Values::NONE, string $usageCategory = Values::NONE) {
         $this->options['recurring'] = $recurring;
         $this->options['triggerBy'] = $triggerBy;
         $this->options['usageCategory'] = $usageCategory;
@@ -201,7 +201,7 @@ class ReadTriggerOptions extends Options {
      * @param string $recurring The frequency of recurring UsageTriggers to read
      * @return $this Fluent Builder
      */
-    public function setRecurring($recurring): self {
+    public function setRecurring(string $recurring): self {
         $this->options['recurring'] = $recurring;
         return $this;
     }
@@ -212,7 +212,7 @@ class ReadTriggerOptions extends Options {
      * @param string $triggerBy The trigger field of the UsageTriggers to read
      * @return $this Fluent Builder
      */
-    public function setTriggerBy($triggerBy): self {
+    public function setTriggerBy(string $triggerBy): self {
         $this->options['triggerBy'] = $triggerBy;
         return $this;
     }
@@ -223,7 +223,7 @@ class ReadTriggerOptions extends Options {
      * @param string $usageCategory The usage category of the UsageTriggers to read
      * @return $this Fluent Builder
      */
-    public function setUsageCategory($usageCategory): self {
+    public function setUsageCategory(string $usageCategory): self {
         $this->options['usageCategory'] = $usageCategory;
         return $this;
     }

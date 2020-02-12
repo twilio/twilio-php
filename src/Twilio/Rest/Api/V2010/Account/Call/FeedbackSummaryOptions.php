@@ -22,7 +22,7 @@ abstract class FeedbackSummaryOptions {
      *                                     to the StatusCallback URL
      * @return CreateFeedbackSummaryOptions Options builder
      */
-    public static function create($includeSubaccounts = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE): CreateFeedbackSummaryOptions {
+    public static function create(bool $includeSubaccounts = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): CreateFeedbackSummaryOptions {
         return new CreateFeedbackSummaryOptions($includeSubaccounts, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -36,7 +36,7 @@ class CreateFeedbackSummaryOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method we use to make requests
      *                                     to the StatusCallback URL
      */
-    public function __construct($includeSubaccounts = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
+    public function __construct(bool $includeSubaccounts = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
@@ -49,7 +49,7 @@ class CreateFeedbackSummaryOptions extends Options {
      *                                 account and its subaccounts
      * @return $this Fluent Builder
      */
-    public function setIncludeSubaccounts($includeSubaccounts): self {
+    public function setIncludeSubaccounts(bool $includeSubaccounts): self {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         return $this;
     }
@@ -61,7 +61,7 @@ class CreateFeedbackSummaryOptions extends Options {
      *                               summary is complete
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -73,7 +73,7 @@ class CreateFeedbackSummaryOptions extends Options {
      *                                     to the StatusCallback URL
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }

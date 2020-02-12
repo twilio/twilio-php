@@ -26,7 +26,7 @@ abstract class ConversationOptions {
      *                           store any data you wish.
      * @return CreateConversationOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $messagingServiceSid = Values::NONE, $attributes = Values::NONE): CreateConversationOptions {
+    public static function create(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE): CreateConversationOptions {
         return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid, $attributes);
     }
 
@@ -40,7 +40,7 @@ abstract class ConversationOptions {
      *                                    conversation belongs to.
      * @return UpdateConversationOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $messagingServiceSid = Values::NONE): UpdateConversationOptions {
+    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE): UpdateConversationOptions {
         return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid);
     }
 }
@@ -55,7 +55,7 @@ class CreateConversationOptions extends Options {
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      */
-    public function __construct($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $messagingServiceSid = Values::NONE, $attributes = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
@@ -69,7 +69,7 @@ class CreateConversationOptions extends Options {
      * @param string $friendlyName The human-readable name of this conversation.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -80,7 +80,7 @@ class CreateConversationOptions extends Options {
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -91,7 +91,7 @@ class CreateConversationOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -103,7 +103,7 @@ class CreateConversationOptions extends Options {
      *                                    conversation belongs to.
      * @return $this Fluent Builder
      */
-    public function setMessagingServiceSid($messagingServiceSid): self {
+    public function setMessagingServiceSid(string $messagingServiceSid): self {
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         return $this;
     }
@@ -115,7 +115,7 @@ class CreateConversationOptions extends Options {
      *                           store any data you wish.
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -146,7 +146,7 @@ class UpdateConversationOptions extends Options {
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
      */
-    public function __construct($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $messagingServiceSid = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
@@ -160,7 +160,7 @@ class UpdateConversationOptions extends Options {
      * @param string $friendlyName The human-readable name of this conversation.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -171,7 +171,7 @@ class UpdateConversationOptions extends Options {
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -182,7 +182,7 @@ class UpdateConversationOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -194,7 +194,7 @@ class UpdateConversationOptions extends Options {
      *                           store any data you wish.
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -206,7 +206,7 @@ class UpdateConversationOptions extends Options {
      *                                    conversation belongs to.
      * @return $this Fluent Builder
      */
-    public function setMessagingServiceSid($messagingServiceSid): self {
+    public function setMessagingServiceSid(string $messagingServiceSid): self {
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         return $this;
     }

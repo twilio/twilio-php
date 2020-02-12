@@ -47,7 +47,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      * @param string $countryCode The ISO country code of the country to fetch
      *                            available phone number information about
      */
-    public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $countryCode = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -151,7 +151,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

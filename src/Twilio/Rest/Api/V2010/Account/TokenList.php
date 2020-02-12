@@ -22,7 +22,7 @@ class TokenList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -38,7 +38,7 @@ class TokenList extends ListResource {
      * @return TokenInstance Newly created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): TokenInstance {
+    public function create(array $options = []): TokenInstance {
         $options = new Values($options);
 
         $data = Values::of(['Ttl' => $options['ttl'], ]);

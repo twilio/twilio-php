@@ -40,7 +40,7 @@ class FlexFlowInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +95,7 @@ class FlexFlowInstance extends InstanceResource {
      * @return FlexFlowInstance Updated FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): FlexFlowInstance {
+    public function update(array $options = []): FlexFlowInstance {
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +116,7 @@ class FlexFlowInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

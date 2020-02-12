@@ -9,19 +9,30 @@
 
 namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber;
 
+use Twilio\Http\Response;
 use Twilio\Page;
+use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class AssignedAddOnPage extends Page {
-    public function __construct($version, $response, $solution) {
+    /**
+     * @param Version $version Version that contains the resource
+     * @param Response $response Response from the API
+     * @param array $solution The context solution
+     */
+    public function __construct(Version $version, Response $response, array $solution) {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
+    /**
+     * @param array $payload Payload response from the API
+     * @return AssignedAddOnInstance \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnInstance
+     */
     public function buildInstance(array $payload): AssignedAddOnInstance {
         return new AssignedAddOnInstance(
             $this->version,

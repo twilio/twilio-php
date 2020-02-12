@@ -40,7 +40,7 @@ class ServiceList extends ListResource {
      * @return ServiceInstance Newly created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = []): ServiceInstance {
+    public function create(string $friendlyName, array $options = []): ServiceInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -82,7 +82,7 @@ class ServiceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -105,7 +105,7 @@ class ServiceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ServiceInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -118,7 +118,7 @@ class ServiceList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ServicePage Page of ServiceInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ServicePage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ServicePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -137,7 +137,7 @@ class ServiceList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ServicePage Page of ServiceInstance
      */
-    public function getPage($targetUrl): ServicePage {
+    public function getPage(string $targetUrl): ServicePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -151,7 +151,7 @@ class ServiceList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): ServiceContext {
+    public function getContext(string $sid): ServiceContext {
         return new ServiceContext($this->version, $sid);
     }
 

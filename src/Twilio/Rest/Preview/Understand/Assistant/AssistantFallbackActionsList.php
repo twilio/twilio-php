@@ -22,7 +22,7 @@ class AssistantFallbackActionsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
      */
-    public function __construct(Version $version, $assistantSid) {
+    public function __construct(Version $version, string $assistantSid) {
         parent::__construct($version);
 
         // Path Solution

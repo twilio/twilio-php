@@ -24,7 +24,7 @@ class VerificationList extends ListResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -42,7 +42,7 @@ class VerificationList extends ListResource {
      * @return VerificationInstance Newly created VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $channel, $options = []): VerificationInstance {
+    public function create(string $to, string $channel, array $options = []): VerificationInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,7 +74,7 @@ class VerificationList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): VerificationContext {
+    public function getContext(string $sid): VerificationContext {
         return new VerificationContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

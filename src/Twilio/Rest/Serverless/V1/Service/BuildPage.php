@@ -9,19 +9,30 @@
 
 namespace Twilio\Rest\Serverless\V1\Service;
 
+use Twilio\Http\Response;
 use Twilio\Page;
+use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
 class BuildPage extends Page {
-    public function __construct($version, $response, $solution) {
+    /**
+     * @param Version $version Version that contains the resource
+     * @param Response $response Response from the API
+     * @param array $solution The context solution
+     */
+    public function __construct(Version $version, Response $response, array $solution) {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
+    /**
+     * @param array $payload Payload response from the API
+     * @return BuildInstance \Twilio\Rest\Serverless\V1\Service\BuildInstance
+     */
     public function buildInstance(array $payload): BuildInstance {
         return new BuildInstance($this->version, $payload, $this->solution['serviceSid']);
     }

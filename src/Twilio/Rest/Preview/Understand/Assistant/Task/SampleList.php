@@ -27,7 +27,7 @@ class SampleList extends ListResource {
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Sample.
      */
-    public function __construct(Version $version, $assistantSid, $taskSid) {
+    public function __construct(Version $version, string $assistantSid, string $taskSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +55,7 @@ class SampleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -79,7 +79,7 @@ class SampleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SampleInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -93,7 +93,7 @@ class SampleList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SamplePage Page of SampleInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SamplePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SamplePage {
         $options = new Values($options);
         $params = Values::of([
             'Language' => $options['language'],
@@ -118,7 +118,7 @@ class SampleList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SamplePage Page of SampleInstance
      */
-    public function getPage($targetUrl): SamplePage {
+    public function getPage(string $targetUrl): SamplePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -137,7 +137,7 @@ class SampleList extends ListResource {
      * @return SampleInstance Newly created SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($language, $taggedText, $options = []): SampleInstance {
+    public function create(string $language, string $taggedText, array $options = []): SampleInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -167,7 +167,7 @@ class SampleList extends ListResource {
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
-    public function getContext($sid): SampleContext {
+    public function getContext(string $sid): SampleContext {
         return new SampleContext(
             $this->version,
             $this->solution['assistantSid'],

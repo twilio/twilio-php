@@ -39,7 +39,7 @@ class SyncMapPermissionInstance extends InstanceResource {
      *                         identifies the User's Sync Map Permission resource
      *                         to fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $identity = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, string $identity = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -109,7 +109,7 @@ class SyncMapPermissionInstance extends InstanceResource {
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage): SyncMapPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): SyncMapPermissionInstance {
         return $this->proxy()->update($read, $write, $manage);
     }
 
@@ -120,7 +120,7 @@ class SyncMapPermissionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

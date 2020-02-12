@@ -38,7 +38,7 @@ class AccountList extends ListResource {
      * @return AccountInstance Newly created AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): AccountInstance {
+    public function create(array $options = []): AccountInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
@@ -72,7 +72,7 @@ class AccountList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,7 +96,7 @@ class AccountList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AccountInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -110,7 +110,7 @@ class AccountList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AccountPage Page of AccountInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AccountPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AccountPage {
         $options = new Values($options);
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
@@ -136,7 +136,7 @@ class AccountList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AccountPage Page of AccountInstance
      */
-    public function getPage($targetUrl): AccountPage {
+    public function getPage(string $targetUrl): AccountPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -150,7 +150,7 @@ class AccountList extends ListResource {
      *
      * @param string $sid Fetch by unique Account Sid
      */
-    public function getContext($sid): AccountContext {
+    public function getContext(string $sid): AccountContext {
         return new AccountContext($this->version, $sid);
     }
 

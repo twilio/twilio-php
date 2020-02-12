@@ -47,7 +47,7 @@ class CountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -70,7 +70,7 @@ class CountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CountryInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -83,7 +83,7 @@ class CountryList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CountryPage Page of CountryInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CountryPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CountryPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -102,7 +102,7 @@ class CountryList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CountryPage Page of CountryInstance
      */
-    public function getPage($targetUrl): CountryPage {
+    public function getPage(string $targetUrl): CountryPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -116,7 +116,7 @@ class CountryList extends ListResource {
      *
      * @param string $isoCountry The ISO country code
      */
-    public function getContext($isoCountry): CountryContext {
+    public function getContext(string $isoCountry): CountryContext {
         return new CountryContext($this->version, $isoCountry);
     }
 

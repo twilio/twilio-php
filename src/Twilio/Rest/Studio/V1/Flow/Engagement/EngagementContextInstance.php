@@ -30,7 +30,7 @@ class EngagementContextInstance extends InstanceResource {
      * @param string $flowSid Flow SID
      * @param string $engagementSid Engagement SID
      */
-    public function __construct(Version $version, array $payload, $flowSid, $engagementSid) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -80,7 +80,7 @@ class EngagementContextInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

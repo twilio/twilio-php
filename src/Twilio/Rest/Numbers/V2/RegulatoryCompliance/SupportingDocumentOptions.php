@@ -18,7 +18,7 @@ abstract class SupportingDocumentOptions {
      *                          Documents resource
      * @return CreateSupportingDocumentOptions Options builder
      */
-    public static function create($attributes = Values::NONE): CreateSupportingDocumentOptions {
+    public static function create(array $attributes = Values::NONE): CreateSupportingDocumentOptions {
         return new CreateSupportingDocumentOptions($attributes);
     }
 
@@ -29,7 +29,7 @@ abstract class SupportingDocumentOptions {
      *                          Document resource
      * @return UpdateSupportingDocumentOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $attributes = Values::NONE): UpdateSupportingDocumentOptions {
+    public static function update(string $friendlyName = Values::NONE, array $attributes = Values::NONE): UpdateSupportingDocumentOptions {
         return new UpdateSupportingDocumentOptions($friendlyName, $attributes);
     }
 }
@@ -39,7 +39,7 @@ class CreateSupportingDocumentOptions extends Options {
      * @param array $attributes The set of parameters that compose the Supporting
      *                          Documents resource
      */
-    public function __construct($attributes = Values::NONE) {
+    public function __construct(array $attributes = Values::NONE) {
         $this->options['attributes'] = $attributes;
     }
 
@@ -50,7 +50,7 @@ class CreateSupportingDocumentOptions extends Options {
      *                          Documents resource
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(array $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -78,7 +78,7 @@ class UpdateSupportingDocumentOptions extends Options {
      * @param array $attributes The set of parameters that compose the Supporting
      *                          Document resource
      */
-    public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $attributes = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
     }
@@ -90,7 +90,7 @@ class UpdateSupportingDocumentOptions extends Options {
      *                             resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -102,7 +102,7 @@ class UpdateSupportingDocumentOptions extends Options {
      *                          Document resource
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(array $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }

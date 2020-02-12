@@ -24,7 +24,7 @@ class FeedbackList extends ListResource {
      * @param string $messageSid The SID of the Message resource for which the
      *                           feedback was provided
      */
-    public function __construct(Version $version, $accountSid, $messageSid) {
+    public function __construct(Version $version, string $accountSid, string $messageSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -40,7 +40,7 @@ class FeedbackList extends ListResource {
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): FeedbackInstance {
+    public function create(array $options = []): FeedbackInstance {
         $options = new Values($options);
 
         $data = Values::of(['Outcome' => $options['outcome'], ]);

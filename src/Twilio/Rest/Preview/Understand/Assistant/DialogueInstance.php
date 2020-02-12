@@ -32,7 +32,7 @@ class DialogueInstance extends InstanceResource {
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $sid The sid
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -82,7 +82,7 @@ class DialogueInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

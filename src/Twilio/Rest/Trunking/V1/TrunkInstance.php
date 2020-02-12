@@ -31,7 +31,7 @@ use Twilio\Version;
  * @property array $recording
  * @property bool $cnamLookupEnabled
  * @property string $authType
- * @property string $authTypeSet
+ * @property string[] $authTypeSet
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $sid
@@ -52,7 +52,7 @@ class TrunkInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -118,7 +118,7 @@ class TrunkInstance extends InstanceResource {
      * @return TrunkInstance Updated TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): TrunkInstance {
+    public function update(array $options = []): TrunkInstance {
         return $this->proxy()->update($options);
     }
 
@@ -164,7 +164,7 @@ class TrunkInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -32,7 +32,7 @@ class PhoneNumberInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $phoneNumber The phone number to fetch in E.164 format
      */
-    public function __construct(Version $version, array $payload, $phoneNumber = null) {
+    public function __construct(Version $version, array $payload, string $phoneNumber = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +70,7 @@ class PhoneNumberInstance extends InstanceResource {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): PhoneNumberInstance {
+    public function fetch(array $options = []): PhoneNumberInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -81,7 +81,7 @@ class PhoneNumberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

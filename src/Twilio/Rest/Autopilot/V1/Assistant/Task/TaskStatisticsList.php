@@ -25,7 +25,7 @@ class TaskStatisticsList extends ListResource {
      * @param string $taskSid The SID of the Task for which the statistics were
      *                        collected
      */
-    public function __construct(Version $version, $assistantSid, $taskSid) {
+    public function __construct(Version $version, string $assistantSid, string $taskSid) {
         parent::__construct($version);
 
         // Path Solution

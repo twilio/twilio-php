@@ -17,7 +17,7 @@ abstract class CredentialOptions {
      * @param string $password The password will not be returned in the response
      * @return UpdateCredentialOptions Options builder
      */
-    public static function update($password = Values::NONE): UpdateCredentialOptions {
+    public static function update(string $password = Values::NONE): UpdateCredentialOptions {
         return new UpdateCredentialOptions($password);
     }
 }
@@ -26,7 +26,7 @@ class UpdateCredentialOptions extends Options {
     /**
      * @param string $password The password will not be returned in the response
      */
-    public function __construct($password = Values::NONE) {
+    public function __construct(string $password = Values::NONE) {
         $this->options['password'] = $password;
     }
 
@@ -36,7 +36,7 @@ class UpdateCredentialOptions extends Options {
      * @param string $password The password will not be returned in the response
      * @return $this Fluent Builder
      */
-    public function setPassword($password): self {
+    public function setPassword(string $password): self {
         $this->options['password'] = $password;
         return $this;
     }

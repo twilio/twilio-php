@@ -46,7 +46,7 @@ class ConversationInstance extends InstanceResource {
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -87,7 +87,7 @@ class ConversationInstance extends InstanceResource {
      * @return ConversationInstance Updated ConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ConversationInstance {
+    public function update(array $options = []): ConversationInstance {
         return $this->proxy()->update($options);
     }
 
@@ -139,7 +139,7 @@ class ConversationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

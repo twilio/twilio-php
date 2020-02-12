@@ -195,7 +195,7 @@ class Pay extends TwiML {
     /**
      * Add ValidCardTypes attribute.
      *
-     * @param string $validCardTypes Comma separated accepted card types
+     * @param string[] $validCardTypes Comma separated accepted card types
      */
     public function setValidCardTypes($validCardTypes): self {
         return $this->setAttribute('validCardTypes', $validCardTypes);

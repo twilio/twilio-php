@@ -21,10 +21,10 @@ abstract class WebhookOptions {
      *                                 be sent to
      * @param string $configurationMethod The HTTP method we should use when
      *                                    sending a webhook request to url
-     * @param string $configurationFilters The list of events that trigger a
-     *                                     webhook event for the Session
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for the Session
+     * @param string[] $configurationFilters The list of events that trigger a
+     *                                       webhook event for the Session
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for the Session
      * @param string $configurationFlowSid The SID of the studio flow where the
      *                                     webhook should be sent to
      * @param int $configurationRetryCount The number of times to call the webhook
@@ -36,7 +36,7 @@ abstract class WebhookOptions {
      * @param int $configurationBufferWindow The period to buffer messages
      * @return CreateWebhookOptions Options builder
      */
-    public static function create($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationReplayAfter = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE): CreateWebhookOptions {
+    public static function create(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE, int $configurationReplayAfter = Values::NONE, bool $configurationBufferMessages = Values::NONE, int $configurationBufferWindow = Values::NONE): CreateWebhookOptions {
         return new CreateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationRetryCount, $configurationReplayAfter, $configurationBufferMessages, $configurationBufferWindow);
     }
 
@@ -45,10 +45,10 @@ abstract class WebhookOptions {
      *                                 be sent to
      * @param string $configurationMethod The HTTP method we should use when
      *                                    sending a webhook request to url
-     * @param string $configurationFilters The list of events that trigger a
-     *                                     webhook event for the Session
-     * @param string $configurationTriggers The list of keywords, that trigger a
-     *                                      webhook event for the Session
+     * @param string[] $configurationFilters The list of events that trigger a
+     *                                       webhook event for the Session
+     * @param string[] $configurationTriggers The list of keywords, that trigger a
+     *                                        webhook event for the Session
      * @param string $configurationFlowSid The SID of the studio flow where the
      *                                     webhook should be sent to
      * @param int $configurationRetryCount The number of times to try the webhook
@@ -58,7 +58,7 @@ abstract class WebhookOptions {
      * @param int $configurationBufferWindow The period to buffer messages
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE): UpdateWebhookOptions {
+    public static function update(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE, bool $configurationBufferMessages = Values::NONE, int $configurationBufferWindow = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationRetryCount, $configurationBufferMessages, $configurationBufferWindow);
     }
 }
@@ -69,10 +69,10 @@ class CreateWebhookOptions extends Options {
      *                                 be sent to
      * @param string $configurationMethod The HTTP method we should use when
      *                                    sending a webhook request to url
-     * @param string $configurationFilters The list of events that trigger a
-     *                                     webhook event for the Session
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for the Session
+     * @param string[] $configurationFilters The list of events that trigger a
+     *                                       webhook event for the Session
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for the Session
      * @param string $configurationFlowSid The SID of the studio flow where the
      *                                     webhook should be sent to
      * @param int $configurationRetryCount The number of times to call the webhook
@@ -83,7 +83,7 @@ class CreateWebhookOptions extends Options {
      *                                          to messages
      * @param int $configurationBufferWindow The period to buffer messages
      */
-    public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationReplayAfter = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE) {
+    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE, int $configurationReplayAfter = Values::NONE, bool $configurationBufferMessages = Values::NONE, int $configurationBufferWindow = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -102,7 +102,7 @@ class CreateWebhookOptions extends Options {
      *                                 be sent to
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl($configurationUrl): self {
+    public function setConfigurationUrl(string $configurationUrl): self {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
@@ -114,7 +114,7 @@ class CreateWebhookOptions extends Options {
      *                                    sending a webhook request to url
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod($configurationMethod): self {
+    public function setConfigurationMethod(string $configurationMethod): self {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -122,11 +122,11 @@ class CreateWebhookOptions extends Options {
     /**
      * The list of events that trigger a webhook event for the Session.
      *
-     * @param string $configurationFilters The list of events that trigger a
-     *                                     webhook event for the Session
+     * @param string[] $configurationFilters The list of events that trigger a
+     *                                       webhook event for the Session
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters($configurationFilters): self {
+    public function setConfigurationFilters(string[] $configurationFilters): self {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -134,11 +134,11 @@ class CreateWebhookOptions extends Options {
     /**
      * The list of keywords, firing webhook event for the Session.
      *
-     * @param string $configurationTriggers The list of keywords, firing webhook
-     *                                      event for the Session
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for the Session
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers($configurationTriggers): self {
+    public function setConfigurationTriggers(string[] $configurationTriggers): self {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -150,7 +150,7 @@ class CreateWebhookOptions extends Options {
      *                                     webhook should be sent to
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid($configurationFlowSid): self {
+    public function setConfigurationFlowSid(string $configurationFlowSid): self {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -162,7 +162,7 @@ class CreateWebhookOptions extends Options {
      *                                     request if the first attempt fails
      * @return $this Fluent Builder
      */
-    public function setConfigurationRetryCount($configurationRetryCount): self {
+    public function setConfigurationRetryCount(int $configurationRetryCount): self {
         $this->options['configurationRetryCount'] = $configurationRetryCount;
         return $this;
     }
@@ -174,7 +174,7 @@ class CreateWebhookOptions extends Options {
      *                                      successors the webhook will be replayed
      * @return $this Fluent Builder
      */
-    public function setConfigurationReplayAfter($configurationReplayAfter): self {
+    public function setConfigurationReplayAfter(int $configurationReplayAfter): self {
         $this->options['configurationReplayAfter'] = $configurationReplayAfter;
         return $this;
     }
@@ -186,7 +186,7 @@ class CreateWebhookOptions extends Options {
      *                                          to messages
      * @return $this Fluent Builder
      */
-    public function setConfigurationBufferMessages($configurationBufferMessages): self {
+    public function setConfigurationBufferMessages(bool $configurationBufferMessages): self {
         $this->options['configurationBufferMessages'] = $configurationBufferMessages;
         return $this;
     }
@@ -197,7 +197,7 @@ class CreateWebhookOptions extends Options {
      * @param int $configurationBufferWindow The period to buffer messages
      * @return $this Fluent Builder
      */
-    public function setConfigurationBufferWindow($configurationBufferWindow): self {
+    public function setConfigurationBufferWindow(int $configurationBufferWindow): self {
         $this->options['configurationBufferWindow'] = $configurationBufferWindow;
         return $this;
     }
@@ -224,10 +224,10 @@ class UpdateWebhookOptions extends Options {
      *                                 be sent to
      * @param string $configurationMethod The HTTP method we should use when
      *                                    sending a webhook request to url
-     * @param string $configurationFilters The list of events that trigger a
-     *                                     webhook event for the Session
-     * @param string $configurationTriggers The list of keywords, that trigger a
-     *                                      webhook event for the Session
+     * @param string[] $configurationFilters The list of events that trigger a
+     *                                       webhook event for the Session
+     * @param string[] $configurationTriggers The list of keywords, that trigger a
+     *                                        webhook event for the Session
      * @param string $configurationFlowSid The SID of the studio flow where the
      *                                     webhook should be sent to
      * @param int $configurationRetryCount The number of times to try the webhook
@@ -236,7 +236,7 @@ class UpdateWebhookOptions extends Options {
      *                                          to messages
      * @param int $configurationBufferWindow The period to buffer messages
      */
-    public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE) {
+    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, string[] $configurationFilters = Values::NONE, string[] $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE, bool $configurationBufferMessages = Values::NONE, int $configurationBufferWindow = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -254,7 +254,7 @@ class UpdateWebhookOptions extends Options {
      *                                 be sent to
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl($configurationUrl): self {
+    public function setConfigurationUrl(string $configurationUrl): self {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
@@ -266,7 +266,7 @@ class UpdateWebhookOptions extends Options {
      *                                    sending a webhook request to url
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod($configurationMethod): self {
+    public function setConfigurationMethod(string $configurationMethod): self {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -274,11 +274,11 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of events that trigger a webhook event for the Session.
      *
-     * @param string $configurationFilters The list of events that trigger a
-     *                                     webhook event for the Session
+     * @param string[] $configurationFilters The list of events that trigger a
+     *                                       webhook event for the Session
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters($configurationFilters): self {
+    public function setConfigurationFilters(string[] $configurationFilters): self {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -286,11 +286,11 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of keywords that trigger a webhook event for the Session.
      *
-     * @param string $configurationTriggers The list of keywords, that trigger a
-     *                                      webhook event for the Session
+     * @param string[] $configurationTriggers The list of keywords, that trigger a
+     *                                        webhook event for the Session
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers($configurationTriggers): self {
+    public function setConfigurationTriggers(string[] $configurationTriggers): self {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -302,7 +302,7 @@ class UpdateWebhookOptions extends Options {
      *                                     webhook should be sent to
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid($configurationFlowSid): self {
+    public function setConfigurationFlowSid(string $configurationFlowSid): self {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -314,7 +314,7 @@ class UpdateWebhookOptions extends Options {
      *                                     request if the first attempt fails
      * @return $this Fluent Builder
      */
-    public function setConfigurationRetryCount($configurationRetryCount): self {
+    public function setConfigurationRetryCount(int $configurationRetryCount): self {
         $this->options['configurationRetryCount'] = $configurationRetryCount;
         return $this;
     }
@@ -326,7 +326,7 @@ class UpdateWebhookOptions extends Options {
      *                                          to messages
      * @return $this Fluent Builder
      */
-    public function setConfigurationBufferMessages($configurationBufferMessages): self {
+    public function setConfigurationBufferMessages(bool $configurationBufferMessages): self {
         $this->options['configurationBufferMessages'] = $configurationBufferMessages;
         return $this;
     }
@@ -337,7 +337,7 @@ class UpdateWebhookOptions extends Options {
      * @param int $configurationBufferWindow The period to buffer messages
      * @return $this Fluent Builder
      */
-    public function setConfigurationBufferWindow($configurationBufferWindow): self {
+    public function setConfigurationBufferWindow(int $configurationBufferWindow): self {
         $this->options['configurationBufferWindow'] = $configurationBufferWindow;
         return $this;
     }

@@ -26,7 +26,7 @@ abstract class SuccessRateOptions {
      * @param string $interval The Interval of this Success Rate.
      * @return FetchSuccessRateOptions Options builder
      */
-    public static function fetch($brandSid = Values::NONE, $brandedChannelSid = Values::NONE, $phoneNumberSid = Values::NONE, $country = Values::NONE, $start = Values::NONE, $end = Values::NONE, $interval = Values::NONE): FetchSuccessRateOptions {
+    public static function fetch(string $brandSid = Values::NONE, string $brandedChannelSid = Values::NONE, string $phoneNumberSid = Values::NONE, string $country = Values::NONE, \DateTime $start = Values::NONE, \DateTime $end = Values::NONE, string $interval = Values::NONE): FetchSuccessRateOptions {
         return new FetchSuccessRateOptions($brandSid, $brandedChannelSid, $phoneNumberSid, $country, $start, $end, $interval);
     }
 }
@@ -41,7 +41,7 @@ class FetchSuccessRateOptions extends Options {
      * @param \DateTime $end The end date that for this Success Rate.
      * @param string $interval The Interval of this Success Rate.
      */
-    public function __construct($brandSid = Values::NONE, $brandedChannelSid = Values::NONE, $phoneNumberSid = Values::NONE, $country = Values::NONE, $start = Values::NONE, $end = Values::NONE, $interval = Values::NONE) {
+    public function __construct(string $brandSid = Values::NONE, string $brandedChannelSid = Values::NONE, string $phoneNumberSid = Values::NONE, string $country = Values::NONE, \DateTime $start = Values::NONE, \DateTime $end = Values::NONE, string $interval = Values::NONE) {
         $this->options['brandSid'] = $brandSid;
         $this->options['brandedChannelSid'] = $brandedChannelSid;
         $this->options['phoneNumberSid'] = $phoneNumberSid;
@@ -57,7 +57,7 @@ class FetchSuccessRateOptions extends Options {
      * @param string $brandSid Brand Sid.
      * @return $this Fluent Builder
      */
-    public function setBrandSid($brandSid): self {
+    public function setBrandSid(string $brandSid): self {
         $this->options['brandSid'] = $brandSid;
         return $this;
     }
@@ -68,7 +68,7 @@ class FetchSuccessRateOptions extends Options {
      * @param string $brandedChannelSid Branded Channel Sid.
      * @return $this Fluent Builder
      */
-    public function setBrandedChannelSid($brandedChannelSid): self {
+    public function setBrandedChannelSid(string $brandedChannelSid): self {
         $this->options['brandedChannelSid'] = $brandedChannelSid;
         return $this;
     }
@@ -79,7 +79,7 @@ class FetchSuccessRateOptions extends Options {
      * @param string $phoneNumberSid Phone Number Sid.
      * @return $this Fluent Builder
      */
-    public function setPhoneNumberSid($phoneNumberSid): self {
+    public function setPhoneNumberSid(string $phoneNumberSid): self {
         $this->options['phoneNumberSid'] = $phoneNumberSid;
         return $this;
     }
@@ -90,7 +90,7 @@ class FetchSuccessRateOptions extends Options {
      * @param string $country Country 2-letter ISO 3166 code.
      * @return $this Fluent Builder
      */
-    public function setCountry($country): self {
+    public function setCountry(string $country): self {
         $this->options['country'] = $country;
         return $this;
     }
@@ -101,7 +101,7 @@ class FetchSuccessRateOptions extends Options {
      * @param \DateTime $start The start date that for this Success Rate.
      * @return $this Fluent Builder
      */
-    public function setStart($start): self {
+    public function setStart(\DateTime $start): self {
         $this->options['start'] = $start;
         return $this;
     }
@@ -112,7 +112,7 @@ class FetchSuccessRateOptions extends Options {
      * @param \DateTime $end The end date that for this Success Rate.
      * @return $this Fluent Builder
      */
-    public function setEnd($end): self {
+    public function setEnd(\DateTime $end): self {
         $this->options['end'] = $end;
         return $this;
     }
@@ -123,7 +123,7 @@ class FetchSuccessRateOptions extends Options {
      * @param string $interval The Interval of this Success Rate.
      * @return $this Fluent Builder
      */
-    public function setInterval($interval): self {
+    public function setInterval(string $interval): self {
         $this->options['interval'] = $interval;
         return $this;
     }

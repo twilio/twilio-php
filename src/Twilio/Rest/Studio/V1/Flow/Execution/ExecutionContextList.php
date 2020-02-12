@@ -20,7 +20,7 @@ class ExecutionContextList extends ListResource {
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
      */
-    public function __construct(Version $version, $flowSid, $executionSid) {
+    public function __construct(Version $version, string $flowSid, string $executionSid) {
         parent::__construct($version);
 
         // Path Solution

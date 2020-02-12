@@ -76,7 +76,7 @@ class DeviceContext extends InstanceContext {
      * @return DeviceInstance Updated DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): DeviceInstance {
+    public function update(array $options = []): DeviceInstance {
         $options = new Values($options);
 
         $data = Values::of([

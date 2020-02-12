@@ -34,14 +34,14 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property int $verificationAttempts
  * @property string $email
- * @property string $ccEmails
+ * @property string[] $ccEmails
  * @property string $url
  * @property string $verificationType
  * @property string $verificationDocumentSid
  * @property string $extension
  * @property int $callDelay
  * @property string $verificationCode
- * @property string $verificationCallSids
+ * @property string[] $verificationCallSids
  */
 class HostedNumberOrderInstance extends InstanceResource {
     /**
@@ -51,7 +51,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid HostedNumberOrder sid.
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -125,7 +125,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): HostedNumberOrderInstance {
+    public function update(array $options = []): HostedNumberOrderInstance {
         return $this->proxy()->update($options);
     }
 
@@ -136,7 +136,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -17,7 +17,7 @@ abstract class AccountOptions {
      * @param string $friendlyName A human readable description of the account
      * @return CreateAccountOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE): CreateAccountOptions {
+    public static function create(string $friendlyName = Values::NONE): CreateAccountOptions {
         return new CreateAccountOptions($friendlyName);
     }
 
@@ -26,7 +26,7 @@ abstract class AccountOptions {
      * @param string $status Status to filter on
      * @return ReadAccountOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE, $status = Values::NONE): ReadAccountOptions {
+    public static function read(string $friendlyName = Values::NONE, string $status = Values::NONE): ReadAccountOptions {
         return new ReadAccountOptions($friendlyName, $status);
     }
 
@@ -35,7 +35,7 @@ abstract class AccountOptions {
      * @param string $status Status to update the Account with
      * @return UpdateAccountOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $status = Values::NONE): UpdateAccountOptions {
+    public static function update(string $friendlyName = Values::NONE, string $status = Values::NONE): UpdateAccountOptions {
         return new UpdateAccountOptions($friendlyName, $status);
     }
 }
@@ -44,7 +44,7 @@ class CreateAccountOptions extends Options {
     /**
      * @param string $friendlyName A human readable description of the account
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -54,7 +54,7 @@ class CreateAccountOptions extends Options {
      * @param string $friendlyName A human readable description of the account
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -80,7 +80,7 @@ class ReadAccountOptions extends Options {
      * @param string $friendlyName FriendlyName to filter on
      * @param string $status Status to filter on
      */
-    public function __construct($friendlyName = Values::NONE, $status = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $status = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['status'] = $status;
     }
@@ -91,7 +91,7 @@ class ReadAccountOptions extends Options {
      * @param string $friendlyName FriendlyName to filter on
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -102,7 +102,7 @@ class ReadAccountOptions extends Options {
      * @param string $status Status to filter on
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -128,7 +128,7 @@ class UpdateAccountOptions extends Options {
      * @param string $friendlyName FriendlyName to update
      * @param string $status Status to update the Account with
      */
-    public function __construct($friendlyName = Values::NONE, $status = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $status = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['status'] = $status;
     }
@@ -139,7 +139,7 @@ class UpdateAccountOptions extends Options {
      * @param string $friendlyName FriendlyName to update
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -150,7 +150,7 @@ class UpdateAccountOptions extends Options {
      * @param string $status Status to update the Account with
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }

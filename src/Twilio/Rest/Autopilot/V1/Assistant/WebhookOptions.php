@@ -21,7 +21,7 @@ abstract class WebhookOptions {
      *                              webhook's URL.
      * @return CreateWebhookOptions Options builder
      */
-    public static function create($webhookMethod = Values::NONE): CreateWebhookOptions {
+    public static function create(string $webhookMethod = Values::NONE): CreateWebhookOptions {
         return new CreateWebhookOptions($webhookMethod);
     }
 
@@ -35,7 +35,7 @@ abstract class WebhookOptions {
      *                              webhook's URL.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $events = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE): UpdateWebhookOptions {
+    public static function update(string $uniqueName = Values::NONE, string $events = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($uniqueName, $events, $webhookUrl, $webhookMethod);
     }
 }
@@ -45,7 +45,7 @@ class CreateWebhookOptions extends Options {
      * @param string $webhookMethod The method to be used when calling the
      *                              webhook's URL.
      */
-    public function __construct($webhookMethod = Values::NONE) {
+    public function __construct(string $webhookMethod = Values::NONE) {
         $this->options['webhookMethod'] = $webhookMethod;
     }
 
@@ -56,7 +56,7 @@ class CreateWebhookOptions extends Options {
      *                              webhook's URL.
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod): self {
+    public function setWebhookMethod(string $webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -87,7 +87,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $webhookMethod The method to be used when calling the
      *                              webhook's URL.
      */
-    public function __construct($uniqueName = Values::NONE, $events = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, string $events = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['events'] = $events;
         $this->options['webhookUrl'] = $webhookUrl;
@@ -101,7 +101,7 @@ class UpdateWebhookOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -113,7 +113,7 @@ class UpdateWebhookOptions extends Options {
      *                       will subscribe to.
      * @return $this Fluent Builder
      */
-    public function setEvents($events): self {
+    public function setEvents(string $events): self {
         $this->options['events'] = $events;
         return $this;
     }
@@ -124,7 +124,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $webhookUrl The URL associated with this Webhook.
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -136,7 +136,7 @@ class UpdateWebhookOptions extends Options {
      *                              webhook's URL.
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod): self {
+    public function setWebhookMethod(string $webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }

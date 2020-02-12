@@ -27,7 +27,7 @@ abstract class MessageOptions {
      * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE): CreateMessageOptions {
+    public static function create(string $from = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $lastUpdatedBy = Values::NONE, string $body = Values::NONE, string $mediaSid = Values::NONE): CreateMessageOptions {
         return new CreateMessageOptions($from, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy, $body, $mediaSid);
     }
 
@@ -35,7 +35,7 @@ abstract class MessageOptions {
      * @param string $order The sort order of the returned messages
      * @return ReadMessageOptions Options builder
      */
-    public static function read($order = Values::NONE): ReadMessageOptions {
+    public static function read(string $order = Values::NONE): ReadMessageOptions {
         return new ReadMessageOptions($order);
     }
 
@@ -52,7 +52,7 @@ abstract class MessageOptions {
      * @param string $from The Identity of the message's author
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE): UpdateMessageOptions {
+    public static function update(string $body = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $lastUpdatedBy = Values::NONE, string $from = Values::NONE): UpdateMessageOptions {
         return new UpdateMessageOptions($body, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy, $from);
     }
 }
@@ -71,7 +71,7 @@ class CreateMessageOptions extends Options {
      * @param string $body The message to send to the channel
      * @param string $mediaSid The Media Sid to be attached to the new Message
      */
-    public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
+    public function __construct(string $from = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $lastUpdatedBy = Values::NONE, string $body = Values::NONE, string $mediaSid = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -87,7 +87,7 @@ class CreateMessageOptions extends Options {
      * @param string $from The Identity of the new message's author
      * @return $this Fluent Builder
      */
-    public function setFrom($from): self {
+    public function setFrom(string $from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -99,7 +99,7 @@ class CreateMessageOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -111,7 +111,7 @@ class CreateMessageOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -123,7 +123,7 @@ class CreateMessageOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -135,7 +135,7 @@ class CreateMessageOptions extends Options {
      *                              Message
      * @return $this Fluent Builder
      */
-    public function setLastUpdatedBy($lastUpdatedBy): self {
+    public function setLastUpdatedBy(string $lastUpdatedBy): self {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
@@ -146,7 +146,7 @@ class CreateMessageOptions extends Options {
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
-    public function setBody($body): self {
+    public function setBody(string $body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -157,7 +157,7 @@ class CreateMessageOptions extends Options {
      * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return $this Fluent Builder
      */
-    public function setMediaSid($mediaSid): self {
+    public function setMediaSid(string $mediaSid): self {
         $this->options['mediaSid'] = $mediaSid;
         return $this;
     }
@@ -182,7 +182,7 @@ class ReadMessageOptions extends Options {
     /**
      * @param string $order The sort order of the returned messages
      */
-    public function __construct($order = Values::NONE) {
+    public function __construct(string $order = Values::NONE) {
         $this->options['order'] = $order;
     }
 
@@ -192,7 +192,7 @@ class ReadMessageOptions extends Options {
      * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
-    public function setOrder($order): self {
+    public function setOrder(string $order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -226,7 +226,7 @@ class UpdateMessageOptions extends Options {
      *                              Message, if applicable
      * @param string $from The Identity of the message's author
      */
-    public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
+    public function __construct(string $body = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $lastUpdatedBy = Values::NONE, string $from = Values::NONE) {
         $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -241,7 +241,7 @@ class UpdateMessageOptions extends Options {
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
-    public function setBody($body): self {
+    public function setBody(string $body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -253,7 +253,7 @@ class UpdateMessageOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -265,7 +265,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -277,7 +277,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -289,7 +289,7 @@ class UpdateMessageOptions extends Options {
      *                              Message, if applicable
      * @return $this Fluent Builder
      */
-    public function setLastUpdatedBy($lastUpdatedBy): self {
+    public function setLastUpdatedBy(string $lastUpdatedBy): self {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
@@ -300,7 +300,7 @@ class UpdateMessageOptions extends Options {
      * @param string $from The Identity of the message's author
      * @return $this Fluent Builder
      */
-    public function setFrom($from): self {
+    public function setFrom(string $from): self {
         $this->options['from'] = $from;
         return $this;
     }

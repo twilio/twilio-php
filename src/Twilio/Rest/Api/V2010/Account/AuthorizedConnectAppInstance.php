@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string $connectAppSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $permissions
+ * @property string[] $permissions
  * @property string $uri
  */
 class AuthorizedConnectAppInstance extends InstanceResource {
@@ -36,7 +36,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $connectAppSid The SID of the Connect App to fetch
      */
-    public function __construct(Version $version, array $payload, $accountSid, $connectAppSid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $connectAppSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +95,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

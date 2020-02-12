@@ -68,11 +68,11 @@ class RoleContext extends InstanceContext {
     /**
      * Update the RoleInstance
      *
-     * @param string $permission A permission the role should have
+     * @param string[] $permission A permission the role should have
      * @return RoleInstance Updated RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($permission): RoleInstance {
+    public function update(array $permission): RoleInstance {
         $data = Values::of(['Permission' => Serialize::map($permission, function($e) { return $e; }), ]);
 
         $payload = $this->version->update(

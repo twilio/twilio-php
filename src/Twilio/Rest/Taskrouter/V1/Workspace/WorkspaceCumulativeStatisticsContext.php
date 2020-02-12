@@ -40,7 +40,7 @@ class WorkspaceCumulativeStatisticsContext extends InstanceContext {
      *                                               WorkspaceCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkspaceCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkspaceCumulativeStatisticsInstance {
         $options = new Values($options);
 
         $params = Values::of([

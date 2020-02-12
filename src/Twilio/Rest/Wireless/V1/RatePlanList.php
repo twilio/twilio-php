@@ -50,7 +50,7 @@ class RatePlanList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -73,7 +73,7 @@ class RatePlanList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RatePlanInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -86,7 +86,7 @@ class RatePlanList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RatePlanPage Page of RatePlanInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): RatePlanPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RatePlanPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -105,7 +105,7 @@ class RatePlanList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RatePlanPage Page of RatePlanInstance
      */
-    public function getPage($targetUrl): RatePlanPage {
+    public function getPage(string $targetUrl): RatePlanPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -121,7 +121,7 @@ class RatePlanList extends ListResource {
      * @return RatePlanInstance Newly created RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): RatePlanInstance {
+    public function create(array $options = []): RatePlanInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -153,7 +153,7 @@ class RatePlanList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): RatePlanContext {
+    public function getContext(string $sid): RatePlanContext {
         return new RatePlanContext($this->version, $sid);
     }
 

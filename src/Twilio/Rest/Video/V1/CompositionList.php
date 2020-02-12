@@ -54,7 +54,7 @@ class CompositionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -78,7 +78,7 @@ class CompositionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CompositionInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -92,7 +92,7 @@ class CompositionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CompositionPage Page of CompositionInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CompositionPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CompositionPage {
         $options = new Values($options);
         $params = Values::of([
             'Status' => $options['status'],
@@ -120,7 +120,7 @@ class CompositionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CompositionPage Page of CompositionInstance
      */
-    public function getPage($targetUrl): CompositionPage {
+    public function getPage(string $targetUrl): CompositionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -138,7 +138,7 @@ class CompositionList extends ListResource {
      * @return CompositionInstance Newly created CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($roomSid, $options = []): CompositionInstance {
+    public function create(string $roomSid, array $options = []): CompositionInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -168,7 +168,7 @@ class CompositionList extends ListResource {
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext($sid): CompositionContext {
+    public function getContext(string $sid): CompositionContext {
         return new CompositionContext($this->version, $sid);
     }
 

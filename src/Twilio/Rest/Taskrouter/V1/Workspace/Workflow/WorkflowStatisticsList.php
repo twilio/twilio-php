@@ -23,7 +23,7 @@ class WorkflowStatisticsList extends ListResource {
      *                            controlled by the Workflow with the specified SID
      *                            value
      */
-    public function __construct(Version $version, $workspaceSid, $workflowSid) {
+    public function __construct(Version $version, string $workspaceSid, string $workflowSid) {
         parent::__construct($version);
 
         // Path Solution

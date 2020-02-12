@@ -24,7 +24,7 @@ class TaskList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that contains the Task
      */
-    public function __construct(Version $version, $workspaceSid) {
+    public function __construct(Version $version, string $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class TaskList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class TaskList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class TaskList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TaskPage Page of TaskInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskPage {
         $options = new Values($options);
         $params = Values::of([
             'Priority' => $options['priority'],
@@ -123,7 +123,7 @@ class TaskList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TaskPage Page of TaskInstance
      */
-    public function getPage($targetUrl): TaskPage {
+    public function getPage(string $targetUrl): TaskPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,7 +139,7 @@ class TaskList extends ListResource {
      * @return TaskInstance Newly created TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): TaskInstance {
+    public function create(array $options = []): TaskInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -165,7 +165,7 @@ class TaskList extends ListResource {
      *
      * @param string $sid The SID of the resource to fetch
      */
-    public function getContext($sid): TaskContext {
+    public function getContext(string $sid): TaskContext {
         return new TaskContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 

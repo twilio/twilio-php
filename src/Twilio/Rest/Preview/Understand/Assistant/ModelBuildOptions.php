@@ -23,7 +23,7 @@ abstract class ModelBuildOptions {
      *                           up to 64 characters long. For example: v0.1
      * @return CreateModelBuildOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $uniqueName = Values::NONE): CreateModelBuildOptions {
+    public static function create(string $statusCallback = Values::NONE, string $uniqueName = Values::NONE): CreateModelBuildOptions {
         return new CreateModelBuildOptions($statusCallback, $uniqueName);
     }
 
@@ -33,7 +33,7 @@ abstract class ModelBuildOptions {
      *                           up to 64 characters long. For example: v0.1
      * @return UpdateModelBuildOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE): UpdateModelBuildOptions {
+    public static function update(string $uniqueName = Values::NONE): UpdateModelBuildOptions {
         return new UpdateModelBuildOptions($uniqueName);
     }
 }
@@ -45,7 +45,7 @@ class CreateModelBuildOptions extends Options {
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long. For example: v0.1
      */
-    public function __construct($statusCallback = Values::NONE, $uniqueName = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $uniqueName = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -56,7 +56,7 @@ class CreateModelBuildOptions extends Options {
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -69,7 +69,7 @@ class CreateModelBuildOptions extends Options {
      *                           up to 64 characters long. For example: v0.1
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -96,7 +96,7 @@ class UpdateModelBuildOptions extends Options {
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long. For example: v0.1
      */
-    public function __construct($uniqueName = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
     }
 
@@ -108,7 +108,7 @@ class UpdateModelBuildOptions extends Options {
      *                           up to 64 characters long. For example: v0.1
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }

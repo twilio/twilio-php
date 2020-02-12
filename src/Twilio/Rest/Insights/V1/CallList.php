@@ -33,7 +33,7 @@ class CallList extends ListResource {
      *
      * @param string $sid The sid
      */
-    public function getContext($sid): CallContext {
+    public function getContext(string $sid): CallContext {
         return new CallContext($this->version, $sid);
     }
 

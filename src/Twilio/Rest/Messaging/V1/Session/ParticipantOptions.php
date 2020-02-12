@@ -28,7 +28,7 @@ abstract class ParticipantOptions {
      *                               resource was updated
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($identity = Values::NONE, $userAddress = Values::NONE, $attributes = Values::NONE, $twilioAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE): CreateParticipantOptions {
+    public static function create(string $identity = Values::NONE, string $userAddress = Values::NONE, string $attributes = Values::NONE, string $twilioAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE): CreateParticipantOptions {
         return new CreateParticipantOptions($identity, $userAddress, $attributes, $twilioAddress, $dateCreated, $dateUpdated);
     }
 
@@ -40,7 +40,7 @@ abstract class ParticipantOptions {
      *                               resource was updated
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE): UpdateParticipantOptions {
+    public static function update(string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE): UpdateParticipantOptions {
         return new UpdateParticipantOptions($attributes, $dateCreated, $dateUpdated);
     }
 }
@@ -57,7 +57,7 @@ class CreateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
      */
-    public function __construct($identity = Values::NONE, $userAddress = Values::NONE, $attributes = Values::NONE, $twilioAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct(string $identity = Values::NONE, string $userAddress = Values::NONE, string $attributes = Values::NONE, string $twilioAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['userAddress'] = $userAddress;
         $this->options['attributes'] = $attributes;
@@ -72,7 +72,7 @@ class CreateParticipantOptions extends Options {
      * @param string $identity The string that identifies the resource's User
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity): self {
+    public function setIdentity(string $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -83,7 +83,7 @@ class CreateParticipantOptions extends Options {
      * @param string $userAddress The address of the participant's device
      * @return $this Fluent Builder
      */
-    public function setUserAddress($userAddress): self {
+    public function setUserAddress(string $userAddress): self {
         $this->options['userAddress'] = $userAddress;
         return $this;
     }
@@ -94,7 +94,7 @@ class CreateParticipantOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -106,7 +106,7 @@ class CreateParticipantOptions extends Options {
      *                              participant is in contact with
      * @return $this Fluent Builder
      */
-    public function setTwilioAddress($twilioAddress): self {
+    public function setTwilioAddress(string $twilioAddress): self {
         $this->options['twilioAddress'] = $twilioAddress;
         return $this;
     }
@@ -118,7 +118,7 @@ class CreateParticipantOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -130,7 +130,7 @@ class CreateParticipantOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -159,7 +159,7 @@ class UpdateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
      */
-    public function __construct($attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct(string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE) {
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
@@ -171,7 +171,7 @@ class UpdateParticipantOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -183,7 +183,7 @@ class UpdateParticipantOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -195,7 +195,7 @@ class UpdateParticipantOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }

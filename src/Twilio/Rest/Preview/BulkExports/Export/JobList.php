@@ -33,7 +33,7 @@ class JobList extends ListResource {
      *
      * @param string $jobSid The job_sid
      */
-    public function getContext($jobSid): JobContext {
+    public function getContext(string $jobSid): JobContext {
         return new JobContext($this->version, $jobSid);
     }
 

@@ -26,7 +26,7 @@ class PayloadList extends ListResource {
      * @param string $addOnResultSid The SID of the AddOnResult to which the
      *                               payload belongs
      */
-    public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid) {
+    public function __construct(Version $version, string $accountSid, string $referenceSid, string $addOnResultSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -57,7 +57,7 @@ class PayloadList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -80,7 +80,7 @@ class PayloadList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return PayloadInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -93,7 +93,7 @@ class PayloadList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return PayloadPage Page of PayloadInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): PayloadPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PayloadPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -112,7 +112,7 @@ class PayloadList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return PayloadPage Page of PayloadInstance
      */
-    public function getPage($targetUrl): PayloadPage {
+    public function getPage(string $targetUrl): PayloadPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class PayloadList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource to fetch
      */
-    public function getContext($sid): PayloadContext {
+    public function getContext(string $sid): PayloadContext {
         return new PayloadContext(
             $this->version,
             $this->solution['accountSid'],

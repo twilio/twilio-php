@@ -23,7 +23,7 @@ abstract class ModelBuildOptions {
      *                           identifies the new resource
      * @return CreateModelBuildOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $uniqueName = Values::NONE): CreateModelBuildOptions {
+    public static function create(string $statusCallback = Values::NONE, string $uniqueName = Values::NONE): CreateModelBuildOptions {
         return new CreateModelBuildOptions($statusCallback, $uniqueName);
     }
 
@@ -32,7 +32,7 @@ abstract class ModelBuildOptions {
      *                           identifies the resource
      * @return UpdateModelBuildOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE): UpdateModelBuildOptions {
+    public static function update(string $uniqueName = Values::NONE): UpdateModelBuildOptions {
         return new UpdateModelBuildOptions($uniqueName);
     }
 }
@@ -44,7 +44,7 @@ class CreateModelBuildOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the new resource
      */
-    public function __construct($statusCallback = Values::NONE, $uniqueName = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $uniqueName = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -56,7 +56,7 @@ class CreateModelBuildOptions extends Options {
      *                               send status information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -68,7 +68,7 @@ class CreateModelBuildOptions extends Options {
      *                           identifies the new resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -94,7 +94,7 @@ class UpdateModelBuildOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      */
-    public function __construct($uniqueName = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
     }
 
@@ -105,7 +105,7 @@ class UpdateModelBuildOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName): self {
+    public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }

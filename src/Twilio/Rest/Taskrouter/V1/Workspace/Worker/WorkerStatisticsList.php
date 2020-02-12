@@ -22,7 +22,7 @@ class WorkerStatisticsList extends ListResource {
      * @param string $workerSid The SID of the Worker that contains the
      *                          WorkerChannel
      */
-    public function __construct(Version $version, $workspaceSid, $workerSid) {
+    public function __construct(Version $version, string $workspaceSid, string $workerSid) {
         parent::__construct($version);
 
         // Path Solution

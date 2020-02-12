@@ -27,7 +27,7 @@ class NotificationList extends ListResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -43,7 +43,7 @@ class NotificationList extends ListResource {
      * @return NotificationInstance Newly created NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): NotificationInstance {
+    public function create(array $options = []): NotificationInstance {
         $options = new Values($options);
 
         $data = Values::of([

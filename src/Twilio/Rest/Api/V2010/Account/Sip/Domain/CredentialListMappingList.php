@@ -24,7 +24,7 @@ class CredentialListMappingList extends ListResource {
      *                           for this resource.
      * @param string $domainSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $accountSid, $domainSid) {
+    public function __construct(Version $version, string $accountSid, string $domainSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -42,7 +42,7 @@ class CredentialListMappingList extends ListResource {
      *                                       CredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($credentialListSid): CredentialListMappingInstance {
+    public function create(string $credentialListSid): CredentialListMappingInstance {
         $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
 
         $payload = $this->version->create(
@@ -79,7 +79,7 @@ class CredentialListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -102,7 +102,7 @@ class CredentialListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialListMappingInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -115,7 +115,7 @@ class CredentialListMappingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CredentialListMappingPage Page of CredentialListMappingInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListMappingPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -135,7 +135,7 @@ class CredentialListMappingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CredentialListMappingPage Page of CredentialListMappingInstance
      */
-    public function getPage($targetUrl): CredentialListMappingPage {
+    public function getPage(string $targetUrl): CredentialListMappingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -149,7 +149,7 @@ class CredentialListMappingList extends ListResource {
      *
      * @param string $sid A string that identifies the resource to fetch
      */
-    public function getContext($sid): CredentialListMappingContext {
+    public function getContext(string $sid): CredentialListMappingContext {
         return new CredentialListMappingContext(
             $this->version,
             $this->solution['accountSid'],

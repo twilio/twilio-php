@@ -22,7 +22,7 @@ class DialogueList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the parent Assistant.
      */
-    public function __construct(Version $version, $assistantSid) {
+    public function __construct(Version $version, string $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -34,7 +34,7 @@ class DialogueList extends ListResource {
      *
      * @param string $sid The sid
      */
-    public function getContext($sid): DialogueContext {
+    public function getContext(string $sid): DialogueContext {
         return new DialogueContext($this->version, $this->solution['assistantSid'], $sid);
     }
 

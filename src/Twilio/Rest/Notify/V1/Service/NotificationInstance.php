@@ -22,9 +22,9 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $serviceSid
  * @property \DateTime $dateCreated
- * @property string $identities
- * @property string $tags
- * @property string $segments
+ * @property string[] $identities
+ * @property string[] $tags
+ * @property string[] $segments
  * @property string $priority
  * @property int $ttl
  * @property string $title
@@ -48,7 +48,7 @@ class NotificationInstance extends InstanceResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      */
-    public function __construct(Version $version, array $payload, $serviceSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +85,7 @@ class NotificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

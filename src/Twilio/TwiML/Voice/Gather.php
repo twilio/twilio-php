@@ -56,7 +56,7 @@ class Gather extends TwiML {
     /**
      * Add Input attribute.
      *
-     * @param string $input Input type Twilio should accept
+     * @param string[] $input Input type Twilio should accept
      */
     public function setInput($input): self {
         return $this->setAttribute('input', $input);

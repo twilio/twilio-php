@@ -49,7 +49,7 @@ class Lookups extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -66,7 +66,7 @@ class Lookups extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -82,7 +82,7 @@ class Lookups extends Domain {
     /**
      * @param string $phoneNumber The phone number to fetch in E.164 format
      */
-    protected function contextPhoneNumbers($phoneNumber): \Twilio\Rest\Lookups\V1\PhoneNumberContext {
+    protected function contextPhoneNumbers(string $phoneNumber): \Twilio\Rest\Lookups\V1\PhoneNumberContext {
         return $this->v1->phoneNumbers($phoneNumber);
     }
 

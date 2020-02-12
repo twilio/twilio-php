@@ -33,7 +33,7 @@ class AuthTypeCallsList extends ListResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, $accountSid, $domainSid) {
+    public function __construct(Version $version, string $accountSid, string $domainSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +77,7 @@ class AuthTypeCallsList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -94,7 +94,7 @@ class AuthTypeCallsList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);

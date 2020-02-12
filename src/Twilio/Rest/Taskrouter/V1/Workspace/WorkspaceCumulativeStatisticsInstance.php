@@ -47,7 +47,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace
      */
-    public function __construct(Version $version, array $payload, $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -104,7 +104,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      *                                               WorkspaceCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): WorkspaceCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkspaceCumulativeStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -115,7 +115,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

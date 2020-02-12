@@ -23,7 +23,7 @@ class NewSigningKeyList extends ListResource {
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -39,7 +39,7 @@ class NewSigningKeyList extends ListResource {
      * @return NewSigningKeyInstance Newly created NewSigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): NewSigningKeyInstance {
+    public function create(array $options = []): NewSigningKeyInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);

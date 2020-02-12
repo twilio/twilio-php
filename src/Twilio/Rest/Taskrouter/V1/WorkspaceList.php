@@ -51,7 +51,7 @@ class WorkspaceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -75,7 +75,7 @@ class WorkspaceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WorkspaceInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -89,7 +89,7 @@ class WorkspaceList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return WorkspacePage Page of WorkspaceInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkspacePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkspacePage {
         $options = new Values($options);
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
@@ -114,7 +114,7 @@ class WorkspaceList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return WorkspacePage Page of WorkspaceInstance
      */
-    public function getPage($targetUrl): WorkspacePage {
+    public function getPage(string $targetUrl): WorkspacePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -131,7 +131,7 @@ class WorkspaceList extends ListResource {
      * @return WorkspaceInstance Newly created WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = []): WorkspaceInstance {
+    public function create(string $friendlyName, array $options = []): WorkspaceInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -158,7 +158,7 @@ class WorkspaceList extends ListResource {
      *
      * @param string $sid The SID of the resource to fetch
      */
-    public function getContext($sid): WorkspaceContext {
+    public function getContext(string $sid): WorkspaceContext {
         return new WorkspaceContext($this->version, $sid);
     }
 

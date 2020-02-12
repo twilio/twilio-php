@@ -25,7 +25,7 @@ class FaxMediaList extends ListResource {
      * @param string $faxSid The SID of the fax the FaxMedia resource is associated
      *                       with
      */
-    public function __construct(Version $version, $faxSid) {
+    public function __construct(Version $version, string $faxSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class FaxMediaList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -75,7 +75,7 @@ class FaxMediaList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FaxMediaInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -88,7 +88,7 @@ class FaxMediaList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FaxMediaPage Page of FaxMediaInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FaxMediaPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FaxMediaPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -107,7 +107,7 @@ class FaxMediaList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FaxMediaPage Page of FaxMediaInstance
      */
-    public function getPage($targetUrl): FaxMediaPage {
+    public function getPage(string $targetUrl): FaxMediaPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -121,7 +121,7 @@ class FaxMediaList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource to fetch
      */
-    public function getContext($sid): FaxMediaContext {
+    public function getContext(string $sid): FaxMediaContext {
         return new FaxMediaContext($this->version, $this->solution['faxSid'], $sid);
     }
 

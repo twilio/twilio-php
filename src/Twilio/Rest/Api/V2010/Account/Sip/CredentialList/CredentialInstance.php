@@ -38,7 +38,7 @@ class CredentialInstance extends InstanceResource {
      *                                  credential
      * @param string $sid The unique id that identifies the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, $accountSid, $credentialListSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $credentialListSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +95,7 @@ class CredentialInstance extends InstanceResource {
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): CredentialInstance {
+    public function update(array $options = []): CredentialInstance {
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +116,7 @@ class CredentialInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

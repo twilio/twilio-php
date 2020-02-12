@@ -21,7 +21,7 @@ class StepContextList extends ListResource {
      * @param string $engagementSid The SID of the Engagement
      * @param string $stepSid Step SID
      */
-    public function __construct(Version $version, $flowSid, $engagementSid, $stepSid) {
+    public function __construct(Version $version, string $flowSid, string $engagementSid, string $stepSid) {
         parent::__construct($version);
 
         // Path Solution

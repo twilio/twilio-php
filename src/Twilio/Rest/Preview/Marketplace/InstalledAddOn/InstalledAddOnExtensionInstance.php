@@ -35,7 +35,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      *                                  which this extension applies
      * @param string $sid The SID of the InstalledAddOn Extension resource to fetch
      */
-    public function __construct(Version $version, array $payload, $installedAddOnSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $installedAddOnSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +93,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($enabled): InstalledAddOnExtensionInstance {
+    public function update(bool $enabled): InstalledAddOnExtensionInstance {
         return $this->proxy()->update($enabled);
     }
 
@@ -104,7 +104,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

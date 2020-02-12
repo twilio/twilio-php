@@ -63,7 +63,7 @@ class TriggerContext extends InstanceContext {
      * @return TriggerInstance Updated TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): TriggerInstance {
+    public function update(array $options = []): TriggerInstance {
         $options = new Values($options);
 
         $data = Values::of([

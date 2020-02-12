@@ -17,7 +17,7 @@ abstract class SigningKeyOptions {
      * @param string $friendlyName The friendly_name
      * @return UpdateSigningKeyOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE): UpdateSigningKeyOptions {
+    public static function update(string $friendlyName = Values::NONE): UpdateSigningKeyOptions {
         return new UpdateSigningKeyOptions($friendlyName);
     }
 }
@@ -26,7 +26,7 @@ class UpdateSigningKeyOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -36,7 +36,7 @@ class UpdateSigningKeyOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }

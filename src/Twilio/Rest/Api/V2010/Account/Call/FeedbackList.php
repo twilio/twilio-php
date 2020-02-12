@@ -20,7 +20,7 @@ class FeedbackList extends ListResource {
      * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The unique string that identifies this resource
      */
-    public function __construct(Version $version, $accountSid, $callSid) {
+    public function __construct(Version $version, string $accountSid, string $callSid) {
         parent::__construct($version);
 
         // Path Solution

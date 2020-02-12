@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property int $revision
  * @property string $commitMessage
  * @property bool $valid
- * @property array $errors
+ * @property array[] $errors
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -41,7 +41,7 @@ class FlowRevisionInstance extends InstanceResource {
      * @param string $revision Specific Revision number or can be `LatestPublished`
      *                         and `LatestRevision`
      */
-    public function __construct(Version $version, array $payload, $sid, $revision = null) {
+    public function __construct(Version $version, array $payload, string $sid, string $revision = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -98,7 +98,7 @@ class FlowRevisionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

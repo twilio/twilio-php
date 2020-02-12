@@ -71,7 +71,7 @@ class CompositionHookContext extends InstanceContext {
      * @return CompositionHookInstance Updated CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName, $options = []): CompositionHookInstance {
+    public function update(string $friendlyName, array $options = []): CompositionHookInstance {
         $options = new Values($options);
 
         $data = Values::of([

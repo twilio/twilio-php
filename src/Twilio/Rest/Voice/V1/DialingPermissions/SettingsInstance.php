@@ -71,7 +71,7 @@ class SettingsInstance extends InstanceResource {
      * @return SettingsInstance Updated SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): SettingsInstance {
+    public function update(array $options = []): SettingsInstance {
         return $this->proxy()->update($options);
     }
 
@@ -82,7 +82,7 @@ class SettingsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

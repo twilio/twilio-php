@@ -24,7 +24,7 @@ class UserList extends ListResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -42,7 +42,7 @@ class UserList extends ListResource {
      * @return UserInstance Newly created UserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($identity, $options = []): UserInstance {
+    public function create(string $identity, array $options = []): UserInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,7 +80,7 @@ class UserList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -103,7 +103,7 @@ class UserList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UserInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -116,7 +116,7 @@ class UserList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UserPage Page of UserInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): UserPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UserPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -135,7 +135,7 @@ class UserList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UserPage Page of UserInstance
      */
-    public function getPage($targetUrl): UserPage {
+    public function getPage(string $targetUrl): UserPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -149,7 +149,7 @@ class UserList extends ListResource {
      *
      * @param string $sid The SID of the User resource to fetch
      */
-    public function getContext($sid): UserContext {
+    public function getContext(string $sid): UserContext {
         return new UserContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

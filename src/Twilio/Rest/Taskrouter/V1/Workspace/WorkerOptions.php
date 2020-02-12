@@ -27,7 +27,7 @@ abstract class WorkerOptions {
      *                             read are eligible for
      * @return ReadWorkerOptions Options builder
      */
-    public static function read($activityName = Values::NONE, $activitySid = Values::NONE, $available = Values::NONE, $friendlyName = Values::NONE, $targetWorkersExpression = Values::NONE, $taskQueueName = Values::NONE, $taskQueueSid = Values::NONE): ReadWorkerOptions {
+    public static function read(string $activityName = Values::NONE, string $activitySid = Values::NONE, string $available = Values::NONE, string $friendlyName = Values::NONE, string $targetWorkersExpression = Values::NONE, string $taskQueueName = Values::NONE, string $taskQueueSid = Values::NONE): ReadWorkerOptions {
         return new ReadWorkerOptions($activityName, $activitySid, $available, $friendlyName, $targetWorkersExpression, $taskQueueName, $taskQueueSid);
     }
 
@@ -37,7 +37,7 @@ abstract class WorkerOptions {
      * @param string $attributes A valid JSON string that describes the new Worker
      * @return CreateWorkerOptions Options builder
      */
-    public static function create($activitySid = Values::NONE, $attributes = Values::NONE): CreateWorkerOptions {
+    public static function create(string $activitySid = Values::NONE, string $attributes = Values::NONE): CreateWorkerOptions {
         return new CreateWorkerOptions($activitySid, $attributes);
     }
 
@@ -49,7 +49,7 @@ abstract class WorkerOptions {
      * @param bool $rejectPendingReservations Whether to reject pending reservations
      * @return UpdateWorkerOptions Options builder
      */
-    public static function update($activitySid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE, $rejectPendingReservations = Values::NONE): UpdateWorkerOptions {
+    public static function update(string $activitySid = Values::NONE, string $attributes = Values::NONE, string $friendlyName = Values::NONE, bool $rejectPendingReservations = Values::NONE): UpdateWorkerOptions {
         return new UpdateWorkerOptions($activitySid, $attributes, $friendlyName, $rejectPendingReservations);
     }
 }
@@ -68,7 +68,7 @@ class ReadWorkerOptions extends Options {
      * @param string $taskQueueSid The SID of the TaskQueue that the Workers to
      *                             read are eligible for
      */
-    public function __construct($activityName = Values::NONE, $activitySid = Values::NONE, $available = Values::NONE, $friendlyName = Values::NONE, $targetWorkersExpression = Values::NONE, $taskQueueName = Values::NONE, $taskQueueSid = Values::NONE) {
+    public function __construct(string $activityName = Values::NONE, string $activitySid = Values::NONE, string $available = Values::NONE, string $friendlyName = Values::NONE, string $targetWorkersExpression = Values::NONE, string $taskQueueName = Values::NONE, string $taskQueueSid = Values::NONE) {
         $this->options['activityName'] = $activityName;
         $this->options['activitySid'] = $activitySid;
         $this->options['available'] = $available;
@@ -84,7 +84,7 @@ class ReadWorkerOptions extends Options {
      * @param string $activityName The activity_name of the Worker resources to read
      * @return $this Fluent Builder
      */
-    public function setActivityName($activityName): self {
+    public function setActivityName(string $activityName): self {
         $this->options['activityName'] = $activityName;
         return $this;
     }
@@ -95,7 +95,7 @@ class ReadWorkerOptions extends Options {
      * @param string $activitySid The activity_sid of the Worker resources to read
      * @return $this Fluent Builder
      */
-    public function setActivitySid($activitySid): self {
+    public function setActivitySid(string $activitySid): self {
         $this->options['activitySid'] = $activitySid;
         return $this;
     }
@@ -107,7 +107,7 @@ class ReadWorkerOptions extends Options {
      *                          available or unavailable
      * @return $this Fluent Builder
      */
-    public function setAvailable($available): self {
+    public function setAvailable(string $available): self {
         $this->options['available'] = $available;
         return $this;
     }
@@ -118,7 +118,7 @@ class ReadWorkerOptions extends Options {
      * @param string $friendlyName The friendly_name of the Worker resources to read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -130,7 +130,7 @@ class ReadWorkerOptions extends Options {
      *                                        expression on a TaskQueue
      * @return $this Fluent Builder
      */
-    public function setTargetWorkersExpression($targetWorkersExpression): self {
+    public function setTargetWorkersExpression(string $targetWorkersExpression): self {
         $this->options['targetWorkersExpression'] = $targetWorkersExpression;
         return $this;
     }
@@ -142,7 +142,7 @@ class ReadWorkerOptions extends Options {
      *                              Workers to read are eligible for
      * @return $this Fluent Builder
      */
-    public function setTaskQueueName($taskQueueName): self {
+    public function setTaskQueueName(string $taskQueueName): self {
         $this->options['taskQueueName'] = $taskQueueName;
         return $this;
     }
@@ -154,7 +154,7 @@ class ReadWorkerOptions extends Options {
      *                             read are eligible for
      * @return $this Fluent Builder
      */
-    public function setTaskQueueSid($taskQueueSid): self {
+    public function setTaskQueueSid(string $taskQueueSid): self {
         $this->options['taskQueueSid'] = $taskQueueSid;
         return $this;
     }
@@ -181,7 +181,7 @@ class CreateWorkerOptions extends Options {
      *                            new Worker's initial state
      * @param string $attributes A valid JSON string that describes the new Worker
      */
-    public function __construct($activitySid = Values::NONE, $attributes = Values::NONE) {
+    public function __construct(string $activitySid = Values::NONE, string $attributes = Values::NONE) {
         $this->options['activitySid'] = $activitySid;
         $this->options['attributes'] = $attributes;
     }
@@ -193,7 +193,7 @@ class CreateWorkerOptions extends Options {
      *                            new Worker's initial state
      * @return $this Fluent Builder
      */
-    public function setActivitySid($activitySid): self {
+    public function setActivitySid(string $activitySid): self {
         $this->options['activitySid'] = $activitySid;
         return $this;
     }
@@ -204,7 +204,7 @@ class CreateWorkerOptions extends Options {
      * @param string $attributes A valid JSON string that describes the new Worker
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -233,7 +233,7 @@ class UpdateWorkerOptions extends Options {
      * @param string $friendlyName A string to describe the Worker
      * @param bool $rejectPendingReservations Whether to reject pending reservations
      */
-    public function __construct($activitySid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE, $rejectPendingReservations = Values::NONE) {
+    public function __construct(string $activitySid = Values::NONE, string $attributes = Values::NONE, string $friendlyName = Values::NONE, bool $rejectPendingReservations = Values::NONE) {
         $this->options['activitySid'] = $activitySid;
         $this->options['attributes'] = $attributes;
         $this->options['friendlyName'] = $friendlyName;
@@ -247,7 +247,7 @@ class UpdateWorkerOptions extends Options {
      *                            Worker's initial state
      * @return $this Fluent Builder
      */
-    public function setActivitySid($activitySid): self {
+    public function setActivitySid(string $activitySid): self {
         $this->options['activitySid'] = $activitySid;
         return $this;
     }
@@ -258,7 +258,7 @@ class UpdateWorkerOptions extends Options {
      * @param string $attributes The JSON string that describes the Worker
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -269,7 +269,7 @@ class UpdateWorkerOptions extends Options {
      * @param string $friendlyName A string to describe the Worker
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -280,7 +280,7 @@ class UpdateWorkerOptions extends Options {
      * @param bool $rejectPendingReservations Whether to reject pending reservations
      * @return $this Fluent Builder
      */
-    public function setRejectPendingReservations($rejectPendingReservations): self {
+    public function setRejectPendingReservations(bool $rejectPendingReservations): self {
         $this->options['rejectPendingReservations'] = $rejectPendingReservations;
         return $this;
     }

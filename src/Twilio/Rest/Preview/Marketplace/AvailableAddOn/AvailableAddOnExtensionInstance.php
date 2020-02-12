@@ -34,7 +34,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
      *                                  which this extension applies
      * @param string $sid The SID of the AvailableAddOn Extension resource to fetch
      */
-    public function __construct(Version $version, array $payload, $availableAddOnSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $availableAddOnSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -90,7 +90,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

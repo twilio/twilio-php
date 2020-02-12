@@ -42,7 +42,7 @@ class TaskQueueRealTimeStatisticsContext extends InstanceContext {
      *                                             TaskQueueRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = []): TaskQueueRealTimeStatisticsInstance {
+    public function fetch(array $options = []): TaskQueueRealTimeStatisticsInstance {
         $options = new Values($options);
 
         $params = Values::of(['TaskChannel' => $options['taskChannel'], ]);

@@ -24,7 +24,7 @@ class ReservationList extends ListResource {
      *                             contained within.
      * @param string $workerSid The SID of the reserved Worker resource
      */
-    public function __construct(Version $version, $workspaceSid, $workerSid) {
+    public function __construct(Version $version, string $workspaceSid, string $workerSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class ReservationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class ReservationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ReservationInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class ReservationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ReservationPage Page of ReservationInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ReservationPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ReservationPage {
         $options = new Values($options);
         $params = Values::of([
             'ReservationStatus' => $options['reservationStatus'],
@@ -115,7 +115,7 @@ class ReservationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ReservationPage Page of ReservationInstance
      */
-    public function getPage($targetUrl): ReservationPage {
+    public function getPage(string $targetUrl): ReservationPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -129,7 +129,7 @@ class ReservationList extends ListResource {
      *
      * @param string $sid The SID of the WorkerReservation resource to fetch
      */
-    public function getContext($sid): ReservationContext {
+    public function getContext(string $sid): ReservationContext {
         return new ReservationContext(
             $this->version,
             $this->solution['workspaceSid'],

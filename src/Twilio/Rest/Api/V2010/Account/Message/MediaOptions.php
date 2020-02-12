@@ -21,7 +21,7 @@ abstract class MediaOptions {
      *                                 date
      * @return ReadMediaOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE): ReadMediaOptions {
+    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE): ReadMediaOptions {
         return new ReadMediaOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter);
     }
 }
@@ -34,7 +34,7 @@ class ReadMediaOptions extends Options {
      * @param string $dateCreatedAfter Only include media that was created on this
      *                                 date
      */
-    public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
+    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -47,7 +47,7 @@ class ReadMediaOptions extends Options {
      *                                  date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore): self {
+    public function setDateCreatedBefore(string $dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -58,7 +58,7 @@ class ReadMediaOptions extends Options {
      * @param string $dateCreated Only include media that was created on this date
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(string $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadMediaOptions extends Options {
      *                                 date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter): self {
+    public function setDateCreatedAfter(string $dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }

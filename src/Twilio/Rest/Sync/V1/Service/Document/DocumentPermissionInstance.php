@@ -39,7 +39,7 @@ class DocumentPermissionInstance extends InstanceResource {
      *                         identifies the User's Document Permission resource
      *                         to fetch
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $documentSid, $identity = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $documentSid, string $identity = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -109,7 +109,7 @@ class DocumentPermissionInstance extends InstanceResource {
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage): DocumentPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): DocumentPermissionInstance {
         return $this->proxy()->update($read, $write, $manage);
     }
 
@@ -120,7 +120,7 @@ class DocumentPermissionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

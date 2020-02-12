@@ -86,7 +86,7 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = []): CompositionSettingsInstance {
+    public function create(string $friendlyName, array $options = []): CompositionSettingsInstance {
         return $this->proxy()->create($friendlyName, $options);
     }
 
@@ -97,7 +97,7 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

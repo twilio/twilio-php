@@ -24,7 +24,7 @@ class NotificationList extends ListResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $callSid The SID of the Call the resource is associated with
      */
-    public function __construct(Version $version, $accountSid, $callSid) {
+    public function __construct(Version $version, string $accountSid, string $callSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class NotificationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -76,7 +76,7 @@ class NotificationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return NotificationInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class NotificationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return NotificationPage Page of NotificationInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): NotificationPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): NotificationPage {
         $options = new Values($options);
         $params = Values::of([
             'Log' => $options['log'],
@@ -118,7 +118,7 @@ class NotificationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return NotificationPage Page of NotificationInstance
      */
-    public function getPage($targetUrl): NotificationPage {
+    public function getPage(string $targetUrl): NotificationPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -132,7 +132,7 @@ class NotificationList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): NotificationContext {
+    public function getContext(string $sid): NotificationContext {
         return new NotificationContext(
             $this->version,
             $this->solution['accountSid'],

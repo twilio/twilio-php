@@ -85,7 +85,7 @@ class ChallengeContext extends InstanceContext {
      * @return ChallengeInstance Updated ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ChallengeInstance {
+    public function update(array $options = []): ChallengeInstance {
         $options = new Values($options);
 
         $data = Values::of(['AuthPayload' => $options['authPayload'], ]);

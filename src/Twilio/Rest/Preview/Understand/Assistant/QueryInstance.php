@@ -43,7 +43,7 @@ class QueryInstance extends InstanceResource {
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -101,7 +101,7 @@ class QueryInstance extends InstanceResource {
      * @return QueryInstance Updated QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): QueryInstance {
+    public function update(array $options = []): QueryInstance {
         return $this->proxy()->update($options);
     }
 
@@ -122,7 +122,7 @@ class QueryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

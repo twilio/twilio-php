@@ -43,7 +43,7 @@ class BrandedCallList extends ListResource {
      * @return BrandedCallInstance Newly created BrandedCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($from, $to, $reason, $options = []): BrandedCallInstance {
+    public function create(string $from, string $to, string $reason, array $options = []): BrandedCallInstance {
         $options = new Values($options);
 
         $data = Values::of([

@@ -26,7 +26,7 @@ class KeyList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $fleetSid The unique identifier of the Fleet.
      */
-    public function __construct(Version $version, $fleetSid) {
+    public function __construct(Version $version, string $fleetSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -42,7 +42,7 @@ class KeyList extends ListResource {
      * @return KeyInstance Newly created KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): KeyInstance {
+    public function create(array $options = []): KeyInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -79,7 +79,7 @@ class KeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -103,7 +103,7 @@ class KeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return KeyInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -117,7 +117,7 @@ class KeyList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return KeyPage Page of KeyInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): KeyPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): KeyPage {
         $options = new Values($options);
         $params = Values::of([
             'DeviceSid' => $options['deviceSid'],
@@ -142,7 +142,7 @@ class KeyList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return KeyPage Page of KeyInstance
      */
-    public function getPage($targetUrl): KeyPage {
+    public function getPage(string $targetUrl): KeyPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -156,7 +156,7 @@ class KeyList extends ListResource {
      *
      * @param string $sid A string that uniquely identifies the Key.
      */
-    public function getContext($sid): KeyContext {
+    public function getContext(string $sid): KeyContext {
         return new KeyContext($this->version, $this->solution['fleetSid'], $sid);
     }
 

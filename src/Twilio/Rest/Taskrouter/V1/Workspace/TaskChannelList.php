@@ -25,7 +25,7 @@ class TaskChannelList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             TaskChannel
      */
-    public function __construct(Version $version, $workspaceSid) {
+    public function __construct(Version $version, string $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -52,7 +52,7 @@ class TaskChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -75,7 +75,7 @@ class TaskChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskChannelInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -88,7 +88,7 @@ class TaskChannelList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TaskChannelPage Page of TaskChannelInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskChannelPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskChannelPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -107,7 +107,7 @@ class TaskChannelList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TaskChannelPage Page of TaskChannelInstance
      */
-    public function getPage($targetUrl): TaskChannelPage {
+    public function getPage(string $targetUrl): TaskChannelPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class TaskChannelList extends ListResource {
      * @return TaskChannelInstance Newly created TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $uniqueName, $options = []): TaskChannelInstance {
+    public function create(string $friendlyName, string $uniqueName, array $options = []): TaskChannelInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -150,7 +150,7 @@ class TaskChannelList extends ListResource {
      *
      * @param string $sid The SID of the TaskChannel resource to fetch
      */
-    public function getContext($sid): TaskChannelContext {
+    public function getContext(string $sid): TaskChannelContext {
         return new TaskChannelContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 

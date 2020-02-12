@@ -68,7 +68,7 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance {
         $options = new Values($options);
 
         $data = Values::of([

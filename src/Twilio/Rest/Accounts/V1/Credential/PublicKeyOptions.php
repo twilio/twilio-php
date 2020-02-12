@@ -19,7 +19,7 @@ abstract class PublicKeyOptions {
      *                           associated with.
      * @return CreatePublicKeyOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $accountSid = Values::NONE): CreatePublicKeyOptions {
+    public static function create(string $friendlyName = Values::NONE, string $accountSid = Values::NONE): CreatePublicKeyOptions {
         return new CreatePublicKeyOptions($friendlyName, $accountSid);
     }
 
@@ -27,7 +27,7 @@ abstract class PublicKeyOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdatePublicKeyOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE): UpdatePublicKeyOptions {
+    public static function update(string $friendlyName = Values::NONE): UpdatePublicKeyOptions {
         return new UpdatePublicKeyOptions($friendlyName);
     }
 }
@@ -38,7 +38,7 @@ class CreatePublicKeyOptions extends Options {
      * @param string $accountSid The Subaccount this Credential should be
      *                           associated with.
      */
-    public function __construct($friendlyName = Values::NONE, $accountSid = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $accountSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['accountSid'] = $accountSid;
     }
@@ -49,7 +49,7 @@ class CreatePublicKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -61,7 +61,7 @@ class CreatePublicKeyOptions extends Options {
      *                           associated with.
      * @return $this Fluent Builder
      */
-    public function setAccountSid($accountSid): self {
+    public function setAccountSid(string $accountSid): self {
         $this->options['accountSid'] = $accountSid;
         return $this;
     }
@@ -86,7 +86,7 @@ class UpdatePublicKeyOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the resource
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -96,7 +96,7 @@ class UpdatePublicKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }

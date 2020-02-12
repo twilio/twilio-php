@@ -29,7 +29,7 @@ class FieldValueList extends ListResource {
      * @param string $fieldTypeSid The SID of the Field Type associated with the
      *                             Field Value
      */
-    public function __construct(Version $version, $assistantSid, $fieldTypeSid) {
+    public function __construct(Version $version, string $assistantSid, string $fieldTypeSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -57,7 +57,7 @@ class FieldValueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($options = [], $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -81,7 +81,7 @@ class FieldValueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FieldValueInstance[] Array of results
      */
-    public function read($options = [], $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -95,7 +95,7 @@ class FieldValueList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FieldValuePage Page of FieldValueInstance
      */
-    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldValuePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldValuePage {
         $options = new Values($options);
         $params = Values::of([
             'Language' => $options['language'],
@@ -120,7 +120,7 @@ class FieldValueList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FieldValuePage Page of FieldValueInstance
      */
-    public function getPage($targetUrl): FieldValuePage {
+    public function getPage(string $targetUrl): FieldValuePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,7 +139,7 @@ class FieldValueList extends ListResource {
      * @return FieldValueInstance Newly created FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($language, $value, $options = []): FieldValueInstance {
+    public function create(string $language, string $value, array $options = []): FieldValueInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -168,7 +168,7 @@ class FieldValueList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): FieldValueContext {
+    public function getContext(string $sid): FieldValueContext {
         return new FieldValueContext(
             $this->version,
             $this->solution['assistantSid'],

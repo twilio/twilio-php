@@ -25,7 +25,7 @@ abstract class LogOptions {
      *                           must have been created.
      * @return ReadLogOptions Options builder
      */
-    public static function read($functionSid = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE): ReadLogOptions {
+    public static function read(string $functionSid = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE): ReadLogOptions {
         return new ReadLogOptions($functionSid, $startDate, $endDate);
     }
 }
@@ -39,7 +39,7 @@ class ReadLogOptions extends Options {
      * @param \DateTime $endDate The date and time before which the Log resource
      *                           must have been created.
      */
-    public function __construct($functionSid = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct(string $functionSid = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE) {
         $this->options['functionSid'] = $functionSid;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
@@ -52,7 +52,7 @@ class ReadLogOptions extends Options {
      *                            the Log resources to read
      * @return $this Fluent Builder
      */
-    public function setFunctionSid($functionSid): self {
+    public function setFunctionSid(string $functionSid): self {
         $this->options['functionSid'] = $functionSid;
         return $this;
     }
@@ -64,7 +64,7 @@ class ReadLogOptions extends Options {
      *                             must have been created.
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate): self {
+    public function setStartDate(\DateTime $startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -76,7 +76,7 @@ class ReadLogOptions extends Options {
      *                           must have been created.
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate): self {
+    public function setEndDate(\DateTime $endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }

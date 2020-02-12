@@ -24,7 +24,7 @@ abstract class RecordingOptions {
      * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $callSid = Values::NONE, $conferenceSid = Values::NONE): ReadRecordingOptions {
+    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $callSid = Values::NONE, string $conferenceSid = Values::NONE): ReadRecordingOptions {
         return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $callSid, $conferenceSid);
     }
 }
@@ -40,7 +40,7 @@ class ReadRecordingOptions extends Options {
      * @param string $callSid The Call SID of the resources to read
      * @param string $conferenceSid Read by unique Conference SID for the recording
      */
-    public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $callSid = Values::NONE, $conferenceSid = Values::NONE) {
+    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $callSid = Values::NONE, string $conferenceSid = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -55,7 +55,7 @@ class ReadRecordingOptions extends Options {
      *                                  on this date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore): self {
+    public function setDateCreatedBefore(string $dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -67,7 +67,7 @@ class ReadRecordingOptions extends Options {
      *                            date
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(string $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -79,7 +79,7 @@ class ReadRecordingOptions extends Options {
      *                                 this date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter): self {
+    public function setDateCreatedAfter(string $dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -90,7 +90,7 @@ class ReadRecordingOptions extends Options {
      * @param string $callSid The Call SID of the resources to read
      * @return $this Fluent Builder
      */
-    public function setCallSid($callSid): self {
+    public function setCallSid(string $callSid): self {
         $this->options['callSid'] = $callSid;
         return $this;
     }
@@ -101,7 +101,7 @@ class ReadRecordingOptions extends Options {
      * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return $this Fluent Builder
      */
-    public function setConferenceSid($conferenceSid): self {
+    public function setConferenceSid(string $conferenceSid): self {
         $this->options['conferenceSid'] = $conferenceSid;
         return $this;
     }

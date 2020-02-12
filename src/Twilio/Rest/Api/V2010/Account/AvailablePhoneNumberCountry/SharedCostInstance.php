@@ -38,7 +38,7 @@ class SharedCostInstance extends InstanceResource {
      * @param string $accountSid The account_sid
      * @param string $countryCode The ISO-3166-1 country code of the country.
      */
-    public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $countryCode) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +68,7 @@ class SharedCostInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

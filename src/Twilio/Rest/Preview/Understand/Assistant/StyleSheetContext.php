@@ -60,7 +60,7 @@ class StyleSheetContext extends InstanceContext {
      * @return StyleSheetInstance Updated StyleSheetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): StyleSheetInstance {
+    public function update(array $options = []): StyleSheetInstance {
         $options = new Values($options);
 
         $data = Values::of(['StyleSheet' => Serialize::jsonObject($options['styleSheet']), ]);

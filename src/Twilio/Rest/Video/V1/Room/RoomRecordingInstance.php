@@ -43,7 +43,7 @@ class RoomRecordingInstance extends InstanceResource {
      *                        associated with
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, $roomSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -114,7 +114,7 @@ class RoomRecordingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

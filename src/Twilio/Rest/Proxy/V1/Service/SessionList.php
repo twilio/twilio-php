@@ -27,7 +27,7 @@ class SessionList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the resource's parent Service
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -54,7 +54,7 @@ class SessionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class SessionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SessionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class SessionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SessionPage Page of SessionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SessionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SessionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -109,7 +109,7 @@ class SessionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SessionPage Page of SessionInstance
      */
-    public function getPage($targetUrl): SessionPage {
+    public function getPage(string $targetUrl): SessionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -125,7 +125,7 @@ class SessionList extends ListResource {
      * @return SessionInstance Newly created SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): SessionInstance {
+    public function create(array $options = []): SessionInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -152,7 +152,7 @@ class SessionList extends ListResource {
      *
      * @param string $sid The unique string that identifies the resource
      */
-    public function getContext($sid): SessionContext {
+    public function getContext(string $sid): SessionContext {
         return new SessionContext($this->version, $this->solution['serviceSid'], $sid);
     }
 

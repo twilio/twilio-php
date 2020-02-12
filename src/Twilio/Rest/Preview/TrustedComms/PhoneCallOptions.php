@@ -38,8 +38,8 @@ abstract class PhoneCallOptions {
      *                                  parameter
      * @param string $recordingStatusCallback Refers to the Voice API Initiate Call
      *                                        parameter
-     * @param string $recordingStatusCallbackEvent Refers to the Voice API Initiate
-     *                                             Call parameter
+     * @param string[] $recordingStatusCallbackEvent Refers to the Voice API
+     *                                               Initiate Call parameter
      * @param string $recordingStatusCallbackMethod Refers to the Voice API
      *                                              Initiate Call parameter
      * @param string $sendDigits Refers to the Voice API Initiate Call parameter
@@ -48,8 +48,8 @@ abstract class PhoneCallOptions {
      * @param string $sipAuthUsername Refers to the Voice API Initiate Call
      *                                parameter
      * @param string $statusCallback Refers to the Voice API Initiate Call parameter
-     * @param string $statusCallbackEvent Refers to the Voice API Initiate Call
-     *                                    parameter
+     * @param string[] $statusCallbackEvent Refers to the Voice API Initiate Call
+     *                                      parameter
      * @param string $statusCallbackMethod Refers to the Voice API Initiate Call
      *                                     parameter
      * @param int $timeout Refers to the Voice API Initiate Call parameter
@@ -57,7 +57,7 @@ abstract class PhoneCallOptions {
      * @param string $url Refers to the Voice API Initiate Call parameter
      * @return CreatePhoneCallOptions Options builder
      */
-    public static function create($reason = Values::NONE, $applicationSid = Values::NONE, $callerId = Values::NONE, $fallbackMethod = Values::NONE, $fallbackUrl = Values::NONE, $machineDetection = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionTimeout = Values::NONE, $method = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $sipAuthPassword = Values::NONE, $sipAuthUsername = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $timeout = Values::NONE, $trim = Values::NONE, $url = Values::NONE): CreatePhoneCallOptions {
+    public static function create(string $reason = Values::NONE, string $applicationSid = Values::NONE, string $callerId = Values::NONE, string $fallbackMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionTimeout = Values::NONE, string $method = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, string $sipAuthPassword = Values::NONE, string $sipAuthUsername = Values::NONE, string $statusCallback = Values::NONE, string[] $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, int $timeout = Values::NONE, string $trim = Values::NONE, string $url = Values::NONE): CreatePhoneCallOptions {
         return new CreatePhoneCallOptions($reason, $applicationSid, $callerId, $fallbackMethod, $fallbackUrl, $machineDetection, $machineDetectionSilenceTimeout, $machineDetectionSpeechEndThreshold, $machineDetectionSpeechThreshold, $machineDetectionTimeout, $method, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackEvent, $recordingStatusCallbackMethod, $sendDigits, $sipAuthPassword, $sipAuthUsername, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $timeout, $trim, $url);
     }
 }
@@ -85,8 +85,8 @@ class CreatePhoneCallOptions extends Options {
      *                                  parameter
      * @param string $recordingStatusCallback Refers to the Voice API Initiate Call
      *                                        parameter
-     * @param string $recordingStatusCallbackEvent Refers to the Voice API Initiate
-     *                                             Call parameter
+     * @param string[] $recordingStatusCallbackEvent Refers to the Voice API
+     *                                               Initiate Call parameter
      * @param string $recordingStatusCallbackMethod Refers to the Voice API
      *                                              Initiate Call parameter
      * @param string $sendDigits Refers to the Voice API Initiate Call parameter
@@ -95,15 +95,15 @@ class CreatePhoneCallOptions extends Options {
      * @param string $sipAuthUsername Refers to the Voice API Initiate Call
      *                                parameter
      * @param string $statusCallback Refers to the Voice API Initiate Call parameter
-     * @param string $statusCallbackEvent Refers to the Voice API Initiate Call
-     *                                    parameter
+     * @param string[] $statusCallbackEvent Refers to the Voice API Initiate Call
+     *                                      parameter
      * @param string $statusCallbackMethod Refers to the Voice API Initiate Call
      *                                     parameter
      * @param int $timeout Refers to the Voice API Initiate Call parameter
      * @param string $trim Refers to the Voice API Initiate Call parameter
      * @param string $url Refers to the Voice API Initiate Call parameter
      */
-    public function __construct($reason = Values::NONE, $applicationSid = Values::NONE, $callerId = Values::NONE, $fallbackMethod = Values::NONE, $fallbackUrl = Values::NONE, $machineDetection = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionTimeout = Values::NONE, $method = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $sipAuthPassword = Values::NONE, $sipAuthUsername = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $timeout = Values::NONE, $trim = Values::NONE, $url = Values::NONE) {
+    public function __construct(string $reason = Values::NONE, string $applicationSid = Values::NONE, string $callerId = Values::NONE, string $fallbackMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionTimeout = Values::NONE, string $method = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, string $sipAuthPassword = Values::NONE, string $sipAuthUsername = Values::NONE, string $statusCallback = Values::NONE, string[] $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, int $timeout = Values::NONE, string $trim = Values::NONE, string $url = Values::NONE) {
         $this->options['reason'] = $reason;
         $this->options['applicationSid'] = $applicationSid;
         $this->options['callerId'] = $callerId;
@@ -137,7 +137,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $reason The business reason for this phone call
      * @return $this Fluent Builder
      */
-    public function setReason($reason): self {
+    public function setReason(string $reason): self {
         $this->options['reason'] = $reason;
         return $this;
     }
@@ -148,7 +148,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $applicationSid Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setApplicationSid($applicationSid): self {
+    public function setApplicationSid(string $applicationSid): self {
         $this->options['applicationSid'] = $applicationSid;
         return $this;
     }
@@ -159,7 +159,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $callerId Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setCallerId($callerId): self {
+    public function setCallerId(string $callerId): self {
         $this->options['callerId'] = $callerId;
         return $this;
     }
@@ -170,7 +170,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $fallbackMethod Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setFallbackMethod($fallbackMethod): self {
+    public function setFallbackMethod(string $fallbackMethod): self {
         $this->options['fallbackMethod'] = $fallbackMethod;
         return $this;
     }
@@ -181,7 +181,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $fallbackUrl Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setFallbackUrl($fallbackUrl): self {
+    public function setFallbackUrl(string $fallbackUrl): self {
         $this->options['fallbackUrl'] = $fallbackUrl;
         return $this;
     }
@@ -193,7 +193,7 @@ class CreatePhoneCallOptions extends Options {
      *                                 parameter
      * @return $this Fluent Builder
      */
-    public function setMachineDetection($machineDetection): self {
+    public function setMachineDetection(string $machineDetection): self {
         $this->options['machineDetection'] = $machineDetection;
         return $this;
     }
@@ -205,7 +205,7 @@ class CreatePhoneCallOptions extends Options {
      *                                            Call parameter
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionSilenceTimeout($machineDetectionSilenceTimeout): self {
+    public function setMachineDetectionSilenceTimeout(int $machineDetectionSilenceTimeout): self {
         $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
         return $this;
     }
@@ -217,7 +217,7 @@ class CreatePhoneCallOptions extends Options {
      *                                                Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionSpeechEndThreshold($machineDetectionSpeechEndThreshold): self {
+    public function setMachineDetectionSpeechEndThreshold(int $machineDetectionSpeechEndThreshold): self {
         $this->options['machineDetectionSpeechEndThreshold'] = $machineDetectionSpeechEndThreshold;
         return $this;
     }
@@ -229,7 +229,7 @@ class CreatePhoneCallOptions extends Options {
      *                                             Call parameter
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionSpeechThreshold($machineDetectionSpeechThreshold): self {
+    public function setMachineDetectionSpeechThreshold(int $machineDetectionSpeechThreshold): self {
         $this->options['machineDetectionSpeechThreshold'] = $machineDetectionSpeechThreshold;
         return $this;
     }
@@ -241,7 +241,7 @@ class CreatePhoneCallOptions extends Options {
      *                                     parameter
      * @return $this Fluent Builder
      */
-    public function setMachineDetectionTimeout($machineDetectionTimeout): self {
+    public function setMachineDetectionTimeout(int $machineDetectionTimeout): self {
         $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
         return $this;
     }
@@ -252,7 +252,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $method Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setMethod($method): self {
+    public function setMethod(string $method): self {
         $this->options['method'] = $method;
         return $this;
     }
@@ -263,7 +263,7 @@ class CreatePhoneCallOptions extends Options {
      * @param bool $record Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setRecord($record): self {
+    public function setRecord(bool $record): self {
         $this->options['record'] = $record;
         return $this;
     }
@@ -275,7 +275,7 @@ class CreatePhoneCallOptions extends Options {
      *                                  parameter
      * @return $this Fluent Builder
      */
-    public function setRecordingChannels($recordingChannels): self {
+    public function setRecordingChannels(string $recordingChannels): self {
         $this->options['recordingChannels'] = $recordingChannels;
         return $this;
     }
@@ -287,7 +287,7 @@ class CreatePhoneCallOptions extends Options {
      *                                        parameter
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallback($recordingStatusCallback): self {
+    public function setRecordingStatusCallback(string $recordingStatusCallback): self {
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         return $this;
     }
@@ -295,11 +295,11 @@ class CreatePhoneCallOptions extends Options {
     /**
      * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
-     * @param string $recordingStatusCallbackEvent Refers to the Voice API Initiate
-     *                                             Call parameter
+     * @param string[] $recordingStatusCallbackEvent Refers to the Voice API
+     *                                               Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent): self {
+    public function setRecordingStatusCallbackEvent(string[] $recordingStatusCallbackEvent): self {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         return $this;
     }
@@ -311,7 +311,7 @@ class CreatePhoneCallOptions extends Options {
      *                                              Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod): self {
+    public function setRecordingStatusCallbackMethod(string $recordingStatusCallbackMethod): self {
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
         return $this;
     }
@@ -322,7 +322,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $sendDigits Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setSendDigits($sendDigits): self {
+    public function setSendDigits(string $sendDigits): self {
         $this->options['sendDigits'] = $sendDigits;
         return $this;
     }
@@ -334,7 +334,7 @@ class CreatePhoneCallOptions extends Options {
      *                                parameter
      * @return $this Fluent Builder
      */
-    public function setSipAuthPassword($sipAuthPassword): self {
+    public function setSipAuthPassword(string $sipAuthPassword): self {
         $this->options['sipAuthPassword'] = $sipAuthPassword;
         return $this;
     }
@@ -346,7 +346,7 @@ class CreatePhoneCallOptions extends Options {
      *                                parameter
      * @return $this Fluent Builder
      */
-    public function setSipAuthUsername($sipAuthUsername): self {
+    public function setSipAuthUsername(string $sipAuthUsername): self {
         $this->options['sipAuthUsername'] = $sipAuthUsername;
         return $this;
     }
@@ -357,7 +357,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $statusCallback Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -365,11 +365,11 @@ class CreatePhoneCallOptions extends Options {
     /**
      * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
-     * @param string $statusCallbackEvent Refers to the Voice API Initiate Call
-     *                                    parameter
+     * @param string[] $statusCallbackEvent Refers to the Voice API Initiate Call
+     *                                      parameter
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackEvent($statusCallbackEvent): self {
+    public function setStatusCallbackEvent(string[] $statusCallbackEvent): self {
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
         return $this;
     }
@@ -381,7 +381,7 @@ class CreatePhoneCallOptions extends Options {
      *                                     parameter
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -392,7 +392,7 @@ class CreatePhoneCallOptions extends Options {
      * @param int $timeout Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setTimeout($timeout): self {
+    public function setTimeout(int $timeout): self {
         $this->options['timeout'] = $timeout;
         return $this;
     }
@@ -403,7 +403,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $trim Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setTrim($trim): self {
+    public function setTrim(string $trim): self {
         $this->options['trim'] = $trim;
         return $this;
     }
@@ -414,7 +414,7 @@ class CreatePhoneCallOptions extends Options {
      * @param string $url Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
      */
-    public function setUrl($url): self {
+    public function setUrl(string $url): self {
         $this->options['url'] = $url;
         return $this;
     }

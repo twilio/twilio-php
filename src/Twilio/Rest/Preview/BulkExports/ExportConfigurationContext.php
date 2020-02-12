@@ -60,7 +60,7 @@ class ExportConfigurationContext extends InstanceContext {
      * @return ExportConfigurationInstance Updated ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ExportConfigurationInstance {
+    public function update(array $options = []): ExportConfigurationInstance {
         $options = new Values($options);
 
         $data = Values::of([

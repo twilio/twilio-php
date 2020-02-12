@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string $identity
  * @property string $bindingType
  * @property string $address
- * @property string $tags
+ * @property string[] $tags
  * @property string $url
  * @property array $links
  */
@@ -43,7 +43,7 @@ class BindingInstance extends InstanceResource {
      *                           associated with
      * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -112,7 +112,7 @@ class BindingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

@@ -75,7 +75,7 @@ class CertificateContext extends InstanceContext {
      * @return CertificateInstance Updated CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): CertificateInstance {
+    public function update(array $options = []): CertificateInstance {
         $options = new Values($options);
 
         $data = Values::of([

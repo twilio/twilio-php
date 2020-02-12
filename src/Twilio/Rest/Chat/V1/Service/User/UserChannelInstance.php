@@ -34,7 +34,7 @@ class UserChannelInstance extends InstanceResource {
      *                           associated with
      * @param string $userSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $userSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +59,7 @@ class UserChannelInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

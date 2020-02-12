@@ -50,7 +50,7 @@ class ChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -73,7 +73,7 @@ class ChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ChannelInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -86,7 +86,7 @@ class ChannelList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ChannelPage Page of ChannelInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ChannelPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ChannelPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -105,7 +105,7 @@ class ChannelList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ChannelPage Page of ChannelInstance
      */
-    public function getPage($targetUrl): ChannelPage {
+    public function getPage(string $targetUrl): ChannelPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,7 +126,7 @@ class ChannelList extends ListResource {
      * @return ChannelInstance Newly created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($flexFlowSid, $identity, $chatUserFriendlyName, $chatFriendlyName, $options = []): ChannelInstance {
+    public function create(string $flexFlowSid, string $identity, string $chatUserFriendlyName, string $chatFriendlyName, array $options = []): ChannelInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -158,7 +158,7 @@ class ChannelList extends ListResource {
      * @param string $sid The SID that identifies the Flex chat channel resource to
      *                    fetch
      */
-    public function getContext($sid): ChannelContext {
+    public function getContext(string $sid): ChannelContext {
         return new ChannelContext($this->version, $sid);
     }
 

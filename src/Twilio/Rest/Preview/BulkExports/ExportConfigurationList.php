@@ -33,7 +33,7 @@ class ExportConfigurationList extends ListResource {
      *
      * @param string $resourceType The type of communication – Messages, Calls
      */
-    public function getContext($resourceType): ExportConfigurationContext {
+    public function getContext(string $resourceType): ExportConfigurationContext {
         return new ExportConfigurationContext($this->version, $resourceType);
     }
 

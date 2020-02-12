@@ -16,7 +16,7 @@ abstract class RecordingOptions {
     /**
      * @param string $status Read only the recordings that have this status
      * @param string $sourceSid Read only the recordings that have this source_sid
-     * @param string $groupingSid Read only recordings that have this grouping_sid
+     * @param string[] $groupingSid Read only recordings that have this grouping_sid
      * @param \DateTime $dateCreatedAfter Read only recordings that started on or
      *                                    after this [ISO
      *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
@@ -26,7 +26,7 @@ abstract class RecordingOptions {
      * @param string $mediaType Read only recordings that have this media type
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE): ReadRecordingOptions {
+    public static function read(string $status = Values::NONE, string $sourceSid = Values::NONE, string[] $groupingSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $mediaType = Values::NONE): ReadRecordingOptions {
         return new ReadRecordingOptions($status, $sourceSid, $groupingSid, $dateCreatedAfter, $dateCreatedBefore, $mediaType);
     }
 }
@@ -35,7 +35,7 @@ class ReadRecordingOptions extends Options {
     /**
      * @param string $status Read only the recordings that have this status
      * @param string $sourceSid Read only the recordings that have this source_sid
-     * @param string $groupingSid Read only recordings that have this grouping_sid
+     * @param string[] $groupingSid Read only recordings that have this grouping_sid
      * @param \DateTime $dateCreatedAfter Read only recordings that started on or
      *                                    after this [ISO
      *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
@@ -44,7 +44,7 @@ class ReadRecordingOptions extends Options {
      *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @param string $mediaType Read only recordings that have this media type
      */
-    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $sourceSid = Values::NONE, string[] $groupingSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $mediaType = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['groupingSid'] = $groupingSid;
@@ -59,7 +59,7 @@ class ReadRecordingOptions extends Options {
      * @param string $status Read only the recordings that have this status
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadRecordingOptions extends Options {
      * @param string $sourceSid Read only the recordings that have this source_sid
      * @return $this Fluent Builder
      */
-    public function setSourceSid($sourceSid): self {
+    public function setSourceSid(string $sourceSid): self {
         $this->options['sourceSid'] = $sourceSid;
         return $this;
     }
@@ -78,10 +78,10 @@ class ReadRecordingOptions extends Options {
     /**
      * Read only recordings with this `grouping_sid`, which may include a `participant_sid` and/or a `room_sid`.
      *
-     * @param string $groupingSid Read only recordings that have this grouping_sid
+     * @param string[] $groupingSid Read only recordings that have this grouping_sid
      * @return $this Fluent Builder
      */
-    public function setGroupingSid($groupingSid): self {
+    public function setGroupingSid(string[] $groupingSid): self {
         $this->options['groupingSid'] = $groupingSid;
         return $this;
     }
@@ -94,7 +94,7 @@ class ReadRecordingOptions extends Options {
      *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter): self {
+    public function setDateCreatedAfter(\DateTime $dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -107,7 +107,7 @@ class ReadRecordingOptions extends Options {
      *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore): self {
+    public function setDateCreatedBefore(\DateTime $dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -118,7 +118,7 @@ class ReadRecordingOptions extends Options {
      * @param string $mediaType Read only recordings that have this media type
      * @return $this Fluent Builder
      */
-    public function setMediaType($mediaType): self {
+    public function setMediaType(string $mediaType): self {
         $this->options['mediaType'] = $mediaType;
         return $this;
     }

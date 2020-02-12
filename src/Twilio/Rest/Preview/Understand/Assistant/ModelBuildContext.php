@@ -65,7 +65,7 @@ class ModelBuildContext extends InstanceContext {
      * @return ModelBuildInstance Updated ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): ModelBuildInstance {
+    public function update(array $options = []): ModelBuildInstance {
         $options = new Values($options);
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], ]);

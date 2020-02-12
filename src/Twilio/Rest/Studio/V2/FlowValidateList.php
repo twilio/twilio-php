@@ -44,7 +44,7 @@ class FlowValidateList extends ListResource {
      * @return FlowValidateInstance Updated FlowValidateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName, $status, $definition, $options = []): FlowValidateInstance {
+    public function update(string $friendlyName, string $status, array $definition, array $options = []): FlowValidateInstance {
         $options = new Values($options);
 
         $data = Values::of([

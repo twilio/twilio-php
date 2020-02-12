@@ -24,7 +24,7 @@ abstract class WorkersCumulativeStatisticsOptions {
      *                            TaskChannel
      * @return FetchWorkersCumulativeStatisticsOptions Options builder
      */
-    public static function fetch($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE, $taskChannel = Values::NONE): FetchWorkersCumulativeStatisticsOptions {
+    public static function fetch(\DateTime $endDate = Values::NONE, int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, string $taskChannel = Values::NONE): FetchWorkersCumulativeStatisticsOptions {
         return new FetchWorkersCumulativeStatisticsOptions($endDate, $minutes, $startDate, $taskChannel);
     }
 }
@@ -40,7 +40,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      * @param string $taskChannel Only calculate cumulative statistics on this
      *                            TaskChannel
      */
-    public function __construct($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE, $taskChannel = Values::NONE) {
+    public function __construct(\DateTime $endDate = Values::NONE, int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, string $taskChannel = Values::NONE) {
         $this->options['endDate'] = $endDate;
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;
@@ -54,7 +54,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                           date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate): self {
+    public function setEndDate(\DateTime $endDate): self {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -66,7 +66,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                     past
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes): self {
+    public function setMinutes(int $minutes): self {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -78,7 +78,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                             date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate): self {
+    public function setStartDate(\DateTime $startDate): self {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -90,7 +90,7 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
      *                            TaskChannel
      * @return $this Fluent Builder
      */
-    public function setTaskChannel($taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }

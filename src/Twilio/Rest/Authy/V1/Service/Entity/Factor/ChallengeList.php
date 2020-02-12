@@ -28,7 +28,7 @@ class ChallengeList extends ListResource {
      * @param string $identity Unique identity of the Entity
      * @param string $factorSid Factor Sid.
      */
-    public function __construct(Version $version, $serviceSid, $identity, $factorSid) {
+    public function __construct(Version $version, string $serviceSid, string $identity, string $factorSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -44,7 +44,7 @@ class ChallengeList extends ListResource {
      * @return ChallengeInstance Newly created ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = []): ChallengeInstance {
+    public function create(array $options = []): ChallengeInstance {
         $options = new Values($options);
 
         $data = Values::of([
@@ -75,7 +75,7 @@ class ChallengeList extends ListResource {
      * @param string $sid A string that uniquely identifies this Challenge, or
      *                    `latest`.
      */
-    public function getContext($sid): ChallengeContext {
+    public function getContext(string $sid): ChallengeContext {
         return new ChallengeContext(
             $this->version,
             $this->solution['serviceSid'],

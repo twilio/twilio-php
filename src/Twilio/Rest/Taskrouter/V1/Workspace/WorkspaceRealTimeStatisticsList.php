@@ -19,7 +19,7 @@ class WorkspaceRealTimeStatisticsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace
      */
-    public function __construct(Version $version, $workspaceSid) {
+    public function __construct(Version $version, string $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution

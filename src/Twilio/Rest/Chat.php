@@ -64,7 +64,7 @@ class Chat extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -81,7 +81,7 @@ class Chat extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -97,7 +97,7 @@ class Chat extends Domain {
     /**
      * @param string $sid The SID of the Credential resource to fetch
      */
-    protected function contextCredentials($sid): \Twilio\Rest\Chat\V2\CredentialContext {
+    protected function contextCredentials(string $sid): \Twilio\Rest\Chat\V2\CredentialContext {
         return $this->v2->credentials($sid);
     }
 
@@ -108,7 +108,7 @@ class Chat extends Domain {
     /**
      * @param string $sid The SID of the Service resource to fetch
      */
-    protected function contextServices($sid): \Twilio\Rest\Chat\V2\ServiceContext {
+    protected function contextServices(string $sid): \Twilio\Rest\Chat\V2\ServiceContext {
         return $this->v2->services($sid);
     }
 

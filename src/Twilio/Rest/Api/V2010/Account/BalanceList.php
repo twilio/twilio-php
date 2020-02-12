@@ -21,7 +21,7 @@ class BalanceList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid Account Sid.
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, string $accountSid) {
         parent::__construct($version);
 
         // Path Solution

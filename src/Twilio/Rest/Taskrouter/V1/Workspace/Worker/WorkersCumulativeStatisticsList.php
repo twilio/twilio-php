@@ -20,7 +20,7 @@ class WorkersCumulativeStatisticsList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Workers
      */
-    public function __construct(Version $version, $workspaceSid) {
+    public function __construct(Version $version, string $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution

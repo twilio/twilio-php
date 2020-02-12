@@ -63,7 +63,7 @@ class Studio extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -80,7 +80,7 @@ class Studio extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -96,7 +96,7 @@ class Studio extends Domain {
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextFlows($sid): \Twilio\Rest\Studio\V2\FlowContext {
+    protected function contextFlows(string $sid): \Twilio\Rest\Studio\V2\FlowContext {
         return $this->v2->flows($sid);
     }
 

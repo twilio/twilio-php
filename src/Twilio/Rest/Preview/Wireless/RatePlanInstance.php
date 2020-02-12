@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property bool $messagingEnabled
  * @property bool $voiceEnabled
  * @property bool $nationalRoamingEnabled
- * @property string $internationalRoaming
+ * @property string[] $internationalRoaming
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -42,7 +42,7 @@ class RatePlanInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -97,7 +97,7 @@ class RatePlanInstance extends InstanceResource {
      * @return RatePlanInstance Updated RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): RatePlanInstance {
+    public function update(array $options = []): RatePlanInstance {
         return $this->proxy()->update($options);
     }
 
@@ -118,7 +118,7 @@ class RatePlanInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

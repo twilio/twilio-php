@@ -31,7 +31,7 @@ class NumberList extends ListResource {
      * @param string $destinationNumber The destination number for which to fetch
      *                                  pricing information
      */
-    public function getContext($destinationNumber): NumberContext {
+    public function getContext(string $destinationNumber): NumberContext {
         return new NumberContext($this->version, $destinationNumber);
     }
 

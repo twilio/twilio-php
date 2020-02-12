@@ -27,7 +27,7 @@ class AssetVersionList extends ListResource {
      * @param string $assetSid The SID of the Asset resource that is the parent of
      *                         the asset version
      */
-    public function __construct(Version $version, $serviceSid, $assetSid) {
+    public function __construct(Version $version, string $serviceSid, string $assetSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -54,7 +54,7 @@ class AssetVersionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class AssetVersionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssetVersionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class AssetVersionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AssetVersionPage Page of AssetVersionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AssetVersionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssetVersionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -109,7 +109,7 @@ class AssetVersionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AssetVersionPage Page of AssetVersionInstance
      */
-    public function getPage($targetUrl): AssetVersionPage {
+    public function getPage(string $targetUrl): AssetVersionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -124,7 +124,7 @@ class AssetVersionList extends ListResource {
      * @param string $sid The SID that identifies the Asset Version resource to
      *                    fetch
      */
-    public function getContext($sid): AssetVersionContext {
+    public function getContext(string $sid): AssetVersionContext {
         return new AssetVersionContext(
             $this->version,
             $this->solution['serviceSid'],

@@ -171,7 +171,7 @@ class Preview extends Domain {
      * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get(string $name) {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -188,7 +188,7 @@ class Preview extends Domain {
      * @return \Twilio\InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, array $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -204,7 +204,7 @@ class Preview extends Domain {
     /**
      * @param string $resourceType The type of communication – Messages, Calls
      */
-    protected function contextExports($resourceType): \Twilio\Rest\Preview\BulkExports\ExportContext {
+    protected function contextExports(string $resourceType): \Twilio\Rest\Preview\BulkExports\ExportContext {
         return $this->bulkExports->exports($resourceType);
     }
 
@@ -215,7 +215,7 @@ class Preview extends Domain {
     /**
      * @param string $resourceType The type of communication – Messages, Calls
      */
-    protected function contextExportConfiguration($resourceType): \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext {
+    protected function contextExportConfiguration(string $resourceType): \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext {
         return $this->bulkExports->exportConfiguration($resourceType);
     }
 
@@ -226,7 +226,7 @@ class Preview extends Domain {
     /**
      * @param string $sid A string that uniquely identifies the Fleet.
      */
-    protected function contextFleets($sid): \Twilio\Rest\Preview\DeployedDevices\FleetContext {
+    protected function contextFleets(string $sid): \Twilio\Rest\Preview\DeployedDevices\FleetContext {
         return $this->deployedDevices->fleets($sid);
     }
 
@@ -237,7 +237,7 @@ class Preview extends Domain {
     /**
      * @param string $sid AuthorizationDocument sid.
      */
-    protected function contextAuthorizationDocuments($sid): \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext {
+    protected function contextAuthorizationDocuments(string $sid): \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext {
         return $this->hostedNumbers->authorizationDocuments($sid);
     }
 
@@ -248,7 +248,7 @@ class Preview extends Domain {
     /**
      * @param string $sid HostedNumberOrder sid.
      */
-    protected function contextHostedNumberOrders($sid): \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext {
+    protected function contextHostedNumberOrders(string $sid): \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext {
         return $this->hostedNumbers->hostedNumberOrders($sid);
     }
 
@@ -259,7 +259,7 @@ class Preview extends Domain {
     /**
      * @param string $sid The SID of the AvailableAddOn resource to fetch
      */
-    protected function contextAvailableAddOns($sid): \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext {
+    protected function contextAvailableAddOns(string $sid): \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext {
         return $this->marketplace->availableAddOns($sid);
     }
 
@@ -270,7 +270,7 @@ class Preview extends Domain {
     /**
      * @param string $sid The SID of the InstalledAddOn resource to fetch
      */
-    protected function contextInstalledAddOns($sid): \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext {
+    protected function contextInstalledAddOns(string $sid): \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext {
         return $this->marketplace->installedAddOns($sid);
     }
 
@@ -281,7 +281,7 @@ class Preview extends Domain {
     /**
      * @param string $sid The sid
      */
-    protected function contextServices($sid): \Twilio\Rest\Preview\Sync\ServiceContext {
+    protected function contextServices(string $sid): \Twilio\Rest\Preview\Sync\ServiceContext {
         return $this->sync->services($sid);
     }
 
@@ -293,7 +293,7 @@ class Preview extends Domain {
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
-    protected function contextAssistants($sid): \Twilio\Rest\Preview\Understand\AssistantContext {
+    protected function contextAssistants(string $sid): \Twilio\Rest\Preview\Understand\AssistantContext {
         return $this->understand->assistants($sid);
     }
 
@@ -304,7 +304,7 @@ class Preview extends Domain {
     /**
      * @param string $sid The sid
      */
-    protected function contextCommands($sid): \Twilio\Rest\Preview\Wireless\CommandContext {
+    protected function contextCommands(string $sid): \Twilio\Rest\Preview\Wireless\CommandContext {
         return $this->wireless->commands($sid);
     }
 
@@ -315,7 +315,7 @@ class Preview extends Domain {
     /**
      * @param string $sid The sid
      */
-    protected function contextRatePlans($sid): \Twilio\Rest\Preview\Wireless\RatePlanContext {
+    protected function contextRatePlans(string $sid): \Twilio\Rest\Preview\Wireless\RatePlanContext {
         return $this->wireless->ratePlans($sid);
     }
 
@@ -326,7 +326,7 @@ class Preview extends Domain {
     /**
      * @param string $sid The sid
      */
-    protected function contextSims($sid): \Twilio\Rest\Preview\Wireless\SimContext {
+    protected function contextSims(string $sid): \Twilio\Rest\Preview\Wireless\SimContext {
         return $this->wireless->sims($sid);
     }
 
@@ -341,7 +341,7 @@ class Preview extends Domain {
     /**
      * @param string $sid A string that uniquely identifies this Business.
      */
-    protected function contextBusinesses($sid): \Twilio\Rest\Preview\TrustedComms\BusinessContext {
+    protected function contextBusinesses(string $sid): \Twilio\Rest\Preview\TrustedComms\BusinessContext {
         return $this->trustedComms->businesses($sid);
     }
 

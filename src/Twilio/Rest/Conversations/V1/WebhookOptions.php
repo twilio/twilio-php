@@ -19,8 +19,8 @@ abstract class WebhookOptions {
     /**
      * @param string $method The HTTP method to be used when sending a webhook
      *                       request.
-     * @param string $filters The list of webhook event triggers that are enabled
-     *                        for this Service.
+     * @param string[] $filters The list of webhook event triggers that are enabled
+     *                          for this Service.
      * @param string $preWebhookUrl The absolute url the pre-event webhook request
      *                              should be sent to.
      * @param string $postWebhookUrl The absolute url the post-event webhook
@@ -28,7 +28,7 @@ abstract class WebhookOptions {
      * @param string $target The routing target of the webhook.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($method = Values::NONE, $filters = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $target = Values::NONE): UpdateWebhookOptions {
+    public static function update(string $method = Values::NONE, string[] $filters = Values::NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $target = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($method, $filters, $preWebhookUrl, $postWebhookUrl, $target);
     }
 }
@@ -37,15 +37,15 @@ class UpdateWebhookOptions extends Options {
     /**
      * @param string $method The HTTP method to be used when sending a webhook
      *                       request.
-     * @param string $filters The list of webhook event triggers that are enabled
-     *                        for this Service.
+     * @param string[] $filters The list of webhook event triggers that are enabled
+     *                          for this Service.
      * @param string $preWebhookUrl The absolute url the pre-event webhook request
      *                              should be sent to.
      * @param string $postWebhookUrl The absolute url the post-event webhook
      *                               request should be sent to.
      * @param string $target The routing target of the webhook.
      */
-    public function __construct($method = Values::NONE, $filters = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $target = Values::NONE) {
+    public function __construct(string $method = Values::NONE, string[] $filters = Values::NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $target = Values::NONE) {
         $this->options['method'] = $method;
         $this->options['filters'] = $filters;
         $this->options['preWebhookUrl'] = $preWebhookUrl;
@@ -60,7 +60,7 @@ class UpdateWebhookOptions extends Options {
      *                       request.
      * @return $this Fluent Builder
      */
-    public function setMethod($method): self {
+    public function setMethod(string $method): self {
         $this->options['method'] = $method;
         return $this;
     }
@@ -68,11 +68,11 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`
      *
-     * @param string $filters The list of webhook event triggers that are enabled
-     *                        for this Service.
+     * @param string[] $filters The list of webhook event triggers that are enabled
+     *                          for this Service.
      * @return $this Fluent Builder
      */
-    public function setFilters($filters): self {
+    public function setFilters(string[] $filters): self {
         $this->options['filters'] = $filters;
         return $this;
     }
@@ -84,7 +84,7 @@ class UpdateWebhookOptions extends Options {
      *                              should be sent to.
      * @return $this Fluent Builder
      */
-    public function setPreWebhookUrl($preWebhookUrl): self {
+    public function setPreWebhookUrl(string $preWebhookUrl): self {
         $this->options['preWebhookUrl'] = $preWebhookUrl;
         return $this;
     }
@@ -96,7 +96,7 @@ class UpdateWebhookOptions extends Options {
      *                               request should be sent to.
      * @return $this Fluent Builder
      */
-    public function setPostWebhookUrl($postWebhookUrl): self {
+    public function setPostWebhookUrl(string $postWebhookUrl): self {
         $this->options['postWebhookUrl'] = $postWebhookUrl;
         return $this;
     }
@@ -107,7 +107,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $target The routing target of the webhook.
      * @return $this Fluent Builder
      */
-    public function setTarget($target): self {
+    public function setTarget(string $target): self {
         $this->options['target'] = $target;
         return $this;
     }

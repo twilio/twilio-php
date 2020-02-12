@@ -22,7 +22,7 @@ abstract class UsageRecordOptions {
      *                            aggregated by
      * @return ReadUsageRecordOptions Options builder
      */
-    public static function read($end = Values::NONE, $start = Values::NONE, $granularity = Values::NONE): ReadUsageRecordOptions {
+    public static function read(\DateTime $end = Values::NONE, \DateTime $start = Values::NONE, string $granularity = Values::NONE): ReadUsageRecordOptions {
         return new ReadUsageRecordOptions($end, $start, $granularity);
     }
 }
@@ -36,7 +36,7 @@ class ReadUsageRecordOptions extends Options {
      * @param string $granularity The time-based grouping that results are
      *                            aggregated by
      */
-    public function __construct($end = Values::NONE, $start = Values::NONE, $granularity = Values::NONE) {
+    public function __construct(\DateTime $end = Values::NONE, \DateTime $start = Values::NONE, string $granularity = Values::NONE) {
         $this->options['end'] = $end;
         $this->options['start'] = $start;
         $this->options['granularity'] = $granularity;
@@ -49,7 +49,7 @@ class ReadUsageRecordOptions extends Options {
      *                       date
      * @return $this Fluent Builder
      */
-    public function setEnd($end): self {
+    public function setEnd(\DateTime $end): self {
         $this->options['end'] = $end;
         return $this;
     }
@@ -61,7 +61,7 @@ class ReadUsageRecordOptions extends Options {
      *                         this date
      * @return $this Fluent Builder
      */
-    public function setStart($start): self {
+    public function setStart(\DateTime $start): self {
         $this->options['start'] = $start;
         return $this;
     }
@@ -73,7 +73,7 @@ class ReadUsageRecordOptions extends Options {
      *                            aggregated by
      * @return $this Fluent Builder
      */
-    public function setGranularity($granularity): self {
+    public function setGranularity(string $granularity): self {
         $this->options['granularity'] = $granularity;
         return $this;
     }

@@ -27,7 +27,7 @@ class FunctionVersionList extends ListResource {
      * @param string $functionSid The SID of the function that is the parent of the
      *                            function version
      */
-    public function __construct(Version $version, $serviceSid, $functionSid) {
+    public function __construct(Version $version, string $serviceSid, string $functionSid) {
         parent::__construct($version);
 
         // Path Solution
@@ -54,7 +54,7 @@ class FunctionVersionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class FunctionVersionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FunctionVersionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -90,7 +90,7 @@ class FunctionVersionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FunctionVersionPage Page of FunctionVersionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FunctionVersionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FunctionVersionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
@@ -109,7 +109,7 @@ class FunctionVersionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FunctionVersionPage Page of FunctionVersionInstance
      */
-    public function getPage($targetUrl): FunctionVersionPage {
+    public function getPage(string $targetUrl): FunctionVersionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -124,7 +124,7 @@ class FunctionVersionList extends ListResource {
      * @param string $sid The SID that identifies the Function Version resource to
      *                    fetch
      */
-    public function getContext($sid): FunctionVersionContext {
+    public function getContext(string $sid): FunctionVersionContext {
         return new FunctionVersionContext(
             $this->version,
             $this->solution['serviceSid'],

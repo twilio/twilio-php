@@ -29,7 +29,7 @@ abstract class ConferenceOptions {
      * @param string $status The status of the resources to read
      * @return ReadConferenceOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $dateUpdatedBefore = Values::NONE, $dateUpdated = Values::NONE, $dateUpdatedAfter = Values::NONE, $friendlyName = Values::NONE, $status = Values::NONE): ReadConferenceOptions {
+    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $dateUpdatedBefore = Values::NONE, string $dateUpdated = Values::NONE, string $dateUpdatedAfter = Values::NONE, string $friendlyName = Values::NONE, string $status = Values::NONE): ReadConferenceOptions {
         return new ReadConferenceOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $dateUpdatedBefore, $dateUpdated, $dateUpdatedAfter, $friendlyName, $status);
     }
 
@@ -40,7 +40,7 @@ abstract class ConferenceOptions {
      * @param string $announceMethod he HTTP method used to call announce_url
      * @return UpdateConferenceOptions Options builder
      */
-    public static function update($status = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE): UpdateConferenceOptions {
+    public static function update(string $status = Values::NONE, string $announceUrl = Values::NONE, string $announceMethod = Values::NONE): UpdateConferenceOptions {
         return new UpdateConferenceOptions($status, $announceUrl, $announceMethod);
     }
 }
@@ -61,7 +61,7 @@ class ReadConferenceOptions extends Options {
      *                             resources to read
      * @param string $status The status of the resources to read
      */
-    public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $dateUpdatedBefore = Values::NONE, $dateUpdated = Values::NONE, $dateUpdatedAfter = Values::NONE, $friendlyName = Values::NONE, $status = Values::NONE) {
+    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $dateUpdatedBefore = Values::NONE, string $dateUpdated = Values::NONE, string $dateUpdatedAfter = Values::NONE, string $friendlyName = Values::NONE, string $status = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -79,7 +79,7 @@ class ReadConferenceOptions extends Options {
      *                                  read
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore): self {
+    public function setDateCreatedBefore(string $dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -90,7 +90,7 @@ class ReadConferenceOptions extends Options {
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(string $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -102,7 +102,7 @@ class ReadConferenceOptions extends Options {
      *                                 read
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter): self {
+    public function setDateCreatedAfter(string $dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -114,7 +114,7 @@ class ReadConferenceOptions extends Options {
      *                                  read
      * @return $this Fluent Builder
      */
-    public function setDateUpdatedBefore($dateUpdatedBefore): self {
+    public function setDateUpdatedBefore(string $dateUpdatedBefore): self {
         $this->options['dateUpdatedBefore'] = $dateUpdatedBefore;
         return $this;
     }
@@ -125,7 +125,7 @@ class ReadConferenceOptions extends Options {
      * @param string $dateUpdated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(string $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -137,7 +137,7 @@ class ReadConferenceOptions extends Options {
      *                                 read
      * @return $this Fluent Builder
      */
-    public function setDateUpdatedAfter($dateUpdatedAfter): self {
+    public function setDateUpdatedAfter(string $dateUpdatedAfter): self {
         $this->options['dateUpdatedAfter'] = $dateUpdatedAfter;
         return $this;
     }
@@ -149,7 +149,7 @@ class ReadConferenceOptions extends Options {
      *                             resources to read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -160,7 +160,7 @@ class ReadConferenceOptions extends Options {
      * @param string $status The status of the resources to read
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -188,7 +188,7 @@ class UpdateConferenceOptions extends Options {
      *                            the conference
      * @param string $announceMethod he HTTP method used to call announce_url
      */
-    public function __construct($status = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $announceUrl = Values::NONE, string $announceMethod = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['announceUrl'] = $announceUrl;
         $this->options['announceMethod'] = $announceMethod;
@@ -200,7 +200,7 @@ class UpdateConferenceOptions extends Options {
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status): self {
+    public function setStatus(string $status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -212,7 +212,7 @@ class UpdateConferenceOptions extends Options {
      *                            the conference
      * @return $this Fluent Builder
      */
-    public function setAnnounceUrl($announceUrl): self {
+    public function setAnnounceUrl(string $announceUrl): self {
         $this->options['announceUrl'] = $announceUrl;
         return $this;
     }
@@ -223,7 +223,7 @@ class UpdateConferenceOptions extends Options {
      * @param string $announceMethod he HTTP method used to call announce_url
      * @return $this Fluent Builder
      */
-    public function setAnnounceMethod($announceMethod): self {
+    public function setAnnounceMethod(string $announceMethod): self {
         $this->options['announceMethod'] = $announceMethod;
         return $this;
     }

@@ -20,7 +20,7 @@ abstract class DataSessionOptions {
      *                         in ISO 8601 format
      * @return ReadDataSessionOptions Options builder
      */
-    public static function read($end = Values::NONE, $start = Values::NONE): ReadDataSessionOptions {
+    public static function read(\DateTime $end = Values::NONE, \DateTime $start = Values::NONE): ReadDataSessionOptions {
         return new ReadDataSessionOptions($end, $start);
     }
 }
@@ -32,7 +32,7 @@ class ReadDataSessionOptions extends Options {
      * @param \DateTime $start The date that the Data Session started, given as GMT
      *                         in ISO 8601 format
      */
-    public function __construct($end = Values::NONE, $start = Values::NONE) {
+    public function __construct(\DateTime $end = Values::NONE, \DateTime $start = Values::NONE) {
         $this->options['end'] = $end;
         $this->options['start'] = $start;
     }
@@ -44,7 +44,7 @@ class ReadDataSessionOptions extends Options {
      *                       8601 format
      * @return $this Fluent Builder
      */
-    public function setEnd($end): self {
+    public function setEnd(\DateTime $end): self {
         $this->options['end'] = $end;
         return $this;
     }
@@ -56,7 +56,7 @@ class ReadDataSessionOptions extends Options {
      *                         in ISO 8601 format
      * @return $this Fluent Builder
      */
-    public function setStart($start): self {
+    public function setStart(\DateTime $start): self {
         $this->options['start'] = $start;
         return $this;
     }

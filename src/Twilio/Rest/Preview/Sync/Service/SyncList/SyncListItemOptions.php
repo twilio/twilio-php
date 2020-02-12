@@ -22,7 +22,7 @@ abstract class SyncListItemOptions {
      * @param string $bounds The bounds
      * @return ReadSyncListItemOptions Options builder
      */
-    public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE): ReadSyncListItemOptions {
+    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE): ReadSyncListItemOptions {
         return new ReadSyncListItemOptions($order, $from, $bounds);
     }
 }
@@ -33,7 +33,7 @@ class ReadSyncListItemOptions extends Options {
      * @param string $from The from
      * @param string $bounds The bounds
      */
-    public function __construct($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
+    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE) {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
@@ -45,7 +45,7 @@ class ReadSyncListItemOptions extends Options {
      * @param string $order The order
      * @return $this Fluent Builder
      */
-    public function setOrder($order): self {
+    public function setOrder(string $order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -56,7 +56,7 @@ class ReadSyncListItemOptions extends Options {
      * @param string $from The from
      * @return $this Fluent Builder
      */
-    public function setFrom($from): self {
+    public function setFrom(string $from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -67,7 +67,7 @@ class ReadSyncListItemOptions extends Options {
      * @param string $bounds The bounds
      * @return $this Fluent Builder
      */
-    public function setBounds($bounds): self {
+    public function setBounds(string $bounds): self {
         $this->options['bounds'] = $bounds;
         return $this;
     }

@@ -26,7 +26,7 @@ abstract class MessageOptions {
      * @param string $body The message body
      * @return CreateMessageOptions Options builder
      */
-    public static function create($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE): CreateMessageOptions {
+    public static function create(string $author = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $body = Values::NONE): CreateMessageOptions {
         return new CreateMessageOptions($author, $attributes, $dateCreated, $dateUpdated, $body);
     }
 
@@ -40,7 +40,7 @@ abstract class MessageOptions {
      * @param string $body The message body
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE): UpdateMessageOptions {
+    public static function update(string $author = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $body = Values::NONE): UpdateMessageOptions {
         return new UpdateMessageOptions($author, $attributes, $dateCreated, $dateUpdated, $body);
     }
 }
@@ -55,7 +55,7 @@ class CreateMessageOptions extends Options {
      *                               resource was updated
      * @param string $body The message body
      */
-    public function __construct($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE) {
+    public function __construct(string $author = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $body = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -69,7 +69,7 @@ class CreateMessageOptions extends Options {
      * @param string $author The identity of the message's author
      * @return $this Fluent Builder
      */
-    public function setAuthor($author): self {
+    public function setAuthor(string $author): self {
         $this->options['author'] = $author;
         return $this;
     }
@@ -80,7 +80,7 @@ class CreateMessageOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -92,7 +92,7 @@ class CreateMessageOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -104,7 +104,7 @@ class CreateMessageOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -115,7 +115,7 @@ class CreateMessageOptions extends Options {
      * @param string $body The message body
      * @return $this Fluent Builder
      */
-    public function setBody($body): self {
+    public function setBody(string $body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -146,7 +146,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was updated
      * @param string $body The message body
      */
-    public function __construct($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE) {
+    public function __construct(string $author = Values::NONE, string $attributes = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $body = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -160,7 +160,7 @@ class UpdateMessageOptions extends Options {
      * @param string $author The identity of the message's author
      * @return $this Fluent Builder
      */
-    public function setAuthor($author): self {
+    public function setAuthor(string $author): self {
         $this->options['author'] = $author;
         return $this;
     }
@@ -171,7 +171,7 @@ class UpdateMessageOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes): self {
+    public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -183,7 +183,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated): self {
+    public function setDateCreated(\DateTime $dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -195,7 +195,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated): self {
+    public function setDateUpdated(\DateTime $dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -206,7 +206,7 @@ class UpdateMessageOptions extends Options {
      * @param string $body The message body
      * @return $this Fluent Builder
      */
-    public function setBody($body): self {
+    public function setBody(string $body): self {
         $this->options['body'] = $body;
         return $this;
     }

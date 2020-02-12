@@ -33,7 +33,7 @@ class TaskActionsInstance extends InstanceResource {
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $taskSid The unique ID of the Task.
      */
-    public function __construct(Version $version, array $payload, $assistantSid, $taskSid) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $taskSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -83,7 +83,7 @@ class TaskActionsInstance extends InstanceResource {
      * @return TaskActionsInstance Updated TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): TaskActionsInstance {
+    public function update(array $options = []): TaskActionsInstance {
         return $this->proxy()->update($options);
     }
 
@@ -94,7 +94,7 @@ class TaskActionsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get(string $name) {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }

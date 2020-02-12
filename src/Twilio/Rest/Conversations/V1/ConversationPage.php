@@ -9,19 +9,30 @@
 
 namespace Twilio\Rest\Conversations\V1;
 
+use Twilio\Http\Response;
 use Twilio\Page;
+use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class ConversationPage extends Page {
-    public function __construct($version, $response, $solution) {
+    /**
+     * @param Version $version Version that contains the resource
+     * @param Response $response Response from the API
+     * @param array $solution The context solution
+     */
+    public function __construct(Version $version, Response $response, array $solution) {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
+    /**
+     * @param array $payload Payload response from the API
+     * @return ConversationInstance \Twilio\Rest\Conversations\V1\ConversationInstance
+     */
     public function buildInstance(array $payload): ConversationInstance {
         return new ConversationInstance($this->version, $payload);
     }

@@ -63,7 +63,7 @@ class OutgoingCallerIdContext extends InstanceContext {
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): OutgoingCallerIdInstance {
+    public function update(array $options = []): OutgoingCallerIdInstance {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);

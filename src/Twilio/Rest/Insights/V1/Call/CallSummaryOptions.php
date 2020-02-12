@@ -20,7 +20,7 @@ abstract class CallSummaryOptions {
      * @param string $processingState The processing_state
      * @return FetchCallSummaryOptions Options builder
      */
-    public static function fetch($processingState = Values::NONE): FetchCallSummaryOptions {
+    public static function fetch(string $processingState = Values::NONE): FetchCallSummaryOptions {
         return new FetchCallSummaryOptions($processingState);
     }
 }
@@ -29,7 +29,7 @@ class FetchCallSummaryOptions extends Options {
     /**
      * @param string $processingState The processing_state
      */
-    public function __construct($processingState = Values::NONE) {
+    public function __construct(string $processingState = Values::NONE) {
         $this->options['processingState'] = $processingState;
     }
 
@@ -39,7 +39,7 @@ class FetchCallSummaryOptions extends Options {
      * @param string $processingState The processing_state
      * @return $this Fluent Builder
      */
-    public function setProcessingState($processingState): self {
+    public function setProcessingState(string $processingState): self {
         $this->options['processingState'] = $processingState;
         return $this;
     }

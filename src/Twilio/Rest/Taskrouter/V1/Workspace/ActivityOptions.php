@@ -17,7 +17,7 @@ abstract class ActivityOptions {
      * @param string $friendlyName A string to describe the Activity resource
      * @return UpdateActivityOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE): UpdateActivityOptions {
+    public static function update(string $friendlyName = Values::NONE): UpdateActivityOptions {
         return new UpdateActivityOptions($friendlyName);
     }
 
@@ -28,7 +28,7 @@ abstract class ActivityOptions {
      *                          unavailable
      * @return ReadActivityOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE, $available = Values::NONE): ReadActivityOptions {
+    public static function read(string $friendlyName = Values::NONE, string $available = Values::NONE): ReadActivityOptions {
         return new ReadActivityOptions($friendlyName, $available);
     }
 
@@ -37,7 +37,7 @@ abstract class ActivityOptions {
      *                        Task when it occupies the Activity
      * @return CreateActivityOptions Options builder
      */
-    public static function create($available = Values::NONE): CreateActivityOptions {
+    public static function create(bool $available = Values::NONE): CreateActivityOptions {
         return new CreateActivityOptions($available);
     }
 }
@@ -46,7 +46,7 @@ class UpdateActivityOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the Activity resource
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -56,7 +56,7 @@ class UpdateActivityOptions extends Options {
      * @param string $friendlyName A string to describe the Activity resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -84,7 +84,7 @@ class ReadActivityOptions extends Options {
      * @param string $available Whether to return activities that are available or
      *                          unavailable
      */
-    public function __construct($friendlyName = Values::NONE, $available = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $available = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['available'] = $available;
     }
@@ -96,7 +96,7 @@ class ReadActivityOptions extends Options {
      *                             read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -108,7 +108,7 @@ class ReadActivityOptions extends Options {
      *                          unavailable
      * @return $this Fluent Builder
      */
-    public function setAvailable($available): self {
+    public function setAvailable(string $available): self {
         $this->options['available'] = $available;
         return $this;
     }
@@ -134,7 +134,7 @@ class CreateActivityOptions extends Options {
      * @param bool $available Whether the Worker should be eligible to receive a
      *                        Task when it occupies the Activity
      */
-    public function __construct($available = Values::NONE) {
+    public function __construct(bool $available = Values::NONE) {
         $this->options['available'] = $available;
     }
 
@@ -145,7 +145,7 @@ class CreateActivityOptions extends Options {
      *                        Task when it occupies the Activity
      * @return $this Fluent Builder
      */
-    public function setAvailable($available): self {
+    public function setAvailable(bool $available): self {
         $this->options['available'] = $available;
         return $this;
     }

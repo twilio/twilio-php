@@ -21,7 +21,7 @@ abstract class SampleOptions {
      *                         language used for the sample
      * @return ReadSampleOptions Options builder
      */
-    public static function read($language = Values::NONE): ReadSampleOptions {
+    public static function read(string $language = Values::NONE): ReadSampleOptions {
         return new ReadSampleOptions($language);
     }
 
@@ -30,7 +30,7 @@ abstract class SampleOptions {
      *                              sample was captured
      * @return CreateSampleOptions Options builder
      */
-    public static function create($sourceChannel = Values::NONE): CreateSampleOptions {
+    public static function create(string $sourceChannel = Values::NONE): CreateSampleOptions {
         return new CreateSampleOptions($sourceChannel);
     }
 
@@ -43,7 +43,7 @@ abstract class SampleOptions {
      *                              was captured
      * @return UpdateSampleOptions Options builder
      */
-    public static function update($language = Values::NONE, $taggedText = Values::NONE, $sourceChannel = Values::NONE): UpdateSampleOptions {
+    public static function update(string $language = Values::NONE, string $taggedText = Values::NONE, string $sourceChannel = Values::NONE): UpdateSampleOptions {
         return new UpdateSampleOptions($language, $taggedText, $sourceChannel);
     }
 }
@@ -53,7 +53,7 @@ class ReadSampleOptions extends Options {
      * @param string $language The ISO language-country string that specifies the
      *                         language used for the sample
      */
-    public function __construct($language = Values::NONE) {
+    public function __construct(string $language = Values::NONE) {
         $this->options['language'] = $language;
     }
 
@@ -64,7 +64,7 @@ class ReadSampleOptions extends Options {
      *                         language used for the sample
      * @return $this Fluent Builder
      */
-    public function setLanguage($language): self {
+    public function setLanguage(string $language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -90,7 +90,7 @@ class CreateSampleOptions extends Options {
      * @param string $sourceChannel The communication channel from which the new
      *                              sample was captured
      */
-    public function __construct($sourceChannel = Values::NONE) {
+    public function __construct(string $sourceChannel = Values::NONE) {
         $this->options['sourceChannel'] = $sourceChannel;
     }
 
@@ -101,7 +101,7 @@ class CreateSampleOptions extends Options {
      *                              sample was captured
      * @return $this Fluent Builder
      */
-    public function setSourceChannel($sourceChannel): self {
+    public function setSourceChannel(string $sourceChannel): self {
         $this->options['sourceChannel'] = $sourceChannel;
         return $this;
     }
@@ -131,7 +131,7 @@ class UpdateSampleOptions extends Options {
      * @param string $sourceChannel The communication channel from which the sample
      *                              was captured
      */
-    public function __construct($language = Values::NONE, $taggedText = Values::NONE, $sourceChannel = Values::NONE) {
+    public function __construct(string $language = Values::NONE, string $taggedText = Values::NONE, string $sourceChannel = Values::NONE) {
         $this->options['language'] = $language;
         $this->options['taggedText'] = $taggedText;
         $this->options['sourceChannel'] = $sourceChannel;
@@ -144,7 +144,7 @@ class UpdateSampleOptions extends Options {
      *                         language used for the sample
      * @return $this Fluent Builder
      */
-    public function setLanguage($language): self {
+    public function setLanguage(string $language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -156,7 +156,7 @@ class UpdateSampleOptions extends Options {
      *                           the task
      * @return $this Fluent Builder
      */
-    public function setTaggedText($taggedText): self {
+    public function setTaggedText(string $taggedText): self {
         $this->options['taggedText'] = $taggedText;
         return $this;
     }
@@ -168,7 +168,7 @@ class UpdateSampleOptions extends Options {
      *                              was captured
      * @return $this Fluent Builder
      */
-    public function setSourceChannel($sourceChannel): self {
+    public function setSourceChannel(string $sourceChannel): self {
         $this->options['sourceChannel'] = $sourceChannel;
         return $this;
     }

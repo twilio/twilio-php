@@ -21,7 +21,7 @@ abstract class StyleSheetOptions {
      *                          object
      * @return UpdateStyleSheetOptions Options builder
      */
-    public static function update($styleSheet = Values::NONE): UpdateStyleSheetOptions {
+    public static function update(array $styleSheet = Values::NONE): UpdateStyleSheetOptions {
         return new UpdateStyleSheetOptions($styleSheet);
     }
 }
@@ -31,7 +31,7 @@ class UpdateStyleSheetOptions extends Options {
      * @param array $styleSheet The JSON string that describes the style sheet
      *                          object
      */
-    public function __construct($styleSheet = Values::NONE) {
+    public function __construct(array $styleSheet = Values::NONE) {
         $this->options['styleSheet'] = $styleSheet;
     }
 
@@ -42,7 +42,7 @@ class UpdateStyleSheetOptions extends Options {
      *                          object
      * @return $this Fluent Builder
      */
-    public function setStyleSheet($styleSheet): self {
+    public function setStyleSheet(array $styleSheet): self {
         $this->options['styleSheet'] = $styleSheet;
         return $this;
     }

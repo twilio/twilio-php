@@ -64,7 +64,7 @@ class TaskChannelContext extends InstanceContext {
      * @return TaskChannelInstance Updated TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = []): TaskChannelInstance {
+    public function update(array $options = []): TaskChannelInstance {
         $options = new Values($options);
 
         $data = Values::of([
