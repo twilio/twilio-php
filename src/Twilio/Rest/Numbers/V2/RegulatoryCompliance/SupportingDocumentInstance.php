@@ -32,16 +32,15 @@ class SupportingDocumentInstance extends InstanceResource {
     /**
      * Initialize the SupportingDocumentInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
@@ -52,19 +51,18 @@ class SupportingDocumentInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentContext Context for this
-     *                                                                                SupportingDocumentInstance
+     * @return SupportingDocumentContext Context for this SupportingDocumentInstance
      */
-    protected function proxy() {
+    protected function proxy(): SupportingDocumentContext {
         if (!$this->context) {
             $this->context = new SupportingDocumentContext($this->version, $this->solution['sid']);
         }
@@ -78,7 +76,7 @@ class SupportingDocumentInstance extends InstanceResource {
      * @return SupportingDocumentInstance Fetched SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SupportingDocumentInstance {
         return $this->proxy()->fetch();
     }
 
@@ -89,7 +87,7 @@ class SupportingDocumentInstance extends InstanceResource {
      * @return SupportingDocumentInstance Updated SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): SupportingDocumentInstance {
         return $this->proxy()->update($options);
     }
 
@@ -118,8 +116,8 @@ class SupportingDocumentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

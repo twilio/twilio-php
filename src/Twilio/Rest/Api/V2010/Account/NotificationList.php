@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,13 +22,12 @@ class NotificationList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Notifications.json';
     }
@@ -49,9 +49,9 @@ class NotificationList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -75,7 +75,7 @@ class NotificationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return NotificationInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -87,11 +87,11 @@ class NotificationList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of NotificationInstance
+     * @return NotificationPage Page of NotificationInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): NotificationPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'Log' => $options['log'],
             'MessageDate<' => Serialize::iso8601Date($options['messageDateBefore']),
             'MessageDate' => Serialize::iso8601Date($options['messageDate']),
@@ -99,7 +99,7 @@ class NotificationList extends ListResource {
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -115,9 +115,9 @@ class NotificationList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of NotificationInstance
+     * @return NotificationPage Page of NotificationInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): NotificationPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -130,9 +130,8 @@ class NotificationList extends ListResource {
      * Constructs a NotificationContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): NotificationContext {
         return new NotificationContext($this->version, $this->solution['accountSid'], $sid);
     }
 
@@ -141,7 +140,7 @@ class NotificationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.NotificationList]';
     }
 }

@@ -26,13 +26,12 @@ class NotificationList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @return \Twilio\Rest\Notify\V1\Service\NotificationList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Notifications';
     }
@@ -44,10 +43,10 @@ class NotificationList extends ListResource {
      * @return NotificationInstance Newly created NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($options = []): NotificationInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
             'Tag' => Serialize::map($options['tag'], function($e) { return $e; }),
             'Body' => $options['body'],
@@ -66,12 +65,12 @@ class NotificationList extends ListResource {
             'Alexa' => Serialize::jsonObject($options['alexa']),
             'ToBinding' => Serialize::map($options['toBinding'], function($e) { return $e; }),
             'DeliveryCallbackUrl' => $options['deliveryCallbackUrl'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -83,7 +82,7 @@ class NotificationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Notify.V1.NotificationList]';
     }
 }

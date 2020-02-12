@@ -22,7 +22,7 @@ class DocumentPermissionPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): DocumentPermissionInstance {
         return new DocumentPermissionInstance(
             $this->version,
             $payload,
@@ -36,7 +36,7 @@ class DocumentPermissionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Sync.DocumentPermissionPage]';
     }
 }

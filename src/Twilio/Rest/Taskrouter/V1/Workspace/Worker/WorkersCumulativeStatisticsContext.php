@@ -20,16 +20,15 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkersCumulativeStatisticsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace with the resource to
      *                             fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/CumulativeStatistics';
     }
@@ -42,15 +41,15 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
      *                                             WorkersCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkersCumulativeStatisticsInstance {
         $options = new Values($options);
 
-        $params = Values::of(array(
+        $params = Values::of([
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'TaskChannel' => $options['taskChannel'],
-        ));
+        ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -70,8 +69,8 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

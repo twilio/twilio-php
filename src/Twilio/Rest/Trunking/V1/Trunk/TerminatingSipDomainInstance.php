@@ -39,17 +39,16 @@ class TerminatingSipDomainInstance extends InstanceResource {
     /**
      * Initialize the TerminatingSipDomainInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $trunkSid The SID of the Trunk to which we should route calls
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainInstance
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'authType' => Values::array_get($payload, 'auth_type'),
@@ -68,20 +67,19 @@ class TerminatingSipDomainInstance extends InstanceResource {
             'sipRegistration' => Values::array_get($payload, 'sip_registration'),
             'trunkSid' => Values::array_get($payload, 'trunk_sid'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['trunkSid' => $trunkSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext Context
-     *                                                                    for this
-     *                                                                    TerminatingSipDomainInstance
+     * @return TerminatingSipDomainContext Context for this
+     *                                     TerminatingSipDomainInstance
      */
-    protected function proxy() {
+    protected function proxy(): TerminatingSipDomainContext {
         if (!$this->context) {
             $this->context = new TerminatingSipDomainContext(
                 $this->version,
@@ -99,17 +97,17 @@ class TerminatingSipDomainInstance extends InstanceResource {
      * @return TerminatingSipDomainInstance Fetched TerminatingSipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): TerminatingSipDomainInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the TerminatingSipDomainInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -138,8 +136,8 @@ class TerminatingSipDomainInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

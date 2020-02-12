@@ -20,7 +20,7 @@ abstract class ExecutionOptions {
      *                                 this ISO 8601 date-time
      * @return ReadExecutionOptions Options builder
      */
-    public static function read($dateCreatedFrom = Values::NONE, $dateCreatedTo = Values::NONE) {
+    public static function read($dateCreatedFrom = Values::NONE, $dateCreatedTo = Values::NONE): ReadExecutionOptions {
         return new ReadExecutionOptions($dateCreatedFrom, $dateCreatedTo);
     }
 
@@ -28,7 +28,7 @@ abstract class ExecutionOptions {
      * @param array $parameters JSON data that will be added to the Flow's context
      * @return CreateExecutionOptions Options builder
      */
-    public static function create($parameters = Values::NONE) {
+    public static function create($parameters = Values::NONE): CreateExecutionOptions {
         return new CreateExecutionOptions($parameters);
     }
 }
@@ -52,7 +52,7 @@ class ReadExecutionOptions extends Options {
      *                                   after this ISO 8601 date-time
      * @return $this Fluent Builder
      */
-    public function setDateCreatedFrom($dateCreatedFrom) {
+    public function setDateCreatedFrom($dateCreatedFrom): self {
         $this->options['dateCreatedFrom'] = $dateCreatedFrom;
         return $this;
     }
@@ -64,7 +64,7 @@ class ReadExecutionOptions extends Options {
      *                                 this ISO 8601 date-time
      * @return $this Fluent Builder
      */
-    public function setDateCreatedTo($dateCreatedTo) {
+    public function setDateCreatedTo($dateCreatedTo): self {
         $this->options['dateCreatedTo'] = $dateCreatedTo;
         return $this;
     }
@@ -74,10 +74,10 @@ class ReadExecutionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -99,7 +99,7 @@ class CreateExecutionOptions extends Options {
      * @param array $parameters JSON data that will be added to the Flow's context
      * @return $this Fluent Builder
      */
-    public function setParameters($parameters) {
+    public function setParameters($parameters): self {
         $this->options['parameters'] = $parameters;
         return $this;
     }
@@ -109,10 +109,10 @@ class CreateExecutionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -22,7 +22,7 @@ class SyncMapPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SyncMapInstance {
         return new SyncMapInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -31,7 +31,7 @@ class SyncMapPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Sync.SyncMapPage]';
     }
 }

@@ -28,41 +28,39 @@ class MemberInstance extends InstanceResource {
     /**
      * Initialize the MemberInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $queueSid The SID of the Queue the member is in
      * @param string $callSid The Call SID of the resource(s) to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $queueSid, $callSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'callSid' => Values::array_get($payload, 'call_sid'),
             'dateEnqueued' => Deserialize::dateTime(Values::array_get($payload, 'date_enqueued')),
             'position' => Values::array_get($payload, 'position'),
             'uri' => Values::array_get($payload, 'uri'),
             'waitTime' => Values::array_get($payload, 'wait_time'),
             'queueSid' => Values::array_get($payload, 'queue_sid'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'queueSid' => $queueSid,
             'callSid' => $callSid ?: $this->properties['callSid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext Context for this
-     *                                                            MemberInstance
+     * @return MemberContext Context for this MemberInstance
      */
-    protected function proxy() {
+    protected function proxy(): MemberContext {
         if (!$this->context) {
             $this->context = new MemberContext(
                 $this->version,
@@ -81,7 +79,7 @@ class MemberInstance extends InstanceResource {
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): MemberInstance {
         return $this->proxy()->fetch();
     }
 
@@ -93,7 +91,7 @@ class MemberInstance extends InstanceResource {
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($url, $options = array()) {
+    public function update($url, $options = []): MemberInstance {
         return $this->proxy()->update($url, $options);
     }
 
@@ -122,8 +120,8 @@ class MemberInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

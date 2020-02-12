@@ -19,7 +19,7 @@ class IpAccessControlListPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): IpAccessControlListInstance {
         return new IpAccessControlListInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
@@ -28,7 +28,7 @@ class IpAccessControlListPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.IpAccessControlListPage]';
     }
 }

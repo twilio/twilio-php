@@ -12,6 +12,9 @@ namespace Twilio\Rest\Serverless\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList;
+use Twilio\Rest\Serverless\V1\Service\Environment\LogList;
+use Twilio\Rest\Serverless\V1\Service\Environment\VariableList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -31,25 +34,24 @@ use Twilio\Version;
  * @property array $links
  */
 class EnvironmentInstance extends InstanceResource {
-    protected $_variables = null;
-    protected $_deployments = null;
-    protected $_logs = null;
+    protected $_variables;
+    protected $_deployments;
+    protected $_logs;
 
     /**
      * Initialize the EnvironmentInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the Environment
      *                           resource is associated with
      * @param string $sid The SID of the Environment resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -61,20 +63,18 @@ class EnvironmentInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext Context for
-     *                                                               this
-     *                                                               EnvironmentInstance
+     * @return EnvironmentContext Context for this EnvironmentInstance
      */
-    protected function proxy() {
+    protected function proxy(): EnvironmentContext {
         if (!$this->context) {
             $this->context = new EnvironmentContext(
                 $this->version,
@@ -92,44 +92,38 @@ class EnvironmentInstance extends InstanceResource {
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): EnvironmentInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the EnvironmentInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the variables
-     *
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList
      */
-    protected function getVariables() {
+    protected function getVariables(): VariableList {
         return $this->proxy()->variables;
     }
 
     /**
      * Access the deployments
-     *
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList
      */
-    protected function getDeployments() {
+    protected function getDeployments(): DeploymentList {
         return $this->proxy()->deployments;
     }
 
     /**
      * Access the logs
-     *
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogList
      */
-    protected function getLogs() {
+    protected function getLogs(): LogList {
         return $this->proxy()->logs;
     }
 
@@ -158,8 +152,8 @@ class EnvironmentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

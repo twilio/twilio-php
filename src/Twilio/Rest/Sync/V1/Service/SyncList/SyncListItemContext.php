@@ -23,19 +23,18 @@ class SyncListItemContext extends InstanceContext {
     /**
      * Initialize the SyncListItemContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Sync Service with the Sync List
      *                           Item resource to fetch
      * @param string $listSid The SID of the Sync List with the Sync List Item
      *                        resource to fetch
      * @param int $index The index of the Sync List Item resource to fetch
-     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext
      */
     public function __construct(Version $version, $serviceSid, $listSid, $index) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, 'index' => $index, );
+        $this->solution = ['serviceSid' => $serviceSid, 'listSid' => $listSid, 'index' => $index, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Items/' . \rawurlencode($index) . '';
     }
@@ -46,8 +45,8 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): SyncListItemInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -67,10 +66,10 @@ class SyncListItemContext extends InstanceContext {
     /**
      * Deletes the SyncListItemInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -81,20 +80,20 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): SyncListItemInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Data' => Serialize::jsonObject($options['data']),
             'Ttl' => $options['ttl'],
             'ItemTtl' => $options['itemTtl'],
             'CollectionTtl' => $options['collectionTtl'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -112,8 +111,8 @@ class SyncListItemContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -19,7 +19,7 @@ abstract class BucketOptions {
      *                      over.
      * @return UpdateBucketOptions Options builder
      */
-    public static function update($max = Values::NONE, $interval = Values::NONE) {
+    public static function update($max = Values::NONE, $interval = Values::NONE): UpdateBucketOptions {
         return new UpdateBucketOptions($max, $interval);
     }
 }
@@ -41,7 +41,7 @@ class UpdateBucketOptions extends Options {
      * @param int $max Max number of requests.
      * @return $this Fluent Builder
      */
-    public function setMax($max) {
+    public function setMax($max): self {
         $this->options['max'] = $max;
         return $this;
     }
@@ -53,7 +53,7 @@ class UpdateBucketOptions extends Options {
      *                      over.
      * @return $this Fluent Builder
      */
-    public function setInterval($interval) {
+    public function setInterval($interval): self {
         $this->options['interval'] = $interval;
         return $this;
     }
@@ -63,10 +63,10 @@ class UpdateBucketOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

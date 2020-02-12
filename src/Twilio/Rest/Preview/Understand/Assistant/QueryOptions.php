@@ -24,7 +24,7 @@ abstract class QueryOptions {
      *                       can be: pending_review, reviewed, discarded
      * @return ReadQueryOptions Options builder
      */
-    public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
+    public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE): ReadQueryOptions {
         return new ReadQueryOptions($language, $modelBuild, $status);
     }
 
@@ -41,7 +41,7 @@ abstract class QueryOptions {
      *                      task-unique-name-1:field-unique-name
      * @return CreateQueryOptions Options builder
      */
-    public static function create($tasks = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
+    public static function create($tasks = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE): CreateQueryOptions {
         return new CreateQueryOptions($tasks, $modelBuild, $field);
     }
 
@@ -52,7 +52,7 @@ abstract class QueryOptions {
      *                       can be: pending_review, reviewed, discarded
      * @return UpdateQueryOptions Options builder
      */
-    public static function update($sampleSid = Values::NONE, $status = Values::NONE) {
+    public static function update($sampleSid = Values::NONE, $status = Values::NONE): UpdateQueryOptions {
         return new UpdateQueryOptions($sampleSid, $status);
     }
 }
@@ -77,7 +77,7 @@ class ReadQueryOptions extends Options {
      * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
-    public function setLanguage($language) {
+    public function setLanguage($language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -89,7 +89,7 @@ class ReadQueryOptions extends Options {
      *                           Build to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild($modelBuild) {
+    public function setModelBuild($modelBuild): self {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -101,7 +101,7 @@ class ReadQueryOptions extends Options {
      *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -111,10 +111,10 @@ class ReadQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -150,7 +150,7 @@ class CreateQueryOptions extends Options {
      *                      task-unique-name-2
      * @return $this Fluent Builder
      */
-    public function setTasks($tasks) {
+    public function setTasks($tasks): self {
         $this->options['tasks'] = $tasks;
         return $this;
     }
@@ -162,7 +162,7 @@ class CreateQueryOptions extends Options {
      *                           Build to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild($modelBuild) {
+    public function setModelBuild($modelBuild): self {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -176,7 +176,7 @@ class CreateQueryOptions extends Options {
      *                      task-unique-name-1:field-unique-name
      * @return $this Fluent Builder
      */
-    public function setField($field) {
+    public function setField($field): self {
         $this->options['field'] = $field;
         return $this;
     }
@@ -186,10 +186,10 @@ class CreateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -216,7 +216,7 @@ class UpdateQueryOptions extends Options {
      *                          this query.
      * @return $this Fluent Builder
      */
-    public function setSampleSid($sampleSid) {
+    public function setSampleSid($sampleSid): self {
         $this->options['sampleSid'] = $sampleSid;
         return $this;
     }
@@ -228,7 +228,7 @@ class UpdateQueryOptions extends Options {
      *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -238,10 +238,10 @@ class UpdateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

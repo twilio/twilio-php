@@ -17,17 +17,17 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class StreamMessageTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->sync->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                    ->syncStreams("TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->streamMessages->create(array());
+                                   ->streamMessages->create([]);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject(array()), );
+        $values = ['Data' => Serialize::jsonObject([]), ];
 
         $this->assertRequest(new Request(
             'post',
@@ -37,7 +37,7 @@ class StreamMessageTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -50,7 +50,7 @@ class StreamMessageTest extends HolodeckTestCase {
 
         $actual = $this->twilio->sync->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->syncStreams("TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->streamMessages->create(array());
+                                         ->streamMessages->create([]);
 
         $this->assertNotNull($actual);
     }

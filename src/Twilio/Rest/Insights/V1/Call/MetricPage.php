@@ -22,7 +22,7 @@ class MetricPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): MetricInstance {
         return new MetricInstance($this->version, $payload, $this->solution['callSid']);
     }
 
@@ -31,7 +31,7 @@ class MetricPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Insights.V1.MetricPage]';
     }
 }

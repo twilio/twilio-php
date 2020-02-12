@@ -20,22 +20,20 @@ class BusinessList extends ListResource {
      * Construct the BusinessList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\BusinessList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a BusinessContext
      *
      * @param string $sid A string that uniquely identifies this Business.
-     * @return \Twilio\Rest\Preview\TrustedComms\BusinessContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): BusinessContext {
         return new BusinessContext($this->version, $sid);
     }
 
@@ -44,7 +42,7 @@ class BusinessList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.BusinessList]';
     }
 }

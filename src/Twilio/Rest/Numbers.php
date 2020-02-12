@@ -18,14 +18,12 @@ use Twilio\Rest\Numbers\V2;
  * @property \Twilio\Rest\Numbers\V2\RegulatoryComplianceList $regulatoryCompliance
  */
 class Numbers extends Domain {
-    protected $_v2 = null;
+    protected $_v2;
 
     /**
      * Construct the Numbers Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Numbers Domain for Numbers
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -34,9 +32,9 @@ class Numbers extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Numbers\V2 Version v2 of numbers
+     * @return V2 Version v2 of numbers
      */
-    protected function getV2() {
+    protected function getV2(): V2 {
         if (!$this->_v2) {
             $this->_v2 = new V2($this);
         }
@@ -70,16 +68,13 @@ class Numbers extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryComplianceList
-     */
-    protected function getRegulatoryCompliance() {
+    protected function getRegulatoryCompliance(): \Twilio\Rest\Numbers\V2\RegulatoryComplianceList {
         return $this->v2->regulatoryCompliance;
     }
 
@@ -88,7 +83,7 @@ class Numbers extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Numbers]';
     }
 }

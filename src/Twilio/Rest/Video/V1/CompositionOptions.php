@@ -27,7 +27,7 @@ abstract class CompositionOptions {
      * @param string $roomSid Read only Composition resources with this Room SID
      * @return ReadCompositionOptions Options builder
      */
-    public static function read($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
+    public static function read($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE): ReadCompositionOptions {
         return new ReadCompositionOptions($status, $dateCreatedAfter, $dateCreatedBefore, $roomSid);
     }
 
@@ -49,7 +49,7 @@ abstract class CompositionOptions {
      *                   media in the composition
      * @return CreateCompositionOptions Options builder
      */
-    public static function create($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
+    public static function create($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE): CreateCompositionOptions {
         return new CreateCompositionOptions($videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 }
@@ -78,7 +78,7 @@ class ReadCompositionOptions extends Options {
      * @param string $status Read only Composition resources with this status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -91,7 +91,7 @@ class ReadCompositionOptions extends Options {
      *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -104,7 +104,7 @@ class ReadCompositionOptions extends Options {
      *                                     zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -115,7 +115,7 @@ class ReadCompositionOptions extends Options {
      * @param string $roomSid Read only Composition resources with this Room SID
      * @return $this Fluent Builder
      */
-    public function setRoomSid($roomSid) {
+    public function setRoomSid($roomSid): self {
         $this->options['roomSid'] = $roomSid;
         return $this;
     }
@@ -125,10 +125,10 @@ class ReadCompositionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -172,7 +172,7 @@ class CreateCompositionOptions extends Options {
      *                           composition
      * @return $this Fluent Builder
      */
-    public function setVideoLayout($videoLayout) {
+    public function setVideoLayout($videoLayout): self {
         $this->options['videoLayout'] = $videoLayout;
         return $this;
     }
@@ -184,7 +184,7 @@ class CreateCompositionOptions extends Options {
      *                             to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources($audioSources) {
+    public function setAudioSources($audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -195,7 +195,7 @@ class CreateCompositionOptions extends Options {
      * @param string $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded($audioSourcesExcluded) {
+    public function setAudioSourcesExcluded($audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -222,7 +222,7 @@ class CreateCompositionOptions extends Options {
      *                           pixels
      * @return $this Fluent Builder
      */
-    public function setResolution($resolution) {
+    public function setResolution($resolution): self {
         $this->options['resolution'] = $resolution;
         return $this;
     }
@@ -233,7 +233,7 @@ class CreateCompositionOptions extends Options {
      * @param string $format The container format of the composition's media files
      * @return $this Fluent Builder
      */
-    public function setFormat($format) {
+    public function setFormat($format): self {
         $this->options['format'] = $format;
         return $this;
     }
@@ -245,7 +245,7 @@ class CreateCompositionOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -257,7 +257,7 @@ class CreateCompositionOptions extends Options {
      *                                     status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -269,7 +269,7 @@ class CreateCompositionOptions extends Options {
      *                   media in the composition
      * @return $this Fluent Builder
      */
-    public function setTrim($trim) {
+    public function setTrim($trim): self {
         $this->options['trim'] = $trim;
         return $this;
     }
@@ -279,10 +279,10 @@ class CreateCompositionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

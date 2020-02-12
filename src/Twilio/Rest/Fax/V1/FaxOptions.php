@@ -25,7 +25,7 @@ abstract class FaxOptions {
      *                                    date
      * @return ReadFaxOptions Options builder
      */
-    public static function read($from = Values::NONE, $to = Values::NONE, $dateCreatedOnOrBefore = Values::NONE, $dateCreatedAfter = Values::NONE) {
+    public static function read($from = Values::NONE, $to = Values::NONE, $dateCreatedOnOrBefore = Values::NONE, $dateCreatedAfter = Values::NONE): ReadFaxOptions {
         return new ReadFaxOptions($from, $to, $dateCreatedOnOrBefore, $dateCreatedAfter);
     }
 
@@ -40,7 +40,7 @@ abstract class FaxOptions {
      * @param int $ttl How long in minutes to try to send the fax
      * @return CreateFaxOptions Options builder
      */
-    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE, $ttl = Values::NONE) {
+    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE, $ttl = Values::NONE): CreateFaxOptions {
         return new CreateFaxOptions($quality, $statusCallback, $from, $sipAuthUsername, $sipAuthPassword, $storeMedia, $ttl);
     }
 
@@ -48,7 +48,7 @@ abstract class FaxOptions {
      * @param string $status The new status of the resource
      * @return UpdateFaxOptions Options builder
      */
-    public static function update($status = Values::NONE) {
+    public static function update($status = Values::NONE): UpdateFaxOptions {
         return new UpdateFaxOptions($status);
     }
 }
@@ -75,7 +75,7 @@ class ReadFaxOptions extends Options {
      * @param string $from Retrieve only those faxes sent from this phone number
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -86,7 +86,7 @@ class ReadFaxOptions extends Options {
      * @param string $to Retrieve only those faxes sent to this phone number
      * @return $this Fluent Builder
      */
-    public function setTo($to) {
+    public function setTo($to): self {
         $this->options['to'] = $to;
         return $this;
     }
@@ -98,7 +98,7 @@ class ReadFaxOptions extends Options {
      *                                         before this date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedOnOrBefore($dateCreatedOnOrBefore) {
+    public function setDateCreatedOnOrBefore($dateCreatedOnOrBefore): self {
         $this->options['dateCreatedOnOrBefore'] = $dateCreatedOnOrBefore;
         return $this;
     }
@@ -110,7 +110,7 @@ class ReadFaxOptions extends Options {
      *                                    date
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -120,10 +120,10 @@ class ReadFaxOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -158,7 +158,7 @@ class CreateFaxOptions extends Options {
      * @param string $quality The quality of this fax
      * @return $this Fluent Builder
      */
-    public function setQuality($quality) {
+    public function setQuality($quality): self {
         $this->options['quality'] = $quality;
         return $this;
     }
@@ -170,7 +170,7 @@ class CreateFaxOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -181,7 +181,7 @@ class CreateFaxOptions extends Options {
      * @param string $from The number the fax was sent from
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -192,7 +192,7 @@ class CreateFaxOptions extends Options {
      * @param string $sipAuthUsername The username for SIP authentication
      * @return $this Fluent Builder
      */
-    public function setSipAuthUsername($sipAuthUsername) {
+    public function setSipAuthUsername($sipAuthUsername): self {
         $this->options['sipAuthUsername'] = $sipAuthUsername;
         return $this;
     }
@@ -203,7 +203,7 @@ class CreateFaxOptions extends Options {
      * @param string $sipAuthPassword The password for SIP authentication
      * @return $this Fluent Builder
      */
-    public function setSipAuthPassword($sipAuthPassword) {
+    public function setSipAuthPassword($sipAuthPassword): self {
         $this->options['sipAuthPassword'] = $sipAuthPassword;
         return $this;
     }
@@ -214,7 +214,7 @@ class CreateFaxOptions extends Options {
      * @param bool $storeMedia Whether to store a copy of the sent media
      * @return $this Fluent Builder
      */
-    public function setStoreMedia($storeMedia) {
+    public function setStoreMedia($storeMedia): self {
         $this->options['storeMedia'] = $storeMedia;
         return $this;
     }
@@ -225,7 +225,7 @@ class CreateFaxOptions extends Options {
      * @param int $ttl How long in minutes to try to send the fax
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -235,10 +235,10 @@ class CreateFaxOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -260,7 +260,7 @@ class UpdateFaxOptions extends Options {
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -270,10 +270,10 @@ class UpdateFaxOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

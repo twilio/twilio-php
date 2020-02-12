@@ -21,7 +21,7 @@ abstract class UsageRecordOptions {
      *                            aggregated by
      * @return ReadUsageRecordOptions Options builder
      */
-    public static function read($end = Values::NONE, $start = Values::NONE, $granularity = Values::NONE) {
+    public static function read($end = Values::NONE, $start = Values::NONE, $granularity = Values::NONE): ReadUsageRecordOptions {
         return new ReadUsageRecordOptions($end, $start, $granularity);
     }
 }
@@ -46,7 +46,7 @@ class ReadUsageRecordOptions extends Options {
      * @param \DateTime $end Only include usage that occurred on or before this date
      * @return $this Fluent Builder
      */
-    public function setEnd($end) {
+    public function setEnd($end): self {
         $this->options['end'] = $end;
         return $this;
     }
@@ -58,7 +58,7 @@ class ReadUsageRecordOptions extends Options {
      *                         this date
      * @return $this Fluent Builder
      */
-    public function setStart($start) {
+    public function setStart($start): self {
         $this->options['start'] = $start;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadUsageRecordOptions extends Options {
      *                            aggregated by
      * @return $this Fluent Builder
      */
-    public function setGranularity($granularity) {
+    public function setGranularity($granularity): self {
         $this->options['granularity'] = $granularity;
         return $this;
     }
@@ -80,10 +80,10 @@ class ReadUsageRecordOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

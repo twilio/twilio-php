@@ -17,7 +17,7 @@ class SsmlBreak extends TwiML {
      *
      * @param array $attributes Optional attributes
      */
-    public function __construct($attributes = array()) {
+    public function __construct($attributes = []) {
         parent::__construct('break', null, $attributes);
     }
 
@@ -25,9 +25,8 @@ class SsmlBreak extends TwiML {
      * Add Strength attribute.
      *
      * @param string $strength Set a pause based on strength
-     * @return static $this.
      */
-    public function setStrength($strength) {
+    public function setStrength($strength): self {
         return $this->setAttribute('strength', $strength);
     }
 
@@ -36,9 +35,8 @@ class SsmlBreak extends TwiML {
      *
      * @param string $time Set a pause to a specific length of time in seconds or
      *                     milliseconds, available values: [number]s, [number]ms
-     * @return static $this.
      */
-    public function setTime($time) {
+    public function setTime($time): self {
         return $this->setAttribute('time', $time);
     }
 }

@@ -18,14 +18,12 @@ use Twilio\Rest\Voice\V1;
  * @property \Twilio\Rest\Voice\V1\DialingPermissionsList $dialingPermissions
  */
 class Voice extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the Voice Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Voice Domain for Voice
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -34,9 +32,9 @@ class Voice extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Voice\V1 Version v1 of voice
+     * @return V1 Version v1 of voice
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -70,16 +68,13 @@ class Voice extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
-     */
-    protected function getDialingPermissions() {
+    protected function getDialingPermissions(): \Twilio\Rest\Voice\V1\DialingPermissionsList {
         return $this->v1->dialingPermissions;
     }
 
@@ -88,7 +83,7 @@ class Voice extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice]';
     }
 }

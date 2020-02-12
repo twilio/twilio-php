@@ -36,16 +36,15 @@ class RecordingInstance extends InstanceResource {
     /**
      * Initialize the RecordingInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\RecordingInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'status' => Values::array_get($payload, 'status'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
@@ -61,19 +60,18 @@ class RecordingInstance extends InstanceResource {
             'trackName' => Values::array_get($payload, 'track_name'),
             'offset' => Values::array_get($payload, 'offset'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Video\V1\RecordingContext Context for this
-     *                                                RecordingInstance
+     * @return RecordingContext Context for this RecordingInstance
      */
-    protected function proxy() {
+    protected function proxy(): RecordingContext {
         if (!$this->context) {
             $this->context = new RecordingContext($this->version, $this->solution['sid']);
         }
@@ -87,17 +85,17 @@ class RecordingInstance extends InstanceResource {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): RecordingInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the RecordingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -126,8 +124,8 @@ class RecordingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

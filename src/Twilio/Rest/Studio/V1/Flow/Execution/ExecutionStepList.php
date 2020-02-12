@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Studio\V1\Flow\Execution;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -20,13 +21,12 @@ class ExecutionStepList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList
      */
     public function __construct(Version $version, $flowSid, $executionSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid, 'executionSid' => $executionSid, );
+        $this->solution = ['flowSid' => $flowSid, 'executionSid' => $executionSid, ];
 
         $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($executionSid) . '/Steps';
     }
@@ -47,9 +47,9 @@ class ExecutionStepList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -72,7 +72,7 @@ class ExecutionStepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ExecutionStepInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -83,14 +83,10 @@ class ExecutionStepList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ExecutionStepInstance
+     * @return ExecutionStepPage Page of ExecutionStepInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ExecutionStepPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -106,9 +102,9 @@ class ExecutionStepList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ExecutionStepInstance
+     * @return ExecutionStepPage Page of ExecutionStepInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): ExecutionStepPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -121,9 +117,8 @@ class ExecutionStepList extends ListResource {
      * Constructs a ExecutionStepContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): ExecutionStepContext {
         return new ExecutionStepContext(
             $this->version,
             $this->solution['flowSid'],
@@ -137,7 +132,7 @@ class ExecutionStepList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1.ExecutionStepList]';
     }
 }

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Insights\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Insights\V1\Call\CallSummaryList;
 use Twilio\Rest\Insights\V1\Call\EventList;
 use Twilio\Rest\Insights\V1\Call\MetricList;
@@ -20,28 +21,27 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Insights\V1\Call\EventList $events
- * @property \Twilio\Rest\Insights\V1\Call\MetricList $metrics
- * @property \Twilio\Rest\Insights\V1\Call\CallSummaryList $summary
+ * @property EventList $events
+ * @property MetricList $metrics
+ * @property CallSummaryList $summary
  * @method \Twilio\Rest\Insights\V1\Call\CallSummaryContext summary()
  */
 class CallContext extends InstanceContext {
-    protected $_events = null;
-    protected $_metrics = null;
-    protected $_summary = null;
+    protected $_events;
+    protected $_metrics;
+    protected $_summary;
 
     /**
      * Initialize the CallContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Insights\V1\CallContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Voice/' . \rawurlencode($sid) . '';
     }
@@ -52,8 +52,8 @@ class CallContext extends InstanceContext {
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): CallInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -66,10 +66,8 @@ class CallContext extends InstanceContext {
 
     /**
      * Access the events
-     *
-     * @return \Twilio\Rest\Insights\V1\Call\EventList
      */
-    protected function getEvents() {
+    protected function getEvents(): EventList {
         if (!$this->_events) {
             $this->_events = new EventList($this->version, $this->solution['sid']);
         }
@@ -79,10 +77,8 @@ class CallContext extends InstanceContext {
 
     /**
      * Access the metrics
-     *
-     * @return \Twilio\Rest\Insights\V1\Call\MetricList
      */
-    protected function getMetrics() {
+    protected function getMetrics(): MetricList {
         if (!$this->_metrics) {
             $this->_metrics = new MetricList($this->version, $this->solution['sid']);
         }
@@ -92,10 +88,8 @@ class CallContext extends InstanceContext {
 
     /**
      * Access the summary
-     *
-     * @return \Twilio\Rest\Insights\V1\Call\CallSummaryList
      */
-    protected function getSummary() {
+    protected function getSummary(): CallSummaryList {
         if (!$this->_summary) {
             $this->_summary = new CallSummaryList($this->version, $this->solution['sid']);
         }
@@ -107,10 +101,10 @@ class CallContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -124,10 +118,10 @@ class CallContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -141,8 +135,8 @@ class CallContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

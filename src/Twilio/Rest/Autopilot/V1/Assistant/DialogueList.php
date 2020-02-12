@@ -22,22 +22,20 @@ class DialogueList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Constructs a DialogueContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): DialogueContext {
         return new DialogueContext($this->version, $this->solution['assistantSid'], $sid);
     }
 
@@ -46,7 +44,7 @@ class DialogueList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.DialogueList]';
     }
 }

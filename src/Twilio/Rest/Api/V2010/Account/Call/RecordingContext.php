@@ -19,18 +19,17 @@ class RecordingContext extends InstanceContext {
     /**
      * Initialize the RecordingContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $callSid The Call SID of the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, 'sid' => $sid, );
+        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Recordings/' . \rawurlencode($sid) . '.json';
     }
@@ -43,15 +42,15 @@ class RecordingContext extends InstanceContext {
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status, $options = array()) {
+    public function update($status, $options = []): RecordingInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Status' => $status, 'PauseBehavior' => $options['pauseBehavior'], ));
+        $data = Values::of(['Status' => $status, 'PauseBehavior' => $options['pauseBehavior'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -70,8 +69,8 @@ class RecordingContext extends InstanceContext {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): RecordingInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -91,10 +90,10 @@ class RecordingContext extends InstanceContext {
     /**
      * Deletes the RecordingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -103,8 +102,8 @@ class RecordingContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

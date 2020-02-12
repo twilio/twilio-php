@@ -34,19 +34,18 @@ class SampleInstance extends InstanceResource {
     /**
      * Initialize the SampleInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Sample.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\SampleInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $taskSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -57,25 +56,22 @@ class SampleInstance extends InstanceResource {
             'taggedText' => Values::array_get($payload, 'tagged_text'),
             'url' => Values::array_get($payload, 'url'),
             'sourceChannel' => Values::array_get($payload, 'source_channel'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'assistantSid' => $assistantSid,
             'taskSid' => $taskSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\SampleContext Context
-     *                                                                      for
-     *                                                                      this
-     *                                                                      SampleInstance
+     * @return SampleContext Context for this SampleInstance
      */
-    protected function proxy() {
+    protected function proxy(): SampleContext {
         if (!$this->context) {
             $this->context = new SampleContext(
                 $this->version,
@@ -94,7 +90,7 @@ class SampleInstance extends InstanceResource {
      * @return SampleInstance Fetched SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SampleInstance {
         return $this->proxy()->fetch();
     }
 
@@ -105,17 +101,17 @@ class SampleInstance extends InstanceResource {
      * @return SampleInstance Updated SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): SampleInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the SampleInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -144,8 +140,8 @@ class SampleInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

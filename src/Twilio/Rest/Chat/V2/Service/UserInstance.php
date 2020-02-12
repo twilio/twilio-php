@@ -13,6 +13,8 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Chat\V2\Service\User\UserBindingList;
+use Twilio\Rest\Chat\V2\Service\User\UserChannelList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -33,24 +35,23 @@ use Twilio\Version;
  * @property string $url
  */
 class UserInstance extends InstanceResource {
-    protected $_userChannels = null;
-    protected $_userBindings = null;
+    protected $_userChannels;
+    protected $_userBindings;
 
     /**
      * Initialize the UserInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $sid The SID of the User resource to fetch
-     * @return \Twilio\Rest\Chat\V2\Service\UserInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -65,19 +66,18 @@ class UserInstance extends InstanceResource {
             'joinedChannelsCount' => Values::array_get($payload, 'joined_channels_count'),
             'links' => Values::array_get($payload, 'links'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Chat\V2\Service\UserContext Context for this
-     *                                                  UserInstance
+     * @return UserContext Context for this UserInstance
      */
-    protected function proxy() {
+    protected function proxy(): UserContext {
         if (!$this->context) {
             $this->context = new UserContext(
                 $this->version,
@@ -95,17 +95,17 @@ class UserInstance extends InstanceResource {
      * @return UserInstance Fetched UserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): UserInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the UserInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -116,25 +116,21 @@ class UserInstance extends InstanceResource {
      * @return UserInstance Updated UserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): UserInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the userChannels
-     *
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelList
      */
-    protected function getUserChannels() {
+    protected function getUserChannels(): UserChannelList {
         return $this->proxy()->userChannels;
     }
 
     /**
      * Access the userBindings
-     *
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingList
      */
-    protected function getUserBindings() {
+    protected function getUserBindings(): UserBindingList {
         return $this->proxy()->userBindings;
     }
 
@@ -163,8 +159,8 @@ class UserInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

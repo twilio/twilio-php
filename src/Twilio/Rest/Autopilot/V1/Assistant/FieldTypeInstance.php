@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -30,23 +31,22 @@ use Twilio\Version;
  * @property string $url
  */
 class FieldTypeInstance extends InstanceResource {
-    protected $_fieldValues = null;
+    protected $_fieldValues;
 
     /**
      * Initialize the FieldTypeInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -56,20 +56,18 @@ class FieldTypeInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext Context for
-     *                                                              this
-     *                                                              FieldTypeInstance
+     * @return FieldTypeContext Context for this FieldTypeInstance
      */
-    protected function proxy() {
+    protected function proxy(): FieldTypeContext {
         if (!$this->context) {
             $this->context = new FieldTypeContext(
                 $this->version,
@@ -87,7 +85,7 @@ class FieldTypeInstance extends InstanceResource {
      * @return FieldTypeInstance Fetched FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): FieldTypeInstance {
         return $this->proxy()->fetch();
     }
 
@@ -98,26 +96,24 @@ class FieldTypeInstance extends InstanceResource {
      * @return FieldTypeInstance Updated FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): FieldTypeInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the FieldTypeInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the fieldValues
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList
      */
-    protected function getFieldValues() {
+    protected function getFieldValues(): FieldValueList {
         return $this->proxy()->fieldValues;
     }
 
@@ -146,8 +142,8 @@ class FieldTypeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Voice\V1\DialingPermissions;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -28,21 +29,20 @@ use Twilio\Version;
  * @property array $links
  */
 class CountryInstance extends InstanceResource {
-    protected $_highriskSpecialPrefixes = null;
+    protected $_highriskSpecialPrefixes;
 
     /**
      * Initialize the CountryInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryInstance
      */
     public function __construct(Version $version, array $payload, $isoCode = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'isoCode' => Values::array_get($payload, 'iso_code'),
             'name' => Values::array_get($payload, 'name'),
             'continent' => Values::array_get($payload, 'continent'),
@@ -52,20 +52,18 @@ class CountryInstance extends InstanceResource {
             'highRiskTollfraudNumbersEnabled' => Values::array_get($payload, 'high_risk_tollfraud_numbers_enabled'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('isoCode' => $isoCode ?: $this->properties['isoCode'], );
+        $this->solution = ['isoCode' => $isoCode ?: $this->properties['isoCode'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext Context for
-     *                                                                 this
-     *                                                                 CountryInstance
+     * @return CountryContext Context for this CountryInstance
      */
-    protected function proxy() {
+    protected function proxy(): CountryContext {
         if (!$this->context) {
             $this->context = new CountryContext($this->version, $this->solution['isoCode']);
         }
@@ -79,16 +77,14 @@ class CountryInstance extends InstanceResource {
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): CountryInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the highriskSpecialPrefixes
-     *
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList
      */
-    protected function getHighriskSpecialPrefixes() {
+    protected function getHighriskSpecialPrefixes(): HighriskSpecialPrefixList {
         return $this->proxy()->highriskSpecialPrefixes;
     }
 
@@ -117,8 +113,8 @@ class CountryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

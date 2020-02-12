@@ -11,6 +11,7 @@ namespace Twilio\Rest\Messaging\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class ShortCodeList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/ShortCodes';
     }
@@ -43,13 +43,13 @@ class ShortCodeList extends ListResource {
      * @return ShortCodeInstance Newly created ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($shortCodeSid) {
-        $data = Values::of(array('ShortCodeSid' => $shortCodeSid, ));
+    public function create($shortCodeSid): ShortCodeInstance {
+        $data = Values::of(['ShortCodeSid' => $shortCodeSid, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -72,9 +72,9 @@ class ShortCodeList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -97,7 +97,7 @@ class ShortCodeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ShortCodeInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -108,14 +108,10 @@ class ShortCodeList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ShortCodeInstance
+     * @return ShortCodePage Page of ShortCodeInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ShortCodePage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -131,9 +127,9 @@ class ShortCodeList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ShortCodeInstance
+     * @return ShortCodePage Page of ShortCodeInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): ShortCodePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -146,9 +142,8 @@ class ShortCodeList extends ListResource {
      * Constructs a ShortCodeContext
      *
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): ShortCodeContext {
         return new ShortCodeContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
@@ -157,7 +152,7 @@ class ShortCodeList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Messaging.V1.ShortCodeList]';
     }
 }

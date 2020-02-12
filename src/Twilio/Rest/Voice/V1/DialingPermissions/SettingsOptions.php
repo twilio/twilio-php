@@ -23,7 +23,7 @@ abstract class SettingsOptions {
      *                                            otherwise `false`
      * @return UpdateSettingsOptions Options builder
      */
-    public static function update($dialingPermissionsInheritance = Values::NONE) {
+    public static function update($dialingPermissionsInheritance = Values::NONE): UpdateSettingsOptions {
         return new UpdateSettingsOptions($dialingPermissionsInheritance);
     }
 }
@@ -48,7 +48,7 @@ class UpdateSettingsOptions extends Options {
      *                                            otherwise `false`
      * @return $this Fluent Builder
      */
-    public function setDialingPermissionsInheritance($dialingPermissionsInheritance) {
+    public function setDialingPermissionsInheritance($dialingPermissionsInheritance): self {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
         return $this;
     }
@@ -58,10 +58,10 @@ class UpdateSettingsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

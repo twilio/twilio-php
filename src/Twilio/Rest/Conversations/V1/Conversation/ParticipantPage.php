@@ -22,7 +22,7 @@ class ParticipantPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): ParticipantInstance {
         return new ParticipantInstance($this->version, $payload, $this->solution['conversationSid']);
     }
 
@@ -31,7 +31,7 @@ class ParticipantPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Conversations.V1.ParticipantPage]';
     }
 }

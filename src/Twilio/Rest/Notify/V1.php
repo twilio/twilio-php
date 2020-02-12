@@ -11,45 +11,39 @@ namespace Twilio\Rest\Notify;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Notify\V1\CredentialList;
 use Twilio\Rest\Notify\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Notify\V1\CredentialList $credentials
- * @property \Twilio\Rest\Notify\V1\ServiceList $services
+ * @property CredentialList $credentials
+ * @property ServiceList $services
  * @method \Twilio\Rest\Notify\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Notify\V1\ServiceContext services(string $sid)
  */
 class V1 extends Version {
-    protected $_credentials = null;
-    protected $_services = null;
+    protected $_credentials;
+    protected $_services;
 
     /**
      * Construct the V1 version of Notify
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Notify\V1 V1 version of Notify
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Notify\V1\CredentialList
-     */
-    protected function getCredentials() {
+    protected function getCredentials(): CredentialList {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
         return $this->_credentials;
     }
 
-    /**
-     * @return \Twilio\Rest\Notify\V1\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): ServiceList {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
@@ -77,10 +71,10 @@ class V1 extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -94,7 +88,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Notify.V1]';
     }
 }

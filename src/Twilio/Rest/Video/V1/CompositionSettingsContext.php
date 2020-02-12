@@ -23,14 +23,13 @@ class CompositionSettingsContext extends InstanceContext {
     /**
      * Initialize the CompositionSettingsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Video\V1\CompositionSettingsContext
+     * @param Version $version Version that contains the resource
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/CompositionSettings/Default';
     }
@@ -41,8 +40,8 @@ class CompositionSettingsContext extends InstanceContext {
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): CompositionSettingsInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -62,22 +61,22 @@ class CompositionSettingsContext extends InstanceContext {
      * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = array()) {
+    public function create($friendlyName, $options = []): CompositionSettingsInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $friendlyName,
             'AwsCredentialsSid' => $options['awsCredentialsSid'],
             'EncryptionKeySid' => $options['encryptionKeySid'],
             'AwsS3Url' => $options['awsS3Url'],
             'AwsStorageEnabled' => Serialize::booleanToString($options['awsStorageEnabled']),
             'EncryptionEnabled' => Serialize::booleanToString($options['encryptionEnabled']),
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -89,8 +88,8 @@ class CompositionSettingsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

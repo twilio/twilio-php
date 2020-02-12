@@ -22,7 +22,7 @@ class AlphaSenderPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): AlphaSenderInstance {
         return new AlphaSenderInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -31,7 +31,7 @@ class AlphaSenderPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Messaging.V1.AlphaSenderPage]';
     }
 }

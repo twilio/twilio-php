@@ -22,7 +22,7 @@ class TaskActionsPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): TaskActionsInstance {
         return new TaskActionsInstance(
             $this->version,
             $payload,
@@ -36,7 +36,7 @@ class TaskActionsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Understand.TaskActionsPage]';
     }
 }

@@ -20,15 +20,14 @@ class WorkersStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkersStatisticsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace with the Worker to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/Statistics';
     }
@@ -40,10 +39,10 @@ class WorkersStatisticsContext extends InstanceContext {
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkersStatisticsInstance {
         $options = new Values($options);
 
-        $params = Values::of(array(
+        $params = Values::of([
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
@@ -51,7 +50,7 @@ class WorkersStatisticsContext extends InstanceContext {
             'TaskQueueName' => $options['taskQueueName'],
             'FriendlyName' => $options['friendlyName'],
             'TaskChannel' => $options['taskChannel'],
-        ));
+        ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -67,8 +66,8 @@ class WorkersStatisticsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

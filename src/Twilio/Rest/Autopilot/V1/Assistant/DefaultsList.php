@@ -22,21 +22,18 @@ class DefaultsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Constructs a DefaultsContext
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext
      */
-    public function getContext() {
+    public function getContext(): DefaultsContext {
         return new DefaultsContext($this->version, $this->solution['assistantSid']);
     }
 
@@ -45,7 +42,7 @@ class DefaultsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.DefaultsList]';
     }
 }

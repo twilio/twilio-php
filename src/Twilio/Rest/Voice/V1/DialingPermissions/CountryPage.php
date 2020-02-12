@@ -22,7 +22,7 @@ class CountryPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): CountryInstance {
         return new CountryInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class CountryPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.CountryPage]';
     }
 }

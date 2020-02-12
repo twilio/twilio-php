@@ -21,7 +21,7 @@ abstract class VariableOptions {
      * @param string $value A string that contains the actual value of the variable
      * @return UpdateVariableOptions Options builder
      */
-    public static function update($key = Values::NONE, $value = Values::NONE) {
+    public static function update($key = Values::NONE, $value = Values::NONE): UpdateVariableOptions {
         return new UpdateVariableOptions($key, $value);
     }
 }
@@ -42,7 +42,7 @@ class UpdateVariableOptions extends Options {
      * @param string $key A string by which the Variable resource can be referenced
      * @return $this Fluent Builder
      */
-    public function setKey($key) {
+    public function setKey($key): self {
         $this->options['key'] = $key;
         return $this;
     }
@@ -53,7 +53,7 @@ class UpdateVariableOptions extends Options {
      * @param string $value A string that contains the actual value of the variable
      * @return $this Fluent Builder
      */
-    public function setValue($value) {
+    public function setValue($value): self {
         $this->options['value'] = $value;
         return $this;
     }
@@ -63,10 +63,10 @@ class UpdateVariableOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

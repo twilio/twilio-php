@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class ChallengeTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -33,7 +33,7 @@ class ChallengeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -67,7 +67,7 @@ class ChallengeTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -84,7 +84,7 @@ class ChallengeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -98,7 +98,7 @@ class ChallengeTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -115,7 +115,7 @@ class ChallengeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchSidResponse() {
+    public function testFetchSidResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -149,7 +149,7 @@ class ChallengeTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchLatestResponse() {
+    public function testFetchLatestResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -183,7 +183,7 @@ class ChallengeTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -200,7 +200,7 @@ class ChallengeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testVerifySidResponse() {
+    public function testVerifySidResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -234,7 +234,7 @@ class ChallengeTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testVerifyLatestResponse() {
+    public function testVerifyLatestResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

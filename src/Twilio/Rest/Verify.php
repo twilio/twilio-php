@@ -19,14 +19,12 @@ use Twilio\Rest\Verify\V2;
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class Verify extends Domain {
-    protected $_v2 = null;
+    protected $_v2;
 
     /**
      * Construct the Verify Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Verify Domain for Verify
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -35,9 +33,9 @@ class Verify extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Verify\V2 Version v2 of verify
+     * @return V2 Version v2 of verify
      */
-    protected function getV2() {
+    protected function getV2(): V2 {
         if (!$this->_v2) {
             $this->_v2 = new V2($this);
         }
@@ -71,24 +69,20 @@ class Verify extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Verify\V2\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): \Twilio\Rest\Verify\V2\ServiceList {
         return $this->v2->services;
     }
 
     /**
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Verify\V2\ServiceContext
      */
-    protected function contextServices($sid) {
+    protected function contextServices($sid): \Twilio\Rest\Verify\V2\ServiceContext {
         return $this->v2->services($sid);
     }
 
@@ -97,7 +91,7 @@ class Verify extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Verify]';
     }
 }

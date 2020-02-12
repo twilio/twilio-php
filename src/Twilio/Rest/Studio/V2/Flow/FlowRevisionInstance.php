@@ -35,18 +35,17 @@ class FlowRevisionInstance extends InstanceResource {
     /**
      * Initialize the FlowRevisionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource
      * @param string $revision Specific Revision number or can be `LatestPublished`
      *                         and `LatestRevision`
-     * @return \Twilio\Rest\Studio\V2\Flow\FlowRevisionInstance
      */
     public function __construct(Version $version, array $payload, $sid, $revision = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
@@ -59,19 +58,18 @@ class FlowRevisionInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid, 'revision' => $revision ?: $this->properties['revision'], );
+        $this->solution = ['sid' => $sid, 'revision' => $revision ?: $this->properties['revision'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Studio\V2\Flow\FlowRevisionContext Context for this
-     *                                                         FlowRevisionInstance
+     * @return FlowRevisionContext Context for this FlowRevisionInstance
      */
-    protected function proxy() {
+    protected function proxy(): FlowRevisionContext {
         if (!$this->context) {
             $this->context = new FlowRevisionContext(
                 $this->version,
@@ -89,7 +87,7 @@ class FlowRevisionInstance extends InstanceResource {
      * @return FlowRevisionInstance Fetched FlowRevisionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): FlowRevisionInstance {
         return $this->proxy()->fetch();
     }
 
@@ -118,8 +116,8 @@ class FlowRevisionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

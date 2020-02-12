@@ -21,13 +21,12 @@ class TokenList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\TokenList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Tokens.json';
     }
@@ -39,15 +38,15 @@ class TokenList extends ListResource {
      * @return TokenInstance Newly created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($options = []): TokenInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Ttl' => $options['ttl'], ));
+        $data = Values::of(['Ttl' => $options['ttl'], ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -59,7 +58,7 @@ class TokenList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.TokenList]';
     }
 }

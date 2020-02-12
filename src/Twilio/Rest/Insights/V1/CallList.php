@@ -20,22 +20,20 @@ class CallList extends ListResource {
      * Construct the CallList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Insights\V1\CallList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a CallContext
      *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Insights\V1\CallContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): CallContext {
         return new CallContext($this->version, $sid);
     }
 
@@ -44,7 +42,7 @@ class CallList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Insights.V1.CallList]';
     }
 }

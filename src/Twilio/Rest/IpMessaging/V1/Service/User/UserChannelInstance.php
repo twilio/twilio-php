@@ -28,18 +28,17 @@ class UserChannelInstance extends InstanceResource {
     /**
      * Initialize the UserChannelInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $userSid The unique string that identifies the resource
-     * @return \Twilio\Rest\IpMessaging\V1\Service\User\UserChannelInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'channelSid' => Values::array_get($payload, 'channel_sid'),
@@ -48,9 +47,9 @@ class UserChannelInstance extends InstanceResource {
             'lastConsumedMessageIndex' => Values::array_get($payload, 'last_consumed_message_index'),
             'unreadMessagesCount' => Values::array_get($payload, 'unread_messages_count'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'userSid' => $userSid, ];
     }
 
     /**
@@ -78,7 +77,7 @@ class UserChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.IpMessaging.V1.UserChannelInstance]';
     }
 }

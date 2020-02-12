@@ -11,6 +11,8 @@ namespace Twilio\Rest\Preview\BulkExports;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Preview\BulkExports\Export\DayList;
+use Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -22,38 +24,36 @@ use Twilio\Version;
  * @property array $links
  */
 class ExportInstance extends InstanceResource {
-    protected $_days = null;
-    protected $_exportCustomJobs = null;
+    protected $_days;
+    protected $_exportCustomJobs;
 
     /**
      * Initialize the ExportInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages, Calls
-     * @return \Twilio\Rest\Preview\BulkExports\ExportInstance
      */
     public function __construct(Version $version, array $payload, $resourceType = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'resourceType' => Values::array_get($payload, 'resource_type'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType'], );
+        $this->solution = ['resourceType' => $resourceType ?: $this->properties['resourceType'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\BulkExports\ExportContext Context for this
-     *                                                        ExportInstance
+     * @return ExportContext Context for this ExportInstance
      */
-    protected function proxy() {
+    protected function proxy(): ExportContext {
         if (!$this->context) {
             $this->context = new ExportContext($this->version, $this->solution['resourceType']);
         }
@@ -67,25 +67,21 @@ class ExportInstance extends InstanceResource {
      * @return ExportInstance Fetched ExportInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ExportInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the days
-     *
-     * @return \Twilio\Rest\Preview\BulkExports\Export\DayList
      */
-    protected function getDays() {
+    protected function getDays(): DayList {
         return $this->proxy()->days;
     }
 
     /**
      * Access the exportCustomJobs
-     *
-     * @return \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList
      */
-    protected function getExportCustomJobs() {
+    protected function getExportCustomJobs(): ExportCustomJobList {
         return $this->proxy()->exportCustomJobs;
     }
 
@@ -114,8 +110,8 @@ class ExportInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

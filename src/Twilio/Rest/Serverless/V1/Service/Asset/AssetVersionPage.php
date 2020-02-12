@@ -22,7 +22,7 @@ class AssetVersionPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): AssetVersionInstance {
         return new AssetVersionInstance(
             $this->version,
             $payload,
@@ -36,7 +36,7 @@ class AssetVersionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Serverless.V1.AssetVersionPage]';
     }
 }

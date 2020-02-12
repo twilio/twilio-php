@@ -20,15 +20,14 @@ class EndUserContext extends InstanceContext {
     /**
      * Initialize the EndUserContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/RegulatoryCompliance/EndUsers/' . \rawurlencode($sid) . '';
     }
@@ -39,8 +38,8 @@ class EndUserContext extends InstanceContext {
      * @return EndUserInstance Fetched EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): EndUserInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -58,18 +57,18 @@ class EndUserContext extends InstanceContext {
      * @return EndUserInstance Updated EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): EndUserInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'Attributes' => Serialize::jsonObject($options['attributes']),
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -81,8 +80,8 @@ class EndUserContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

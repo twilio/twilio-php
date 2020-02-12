@@ -19,7 +19,7 @@ class FlexFlowPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FlexFlowInstance {
         return new FlexFlowInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class FlexFlowPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.FlexApi.V1.FlexFlowPage]';
     }
 }

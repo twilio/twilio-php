@@ -28,36 +28,33 @@ class PublicKeyInstance extends InstanceResource {
     /**
      * Initialize the PublicKeyInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext Context for
-     *                                                              this
-     *                                                              PublicKeyInstance
+     * @return PublicKeyContext Context for this PublicKeyInstance
      */
-    protected function proxy() {
+    protected function proxy(): PublicKeyContext {
         if (!$this->context) {
             $this->context = new PublicKeyContext($this->version, $this->solution['sid']);
         }
@@ -71,7 +68,7 @@ class PublicKeyInstance extends InstanceResource {
      * @return PublicKeyInstance Fetched PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): PublicKeyInstance {
         return $this->proxy()->fetch();
     }
 
@@ -82,17 +79,17 @@ class PublicKeyInstance extends InstanceResource {
      * @return PublicKeyInstance Updated PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): PublicKeyInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the PublicKeyInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -121,8 +118,8 @@ class PublicKeyInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

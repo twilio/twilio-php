@@ -18,7 +18,7 @@ class SsmlEmphasis extends TwiML {
      * @param string $words Words to emphasize
      * @param array $attributes Optional attributes
      */
-    public function __construct($words, $attributes = array()) {
+    public function __construct($words, $attributes = []) {
         parent::__construct('emphasis', $words, $attributes);
     }
 
@@ -26,9 +26,8 @@ class SsmlEmphasis extends TwiML {
      * Add Level attribute.
      *
      * @param string $level Specify the degree of emphasis
-     * @return static $this.
      */
-    public function setLevel($level) {
+    public function setLevel($level): self {
         return $this->setAttribute('level', $level);
     }
 }

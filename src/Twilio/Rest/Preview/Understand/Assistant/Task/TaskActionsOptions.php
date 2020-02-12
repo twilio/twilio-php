@@ -21,7 +21,7 @@ abstract class TaskActionsOptions {
      *                       perform this task.
      * @return UpdateTaskActionsOptions Options builder
      */
-    public static function update($actions = Values::NONE) {
+    public static function update($actions = Values::NONE): UpdateTaskActionsOptions {
         return new UpdateTaskActionsOptions($actions);
     }
 }
@@ -42,7 +42,7 @@ class UpdateTaskActionsOptions extends Options {
      *                       perform this task.
      * @return $this Fluent Builder
      */
-    public function setActions($actions) {
+    public function setActions($actions): self {
         $this->options['actions'] = $actions;
         return $this;
     }
@@ -52,10 +52,10 @@ class UpdateTaskActionsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

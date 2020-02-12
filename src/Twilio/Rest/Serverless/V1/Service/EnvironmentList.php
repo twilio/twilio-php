@@ -12,6 +12,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,13 +26,12 @@ class EnvironmentList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the Environment
      *                           resource is associated with
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments';
     }
@@ -52,9 +52,9 @@ class EnvironmentList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class EnvironmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EnvironmentInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -88,14 +88,10 @@ class EnvironmentList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of EnvironmentInstance
+     * @return EnvironmentPage Page of EnvironmentInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): EnvironmentPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -111,9 +107,9 @@ class EnvironmentList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of EnvironmentInstance
+     * @return EnvironmentPage Page of EnvironmentInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): EnvironmentPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -131,15 +127,15 @@ class EnvironmentList extends ListResource {
      * @return EnvironmentInstance Newly created EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($uniqueName, $options = array()) {
+    public function create($uniqueName, $options = []): EnvironmentInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $uniqueName, 'DomainSuffix' => $options['domainSuffix'], ));
+        $data = Values::of(['UniqueName' => $uniqueName, 'DomainSuffix' => $options['domainSuffix'], ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -150,9 +146,8 @@ class EnvironmentList extends ListResource {
      * Constructs a EnvironmentContext
      *
      * @param string $sid The SID of the Environment resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): EnvironmentContext {
         return new EnvironmentContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
@@ -161,7 +156,7 @@ class EnvironmentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Serverless.V1.EnvironmentList]';
     }
 }

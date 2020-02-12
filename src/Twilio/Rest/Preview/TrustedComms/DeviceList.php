@@ -22,13 +22,12 @@ class DeviceList extends ListResource {
      * Construct the DeviceList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Devices';
     }
@@ -41,13 +40,13 @@ class DeviceList extends ListResource {
      * @return DeviceInstance Newly created DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($phoneNumber, $pushToken) {
-        $data = Values::of(array('PhoneNumber' => $phoneNumber, 'PushToken' => $pushToken, ));
+    public function create($phoneNumber, $pushToken): DeviceInstance {
+        $data = Values::of(['PhoneNumber' => $phoneNumber, 'PushToken' => $pushToken, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -59,7 +58,7 @@ class DeviceList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.DeviceList]';
     }
 }

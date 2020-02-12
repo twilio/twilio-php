@@ -22,7 +22,7 @@ abstract class InstalledAddOnOptions {
      *                           identifies the resource
      * @return CreateInstalledAddOnOptions Options builder
      */
-    public static function create($configuration = Values::NONE, $uniqueName = Values::NONE) {
+    public static function create($configuration = Values::NONE, $uniqueName = Values::NONE): CreateInstalledAddOnOptions {
         return new CreateInstalledAddOnOptions($configuration, $uniqueName);
     }
 
@@ -32,7 +32,7 @@ abstract class InstalledAddOnOptions {
      *                           identifies the resource
      * @return UpdateInstalledAddOnOptions Options builder
      */
-    public static function update($configuration = Values::NONE, $uniqueName = Values::NONE) {
+    public static function update($configuration = Values::NONE, $uniqueName = Values::NONE): UpdateInstalledAddOnOptions {
         return new UpdateInstalledAddOnOptions($configuration, $uniqueName);
     }
 }
@@ -54,7 +54,7 @@ class CreateInstalledAddOnOptions extends Options {
      * @param array $configuration The JSON object representing the configuration
      * @return $this Fluent Builder
      */
-    public function setConfiguration($configuration) {
+    public function setConfiguration($configuration): self {
         $this->options['configuration'] = $configuration;
         return $this;
     }
@@ -66,7 +66,7 @@ class CreateInstalledAddOnOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -76,10 +76,10 @@ class CreateInstalledAddOnOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -104,7 +104,7 @@ class UpdateInstalledAddOnOptions extends Options {
      * @param array $configuration The JSON object representing the configuration
      * @return $this Fluent Builder
      */
-    public function setConfiguration($configuration) {
+    public function setConfiguration($configuration): self {
         $this->options['configuration'] = $configuration;
         return $this;
     }
@@ -116,7 +116,7 @@ class UpdateInstalledAddOnOptions extends Options {
      *                           identifies the resource
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -126,10 +126,10 @@ class UpdateInstalledAddOnOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

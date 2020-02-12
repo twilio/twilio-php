@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,13 +26,12 @@ class AssignedAddOnList extends ListResource {
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $resourceSid The SID of the Phone Number that installed this
      *                            Add-on
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList
      */
     public function __construct(Version $version, $accountSid, $resourceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'resourceSid' => $resourceSid, );
+        $this->solution = ['accountSid' => $accountSid, 'resourceSid' => $resourceSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($resourceSid) . '/AssignedAddOns.json';
     }
@@ -52,9 +52,9 @@ class AssignedAddOnList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -77,7 +77,7 @@ class AssignedAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssignedAddOnInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -88,14 +88,10 @@ class AssignedAddOnList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of AssignedAddOnInstance
+     * @return AssignedAddOnPage Page of AssignedAddOnInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -111,9 +107,9 @@ class AssignedAddOnList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AssignedAddOnInstance
+     * @return AssignedAddOnPage Page of AssignedAddOnInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): AssignedAddOnPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -130,13 +126,13 @@ class AssignedAddOnList extends ListResource {
      * @return AssignedAddOnInstance Newly created AssignedAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($installedAddOnSid) {
-        $data = Values::of(array('InstalledAddOnSid' => $installedAddOnSid, ));
+    public function create($installedAddOnSid): AssignedAddOnInstance {
+        $data = Values::of(['InstalledAddOnSid' => $installedAddOnSid, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -152,9 +148,8 @@ class AssignedAddOnList extends ListResource {
      * Constructs a AssignedAddOnContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): AssignedAddOnContext {
         return new AssignedAddOnContext(
             $this->version,
             $this->solution['accountSid'],
@@ -168,7 +163,7 @@ class AssignedAddOnList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AssignedAddOnList]';
     }
 }

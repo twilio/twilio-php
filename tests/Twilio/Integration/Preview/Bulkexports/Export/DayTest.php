@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class DayTest extends HolodeckTestCase {
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class DayTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadResponse() {
+    public function testReadResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

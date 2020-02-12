@@ -21,24 +21,19 @@ class FieldValueContext extends InstanceContext {
     /**
      * Initialize the FieldValueContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the FieldType associated with the resource to
      *                             fetch
      * @param string $fieldTypeSid The SID of the Field Type associated with  the
      *                             Field Value to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'assistantSid' => $assistantSid,
-            'fieldTypeSid' => $fieldTypeSid,
-            'sid' => $sid,
-        );
+        $this->solution = ['assistantSid' => $assistantSid, 'fieldTypeSid' => $fieldTypeSid, 'sid' => $sid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($fieldTypeSid) . '/FieldValues/' . \rawurlencode($sid) . '';
     }
@@ -49,8 +44,8 @@ class FieldValueContext extends InstanceContext {
      * @return FieldValueInstance Fetched FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FieldValueInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -70,10 +65,10 @@ class FieldValueContext extends InstanceContext {
     /**
      * Deletes the FieldValueInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -82,8 +77,8 @@ class FieldValueContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

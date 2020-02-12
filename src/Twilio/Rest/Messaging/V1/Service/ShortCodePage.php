@@ -22,7 +22,7 @@ class ShortCodePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): ShortCodeInstance {
         return new ShortCodeInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -31,7 +31,7 @@ class ShortCodePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Messaging.V1.ShortCodePage]';
     }
 }

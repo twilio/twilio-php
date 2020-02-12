@@ -19,14 +19,13 @@ class ConfigurationContext extends InstanceContext {
     /**
      * Initialize the ConfigurationContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext
+     * @param Version $version Version that contains the resource
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Configuration';
     }
@@ -38,10 +37,10 @@ class ConfigurationContext extends InstanceContext {
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): ConfigurationInstance {
         $options = new Values($options);
 
-        $params = Values::of(array('UiVersion' => $options['uiVersion'], ));
+        $params = Values::of(['UiVersion' => $options['uiVersion'], ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -58,13 +57,13 @@ class ConfigurationContext extends InstanceContext {
      * @return ConfigurationInstance Newly created ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create() {
-        $data = Values::of(array());
+    public function create(): ConfigurationInstance {
+        $data = Values::of([]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -77,13 +76,13 @@ class ConfigurationContext extends InstanceContext {
      * @return ConfigurationInstance Updated ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update() {
-        $data = Values::of(array());
+    public function update(): ConfigurationInstance {
+        $data = Values::of([]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -95,8 +94,8 @@ class ConfigurationContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

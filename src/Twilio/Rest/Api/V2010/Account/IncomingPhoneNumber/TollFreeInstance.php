@@ -52,16 +52,15 @@ class TollFreeInstance extends InstanceResource {
     /**
      * Initialize the TollFreeInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'addressSid' => Values::array_get($payload, 'address_sid'),
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
@@ -93,9 +92,9 @@ class TollFreeInstance extends InstanceResource {
             'emergencyStatus' => Values::array_get($payload, 'emergency_status'),
             'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
             'bundleSid' => Values::array_get($payload, 'bundle_sid'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
     }
 
     /**
@@ -123,7 +122,7 @@ class TollFreeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.TollFreeInstance]';
     }
 }

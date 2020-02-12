@@ -19,7 +19,7 @@ class UsageRecordPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): UsageRecordInstance {
         return new UsageRecordInstance($this->version, $payload, $this->solution['simSid']);
     }
 
@@ -28,7 +28,7 @@ class UsageRecordPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Wireless.V1.UsageRecordPage]';
     }
 }

@@ -46,7 +46,7 @@ abstract class MachineToMachineOptions {
      * @param bool $faxEnabled Whether the phone numbers can receive faxes
      * @return ReadMachineToMachineOptions Options builder
      */
-    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE, $faxEnabled = Values::NONE) {
+    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE, $faxEnabled = Values::NONE): ReadMachineToMachineOptions {
         return new ReadMachineToMachineOptions($areaCode, $contains, $smsEnabled, $mmsEnabled, $voiceEnabled, $excludeAllAddressRequired, $excludeLocalAddressRequired, $excludeForeignAddressRequired, $beta, $nearNumber, $nearLatLong, $distance, $inPostalCode, $inRegion, $inRateCenter, $inLata, $inLocality, $faxEnabled);
     }
 }
@@ -111,7 +111,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param int $areaCode The area code of the phone numbers to read
      * @return $this Fluent Builder
      */
-    public function setAreaCode($areaCode) {
+    public function setAreaCode($areaCode): self {
         $this->options['areaCode'] = $areaCode;
         return $this;
     }
@@ -122,7 +122,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param string $contains The pattern on which to match phone numbers
      * @return $this Fluent Builder
      */
-    public function setContains($contains) {
+    public function setContains($contains): self {
         $this->options['contains'] = $contains;
         return $this;
     }
@@ -133,7 +133,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param bool $smsEnabled Whether the phone numbers can receive text messages
      * @return $this Fluent Builder
      */
-    public function setSmsEnabled($smsEnabled) {
+    public function setSmsEnabled($smsEnabled): self {
         $this->options['smsEnabled'] = $smsEnabled;
         return $this;
     }
@@ -144,7 +144,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param bool $mmsEnabled Whether the phone numbers can receive MMS messages
      * @return $this Fluent Builder
      */
-    public function setMmsEnabled($mmsEnabled) {
+    public function setMmsEnabled($mmsEnabled): self {
         $this->options['mmsEnabled'] = $mmsEnabled;
         return $this;
     }
@@ -155,7 +155,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param bool $voiceEnabled Whether the phone numbers can receive calls.
      * @return $this Fluent Builder
      */
-    public function setVoiceEnabled($voiceEnabled) {
+    public function setVoiceEnabled($voiceEnabled): self {
         $this->options['voiceEnabled'] = $voiceEnabled;
         return $this;
     }
@@ -167,7 +167,7 @@ class ReadMachineToMachineOptions extends Options {
      *                                        require an Address
      * @return $this Fluent Builder
      */
-    public function setExcludeAllAddressRequired($excludeAllAddressRequired) {
+    public function setExcludeAllAddressRequired($excludeAllAddressRequired): self {
         $this->options['excludeAllAddressRequired'] = $excludeAllAddressRequired;
         return $this;
     }
@@ -179,7 +179,7 @@ class ReadMachineToMachineOptions extends Options {
      *                                          that require a local address
      * @return $this Fluent Builder
      */
-    public function setExcludeLocalAddressRequired($excludeLocalAddressRequired) {
+    public function setExcludeLocalAddressRequired($excludeLocalAddressRequired): self {
         $this->options['excludeLocalAddressRequired'] = $excludeLocalAddressRequired;
         return $this;
     }
@@ -191,7 +191,7 @@ class ReadMachineToMachineOptions extends Options {
      *                                            that require a foreign address
      * @return $this Fluent Builder
      */
-    public function setExcludeForeignAddressRequired($excludeForeignAddressRequired) {
+    public function setExcludeForeignAddressRequired($excludeForeignAddressRequired): self {
         $this->options['excludeForeignAddressRequired'] = $excludeForeignAddressRequired;
         return $this;
     }
@@ -202,7 +202,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param bool $beta Whether to read phone numbers new to the Twilio platform
      * @return $this Fluent Builder
      */
-    public function setBeta($beta) {
+    public function setBeta($beta): self {
         $this->options['beta'] = $beta;
         return $this;
     }
@@ -214,7 +214,7 @@ class ReadMachineToMachineOptions extends Options {
      *                           number within distance miles. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setNearNumber($nearNumber) {
+    public function setNearNumber($nearNumber): self {
         $this->options['nearNumber'] = $nearNumber;
         return $this;
     }
@@ -227,7 +227,7 @@ class ReadMachineToMachineOptions extends Options {
      *                            miles. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setNearLatLong($nearLatLong) {
+    public function setNearLatLong($nearLatLong): self {
         $this->options['nearLatLong'] = $nearLatLong;
         return $this;
     }
@@ -239,7 +239,7 @@ class ReadMachineToMachineOptions extends Options {
      *                      (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setDistance($distance) {
+    public function setDistance($distance): self {
         $this->options['distance'] = $distance;
         return $this;
     }
@@ -251,7 +251,7 @@ class ReadMachineToMachineOptions extends Options {
      *                             (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setInPostalCode($inPostalCode) {
+    public function setInPostalCode($inPostalCode): self {
         $this->options['inPostalCode'] = $inPostalCode;
         return $this;
     }
@@ -263,7 +263,7 @@ class ReadMachineToMachineOptions extends Options {
      *                         only)
      * @return $this Fluent Builder
      */
-    public function setInRegion($inRegion) {
+    public function setInRegion($inRegion): self {
         $this->options['inRegion'] = $inRegion;
         return $this;
     }
@@ -276,7 +276,7 @@ class ReadMachineToMachineOptions extends Options {
      *                             center as that number. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setInRateCenter($inRateCenter) {
+    public function setInRateCenter($inRateCenter): self {
         $this->options['inRateCenter'] = $inRateCenter;
         return $this;
     }
@@ -288,7 +288,7 @@ class ReadMachineToMachineOptions extends Options {
      *                       area. (US/Canada only)
      * @return $this Fluent Builder
      */
-    public function setInLata($inLata) {
+    public function setInLata($inLata): self {
         $this->options['inLata'] = $inLata;
         return $this;
     }
@@ -299,7 +299,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param string $inLocality Limit results to a particular locality
      * @return $this Fluent Builder
      */
-    public function setInLocality($inLocality) {
+    public function setInLocality($inLocality): self {
         $this->options['inLocality'] = $inLocality;
         return $this;
     }
@@ -310,7 +310,7 @@ class ReadMachineToMachineOptions extends Options {
      * @param bool $faxEnabled Whether the phone numbers can receive faxes
      * @return $this Fluent Builder
      */
-    public function setFaxEnabled($faxEnabled) {
+    public function setFaxEnabled($faxEnabled): self {
         $this->options['faxEnabled'] = $faxEnabled;
         return $this;
     }
@@ -320,10 +320,10 @@ class ReadMachineToMachineOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

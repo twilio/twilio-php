@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class AllTimeTest extends HolodeckTestCase {
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -33,7 +33,7 @@ class AllTimeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -89,7 +89,7 @@ class AllTimeTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, \count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

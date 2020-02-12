@@ -19,7 +19,7 @@ class EventPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): EventInstance {
         return new EventInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class EventPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Monitor.V1.EventPage]';
     }
 }

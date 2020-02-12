@@ -32,20 +32,19 @@ class UserChannelInstance extends InstanceResource {
     /**
      * Initialize the UserChannelInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $userSid The SID of the User the User Channel belongs to
      * @param string $channelSid The SID of the Channel that has the User Channel
      *                           to fetch
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid, $channelSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'channelSid' => Values::array_get($payload, 'channel_sid'),
@@ -57,24 +56,22 @@ class UserChannelInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
             'url' => Values::array_get($payload, 'url'),
             'notificationLevel' => Values::array_get($payload, 'notification_level'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'userSid' => $userSid,
             'channelSid' => $channelSid ?: $this->properties['channelSid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelContext Context for
-     *                                                              this
-     *                                                              UserChannelInstance
+     * @return UserChannelContext Context for this UserChannelInstance
      */
-    protected function proxy() {
+    protected function proxy(): UserChannelContext {
         if (!$this->context) {
             $this->context = new UserChannelContext(
                 $this->version,
@@ -93,17 +90,17 @@ class UserChannelInstance extends InstanceResource {
      * @return UserChannelInstance Fetched UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): UserChannelInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the UserChannelInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -114,7 +111,7 @@ class UserChannelInstance extends InstanceResource {
      * @return UserChannelInstance Updated UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): UserChannelInstance {
         return $this->proxy()->update($options);
     }
 
@@ -143,8 +140,8 @@ class UserChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

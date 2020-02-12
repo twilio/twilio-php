@@ -29,7 +29,7 @@ abstract class MemberOptions {
      *                           application-specific data
      * @return CreateMemberOptions Options builder
      */
-    public static function create($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public static function create($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE): CreateMemberOptions {
         return new CreateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes);
     }
 
@@ -37,7 +37,7 @@ abstract class MemberOptions {
      * @param string $identity The `identity` value of the resources to read
      * @return ReadMemberOptions Options builder
      */
-    public static function read($identity = Values::NONE) {
+    public static function read($identity = Values::NONE): ReadMemberOptions {
         return new ReadMemberOptions($identity);
     }
 
@@ -57,7 +57,7 @@ abstract class MemberOptions {
      *                           application-specific data
      * @return UpdateMemberOptions Options builder
      */
-    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE): UpdateMemberOptions {
         return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes);
     }
 }
@@ -93,7 +93,7 @@ class CreateMemberOptions extends Options {
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid) {
+    public function setRoleSid($roleSid): self {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -105,7 +105,7 @@ class CreateMemberOptions extends Options {
      *                                      Channel the Member has read
      * @return $this Fluent Builder
      */
-    public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
+    public function setLastConsumedMessageIndex($lastConsumedMessageIndex): self {
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         return $this;
     }
@@ -119,7 +119,7 @@ class CreateMemberOptions extends Options {
      *                                            for the member within the Channel
      * @return $this Fluent Builder
      */
-    public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
+    public function setLastConsumptionTimestamp($lastConsumptionTimestamp): self {
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         return $this;
     }
@@ -131,7 +131,7 @@ class CreateMemberOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -143,7 +143,7 @@ class CreateMemberOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -155,7 +155,7 @@ class CreateMemberOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -165,10 +165,10 @@ class CreateMemberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -190,7 +190,7 @@ class ReadMemberOptions extends Options {
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -200,10 +200,10 @@ class ReadMemberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -242,7 +242,7 @@ class UpdateMemberOptions extends Options {
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid) {
+    public function setRoleSid($roleSid): self {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -254,7 +254,7 @@ class UpdateMemberOptions extends Options {
      *                                      for the Channel for the Member
      * @return $this Fluent Builder
      */
-    public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
+    public function setLastConsumedMessageIndex($lastConsumedMessageIndex): self {
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         return $this;
     }
@@ -268,7 +268,7 @@ class UpdateMemberOptions extends Options {
      *                                            for the Member within the Channel
      * @return $this Fluent Builder
      */
-    public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
+    public function setLastConsumptionTimestamp($lastConsumptionTimestamp): self {
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         return $this;
     }
@@ -280,7 +280,7 @@ class UpdateMemberOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -292,7 +292,7 @@ class UpdateMemberOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -304,7 +304,7 @@ class UpdateMemberOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -314,10 +314,10 @@ class UpdateMemberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -28,16 +28,15 @@ class TokenInstance extends InstanceResource {
     /**
      * Initialize the TokenInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\TokenInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -45,9 +44,9 @@ class TokenInstance extends InstanceResource {
             'password' => Values::array_get($payload, 'password'),
             'ttl' => Values::array_get($payload, 'ttl'),
             'username' => Values::array_get($payload, 'username'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
     }
 
     /**
@@ -75,7 +74,7 @@ class TokenInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.TokenInstance]';
     }
 }

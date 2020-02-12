@@ -21,14 +21,12 @@ use Twilio\Rest\Notify\V1;
  * @method \Twilio\Rest\Notify\V1\ServiceContext services(string $sid)
  */
 class Notify extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the Notify Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Notify Domain for Notify
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -37,9 +35,9 @@ class Notify extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Notify\V1 Version v1 of notify
+     * @return V1 Version v1 of notify
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -73,39 +71,31 @@ class Notify extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Notify\V1\CredentialList
-     */
-    protected function getCredentials() {
+    protected function getCredentials(): \Twilio\Rest\Notify\V1\CredentialList {
         return $this->v1->credentials;
     }
 
     /**
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Notify\V1\CredentialContext
      */
-    protected function contextCredentials($sid) {
+    protected function contextCredentials($sid): \Twilio\Rest\Notify\V1\CredentialContext {
         return $this->v1->credentials($sid);
     }
 
-    /**
-     * @return \Twilio\Rest\Notify\V1\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): \Twilio\Rest\Notify\V1\ServiceList {
         return $this->v1->services;
     }
 
     /**
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Notify\V1\ServiceContext
      */
-    protected function contextServices($sid) {
+    protected function contextServices($sid): \Twilio\Rest\Notify\V1\ServiceContext {
         return $this->v1->services($sid);
     }
 
@@ -114,7 +104,7 @@ class Notify extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Notify]';
     }
 }

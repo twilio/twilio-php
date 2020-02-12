@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,13 +24,12 @@ class ActivityList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Activity
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Activities';
     }
@@ -51,9 +51,9 @@ class ActivityList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -77,7 +77,7 @@ class ActivityList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ActivityInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -89,17 +89,17 @@ class ActivityList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ActivityInstance
+     * @return ActivityPage Page of ActivityInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): ActivityPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'Available' => $options['available'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -115,9 +115,9 @@ class ActivityList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ActivityInstance
+     * @return ActivityPage Page of ActivityInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): ActivityPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,18 +134,18 @@ class ActivityList extends ListResource {
      * @return ActivityInstance Newly created ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = array()) {
+    public function create($friendlyName, $options = []): ActivityInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $friendlyName,
             'Available' => Serialize::booleanToString($options['available']),
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -156,9 +156,8 @@ class ActivityList extends ListResource {
      * Constructs a ActivityContext
      *
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): ActivityContext {
         return new ActivityContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
@@ -167,7 +166,7 @@ class ActivityList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.ActivityList]';
     }
 }

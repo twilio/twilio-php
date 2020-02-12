@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class HighriskSpecialPrefixTest extends HolodeckTestCase {
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -32,7 +32,7 @@ class HighriskSpecialPrefixTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadLvResponse() {
+    public function testReadLvResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

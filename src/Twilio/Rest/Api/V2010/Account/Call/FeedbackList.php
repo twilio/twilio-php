@@ -19,21 +19,18 @@ class FeedbackList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
+        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
     }
 
     /**
      * Constructs a FeedbackContext
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext
      */
-    public function getContext() {
+    public function getContext(): FeedbackContext {
         return new FeedbackContext(
             $this->version,
             $this->solution['accountSid'],
@@ -46,7 +43,7 @@ class FeedbackList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.FeedbackList]';
     }
 }

@@ -38,18 +38,17 @@ class TriggerInstance extends InstanceResource {
     /**
      * Initialize the TriggerInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'callbackMethod' => Values::array_get($payload, 'callback_method'),
@@ -66,19 +65,18 @@ class TriggerInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
             'usageCategory' => Values::array_get($payload, 'usage_category'),
             'usageRecordUri' => Values::array_get($payload, 'usage_record_uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext Context for this
-     *                                                             TriggerInstance
+     * @return TriggerContext Context for this TriggerInstance
      */
-    protected function proxy() {
+    protected function proxy(): TriggerContext {
         if (!$this->context) {
             $this->context = new TriggerContext(
                 $this->version,
@@ -96,7 +94,7 @@ class TriggerInstance extends InstanceResource {
      * @return TriggerInstance Fetched TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): TriggerInstance {
         return $this->proxy()->fetch();
     }
 
@@ -107,17 +105,17 @@ class TriggerInstance extends InstanceResource {
      * @return TriggerInstance Updated TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): TriggerInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the TriggerInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -146,8 +144,8 @@ class TriggerInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

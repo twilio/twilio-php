@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class HostedNumberOrderList extends ListResource {
      * Construct the HostedNumberOrderList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/HostedNumberOrders';
     }
@@ -52,9 +52,9 @@ class HostedNumberOrderList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -78,7 +78,7 @@ class HostedNumberOrderList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return HostedNumberOrderInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,11 +90,11 @@ class HostedNumberOrderList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of HostedNumberOrderInstance
+     * @return HostedNumberOrderPage Page of HostedNumberOrderInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): HostedNumberOrderPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'Status' => $options['status'],
             'PhoneNumber' => $options['phoneNumber'],
             'IncomingPhoneNumberSid' => $options['incomingPhoneNumberSid'],
@@ -103,7 +103,7 @@ class HostedNumberOrderList extends ListResource {
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -119,9 +119,9 @@ class HostedNumberOrderList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of HostedNumberOrderInstance
+     * @return HostedNumberOrderPage Page of HostedNumberOrderInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): HostedNumberOrderPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,10 +139,10 @@ class HostedNumberOrderList extends ListResource {
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($phoneNumber, $smsCapability, $options = array()) {
+    public function create($phoneNumber, $smsCapability, $options = []): HostedNumberOrderInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'PhoneNumber' => $phoneNumber,
             'SmsCapability' => Serialize::booleanToString($smsCapability),
             'AccountSid' => $options['accountSid'],
@@ -160,12 +160,12 @@ class HostedNumberOrderList extends ListResource {
             'Email' => $options['email'],
             'VerificationType' => $options['verificationType'],
             'VerificationDocumentSid' => $options['verificationDocumentSid'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -176,9 +176,8 @@ class HostedNumberOrderList extends ListResource {
      * Constructs a HostedNumberOrderContext
      *
      * @param string $sid HostedNumberOrder sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): HostedNumberOrderContext {
         return new HostedNumberOrderContext($this->version, $sid);
     }
 
@@ -187,7 +186,7 @@ class HostedNumberOrderList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.HostedNumbers.HostedNumberOrderList]';
     }
 }

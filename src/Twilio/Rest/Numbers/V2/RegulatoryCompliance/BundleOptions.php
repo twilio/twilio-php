@@ -22,7 +22,7 @@ abstract class BundleOptions {
      * @param string $numberType The type of phone number
      * @return CreateBundleOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $endUserType = Values::NONE, $numberType = Values::NONE) {
+    public static function create($statusCallback = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $endUserType = Values::NONE, $numberType = Values::NONE): CreateBundleOptions {
         return new CreateBundleOptions($statusCallback, $regulationSid, $isoCountry, $endUserType, $numberType);
     }
 
@@ -35,7 +35,7 @@ abstract class BundleOptions {
      * @param string $numberType The type of phone number
      * @return ReadBundleOptions Options builder
      */
-    public static function read($status = Values::NONE, $friendlyName = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $numberType = Values::NONE) {
+    public static function read($status = Values::NONE, $friendlyName = Values::NONE, $regulationSid = Values::NONE, $isoCountry = Values::NONE, $numberType = Values::NONE): ReadBundleOptions {
         return new ReadBundleOptions($status, $friendlyName, $regulationSid, $isoCountry, $numberType);
     }
 
@@ -48,7 +48,7 @@ abstract class BundleOptions {
      * @param string $email The email address
      * @return UpdateBundleOptions Options builder
      */
-    public static function update($status = Values::NONE, $statusCallback = Values::NONE, $friendlyName = Values::NONE, $email = Values::NONE) {
+    public static function update($status = Values::NONE, $statusCallback = Values::NONE, $friendlyName = Values::NONE, $email = Values::NONE): UpdateBundleOptions {
         return new UpdateBundleOptions($status, $statusCallback, $friendlyName, $email);
     }
 }
@@ -77,7 +77,7 @@ class CreateBundleOptions extends Options {
      *                               status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -88,7 +88,7 @@ class CreateBundleOptions extends Options {
      * @param string $regulationSid The unique string of a regulation.
      * @return $this Fluent Builder
      */
-    public function setRegulationSid($regulationSid) {
+    public function setRegulationSid($regulationSid): self {
         $this->options['regulationSid'] = $regulationSid;
         return $this;
     }
@@ -99,7 +99,7 @@ class CreateBundleOptions extends Options {
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
      */
-    public function setIsoCountry($isoCountry) {
+    public function setIsoCountry($isoCountry): self {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
@@ -110,7 +110,7 @@ class CreateBundleOptions extends Options {
      * @param string $endUserType The type of End User of the Bundle resource
      * @return $this Fluent Builder
      */
-    public function setEndUserType($endUserType) {
+    public function setEndUserType($endUserType): self {
         $this->options['endUserType'] = $endUserType;
         return $this;
     }
@@ -121,7 +121,7 @@ class CreateBundleOptions extends Options {
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder
      */
-    public function setNumberType($numberType) {
+    public function setNumberType($numberType): self {
         $this->options['numberType'] = $numberType;
         return $this;
     }
@@ -131,10 +131,10 @@ class CreateBundleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -165,7 +165,7 @@ class ReadBundleOptions extends Options {
      * @param string $status The verification status of the Bundle resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -177,7 +177,7 @@ class ReadBundleOptions extends Options {
      *                             resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -188,7 +188,7 @@ class ReadBundleOptions extends Options {
      * @param string $regulationSid The unique string of a regulation.
      * @return $this Fluent Builder
      */
-    public function setRegulationSid($regulationSid) {
+    public function setRegulationSid($regulationSid): self {
         $this->options['regulationSid'] = $regulationSid;
         return $this;
     }
@@ -199,7 +199,7 @@ class ReadBundleOptions extends Options {
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
      */
-    public function setIsoCountry($isoCountry) {
+    public function setIsoCountry($isoCountry): self {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
@@ -210,7 +210,7 @@ class ReadBundleOptions extends Options {
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder
      */
-    public function setNumberType($numberType) {
+    public function setNumberType($numberType): self {
         $this->options['numberType'] = $numberType;
         return $this;
     }
@@ -220,10 +220,10 @@ class ReadBundleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -253,7 +253,7 @@ class UpdateBundleOptions extends Options {
      * @param string $status The verification status of the Bundle resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -265,7 +265,7 @@ class UpdateBundleOptions extends Options {
      *                               status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -277,7 +277,7 @@ class UpdateBundleOptions extends Options {
      *                             resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -288,7 +288,7 @@ class UpdateBundleOptions extends Options {
      * @param string $email The email address
      * @return $this Fluent Builder
      */
-    public function setEmail($email) {
+    public function setEmail($email): self {
         $this->options['email'] = $email;
         return $this;
     }
@@ -298,10 +298,10 @@ class UpdateBundleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

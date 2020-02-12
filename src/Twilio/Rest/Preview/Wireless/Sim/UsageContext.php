@@ -22,15 +22,14 @@ class UsageContext extends InstanceContext {
     /**
      * Initialize the UsageContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $simSid The sim_sid
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext
      */
     public function __construct(Version $version, $simSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('simSid' => $simSid, );
+        $this->solution = ['simSid' => $simSid, ];
 
         $this->uri = '/Sims/' . \rawurlencode($simSid) . '/Usage';
     }
@@ -42,10 +41,10 @@ class UsageContext extends InstanceContext {
      * @return UsageInstance Fetched UsageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): UsageInstance {
         $options = new Values($options);
 
-        $params = Values::of(array('End' => $options['end'], 'Start' => $options['start'], ));
+        $params = Values::of(['End' => $options['end'], 'Start' => $options['start'], ]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -61,8 +60,8 @@ class UsageContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

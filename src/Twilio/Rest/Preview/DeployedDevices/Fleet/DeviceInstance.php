@@ -36,17 +36,16 @@ class DeviceInstance extends InstanceResource {
     /**
      * Initialize the DeviceInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $fleetSid The unique identifier of the Fleet.
      * @param string $sid A string that uniquely identifies the Device.
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceInstance
      */
     public function __construct(Version $version, array $payload, $fleetSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'url' => Values::array_get($payload, 'url'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
@@ -59,20 +58,18 @@ class DeviceInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'dateAuthenticated' => Deserialize::dateTime(Values::array_get($payload, 'date_authenticated')),
-        );
+        ];
 
-        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceContext Context for
-     *                                                                  this
-     *                                                                  DeviceInstance
+     * @return DeviceContext Context for this DeviceInstance
      */
-    protected function proxy() {
+    protected function proxy(): DeviceContext {
         if (!$this->context) {
             $this->context = new DeviceContext(
                 $this->version,
@@ -90,17 +87,17 @@ class DeviceInstance extends InstanceResource {
      * @return DeviceInstance Fetched DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): DeviceInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the DeviceInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -111,7 +108,7 @@ class DeviceInstance extends InstanceResource {
      * @return DeviceInstance Updated DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): DeviceInstance {
         return $this->proxy()->update($options);
     }
 
@@ -140,8 +137,8 @@ class DeviceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

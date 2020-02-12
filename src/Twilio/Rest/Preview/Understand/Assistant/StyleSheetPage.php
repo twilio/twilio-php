@@ -22,7 +22,7 @@ class StyleSheetPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): StyleSheetInstance {
         return new StyleSheetInstance($this->version, $payload, $this->solution['assistantSid']);
     }
 
@@ -31,7 +31,7 @@ class StyleSheetPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Understand.StyleSheetPage]';
     }
 }

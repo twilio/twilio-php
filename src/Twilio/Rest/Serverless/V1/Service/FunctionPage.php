@@ -22,7 +22,7 @@ class FunctionPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FunctionInstance {
         return new FunctionInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -31,7 +31,7 @@ class FunctionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Serverless.V1.FunctionPage]';
     }
 }

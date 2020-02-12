@@ -19,7 +19,7 @@ abstract class WorkerChannelOptions {
      * @param bool $available Whether the WorkerChannel is available
      * @return UpdateWorkerChannelOptions Options builder
      */
-    public static function update($capacity = Values::NONE, $available = Values::NONE) {
+    public static function update($capacity = Values::NONE, $available = Values::NONE): UpdateWorkerChannelOptions {
         return new UpdateWorkerChannelOptions($capacity, $available);
     }
 }
@@ -42,7 +42,7 @@ class UpdateWorkerChannelOptions extends Options {
      *                      for the TaskChannel type
      * @return $this Fluent Builder
      */
-    public function setCapacity($capacity) {
+    public function setCapacity($capacity): self {
         $this->options['capacity'] = $capacity;
         return $this;
     }
@@ -53,7 +53,7 @@ class UpdateWorkerChannelOptions extends Options {
      * @param bool $available Whether the WorkerChannel is available
      * @return $this Fluent Builder
      */
-    public function setAvailable($available) {
+    public function setAvailable($available): self {
         $this->options['available'] = $available;
         return $this;
     }
@@ -63,10 +63,10 @@ class UpdateWorkerChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

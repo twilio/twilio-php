@@ -19,7 +19,7 @@ class WorkflowCumulativeStatisticsPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): WorkflowCumulativeStatisticsInstance {
         return new WorkflowCumulativeStatisticsInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class WorkflowCumulativeStatisticsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.WorkflowCumulativeStatisticsPage]';
     }
 }

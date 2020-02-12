@@ -19,17 +19,16 @@ class ShortCodeContext extends InstanceContext {
     /**
      * Initialize the ShortCodeContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the
      *                           resource(s) to fetch
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SMS/ShortCodes/' . \rawurlencode($sid) . '.json';
     }
@@ -40,8 +39,8 @@ class ShortCodeContext extends InstanceContext {
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ShortCodeInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -64,22 +63,22 @@ class ShortCodeContext extends InstanceContext {
      * @return ShortCodeInstance Updated ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ShortCodeInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'ApiVersion' => $options['apiVersion'],
             'SmsUrl' => $options['smsUrl'],
             'SmsMethod' => $options['smsMethod'],
             'SmsFallbackUrl' => $options['smsFallbackUrl'],
             'SmsFallbackMethod' => $options['smsFallbackMethod'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -96,8 +95,8 @@ class ShortCodeContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

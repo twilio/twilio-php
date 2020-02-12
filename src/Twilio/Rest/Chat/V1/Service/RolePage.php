@@ -19,7 +19,7 @@ class RolePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): RoleInstance {
         return new RoleInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -28,7 +28,7 @@ class RolePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Chat.V1.RolePage]';
     }
 }

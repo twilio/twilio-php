@@ -29,7 +29,7 @@ abstract class RatePlanOptions {
      * @param string $internationalRoaming The international_roaming
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $commandsEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $commandsEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE): CreateRatePlanOptions {
         return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $commandsEnabled, $nationalRoamingEnabled, $internationalRoaming);
     }
 
@@ -38,7 +38,7 @@ abstract class RatePlanOptions {
      * @param string $friendlyName The friendly_name
      * @return UpdateRatePlanOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $friendlyName = Values::NONE) {
+    public static function update($uniqueName = Values::NONE, $friendlyName = Values::NONE): UpdateRatePlanOptions {
         return new UpdateRatePlanOptions($uniqueName, $friendlyName);
     }
 }
@@ -75,7 +75,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -86,7 +86,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -97,7 +97,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $dataEnabled The data_enabled
      * @return $this Fluent Builder
      */
-    public function setDataEnabled($dataEnabled) {
+    public function setDataEnabled($dataEnabled): self {
         $this->options['dataEnabled'] = $dataEnabled;
         return $this;
     }
@@ -108,7 +108,7 @@ class CreateRatePlanOptions extends Options {
      * @param int $dataLimit The data_limit
      * @return $this Fluent Builder
      */
-    public function setDataLimit($dataLimit) {
+    public function setDataLimit($dataLimit): self {
         $this->options['dataLimit'] = $dataLimit;
         return $this;
     }
@@ -119,7 +119,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $dataMetering The data_metering
      * @return $this Fluent Builder
      */
-    public function setDataMetering($dataMetering) {
+    public function setDataMetering($dataMetering): self {
         $this->options['dataMetering'] = $dataMetering;
         return $this;
     }
@@ -130,7 +130,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $messagingEnabled The messaging_enabled
      * @return $this Fluent Builder
      */
-    public function setMessagingEnabled($messagingEnabled) {
+    public function setMessagingEnabled($messagingEnabled): self {
         $this->options['messagingEnabled'] = $messagingEnabled;
         return $this;
     }
@@ -141,7 +141,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $voiceEnabled The voice_enabled
      * @return $this Fluent Builder
      */
-    public function setVoiceEnabled($voiceEnabled) {
+    public function setVoiceEnabled($voiceEnabled): self {
         $this->options['voiceEnabled'] = $voiceEnabled;
         return $this;
     }
@@ -152,7 +152,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $commandsEnabled The commands_enabled
      * @return $this Fluent Builder
      */
-    public function setCommandsEnabled($commandsEnabled) {
+    public function setCommandsEnabled($commandsEnabled): self {
         $this->options['commandsEnabled'] = $commandsEnabled;
         return $this;
     }
@@ -163,7 +163,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @return $this Fluent Builder
      */
-    public function setNationalRoamingEnabled($nationalRoamingEnabled) {
+    public function setNationalRoamingEnabled($nationalRoamingEnabled): self {
         $this->options['nationalRoamingEnabled'] = $nationalRoamingEnabled;
         return $this;
     }
@@ -174,7 +174,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $internationalRoaming The international_roaming
      * @return $this Fluent Builder
      */
-    public function setInternationalRoaming($internationalRoaming) {
+    public function setInternationalRoaming($internationalRoaming): self {
         $this->options['internationalRoaming'] = $internationalRoaming;
         return $this;
     }
@@ -184,10 +184,10 @@ class CreateRatePlanOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -211,7 +211,7 @@ class UpdateRatePlanOptions extends Options {
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -222,7 +222,7 @@ class UpdateRatePlanOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -232,10 +232,10 @@ class UpdateRatePlanOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

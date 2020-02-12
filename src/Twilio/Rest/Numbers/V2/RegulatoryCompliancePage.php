@@ -19,7 +19,7 @@ class RegulatoryCompliancePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): RegulatoryComplianceInstance {
         return new RegulatoryComplianceInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class RegulatoryCompliancePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Numbers.V2.RegulatoryCompliancePage]';
     }
 }

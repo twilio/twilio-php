@@ -12,6 +12,8 @@ namespace Twilio\Rest\Video\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Video\V1\Room\ParticipantList;
+use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,22 +38,21 @@ use Twilio\Version;
  * @property array $links
  */
 class RoomInstance extends InstanceResource {
-    protected $_recordings = null;
-    protected $_participants = null;
+    protected $_recordings;
+    protected $_participants;
 
     /**
      * Initialize the RoomInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\RoomInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'status' => Values::array_get($payload, 'status'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
@@ -70,18 +71,18 @@ class RoomInstance extends InstanceResource {
             'mediaRegion' => Values::array_get($payload, 'media_region'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Video\V1\RoomContext Context for this RoomInstance
+     * @return RoomContext Context for this RoomInstance
      */
-    protected function proxy() {
+    protected function proxy(): RoomContext {
         if (!$this->context) {
             $this->context = new RoomContext($this->version, $this->solution['sid']);
         }
@@ -95,7 +96,7 @@ class RoomInstance extends InstanceResource {
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): RoomInstance {
         return $this->proxy()->fetch();
     }
 
@@ -106,25 +107,21 @@ class RoomInstance extends InstanceResource {
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status) {
+    public function update($status): RoomInstance {
         return $this->proxy()->update($status);
     }
 
     /**
      * Access the recordings
-     *
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings(): RoomRecordingList {
         return $this->proxy()->recordings;
     }
 
     /**
      * Access the participants
-     *
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantList
      */
-    protected function getParticipants() {
+    protected function getParticipants(): ParticipantList {
         return $this->proxy()->participants;
     }
 
@@ -153,8 +150,8 @@ class RoomInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

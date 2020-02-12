@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class EventTest extends HolodeckTestCase {
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class EventTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadResponse() {
+    public function testReadResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -101,7 +101,7 @@ class EventTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadDeepResponse() {
+    public function testReadDeepResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

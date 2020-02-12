@@ -24,7 +24,7 @@ abstract class QueryOptions {
      * @param string $status The status of the resources to read
      * @return ReadQueryOptions Options builder
      */
-    public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
+    public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE): ReadQueryOptions {
         return new ReadQueryOptions($language, $modelBuild, $status);
     }
 
@@ -34,7 +34,7 @@ abstract class QueryOptions {
      *                           queried
      * @return CreateQueryOptions Options builder
      */
-    public static function create($tasks = Values::NONE, $modelBuild = Values::NONE) {
+    public static function create($tasks = Values::NONE, $modelBuild = Values::NONE): CreateQueryOptions {
         return new CreateQueryOptions($tasks, $modelBuild);
     }
 
@@ -44,7 +44,7 @@ abstract class QueryOptions {
      * @param string $status The new status of the resource
      * @return UpdateQueryOptions Options builder
      */
-    public static function update($sampleSid = Values::NONE, $status = Values::NONE) {
+    public static function update($sampleSid = Values::NONE, $status = Values::NONE): UpdateQueryOptions {
         return new UpdateQueryOptions($sampleSid, $status);
     }
 }
@@ -70,7 +70,7 @@ class ReadQueryOptions extends Options {
      *                         language used by the Query resources to read
      * @return $this Fluent Builder
      */
-    public function setLanguage($language) {
+    public function setLanguage($language): self {
         $this->options['language'] = $language;
         return $this;
     }
@@ -82,7 +82,7 @@ class ReadQueryOptions extends Options {
      *                           queried
      * @return $this Fluent Builder
      */
-    public function setModelBuild($modelBuild) {
+    public function setModelBuild($modelBuild): self {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -93,7 +93,7 @@ class ReadQueryOptions extends Options {
      * @param string $status The status of the resources to read
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -103,10 +103,10 @@ class ReadQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -131,7 +131,7 @@ class CreateQueryOptions extends Options {
      * @param string $tasks The list of tasks to limit the new query to
      * @return $this Fluent Builder
      */
-    public function setTasks($tasks) {
+    public function setTasks($tasks): self {
         $this->options['tasks'] = $tasks;
         return $this;
     }
@@ -143,7 +143,7 @@ class CreateQueryOptions extends Options {
      *                           queried
      * @return $this Fluent Builder
      */
-    public function setModelBuild($modelBuild) {
+    public function setModelBuild($modelBuild): self {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -153,10 +153,10 @@ class CreateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -182,7 +182,7 @@ class UpdateQueryOptions extends Options {
      *                          created from the query
      * @return $this Fluent Builder
      */
-    public function setSampleSid($sampleSid) {
+    public function setSampleSid($sampleSid): self {
         $this->options['sampleSid'] = $sampleSid;
         return $this;
     }
@@ -193,7 +193,7 @@ class UpdateQueryOptions extends Options {
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -203,10 +203,10 @@ class UpdateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

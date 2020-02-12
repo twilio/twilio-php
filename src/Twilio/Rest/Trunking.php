@@ -19,14 +19,12 @@ use Twilio\Rest\Trunking\V1;
  * @method \Twilio\Rest\Trunking\V1\TrunkContext trunks(string $sid)
  */
 class Trunking extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the Trunking Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Trunking Domain for Trunking
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -35,9 +33,9 @@ class Trunking extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Trunking\V1 Version v1 of trunking
+     * @return V1 Version v1 of trunking
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -71,24 +69,20 @@ class Trunking extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Trunking\V1\TrunkList
-     */
-    protected function getTrunks() {
+    protected function getTrunks(): \Twilio\Rest\Trunking\V1\TrunkList {
         return $this->v1->trunks;
     }
 
     /**
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\TrunkContext
      */
-    protected function contextTrunks($sid) {
+    protected function contextTrunks($sid): \Twilio\Rest\Trunking\V1\TrunkContext {
         return $this->v1->trunks($sid);
     }
 
@@ -97,7 +91,7 @@ class Trunking extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Trunking]';
     }
 }

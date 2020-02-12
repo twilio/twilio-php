@@ -21,7 +21,7 @@ abstract class MetricOptions {
      * @param string $direction The direction
      * @return ReadMetricOptions Options builder
      */
-    public static function read($edge = Values::NONE, $direction = Values::NONE) {
+    public static function read($edge = Values::NONE, $direction = Values::NONE): ReadMetricOptions {
         return new ReadMetricOptions($edge, $direction);
     }
 }
@@ -42,7 +42,7 @@ class ReadMetricOptions extends Options {
      * @param string $edge The edge
      * @return $this Fluent Builder
      */
-    public function setEdge($edge) {
+    public function setEdge($edge): self {
         $this->options['edge'] = $edge;
         return $this;
     }
@@ -53,7 +53,7 @@ class ReadMetricOptions extends Options {
      * @param string $direction The direction
      * @return $this Fluent Builder
      */
-    public function setDirection($direction) {
+    public function setDirection($direction): self {
         $this->options['direction'] = $direction;
         return $this;
     }
@@ -63,10 +63,10 @@ class ReadMetricOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

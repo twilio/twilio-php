@@ -19,7 +19,7 @@ class EngagementContextPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): EngagementContextInstance {
         return new EngagementContextInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class EngagementContextPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1.EngagementContextPage]';
     }
 }

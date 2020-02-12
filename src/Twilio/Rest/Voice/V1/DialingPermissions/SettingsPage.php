@@ -22,7 +22,7 @@ class SettingsPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SettingsInstance {
         return new SettingsInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class SettingsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.SettingsPage]';
     }
 }

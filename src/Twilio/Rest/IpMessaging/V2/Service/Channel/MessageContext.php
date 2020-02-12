@@ -20,18 +20,17 @@ class MessageContext extends InstanceContext {
     /**
      * Initialize the MessageContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $channelSid The SID of the Channel the message to fetch
      *                           belongs to
      * @param string $sid The SID of the Message resource to fetch
-     * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageContext
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'channelSid' => $channelSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($channelSid) . '/Messages/' . \rawurlencode($sid) . '';
     }
@@ -42,8 +41,8 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): MessageInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -63,10 +62,10 @@ class MessageContext extends InstanceContext {
     /**
      * Deletes the MessageInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -77,22 +76,22 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): MessageInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Body' => $options['body'],
             'Attributes' => $options['attributes'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'LastUpdatedBy' => $options['lastUpdatedBy'],
             'From' => $options['from'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -110,8 +109,8 @@ class MessageContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

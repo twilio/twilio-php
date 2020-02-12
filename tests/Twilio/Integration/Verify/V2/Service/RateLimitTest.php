@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class RateLimitTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -25,7 +25,7 @@ class RateLimitTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UniqueName' => "unique_name", );
+        $values = ['UniqueName' => "unique_name", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -35,7 +35,7 @@ class RateLimitTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateRateLimitResponse() {
+    public function testCreateRateLimitResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -61,7 +61,7 @@ class RateLimitTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -76,7 +76,7 @@ class RateLimitTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateRateLimitResponse() {
+    public function testUpdateRateLimitResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -102,7 +102,7 @@ class RateLimitTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -117,7 +117,7 @@ class RateLimitTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchRateLimitResponse() {
+    public function testFetchRateLimitResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -143,7 +143,7 @@ class RateLimitTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -158,7 +158,7 @@ class RateLimitTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadAllResponse() {
+    public function testReadAllResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -197,7 +197,7 @@ class RateLimitTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -212,7 +212,7 @@ class RateLimitTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null

@@ -21,20 +21,19 @@ class AssetVersionContext extends InstanceContext {
     /**
      * Initialize the AssetVersionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Asset Version
      *                           resource from
      * @param string $assetSid The SID of the Asset resource that is the parent of
      *                         the Asset Version resource to fetch
      * @param string $sid The SID that identifies the Asset Version resource to
      *                    fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext
      */
     public function __construct(Version $version, $serviceSid, $assetSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'assetSid' => $assetSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'assetSid' => $assetSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets/' . \rawurlencode($assetSid) . '/Versions/' . \rawurlencode($sid) . '';
     }
@@ -45,8 +44,8 @@ class AssetVersionContext extends InstanceContext {
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AssetVersionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -68,8 +67,8 @@ class AssetVersionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

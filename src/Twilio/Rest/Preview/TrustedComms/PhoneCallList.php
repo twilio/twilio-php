@@ -24,13 +24,12 @@ class PhoneCallList extends ListResource {
      * Construct the PhoneCallList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Business/PhoneCalls';
     }
@@ -44,10 +43,10 @@ class PhoneCallList extends ListResource {
      * @return PhoneCallInstance Newly created PhoneCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($from, $to, $options = array()) {
+    public function create($from, $to, $options = []): PhoneCallInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'From' => $from,
             'To' => $to,
             'Reason' => $options['reason'],
@@ -75,12 +74,12 @@ class PhoneCallList extends ListResource {
             'Timeout' => $options['timeout'],
             'Trim' => $options['trim'],
             'Url' => $options['url'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -92,7 +91,7 @@ class PhoneCallList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.PhoneCallList]';
     }
 }

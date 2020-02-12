@@ -11,30 +11,27 @@ namespace Twilio\Rest\Voice;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Voice\V1\DialingPermissionsList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Voice\V1\DialingPermissionsList $dialingPermissions
+ * @property DialingPermissionsList $dialingPermissions
  */
 class V1 extends Version {
-    protected $_dialingPermissions = null;
+    protected $_dialingPermissions;
 
     /**
      * Construct the V1 version of Voice
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Voice\V1 V1 version of Voice
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
-     */
-    protected function getDialingPermissions() {
+    protected function getDialingPermissions(): DialingPermissionsList {
         if (!$this->_dialingPermissions) {
             $this->_dialingPermissions = new DialingPermissionsList($this);
         }
@@ -62,10 +59,10 @@ class V1 extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -79,7 +76,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1]';
     }
 }

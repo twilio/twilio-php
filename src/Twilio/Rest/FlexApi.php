@@ -25,14 +25,12 @@ use Twilio\Rest\FlexApi\V1;
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
 class FlexApi extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the FlexApi Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\FlexApi Domain for FlexApi
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -41,9 +39,9 @@ class FlexApi extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1 Version v1 of flex_api
+     * @return V1 Version v1 of flex_api
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -77,69 +75,51 @@ class FlexApi extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\FlexApi\V1\ChannelList
-     */
-    protected function getChannel() {
+    protected function getChannel(): \Twilio\Rest\FlexApi\V1\ChannelList {
         return $this->v1->channel;
     }
 
     /**
      * @param string $sid The SID that identifies the Flex chat channel resource to
      *                    fetch
-     * @return \Twilio\Rest\FlexApi\V1\ChannelContext
      */
-    protected function contextChannel($sid) {
+    protected function contextChannel($sid): \Twilio\Rest\FlexApi\V1\ChannelContext {
         return $this->v1->channel($sid);
     }
 
-    /**
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
-     */
-    protected function getConfiguration() {
+    protected function getConfiguration(): \Twilio\Rest\FlexApi\V1\ConfigurationList {
         return $this->v1->configuration;
     }
 
-    /**
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext
-     */
-    protected function contextConfiguration() {
+    protected function contextConfiguration(): \Twilio\Rest\FlexApi\V1\ConfigurationContext {
         return $this->v1->configuration();
     }
 
-    /**
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
-     */
-    protected function getFlexFlow() {
+    protected function getFlexFlow(): \Twilio\Rest\FlexApi\V1\FlexFlowList {
         return $this->v1->flexFlow;
     }
 
     /**
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext
      */
-    protected function contextFlexFlow($sid) {
+    protected function contextFlexFlow($sid): \Twilio\Rest\FlexApi\V1\FlexFlowContext {
         return $this->v1->flexFlow($sid);
     }
 
-    /**
-     * @return \Twilio\Rest\FlexApi\V1\WebChannelList
-     */
-    protected function getWebChannel() {
+    protected function getWebChannel(): \Twilio\Rest\FlexApi\V1\WebChannelList {
         return $this->v1->webChannel;
     }
 
     /**
      * @param string $sid The SID of the WebChannel resource to fetch
-     * @return \Twilio\Rest\FlexApi\V1\WebChannelContext
      */
-    protected function contextWebChannel($sid) {
+    protected function contextWebChannel($sid): \Twilio\Rest\FlexApi\V1\WebChannelContext {
         return $this->v1->webChannel($sid);
     }
 
@@ -148,7 +128,7 @@ class FlexApi extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.FlexApi]';
     }
 }

@@ -38,18 +38,17 @@ class NotificationInstance extends InstanceResource {
     /**
      * Initialize the NotificationInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $callSid The SID of the Call the resource is associated with
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'callSid' => Values::array_get($payload, 'call_sid'),
@@ -67,24 +66,22 @@ class NotificationInstance extends InstanceResource {
             'responseHeaders' => Values::array_get($payload, 'response_headers'),
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'callSid' => $callSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationContext Context for
-     *                                                                 this
-     *                                                                 NotificationInstance
+     * @return NotificationContext Context for this NotificationInstance
      */
-    protected function proxy() {
+    protected function proxy(): NotificationContext {
         if (!$this->context) {
             $this->context = new NotificationContext(
                 $this->version,
@@ -103,7 +100,7 @@ class NotificationInstance extends InstanceResource {
      * @return NotificationInstance Fetched NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): NotificationInstance {
         return $this->proxy()->fetch();
     }
 
@@ -132,8 +129,8 @@ class NotificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

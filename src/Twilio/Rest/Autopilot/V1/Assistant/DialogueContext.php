@@ -21,17 +21,16 @@ class DialogueContext extends InstanceContext {
     /**
      * Initialize the DialogueContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext
      */
     public function __construct(Version $version, $assistantSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'sid' => $sid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Dialogues/' . \rawurlencode($sid) . '';
     }
@@ -42,8 +41,8 @@ class DialogueContext extends InstanceContext {
      * @return DialogueInstance Fetched DialogueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): DialogueInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -64,8 +63,8 @@ class DialogueContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

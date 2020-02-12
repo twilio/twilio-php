@@ -31,19 +31,18 @@ class BucketInstance extends InstanceResource {
     /**
      * Initialize the BucketInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $rateLimitSid Rate Limit Sid.
      * @param string $sid A string that uniquely identifies this Bucket.
-     * @return \Twilio\Rest\Verify\V2\Service\RateLimit\BucketInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $rateLimitSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'rateLimitSid' => Values::array_get($payload, 'rate_limit_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
@@ -53,24 +52,22 @@ class BucketInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'rateLimitSid' => $rateLimitSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Verify\V2\Service\RateLimit\BucketContext Context for
-     *                                                                this
-     *                                                                BucketInstance
+     * @return BucketContext Context for this BucketInstance
      */
-    protected function proxy() {
+    protected function proxy(): BucketContext {
         if (!$this->context) {
             $this->context = new BucketContext(
                 $this->version,
@@ -90,7 +87,7 @@ class BucketInstance extends InstanceResource {
      * @return BucketInstance Updated BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): BucketInstance {
         return $this->proxy()->update($options);
     }
 
@@ -100,17 +97,17 @@ class BucketInstance extends InstanceResource {
      * @return BucketInstance Fetched BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): BucketInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the BucketInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -139,8 +136,8 @@ class BucketInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

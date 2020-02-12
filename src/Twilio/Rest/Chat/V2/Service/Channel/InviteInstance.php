@@ -31,19 +31,18 @@ class InviteInstance extends InstanceResource {
     /**
      * Initialize the InviteInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $channelSid The SID of the Channel the new resource belongs to
      * @param string $sid The SID of the Invite resource to fetch
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'channelSid' => Values::array_get($payload, 'channel_sid'),
@@ -54,23 +53,22 @@ class InviteInstance extends InstanceResource {
             'roleSid' => Values::array_get($payload, 'role_sid'),
             'createdBy' => Values::array_get($payload, 'created_by'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteContext Context for this
-     *                                                            InviteInstance
+     * @return InviteContext Context for this InviteInstance
      */
-    protected function proxy() {
+    protected function proxy(): InviteContext {
         if (!$this->context) {
             $this->context = new InviteContext(
                 $this->version,
@@ -89,17 +87,17 @@ class InviteInstance extends InstanceResource {
      * @return InviteInstance Fetched InviteInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): InviteInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the InviteInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -128,8 +126,8 @@ class InviteInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

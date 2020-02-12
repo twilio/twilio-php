@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class BuildTest extends HolodeckTestCase {
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class BuildTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -56,7 +56,7 @@ class BuildTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -71,7 +71,7 @@ class BuildTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -121,7 +121,7 @@ class BuildTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -136,7 +136,7 @@ class BuildTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -148,7 +148,7 @@ class BuildTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -163,7 +163,7 @@ class BuildTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

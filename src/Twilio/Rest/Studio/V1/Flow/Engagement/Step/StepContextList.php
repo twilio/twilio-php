@@ -20,25 +20,18 @@ class StepContextList extends ListResource {
      * @param string $flowSid The SID of the Flow
      * @param string $engagementSid The SID of the Engagement
      * @param string $stepSid Step SID
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList
      */
     public function __construct(Version $version, $flowSid, $engagementSid, $stepSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'flowSid' => $flowSid,
-            'engagementSid' => $engagementSid,
-            'stepSid' => $stepSid,
-        );
+        $this->solution = ['flowSid' => $flowSid, 'engagementSid' => $engagementSid, 'stepSid' => $stepSid, ];
     }
 
     /**
      * Constructs a StepContextContext
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext
      */
-    public function getContext() {
+    public function getContext(): StepContextContext {
         return new StepContextContext(
             $this->version,
             $this->solution['flowSid'],
@@ -52,7 +45,7 @@ class StepContextList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1.StepContextList]';
     }
 }

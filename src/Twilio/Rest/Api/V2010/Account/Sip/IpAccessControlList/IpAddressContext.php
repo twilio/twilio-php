@@ -19,23 +19,22 @@ class IpAddressContext extends InstanceContext {
     /**
      * Initialize the IpAddressContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
      * @param string $ipAccessControlListSid The IpAccessControlList Sid that
      *                                       identifies the IpAddress resources to
      *                                       fetch
      * @param string $sid A string that identifies the IpAddress resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext
      */
     public function __construct(Version $version, $accountSid, $ipAccessControlListSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'ipAccessControlListSid' => $ipAccessControlListSid,
             'sid' => $sid,
-        );
+        ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . \rawurlencode($ipAccessControlListSid) . '/IpAddresses/' . \rawurlencode($sid) . '.json';
     }
@@ -46,8 +45,8 @@ class IpAddressContext extends InstanceContext {
      * @return IpAddressInstance Fetched IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): IpAddressInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -71,19 +70,19 @@ class IpAddressContext extends InstanceContext {
      * @return IpAddressInstance Updated IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): IpAddressInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'IpAddress' => $options['ipAddress'],
             'FriendlyName' => $options['friendlyName'],
             'CidrPrefixLength' => $options['cidrPrefixLength'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -99,10 +98,10 @@ class IpAddressContext extends InstanceContext {
     /**
      * Deletes the IpAddressInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -111,8 +110,8 @@ class IpAddressContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

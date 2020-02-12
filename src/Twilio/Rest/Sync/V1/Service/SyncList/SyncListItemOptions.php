@@ -23,7 +23,7 @@ abstract class SyncListItemOptions {
      *                           parent Sync List expires
      * @return CreateSyncListItemOptions Options builder
      */
-    public static function create($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
+    public static function create($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE): CreateSyncListItemOptions {
         return new CreateSyncListItemOptions($ttl, $itemTtl, $collectionTtl);
     }
 
@@ -34,7 +34,7 @@ abstract class SyncListItemOptions {
      *                       from parameter
      * @return ReadSyncListItemOptions Options builder
      */
-    public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
+    public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE): ReadSyncListItemOptions {
         return new ReadSyncListItemOptions($order, $from, $bounds);
     }
 
@@ -47,7 +47,7 @@ abstract class SyncListItemOptions {
      *                           parent Sync List expires
      * @return UpdateSyncListItemOptions Options builder
      */
-    public static function update($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
+    public static function update($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE): UpdateSyncListItemOptions {
         return new UpdateSyncListItemOptions($data, $ttl, $itemTtl, $collectionTtl);
     }
 }
@@ -71,7 +71,7 @@ class CreateSyncListItemOptions extends Options {
      * @param int $ttl An alias for item_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -82,7 +82,7 @@ class CreateSyncListItemOptions extends Options {
      * @param int $itemTtl How long, in seconds, before the List Item expires
      * @return $this Fluent Builder
      */
-    public function setItemTtl($itemTtl) {
+    public function setItemTtl($itemTtl): self {
         $this->options['itemTtl'] = $itemTtl;
         return $this;
     }
@@ -94,7 +94,7 @@ class CreateSyncListItemOptions extends Options {
      *                           parent Sync List expires
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl) {
+    public function setCollectionTtl($collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -104,10 +104,10 @@ class CreateSyncListItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -134,7 +134,7 @@ class ReadSyncListItemOptions extends Options {
      * @param string $order The order to return the List Items
      * @return $this Fluent Builder
      */
-    public function setOrder($order) {
+    public function setOrder($order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -145,7 +145,7 @@ class ReadSyncListItemOptions extends Options {
      * @param string $from The index of the first Sync List Item resource to read
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -157,7 +157,7 @@ class ReadSyncListItemOptions extends Options {
      *                       from parameter
      * @return $this Fluent Builder
      */
-    public function setBounds($bounds) {
+    public function setBounds($bounds): self {
         $this->options['bounds'] = $bounds;
         return $this;
     }
@@ -167,10 +167,10 @@ class ReadSyncListItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -201,7 +201,7 @@ class UpdateSyncListItemOptions extends Options {
      *                    object that the List Item stores
      * @return $this Fluent Builder
      */
-    public function setData($data) {
+    public function setData($data): self {
         $this->options['data'] = $data;
         return $this;
     }
@@ -212,7 +212,7 @@ class UpdateSyncListItemOptions extends Options {
      * @param int $ttl An alias for item_ttl
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
+    public function setTtl($ttl): self {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -223,7 +223,7 @@ class UpdateSyncListItemOptions extends Options {
      * @param int $itemTtl How long, in seconds, before the List Item expires
      * @return $this Fluent Builder
      */
-    public function setItemTtl($itemTtl) {
+    public function setItemTtl($itemTtl): self {
         $this->options['itemTtl'] = $itemTtl;
         return $this;
     }
@@ -235,7 +235,7 @@ class UpdateSyncListItemOptions extends Options {
      *                           parent Sync List expires
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl($collectionTtl) {
+    public function setCollectionTtl($collectionTtl): self {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -245,10 +245,10 @@ class UpdateSyncListItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

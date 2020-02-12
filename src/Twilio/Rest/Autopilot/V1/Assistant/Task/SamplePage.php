@@ -22,7 +22,7 @@ class SamplePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): SampleInstance {
         return new SampleInstance(
             $this->version,
             $payload,
@@ -36,7 +36,7 @@ class SamplePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.SamplePage]';
     }
 }

@@ -22,18 +22,17 @@ class SyncMapPermissionContext extends InstanceContext {
     /**
      * Initialize the SyncMapPermissionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $mapSid Sync Map SID or unique name.
      * @param string $identity Identity of the user to whom the Sync Map Permission
      *                         applies.
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext
      */
     public function __construct(Version $version, $serviceSid, $mapSid, $identity) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'identity' => $identity, );
+        $this->solution = ['serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'identity' => $identity, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps/' . \rawurlencode($mapSid) . '/Permissions/' . \rawurlencode($identity) . '';
     }
@@ -44,8 +43,8 @@ class SyncMapPermissionContext extends InstanceContext {
      * @return SyncMapPermissionInstance Fetched SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): SyncMapPermissionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -65,10 +64,10 @@ class SyncMapPermissionContext extends InstanceContext {
     /**
      * Deletes the SyncMapPermissionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -81,17 +80,17 @@ class SyncMapPermissionContext extends InstanceContext {
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($read, $write, $manage) {
-        $data = Values::of(array(
+    public function update($read, $write, $manage): SyncMapPermissionInstance {
+        $data = Values::of([
             'Read' => Serialize::booleanToString($read),
             'Write' => Serialize::booleanToString($write),
             'Manage' => Serialize::booleanToString($manage),
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -109,8 +108,8 @@ class SyncMapPermissionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

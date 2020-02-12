@@ -21,16 +21,15 @@ class ShortCodeContext extends InstanceContext {
     /**
      * Initialize the ShortCodeContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/ShortCodes/' . \rawurlencode($sid) . '';
     }
@@ -38,10 +37,10 @@ class ShortCodeContext extends InstanceContext {
     /**
      * Deletes the ShortCodeInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -51,8 +50,8 @@ class ShortCodeContext extends InstanceContext {
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ShortCodeInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -73,8 +72,8 @@ class ShortCodeContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Studio\V2\Flow;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -22,13 +23,12 @@ class FlowRevisionList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Studio\V2\Flow\FlowRevisionList
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Flows/' . \rawurlencode($sid) . '/Revisions';
     }
@@ -49,9 +49,9 @@ class FlowRevisionList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -74,7 +74,7 @@ class FlowRevisionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FlowRevisionInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -85,14 +85,10 @@ class FlowRevisionList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of FlowRevisionInstance
+     * @return FlowRevisionPage Page of FlowRevisionInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FlowRevisionPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -108,9 +104,9 @@ class FlowRevisionList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of FlowRevisionInstance
+     * @return FlowRevisionPage Page of FlowRevisionInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): FlowRevisionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -124,9 +120,8 @@ class FlowRevisionList extends ListResource {
      *
      * @param string $revision Specific Revision number or can be `LatestPublished`
      *                         and `LatestRevision`
-     * @return \Twilio\Rest\Studio\V2\Flow\FlowRevisionContext
      */
-    public function getContext($revision) {
+    public function getContext($revision): FlowRevisionContext {
         return new FlowRevisionContext($this->version, $this->solution['sid'], $revision);
     }
 
@@ -135,7 +130,7 @@ class FlowRevisionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V2.FlowRevisionList]';
     }
 }

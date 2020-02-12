@@ -21,17 +21,16 @@ class AvailableAddOnExtensionContext extends InstanceContext {
     /**
      * Initialize the AvailableAddOnExtensionContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $availableAddOnSid The SID of the AvailableAddOn resource with
      *                                  the extension to fetch
      * @param string $sid The SID of the AvailableAddOn Extension resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext
      */
     public function __construct(Version $version, $availableAddOnSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('availableAddOnSid' => $availableAddOnSid, 'sid' => $sid, );
+        $this->solution = ['availableAddOnSid' => $availableAddOnSid, 'sid' => $sid, ];
 
         $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '';
     }
@@ -43,8 +42,8 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      *                                         AvailableAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AvailableAddOnExtensionInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -65,8 +64,8 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

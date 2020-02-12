@@ -20,25 +20,18 @@ class ExecutionStepContextList extends ListResource {
      * @param string $flowSid The SID of the Flow
      * @param string $executionSid The SID of the Execution
      * @param string $stepSid Step SID
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList
      */
     public function __construct(Version $version, $flowSid, $executionSid, $stepSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'flowSid' => $flowSid,
-            'executionSid' => $executionSid,
-            'stepSid' => $stepSid,
-        );
+        $this->solution = ['flowSid' => $flowSid, 'executionSid' => $executionSid, 'stepSid' => $stepSid, ];
     }
 
     /**
      * Constructs a ExecutionStepContextContext
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextContext
      */
-    public function getContext() {
+    public function getContext(): ExecutionStepContextContext {
         return new ExecutionStepContextContext(
             $this->version,
             $this->solution['flowSid'],
@@ -52,7 +45,7 @@ class ExecutionStepContextList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1.ExecutionStepContextList]';
     }
 }

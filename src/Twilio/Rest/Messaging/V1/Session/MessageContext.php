@@ -23,16 +23,15 @@ class MessageContext extends InstanceContext {
     /**
      * Initialize the MessageContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sessionSid The SID of the Session with the message to fetch
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Messaging\V1\Session\MessageContext
      */
     public function __construct(Version $version, $sessionSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sessionSid' => $sessionSid, 'sid' => $sid, );
+        $this->solution = ['sessionSid' => $sessionSid, 'sid' => $sid, ];
 
         $this->uri = '/Sessions/' . \rawurlencode($sessionSid) . '/Messages/' . \rawurlencode($sid) . '';
     }
@@ -43,8 +42,8 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): MessageInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -67,21 +66,21 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): MessageInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Author' => $options['author'],
             'Attributes' => $options['attributes'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Body' => $options['body'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -96,10 +95,10 @@ class MessageContext extends InstanceContext {
     /**
      * Deletes the MessageInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -108,8 +107,8 @@ class MessageContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

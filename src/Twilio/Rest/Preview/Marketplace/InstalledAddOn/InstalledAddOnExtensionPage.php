@@ -22,7 +22,7 @@ class InstalledAddOnExtensionPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): InstalledAddOnExtensionInstance {
         return new InstalledAddOnExtensionInstance(
             $this->version,
             $payload,
@@ -35,7 +35,7 @@ class InstalledAddOnExtensionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Marketplace.InstalledAddOnExtensionPage]';
     }
 }

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -30,21 +31,20 @@ use Twilio\Version;
  * @property array $links
  */
 class BundleInstance extends InstanceResource {
-    protected $_itemAssignments = null;
+    protected $_itemAssignments;
 
     /**
      * Initialize the BundleInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource.
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'regulationSid' => Values::array_get($payload, 'regulation_sid'),
@@ -56,20 +56,18 @@ class BundleInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext Context
-     *                                                                    for this
-     *                                                                    BundleInstance
+     * @return BundleContext Context for this BundleInstance
      */
-    protected function proxy() {
+    protected function proxy(): BundleContext {
         if (!$this->context) {
             $this->context = new BundleContext($this->version, $this->solution['sid']);
         }
@@ -83,7 +81,7 @@ class BundleInstance extends InstanceResource {
      * @return BundleInstance Fetched BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): BundleInstance {
         return $this->proxy()->fetch();
     }
 
@@ -94,16 +92,14 @@ class BundleInstance extends InstanceResource {
      * @return BundleInstance Updated BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): BundleInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the itemAssignments
-     *
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList
      */
-    protected function getItemAssignments() {
+    protected function getItemAssignments(): ItemAssignmentList {
         return $this->proxy()->itemAssignments;
     }
 
@@ -132,8 +128,8 @@ class BundleInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

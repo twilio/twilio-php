@@ -17,21 +17,18 @@ class ConfigurationList extends ListResource {
      * Construct the ConfigurationList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a ConfigurationContext
-     *
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext
      */
-    public function getContext() {
+    public function getContext(): ConfigurationContext {
         return new ConfigurationContext($this->version);
     }
 
@@ -40,7 +37,7 @@ class ConfigurationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.FlexApi.V1.ConfigurationList]';
     }
 }

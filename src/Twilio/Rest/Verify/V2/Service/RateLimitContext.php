@@ -11,32 +11,32 @@ namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Verify\V2\Service\RateLimit\BucketList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Verify\V2\Service\RateLimit\BucketList $buckets
+ * @property BucketList $buckets
  * @method \Twilio\Rest\Verify\V2\Service\RateLimit\BucketContext buckets(string $sid)
  */
 class RateLimitContext extends InstanceContext {
-    protected $_buckets = null;
+    protected $_buckets;
 
     /**
      * Initialize the RateLimitContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Verify\V2\Service\RateLimitContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/RateLimits/' . \rawurlencode($sid) . '';
     }
@@ -48,15 +48,15 @@ class RateLimitContext extends InstanceContext {
      * @return RateLimitInstance Updated RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): RateLimitInstance {
         $options = new Values($options);
 
-        $data = Values::of(array('Description' => $options['description'], ));
+        $data = Values::of(['Description' => $options['description'], ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -74,8 +74,8 @@ class RateLimitContext extends InstanceContext {
      * @return RateLimitInstance Fetched RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): RateLimitInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -94,19 +94,17 @@ class RateLimitContext extends InstanceContext {
     /**
      * Deletes the RateLimitInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the buckets
-     *
-     * @return \Twilio\Rest\Verify\V2\Service\RateLimit\BucketList
      */
-    protected function getBuckets() {
+    protected function getBuckets(): BucketList {
         if (!$this->_buckets) {
             $this->_buckets = new BucketList(
                 $this->version,
@@ -122,10 +120,10 @@ class RateLimitContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -139,10 +137,10 @@ class RateLimitContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -156,8 +154,8 @@ class RateLimitContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
