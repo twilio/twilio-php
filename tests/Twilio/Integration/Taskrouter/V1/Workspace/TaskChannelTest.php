@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class TaskChannelTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class TaskChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchSidResponse() {
+    public function testFetchSidResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -58,7 +58,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchUniqueNameResponse() {
+    public function testFetchUniqueNameResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -85,7 +85,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -100,7 +100,7 @@ class TaskChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -140,7 +140,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, \count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -165,7 +165,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -180,7 +180,7 @@ class TaskChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateSidResponse() {
+    public function testUpdateSidResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -207,7 +207,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateUniqueNameResponse() {
+    public function testUpdateUniqueNameResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -234,7 +234,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -249,7 +249,7 @@ class TaskChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteSidResponse() {
+    public function testDeleteSidResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -261,7 +261,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testDeleteUniqueNameResponse() {
+    public function testDeleteUniqueNameResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -273,7 +273,7 @@ class TaskChannelTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -282,7 +282,7 @@ class TaskChannelTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendly_name", 'UniqueName' => "unique_name", );
+        $values = ['FriendlyName' => "friendly_name", 'UniqueName' => "unique_name", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -292,7 +292,7 @@ class TaskChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

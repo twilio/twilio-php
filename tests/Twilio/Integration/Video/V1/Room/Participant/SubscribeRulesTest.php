@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class SubscribeRulesTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -32,7 +32,7 @@ class SubscribeRulesTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -62,7 +62,7 @@ class SubscribeRulesTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -78,7 +78,7 @@ class SubscribeRulesTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateFiltersResponse() {
+    public function testUpdateFiltersResponse(): void {
         $this->holodeck->mock(new Response(
             202,
             '

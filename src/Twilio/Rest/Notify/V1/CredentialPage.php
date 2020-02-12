@@ -22,7 +22,7 @@ class CredentialPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): CredentialInstance {
         return new CredentialInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class CredentialPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Notify.V1.CredentialPage]';
     }
 }

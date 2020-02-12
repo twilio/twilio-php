@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Sip;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,23 +26,22 @@ use Twilio\Version;
  * @property string $uri
  */
 class IpAccessControlListInstance extends InstanceResource {
-    protected $_ipAddresses = null;
+    protected $_ipAddresses;
 
     /**
      * Initialize the IpAccessControlListInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid A string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
@@ -49,18 +49,19 @@ class IpAccessControlListInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
             'uri' => Values::array_get($payload, 'uri'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext Context for this IpAccessControlListInstance
+     * @return IpAccessControlListContext Context for this
+     *                                    IpAccessControlListInstance
      */
-    protected function proxy() {
+    protected function proxy(): IpAccessControlListContext {
         if (!$this->context) {
             $this->context = new IpAccessControlListContext(
                 $this->version,
@@ -78,7 +79,7 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): IpAccessControlListInstance {
         return $this->proxy()->fetch();
     }
 
@@ -89,26 +90,24 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return IpAccessControlListInstance Updated IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($friendlyName) {
+    public function update($friendlyName): IpAccessControlListInstance {
         return $this->proxy()->update($friendlyName);
     }
 
     /**
      * Deletes the IpAccessControlListInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the ipAddresses
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList
      */
-    protected function getIpAddresses() {
+    protected function getIpAddresses(): IpAddressList {
         return $this->proxy()->ipAddresses;
     }
 
@@ -137,8 +136,8 @@ class IpAccessControlListInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -25,7 +25,7 @@ class Stop extends TwiML {
      * @param array $attributes Optional attributes
      * @return Stream Child element.
      */
-    public function stream($attributes = array()) {
+    public function stream($attributes = []): Stream {
         return $this->nest(new Stream($attributes));
     }
 
@@ -35,7 +35,7 @@ class Stop extends TwiML {
      * @param array $attributes Optional attributes
      * @return Siprec Child element.
      */
-    public function siprec($attributes = array()) {
+    public function siprec($attributes = []): Siprec {
         return $this->nest(new Siprec($attributes));
     }
 }

@@ -33,19 +33,18 @@ class ReservationInstance extends InstanceResource {
     /**
      * Initialize the ReservationInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that this worker is
      *                             contained within.
      * @param string $workerSid The SID of the reserved Worker resource
      * @param string $sid The SID of the WorkerReservation resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -57,22 +56,22 @@ class ReservationInstance extends InstanceResource {
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'workspaceSid' => $workspaceSid,
             'workerSid' => $workerSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext Context for this ReservationInstance
+     * @return ReservationContext Context for this ReservationInstance
      */
-    protected function proxy() {
+    protected function proxy(): ReservationContext {
         if (!$this->context) {
             $this->context = new ReservationContext(
                 $this->version,
@@ -91,7 +90,7 @@ class ReservationInstance extends InstanceResource {
      * @return ReservationInstance Fetched ReservationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ReservationInstance {
         return $this->proxy()->fetch();
     }
 
@@ -102,7 +101,7 @@ class ReservationInstance extends InstanceResource {
      * @return ReservationInstance Updated ReservationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ReservationInstance {
         return $this->proxy()->update($options);
     }
 
@@ -131,8 +130,8 @@ class ReservationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

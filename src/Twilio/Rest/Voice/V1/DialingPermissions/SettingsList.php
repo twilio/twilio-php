@@ -20,21 +20,18 @@ class SettingsList extends ListResource {
      * Construct the SettingsList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Constructs a SettingsContext
-     *
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext
      */
-    public function getContext() {
+    public function getContext(): SettingsContext {
         return new SettingsContext($this->version);
     }
 
@@ -43,7 +40,7 @@ class SettingsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.SettingsList]';
     }
 }

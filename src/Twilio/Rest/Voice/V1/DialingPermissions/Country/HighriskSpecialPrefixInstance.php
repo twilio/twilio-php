@@ -23,18 +23,17 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
     /**
      * Initialize the HighriskSpecialPrefixInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixInstance
      */
     public function __construct(Version $version, array $payload, $isoCode) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array('prefix' => Values::array_get($payload, 'prefix'), );
+        $this->properties = ['prefix' => Values::array_get($payload, 'prefix'), ];
 
-        $this->solution = array('isoCode' => $isoCode, );
+        $this->solution = ['isoCode' => $isoCode, ];
     }
 
     /**
@@ -62,7 +61,7 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Voice.V1.HighriskSpecialPrefixInstance]';
     }
 }

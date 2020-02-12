@@ -22,18 +22,17 @@ class PaymentContext extends InstanceContext {
     /**
      * Initialize the PaymentContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that will update the
      *                           resource
      * @param string $callSid The SID of the call that will create the resource.
      * @param string $sid The SID of Payments session
-     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentContext
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, 'sid' => $sid, );
+        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Payments/' . \rawurlencode($sid) . '.json';
     }
@@ -50,20 +49,20 @@ class PaymentContext extends InstanceContext {
      * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($idempotencyKey, $statusCallback, $options = array()) {
+    public function update($idempotencyKey, $statusCallback, $options = []): PaymentInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'IdempotencyKey' => $idempotencyKey,
             'StatusCallback' => $statusCallback,
             'Capture' => $options['capture'],
             'Status' => $options['status'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -81,8 +80,8 @@ class PaymentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -18,14 +18,13 @@ class CredentialInstance extends InstanceResource {
     /**
      * Initialize the CredentialInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Accounts\V1\CredentialInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
@@ -53,7 +52,7 @@ class CredentialInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Accounts.V1.CredentialInstance]';
     }
 }

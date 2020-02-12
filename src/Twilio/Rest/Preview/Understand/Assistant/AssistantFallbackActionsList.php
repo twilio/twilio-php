@@ -21,21 +21,18 @@ class AssistantFallbackActionsList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Constructs a AssistantFallbackActionsContext
-     *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsContext
      */
-    public function getContext() {
+    public function getContext(): AssistantFallbackActionsContext {
         return new AssistantFallbackActionsContext($this->version, $this->solution['assistantSid']);
     }
 
@@ -44,7 +41,7 @@ class AssistantFallbackActionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Understand.AssistantFallbackActionsList]';
     }
 }

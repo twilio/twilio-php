@@ -17,7 +17,7 @@ class Refer extends TwiML {
      *
      * @param array $attributes Optional attributes
      */
-    public function __construct($attributes = array()) {
+    public function __construct($attributes = []) {
         parent::__construct('Refer', null, $attributes);
     }
 
@@ -27,7 +27,7 @@ class Refer extends TwiML {
      * @param string $sipUrl SIP URL
      * @return ReferSip Child element.
      */
-    public function sip($sipUrl) {
+    public function sip($sipUrl): ReferSip {
         return $this->nest(new ReferSip($sipUrl));
     }
 
@@ -35,9 +35,8 @@ class Refer extends TwiML {
      * Add Action attribute.
      *
      * @param string $action Action URL
-     * @return static $this.
      */
-    public function setAction($action) {
+    public function setAction($action): self {
         return $this->setAttribute('action', $action);
     }
 
@@ -45,9 +44,8 @@ class Refer extends TwiML {
      * Add Method attribute.
      *
      * @param string $method Action URL method
-     * @return static $this.
      */
-    public function setMethod($method) {
+    public function setMethod($method): self {
         return $this->setAttribute('method', $method);
     }
 }

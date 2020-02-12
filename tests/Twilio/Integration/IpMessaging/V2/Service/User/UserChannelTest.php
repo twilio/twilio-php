@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class UserChannelTest extends HolodeckTestCase {
-    public function testReadRequest() {
+    public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -32,7 +32,7 @@ class UserChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -75,7 +75,7 @@ class UserChannelTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, \count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -101,7 +101,7 @@ class UserChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -117,7 +117,7 @@ class UserChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -147,7 +147,7 @@ class UserChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -163,7 +163,7 @@ class UserChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse(): void {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -176,7 +176,7 @@ class UserChannelTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -192,7 +192,7 @@ class UserChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateNotificationLevelResponse() {
+    public function testUpdateNotificationLevelResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -222,7 +222,7 @@ class UserChannelTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateLastConsumedMessageIndexResponse() {
+    public function testUpdateLastConsumedMessageIndexResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

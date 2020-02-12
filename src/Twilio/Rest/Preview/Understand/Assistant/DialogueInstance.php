@@ -27,36 +27,33 @@ class DialogueInstance extends InstanceResource {
     /**
      * Initialize the DialogueInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assistantSid' => Values::array_get($payload, 'assistant_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'data' => Values::array_get($payload, 'data'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueContext Context
-     *                                                                   for this
-     *                                                                   DialogueInstance
+     * @return DialogueContext Context for this DialogueInstance
      */
-    protected function proxy() {
+    protected function proxy(): DialogueContext {
         if (!$this->context) {
             $this->context = new DialogueContext(
                 $this->version,
@@ -74,7 +71,7 @@ class DialogueInstance extends InstanceResource {
      * @return DialogueInstance Fetched DialogueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): DialogueInstance {
         return $this->proxy()->fetch();
     }
 
@@ -103,8 +100,8 @@ class DialogueInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

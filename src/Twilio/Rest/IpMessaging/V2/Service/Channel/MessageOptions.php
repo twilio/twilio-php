@@ -27,7 +27,7 @@ abstract class MessageOptions {
      * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
+    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE): CreateMessageOptions {
         return new CreateMessageOptions($from, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy, $body, $mediaSid);
     }
 
@@ -35,7 +35,7 @@ abstract class MessageOptions {
      * @param string $order The sort order of the returned messages
      * @return ReadMessageOptions Options builder
      */
-    public static function read($order = Values::NONE) {
+    public static function read($order = Values::NONE): ReadMessageOptions {
         return new ReadMessageOptions($order);
     }
 
@@ -52,7 +52,7 @@ abstract class MessageOptions {
      * @param string $from The Identity of the message's author
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
+    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE): UpdateMessageOptions {
         return new UpdateMessageOptions($body, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy, $from);
     }
 }
@@ -87,7 +87,7 @@ class CreateMessageOptions extends Options {
      * @param string $from The Identity of the new message's author
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -99,7 +99,7 @@ class CreateMessageOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -111,7 +111,7 @@ class CreateMessageOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -123,7 +123,7 @@ class CreateMessageOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -135,7 +135,7 @@ class CreateMessageOptions extends Options {
      *                              Message
      * @return $this Fluent Builder
      */
-    public function setLastUpdatedBy($lastUpdatedBy) {
+    public function setLastUpdatedBy($lastUpdatedBy): self {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
@@ -146,7 +146,7 @@ class CreateMessageOptions extends Options {
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
-    public function setBody($body) {
+    public function setBody($body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -157,7 +157,7 @@ class CreateMessageOptions extends Options {
      * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return $this Fluent Builder
      */
-    public function setMediaSid($mediaSid) {
+    public function setMediaSid($mediaSid): self {
         $this->options['mediaSid'] = $mediaSid;
         return $this;
     }
@@ -167,10 +167,10 @@ class CreateMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -192,7 +192,7 @@ class ReadMessageOptions extends Options {
      * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
-    public function setOrder($order) {
+    public function setOrder($order): self {
         $this->options['order'] = $order;
         return $this;
     }
@@ -202,10 +202,10 @@ class ReadMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -241,7 +241,7 @@ class UpdateMessageOptions extends Options {
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
-    public function setBody($body) {
+    public function setBody($body): self {
         $this->options['body'] = $body;
         return $this;
     }
@@ -253,7 +253,7 @@ class UpdateMessageOptions extends Options {
      *                           application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -265,7 +265,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -277,7 +277,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -289,7 +289,7 @@ class UpdateMessageOptions extends Options {
      *                              Message, if applicable
      * @return $this Fluent Builder
      */
-    public function setLastUpdatedBy($lastUpdatedBy) {
+    public function setLastUpdatedBy($lastUpdatedBy): self {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
@@ -300,7 +300,7 @@ class UpdateMessageOptions extends Options {
      * @param string $from The Identity of the message's author
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -310,10 +310,10 @@ class UpdateMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

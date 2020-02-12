@@ -26,35 +26,34 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkersRealTimeStatisticsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Workers
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'activityStatistics' => Values::array_get($payload, 'activity_statistics'),
             'totalWorkers' => Values::array_get($payload, 'total_workers'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext Context for this
-     *                                                                                      WorkersRealTimeStatisticsInstance
+     * @return WorkersRealTimeStatisticsContext Context for this
+     *                                          WorkersRealTimeStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy(): WorkersRealTimeStatisticsContext {
         if (!$this->context) {
             $this->context = new WorkersRealTimeStatisticsContext(
                 $this->version,
@@ -73,7 +72,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      *                                           WorkersRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): WorkersRealTimeStatisticsInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -102,8 +101,8 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

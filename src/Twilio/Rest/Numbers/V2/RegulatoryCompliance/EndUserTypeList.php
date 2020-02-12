@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -18,13 +19,12 @@ class EndUserTypeList extends ListResource {
      * Construct the EndUserTypeList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/RegulatoryCompliance/EndUserTypes';
     }
@@ -45,9 +45,9 @@ class EndUserTypeList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -70,7 +70,7 @@ class EndUserTypeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EndUserTypeInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -81,14 +81,10 @@ class EndUserTypeList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of EndUserTypeInstance
+     * @return EndUserTypePage Page of EndUserTypeInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): EndUserTypePage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -104,9 +100,9 @@ class EndUserTypeList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of EndUserTypeInstance
+     * @return EndUserTypePage Page of EndUserTypeInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): EndUserTypePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -120,9 +116,8 @@ class EndUserTypeList extends ListResource {
      *
      * @param string $sid The unique string that identifies the End-User Type
      *                    resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): EndUserTypeContext {
         return new EndUserTypeContext($this->version, $sid);
     }
 
@@ -131,7 +126,7 @@ class EndUserTypeList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Numbers.V2.EndUserTypeList]';
     }
 }

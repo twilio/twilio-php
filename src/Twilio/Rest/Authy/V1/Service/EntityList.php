@@ -11,6 +11,7 @@ namespace Twilio\Rest\Authy\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,13 +24,12 @@ class EntityList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @return \Twilio\Rest\Authy\V1\Service\EntityList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities';
     }
@@ -41,13 +41,13 @@ class EntityList extends ListResource {
      * @return EntityInstance Newly created EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($identity) {
-        $data = Values::of(array('Identity' => $identity, ));
+    public function create($identity): EntityInstance {
+        $data = Values::of(['Identity' => $identity, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -70,9 +70,9 @@ class EntityList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -95,7 +95,7 @@ class EntityList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EntityInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,14 +106,10 @@ class EntityList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of EntityInstance
+     * @return EntityPage Page of EntityInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): EntityPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -129,9 +125,9 @@ class EntityList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of EntityInstance
+     * @return EntityPage Page of EntityInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): EntityPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -144,9 +140,8 @@ class EntityList extends ListResource {
      * Constructs a EntityContext
      *
      * @param string $identity Unique identity of the Entity
-     * @return \Twilio\Rest\Authy\V1\Service\EntityContext
      */
-    public function getContext($identity) {
+    public function getContext($identity): EntityContext {
         return new EntityContext($this->version, $this->solution['serviceSid'], $identity);
     }
 
@@ -155,7 +150,7 @@ class EntityList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Authy.V1.EntityList]';
     }
 }

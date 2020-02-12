@@ -31,7 +31,7 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
     /**
      * Initialize the AssignedAddOnExtensionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $resourceSid The SID of the Phone Number to which the Add-on
@@ -39,13 +39,12 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      * @param string $assignedAddOnSid The SID that uniquely identifies the
      *                                 assigned Add-on installation
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $resourceSid, $assignedAddOnSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'resourceSid' => Values::array_get($payload, 'resource_sid'),
@@ -55,24 +54,24 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'uri' => Values::array_get($payload, 'uri'),
             'enabled' => Values::array_get($payload, 'enabled'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'resourceSid' => $resourceSid,
             'assignedAddOnSid' => $assignedAddOnSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext Context for this
-     *                                                                                                        AssignedAddOnExtensionInstance
+     * @return AssignedAddOnExtensionContext Context for this
+     *                                       AssignedAddOnExtensionInstance
      */
-    protected function proxy() {
+    protected function proxy(): AssignedAddOnExtensionContext {
         if (!$this->context) {
             $this->context = new AssignedAddOnExtensionContext(
                 $this->version,
@@ -92,7 +91,7 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AssignedAddOnExtensionInstance {
         return $this->proxy()->fetch();
     }
 
@@ -121,8 +120,8 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

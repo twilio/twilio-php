@@ -24,7 +24,7 @@ abstract class DeviceOptions {
      * @param bool $enabled The enabled
      * @return CreateDeviceOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
+    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE): CreateDeviceOptions {
         return new CreateDeviceOptions($uniqueName, $friendlyName, $identity, $deploymentSid, $enabled);
     }
 
@@ -33,7 +33,7 @@ abstract class DeviceOptions {
      *                              Deployment.
      * @return ReadDeviceOptions Options builder
      */
-    public static function read($deploymentSid = Values::NONE) {
+    public static function read($deploymentSid = Values::NONE): ReadDeviceOptions {
         return new ReadDeviceOptions($deploymentSid);
     }
 
@@ -44,7 +44,7 @@ abstract class DeviceOptions {
      * @param bool $enabled The enabled
      * @return UpdateDeviceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE): UpdateDeviceOptions {
         return new UpdateDeviceOptions($friendlyName, $identity, $deploymentSid, $enabled);
     }
 }
@@ -71,7 +71,7 @@ class CreateDeviceOptions extends Options {
      * @param string $uniqueName A unique, addressable name of this Device.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -82,7 +82,7 @@ class CreateDeviceOptions extends Options {
      * @param string $friendlyName A human readable description for this Device.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -93,7 +93,7 @@ class CreateDeviceOptions extends Options {
      * @param string $identity An identifier of the Device user.
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -104,7 +104,7 @@ class CreateDeviceOptions extends Options {
      * @param string $deploymentSid The unique SID of the Deployment group.
      * @return $this Fluent Builder
      */
-    public function setDeploymentSid($deploymentSid) {
+    public function setDeploymentSid($deploymentSid): self {
         $this->options['deploymentSid'] = $deploymentSid;
         return $this;
     }
@@ -115,7 +115,7 @@ class CreateDeviceOptions extends Options {
      * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -125,10 +125,10 @@ class CreateDeviceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -152,7 +152,7 @@ class ReadDeviceOptions extends Options {
      *                              Deployment.
      * @return $this Fluent Builder
      */
-    public function setDeploymentSid($deploymentSid) {
+    public function setDeploymentSid($deploymentSid): self {
         $this->options['deploymentSid'] = $deploymentSid;
         return $this;
     }
@@ -162,10 +162,10 @@ class ReadDeviceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -193,7 +193,7 @@ class UpdateDeviceOptions extends Options {
      * @param string $friendlyName A human readable description for this Device.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -204,7 +204,7 @@ class UpdateDeviceOptions extends Options {
      * @param string $identity An identifier of the Device user.
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -215,7 +215,7 @@ class UpdateDeviceOptions extends Options {
      * @param string $deploymentSid The unique SID of the Deployment group.
      * @return $this Fluent Builder
      */
-    public function setDeploymentSid($deploymentSid) {
+    public function setDeploymentSid($deploymentSid): self {
         $this->options['deploymentSid'] = $deploymentSid;
         return $this;
     }
@@ -226,7 +226,7 @@ class UpdateDeviceOptions extends Options {
      * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -236,10 +236,10 @@ class UpdateDeviceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

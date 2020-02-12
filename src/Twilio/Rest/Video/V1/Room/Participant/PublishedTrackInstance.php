@@ -30,20 +30,19 @@ class PublishedTrackInstance extends InstanceResource {
     /**
      * Initialize the PublishedTrackInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid The SID of the Room resource where the track is
      *                        published
      * @param string $participantSid The SID of the Participant resource with the
      *                               published track
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'participantSid' => Values::array_get($payload, 'participant_sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
@@ -53,25 +52,22 @@ class PublishedTrackInstance extends InstanceResource {
             'enabled' => Values::array_get($payload, 'enabled'),
             'kind' => Values::array_get($payload, 'kind'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'roomSid' => $roomSid,
             'participantSid' => $participantSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext Context
-     *                                                                      for
-     *                                                                      this
-     *                                                                      PublishedTrackInstance
+     * @return PublishedTrackContext Context for this PublishedTrackInstance
      */
-    protected function proxy() {
+    protected function proxy(): PublishedTrackContext {
         if (!$this->context) {
             $this->context = new PublishedTrackContext(
                 $this->version,
@@ -90,7 +86,7 @@ class PublishedTrackInstance extends InstanceResource {
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): PublishedTrackInstance {
         return $this->proxy()->fetch();
     }
 
@@ -119,8 +115,8 @@ class PublishedTrackInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

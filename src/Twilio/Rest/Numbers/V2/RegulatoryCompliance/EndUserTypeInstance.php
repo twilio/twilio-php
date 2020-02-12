@@ -25,34 +25,33 @@ class EndUserTypeInstance extends InstanceResource {
     /**
      * Initialize the EndUserTypeInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the End-User Type
      *                    resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'machineName' => Values::array_get($payload, 'machine_name'),
             'fields' => Values::array_get($payload, 'fields'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext Context for this EndUserTypeInstance
+     * @return EndUserTypeContext Context for this EndUserTypeInstance
      */
-    protected function proxy() {
+    protected function proxy(): EndUserTypeContext {
         if (!$this->context) {
             $this->context = new EndUserTypeContext($this->version, $this->solution['sid']);
         }
@@ -66,7 +65,7 @@ class EndUserTypeInstance extends InstanceResource {
      * @return EndUserTypeInstance Fetched EndUserTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): EndUserTypeInstance {
         return $this->proxy()->fetch();
     }
 
@@ -95,8 +94,8 @@ class EndUserTypeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

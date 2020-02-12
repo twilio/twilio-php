@@ -11,6 +11,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class AssetList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the Asset resource is
      *                           associated with
-     * @return \Twilio\Rest\Serverless\V1\Service\AssetList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets';
     }
@@ -51,9 +51,9 @@ class AssetList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -76,7 +76,7 @@ class AssetList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssetInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -87,14 +87,10 @@ class AssetList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of AssetInstance
+     * @return AssetPage Page of AssetInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): AssetPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -110,9 +106,9 @@ class AssetList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AssetInstance
+     * @return AssetPage Page of AssetInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): AssetPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,13 +124,13 @@ class AssetList extends ListResource {
      * @return AssetInstance Newly created AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName, ));
+    public function create($friendlyName): AssetInstance {
+        $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -145,9 +141,8 @@ class AssetList extends ListResource {
      * Constructs a AssetContext
      *
      * @param string $sid The SID that identifies the Asset resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\AssetContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): AssetContext {
         return new AssetContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
@@ -156,7 +151,7 @@ class AssetList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Serverless.V1.AssetList]';
     }
 }

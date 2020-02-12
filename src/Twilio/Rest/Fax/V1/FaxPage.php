@@ -22,7 +22,7 @@ class FaxPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FaxInstance {
         return new FaxInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class FaxPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Fax.V1.FaxPage]';
     }
 }

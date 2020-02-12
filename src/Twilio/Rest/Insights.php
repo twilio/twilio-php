@@ -19,14 +19,12 @@ use Twilio\Rest\Insights\V1;
  * @method \Twilio\Rest\Insights\V1\CallContext calls(string $sid)
  */
 class Insights extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the Insights Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Insights Domain for Insights
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -35,9 +33,9 @@ class Insights extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Insights\V1 Version v1 of insights
+     * @return V1 Version v1 of insights
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -71,24 +69,20 @@ class Insights extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Insights\V1\CallList
-     */
-    protected function getCalls() {
+    protected function getCalls(): \Twilio\Rest\Insights\V1\CallList {
         return $this->v1->calls;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Insights\V1\CallContext
      */
-    protected function contextCalls($sid) {
+    protected function contextCalls($sid): \Twilio\Rest\Insights\V1\CallContext {
         return $this->v1->calls($sid);
     }
 
@@ -97,7 +91,7 @@ class Insights extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Insights]';
     }
 }

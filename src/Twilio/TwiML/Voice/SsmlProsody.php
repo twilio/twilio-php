@@ -18,7 +18,7 @@ class SsmlProsody extends TwiML {
      * @param string $words Words to speak
      * @param array $attributes Optional attributes
      */
-    public function __construct($words, $attributes = array()) {
+    public function __construct($words, $attributes = []) {
         parent::__construct('prosody', $words, $attributes);
     }
 
@@ -27,9 +27,8 @@ class SsmlProsody extends TwiML {
      *
      * @param string $volume Specify the volume, available values: default, silent,
      *                       x-soft, soft, medium, loud, x-loud, +ndB, -ndB
-     * @return static $this.
      */
-    public function setVolume($volume) {
+    public function setVolume($volume): self {
         return $this->setAttribute('volume', $volume);
     }
 
@@ -38,9 +37,8 @@ class SsmlProsody extends TwiML {
      *
      * @param string $rate Specify the rate, available values: x-slow, slow,
      *                     medium, fast, x-fast, n%
-     * @return static $this.
      */
-    public function setRate($rate) {
+    public function setRate($rate): self {
         return $this->setAttribute('rate', $rate);
     }
 
@@ -49,9 +47,8 @@ class SsmlProsody extends TwiML {
      *
      * @param string $pitch Specify the pitch, available values: default, x-low,
      *                      low, medium, high, x-high, +n%, -n%
-     * @return static $this.
      */
-    public function setPitch($pitch) {
+    public function setPitch($pitch): self {
         return $this->setAttribute('pitch', $pitch);
     }
 }

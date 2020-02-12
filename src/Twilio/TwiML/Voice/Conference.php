@@ -18,7 +18,7 @@ class Conference extends TwiML {
      * @param string $name Conference name
      * @param array $attributes Optional attributes
      */
-    public function __construct($name, $attributes = array()) {
+    public function __construct($name, $attributes = []) {
         parent::__construct('Conference', $name, $attributes);
     }
 
@@ -26,9 +26,8 @@ class Conference extends TwiML {
      * Add Muted attribute.
      *
      * @param bool $muted Join the conference muted
-     * @return static $this.
      */
-    public function setMuted($muted) {
+    public function setMuted($muted): self {
         return $this->setAttribute('muted', $muted);
     }
 
@@ -36,9 +35,8 @@ class Conference extends TwiML {
      * Add Beep attribute.
      *
      * @param string $beep Play beep when joining
-     * @return static $this.
      */
-    public function setBeep($beep) {
+    public function setBeep($beep): self {
         return $this->setAttribute('beep', $beep);
     }
 
@@ -46,9 +44,8 @@ class Conference extends TwiML {
      * Add StartConferenceOnEnter attribute.
      *
      * @param bool $startConferenceOnEnter Start the conference on enter
-     * @return static $this.
      */
-    public function setStartConferenceOnEnter($startConferenceOnEnter) {
+    public function setStartConferenceOnEnter($startConferenceOnEnter): self {
         return $this->setAttribute('startConferenceOnEnter', $startConferenceOnEnter);
     }
 
@@ -56,9 +53,8 @@ class Conference extends TwiML {
      * Add EndConferenceOnExit attribute.
      *
      * @param bool $endConferenceOnExit End the conferenceon exit
-     * @return static $this.
      */
-    public function setEndConferenceOnExit($endConferenceOnExit) {
+    public function setEndConferenceOnExit($endConferenceOnExit): self {
         return $this->setAttribute('endConferenceOnExit', $endConferenceOnExit);
     }
 
@@ -66,9 +62,8 @@ class Conference extends TwiML {
      * Add WaitUrl attribute.
      *
      * @param string $waitUrl Wait URL
-     * @return static $this.
      */
-    public function setWaitUrl($waitUrl) {
+    public function setWaitUrl($waitUrl): self {
         return $this->setAttribute('waitUrl', $waitUrl);
     }
 
@@ -76,9 +71,8 @@ class Conference extends TwiML {
      * Add WaitMethod attribute.
      *
      * @param string $waitMethod Wait URL method
-     * @return static $this.
      */
-    public function setWaitMethod($waitMethod) {
+    public function setWaitMethod($waitMethod): self {
         return $this->setAttribute('waitMethod', $waitMethod);
     }
 
@@ -86,9 +80,8 @@ class Conference extends TwiML {
      * Add MaxParticipants attribute.
      *
      * @param int $maxParticipants Maximum number of participants
-     * @return static $this.
      */
-    public function setMaxParticipants($maxParticipants) {
+    public function setMaxParticipants($maxParticipants): self {
         return $this->setAttribute('maxParticipants', $maxParticipants);
     }
 
@@ -96,9 +89,8 @@ class Conference extends TwiML {
      * Add Record attribute.
      *
      * @param string $record Record the conference
-     * @return static $this.
      */
-    public function setRecord($record) {
+    public function setRecord($record): self {
         return $this->setAttribute('record', $record);
     }
 
@@ -106,9 +98,8 @@ class Conference extends TwiML {
      * Add Region attribute.
      *
      * @param string $region Conference region
-     * @return static $this.
      */
-    public function setRegion($region) {
+    public function setRegion($region): self {
         return $this->setAttribute('region', $region);
     }
 
@@ -116,9 +107,8 @@ class Conference extends TwiML {
      * Add Coach attribute.
      *
      * @param string $coach Call coach
-     * @return static $this.
      */
-    public function setCoach($coach) {
+    public function setCoach($coach): self {
         return $this->setAttribute('coach', $coach);
     }
 
@@ -126,9 +116,8 @@ class Conference extends TwiML {
      * Add Trim attribute.
      *
      * @param string $trim Trim the conference recording
-     * @return static $this.
      */
-    public function setTrim($trim) {
+    public function setTrim($trim): self {
         return $this->setAttribute('trim', $trim);
     }
 
@@ -136,9 +125,8 @@ class Conference extends TwiML {
      * Add StatusCallbackEvent attribute.
      *
      * @param string $statusCallbackEvent Events to call status callback URL
-     * @return static $this.
      */
-    public function setStatusCallbackEvent($statusCallbackEvent) {
+    public function setStatusCallbackEvent($statusCallbackEvent): self {
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);
     }
 
@@ -146,9 +134,8 @@ class Conference extends TwiML {
      * Add StatusCallback attribute.
      *
      * @param string $statusCallback Status callback URL
-     * @return static $this.
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         return $this->setAttribute('statusCallback', $statusCallback);
     }
 
@@ -156,9 +143,8 @@ class Conference extends TwiML {
      * Add StatusCallbackMethod attribute.
      *
      * @param string $statusCallbackMethod Status callback URL method
-     * @return static $this.
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
     }
 
@@ -166,9 +152,8 @@ class Conference extends TwiML {
      * Add RecordingStatusCallback attribute.
      *
      * @param string $recordingStatusCallback Recording status callback URL
-     * @return static $this.
      */
-    public function setRecordingStatusCallback($recordingStatusCallback) {
+    public function setRecordingStatusCallback($recordingStatusCallback): self {
         return $this->setAttribute('recordingStatusCallback', $recordingStatusCallback);
     }
 
@@ -177,9 +162,8 @@ class Conference extends TwiML {
      *
      * @param string $recordingStatusCallbackMethod Recording status callback URL
      *                                              method
-     * @return static $this.
      */
-    public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
+    public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod): self {
         return $this->setAttribute('recordingStatusCallbackMethod', $recordingStatusCallbackMethod);
     }
 
@@ -187,9 +171,8 @@ class Conference extends TwiML {
      * Add RecordingStatusCallbackEvent attribute.
      *
      * @param string $recordingStatusCallbackEvent Recording status callback events
-     * @return static $this.
      */
-    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
+    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent): self {
         return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);
     }
 
@@ -197,9 +180,8 @@ class Conference extends TwiML {
      * Add EventCallbackUrl attribute.
      *
      * @param string $eventCallbackUrl Event callback URL
-     * @return static $this.
      */
-    public function setEventCallbackUrl($eventCallbackUrl) {
+    public function setEventCallbackUrl($eventCallbackUrl): self {
         return $this->setAttribute('eventCallbackUrl', $eventCallbackUrl);
     }
 }

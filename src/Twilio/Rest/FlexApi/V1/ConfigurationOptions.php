@@ -18,7 +18,7 @@ abstract class ConfigurationOptions {
      *                          to fetch
      * @return FetchConfigurationOptions Options builder
      */
-    public static function fetch($uiVersion = Values::NONE) {
+    public static function fetch($uiVersion = Values::NONE): FetchConfigurationOptions {
         return new FetchConfigurationOptions($uiVersion);
     }
 }
@@ -39,7 +39,7 @@ class FetchConfigurationOptions extends Options {
      *                          to fetch
      * @return $this Fluent Builder
      */
-    public function setUiVersion($uiVersion) {
+    public function setUiVersion($uiVersion): self {
         $this->options['uiVersion'] = $uiVersion;
         return $this;
     }
@@ -49,10 +49,10 @@ class FetchConfigurationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

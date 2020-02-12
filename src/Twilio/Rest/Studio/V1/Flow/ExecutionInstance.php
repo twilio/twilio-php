@@ -12,6 +12,8 @@ namespace Twilio\Rest\Studio\V1\Flow;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList;
+use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -29,23 +31,22 @@ use Twilio\Version;
  * @property array $links
  */
 class ExecutionInstance extends InstanceResource {
-    protected $_steps = null;
-    protected $_executionContext = null;
+    protected $_steps;
+    protected $_executionContext;
 
     /**
      * Initialize the ExecutionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid The SID of the Flow
      * @param string $sid The SID of the Execution resource to fetch
-     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'flowSid' => Values::array_get($payload, 'flow_sid'),
@@ -57,19 +58,18 @@ class ExecutionInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionContext Context for this
-     *                                                      ExecutionInstance
+     * @return ExecutionContext Context for this ExecutionInstance
      */
-    protected function proxy() {
+    protected function proxy(): ExecutionContext {
         if (!$this->context) {
             $this->context = new ExecutionContext(
                 $this->version,
@@ -87,35 +87,31 @@ class ExecutionInstance extends InstanceResource {
      * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): ExecutionInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the ExecutionInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the steps
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList
      */
-    protected function getSteps() {
+    protected function getSteps(): ExecutionStepList {
         return $this->proxy()->steps;
     }
 
     /**
      * Access the executionContext
-     *
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList
      */
-    protected function getExecutionContext() {
+    protected function getExecutionContext(): ExecutionContextList {
         return $this->proxy()->executionContext;
     }
 
@@ -144,8 +140,8 @@ class ExecutionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

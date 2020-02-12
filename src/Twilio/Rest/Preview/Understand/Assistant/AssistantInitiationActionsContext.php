@@ -23,15 +23,14 @@ class AssistantInitiationActionsContext extends InstanceContext {
     /**
      * Initialize the AssistantInitiationActionsContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsContext
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/InitiationActions';
     }
@@ -43,8 +42,8 @@ class AssistantInitiationActionsContext extends InstanceContext {
      *                                            AssistantInitiationActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): AssistantInitiationActionsInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -67,17 +66,15 @@ class AssistantInitiationActionsContext extends InstanceContext {
      *                                            AssistantInitiationActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): AssistantInitiationActionsInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'InitiationActions' => Serialize::jsonObject($options['initiationActions']),
-        ));
+        $data = Values::of(['InitiationActions' => Serialize::jsonObject($options['initiationActions']), ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -93,8 +90,8 @@ class AssistantInitiationActionsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

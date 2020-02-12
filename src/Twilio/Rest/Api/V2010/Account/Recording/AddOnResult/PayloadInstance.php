@@ -32,7 +32,7 @@ class PayloadInstance extends InstanceResource {
     /**
      * Initialize the PayloadInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $referenceSid The SID of the recording to which the
@@ -41,13 +41,12 @@ class PayloadInstance extends InstanceResource {
      * @param string $addOnResultSid The SID of the AddOnResult to which the
      *                               payload belongs
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $addOnResultSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'addOnResultSid' => Values::array_get($payload, 'add_on_result_sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -59,23 +58,23 @@ class PayloadInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'referenceSid' => Values::array_get($payload, 'reference_sid'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'referenceSid' => $referenceSid,
             'addOnResultSid' => $addOnResultSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext Context for this PayloadInstance
+     * @return PayloadContext Context for this PayloadInstance
      */
-    protected function proxy() {
+    protected function proxy(): PayloadContext {
         if (!$this->context) {
             $this->context = new PayloadContext(
                 $this->version,
@@ -95,17 +94,17 @@ class PayloadInstance extends InstanceResource {
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): PayloadInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the PayloadInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -134,8 +133,8 @@ class PayloadInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

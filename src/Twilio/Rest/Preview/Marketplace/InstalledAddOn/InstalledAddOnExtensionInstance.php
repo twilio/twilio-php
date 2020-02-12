@@ -29,18 +29,17 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
     /**
      * Initialize the InstalledAddOnExtensionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $installedAddOnSid The SID of the InstalledAddOn resource to
      *                                  which this extension applies
      * @param string $sid The SID of the InstalledAddOn Extension resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionInstance
      */
     public function __construct(Version $version, array $payload, $installedAddOnSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'installedAddOnSid' => Values::array_get($payload, 'installed_add_on_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
@@ -48,22 +47,22 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'enabled' => Values::array_get($payload, 'enabled'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'installedAddOnSid' => $installedAddOnSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext Context for this
-     *                                                                                        InstalledAddOnExtensionInstance
+     * @return InstalledAddOnExtensionContext Context for this
+     *                                        InstalledAddOnExtensionInstance
      */
-    protected function proxy() {
+    protected function proxy(): InstalledAddOnExtensionContext {
         if (!$this->context) {
             $this->context = new InstalledAddOnExtensionContext(
                 $this->version,
@@ -82,7 +81,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): InstalledAddOnExtensionInstance {
         return $this->proxy()->fetch();
     }
 
@@ -94,7 +93,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($enabled) {
+    public function update($enabled): InstalledAddOnExtensionInstance {
         return $this->proxy()->update($enabled);
     }
 
@@ -123,8 +122,8 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

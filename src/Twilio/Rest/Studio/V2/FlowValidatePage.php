@@ -22,7 +22,7 @@ class FlowValidatePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): FlowValidateInstance {
         return new FlowValidateInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class FlowValidatePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V2.FlowValidatePage]';
     }
 }

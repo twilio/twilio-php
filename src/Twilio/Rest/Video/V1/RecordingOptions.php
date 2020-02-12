@@ -26,7 +26,7 @@ abstract class RecordingOptions {
      * @param string $mediaType Read only recordings that have this media type
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE) {
+    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE): ReadRecordingOptions {
         return new ReadRecordingOptions($status, $sourceSid, $groupingSid, $dateCreatedAfter, $dateCreatedBefore, $mediaType);
     }
 }
@@ -59,7 +59,7 @@ class ReadRecordingOptions extends Options {
      * @param string $status Read only the recordings that have this status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status): self {
         $this->options['status'] = $status;
         return $this;
     }
@@ -70,7 +70,7 @@ class ReadRecordingOptions extends Options {
      * @param string $sourceSid Read only the recordings that have this source_sid
      * @return $this Fluent Builder
      */
-    public function setSourceSid($sourceSid) {
+    public function setSourceSid($sourceSid): self {
         $this->options['sourceSid'] = $sourceSid;
         return $this;
     }
@@ -81,7 +81,7 @@ class ReadRecordingOptions extends Options {
      * @param string $groupingSid Read only recordings that have this grouping_sid
      * @return $this Fluent Builder
      */
-    public function setGroupingSid($groupingSid) {
+    public function setGroupingSid($groupingSid): self {
         $this->options['groupingSid'] = $groupingSid;
         return $this;
     }
@@ -94,7 +94,7 @@ class ReadRecordingOptions extends Options {
      *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -107,7 +107,7 @@ class ReadRecordingOptions extends Options {
      *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -118,7 +118,7 @@ class ReadRecordingOptions extends Options {
      * @param string $mediaType Read only recordings that have this media type
      * @return $this Fluent Builder
      */
-    public function setMediaType($mediaType) {
+    public function setMediaType($mediaType): self {
         $this->options['mediaType'] = $mediaType;
         return $this;
     }
@@ -128,10 +128,10 @@ class ReadRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

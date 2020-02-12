@@ -21,15 +21,14 @@ class JobContext extends InstanceContext {
     /**
      * Initialize the JobContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $jobSid The job_sid
-     * @return \Twilio\Rest\Preview\BulkExports\Export\JobContext
      */
     public function __construct(Version $version, $jobSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('jobSid' => $jobSid, );
+        $this->solution = ['jobSid' => $jobSid, ];
 
         $this->uri = '/Exports/Jobs/' . \rawurlencode($jobSid) . '';
     }
@@ -40,8 +39,8 @@ class JobContext extends InstanceContext {
      * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): JobInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -55,10 +54,10 @@ class JobContext extends InstanceContext {
     /**
      * Deletes the JobInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -67,8 +66,8 @@ class JobContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -20,7 +20,7 @@ abstract class EventOptions {
      * @param string $edge The edge
      * @return ReadEventOptions Options builder
      */
-    public static function read($edge = Values::NONE) {
+    public static function read($edge = Values::NONE): ReadEventOptions {
         return new ReadEventOptions($edge);
     }
 }
@@ -39,7 +39,7 @@ class ReadEventOptions extends Options {
      * @param string $edge The edge
      * @return $this Fluent Builder
      */
-    public function setEdge($edge) {
+    public function setEdge($edge): self {
         $this->options['edge'] = $edge;
         return $this;
     }
@@ -49,10 +49,10 @@ class ReadEventOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

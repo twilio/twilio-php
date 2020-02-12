@@ -12,6 +12,7 @@ namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -20,13 +21,12 @@ class BundleList extends ListResource {
      * Construct the BundleList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/RegulatoryCompliance/Bundles';
     }
@@ -41,10 +41,10 @@ class BundleList extends ListResource {
      * @return BundleInstance Newly created BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $email, $options = array()) {
+    public function create($friendlyName, $email, $options = []): BundleInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $friendlyName,
             'Email' => $email,
             'StatusCallback' => $options['statusCallback'],
@@ -52,12 +52,12 @@ class BundleList extends ListResource {
             'IsoCountry' => $options['isoCountry'],
             'EndUserType' => $options['endUserType'],
             'NumberType' => $options['numberType'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -81,9 +81,9 @@ class BundleList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -107,7 +107,7 @@ class BundleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BundleInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -119,11 +119,11 @@ class BundleList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of BundleInstance
+     * @return BundlePage Page of BundleInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): BundlePage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'Status' => $options['status'],
             'FriendlyName' => $options['friendlyName'],
             'RegulationSid' => $options['regulationSid'],
@@ -132,7 +132,7 @@ class BundleList extends ListResource {
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -148,9 +148,9 @@ class BundleList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of BundleInstance
+     * @return BundlePage Page of BundleInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): BundlePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -163,9 +163,8 @@ class BundleList extends ListResource {
      * Constructs a BundleContext
      *
      * @param string $sid The unique string that identifies the resource.
-     * @return \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): BundleContext {
         return new BundleContext($this->version, $sid);
     }
 
@@ -174,7 +173,7 @@ class BundleList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Numbers.V2.BundleList]';
     }
 }

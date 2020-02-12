@@ -18,17 +18,16 @@ class RoomRecordingContext extends InstanceContext {
     /**
      * Initialize the RoomRecordingContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $roomSid The SID of the Room resource with the recording to
      *                        fetch
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid, );
+        $this->solution = ['roomSid' => $roomSid, 'sid' => $sid, ];
 
         $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Recordings/' . \rawurlencode($sid) . '';
     }
@@ -39,8 +38,8 @@ class RoomRecordingContext extends InstanceContext {
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): RoomRecordingInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -59,10 +58,10 @@ class RoomRecordingContext extends InstanceContext {
     /**
      * Deletes the RoomRecordingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -71,8 +70,8 @@ class RoomRecordingContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

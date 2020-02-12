@@ -21,21 +21,18 @@ class AssistantInitiationActionsList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Constructs a AssistantInitiationActionsContext
-     *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsContext
      */
-    public function getContext() {
+    public function getContext(): AssistantInitiationActionsContext {
         return new AssistantInitiationActionsContext($this->version, $this->solution['assistantSid']);
     }
 
@@ -44,7 +41,7 @@ class AssistantInitiationActionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Understand.AssistantInitiationActionsList]';
     }
 }

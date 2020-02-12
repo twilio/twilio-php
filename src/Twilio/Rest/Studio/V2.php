@@ -11,44 +11,38 @@ namespace Twilio\Rest\Studio;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Studio\V2\FlowList;
 use Twilio\Rest\Studio\V2\FlowValidateList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V2\FlowList $flows
- * @property \Twilio\Rest\Studio\V2\FlowValidateList $flowValid
+ * @property FlowList $flows
+ * @property FlowValidateList $flowValid
  * @method \Twilio\Rest\Studio\V2\FlowContext flows(string $sid)
  */
 class V2 extends Version {
-    protected $_flows = null;
-    protected $_flowValid = null;
+    protected $_flows;
+    protected $_flowValid;
 
     /**
      * Construct the V2 version of Studio
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Studio\V2 V2 version of Studio
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v2';
     }
 
-    /**
-     * @return \Twilio\Rest\Studio\V2\FlowList
-     */
-    protected function getFlows() {
+    protected function getFlows(): FlowList {
         if (!$this->_flows) {
             $this->_flows = new FlowList($this);
         }
         return $this->_flows;
     }
 
-    /**
-     * @return \Twilio\Rest\Studio\V2\FlowValidateList
-     */
-    protected function getFlowValid() {
+    protected function getFlowValid(): FlowValidateList {
         if (!$this->_flowValid) {
             $this->_flowValid = new FlowValidateList($this);
         }
@@ -76,10 +70,10 @@ class V2 extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -93,7 +87,7 @@ class V2 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V2]';
     }
 }

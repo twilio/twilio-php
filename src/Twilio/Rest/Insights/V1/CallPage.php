@@ -22,7 +22,7 @@ class CallPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): CallInstance {
         return new CallInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class CallPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Insights.V1.CallPage]';
     }
 }

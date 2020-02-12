@@ -36,7 +36,7 @@ abstract class ServiceOptions {
      *                                      used to update Sync objects
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE): CreateServiceOptions {
         return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow, $webhooksFromRestEnabled);
     }
 
@@ -60,7 +60,7 @@ abstract class ServiceOptions {
      *                                      used to update Sync objects
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
+    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow, $webhooksFromRestEnabled);
     }
 }
@@ -101,7 +101,7 @@ class CreateServiceOptions extends Options {
      * @param string $friendlyName A string that you assign to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -113,7 +113,7 @@ class CreateServiceOptions extends Options {
      *                           manipulated
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -126,7 +126,7 @@ class CreateServiceOptions extends Options {
      *                                          endpoints connect to Sync
      * @return $this Fluent Builder
      */
-    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
+    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled): self {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         return $this;
     }
@@ -139,7 +139,7 @@ class CreateServiceOptions extends Options {
      *                         Permissions resource
      * @return $this Fluent Builder
      */
-    public function setAclEnabled($aclEnabled) {
+    public function setAclEnabled($aclEnabled): self {
         $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
@@ -152,7 +152,7 @@ class CreateServiceOptions extends Options {
      *                                            occurs after a configurable delay
      * @return $this Fluent Builder
      */
-    public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled) {
+    public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled): self {
         $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
         return $this;
     }
@@ -164,7 +164,7 @@ class CreateServiceOptions extends Options {
      *                                          milliseconds
      * @return $this Fluent Builder
      */
-    public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
+    public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow): self {
         $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
         return $this;
     }
@@ -177,7 +177,7 @@ class CreateServiceOptions extends Options {
      *                                      used to update Sync objects
      * @return $this Fluent Builder
      */
-    public function setWebhooksFromRestEnabled($webhooksFromRestEnabled) {
+    public function setWebhooksFromRestEnabled($webhooksFromRestEnabled): self {
         $this->options['webhooksFromRestEnabled'] = $webhooksFromRestEnabled;
         return $this;
     }
@@ -187,10 +187,10 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -235,7 +235,7 @@ class UpdateServiceOptions extends Options {
      *                           manipulated
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -246,7 +246,7 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName A string that you assign to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -259,7 +259,7 @@ class UpdateServiceOptions extends Options {
      *                                          endpoints connect to Sync
      * @return $this Fluent Builder
      */
-    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
+    public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled): self {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         return $this;
     }
@@ -272,7 +272,7 @@ class UpdateServiceOptions extends Options {
      *                         Permissions resource
      * @return $this Fluent Builder
      */
-    public function setAclEnabled($aclEnabled) {
+    public function setAclEnabled($aclEnabled): self {
         $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
@@ -285,7 +285,7 @@ class UpdateServiceOptions extends Options {
      *                                            occurs after a configurable delay
      * @return $this Fluent Builder
      */
-    public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled) {
+    public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled): self {
         $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
         return $this;
     }
@@ -297,7 +297,7 @@ class UpdateServiceOptions extends Options {
      *                                          milliseconds
      * @return $this Fluent Builder
      */
-    public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
+    public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow): self {
         $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
         return $this;
     }
@@ -310,7 +310,7 @@ class UpdateServiceOptions extends Options {
      *                                      used to update Sync objects
      * @return $this Fluent Builder
      */
-    public function setWebhooksFromRestEnabled($webhooksFromRestEnabled) {
+    public function setWebhooksFromRestEnabled($webhooksFromRestEnabled): self {
         $this->options['webhooksFromRestEnabled'] = $webhooksFromRestEnabled;
         return $this;
     }
@@ -320,10 +320,10 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

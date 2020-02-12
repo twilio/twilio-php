@@ -28,7 +28,7 @@ abstract class ParticipantOptions {
      *                               resource was updated
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($identity = Values::NONE, $userAddress = Values::NONE, $attributes = Values::NONE, $twilioAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public static function create($identity = Values::NONE, $userAddress = Values::NONE, $attributes = Values::NONE, $twilioAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE): CreateParticipantOptions {
         return new CreateParticipantOptions($identity, $userAddress, $attributes, $twilioAddress, $dateCreated, $dateUpdated);
     }
 
@@ -40,7 +40,7 @@ abstract class ParticipantOptions {
      *                               resource was updated
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public static function update($attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE): UpdateParticipantOptions {
         return new UpdateParticipantOptions($attributes, $dateCreated, $dateUpdated);
     }
 }
@@ -72,7 +72,7 @@ class CreateParticipantOptions extends Options {
      * @param string $identity The string that identifies the resource's User
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -83,7 +83,7 @@ class CreateParticipantOptions extends Options {
      * @param string $userAddress The address of the participant's device
      * @return $this Fluent Builder
      */
-    public function setUserAddress($userAddress) {
+    public function setUserAddress($userAddress): self {
         $this->options['userAddress'] = $userAddress;
         return $this;
     }
@@ -94,7 +94,7 @@ class CreateParticipantOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -106,7 +106,7 @@ class CreateParticipantOptions extends Options {
      *                              participant is in contact with
      * @return $this Fluent Builder
      */
-    public function setTwilioAddress($twilioAddress) {
+    public function setTwilioAddress($twilioAddress): self {
         $this->options['twilioAddress'] = $twilioAddress;
         return $this;
     }
@@ -118,7 +118,7 @@ class CreateParticipantOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -130,7 +130,7 @@ class CreateParticipantOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -140,10 +140,10 @@ class CreateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -171,7 +171,7 @@ class UpdateParticipantOptions extends Options {
      * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -183,7 +183,7 @@ class UpdateParticipantOptions extends Options {
      *                               resource was created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -195,7 +195,7 @@ class UpdateParticipantOptions extends Options {
      *                               resource was updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -205,10 +205,10 @@ class UpdateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

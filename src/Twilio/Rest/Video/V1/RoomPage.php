@@ -19,7 +19,7 @@ class RoomPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): RoomInstance {
         return new RoomInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class RoomPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Video.V1.RoomPage]';
     }
 }

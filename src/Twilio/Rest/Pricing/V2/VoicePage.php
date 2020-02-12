@@ -19,7 +19,7 @@ class VoicePage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): VoiceInstance {
         return new VoiceInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class VoicePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Pricing.V2.VoicePage]';
     }
 }

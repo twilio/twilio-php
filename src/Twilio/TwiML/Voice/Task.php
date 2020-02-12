@@ -18,7 +18,7 @@ class Task extends TwiML {
      * @param string $body TaskRouter task attributes
      * @param array $attributes Optional attributes
      */
-    public function __construct($body, $attributes = array()) {
+    public function __construct($body, $attributes = []) {
         parent::__construct('Task', $body, $attributes);
     }
 
@@ -26,9 +26,8 @@ class Task extends TwiML {
      * Add Priority attribute.
      *
      * @param int $priority Task priority
-     * @return static $this.
      */
-    public function setPriority($priority) {
+    public function setPriority($priority): self {
         return $this->setAttribute('priority', $priority);
     }
 
@@ -36,9 +35,8 @@ class Task extends TwiML {
      * Add Timeout attribute.
      *
      * @param int $timeout Timeout associated with task
-     * @return static $this.
      */
-    public function setTimeout($timeout) {
+    public function setTimeout($timeout): self {
         return $this->setAttribute('timeout', $timeout);
     }
 }

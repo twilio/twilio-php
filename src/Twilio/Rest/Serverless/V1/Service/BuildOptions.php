@@ -25,7 +25,7 @@ abstract class BuildOptions {
      *                             included in the build
      * @return CreateBuildOptions Options builder
      */
-    public static function create($assetVersions = Values::NONE, $functionVersions = Values::NONE, $dependencies = Values::NONE) {
+    public static function create($assetVersions = Values::NONE, $functionVersions = Values::NONE, $dependencies = Values::NONE): CreateBuildOptions {
         return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies);
     }
 }
@@ -52,7 +52,7 @@ class CreateBuildOptions extends Options {
      *                              include in the build
      * @return $this Fluent Builder
      */
-    public function setAssetVersions($assetVersions) {
+    public function setAssetVersions($assetVersions): self {
         $this->options['assetVersions'] = $assetVersions;
         return $this;
     }
@@ -64,7 +64,7 @@ class CreateBuildOptions extends Options {
      *                                 include in the build
      * @return $this Fluent Builder
      */
-    public function setFunctionVersions($functionVersions) {
+    public function setFunctionVersions($functionVersions): self {
         $this->options['functionVersions'] = $functionVersions;
         return $this;
     }
@@ -76,7 +76,7 @@ class CreateBuildOptions extends Options {
      *                             included in the build
      * @return $this Fluent Builder
      */
-    public function setDependencies($dependencies) {
+    public function setDependencies($dependencies): self {
         $this->options['dependencies'] = $dependencies;
         return $this;
     }
@@ -86,10 +86,10 @@ class CreateBuildOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

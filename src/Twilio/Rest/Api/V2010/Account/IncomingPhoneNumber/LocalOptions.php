@@ -21,7 +21,7 @@ abstract class LocalOptions {
      *                       default, phone numbers of all origin are included.
      * @return ReadLocalOptions Options builder
      */
-    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
+    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE): ReadLocalOptions {
         return new ReadLocalOptions($beta, $friendlyName, $phoneNumber, $origin);
     }
 
@@ -67,7 +67,7 @@ abstract class LocalOptions {
      *                          number
      * @return CreateLocalOptions Options builder
      */
-    public static function create($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $bundleSid = Values::NONE) {
+    public static function create($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $bundleSid = Values::NONE): CreateLocalOptions {
         return new CreateLocalOptions($apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $identitySid, $addressSid, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode, $bundleSid);
     }
 }
@@ -93,7 +93,7 @@ class ReadLocalOptions extends Options {
      * @param bool $beta Whether to include new phone numbers
      * @return $this Fluent Builder
      */
-    public function setBeta($beta) {
+    public function setBeta($beta): self {
         $this->options['beta'] = $beta;
         return $this;
     }
@@ -104,7 +104,7 @@ class ReadLocalOptions extends Options {
      * @param string $friendlyName A string that identifies the resources to read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -115,7 +115,7 @@ class ReadLocalOptions extends Options {
      * @param string $phoneNumber The phone numbers of the resources to read
      * @return $this Fluent Builder
      */
-    public function setPhoneNumber($phoneNumber) {
+    public function setPhoneNumber($phoneNumber): self {
         $this->options['phoneNumber'] = $phoneNumber;
         return $this;
     }
@@ -127,7 +127,7 @@ class ReadLocalOptions extends Options {
      *                       default, phone numbers of all origin are included.
      * @return $this Fluent Builder
      */
-    public function setOrigin($origin) {
+    public function setOrigin($origin): self {
         $this->options['origin'] = $origin;
         return $this;
     }
@@ -137,10 +137,10 @@ class ReadLocalOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -222,7 +222,7 @@ class CreateLocalOptions extends Options {
      *                           the new phone number
      * @return $this Fluent Builder
      */
-    public function setApiVersion($apiVersion) {
+    public function setApiVersion($apiVersion): self {
         $this->options['apiVersion'] = $apiVersion;
         return $this;
     }
@@ -233,7 +233,7 @@ class CreateLocalOptions extends Options {
      * @param string $friendlyName A string to describe the new phone number
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -245,7 +245,7 @@ class CreateLocalOptions extends Options {
      *                                  messages
      * @return $this Fluent Builder
      */
-    public function setSmsApplicationSid($smsApplicationSid) {
+    public function setSmsApplicationSid($smsApplicationSid): self {
         $this->options['smsApplicationSid'] = $smsApplicationSid;
         return $this;
     }
@@ -257,7 +257,7 @@ class CreateLocalOptions extends Options {
      *                                  status_callback
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackMethod($smsFallbackMethod) {
+    public function setSmsFallbackMethod($smsFallbackMethod): self {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
         return $this;
     }
@@ -269,7 +269,7 @@ class CreateLocalOptions extends Options {
      *                               executing TwiML
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackUrl($smsFallbackUrl) {
+    public function setSmsFallbackUrl($smsFallbackUrl): self {
         $this->options['smsFallbackUrl'] = $smsFallbackUrl;
         return $this;
     }
@@ -280,7 +280,7 @@ class CreateLocalOptions extends Options {
      * @param string $smsMethod The HTTP method to use with sms url
      * @return $this Fluent Builder
      */
-    public function setSmsMethod($smsMethod) {
+    public function setSmsMethod($smsMethod): self {
         $this->options['smsMethod'] = $smsMethod;
         return $this;
     }
@@ -292,7 +292,7 @@ class CreateLocalOptions extends Options {
      *                       receives an incoming SMS message
      * @return $this Fluent Builder
      */
-    public function setSmsUrl($smsUrl) {
+    public function setSmsUrl($smsUrl): self {
         $this->options['smsUrl'] = $smsUrl;
         return $this;
     }
@@ -304,7 +304,7 @@ class CreateLocalOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -316,7 +316,7 @@ class CreateLocalOptions extends Options {
      *                                     status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -328,7 +328,7 @@ class CreateLocalOptions extends Options {
      *                                    new phone number
      * @return $this Fluent Builder
      */
-    public function setVoiceApplicationSid($voiceApplicationSid) {
+    public function setVoiceApplicationSid($voiceApplicationSid): self {
         $this->options['voiceApplicationSid'] = $voiceApplicationSid;
         return $this;
     }
@@ -339,7 +339,7 @@ class CreateLocalOptions extends Options {
      * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @return $this Fluent Builder
      */
-    public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
+    public function setVoiceCallerIdLookup($voiceCallerIdLookup): self {
         $this->options['voiceCallerIdLookup'] = $voiceCallerIdLookup;
         return $this;
     }
@@ -351,7 +351,7 @@ class CreateLocalOptions extends Options {
      *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackMethod($voiceFallbackMethod) {
+    public function setVoiceFallbackMethod($voiceFallbackMethod): self {
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         return $this;
     }
@@ -363,7 +363,7 @@ class CreateLocalOptions extends Options {
      *                                 TwiML
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackUrl($voiceFallbackUrl) {
+    public function setVoiceFallbackUrl($voiceFallbackUrl): self {
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         return $this;
     }
@@ -374,7 +374,7 @@ class CreateLocalOptions extends Options {
      * @param string $voiceMethod The HTTP method used with the voice_url
      * @return $this Fluent Builder
      */
-    public function setVoiceMethod($voiceMethod) {
+    public function setVoiceMethod($voiceMethod): self {
         $this->options['voiceMethod'] = $voiceMethod;
         return $this;
     }
@@ -386,7 +386,7 @@ class CreateLocalOptions extends Options {
      *                         receives a call
      * @return $this Fluent Builder
      */
-    public function setVoiceUrl($voiceUrl) {
+    public function setVoiceUrl($voiceUrl): self {
         $this->options['voiceUrl'] = $voiceUrl;
         return $this;
     }
@@ -398,7 +398,7 @@ class CreateLocalOptions extends Options {
      *                            with the new phone number
      * @return $this Fluent Builder
      */
-    public function setIdentitySid($identitySid) {
+    public function setIdentitySid($identitySid): self {
         $this->options['identitySid'] = $identitySid;
         return $this;
     }
@@ -410,7 +410,7 @@ class CreateLocalOptions extends Options {
      *                           the phone number
      * @return $this Fluent Builder
      */
-    public function setAddressSid($addressSid) {
+    public function setAddressSid($addressSid): self {
         $this->options['addressSid'] = $addressSid;
         return $this;
     }
@@ -422,7 +422,7 @@ class CreateLocalOptions extends Options {
      *                                number is enabled for emergency calling
      * @return $this Fluent Builder
      */
-    public function setEmergencyStatus($emergencyStatus) {
+    public function setEmergencyStatus($emergencyStatus): self {
         $this->options['emergencyStatus'] = $emergencyStatus;
         return $this;
     }
@@ -434,7 +434,7 @@ class CreateLocalOptions extends Options {
      *                                    use for emergency calling
      * @return $this Fluent Builder
      */
-    public function setEmergencyAddressSid($emergencyAddressSid) {
+    public function setEmergencyAddressSid($emergencyAddressSid): self {
         $this->options['emergencyAddressSid'] = $emergencyAddressSid;
         return $this;
     }
@@ -446,7 +446,7 @@ class CreateLocalOptions extends Options {
      *                         number
      * @return $this Fluent Builder
      */
-    public function setTrunkSid($trunkSid) {
+    public function setTrunkSid($trunkSid): self {
         $this->options['trunkSid'] = $trunkSid;
         return $this;
     }
@@ -457,7 +457,7 @@ class CreateLocalOptions extends Options {
      * @param string $voiceReceiveMode Incoming call type: fax or voice
      * @return $this Fluent Builder
      */
-    public function setVoiceReceiveMode($voiceReceiveMode) {
+    public function setVoiceReceiveMode($voiceReceiveMode): self {
         $this->options['voiceReceiveMode'] = $voiceReceiveMode;
         return $this;
     }
@@ -469,7 +469,7 @@ class CreateLocalOptions extends Options {
      *                          number
      * @return $this Fluent Builder
      */
-    public function setBundleSid($bundleSid) {
+    public function setBundleSid($bundleSid): self {
         $this->options['bundleSid'] = $bundleSid;
         return $this;
     }
@@ -479,10 +479,10 @@ class CreateLocalOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

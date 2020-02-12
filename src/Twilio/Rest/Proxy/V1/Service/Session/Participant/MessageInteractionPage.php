@@ -22,7 +22,7 @@ class MessageInteractionPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): MessageInteractionInstance {
         return new MessageInteractionInstance(
             $this->version,
             $payload,
@@ -37,7 +37,7 @@ class MessageInteractionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Proxy.V1.MessageInteractionPage]';
     }
 }

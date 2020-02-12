@@ -24,7 +24,7 @@ abstract class ShortCodeOptions {
      *                                  sms_fallback_url
      * @return UpdateShortCodeOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $apiVersion = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $apiVersion = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE): UpdateShortCodeOptions {
         return new UpdateShortCodeOptions($friendlyName, $apiVersion, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod);
     }
 
@@ -34,7 +34,7 @@ abstract class ShortCodeOptions {
      * @param string $shortCode Filter by ShortCode
      * @return ReadShortCodeOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE, $shortCode = Values::NONE) {
+    public static function read($friendlyName = Values::NONE, $shortCode = Values::NONE): ReadShortCodeOptions {
         return new ReadShortCodeOptions($friendlyName, $shortCode);
     }
 }
@@ -65,7 +65,7 @@ class UpdateShortCodeOptions extends Options {
      * @param string $friendlyName A string to describe this resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -76,7 +76,7 @@ class UpdateShortCodeOptions extends Options {
      * @param string $apiVersion The API version to use to start a new TwiML session
      * @return $this Fluent Builder
      */
-    public function setApiVersion($apiVersion) {
+    public function setApiVersion($apiVersion): self {
         $this->options['apiVersion'] = $apiVersion;
         return $this;
     }
@@ -87,7 +87,7 @@ class UpdateShortCodeOptions extends Options {
      * @param string $smsUrl URL Twilio will request when receiving an SMS
      * @return $this Fluent Builder
      */
-    public function setSmsUrl($smsUrl) {
+    public function setSmsUrl($smsUrl): self {
         $this->options['smsUrl'] = $smsUrl;
         return $this;
     }
@@ -98,7 +98,7 @@ class UpdateShortCodeOptions extends Options {
      * @param string $smsMethod HTTP method to use when requesting the sms url
      * @return $this Fluent Builder
      */
-    public function setSmsMethod($smsMethod) {
+    public function setSmsMethod($smsMethod): self {
         $this->options['smsMethod'] = $smsMethod;
         return $this;
     }
@@ -110,7 +110,7 @@ class UpdateShortCodeOptions extends Options {
      *                               executing TwiML
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackUrl($smsFallbackUrl) {
+    public function setSmsFallbackUrl($smsFallbackUrl): self {
         $this->options['smsFallbackUrl'] = $smsFallbackUrl;
         return $this;
     }
@@ -122,7 +122,7 @@ class UpdateShortCodeOptions extends Options {
      *                                  sms_fallback_url
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackMethod($smsFallbackMethod) {
+    public function setSmsFallbackMethod($smsFallbackMethod): self {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
         return $this;
     }
@@ -132,10 +132,10 @@ class UpdateShortCodeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -161,7 +161,7 @@ class ReadShortCodeOptions extends Options {
      *                             resources to read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -172,7 +172,7 @@ class ReadShortCodeOptions extends Options {
      * @param string $shortCode Filter by ShortCode
      * @return $this Fluent Builder
      */
-    public function setShortCode($shortCode) {
+    public function setShortCode($shortCode): self {
         $this->options['shortCode'] = $shortCode;
         return $this;
     }
@@ -182,10 +182,10 @@ class ReadShortCodeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

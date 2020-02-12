@@ -26,22 +26,21 @@ class DeviceInstance extends InstanceResource {
     /**
      * Initialize the DeviceInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'bindingSid' => Values::array_get($payload, 'binding_sid'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'sid' => Values::array_get($payload, 'sid'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
@@ -69,7 +68,7 @@ class DeviceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.TrustedComms.DeviceInstance]';
     }
 }

@@ -18,17 +18,16 @@ class UserBindingContext extends InstanceContext {
     /**
      * Initialize the UserBindingContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $userSid The SID of the User with the binding
      * @param string $sid The SID of the User Binding resource to fetch
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingContext
      */
     public function __construct(Version $version, $serviceSid, $userSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, 'sid' => $sid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'userSid' => $userSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Bindings/' . \rawurlencode($sid) . '';
     }
@@ -39,8 +38,8 @@ class UserBindingContext extends InstanceContext {
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): UserBindingInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -60,10 +59,10 @@ class UserBindingContext extends InstanceContext {
     /**
      * Deletes the UserBindingInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -72,8 +71,8 @@ class UserBindingContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

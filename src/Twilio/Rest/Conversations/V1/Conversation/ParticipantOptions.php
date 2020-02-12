@@ -33,7 +33,7 @@ abstract class ParticipantOptions {
      *                                                 Group MMS.
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $messagingBindingProjectedAddress = Values::NONE) {
+    public static function create($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $messagingBindingProjectedAddress = Values::NONE): CreateParticipantOptions {
         return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes, $messagingBindingProjectedAddress);
     }
 
@@ -44,7 +44,7 @@ abstract class ParticipantOptions {
      *                           store any data you wish.
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public static function update($dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE): UpdateParticipantOptions {
         return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes);
     }
 }
@@ -83,7 +83,7 @@ class CreateParticipantOptions extends Options {
      *                         participant as Chat User.
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -95,7 +95,7 @@ class CreateParticipantOptions extends Options {
      *                                        device.
      * @return $this Fluent Builder
      */
-    public function setMessagingBindingAddress($messagingBindingAddress) {
+    public function setMessagingBindingAddress($messagingBindingAddress): self {
         $this->options['messagingBindingAddress'] = $messagingBindingAddress;
         return $this;
     }
@@ -108,7 +108,7 @@ class CreateParticipantOptions extends Options {
      *                                             in contact with.
      * @return $this Fluent Builder
      */
-    public function setMessagingBindingProxyAddress($messagingBindingProxyAddress) {
+    public function setMessagingBindingProxyAddress($messagingBindingProxyAddress): self {
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
         return $this;
     }
@@ -119,7 +119,7 @@ class CreateParticipantOptions extends Options {
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -130,7 +130,7 @@ class CreateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -142,7 +142,7 @@ class CreateParticipantOptions extends Options {
      *                           store any data you wish.
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -155,7 +155,7 @@ class CreateParticipantOptions extends Options {
      *                                                 Group MMS.
      * @return $this Fluent Builder
      */
-    public function setMessagingBindingProjectedAddress($messagingBindingProjectedAddress) {
+    public function setMessagingBindingProjectedAddress($messagingBindingProjectedAddress): self {
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
         return $this;
     }
@@ -165,10 +165,10 @@ class CreateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -195,7 +195,7 @@ class UpdateParticipantOptions extends Options {
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated): self {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -206,7 +206,7 @@ class UpdateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated): self {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -218,7 +218,7 @@ class UpdateParticipantOptions extends Options {
      *                           store any data you wish.
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes): self {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -228,10 +228,10 @@ class UpdateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

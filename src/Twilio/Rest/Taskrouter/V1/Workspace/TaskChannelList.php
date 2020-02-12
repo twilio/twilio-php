@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,13 +24,12 @@ class TaskChannelList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that contains the
      *                             TaskChannel
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, );
+        $this->solution = ['workspaceSid' => $workspaceSid, ];
 
         $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/TaskChannels';
     }
@@ -50,9 +50,9 @@ class TaskChannelList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -75,7 +75,7 @@ class TaskChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskChannelInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -86,14 +86,10 @@ class TaskChannelList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of TaskChannelInstance
+     * @return TaskChannelPage Page of TaskChannelInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskChannelPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -109,9 +105,9 @@ class TaskChannelList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of TaskChannelInstance
+     * @return TaskChannelPage Page of TaskChannelInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): TaskChannelPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -130,19 +126,19 @@ class TaskChannelList extends ListResource {
      * @return TaskChannelInstance Newly created TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $uniqueName, $options = array()) {
+    public function create($friendlyName, $uniqueName, $options = []): TaskChannelInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'FriendlyName' => $friendlyName,
             'UniqueName' => $uniqueName,
             'ChannelOptimizedRouting' => Serialize::booleanToString($options['channelOptimizedRouting']),
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -153,9 +149,8 @@ class TaskChannelList extends ListResource {
      * Constructs a TaskChannelContext
      *
      * @param string $sid The SID of the TaskChannel resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): TaskChannelContext {
         return new TaskChannelContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
@@ -164,7 +159,7 @@ class TaskChannelList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter.V1.TaskChannelList]';
     }
 }

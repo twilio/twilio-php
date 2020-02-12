@@ -10,12 +10,13 @@
 namespace Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingList $credentialListMappings
+ * @property AuthRegistrationsCredentialListMappingList $credentialListMappings
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingContext credentialListMappings(string $sid)
  */
 class AuthTypeRegistrationsList extends ListResource {
@@ -27,19 +28,18 @@ class AuthTypeRegistrationsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $domainSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
+        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
     }
 
     /**
      * Access the credentialListMappings
      */
-    protected function getCredentialListMappings() {
+    protected function getCredentialListMappings(): AuthRegistrationsCredentialListMappingList {
         if (!$this->_credentialListMappings) {
             $this->_credentialListMappings = new AuthRegistrationsCredentialListMappingList(
                 $this->version,
@@ -72,10 +72,10 @@ class AuthTypeRegistrationsList extends ListResource {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -89,7 +89,7 @@ class AuthTypeRegistrationsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.AuthTypeRegistrationsList]';
     }
 }

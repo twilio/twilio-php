@@ -19,7 +19,7 @@ abstract class TaskChannelOptions {
      *                                      prioritize Workers that have been idle
      * @return UpdateTaskChannelOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $channelOptimizedRouting = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $channelOptimizedRouting = Values::NONE): UpdateTaskChannelOptions {
         return new UpdateTaskChannelOptions($friendlyName, $channelOptimizedRouting);
     }
 
@@ -28,7 +28,7 @@ abstract class TaskChannelOptions {
      *                                      prioritize Workers that have been idle
      * @return CreateTaskChannelOptions Options builder
      */
-    public static function create($channelOptimizedRouting = Values::NONE) {
+    public static function create($channelOptimizedRouting = Values::NONE): CreateTaskChannelOptions {
         return new CreateTaskChannelOptions($channelOptimizedRouting);
     }
 }
@@ -50,7 +50,7 @@ class UpdateTaskChannelOptions extends Options {
      * @param string $friendlyName A string to describe the TaskChannel resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -62,7 +62,7 @@ class UpdateTaskChannelOptions extends Options {
      *                                      prioritize Workers that have been idle
      * @return $this Fluent Builder
      */
-    public function setChannelOptimizedRouting($channelOptimizedRouting) {
+    public function setChannelOptimizedRouting($channelOptimizedRouting): self {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
         return $this;
     }
@@ -72,10 +72,10 @@ class UpdateTaskChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -99,7 +99,7 @@ class CreateTaskChannelOptions extends Options {
      *                                      prioritize Workers that have been idle
      * @return $this Fluent Builder
      */
-    public function setChannelOptimizedRouting($channelOptimizedRouting) {
+    public function setChannelOptimizedRouting($channelOptimizedRouting): self {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
         return $this;
     }
@@ -109,10 +109,10 @@ class CreateTaskChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

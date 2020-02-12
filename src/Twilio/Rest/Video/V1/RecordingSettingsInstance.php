@@ -31,15 +31,14 @@ class RecordingSettingsInstance extends InstanceResource {
     /**
      * Initialize the RecordingSettingsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'awsCredentialsSid' => Values::array_get($payload, 'aws_credentials_sid'),
@@ -48,19 +47,18 @@ class RecordingSettingsInstance extends InstanceResource {
             'encryptionKeySid' => Values::array_get($payload, 'encryption_key_sid'),
             'encryptionEnabled' => Values::array_get($payload, 'encryption_enabled'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsContext Context for this
-     *                                                        RecordingSettingsInstance
+     * @return RecordingSettingsContext Context for this RecordingSettingsInstance
      */
-    protected function proxy() {
+    protected function proxy(): RecordingSettingsContext {
         if (!$this->context) {
             $this->context = new RecordingSettingsContext($this->version);
         }
@@ -74,7 +72,7 @@ class RecordingSettingsInstance extends InstanceResource {
      * @return RecordingSettingsInstance Fetched RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): RecordingSettingsInstance {
         return $this->proxy()->fetch();
     }
 
@@ -86,7 +84,7 @@ class RecordingSettingsInstance extends InstanceResource {
      * @return RecordingSettingsInstance Newly created RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $options = array()) {
+    public function create($friendlyName, $options = []): RecordingSettingsInstance {
         return $this->proxy()->create($friendlyName, $options);
     }
 
@@ -115,8 +113,8 @@ class RecordingSettingsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

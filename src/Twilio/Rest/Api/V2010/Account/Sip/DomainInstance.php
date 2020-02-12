@@ -13,6 +13,9 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList;
+use Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList;
+use Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,25 +39,24 @@ use Twilio\Version;
  * @property bool $sipRegistration
  */
 class DomainInstance extends InstanceResource {
-    protected $_ipAccessControlListMappings = null;
-    protected $_credentialListMappings = null;
-    protected $_auth = null;
+    protected $_ipAccessControlListMappings;
+    protected $_credentialListMappings;
+    protected $_auth;
 
     /**
      * Initialize the DomainInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'authType' => Values::array_get($payload, 'auth_type'),
@@ -72,19 +74,18 @@ class DomainInstance extends InstanceResource {
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
             'sipRegistration' => Values::array_get($payload, 'sip_registration'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext Context for this
-     *                                                          DomainInstance
+     * @return DomainContext Context for this DomainInstance
      */
-    protected function proxy() {
+    protected function proxy(): DomainContext {
         if (!$this->context) {
             $this->context = new DomainContext(
                 $this->version,
@@ -102,7 +103,7 @@ class DomainInstance extends InstanceResource {
      * @return DomainInstance Fetched DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): DomainInstance {
         return $this->proxy()->fetch();
     }
 
@@ -113,44 +114,38 @@ class DomainInstance extends InstanceResource {
      * @return DomainInstance Updated DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): DomainInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the DomainInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the ipAccessControlListMappings
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList
      */
-    protected function getIpAccessControlListMappings() {
+    protected function getIpAccessControlListMappings(): IpAccessControlListMappingList {
         return $this->proxy()->ipAccessControlListMappings;
     }
 
     /**
      * Access the credentialListMappings
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList
      */
-    protected function getCredentialListMappings() {
+    protected function getCredentialListMappings(): CredentialListMappingList {
         return $this->proxy()->credentialListMappings;
     }
 
     /**
      * Access the auth
-     *
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList
      */
-    protected function getAuth() {
+    protected function getAuth(): AuthTypesList {
         return $this->proxy()->auth;
     }
 
@@ -179,8 +174,8 @@ class DomainInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

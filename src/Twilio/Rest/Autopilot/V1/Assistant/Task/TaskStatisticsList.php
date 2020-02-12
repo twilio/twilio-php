@@ -24,21 +24,18 @@ class TaskStatisticsList extends ListResource {
      *                             the Task associated with the resource
      * @param string $taskSid The SID of the Task for which the statistics were
      *                        collected
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
     }
 
     /**
      * Constructs a TaskStatisticsContext
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext
      */
-    public function getContext() {
+    public function getContext(): TaskStatisticsContext {
         return new TaskStatisticsContext(
             $this->version,
             $this->solution['assistantSid'],
@@ -51,7 +48,7 @@ class TaskStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.TaskStatisticsList]';
     }
 }

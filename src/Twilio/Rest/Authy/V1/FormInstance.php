@@ -26,32 +26,31 @@ class FormInstance extends InstanceResource {
     /**
      * Initialize the FormInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $formType The Type of this Form
-     * @return \Twilio\Rest\Authy\V1\FormInstance
      */
     public function __construct(Version $version, array $payload, $formType = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'formType' => Values::array_get($payload, 'form_type'),
             'forms' => Values::array_get($payload, 'forms'),
             'formMeta' => Values::array_get($payload, 'form_meta'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('formType' => $formType ?: $this->properties['formType'], );
+        $this->solution = ['formType' => $formType ?: $this->properties['formType'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Authy\V1\FormContext Context for this FormInstance
+     * @return FormContext Context for this FormInstance
      */
-    protected function proxy() {
+    protected function proxy(): FormContext {
         if (!$this->context) {
             $this->context = new FormContext($this->version, $this->solution['formType']);
         }
@@ -65,7 +64,7 @@ class FormInstance extends InstanceResource {
      * @return FormInstance Fetched FormInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): FormInstance {
         return $this->proxy()->fetch();
     }
 
@@ -94,8 +93,8 @@ class FormInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

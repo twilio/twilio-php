@@ -11,33 +11,33 @@ namespace Twilio\Rest\Video\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Rest\Video\V1\Room\ParticipantList;
 use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList $recordings
- * @property \Twilio\Rest\Video\V1\Room\ParticipantList $participants
+ * @property RoomRecordingList $recordings
+ * @property ParticipantList $participants
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)
  */
 class RoomContext extends InstanceContext {
-    protected $_recordings = null;
-    protected $_participants = null;
+    protected $_recordings;
+    protected $_participants;
 
     /**
      * Initialize the RoomContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Video\V1\RoomContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Rooms/' . \rawurlencode($sid) . '';
     }
@@ -48,8 +48,8 @@ class RoomContext extends InstanceContext {
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): RoomInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -67,13 +67,13 @@ class RoomContext extends InstanceContext {
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status) {
-        $data = Values::of(array('Status' => $status, ));
+    public function update($status): RoomInstance {
+        $data = Values::of(['Status' => $status, ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -82,10 +82,8 @@ class RoomContext extends InstanceContext {
 
     /**
      * Access the recordings
-     *
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings(): RoomRecordingList {
         if (!$this->_recordings) {
             $this->_recordings = new RoomRecordingList($this->version, $this->solution['sid']);
         }
@@ -95,10 +93,8 @@ class RoomContext extends InstanceContext {
 
     /**
      * Access the participants
-     *
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantList
      */
-    protected function getParticipants() {
+    protected function getParticipants(): ParticipantList {
         if (!$this->_participants) {
             $this->_participants = new ParticipantList($this->version, $this->solution['sid']);
         }
@@ -110,10 +106,10 @@ class RoomContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -127,10 +123,10 @@ class RoomContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -144,8 +140,8 @@ class RoomContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

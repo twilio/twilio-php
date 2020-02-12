@@ -20,7 +20,7 @@ abstract class IpAddressOptions {
      *                              address is used.
      * @return CreateIpAddressOptions Options builder
      */
-    public static function create($cidrPrefixLength = Values::NONE) {
+    public static function create($cidrPrefixLength = Values::NONE): CreateIpAddressOptions {
         return new CreateIpAddressOptions($cidrPrefixLength);
     }
 
@@ -37,7 +37,7 @@ abstract class IpAddressOptions {
      *                              address is used.
      * @return UpdateIpAddressOptions Options builder
      */
-    public static function update($ipAddress = Values::NONE, $friendlyName = Values::NONE, $cidrPrefixLength = Values::NONE) {
+    public static function update($ipAddress = Values::NONE, $friendlyName = Values::NONE, $cidrPrefixLength = Values::NONE): UpdateIpAddressOptions {
         return new UpdateIpAddressOptions($ipAddress, $friendlyName, $cidrPrefixLength);
     }
 }
@@ -62,7 +62,7 @@ class CreateIpAddressOptions extends Options {
      *                              address is used.
      * @return $this Fluent Builder
      */
-    public function setCidrPrefixLength($cidrPrefixLength) {
+    public function setCidrPrefixLength($cidrPrefixLength): self {
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;
         return $this;
     }
@@ -72,10 +72,10 @@ class CreateIpAddressOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -111,7 +111,7 @@ class UpdateIpAddressOptions extends Options {
      *                          only supported today.
      * @return $this Fluent Builder
      */
-    public function setIpAddress($ipAddress) {
+    public function setIpAddress($ipAddress): self {
         $this->options['ipAddress'] = $ipAddress;
         return $this;
     }
@@ -123,7 +123,7 @@ class UpdateIpAddressOptions extends Options {
      *                             resource, up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -137,7 +137,7 @@ class UpdateIpAddressOptions extends Options {
      *                              address is used.
      * @return $this Fluent Builder
      */
-    public function setCidrPrefixLength($cidrPrefixLength) {
+    public function setCidrPrefixLength($cidrPrefixLength): self {
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;
         return $this;
     }
@@ -147,10 +147,10 @@ class UpdateIpAddressOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

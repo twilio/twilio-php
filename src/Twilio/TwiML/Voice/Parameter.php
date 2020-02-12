@@ -17,7 +17,7 @@ class Parameter extends TwiML {
      *
      * @param array $attributes Optional attributes
      */
-    public function __construct($attributes = array()) {
+    public function __construct($attributes = []) {
         parent::__construct('Parameter', null, $attributes);
     }
 
@@ -25,9 +25,8 @@ class Parameter extends TwiML {
      * Add Name attribute.
      *
      * @param string $name The name of the custom parameter
-     * @return static $this.
      */
-    public function setName($name) {
+    public function setName($name): self {
         return $this->setAttribute('name', $name);
     }
 
@@ -35,9 +34,8 @@ class Parameter extends TwiML {
      * Add Value attribute.
      *
      * @param string $value The value of the custom parameter
-     * @return static $this.
      */
-    public function setValue($value) {
+    public function setValue($value): self {
         return $this->setAttribute('value', $value);
     }
 }

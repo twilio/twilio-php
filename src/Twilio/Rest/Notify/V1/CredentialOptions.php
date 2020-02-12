@@ -30,7 +30,7 @@ abstract class CredentialOptions {
      *                       Firebase console under Settings / Cloud messaging
      * @return CreateCredentialOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE): CreateCredentialOptions {
         return new CreateCredentialOptions($friendlyName, $certificate, $privateKey, $sandbox, $apiKey, $secret);
     }
 
@@ -48,7 +48,7 @@ abstract class CredentialOptions {
      *                       Firebase console under Settings / Cloud messaging
      * @return UpdateCredentialOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE): UpdateCredentialOptions {
         return new UpdateCredentialOptions($friendlyName, $certificate, $privateKey, $sandbox, $apiKey, $secret);
     }
 }
@@ -82,7 +82,7 @@ class CreateCredentialOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -94,7 +94,7 @@ class CreateCredentialOptions extends Options {
      *                            certificate
      * @return $this Fluent Builder
      */
-    public function setCertificate($certificate) {
+    public function setCertificate($certificate): self {
         $this->options['certificate'] = $certificate;
         return $this;
     }
@@ -106,7 +106,7 @@ class CreateCredentialOptions extends Options {
      *                           private key
      * @return $this Fluent Builder
      */
-    public function setPrivateKey($privateKey) {
+    public function setPrivateKey($privateKey): self {
         $this->options['privateKey'] = $privateKey;
         return $this;
     }
@@ -118,7 +118,7 @@ class CreateCredentialOptions extends Options {
      *                      APNs
      * @return $this Fluent Builder
      */
-    public function setSandbox($sandbox) {
+    public function setSandbox($sandbox): self {
         $this->options['sandbox'] = $sandbox;
         return $this;
     }
@@ -130,7 +130,7 @@ class CreateCredentialOptions extends Options {
      *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
-    public function setApiKey($apiKey) {
+    public function setApiKey($apiKey): self {
         $this->options['apiKey'] = $apiKey;
         return $this;
     }
@@ -142,7 +142,7 @@ class CreateCredentialOptions extends Options {
      *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
-    public function setSecret($secret) {
+    public function setSecret($secret): self {
         $this->options['secret'] = $secret;
         return $this;
     }
@@ -152,10 +152,10 @@ class CreateCredentialOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -192,7 +192,7 @@ class UpdateCredentialOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -204,7 +204,7 @@ class UpdateCredentialOptions extends Options {
      *                            certificate
      * @return $this Fluent Builder
      */
-    public function setCertificate($certificate) {
+    public function setCertificate($certificate): self {
         $this->options['certificate'] = $certificate;
         return $this;
     }
@@ -216,7 +216,7 @@ class UpdateCredentialOptions extends Options {
      *                           private key
      * @return $this Fluent Builder
      */
-    public function setPrivateKey($privateKey) {
+    public function setPrivateKey($privateKey): self {
         $this->options['privateKey'] = $privateKey;
         return $this;
     }
@@ -228,7 +228,7 @@ class UpdateCredentialOptions extends Options {
      *                      APNs
      * @return $this Fluent Builder
      */
-    public function setSandbox($sandbox) {
+    public function setSandbox($sandbox): self {
         $this->options['sandbox'] = $sandbox;
         return $this;
     }
@@ -240,7 +240,7 @@ class UpdateCredentialOptions extends Options {
      *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
-    public function setApiKey($apiKey) {
+    public function setApiKey($apiKey): self {
         $this->options['apiKey'] = $apiKey;
         return $this;
     }
@@ -252,7 +252,7 @@ class UpdateCredentialOptions extends Options {
      *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
-    public function setSecret($secret) {
+    public function setSecret($secret): self {
         $this->options['secret'] = $secret;
         return $this;
     }
@@ -262,10 +262,10 @@ class UpdateCredentialOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

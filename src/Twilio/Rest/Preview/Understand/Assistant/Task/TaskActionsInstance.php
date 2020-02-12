@@ -28,34 +28,33 @@ class TaskActionsInstance extends InstanceResource {
     /**
      * Initialize the TaskActionsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $taskSid The unique ID of the Task.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $taskSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'assistantSid' => Values::array_get($payload, 'assistant_sid'),
             'taskSid' => Values::array_get($payload, 'task_sid'),
             'url' => Values::array_get($payload, 'url'),
             'data' => Values::array_get($payload, 'data'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsContext Context for this TaskActionsInstance
+     * @return TaskActionsContext Context for this TaskActionsInstance
      */
-    protected function proxy() {
+    protected function proxy(): TaskActionsContext {
         if (!$this->context) {
             $this->context = new TaskActionsContext(
                 $this->version,
@@ -73,7 +72,7 @@ class TaskActionsInstance extends InstanceResource {
      * @return TaskActionsInstance Fetched TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): TaskActionsInstance {
         return $this->proxy()->fetch();
     }
 
@@ -84,7 +83,7 @@ class TaskActionsInstance extends InstanceResource {
      * @return TaskActionsInstance Updated TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): TaskActionsInstance {
         return $this->proxy()->update($options);
     }
 
@@ -113,8 +112,8 @@ class TaskActionsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

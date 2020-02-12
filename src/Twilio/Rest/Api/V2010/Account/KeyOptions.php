@@ -17,7 +17,7 @@ abstract class KeyOptions {
      * @param string $friendlyName A string to describe the resource
      * @return UpdateKeyOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE): UpdateKeyOptions {
         return new UpdateKeyOptions($friendlyName);
     }
 }
@@ -36,7 +36,7 @@ class UpdateKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -46,10 +46,10 @@ class UpdateKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

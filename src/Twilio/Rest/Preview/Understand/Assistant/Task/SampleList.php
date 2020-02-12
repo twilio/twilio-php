@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Understand\Assistant\Task;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,13 +26,12 @@ class SampleList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Sample.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\SampleList
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, );
+        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Samples';
     }
@@ -53,9 +53,9 @@ class SampleList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -79,7 +79,7 @@ class SampleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SampleInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -91,16 +91,16 @@ class SampleList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of SampleInstance
+     * @return SamplePage Page of SampleInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): SamplePage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'Language' => $options['language'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -116,9 +116,9 @@ class SampleList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of SampleInstance
+     * @return SamplePage Page of SampleInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): SamplePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -137,19 +137,19 @@ class SampleList extends ListResource {
      * @return SampleInstance Newly created SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($language, $taggedText, $options = array()) {
+    public function create($language, $taggedText, $options = []): SampleInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Language' => $language,
             'TaggedText' => $taggedText,
             'SourceChannel' => $options['sourceChannel'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -166,9 +166,8 @@ class SampleList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\SampleContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): SampleContext {
         return new SampleContext(
             $this->version,
             $this->solution['assistantSid'],
@@ -182,7 +181,7 @@ class SampleList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Understand.SampleList]';
     }
 }

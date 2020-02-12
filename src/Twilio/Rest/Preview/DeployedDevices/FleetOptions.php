@@ -20,7 +20,7 @@ abstract class FleetOptions {
      * @param string $friendlyName A human readable description for this Fleet.
      * @return CreateFleetOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE) {
+    public static function create($friendlyName = Values::NONE): CreateFleetOptions {
         return new CreateFleetOptions($friendlyName);
     }
 
@@ -29,7 +29,7 @@ abstract class FleetOptions {
      * @param string $defaultDeploymentSid A default Deployment SID.
      * @return UpdateFleetOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $defaultDeploymentSid = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $defaultDeploymentSid = Values::NONE): UpdateFleetOptions {
         return new UpdateFleetOptions($friendlyName, $defaultDeploymentSid);
     }
 }
@@ -48,7 +48,7 @@ class CreateFleetOptions extends Options {
      * @param string $friendlyName A human readable description for this Fleet.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -58,10 +58,10 @@ class CreateFleetOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -85,7 +85,7 @@ class UpdateFleetOptions extends Options {
      * @param string $friendlyName A human readable description for this Fleet.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -96,7 +96,7 @@ class UpdateFleetOptions extends Options {
      * @param string $defaultDeploymentSid A default Deployment SID.
      * @return $this Fluent Builder
      */
-    public function setDefaultDeploymentSid($defaultDeploymentSid) {
+    public function setDefaultDeploymentSid($defaultDeploymentSid): self {
         $this->options['defaultDeploymentSid'] = $defaultDeploymentSid;
         return $this;
     }
@@ -106,10 +106,10 @@ class UpdateFleetOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

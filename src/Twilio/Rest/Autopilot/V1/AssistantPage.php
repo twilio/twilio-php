@@ -22,7 +22,7 @@ class AssistantPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): AssistantInstance {
         return new AssistantInstance($this->version, $payload);
     }
 
@@ -31,7 +31,7 @@ class AssistantPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.AssistantPage]';
     }
 }

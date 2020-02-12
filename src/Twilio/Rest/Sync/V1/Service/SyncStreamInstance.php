@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -31,23 +32,22 @@ use Twilio\Version;
  * @property string $createdBy
  */
 class SyncStreamInstance extends InstanceResource {
-    protected $_streamMessages = null;
+    protected $_streamMessages;
 
     /**
      * Initialize the SyncStreamInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Sync Service that the resource is
      *                           associated with
      * @param string $sid The SID of the Stream resource to fetch
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
@@ -58,19 +58,18 @@ class SyncStreamInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'createdBy' => Values::array_get($payload, 'created_by'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamContext Context for this
-     *                                                        SyncStreamInstance
+     * @return SyncStreamContext Context for this SyncStreamInstance
      */
-    protected function proxy() {
+    protected function proxy(): SyncStreamContext {
         if (!$this->context) {
             $this->context = new SyncStreamContext(
                 $this->version,
@@ -88,17 +87,17 @@ class SyncStreamInstance extends InstanceResource {
      * @return SyncStreamInstance Fetched SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SyncStreamInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the SyncStreamInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
@@ -109,16 +108,14 @@ class SyncStreamInstance extends InstanceResource {
      * @return SyncStreamInstance Updated SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): SyncStreamInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the streamMessages
-     *
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList
      */
-    protected function getStreamMessages() {
+    protected function getStreamMessages(): StreamMessageList {
         return $this->proxy()->streamMessages;
     }
 
@@ -147,8 +144,8 @@ class SyncStreamInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

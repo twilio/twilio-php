@@ -19,7 +19,7 @@ class ChannelPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): ChannelInstance {
         return new ChannelInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class ChannelPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.FlexApi.V1.ChannelPage]';
     }
 }

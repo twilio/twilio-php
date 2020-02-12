@@ -33,17 +33,16 @@ class VoipInstance extends InstanceResource {
     /**
      * Initialize the VoipInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The account_sid
      * @param string $countryCode The ISO-3166-1 country code of the country.
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'lata' => Values::array_get($payload, 'lata'),
@@ -57,9 +56,9 @@ class VoipInstance extends InstanceResource {
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
             'beta' => Values::array_get($payload, 'beta'),
             'capabilities' => Values::array_get($payload, 'capabilities'),
-        );
+        ];
 
-        $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode, );
+        $this->solution = ['accountSid' => $accountSid, 'countryCode' => $countryCode, ];
     }
 
     /**
@@ -87,7 +86,7 @@ class VoipInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.VoipInstance]';
     }
 }

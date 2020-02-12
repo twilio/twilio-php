@@ -21,7 +21,7 @@ abstract class ExportCustomJobOptions {
      * @param string $previousToken The token for the previous page of result
      * @return ReadExportCustomJobOptions Options builder
      */
-    public static function read($nextToken = Values::NONE, $previousToken = Values::NONE) {
+    public static function read($nextToken = Values::NONE, $previousToken = Values::NONE): ReadExportCustomJobOptions {
         return new ReadExportCustomJobOptions($nextToken, $previousToken);
     }
 
@@ -34,7 +34,7 @@ abstract class ExportCustomJobOptions {
      * @param string $email The email
      * @return CreateExportCustomJobOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $startDay = Values::NONE, $endDay = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE, $email = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $startDay = Values::NONE, $endDay = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE, $email = Values::NONE): CreateExportCustomJobOptions {
         return new CreateExportCustomJobOptions($friendlyName, $startDay, $endDay, $webhookUrl, $webhookMethod, $email);
     }
 }
@@ -55,7 +55,7 @@ class ReadExportCustomJobOptions extends Options {
      * @param string $nextToken The token for the next page of job results
      * @return $this Fluent Builder
      */
-    public function setNextToken($nextToken) {
+    public function setNextToken($nextToken): self {
         $this->options['nextToken'] = $nextToken;
         return $this;
     }
@@ -66,7 +66,7 @@ class ReadExportCustomJobOptions extends Options {
      * @param string $previousToken The token for the previous page of result
      * @return $this Fluent Builder
      */
-    public function setPreviousToken($previousToken) {
+    public function setPreviousToken($previousToken): self {
         $this->options['previousToken'] = $previousToken;
         return $this;
     }
@@ -76,10 +76,10 @@ class ReadExportCustomJobOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -111,7 +111,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -122,7 +122,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $startDay The start_day
      * @return $this Fluent Builder
      */
-    public function setStartDay($startDay) {
+    public function setStartDay($startDay): self {
         $this->options['startDay'] = $startDay;
         return $this;
     }
@@ -133,7 +133,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $endDay The end_day
      * @return $this Fluent Builder
      */
-    public function setEndDay($endDay) {
+    public function setEndDay($endDay): self {
         $this->options['endDay'] = $endDay;
         return $this;
     }
@@ -144,7 +144,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl($webhookUrl) {
+    public function setWebhookUrl($webhookUrl): self {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -155,7 +155,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $webhookMethod The webhook_method
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod($webhookMethod) {
+    public function setWebhookMethod($webhookMethod): self {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -166,7 +166,7 @@ class CreateExportCustomJobOptions extends Options {
      * @param string $email The email
      * @return $this Fluent Builder
      */
-    public function setEmail($email) {
+    public function setEmail($email): self {
         $this->options['email'] = $email;
         return $this;
     }
@@ -176,10 +176,10 @@ class CreateExportCustomJobOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

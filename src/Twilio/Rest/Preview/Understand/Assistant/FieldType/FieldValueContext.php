@@ -21,21 +21,16 @@ class FieldValueContext extends InstanceContext {
     /**
      * Initialize the FieldValueContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
      * @param string $fieldTypeSid The field_type_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueContext
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'assistantSid' => $assistantSid,
-            'fieldTypeSid' => $fieldTypeSid,
-            'sid' => $sid,
-        );
+        $this->solution = ['assistantSid' => $assistantSid, 'fieldTypeSid' => $fieldTypeSid, 'sid' => $sid, ];
 
         $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($fieldTypeSid) . '/FieldValues/' . \rawurlencode($sid) . '';
     }
@@ -46,8 +41,8 @@ class FieldValueContext extends InstanceContext {
      * @return FieldValueInstance Fetched FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FieldValueInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -67,10 +62,10 @@ class FieldValueContext extends InstanceContext {
     /**
      * Deletes the FieldValueInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -79,8 +74,8 @@ class FieldValueContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

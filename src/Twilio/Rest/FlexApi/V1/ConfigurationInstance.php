@@ -56,15 +56,14 @@ class ConfigurationInstance extends InstanceResource {
     /**
      * Initialize the ConfigurationInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -99,19 +98,18 @@ class ConfigurationInstance extends InstanceResource {
             'outboundCallFlows' => Values::array_get($payload, 'outbound_call_flows'),
             'serverlessServiceSids' => Values::array_get($payload, 'serverless_service_sids'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext Context for this
-     *                                                      ConfigurationInstance
+     * @return ConfigurationContext Context for this ConfigurationInstance
      */
-    protected function proxy() {
+    protected function proxy(): ConfigurationContext {
         if (!$this->context) {
             $this->context = new ConfigurationContext($this->version);
         }
@@ -126,7 +124,7 @@ class ConfigurationInstance extends InstanceResource {
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch($options = array()) {
+    public function fetch($options = []): ConfigurationInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -136,7 +134,7 @@ class ConfigurationInstance extends InstanceResource {
      * @return ConfigurationInstance Newly created ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create() {
+    public function create(): ConfigurationInstance {
         return $this->proxy()->create();
     }
 
@@ -146,7 +144,7 @@ class ConfigurationInstance extends InstanceResource {
      * @return ConfigurationInstance Updated ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update() {
+    public function update(): ConfigurationInstance {
         return $this->proxy()->update();
     }
 
@@ -175,8 +173,8 @@ class ConfigurationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

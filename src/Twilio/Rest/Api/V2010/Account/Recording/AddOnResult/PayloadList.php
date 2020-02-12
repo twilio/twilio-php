@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Recording\AddOnResult;
 
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,17 +25,16 @@ class PayloadList extends ListResource {
      *                             belongs
      * @param string $addOnResultSid The SID of the AddOnResult to which the
      *                               payload belongs
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
+        $this->solution = [
             'accountSid' => $accountSid,
             'referenceSid' => $referenceSid,
             'addOnResultSid' => $addOnResultSid,
-        );
+        ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults/' . \rawurlencode($addOnResultSid) . '/Payloads.json';
     }
@@ -55,9 +55,9 @@ class PayloadList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -80,7 +80,7 @@ class PayloadList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return PayloadInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -91,14 +91,10 @@ class PayloadList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of PayloadInstance
+     * @return PayloadPage Page of PayloadInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): PayloadPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -114,9 +110,9 @@ class PayloadList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of PayloadInstance
+     * @return PayloadPage Page of PayloadInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): PayloadPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -129,9 +125,8 @@ class PayloadList extends ListResource {
      * Constructs a PayloadContext
      *
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): PayloadContext {
         return new PayloadContext(
             $this->version,
             $this->solution['accountSid'],
@@ -146,7 +141,7 @@ class PayloadList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.PayloadList]';
     }
 }

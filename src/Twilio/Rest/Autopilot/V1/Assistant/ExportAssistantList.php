@@ -21,21 +21,18 @@ class ExportAssistantList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant to export.
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('assistantSid' => $assistantSid, );
+        $this->solution = ['assistantSid' => $assistantSid, ];
     }
 
     /**
      * Constructs a ExportAssistantContext
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantContext
      */
-    public function getContext() {
+    public function getContext(): ExportAssistantContext {
         return new ExportAssistantContext($this->version, $this->solution['assistantSid']);
     }
 
@@ -44,7 +41,7 @@ class ExportAssistantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Autopilot.V1.ExportAssistantList]';
     }
 }

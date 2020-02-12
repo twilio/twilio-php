@@ -20,17 +20,16 @@ class ConnectAppContext extends InstanceContext {
     /**
      * Initialize the ConnectAppContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
+        $this->solution = ['accountSid' => $accountSid, 'sid' => $sid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/ConnectApps/' . \rawurlencode($sid) . '.json';
     }
@@ -41,8 +40,8 @@ class ConnectAppContext extends InstanceContext {
      * @return ConnectAppInstance Fetched ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ConnectAppInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -65,10 +64,10 @@ class ConnectAppContext extends InstanceContext {
      * @return ConnectAppInstance Updated ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ConnectAppInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'AuthorizeRedirectUrl' => $options['authorizeRedirectUrl'],
             'CompanyName' => $options['companyName'],
             'DeauthorizeCallbackMethod' => $options['deauthorizeCallbackMethod'],
@@ -77,12 +76,12 @@ class ConnectAppContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'HomepageUrl' => $options['homepageUrl'],
             'Permissions' => Serialize::map($options['permissions'], function($e) { return $e; }),
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -97,10 +96,10 @@ class ConnectAppContext extends InstanceContext {
     /**
      * Deletes the ConnectAppInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -109,8 +108,8 @@ class ConnectAppContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

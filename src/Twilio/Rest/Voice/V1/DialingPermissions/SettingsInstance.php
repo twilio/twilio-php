@@ -25,31 +25,28 @@ class SettingsInstance extends InstanceResource {
     /**
      * Initialize the SettingsInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'dialingPermissionsInheritance' => Values::array_get($payload, 'dialing_permissions_inheritance'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext Context for
-     *                                                                  this
-     *                                                                  SettingsInstance
+     * @return SettingsContext Context for this SettingsInstance
      */
-    protected function proxy() {
+    protected function proxy(): SettingsContext {
         if (!$this->context) {
             $this->context = new SettingsContext($this->version);
         }
@@ -63,7 +60,7 @@ class SettingsInstance extends InstanceResource {
      * @return SettingsInstance Fetched SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): SettingsInstance {
         return $this->proxy()->fetch();
     }
 
@@ -74,7 +71,7 @@ class SettingsInstance extends InstanceResource {
      * @return SettingsInstance Updated SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): SettingsInstance {
         return $this->proxy()->update($options);
     }
 
@@ -103,8 +100,8 @@ class SettingsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

@@ -19,7 +19,7 @@ class ExecutionContextPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): ExecutionContextInstance {
         return new ExecutionContextInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class ExecutionContextPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V1.ExecutionContextPage]';
     }
 }

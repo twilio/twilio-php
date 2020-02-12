@@ -11,6 +11,7 @@ namespace Twilio\Rest\Studio\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Studio\V2\Flow\FlowRevisionList;
 use Twilio\Serialize;
@@ -20,24 +21,23 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Studio\V2\Flow\FlowRevisionList $revisions
+ * @property FlowRevisionList $revisions
  * @method \Twilio\Rest\Studio\V2\Flow\FlowRevisionContext revisions(string $revision)
  */
 class FlowContext extends InstanceContext {
-    protected $_revisions = null;
+    protected $_revisions;
 
     /**
      * Initialize the FlowContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Studio\V2\FlowContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = ['sid' => $sid, ];
 
         $this->uri = '/Flows/' . \rawurlencode($sid) . '';
     }
@@ -50,20 +50,20 @@ class FlowContext extends InstanceContext {
      * @return FlowInstance Updated FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status, $options = array()) {
+    public function update($status, $options = []): FlowInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Status' => $status,
             'FriendlyName' => $options['friendlyName'],
             'Definition' => Serialize::jsonObject($options['definition']),
             'CommitMessage' => $options['commitMessage'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -76,8 +76,8 @@ class FlowContext extends InstanceContext {
      * @return FlowInstance Fetched FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): FlowInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -91,19 +91,17 @@ class FlowContext extends InstanceContext {
     /**
      * Deletes the FlowInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the revisions
-     *
-     * @return \Twilio\Rest\Studio\V2\Flow\FlowRevisionList
      */
-    protected function getRevisions() {
+    protected function getRevisions(): FlowRevisionList {
         if (!$this->_revisions) {
             $this->_revisions = new FlowRevisionList($this->version, $this->solution['sid']);
         }
@@ -115,10 +113,10 @@ class FlowContext extends InstanceContext {
      * Magic getter to lazy load subresources
      *
      * @param string $name Subresource to return
-     * @return \Twilio\ListResource The requested subresource
+     * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name): ListResource {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -132,10 +130,10 @@ class FlowContext extends InstanceContext {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -149,8 +147,8 @@ class FlowContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

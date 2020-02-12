@@ -11,58 +11,49 @@ namespace Twilio\Rest\Messaging;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Messaging\V1\ServiceList;
 use Twilio\Rest\Messaging\V1\SessionList;
 use Twilio\Rest\Messaging\V1\WebhookList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Messaging\V1\ServiceList $services
- * @property \Twilio\Rest\Messaging\V1\SessionList $sessions
- * @property \Twilio\Rest\Messaging\V1\WebhookList $webhooks
+ * @property ServiceList $services
+ * @property SessionList $sessions
+ * @property WebhookList $webhooks
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Messaging\V1\SessionContext sessions(string $sid)
  */
 class V1 extends Version {
-    protected $_services = null;
-    protected $_sessions = null;
-    protected $_webhooks = null;
+    protected $_services;
+    protected $_sessions;
+    protected $_webhooks;
 
     /**
      * Construct the V1 version of Messaging
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Messaging\V1 V1 version of Messaging
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Messaging\V1\ServiceList
-     */
-    protected function getServices() {
+    protected function getServices(): ServiceList {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
         return $this->_services;
     }
 
-    /**
-     * @return \Twilio\Rest\Messaging\V1\SessionList
-     */
-    protected function getSessions() {
+    protected function getSessions(): SessionList {
         if (!$this->_sessions) {
             $this->_sessions = new SessionList($this);
         }
         return $this->_sessions;
     }
 
-    /**
-     * @return \Twilio\Rest\Messaging\V1\WebhookList
-     */
-    protected function getWebhooks() {
+    protected function getWebhooks(): WebhookList {
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList($this);
         }
@@ -90,10 +81,10 @@ class V1 extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -107,7 +98,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Messaging.V1]';
     }
 }

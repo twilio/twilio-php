@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,13 +25,12 @@ class FaxList extends ListResource {
      * Construct the FaxList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Fax\V1\FaxList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/Faxes';
     }
@@ -52,9 +52,9 @@ class FaxList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = [], $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -78,7 +78,7 @@ class FaxList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FaxInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
+    public function read($options = [], $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -90,11 +90,11 @@ class FaxList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of FaxInstance
+     * @return FaxPage Page of FaxInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = [], $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): FaxPage {
         $options = new Values($options);
-        $params = Values::of(array(
+        $params = Values::of([
             'From' => $options['from'],
             'To' => $options['to'],
             'DateCreatedOnOrBefore' => Serialize::iso8601DateTime($options['dateCreatedOnOrBefore']),
@@ -102,7 +102,7 @@ class FaxList extends ListResource {
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
-        ));
+        ]);
 
         $response = $this->version->page(
             'GET',
@@ -118,9 +118,9 @@ class FaxList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of FaxInstance
+     * @return FaxPage Page of FaxInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): FaxPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -138,10 +138,10 @@ class FaxList extends ListResource {
      * @return FaxInstance Newly created FaxInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($to, $mediaUrl, $options = array()) {
+    public function create($to, $mediaUrl, $options = []): FaxInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'To' => $to,
             'MediaUrl' => $mediaUrl,
             'Quality' => $options['quality'],
@@ -151,12 +151,12 @@ class FaxList extends ListResource {
             'SipAuthPassword' => $options['sipAuthPassword'],
             'StoreMedia' => Serialize::booleanToString($options['storeMedia']),
             'Ttl' => $options['ttl'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -167,9 +167,8 @@ class FaxList extends ListResource {
      * Constructs a FaxContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Fax\V1\FaxContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): FaxContext {
         return new FaxContext($this->version, $sid);
     }
 
@@ -178,7 +177,7 @@ class FaxList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Fax.V1.FaxList]';
     }
 }

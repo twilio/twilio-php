@@ -13,6 +13,10 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList;
+use Twilio\Rest\Autopilot\V1\Assistant\Task\SampleList;
+use Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList;
+use Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -31,26 +35,25 @@ use Twilio\Version;
  * @property string $url
  */
 class TaskInstance extends InstanceResource {
-    protected $_fields = null;
-    protected $_samples = null;
-    protected $_taskActions = null;
-    protected $_statistics = null;
+    protected $_fields;
+    protected $_samples;
+    protected $_taskActions;
+    protected $_statistics;
 
     /**
      * Initialize the TaskInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -61,19 +64,18 @@ class TaskInstance extends InstanceResource {
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'actionsUrl' => Values::array_get($payload, 'actions_url'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskContext Context for this
-     *                                                         TaskInstance
+     * @return TaskContext Context for this TaskInstance
      */
-    protected function proxy() {
+    protected function proxy(): TaskContext {
         if (!$this->context) {
             $this->context = new TaskContext(
                 $this->version,
@@ -91,7 +93,7 @@ class TaskInstance extends InstanceResource {
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): TaskInstance {
         return $this->proxy()->fetch();
     }
 
@@ -102,53 +104,45 @@ class TaskInstance extends InstanceResource {
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): TaskInstance {
         return $this->proxy()->update($options);
     }
 
     /**
      * Deletes the TaskInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the fields
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList
      */
-    protected function getFields() {
+    protected function getFields(): FieldList {
         return $this->proxy()->fields;
     }
 
     /**
      * Access the samples
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleList
      */
-    protected function getSamples() {
+    protected function getSamples(): SampleList {
         return $this->proxy()->samples;
     }
 
     /**
      * Access the taskActions
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList
      */
-    protected function getTaskActions() {
+    protected function getTaskActions(): TaskActionsList {
         return $this->proxy()->taskActions;
     }
 
     /**
      * Access the statistics
-     *
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList
      */
-    protected function getStatistics() {
+    protected function getStatistics(): TaskStatisticsList {
         return $this->proxy()->statistics;
     }
 
@@ -177,8 +171,8 @@ class TaskInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

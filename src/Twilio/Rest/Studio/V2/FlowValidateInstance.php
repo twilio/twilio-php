@@ -23,17 +23,16 @@ class FlowValidateInstance extends InstanceResource {
     /**
      * Initialize the FlowValidateInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Studio\V2\FlowValidateInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array('valid' => Values::array_get($payload, 'valid'), );
+        $this->properties = ['valid' => Values::array_get($payload, 'valid'), ];
 
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
@@ -61,7 +60,7 @@ class FlowValidateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Studio.V2.FlowValidateInstance]';
     }
 }

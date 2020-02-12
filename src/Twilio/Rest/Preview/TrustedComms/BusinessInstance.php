@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Preview\TrustedComms\Business\InsightsList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,38 +24,36 @@ use Twilio\Version;
  * @property array $links
  */
 class BusinessInstance extends InstanceResource {
-    protected $_insights = null;
+    protected $_insights;
 
     /**
      * Initialize the BusinessInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A string that uniquely identifies this Business.
-     * @return \Twilio\Rest\Preview\TrustedComms\BusinessInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-        );
+        ];
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\TrustedComms\BusinessContext Context for this
-     *                                                           BusinessInstance
+     * @return BusinessContext Context for this BusinessInstance
      */
-    protected function proxy() {
+    protected function proxy(): BusinessContext {
         if (!$this->context) {
             $this->context = new BusinessContext($this->version, $this->solution['sid']);
         }
@@ -68,16 +67,14 @@ class BusinessInstance extends InstanceResource {
      * @return BusinessInstance Fetched BusinessInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): BusinessInstance {
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the insights
-     *
-     * @return \Twilio\Rest\Preview\TrustedComms\Business\InsightsList
      */
-    protected function getInsights() {
+    protected function getInsights(): InsightsList {
         return $this->proxy()->insights;
     }
 
@@ -106,8 +103,8 @@ class BusinessInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

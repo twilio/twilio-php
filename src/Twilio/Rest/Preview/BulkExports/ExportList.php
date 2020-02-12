@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Preview\BulkExports;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Preview\BulkExports\Export\JobList;
 use Twilio\Version;
@@ -17,7 +18,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\BulkExports\Export\JobList $jobs
+ * @property JobList $jobs
  * @method \Twilio\Rest\Preview\BulkExports\Export\JobContext jobs(string $jobSid)
  */
 class ExportList extends ListResource {
@@ -27,19 +28,18 @@ class ExportList extends ListResource {
      * Construct the ExportList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\BulkExports\ExportList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
     }
 
     /**
      * Access the jobs
      */
-    protected function getJobs() {
+    protected function getJobs(): JobList {
         if (!$this->_jobs) {
             $this->_jobs = new JobList($this->version);
         }
@@ -51,9 +51,8 @@ class ExportList extends ListResource {
      * Constructs a ExportContext
      *
      * @param string $resourceType The type of communication – Messages, Calls
-     * @return \Twilio\Rest\Preview\BulkExports\ExportContext
      */
-    public function getContext($resourceType) {
+    public function getContext($resourceType): ExportContext {
         return new ExportContext($this->version, $resourceType);
     }
 
@@ -78,10 +77,10 @@ class ExportList extends ListResource {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -95,7 +94,7 @@ class ExportList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.BulkExports.ExportList]';
     }
 }

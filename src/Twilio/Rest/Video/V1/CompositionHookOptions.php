@@ -29,7 +29,7 @@ abstract class CompositionHookOptions {
      *                             friendly names that match this string
      * @return ReadCompositionHookOptions Options builder
      */
-    public static function read($enabled = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $friendlyName = Values::NONE) {
+    public static function read($enabled = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $friendlyName = Values::NONE): ReadCompositionHookOptions {
         return new ReadCompositionHookOptions($enabled, $dateCreatedAfter, $dateCreatedBefore, $friendlyName);
     }
 
@@ -53,7 +53,7 @@ abstract class CompositionHookOptions {
      *                   media in the Compositions triggered by the composition hook
      * @return CreateCompositionHookOptions Options builder
      */
-    public static function create($enabled = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
+    public static function create($enabled = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE): CreateCompositionHookOptions {
         return new CreateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 
@@ -77,7 +77,7 @@ abstract class CompositionHookOptions {
      *                                     status_callback
      * @return UpdateCompositionHookOptions Options builder
      */
-    public static function update($enabled = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $trim = Values::NONE, $format = Values::NONE, $resolution = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
+    public static function update($enabled = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $trim = Values::NONE, $format = Values::NONE, $resolution = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
         return new UpdateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $trim, $format, $resolution, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -109,7 +109,7 @@ class ReadCompositionHookOptions extends Options {
      *                      value that matches this parameter
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -122,7 +122,7 @@ class ReadCompositionHookOptions extends Options {
      *                                    datetime with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter): self {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -135,7 +135,7 @@ class ReadCompositionHookOptions extends Options {
      *                                     with time zone
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore): self {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -147,7 +147,7 @@ class ReadCompositionHookOptions extends Options {
      *                             friendly names that match this string
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -157,10 +157,10 @@ class ReadCompositionHookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -206,7 +206,7 @@ class CreateCompositionHookOptions extends Options {
      * @param bool $enabled Whether the composition hook is active
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -218,7 +218,7 @@ class CreateCompositionHookOptions extends Options {
      *                           composition hook
      * @return $this Fluent Builder
      */
-    public function setVideoLayout($videoLayout) {
+    public function setVideoLayout($videoLayout): self {
         $this->options['videoLayout'] = $videoLayout;
         return $this;
     }
@@ -230,7 +230,7 @@ class CreateCompositionHookOptions extends Options {
      *                             to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources($audioSources) {
+    public function setAudioSources($audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -241,7 +241,7 @@ class CreateCompositionHookOptions extends Options {
      * @param string $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded($audioSourcesExcluded) {
+    public function setAudioSourcesExcluded($audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -268,7 +268,7 @@ class CreateCompositionHookOptions extends Options {
      *                           in pixels
      * @return $this Fluent Builder
      */
-    public function setResolution($resolution) {
+    public function setResolution($resolution): self {
         $this->options['resolution'] = $resolution;
         return $this;
     }
@@ -280,7 +280,7 @@ class CreateCompositionHookOptions extends Options {
      *                       compositions created by the composition hook
      * @return $this Fluent Builder
      */
-    public function setFormat($format) {
+    public function setFormat($format): self {
         $this->options['format'] = $format;
         return $this;
     }
@@ -292,7 +292,7 @@ class CreateCompositionHookOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -304,7 +304,7 @@ class CreateCompositionHookOptions extends Options {
      *                                     status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -316,7 +316,7 @@ class CreateCompositionHookOptions extends Options {
      *                   media in the Compositions triggered by the composition hook
      * @return $this Fluent Builder
      */
-    public function setTrim($trim) {
+    public function setTrim($trim): self {
         $this->options['trim'] = $trim;
         return $this;
     }
@@ -326,10 +326,10 @@ class CreateCompositionHookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -375,7 +375,7 @@ class UpdateCompositionHookOptions extends Options {
      * @param bool $enabled Whether the composition hook is active
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled): self {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -387,7 +387,7 @@ class UpdateCompositionHookOptions extends Options {
      *                           the composition hook
      * @return $this Fluent Builder
      */
-    public function setVideoLayout($videoLayout) {
+    public function setVideoLayout($videoLayout): self {
         $this->options['videoLayout'] = $videoLayout;
         return $this;
     }
@@ -399,7 +399,7 @@ class UpdateCompositionHookOptions extends Options {
      *                             to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources($audioSources) {
+    public function setAudioSources($audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -410,7 +410,7 @@ class UpdateCompositionHookOptions extends Options {
      * @param string $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded($audioSourcesExcluded) {
+    public function setAudioSourcesExcluded($audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -422,7 +422,7 @@ class UpdateCompositionHookOptions extends Options {
      *                   media in the Compositions triggered by the composition hook
      * @return $this Fluent Builder
      */
-    public function setTrim($trim) {
+    public function setTrim($trim): self {
         $this->options['trim'] = $trim;
         return $this;
     }
@@ -434,7 +434,7 @@ class UpdateCompositionHookOptions extends Options {
      *                       compositions created by the composition hook
      * @return $this Fluent Builder
      */
-    public function setFormat($format) {
+    public function setFormat($format): self {
         $this->options['format'] = $format;
         return $this;
     }
@@ -461,7 +461,7 @@ class UpdateCompositionHookOptions extends Options {
      *                           pixels
      * @return $this Fluent Builder
      */
-    public function setResolution($resolution) {
+    public function setResolution($resolution): self {
         $this->options['resolution'] = $resolution;
         return $this;
     }
@@ -473,7 +473,7 @@ class UpdateCompositionHookOptions extends Options {
      *                               information to your application
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback): self {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -485,7 +485,7 @@ class UpdateCompositionHookOptions extends Options {
      *                                     status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -495,10 +495,10 @@ class UpdateCompositionHookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

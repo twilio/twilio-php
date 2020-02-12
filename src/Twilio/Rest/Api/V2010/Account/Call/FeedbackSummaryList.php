@@ -22,13 +22,12 @@ class FeedbackSummaryList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/FeedbackSummary.json';
     }
@@ -42,21 +41,21 @@ class FeedbackSummaryList extends ListResource {
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($startDate, $endDate, $options = array()) {
+    public function create($startDate, $endDate, $options = []): FeedbackSummaryInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'StartDate' => Serialize::iso8601Date($startDate),
             'EndDate' => Serialize::iso8601Date($endDate),
             'IncludeSubaccounts' => Serialize::booleanToString($options['includeSubaccounts']),
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -68,9 +67,8 @@ class FeedbackSummaryList extends ListResource {
      *
      * @param string $sid A string that uniquely identifies this feedback summary
      *                    resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): FeedbackSummaryContext {
         return new FeedbackSummaryContext($this->version, $this->solution['accountSid'], $sid);
     }
 
@@ -79,7 +77,7 @@ class FeedbackSummaryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.FeedbackSummaryList]';
     }
 }

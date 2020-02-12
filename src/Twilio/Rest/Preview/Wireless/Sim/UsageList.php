@@ -21,21 +21,18 @@ class UsageList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $simSid The sim_sid
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList
      */
     public function __construct(Version $version, $simSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('simSid' => $simSid, );
+        $this->solution = ['simSid' => $simSid, ];
     }
 
     /**
      * Constructs a UsageContext
-     *
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext
      */
-    public function getContext() {
+    public function getContext(): UsageContext {
         return new UsageContext($this->version, $this->solution['simSid']);
     }
 
@@ -44,7 +41,7 @@ class UsageList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Preview.Wireless.UsageList]';
     }
 }

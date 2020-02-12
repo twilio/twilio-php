@@ -21,23 +21,18 @@ class DeploymentContext extends InstanceContext {
     /**
      * Initialize the DeploymentContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Deployment
      *                           resource from
      * @param string $environmentSid The SID of the environment used by the
      *                               Deployment to fetch
      * @param string $sid The SID that identifies the Deployment resource to fetch
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentContext
      */
     public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'environmentSid' => $environmentSid,
-            'sid' => $sid,
-        );
+        $this->solution = ['serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, 'sid' => $sid, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Deployments/' . \rawurlencode($sid) . '';
     }
@@ -48,8 +43,8 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): DeploymentInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -71,8 +66,8 @@ class DeploymentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

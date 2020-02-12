@@ -19,7 +19,7 @@ class UserChannelPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): UserChannelInstance {
         return new UserChannelInstance(
             $this->version,
             $payload,
@@ -33,7 +33,7 @@ class UserChannelPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Chat.V1.UserChannelPage]';
     }
 }

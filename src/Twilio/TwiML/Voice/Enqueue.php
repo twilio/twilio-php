@@ -18,7 +18,7 @@ class Enqueue extends TwiML {
      * @param string $name Friendly name
      * @param array $attributes Optional attributes
      */
-    public function __construct($name = null, $attributes = array()) {
+    public function __construct($name = null, $attributes = []) {
         parent::__construct('Enqueue', $name, $attributes);
     }
 
@@ -29,7 +29,7 @@ class Enqueue extends TwiML {
      * @param array $attributes Optional attributes
      * @return Task Child element.
      */
-    public function task($body, $attributes = array()) {
+    public function task($body, $attributes = []): Task {
         return $this->nest(new Task($body, $attributes));
     }
 
@@ -37,9 +37,8 @@ class Enqueue extends TwiML {
      * Add Action attribute.
      *
      * @param string $action Action URL
-     * @return static $this.
      */
-    public function setAction($action) {
+    public function setAction($action): self {
         return $this->setAttribute('action', $action);
     }
 
@@ -47,9 +46,8 @@ class Enqueue extends TwiML {
      * Add Method attribute.
      *
      * @param string $method Action URL method
-     * @return static $this.
      */
-    public function setMethod($method) {
+    public function setMethod($method): self {
         return $this->setAttribute('method', $method);
     }
 
@@ -57,9 +55,8 @@ class Enqueue extends TwiML {
      * Add WaitUrl attribute.
      *
      * @param string $waitUrl Wait URL
-     * @return static $this.
      */
-    public function setWaitUrl($waitUrl) {
+    public function setWaitUrl($waitUrl): self {
         return $this->setAttribute('waitUrl', $waitUrl);
     }
 
@@ -67,9 +64,8 @@ class Enqueue extends TwiML {
      * Add WaitUrlMethod attribute.
      *
      * @param string $waitUrlMethod Wait URL method
-     * @return static $this.
      */
-    public function setWaitUrlMethod($waitUrlMethod) {
+    public function setWaitUrlMethod($waitUrlMethod): self {
         return $this->setAttribute('waitUrlMethod', $waitUrlMethod);
     }
 
@@ -77,9 +73,8 @@ class Enqueue extends TwiML {
      * Add WorkflowSid attribute.
      *
      * @param string $workflowSid TaskRouter Workflow SID
-     * @return static $this.
      */
-    public function setWorkflowSid($workflowSid) {
+    public function setWorkflowSid($workflowSid): self {
         return $this->setAttribute('workflowSid', $workflowSid);
     }
 }

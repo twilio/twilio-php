@@ -25,7 +25,7 @@ abstract class UserChannelOptions {
      *                                            Channel
      * @return UpdateUserChannelOptions Options builder
      */
-    public static function update($notificationLevel = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE) {
+    public static function update($notificationLevel = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE): UpdateUserChannelOptions {
         return new UpdateUserChannelOptions($notificationLevel, $lastConsumedMessageIndex, $lastConsumptionTimestamp);
     }
 }
@@ -55,7 +55,7 @@ class UpdateUserChannelOptions extends Options {
      *                                  the User Channel
      * @return $this Fluent Builder
      */
-    public function setNotificationLevel($notificationLevel) {
+    public function setNotificationLevel($notificationLevel): self {
         $this->options['notificationLevel'] = $notificationLevel;
         return $this;
     }
@@ -67,7 +67,7 @@ class UpdateUserChannelOptions extends Options {
      *                                      Member has read within the Channel
      * @return $this Fluent Builder
      */
-    public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
+    public function setLastConsumedMessageIndex($lastConsumedMessageIndex): self {
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         return $this;
     }
@@ -82,7 +82,7 @@ class UpdateUserChannelOptions extends Options {
      *                                            Channel
      * @return $this Fluent Builder
      */
-    public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
+    public function setLastConsumptionTimestamp($lastConsumptionTimestamp): self {
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         return $this;
     }
@@ -92,10 +92,10 @@ class UpdateUserChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -19,7 +19,7 @@ class AlertPage extends Page {
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload): AlertInstance {
         return new AlertInstance($this->version, $payload);
     }
 
@@ -28,7 +28,7 @@ class AlertPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Monitor.V1.AlertPage]';
     }
 }

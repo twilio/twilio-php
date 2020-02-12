@@ -19,14 +19,12 @@ use Twilio\Rest\Taskrouter\V1;
  * @method \Twilio\Rest\Taskrouter\V1\WorkspaceContext workspaces(string $sid)
  */
 class Taskrouter extends Domain {
-    protected $_v1 = null;
+    protected $_v1;
 
     /**
      * Construct the Taskrouter Domain
      *
-     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
-     *                                    Twilio
-     * @return \Twilio\Rest\Taskrouter Domain for Taskrouter
+     * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -35,9 +33,9 @@ class Taskrouter extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Taskrouter\V1 Version v1 of taskrouter
+     * @return V1 Version v1 of taskrouter
      */
-    protected function getV1() {
+    protected function getV1(): V1 {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -71,24 +69,20 @@ class Taskrouter extends Domain {
     public function __call($name, $arguments) {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
-            return \call_user_func_array(array($this, $method), $arguments);
+            return \call_user_func_array([$this, $method], $arguments);
         }
 
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    /**
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList
-     */
-    protected function getWorkspaces() {
+    protected function getWorkspaces(): \Twilio\Rest\Taskrouter\V1\WorkspaceList {
         return $this->v1->workspaces;
     }
 
     /**
      * @param string $sid The SID of the resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext
      */
-    protected function contextWorkspaces($sid) {
+    protected function contextWorkspaces($sid): \Twilio\Rest\Taskrouter\V1\WorkspaceContext {
         return $this->v1->workspaces($sid);
     }
 
@@ -97,7 +91,7 @@ class Taskrouter extends Domain {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Taskrouter]';
     }
 }

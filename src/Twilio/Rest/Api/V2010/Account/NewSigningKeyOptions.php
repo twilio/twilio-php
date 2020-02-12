@@ -17,7 +17,7 @@ abstract class NewSigningKeyOptions {
      * @param string $friendlyName A string to describe the resource
      * @return CreateNewSigningKeyOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE) {
+    public static function create($friendlyName = Values::NONE): CreateNewSigningKeyOptions {
         return new CreateNewSigningKeyOptions($friendlyName);
     }
 }
@@ -36,7 +36,7 @@ class CreateNewSigningKeyOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -46,10 +46,10 @@ class CreateNewSigningKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

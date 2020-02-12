@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,13 +22,12 @@ class CredentialListList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk the credential list in
      *                         associated with
-     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList
      */
     public function __construct(Version $version, $trunkSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('trunkSid' => $trunkSid, );
+        $this->solution = ['trunkSid' => $trunkSid, ];
 
         $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/CredentialLists';
     }
@@ -40,13 +40,13 @@ class CredentialListList extends ListResource {
      * @return CredentialListInstance Newly created CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($credentialListSid) {
-        $data = Values::of(array('CredentialListSid' => $credentialListSid, ));
+    public function create($credentialListSid): CredentialListInstance {
+        $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -69,9 +69,9 @@ class CredentialListList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -94,7 +94,7 @@ class CredentialListList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialListInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -105,14 +105,10 @@ class CredentialListList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of CredentialListInstance
+     * @return CredentialListPage Page of CredentialListInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -128,9 +124,9 @@ class CredentialListList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of CredentialListInstance
+     * @return CredentialListPage Page of CredentialListInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): CredentialListPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -143,9 +139,8 @@ class CredentialListList extends ListResource {
      * Constructs a CredentialListContext
      *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): CredentialListContext {
         return new CredentialListContext($this->version, $this->solution['trunkSid'], $sid);
     }
 
@@ -154,7 +149,7 @@ class CredentialListList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Trunking.V1.CredentialListList]';
     }
 }

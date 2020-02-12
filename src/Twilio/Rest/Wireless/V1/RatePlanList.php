@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,13 +22,12 @@ class RatePlanList extends ListResource {
      * Construct the RatePlanList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = [];
 
         $this->uri = '/RatePlans';
     }
@@ -48,9 +48,9 @@ class RatePlanList extends ListResource {
      *                        page_size is defined but a limit is defined, stream()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return \Twilio\Stream stream of results
+     * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -73,7 +73,7 @@ class RatePlanList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RatePlanInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -84,14 +84,10 @@ class RatePlanList extends ListResource {
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of RatePlanInstance
+     * @return RatePlanPage Page of RatePlanInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $params = Values::of(array(
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ));
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE): RatePlanPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page(
             'GET',
@@ -107,9 +103,9 @@ class RatePlanList extends ListResource {
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of RatePlanInstance
+     * @return RatePlanPage Page of RatePlanInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl): RatePlanPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -125,10 +121,10 @@ class RatePlanList extends ListResource {
      * @return RatePlanInstance Newly created RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($options = []): RatePlanInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'UniqueName' => $options['uniqueName'],
             'FriendlyName' => $options['friendlyName'],
             'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
@@ -140,12 +136,12 @@ class RatePlanList extends ListResource {
             'InternationalRoaming' => Serialize::map($options['internationalRoaming'], function($e) { return $e; }),
             'NationalRoamingDataLimit' => $options['nationalRoamingDataLimit'],
             'InternationalRoamingDataLimit' => $options['internationalRoamingDataLimit'],
-        ));
+        ]);
 
         $payload = $this->version->create(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -156,9 +152,8 @@ class RatePlanList extends ListResource {
      * Constructs a RatePlanContext
      *
      * @param string $sid The SID that identifies the resource to fetch
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
      */
-    public function getContext($sid) {
+    public function getContext($sid): RatePlanContext {
         return new RatePlanContext($this->version, $sid);
     }
 
@@ -167,7 +162,7 @@ class RatePlanList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Wireless.V1.RatePlanList]';
     }
 }

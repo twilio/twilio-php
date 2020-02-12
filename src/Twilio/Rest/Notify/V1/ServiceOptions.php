@@ -41,7 +41,7 @@ abstract class ServiceOptions {
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE): CreateServiceOptions {
         return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled, $alexaSkillId, $defaultAlexaNotificationProtocolVersion);
     }
 
@@ -50,7 +50,7 @@ abstract class ServiceOptions {
      *                             to read
      * @return ReadServiceOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE) {
+    public static function read($friendlyName = Values::NONE): ReadServiceOptions {
         return new ReadServiceOptions($friendlyName);
     }
 
@@ -81,7 +81,7 @@ abstract class ServiceOptions {
      * @param bool $deliveryCallbackEnabled Enable delivery callbacks
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE, $deliveryCallbackUrl = Values::NONE, $deliveryCallbackEnabled = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE, $deliveryCallbackUrl = Values::NONE, $deliveryCallbackEnabled = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled, $alexaSkillId, $defaultAlexaNotificationProtocolVersion, $deliveryCallbackUrl, $deliveryCallbackEnabled);
     }
 }
@@ -132,7 +132,7 @@ class CreateServiceOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -144,7 +144,7 @@ class CreateServiceOptions extends Options {
      *                                 Bindings
      * @return $this Fluent Builder
      */
-    public function setApnCredentialSid($apnCredentialSid) {
+    public function setApnCredentialSid($apnCredentialSid): self {
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         return $this;
     }
@@ -156,7 +156,7 @@ class CreateServiceOptions extends Options {
      *                                 Bindings
      * @return $this Fluent Builder
      */
-    public function setGcmCredentialSid($gcmCredentialSid) {
+    public function setGcmCredentialSid($gcmCredentialSid): self {
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
         return $this;
     }
@@ -168,7 +168,7 @@ class CreateServiceOptions extends Options {
      *                                    for SMS Bindings
      * @return $this Fluent Builder
      */
-    public function setMessagingServiceSid($messagingServiceSid) {
+    public function setMessagingServiceSid($messagingServiceSid): self {
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         return $this;
     }
@@ -179,7 +179,7 @@ class CreateServiceOptions extends Options {
      * @param string $facebookMessengerPageId Deprecated
      * @return $this Fluent Builder
      */
-    public function setFacebookMessengerPageId($facebookMessengerPageId) {
+    public function setFacebookMessengerPageId($facebookMessengerPageId): self {
         $this->options['facebookMessengerPageId'] = $facebookMessengerPageId;
         return $this;
     }
@@ -192,7 +192,7 @@ class CreateServiceOptions extends Options {
      *                                                      notifications
      * @return $this Fluent Builder
      */
-    public function setDefaultApnNotificationProtocolVersion($defaultApnNotificationProtocolVersion) {
+    public function setDefaultApnNotificationProtocolVersion($defaultApnNotificationProtocolVersion): self {
         $this->options['defaultApnNotificationProtocolVersion'] = $defaultApnNotificationProtocolVersion;
         return $this;
     }
@@ -205,7 +205,7 @@ class CreateServiceOptions extends Options {
      *                                                      notifications
      * @return $this Fluent Builder
      */
-    public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion) {
+    public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion): self {
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
         return $this;
     }
@@ -217,7 +217,7 @@ class CreateServiceOptions extends Options {
      *                                 Bindings
      * @return $this Fluent Builder
      */
-    public function setFcmCredentialSid($fcmCredentialSid) {
+    public function setFcmCredentialSid($fcmCredentialSid): self {
         $this->options['fcmCredentialSid'] = $fcmCredentialSid;
         return $this;
     }
@@ -230,7 +230,7 @@ class CreateServiceOptions extends Options {
      *                                                      notifications
      * @return $this Fluent Builder
      */
-    public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
+    public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion): self {
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
         return $this;
     }
@@ -241,7 +241,7 @@ class CreateServiceOptions extends Options {
      * @param bool $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
-    public function setLogEnabled($logEnabled) {
+    public function setLogEnabled($logEnabled): self {
         $this->options['logEnabled'] = $logEnabled;
         return $this;
     }
@@ -252,7 +252,7 @@ class CreateServiceOptions extends Options {
      * @param string $alexaSkillId Deprecated
      * @return $this Fluent Builder
      */
-    public function setAlexaSkillId($alexaSkillId) {
+    public function setAlexaSkillId($alexaSkillId): self {
         $this->options['alexaSkillId'] = $alexaSkillId;
         return $this;
     }
@@ -263,7 +263,7 @@ class CreateServiceOptions extends Options {
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return $this Fluent Builder
      */
-    public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion) {
+    public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion): self {
         $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
         return $this;
     }
@@ -273,10 +273,10 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -300,7 +300,7 @@ class ReadServiceOptions extends Options {
      *                             to read
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -310,10 +310,10 @@ class ReadServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -371,7 +371,7 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -383,7 +383,7 @@ class UpdateServiceOptions extends Options {
      *                                 Bindings
      * @return $this Fluent Builder
      */
-    public function setApnCredentialSid($apnCredentialSid) {
+    public function setApnCredentialSid($apnCredentialSid): self {
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         return $this;
     }
@@ -395,7 +395,7 @@ class UpdateServiceOptions extends Options {
      *                                 Bindings
      * @return $this Fluent Builder
      */
-    public function setGcmCredentialSid($gcmCredentialSid) {
+    public function setGcmCredentialSid($gcmCredentialSid): self {
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
         return $this;
     }
@@ -407,7 +407,7 @@ class UpdateServiceOptions extends Options {
      *                                    for SMS Bindings
      * @return $this Fluent Builder
      */
-    public function setMessagingServiceSid($messagingServiceSid) {
+    public function setMessagingServiceSid($messagingServiceSid): self {
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         return $this;
     }
@@ -418,7 +418,7 @@ class UpdateServiceOptions extends Options {
      * @param string $facebookMessengerPageId Deprecated
      * @return $this Fluent Builder
      */
-    public function setFacebookMessengerPageId($facebookMessengerPageId) {
+    public function setFacebookMessengerPageId($facebookMessengerPageId): self {
         $this->options['facebookMessengerPageId'] = $facebookMessengerPageId;
         return $this;
     }
@@ -431,7 +431,7 @@ class UpdateServiceOptions extends Options {
      *                                                      notifications
      * @return $this Fluent Builder
      */
-    public function setDefaultApnNotificationProtocolVersion($defaultApnNotificationProtocolVersion) {
+    public function setDefaultApnNotificationProtocolVersion($defaultApnNotificationProtocolVersion): self {
         $this->options['defaultApnNotificationProtocolVersion'] = $defaultApnNotificationProtocolVersion;
         return $this;
     }
@@ -444,7 +444,7 @@ class UpdateServiceOptions extends Options {
      *                                                      notifications
      * @return $this Fluent Builder
      */
-    public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion) {
+    public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion): self {
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
         return $this;
     }
@@ -456,7 +456,7 @@ class UpdateServiceOptions extends Options {
      *                                 Bindings
      * @return $this Fluent Builder
      */
-    public function setFcmCredentialSid($fcmCredentialSid) {
+    public function setFcmCredentialSid($fcmCredentialSid): self {
         $this->options['fcmCredentialSid'] = $fcmCredentialSid;
         return $this;
     }
@@ -469,7 +469,7 @@ class UpdateServiceOptions extends Options {
      *                                                      notifications
      * @return $this Fluent Builder
      */
-    public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
+    public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion): self {
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
         return $this;
     }
@@ -480,7 +480,7 @@ class UpdateServiceOptions extends Options {
      * @param bool $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
-    public function setLogEnabled($logEnabled) {
+    public function setLogEnabled($logEnabled): self {
         $this->options['logEnabled'] = $logEnabled;
         return $this;
     }
@@ -491,7 +491,7 @@ class UpdateServiceOptions extends Options {
      * @param string $alexaSkillId Deprecated
      * @return $this Fluent Builder
      */
-    public function setAlexaSkillId($alexaSkillId) {
+    public function setAlexaSkillId($alexaSkillId): self {
         $this->options['alexaSkillId'] = $alexaSkillId;
         return $this;
     }
@@ -502,7 +502,7 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return $this Fluent Builder
      */
-    public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion) {
+    public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion): self {
         $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
         return $this;
     }
@@ -513,7 +513,7 @@ class UpdateServiceOptions extends Options {
      * @param string $deliveryCallbackUrl Webhook URL
      * @return $this Fluent Builder
      */
-    public function setDeliveryCallbackUrl($deliveryCallbackUrl) {
+    public function setDeliveryCallbackUrl($deliveryCallbackUrl): self {
         $this->options['deliveryCallbackUrl'] = $deliveryCallbackUrl;
         return $this;
     }
@@ -524,7 +524,7 @@ class UpdateServiceOptions extends Options {
      * @param bool $deliveryCallbackEnabled Enable delivery callbacks
      * @return $this Fluent Builder
      */
-    public function setDeliveryCallbackEnabled($deliveryCallbackEnabled) {
+    public function setDeliveryCallbackEnabled($deliveryCallbackEnabled): self {
         $this->options['deliveryCallbackEnabled'] = $deliveryCallbackEnabled;
         return $this;
     }
@@ -534,10 +534,10 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

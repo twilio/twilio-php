@@ -18,16 +18,15 @@ class UsageInstance extends InstanceResource {
     /**
      * Initialize the UsageInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\UsageInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
 
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = ['accountSid' => $accountSid, ];
     }
 
     /**
@@ -55,7 +54,7 @@ class UsageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Api.V2010.UsageInstance]';
     }
 }

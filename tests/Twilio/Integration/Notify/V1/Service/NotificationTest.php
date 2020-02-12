@@ -16,7 +16,7 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class NotificationTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+    public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -31,7 +31,7 @@ class NotificationTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -68,7 +68,7 @@ class NotificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateDirectNotificationResponse() {
+    public function testCreateDirectNotificationResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '

@@ -11,44 +11,38 @@ namespace Twilio\Rest\Conversations;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\InstanceContext;
 use Twilio\Rest\Conversations\V1\ConversationList;
 use Twilio\Rest\Conversations\V1\WebhookList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Conversations\V1\ConversationList $conversations
- * @property \Twilio\Rest\Conversations\V1\WebhookList $webhooks
+ * @property ConversationList $conversations
+ * @property WebhookList $webhooks
  * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
  */
 class V1 extends Version {
-    protected $_conversations = null;
-    protected $_webhooks = null;
+    protected $_conversations;
+    protected $_webhooks;
 
     /**
      * Construct the V1 version of Conversations
      *
-     * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Conversations\V1 V1 version of Conversations
+     * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    /**
-     * @return \Twilio\Rest\Conversations\V1\ConversationList
-     */
-    protected function getConversations() {
+    protected function getConversations(): ConversationList {
         if (!$this->_conversations) {
             $this->_conversations = new ConversationList($this);
         }
         return $this->_conversations;
     }
 
-    /**
-     * @return \Twilio\Rest\Conversations\V1\WebhookList
-     */
-    protected function getWebhooks() {
+    protected function getWebhooks(): WebhookList {
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList($this);
         }
@@ -76,10 +70,10 @@ class V1 extends Version {
      *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\InstanceContext The requested resource context
+     * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments): InstanceContext {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -93,7 +87,7 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Conversations.V1]';
     }
 }

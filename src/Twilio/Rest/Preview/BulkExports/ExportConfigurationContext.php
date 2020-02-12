@@ -23,15 +23,14 @@ class ExportConfigurationContext extends InstanceContext {
     /**
      * Initialize the ExportConfigurationContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $resourceType The type of communication – Messages, Calls
-     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext
      */
     public function __construct(Version $version, $resourceType) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('resourceType' => $resourceType, );
+        $this->solution = ['resourceType' => $resourceType, ];
 
         $this->uri = '/Exports/' . \rawurlencode($resourceType) . '/Configuration';
     }
@@ -42,8 +41,8 @@ class ExportConfigurationContext extends InstanceContext {
      * @return ExportConfigurationInstance Fetched ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): ExportConfigurationInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -61,19 +60,19 @@ class ExportConfigurationContext extends InstanceContext {
      * @return ExportConfigurationInstance Updated ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): ExportConfigurationInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Enabled' => Serialize::booleanToString($options['enabled']),
             'WebhookUrl' => $options['webhookUrl'],
             'WebhookMethod' => $options['webhookMethod'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -85,8 +84,8 @@ class ExportConfigurationContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

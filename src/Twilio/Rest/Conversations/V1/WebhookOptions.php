@@ -28,7 +28,7 @@ abstract class WebhookOptions {
      * @param string $target The routing target of the webhook.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update($method = Values::NONE, $filters = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $target = Values::NONE) {
+    public static function update($method = Values::NONE, $filters = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $target = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($method, $filters, $preWebhookUrl, $postWebhookUrl, $target);
     }
 }
@@ -60,7 +60,7 @@ class UpdateWebhookOptions extends Options {
      *                       request.
      * @return $this Fluent Builder
      */
-    public function setMethod($method) {
+    public function setMethod($method): self {
         $this->options['method'] = $method;
         return $this;
     }
@@ -72,7 +72,7 @@ class UpdateWebhookOptions extends Options {
      *                        for this Service.
      * @return $this Fluent Builder
      */
-    public function setFilters($filters) {
+    public function setFilters($filters): self {
         $this->options['filters'] = $filters;
         return $this;
     }
@@ -84,7 +84,7 @@ class UpdateWebhookOptions extends Options {
      *                              should be sent to.
      * @return $this Fluent Builder
      */
-    public function setPreWebhookUrl($preWebhookUrl) {
+    public function setPreWebhookUrl($preWebhookUrl): self {
         $this->options['preWebhookUrl'] = $preWebhookUrl;
         return $this;
     }
@@ -96,7 +96,7 @@ class UpdateWebhookOptions extends Options {
      *                               request should be sent to.
      * @return $this Fluent Builder
      */
-    public function setPostWebhookUrl($postWebhookUrl) {
+    public function setPostWebhookUrl($postWebhookUrl): self {
         $this->options['postWebhookUrl'] = $postWebhookUrl;
         return $this;
     }
@@ -107,7 +107,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $target The routing target of the webhook.
      * @return $this Fluent Builder
      */
-    public function setTarget($target) {
+    public function setTarget($target): self {
         $this->options['target'] = $target;
         return $this;
     }
@@ -117,10 +117,10 @@ class UpdateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $options = array();
+    public function __toString(): string {
+        $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
+            if ($value !== Values::NONE) {
                 $options[] = "$key=$value";
             }
         }

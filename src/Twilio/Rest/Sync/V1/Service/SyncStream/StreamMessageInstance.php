@@ -24,23 +24,22 @@ class StreamMessageInstance extends InstanceResource {
     /**
      * Initialize the StreamMessageInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Sync Service that the resource is
      *                           associated with
      * @param string $streamSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $streamSid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'data' => Values::array_get($payload, 'data'),
-        );
+        ];
 
-        $this->solution = array('serviceSid' => $serviceSid, 'streamSid' => $streamSid, );
+        $this->solution = ['serviceSid' => $serviceSid, 'streamSid' => $streamSid, ];
     }
 
     /**
@@ -68,7 +67,7 @@ class StreamMessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString(): string {
         return '[Twilio.Sync.V1.StreamMessageInstance]';
     }
 }

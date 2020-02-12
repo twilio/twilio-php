@@ -20,17 +20,16 @@ class OriginationUrlContext extends InstanceContext {
     /**
      * Initialize the OriginationUrlContext
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk from which to fetch the
      *                         OriginationUrl
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid, );
+        $this->solution = ['trunkSid' => $trunkSid, 'sid' => $sid, ];
 
         $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/OriginationUrls/' . \rawurlencode($sid) . '';
     }
@@ -41,8 +40,8 @@ class OriginationUrlContext extends InstanceContext {
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch(): OriginationUrlInstance {
+        $params = Values::of([]);
 
         $payload = $this->version->fetch(
             'GET',
@@ -61,10 +60,10 @@ class OriginationUrlContext extends InstanceContext {
     /**
      * Deletes the OriginationUrlInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete() {
+    public function delete(): bool {
         return $this->version->delete('delete', $this->uri);
     }
 
@@ -75,21 +74,21 @@ class OriginationUrlContext extends InstanceContext {
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($options = array()) {
+    public function update($options = []): OriginationUrlInstance {
         $options = new Values($options);
 
-        $data = Values::of(array(
+        $data = Values::of([
             'Weight' => $options['weight'],
             'Priority' => $options['priority'],
             'Enabled' => Serialize::booleanToString($options['enabled']),
             'FriendlyName' => $options['friendlyName'],
             'SipUrl' => $options['sipUrl'],
-        ));
+        ]);
 
         $payload = $this->version->update(
             'POST',
             $this->uri,
-            array(),
+            [],
             $data
         );
 
@@ -106,8 +105,8 @@ class OriginationUrlContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }

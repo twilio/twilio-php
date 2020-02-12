@@ -28,40 +28,39 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
     /**
      * Initialize the AvailableAddOnExtensionInstance
      *
-     * @param \Twilio\Version $version Version that contains the resource
+     * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $availableAddOnSid The SID of the AvailableAddOn resource to
      *                                  which this extension applies
      * @param string $sid The SID of the AvailableAddOn Extension resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionInstance
      */
     public function __construct(Version $version, array $payload, $availableAddOnSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = array(
+        $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'availableAddOnSid' => Values::array_get($payload, 'available_add_on_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'productName' => Values::array_get($payload, 'product_name'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),
-        );
+        ];
 
-        $this->solution = array(
+        $this->solution = [
             'availableAddOnSid' => $availableAddOnSid,
             'sid' => $sid ?: $this->properties['sid'],
-        );
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext Context for this
-     *                                                                                        AvailableAddOnExtensionInstance
+     * @return AvailableAddOnExtensionContext Context for this
+     *                                        AvailableAddOnExtensionInstance
      */
-    protected function proxy() {
+    protected function proxy(): AvailableAddOnExtensionContext {
         if (!$this->context) {
             $this->context = new AvailableAddOnExtensionContext(
                 $this->version,
@@ -80,7 +79,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
      *                                         AvailableAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
+    public function fetch(): AvailableAddOnExtensionInstance {
         return $this->proxy()->fetch();
     }
 
@@ -109,8 +108,8 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString() {
-        $context = array();
+    public function __toString(): string {
+        $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
