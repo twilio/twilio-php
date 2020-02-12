@@ -21,10 +21,6 @@ The PHP library documentation can be found [here][libdocs].
 
 This library supports the following PHP implementations:
 
-* PHP 5.5
-* PHP 5.6
-* PHP 7.0
-* PHP 7.1
 * PHP 7.2
 * PHP 7.3
 * PHP 7.4

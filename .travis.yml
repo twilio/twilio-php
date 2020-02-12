@@ -7,7 +7,6 @@ addons:
     packages:
       - libonig-dev
 php:
-  - '7.1'
   - '7.2'
   - '7.3'
   - '7.4snapshot'
@@ -35,4 +34,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    php: "7.1"
+    php: '7.2'
