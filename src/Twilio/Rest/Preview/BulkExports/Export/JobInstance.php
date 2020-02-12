@@ -23,6 +23,9 @@ use Twilio\Version;
  * @property string $startDay
  * @property string $endDay
  * @property string $jobSid
+ * @property string $webhookUrl
+ * @property string $webhookMethod
+ * @property string $email
  * @property string $url
  */
 class JobInstance extends InstanceResource {
@@ -45,6 +48,9 @@ class JobInstance extends InstanceResource {
             'startDay' => Values::array_get($payload, 'start_day'),
             'endDay' => Values::array_get($payload, 'end_day'),
             'jobSid' => Values::array_get($payload, 'job_sid'),
+            'webhookUrl' => Values::array_get($payload, 'webhook_url'),
+            'webhookMethod' => Values::array_get($payload, 'webhook_method'),
+            'email' => Values::array_get($payload, 'email'),
             'url' => Values::array_get($payload, 'url'),
         );
 

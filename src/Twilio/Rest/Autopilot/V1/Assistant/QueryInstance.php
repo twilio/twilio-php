@@ -32,6 +32,7 @@ use Twilio\Version;
  * @property string $status
  * @property string $url
  * @property string $sourceChannel
+ * @property string $dialogueSid
  */
 class QueryInstance extends InstanceResource {
     /**
@@ -62,6 +63,7 @@ class QueryInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'url' => Values::array_get($payload, 'url'),
             'sourceChannel' => Values::array_get($payload, 'source_channel'),
+            'dialogueSid' => Values::array_get($payload, 'dialogue_sid'),
         );
 
         $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid ?: $this->properties['sid'], );

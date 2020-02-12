@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Call\NotificationList;
+use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
 use Twilio\Rest\Api\V2010\Account\Call\RecordingList;
 use Twilio\Values;
 use Twilio\Version;
@@ -22,14 +23,17 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\Call\RecordingList $recordings
  * @property \Twilio\Rest\Api\V2010\Account\Call\NotificationList $notifications
  * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackList $feedback
+ * @property \Twilio\Rest\Api\V2010\Account\Call\PaymentList $payments
  * @method \Twilio\Rest\Api\V2010\Account\Call\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\NotificationContext notifications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext feedback()
+ * @method \Twilio\Rest\Api\V2010\Account\Call\PaymentContext payments(string $sid)
  */
 class CallContext extends InstanceContext {
     protected $_recordings = null;
     protected $_notifications = null;
     protected $_feedback = null;
+    protected $_payments = null;
 
     /**
      * Initialize the CallContext
@@ -167,6 +171,23 @@ class CallContext extends InstanceContext {
         }
 
         return $this->_feedback;
+    }
+
+    /**
+     * Access the payments
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Call\PaymentList
+     */
+    protected function getPayments() {
+        if (!$this->_payments) {
+            $this->_payments = new PaymentList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_payments;
     }
 
     /**

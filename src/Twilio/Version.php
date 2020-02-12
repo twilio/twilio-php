@@ -226,7 +226,7 @@ abstract class Version {
         return $this->domain;
     }
 
-    public function __toString(): string {
+    public function __toString() {
         return '[Version]';
     }
 }

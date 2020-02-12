@@ -30,7 +30,7 @@ class ExportInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $resourceType The resource_type
+     * @param string $resourceType The type of communication – Messages, Calls
      * @return \Twilio\Rest\Preview\BulkExports\ExportInstance
      */
     public function __construct(Version $version, array $payload, $resourceType = null) {

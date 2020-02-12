@@ -44,7 +44,7 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * The phone number or [email](https://www.twilio.com/docs/verify/tutorials/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      *
      * @param string $to The phone number or email to verify
      * @return $this Fluent Builder
@@ -55,7 +55,7 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/tutorials/email) must be specified.
+     * A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified.
      *
      * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check

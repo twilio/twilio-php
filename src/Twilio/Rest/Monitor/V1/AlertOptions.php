@@ -16,9 +16,9 @@ abstract class AlertOptions {
     /**
      * @param string $logLevel Only show alerts for this log-level
      * @param \DateTime $startDate Only include alerts that occurred on or after
-     *                             this date
+     *                             this date and time
      * @param \DateTime $endDate Only include alerts that occurred on or before
-     *                           this date
+     *                           this date and time
      * @return ReadAlertOptions Options builder
      */
     public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -30,9 +30,9 @@ class ReadAlertOptions extends Options {
     /**
      * @param string $logLevel Only show alerts for this log-level
      * @param \DateTime $startDate Only include alerts that occurred on or after
-     *                             this date
+     *                             this date and time
      * @param \DateTime $endDate Only include alerts that occurred on or before
-     *                           this date
+     *                           this date and time
      */
     public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['logLevel'] = $logLevel;
@@ -52,10 +52,10 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * Only include alerts that occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. Queries for alerts older than 30 days are not supported.
+     * Only include alerts that occurred on or after this date and time. Specify the date and time in GMT and format as `YYYY-MM-DD` or `YYYY-MM-DDThh:mm:ssZ`. Queries for alerts older than 30 days are not supported.
      *
      * @param \DateTime $startDate Only include alerts that occurred on or after
-     *                             this date
+     *                             this date and time
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -64,10 +64,10 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * Only include alerts that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`. Queries for alerts older than 30 days are not supported.
+     * Only include alerts that occurred on or before this date and time. Specify the date and time in GMT and format as `YYYY-MM-DD` or `YYYY-MM-DDThh:mm:ssZ`. Queries for alerts older than 30 days are not supported.
      *
      * @param \DateTime $endDate Only include alerts that occurred on or before
-     *                           this date
+     *                           this date and time
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

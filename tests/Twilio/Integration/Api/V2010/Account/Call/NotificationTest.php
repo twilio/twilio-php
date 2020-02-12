@@ -53,7 +53,7 @@ class NotificationTest extends HolodeckTestCase {
                 "response_body": "",
                 "response_headers": "",
                 "sid": "NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
         ));
@@ -63,35 +63,6 @@ class NotificationTest extends HolodeckTestCase {
                                            ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
-    }
-
-    public function testDeleteRequest() {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $this->assertRequest(new Request(
-            'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Notifications/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
-        ));
-    }
-
-    public function testDeleteResponse() {
-        $this->holodeck->mock(new Response(
-            204,
-            null
-        ));
-
-        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
-
-        $this->assertTrue($actual);
     }
 
     public function testReadRequest() {
@@ -115,10 +86,6 @@ class NotificationTest extends HolodeckTestCase {
             200,
             '
             {
-                "end": 0,
-                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json?PageSize=50&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json?PageSize=50&Page=0",
-                "next_page_uri": null,
                 "notifications": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -134,15 +101,16 @@ class NotificationTest extends HolodeckTestCase {
                         "request_method": null,
                         "request_url": "",
                         "sid": "NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "previous_page_uri": null,
+                "end": 0,
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json?PageSize=1&Page=0",
+                "next_page_uri": null,
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json"
             }
             '
@@ -160,17 +128,14 @@ class NotificationTest extends HolodeckTestCase {
             200,
             '
             {
-                "end": 0,
-                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json?PageSize=50&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json?PageSize=50&Page=0",
-                "next_page_uri": null,
                 "notifications": [],
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "previous_page_uri": null,
+                "end": 0,
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json?PageSize=1&Page=0",
+                "next_page_uri": null,
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json"
             }
             '

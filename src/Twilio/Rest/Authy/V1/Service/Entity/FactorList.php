@@ -38,7 +38,7 @@ class FactorList extends ListResource {
     /**
      * Create a new FactorInstance
      *
-     * @param string $binding A unique binding for this Factor
+     * @param string $binding A unique binding for this Factor as a json string
      * @param string $friendlyName The friendly name of this Factor
      * @param string $factorType The Type of this Factor
      * @return FactorInstance Newly created FactorInstance

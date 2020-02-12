@@ -60,4 +60,30 @@ class VerificationCheckTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testEmailVerificationChecksResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "recipient@foo.com",
+                "channel": "email",
+                "status": "approved",
+                "valid": true,
+                "amount": null,
+                "payee": null,
+                "date_created": "2020-01-30T20:00:00Z",
+                "date_updated": "2020-01-30T20:00:00Z"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->verificationChecks->create("code");
+
+        $this->assertNotNull($actual);
+    }
 }

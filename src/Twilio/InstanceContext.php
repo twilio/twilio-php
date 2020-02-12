@@ -13,7 +13,7 @@ class InstanceContext {
         $this->version = $version;
     }
 
-    public function __toString(): string {
+    public function __toString() {
         return '[InstanceContext]';
     }
 }

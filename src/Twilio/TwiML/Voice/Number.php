@@ -81,4 +81,14 @@ class Number extends TwiML {
     public function setStatusCallbackMethod($statusCallbackMethod) {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
     }
+
+    /**
+     * Add Byoc attribute.
+     *
+     * @param string $byoc BYOC trunk SID (Beta)
+     * @return static $this.
+     */
+    public function setByoc($byoc) {
+        return $this->setAttribute('byoc', $byoc);
+    }
 }

@@ -67,4 +67,13 @@ final class GuzzleClientTest extends UnitTest {
         $this->expectException(HttpException::class, 'Unable to complete the HTTP request');
         $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
     }
+
+    public function testQueryParams()
+    {
+        $this->mockHandler->append(new Response());
+        $this->client->request('get', 'https://www.whatever.com?foo=bar');
+        $request = $this->mockHandler->getLastRequest();
+
+        $this->assertSame('https://www.whatever.com?foo=bar', (string)$request->getUri());
+    }
 }

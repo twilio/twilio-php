@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property array $lookup
  * @property string $amount
  * @property string $payee
+ * @property array $sendCodeAttempts
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -56,6 +57,7 @@ class VerificationInstance extends InstanceResource {
             'lookup' => Values::array_get($payload, 'lookup'),
             'amount' => Values::array_get($payload, 'amount'),
             'payee' => Values::array_get($payload, 'payee'),
+            'sendCodeAttempts' => Values::array_get($payload, 'send_code_attempts'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

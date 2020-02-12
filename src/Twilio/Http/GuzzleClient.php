@@ -30,12 +30,17 @@ final class GuzzleClient implements Client {
         $timeout = null
     ): Response {
         try {
-            $response = $this->client->send(new Request($method, $url, $headers), [
+            $options = [
                 'timeout' => $timeout,
                 'auth' => [$user, $password],
-                'query' => $params,
                 'form_params' => $data,
-            ]);
+            ];
+
+            if ($params) {
+                $options['query'] = $params;
+            }
+
+            $response = $this->client->send(new Request($method, $url, $headers), $options);
         } catch (BadResponseException $exception) {
             $response = $exception->getResponse();
         } catch (\Exception $exception) {

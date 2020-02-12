@@ -11,7 +11,6 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\AccSecurity as PreviewAccSecurity;
 use Twilio\Rest\Preview\BulkExports as PreviewBulkExports;
 use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
@@ -26,7 +25,6 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\DeployedDevices $deployedDevices
  * @property \Twilio\Rest\Preview\HostedNumbers $hostedNumbers
  * @property \Twilio\Rest\Preview\Marketplace $marketplace
- * @property \Twilio\Rest\Preview\AccSecurity $accSecurity
  * @property \Twilio\Rest\Preview\Sync $sync
  * @property \Twilio\Rest\Preview\Understand $understand
  * @property \Twilio\Rest\Preview\Wireless $wireless
@@ -70,7 +68,6 @@ class Preview extends Domain {
     protected $_deployedDevices = null;
     protected $_hostedNumbers = null;
     protected $_marketplace = null;
-    protected $_accSecurity = null;
     protected $_sync = null;
     protected $_understand = null;
     protected $_wireless = null;
@@ -128,16 +125,6 @@ class Preview extends Domain {
             $this->_marketplace = new PreviewMarketplace($this);
         }
         return $this->_marketplace;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\AccSecurity Version accSecurity of preview
-     */
-    protected function getAccSecurity() {
-        if (!$this->_accSecurity) {
-            $this->_accSecurity = new PreviewAccSecurity($this);
-        }
-        return $this->_accSecurity;
     }
 
     /**
@@ -221,7 +208,7 @@ class Preview extends Domain {
     }
 
     /**
-     * @param string $resourceType The resource_type
+     * @param string $resourceType The type of communication – Messages, Calls
      * @return \Twilio\Rest\Preview\BulkExports\ExportContext
      */
     protected function contextExports($resourceType) {
@@ -236,7 +223,7 @@ class Preview extends Domain {
     }
 
     /**
-     * @param string $resourceType The resource_type
+     * @param string $resourceType The type of communication – Messages, Calls
      * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext
      */
     protected function contextExportConfiguration($resourceType) {

@@ -17,11 +17,10 @@ The PHP library documentation can be found [here][libdocs].
 
 ### Supported PHP Versions
 
-**On January 1, 2020, Twilio will no longer support PHP version 5 via this helper library.** Please see [this issue](https://github.com/twilio/twilio-php/issues/582) for details.
+**On January 1, 2020, Twilio will no longer support PHP version 5.X, 7.0, and 7.1 via this helper library.** Please see [this issue](https://github.com/twilio/twilio-php/issues/582) for details.
 
 This library supports the following PHP implementations:
 
-* PHP 7.1
 * PHP 7.2
 * PHP 7.3
 * PHP 7.4
