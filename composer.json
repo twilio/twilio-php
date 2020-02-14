@@ -16,8 +16,8 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6.3",
-        "apigen/apigen": "^4.1",
-        "phpunit/phpunit": ">=4.5"
+        "phpunit/phpunit": ">=4.5",
+        "theseer/phpdox": "^0.12.0"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"

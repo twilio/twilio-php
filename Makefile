@@ -22,7 +22,7 @@ test: install
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs:
-	vendor/bin/apigen generate --source src -d docs/api --exclude="autoload.php" --template-theme bootstrap --main Twilio
+	vendor/bin/phpdox
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
