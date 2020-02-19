@@ -7,15 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Studio\V2;
+namespace Twilio\Rest\Studio\V2\Flow;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
-use Twilio\Rest\Studio\V2\Flow\ExecutionList;
-use Twilio\Rest\Studio\V2\Flow\FlowRevisionList;
-use Twilio\Rest\Studio\V2\Flow\FlowTestUserList;
+use Twilio\Rest\Studio\V2\Flow\Execution\ExecutionContextList;
+use Twilio\Rest\Studio\V2\Flow\Execution\ExecutionStepList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -24,93 +22,77 @@ use Twilio\Version;
  *
  * @property string $sid
  * @property string $accountSid
- * @property string $friendlyName
- * @property array $definition
+ * @property string $flowSid
+ * @property string $contactChannelAddress
+ * @property array $context
  * @property string $status
- * @property int $revision
- * @property string $commitMessage
- * @property bool $valid
- * @property array[] $errors
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $webhookUrl
  * @property string $url
  * @property array $links
  */
-class FlowInstance extends InstanceResource {
-    protected $_revisions;
-    protected $_testUsers;
-    protected $_executions;
+class ExecutionInstance extends InstanceResource {
+    protected $_steps;
+    protected $_executionContext;
 
     /**
-     * Initialize the FlowInstance
+     * Initialize the ExecutionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $flowSid The flow_sid
+     * @param string $sid The sid
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'definition' => Values::array_get($payload, 'definition'),
+            'flowSid' => Values::array_get($payload, 'flow_sid'),
+            'contactChannelAddress' => Values::array_get($payload, 'contact_channel_address'),
+            'context' => Values::array_get($payload, 'context'),
             'status' => Values::array_get($payload, 'status'),
-            'revision' => Values::array_get($payload, 'revision'),
-            'commitMessage' => Values::array_get($payload, 'commit_message'),
-            'valid' => Values::array_get($payload, 'valid'),
-            'errors' => Values::array_get($payload, 'errors'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'webhookUrl' => Values::array_get($payload, 'webhook_url'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return FlowContext Context for this FlowInstance
+     * @return ExecutionContext Context for this ExecutionInstance
      */
-    protected function proxy(): FlowContext {
+    protected function proxy(): ExecutionContext {
         if (!$this->context) {
-            $this->context = new FlowContext($this->version, $this->solution['sid']);
+            $this->context = new ExecutionContext(
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Update the FlowInstance
+     * Fetch a ExecutionInstance
      *
-     * @param string $status The status of the Flow
-     * @param array|Options $options Optional Arguments
-     * @return FlowInstance Updated FlowInstance
+     * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status, array $options = []): FlowInstance {
-        return $this->proxy()->update($status, $options);
-    }
-
-    /**
-     * Fetch a FlowInstance
-     *
-     * @return FlowInstance Fetched FlowInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): FlowInstance {
+    public function fetch(): ExecutionInstance {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Deletes the FlowInstance
+     * Deletes the ExecutionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -120,24 +102,17 @@ class FlowInstance extends InstanceResource {
     }
 
     /**
-     * Access the revisions
+     * Access the steps
      */
-    protected function getRevisions(): FlowRevisionList {
-        return $this->proxy()->revisions;
+    protected function getSteps(): ExecutionStepList {
+        return $this->proxy()->steps;
     }
 
     /**
-     * Access the testUsers
+     * Access the executionContext
      */
-    protected function getTestUsers(): FlowTestUserList {
-        return $this->proxy()->testUsers;
-    }
-
-    /**
-     * Access the executions
-     */
-    protected function getExecutions(): ExecutionList {
-        return $this->proxy()->executions;
+    protected function getExecutionContext(): ExecutionContextList {
+        return $this->proxy()->executionContext;
     }
 
     /**
@@ -170,6 +145,6 @@ class FlowInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V2.FlowInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Studio.V2.ExecutionInstance ' . \implode(' ', $context) . ']';
     }
 }

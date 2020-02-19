@@ -100,10 +100,11 @@ abstract class ParticipantOptions {
      * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
+     * @param string $byoc BYOC trunk SID (Beta)
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string[] $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE): CreateParticipantOptions {
-        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach);
+    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string[] $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE): CreateParticipantOptions {
+        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach, $byoc);
     }
 
     /**
@@ -371,8 +372,9 @@ class CreateParticipantOptions extends Options {
      * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
+     * @param string $byoc BYOC trunk SID (Beta)
      */
-    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string[] $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string[] $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
@@ -403,6 +405,7 @@ class CreateParticipantOptions extends Options {
         $this->options['conferenceRecordingStatusCallbackEvent'] = $conferenceRecordingStatusCallbackEvent;
         $this->options['coaching'] = $coaching;
         $this->options['callSidToCoach'] = $callSidToCoach;
+        $this->options['byoc'] = $byoc;
     }
 
     /**
@@ -763,6 +766,17 @@ class CreateParticipantOptions extends Options {
      */
     public function setCallSidToCoach(string $callSidToCoach): self {
         $this->options['callSidToCoach'] = $callSidToCoach;
+        return $this;
+    }
+
+    /**
+     * The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+     *
+     * @param string $byoc BYOC trunk SID (Beta)
+     * @return $this Fluent Builder
+     */
+    public function setByoc(string $byoc): self {
+        $this->options['byoc'] = $byoc;
         return $this;
     }
 

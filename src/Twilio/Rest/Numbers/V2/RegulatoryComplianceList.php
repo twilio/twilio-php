@@ -15,6 +15,7 @@ use Twilio\ListResource;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeList;
 use Twilio\Version;
@@ -23,11 +24,13 @@ use Twilio\Version;
  * @property BundleList $bundles
  * @property EndUserList $endUsers
  * @property EndUserTypeList $endUserTypes
+ * @property RegulationList $regulations
  * @property SupportingDocumentList $supportingDocuments
  * @property SupportingDocumentTypeList $supportingDocumentTypes
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext bundles(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserContext endUsers(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext endUserTypes(string $sid)
+ * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationContext regulations(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentContext supportingDocuments(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeContext supportingDocumentTypes(string $sid)
  */
@@ -35,6 +38,7 @@ class RegulatoryComplianceList extends ListResource {
     protected $_bundles = null;
     protected $_endUsers = null;
     protected $_endUserTypes = null;
+    protected $_regulations = null;
     protected $_supportingDocuments = null;
     protected $_supportingDocumentTypes = null;
 
@@ -81,6 +85,17 @@ class RegulatoryComplianceList extends ListResource {
         }
 
         return $this->_endUserTypes;
+    }
+
+    /**
+     * Access the regulations
+     */
+    protected function getRegulations(): RegulationList {
+        if (!$this->_regulations) {
+            $this->_regulations = new RegulationList($this->version);
+        }
+
+        return $this->_regulations;
     }
 
     /**

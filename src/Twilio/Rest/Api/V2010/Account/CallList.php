@@ -81,6 +81,9 @@ class CallList extends ListResource {
             'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
             'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
             'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
+            'AsyncAmd' => $options['asyncAmd'],
+            'AsyncAmdStatusCallback' => $options['asyncAmdStatusCallback'],
+            'AsyncAmdStatusCallbackMethod' => $options['asyncAmdStatusCallbackMethod'],
             'Byoc' => $options['byoc'],
         ]);
 

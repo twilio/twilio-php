@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string $addons
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property \DateTime $taskQueueEnteredDate
  * @property int $priority
  * @property string $reason
  * @property string $sid
@@ -62,6 +63,7 @@ class TaskInstance extends InstanceResource {
             'addons' => Values::array_get($payload, 'addons'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'taskQueueEnteredDate' => Deserialize::dateTime(Values::array_get($payload, 'task_queue_entered_date')),
             'priority' => Values::array_get($payload, 'priority'),
             'reason' => Values::array_get($payload, 'reason'),
             'sid' => Values::array_get($payload, 'sid'),

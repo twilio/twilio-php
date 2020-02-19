@@ -35,6 +35,7 @@ use Twilio\Version;
  * @property string $chatServiceInstanceSid
  * @property string $uiLanguage
  * @property array $uiAttributes
+ * @property array $uiDependencies
  * @property string $uiVersion
  * @property string $serviceVersion
  * @property bool $callRecordingEnabled
@@ -82,6 +83,7 @@ class ConfigurationInstance extends InstanceResource {
             'chatServiceInstanceSid' => Values::array_get($payload, 'chat_service_instance_sid'),
             'uiLanguage' => Values::array_get($payload, 'ui_language'),
             'uiAttributes' => Values::array_get($payload, 'ui_attributes'),
+            'uiDependencies' => Values::array_get($payload, 'ui_dependencies'),
             'uiVersion' => Values::array_get($payload, 'ui_version'),
             'serviceVersion' => Values::array_get($payload, 'service_version'),
             'callRecordingEnabled' => Values::array_get($payload, 'call_recording_enabled'),

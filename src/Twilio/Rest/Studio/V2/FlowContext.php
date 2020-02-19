@@ -13,7 +13,9 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Studio\V2\Flow\ExecutionList;
 use Twilio\Rest\Studio\V2\Flow\FlowRevisionList;
+use Twilio\Rest\Studio\V2\Flow\FlowTestUserList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -22,10 +24,16 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property FlowRevisionList $revisions
+ * @property FlowTestUserList $testUsers
+ * @property ExecutionList $executions
  * @method \Twilio\Rest\Studio\V2\Flow\FlowRevisionContext revisions(string $revision)
+ * @method \Twilio\Rest\Studio\V2\Flow\FlowTestUserContext testUsers()
+ * @method \Twilio\Rest\Studio\V2\Flow\ExecutionContext executions(string $sid)
  */
 class FlowContext extends InstanceContext {
     protected $_revisions;
+    protected $_testUsers;
+    protected $_executions;
 
     /**
      * Initialize the FlowContext
@@ -107,6 +115,28 @@ class FlowContext extends InstanceContext {
         }
 
         return $this->_revisions;
+    }
+
+    /**
+     * Access the testUsers
+     */
+    protected function getTestUsers(): FlowTestUserList {
+        if (!$this->_testUsers) {
+            $this->_testUsers = new FlowTestUserList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_testUsers;
+    }
+
+    /**
+     * Access the executions
+     */
+    protected function getExecutions(): ExecutionList {
+        if (!$this->_executions) {
+            $this->_executions = new ExecutionList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_executions;
     }
 
     /**

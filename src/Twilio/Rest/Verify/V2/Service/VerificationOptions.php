@@ -26,7 +26,7 @@ abstract class VerificationOptions {
      *                          Limits.
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
-     * @param string $appHash App Hash to be included at the end of an SMS.
+     * @param string $appHash Your App Hash to be appended at the end of an SMS.
      * @return CreateVerificationOptions Options builder
      */
     public static function create(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::NONE, array $channelConfiguration = Values::NONE, string $appHash = Values::NONE): CreateVerificationOptions {
@@ -48,7 +48,7 @@ class CreateVerificationOptions extends Options {
      *                          Limits.
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
-     * @param string $appHash App Hash to be included at the end of an SMS.
+     * @param string $appHash Your App Hash to be appended at the end of an SMS.
      */
     public function __construct(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::NONE, array $channelConfiguration = Values::NONE, string $appHash = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
@@ -131,7 +131,7 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * The custom key-value pairs of Programmable Rate Limits. Keys should be the unique_name configured while creating you Rate Limit along with the associated values for each particular request. You may include multiple Rate Limit values in each request.
+     * The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request.
      *
      * @param array $rateLimits The custom key-value pairs of Programmable Rate
      *                          Limits.
@@ -155,9 +155,9 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be included at the end of an SMS. **Only applies for SMS.**
+     * Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.
      *
-     * @param string $appHash App Hash to be included at the end of an SMS.
+     * @param string $appHash Your App Hash to be appended at the end of an SMS.
      * @return $this Fluent Builder
      */
     public function setAppHash(string $appHash): self {

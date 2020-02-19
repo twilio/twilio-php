@@ -25,7 +25,7 @@ abstract class ServiceOptions {
      *                        use in phone calls
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
      *                          starting a verification
-     * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at
+     * @param bool $doNotShareWarningEnabled Whether to add a security warning at
      *                                       the end of an SMS.
      * @return CreateServiceOptions Options builder
      */
@@ -68,7 +68,7 @@ class CreateServiceOptions extends Options {
      *                        use in phone calls
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
      *                          starting a verification
-     * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at
+     * @param bool $doNotShareWarningEnabled Whether to add a security warning at
      *                                       the end of an SMS.
      */
     public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE) {
@@ -153,9 +153,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**
+     * Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`
      *
-     * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at
+     * @param bool $doNotShareWarningEnabled Whether to add a security warning at
      *                                       the end of an SMS.
      * @return $this Fluent Builder
      */

@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string $taskQueueSid
  * @property array $waitDurationUntilAccepted
  * @property array $waitDurationUntilCanceled
+ * @property array $waitDurationInQueueUntilAccepted
  * @property int $tasksCanceled
  * @property int $tasksCompleted
  * @property int $tasksDeleted
@@ -69,6 +70,7 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
             'taskQueueSid' => Values::array_get($payload, 'task_queue_sid'),
             'waitDurationUntilAccepted' => Values::array_get($payload, 'wait_duration_until_accepted'),
             'waitDurationUntilCanceled' => Values::array_get($payload, 'wait_duration_until_canceled'),
+            'waitDurationInQueueUntilAccepted' => Values::array_get($payload, 'wait_duration_in_queue_until_accepted'),
             'tasksCanceled' => Values::array_get($payload, 'tasks_canceled'),
             'tasksCompleted' => Values::array_get($payload, 'tasks_completed'),
             'tasksDeleted' => Values::array_get($payload, 'tasks_deleted'),

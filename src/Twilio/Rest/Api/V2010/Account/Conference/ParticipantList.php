@@ -80,6 +80,7 @@ class ParticipantList extends ListResource {
             'ConferenceRecordingStatusCallbackEvent' => Serialize::map($options['conferenceRecordingStatusCallbackEvent'], function($e) { return $e; }),
             'Coaching' => Serialize::booleanToString($options['coaching']),
             'CallSidToCoach' => $options['callSidToCoach'],
+            'Byoc' => $options['byoc'],
         ]);
 
         $payload = $this->version->create(

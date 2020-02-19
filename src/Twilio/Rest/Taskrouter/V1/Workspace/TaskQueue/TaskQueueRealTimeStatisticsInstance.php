@@ -20,6 +20,8 @@ use Twilio\Version;
  * @property array[] $activityStatistics
  * @property int $longestTaskWaitingAge
  * @property string $longestTaskWaitingSid
+ * @property int $longestRelativeTaskAgeInQueue
+ * @property string $longestRelativeTaskSidInQueue
  * @property string $taskQueueSid
  * @property array $tasksByPriority
  * @property array $tasksByStatus
@@ -49,6 +51,8 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
             'activityStatistics' => Values::array_get($payload, 'activity_statistics'),
             'longestTaskWaitingAge' => Values::array_get($payload, 'longest_task_waiting_age'),
             'longestTaskWaitingSid' => Values::array_get($payload, 'longest_task_waiting_sid'),
+            'longestRelativeTaskAgeInQueue' => Values::array_get($payload, 'longest_relative_task_age_in_queue'),
+            'longestRelativeTaskSidInQueue' => Values::array_get($payload, 'longest_relative_task_sid_in_queue'),
             'taskQueueSid' => Values::array_get($payload, 'task_queue_sid'),
             'tasksByPriority' => Values::array_get($payload, 'tasks_by_priority'),
             'tasksByStatus' => Values::array_get($payload, 'tasks_by_status'),

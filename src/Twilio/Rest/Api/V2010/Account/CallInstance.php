@@ -45,7 +45,9 @@ use Twilio\Version;
  * @property array $subresourceUris
  * @property string $to
  * @property string $toFormatted
+ * @property string $trunkSid
  * @property string $uri
+ * @property string $queueTime
  */
 class CallInstance extends InstanceResource {
     protected $_recordings;
@@ -90,7 +92,9 @@ class CallInstance extends InstanceResource {
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
             'to' => Values::array_get($payload, 'to'),
             'toFormatted' => Values::array_get($payload, 'to_formatted'),
+            'trunkSid' => Values::array_get($payload, 'trunk_sid'),
             'uri' => Values::array_get($payload, 'uri'),
+            'queueTime' => Values::array_get($payload, 'queue_time'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

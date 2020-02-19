@@ -1,6 +1,54 @@
 twilio-php Changelog
 ====================
 
+[2020-02-19] Version 6.0.0
+--------------------------
+**Library - Fix**
+- [PR #607](https://github.com/twilio/twilio-php/pull/607): migrate to phpdox for source code doc generation. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #602](https://github.com/twilio/twilio-php/pull/602): only pass query option to Guzzle client if it is provided. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Feature**
+- [PR #606](https://github.com/twilio/twilio-php/pull/606): add scalar param type declarations to generated API code. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+- [PR #605](https://github.com/twilio/twilio-php/pull/605): add scalar param type declarations. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Library - Chore**
+- [PR #604](https://github.com/twilio/twilio-php/pull/604): add return types, drop 'array()' syntax, and address linter warnings in generated API code. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+- [PR #603](https://github.com/twilio/twilio-php/pull/603): add return types, drop 'array()' syntax, and address linter warnings. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+- [PR #595](https://github.com/twilio/twilio-php/pull/595): drop support for EOL versions of PHP. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Api**
+- Make call create parameters `async_amd`, `async_amd_status_callback`, and `async_amd_status_callback_method` public
+- Add `trunk_sid` as an optional field to Call resource fetch/read responses
+- Add property `queue_time` to successful response of create, fetch, and update requests for Call
+- Add optional parameter `byoc` to conference participant create.
+
+**Authy**
+- Added support for challenges associated to push factors
+
+**Flex**
+- Adding `ui_dependencies` to Flex Configuration
+
+**Messaging**
+- Deprecate Session API **(breaking change)**
+
+**Numbers**
+- Add Regulations API
+
+**Studio**
+- Add Execution and Step endpoints to v2 API
+- Add webhook_url to Flow response and add new /TestUsers endpoint to v2 API
+
+**Taskrouter**
+- Adding `longest_relative_task_age_in_queue` and `longest_relative_task_sid_in_queue` to TaskQueue Real Time Statistics API.
+- Add `wait_duration_in_queue_until_accepted` aggregations to TaskQueues Cumulative Statistics endpoint
+- Add TaskQueueEnteredDate property to Tasks.
+
+**Video**
+- [Composer] Clarification for the composition hooks creation documentation: one source is mandatory, either the `audio_sources` or the `video_layout`, but one of them has to be provided
+- [Composer] `audio_sources` type on the composer HTTP POST command, changed from `sid[]` to `string[]` **(breaking change)**
+- [Composer] Clarification for the composition creation documentation: one source is mandatory, either the `audio_sources` or the `video_layout`, but one of them has to be provided
+
+
 [2020-02-05] Version 5.42.2
 ---------------------------
 **Library - Fix**

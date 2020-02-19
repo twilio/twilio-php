@@ -61,11 +61,16 @@ abstract class CallOptions {
      *                                                silence after speech activity
      * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
      *                                            silence
+     * @param string $asyncAmd Enable asynchronous AMD
+     * @param string $asyncAmdStatusCallback The URL we should call to send amd
+     *                                       status information to your application
+     * @param string $asyncAmdStatusCallbackMethod HTTP Method to use with
+     *                                             async_amd_status_callback
      * @param string $byoc BYOC trunk SID (Beta)
      * @return CreateCallOptions Options builder
      */
-    public static function create(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string[] $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $byoc = Values::NONE): CreateCallOptions {
-        return new CreateCallOptions($url, $twiml, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout, $byoc);
+    public static function create(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string[] $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE): CreateCallOptions {
+        return new CreateCallOptions($url, $twiml, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout, $asyncAmd, $asyncAmdStatusCallback, $asyncAmdStatusCallbackMethod, $byoc);
     }
 
     /**
@@ -152,9 +157,14 @@ class CreateCallOptions extends Options {
      *                                                silence after speech activity
      * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
      *                                            silence
+     * @param string $asyncAmd Enable asynchronous AMD
+     * @param string $asyncAmdStatusCallback The URL we should call to send amd
+     *                                       status information to your application
+     * @param string $asyncAmdStatusCallbackMethod HTTP Method to use with
+     *                                             async_amd_status_callback
      * @param string $byoc BYOC trunk SID (Beta)
      */
-    public function __construct(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string[] $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $byoc = Values::NONE) {
+    public function __construct(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string[] $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE) {
         $this->options['url'] = $url;
         $this->options['twiml'] = $twiml;
         $this->options['applicationSid'] = $applicationSid;
@@ -180,6 +190,9 @@ class CreateCallOptions extends Options {
         $this->options['machineDetectionSpeechThreshold'] = $machineDetectionSpeechThreshold;
         $this->options['machineDetectionSpeechEndThreshold'] = $machineDetectionSpeechEndThreshold;
         $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
+        $this->options['asyncAmd'] = $asyncAmd;
+        $this->options['asyncAmdStatusCallback'] = $asyncAmdStatusCallback;
+        $this->options['asyncAmdStatusCallbackMethod'] = $asyncAmdStatusCallbackMethod;
         $this->options['byoc'] = $byoc;
     }
 
@@ -477,6 +490,41 @@ class CreateCallOptions extends Options {
      */
     public function setMachineDetectionSilenceTimeout(int $machineDetectionSilenceTimeout): self {
         $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
+        return $this;
+    }
+
+    /**
+     * Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.
+     *
+     * @param string $asyncAmd Enable asynchronous AMD
+     * @return $this Fluent Builder
+     */
+    public function setAsyncAmd(string $asyncAmd): self {
+        $this->options['asyncAmd'] = $asyncAmd;
+        return $this;
+    }
+
+    /**
+     * The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
+     *
+     * @param string $asyncAmdStatusCallback The URL we should call to send amd
+     *                                       status information to your application
+     * @return $this Fluent Builder
+     */
+    public function setAsyncAmdStatusCallback(string $asyncAmdStatusCallback): self {
+        $this->options['asyncAmdStatusCallback'] = $asyncAmdStatusCallback;
+        return $this;
+    }
+
+    /**
+     * The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+     *
+     * @param string $asyncAmdStatusCallbackMethod HTTP Method to use with
+     *                                             async_amd_status_callback
+     * @return $this Fluent Builder
+     */
+    public function setAsyncAmdStatusCallbackMethod(string $asyncAmdStatusCallbackMethod): self {
+        $this->options['asyncAmdStatusCallbackMethod'] = $asyncAmdStatusCallbackMethod;
         return $this;
     }
 
