@@ -3,7 +3,9 @@
     <project name="twilio-php" source="${basedir}/src" workdir="${basedir}/docs/xml">
         <collector backend="parser"/>
         <generator output="${basedir}/docs">
-            <build engine="html" output="api"/>
+            <build engine="html" output="api">
+                <file extension="html"/>
+            </build>
         </generator>
     </project>
 </phpdox>
