@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Supersim\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -17,14 +17,16 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $bindingSid
- * @property string $phoneNumber
- * @property string $sid
- * @property string $url
+ * @property string $accountSid
+ * @property string $simSid
+ * @property array $period
+ * @property string $dataUpload
+ * @property string $dataDownload
+ * @property string $dataTotal
  */
-class DeviceInstance extends InstanceResource {
+class UsageRecordInstance extends InstanceResource {
     /**
-     * Initialize the DeviceInstance
+     * Initialize the UsageRecordInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -34,10 +36,12 @@ class DeviceInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = [
-            'bindingSid' => Values::array_get($payload, 'binding_sid'),
-            'phoneNumber' => Values::array_get($payload, 'phone_number'),
-            'sid' => Values::array_get($payload, 'sid'),
-            'url' => Values::array_get($payload, 'url'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'simSid' => Values::array_get($payload, 'sim_sid'),
+            'period' => Values::array_get($payload, 'period'),
+            'dataUpload' => Values::array_get($payload, 'data_upload'),
+            'dataDownload' => Values::array_get($payload, 'data_download'),
+            'dataTotal' => Values::array_get($payload, 'data_total'),
         ];
 
         $this->solution = [];
@@ -69,6 +73,6 @@ class DeviceInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.DeviceInstance]';
+        return '[Twilio.Supersim.V1.UsageRecordInstance]';
     }
 }

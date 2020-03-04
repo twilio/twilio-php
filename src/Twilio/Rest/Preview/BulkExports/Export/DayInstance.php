@@ -20,6 +20,8 @@ use Twilio\Version;
  * @property string $redirectTo
  * @property string $day
  * @property int $size
+ * @property string $createDate
+ * @property string $friendlyName
  * @property string $resourceType
  */
 class DayInstance extends InstanceResource {
@@ -29,8 +31,9 @@ class DayInstance extends InstanceResource {
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $day The date of the data in the file
      */
-    public function __construct(Version $version, array $payload, string $resourceType) {
+    public function __construct(Version $version, array $payload, string $resourceType, string $day = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -38,10 +41,40 @@ class DayInstance extends InstanceResource {
             'redirectTo' => Values::array_get($payload, 'redirect_to'),
             'day' => Values::array_get($payload, 'day'),
             'size' => Values::array_get($payload, 'size'),
+            'createDate' => Values::array_get($payload, 'create_date'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'resourceType' => Values::array_get($payload, 'resource_type'),
         ];
 
-        $this->solution = ['resourceType' => $resourceType, ];
+        $this->solution = ['resourceType' => $resourceType, 'day' => $day ?: $this->properties['day'], ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return DayContext Context for this DayInstance
+     */
+    protected function proxy(): DayContext {
+        if (!$this->context) {
+            $this->context = new DayContext(
+                $this->version,
+                $this->solution['resourceType'],
+                $this->solution['day']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Fetch a DayInstance
+     *
+     * @return DayInstance Fetched DayInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): DayInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -70,6 +103,10 @@ class DayInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.BulkExports.DayInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Preview.BulkExports.DayInstance ' . \implode(' ', $context) . ']';
     }
 }

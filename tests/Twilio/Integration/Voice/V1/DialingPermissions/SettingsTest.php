@@ -65,7 +65,7 @@ class SettingsTest extends HolodeckTestCase {
 
     public function testUpdateResponse(): void {
         $this->holodeck->mock(new Response(
-            202,
+            200,
             '
             {
                 "dialing_permissions_inheritance": true,

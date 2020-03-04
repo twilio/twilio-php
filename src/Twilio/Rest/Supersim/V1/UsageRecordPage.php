@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Supersim\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class DevicePage extends Page {
+class UsageRecordPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class DevicePage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return DeviceInstance \Twilio\Rest\Preview\TrustedComms\DeviceInstance
+     * @return UsageRecordInstance \Twilio\Rest\Supersim\V1\UsageRecordInstance
      */
-    public function buildInstance(array $payload): DeviceInstance {
-        return new DeviceInstance($this->version, $payload);
+    public function buildInstance(array $payload): UsageRecordInstance {
+        return new UsageRecordInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +43,6 @@ class DevicePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.DevicePage]';
+        return '[Twilio.Supersim.V1.UsageRecordPage]';
     }
 }

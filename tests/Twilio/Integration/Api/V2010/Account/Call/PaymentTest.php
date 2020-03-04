@@ -80,7 +80,7 @@ class PaymentTest extends HolodeckTestCase {
 
     public function testCollectCreditCardNumberResponse(): void {
         $this->holodeck->mock(new Response(
-            202,
+            200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -102,7 +102,7 @@ class PaymentTest extends HolodeckTestCase {
 
     public function testCollectCreditCardExpiryDateResponse(): void {
         $this->holodeck->mock(new Response(
-            202,
+            200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -124,7 +124,7 @@ class PaymentTest extends HolodeckTestCase {
 
     public function testCompletePaymentResponse(): void {
         $this->holodeck->mock(new Response(
-            202,
+            200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

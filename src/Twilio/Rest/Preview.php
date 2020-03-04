@@ -45,7 +45,6 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\TrustedComms\BusinessList $businesses
  * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
- * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
  * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
@@ -359,10 +358,6 @@ class Preview extends Domain {
 
     protected function contextCurrentCalls(): \Twilio\Rest\Preview\TrustedComms\CurrentCallContext {
         return $this->trustedComms->currentCalls();
-    }
-
-    protected function getDevices(): \Twilio\Rest\Preview\TrustedComms\DeviceList {
-        return $this->trustedComms->devices;
     }
 
     protected function getPhoneCalls(): \Twilio\Rest\Preview\TrustedComms\PhoneCallList {

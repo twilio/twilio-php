@@ -22,6 +22,7 @@ use Twilio\Version;
  *
  * @property DayList $days
  * @property ExportCustomJobList $exportCustomJobs
+ * @method \Twilio\Rest\Preview\BulkExports\Export\DayContext days(string $day)
  */
 class ExportContext extends InstanceContext {
     protected $_days;

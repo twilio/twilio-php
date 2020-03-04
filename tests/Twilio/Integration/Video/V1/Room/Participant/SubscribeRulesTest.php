@@ -80,7 +80,7 @@ class SubscribeRulesTest extends HolodeckTestCase {
 
     public function testUpdateFiltersResponse(): void {
         $this->holodeck->mock(new Response(
-            202,
+            200,
             '
             {
                 "participant_sid": "PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

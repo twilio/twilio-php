@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property string $url
  * @property array $links
+ * @property array $configuration
  */
 class ServiceInstance extends InstanceResource {
     protected $_entities;
@@ -50,6 +51,7 @@ class ServiceInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'configuration' => Values::array_get($payload, 'configuration'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

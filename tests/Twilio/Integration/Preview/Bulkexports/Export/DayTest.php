@@ -16,6 +16,37 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class DayTest extends HolodeckTestCase {
+    public function testFetchRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->preview->bulkExports->exports("resource_type")
+                                               ->days("day")->fetch();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Days/day'
+        ));
+    }
+
+    public function testFetchResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "redirect_to": "https://com.twilio.dev-us1.exports.s3.amazonaws.com/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->preview->bulkExports->exports("resource_type")
+                                                     ->days("day")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
@@ -31,26 +62,20 @@ class DayTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadResponse(): void {
+    public function testReadEmptyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
             {
-                "days": [
-                    {
-                        "day": "2017-05-01",
-                        "size": 1234,
-                        "resource_type": "Calls"
-                    }
-                ],
+                "days": [],
                 "meta": {
-                    "key": "days",
-                    "page_size": 50,
-                    "url": "https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0",
                     "page": 0,
+                    "page_size": 50,
                     "first_page_url": "https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0",
                     "previous_page_url": null,
-                    "next_page_url": null
+                    "url": "https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "days"
                 }
             }
             '
@@ -60,5 +85,38 @@ class DayTest extends HolodeckTestCase {
                                                      ->days->read();
 
         $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "days": [
+                    {
+                        "day": "2017-04-01",
+                        "size": 100,
+                        "resource_type": "Calls",
+                        "create_date": "2017-04-02",
+                        "friendly_name": "friendly_name"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "days"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->preview->bulkExports->exports("resource_type")
+                                                     ->days->read();
+
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

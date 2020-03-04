@@ -11,6 +11,7 @@ namespace Twilio\Rest\Authy\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -37,11 +38,14 @@ class ServiceList extends ListResource {
      * Create a new ServiceInstance
      *
      * @param string $friendlyName A human readable description of this resource.
+     * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName): ServiceInstance {
-        $data = Values::of(['FriendlyName' => $friendlyName, ]);
+    public function create(string $friendlyName, array $options = []): ServiceInstance {
+        $options = new Values($options);
+
+        $data = Values::of(['FriendlyName' => $friendlyName, 'Push' => $options['push'], ]);
 
         $payload = $this->version->create(
             'POST',

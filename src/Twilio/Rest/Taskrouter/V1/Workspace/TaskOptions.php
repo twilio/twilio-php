@@ -119,7 +119,7 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set.
+     * The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647).
      *
      * @param int $priority The Task's new priority value
      * @return $this Fluent Builder
@@ -339,7 +339,7 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The priority to assign the new task and override the default. When supplied, the new Task will have this priority unless it matches a Workflow Target with a Priority set. When not supplied, the new Task will have the priority of the matching Workflow Target.
+     * The priority to assign the new task and override the default. When supplied, the new Task will have this priority unless it matches a Workflow Target with a Priority set. When not supplied, the new Task will have the priority of the matching Workflow Target. Value can be 0 to 2^31^ (2,147,483,647).
      *
      * @param int $priority The priority to assign the new task and override the
      *                      default

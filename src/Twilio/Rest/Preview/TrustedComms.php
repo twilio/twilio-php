@@ -16,7 +16,6 @@ use Twilio\Rest\Preview\TrustedComms\BrandedCallList;
 use Twilio\Rest\Preview\TrustedComms\BusinessList;
 use Twilio\Rest\Preview\TrustedComms\CpsList;
 use Twilio\Rest\Preview\TrustedComms\CurrentCallList;
-use Twilio\Rest\Preview\TrustedComms\DeviceList;
 use Twilio\Rest\Preview\TrustedComms\PhoneCallList;
 use Twilio\Version;
 
@@ -25,7 +24,6 @@ use Twilio\Version;
  * @property BusinessList $businesses
  * @property CpsList $cps
  * @property CurrentCallList $currentCalls
- * @property DeviceList $devices
  * @property PhoneCallList $phoneCalls
  * @method \Twilio\Rest\Preview\TrustedComms\BusinessContext businesses(string $sid)
  */
@@ -34,7 +32,6 @@ class TrustedComms extends Version {
     protected $_businesses;
     protected $_cps;
     protected $_currentCalls;
-    protected $_devices;
     protected $_phoneCalls;
 
     /**
@@ -73,13 +70,6 @@ class TrustedComms extends Version {
             $this->_currentCalls = new CurrentCallList($this);
         }
         return $this->_currentCalls;
-    }
-
-    protected function getDevices(): DeviceList {
-        if (!$this->_devices) {
-            $this->_devices = new DeviceList($this);
-        }
-        return $this->_devices;
     }
 
     protected function getPhoneCalls(): PhoneCallList {

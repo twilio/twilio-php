@@ -17,11 +17,54 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
+     * @param string $push Optional service level push factors configuration
+     * @return CreateServiceOptions Options builder
+     */
+    public static function create(string $push = Values::NONE): CreateServiceOptions {
+        return new CreateServiceOptions($push);
+    }
+
+    /**
      * @param string $friendlyName A human readable description of this resource.
      * @return UpdateServiceOptions Options builder
      */
     public static function update(string $friendlyName = Values::NONE): UpdateServiceOptions {
         return new UpdateServiceOptions($friendlyName);
+    }
+}
+
+class CreateServiceOptions extends Options {
+    /**
+     * @param string $push Optional service level push factors configuration
+     */
+    public function __construct(string $push = Values::NONE) {
+        $this->options['push'] = $push;
+    }
+
+    /**
+     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}
+     *
+     * @param string $push Optional service level push factors configuration
+     * @return $this Fluent Builder
+     */
+    public function setPush(string $push): self {
+        $this->options['push'] = $push;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = [];
+        foreach ($this->options as $key => $value) {
+            if ($value !== Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Authy.V1.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 

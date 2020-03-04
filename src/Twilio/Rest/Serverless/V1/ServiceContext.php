@@ -95,6 +95,7 @@ class ServiceContext extends InstanceContext {
         $data = Values::of([
             'IncludeCredentials' => Serialize::booleanToString($options['includeCredentials']),
             'FriendlyName' => $options['friendlyName'],
+            'UiEditable' => Serialize::booleanToString($options['uiEditable']),
         ]);
 
         $payload = $this->version->update(

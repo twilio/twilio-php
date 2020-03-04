@@ -444,7 +444,7 @@ class MessageTest extends HolodeckTestCase {
 
     public function testUpdateResponse(): void {
         $this->holodeck->mock(new Response(
-            202,
+            200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

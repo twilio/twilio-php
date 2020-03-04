@@ -45,6 +45,7 @@ use Twilio\VersionInfo;
  * @property Video $video
  * @property Voice $voice
  * @property Wireless $wireless
+ * @property Supersim $supersim
  * @property \Twilio\Rest\Api\V2010\AccountInstance $account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList $addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList $applications
@@ -126,6 +127,7 @@ class Client {
     protected $_video;
     protected $_voice;
     protected $_wireless;
+    protected $_supersim;
 
     /**
      * Initializes the Twilio Client
@@ -826,6 +828,18 @@ class Client {
             $this->_wireless = new Wireless($this);
         }
         return $this->_wireless;
+    }
+
+    /**
+     * Access the Supersim Twilio Domain
+     *
+     * @return Supersim Supersim Twilio Domain
+     */
+    protected function getSupersim(): Supersim {
+        if (!$this->_supersim) {
+            $this->_supersim = new Supersim($this);
+        }
+        return $this->_supersim;
     }
 
     /**
