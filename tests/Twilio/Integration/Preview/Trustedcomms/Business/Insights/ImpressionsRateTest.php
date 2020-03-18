@@ -15,20 +15,20 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class SuccessRateTest extends HolodeckTestCase {
+class ImpressionsRateTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->trustedComms->businesses("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->insights
-                                                ->successRate()->fetch();
+                                                ->impressionsRate()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Insights/SuccessRate'
+            'https://preview.twilio.com/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Insights/ImpressionsRate'
         ));
     }
 
@@ -43,21 +43,20 @@ class SuccessRateTest extends HolodeckTestCase {
                 "end": "2015-07-30T21:00:00Z",
                 "interval": "minute",
                 "reports": {
-                    "success_rate": {
+                    "impressions_rate": {
                         "timestamp": "2015-07-30T20:00:00",
                         "calls": 1200,
-                        "branded": 800,
-                        "value": 66.67
+                        "impressions": 800
                     }
                 },
-                "url": "https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Insights/SuccessRate"
+                "url": "https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Insights/ImpressionsRate"
             }
             '
         ));
 
         $actual = $this->twilio->preview->trustedComms->businesses("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                       ->insights
-                                                      ->successRate()->fetch();
+                                                      ->impressionsRate()->fetch();
 
         $this->assertNotNull($actual);
     }

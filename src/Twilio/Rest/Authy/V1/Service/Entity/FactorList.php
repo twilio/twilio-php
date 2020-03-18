@@ -41,14 +41,16 @@ class FactorList extends ListResource {
      * @param string $binding A unique binding for this Factor as a json string
      * @param string $friendlyName The friendly name of this Factor
      * @param string $factorType The Type of this Factor
+     * @param string $config The config for this Factor as a json string
      * @return FactorInstance Newly created FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $binding, string $friendlyName, string $factorType): FactorInstance {
+    public function create(string $binding, string $friendlyName, string $factorType, string $config): FactorInstance {
         $data = Values::of([
             'Binding' => $binding,
             'FriendlyName' => $friendlyName,
             'FactorType' => $factorType,
+            'Config' => $config,
         ]);
 
         $payload = $this->version->create(

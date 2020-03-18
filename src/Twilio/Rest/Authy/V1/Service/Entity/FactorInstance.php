@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string $status
  * @property string $factorType
+ * @property array $config
  * @property string $url
  * @property array $links
  */
@@ -60,6 +61,7 @@ class FactorInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'status' => Values::array_get($payload, 'status'),
             'factorType' => Values::array_get($payload, 'factor_type'),
+            'config' => Values::array_get($payload, 'config'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];

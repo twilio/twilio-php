@@ -87,7 +87,11 @@ class FactorContext extends InstanceContext {
     public function update(array $options = []): FactorInstance {
         $options = new Values($options);
 
-        $data = Values::of(['AuthPayload' => $options['authPayload'], ]);
+        $data = Values::of([
+            'AuthPayload' => $options['authPayload'],
+            'FriendlyName' => $options['friendlyName'],
+            'Config' => $options['config'],
+        ]);
 
         $payload = $this->version->update(
             'POST',

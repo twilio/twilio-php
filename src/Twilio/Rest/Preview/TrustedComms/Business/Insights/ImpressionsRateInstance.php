@@ -27,9 +27,9 @@ use Twilio\Version;
  * @property \DateTime $start
  * @property string $url
  */
-class SuccessRateInstance extends InstanceResource {
+class ImpressionsRateInstance extends InstanceResource {
     /**
-     * Initialize the SuccessRateInstance
+     * Initialize the ImpressionsRateInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -56,24 +56,24 @@ class SuccessRateInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return SuccessRateContext Context for this SuccessRateInstance
+     * @return ImpressionsRateContext Context for this ImpressionsRateInstance
      */
-    protected function proxy(): SuccessRateContext {
+    protected function proxy(): ImpressionsRateContext {
         if (!$this->context) {
-            $this->context = new SuccessRateContext($this->version, $this->solution['businessSid']);
+            $this->context = new ImpressionsRateContext($this->version, $this->solution['businessSid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a SuccessRateInstance
+     * Fetch a ImpressionsRateInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return SuccessRateInstance Fetched SuccessRateInstance
+     * @return ImpressionsRateInstance Fetched ImpressionsRateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): SuccessRateInstance {
+    public function fetch(array $options = []): ImpressionsRateInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -107,6 +107,6 @@ class SuccessRateInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.SuccessRateInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Preview.TrustedComms.ImpressionsRateInstance ' . \implode(' ', $context) . ']';
     }
 }

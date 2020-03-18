@@ -19,10 +19,12 @@ abstract class FactorOptions {
     /**
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
+     * @param string $friendlyName The friendly name of this Factor
+     * @param string $config The config for this Factor as a json string
      * @return UpdateFactorOptions Options builder
      */
-    public static function update(string $authPayload = Values::NONE): UpdateFactorOptions {
-        return new UpdateFactorOptions($authPayload);
+    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $config = Values::NONE): UpdateFactorOptions {
+        return new UpdateFactorOptions($authPayload, $friendlyName, $config);
     }
 }
 
@@ -30,9 +32,13 @@ class UpdateFactorOptions extends Options {
     /**
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
+     * @param string $friendlyName The friendly name of this Factor
+     * @param string $config The config for this Factor as a json string
      */
-    public function __construct(string $authPayload = Values::NONE) {
+    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $config = Values::NONE) {
         $this->options['authPayload'] = $authPayload;
+        $this->options['friendlyName'] = $friendlyName;
+        $this->options['config'] = $config;
     }
 
     /**
@@ -44,6 +50,28 @@ class UpdateFactorOptions extends Options {
      */
     public function setAuthPayload(string $authPayload): self {
         $this->options['authPayload'] = $authPayload;
+        return $this;
+    }
+
+    /**
+     * The new friendly name of this Factor
+     *
+     * @param string $friendlyName The friendly name of this Factor
+     * @return $this Fluent Builder
+     */
+    public function setFriendlyName(string $friendlyName): self {
+        $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The new config for this Factor. It must be a json string with the required properties for the given factor type
+     *
+     * @param string $config The config for this Factor as a json string
+     * @return $this Fluent Builder
+     */
+    public function setConfig(string $config): self {
+        $this->options['config'] = $config;
         return $this;
     }
 

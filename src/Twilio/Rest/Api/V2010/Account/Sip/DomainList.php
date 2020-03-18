@@ -137,6 +137,7 @@ class DomainList extends ListResource {
             'VoiceStatusCallbackUrl' => $options['voiceStatusCallbackUrl'],
             'VoiceStatusCallbackMethod' => $options['voiceStatusCallbackMethod'],
             'SipRegistration' => Serialize::booleanToString($options['sipRegistration']),
+            'EmergencyCallingEnabled' => Serialize::booleanToString($options['emergencyCallingEnabled']),
         ]);
 
         $payload = $this->version->create(

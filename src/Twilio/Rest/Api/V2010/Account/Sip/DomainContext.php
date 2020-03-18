@@ -92,6 +92,7 @@ class DomainContext extends InstanceContext {
             'VoiceUrl' => $options['voiceUrl'],
             'SipRegistration' => Serialize::booleanToString($options['sipRegistration']),
             'DomainName' => $options['domainName'],
+            'EmergencyCallingEnabled' => Serialize::booleanToString($options['emergencyCallingEnabled']),
         ]);
 
         $payload = $this->version->update(

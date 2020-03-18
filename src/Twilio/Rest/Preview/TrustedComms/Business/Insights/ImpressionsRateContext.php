@@ -19,9 +19,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class SuccessRateContext extends InstanceContext {
+class ImpressionsRateContext extends InstanceContext {
     /**
-     * Initialize the SuccessRateContext
+     * Initialize the ImpressionsRateContext
      *
      * @param Version $version Version that contains the resource
      * @param string $businessSid Business Sid.
@@ -32,17 +32,17 @@ class SuccessRateContext extends InstanceContext {
         // Path Solution
         $this->solution = ['businessSid' => $businessSid, ];
 
-        $this->uri = '/Businesses/' . \rawurlencode($businessSid) . '/Insights/SuccessRate';
+        $this->uri = '/Businesses/' . \rawurlencode($businessSid) . '/Insights/ImpressionsRate';
     }
 
     /**
-     * Fetch a SuccessRateInstance
+     * Fetch a ImpressionsRateInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return SuccessRateInstance Fetched SuccessRateInstance
+     * @return ImpressionsRateInstance Fetched ImpressionsRateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): SuccessRateInstance {
+    public function fetch(array $options = []): ImpressionsRateInstance {
         $options = new Values($options);
 
         $params = Values::of([
@@ -61,7 +61,7 @@ class SuccessRateContext extends InstanceContext {
             $params
         );
 
-        return new SuccessRateInstance($this->version, $payload, $this->solution['businessSid']);
+        return new ImpressionsRateInstance($this->version, $payload, $this->solution['businessSid']);
     }
 
     /**
@@ -74,6 +74,6 @@ class SuccessRateContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.SuccessRateContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Preview.TrustedComms.ImpressionsRateContext ' . \implode(' ', $context) . ']';
     }
 }

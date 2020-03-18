@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class SuccessRatePage extends Page {
+class ImpressionsRatePage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class SuccessRatePage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return SuccessRateInstance \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateInstance
+     * @return ImpressionsRateInstance \Twilio\Rest\Preview\TrustedComms\Business\Insights\ImpressionsRateInstance
      */
-    public function buildInstance(array $payload): SuccessRateInstance {
-        return new SuccessRateInstance($this->version, $payload, $this->solution['businessSid']);
+    public function buildInstance(array $payload): ImpressionsRateInstance {
+        return new ImpressionsRateInstance($this->version, $payload, $this->solution['businessSid']);
     }
 
     /**
@@ -43,6 +43,6 @@ class SuccessRatePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.SuccessRatePage]';
+        return '[Twilio.Preview.TrustedComms.ImpressionsRatePage]';
     }
 }

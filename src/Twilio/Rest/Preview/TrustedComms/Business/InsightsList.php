@@ -12,17 +12,17 @@ namespace Twilio\Rest\Preview\TrustedComms\Business;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
-use Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateList;
+use Twilio\Rest\Preview\TrustedComms\Business\Insights\ImpressionsRateList;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property SuccessRateList $successRate
- * @method \Twilio\Rest\Preview\TrustedComms\Business\Insights\SuccessRateContext successRate()
+ * @property ImpressionsRateList $impressionsRate
+ * @method \Twilio\Rest\Preview\TrustedComms\Business\Insights\ImpressionsRateContext impressionsRate()
  */
 class InsightsList extends ListResource {
-    protected $_successRate = null;
+    protected $_impressionsRate = null;
 
     /**
      * Construct the InsightsList
@@ -38,14 +38,14 @@ class InsightsList extends ListResource {
     }
 
     /**
-     * Access the successRate
+     * Access the impressionsRate
      */
-    protected function getSuccessRate(): SuccessRateList {
-        if (!$this->_successRate) {
-            $this->_successRate = new SuccessRateList($this->version, $this->solution['businessSid']);
+    protected function getImpressionsRate(): ImpressionsRateList {
+        if (!$this->_impressionsRate) {
+            $this->_impressionsRate = new ImpressionsRateList($this->version, $this->solution['businessSid']);
         }
 
-        return $this->_successRate;
+        return $this->_impressionsRate;
     }
 
     /**
