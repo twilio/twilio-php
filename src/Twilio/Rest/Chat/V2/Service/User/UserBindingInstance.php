@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property string $userSid
  * @property string $credentialSid
  * @property string $bindingType
- * @property array $messageTypes
+ * @property string[] $messageTypes
  * @property string $url
  */
 class UserBindingInstance extends InstanceResource {

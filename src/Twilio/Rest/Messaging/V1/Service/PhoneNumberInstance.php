@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property string $phoneNumber
  * @property string $countryCode
- * @property array $capabilities
+ * @property string[] $capabilities
  * @property string $url
  */
 class PhoneNumberInstance extends InstanceResource {

@@ -48,8 +48,8 @@ class CreateBuildOptions extends Options {
     /**
      * The list of Asset Version resource SIDs to include in the build.
      *
-     * @param array $assetVersions The list of Asset Version resource SIDs to
-     *                             include in the build
+     * @param string[] $assetVersions The list of Asset Version resource SIDs to
+     *                                include in the build
      * @return $this Fluent Builder
      */
     public function setAssetVersions(array $assetVersions): self {
@@ -60,8 +60,8 @@ class CreateBuildOptions extends Options {
     /**
      * The list of the Variable resource SIDs to include in the build.
      *
-     * @param array $functionVersions The list of the Variable resource SIDs to
-     *                                include in the build
+     * @param string[] $functionVersions The list of the Variable resource SIDs to
+     *                                   include in the build
      * @return $this Fluent Builder
      */
     public function setFunctionVersions(array $functionVersions): self {

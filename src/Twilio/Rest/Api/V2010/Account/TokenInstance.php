@@ -19,7 +19,7 @@ use Twilio\Version;
  * @property string $accountSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property array $iceServers
+ * @property string[] $iceServers
  * @property string $password
  * @property string $ttl
  * @property string $username

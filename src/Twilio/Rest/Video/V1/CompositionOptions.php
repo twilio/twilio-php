@@ -180,8 +180,8 @@ class CreateCompositionOptions extends Options {
     /**
      * An array of track names from the same group room to merge into the new composition. Can include zero or more track names. The new composition includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which will match zero or more characters in a track name. For example, `student*` includes `student` as well as `studentTeam`. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request
      *
-     * @param array $audioSources An array of track names from the same group room
-     *                            to merge
+     * @param string[] $audioSources An array of track names from the same group
+     *                               room to merge
      * @return $this Fluent Builder
      */
     public function setAudioSources(array $audioSources): self {
@@ -192,7 +192,7 @@ class CreateCompositionOptions extends Options {
     /**
      * An array of track names to exclude. The new composition includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which will match zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
      *
-     * @param array $audioSourcesExcluded An array of track names to exclude
+     * @param string[] $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
     public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {

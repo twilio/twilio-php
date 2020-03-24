@@ -76,8 +76,8 @@ class CreateRecordingOptions extends Options {
     /**
      * The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
      *
-     * @param array $recordingStatusCallbackEvent The recording status changes that
-     *                                            should generate a callback
+     * @param string[] $recordingStatusCallbackEvent The recording status changes
+     *                                               that should generate a callback
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {

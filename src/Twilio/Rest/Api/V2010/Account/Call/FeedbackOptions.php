@@ -41,7 +41,7 @@ class CreateFeedbackOptions extends Options {
     /**
      * A list of one or more issues experienced during the call. Issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
      *
-     * @param array $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
     public function setIssue(array $issue): self {
@@ -76,7 +76,7 @@ class UpdateFeedbackOptions extends Options {
     /**
      * One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
      *
-     * @param array $issue Issues experienced during the call
+     * @param string[] $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
     public function setIssue(array $issue): self {

@@ -102,8 +102,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The events that cause us to call the Channel Webhook. Used when `type` is `webhook`. This parameter takes only one event. To specify more than one event, repeat this parameter for each event. For the list of possible events, see [Webhook Event Triggers](https://www.twilio.com/docs/chat/webhook-events#webhook-event-trigger).
      *
-     * @param array $configurationFilters The events that cause us to call the
-     *                                    Channel Webhook
+     * @param string[] $configurationFilters The events that cause us to call the
+     *                                       Channel Webhook
      * @return $this Fluent Builder
      */
     public function setConfigurationFilters(array $configurationFilters): self {
@@ -114,9 +114,9 @@ class CreateWebhookOptions extends Options {
     /**
      * A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`.
      *
-     * @param array $configurationTriggers A string that will cause us to call the
-     *                                     webhook when it is found in a message
-     *                                     body
+     * @param string[] $configurationTriggers A string that will cause us to call
+     *                                        the webhook when it is found in a
+     *                                        message body
      * @return $this Fluent Builder
      */
     public function setConfigurationTriggers(array $configurationTriggers): self {
@@ -214,8 +214,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The events that cause us to call the Channel Webhook. Used when `type` is `webhook`. This parameter takes only one event. To specify more than one event, repeat this parameter for each event. For the list of possible events, see [Webhook Event Triggers](https://www.twilio.com/docs/chat/webhook-events#webhook-event-trigger).
      *
-     * @param array $configurationFilters The events that cause us to call the
-     *                                    Channel Webhook
+     * @param string[] $configurationFilters The events that cause us to call the
+     *                                       Channel Webhook
      * @return $this Fluent Builder
      */
     public function setConfigurationFilters(array $configurationFilters): self {
@@ -226,9 +226,9 @@ class UpdateWebhookOptions extends Options {
     /**
      * A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`.
      *
-     * @param array $configurationTriggers A string that will cause us to call the
-     *                                     webhook when it is found in a message
-     *                                     body
+     * @param string[] $configurationTriggers A string that will cause us to call
+     *                                        the webhook when it is found in a
+     *                                        message body
      * @return $this Fluent Builder
      */
     public function setConfigurationTriggers(array $configurationTriggers): self {

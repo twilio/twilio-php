@@ -35,8 +35,8 @@ class ReadUserBindingOptions extends Options {
     /**
      * The push technology used by the User Binding resources to read. Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
      *
-     * @param array $bindingType The push technology used by the User Binding
-     *                           resources to read
+     * @param string[] $bindingType The push technology used by the User Binding
+     *                              resources to read
      * @return $this Fluent Builder
      */
     public function setBindingType(array $bindingType): self {

@@ -226,8 +226,8 @@ class CreateCompositionHookOptions extends Options {
     /**
      * An array of track names from the same group room to merge into the compositions created by the composition hook. Can include zero or more track names. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`.
      *
-     * @param array $audioSources An array of track names from the same group room
-     *                            to merge
+     * @param string[] $audioSources An array of track names from the same group
+     *                               room to merge
      * @return $this Fluent Builder
      */
     public function setAudioSources(array $audioSources): self {
@@ -238,7 +238,7 @@ class CreateCompositionHookOptions extends Options {
     /**
      * An array of track names to exclude. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
      *
-     * @param array $audioSourcesExcluded An array of track names to exclude
+     * @param string[] $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
     public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {
@@ -395,8 +395,8 @@ class UpdateCompositionHookOptions extends Options {
     /**
      * An array of track names from the same group room to merge into the compositions created by the composition hook. Can include zero or more track names. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`.
      *
-     * @param array $audioSources An array of track names from the same group room
-     *                            to merge
+     * @param string[] $audioSources An array of track names from the same group
+     *                               room to merge
      * @return $this Fluent Builder
      */
     public function setAudioSources(array $audioSources): self {
@@ -407,7 +407,7 @@ class UpdateCompositionHookOptions extends Options {
     /**
      * An array of track names to exclude. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
      *
-     * @param array $audioSourcesExcluded An array of track names to exclude
+     * @param string[] $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
     public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {

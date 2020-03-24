@@ -104,8 +104,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The list of events, firing webhook event for this Conversation.
      *
-     * @param array $configurationFilters The list of events, firing webhook event
-     *                                    for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
      * @return $this Fluent Builder
      */
     public function setConfigurationFilters(array $configurationFilters): self {
@@ -116,8 +116,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The list of keywords, firing webhook event for this Conversation.
      *
-     * @param array $configurationTriggers The list of keywords, firing webhook
-     *                                     event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @return $this Fluent Builder
      */
     public function setConfigurationTriggers(array $configurationTriggers): self {
@@ -213,8 +213,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of events, firing webhook event for this Conversation.
      *
-     * @param array $configurationFilters The list of events, firing webhook event
-     *                                    for this Conversation.
+     * @param string[] $configurationFilters The list of events, firing webhook
+     *                                       event for this Conversation.
      * @return $this Fluent Builder
      */
     public function setConfigurationFilters(array $configurationFilters): self {
@@ -225,8 +225,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of keywords, firing webhook event for this Conversation.
      *
-     * @param array $configurationTriggers The list of keywords, firing webhook
-     *                                     event for this Conversation.
+     * @param string[] $configurationTriggers The list of keywords, firing webhook
+     *                                        event for this Conversation.
      * @return $this Fluent Builder
      */
     public function setConfigurationTriggers(array $configurationTriggers): self {

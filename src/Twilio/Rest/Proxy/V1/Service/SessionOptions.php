@@ -121,8 +121,8 @@ class CreateSessionOptions extends Options {
     /**
      * The Participant objects to include in the new session.
      *
-     * @param array $participants The Participant objects to include in the new
-     *                            session
+     * @param array[] $participants The Participant objects to include in the new
+     *                              session
      * @return $this Fluent Builder
      */
     public function setParticipants(array $participants): self {

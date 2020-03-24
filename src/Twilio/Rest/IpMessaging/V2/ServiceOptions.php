@@ -530,8 +530,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The list of webhook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
      *
-     * @param array $webhookFilters The list of webhook events that are enabled for
-     *                              this Service instance
+     * @param string[] $webhookFilters The list of webhook events that are enabled
+     *                                 for this Service instance
      * @return $this Fluent Builder
      */
     public function setWebhookFilters(array $webhookFilters): self {

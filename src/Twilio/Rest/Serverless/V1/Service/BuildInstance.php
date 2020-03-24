@@ -22,9 +22,9 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $serviceSid
  * @property string $status
- * @property array $assetVersions
- * @property array $functionVersions
- * @property array $dependencies
+ * @property array[] $assetVersions
+ * @property array[] $functionVersions
+ * @property array[] $dependencies
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url

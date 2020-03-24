@@ -73,7 +73,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
     /**
      * A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
      *
-     * @param array $hostedNumberOrderSids A list of HostedNumberOrder sids.
+     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids.
      * @return $this Fluent Builder
      */
     public function setHostedNumberOrderSids(array $hostedNumberOrderSids): self {
@@ -106,7 +106,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
     /**
      * Email recipients who will be informed when an Authorization Document has been sent and signed
      *
-     * @param array $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
     public function setCcEmails(array $ccEmails): self {
@@ -223,7 +223,7 @@ class CreateAuthorizationDocumentOptions extends Options {
     /**
      * Email recipients who will be informed when an Authorization Document has been sent and signed.
      *
-     * @param array $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
     public function setCcEmails(array $ccEmails): self {

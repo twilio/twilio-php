@@ -135,7 +135,7 @@ class CreateMessageOptions extends Options {
     /**
      * The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.
      *
-     * @param array $mediaUrl The URL of the media to send with the message
+     * @param string[] $mediaUrl The URL of the media to send with the message
      * @return $this Fluent Builder
      */
     public function setMediaUrl(array $mediaUrl): self {
@@ -251,7 +251,7 @@ class CreateMessageOptions extends Options {
     /**
      * Rich actions for Channels Messages.
      *
-     * @param array $persistentAction Rich actions for Channels Messages.
+     * @param string[] $persistentAction Rich actions for Channels Messages.
      * @return $this Fluent Builder
      */
     public function setPersistentAction(array $persistentAction): self {

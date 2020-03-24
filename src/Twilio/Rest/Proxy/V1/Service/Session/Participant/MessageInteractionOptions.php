@@ -50,7 +50,7 @@ class CreateMessageInteractionOptions extends Options {
     /**
      * Reserved. Not currently supported.
      *
-     * @param array $mediaUrl Reserved
+     * @param string[] $mediaUrl Reserved
      * @return $this Fluent Builder
      */
     public function setMediaUrl(array $mediaUrl): self {

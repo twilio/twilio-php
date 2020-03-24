@@ -164,8 +164,8 @@ class CreateRoomOptions extends Options {
     /**
      * An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
      *
-     * @param array $videoCodecs An array of the video codecs that are supported
-     *                           when publishing a track in the room
+     * @param string[] $videoCodecs An array of the video codecs that are supported
+     *                              when publishing a track in the room
      * @return $this Fluent Builder
      */
     public function setVideoCodecs(array $videoCodecs): self {

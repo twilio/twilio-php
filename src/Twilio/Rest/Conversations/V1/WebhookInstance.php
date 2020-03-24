@@ -20,7 +20,7 @@ use Twilio\Version;
  *
  * @property string $accountSid
  * @property string $method
- * @property array $filters
+ * @property string[] $filters
  * @property string $preWebhookUrl
  * @property string $postWebhookUrl
  * @property string $target

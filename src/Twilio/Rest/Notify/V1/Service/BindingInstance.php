@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string $identity
  * @property string $bindingType
  * @property string $address
- * @property array $tags
+ * @property string[] $tags
  * @property string $url
  * @property array $links
  */

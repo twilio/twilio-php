@@ -30,7 +30,7 @@ use Twilio\Version;
  * @property array $recording
  * @property bool $cnamLookupEnabled
  * @property string $authType
- * @property array $authTypeSet
+ * @property string[] $authTypeSet
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $sid

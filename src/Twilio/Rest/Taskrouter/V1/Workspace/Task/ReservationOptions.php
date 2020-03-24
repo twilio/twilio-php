@@ -610,8 +610,8 @@ class UpdateReservationOptions extends Options {
     /**
      * The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.
      *
-     * @param array $statusCallbackEvent The call progress events that we will send
-     *                                   to status_callback
+     * @param string[] $statusCallbackEvent The call progress events that we will
+     *                                      send to status_callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackEvent(array $statusCallbackEvent): self {
@@ -762,9 +762,9 @@ class UpdateReservationOptions extends Options {
     /**
      * The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.
      *
-     * @param array $conferenceStatusCallbackEvent The conference status events
-     *                                             that we will send to
-     *                                             conference_status_callback
+     * @param string[] $conferenceStatusCallbackEvent The conference status events
+     *                                                that we will send to
+     *                                                conference_status_callback
      * @return $this Fluent Builder
      */
     public function setConferenceStatusCallbackEvent(array $conferenceStatusCallbackEvent): self {
@@ -895,9 +895,9 @@ class UpdateReservationOptions extends Options {
     /**
      * The Call progress events sent via webhooks as a result of a Dequeue instruction.
      *
-     * @param array $dequeueStatusCallbackEvent The Call progress events sent via
-     *                                          webhooks as a result of a Dequeue
-     *                                          instruction
+     * @param string[] $dequeueStatusCallbackEvent The Call progress events sent
+     *                                             via webhooks as a result of a
+     *                                             Dequeue instruction
      * @return $this Fluent Builder
      */
     public function setDequeueStatusCallbackEvent(array $dequeueStatusCallbackEvent): self {

@@ -189,7 +189,7 @@ class ReadChannelOptions extends Options {
     /**
      * The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      *
-     * @param array $type The visibility of the channel to read
+     * @param string[] $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
     public function setType(array $type): self {

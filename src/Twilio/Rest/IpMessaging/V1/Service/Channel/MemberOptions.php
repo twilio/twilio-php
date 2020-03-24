@@ -86,7 +86,7 @@ class ReadMemberOptions extends Options {
     /**
      * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
      *
-     * @param array $identity The `identity` value of the resources to read
+     * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setIdentity(array $identity): self {

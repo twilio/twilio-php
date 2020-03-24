@@ -145,8 +145,8 @@ class UpdateConnectAppOptions extends Options {
     /**
      * A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`.
      *
-     * @param array $permissions The set of permissions that your ConnectApp will
-     *                           request
+     * @param string[] $permissions The set of permissions that your ConnectApp
+     *                              will request
      * @return $this Fluent Builder
      */
     public function setPermissions(array $permissions): self {

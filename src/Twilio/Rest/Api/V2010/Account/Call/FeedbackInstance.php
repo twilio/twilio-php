@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string $accountSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property array $issues
+ * @property string[] $issues
  * @property int $qualityScore
  * @property string $sid
  */

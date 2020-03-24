@@ -295,8 +295,8 @@ class CreatePhoneCallOptions extends Options {
     /**
      * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
-     * @param array $recordingStatusCallbackEvent Refers to the Voice API Initiate
-     *                                            Call parameter
+     * @param string[] $recordingStatusCallbackEvent Refers to the Voice API
+     *                                               Initiate Call parameter
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {
@@ -365,8 +365,8 @@ class CreatePhoneCallOptions extends Options {
     /**
      * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
-     * @param array $statusCallbackEvent Refers to the Voice API Initiate Call
-     *                                   parameter
+     * @param string[] $statusCallbackEvent Refers to the Voice API Initiate Call
+     *                                      parameter
      * @return $this Fluent Builder
      */
     public function setStatusCallbackEvent(array $statusCallbackEvent): self {

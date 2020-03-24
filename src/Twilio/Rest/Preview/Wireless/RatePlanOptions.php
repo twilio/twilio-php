@@ -171,7 +171,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The international_roaming
      *
-     * @param array $internationalRoaming The international_roaming
+     * @param string[] $internationalRoaming The international_roaming
      * @return $this Fluent Builder
      */
     public function setInternationalRoaming(array $internationalRoaming): self {

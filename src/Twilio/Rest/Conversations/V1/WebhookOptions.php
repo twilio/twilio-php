@@ -68,8 +68,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`
      *
-     * @param array $filters The list of webhook event triggers that are enabled
-     *                       for this Service.
+     * @param string[] $filters The list of webhook event triggers that are enabled
+     *                          for this Service.
      * @return $this Fluent Builder
      */
     public function setFilters(array $filters): self {

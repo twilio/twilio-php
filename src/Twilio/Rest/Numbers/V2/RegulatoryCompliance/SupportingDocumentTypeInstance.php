@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string $sid
  * @property string $friendlyName
  * @property string $machineName
- * @property array $fields
+ * @property array[] $fields
  * @property string $url
  */
 class SupportingDocumentTypeInstance extends InstanceResource {

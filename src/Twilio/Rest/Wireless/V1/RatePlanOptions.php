@@ -195,9 +195,9 @@ class CreateRatePlanOptions extends Options {
     /**
      * The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can be: `data`, `voice`, and `messaging`.
      *
-     * @param array $internationalRoaming The services that SIMs capable of using
-     *                                    GPRS/3G/4G/LTE data connectivity can use
-     *                                    outside of the United States
+     * @param string[] $internationalRoaming The services that SIMs capable of
+     *                                       using GPRS/3G/4G/LTE data connectivity
+     *                                       can use outside of the United States
      * @return $this Fluent Builder
      */
     public function setInternationalRoaming(array $internationalRoaming): self {

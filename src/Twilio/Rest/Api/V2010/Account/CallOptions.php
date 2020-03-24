@@ -281,8 +281,8 @@ class CreateCallOptions extends Options {
     /**
      * The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.
      *
-     * @param array $statusCallbackEvent The call progress events that we send to
-     *                                   the `status_callback` URL.
+     * @param string[] $statusCallbackEvent The call progress events that we send
+     *                                      to the `status_callback` URL.
      * @return $this Fluent Builder
      */
     public function setStatusCallbackEvent(array $statusCallbackEvent): self {
@@ -422,10 +422,10 @@ class CreateCallOptions extends Options {
     /**
      * The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space.
      *
-     * @param array $recordingStatusCallbackEvent The recording status events that
-     *                                            will trigger calls to the URL
-     *                                            specified in
-     *                                            `recording_status_callback`
+     * @param string[] $recordingStatusCallbackEvent The recording status events
+     *                                               that will trigger calls to the
+     *                                               URL specified in
+     *                                               `recording_status_callback`
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {

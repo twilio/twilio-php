@@ -139,7 +139,7 @@ class UpdateHostedNumberOrderOptions extends Options {
     /**
      * Optional. A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
      *
-     * @param array $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
     public function setCcEmails(array $ccEmails): self {
@@ -394,7 +394,7 @@ class CreateHostedNumberOrderOptions extends Options {
     /**
      * Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.
      *
-     * @param array $ccEmails A list of emails.
+     * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
     public function setCcEmails(array $ccEmails): self {

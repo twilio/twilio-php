@@ -30,7 +30,7 @@ use Twilio\Version;
  * @property int $revision
  * @property string $commitMessage
  * @property bool $valid
- * @property array $errors
+ * @property array[] $errors
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $webhookUrl

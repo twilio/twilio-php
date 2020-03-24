@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string $identity
  * @property string $credentialSid
  * @property string $bindingType
- * @property array $messageTypes
+ * @property string[] $messageTypes
  * @property string $url
  * @property array $links
  */

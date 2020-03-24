@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string $addressSid
  * @property string $status
  * @property string $email
- * @property array $ccEmails
+ * @property string[] $ccEmails
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url

@@ -76,7 +76,7 @@ class ReadInviteOptions extends Options {
     /**
      * The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
      *
-     * @param array $identity The `identity` value of the resources to read
+     * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setIdentity(array $identity): self {

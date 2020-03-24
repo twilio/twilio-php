@@ -62,7 +62,7 @@ class CreateBindingOptions extends Options {
     /**
      * A tag that can be used to select the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 20 tags.
      *
-     * @param array $tag A tag that can be used to select the Bindings to notify
+     * @param string[] $tag A tag that can be used to select the Bindings to notify
      * @return $this Fluent Builder
      */
     public function setTag(array $tag): self {
@@ -164,7 +164,7 @@ class ReadBindingOptions extends Options {
     /**
      * The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read.
      *
-     * @param array $identity The `identity` value of the resources to read
+     * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setIdentity(array $identity): self {
@@ -175,7 +175,7 @@ class ReadBindingOptions extends Options {
     /**
      * Only list Bindings that have all of the specified Tags. The following implicit tags are available: `all`, `apn`, `fcm`, `gcm`, `sms`, `facebook-messenger`. Up to 5 tags are allowed.
      *
-     * @param array $tag Only list Bindings that have all of the specified Tags
+     * @param string[] $tag Only list Bindings that have all of the specified Tags
      * @return $this Fluent Builder
      */
     public function setTag(array $tag): self {

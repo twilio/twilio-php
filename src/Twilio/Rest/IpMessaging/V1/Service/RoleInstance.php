@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string $serviceSid
  * @property string $friendlyName
  * @property string $type
- * @property array $permissions
+ * @property string[] $permissions
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url

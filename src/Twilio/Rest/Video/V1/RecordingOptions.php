@@ -78,7 +78,7 @@ class ReadRecordingOptions extends Options {
     /**
      * Read only recordings with this `grouping_sid`, which may include a `participant_sid` and/or a `room_sid`.
      *
-     * @param array $groupingSid Read only recordings that have this grouping_sid
+     * @param string[] $groupingSid Read only recordings that have this grouping_sid
      * @return $this Fluent Builder
      */
     public function setGroupingSid(array $groupingSid): self {

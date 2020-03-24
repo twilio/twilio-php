@@ -33,13 +33,13 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property int $verificationAttempts
  * @property string $email
- * @property array $ccEmails
+ * @property string[] $ccEmails
  * @property string $verificationType
  * @property string $verificationDocumentSid
  * @property string $extension
  * @property int $callDelay
  * @property string $verificationCode
- * @property array $verificationCallSids
+ * @property string[] $verificationCallSids
  */
 class DependentHostedNumberOrderInstance extends InstanceResource {
     /**

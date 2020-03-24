@@ -435,8 +435,8 @@ class CreateParticipantOptions extends Options {
     /**
      * The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
      *
-     * @param array $statusCallbackEvent Set state change events that will trigger
-     *                                   a callback
+     * @param string[] $statusCallbackEvent Set state change events that will
+     *                                      trigger a callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackEvent(array $statusCallbackEvent): self {
@@ -611,9 +611,10 @@ class CreateParticipantOptions extends Options {
     /**
      * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, and `speaker`. Separate multiple values with a space. Defaults to `start end`.
      *
-     * @param array $conferenceStatusCallbackEvent The conference state changes
-     *                                             that should generate a call to
-     *                                             `conference_status_callback`
+     * @param string[] $conferenceStatusCallbackEvent The conference state changes
+     *                                                that should generate a call
+     *                                                to
+     *                                                `conference_status_callback`
      * @return $this Fluent Builder
      */
     public function setConferenceStatusCallbackEvent(array $conferenceStatusCallbackEvent): self {
@@ -720,9 +721,9 @@ class CreateParticipantOptions extends Options {
     /**
      * The recording state changes that should generate a call to `recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
      *
-     * @param array $recordingStatusCallbackEvent The recording state changes that
-     *                                            should generate a call to
-     *                                            `recording_status_callback`
+     * @param string[] $recordingStatusCallbackEvent The recording state changes
+     *                                               that should generate a call to
+     *                                               `recording_status_callback`
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {
@@ -733,11 +734,11 @@ class CreateParticipantOptions extends Options {
     /**
      * The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
      *
-     * @param array $conferenceRecordingStatusCallbackEvent The conference
-     *                                                      recording state changes
-     *                                                      that should generate a
-     *                                                      call to
-     *                                                      `conference_recording_status_callback`
+     * @param string[] $conferenceRecordingStatusCallbackEvent The conference
+     *                                                         recording state
+     *                                                         changes that should
+     *                                                         generate a call to
+     *                                                         `conference_recording_status_callback`
      * @return $this Fluent Builder
      */
     public function setConferenceRecordingStatusCallbackEvent(array $conferenceRecordingStatusCallbackEvent): self {
