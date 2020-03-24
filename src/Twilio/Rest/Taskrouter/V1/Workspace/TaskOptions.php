@@ -44,7 +44,7 @@ abstract class TaskOptions {
      * @param bool $hasAddons Whether to read Tasks with addons
      * @return ReadTaskOptions Options builder
      */
-    public static function read(int $priority = Values::NONE, string[] $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
+    public static function read(int $priority = Values::NONE, array $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
         return new ReadTaskOptions($priority, $assignmentStatus, $workflowSid, $workflowName, $taskQueueSid, $taskQueueName, $evaluateTaskAttributes, $ordering, $hasAddons);
     }
 
@@ -174,7 +174,7 @@ class ReadTaskOptions extends Options {
      * @param string $ordering Controls the order of the Tasks returned
      * @param bool $hasAddons Whether to read Tasks with addons
      */
-    public function __construct(int $priority = Values::NONE, string[] $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
+    public function __construct(int $priority = Values::NONE, array $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
         $this->options['priority'] = $priority;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['workflowSid'] = $workflowSid;
@@ -200,12 +200,11 @@ class ReadTaskOptions extends Options {
     /**
      * The `assignment_status` of the Tasks to read. Can be: `pending`, `reserved`, `assigned`, `canceled`, and `completed`. Returns all Tasks in the Workspace with the specified `assignment_status`.
      *
-     * @param string[] $assignmentStatus Returns the list of all Tasks in the
-     *                                   Workspace with the specified
-     *                                   assignment_status
+     * @param array $assignmentStatus Returns the list of all Tasks in the
+     *                                Workspace with the specified assignment_status
      * @return $this Fluent Builder
      */
-    public function setAssignmentStatus(string[] $assignmentStatus): self {
+    public function setAssignmentStatus(array $assignmentStatus): self {
         $this->options['assignmentStatus'] = $assignmentStatus;
         return $this;
     }

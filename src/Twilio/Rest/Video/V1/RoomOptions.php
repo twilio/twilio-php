@@ -31,7 +31,7 @@ abstract class RoomOptions {
      * @param string $mediaRegion The region for the media server in Group Rooms
      * @return CreateRoomOptions Options builder
      */
-    public static function create(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, string[] $videoCodecs = Values::NONE, string $mediaRegion = Values::NONE): CreateRoomOptions {
+    public static function create(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::NONE, string $mediaRegion = Values::NONE): CreateRoomOptions {
         return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect, $videoCodecs, $mediaRegion);
     }
 
@@ -67,7 +67,7 @@ class CreateRoomOptions extends Options {
      *                              when publishing a track in the room
      * @param string $mediaRegion The region for the media server in Group Rooms
      */
-    public function __construct(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, string[] $videoCodecs = Values::NONE, string $mediaRegion = Values::NONE) {
+    public function __construct(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::NONE, string $mediaRegion = Values::NONE) {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
@@ -164,11 +164,11 @@ class CreateRoomOptions extends Options {
     /**
      * An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
      *
-     * @param string[] $videoCodecs An array of the video codecs that are supported
-     *                              when publishing a track in the room
+     * @param array $videoCodecs An array of the video codecs that are supported
+     *                           when publishing a track in the room
      * @return $this Fluent Builder
      */
-    public function setVideoCodecs(string[] $videoCodecs): self {
+    public function setVideoCodecs(array $videoCodecs): self {
         $this->options['videoCodecs'] = $videoCodecs;
         return $this;
     }

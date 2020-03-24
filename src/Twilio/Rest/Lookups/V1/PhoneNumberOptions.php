@@ -21,7 +21,7 @@ abstract class PhoneNumberOptions {
      *                           invoke
      * @return FetchPhoneNumberOptions Options builder
      */
-    public static function fetch(string $countryCode = Values::NONE, string[] $type = Values::NONE, string[] $addOns = Values::NONE, string $addOnsData = Values::NONE): FetchPhoneNumberOptions {
+    public static function fetch(string $countryCode = Values::NONE, array $type = Values::NONE, array $addOns = Values::NONE, string $addOnsData = Values::NONE): FetchPhoneNumberOptions {
         return new FetchPhoneNumberOptions($countryCode, $type, $addOns, $addOnsData);
     }
 }
@@ -34,7 +34,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addOnsData Data specific to the add-on you would like to
      *                           invoke
      */
-    public function __construct(string $countryCode = Values::NONE, string[] $type = Values::NONE, string[] $addOns = Values::NONE, string $addOnsData = Values::NONE) {
+    public function __construct(string $countryCode = Values::NONE, array $type = Values::NONE, array $addOns = Values::NONE, string $addOnsData = Values::NONE) {
         $this->options['countryCode'] = $countryCode;
         $this->options['type'] = $type;
         $this->options['addOns'] = $addOns;
@@ -55,10 +55,10 @@ class FetchPhoneNumberOptions extends Options {
     /**
      * The type of information to return. Can be: `carrier` or `caller-name`. The default is null.  Carrier information costs $0.005 per phone number looked up.  Caller Name information is currently available only in the US and costs $0.01 per phone number looked up.  To retrieve both types on information, specify this parameter twice; once with `carrier` and once with `caller-name` as the value.
      *
-     * @param string[] $type The type of information to return
+     * @param array $type The type of information to return
      * @return $this Fluent Builder
      */
-    public function setType(string[] $type): self {
+    public function setType(array $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -66,10 +66,10 @@ class FetchPhoneNumberOptions extends Options {
     /**
      * The `unique_name` of an Add-on you would like to invoke. Can be the `unique_name` of an Add-on that is installed on your account. You can specify multiple instances of this parameter to invoke multiple Add-ons. For more information about  Add-ons, see the [Add-ons documentation](https://www.twilio.com/docs/add-ons).
      *
-     * @param string[] $addOns The unique_name of an Add-on you would like to invoke
+     * @param array $addOns The unique_name of an Add-on you would like to invoke
      * @return $this Fluent Builder
      */
-    public function setAddOns(string[] $addOns): self {
+    public function setAddOns(array $addOns): self {
         $this->options['addOns'] = $addOns;
         return $this;
     }

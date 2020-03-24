@@ -17,8 +17,8 @@ use Twilio\Version;
 /**
  * @property string $country
  * @property string $isoCountry
- * @property string[] $outboundSmsPrices
- * @property string[] $inboundSmsPrices
+ * @property array $outboundSmsPrices
+ * @property array $inboundSmsPrices
  * @property string $priceUnit
  * @property string $url
  */

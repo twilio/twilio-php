@@ -35,7 +35,7 @@ abstract class ChannelOptions {
      * @param string[] $type The visibility of the channel to read
      * @return ReadChannelOptions Options builder
      */
-    public static function read(string[] $type = Values::NONE): ReadChannelOptions {
+    public static function read(array $type = Values::NONE): ReadChannelOptions {
         return new ReadChannelOptions($type);
     }
 
@@ -182,17 +182,17 @@ class ReadChannelOptions extends Options {
     /**
      * @param string[] $type The visibility of the channel to read
      */
-    public function __construct(string[] $type = Values::NONE) {
+    public function __construct(array $type = Values::NONE) {
         $this->options['type'] = $type;
     }
 
     /**
      * The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      *
-     * @param string[] $type The visibility of the channel to read
+     * @param array $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
-    public function setType(string[] $type): self {
+    public function setType(array $type): self {
         $this->options['type'] = $type;
         return $this;
     }

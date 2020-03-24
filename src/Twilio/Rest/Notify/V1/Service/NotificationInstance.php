@@ -22,9 +22,9 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $serviceSid
  * @property \DateTime $dateCreated
- * @property string[] $identities
- * @property string[] $tags
- * @property string[] $segments
+ * @property array $identities
+ * @property array $tags
+ * @property array $segments
  * @property string $priority
  * @property int $ttl
  * @property string $title

@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string $originationNumber
  * @property string $country
  * @property string $isoCountry
- * @property string[] $outboundCallPrices
+ * @property array $outboundCallPrices
  * @property string $inboundCallPrice
  * @property string $priceUnit
  * @property string $url

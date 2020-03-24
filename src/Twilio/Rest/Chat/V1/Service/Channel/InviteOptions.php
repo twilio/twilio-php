@@ -25,7 +25,7 @@ abstract class InviteOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadInviteOptions Options builder
      */
-    public static function read(string[] $identity = Values::NONE): ReadInviteOptions {
+    public static function read(array $identity = Values::NONE): ReadInviteOptions {
         return new ReadInviteOptions($identity);
     }
 }
@@ -69,17 +69,17 @@ class ReadInviteOptions extends Options {
     /**
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(string[] $identity = Values::NONE) {
+    public function __construct(array $identity = Values::NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
      * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
      *
-     * @param string[] $identity The `identity` value of the resources to read
+     * @param array $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity(string[] $identity): self {
+    public function setIdentity(array $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }

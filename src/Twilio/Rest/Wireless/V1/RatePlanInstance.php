@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property bool $voiceEnabled
  * @property bool $nationalRoamingEnabled
  * @property int $nationalRoamingDataLimit
- * @property string[] $internationalRoaming
+ * @property array $internationalRoaming
  * @property int $internationalRoamingDataLimit
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated

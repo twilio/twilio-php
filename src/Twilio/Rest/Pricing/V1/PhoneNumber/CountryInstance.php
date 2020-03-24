@@ -17,7 +17,7 @@ use Twilio\Version;
 /**
  * @property string $country
  * @property string $isoCountry
- * @property string[] $phoneNumberPrices
+ * @property array $phoneNumberPrices
  * @property string $priceUnit
  * @property string $url
  */

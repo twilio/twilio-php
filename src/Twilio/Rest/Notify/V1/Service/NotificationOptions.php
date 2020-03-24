@@ -42,7 +42,7 @@ abstract class NotificationOptions {
      * @param string $deliveryCallbackUrl URL to send webhooks
      * @return CreateNotificationOptions Options builder
      */
-    public static function create(string[] $identity = Values::NONE, string[] $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, string[] $segment = Values::NONE, array $alexa = Values::NONE, string[] $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
+    public static function create(array $identity = Values::NONE, array $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, array $segment = Values::NONE, array $alexa = Values::NONE, array $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
         return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding, $deliveryCallbackUrl);
     }
 }
@@ -73,7 +73,7 @@ class CreateNotificationOptions extends Options {
      * @param string[] $toBinding The destination address specified as a JSON string
      * @param string $deliveryCallbackUrl URL to send webhooks
      */
-    public function __construct(string[] $identity = Values::NONE, string[] $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, string[] $segment = Values::NONE, array $alexa = Values::NONE, string[] $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE) {
+    public function __construct(array $identity = Values::NONE, array $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, array $segment = Values::NONE, array $alexa = Values::NONE, array $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -97,11 +97,11 @@ class CreateNotificationOptions extends Options {
     /**
      * The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list.
      *
-     * @param string[] $identity The `identity` value that identifies the new
-     *                           resource's User
+     * @param array $identity The `identity` value that identifies the new
+     *                        resource's User
      * @return $this Fluent Builder
      */
-    public function setIdentity(string[] $identity): self {
+    public function setIdentity(array $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -109,10 +109,10 @@ class CreateNotificationOptions extends Options {
     /**
      * A tag that selects the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 5 tags. The implicit tag `all` is available to notify all Bindings in a Service instance. Similarly, the implicit tags `apn`, `fcm`, `gcm`, `sms` and `facebook-messenger` are available to notify all Bindings in a specific channel.
      *
-     * @param string[] $tag A tag that selects the Bindings to notify
+     * @param array $tag A tag that selects the Bindings to notify
      * @return $this Fluent Builder
      */
-    public function setTag(string[] $tag): self {
+    public function setTag(array $tag): self {
         $this->options['tag'] = $tag;
         return $this;
     }
@@ -256,10 +256,10 @@ class CreateNotificationOptions extends Options {
     /**
      * The Segment resource is deprecated. Use the `tag` parameter, instead.
      *
-     * @param string[] $segment A Segment to notify
+     * @param array $segment A Segment to notify
      * @return $this Fluent Builder
      */
-    public function setSegment(string[] $segment): self {
+    public function setSegment(array $segment): self {
         $this->options['segment'] = $segment;
         return $this;
     }
@@ -278,10 +278,10 @@ class CreateNotificationOptions extends Options {
     /**
      * The destination address specified as a JSON string.  Multiple `to_binding` parameters can be included but the total size of the request entity should not exceed 1MB. This is typically sufficient for 10,000 phone numbers.
      *
-     * @param string[] $toBinding The destination address specified as a JSON string
+     * @param array $toBinding The destination address specified as a JSON string
      * @return $this Fluent Builder
      */
-    public function setToBinding(string[] $toBinding): self {
+    public function setToBinding(array $toBinding): self {
         $this->options['toBinding'] = $toBinding;
         return $this;
     }

@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string $connectAppSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string[] $permissions
+ * @property array $permissions
  * @property string $uri
  */
 class AuthorizedConnectAppInstance extends InstanceResource {

@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string $description
  * @property string $friendlyName
  * @property string $homepageUrl
- * @property string[] $permissions
+ * @property array $permissions
  * @property string $sid
  * @property string $uri
  */

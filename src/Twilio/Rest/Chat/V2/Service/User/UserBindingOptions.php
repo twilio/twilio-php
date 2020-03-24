@@ -18,7 +18,7 @@ abstract class UserBindingOptions {
      *                              resources to read
      * @return ReadUserBindingOptions Options builder
      */
-    public static function read(string[] $bindingType = Values::NONE): ReadUserBindingOptions {
+    public static function read(array $bindingType = Values::NONE): ReadUserBindingOptions {
         return new ReadUserBindingOptions($bindingType);
     }
 }
@@ -28,18 +28,18 @@ class ReadUserBindingOptions extends Options {
      * @param string[] $bindingType The push technology used by the User Binding
      *                              resources to read
      */
-    public function __construct(string[] $bindingType = Values::NONE) {
+    public function __construct(array $bindingType = Values::NONE) {
         $this->options['bindingType'] = $bindingType;
     }
 
     /**
      * The push technology used by the User Binding resources to read. Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
      *
-     * @param string[] $bindingType The push technology used by the User Binding
-     *                              resources to read
+     * @param array $bindingType The push technology used by the User Binding
+     *                           resources to read
      * @return $this Fluent Builder
      */
-    public function setBindingType(string[] $bindingType): self {
+    public function setBindingType(array $bindingType): self {
         $this->options['bindingType'] = $bindingType;
         return $this;
     }

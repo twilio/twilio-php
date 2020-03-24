@@ -37,7 +37,7 @@ use Twilio\Version;
  * @property string $preWebhookUrl
  * @property string $postWebhookUrl
  * @property string $webhookMethod
- * @property string[] $webhookFilters
+ * @property array $webhookFilters
  * @property array $notifications
  * @property string $url
  * @property array $links

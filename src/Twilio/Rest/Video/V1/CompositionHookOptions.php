@@ -53,7 +53,7 @@ abstract class CompositionHookOptions {
      *                   media in the Compositions triggered by the composition hook
      * @return CreateCompositionHookOptions Options builder
      */
-    public static function create(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionHookOptions {
+    public static function create(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionHookOptions {
         return new CreateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 
@@ -77,7 +77,7 @@ abstract class CompositionHookOptions {
      *                                     status_callback
      * @return UpdateCompositionHookOptions Options builder
      */
-    public static function update(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
+    public static function update(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
         return new UpdateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $trim, $format, $resolution, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -188,7 +188,7 @@ class CreateCompositionHookOptions extends Options {
      * @param bool $trim Whether to clip the intervals where there is no active
      *                   media in the Compositions triggered by the composition hook
      */
-    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -226,11 +226,11 @@ class CreateCompositionHookOptions extends Options {
     /**
      * An array of track names from the same group room to merge into the compositions created by the composition hook. Can include zero or more track names. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`.
      *
-     * @param string[] $audioSources An array of track names from the same group
-     *                               room to merge
+     * @param array $audioSources An array of track names from the same group room
+     *                            to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources(string[] $audioSources): self {
+    public function setAudioSources(array $audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -238,10 +238,10 @@ class CreateCompositionHookOptions extends Options {
     /**
      * An array of track names to exclude. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
      *
-     * @param string[] $audioSourcesExcluded An array of track names to exclude
+     * @param array $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded(string[] $audioSourcesExcluded): self {
+    public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -357,7 +357,7 @@ class UpdateCompositionHookOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method we should use to call
      *                                     status_callback
      */
-    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -395,11 +395,11 @@ class UpdateCompositionHookOptions extends Options {
     /**
      * An array of track names from the same group room to merge into the compositions created by the composition hook. Can include zero or more track names. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`.
      *
-     * @param string[] $audioSources An array of track names from the same group
-     *                               room to merge
+     * @param array $audioSources An array of track names from the same group room
+     *                            to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources(string[] $audioSources): self {
+    public function setAudioSources(array $audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -407,10 +407,10 @@ class UpdateCompositionHookOptions extends Options {
     /**
      * An array of track names to exclude. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this parameter can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
      *
-     * @param string[] $audioSourcesExcluded An array of track names to exclude
+     * @param array $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded(string[] $audioSourcesExcluded): self {
+    public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }

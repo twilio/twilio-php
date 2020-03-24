@@ -26,7 +26,7 @@ abstract class RecordingOptions {
      *                                  recording will be configured with
      * @return CreateRecordingOptions Options builder
      */
-    public static function create(string[] $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE): CreateRecordingOptions {
+    public static function create(array $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE): CreateRecordingOptions {
         return new CreateRecordingOptions($recordingStatusCallbackEvent, $recordingStatusCallback, $recordingStatusCallbackMethod, $trim, $recordingChannels);
     }
 
@@ -65,7 +65,7 @@ class CreateRecordingOptions extends Options {
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
      */
-    public function __construct(string[] $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE) {
+    public function __construct(array $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
@@ -76,11 +76,11 @@ class CreateRecordingOptions extends Options {
     /**
      * The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
      *
-     * @param string[] $recordingStatusCallbackEvent The recording status changes
-     *                                               that should generate a callback
+     * @param array $recordingStatusCallbackEvent The recording status changes that
+     *                                            should generate a callback
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackEvent(string[] $recordingStatusCallbackEvent): self {
+    public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         return $this;
     }

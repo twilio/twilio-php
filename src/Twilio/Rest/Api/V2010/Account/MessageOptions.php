@@ -38,7 +38,7 @@ abstract class MessageOptions {
      * @param string[] $persistentAction Rich actions for Channels Messages.
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, string[] $mediaUrl = Values::NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, string[] $persistentAction = Values::NONE): CreateMessageOptions {
+    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::NONE): CreateMessageOptions {
         return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction);
     }
 
@@ -80,7 +80,7 @@ class CreateMessageOptions extends Options {
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
      */
-    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, string[] $mediaUrl = Values::NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, string[] $persistentAction = Values::NONE) {
+    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -135,10 +135,10 @@ class CreateMessageOptions extends Options {
     /**
      * The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.
      *
-     * @param string[] $mediaUrl The URL of the media to send with the message
+     * @param array $mediaUrl The URL of the media to send with the message
      * @return $this Fluent Builder
      */
-    public function setMediaUrl(string[] $mediaUrl): self {
+    public function setMediaUrl(array $mediaUrl): self {
         $this->options['mediaUrl'] = $mediaUrl;
         return $this;
     }
@@ -251,10 +251,10 @@ class CreateMessageOptions extends Options {
     /**
      * Rich actions for Channels Messages.
      *
-     * @param string[] $persistentAction Rich actions for Channels Messages.
+     * @param array $persistentAction Rich actions for Channels Messages.
      * @return $this Fluent Builder
      */
-    public function setPersistentAction(string[] $persistentAction): self {
+    public function setPersistentAction(array $persistentAction): self {
         $this->options['persistentAction'] = $persistentAction;
         return $this;
     }

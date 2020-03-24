@@ -34,7 +34,7 @@ use Twilio\Version;
  * @property array $clientEdge
  * @property array $sdkEdge
  * @property array $sipEdge
- * @property string[] $tags
+ * @property array $tags
  * @property string $url
  * @property array $attributes
  * @property array $properties

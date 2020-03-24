@@ -29,7 +29,7 @@ abstract class RatePlanOptions {
      * @param string[] $internationalRoaming The international_roaming
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, string[] $internationalRoaming = Values::NONE): CreateRatePlanOptions {
+    public static function create(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, array $internationalRoaming = Values::NONE): CreateRatePlanOptions {
         return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $commandsEnabled, $nationalRoamingEnabled, $internationalRoaming);
     }
 
@@ -56,7 +56,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @param string[] $internationalRoaming The international_roaming
      */
-    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, string[] $internationalRoaming = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, array $internationalRoaming = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dataEnabled'] = $dataEnabled;
@@ -171,10 +171,10 @@ class CreateRatePlanOptions extends Options {
     /**
      * The international_roaming
      *
-     * @param string[] $internationalRoaming The international_roaming
+     * @param array $internationalRoaming The international_roaming
      * @return $this Fluent Builder
      */
-    public function setInternationalRoaming(string[] $internationalRoaming): self {
+    public function setInternationalRoaming(array $internationalRoaming): self {
         $this->options['internationalRoaming'] = $internationalRoaming;
         return $this;
     }

@@ -25,7 +25,7 @@ abstract class BuildOptions {
      *                             included in the build
      * @return CreateBuildOptions Options builder
      */
-    public static function create(string[] $assetVersions = Values::NONE, string[] $functionVersions = Values::NONE, string $dependencies = Values::NONE): CreateBuildOptions {
+    public static function create(array $assetVersions = Values::NONE, array $functionVersions = Values::NONE, string $dependencies = Values::NONE): CreateBuildOptions {
         return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies);
     }
 }
@@ -39,7 +39,7 @@ class CreateBuildOptions extends Options {
      * @param string $dependencies A list of objects that describe the Dependencies
      *                             included in the build
      */
-    public function __construct(string[] $assetVersions = Values::NONE, string[] $functionVersions = Values::NONE, string $dependencies = Values::NONE) {
+    public function __construct(array $assetVersions = Values::NONE, array $functionVersions = Values::NONE, string $dependencies = Values::NONE) {
         $this->options['assetVersions'] = $assetVersions;
         $this->options['functionVersions'] = $functionVersions;
         $this->options['dependencies'] = $dependencies;
@@ -48,11 +48,11 @@ class CreateBuildOptions extends Options {
     /**
      * The list of Asset Version resource SIDs to include in the build.
      *
-     * @param string[] $assetVersions The list of Asset Version resource SIDs to
-     *                                include in the build
+     * @param array $assetVersions The list of Asset Version resource SIDs to
+     *                             include in the build
      * @return $this Fluent Builder
      */
-    public function setAssetVersions(string[] $assetVersions): self {
+    public function setAssetVersions(array $assetVersions): self {
         $this->options['assetVersions'] = $assetVersions;
         return $this;
     }
@@ -60,11 +60,11 @@ class CreateBuildOptions extends Options {
     /**
      * The list of the Variable resource SIDs to include in the build.
      *
-     * @param string[] $functionVersions The list of the Variable resource SIDs to
-     *                                   include in the build
+     * @param array $functionVersions The list of the Variable resource SIDs to
+     *                                include in the build
      * @return $this Fluent Builder
      */
-    public function setFunctionVersions(string[] $functionVersions): self {
+    public function setFunctionVersions(array $functionVersions): self {
         $this->options['functionVersions'] = $functionVersions;
         return $this;
     }

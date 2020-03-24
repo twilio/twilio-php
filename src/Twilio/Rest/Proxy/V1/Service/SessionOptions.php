@@ -27,7 +27,7 @@ abstract class SessionOptions {
      *                              session
      * @return CreateSessionOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array[] $participants = Values::NONE): CreateSessionOptions {
+    public static function create(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array $participants = Values::NONE): CreateSessionOptions {
         return new CreateSessionOptions($uniqueName, $dateExpiry, $ttl, $mode, $status, $participants);
     }
 
@@ -53,7 +53,7 @@ class CreateSessionOptions extends Options {
      * @param array[] $participants The Participant objects to include in the new
      *                              session
      */
-    public function __construct(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array[] $participants = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array $participants = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
@@ -121,11 +121,11 @@ class CreateSessionOptions extends Options {
     /**
      * The Participant objects to include in the new session.
      *
-     * @param array[] $participants The Participant objects to include in the new
-     *                              session
+     * @param array $participants The Participant objects to include in the new
+     *                            session
      * @return $this Fluent Builder
      */
-    public function setParticipants(array[] $participants): self {
+    public function setParticipants(array $participants): self {
         $this->options['participants'] = $participants;
         return $this;
     }

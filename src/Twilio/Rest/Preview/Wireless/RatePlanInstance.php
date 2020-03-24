@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property bool $messagingEnabled
  * @property bool $voiceEnabled
  * @property bool $nationalRoamingEnabled
- * @property string[] $internationalRoaming
+ * @property array $internationalRoaming
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url

@@ -103,7 +103,7 @@ abstract class ParticipantOptions {
      * @param string $byoc BYOC trunk SID (Beta)
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string[] $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE): CreateParticipantOptions {
+    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::NONE, array $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE): CreateParticipantOptions {
         return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach, $byoc);
     }
 
@@ -374,7 +374,7 @@ class CreateParticipantOptions extends Options {
      *                               `coached`
      * @param string $byoc BYOC trunk SID (Beta)
      */
-    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string[] $recordingStatusCallbackEvent = Values::NONE, string[] $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::NONE, array $conferenceRecordingStatusCallbackEvent = Values::NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
@@ -435,11 +435,11 @@ class CreateParticipantOptions extends Options {
     /**
      * The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
      *
-     * @param string[] $statusCallbackEvent Set state change events that will
-     *                                      trigger a callback
+     * @param array $statusCallbackEvent Set state change events that will trigger
+     *                                   a callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackEvent(string[] $statusCallbackEvent): self {
+    public function setStatusCallbackEvent(array $statusCallbackEvent): self {
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
         return $this;
     }
@@ -611,13 +611,12 @@ class CreateParticipantOptions extends Options {
     /**
      * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, and `speaker`. Separate multiple values with a space. Defaults to `start end`.
      *
-     * @param string[] $conferenceStatusCallbackEvent The conference state changes
-     *                                                that should generate a call
-     *                                                to
-     *                                                `conference_status_callback`
+     * @param array $conferenceStatusCallbackEvent The conference state changes
+     *                                             that should generate a call to
+     *                                             `conference_status_callback`
      * @return $this Fluent Builder
      */
-    public function setConferenceStatusCallbackEvent(string[] $conferenceStatusCallbackEvent): self {
+    public function setConferenceStatusCallbackEvent(array $conferenceStatusCallbackEvent): self {
         $this->options['conferenceStatusCallbackEvent'] = $conferenceStatusCallbackEvent;
         return $this;
     }
@@ -721,12 +720,12 @@ class CreateParticipantOptions extends Options {
     /**
      * The recording state changes that should generate a call to `recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
      *
-     * @param string[] $recordingStatusCallbackEvent The recording state changes
-     *                                               that should generate a call to
-     *                                               `recording_status_callback`
+     * @param array $recordingStatusCallbackEvent The recording state changes that
+     *                                            should generate a call to
+     *                                            `recording_status_callback`
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackEvent(string[] $recordingStatusCallbackEvent): self {
+    public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         return $this;
     }
@@ -734,14 +733,14 @@ class CreateParticipantOptions extends Options {
     /**
      * The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
      *
-     * @param string[] $conferenceRecordingStatusCallbackEvent The conference
-     *                                                         recording state
-     *                                                         changes that should
-     *                                                         generate a call to
-     *                                                         `conference_recording_status_callback`
+     * @param array $conferenceRecordingStatusCallbackEvent The conference
+     *                                                      recording state changes
+     *                                                      that should generate a
+     *                                                      call to
+     *                                                      `conference_recording_status_callback`
      * @return $this Fluent Builder
      */
-    public function setConferenceRecordingStatusCallbackEvent(string[] $conferenceRecordingStatusCallbackEvent): self {
+    public function setConferenceRecordingStatusCallbackEvent(array $conferenceRecordingStatusCallbackEvent): self {
         $this->options['conferenceRecordingStatusCallbackEvent'] = $conferenceRecordingStatusCallbackEvent;
         return $this;
     }

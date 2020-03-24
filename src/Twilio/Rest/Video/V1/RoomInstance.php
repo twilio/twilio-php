@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string $type
  * @property int $maxParticipants
  * @property bool $recordParticipantsOnConnect
- * @property string[] $videoCodecs
+ * @property array $videoCodecs
  * @property string $mediaRegion
  * @property string $url
  * @property array $links

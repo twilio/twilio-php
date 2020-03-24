@@ -32,7 +32,7 @@ abstract class HostedNumberOrderOptions {
      *                       before initiating the verification call.
      * @return UpdateHostedNumberOrderOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $email = Values::NONE, string[] $ccEmails = Values::NONE, string $status = Values::NONE, string $verificationCode = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE, string $extension = Values::NONE, int $callDelay = Values::NONE): UpdateHostedNumberOrderOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::NONE, string $status = Values::NONE, string $verificationCode = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE, string $extension = Values::NONE, int $callDelay = Values::NONE): UpdateHostedNumberOrderOptions {
         return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode, $verificationType, $verificationDocumentSid, $extension, $callDelay);
     }
 
@@ -68,7 +68,7 @@ abstract class HostedNumberOrderOptions {
      * @param string $verificationDocumentSid Verification Document Sid
      * @return CreateHostedNumberOrderOptions Options builder
      */
-    public static function create(string $accountSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string[] $ccEmails = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $statusCallbackUrl = Values::NONE, string $statusCallbackMethod = Values::NONE, string $smsApplicationSid = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE): CreateHostedNumberOrderOptions {
+    public static function create(string $accountSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $ccEmails = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $statusCallbackUrl = Values::NONE, string $statusCallbackMethod = Values::NONE, string $smsApplicationSid = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE): CreateHostedNumberOrderOptions {
         return new CreateHostedNumberOrderOptions($accountSid, $friendlyName, $uniqueName, $ccEmails, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $statusCallbackUrl, $statusCallbackMethod, $smsApplicationSid, $addressSid, $email, $verificationType, $verificationDocumentSid);
     }
 }
@@ -89,7 +89,7 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param int $callDelay The number of seconds, between 0 and 60, to delay
      *                       before initiating the verification call.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $email = Values::NONE, string[] $ccEmails = Values::NONE, string $status = Values::NONE, string $verificationCode = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE, string $extension = Values::NONE, int $callDelay = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::NONE, string $status = Values::NONE, string $verificationCode = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE, string $extension = Values::NONE, int $callDelay = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['email'] = $email;
@@ -139,10 +139,10 @@ class UpdateHostedNumberOrderOptions extends Options {
     /**
      * Optional. A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
      *
-     * @param string[] $ccEmails A list of emails.
+     * @param array $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
-    public function setCcEmails(string[] $ccEmails): self {
+    public function setCcEmails(array $ccEmails): self {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
@@ -339,7 +339,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $verificationType Verification Type.
      * @param string $verificationDocumentSid Verification Document Sid
      */
-    public function __construct(string $accountSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string[] $ccEmails = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $statusCallbackUrl = Values::NONE, string $statusCallbackMethod = Values::NONE, string $smsApplicationSid = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE) {
+    public function __construct(string $accountSid = Values::NONE, string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $ccEmails = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $statusCallbackUrl = Values::NONE, string $statusCallbackMethod = Values::NONE, string $smsApplicationSid = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string $verificationType = Values::NONE, string $verificationDocumentSid = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
@@ -394,10 +394,10 @@ class CreateHostedNumberOrderOptions extends Options {
     /**
      * Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.
      *
-     * @param string[] $ccEmails A list of emails.
+     * @param array $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
-    public function setCcEmails(string[] $ccEmails): self {
+    public function setCcEmails(array $ccEmails): self {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }

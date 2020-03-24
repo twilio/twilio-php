@@ -25,8 +25,8 @@ use Twilio\Version;
  * @property \DateTime $dateDeleted
  * @property string $sid
  * @property string $roomSid
- * @property string[] $audioSources
- * @property string[] $audioSourcesExcluded
+ * @property array $audioSources
+ * @property array $audioSourcesExcluded
  * @property array $videoLayout
  * @property string $resolution
  * @property bool $trim

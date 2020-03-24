@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $alphaSender
- * @property string[] $capabilities
+ * @property array $capabilities
  * @property string $url
  */
 class AlphaSenderInstance extends InstanceResource {

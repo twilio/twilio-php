@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property string $accountSid
- * @property array[] $activityStatistics
+ * @property array $activityStatistics
  * @property int $longestTaskWaitingAge
  * @property string $longestTaskWaitingSid
  * @property array $tasksByPriority

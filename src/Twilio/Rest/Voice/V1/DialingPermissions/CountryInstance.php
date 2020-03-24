@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string $isoCode
  * @property string $name
  * @property string $continent
- * @property string[] $countryCodes
+ * @property array $countryCodes
  * @property bool $lowRiskNumbersEnabled
  * @property bool $highRiskSpecialNumbersEnabled
  * @property bool $highRiskTollfraudNumbersEnabled

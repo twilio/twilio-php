@@ -25,8 +25,8 @@ use Twilio\Version;
  * @property string $taskrouterWorkspaceSid
  * @property string $taskrouterTargetWorkflowSid
  * @property string $taskrouterTargetTaskqueueSid
- * @property array[] $taskrouterTaskqueues
- * @property array[] $taskrouterSkills
+ * @property array $taskrouterTaskqueues
+ * @property array $taskrouterSkills
  * @property array $taskrouterWorkerChannels
  * @property array $taskrouterWorkerAttributes
  * @property string $taskrouterOfflineActivitySid
@@ -48,9 +48,9 @@ use Twilio\Version;
  * @property array $publicAttributes
  * @property bool $pluginServiceEnabled
  * @property array $pluginServiceAttributes
- * @property array[] $integrations
+ * @property array $integrations
  * @property array $outboundCallFlows
- * @property string[] $serverlessServiceSids
+ * @property array $serverlessServiceSids
  * @property string $url
  */
 class ConfigurationInstance extends InstanceResource {

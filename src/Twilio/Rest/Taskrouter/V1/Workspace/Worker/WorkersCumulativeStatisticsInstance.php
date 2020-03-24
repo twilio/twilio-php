@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string $accountSid
  * @property \DateTime $startTime
  * @property \DateTime $endTime
- * @property array[] $activityDurations
+ * @property array $activityDurations
  * @property int $reservationsCreated
  * @property int $reservationsAccepted
  * @property int $reservationsRejected

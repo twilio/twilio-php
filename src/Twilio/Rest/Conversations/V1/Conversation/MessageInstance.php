@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property int $index
  * @property string $author
  * @property string $body
- * @property array[] $media
+ * @property array $media
  * @property string $attributes
  * @property string $participantSid
  * @property \DateTime $dateCreated

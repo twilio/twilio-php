@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property array $lookup
  * @property string $amount
  * @property string $payee
- * @property array[] $sendCodeAttempts
+ * @property array $sendCodeAttempts
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url

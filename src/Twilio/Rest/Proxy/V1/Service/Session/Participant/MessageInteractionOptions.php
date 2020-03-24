@@ -21,7 +21,7 @@ abstract class MessageInteractionOptions {
      * @param string[] $mediaUrl Reserved
      * @return CreateMessageInteractionOptions Options builder
      */
-    public static function create(string $body = Values::NONE, string[] $mediaUrl = Values::NONE): CreateMessageInteractionOptions {
+    public static function create(string $body = Values::NONE, array $mediaUrl = Values::NONE): CreateMessageInteractionOptions {
         return new CreateMessageInteractionOptions($body, $mediaUrl);
     }
 }
@@ -31,7 +31,7 @@ class CreateMessageInteractionOptions extends Options {
      * @param string $body Message body
      * @param string[] $mediaUrl Reserved
      */
-    public function __construct(string $body = Values::NONE, string[] $mediaUrl = Values::NONE) {
+    public function __construct(string $body = Values::NONE, array $mediaUrl = Values::NONE) {
         $this->options['body'] = $body;
         $this->options['mediaUrl'] = $mediaUrl;
     }
@@ -50,10 +50,10 @@ class CreateMessageInteractionOptions extends Options {
     /**
      * Reserved. Not currently supported.
      *
-     * @param string[] $mediaUrl Reserved
+     * @param array $mediaUrl Reserved
      * @return $this Fluent Builder
      */
-    public function setMediaUrl(string[] $mediaUrl): self {
+    public function setMediaUrl(array $mediaUrl): self {
         $this->options['mediaUrl'] = $mediaUrl;
         return $this;
     }
