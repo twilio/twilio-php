@@ -105,10 +105,8 @@ class ReadQueryOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Autopilot.V1.ReadQueryOptions ' . \implode(' ', $options) . ']';
     }
@@ -155,10 +153,8 @@ class CreateQueryOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Autopilot.V1.CreateQueryOptions ' . \implode(' ', $options) . ']';
     }
@@ -205,10 +201,8 @@ class UpdateQueryOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Autopilot.V1.UpdateQueryOptions ' . \implode(' ', $options) . ']';
     }

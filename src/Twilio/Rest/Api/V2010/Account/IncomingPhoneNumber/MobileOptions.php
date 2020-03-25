@@ -138,10 +138,8 @@ class ReadMobileOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.ReadMobileOptions ' . \implode(' ', $options) . ']';
     }
@@ -478,10 +476,8 @@ class CreateMobileOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.CreateMobileOptions ' . \implode(' ', $options) . ']';
     }

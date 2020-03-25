@@ -167,10 +167,8 @@ class CreateParticipantOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Conversations.V1.CreateParticipantOptions ' . \implode(' ', $options) . ']';
     }
@@ -230,10 +228,8 @@ class UpdateParticipantOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Conversations.V1.UpdateParticipantOptions ' . \implode(' ', $options) . ']';
     }

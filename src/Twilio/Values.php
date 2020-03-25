@@ -20,10 +20,9 @@ class Values implements \ArrayAccess {
     public static function of(array $array): array {
         $result = [];
         foreach ($array as $key => $value) {
-            if ($value === self::NONE || $value === self::ARRAY_NONE) {
-                continue;
+            if ($value !== self::NONE && $value !== self::ARRAY_NONE) {
+                $result[$key] = $value;
             }
-            $result[$key] = $value;
         }
         return $result;
     }

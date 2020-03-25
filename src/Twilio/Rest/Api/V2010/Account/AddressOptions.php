@@ -112,10 +112,8 @@ class CreateAddressOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.CreateAddressOptions ' . \implode(' ', $options) . ']';
     }
@@ -242,10 +240,8 @@ class UpdateAddressOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.UpdateAddressOptions ' . \implode(' ', $options) . ']';
     }
@@ -309,10 +305,8 @@ class ReadAddressOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.ReadAddressOptions ' . \implode(' ', $options) . ']';
     }

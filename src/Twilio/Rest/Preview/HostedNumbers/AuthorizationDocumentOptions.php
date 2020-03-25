@@ -155,10 +155,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
     }
@@ -203,10 +201,8 @@ class ReadAuthorizationDocumentOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
     }
@@ -238,10 +234,8 @@ class CreateAuthorizationDocumentOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.HostedNumbers.CreateAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
     }

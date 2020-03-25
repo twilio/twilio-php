@@ -166,10 +166,8 @@ class ReadWorkerOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.ReadWorkerOptions ' . \implode(' ', $options) . ']';
     }
@@ -216,10 +214,8 @@ class CreateWorkerOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.CreateWorkerOptions ' . \implode(' ', $options) . ']';
     }
@@ -292,10 +288,8 @@ class UpdateWorkerOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.UpdateWorkerOptions ' . \implode(' ', $options) . ']';
     }

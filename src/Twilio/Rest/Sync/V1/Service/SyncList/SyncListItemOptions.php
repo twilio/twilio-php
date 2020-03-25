@@ -106,10 +106,8 @@ class CreateSyncListItemOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Sync.V1.CreateSyncListItemOptions ' . \implode(' ', $options) . ']';
     }
@@ -169,10 +167,8 @@ class ReadSyncListItemOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Sync.V1.ReadSyncListItemOptions ' . \implode(' ', $options) . ']';
     }
@@ -247,10 +243,8 @@ class UpdateSyncListItemOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Sync.V1.UpdateSyncListItemOptions ' . \implode(' ', $options) . ']';
     }

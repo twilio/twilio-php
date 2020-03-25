@@ -161,10 +161,8 @@ class ReadReservationOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.ReadReservationOptions ' . \implode(' ', $options) . ']';
     }
@@ -972,10 +970,8 @@ class UpdateReservationOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.UpdateReservationOptions ' . \implode(' ', $options) . ']';
     }

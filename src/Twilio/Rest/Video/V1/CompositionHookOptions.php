@@ -159,10 +159,8 @@ class ReadCompositionHookOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Video.V1.ReadCompositionHookOptions ' . \implode(' ', $options) . ']';
     }
@@ -328,10 +326,8 @@ class CreateCompositionHookOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Video.V1.CreateCompositionHookOptions ' . \implode(' ', $options) . ']';
     }
@@ -497,10 +493,8 @@ class UpdateCompositionHookOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Video.V1.UpdateCompositionHookOptions ' . \implode(' ', $options) . ']';
     }

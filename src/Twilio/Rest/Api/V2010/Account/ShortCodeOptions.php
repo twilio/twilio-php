@@ -134,10 +134,8 @@ class UpdateShortCodeOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.UpdateShortCodeOptions ' . \implode(' ', $options) . ']';
     }
@@ -184,10 +182,8 @@ class ReadShortCodeOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.ReadShortCodeOptions ' . \implode(' ', $options) . ']';
     }

@@ -83,10 +83,8 @@ class CreateMessageOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.IpMessaging.V1.CreateMessageOptions ' . \implode(' ', $options) . ']';
     }
@@ -118,10 +116,8 @@ class ReadMessageOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.IpMessaging.V1.ReadMessageOptions ' . \implode(' ', $options) . ']';
     }
@@ -168,10 +164,8 @@ class UpdateMessageOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.IpMessaging.V1.UpdateMessageOptions ' . \implode(' ', $options) . ']';
     }

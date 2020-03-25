@@ -82,10 +82,8 @@ class CreateKeyOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.DeployedDevices.CreateKeyOptions ' . \implode(' ', $options) . ']';
     }
@@ -117,10 +115,8 @@ class ReadKeyOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.DeployedDevices.ReadKeyOptions ' . \implode(' ', $options) . ']';
     }
@@ -165,10 +161,8 @@ class UpdateKeyOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.DeployedDevices.UpdateKeyOptions ' . \implode(' ', $options) . ']';
     }

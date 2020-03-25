@@ -82,10 +82,8 @@ class ReadUsageRecordOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Wireless.V1.ReadUsageRecordOptions ' . \implode(' ', $options) . ']';
     }

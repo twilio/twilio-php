@@ -140,10 +140,8 @@ class CreateRecordingOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.CreateRecordingOptions ' . \implode(' ', $options) . ']';
     }
@@ -177,10 +175,8 @@ class UpdateRecordingOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.UpdateRecordingOptions ' . \implode(' ', $options) . ']';
     }
@@ -242,10 +238,8 @@ class ReadRecordingOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Api.V2010.ReadRecordingOptions ' . \implode(' ', $options) . ']';
     }

@@ -122,10 +122,8 @@ class ReadFaxOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Fax.V1.ReadFaxOptions ' . \implode(' ', $options) . ']';
     }
@@ -237,10 +235,8 @@ class CreateFaxOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Fax.V1.CreateFaxOptions ' . \implode(' ', $options) . ']';
     }
@@ -272,10 +268,8 @@ class UpdateFaxOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Fax.V1.UpdateFaxOptions ' . \implode(' ', $options) . ']';
     }

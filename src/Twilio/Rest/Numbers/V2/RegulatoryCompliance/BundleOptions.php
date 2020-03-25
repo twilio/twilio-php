@@ -133,10 +133,8 @@ class CreateBundleOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Numbers.V2.CreateBundleOptions ' . \implode(' ', $options) . ']';
     }
@@ -222,10 +220,8 @@ class ReadBundleOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Numbers.V2.ReadBundleOptions ' . \implode(' ', $options) . ']';
     }
@@ -300,10 +296,8 @@ class UpdateBundleOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Numbers.V2.UpdateBundleOptions ' . \implode(' ', $options) . ']';
     }

@@ -78,10 +78,8 @@ class ReadExportCustomJobOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.BulkExports.ReadExportCustomJobOptions ' . \implode(' ', $options) . ']';
     }
@@ -178,10 +176,8 @@ class CreateExportCustomJobOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.BulkExports.CreateExportCustomJobOptions ' . \implode(' ', $options) . ']';
     }

@@ -62,10 +62,8 @@ class CreateSupportingDocumentOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Numbers.V2.CreateSupportingDocumentOptions ' . \implode(' ', $options) . ']';
     }
@@ -114,10 +112,8 @@ class UpdateSupportingDocumentOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Numbers.V2.UpdateSupportingDocumentOptions ' . \implode(' ', $options) . ']';
     }

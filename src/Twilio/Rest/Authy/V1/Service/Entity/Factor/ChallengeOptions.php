@@ -93,10 +93,8 @@ class CreateChallengeOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Authy.V1.CreateChallengeOptions ' . \implode(' ', $options) . ']';
     }
@@ -128,10 +126,8 @@ class UpdateChallengeOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Authy.V1.UpdateChallengeOptions ' . \implode(' ', $options) . ']';
     }

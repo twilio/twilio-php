@@ -91,10 +91,8 @@ class CreateCertificateOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.DeployedDevices.CreateCertificateOptions ' . \implode(' ', $options) . ']';
     }
@@ -128,10 +126,8 @@ class ReadCertificateOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.DeployedDevices.ReadCertificateOptions ' . \implode(' ', $options) . ']';
     }
@@ -180,10 +176,8 @@ class UpdateCertificateOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Preview.DeployedDevices.UpdateCertificateOptions ' . \implode(' ', $options) . ']';
     }

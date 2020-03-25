@@ -275,10 +275,8 @@ class CreateServiceOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Notify.V1.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
@@ -312,10 +310,8 @@ class ReadServiceOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Notify.V1.ReadServiceOptions ' . \implode(' ', $options) . ']';
     }
@@ -536,10 +532,8 @@ class UpdateServiceOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Notify.V1.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }

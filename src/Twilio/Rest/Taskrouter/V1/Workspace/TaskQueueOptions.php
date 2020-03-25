@@ -164,10 +164,8 @@ class UpdateTaskQueueOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.UpdateTaskQueueOptions ' . \implode(' ', $options) . ']';
     }
@@ -229,10 +227,8 @@ class ReadTaskQueueOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.ReadTaskQueueOptions ' . \implode(' ', $options) . ']';
     }
@@ -324,10 +320,8 @@ class CreateTaskQueueOptions extends Options {
      */
     public function __toString(): string {
         $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
+        foreach (Values::of($this->options) as $key => $value) {
                 $options[] = "$key=$value";
-            }
         }
         return '[Twilio.Taskrouter.V1.CreateTaskQueueOptions ' . \implode(' ', $options) . ']';
     }
