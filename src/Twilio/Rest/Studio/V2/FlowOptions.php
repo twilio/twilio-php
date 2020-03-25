@@ -30,7 +30,7 @@ abstract class FlowOptions {
      * @param string $commitMessage Description on change made in the revision
      * @return UpdateFlowOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, array $definition = Values::NONE, string $commitMessage = Values::NONE): UpdateFlowOptions {
+    public static function update(string $friendlyName = Values::NONE, array $definition = Values::ARRAY_NONE, string $commitMessage = Values::NONE): UpdateFlowOptions {
         return new UpdateFlowOptions($friendlyName, $definition, $commitMessage);
     }
 }
@@ -62,7 +62,7 @@ class CreateFlowOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -76,7 +76,7 @@ class UpdateFlowOptions extends Options {
      * @param array $definition JSON representation of flow definition
      * @param string $commitMessage Description on change made in the revision
      */
-    public function __construct(string $friendlyName = Values::NONE, array $definition = Values::NONE, string $commitMessage = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $definition = Values::ARRAY_NONE, string $commitMessage = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['definition'] = $definition;
         $this->options['commitMessage'] = $commitMessage;
@@ -123,7 +123,7 @@ class UpdateFlowOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

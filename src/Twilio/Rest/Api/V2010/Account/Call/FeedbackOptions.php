@@ -17,7 +17,7 @@ abstract class FeedbackOptions {
      * @param string[] $issue Issues experienced during the call
      * @return CreateFeedbackOptions Options builder
      */
-    public static function create(array $issue = Values::NONE): CreateFeedbackOptions {
+    public static function create(array $issue = Values::ARRAY_NONE): CreateFeedbackOptions {
         return new CreateFeedbackOptions($issue);
     }
 
@@ -25,7 +25,7 @@ abstract class FeedbackOptions {
      * @param string[] $issue Issues experienced during the call
      * @return UpdateFeedbackOptions Options builder
      */
-    public static function update(array $issue = Values::NONE): UpdateFeedbackOptions {
+    public static function update(array $issue = Values::ARRAY_NONE): UpdateFeedbackOptions {
         return new UpdateFeedbackOptions($issue);
     }
 }
@@ -34,7 +34,7 @@ class CreateFeedbackOptions extends Options {
     /**
      * @param string[] $issue Issues experienced during the call
      */
-    public function __construct(array $issue = Values::NONE) {
+    public function __construct(array $issue = Values::ARRAY_NONE) {
         $this->options['issue'] = $issue;
     }
 
@@ -57,7 +57,7 @@ class CreateFeedbackOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -69,7 +69,7 @@ class UpdateFeedbackOptions extends Options {
     /**
      * @param string[] $issue Issues experienced during the call
      */
-    public function __construct(array $issue = Values::NONE) {
+    public function __construct(array $issue = Values::ARRAY_NONE) {
         $this->options['issue'] = $issue;
     }
 
@@ -92,7 +92,7 @@ class UpdateFeedbackOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

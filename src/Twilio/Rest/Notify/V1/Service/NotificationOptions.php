@@ -42,7 +42,7 @@ abstract class NotificationOptions {
      * @param string $deliveryCallbackUrl URL to send webhooks
      * @return CreateNotificationOptions Options builder
      */
-    public static function create(array $identity = Values::NONE, array $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, array $segment = Values::NONE, array $alexa = Values::NONE, array $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
+    public static function create(array $identity = Values::ARRAY_NONE, array $tag = Values::ARRAY_NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::ARRAY_NONE, array $apn = Values::ARRAY_NONE, array $gcm = Values::ARRAY_NONE, array $sms = Values::ARRAY_NONE, array $facebookMessenger = Values::ARRAY_NONE, array $fcm = Values::ARRAY_NONE, array $segment = Values::ARRAY_NONE, array $alexa = Values::ARRAY_NONE, array $toBinding = Values::ARRAY_NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
         return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding, $deliveryCallbackUrl);
     }
 }
@@ -73,7 +73,7 @@ class CreateNotificationOptions extends Options {
      * @param string[] $toBinding The destination address specified as a JSON string
      * @param string $deliveryCallbackUrl URL to send webhooks
      */
-    public function __construct(array $identity = Values::NONE, array $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, array $segment = Values::NONE, array $alexa = Values::NONE, array $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE) {
+    public function __construct(array $identity = Values::ARRAY_NONE, array $tag = Values::ARRAY_NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::ARRAY_NONE, array $apn = Values::ARRAY_NONE, array $gcm = Values::ARRAY_NONE, array $sms = Values::ARRAY_NONE, array $facebookMessenger = Values::ARRAY_NONE, array $fcm = Values::ARRAY_NONE, array $segment = Values::ARRAY_NONE, array $alexa = Values::ARRAY_NONE, array $toBinding = Values::ARRAY_NONE, string $deliveryCallbackUrl = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -305,7 +305,7 @@ class CreateNotificationOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -22,7 +22,7 @@ abstract class InstalledAddOnOptions {
      *                           identifies the resource
      * @return CreateInstalledAddOnOptions Options builder
      */
-    public static function create(array $configuration = Values::NONE, string $uniqueName = Values::NONE): CreateInstalledAddOnOptions {
+    public static function create(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE): CreateInstalledAddOnOptions {
         return new CreateInstalledAddOnOptions($configuration, $uniqueName);
     }
 
@@ -32,7 +32,7 @@ abstract class InstalledAddOnOptions {
      *                           identifies the resource
      * @return UpdateInstalledAddOnOptions Options builder
      */
-    public static function update(array $configuration = Values::NONE, string $uniqueName = Values::NONE): UpdateInstalledAddOnOptions {
+    public static function update(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE): UpdateInstalledAddOnOptions {
         return new UpdateInstalledAddOnOptions($configuration, $uniqueName);
     }
 }
@@ -43,7 +43,7 @@ class CreateInstalledAddOnOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      */
-    public function __construct(array $configuration = Values::NONE, string $uniqueName = Values::NONE) {
+    public function __construct(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE) {
         $this->options['configuration'] = $configuration;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -79,7 +79,7 @@ class CreateInstalledAddOnOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -93,7 +93,7 @@ class UpdateInstalledAddOnOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      */
-    public function __construct(array $configuration = Values::NONE, string $uniqueName = Values::NONE) {
+    public function __construct(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE) {
         $this->options['configuration'] = $configuration;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -129,7 +129,7 @@ class UpdateInstalledAddOnOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

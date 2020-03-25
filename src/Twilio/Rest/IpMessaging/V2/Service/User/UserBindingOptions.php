@@ -18,7 +18,7 @@ abstract class UserBindingOptions {
      *                              resources to read
      * @return ReadUserBindingOptions Options builder
      */
-    public static function read(array $bindingType = Values::NONE): ReadUserBindingOptions {
+    public static function read(array $bindingType = Values::ARRAY_NONE): ReadUserBindingOptions {
         return new ReadUserBindingOptions($bindingType);
     }
 }
@@ -28,7 +28,7 @@ class ReadUserBindingOptions extends Options {
      * @param string[] $bindingType The push technology used by the User Binding
      *                              resources to read
      */
-    public function __construct(array $bindingType = Values::NONE) {
+    public function __construct(array $bindingType = Values::ARRAY_NONE) {
         $this->options['bindingType'] = $bindingType;
     }
 
@@ -52,7 +52,7 @@ class ReadUserBindingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -24,7 +24,7 @@ abstract class TaskOptions {
      * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return CreateTaskOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE): CreateTaskOptions {
+    public static function create(string $friendlyName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE): CreateTaskOptions {
         return new CreateTaskOptions($friendlyName, $actions, $actionsUrl);
     }
 
@@ -37,7 +37,7 @@ abstract class TaskOptions {
      * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return UpdateTaskOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE): UpdateTaskOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE): UpdateTaskOptions {
         return new UpdateTaskOptions($friendlyName, $uniqueName, $actions, $actionsUrl);
     }
 }
@@ -50,7 +50,7 @@ class CreateTaskOptions extends Options {
      *                       instruct the Assistant on how to perform the task
      * @param string $actionsUrl The URL from which the Assistant can fetch actions
      */
-    public function __construct(string $friendlyName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['actions'] = $actions;
         $this->options['actionsUrl'] = $actionsUrl;
@@ -99,7 +99,7 @@ class CreateTaskOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -116,7 +116,7 @@ class UpdateTaskOptions extends Options {
      *                       instruct the Assistant on how to perform the task
      * @param string $actionsUrl The URL from which the Assistant can fetch actions
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['actions'] = $actions;
@@ -177,7 +177,7 @@ class UpdateTaskOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

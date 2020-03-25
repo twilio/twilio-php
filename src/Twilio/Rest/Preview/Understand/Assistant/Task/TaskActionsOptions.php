@@ -21,7 +21,7 @@ abstract class TaskActionsOptions {
      *                       perform this task.
      * @return UpdateTaskActionsOptions Options builder
      */
-    public static function update(array $actions = Values::NONE): UpdateTaskActionsOptions {
+    public static function update(array $actions = Values::ARRAY_NONE): UpdateTaskActionsOptions {
         return new UpdateTaskActionsOptions($actions);
     }
 }
@@ -31,7 +31,7 @@ class UpdateTaskActionsOptions extends Options {
      * @param array $actions The JSON actions that instruct the Assistant how to
      *                       perform this task.
      */
-    public function __construct(array $actions = Values::NONE) {
+    public function __construct(array $actions = Values::ARRAY_NONE) {
         $this->options['actions'] = $actions;
     }
 
@@ -55,7 +55,7 @@ class UpdateTaskActionsOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

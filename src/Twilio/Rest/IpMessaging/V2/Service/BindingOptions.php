@@ -19,7 +19,7 @@ abstract class BindingOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadBindingOptions Options builder
      */
-    public static function read(array $bindingType = Values::NONE, array $identity = Values::NONE): ReadBindingOptions {
+    public static function read(array $bindingType = Values::ARRAY_NONE, array $identity = Values::ARRAY_NONE): ReadBindingOptions {
         return new ReadBindingOptions($bindingType, $identity);
     }
 }
@@ -30,7 +30,7 @@ class ReadBindingOptions extends Options {
      *                              resources to read
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(array $bindingType = Values::NONE, array $identity = Values::NONE) {
+    public function __construct(array $bindingType = Values::ARRAY_NONE, array $identity = Values::ARRAY_NONE) {
         $this->options['bindingType'] = $bindingType;
         $this->options['identity'] = $identity;
     }
@@ -66,7 +66,7 @@ class ReadBindingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

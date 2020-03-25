@@ -31,7 +31,7 @@ abstract class WebhookOptions {
      *                                      successors the webhook will be replayed.
      * @return CreateWebhookOptions Options builder
      */
-    public static function create(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::NONE, array $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationReplayAfter = Values::NONE): CreateWebhookOptions {
+    public static function create(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE, int $configurationReplayAfter = Values::NONE): CreateWebhookOptions {
         return new CreateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationReplayAfter);
     }
 
@@ -48,7 +48,7 @@ abstract class WebhookOptions {
      *                                     should be sent to.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::NONE, array $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE): UpdateWebhookOptions {
+    public static function update(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid);
     }
 }
@@ -68,7 +68,7 @@ class CreateWebhookOptions extends Options {
      * @param int $configurationReplayAfter The message index for which and it's
      *                                      successors the webhook will be replayed.
      */
-    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::NONE, array $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE, int $configurationReplayAfter = Values::NONE) {
+    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE, int $configurationReplayAfter = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -157,7 +157,7 @@ class CreateWebhookOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -178,7 +178,7 @@ class UpdateWebhookOptions extends Options {
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      */
-    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::NONE, array $configurationTriggers = Values::NONE, string $configurationFlowSid = Values::NONE) {
+    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -254,7 +254,7 @@ class UpdateWebhookOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

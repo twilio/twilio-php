@@ -25,7 +25,7 @@ abstract class InviteOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadInviteOptions Options builder
      */
-    public static function read(array $identity = Values::NONE): ReadInviteOptions {
+    public static function read(array $identity = Values::ARRAY_NONE): ReadInviteOptions {
         return new ReadInviteOptions($identity);
     }
 }
@@ -57,7 +57,7 @@ class CreateInviteOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -69,7 +69,7 @@ class ReadInviteOptions extends Options {
     /**
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(array $identity = Values::NONE) {
+    public function __construct(array $identity = Values::ARRAY_NONE) {
         $this->options['identity'] = $identity;
     }
 
@@ -92,7 +92,7 @@ class ReadInviteOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

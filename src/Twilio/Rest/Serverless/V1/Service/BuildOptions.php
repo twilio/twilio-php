@@ -25,7 +25,7 @@ abstract class BuildOptions {
      *                             included in the build
      * @return CreateBuildOptions Options builder
      */
-    public static function create(array $assetVersions = Values::NONE, array $functionVersions = Values::NONE, string $dependencies = Values::NONE): CreateBuildOptions {
+    public static function create(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE): CreateBuildOptions {
         return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies);
     }
 }
@@ -39,7 +39,7 @@ class CreateBuildOptions extends Options {
      * @param string $dependencies A list of objects that describe the Dependencies
      *                             included in the build
      */
-    public function __construct(array $assetVersions = Values::NONE, array $functionVersions = Values::NONE, string $dependencies = Values::NONE) {
+    public function __construct(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE) {
         $this->options['assetVersions'] = $assetVersions;
         $this->options['functionVersions'] = $functionVersions;
         $this->options['dependencies'] = $dependencies;
@@ -89,7 +89,7 @@ class CreateBuildOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

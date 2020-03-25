@@ -47,7 +47,7 @@ abstract class SyncListItemOptions {
      *                           parent Sync List expires
      * @return UpdateSyncListItemOptions Options builder
      */
-    public static function update(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncListItemOptions {
+    public static function update(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncListItemOptions {
         return new UpdateSyncListItemOptions($data, $ttl, $itemTtl, $collectionTtl);
     }
 }
@@ -107,7 +107,7 @@ class CreateSyncListItemOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -170,7 +170,7 @@ class ReadSyncListItemOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -187,7 +187,7 @@ class UpdateSyncListItemOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the List Item's
      *                           parent Sync List expires
      */
-    public function __construct(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
+    public function __construct(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;
@@ -248,7 +248,7 @@ class UpdateSyncListItemOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

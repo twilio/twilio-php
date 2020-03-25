@@ -26,7 +26,7 @@ abstract class RecordingOptions {
      * @param string $mediaType Read only recordings that have this media type
      * @return ReadRecordingOptions Options builder
      */
-    public static function read(string $status = Values::NONE, string $sourceSid = Values::NONE, array $groupingSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $mediaType = Values::NONE): ReadRecordingOptions {
+    public static function read(string $status = Values::NONE, string $sourceSid = Values::NONE, array $groupingSid = Values::ARRAY_NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $mediaType = Values::NONE): ReadRecordingOptions {
         return new ReadRecordingOptions($status, $sourceSid, $groupingSid, $dateCreatedAfter, $dateCreatedBefore, $mediaType);
     }
 }
@@ -44,7 +44,7 @@ class ReadRecordingOptions extends Options {
      *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @param string $mediaType Read only recordings that have this media type
      */
-    public function __construct(string $status = Values::NONE, string $sourceSid = Values::NONE, array $groupingSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $mediaType = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $sourceSid = Values::NONE, array $groupingSid = Values::ARRAY_NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $mediaType = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['groupingSid'] = $groupingSid;
@@ -131,7 +131,7 @@ class ReadRecordingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

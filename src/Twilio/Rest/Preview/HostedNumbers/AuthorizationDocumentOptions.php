@@ -27,7 +27,7 @@ abstract class AuthorizationDocumentOptions {
      *                                   number.
      * @return UpdateAuthorizationDocumentOptions Options builder
      */
-    public static function update(array $hostedNumberOrderSids = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE): UpdateAuthorizationDocumentOptions {
+    public static function update(array $hostedNumberOrderSids = Values::ARRAY_NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::ARRAY_NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE): UpdateAuthorizationDocumentOptions {
         return new UpdateAuthorizationDocumentOptions($hostedNumberOrderSids, $addressSid, $email, $ccEmails, $status, $contactTitle, $contactPhoneNumber);
     }
 
@@ -44,7 +44,7 @@ abstract class AuthorizationDocumentOptions {
      * @param string[] $ccEmails A list of emails.
      * @return CreateAuthorizationDocumentOptions Options builder
      */
-    public static function create(array $ccEmails = Values::NONE): CreateAuthorizationDocumentOptions {
+    public static function create(array $ccEmails = Values::ARRAY_NONE): CreateAuthorizationDocumentOptions {
         return new CreateAuthorizationDocumentOptions($ccEmails);
     }
 }
@@ -60,7 +60,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string $contactPhoneNumber Authorization Document's signee's phone
      *                                   number.
      */
-    public function __construct(array $hostedNumberOrderSids = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE) {
+    public function __construct(array $hostedNumberOrderSids = Values::ARRAY_NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::ARRAY_NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE) {
         $this->options['hostedNumberOrderSids'] = $hostedNumberOrderSids;
         $this->options['addressSid'] = $addressSid;
         $this->options['email'] = $email;
@@ -156,7 +156,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -204,7 +204,7 @@ class ReadAuthorizationDocumentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -216,7 +216,7 @@ class CreateAuthorizationDocumentOptions extends Options {
     /**
      * @param string[] $ccEmails A list of emails.
      */
-    public function __construct(array $ccEmails = Values::NONE) {
+    public function __construct(array $ccEmails = Values::ARRAY_NONE) {
         $this->options['ccEmails'] = $ccEmails;
     }
 
@@ -239,7 +239,7 @@ class CreateAuthorizationDocumentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

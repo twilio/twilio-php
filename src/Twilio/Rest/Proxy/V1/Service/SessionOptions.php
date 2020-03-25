@@ -27,7 +27,7 @@ abstract class SessionOptions {
      *                              session
      * @return CreateSessionOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array $participants = Values::NONE): CreateSessionOptions {
+    public static function create(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array $participants = Values::ARRAY_NONE): CreateSessionOptions {
         return new CreateSessionOptions($uniqueName, $dateExpiry, $ttl, $mode, $status, $participants);
     }
 
@@ -53,7 +53,7 @@ class CreateSessionOptions extends Options {
      * @param array[] $participants The Participant objects to include in the new
      *                              session
      */
-    public function __construct(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array $participants = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, \DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $mode = Values::NONE, string $status = Values::NONE, array $participants = Values::ARRAY_NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
@@ -138,7 +138,7 @@ class CreateSessionOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -199,7 +199,7 @@ class UpdateSessionOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

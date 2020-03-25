@@ -29,7 +29,7 @@ abstract class ExecutionOptions {
      * @param array $parameters The parameters
      * @return CreateExecutionOptions Options builder
      */
-    public static function create(array $parameters = Values::NONE): CreateExecutionOptions {
+    public static function create(array $parameters = Values::ARRAY_NONE): CreateExecutionOptions {
         return new CreateExecutionOptions($parameters);
     }
 }
@@ -74,7 +74,7 @@ class ReadExecutionOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -86,7 +86,7 @@ class CreateExecutionOptions extends Options {
     /**
      * @param array $parameters The parameters
      */
-    public function __construct(array $parameters = Values::NONE) {
+    public function __construct(array $parameters = Values::ARRAY_NONE) {
         $this->options['parameters'] = $parameters;
     }
 
@@ -109,7 +109,7 @@ class CreateExecutionOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

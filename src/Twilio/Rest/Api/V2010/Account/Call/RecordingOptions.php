@@ -26,7 +26,7 @@ abstract class RecordingOptions {
      *                                  recording will be configured with
      * @return CreateRecordingOptions Options builder
      */
-    public static function create(array $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE): CreateRecordingOptions {
+    public static function create(array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE): CreateRecordingOptions {
         return new CreateRecordingOptions($recordingStatusCallbackEvent, $recordingStatusCallback, $recordingStatusCallbackMethod, $trim, $recordingChannels);
     }
 
@@ -65,7 +65,7 @@ class CreateRecordingOptions extends Options {
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
      */
-    public function __construct(array $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE) {
+    public function __construct(array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
@@ -141,7 +141,7 @@ class CreateRecordingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -178,7 +178,7 @@ class UpdateRecordingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -243,7 +243,7 @@ class ReadRecordingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

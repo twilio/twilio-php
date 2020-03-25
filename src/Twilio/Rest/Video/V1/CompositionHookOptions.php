@@ -53,7 +53,7 @@ abstract class CompositionHookOptions {
      *                   media in the Compositions triggered by the composition hook
      * @return CreateCompositionHookOptions Options builder
      */
-    public static function create(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionHookOptions {
+    public static function create(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionHookOptions {
         return new CreateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 
@@ -77,7 +77,7 @@ abstract class CompositionHookOptions {
      *                                     status_callback
      * @return UpdateCompositionHookOptions Options builder
      */
-    public static function update(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
+    public static function update(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
         return new UpdateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $trim, $format, $resolution, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -160,7 +160,7 @@ class ReadCompositionHookOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -188,7 +188,7 @@ class CreateCompositionHookOptions extends Options {
      * @param bool $trim Whether to clip the intervals where there is no active
      *                   media in the Compositions triggered by the composition hook
      */
-    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -329,7 +329,7 @@ class CreateCompositionHookOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -357,7 +357,7 @@ class UpdateCompositionHookOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method we should use to call
      *                                     status_callback
      */
-    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -498,7 +498,7 @@ class UpdateCompositionHookOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

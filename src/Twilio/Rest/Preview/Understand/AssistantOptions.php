@@ -40,7 +40,7 @@ abstract class AssistantOptions {
      *                          assistant
      * @return CreateAssistantOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::NONE, array $initiationActions = Values::NONE, array $styleSheet = Values::NONE): CreateAssistantOptions {
+    public static function create(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::ARRAY_NONE, array $initiationActions = Values::ARRAY_NONE, array $styleSheet = Values::ARRAY_NONE): CreateAssistantOptions {
         return new CreateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions, $styleSheet);
     }
 
@@ -68,7 +68,7 @@ abstract class AssistantOptions {
      *                          assistant
      * @return UpdateAssistantOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::NONE, array $initiationActions = Values::NONE, array $styleSheet = Values::NONE): UpdateAssistantOptions {
+    public static function update(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::ARRAY_NONE, array $initiationActions = Values::ARRAY_NONE, array $styleSheet = Values::ARRAY_NONE): UpdateAssistantOptions {
         return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions, $styleSheet);
     }
 }
@@ -97,7 +97,7 @@ class CreateAssistantOptions extends Options {
      * @param array $styleSheet The JSON object that holds the style sheet for the
      *                          assistant
      */
-    public function __construct(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::NONE, array $initiationActions = Values::NONE, array $styleSheet = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::ARRAY_NONE, array $initiationActions = Values::ARRAY_NONE, array $styleSheet = Values::ARRAY_NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
@@ -217,7 +217,7 @@ class CreateAssistantOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -249,7 +249,7 @@ class UpdateAssistantOptions extends Options {
      * @param array $styleSheet The JSON object that holds the style sheet for the
      *                          assistant
      */
-    public function __construct(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::NONE, array $initiationActions = Values::NONE, array $styleSheet = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, bool $logQueries = Values::NONE, string $uniqueName = Values::NONE, string $callbackUrl = Values::NONE, string $callbackEvents = Values::NONE, array $fallbackActions = Values::ARRAY_NONE, array $initiationActions = Values::ARRAY_NONE, array $styleSheet = Values::ARRAY_NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
@@ -369,7 +369,7 @@ class UpdateAssistantOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

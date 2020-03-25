@@ -70,7 +70,7 @@ abstract class CallOptions {
      * @param string $callReason Reason for the call (Beta)
      * @return CreateCallOptions Options builder
      */
-    public static function create(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, array $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, array $recordingStatusCallbackEvent = Values::NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE, string $callReason = Values::NONE): CreateCallOptions {
+    public static function create(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE, string $callReason = Values::NONE): CreateCallOptions {
         return new CreateCallOptions($url, $twiml, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout, $asyncAmd, $asyncAmdStatusCallback, $asyncAmdStatusCallbackMethod, $byoc, $callReason);
     }
 
@@ -166,7 +166,7 @@ class CreateCallOptions extends Options {
      * @param string $byoc BYOC trunk SID (Beta)
      * @param string $callReason Reason for the call (Beta)
      */
-    public function __construct(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, array $statusCallbackEvent = Values::NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, array $recordingStatusCallbackEvent = Values::NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE, string $callReason = Values::NONE) {
+    public function __construct(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE, string $callReason = Values::NONE) {
         $this->options['url'] = $url;
         $this->options['twiml'] = $twiml;
         $this->options['applicationSid'] = $applicationSid;
@@ -561,7 +561,7 @@ class CreateCallOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -713,7 +713,7 @@ class ReadCallOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -843,7 +843,7 @@ class UpdateCallOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

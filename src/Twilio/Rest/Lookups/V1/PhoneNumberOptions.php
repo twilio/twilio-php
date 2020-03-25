@@ -21,7 +21,7 @@ abstract class PhoneNumberOptions {
      *                           invoke
      * @return FetchPhoneNumberOptions Options builder
      */
-    public static function fetch(string $countryCode = Values::NONE, array $type = Values::NONE, array $addOns = Values::NONE, string $addOnsData = Values::NONE): FetchPhoneNumberOptions {
+    public static function fetch(string $countryCode = Values::NONE, array $type = Values::ARRAY_NONE, array $addOns = Values::ARRAY_NONE, string $addOnsData = Values::NONE): FetchPhoneNumberOptions {
         return new FetchPhoneNumberOptions($countryCode, $type, $addOns, $addOnsData);
     }
 }
@@ -34,7 +34,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addOnsData Data specific to the add-on you would like to
      *                           invoke
      */
-    public function __construct(string $countryCode = Values::NONE, array $type = Values::NONE, array $addOns = Values::NONE, string $addOnsData = Values::NONE) {
+    public function __construct(string $countryCode = Values::NONE, array $type = Values::ARRAY_NONE, array $addOns = Values::ARRAY_NONE, string $addOnsData = Values::NONE) {
         $this->options['countryCode'] = $countryCode;
         $this->options['type'] = $type;
         $this->options['addOns'] = $addOns;
@@ -94,7 +94,7 @@ class FetchPhoneNumberOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

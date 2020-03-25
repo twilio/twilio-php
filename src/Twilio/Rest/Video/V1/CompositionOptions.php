@@ -49,7 +49,7 @@ abstract class CompositionOptions {
      *                   media in the composition
      * @return CreateCompositionOptions Options builder
      */
-    public static function create(array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionOptions {
+    public static function create(array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionOptions {
         return new CreateCompositionOptions($videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 }
@@ -128,7 +128,7 @@ class ReadCompositionOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -154,7 +154,7 @@ class CreateCompositionOptions extends Options {
      * @param bool $trim Whether to clip the intervals where there is no active
      *                   media in the composition
      */
-    public function __construct(array $videoLayout = Values::NONE, array $audioSources = Values::NONE, array $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
+    public function __construct(array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
@@ -282,7 +282,7 @@ class CreateCompositionOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

@@ -25,7 +25,7 @@ abstract class MemberOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadMemberOptions Options builder
      */
-    public static function read(array $identity = Values::NONE): ReadMemberOptions {
+    public static function read(array $identity = Values::ARRAY_NONE): ReadMemberOptions {
         return new ReadMemberOptions($identity);
     }
 
@@ -67,7 +67,7 @@ class CreateMemberOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -79,7 +79,7 @@ class ReadMemberOptions extends Options {
     /**
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(array $identity = Values::NONE) {
+    public function __construct(array $identity = Values::ARRAY_NONE) {
         $this->options['identity'] = $identity;
     }
 
@@ -102,7 +102,7 @@ class ReadMemberOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -152,7 +152,7 @@ class UpdateMemberOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

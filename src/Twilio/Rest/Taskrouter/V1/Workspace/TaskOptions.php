@@ -44,7 +44,7 @@ abstract class TaskOptions {
      * @param bool $hasAddons Whether to read Tasks with addons
      * @return ReadTaskOptions Options builder
      */
-    public static function read(int $priority = Values::NONE, array $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
+    public static function read(int $priority = Values::NONE, array $assignmentStatus = Values::ARRAY_NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
         return new ReadTaskOptions($priority, $assignmentStatus, $workflowSid, $workflowName, $taskQueueSid, $taskQueueName, $evaluateTaskAttributes, $ordering, $hasAddons);
     }
 
@@ -149,7 +149,7 @@ class UpdateTaskOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -174,7 +174,7 @@ class ReadTaskOptions extends Options {
      * @param string $ordering Controls the order of the Tasks returned
      * @param bool $hasAddons Whether to read Tasks with addons
      */
-    public function __construct(int $priority = Values::NONE, array $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
+    public function __construct(int $priority = Values::NONE, array $assignmentStatus = Values::ARRAY_NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
         $this->options['priority'] = $priority;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['workflowSid'] = $workflowSid;
@@ -298,7 +298,7 @@ class ReadTaskOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -395,7 +395,7 @@ class CreateTaskOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

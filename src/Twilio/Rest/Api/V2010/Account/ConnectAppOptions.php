@@ -29,7 +29,7 @@ abstract class ConnectAppOptions {
      *                              will request
      * @return UpdateConnectAppOptions Options builder
      */
-    public static function update(string $authorizeRedirectUrl = Values::NONE, string $companyName = Values::NONE, string $deauthorizeCallbackMethod = Values::NONE, string $deauthorizeCallbackUrl = Values::NONE, string $description = Values::NONE, string $friendlyName = Values::NONE, string $homepageUrl = Values::NONE, array $permissions = Values::NONE): UpdateConnectAppOptions {
+    public static function update(string $authorizeRedirectUrl = Values::NONE, string $companyName = Values::NONE, string $deauthorizeCallbackMethod = Values::NONE, string $deauthorizeCallbackUrl = Values::NONE, string $description = Values::NONE, string $friendlyName = Values::NONE, string $homepageUrl = Values::NONE, array $permissions = Values::ARRAY_NONE): UpdateConnectAppOptions {
         return new UpdateConnectAppOptions($authorizeRedirectUrl, $companyName, $deauthorizeCallbackMethod, $deauthorizeCallbackUrl, $description, $friendlyName, $homepageUrl, $permissions);
     }
 }
@@ -50,7 +50,7 @@ class UpdateConnectAppOptions extends Options {
      * @param string[] $permissions The set of permissions that your ConnectApp
      *                              will request
      */
-    public function __construct(string $authorizeRedirectUrl = Values::NONE, string $companyName = Values::NONE, string $deauthorizeCallbackMethod = Values::NONE, string $deauthorizeCallbackUrl = Values::NONE, string $description = Values::NONE, string $friendlyName = Values::NONE, string $homepageUrl = Values::NONE, array $permissions = Values::NONE) {
+    public function __construct(string $authorizeRedirectUrl = Values::NONE, string $companyName = Values::NONE, string $deauthorizeCallbackMethod = Values::NONE, string $deauthorizeCallbackUrl = Values::NONE, string $description = Values::NONE, string $friendlyName = Values::NONE, string $homepageUrl = Values::NONE, array $permissions = Values::ARRAY_NONE) {
         $this->options['authorizeRedirectUrl'] = $authorizeRedirectUrl;
         $this->options['companyName'] = $companyName;
         $this->options['deauthorizeCallbackMethod'] = $deauthorizeCallbackMethod;
@@ -162,7 +162,7 @@ class UpdateConnectAppOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

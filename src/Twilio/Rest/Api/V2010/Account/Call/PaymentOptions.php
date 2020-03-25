@@ -43,7 +43,7 @@ abstract class PaymentOptions {
      *                               types separated by space.
      * @return CreatePaymentOptions Options builder
      */
-    public static function create(string $bankAccountType = Values::NONE, string $chargeAmount = Values::NONE, string $currency = Values::NONE, string $description = Values::NONE, string $input = Values::NONE, int $minPostalCodeLength = Values::NONE, array $parameter = Values::NONE, string $paymentConnector = Values::NONE, string $paymentMethod = Values::NONE, bool $postalCode = Values::NONE, bool $securityCode = Values::NONE, int $timeout = Values::NONE, string $tokenType = Values::NONE, string $validCardTypes = Values::NONE): CreatePaymentOptions {
+    public static function create(string $bankAccountType = Values::NONE, string $chargeAmount = Values::NONE, string $currency = Values::NONE, string $description = Values::NONE, string $input = Values::NONE, int $minPostalCodeLength = Values::NONE, array $parameter = Values::ARRAY_NONE, string $paymentConnector = Values::NONE, string $paymentMethod = Values::NONE, bool $postalCode = Values::NONE, bool $securityCode = Values::NONE, int $timeout = Values::NONE, string $tokenType = Values::NONE, string $validCardTypes = Values::NONE): CreatePaymentOptions {
         return new CreatePaymentOptions($bankAccountType, $chargeAmount, $currency, $description, $input, $minPostalCodeLength, $parameter, $paymentConnector, $paymentMethod, $postalCode, $securityCode, $timeout, $tokenType, $validCardTypes);
     }
 
@@ -84,7 +84,7 @@ class CreatePaymentOptions extends Options {
      * @param string $validCardTypes List of card types accepted with each card
      *                               types separated by space.
      */
-    public function __construct(string $bankAccountType = Values::NONE, string $chargeAmount = Values::NONE, string $currency = Values::NONE, string $description = Values::NONE, string $input = Values::NONE, int $minPostalCodeLength = Values::NONE, array $parameter = Values::NONE, string $paymentConnector = Values::NONE, string $paymentMethod = Values::NONE, bool $postalCode = Values::NONE, bool $securityCode = Values::NONE, int $timeout = Values::NONE, string $tokenType = Values::NONE, string $validCardTypes = Values::NONE) {
+    public function __construct(string $bankAccountType = Values::NONE, string $chargeAmount = Values::NONE, string $currency = Values::NONE, string $description = Values::NONE, string $input = Values::NONE, int $minPostalCodeLength = Values::NONE, array $parameter = Values::ARRAY_NONE, string $paymentConnector = Values::NONE, string $paymentMethod = Values::NONE, bool $postalCode = Values::NONE, bool $securityCode = Values::NONE, int $timeout = Values::NONE, string $tokenType = Values::NONE, string $validCardTypes = Values::NONE) {
         $this->options['bankAccountType'] = $bankAccountType;
         $this->options['chargeAmount'] = $chargeAmount;
         $this->options['currency'] = $currency;
@@ -273,7 +273,7 @@ class CreatePaymentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -321,7 +321,7 @@ class UpdatePaymentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

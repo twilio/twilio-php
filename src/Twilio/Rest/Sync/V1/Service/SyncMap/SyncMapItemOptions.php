@@ -47,7 +47,7 @@ abstract class SyncMapItemOptions {
      *                           Sync Map expires and is deleted
      * @return UpdateSyncMapItemOptions Options builder
      */
-    public static function update(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncMapItemOptions {
+    public static function update(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncMapItemOptions {
         return new UpdateSyncMapItemOptions($data, $ttl, $itemTtl, $collectionTtl);
     }
 }
@@ -107,7 +107,7 @@ class CreateSyncMapItemOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -170,7 +170,7 @@ class ReadSyncMapItemOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -187,7 +187,7 @@ class UpdateSyncMapItemOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the Map Item's parent
      *                           Sync Map expires and is deleted
      */
-    public function __construct(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
+    public function __construct(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;
@@ -248,7 +248,7 @@ class UpdateSyncMapItemOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

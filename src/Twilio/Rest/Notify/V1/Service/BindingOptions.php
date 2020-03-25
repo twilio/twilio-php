@@ -25,7 +25,7 @@ abstract class BindingOptions {
      * @param string $endpoint Deprecated
      * @return CreateBindingOptions Options builder
      */
-    public static function create(array $tag = Values::NONE, string $notificationProtocolVersion = Values::NONE, string $credentialSid = Values::NONE, string $endpoint = Values::NONE): CreateBindingOptions {
+    public static function create(array $tag = Values::ARRAY_NONE, string $notificationProtocolVersion = Values::NONE, string $credentialSid = Values::NONE, string $endpoint = Values::NONE): CreateBindingOptions {
         return new CreateBindingOptions($tag, $notificationProtocolVersion, $credentialSid, $endpoint);
     }
 
@@ -38,7 +38,7 @@ abstract class BindingOptions {
      * @param string[] $tag Only list Bindings that have all of the specified Tags
      * @return ReadBindingOptions Options builder
      */
-    public static function read(\DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE, array $identity = Values::NONE, array $tag = Values::NONE): ReadBindingOptions {
+    public static function read(\DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE, array $identity = Values::ARRAY_NONE, array $tag = Values::ARRAY_NONE): ReadBindingOptions {
         return new ReadBindingOptions($startDate, $endDate, $identity, $tag);
     }
 }
@@ -52,7 +52,7 @@ class CreateBindingOptions extends Options {
      *                              to send notifications to this Binding
      * @param string $endpoint Deprecated
      */
-    public function __construct(array $tag = Values::NONE, string $notificationProtocolVersion = Values::NONE, string $credentialSid = Values::NONE, string $endpoint = Values::NONE) {
+    public function __construct(array $tag = Values::ARRAY_NONE, string $notificationProtocolVersion = Values::NONE, string $credentialSid = Values::NONE, string $endpoint = Values::NONE) {
         $this->options['tag'] = $tag;
         $this->options['notificationProtocolVersion'] = $notificationProtocolVersion;
         $this->options['credentialSid'] = $credentialSid;
@@ -113,7 +113,7 @@ class CreateBindingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -130,7 +130,7 @@ class ReadBindingOptions extends Options {
      * @param string[] $identity The `identity` value of the resources to read
      * @param string[] $tag Only list Bindings that have all of the specified Tags
      */
-    public function __construct(\DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE, array $identity = Values::NONE, array $tag = Values::NONE) {
+    public function __construct(\DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE, array $identity = Values::ARRAY_NONE, array $tag = Values::ARRAY_NONE) {
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
         $this->options['identity'] = $identity;
@@ -191,7 +191,7 @@ class ReadBindingOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }

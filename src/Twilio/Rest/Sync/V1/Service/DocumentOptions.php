@@ -25,7 +25,7 @@ abstract class DocumentOptions {
      *                 is deleted
      * @return CreateDocumentOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, array $data = Values::NONE, int $ttl = Values::NONE): CreateDocumentOptions {
+    public static function create(string $uniqueName = Values::NONE, array $data = Values::ARRAY_NONE, int $ttl = Values::NONE): CreateDocumentOptions {
         return new CreateDocumentOptions($uniqueName, $data, $ttl);
     }
 
@@ -36,7 +36,7 @@ abstract class DocumentOptions {
      *                 and is deleted
      * @return UpdateDocumentOptions Options builder
      */
-    public static function update(array $data = Values::NONE, int $ttl = Values::NONE): UpdateDocumentOptions {
+    public static function update(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE): UpdateDocumentOptions {
         return new UpdateDocumentOptions($data, $ttl);
     }
 }
@@ -50,7 +50,7 @@ class CreateDocumentOptions extends Options {
      * @param int $ttl How long, in seconds, before the Sync Document expires and
      *                 is deleted
      */
-    public function __construct(string $uniqueName = Values::NONE, array $data = Values::NONE, int $ttl = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, array $data = Values::ARRAY_NONE, int $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
@@ -100,7 +100,7 @@ class CreateDocumentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
@@ -115,7 +115,7 @@ class UpdateDocumentOptions extends Options {
      * @param int $ttl How long, in seconds, before the Document resource expires
      *                 and is deleted
      */
-    public function __construct(array $data = Values::NONE, int $ttl = Values::NONE) {
+    public function __construct(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
     }
@@ -152,7 +152,7 @@ class UpdateDocumentOptions extends Options {
     public function __toString(): string {
         $options = [];
         foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
+            if ($value !== Values::NONE || $value !== Values::ARRAY_NONE) {
                 $options[] = "$key=$value";
             }
         }
