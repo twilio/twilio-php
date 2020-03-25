@@ -464,11 +464,8 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Api.V2010.UpdateIncomingPhoneNumberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.UpdateIncomingPhoneNumberOptions ' . $options . ']';
     }
 }
 
@@ -542,11 +539,8 @@ class ReadIncomingPhoneNumberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Api.V2010.ReadIncomingPhoneNumberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.ReadIncomingPhoneNumberOptions ' . $options . ']';
     }
 }
 
@@ -906,10 +900,7 @@ class CreateIncomingPhoneNumberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Api.V2010.CreateIncomingPhoneNumberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.CreateIncomingPhoneNumberOptions ' . $options . ']';
     }
 }

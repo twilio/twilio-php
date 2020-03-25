@@ -94,11 +94,8 @@ class CreateSyncMapOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Sync.V1.CreateSyncMapOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Sync.V1.CreateSyncMapOptions ' . $options . ']';
     }
 }
 
@@ -142,10 +139,7 @@ class UpdateSyncMapOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Sync.V1.UpdateSyncMapOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Sync.V1.UpdateSyncMapOptions ' . $options . ']';
     }
 }

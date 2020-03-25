@@ -105,11 +105,8 @@ class ReadCommandOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Wireless.V1.ReadCommandOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Wireless.V1.ReadCommandOptions ' . $options . ']';
     }
 }
 
@@ -209,10 +206,7 @@ class CreateCommandOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Wireless.V1.CreateCommandOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Wireless.V1.CreateCommandOptions ' . $options . ']';
     }
 }

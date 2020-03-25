@@ -92,11 +92,8 @@ class CreateChallengeOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Authy.V1.CreateChallengeOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Authy.V1.CreateChallengeOptions ' . $options . ']';
     }
 }
 
@@ -125,10 +122,7 @@ class UpdateChallengeOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Authy.V1.UpdateChallengeOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Authy.V1.UpdateChallengeOptions ' . $options . ']';
     }
 }

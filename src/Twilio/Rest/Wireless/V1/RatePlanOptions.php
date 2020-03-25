@@ -239,11 +239,8 @@ class CreateRatePlanOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Wireless.V1.CreateRatePlanOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Wireless.V1.CreateRatePlanOptions ' . $options . ']';
     }
 }
 
@@ -287,10 +284,7 @@ class UpdateRatePlanOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Wireless.V1.UpdateRatePlanOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Wireless.V1.UpdateRatePlanOptions ' . $options . ']';
     }
 }

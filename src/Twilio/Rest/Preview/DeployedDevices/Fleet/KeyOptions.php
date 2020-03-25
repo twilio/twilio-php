@@ -81,11 +81,8 @@ class CreateKeyOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.DeployedDevices.CreateKeyOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.CreateKeyOptions ' . $options . ']';
     }
 }
 
@@ -114,11 +111,8 @@ class ReadKeyOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.DeployedDevices.ReadKeyOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.ReadKeyOptions ' . $options . ']';
     }
 }
 
@@ -160,10 +154,7 @@ class UpdateKeyOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.DeployedDevices.UpdateKeyOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.UpdateKeyOptions ' . $options . ']';
     }
 }

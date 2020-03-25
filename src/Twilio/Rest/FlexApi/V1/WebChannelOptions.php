@@ -70,11 +70,8 @@ class CreateWebChannelOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.FlexApi.V1.CreateWebChannelOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.CreateWebChannelOptions ' . $options . ']';
     }
 }
 
@@ -116,10 +113,7 @@ class UpdateWebChannelOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.FlexApi.V1.UpdateWebChannelOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.UpdateWebChannelOptions ' . $options . ']';
     }
 }

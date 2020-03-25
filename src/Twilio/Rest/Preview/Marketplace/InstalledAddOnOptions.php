@@ -77,11 +77,8 @@ class CreateInstalledAddOnOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.Marketplace.CreateInstalledAddOnOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Marketplace.CreateInstalledAddOnOptions ' . $options . ']';
     }
 }
 
@@ -125,10 +122,7 @@ class UpdateInstalledAddOnOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.Marketplace.UpdateInstalledAddOnOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Marketplace.UpdateInstalledAddOnOptions ' . $options . ']';
     }
 }

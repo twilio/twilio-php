@@ -55,11 +55,8 @@ class CreateRateLimitOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Verify.V2.CreateRateLimitOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Verify.V2.CreateRateLimitOptions ' . $options . ']';
     }
 }
 
@@ -88,10 +85,7 @@ class UpdateRateLimitOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Verify.V2.UpdateRateLimitOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Verify.V2.UpdateRateLimitOptions ' . $options . ']';
     }
 }

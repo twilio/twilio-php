@@ -221,11 +221,8 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.HostedNumbers.UpdateHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.HostedNumbers.UpdateHostedNumberOrderOptions ' . $options . ']';
     }
 }
 
@@ -308,11 +305,8 @@ class ReadHostedNumberOrderOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.HostedNumbers.ReadHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.HostedNumbers.ReadHostedNumberOrderOptions ' . $options . ']';
     }
 }
 
@@ -525,10 +519,7 @@ class CreateHostedNumberOrderOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Preview.HostedNumbers.CreateHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.HostedNumbers.CreateHostedNumberOrderOptions ' . $options . ']';
     }
 }

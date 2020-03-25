@@ -72,11 +72,8 @@ class ReadExecutionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Studio.V2.ReadExecutionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V2.ReadExecutionOptions ' . $options . ']';
     }
 }
 
@@ -105,10 +102,7 @@ class CreateExecutionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Studio.V2.CreateExecutionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V2.CreateExecutionOptions ' . $options . ']';
     }
 }

@@ -132,11 +132,8 @@ class CreateBundleOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Numbers.V2.CreateBundleOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Numbers.V2.CreateBundleOptions ' . $options . ']';
     }
 }
 
@@ -219,11 +216,8 @@ class ReadBundleOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Numbers.V2.ReadBundleOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Numbers.V2.ReadBundleOptions ' . $options . ']';
     }
 }
 
@@ -295,10 +289,7 @@ class UpdateBundleOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Numbers.V2.UpdateBundleOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Numbers.V2.UpdateBundleOptions ' . $options . ']';
     }
 }

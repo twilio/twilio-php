@@ -81,11 +81,8 @@ class CreateCommandOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Supersim.V1.CreateCommandOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Supersim.V1.CreateCommandOptions ' . $options . ']';
     }
 }
 
@@ -142,10 +139,7 @@ class ReadCommandOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Supersim.V1.ReadCommandOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Supersim.V1.ReadCommandOptions ' . $options . ']';
     }
 }

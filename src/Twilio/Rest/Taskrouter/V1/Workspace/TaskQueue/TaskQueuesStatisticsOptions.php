@@ -135,10 +135,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Taskrouter.V1.ReadTaskQueuesStatisticsOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.ReadTaskQueuesStatisticsOptions ' . $options . ']';
     }
 }

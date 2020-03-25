@@ -101,11 +101,8 @@ class ReadFlexFlowOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.FlexApi.V1.ReadFlexFlowOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.ReadFlexFlowOptions ' . $options . ']';
     }
 }
 
@@ -309,11 +306,8 @@ class CreateFlexFlowOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.FlexApi.V1.CreateFlexFlowOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.CreateFlexFlowOptions ' . $options . ']';
     }
 }
 
@@ -556,10 +550,7 @@ class UpdateFlexFlowOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.FlexApi.V1.UpdateFlexFlowOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.UpdateFlexFlowOptions ' . $options . ']';
     }
 }

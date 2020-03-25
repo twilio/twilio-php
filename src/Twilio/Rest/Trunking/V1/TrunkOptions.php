@@ -165,11 +165,8 @@ class CreateTrunkOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Trunking.V1.CreateTrunkOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Trunking.V1.CreateTrunkOptions ' . $options . ']';
     }
 }
 
@@ -286,10 +283,7 @@ class UpdateTrunkOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Trunking.V1.UpdateTrunkOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Trunking.V1.UpdateTrunkOptions ' . $options . ']';
     }
 }

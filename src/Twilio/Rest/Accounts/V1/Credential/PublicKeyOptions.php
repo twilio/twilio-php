@@ -72,11 +72,8 @@ class CreatePublicKeyOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Accounts.V1.CreatePublicKeyOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Accounts.V1.CreatePublicKeyOptions ' . $options . ']';
     }
 }
 
@@ -105,10 +102,7 @@ class UpdatePublicKeyOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach (Values::of($this->options) as $key => $value) {
-                $options[] = "$key=$value";
-        }
-        return '[Twilio.Accounts.V1.UpdatePublicKeyOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Accounts.V1.UpdatePublicKeyOptions ' . $options . ']';
     }
 }
