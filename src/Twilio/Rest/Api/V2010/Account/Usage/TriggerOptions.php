@@ -97,13 +97,8 @@ class UpdateTriggerOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.UpdateTriggerOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.UpdateTriggerOptions ' . $options . ']';
     }
 }
 
@@ -173,13 +168,8 @@ class CreateTriggerOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.CreateTriggerOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.CreateTriggerOptions ' . $options . ']';
     }
 }
 
@@ -234,12 +224,7 @@ class ReadTriggerOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.ReadTriggerOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.ReadTriggerOptions ' . $options . ']';
     }
 }

@@ -27,7 +27,7 @@ abstract class AuthorizationDocumentOptions {
      *                                   number.
      * @return UpdateAuthorizationDocumentOptions Options builder
      */
-    public static function update(string[] $hostedNumberOrderSids = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string[] $ccEmails = Values::NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE): UpdateAuthorizationDocumentOptions {
+    public static function update(array $hostedNumberOrderSids = Values::ARRAY_NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::ARRAY_NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE): UpdateAuthorizationDocumentOptions {
         return new UpdateAuthorizationDocumentOptions($hostedNumberOrderSids, $addressSid, $email, $ccEmails, $status, $contactTitle, $contactPhoneNumber);
     }
 
@@ -44,7 +44,7 @@ abstract class AuthorizationDocumentOptions {
      * @param string[] $ccEmails A list of emails.
      * @return CreateAuthorizationDocumentOptions Options builder
      */
-    public static function create(string[] $ccEmails = Values::NONE): CreateAuthorizationDocumentOptions {
+    public static function create(array $ccEmails = Values::ARRAY_NONE): CreateAuthorizationDocumentOptions {
         return new CreateAuthorizationDocumentOptions($ccEmails);
     }
 }
@@ -60,7 +60,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string $contactPhoneNumber Authorization Document's signee's phone
      *                                   number.
      */
-    public function __construct(string[] $hostedNumberOrderSids = Values::NONE, string $addressSid = Values::NONE, string $email = Values::NONE, string[] $ccEmails = Values::NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE) {
+    public function __construct(array $hostedNumberOrderSids = Values::ARRAY_NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::ARRAY_NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE) {
         $this->options['hostedNumberOrderSids'] = $hostedNumberOrderSids;
         $this->options['addressSid'] = $addressSid;
         $this->options['email'] = $email;
@@ -76,7 +76,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids.
      * @return $this Fluent Builder
      */
-    public function setHostedNumberOrderSids(string[] $hostedNumberOrderSids): self {
+    public function setHostedNumberOrderSids(array $hostedNumberOrderSids): self {
         $this->options['hostedNumberOrderSids'] = $hostedNumberOrderSids;
         return $this;
     }
@@ -109,7 +109,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
-    public function setCcEmails(string[] $ccEmails): self {
+    public function setCcEmails(array $ccEmails): self {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
@@ -154,13 +154,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . $options . ']';
     }
 }
 
@@ -202,13 +197,8 @@ class ReadAuthorizationDocumentOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . $options . ']';
     }
 }
 
@@ -216,7 +206,7 @@ class CreateAuthorizationDocumentOptions extends Options {
     /**
      * @param string[] $ccEmails A list of emails.
      */
-    public function __construct(string[] $ccEmails = Values::NONE) {
+    public function __construct(array $ccEmails = Values::ARRAY_NONE) {
         $this->options['ccEmails'] = $ccEmails;
     }
 
@@ -226,7 +216,7 @@ class CreateAuthorizationDocumentOptions extends Options {
      * @param string[] $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
-    public function setCcEmails(string[] $ccEmails): self {
+    public function setCcEmails(array $ccEmails): self {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
@@ -237,12 +227,7 @@ class CreateAuthorizationDocumentOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.HostedNumbers.CreateAuthorizationDocumentOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.HostedNumbers.CreateAuthorizationDocumentOptions ' . $options . ']';
     }
 }

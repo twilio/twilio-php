@@ -49,7 +49,7 @@ abstract class CompositionOptions {
      *                   media in the composition
      * @return CreateCompositionOptions Options builder
      */
-    public static function create(array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionOptions {
+    public static function create(array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionOptions {
         return new CreateCompositionOptions($videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 }
@@ -126,13 +126,8 @@ class ReadCompositionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Video.V1.ReadCompositionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Video.V1.ReadCompositionOptions ' . $options . ']';
     }
 }
 
@@ -154,7 +149,7 @@ class CreateCompositionOptions extends Options {
      * @param bool $trim Whether to clip the intervals where there is no active
      *                   media in the composition
      */
-    public function __construct(array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
+    public function __construct(array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
@@ -184,7 +179,7 @@ class CreateCompositionOptions extends Options {
      *                               room to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources(string[] $audioSources): self {
+    public function setAudioSources(array $audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -195,7 +190,7 @@ class CreateCompositionOptions extends Options {
      * @param string[] $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded(string[] $audioSourcesExcluded): self {
+    public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -280,12 +275,7 @@ class CreateCompositionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Video.V1.CreateCompositionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Video.V1.CreateCompositionOptions ' . $options . ']';
     }
 }

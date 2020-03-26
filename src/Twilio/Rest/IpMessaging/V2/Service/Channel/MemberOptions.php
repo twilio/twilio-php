@@ -37,7 +37,7 @@ abstract class MemberOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadMemberOptions Options builder
      */
-    public static function read(string[] $identity = Values::NONE): ReadMemberOptions {
+    public static function read(array $identity = Values::ARRAY_NONE): ReadMemberOptions {
         return new ReadMemberOptions($identity);
     }
 
@@ -166,13 +166,8 @@ class CreateMemberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V2.CreateMemberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V2.CreateMemberOptions ' . $options . ']';
     }
 }
 
@@ -180,7 +175,7 @@ class ReadMemberOptions extends Options {
     /**
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(string[] $identity = Values::NONE) {
+    public function __construct(array $identity = Values::ARRAY_NONE) {
         $this->options['identity'] = $identity;
     }
 
@@ -190,7 +185,7 @@ class ReadMemberOptions extends Options {
      * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity(string[] $identity): self {
+    public function setIdentity(array $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -201,13 +196,8 @@ class ReadMemberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V2.ReadMemberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V2.ReadMemberOptions ' . $options . ']';
     }
 }
 
@@ -315,12 +305,7 @@ class UpdateMemberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V2.UpdateMemberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V2.UpdateMemberOptions ' . $options . ']';
     }
 }

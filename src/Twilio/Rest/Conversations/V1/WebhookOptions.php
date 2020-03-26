@@ -28,7 +28,7 @@ abstract class WebhookOptions {
      * @param string $target The routing target of the webhook.
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update(string $method = Values::NONE, string[] $filters = Values::NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $target = Values::NONE): UpdateWebhookOptions {
+    public static function update(string $method = Values::NONE, array $filters = Values::ARRAY_NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $target = Values::NONE): UpdateWebhookOptions {
         return new UpdateWebhookOptions($method, $filters, $preWebhookUrl, $postWebhookUrl, $target);
     }
 }
@@ -45,7 +45,7 @@ class UpdateWebhookOptions extends Options {
      *                               request should be sent to.
      * @param string $target The routing target of the webhook.
      */
-    public function __construct(string $method = Values::NONE, string[] $filters = Values::NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $target = Values::NONE) {
+    public function __construct(string $method = Values::NONE, array $filters = Values::ARRAY_NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $target = Values::NONE) {
         $this->options['method'] = $method;
         $this->options['filters'] = $filters;
         $this->options['preWebhookUrl'] = $preWebhookUrl;
@@ -72,7 +72,7 @@ class UpdateWebhookOptions extends Options {
      *                          for this Service.
      * @return $this Fluent Builder
      */
-    public function setFilters(string[] $filters): self {
+    public function setFilters(array $filters): self {
         $this->options['filters'] = $filters;
         return $this;
     }
@@ -118,12 +118,7 @@ class UpdateWebhookOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Conversations.V1.UpdateWebhookOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Conversations.V1.UpdateWebhookOptions ' . $options . ']';
     }
 }

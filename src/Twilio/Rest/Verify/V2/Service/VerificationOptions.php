@@ -29,7 +29,7 @@ abstract class VerificationOptions {
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::NONE, array $channelConfiguration = Values::NONE, string $appHash = Values::NONE): CreateVerificationOptions {
+    public static function create(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE): CreateVerificationOptions {
         return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash);
     }
 }
@@ -50,7 +50,7 @@ class CreateVerificationOptions extends Options {
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
      */
-    public function __construct(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::NONE, array $channelConfiguration = Values::NONE, string $appHash = Values::NONE) {
+    public function __construct(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
@@ -171,12 +171,7 @@ class CreateVerificationOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Verify.V2.CreateVerificationOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Verify.V2.CreateVerificationOptions ' . $options . ']';
     }
 }

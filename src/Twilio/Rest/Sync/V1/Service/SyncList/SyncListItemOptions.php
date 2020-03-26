@@ -47,7 +47,7 @@ abstract class SyncListItemOptions {
      *                           parent Sync List expires
      * @return UpdateSyncListItemOptions Options builder
      */
-    public static function update(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncListItemOptions {
+    public static function update(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncListItemOptions {
         return new UpdateSyncListItemOptions($data, $ttl, $itemTtl, $collectionTtl);
     }
 }
@@ -105,13 +105,8 @@ class CreateSyncListItemOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Sync.V1.CreateSyncListItemOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Sync.V1.CreateSyncListItemOptions ' . $options . ']';
     }
 }
 
@@ -168,13 +163,8 @@ class ReadSyncListItemOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Sync.V1.ReadSyncListItemOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Sync.V1.ReadSyncListItemOptions ' . $options . ']';
     }
 }
 
@@ -187,7 +177,7 @@ class UpdateSyncListItemOptions extends Options {
      * @param int $collectionTtl How long, in seconds, before the List Item's
      *                           parent Sync List expires
      */
-    public function __construct(array $data = Values::NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
+    public function __construct(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, int $itemTtl = Values::NONE, int $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;
@@ -246,12 +236,7 @@ class UpdateSyncListItemOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Sync.V1.UpdateSyncListItemOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Sync.V1.UpdateSyncListItemOptions ' . $options . ']';
     }
 }

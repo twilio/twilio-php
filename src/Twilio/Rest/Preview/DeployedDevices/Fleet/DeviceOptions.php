@@ -126,13 +126,8 @@ class CreateDeviceOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.DeployedDevices.CreateDeviceOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.CreateDeviceOptions ' . $options . ']';
     }
 }
 
@@ -163,13 +158,8 @@ class ReadDeviceOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.DeployedDevices.ReadDeviceOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.ReadDeviceOptions ' . $options . ']';
     }
 }
 
@@ -237,12 +227,7 @@ class UpdateDeviceOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.DeployedDevices.UpdateDeviceOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.UpdateDeviceOptions ' . $options . ']';
     }
 }

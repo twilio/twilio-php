@@ -27,7 +27,7 @@ abstract class TaskOptions {
      *                           assistant fetches actions
      * @return CreateTaskOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE): CreateTaskOptions {
+    public static function create(string $friendlyName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE): CreateTaskOptions {
         return new CreateTaskOptions($friendlyName, $actions, $actionsUrl);
     }
 
@@ -45,7 +45,7 @@ abstract class TaskOptions {
      *                           assistant fetches actions
      * @return UpdateTaskOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE): UpdateTaskOptions {
+    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE): UpdateTaskOptions {
         return new UpdateTaskOptions($friendlyName, $uniqueName, $actions, $actionsUrl);
     }
 }
@@ -61,7 +61,7 @@ class CreateTaskOptions extends Options {
      * @param string $actionsUrl User-provided HTTP endpoint where from the
      *                           assistant fetches actions
      */
-    public function __construct(string $friendlyName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['actions'] = $actions;
         $this->options['actionsUrl'] = $actionsUrl;
@@ -111,13 +111,8 @@ class CreateTaskOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Understand.CreateTaskOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Understand.CreateTaskOptions ' . $options . ']';
     }
 }
 
@@ -135,7 +130,7 @@ class UpdateTaskOptions extends Options {
      * @param string $actionsUrl User-provided HTTP endpoint where from the
      *                           assistant fetches actions
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::NONE, string $actionsUrl = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, array $actions = Values::ARRAY_NONE, string $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['actions'] = $actions;
@@ -199,12 +194,7 @@ class UpdateTaskOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Understand.UpdateTaskOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Understand.UpdateTaskOptions ' . $options . ']';
     }
 }

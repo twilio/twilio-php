@@ -53,7 +53,7 @@ abstract class CompositionHookOptions {
      *                   media in the Compositions triggered by the composition hook
      * @return CreateCompositionHookOptions Options builder
      */
-    public static function create(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionHookOptions {
+    public static function create(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE): CreateCompositionHookOptions {
         return new CreateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 
@@ -77,7 +77,7 @@ abstract class CompositionHookOptions {
      *                                     status_callback
      * @return UpdateCompositionHookOptions Options builder
      */
-    public static function update(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
+    public static function update(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): UpdateCompositionHookOptions {
         return new UpdateCompositionHookOptions($enabled, $videoLayout, $audioSources, $audioSourcesExcluded, $trim, $format, $resolution, $statusCallback, $statusCallbackMethod);
     }
 }
@@ -158,13 +158,8 @@ class ReadCompositionHookOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Video.V1.ReadCompositionHookOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Video.V1.ReadCompositionHookOptions ' . $options . ']';
     }
 }
 
@@ -188,7 +183,7 @@ class CreateCompositionHookOptions extends Options {
      * @param bool $trim Whether to clip the intervals where there is no active
      *                   media in the Compositions triggered by the composition hook
      */
-    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, string $resolution = Values::NONE, string $format = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $trim = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -230,7 +225,7 @@ class CreateCompositionHookOptions extends Options {
      *                               room to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources(string[] $audioSources): self {
+    public function setAudioSources(array $audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -241,7 +236,7 @@ class CreateCompositionHookOptions extends Options {
      * @param string[] $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded(string[] $audioSourcesExcluded): self {
+    public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -327,13 +322,8 @@ class CreateCompositionHookOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Video.V1.CreateCompositionHookOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Video.V1.CreateCompositionHookOptions ' . $options . ']';
     }
 }
 
@@ -357,7 +347,7 @@ class UpdateCompositionHookOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method we should use to call
      *                                     status_callback
      */
-    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::NONE, string[] $audioSources = Values::NONE, string[] $audioSourcesExcluded = Values::NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
+    public function __construct(bool $enabled = Values::NONE, array $videoLayout = Values::ARRAY_NONE, array $audioSources = Values::ARRAY_NONE, array $audioSourcesExcluded = Values::ARRAY_NONE, bool $trim = Values::NONE, string $format = Values::NONE, string $resolution = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -399,7 +389,7 @@ class UpdateCompositionHookOptions extends Options {
      *                               room to merge
      * @return $this Fluent Builder
      */
-    public function setAudioSources(string[] $audioSources): self {
+    public function setAudioSources(array $audioSources): self {
         $this->options['audioSources'] = $audioSources;
         return $this;
     }
@@ -410,7 +400,7 @@ class UpdateCompositionHookOptions extends Options {
      * @param string[] $audioSourcesExcluded An array of track names to exclude
      * @return $this Fluent Builder
      */
-    public function setAudioSourcesExcluded(string[] $audioSourcesExcluded): self {
+    public function setAudioSourcesExcluded(array $audioSourcesExcluded): self {
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
@@ -496,12 +486,7 @@ class UpdateCompositionHookOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Video.V1.UpdateCompositionHookOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Video.V1.UpdateCompositionHookOptions ' . $options . ']';
     }
 }

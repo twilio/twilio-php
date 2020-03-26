@@ -17,7 +17,7 @@ abstract class FeedbackOptions {
      * @param string[] $issue Issues experienced during the call
      * @return CreateFeedbackOptions Options builder
      */
-    public static function create(string[] $issue = Values::NONE): CreateFeedbackOptions {
+    public static function create(array $issue = Values::ARRAY_NONE): CreateFeedbackOptions {
         return new CreateFeedbackOptions($issue);
     }
 
@@ -25,7 +25,7 @@ abstract class FeedbackOptions {
      * @param string[] $issue Issues experienced during the call
      * @return UpdateFeedbackOptions Options builder
      */
-    public static function update(string[] $issue = Values::NONE): UpdateFeedbackOptions {
+    public static function update(array $issue = Values::ARRAY_NONE): UpdateFeedbackOptions {
         return new UpdateFeedbackOptions($issue);
     }
 }
@@ -34,7 +34,7 @@ class CreateFeedbackOptions extends Options {
     /**
      * @param string[] $issue Issues experienced during the call
      */
-    public function __construct(string[] $issue = Values::NONE) {
+    public function __construct(array $issue = Values::ARRAY_NONE) {
         $this->options['issue'] = $issue;
     }
 
@@ -44,7 +44,7 @@ class CreateFeedbackOptions extends Options {
      * @param string[] $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
-    public function setIssue(string[] $issue): self {
+    public function setIssue(array $issue): self {
         $this->options['issue'] = $issue;
         return $this;
     }
@@ -55,13 +55,8 @@ class CreateFeedbackOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.CreateFeedbackOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.CreateFeedbackOptions ' . $options . ']';
     }
 }
 
@@ -69,7 +64,7 @@ class UpdateFeedbackOptions extends Options {
     /**
      * @param string[] $issue Issues experienced during the call
      */
-    public function __construct(string[] $issue = Values::NONE) {
+    public function __construct(array $issue = Values::ARRAY_NONE) {
         $this->options['issue'] = $issue;
     }
 
@@ -79,7 +74,7 @@ class UpdateFeedbackOptions extends Options {
      * @param string[] $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
-    public function setIssue(string[] $issue): self {
+    public function setIssue(array $issue): self {
         $this->options['issue'] = $issue;
         return $this;
     }
@@ -90,12 +85,7 @@ class UpdateFeedbackOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.UpdateFeedbackOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.UpdateFeedbackOptions ' . $options . ']';
     }
 }

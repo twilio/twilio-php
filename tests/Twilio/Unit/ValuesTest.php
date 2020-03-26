@@ -61,4 +61,17 @@ class ValuesTest extends UnitTest {
 
         $this->assertEquals(['Known' => 1], $data);
     }
+
+    public function testArrayValues(): void {
+        $values = new Values([
+            'a' => [1],
+        ]);
+
+        $data = Values::of([
+            'a' => $values['a'],
+            'b' => Values::ARRAY_NONE,
+        ]);
+
+        $this->assertEquals(['a' => [1]], $data);
+    }
 }

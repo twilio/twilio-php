@@ -21,7 +21,7 @@ abstract class PhoneNumberOptions {
      *                           invoke
      * @return FetchPhoneNumberOptions Options builder
      */
-    public static function fetch(string $countryCode = Values::NONE, string[] $type = Values::NONE, string[] $addOns = Values::NONE, string $addOnsData = Values::NONE): FetchPhoneNumberOptions {
+    public static function fetch(string $countryCode = Values::NONE, array $type = Values::ARRAY_NONE, array $addOns = Values::ARRAY_NONE, string $addOnsData = Values::NONE): FetchPhoneNumberOptions {
         return new FetchPhoneNumberOptions($countryCode, $type, $addOns, $addOnsData);
     }
 }
@@ -34,7 +34,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addOnsData Data specific to the add-on you would like to
      *                           invoke
      */
-    public function __construct(string $countryCode = Values::NONE, string[] $type = Values::NONE, string[] $addOns = Values::NONE, string $addOnsData = Values::NONE) {
+    public function __construct(string $countryCode = Values::NONE, array $type = Values::ARRAY_NONE, array $addOns = Values::ARRAY_NONE, string $addOnsData = Values::NONE) {
         $this->options['countryCode'] = $countryCode;
         $this->options['type'] = $type;
         $this->options['addOns'] = $addOns;
@@ -58,7 +58,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string[] $type The type of information to return
      * @return $this Fluent Builder
      */
-    public function setType(string[] $type): self {
+    public function setType(array $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -69,7 +69,7 @@ class FetchPhoneNumberOptions extends Options {
      * @param string[] $addOns The unique_name of an Add-on you would like to invoke
      * @return $this Fluent Builder
      */
-    public function setAddOns(string[] $addOns): self {
+    public function setAddOns(array $addOns): self {
         $this->options['addOns'] = $addOns;
         return $this;
     }
@@ -92,12 +92,7 @@ class FetchPhoneNumberOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Lookups.V1.FetchPhoneNumberOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Lookups.V1.FetchPhoneNumberOptions ' . $options . ']';
     }
 }

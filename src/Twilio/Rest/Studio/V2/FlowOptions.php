@@ -30,7 +30,7 @@ abstract class FlowOptions {
      * @param string $commitMessage Description on change made in the revision
      * @return UpdateFlowOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, array $definition = Values::NONE, string $commitMessage = Values::NONE): UpdateFlowOptions {
+    public static function update(string $friendlyName = Values::NONE, array $definition = Values::ARRAY_NONE, string $commitMessage = Values::NONE): UpdateFlowOptions {
         return new UpdateFlowOptions($friendlyName, $definition, $commitMessage);
     }
 }
@@ -60,13 +60,8 @@ class CreateFlowOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Studio.V2.CreateFlowOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V2.CreateFlowOptions ' . $options . ']';
     }
 }
 
@@ -76,7 +71,7 @@ class UpdateFlowOptions extends Options {
      * @param array $definition JSON representation of flow definition
      * @param string $commitMessage Description on change made in the revision
      */
-    public function __construct(string $friendlyName = Values::NONE, array $definition = Values::NONE, string $commitMessage = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, array $definition = Values::ARRAY_NONE, string $commitMessage = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['definition'] = $definition;
         $this->options['commitMessage'] = $commitMessage;
@@ -121,12 +116,7 @@ class UpdateFlowOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Studio.V2.UpdateFlowOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V2.UpdateFlowOptions ' . $options . ']';
     }
 }

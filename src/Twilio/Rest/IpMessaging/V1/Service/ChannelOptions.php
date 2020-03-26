@@ -30,7 +30,7 @@ abstract class ChannelOptions {
      * @param string[] $type The visibility of the channel to read
      * @return ReadChannelOptions Options builder
      */
-    public static function read(string[] $type = Values::NONE): ReadChannelOptions {
+    public static function read(array $type = Values::ARRAY_NONE): ReadChannelOptions {
         return new ReadChannelOptions($type);
     }
 
@@ -115,13 +115,8 @@ class CreateChannelOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V1.CreateChannelOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V1.CreateChannelOptions ' . $options . ']';
     }
 }
 
@@ -129,7 +124,7 @@ class ReadChannelOptions extends Options {
     /**
      * @param string[] $type The visibility of the channel to read
      */
-    public function __construct(string[] $type = Values::NONE) {
+    public function __construct(array $type = Values::ARRAY_NONE) {
         $this->options['type'] = $type;
     }
 
@@ -139,7 +134,7 @@ class ReadChannelOptions extends Options {
      * @param string[] $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
-    public function setType(string[] $type): self {
+    public function setType(array $type): self {
         $this->options['type'] = $type;
         return $this;
     }
@@ -150,13 +145,8 @@ class ReadChannelOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V1.ReadChannelOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V1.ReadChannelOptions ' . $options . ']';
     }
 }
 
@@ -215,12 +205,7 @@ class UpdateChannelOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V1.UpdateChannelOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V1.UpdateChannelOptions ' . $options . ']';
     }
 }

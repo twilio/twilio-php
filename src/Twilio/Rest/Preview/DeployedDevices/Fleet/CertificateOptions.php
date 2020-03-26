@@ -90,13 +90,8 @@ class CreateCertificateOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.DeployedDevices.CreateCertificateOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.CreateCertificateOptions ' . $options . ']';
     }
 }
 
@@ -127,13 +122,8 @@ class ReadCertificateOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.DeployedDevices.ReadCertificateOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.ReadCertificateOptions ' . $options . ']';
     }
 }
 
@@ -179,12 +169,7 @@ class UpdateCertificateOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.DeployedDevices.UpdateCertificateOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.DeployedDevices.UpdateCertificateOptions ' . $options . ']';
     }
 }

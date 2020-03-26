@@ -21,7 +21,7 @@ abstract class DocumentOptions {
      * @param array $data The data
      * @return CreateDocumentOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, array $data = Values::NONE): CreateDocumentOptions {
+    public static function create(string $uniqueName = Values::NONE, array $data = Values::ARRAY_NONE): CreateDocumentOptions {
         return new CreateDocumentOptions($uniqueName, $data);
     }
 }
@@ -31,7 +31,7 @@ class CreateDocumentOptions extends Options {
      * @param string $uniqueName The unique_name
      * @param array $data The data
      */
-    public function __construct(string $uniqueName = Values::NONE, array $data = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, array $data = Values::ARRAY_NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['data'] = $data;
     }
@@ -64,12 +64,7 @@ class CreateDocumentOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Sync.CreateDocumentOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Sync.CreateDocumentOptions ' . $options . ']';
     }
 }

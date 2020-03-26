@@ -28,7 +28,7 @@ abstract class ExecutionOptions {
      * @param array $parameters JSON data that will be added to the Flow's context
      * @return CreateExecutionOptions Options builder
      */
-    public static function create(array $parameters = Values::NONE): CreateExecutionOptions {
+    public static function create(array $parameters = Values::ARRAY_NONE): CreateExecutionOptions {
         return new CreateExecutionOptions($parameters);
     }
 }
@@ -75,13 +75,8 @@ class ReadExecutionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Studio.V1.ReadExecutionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V1.ReadExecutionOptions ' . $options . ']';
     }
 }
 
@@ -89,7 +84,7 @@ class CreateExecutionOptions extends Options {
     /**
      * @param array $parameters JSON data that will be added to the Flow's context
      */
-    public function __construct(array $parameters = Values::NONE) {
+    public function __construct(array $parameters = Values::ARRAY_NONE) {
         $this->options['parameters'] = $parameters;
     }
 
@@ -110,12 +105,7 @@ class CreateExecutionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Studio.V1.CreateExecutionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V1.CreateExecutionOptions ' . $options . ']';
     }
 }

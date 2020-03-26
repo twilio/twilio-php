@@ -44,7 +44,7 @@ abstract class TaskOptions {
      * @param bool $hasAddons Whether to read Tasks with addons
      * @return ReadTaskOptions Options builder
      */
-    public static function read(int $priority = Values::NONE, string[] $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
+    public static function read(int $priority = Values::NONE, array $assignmentStatus = Values::ARRAY_NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE): ReadTaskOptions {
         return new ReadTaskOptions($priority, $assignmentStatus, $workflowSid, $workflowName, $taskQueueSid, $taskQueueName, $evaluateTaskAttributes, $ordering, $hasAddons);
     }
 
@@ -147,13 +147,8 @@ class UpdateTaskOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Taskrouter.V1.UpdateTaskOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.UpdateTaskOptions ' . $options . ']';
     }
 }
 
@@ -174,7 +169,7 @@ class ReadTaskOptions extends Options {
      * @param string $ordering Controls the order of the Tasks returned
      * @param bool $hasAddons Whether to read Tasks with addons
      */
-    public function __construct(int $priority = Values::NONE, string[] $assignmentStatus = Values::NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
+    public function __construct(int $priority = Values::NONE, array $assignmentStatus = Values::ARRAY_NONE, string $workflowSid = Values::NONE, string $workflowName = Values::NONE, string $taskQueueSid = Values::NONE, string $taskQueueName = Values::NONE, string $evaluateTaskAttributes = Values::NONE, string $ordering = Values::NONE, bool $hasAddons = Values::NONE) {
         $this->options['priority'] = $priority;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['workflowSid'] = $workflowSid;
@@ -205,7 +200,7 @@ class ReadTaskOptions extends Options {
      *                                   assignment_status
      * @return $this Fluent Builder
      */
-    public function setAssignmentStatus(string[] $assignmentStatus): self {
+    public function setAssignmentStatus(array $assignmentStatus): self {
         $this->options['assignmentStatus'] = $assignmentStatus;
         return $this;
     }
@@ -296,13 +291,8 @@ class ReadTaskOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Taskrouter.V1.ReadTaskOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.ReadTaskOptions ' . $options . ']';
     }
 }
 
@@ -393,12 +383,7 @@ class CreateTaskOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Taskrouter.V1.CreateTaskOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.CreateTaskOptions ' . $options . ']';
     }
 }

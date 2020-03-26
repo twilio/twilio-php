@@ -20,7 +20,7 @@ abstract class DefaultsOptions {
      * @param array $defaults A JSON string that describes the default task links.
      * @return UpdateDefaultsOptions Options builder
      */
-    public static function update(array $defaults = Values::NONE): UpdateDefaultsOptions {
+    public static function update(array $defaults = Values::ARRAY_NONE): UpdateDefaultsOptions {
         return new UpdateDefaultsOptions($defaults);
     }
 }
@@ -29,7 +29,7 @@ class UpdateDefaultsOptions extends Options {
     /**
      * @param array $defaults A JSON string that describes the default task links.
      */
-    public function __construct(array $defaults = Values::NONE) {
+    public function __construct(array $defaults = Values::ARRAY_NONE) {
         $this->options['defaults'] = $defaults;
     }
 
@@ -50,12 +50,7 @@ class UpdateDefaultsOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Autopilot.V1.UpdateDefaultsOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Autopilot.V1.UpdateDefaultsOptions ' . $options . ']';
     }
 }

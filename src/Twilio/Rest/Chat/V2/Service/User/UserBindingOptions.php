@@ -18,7 +18,7 @@ abstract class UserBindingOptions {
      *                              resources to read
      * @return ReadUserBindingOptions Options builder
      */
-    public static function read(string[] $bindingType = Values::NONE): ReadUserBindingOptions {
+    public static function read(array $bindingType = Values::ARRAY_NONE): ReadUserBindingOptions {
         return new ReadUserBindingOptions($bindingType);
     }
 }
@@ -28,7 +28,7 @@ class ReadUserBindingOptions extends Options {
      * @param string[] $bindingType The push technology used by the User Binding
      *                              resources to read
      */
-    public function __construct(string[] $bindingType = Values::NONE) {
+    public function __construct(array $bindingType = Values::ARRAY_NONE) {
         $this->options['bindingType'] = $bindingType;
     }
 
@@ -39,7 +39,7 @@ class ReadUserBindingOptions extends Options {
      *                              resources to read
      * @return $this Fluent Builder
      */
-    public function setBindingType(string[] $bindingType): self {
+    public function setBindingType(array $bindingType): self {
         $this->options['bindingType'] = $bindingType;
         return $this;
     }
@@ -50,12 +50,7 @@ class ReadUserBindingOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Chat.V2.ReadUserBindingOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Chat.V2.ReadUserBindingOptions ' . $options . ']';
     }
 }

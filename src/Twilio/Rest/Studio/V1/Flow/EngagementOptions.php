@@ -19,7 +19,7 @@ abstract class EngagementOptions {
      *                          flow
      * @return CreateEngagementOptions Options builder
      */
-    public static function create(array $parameters = Values::NONE): CreateEngagementOptions {
+    public static function create(array $parameters = Values::ARRAY_NONE): CreateEngagementOptions {
         return new CreateEngagementOptions($parameters);
     }
 }
@@ -30,7 +30,7 @@ class CreateEngagementOptions extends Options {
      *                          and that you can access as variables inside your
      *                          flow
      */
-    public function __construct(array $parameters = Values::NONE) {
+    public function __construct(array $parameters = Values::ARRAY_NONE) {
         $this->options['parameters'] = $parameters;
     }
 
@@ -53,12 +53,7 @@ class CreateEngagementOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Studio.V1.CreateEngagementOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Studio.V1.CreateEngagementOptions ' . $options . ']';
     }
 }

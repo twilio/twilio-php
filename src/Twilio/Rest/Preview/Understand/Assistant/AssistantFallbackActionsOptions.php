@@ -20,7 +20,7 @@ abstract class AssistantFallbackActionsOptions {
      * @param array $fallbackActions The fallback_actions
      * @return UpdateAssistantFallbackActionsOptions Options builder
      */
-    public static function update(array $fallbackActions = Values::NONE): UpdateAssistantFallbackActionsOptions {
+    public static function update(array $fallbackActions = Values::ARRAY_NONE): UpdateAssistantFallbackActionsOptions {
         return new UpdateAssistantFallbackActionsOptions($fallbackActions);
     }
 }
@@ -29,7 +29,7 @@ class UpdateAssistantFallbackActionsOptions extends Options {
     /**
      * @param array $fallbackActions The fallback_actions
      */
-    public function __construct(array $fallbackActions = Values::NONE) {
+    public function __construct(array $fallbackActions = Values::ARRAY_NONE) {
         $this->options['fallbackActions'] = $fallbackActions;
     }
 
@@ -50,12 +50,7 @@ class UpdateAssistantFallbackActionsOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Understand.UpdateAssistantFallbackActionsOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Understand.UpdateAssistantFallbackActionsOptions ' . $options . ']';
     }
 }

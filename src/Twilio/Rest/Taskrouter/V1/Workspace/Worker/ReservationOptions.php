@@ -126,7 +126,7 @@ abstract class ReservationOptions {
      *                                     the customer joins
      * @return UpdateReservationOptions Options builder
      */
-    public static function update(string $reservationStatus = Values::NONE, string $workerActivitySid = Values::NONE, string $instruction = Values::NONE, string $dequeuePostWorkActivitySid = Values::NONE, string $dequeueFrom = Values::NONE, string $dequeueRecord = Values::NONE, int $dequeueTimeout = Values::NONE, string $dequeueTo = Values::NONE, string $dequeueStatusCallbackUrl = Values::NONE, string $callFrom = Values::NONE, string $callRecord = Values::NONE, int $callTimeout = Values::NONE, string $callTo = Values::NONE, string $callUrl = Values::NONE, string $callStatusCallbackUrl = Values::NONE, bool $callAccept = Values::NONE, string $redirectCallSid = Values::NONE, bool $redirectAccept = Values::NONE, string $redirectUrl = Values::NONE, string $to = Values::NONE, string $from = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string $region = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string[] $dequeueStatusCallbackEvent = Values::NONE, string $postWorkActivitySid = Values::NONE, bool $endConferenceOnCustomerExit = Values::NONE, bool $beepOnCustomerEntrance = Values::NONE): UpdateReservationOptions {
+    public static function update(string $reservationStatus = Values::NONE, string $workerActivitySid = Values::NONE, string $instruction = Values::NONE, string $dequeuePostWorkActivitySid = Values::NONE, string $dequeueFrom = Values::NONE, string $dequeueRecord = Values::NONE, int $dequeueTimeout = Values::NONE, string $dequeueTo = Values::NONE, string $dequeueStatusCallbackUrl = Values::NONE, string $callFrom = Values::NONE, string $callRecord = Values::NONE, int $callTimeout = Values::NONE, string $callTo = Values::NONE, string $callUrl = Values::NONE, string $callStatusCallbackUrl = Values::NONE, bool $callAccept = Values::NONE, string $redirectCallSid = Values::NONE, bool $redirectAccept = Values::NONE, string $redirectUrl = Values::NONE, string $to = Values::NONE, string $from = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string $region = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, array $dequeueStatusCallbackEvent = Values::ARRAY_NONE, string $postWorkActivitySid = Values::NONE, bool $endConferenceOnCustomerExit = Values::NONE, bool $beepOnCustomerEntrance = Values::NONE): UpdateReservationOptions {
         return new UpdateReservationOptions($reservationStatus, $workerActivitySid, $instruction, $dequeuePostWorkActivitySid, $dequeueFrom, $dequeueRecord, $dequeueTimeout, $dequeueTo, $dequeueStatusCallbackUrl, $callFrom, $callRecord, $callTimeout, $callTo, $callUrl, $callStatusCallbackUrl, $callAccept, $redirectCallSid, $redirectAccept, $redirectUrl, $to, $from, $statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $conferenceRecord, $conferenceTrim, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $region, $sipAuthUsername, $sipAuthPassword, $dequeueStatusCallbackEvent, $postWorkActivitySid, $endConferenceOnCustomerExit, $beepOnCustomerEntrance);
     }
 }
@@ -158,13 +158,8 @@ class ReadReservationOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Taskrouter.V1.ReadReservationOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.ReadReservationOptions ' . $options . ']';
     }
 }
 
@@ -272,7 +267,7 @@ class UpdateReservationOptions extends Options {
      * @param bool $beepOnCustomerEntrance Whether to play a notification beep when
      *                                     the customer joins
      */
-    public function __construct(string $reservationStatus = Values::NONE, string $workerActivitySid = Values::NONE, string $instruction = Values::NONE, string $dequeuePostWorkActivitySid = Values::NONE, string $dequeueFrom = Values::NONE, string $dequeueRecord = Values::NONE, int $dequeueTimeout = Values::NONE, string $dequeueTo = Values::NONE, string $dequeueStatusCallbackUrl = Values::NONE, string $callFrom = Values::NONE, string $callRecord = Values::NONE, int $callTimeout = Values::NONE, string $callTo = Values::NONE, string $callUrl = Values::NONE, string $callStatusCallbackUrl = Values::NONE, bool $callAccept = Values::NONE, string $redirectCallSid = Values::NONE, bool $redirectAccept = Values::NONE, string $redirectUrl = Values::NONE, string $to = Values::NONE, string $from = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string[] $statusCallbackEvent = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, string[] $conferenceStatusCallbackEvent = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string $region = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string[] $dequeueStatusCallbackEvent = Values::NONE, string $postWorkActivitySid = Values::NONE, bool $endConferenceOnCustomerExit = Values::NONE, bool $beepOnCustomerEntrance = Values::NONE) {
+    public function __construct(string $reservationStatus = Values::NONE, string $workerActivitySid = Values::NONE, string $instruction = Values::NONE, string $dequeuePostWorkActivitySid = Values::NONE, string $dequeueFrom = Values::NONE, string $dequeueRecord = Values::NONE, int $dequeueTimeout = Values::NONE, string $dequeueTo = Values::NONE, string $dequeueStatusCallbackUrl = Values::NONE, string $callFrom = Values::NONE, string $callRecord = Values::NONE, int $callTimeout = Values::NONE, string $callTo = Values::NONE, string $callUrl = Values::NONE, string $callStatusCallbackUrl = Values::NONE, bool $callAccept = Values::NONE, string $redirectCallSid = Values::NONE, bool $redirectAccept = Values::NONE, string $redirectUrl = Values::NONE, string $to = Values::NONE, string $from = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, string $region = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, array $dequeueStatusCallbackEvent = Values::ARRAY_NONE, string $postWorkActivitySid = Values::NONE, bool $endConferenceOnCustomerExit = Values::NONE, bool $beepOnCustomerEntrance = Values::NONE) {
         $this->options['reservationStatus'] = $reservationStatus;
         $this->options['workerActivitySid'] = $workerActivitySid;
         $this->options['instruction'] = $instruction;
@@ -609,7 +604,7 @@ class UpdateReservationOptions extends Options {
      *                                      send to status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackEvent(string[] $statusCallbackEvent): self {
+    public function setStatusCallbackEvent(array $statusCallbackEvent): self {
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
         return $this;
     }
@@ -763,7 +758,7 @@ class UpdateReservationOptions extends Options {
      *                                                conference_status_callback
      * @return $this Fluent Builder
      */
-    public function setConferenceStatusCallbackEvent(string[] $conferenceStatusCallbackEvent): self {
+    public function setConferenceStatusCallbackEvent(array $conferenceStatusCallbackEvent): self {
         $this->options['conferenceStatusCallbackEvent'] = $conferenceStatusCallbackEvent;
         return $this;
     }
@@ -896,7 +891,7 @@ class UpdateReservationOptions extends Options {
      *                                             Dequeue instruction
      * @return $this Fluent Builder
      */
-    public function setDequeueStatusCallbackEvent(string[] $dequeueStatusCallbackEvent): self {
+    public function setDequeueStatusCallbackEvent(array $dequeueStatusCallbackEvent): self {
         $this->options['dequeueStatusCallbackEvent'] = $dequeueStatusCallbackEvent;
         return $this;
     }
@@ -943,12 +938,7 @@ class UpdateReservationOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Taskrouter.V1.UpdateReservationOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.UpdateReservationOptions ' . $options . ']';
     }
 }

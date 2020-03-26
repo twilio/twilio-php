@@ -38,7 +38,7 @@ abstract class MessageOptions {
      * @param string[] $persistentAction Rich actions for Channels Messages.
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, string[] $mediaUrl = Values::NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, string[] $persistentAction = Values::NONE): CreateMessageOptions {
+    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE): CreateMessageOptions {
         return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction);
     }
 
@@ -80,7 +80,7 @@ class CreateMessageOptions extends Options {
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
      */
-    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, string[] $mediaUrl = Values::NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, string[] $persistentAction = Values::NONE) {
+    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -138,7 +138,7 @@ class CreateMessageOptions extends Options {
      * @param string[] $mediaUrl The URL of the media to send with the message
      * @return $this Fluent Builder
      */
-    public function setMediaUrl(string[] $mediaUrl): self {
+    public function setMediaUrl(array $mediaUrl): self {
         $this->options['mediaUrl'] = $mediaUrl;
         return $this;
     }
@@ -254,7 +254,7 @@ class CreateMessageOptions extends Options {
      * @param string[] $persistentAction Rich actions for Channels Messages.
      * @return $this Fluent Builder
      */
-    public function setPersistentAction(string[] $persistentAction): self {
+    public function setPersistentAction(array $persistentAction): self {
         $this->options['persistentAction'] = $persistentAction;
         return $this;
     }
@@ -265,13 +265,8 @@ class CreateMessageOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.CreateMessageOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.CreateMessageOptions ' . $options . ']';
     }
 }
 
@@ -352,12 +347,7 @@ class ReadMessageOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.ReadMessageOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.ReadMessageOptions ' . $options . ']';
     }
 }

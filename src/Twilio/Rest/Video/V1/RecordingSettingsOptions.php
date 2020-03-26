@@ -118,12 +118,7 @@ class CreateRecordingSettingsOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Video.V1.CreateRecordingSettingsOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Video.V1.CreateRecordingSettingsOptions ' . $options . ']';
     }
 }

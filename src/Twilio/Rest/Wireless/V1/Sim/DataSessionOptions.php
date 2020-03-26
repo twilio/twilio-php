@@ -67,12 +67,7 @@ class ReadDataSessionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Wireless.V1.ReadDataSessionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Wireless.V1.ReadDataSessionOptions ' . $options . ']';
     }
 }

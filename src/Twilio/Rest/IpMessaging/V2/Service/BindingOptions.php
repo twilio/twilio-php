@@ -19,7 +19,7 @@ abstract class BindingOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadBindingOptions Options builder
      */
-    public static function read(string[] $bindingType = Values::NONE, string[] $identity = Values::NONE): ReadBindingOptions {
+    public static function read(array $bindingType = Values::ARRAY_NONE, array $identity = Values::ARRAY_NONE): ReadBindingOptions {
         return new ReadBindingOptions($bindingType, $identity);
     }
 }
@@ -30,7 +30,7 @@ class ReadBindingOptions extends Options {
      *                              resources to read
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(string[] $bindingType = Values::NONE, string[] $identity = Values::NONE) {
+    public function __construct(array $bindingType = Values::ARRAY_NONE, array $identity = Values::ARRAY_NONE) {
         $this->options['bindingType'] = $bindingType;
         $this->options['identity'] = $identity;
     }
@@ -42,7 +42,7 @@ class ReadBindingOptions extends Options {
      *                              resources to read
      * @return $this Fluent Builder
      */
-    public function setBindingType(string[] $bindingType): self {
+    public function setBindingType(array $bindingType): self {
         $this->options['bindingType'] = $bindingType;
         return $this;
     }
@@ -53,7 +53,7 @@ class ReadBindingOptions extends Options {
      * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity(string[] $identity): self {
+    public function setIdentity(array $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -64,12 +64,7 @@ class ReadBindingOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.IpMessaging.V2.ReadBindingOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.IpMessaging.V2.ReadBindingOptions ' . $options . ']';
     }
 }

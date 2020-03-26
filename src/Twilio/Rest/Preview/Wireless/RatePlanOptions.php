@@ -29,7 +29,7 @@ abstract class RatePlanOptions {
      * @param string[] $internationalRoaming The international_roaming
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, string[] $internationalRoaming = Values::NONE): CreateRatePlanOptions {
+    public static function create(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, array $internationalRoaming = Values::ARRAY_NONE): CreateRatePlanOptions {
         return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $commandsEnabled, $nationalRoamingEnabled, $internationalRoaming);
     }
 
@@ -56,7 +56,7 @@ class CreateRatePlanOptions extends Options {
      * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @param string[] $internationalRoaming The international_roaming
      */
-    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, string[] $internationalRoaming = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, array $internationalRoaming = Values::ARRAY_NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dataEnabled'] = $dataEnabled;
@@ -174,7 +174,7 @@ class CreateRatePlanOptions extends Options {
      * @param string[] $internationalRoaming The international_roaming
      * @return $this Fluent Builder
      */
-    public function setInternationalRoaming(string[] $internationalRoaming): self {
+    public function setInternationalRoaming(array $internationalRoaming): self {
         $this->options['internationalRoaming'] = $internationalRoaming;
         return $this;
     }
@@ -185,13 +185,8 @@ class CreateRatePlanOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Wireless.CreateRatePlanOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Wireless.CreateRatePlanOptions ' . $options . ']';
     }
 }
 
@@ -233,12 +228,7 @@ class UpdateRatePlanOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Wireless.UpdateRatePlanOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Wireless.UpdateRatePlanOptions ' . $options . ']';
     }
 }

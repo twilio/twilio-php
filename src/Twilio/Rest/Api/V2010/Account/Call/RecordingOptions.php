@@ -26,7 +26,7 @@ abstract class RecordingOptions {
      *                                  recording will be configured with
      * @return CreateRecordingOptions Options builder
      */
-    public static function create(string[] $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE): CreateRecordingOptions {
+    public static function create(array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE): CreateRecordingOptions {
         return new CreateRecordingOptions($recordingStatusCallbackEvent, $recordingStatusCallback, $recordingStatusCallbackMethod, $trim, $recordingChannels);
     }
 
@@ -65,7 +65,7 @@ class CreateRecordingOptions extends Options {
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
      */
-    public function __construct(string[] $recordingStatusCallbackEvent = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE) {
+    public function __construct(array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $trim = Values::NONE, string $recordingChannels = Values::NONE) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
@@ -80,7 +80,7 @@ class CreateRecordingOptions extends Options {
      *                                               that should generate a callback
      * @return $this Fluent Builder
      */
-    public function setRecordingStatusCallbackEvent(string[] $recordingStatusCallbackEvent): self {
+    public function setRecordingStatusCallbackEvent(array $recordingStatusCallbackEvent): self {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         return $this;
     }
@@ -139,13 +139,8 @@ class CreateRecordingOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.CreateRecordingOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.CreateRecordingOptions ' . $options . ']';
     }
 }
 
@@ -176,13 +171,8 @@ class UpdateRecordingOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.UpdateRecordingOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.UpdateRecordingOptions ' . $options . ']';
     }
 }
 
@@ -241,12 +231,7 @@ class ReadRecordingOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.ReadRecordingOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.ReadRecordingOptions ' . $options . ']';
     }
 }

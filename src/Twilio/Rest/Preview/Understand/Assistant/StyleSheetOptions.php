@@ -20,7 +20,7 @@ abstract class StyleSheetOptions {
      * @param array $styleSheet The JSON Style sheet string
      * @return UpdateStyleSheetOptions Options builder
      */
-    public static function update(array $styleSheet = Values::NONE): UpdateStyleSheetOptions {
+    public static function update(array $styleSheet = Values::ARRAY_NONE): UpdateStyleSheetOptions {
         return new UpdateStyleSheetOptions($styleSheet);
     }
 }
@@ -29,7 +29,7 @@ class UpdateStyleSheetOptions extends Options {
     /**
      * @param array $styleSheet The JSON Style sheet string
      */
-    public function __construct(array $styleSheet = Values::NONE) {
+    public function __construct(array $styleSheet = Values::ARRAY_NONE) {
         $this->options['styleSheet'] = $styleSheet;
     }
 
@@ -50,12 +50,7 @@ class UpdateStyleSheetOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Preview.Understand.UpdateStyleSheetOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Understand.UpdateStyleSheetOptions ' . $options . ']';
     }
 }

@@ -6,6 +6,7 @@ namespace Twilio;
 
 class Values implements \ArrayAccess {
     public const NONE = 'Twilio\\Values\\NONE';
+    public const ARRAY_NONE = [self::NONE];
 
     protected $options;
 
@@ -19,10 +20,9 @@ class Values implements \ArrayAccess {
     public static function of(array $array): array {
         $result = [];
         foreach ($array as $key => $value) {
-            if ($value === self::NONE) {
-                continue;
+            if ($value !== self::NONE && $value !== self::ARRAY_NONE) {
+                $result[$key] = $value;
             }
-            $result[$key] = $value;
         }
         return $result;
     }

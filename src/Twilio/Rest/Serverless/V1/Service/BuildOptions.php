@@ -25,7 +25,7 @@ abstract class BuildOptions {
      *                             included in the build
      * @return CreateBuildOptions Options builder
      */
-    public static function create(string[] $assetVersions = Values::NONE, string[] $functionVersions = Values::NONE, string $dependencies = Values::NONE): CreateBuildOptions {
+    public static function create(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE): CreateBuildOptions {
         return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies);
     }
 }
@@ -39,7 +39,7 @@ class CreateBuildOptions extends Options {
      * @param string $dependencies A list of objects that describe the Dependencies
      *                             included in the build
      */
-    public function __construct(string[] $assetVersions = Values::NONE, string[] $functionVersions = Values::NONE, string $dependencies = Values::NONE) {
+    public function __construct(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE) {
         $this->options['assetVersions'] = $assetVersions;
         $this->options['functionVersions'] = $functionVersions;
         $this->options['dependencies'] = $dependencies;
@@ -52,7 +52,7 @@ class CreateBuildOptions extends Options {
      *                                include in the build
      * @return $this Fluent Builder
      */
-    public function setAssetVersions(string[] $assetVersions): self {
+    public function setAssetVersions(array $assetVersions): self {
         $this->options['assetVersions'] = $assetVersions;
         return $this;
     }
@@ -64,7 +64,7 @@ class CreateBuildOptions extends Options {
      *                                   include in the build
      * @return $this Fluent Builder
      */
-    public function setFunctionVersions(string[] $functionVersions): self {
+    public function setFunctionVersions(array $functionVersions): self {
         $this->options['functionVersions'] = $functionVersions;
         return $this;
     }
@@ -87,12 +87,7 @@ class CreateBuildOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Serverless.V1.CreateBuildOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Serverless.V1.CreateBuildOptions ' . $options . ']';
     }
 }

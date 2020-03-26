@@ -25,7 +25,7 @@ abstract class InviteOptions {
      * @param string[] $identity The `identity` value of the resources to read
      * @return ReadInviteOptions Options builder
      */
-    public static function read(string[] $identity = Values::NONE): ReadInviteOptions {
+    public static function read(array $identity = Values::ARRAY_NONE): ReadInviteOptions {
         return new ReadInviteOptions($identity);
     }
 }
@@ -55,13 +55,8 @@ class CreateInviteOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Chat.V1.CreateInviteOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Chat.V1.CreateInviteOptions ' . $options . ']';
     }
 }
 
@@ -69,7 +64,7 @@ class ReadInviteOptions extends Options {
     /**
      * @param string[] $identity The `identity` value of the resources to read
      */
-    public function __construct(string[] $identity = Values::NONE) {
+    public function __construct(array $identity = Values::ARRAY_NONE) {
         $this->options['identity'] = $identity;
     }
 
@@ -79,7 +74,7 @@ class ReadInviteOptions extends Options {
      * @param string[] $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
-    public function setIdentity(string[] $identity): self {
+    public function setIdentity(array $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -90,12 +85,7 @@ class ReadInviteOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Chat.V1.ReadInviteOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Chat.V1.ReadInviteOptions ' . $options . ']';
     }
 }

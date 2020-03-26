@@ -42,7 +42,7 @@ abstract class NotificationOptions {
      * @param string $deliveryCallbackUrl URL to send webhooks
      * @return CreateNotificationOptions Options builder
      */
-    public static function create(string[] $identity = Values::NONE, string[] $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, string[] $segment = Values::NONE, array $alexa = Values::NONE, string[] $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
+    public static function create(array $identity = Values::ARRAY_NONE, array $tag = Values::ARRAY_NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::ARRAY_NONE, array $apn = Values::ARRAY_NONE, array $gcm = Values::ARRAY_NONE, array $sms = Values::ARRAY_NONE, array $facebookMessenger = Values::ARRAY_NONE, array $fcm = Values::ARRAY_NONE, array $segment = Values::ARRAY_NONE, array $alexa = Values::ARRAY_NONE, array $toBinding = Values::ARRAY_NONE, string $deliveryCallbackUrl = Values::NONE): CreateNotificationOptions {
         return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding, $deliveryCallbackUrl);
     }
 }
@@ -73,7 +73,7 @@ class CreateNotificationOptions extends Options {
      * @param string[] $toBinding The destination address specified as a JSON string
      * @param string $deliveryCallbackUrl URL to send webhooks
      */
-    public function __construct(string[] $identity = Values::NONE, string[] $tag = Values::NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::NONE, array $apn = Values::NONE, array $gcm = Values::NONE, array $sms = Values::NONE, array $facebookMessenger = Values::NONE, array $fcm = Values::NONE, string[] $segment = Values::NONE, array $alexa = Values::NONE, string[] $toBinding = Values::NONE, string $deliveryCallbackUrl = Values::NONE) {
+    public function __construct(array $identity = Values::ARRAY_NONE, array $tag = Values::ARRAY_NONE, string $body = Values::NONE, string $priority = Values::NONE, int $ttl = Values::NONE, string $title = Values::NONE, string $sound = Values::NONE, string $action = Values::NONE, array $data = Values::ARRAY_NONE, array $apn = Values::ARRAY_NONE, array $gcm = Values::ARRAY_NONE, array $sms = Values::ARRAY_NONE, array $facebookMessenger = Values::ARRAY_NONE, array $fcm = Values::ARRAY_NONE, array $segment = Values::ARRAY_NONE, array $alexa = Values::ARRAY_NONE, array $toBinding = Values::ARRAY_NONE, string $deliveryCallbackUrl = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -101,7 +101,7 @@ class CreateNotificationOptions extends Options {
      *                           resource's User
      * @return $this Fluent Builder
      */
-    public function setIdentity(string[] $identity): self {
+    public function setIdentity(array $identity): self {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -112,7 +112,7 @@ class CreateNotificationOptions extends Options {
      * @param string[] $tag A tag that selects the Bindings to notify
      * @return $this Fluent Builder
      */
-    public function setTag(string[] $tag): self {
+    public function setTag(array $tag): self {
         $this->options['tag'] = $tag;
         return $this;
     }
@@ -259,7 +259,7 @@ class CreateNotificationOptions extends Options {
      * @param string[] $segment A Segment to notify
      * @return $this Fluent Builder
      */
-    public function setSegment(string[] $segment): self {
+    public function setSegment(array $segment): self {
         $this->options['segment'] = $segment;
         return $this;
     }
@@ -281,7 +281,7 @@ class CreateNotificationOptions extends Options {
      * @param string[] $toBinding The destination address specified as a JSON string
      * @return $this Fluent Builder
      */
-    public function setToBinding(string[] $toBinding): self {
+    public function setToBinding(array $toBinding): self {
         $this->options['toBinding'] = $toBinding;
         return $this;
     }
@@ -303,12 +303,7 @@ class CreateNotificationOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Notify.V1.CreateNotificationOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Notify.V1.CreateNotificationOptions ' . $options . ']';
     }
 }

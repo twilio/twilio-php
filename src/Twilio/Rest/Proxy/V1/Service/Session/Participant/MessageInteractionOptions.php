@@ -21,7 +21,7 @@ abstract class MessageInteractionOptions {
      * @param string[] $mediaUrl Reserved
      * @return CreateMessageInteractionOptions Options builder
      */
-    public static function create(string $body = Values::NONE, string[] $mediaUrl = Values::NONE): CreateMessageInteractionOptions {
+    public static function create(string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE): CreateMessageInteractionOptions {
         return new CreateMessageInteractionOptions($body, $mediaUrl);
     }
 }
@@ -31,7 +31,7 @@ class CreateMessageInteractionOptions extends Options {
      * @param string $body Message body
      * @param string[] $mediaUrl Reserved
      */
-    public function __construct(string $body = Values::NONE, string[] $mediaUrl = Values::NONE) {
+    public function __construct(string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE) {
         $this->options['body'] = $body;
         $this->options['mediaUrl'] = $mediaUrl;
     }
@@ -53,7 +53,7 @@ class CreateMessageInteractionOptions extends Options {
      * @param string[] $mediaUrl Reserved
      * @return $this Fluent Builder
      */
-    public function setMediaUrl(string[] $mediaUrl): self {
+    public function setMediaUrl(array $mediaUrl): self {
         $this->options['mediaUrl'] = $mediaUrl;
         return $this;
     }
@@ -64,12 +64,7 @@ class CreateMessageInteractionOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Proxy.V1.CreateMessageInteractionOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Proxy.V1.CreateMessageInteractionOptions ' . $options . ']';
     }
 }

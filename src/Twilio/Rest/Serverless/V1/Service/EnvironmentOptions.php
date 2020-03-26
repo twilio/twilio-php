@@ -53,12 +53,7 @@ class CreateEnvironmentOptions extends Options {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $options = [];
-        foreach ($this->options as $key => $value) {
-            if ($value !== Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Serverless.V1.CreateEnvironmentOptions ' . \implode(' ', $options) . ']';
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Serverless.V1.CreateEnvironmentOptions ' . $options . ']';
     }
 }
