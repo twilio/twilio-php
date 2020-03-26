@@ -6,7 +6,7 @@ namespace Twilio;
 
 class Values implements \ArrayAccess {
     public const NONE = 'Twilio\\Values\\NONE';
-    public const ARRAY_NONE = [];
+    public const ARRAY_NONE = [self::NONE];
 
     protected $options;
 
