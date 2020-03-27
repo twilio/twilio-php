@@ -64,7 +64,7 @@ class PhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a PhoneNumberInstance
+     * Fetch the PhoneNumberInstance
      *
      * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance

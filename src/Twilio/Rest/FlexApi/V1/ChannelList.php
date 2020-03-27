@@ -89,11 +89,7 @@ class ChannelList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ChannelPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ChannelPage($this->version, $response, $this->solution);
     }
@@ -115,7 +111,7 @@ class ChannelList extends ListResource {
     }
 
     /**
-     * Create a new ChannelInstance
+     * Create the ChannelInstance
      *
      * @param string $flexFlowSid The SID of the FlexFlow
      * @param string $identity The identity value that identifies the new
@@ -123,7 +119,7 @@ class ChannelList extends ListResource {
      * @param string $chatUserFriendlyName The chat participant's friendly name
      * @param string $chatFriendlyName The chat channel's friendly name
      * @param array|Options $options Optional Arguments
-     * @return ChannelInstance Newly created ChannelInstance
+     * @return ChannelInstance Created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $flexFlowSid, string $identity, string $chatUserFriendlyName, string $chatFriendlyName, array $options = []): ChannelInstance {
@@ -142,12 +138,7 @@ class ChannelList extends ListResource {
             'LongLived' => Serialize::booleanToString($options['longLived']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ChannelInstance($this->version, $payload);
     }

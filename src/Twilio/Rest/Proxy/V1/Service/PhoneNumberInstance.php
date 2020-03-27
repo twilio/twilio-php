@@ -83,7 +83,7 @@ class PhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the PhoneNumberInstance
+     * Delete the PhoneNumberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -93,7 +93,7 @@ class PhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a PhoneNumberInstance
+     * Fetch the PhoneNumberInstance
      *
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.

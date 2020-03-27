@@ -119,7 +119,7 @@ class CallInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CallInstance
+     * Delete the CallInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -129,7 +129,7 @@ class CallInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CallInstance
+     * Fetch the CallInstance
      *
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.

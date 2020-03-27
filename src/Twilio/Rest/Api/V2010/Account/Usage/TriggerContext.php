@@ -34,19 +34,13 @@ class TriggerContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TriggerInstance
+     * Fetch the TriggerInstance
      *
      * @return TriggerInstance Fetched TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): TriggerInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new TriggerInstance(
             $this->version,
@@ -72,12 +66,7 @@ class TriggerContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TriggerInstance(
             $this->version,
@@ -88,13 +77,13 @@ class TriggerContext extends InstanceContext {
     }
 
     /**
-     * Deletes the TriggerInstance
+     * Delete the TriggerInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

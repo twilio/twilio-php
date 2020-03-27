@@ -33,13 +33,13 @@ class EndUserList extends ListResource {
     }
 
     /**
-     * Create a new EndUserInstance
+     * Create the EndUserInstance
      *
      * @param string $friendlyName The string that you assigned to describe the
      *                             resource
      * @param string $type The type of end user of the Bundle resource
      * @param array|Options $options Optional Arguments
-     * @return EndUserInstance Newly created EndUserInstance
+     * @return EndUserInstance Created EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $type, array $options = []): EndUserInstance {
@@ -51,12 +51,7 @@ class EndUserList extends ListResource {
             'Attributes' => Serialize::jsonObject($options['attributes']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new EndUserInstance($this->version, $payload);
     }
@@ -118,11 +113,7 @@ class EndUserList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EndUserPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new EndUserPage($this->version, $response, $this->solution);
     }

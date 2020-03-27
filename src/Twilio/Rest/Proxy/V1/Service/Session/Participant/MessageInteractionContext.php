@@ -42,19 +42,13 @@ class MessageInteractionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a MessageInteractionInstance
+     * Fetch the MessageInteractionInstance
      *
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): MessageInteractionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new MessageInteractionInstance(
             $this->version,

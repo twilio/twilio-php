@@ -77,7 +77,7 @@ class ConnectAppInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ConnectAppInstance
+     * Fetch the ConnectAppInstance
      *
      * @return ConnectAppInstance Fetched ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class ConnectAppInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ConnectAppInstance
+     * Delete the ConnectAppInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

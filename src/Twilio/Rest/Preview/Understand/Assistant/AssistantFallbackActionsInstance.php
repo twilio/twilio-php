@@ -64,7 +64,7 @@ class AssistantFallbackActionsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AssistantFallbackActionsInstance
+     * Fetch the AssistantFallbackActionsInstance
      *
      * @return AssistantFallbackActionsInstance Fetched
      *                                          AssistantFallbackActionsInstance

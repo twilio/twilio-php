@@ -33,23 +33,18 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
     }
 
     /**
-     * Create a new AuthRegistrationsCredentialListMappingInstance
+     * Create the AuthRegistrationsCredentialListMappingInstance
      *
      * @param string $credentialListSid The SID of the CredentialList resource to
      *                                  map to the SIP domain
-     * @return AuthRegistrationsCredentialListMappingInstance Newly created
+     * @return AuthRegistrationsCredentialListMappingInstance Created
      *                                                        AuthRegistrationsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $credentialListSid): AuthRegistrationsCredentialListMappingInstance {
         $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AuthRegistrationsCredentialListMappingInstance(
             $this->version,
@@ -120,11 +115,7 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthRegistrationsCredentialListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AuthRegistrationsCredentialListMappingPage($this->version, $response, $this->solution);
     }

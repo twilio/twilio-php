@@ -87,7 +87,7 @@ class LogInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a LogInstance
+     * Fetch the LogInstance
      *
      * @return LogInstance Fetched LogInstance
      * @throws TwilioException When an HTTP error occurs.

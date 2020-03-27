@@ -33,19 +33,13 @@ class CurrentCallContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CurrentCallInstance
+     * Fetch the CurrentCallInstance
      *
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CurrentCallInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CurrentCallInstance($this->version, $payload);
     }

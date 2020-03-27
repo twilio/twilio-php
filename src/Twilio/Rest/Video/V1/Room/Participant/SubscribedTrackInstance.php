@@ -82,7 +82,7 @@ class SubscribedTrackInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SubscribedTrackInstance
+     * Fetch the SubscribedTrackInstance
      *
      * @return SubscribedTrackInstance Fetched SubscribedTrackInstance
      * @throws TwilioException When an HTTP error occurs.

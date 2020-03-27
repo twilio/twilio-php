@@ -67,7 +67,7 @@ class RecordingSettingsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RecordingSettingsInstance
+     * Fetch the RecordingSettingsInstance
      *
      * @return RecordingSettingsInstance Fetched RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -77,11 +77,11 @@ class RecordingSettingsInstance extends InstanceResource {
     }
 
     /**
-     * Create a new RecordingSettingsInstance
+     * Create the RecordingSettingsInstance
      *
      * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
-     * @return RecordingSettingsInstance Newly created RecordingSettingsInstance
+     * @return RecordingSettingsInstance Created RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): RecordingSettingsInstance {

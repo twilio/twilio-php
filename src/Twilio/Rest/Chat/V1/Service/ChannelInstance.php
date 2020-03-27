@@ -92,7 +92,7 @@ class ChannelInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ChannelInstance
+     * Fetch the ChannelInstance
      *
      * @return ChannelInstance Fetched ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -102,7 +102,7 @@ class ChannelInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ChannelInstance
+     * Delete the ChannelInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

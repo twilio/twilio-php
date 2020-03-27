@@ -95,6 +95,7 @@ class QueryList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): QueryPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Language' => $options['language'],
             'ModelBuild' => $options['modelBuild'],
@@ -104,11 +105,7 @@ class QueryList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new QueryPage($this->version, $response, $this->solution);
     }
@@ -130,13 +127,13 @@ class QueryList extends ListResource {
     }
 
     /**
-     * Create a new QueryInstance
+     * Create the QueryInstance
      *
      * @param string $language The ISO language-country string that specifies the
      *                         language used for the new query
      * @param string $query The end-user's natural language input
      * @param array|Options $options Optional Arguments
-     * @return QueryInstance Newly created QueryInstance
+     * @return QueryInstance Created QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $language, string $query, array $options = []): QueryInstance {
@@ -149,12 +146,7 @@ class QueryList extends ListResource {
             'ModelBuild' => $options['modelBuild'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new QueryInstance($this->version, $payload, $this->solution['assistantSid']);
     }

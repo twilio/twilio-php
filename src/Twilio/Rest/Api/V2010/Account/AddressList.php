@@ -35,7 +35,7 @@ class AddressList extends ListResource {
     }
 
     /**
-     * Create a new AddressInstance
+     * Create the AddressInstance
      *
      * @param string $customerName The name to associate with the new address
      * @param string $street The number and street address of the new address
@@ -44,7 +44,7 @@ class AddressList extends ListResource {
      * @param string $postalCode The postal code of the new address
      * @param string $isoCountry The ISO country code of the new address
      * @param array|Options $options Optional Arguments
-     * @return AddressInstance Newly created AddressInstance
+     * @return AddressInstance Created AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $customerName, string $street, string $city, string $region, string $postalCode, string $isoCountry, array $options = []): AddressInstance {
@@ -62,12 +62,7 @@ class AddressList extends ListResource {
             'AutoCorrectAddress' => Serialize::booleanToString($options['autoCorrectAddress']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AddressInstance($this->version, $payload, $this->solution['accountSid']);
     }
@@ -131,6 +126,7 @@ class AddressList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AddressPage {
         $options = new Values($options);
+
         $params = Values::of([
             'CustomerName' => $options['customerName'],
             'FriendlyName' => $options['friendlyName'],
@@ -140,11 +136,7 @@ class AddressList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AddressPage($this->version, $response, $this->solution);
     }

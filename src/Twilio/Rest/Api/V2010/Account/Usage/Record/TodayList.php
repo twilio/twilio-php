@@ -92,6 +92,7 @@ class TodayList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TodayPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Category' => $options['category'],
             'StartDate' => Serialize::iso8601Date($options['startDate']),
@@ -102,11 +103,7 @@ class TodayList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TodayPage($this->version, $response, $this->solution);
     }

@@ -35,19 +35,13 @@ class FaxMediaContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FaxMediaInstance
+     * Fetch the FaxMediaInstance
      *
      * @return FaxMediaInstance Fetched FaxMediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FaxMediaInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FaxMediaInstance(
             $this->version,
@@ -58,13 +52,13 @@ class FaxMediaContext extends InstanceContext {
     }
 
     /**
-     * Deletes the FaxMediaInstance
+     * Delete the FaxMediaInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

@@ -94,6 +94,7 @@ class HostedNumberOrderList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): HostedNumberOrderPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'PhoneNumber' => $options['phoneNumber'],
@@ -105,11 +106,7 @@ class HostedNumberOrderList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new HostedNumberOrderPage($this->version, $response, $this->solution);
     }
@@ -131,12 +128,12 @@ class HostedNumberOrderList extends ListResource {
     }
 
     /**
-     * Create a new HostedNumberOrderInstance
+     * Create the HostedNumberOrderInstance
      *
      * @param string $phoneNumber An E164 formatted phone number.
      * @param bool $smsCapability Specify SMS capability to host.
      * @param array|Options $options Optional Arguments
-     * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
+     * @return HostedNumberOrderInstance Created HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $phoneNumber, bool $smsCapability, array $options = []): HostedNumberOrderInstance {
@@ -162,12 +159,7 @@ class HostedNumberOrderList extends ListResource {
             'VerificationDocumentSid' => $options['verificationDocumentSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new HostedNumberOrderInstance($this->version, $payload);
     }

@@ -93,6 +93,7 @@ class TaskQueuesStatisticsList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskQueuesStatisticsPage {
         $options = new Values($options);
+
         $params = Values::of([
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'FriendlyName' => $options['friendlyName'],
@@ -105,11 +106,7 @@ class TaskQueuesStatisticsList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TaskQueuesStatisticsPage($this->version, $response, $this->solution);
     }

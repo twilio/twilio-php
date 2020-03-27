@@ -41,19 +41,13 @@ class StepContext extends InstanceContext {
     }
 
     /**
-     * Fetch a StepInstance
+     * Fetch the StepInstance
      *
      * @return StepInstance Fetched StepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): StepInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new StepInstance(
             $this->version,

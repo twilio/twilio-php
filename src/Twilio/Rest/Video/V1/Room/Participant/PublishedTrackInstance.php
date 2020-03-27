@@ -81,7 +81,7 @@ class PublishedTrackInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a PublishedTrackInstance
+     * Fetch the PublishedTrackInstance
      *
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -77,7 +77,7 @@ class QueueInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a QueueInstance
+     * Fetch the QueueInstance
      *
      * @return QueueInstance Fetched QueueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class QueueInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the QueueInstance
+     * Delete the QueueInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

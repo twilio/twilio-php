@@ -104,7 +104,7 @@ class SimInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SimInstance
+     * Fetch the SimInstance
      *
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -125,7 +125,7 @@ class SimInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SimInstance
+     * Delete the SimInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

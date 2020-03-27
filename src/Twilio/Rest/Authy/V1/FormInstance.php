@@ -59,7 +59,7 @@ class FormInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FormInstance
+     * Fetch the FormInstance
      *
      * @return FormInstance Fetched FormInstance
      * @throws TwilioException When an HTTP error occurs.

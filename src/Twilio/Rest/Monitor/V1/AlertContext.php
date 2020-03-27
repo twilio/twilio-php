@@ -31,19 +31,13 @@ class AlertContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AlertInstance
+     * Fetch the AlertInstance
      *
      * @return AlertInstance Fetched AlertInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AlertInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AlertInstance($this->version, $payload, $this->solution['sid']);
     }

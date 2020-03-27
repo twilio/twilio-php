@@ -93,6 +93,7 @@ class MetricList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MetricPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Edge' => $options['edge'],
             'Direction' => $options['direction'],
@@ -101,11 +102,7 @@ class MetricList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new MetricPage($this->version, $response, $this->solution);
     }

@@ -33,22 +33,17 @@ class PhoneNumberList extends ListResource {
     }
 
     /**
-     * Create a new PhoneNumberInstance
+     * Create the PhoneNumberInstance
      *
      * @param string $phoneNumberSid The SID of the Incoming Phone Number that you
      *                               want to associate with the trunk
-     * @return PhoneNumberInstance Newly created PhoneNumberInstance
+     * @return PhoneNumberInstance Created PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $phoneNumberSid): PhoneNumberInstance {
         $data = Values::of(['PhoneNumberSid' => $phoneNumberSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PhoneNumberInstance($this->version, $payload, $this->solution['trunkSid']);
     }
@@ -110,11 +105,7 @@ class PhoneNumberList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PhoneNumberPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new PhoneNumberPage($this->version, $response, $this->solution);
     }

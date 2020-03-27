@@ -94,6 +94,7 @@ class ExportCustomJobList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ExportCustomJobPage {
         $options = new Values($options);
+
         $params = Values::of([
             'NextToken' => $options['nextToken'],
             'PreviousToken' => $options['previousToken'],
@@ -102,11 +103,7 @@ class ExportCustomJobList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ExportCustomJobPage($this->version, $response, $this->solution);
     }
@@ -128,10 +125,10 @@ class ExportCustomJobList extends ListResource {
     }
 
     /**
-     * Create a new ExportCustomJobInstance
+     * Create the ExportCustomJobInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return ExportCustomJobInstance Newly created ExportCustomJobInstance
+     * @return ExportCustomJobInstance Created ExportCustomJobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): ExportCustomJobInstance {
@@ -146,12 +143,7 @@ class ExportCustomJobList extends ListResource {
             'Email' => $options['email'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ExportCustomJobInstance($this->version, $payload, $this->solution['resourceType']);
     }

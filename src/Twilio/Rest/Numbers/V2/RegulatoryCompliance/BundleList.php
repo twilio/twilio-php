@@ -32,13 +32,13 @@ class BundleList extends ListResource {
     }
 
     /**
-     * Create a new BundleInstance
+     * Create the BundleInstance
      *
      * @param string $friendlyName The string that you assigned to describe the
      *                             resource
      * @param string $email The email address
      * @param array|Options $options Optional Arguments
-     * @return BundleInstance Newly created BundleInstance
+     * @return BundleInstance Created BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $email, array $options = []): BundleInstance {
@@ -54,12 +54,7 @@ class BundleList extends ListResource {
             'NumberType' => $options['numberType'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BundleInstance($this->version, $payload);
     }
@@ -123,6 +118,7 @@ class BundleList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BundlePage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'FriendlyName' => $options['friendlyName'],
@@ -134,11 +130,7 @@ class BundleList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new BundlePage($this->version, $response, $this->solution);
     }

@@ -94,6 +94,7 @@ class CompositionList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CompositionPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
@@ -104,11 +105,7 @@ class CompositionList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CompositionPage($this->version, $response, $this->solution);
     }
@@ -130,12 +127,12 @@ class CompositionList extends ListResource {
     }
 
     /**
-     * Create a new CompositionInstance
+     * Create the CompositionInstance
      *
      * @param string $roomSid The SID of the Group Room with the media tracks to be
      *                        used as composition sources
      * @param array|Options $options Optional Arguments
-     * @return CompositionInstance Newly created CompositionInstance
+     * @return CompositionInstance Created CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $roomSid, array $options = []): CompositionInstance {
@@ -153,12 +150,7 @@ class CompositionList extends ListResource {
             'Trim' => Serialize::booleanToString($options['trim']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CompositionInstance($this->version, $payload);
     }

@@ -90,6 +90,7 @@ class AlertList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AlertPage {
         $options = new Values($options);
+
         $params = Values::of([
             'LogLevel' => $options['logLevel'],
             'StartDate' => Serialize::iso8601Date($options['startDate']),
@@ -99,11 +100,7 @@ class AlertList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AlertPage($this->version, $response, $this->solution);
     }

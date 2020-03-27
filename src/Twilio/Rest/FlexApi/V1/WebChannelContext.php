@@ -32,19 +32,13 @@ class WebChannelContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WebChannelInstance
+     * Fetch the WebChannelInstance
      *
      * @return WebChannelInstance Fetched WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): WebChannelInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebChannelInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -64,24 +58,19 @@ class WebChannelContext extends InstanceContext {
             'PostEngagementData' => $options['postEngagementData'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebChannelInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the WebChannelInstance
+     * Delete the WebChannelInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

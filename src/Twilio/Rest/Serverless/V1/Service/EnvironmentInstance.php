@@ -87,7 +87,7 @@ class EnvironmentInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a EnvironmentInstance
+     * Fetch the EnvironmentInstance
      *
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -97,7 +97,7 @@ class EnvironmentInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the EnvironmentInstance
+     * Delete the EnvironmentInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

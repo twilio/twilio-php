@@ -100,7 +100,7 @@ class AssistantInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AssistantInstance
+     * Fetch the AssistantInstance
      *
      * @return AssistantInstance Fetched AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -121,7 +121,7 @@ class AssistantInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AssistantInstance
+     * Delete the AssistantInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

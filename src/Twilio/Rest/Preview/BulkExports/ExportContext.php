@@ -44,19 +44,13 @@ class ExportContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ExportInstance
+     * Fetch the ExportInstance
      *
      * @return ExportInstance Fetched ExportInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ExportInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExportInstance($this->version, $payload, $this->solution['resourceType']);
     }

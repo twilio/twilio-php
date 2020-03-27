@@ -79,7 +79,7 @@ class CurrentCallInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CurrentCallInstance
+     * Fetch the CurrentCallInstance
      *
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.

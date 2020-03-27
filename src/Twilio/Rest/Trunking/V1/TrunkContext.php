@@ -53,31 +53,25 @@ class TrunkContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TrunkInstance
+     * Fetch the TrunkInstance
      *
      * @return TrunkInstance Fetched TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): TrunkInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new TrunkInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the TrunkInstance
+     * Delete the TrunkInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -100,12 +94,7 @@ class TrunkContext extends InstanceContext {
             'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TrunkInstance($this->version, $payload, $this->solution['sid']);
     }

@@ -43,19 +43,13 @@ class FunctionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FunctionInstance
+     * Fetch the FunctionInstance
      *
      * @return FunctionInstance Fetched FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FunctionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FunctionInstance(
             $this->version,
@@ -66,13 +60,13 @@ class FunctionContext extends InstanceContext {
     }
 
     /**
-     * Deletes the FunctionInstance
+     * Delete the FunctionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -85,12 +79,7 @@ class FunctionContext extends InstanceContext {
     public function update(string $friendlyName): FunctionInstance {
         $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FunctionInstance(
             $this->version,

@@ -89,7 +89,7 @@ class NotificationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a NotificationInstance
+     * Fetch the NotificationInstance
      *
      * @return NotificationInstance Fetched NotificationInstance
      * @throws TwilioException When an HTTP error occurs.

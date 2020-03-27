@@ -33,19 +33,13 @@ class FeedbackSummaryContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FeedbackSummaryInstance
+     * Fetch the FeedbackSummaryInstance
      *
      * @return FeedbackSummaryInstance Fetched FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FeedbackSummaryInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FeedbackSummaryInstance(
             $this->version,
@@ -56,13 +50,13 @@ class FeedbackSummaryContext extends InstanceContext {
     }
 
     /**
-     * Deletes the FeedbackSummaryInstance
+     * Delete the FeedbackSummaryInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

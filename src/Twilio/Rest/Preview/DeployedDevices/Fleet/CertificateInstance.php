@@ -76,7 +76,7 @@ class CertificateInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CertificateInstance
+     * Fetch the CertificateInstance
      *
      * @return CertificateInstance Fetched CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -86,7 +86,7 @@ class CertificateInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CertificateInstance
+     * Delete the CertificateInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

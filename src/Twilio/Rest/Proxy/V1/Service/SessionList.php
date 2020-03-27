@@ -93,11 +93,7 @@ class SessionList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SessionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SessionPage($this->version, $response, $this->solution);
     }
@@ -119,10 +115,10 @@ class SessionList extends ListResource {
     }
 
     /**
-     * Create a new SessionInstance
+     * Create the SessionInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return SessionInstance Newly created SessionInstance
+     * @return SessionInstance Created SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): SessionInstance {
@@ -137,12 +133,7 @@ class SessionList extends ListResource {
             'Participants' => Serialize::map($options['participants'], function($e) { return Serialize::jsonObject($e); }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SessionInstance($this->version, $payload, $this->solution['serviceSid']);
     }

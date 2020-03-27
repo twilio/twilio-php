@@ -73,7 +73,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AvailableAddOnExtensionInstance
+     * Fetch the AvailableAddOnExtensionInstance
      *
      * @return AvailableAddOnExtensionInstance Fetched
      *                                         AvailableAddOnExtensionInstance

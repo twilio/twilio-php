@@ -36,21 +36,16 @@ class AlphaSenderList extends ListResource {
     }
 
     /**
-     * Create a new AlphaSenderInstance
+     * Create the AlphaSenderInstance
      *
      * @param string $alphaSender The Alphanumeric Sender ID string
-     * @return AlphaSenderInstance Newly created AlphaSenderInstance
+     * @return AlphaSenderInstance Created AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $alphaSender): AlphaSenderInstance {
         $data = Values::of(['AlphaSender' => $alphaSender, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AlphaSenderInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -112,11 +107,7 @@ class AlphaSenderList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AlphaSenderPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AlphaSenderPage($this->version, $response, $this->solution);
     }

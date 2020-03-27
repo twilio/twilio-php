@@ -97,7 +97,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkspaceCumulativeStatisticsInstance
+     * Fetch the WorkspaceCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceCumulativeStatisticsInstance Fetched

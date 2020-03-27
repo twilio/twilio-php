@@ -120,7 +120,7 @@ class AccountInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AccountInstance
+     * Fetch the AccountInstance
      *
      * @return AccountInstance Fetched AccountInstance
      * @throws TwilioException When an HTTP error occurs.

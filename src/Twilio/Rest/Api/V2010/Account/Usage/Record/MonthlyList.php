@@ -92,6 +92,7 @@ class MonthlyList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MonthlyPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Category' => $options['category'],
             'StartDate' => Serialize::iso8601Date($options['startDate']),
@@ -102,11 +103,7 @@ class MonthlyList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new MonthlyPage($this->version, $response, $this->solution);
     }

@@ -89,6 +89,7 @@ class RegulationList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RegulationPage {
         $options = new Values($options);
+
         $params = Values::of([
             'EndUserType' => $options['endUserType'],
             'IsoCountry' => $options['isoCountry'],
@@ -98,11 +99,7 @@ class RegulationList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RegulationPage($this->version, $response, $this->solution);
     }

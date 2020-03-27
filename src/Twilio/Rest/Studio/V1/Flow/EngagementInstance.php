@@ -82,7 +82,7 @@ class EngagementInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a EngagementInstance
+     * Fetch the EngagementInstance
      *
      * @return EngagementInstance Fetched EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class EngagementInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the EngagementInstance
+     * Delete the EngagementInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

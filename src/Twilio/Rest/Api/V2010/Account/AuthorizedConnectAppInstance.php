@@ -79,7 +79,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AuthorizedConnectAppInstance
+     * Fetch the AuthorizedConnectAppInstance
      *
      * @return AuthorizedConnectAppInstance Fetched AuthorizedConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.

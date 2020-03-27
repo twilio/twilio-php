@@ -108,7 +108,7 @@ class RecordingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RecordingInstance
+     * Fetch the RecordingInstance
      *
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -118,7 +118,7 @@ class RecordingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the RecordingInstance
+     * Delete the RecordingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

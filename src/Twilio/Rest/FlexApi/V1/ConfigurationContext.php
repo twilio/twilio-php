@@ -31,7 +31,7 @@ class ConfigurationContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ConfigurationInstance
+     * Fetch the ConfigurationInstance
      *
      * @param array|Options $options Optional Arguments
      * @return ConfigurationInstance Fetched ConfigurationInstance
@@ -42,30 +42,19 @@ class ConfigurationContext extends InstanceContext {
 
         $params = Values::of(['UiVersion' => $options['uiVersion'], ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new ConfigurationInstance($this->version, $payload);
     }
 
     /**
-     * Create a new ConfigurationInstance
+     * Create the ConfigurationInstance
      *
-     * @return ConfigurationInstance Newly created ConfigurationInstance
+     * @return ConfigurationInstance Created ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(): ConfigurationInstance {
-        $data = Values::of([]);
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri);
 
         return new ConfigurationInstance($this->version, $payload);
     }
@@ -77,14 +66,7 @@ class ConfigurationContext extends InstanceContext {
      * @throws TwilioException When an HTTP error occurs.
      */
     public function update(): ConfigurationInstance {
-        $data = Values::of([]);
-
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri);
 
         return new ConfigurationInstance($this->version, $payload);
     }

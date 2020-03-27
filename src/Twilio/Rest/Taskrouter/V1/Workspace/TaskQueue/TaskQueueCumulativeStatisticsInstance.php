@@ -103,7 +103,7 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskQueueCumulativeStatisticsInstance
+     * Fetch the TaskQueueCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueCumulativeStatisticsInstance Fetched

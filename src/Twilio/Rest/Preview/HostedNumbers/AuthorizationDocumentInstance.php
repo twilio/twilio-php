@@ -75,7 +75,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AuthorizationDocumentInstance
+     * Fetch the AuthorizationDocumentInstance
      *
      * @return AuthorizationDocumentInstance Fetched AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.

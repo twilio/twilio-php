@@ -43,19 +43,13 @@ class AddOnResultContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AddOnResultInstance
+     * Fetch the AddOnResultInstance
      *
      * @return AddOnResultInstance Fetched AddOnResultInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AddOnResultInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AddOnResultInstance(
             $this->version,
@@ -67,13 +61,13 @@ class AddOnResultContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AddOnResultInstance
+     * Delete the AddOnResultInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

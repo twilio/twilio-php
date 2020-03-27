@@ -37,19 +37,13 @@ class WebhookContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WebhookInstance
+     * Fetch the WebhookInstance
      *
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): WebhookInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebhookInstance(
             $this->version,
@@ -79,12 +73,7 @@ class WebhookContext extends InstanceContext {
             'Configuration.RetryCount' => $options['configurationRetryCount'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebhookInstance(
             $this->version,
@@ -96,13 +85,13 @@ class WebhookContext extends InstanceContext {
     }
 
     /**
-     * Deletes the WebhookInstance
+     * Delete the WebhookInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

@@ -34,13 +34,13 @@ class TriggerList extends ListResource {
     }
 
     /**
-     * Create a new TriggerInstance
+     * Create the TriggerInstance
      *
      * @param string $callbackUrl The URL we call when the trigger fires
      * @param string $triggerValue The usage value at which the trigger should fire
      * @param string $usageCategory The usage category the trigger watches
      * @param array|Options $options Optional Arguments
-     * @return TriggerInstance Newly created TriggerInstance
+     * @return TriggerInstance Created TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): TriggerInstance {
@@ -56,12 +56,7 @@ class TriggerList extends ListResource {
             'TriggerBy' => $options['triggerBy'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TriggerInstance($this->version, $payload, $this->solution['accountSid']);
     }
@@ -125,6 +120,7 @@ class TriggerList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TriggerPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Recurring' => $options['recurring'],
             'TriggerBy' => $options['triggerBy'],
@@ -134,11 +130,7 @@ class TriggerList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TriggerPage($this->version, $response, $this->solution);
     }

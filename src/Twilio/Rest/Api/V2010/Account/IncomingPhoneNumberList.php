@@ -106,6 +106,7 @@ class IncomingPhoneNumberList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IncomingPhoneNumberPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Beta' => Serialize::booleanToString($options['beta']),
             'FriendlyName' => $options['friendlyName'],
@@ -116,11 +117,7 @@ class IncomingPhoneNumberList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new IncomingPhoneNumberPage($this->version, $response, $this->solution);
     }
@@ -142,10 +139,10 @@ class IncomingPhoneNumberList extends ListResource {
     }
 
     /**
-     * Create a new IncomingPhoneNumberInstance
+     * Create the IncomingPhoneNumberInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return IncomingPhoneNumberInstance Newly created IncomingPhoneNumberInstance
+     * @return IncomingPhoneNumberInstance Created IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): IncomingPhoneNumberInstance {
@@ -178,12 +175,7 @@ class IncomingPhoneNumberList extends ListResource {
             'BundleSid' => $options['bundleSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IncomingPhoneNumberInstance($this->version, $payload, $this->solution['accountSid']);
     }

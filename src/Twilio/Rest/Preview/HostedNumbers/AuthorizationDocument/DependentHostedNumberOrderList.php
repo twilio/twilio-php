@@ -96,6 +96,7 @@ class DependentHostedNumberOrderList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DependentHostedNumberOrderPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'PhoneNumber' => $options['phoneNumber'],
@@ -107,11 +108,7 @@ class DependentHostedNumberOrderList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new DependentHostedNumberOrderPage($this->version, $response, $this->solution);
     }

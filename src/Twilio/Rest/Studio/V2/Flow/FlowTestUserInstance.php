@@ -57,7 +57,7 @@ class FlowTestUserInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FlowTestUserInstance
+     * Fetch the FlowTestUserInstance
      *
      * @return FlowTestUserInstance Fetched FlowTestUserInstance
      * @throws TwilioException When an HTTP error occurs.

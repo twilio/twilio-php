@@ -104,7 +104,7 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkflowCumulativeStatisticsInstance
+     * Fetch the WorkflowCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkflowCumulativeStatisticsInstance Fetched

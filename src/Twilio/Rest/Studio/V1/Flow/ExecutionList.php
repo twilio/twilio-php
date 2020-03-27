@@ -92,6 +92,7 @@ class ExecutionList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ExecutionPage {
         $options = new Values($options);
+
         $params = Values::of([
             'DateCreatedFrom' => Serialize::iso8601DateTime($options['dateCreatedFrom']),
             'DateCreatedTo' => Serialize::iso8601DateTime($options['dateCreatedTo']),
@@ -100,11 +101,7 @@ class ExecutionList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ExecutionPage($this->version, $response, $this->solution);
     }
@@ -126,13 +123,13 @@ class ExecutionList extends ListResource {
     }
 
     /**
-     * Create a new ExecutionInstance
+     * Create the ExecutionInstance
      *
      * @param string $to The Contact phone number to start a Studio Flow Execution
      * @param string $from The Twilio phone number to send messages or initiate
      *                     calls from during the Flow Execution
      * @param array|Options $options Optional Arguments
-     * @return ExecutionInstance Newly created ExecutionInstance
+     * @return ExecutionInstance Created ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $to, string $from, array $options = []): ExecutionInstance {
@@ -144,12 +141,7 @@ class ExecutionList extends ListResource {
             'Parameters' => Serialize::jsonObject($options['parameters']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ExecutionInstance($this->version, $payload, $this->solution['flowSid']);
     }

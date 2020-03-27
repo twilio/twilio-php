@@ -36,19 +36,13 @@ class CertificateContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CertificateInstance
+     * Fetch the CertificateInstance
      *
      * @return CertificateInstance Fetched CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CertificateInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CertificateInstance(
             $this->version,
@@ -59,13 +53,13 @@ class CertificateContext extends InstanceContext {
     }
 
     /**
-     * Deletes the CertificateInstance
+     * Delete the CertificateInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -83,12 +77,7 @@ class CertificateContext extends InstanceContext {
             'DeviceSid' => $options['deviceSid'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new CertificateInstance(
             $this->version,

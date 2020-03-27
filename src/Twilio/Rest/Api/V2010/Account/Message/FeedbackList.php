@@ -34,10 +34,10 @@ class FeedbackList extends ListResource {
     }
 
     /**
-     * Create a new FeedbackInstance
+     * Create the FeedbackInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return FeedbackInstance Newly created FeedbackInstance
+     * @return FeedbackInstance Created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): FeedbackInstance {
@@ -45,12 +45,7 @@ class FeedbackList extends ListResource {
 
         $data = Values::of(['Outcome' => $options['outcome'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FeedbackInstance(
             $this->version,

@@ -43,19 +43,13 @@ class PayloadContext extends InstanceContext {
     }
 
     /**
-     * Fetch a PayloadInstance
+     * Fetch the PayloadInstance
      *
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): PayloadInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new PayloadInstance(
             $this->version,
@@ -68,13 +62,13 @@ class PayloadContext extends InstanceContext {
     }
 
     /**
-     * Deletes the PayloadInstance
+     * Delete the PayloadInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

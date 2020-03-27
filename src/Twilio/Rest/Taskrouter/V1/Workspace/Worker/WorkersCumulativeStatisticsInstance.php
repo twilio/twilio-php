@@ -80,7 +80,7 @@ class WorkersCumulativeStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkersCumulativeStatisticsInstance
+     * Fetch the WorkersCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkersCumulativeStatisticsInstance Fetched

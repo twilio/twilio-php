@@ -92,6 +92,7 @@ class NationalList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): NationalPage {
         $options = new Values($options);
+
         $params = Values::of([
             'AreaCode' => $options['areaCode'],
             'Contains' => $options['contains'],
@@ -116,11 +117,7 @@ class NationalList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new NationalPage($this->version, $response, $this->solution);
     }

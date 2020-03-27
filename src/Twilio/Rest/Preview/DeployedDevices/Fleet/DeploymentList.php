@@ -36,10 +36,10 @@ class DeploymentList extends ListResource {
     }
 
     /**
-     * Create a new DeploymentInstance
+     * Create the DeploymentInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return DeploymentInstance Newly created DeploymentInstance
+     * @return DeploymentInstance Created DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): DeploymentInstance {
@@ -50,12 +50,7 @@ class DeploymentList extends ListResource {
             'SyncServiceSid' => $options['syncServiceSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new DeploymentInstance($this->version, $payload, $this->solution['fleetSid']);
     }
@@ -117,11 +112,7 @@ class DeploymentList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DeploymentPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new DeploymentPage($this->version, $response, $this->solution);
     }

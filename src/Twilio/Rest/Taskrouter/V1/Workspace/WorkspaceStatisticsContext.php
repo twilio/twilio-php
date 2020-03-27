@@ -33,7 +33,7 @@ class WorkspaceStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkspaceStatisticsInstance
+     * Fetch the WorkspaceStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceStatisticsInstance Fetched WorkspaceStatisticsInstance
@@ -50,11 +50,7 @@ class WorkspaceStatisticsContext extends InstanceContext {
             'SplitByWaitTime' => $options['splitByWaitTime'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkspaceStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

@@ -62,7 +62,7 @@ class BusinessInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BusinessInstance
+     * Fetch the BusinessInstance
      *
      * @return BusinessInstance Fetched BusinessInstance
      * @throws TwilioException When an HTTP error occurs.

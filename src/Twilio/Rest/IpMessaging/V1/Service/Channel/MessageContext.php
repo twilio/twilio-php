@@ -35,19 +35,13 @@ class MessageContext extends InstanceContext {
     }
 
     /**
-     * Fetch a MessageInstance
+     * Fetch the MessageInstance
      *
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): MessageInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new MessageInstance(
             $this->version,
@@ -59,13 +53,13 @@ class MessageContext extends InstanceContext {
     }
 
     /**
-     * Deletes the MessageInstance
+     * Delete the MessageInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -80,12 +74,7 @@ class MessageContext extends InstanceContext {
 
         $data = Values::of(['Body' => $options['body'], 'Attributes' => $options['attributes'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MessageInstance(
             $this->version,

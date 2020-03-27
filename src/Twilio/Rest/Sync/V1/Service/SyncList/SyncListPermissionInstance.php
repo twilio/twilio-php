@@ -82,7 +82,7 @@ class SyncListPermissionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SyncListPermissionInstance
+     * Fetch the SyncListPermissionInstance
      *
      * @return SyncListPermissionInstance Fetched SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class SyncListPermissionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SyncListPermissionInstance
+     * Delete the SyncListPermissionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -91,6 +91,7 @@ class FlexFlowList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FlexFlowPage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
@@ -98,11 +99,7 @@ class FlexFlowList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FlexFlowPage($this->version, $response, $this->solution);
     }
@@ -124,13 +121,13 @@ class FlexFlowList extends ListResource {
     }
 
     /**
-     * Create a new FlexFlowInstance
+     * Create the FlexFlowInstance
      *
      * @param string $friendlyName A string to describe the resource
      * @param string $chatServiceSid The SID of the chat service
      * @param string $channelType The channel type
      * @param array|Options $options Optional Arguments
-     * @return FlexFlowInstance Newly created FlexFlowInstance
+     * @return FlexFlowInstance Created FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $chatServiceSid, string $channelType, array $options = []): FlexFlowInstance {
@@ -156,12 +153,7 @@ class FlexFlowList extends ListResource {
             'Integration.RetryCount' => $options['integrationRetryCount'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FlexFlowInstance($this->version, $payload);
     }

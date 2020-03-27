@@ -34,13 +34,13 @@ class BrandedCallList extends ListResource {
     }
 
     /**
-     * Create a new BrandedCallInstance
+     * Create the BrandedCallInstance
      *
      * @param string $from Twilio number from which to brand the call
      * @param string $to The terminating Phone Number
      * @param string $reason The business reason for this phone call
      * @param array|Options $options Optional Arguments
-     * @return BrandedCallInstance Newly created BrandedCallInstance
+     * @return BrandedCallInstance Created BrandedCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $from, string $to, string $reason, array $options = []): BrandedCallInstance {
@@ -53,12 +53,7 @@ class BrandedCallList extends ListResource {
             'CallSid' => $options['callSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BrandedCallInstance($this->version, $payload);
     }

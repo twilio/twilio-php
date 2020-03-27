@@ -37,22 +37,17 @@ class StreamMessageList extends ListResource {
     }
 
     /**
-     * Create a new StreamMessageInstance
+     * Create the StreamMessageInstance
      *
      * @param array $data A JSON string that represents an arbitrary, schema-less
      *                    object that makes up the Stream Message body
-     * @return StreamMessageInstance Newly created StreamMessageInstance
+     * @return StreamMessageInstance Created StreamMessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $data): StreamMessageInstance {
         $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new StreamMessageInstance(
             $this->version,

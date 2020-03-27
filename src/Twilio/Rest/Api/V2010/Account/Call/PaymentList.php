@@ -38,7 +38,7 @@ class PaymentList extends ListResource {
     }
 
     /**
-     * Create a new PaymentInstance
+     * Create the PaymentInstance
      *
      * @param string $idempotencyKey A unique token for each payment session that
      *                               should be provided to maintain idempotency of
@@ -46,7 +46,7 @@ class PaymentList extends ListResource {
      * @param string $statusCallback The URL we should call to send status of
      *                               payment session.
      * @param array|Options $options Optional Arguments
-     * @return PaymentInstance Newly created PaymentInstance
+     * @return PaymentInstance Created PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance {
@@ -71,12 +71,7 @@ class PaymentList extends ListResource {
             'ValidCardTypes' => $options['validCardTypes'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PaymentInstance(
             $this->version,

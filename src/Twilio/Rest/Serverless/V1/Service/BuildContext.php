@@ -36,19 +36,13 @@ class BuildContext extends InstanceContext {
     }
 
     /**
-     * Fetch a BuildInstance
+     * Fetch the BuildInstance
      *
      * @return BuildInstance Fetched BuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): BuildInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new BuildInstance(
             $this->version,
@@ -59,13 +53,13 @@ class BuildContext extends InstanceContext {
     }
 
     /**
-     * Deletes the BuildInstance
+     * Delete the BuildInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

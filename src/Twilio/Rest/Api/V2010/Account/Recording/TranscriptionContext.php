@@ -35,19 +35,13 @@ class TranscriptionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TranscriptionInstance
+     * Fetch the TranscriptionInstance
      *
      * @return TranscriptionInstance Fetched TranscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): TranscriptionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new TranscriptionInstance(
             $this->version,
@@ -59,13 +53,13 @@ class TranscriptionContext extends InstanceContext {
     }
 
     /**
-     * Deletes the TranscriptionInstance
+     * Delete the TranscriptionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

@@ -106,7 +106,7 @@ class MessageInteractionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a MessageInteractionInstance
+     * Fetch the MessageInteractionInstance
      *
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.

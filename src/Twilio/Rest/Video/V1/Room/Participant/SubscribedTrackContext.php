@@ -35,19 +35,13 @@ class SubscribedTrackContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SubscribedTrackInstance
+     * Fetch the SubscribedTrackInstance
      *
      * @return SubscribedTrackInstance Fetched SubscribedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SubscribedTrackInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SubscribedTrackInstance(
             $this->version,

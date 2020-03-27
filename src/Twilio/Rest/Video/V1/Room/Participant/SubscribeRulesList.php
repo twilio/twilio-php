@@ -38,19 +38,13 @@ class SubscribeRulesList extends ListResource {
     }
 
     /**
-     * Fetch a SubscribeRulesInstance
+     * Fetch the SubscribeRulesInstance
      *
      * @return SubscribeRulesInstance Fetched SubscribeRulesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SubscribeRulesInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SubscribeRulesInstance(
             $this->version,
@@ -72,12 +66,7 @@ class SubscribeRulesList extends ListResource {
 
         $data = Values::of(['Rules' => Serialize::jsonObject($options['rules']), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SubscribeRulesInstance(
             $this->version,

@@ -53,12 +53,7 @@ class RateLimitContext extends InstanceContext {
 
         $data = Values::of(['Description' => $options['description'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RateLimitInstance(
             $this->version,
@@ -69,19 +64,13 @@ class RateLimitContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RateLimitInstance
+     * Fetch the RateLimitInstance
      *
      * @return RateLimitInstance Fetched RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): RateLimitInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new RateLimitInstance(
             $this->version,
@@ -92,13 +81,13 @@ class RateLimitContext extends InstanceContext {
     }
 
     /**
-     * Deletes the RateLimitInstance
+     * Delete the RateLimitInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

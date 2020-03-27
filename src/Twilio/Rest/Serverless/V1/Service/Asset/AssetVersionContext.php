@@ -39,19 +39,13 @@ class AssetVersionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AssetVersionInstance
+     * Fetch the AssetVersionInstance
      *
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AssetVersionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssetVersionInstance(
             $this->version,

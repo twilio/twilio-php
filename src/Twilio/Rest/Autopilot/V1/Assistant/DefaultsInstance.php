@@ -61,7 +61,7 @@ class DefaultsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DefaultsInstance
+     * Fetch the DefaultsInstance
      *
      * @return DefaultsInstance Fetched DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.

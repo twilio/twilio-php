@@ -31,31 +31,25 @@ class CommandContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CommandInstance
+     * Fetch the CommandInstance
      *
      * @return CommandInstance Fetched CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CommandInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CommandInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the CommandInstance
+     * Delete the CommandInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

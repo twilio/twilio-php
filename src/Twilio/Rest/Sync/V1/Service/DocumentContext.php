@@ -45,19 +45,13 @@ class DocumentContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DocumentInstance
+     * Fetch the DocumentInstance
      *
      * @return DocumentInstance Fetched DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DocumentInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DocumentInstance(
             $this->version,
@@ -68,13 +62,13 @@ class DocumentContext extends InstanceContext {
     }
 
     /**
-     * Deletes the DocumentInstance
+     * Delete the DocumentInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -89,12 +83,7 @@ class DocumentContext extends InstanceContext {
 
         $data = Values::of(['Data' => Serialize::jsonObject($options['data']), 'Ttl' => $options['ttl'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DocumentInstance(
             $this->version,

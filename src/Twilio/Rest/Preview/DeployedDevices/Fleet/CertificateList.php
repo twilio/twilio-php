@@ -36,11 +36,11 @@ class CertificateList extends ListResource {
     }
 
     /**
-     * Create a new CertificateInstance
+     * Create the CertificateInstance
      *
      * @param string $certificateData The public certificate data.
      * @param array|Options $options Optional Arguments
-     * @return CertificateInstance Newly created CertificateInstance
+     * @return CertificateInstance Created CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $certificateData, array $options = []): CertificateInstance {
@@ -52,12 +52,7 @@ class CertificateList extends ListResource {
             'DeviceSid' => $options['deviceSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CertificateInstance($this->version, $payload, $this->solution['fleetSid']);
     }
@@ -121,6 +116,7 @@ class CertificateList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CertificatePage {
         $options = new Values($options);
+
         $params = Values::of([
             'DeviceSid' => $options['deviceSid'],
             'PageToken' => $pageToken,
@@ -128,11 +124,7 @@ class CertificateList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CertificatePage($this->version, $response, $this->solution);
     }

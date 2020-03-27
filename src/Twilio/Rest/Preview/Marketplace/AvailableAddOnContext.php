@@ -41,19 +41,13 @@ class AvailableAddOnContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AvailableAddOnInstance
+     * Fetch the AvailableAddOnInstance
      *
      * @return AvailableAddOnInstance Fetched AvailableAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AvailableAddOnInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AvailableAddOnInstance($this->version, $payload, $this->solution['sid']);
     }

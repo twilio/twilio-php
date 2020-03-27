@@ -95,7 +95,7 @@ class VerificationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a VerificationInstance
+     * Fetch the VerificationInstance
      *
      * @return VerificationInstance Fetched VerificationInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -33,19 +33,13 @@ class UserBindingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a UserBindingInstance
+     * Fetch the UserBindingInstance
      *
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): UserBindingInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new UserBindingInstance(
             $this->version,
@@ -57,13 +51,13 @@ class UserBindingContext extends InstanceContext {
     }
 
     /**
-     * Deletes the UserBindingInstance
+     * Delete the UserBindingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

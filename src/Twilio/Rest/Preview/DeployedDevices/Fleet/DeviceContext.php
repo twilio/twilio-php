@@ -37,19 +37,13 @@ class DeviceContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DeviceInstance
+     * Fetch the DeviceInstance
      *
      * @return DeviceInstance Fetched DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DeviceInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DeviceInstance(
             $this->version,
@@ -60,13 +54,13 @@ class DeviceContext extends InstanceContext {
     }
 
     /**
-     * Deletes the DeviceInstance
+     * Delete the DeviceInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -86,12 +80,7 @@ class DeviceContext extends InstanceContext {
             'Enabled' => Serialize::booleanToString($options['enabled']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DeviceInstance(
             $this->version,

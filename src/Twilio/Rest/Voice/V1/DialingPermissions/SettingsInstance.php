@@ -55,7 +55,7 @@ class SettingsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SettingsInstance
+     * Fetch the SettingsInstance
      *
      * @return SettingsInstance Fetched SettingsInstance
      * @throws TwilioException When an HTTP error occurs.

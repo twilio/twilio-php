@@ -34,19 +34,13 @@ class FormContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FormInstance
+     * Fetch the FormInstance
      *
      * @return FormInstance Fetched FormInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FormInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FormInstance($this->version, $payload, $this->solution['formType']);
     }

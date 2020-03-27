@@ -31,19 +31,13 @@ class BalanceList extends ListResource {
     }
 
     /**
-     * Fetch a BalanceInstance
+     * Fetch the BalanceInstance
      *
      * @return BalanceInstance Fetched BalanceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): BalanceInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new BalanceInstance($this->version, $payload, $this->solution['accountSid']);
     }

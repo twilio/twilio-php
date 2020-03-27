@@ -70,7 +70,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a OutgoingCallerIdInstance
+     * Fetch the OutgoingCallerIdInstance
      *
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,7 +91,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the OutgoingCallerIdInstance
+     * Delete the OutgoingCallerIdInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

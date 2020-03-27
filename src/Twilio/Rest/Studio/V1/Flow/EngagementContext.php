@@ -44,19 +44,13 @@ class EngagementContext extends InstanceContext {
     }
 
     /**
-     * Fetch a EngagementInstance
+     * Fetch the EngagementInstance
      *
      * @return EngagementInstance Fetched EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EngagementInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EngagementInstance(
             $this->version,
@@ -67,13 +61,13 @@ class EngagementContext extends InstanceContext {
     }
 
     /**
-     * Deletes the EngagementInstance
+     * Delete the EngagementInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

@@ -33,19 +33,13 @@ class FlexFlowContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FlexFlowInstance
+     * Fetch the FlexFlowInstance
      *
      * @return FlexFlowInstance Fetched FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FlexFlowInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlexFlowInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -80,24 +74,19 @@ class FlexFlowContext extends InstanceContext {
             'Integration.RetryCount' => $options['integrationRetryCount'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlexFlowInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the FlexFlowInstance
+     * Delete the FlexFlowInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

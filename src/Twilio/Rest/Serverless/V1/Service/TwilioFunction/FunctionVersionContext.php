@@ -39,19 +39,13 @@ class FunctionVersionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FunctionVersionInstance
+     * Fetch the FunctionVersionInstance
      *
      * @return FunctionVersionInstance Fetched FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FunctionVersionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FunctionVersionInstance(
             $this->version,

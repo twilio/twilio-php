@@ -93,11 +93,7 @@ class FieldTypeList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldTypePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FieldTypePage($this->version, $response, $this->solution);
     }
@@ -119,12 +115,12 @@ class FieldTypeList extends ListResource {
     }
 
     /**
-     * Create a new FieldTypeInstance
+     * Create the FieldTypeInstance
      *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the new resource
      * @param array|Options $options Optional Arguments
-     * @return FieldTypeInstance Newly created FieldTypeInstance
+     * @return FieldTypeInstance Created FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $uniqueName, array $options = []): FieldTypeInstance {
@@ -132,12 +128,7 @@ class FieldTypeList extends ListResource {
 
         $data = Values::of(['UniqueName' => $uniqueName, 'FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FieldTypeInstance($this->version, $payload, $this->solution['assistantSid']);
     }

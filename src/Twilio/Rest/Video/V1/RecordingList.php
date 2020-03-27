@@ -90,6 +90,7 @@ class RecordingList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RecordingPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'SourceSid' => $options['sourceSid'],
@@ -102,11 +103,7 @@ class RecordingList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RecordingPage($this->version, $response, $this->solution);
     }

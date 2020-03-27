@@ -34,19 +34,13 @@ class ShortCodeContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ShortCodeInstance
+     * Fetch the ShortCodeInstance
      *
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ShortCodeInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ShortCodeInstance(
             $this->version,
@@ -75,12 +69,7 @@ class ShortCodeContext extends InstanceContext {
             'SmsFallbackMethod' => $options['smsFallbackMethod'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ShortCodeInstance(
             $this->version,

@@ -35,19 +35,13 @@ class FlowTestUserContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FlowTestUserInstance
+     * Fetch the FlowTestUserInstance
      *
      * @return FlowTestUserInstance Fetched FlowTestUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FlowTestUserInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlowTestUserInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -62,12 +56,7 @@ class FlowTestUserContext extends InstanceContext {
     public function update(array $testUsers): FlowTestUserInstance {
         $data = Values::of(['TestUsers' => Serialize::map($testUsers, function($e) { return $e; }), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlowTestUserInstance($this->version, $payload, $this->solution['sid']);
     }

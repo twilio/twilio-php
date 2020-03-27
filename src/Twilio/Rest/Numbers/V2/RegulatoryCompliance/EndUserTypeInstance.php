@@ -60,7 +60,7 @@ class EndUserTypeInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a EndUserTypeInstance
+     * Fetch the EndUserTypeInstance
      *
      * @return EndUserTypeInstance Fetched EndUserTypeInstance
      * @throws TwilioException When an HTTP error occurs.

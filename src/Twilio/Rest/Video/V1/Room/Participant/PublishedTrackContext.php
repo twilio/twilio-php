@@ -35,19 +35,13 @@ class PublishedTrackContext extends InstanceContext {
     }
 
     /**
-     * Fetch a PublishedTrackInstance
+     * Fetch the PublishedTrackInstance
      *
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): PublishedTrackInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new PublishedTrackInstance(
             $this->version,

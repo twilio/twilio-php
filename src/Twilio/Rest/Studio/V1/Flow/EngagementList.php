@@ -90,11 +90,7 @@ class EngagementList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EngagementPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new EngagementPage($this->version, $response, $this->solution);
     }
@@ -116,13 +112,13 @@ class EngagementList extends ListResource {
     }
 
     /**
-     * Create a new EngagementInstance
+     * Create the EngagementInstance
      *
      * @param string $to The Contact phone number to start a Studio Flow Engagement
      * @param string $from The Twilio phone number to send messages or initiate
      *                     calls from during the Flow Engagement
      * @param array|Options $options Optional Arguments
-     * @return EngagementInstance Newly created EngagementInstance
+     * @return EngagementInstance Created EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $to, string $from, array $options = []): EngagementInstance {
@@ -134,12 +130,7 @@ class EngagementList extends ListResource {
             'Parameters' => Serialize::jsonObject($options['parameters']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new EngagementInstance($this->version, $payload, $this->solution['flowSid']);
     }

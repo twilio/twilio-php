@@ -92,11 +92,7 @@ class FunctionList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FunctionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FunctionPage($this->version, $response, $this->solution);
     }
@@ -118,21 +114,16 @@ class FunctionList extends ListResource {
     }
 
     /**
-     * Create a new FunctionInstance
+     * Create the FunctionInstance
      *
      * @param string $friendlyName A string to describe the Function resource
-     * @return FunctionInstance Newly created FunctionInstance
+     * @return FunctionInstance Created FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName): FunctionInstance {
         $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FunctionInstance($this->version, $payload, $this->solution['serviceSid']);
     }

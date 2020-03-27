@@ -34,23 +34,18 @@ class BucketList extends ListResource {
     }
 
     /**
-     * Create a new BucketInstance
+     * Create the BucketInstance
      *
      * @param int $max Max number of requests.
      * @param int $interval Number of seconds that the rate limit will be enforced
      *                      over.
-     * @return BucketInstance Newly created BucketInstance
+     * @return BucketInstance Created BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(int $max, int $interval): BucketInstance {
         $data = Values::of(['Max' => $max, 'Interval' => $interval, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BucketInstance(
             $this->version,
@@ -117,11 +112,7 @@ class BucketList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BucketPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new BucketPage($this->version, $response, $this->solution);
     }

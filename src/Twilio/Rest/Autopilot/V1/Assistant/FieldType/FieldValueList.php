@@ -97,6 +97,7 @@ class FieldValueList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldValuePage {
         $options = new Values($options);
+
         $params = Values::of([
             'Language' => $options['language'],
             'PageToken' => $pageToken,
@@ -104,11 +105,7 @@ class FieldValueList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FieldValuePage($this->version, $response, $this->solution);
     }
@@ -130,13 +127,13 @@ class FieldValueList extends ListResource {
     }
 
     /**
-     * Create a new FieldValueInstance
+     * Create the FieldValueInstance
      *
      * @param string $language The ISO language-country tag that identifies the
      *                         language of the value
      * @param string $value The Field Value data
      * @param array|Options $options Optional Arguments
-     * @return FieldValueInstance Newly created FieldValueInstance
+     * @return FieldValueInstance Created FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $language, string $value, array $options = []): FieldValueInstance {
@@ -148,12 +145,7 @@ class FieldValueList extends ListResource {
             'SynonymOf' => $options['synonymOf'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FieldValueInstance(
             $this->version,

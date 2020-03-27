@@ -35,21 +35,16 @@ class ShortCodeList extends ListResource {
     }
 
     /**
-     * Create a new ShortCodeInstance
+     * Create the ShortCodeInstance
      *
      * @param string $sid The SID of a Twilio ShortCode resource
-     * @return ShortCodeInstance Newly created ShortCodeInstance
+     * @return ShortCodeInstance Created ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $sid): ShortCodeInstance {
         $data = Values::of(['Sid' => $sid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ShortCodeInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -111,11 +106,7 @@ class ShortCodeList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ShortCodePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ShortCodePage($this->version, $response, $this->solution);
     }

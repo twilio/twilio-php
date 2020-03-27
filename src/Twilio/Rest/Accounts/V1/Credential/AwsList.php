@@ -88,11 +88,7 @@ class AwsList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AwsPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AwsPage($this->version, $response, $this->solution);
     }
@@ -114,13 +110,13 @@ class AwsList extends ListResource {
     }
 
     /**
-     * Create a new AwsInstance
+     * Create the AwsInstance
      *
      * @param string $credentials A string that contains the AWS access credentials
      *                            in the format
      *                            <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
      * @param array|Options $options Optional Arguments
-     * @return AwsInstance Newly created AwsInstance
+     * @return AwsInstance Created AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $credentials, array $options = []): AwsInstance {
@@ -132,12 +128,7 @@ class AwsList extends ListResource {
             'AccountSid' => $options['accountSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AwsInstance($this->version, $payload);
     }

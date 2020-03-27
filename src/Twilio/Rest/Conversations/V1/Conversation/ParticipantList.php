@@ -38,10 +38,10 @@ class ParticipantList extends ListResource {
     }
 
     /**
-     * Create a new ParticipantInstance
+     * Create the ParticipantInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Newly created ParticipantInstance
+     * @return ParticipantInstance Created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): ParticipantInstance {
@@ -57,12 +57,7 @@ class ParticipantList extends ListResource {
             'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ParticipantInstance($this->version, $payload, $this->solution['conversationSid']);
     }
@@ -124,11 +119,7 @@ class ParticipantList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ParticipantPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ParticipantPage($this->version, $response, $this->solution);
     }

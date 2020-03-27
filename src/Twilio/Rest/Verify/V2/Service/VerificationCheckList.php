@@ -33,11 +33,11 @@ class VerificationCheckList extends ListResource {
     }
 
     /**
-     * Create a new VerificationCheckInstance
+     * Create the VerificationCheckInstance
      *
      * @param string $code The verification string
      * @param array|Options $options Optional Arguments
-     * @return VerificationCheckInstance Newly created VerificationCheckInstance
+     * @return VerificationCheckInstance Created VerificationCheckInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $code, array $options = []): VerificationCheckInstance {
@@ -51,12 +51,7 @@ class VerificationCheckList extends ListResource {
             'Payee' => $options['payee'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new VerificationCheckInstance($this->version, $payload, $this->solution['serviceSid']);
     }

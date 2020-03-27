@@ -47,19 +47,13 @@ class CallContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CallInstance
+     * Fetch the CallInstance
      *
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CallInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CallInstance($this->version, $payload, $this->solution['sid']);
     }

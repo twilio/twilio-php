@@ -92,11 +92,7 @@ class CredentialList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CredentialPage($this->version, $response, $this->solution);
     }
@@ -118,11 +114,11 @@ class CredentialList extends ListResource {
     }
 
     /**
-     * Create a new CredentialInstance
+     * Create the CredentialInstance
      *
      * @param string $type The Credential type
      * @param array|Options $options Optional Arguments
-     * @return CredentialInstance Newly created CredentialInstance
+     * @return CredentialInstance Created CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $type, array $options = []): CredentialInstance {
@@ -138,12 +134,7 @@ class CredentialList extends ListResource {
             'Secret' => $options['secret'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CredentialInstance($this->version, $payload);
     }

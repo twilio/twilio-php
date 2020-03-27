@@ -33,19 +33,13 @@ class CpsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CpsInstance
+     * Fetch the CpsInstance
      *
      * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CpsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CpsInstance($this->version, $payload);
     }

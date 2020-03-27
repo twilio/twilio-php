@@ -35,19 +35,13 @@ class BindingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a BindingInstance
+     * Fetch the BindingInstance
      *
      * @return BindingInstance Fetched BindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): BindingInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new BindingInstance(
             $this->version,
@@ -58,13 +52,13 @@ class BindingContext extends InstanceContext {
     }
 
     /**
-     * Deletes the BindingInstance
+     * Delete the BindingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

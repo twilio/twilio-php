@@ -100,7 +100,7 @@ class ChallengeInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ChallengeInstance
+     * Delete the ChallengeInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -110,7 +110,7 @@ class ChallengeInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ChallengeInstance
+     * Fetch the ChallengeInstance
      *
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.

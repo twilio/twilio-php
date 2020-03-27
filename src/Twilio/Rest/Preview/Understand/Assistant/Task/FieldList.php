@@ -92,11 +92,7 @@ class FieldList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FieldPage($this->version, $response, $this->solution);
     }
@@ -118,7 +114,7 @@ class FieldList extends ListResource {
     }
 
     /**
-     * Create a new FieldInstance
+     * Create the FieldInstance
      *
      * @param string $fieldType The unique name or sid of the FieldType. It can be
      *                          any Built-in Field Type or the unique_name or sid
@@ -126,18 +122,13 @@ class FieldList extends ListResource {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @return FieldInstance Newly created FieldInstance
+     * @return FieldInstance Created FieldInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $fieldType, string $uniqueName): FieldInstance {
         $data = Values::of(['FieldType' => $fieldType, 'UniqueName' => $uniqueName, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FieldInstance(
             $this->version,

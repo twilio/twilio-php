@@ -63,7 +63,7 @@ class WebChannelInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WebChannelInstance
+     * Fetch the WebChannelInstance
      *
      * @return WebChannelInstance Fetched WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class WebChannelInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the WebChannelInstance
+     * Delete the WebChannelInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

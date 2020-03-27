@@ -75,7 +75,7 @@ class FleetInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FleetInstance
+     * Fetch the FleetInstance
      *
      * @return FleetInstance Fetched FleetInstance
      * @throws TwilioException When an HTTP error occurs.

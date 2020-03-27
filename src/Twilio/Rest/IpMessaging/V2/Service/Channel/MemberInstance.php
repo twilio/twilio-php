@@ -87,7 +87,7 @@ class MemberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a MemberInstance
+     * Fetch the MemberInstance
      *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -97,7 +97,7 @@ class MemberInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the MemberInstance
+     * Delete the MemberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

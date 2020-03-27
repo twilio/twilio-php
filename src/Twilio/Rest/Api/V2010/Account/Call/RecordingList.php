@@ -35,10 +35,10 @@ class RecordingList extends ListResource {
     }
 
     /**
-     * Create a new RecordingInstance
+     * Create the RecordingInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return RecordingInstance Newly created RecordingInstance
+     * @return RecordingInstance Created RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): RecordingInstance {
@@ -52,12 +52,7 @@ class RecordingList extends ListResource {
             'RecordingChannels' => $options['recordingChannels'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RecordingInstance(
             $this->version,
@@ -126,6 +121,7 @@ class RecordingList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RecordingPage {
         $options = new Values($options);
+
         $params = Values::of([
             'DateCreated<' => Serialize::iso8601Date($options['dateCreatedBefore']),
             'DateCreated' => Serialize::iso8601Date($options['dateCreated']),
@@ -135,11 +131,7 @@ class RecordingList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RecordingPage($this->version, $response, $this->solution);
     }

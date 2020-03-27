@@ -37,10 +37,10 @@ class SyncStreamList extends ListResource {
     }
 
     /**
-     * Create a new SyncStreamInstance
+     * Create the SyncStreamInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return SyncStreamInstance Newly created SyncStreamInstance
+     * @return SyncStreamInstance Created SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): SyncStreamInstance {
@@ -48,12 +48,7 @@ class SyncStreamList extends ListResource {
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], 'Ttl' => $options['ttl'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncStreamInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -115,11 +110,7 @@ class SyncStreamList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncStreamPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SyncStreamPage($this->version, $response, $this->solution);
     }

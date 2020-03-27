@@ -40,19 +40,13 @@ class BusinessContext extends InstanceContext {
     }
 
     /**
-     * Fetch a BusinessInstance
+     * Fetch the BusinessInstance
      *
      * @return BusinessInstance Fetched BusinessInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): BusinessInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new BusinessInstance($this->version, $payload, $this->solution['sid']);
     }

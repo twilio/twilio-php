@@ -36,12 +36,12 @@ class InstalledAddOnList extends ListResource {
     }
 
     /**
-     * Create a new InstalledAddOnInstance
+     * Create the InstalledAddOnInstance
      *
      * @param string $availableAddOnSid The SID of the AvaliableAddOn to install
      * @param bool $acceptTermsOfService Whether the Terms of Service were accepted
      * @param array|Options $options Optional Arguments
-     * @return InstalledAddOnInstance Newly created InstalledAddOnInstance
+     * @return InstalledAddOnInstance Created InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): InstalledAddOnInstance {
@@ -54,12 +54,7 @@ class InstalledAddOnList extends ListResource {
             'UniqueName' => $options['uniqueName'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new InstalledAddOnInstance($this->version, $payload);
     }
@@ -121,11 +116,7 @@ class InstalledAddOnList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): InstalledAddOnPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new InstalledAddOnPage($this->version, $response, $this->solution);
     }

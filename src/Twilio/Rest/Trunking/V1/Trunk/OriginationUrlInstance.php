@@ -78,7 +78,7 @@ class OriginationUrlInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a OriginationUrlInstance
+     * Fetch the OriginationUrlInstance
      *
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -88,7 +88,7 @@ class OriginationUrlInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the OriginationUrlInstance
+     * Delete the OriginationUrlInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

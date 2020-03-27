@@ -92,6 +92,7 @@ class DataSessionList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DataSessionPage {
         $options = new Values($options);
+
         $params = Values::of([
             'End' => Serialize::iso8601DateTime($options['end']),
             'Start' => Serialize::iso8601DateTime($options['start']),
@@ -100,11 +101,7 @@ class DataSessionList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new DataSessionPage($this->version, $response, $this->solution);
     }

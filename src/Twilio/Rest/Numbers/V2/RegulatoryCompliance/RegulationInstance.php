@@ -63,7 +63,7 @@ class RegulationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RegulationInstance
+     * Fetch the RegulationInstance
      *
      * @return RegulationInstance Fetched RegulationInstance
      * @throws TwilioException When an HTTP error occurs.

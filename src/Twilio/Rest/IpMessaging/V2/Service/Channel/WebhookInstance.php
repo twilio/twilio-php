@@ -82,7 +82,7 @@ class WebhookInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WebhookInstance
+     * Fetch the WebhookInstance
      *
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -103,7 +103,7 @@ class WebhookInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the WebhookInstance
+     * Delete the WebhookInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -32,19 +32,13 @@ class AwsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AwsInstance
+     * Fetch the AwsInstance
      *
      * @return AwsInstance Fetched AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AwsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AwsInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -61,24 +55,19 @@ class AwsContext extends InstanceContext {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AwsInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the AwsInstance
+     * Delete the AwsInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

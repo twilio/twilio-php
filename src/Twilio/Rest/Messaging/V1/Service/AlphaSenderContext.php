@@ -36,19 +36,13 @@ class AlphaSenderContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AlphaSenderInstance
+     * Fetch the AlphaSenderInstance
      *
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AlphaSenderInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AlphaSenderInstance(
             $this->version,
@@ -59,13 +53,13 @@ class AlphaSenderContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AlphaSenderInstance
+     * Delete the AlphaSenderInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

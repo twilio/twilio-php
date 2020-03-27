@@ -91,11 +91,7 @@ class TaskChannelList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskChannelPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TaskChannelPage($this->version, $response, $this->solution);
     }
@@ -117,13 +113,13 @@ class TaskChannelList extends ListResource {
     }
 
     /**
-     * Create a new TaskChannelInstance
+     * Create the TaskChannelInstance
      *
      * @param string $friendlyName A string to describe the TaskChannel resource
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the TaskChannel
      * @param array|Options $options Optional Arguments
-     * @return TaskChannelInstance Newly created TaskChannelInstance
+     * @return TaskChannelInstance Created TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $uniqueName, array $options = []): TaskChannelInstance {
@@ -135,12 +131,7 @@ class TaskChannelList extends ListResource {
             'ChannelOptimizedRouting' => Serialize::booleanToString($options['channelOptimizedRouting']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TaskChannelInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

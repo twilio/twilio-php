@@ -80,7 +80,7 @@ class DeploymentInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DeploymentInstance
+     * Fetch the DeploymentInstance
      *
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.

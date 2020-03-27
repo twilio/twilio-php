@@ -80,7 +80,7 @@ class ShortCodeInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ShortCodeInstance
+     * Fetch the ShortCodeInstance
      *
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.

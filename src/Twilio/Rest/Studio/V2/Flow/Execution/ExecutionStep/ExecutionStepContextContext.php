@@ -36,19 +36,13 @@ class ExecutionStepContextContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ExecutionStepContextInstance
+     * Fetch the ExecutionStepContextInstance
      *
      * @return ExecutionStepContextInstance Fetched ExecutionStepContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ExecutionStepContextInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExecutionStepContextInstance(
             $this->version,

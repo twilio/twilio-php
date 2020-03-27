@@ -88,7 +88,7 @@ class AlertInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AlertInstance
+     * Fetch the AlertInstance
      *
      * @return AlertInstance Fetched AlertInstance
      * @throws TwilioException When an HTTP error occurs.

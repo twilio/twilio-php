@@ -96,7 +96,7 @@ class ApplicationInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ApplicationInstance
+     * Delete the ApplicationInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -106,7 +106,7 @@ class ApplicationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ApplicationInstance
+     * Fetch the ApplicationInstance
      *
      * @return ApplicationInstance Fetched ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.

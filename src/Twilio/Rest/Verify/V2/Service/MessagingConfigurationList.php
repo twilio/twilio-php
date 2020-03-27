@@ -33,24 +33,18 @@ class MessagingConfigurationList extends ListResource {
     }
 
     /**
-     * Create a new MessagingConfigurationInstance
+     * Create the MessagingConfigurationInstance
      *
      * @param string $country The ISO-3166-1 country code of the country or `all`.
      * @param string $messagingServiceSid The SID of the Messaging Service used for
      *                                    this configuration.
-     * @return MessagingConfigurationInstance Newly created
-     *                                        MessagingConfigurationInstance
+     * @return MessagingConfigurationInstance Created MessagingConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $country, string $messagingServiceSid): MessagingConfigurationInstance {
         $data = Values::of(['Country' => $country, 'MessagingServiceSid' => $messagingServiceSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MessagingConfigurationInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -114,11 +108,7 @@ class MessagingConfigurationList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagingConfigurationPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new MessagingConfigurationPage($this->version, $response, $this->solution);
     }

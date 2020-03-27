@@ -99,6 +99,7 @@ class TaskQueueList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskQueuePage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'EvaluateWorkerAttributes' => $options['evaluateWorkerAttributes'],
@@ -108,11 +109,7 @@ class TaskQueueList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TaskQueuePage($this->version, $response, $this->solution);
     }
@@ -134,11 +131,11 @@ class TaskQueueList extends ListResource {
     }
 
     /**
-     * Create a new TaskQueueInstance
+     * Create the TaskQueueInstance
      *
      * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
-     * @return TaskQueueInstance Newly created TaskQueueInstance
+     * @return TaskQueueInstance Created TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): TaskQueueInstance {
@@ -153,12 +150,7 @@ class TaskQueueList extends ListResource {
             'AssignmentActivitySid' => $options['assignmentActivitySid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TaskQueueInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

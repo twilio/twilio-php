@@ -37,19 +37,13 @@ class ReservationContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ReservationInstance
+     * Fetch the ReservationInstance
      *
      * @return ReservationInstance Fetched ReservationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ReservationInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ReservationInstance(
             $this->version,
@@ -126,12 +120,7 @@ class ReservationContext extends InstanceContext {
             'BeepOnCustomerEntrance' => Serialize::booleanToString($options['beepOnCustomerEntrance']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ReservationInstance(
             $this->version,

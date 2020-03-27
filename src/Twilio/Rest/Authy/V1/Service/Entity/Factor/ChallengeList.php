@@ -38,10 +38,10 @@ class ChallengeList extends ListResource {
     }
 
     /**
-     * Create a new ChallengeInstance
+     * Create the ChallengeInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return ChallengeInstance Newly created ChallengeInstance
+     * @return ChallengeInstance Created ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): ChallengeInstance {
@@ -53,12 +53,7 @@ class ChallengeList extends ListResource {
             'HiddenDetails' => $options['hiddenDetails'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ChallengeInstance(
             $this->version,

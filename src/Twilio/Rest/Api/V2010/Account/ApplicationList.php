@@ -34,10 +34,10 @@ class ApplicationList extends ListResource {
     }
 
     /**
-     * Create a new ApplicationInstance
+     * Create the ApplicationInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return ApplicationInstance Newly created ApplicationInstance
+     * @return ApplicationInstance Created ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): ApplicationInstance {
@@ -61,12 +61,7 @@ class ApplicationList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ApplicationInstance($this->version, $payload, $this->solution['accountSid']);
     }
@@ -130,6 +125,7 @@ class ApplicationList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ApplicationPage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
@@ -137,11 +133,7 @@ class ApplicationList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ApplicationPage($this->version, $response, $this->solution);
     }

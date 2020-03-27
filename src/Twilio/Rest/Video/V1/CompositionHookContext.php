@@ -36,31 +36,25 @@ class CompositionHookContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CompositionHookInstance
+     * Fetch the CompositionHookInstance
      *
      * @return CompositionHookInstance Fetched CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CompositionHookInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CompositionHookInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the CompositionHookInstance
+     * Delete the CompositionHookInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -87,12 +81,7 @@ class CompositionHookContext extends InstanceContext {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new CompositionHookInstance($this->version, $payload, $this->solution['sid']);
     }

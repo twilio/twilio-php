@@ -95,6 +95,7 @@ class SampleList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SamplePage {
         $options = new Values($options);
+
         $params = Values::of([
             'Language' => $options['language'],
             'PageToken' => $pageToken,
@@ -102,11 +103,7 @@ class SampleList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SamplePage($this->version, $response, $this->solution);
     }
@@ -128,13 +125,13 @@ class SampleList extends ListResource {
     }
 
     /**
-     * Create a new SampleInstance
+     * Create the SampleInstance
      *
      * @param string $language An ISO language-country string of the sample.
      * @param string $taggedText The text example of how end-users may express this
      *                           task. The sample may contain Field tag blocks.
      * @param array|Options $options Optional Arguments
-     * @return SampleInstance Newly created SampleInstance
+     * @return SampleInstance Created SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $language, string $taggedText, array $options = []): SampleInstance {
@@ -146,12 +143,7 @@ class SampleList extends ListResource {
             'SourceChannel' => $options['sourceChannel'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SampleInstance(
             $this->version,

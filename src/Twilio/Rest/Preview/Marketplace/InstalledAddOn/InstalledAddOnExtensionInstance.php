@@ -75,7 +75,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a InstalledAddOnExtensionInstance
+     * Fetch the InstalledAddOnExtensionInstance
      *
      * @return InstalledAddOnExtensionInstance Fetched
      *                                         InstalledAddOnExtensionInstance

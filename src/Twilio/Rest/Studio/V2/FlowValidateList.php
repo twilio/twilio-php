@@ -54,12 +54,7 @@ class FlowValidateList extends ListResource {
             'CommitMessage' => $options['commitMessage'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlowValidateInstance($this->version, $payload);
     }

@@ -100,7 +100,7 @@ class DomainInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DomainInstance
+     * Fetch the DomainInstance
      *
      * @return DomainInstance Fetched DomainInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -121,7 +121,7 @@ class DomainInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the DomainInstance
+     * Delete the DomainInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

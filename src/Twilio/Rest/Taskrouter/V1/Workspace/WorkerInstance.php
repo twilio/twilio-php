@@ -93,7 +93,7 @@ class WorkerInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkerInstance
+     * Fetch the WorkerInstance
      *
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -114,7 +114,7 @@ class WorkerInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the WorkerInstance
+     * Delete the WorkerInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

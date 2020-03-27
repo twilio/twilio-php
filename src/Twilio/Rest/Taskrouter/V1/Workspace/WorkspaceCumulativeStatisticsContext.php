@@ -33,7 +33,7 @@ class WorkspaceCumulativeStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkspaceCumulativeStatisticsInstance
+     * Fetch the WorkspaceCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceCumulativeStatisticsInstance Fetched
@@ -51,11 +51,7 @@ class WorkspaceCumulativeStatisticsContext extends InstanceContext {
             'SplitByWaitTime' => $options['splitByWaitTime'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkspaceCumulativeStatisticsInstance(
             $this->version,

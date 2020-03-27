@@ -101,7 +101,7 @@ class TaskInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskInstance
+     * Fetch the TaskInstance
      *
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -122,7 +122,7 @@ class TaskInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the TaskInstance
+     * Delete the TaskInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

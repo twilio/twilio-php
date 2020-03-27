@@ -33,13 +33,13 @@ class SupportingDocumentList extends ListResource {
     }
 
     /**
-     * Create a new SupportingDocumentInstance
+     * Create the SupportingDocumentInstance
      *
      * @param string $friendlyName The string that you assigned to describe the
      *                             resource
      * @param string $type The type of the Supporting Document
      * @param array|Options $options Optional Arguments
-     * @return SupportingDocumentInstance Newly created SupportingDocumentInstance
+     * @return SupportingDocumentInstance Created SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $type, array $options = []): SupportingDocumentInstance {
@@ -51,12 +51,7 @@ class SupportingDocumentList extends ListResource {
             'Attributes' => Serialize::jsonObject($options['attributes']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SupportingDocumentInstance($this->version, $payload);
     }
@@ -119,11 +114,7 @@ class SupportingDocumentList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SupportingDocumentPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SupportingDocumentPage($this->version, $response, $this->solution);
     }

@@ -38,19 +38,13 @@ class LogContext extends InstanceContext {
     }
 
     /**
-     * Fetch a LogInstance
+     * Fetch the LogInstance
      *
      * @return LogInstance Fetched LogInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): LogInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new LogInstance(
             $this->version,

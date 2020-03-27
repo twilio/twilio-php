@@ -42,29 +42,23 @@ class EntityContext extends InstanceContext {
     }
 
     /**
-     * Deletes the EntityInstance
+     * Delete the EntityInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
-     * Fetch a EntityInstance
+     * Fetch the EntityInstance
      *
      * @return EntityInstance Fetched EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EntityInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EntityInstance(
             $this->version,

@@ -70,7 +70,7 @@ class UsageInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a UsageInstance
+     * Fetch the UsageInstance
      *
      * @param array|Options $options Optional Arguments
      * @return UsageInstance Fetched UsageInstance

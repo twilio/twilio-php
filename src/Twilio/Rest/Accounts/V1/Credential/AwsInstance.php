@@ -63,7 +63,7 @@ class AwsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AwsInstance
+     * Fetch the AwsInstance
      *
      * @return AwsInstance Fetched AwsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class AwsInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AwsInstance
+     * Delete the AwsInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

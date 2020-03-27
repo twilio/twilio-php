@@ -92,7 +92,7 @@ class BucketInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BucketInstance
+     * Fetch the BucketInstance
      *
      * @return BucketInstance Fetched BucketInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -102,7 +102,7 @@ class BucketInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the BucketInstance
+     * Delete the BucketInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

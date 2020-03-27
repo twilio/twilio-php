@@ -45,19 +45,13 @@ class AssignedAddOnContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AssignedAddOnInstance
+     * Fetch the AssignedAddOnInstance
      *
      * @return AssignedAddOnInstance Fetched AssignedAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AssignedAddOnInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssignedAddOnInstance(
             $this->version,
@@ -69,13 +63,13 @@ class AssignedAddOnContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AssignedAddOnInstance
+     * Delete the AssignedAddOnInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

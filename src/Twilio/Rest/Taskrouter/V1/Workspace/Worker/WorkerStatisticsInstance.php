@@ -67,7 +67,7 @@ class WorkerStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkerStatisticsInstance
+     * Fetch the WorkerStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance

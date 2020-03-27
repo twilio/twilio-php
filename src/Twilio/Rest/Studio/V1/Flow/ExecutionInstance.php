@@ -82,7 +82,7 @@ class ExecutionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ExecutionInstance
+     * Fetch the ExecutionInstance
      *
      * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class ExecutionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ExecutionInstance
+     * Delete the ExecutionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -44,29 +44,23 @@ class FactorContext extends InstanceContext {
     }
 
     /**
-     * Deletes the FactorInstance
+     * Delete the FactorInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
-     * Fetch a FactorInstance
+     * Fetch the FactorInstance
      *
      * @return FactorInstance Fetched FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FactorInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FactorInstance(
             $this->version,
@@ -93,12 +87,7 @@ class FactorContext extends InstanceContext {
             'Config' => $options['config'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FactorInstance(
             $this->version,

@@ -34,31 +34,25 @@ class CompositionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CompositionInstance
+     * Fetch the CompositionInstance
      *
      * @return CompositionInstance Fetched CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CompositionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CompositionInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the CompositionInstance
+     * Delete the CompositionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

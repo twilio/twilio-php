@@ -37,19 +37,13 @@ class DefaultsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DefaultsInstance
+     * Fetch the DefaultsInstance
      *
      * @return DefaultsInstance Fetched DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DefaultsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DefaultsInstance($this->version, $payload, $this->solution['assistantSid']);
     }
@@ -66,12 +60,7 @@ class DefaultsContext extends InstanceContext {
 
         $data = Values::of(['Defaults' => Serialize::jsonObject($options['defaults']), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DefaultsInstance($this->version, $payload, $this->solution['assistantSid']);
     }

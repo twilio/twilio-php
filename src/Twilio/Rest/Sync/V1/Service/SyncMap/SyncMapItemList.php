@@ -39,13 +39,13 @@ class SyncMapItemList extends ListResource {
     }
 
     /**
-     * Create a new SyncMapItemInstance
+     * Create the SyncMapItemInstance
      *
      * @param string $key The unique, user-defined key for the Map Item
      * @param array $data A JSON string that represents an arbitrary, schema-less
      *                    object that the Map Item stores
      * @param array|Options $options Optional Arguments
-     * @return SyncMapItemInstance Newly created SyncMapItemInstance
+     * @return SyncMapItemInstance Created SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $key, array $data, array $options = []): SyncMapItemInstance {
@@ -59,12 +59,7 @@ class SyncMapItemList extends ListResource {
             'CollectionTtl' => $options['collectionTtl'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncMapItemInstance(
             $this->version,
@@ -133,6 +128,7 @@ class SyncMapItemList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapItemPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Order' => $options['order'],
             'From' => $options['from'],
@@ -142,11 +138,7 @@ class SyncMapItemList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SyncMapItemPage($this->version, $response, $this->solution);
     }

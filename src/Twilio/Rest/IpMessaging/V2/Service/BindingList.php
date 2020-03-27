@@ -92,6 +92,7 @@ class BindingList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BindingPage {
         $options = new Values($options);
+
         $params = Values::of([
             'BindingType' => Serialize::map($options['bindingType'], function($e) { return $e; }),
             'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
@@ -100,11 +101,7 @@ class BindingList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new BindingPage($this->version, $response, $this->solution);
     }

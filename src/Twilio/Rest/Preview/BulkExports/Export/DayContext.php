@@ -35,19 +35,13 @@ class DayContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DayInstance
+     * Fetch the DayInstance
      *
      * @return DayInstance Fetched DayInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DayInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DayInstance(
             $this->version,

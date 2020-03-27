@@ -92,6 +92,7 @@ class LocalList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): LocalPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Beta' => Serialize::booleanToString($options['beta']),
             'FriendlyName' => $options['friendlyName'],
@@ -102,11 +103,7 @@ class LocalList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new LocalPage($this->version, $response, $this->solution);
     }
@@ -128,11 +125,11 @@ class LocalList extends ListResource {
     }
 
     /**
-     * Create a new LocalInstance
+     * Create the LocalInstance
      *
      * @param string $phoneNumber The phone number to purchase in E.164 format
      * @param array|Options $options Optional Arguments
-     * @return LocalInstance Newly created LocalInstance
+     * @return LocalInstance Created LocalInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $phoneNumber, array $options = []): LocalInstance {
@@ -164,12 +161,7 @@ class LocalList extends ListResource {
             'BundleSid' => $options['bundleSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new LocalInstance($this->version, $payload, $this->solution['accountSid']);
     }

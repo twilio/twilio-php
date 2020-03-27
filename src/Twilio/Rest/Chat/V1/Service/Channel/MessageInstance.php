@@ -90,7 +90,7 @@ class MessageInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a MessageInstance
+     * Fetch the MessageInstance
      *
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class MessageInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the MessageInstance
+     * Delete the MessageInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

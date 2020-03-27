@@ -89,7 +89,7 @@ class AssignedAddOnInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AssignedAddOnInstance
+     * Fetch the AssignedAddOnInstance
      *
      * @return AssignedAddOnInstance Fetched AssignedAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -99,7 +99,7 @@ class AssignedAddOnInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AssignedAddOnInstance
+     * Delete the AssignedAddOnInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

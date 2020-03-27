@@ -36,31 +36,25 @@ class HostedNumberOrderContext extends InstanceContext {
     }
 
     /**
-     * Fetch a HostedNumberOrderInstance
+     * Fetch the HostedNumberOrderInstance
      *
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): HostedNumberOrderInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new HostedNumberOrderInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the HostedNumberOrderInstance
+     * Delete the HostedNumberOrderInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -86,12 +80,7 @@ class HostedNumberOrderContext extends InstanceContext {
             'CallDelay' => $options['callDelay'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new HostedNumberOrderInstance($this->version, $payload, $this->solution['sid']);
     }

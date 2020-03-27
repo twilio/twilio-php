@@ -37,7 +37,7 @@ class WorkflowStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkflowStatisticsInstance
+     * Fetch the WorkflowStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
@@ -54,11 +54,7 @@ class WorkflowStatisticsContext extends InstanceContext {
             'SplitByWaitTime' => $options['splitByWaitTime'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkflowStatisticsInstance(
             $this->version,

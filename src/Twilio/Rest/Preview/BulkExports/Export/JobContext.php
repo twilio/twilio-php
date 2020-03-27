@@ -34,31 +34,25 @@ class JobContext extends InstanceContext {
     }
 
     /**
-     * Fetch a JobInstance
+     * Fetch the JobInstance
      *
      * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): JobInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new JobInstance($this->version, $payload, $this->solution['jobSid']);
     }
 
     /**
-     * Deletes the JobInstance
+     * Delete the JobInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

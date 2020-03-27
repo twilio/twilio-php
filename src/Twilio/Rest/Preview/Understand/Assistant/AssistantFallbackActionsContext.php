@@ -36,20 +36,14 @@ class AssistantFallbackActionsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AssistantFallbackActionsInstance
+     * Fetch the AssistantFallbackActionsInstance
      *
      * @return AssistantFallbackActionsInstance Fetched
      *                                          AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AssistantFallbackActionsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssistantFallbackActionsInstance(
             $this->version,
@@ -71,12 +65,7 @@ class AssistantFallbackActionsContext extends InstanceContext {
 
         $data = Values::of(['FallbackActions' => Serialize::jsonObject($options['fallbackActions']), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AssistantFallbackActionsInstance(
             $this->version,

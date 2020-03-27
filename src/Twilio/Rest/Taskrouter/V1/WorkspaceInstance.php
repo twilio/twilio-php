@@ -102,7 +102,7 @@ class WorkspaceInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkspaceInstance
+     * Fetch the WorkspaceInstance
      *
      * @return WorkspaceInstance Fetched WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -123,7 +123,7 @@ class WorkspaceInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the WorkspaceInstance
+     * Delete the WorkspaceInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

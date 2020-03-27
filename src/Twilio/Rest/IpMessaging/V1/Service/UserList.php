@@ -34,12 +34,12 @@ class UserList extends ListResource {
     }
 
     /**
-     * Create a new UserInstance
+     * Create the UserInstance
      *
      * @param string $identity The `identity` value that identifies the new
      *                         resource's User
      * @param array|Options $options Optional Arguments
-     * @return UserInstance Newly created UserInstance
+     * @return UserInstance Created UserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $identity, array $options = []): UserInstance {
@@ -52,12 +52,7 @@ class UserList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new UserInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -119,11 +114,7 @@ class UserList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UserPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new UserPage($this->version, $response, $this->solution);
     }

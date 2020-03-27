@@ -36,10 +36,10 @@ class FleetList extends ListResource {
     }
 
     /**
-     * Create a new FleetInstance
+     * Create the FleetInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return FleetInstance Newly created FleetInstance
+     * @return FleetInstance Created FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): FleetInstance {
@@ -53,12 +53,7 @@ class FleetList extends ListResource {
             'CommandsMethod' => $options['commandsMethod'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FleetInstance($this->version, $payload);
     }
@@ -120,11 +115,7 @@ class FleetList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FleetPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FleetPage($this->version, $response, $this->solution);
     }

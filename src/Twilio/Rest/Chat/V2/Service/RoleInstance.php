@@ -74,7 +74,7 @@ class RoleInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RoleInstance
+     * Fetch the RoleInstance
      *
      * @return RoleInstance Fetched RoleInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class RoleInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the RoleInstance
+     * Delete the RoleInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

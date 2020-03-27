@@ -56,7 +56,7 @@ class CpsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CpsInstance
+     * Fetch the CpsInstance
      *
      * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.

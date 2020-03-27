@@ -32,19 +32,13 @@ class EngagementContextContext extends InstanceContext {
     }
 
     /**
-     * Fetch a EngagementContextInstance
+     * Fetch the EngagementContextInstance
      *
      * @return EngagementContextInstance Fetched EngagementContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EngagementContextInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EngagementContextInstance(
             $this->version,

@@ -92,7 +92,7 @@ class ConversationInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ConversationInstance
+     * Delete the ConversationInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -102,7 +102,7 @@ class ConversationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ConversationInstance
+     * Fetch the ConversationInstance
      *
      * @return ConversationInstance Fetched ConversationInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -92,7 +92,7 @@ class FaxInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FaxInstance
+     * Fetch the FaxInstance
      *
      * @return FaxInstance Fetched FaxInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,7 +113,7 @@ class FaxInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FaxInstance
+     * Delete the FaxInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

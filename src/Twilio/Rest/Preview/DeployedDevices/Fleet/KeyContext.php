@@ -36,19 +36,13 @@ class KeyContext extends InstanceContext {
     }
 
     /**
-     * Fetch a KeyInstance
+     * Fetch the KeyInstance
      *
      * @return KeyInstance Fetched KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): KeyInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new KeyInstance(
             $this->version,
@@ -59,13 +53,13 @@ class KeyContext extends InstanceContext {
     }
 
     /**
-     * Deletes the KeyInstance
+     * Delete the KeyInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -83,12 +77,7 @@ class KeyContext extends InstanceContext {
             'DeviceSid' => $options['deviceSid'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new KeyInstance(
             $this->version,

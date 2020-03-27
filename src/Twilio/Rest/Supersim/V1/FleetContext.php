@@ -35,19 +35,13 @@ class FleetContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FleetInstance
+     * Fetch the FleetInstance
      *
      * @return FleetInstance Fetched FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FleetInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FleetInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -64,12 +58,7 @@ class FleetContext extends InstanceContext {
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FleetInstance($this->version, $payload, $this->solution['sid']);
     }

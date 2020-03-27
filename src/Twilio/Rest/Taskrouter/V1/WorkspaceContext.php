@@ -77,19 +77,13 @@ class WorkspaceContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkspaceInstance
+     * Fetch the WorkspaceInstance
      *
      * @return WorkspaceInstance Fetched WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): WorkspaceInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new WorkspaceInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -114,24 +108,19 @@ class WorkspaceContext extends InstanceContext {
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WorkspaceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the WorkspaceInstance
+     * Delete the WorkspaceInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

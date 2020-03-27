@@ -68,7 +68,7 @@ class CompositionSettingsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CompositionSettingsInstance
+     * Fetch the CompositionSettingsInstance
      *
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -78,12 +78,12 @@ class CompositionSettingsInstance extends InstanceResource {
     }
 
     /**
-     * Create a new CompositionSettingsInstance
+     * Create the CompositionSettingsInstance
      *
      * @param string $friendlyName A descriptive string that you create to describe
      *                             the resource
      * @param array|Options $options Optional Arguments
-     * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
+     * @return CompositionSettingsInstance Created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): CompositionSettingsInstance {

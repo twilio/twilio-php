@@ -77,7 +77,7 @@ class TaskChannelInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskChannelInstance
+     * Fetch the TaskChannelInstance
      *
      * @return TaskChannelInstance Fetched TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class TaskChannelInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the TaskChannelInstance
+     * Delete the TaskChannelInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

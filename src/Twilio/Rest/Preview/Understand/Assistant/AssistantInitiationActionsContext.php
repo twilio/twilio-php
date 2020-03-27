@@ -36,20 +36,14 @@ class AssistantInitiationActionsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AssistantInitiationActionsInstance
+     * Fetch the AssistantInitiationActionsInstance
      *
      * @return AssistantInitiationActionsInstance Fetched
      *                                            AssistantInitiationActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AssistantInitiationActionsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssistantInitiationActionsInstance(
             $this->version,
@@ -71,12 +65,7 @@ class AssistantInitiationActionsContext extends InstanceContext {
 
         $data = Values::of(['InitiationActions' => Serialize::jsonObject($options['initiationActions']), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AssistantInitiationActionsInstance(
             $this->version,

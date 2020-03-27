@@ -85,7 +85,7 @@ class ReservationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ReservationInstance
+     * Fetch the ReservationInstance
      *
      * @return ReservationInstance Fetched ReservationInstance
      * @throws TwilioException When an HTTP error occurs.

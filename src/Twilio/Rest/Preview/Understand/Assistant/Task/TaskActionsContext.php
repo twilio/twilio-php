@@ -37,19 +37,13 @@ class TaskActionsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TaskActionsInstance
+     * Fetch the TaskActionsInstance
      *
      * @return TaskActionsInstance Fetched TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): TaskActionsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskActionsInstance(
             $this->version,
@@ -71,12 +65,7 @@ class TaskActionsContext extends InstanceContext {
 
         $data = Values::of(['Actions' => Serialize::jsonObject($options['actions']), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TaskActionsInstance(
             $this->version,

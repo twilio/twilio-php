@@ -72,7 +72,7 @@ class AuthRegistrationsCredentialListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AuthRegistrationsCredentialListMappingInstance
+     * Fetch the AuthRegistrationsCredentialListMappingInstance
      *
      * @return AuthRegistrationsCredentialListMappingInstance Fetched
      *                                                        AuthRegistrationsCredentialListMappingInstance
@@ -83,7 +83,7 @@ class AuthRegistrationsCredentialListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AuthRegistrationsCredentialListMappingInstance
+     * Delete the AuthRegistrationsCredentialListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

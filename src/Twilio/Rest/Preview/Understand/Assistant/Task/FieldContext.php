@@ -37,19 +37,13 @@ class FieldContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FieldInstance
+     * Fetch the FieldInstance
      *
      * @return FieldInstance Fetched FieldInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FieldInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FieldInstance(
             $this->version,
@@ -61,13 +55,13 @@ class FieldContext extends InstanceContext {
     }
 
     /**
-     * Deletes the FieldInstance
+     * Delete the FieldInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

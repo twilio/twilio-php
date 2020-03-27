@@ -34,11 +34,11 @@ class MessageList extends ListResource {
     }
 
     /**
-     * Create a new MessageInstance
+     * Create the MessageInstance
      *
      * @param string $to The destination phone number
      * @param array|Options $options Optional Arguments
-     * @return MessageInstance Newly created MessageInstance
+     * @return MessageInstance Created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $to, array $options = []): MessageInstance {
@@ -62,12 +62,7 @@ class MessageList extends ListResource {
             'PersistentAction' => Serialize::map($options['persistentAction'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MessageInstance($this->version, $payload, $this->solution['accountSid']);
     }
@@ -131,6 +126,7 @@ class MessageList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagePage {
         $options = new Values($options);
+
         $params = Values::of([
             'To' => $options['to'],
             'From' => $options['from'],
@@ -142,11 +138,7 @@ class MessageList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new MessagePage($this->version, $response, $this->solution);
     }

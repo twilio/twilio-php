@@ -93,11 +93,7 @@ class ModelBuildList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ModelBuildPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ModelBuildPage($this->version, $response, $this->solution);
     }
@@ -119,10 +115,10 @@ class ModelBuildList extends ListResource {
     }
 
     /**
-     * Create a new ModelBuildInstance
+     * Create the ModelBuildInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return ModelBuildInstance Newly created ModelBuildInstance
+     * @return ModelBuildInstance Created ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): ModelBuildInstance {
@@ -133,12 +129,7 @@ class ModelBuildList extends ListResource {
             'UniqueName' => $options['uniqueName'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ModelBuildInstance($this->version, $payload, $this->solution['assistantSid']);
     }

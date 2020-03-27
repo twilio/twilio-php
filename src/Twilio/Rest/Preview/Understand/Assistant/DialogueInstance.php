@@ -66,7 +66,7 @@ class DialogueInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DialogueInstance
+     * Fetch the DialogueInstance
      *
      * @return DialogueInstance Fetched DialogueInstance
      * @throws TwilioException When an HTTP error occurs.

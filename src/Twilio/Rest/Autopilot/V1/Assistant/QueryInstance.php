@@ -87,7 +87,7 @@ class QueryInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a QueryInstance
+     * Fetch the QueryInstance
      *
      * @return QueryInstance Fetched QueryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -108,7 +108,7 @@ class QueryInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the QueryInstance
+     * Delete the QueryInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

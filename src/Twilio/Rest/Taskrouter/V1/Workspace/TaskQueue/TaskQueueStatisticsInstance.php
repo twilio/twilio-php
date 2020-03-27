@@ -70,7 +70,7 @@ class TaskQueueStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskQueueStatisticsInstance
+     * Fetch the TaskQueueStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance

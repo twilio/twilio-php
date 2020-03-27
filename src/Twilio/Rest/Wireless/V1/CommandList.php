@@ -91,6 +91,7 @@ class CommandList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CommandPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Sim' => $options['sim'],
             'Status' => $options['status'],
@@ -101,11 +102,7 @@ class CommandList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CommandPage($this->version, $response, $this->solution);
     }
@@ -127,12 +124,12 @@ class CommandList extends ListResource {
     }
 
     /**
-     * Create a new CommandInstance
+     * Create the CommandInstance
      *
      * @param string $command The message body of the Command or a Base64 encoded
      *                        byte string in binary mode
      * @param array|Options $options Optional Arguments
-     * @return CommandInstance Newly created CommandInstance
+     * @return CommandInstance Created CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $command, array $options = []): CommandInstance {
@@ -148,12 +145,7 @@ class CommandList extends ListResource {
             'DeliveryReceiptRequested' => Serialize::booleanToString($options['deliveryReceiptRequested']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CommandInstance($this->version, $payload);
     }

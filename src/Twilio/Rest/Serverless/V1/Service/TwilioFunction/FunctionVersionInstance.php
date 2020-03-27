@@ -82,7 +82,7 @@ class FunctionVersionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FunctionVersionInstance
+     * Fetch the FunctionVersionInstance
      *
      * @return FunctionVersionInstance Fetched FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.

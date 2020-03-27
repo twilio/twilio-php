@@ -38,21 +38,16 @@ class SyncListItemList extends ListResource {
     }
 
     /**
-     * Create a new SyncListItemInstance
+     * Create the SyncListItemInstance
      *
      * @param array $data The data
-     * @return SyncListItemInstance Newly created SyncListItemInstance
+     * @return SyncListItemInstance Created SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $data): SyncListItemInstance {
         $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncListItemInstance(
             $this->version,
@@ -121,6 +116,7 @@ class SyncListItemList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncListItemPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Order' => $options['order'],
             'From' => $options['from'],
@@ -130,11 +126,7 @@ class SyncListItemList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SyncListItemPage($this->version, $response, $this->solution);
     }

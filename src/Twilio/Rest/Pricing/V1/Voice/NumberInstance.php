@@ -63,7 +63,7 @@ class NumberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a NumberInstance
+     * Fetch the NumberInstance
      *
      * @return NumberInstance Fetched NumberInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -82,7 +82,7 @@ class DeviceInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DeviceInstance
+     * Fetch the DeviceInstance
      *
      * @return DeviceInstance Fetched DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class DeviceInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the DeviceInstance
+     * Delete the DeviceInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -82,7 +82,7 @@ class InviteInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a InviteInstance
+     * Fetch the InviteInstance
      *
      * @return InviteInstance Fetched InviteInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class InviteInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the InviteInstance
+     * Delete the InviteInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

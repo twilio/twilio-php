@@ -94,6 +94,7 @@ class CompositionHookList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CompositionHookPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Enabled' => Serialize::booleanToString($options['enabled']),
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
@@ -104,11 +105,7 @@ class CompositionHookList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CompositionHookPage($this->version, $response, $this->solution);
     }
@@ -130,11 +127,11 @@ class CompositionHookList extends ListResource {
     }
 
     /**
-     * Create a new CompositionHookInstance
+     * Create the CompositionHookInstance
      *
      * @param string $friendlyName A unique string to describe the resource
      * @param array|Options $options Optional Arguments
-     * @return CompositionHookInstance Newly created CompositionHookInstance
+     * @return CompositionHookInstance Created CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): CompositionHookInstance {
@@ -153,12 +150,7 @@ class CompositionHookList extends ListResource {
             'Trim' => Serialize::booleanToString($options['trim']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CompositionHookInstance($this->version, $payload);
     }

@@ -93,11 +93,7 @@ class AssignedAddOnList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssignedAddOnPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AssignedAddOnPage($this->version, $response, $this->solution);
     }
@@ -119,22 +115,17 @@ class AssignedAddOnList extends ListResource {
     }
 
     /**
-     * Create a new AssignedAddOnInstance
+     * Create the AssignedAddOnInstance
      *
      * @param string $installedAddOnSid The SID that identifies the Add-on
      *                                  installation
-     * @return AssignedAddOnInstance Newly created AssignedAddOnInstance
+     * @return AssignedAddOnInstance Created AssignedAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $installedAddOnSid): AssignedAddOnInstance {
         $data = Values::of(['InstalledAddOnSid' => $installedAddOnSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AssignedAddOnInstance(
             $this->version,

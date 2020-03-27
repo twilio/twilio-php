@@ -92,11 +92,7 @@ class AssistantList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssistantPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AssistantPage($this->version, $response, $this->solution);
     }
@@ -118,10 +114,10 @@ class AssistantList extends ListResource {
     }
 
     /**
-     * Create a new AssistantInstance
+     * Create the AssistantInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return AssistantInstance Newly created AssistantInstance
+     * @return AssistantInstance Created AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): AssistantInstance {
@@ -137,12 +133,7 @@ class AssistantList extends ListResource {
             'Defaults' => Serialize::jsonObject($options['defaults']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AssistantInstance($this->version, $payload);
     }

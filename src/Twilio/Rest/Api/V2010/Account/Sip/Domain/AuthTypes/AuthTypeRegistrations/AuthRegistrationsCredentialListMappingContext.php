@@ -35,20 +35,14 @@ class AuthRegistrationsCredentialListMappingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AuthRegistrationsCredentialListMappingInstance
+     * Fetch the AuthRegistrationsCredentialListMappingInstance
      *
      * @return AuthRegistrationsCredentialListMappingInstance Fetched
      *                                                        AuthRegistrationsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AuthRegistrationsCredentialListMappingInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AuthRegistrationsCredentialListMappingInstance(
             $this->version,
@@ -60,13 +54,13 @@ class AuthRegistrationsCredentialListMappingContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AuthRegistrationsCredentialListMappingInstance
+     * Delete the AuthRegistrationsCredentialListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

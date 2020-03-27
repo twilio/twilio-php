@@ -94,6 +94,7 @@ class FaxList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FaxPage {
         $options = new Values($options);
+
         $params = Values::of([
             'From' => $options['from'],
             'To' => $options['to'],
@@ -104,11 +105,7 @@ class FaxList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FaxPage($this->version, $response, $this->solution);
     }
@@ -130,12 +127,12 @@ class FaxList extends ListResource {
     }
 
     /**
-     * Create a new FaxInstance
+     * Create the FaxInstance
      *
      * @param string $to The phone number to receive the fax
      * @param string $mediaUrl The URL of the PDF that contains the fax
      * @param array|Options $options Optional Arguments
-     * @return FaxInstance Newly created FaxInstance
+     * @return FaxInstance Created FaxInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $to, string $mediaUrl, array $options = []): FaxInstance {
@@ -153,12 +150,7 @@ class FaxList extends ListResource {
             'Ttl' => $options['ttl'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FaxInstance($this->version, $payload);
     }

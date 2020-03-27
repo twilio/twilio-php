@@ -34,19 +34,13 @@ class MemberContext extends InstanceContext {
     }
 
     /**
-     * Fetch a MemberInstance
+     * Fetch the MemberInstance
      *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): MemberInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new MemberInstance(
             $this->version,
@@ -58,13 +52,13 @@ class MemberContext extends InstanceContext {
     }
 
     /**
-     * Deletes the MemberInstance
+     * Delete the MemberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -82,12 +76,7 @@ class MemberContext extends InstanceContext {
             'LastConsumedMessageIndex' => $options['lastConsumedMessageIndex'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MemberInstance(
             $this->version,

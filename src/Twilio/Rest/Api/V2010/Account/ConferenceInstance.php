@@ -81,7 +81,7 @@ class ConferenceInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ConferenceInstance
+     * Fetch the ConferenceInstance
      *
      * @return ConferenceInstance Fetched ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.

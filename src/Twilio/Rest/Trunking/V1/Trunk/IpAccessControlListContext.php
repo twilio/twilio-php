@@ -33,19 +33,13 @@ class IpAccessControlListContext extends InstanceContext {
     }
 
     /**
-     * Fetch a IpAccessControlListInstance
+     * Fetch the IpAccessControlListInstance
      *
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): IpAccessControlListInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new IpAccessControlListInstance(
             $this->version,
@@ -56,13 +50,13 @@ class IpAccessControlListContext extends InstanceContext {
     }
 
     /**
-     * Deletes the IpAccessControlListInstance
+     * Delete the IpAccessControlListInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

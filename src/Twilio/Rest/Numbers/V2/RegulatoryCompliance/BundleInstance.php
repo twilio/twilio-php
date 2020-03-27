@@ -76,7 +76,7 @@ class BundleInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BundleInstance
+     * Fetch the BundleInstance
      *
      * @return BundleInstance Fetched BundleInstance
      * @throws TwilioException When an HTTP error occurs.

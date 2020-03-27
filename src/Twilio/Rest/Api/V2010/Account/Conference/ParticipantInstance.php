@@ -88,7 +88,7 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch the ParticipantInstance
      *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -109,7 +109,7 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ParticipantInstance
+     * Delete the ParticipantInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

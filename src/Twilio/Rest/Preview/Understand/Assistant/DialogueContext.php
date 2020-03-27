@@ -35,19 +35,13 @@ class DialogueContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DialogueInstance
+     * Fetch the DialogueInstance
      *
      * @return DialogueInstance Fetched DialogueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DialogueInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DialogueInstance(
             $this->version,

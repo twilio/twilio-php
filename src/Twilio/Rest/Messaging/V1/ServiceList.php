@@ -36,11 +36,11 @@ class ServiceList extends ListResource {
     }
 
     /**
-     * Create a new ServiceInstance
+     * Create the ServiceInstance
      *
      * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Newly created ServiceInstance
+     * @return ServiceInstance Created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): ServiceInstance {
@@ -63,12 +63,7 @@ class ServiceList extends ListResource {
             'SynchronousValidation' => Serialize::booleanToString($options['synchronousValidation']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ServiceInstance($this->version, $payload);
     }
@@ -130,11 +125,7 @@ class ServiceList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ServicePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ServicePage($this->version, $response, $this->solution);
     }

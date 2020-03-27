@@ -32,23 +32,18 @@ class IpAccessControlListList extends ListResource {
     }
 
     /**
-     * Create a new IpAccessControlListInstance
+     * Create the IpAccessControlListInstance
      *
      * @param string $ipAccessControlListSid The SID of the IP Access Control List
      *                                       that you want to associate with the
      *                                       trunk
-     * @return IpAccessControlListInstance Newly created IpAccessControlListInstance
+     * @return IpAccessControlListInstance Created IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $ipAccessControlListSid): IpAccessControlListInstance {
         $data = Values::of(['IpAccessControlListSid' => $ipAccessControlListSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IpAccessControlListInstance($this->version, $payload, $this->solution['trunkSid']);
     }
@@ -111,11 +106,7 @@ class IpAccessControlListList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAccessControlListPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new IpAccessControlListPage($this->version, $response, $this->solution);
     }

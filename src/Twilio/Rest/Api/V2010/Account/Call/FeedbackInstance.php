@@ -68,11 +68,11 @@ class FeedbackInstance extends InstanceResource {
     }
 
     /**
-     * Create a new FeedbackInstance
+     * Create the FeedbackInstance
      *
      * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
-     * @return FeedbackInstance Newly created FeedbackInstance
+     * @return FeedbackInstance Created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(int $qualityScore, array $options = []): FeedbackInstance {
@@ -80,7 +80,7 @@ class FeedbackInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FeedbackInstance
+     * Fetch the FeedbackInstance
      *
      * @return FeedbackInstance Fetched FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.

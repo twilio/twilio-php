@@ -85,7 +85,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AvailablePhoneNumberCountryInstance
+     * Fetch the AvailablePhoneNumberCountryInstance
      *
      * @return AvailablePhoneNumberCountryInstance Fetched
      *                                             AvailablePhoneNumberCountryInstance

@@ -89,6 +89,7 @@ class SimList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SimPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'Iccid' => $options['iccid'],
@@ -100,11 +101,7 @@ class SimList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SimPage($this->version, $response, $this->solution);
     }

@@ -39,19 +39,13 @@ class SampleContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SampleInstance
+     * Fetch the SampleInstance
      *
      * @return SampleInstance Fetched SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SampleInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SampleInstance(
             $this->version,
@@ -78,12 +72,7 @@ class SampleContext extends InstanceContext {
             'SourceChannel' => $options['sourceChannel'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SampleInstance(
             $this->version,
@@ -95,13 +84,13 @@ class SampleContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SampleInstance
+     * Delete the SampleInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

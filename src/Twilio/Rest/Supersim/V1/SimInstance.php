@@ -71,7 +71,7 @@ class SimInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SimInstance
+     * Fetch the SimInstance
      *
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
