@@ -36,19 +36,13 @@ class ModelBuildContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ModelBuildInstance
+     * Fetch the ModelBuildInstance
      *
      * @return ModelBuildInstance Fetched ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ModelBuildInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ModelBuildInstance(
             $this->version,
@@ -70,12 +64,7 @@ class ModelBuildContext extends InstanceContext {
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ModelBuildInstance(
             $this->version,
@@ -86,13 +75,13 @@ class ModelBuildContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ModelBuildInstance
+     * Delete the ModelBuildInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

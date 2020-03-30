@@ -48,19 +48,13 @@ class SyncMapContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SyncMapInstance
+     * Fetch the SyncMapInstance
      *
      * @return SyncMapInstance Fetched SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SyncMapInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SyncMapInstance(
             $this->version,
@@ -71,13 +65,13 @@ class SyncMapContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SyncMapInstance
+     * Delete the SyncMapInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -92,12 +86,7 @@ class SyncMapContext extends InstanceContext {
 
         $data = Values::of(['Ttl' => $options['ttl'], 'CollectionTtl' => $options['collectionTtl'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SyncMapInstance(
             $this->version,

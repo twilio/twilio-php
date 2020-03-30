@@ -91,7 +91,7 @@ class CallSummaryInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CallSummaryInstance
+     * Fetch the CallSummaryInstance
      *
      * @param array|Options $options Optional Arguments
      * @return CallSummaryInstance Fetched CallSummaryInstance

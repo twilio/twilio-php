@@ -70,7 +70,7 @@ class IpAccessControlListInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a IpAccessControlListInstance
+     * Fetch the IpAccessControlListInstance
      *
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -80,7 +80,7 @@ class IpAccessControlListInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the IpAccessControlListInstance
+     * Delete the IpAccessControlListInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

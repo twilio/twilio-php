@@ -67,7 +67,7 @@ class ImpressionsRateInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ImpressionsRateInstance
+     * Fetch the ImpressionsRateInstance
      *
      * @param array|Options $options Optional Arguments
      * @return ImpressionsRateInstance Fetched ImpressionsRateInstance

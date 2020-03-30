@@ -35,19 +35,13 @@ class SettingsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SettingsInstance
+     * Fetch the SettingsInstance
      *
      * @return SettingsInstance Fetched SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SettingsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SettingsInstance($this->version, $payload);
     }
@@ -66,12 +60,7 @@ class SettingsContext extends InstanceContext {
             'DialingPermissionsInheritance' => Serialize::booleanToString($options['dialingPermissionsInheritance']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SettingsInstance($this->version, $payload);
     }

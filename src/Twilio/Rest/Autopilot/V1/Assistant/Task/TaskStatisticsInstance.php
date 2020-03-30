@@ -70,7 +70,7 @@ class TaskStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskStatisticsInstance
+     * Fetch the TaskStatisticsInstance
      *
      * @return TaskStatisticsInstance Fetched TaskStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.

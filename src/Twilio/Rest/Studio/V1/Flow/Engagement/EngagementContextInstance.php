@@ -64,7 +64,7 @@ class EngagementContextInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a EngagementContextInstance
+     * Fetch the EngagementContextInstance
      *
      * @return EngagementContextInstance Fetched EngagementContextInstance
      * @throws TwilioException When an HTTP error occurs.

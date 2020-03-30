@@ -61,7 +61,7 @@ class SupportingDocumentTypeInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SupportingDocumentTypeInstance
+     * Fetch the SupportingDocumentTypeInstance
      *
      * @return SupportingDocumentTypeInstance Fetched SupportingDocumentTypeInstance
      * @throws TwilioException When an HTTP error occurs.

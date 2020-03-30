@@ -34,11 +34,11 @@ class FeedbackContext extends InstanceContext {
     }
 
     /**
-     * Create a new FeedbackInstance
+     * Create the FeedbackInstance
      *
      * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
-     * @return FeedbackInstance Newly created FeedbackInstance
+     * @return FeedbackInstance Created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(int $qualityScore, array $options = []): FeedbackInstance {
@@ -49,12 +49,7 @@ class FeedbackContext extends InstanceContext {
             'Issue' => Serialize::map($options['issue'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FeedbackInstance(
             $this->version,
@@ -65,19 +60,13 @@ class FeedbackContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FeedbackInstance
+     * Fetch the FeedbackInstance
      *
      * @return FeedbackInstance Fetched FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FeedbackInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FeedbackInstance(
             $this->version,
@@ -103,12 +92,7 @@ class FeedbackContext extends InstanceContext {
             'Issue' => Serialize::map($options['issue'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FeedbackInstance(
             $this->version,

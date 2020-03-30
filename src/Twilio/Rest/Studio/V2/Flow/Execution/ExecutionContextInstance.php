@@ -66,7 +66,7 @@ class ExecutionContextInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ExecutionContextInstance
+     * Fetch the ExecutionContextInstance
      *
      * @return ExecutionContextInstance Fetched ExecutionContextInstance
      * @throws TwilioException When an HTTP error occurs.

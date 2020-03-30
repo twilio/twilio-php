@@ -36,10 +36,10 @@ class KeyList extends ListResource {
     }
 
     /**
-     * Create a new KeyInstance
+     * Create the KeyInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return KeyInstance Newly created KeyInstance
+     * @return KeyInstance Created KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): KeyInstance {
@@ -50,12 +50,7 @@ class KeyList extends ListResource {
             'DeviceSid' => $options['deviceSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new KeyInstance($this->version, $payload, $this->solution['fleetSid']);
     }
@@ -119,6 +114,7 @@ class KeyList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): KeyPage {
         $options = new Values($options);
+
         $params = Values::of([
             'DeviceSid' => $options['deviceSid'],
             'PageToken' => $pageToken,
@@ -126,11 +122,7 @@ class KeyList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new KeyPage($this->version, $response, $this->solution);
     }

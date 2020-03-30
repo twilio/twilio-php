@@ -68,7 +68,7 @@ class AvailableAddOnInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AvailableAddOnInstance
+     * Fetch the AvailableAddOnInstance
      *
      * @return AvailableAddOnInstance Fetched AvailableAddOnInstance
      * @throws TwilioException When an HTTP error occurs.

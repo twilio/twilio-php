@@ -72,7 +72,7 @@ class AuthCallsIpAccessControlListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AuthCallsIpAccessControlListMappingInstance
+     * Fetch the AuthCallsIpAccessControlListMappingInstance
      *
      * @return AuthCallsIpAccessControlListMappingInstance Fetched
      *                                                     AuthCallsIpAccessControlListMappingInstance
@@ -83,7 +83,7 @@ class AuthCallsIpAccessControlListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AuthCallsIpAccessControlListMappingInstance
+     * Delete the AuthCallsIpAccessControlListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

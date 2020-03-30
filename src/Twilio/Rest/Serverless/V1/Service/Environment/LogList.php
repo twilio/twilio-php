@@ -97,6 +97,7 @@ class LogList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): LogPage {
         $options = new Values($options);
+
         $params = Values::of([
             'FunctionSid' => $options['functionSid'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
@@ -106,11 +107,7 @@ class LogList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new LogPage($this->version, $response, $this->solution);
     }

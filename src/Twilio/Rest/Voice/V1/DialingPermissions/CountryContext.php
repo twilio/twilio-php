@@ -40,19 +40,13 @@ class CountryContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CountryInstance
+     * Fetch the CountryInstance
      *
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CountryInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CountryInstance($this->version, $payload, $this->solution['isoCode']);
     }

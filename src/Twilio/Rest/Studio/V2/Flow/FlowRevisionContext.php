@@ -36,19 +36,13 @@ class FlowRevisionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FlowRevisionInstance
+     * Fetch the FlowRevisionInstance
      *
      * @return FlowRevisionInstance Fetched FlowRevisionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FlowRevisionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlowRevisionInstance(
             $this->version,

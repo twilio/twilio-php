@@ -65,7 +65,7 @@ class KeyInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a KeyInstance
+     * Fetch the KeyInstance
      *
      * @return KeyInstance Fetched KeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -86,7 +86,7 @@ class KeyInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the KeyInstance
+     * Delete the KeyInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

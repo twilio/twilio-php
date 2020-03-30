@@ -34,23 +34,18 @@ class IpAccessControlListMappingList extends ListResource {
     }
 
     /**
-     * Create a new IpAccessControlListMappingInstance
+     * Create the IpAccessControlListMappingInstance
      *
      * @param string $ipAccessControlListSid The unique id of the IP access control
      *                                       list to map to the SIP domain
-     * @return IpAccessControlListMappingInstance Newly created
+     * @return IpAccessControlListMappingInstance Created
      *                                            IpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $ipAccessControlListSid): IpAccessControlListMappingInstance {
         $data = Values::of(['IpAccessControlListSid' => $ipAccessControlListSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IpAccessControlListMappingInstance(
             $this->version,
@@ -120,11 +115,7 @@ class IpAccessControlListMappingList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAccessControlListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new IpAccessControlListMappingPage($this->version, $response, $this->solution);
     }

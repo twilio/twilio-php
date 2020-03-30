@@ -69,7 +69,7 @@ class NumberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a NumberInstance
+     * Fetch the NumberInstance
      *
      * @param array|Options $options Optional Arguments
      * @return NumberInstance Fetched NumberInstance

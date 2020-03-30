@@ -89,7 +89,7 @@ class TriggerInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TriggerInstance
+     * Fetch the TriggerInstance
      *
      * @return TriggerInstance Fetched TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -110,7 +110,7 @@ class TriggerInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the TriggerInstance
+     * Delete the TriggerInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

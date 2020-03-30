@@ -33,23 +33,18 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
     }
 
     /**
-     * Create a new AuthCallsIpAccessControlListMappingInstance
+     * Create the AuthCallsIpAccessControlListMappingInstance
      *
      * @param string $ipAccessControlListSid The SID of the IpAccessControlList
      *                                       resource to map to the SIP domain
-     * @return AuthCallsIpAccessControlListMappingInstance Newly created
+     * @return AuthCallsIpAccessControlListMappingInstance Created
      *                                                     AuthCallsIpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $ipAccessControlListSid): AuthCallsIpAccessControlListMappingInstance {
         $data = Values::of(['IpAccessControlListSid' => $ipAccessControlListSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AuthCallsIpAccessControlListMappingInstance(
             $this->version,
@@ -120,11 +115,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthCallsIpAccessControlListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AuthCallsIpAccessControlListMappingPage($this->version, $response, $this->solution);
     }

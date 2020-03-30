@@ -33,7 +33,7 @@ class PhoneNumberContext extends InstanceContext {
     }
 
     /**
-     * Fetch a PhoneNumberInstance
+     * Fetch the PhoneNumberInstance
      *
      * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
@@ -47,13 +47,9 @@ class PhoneNumberContext extends InstanceContext {
             'Type' => Serialize::map($options['type'], function($e) { return $e; }),
             'AddOns' => Serialize::map($options['addOns'], function($e) { return $e; }),
         ]);
-
         $params = \array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new PhoneNumberInstance($this->version, $payload, $this->solution['phoneNumber']);
     }

@@ -34,19 +34,13 @@ class OutgoingCallerIdContext extends InstanceContext {
     }
 
     /**
-     * Fetch a OutgoingCallerIdInstance
+     * Fetch the OutgoingCallerIdInstance
      *
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): OutgoingCallerIdInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new OutgoingCallerIdInstance(
             $this->version,
@@ -68,12 +62,7 @@ class OutgoingCallerIdContext extends InstanceContext {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new OutgoingCallerIdInstance(
             $this->version,
@@ -84,13 +73,13 @@ class OutgoingCallerIdContext extends InstanceContext {
     }
 
     /**
-     * Deletes the OutgoingCallerIdInstance
+     * Delete the OutgoingCallerIdInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

@@ -84,7 +84,7 @@ class VariableInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a VariableInstance
+     * Fetch the VariableInstance
      *
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -105,7 +105,7 @@ class VariableInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the VariableInstance
+     * Delete the VariableInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

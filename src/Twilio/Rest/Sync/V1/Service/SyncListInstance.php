@@ -86,7 +86,7 @@ class SyncListInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SyncListInstance
+     * Fetch the SyncListInstance
      *
      * @return SyncListInstance Fetched SyncListInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -96,7 +96,7 @@ class SyncListInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SyncListInstance
+     * Delete the SyncListInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

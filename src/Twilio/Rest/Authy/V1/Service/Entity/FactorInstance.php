@@ -93,7 +93,7 @@ class FactorInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FactorInstance
+     * Delete the FactorInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -103,7 +103,7 @@ class FactorInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FactorInstance
+     * Fetch the FactorInstance
      *
      * @return FactorInstance Fetched FactorInstance
      * @throws TwilioException When an HTTP error occurs.

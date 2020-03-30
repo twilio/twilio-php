@@ -40,19 +40,13 @@ class SyncListItemContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SyncListItemInstance
+     * Fetch the SyncListItemInstance
      *
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SyncListItemInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SyncListItemInstance(
             $this->version,
@@ -64,13 +58,13 @@ class SyncListItemContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SyncListItemInstance
+     * Delete the SyncListItemInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -90,12 +84,7 @@ class SyncListItemContext extends InstanceContext {
             'CollectionTtl' => $options['collectionTtl'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SyncListItemInstance(
             $this->version,

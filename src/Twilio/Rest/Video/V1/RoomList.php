@@ -33,10 +33,10 @@ class RoomList extends ListResource {
     }
 
     /**
-     * Create a new RoomInstance
+     * Create the RoomInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return RoomInstance Newly created RoomInstance
+     * @return RoomInstance Created RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): RoomInstance {
@@ -54,12 +54,7 @@ class RoomList extends ListResource {
             'MediaRegion' => $options['mediaRegion'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RoomInstance($this->version, $payload);
     }
@@ -123,6 +118,7 @@ class RoomList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RoomPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Status' => $options['status'],
             'UniqueName' => $options['uniqueName'],
@@ -133,11 +129,7 @@ class RoomList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RoomPage($this->version, $response, $this->solution);
     }

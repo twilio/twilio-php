@@ -33,22 +33,17 @@ class CredentialListList extends ListResource {
     }
 
     /**
-     * Create a new CredentialListInstance
+     * Create the CredentialListInstance
      *
      * @param string $credentialListSid The SID of the Credential List that you
      *                                  want to associate with the trunk
-     * @return CredentialListInstance Newly created CredentialListInstance
+     * @return CredentialListInstance Created CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $credentialListSid): CredentialListInstance {
         $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CredentialListInstance($this->version, $payload, $this->solution['trunkSid']);
     }
@@ -110,11 +105,7 @@ class CredentialListList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CredentialListPage($this->version, $response, $this->solution);
     }

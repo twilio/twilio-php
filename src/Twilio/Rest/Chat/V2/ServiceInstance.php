@@ -106,7 +106,7 @@ class ServiceInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ServiceInstance
+     * Fetch the ServiceInstance
      *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -116,7 +116,7 @@ class ServiceInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ServiceInstance
+     * Delete the ServiceInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

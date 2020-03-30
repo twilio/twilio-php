@@ -50,31 +50,25 @@ class ServiceContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ServiceInstance
+     * Fetch the ServiceInstance
      *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ServiceInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the ServiceInstance
+     * Delete the ServiceInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -98,12 +92,7 @@ class ServiceContext extends InstanceContext {
             'ChatInstanceSid' => $options['chatInstanceSid'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }

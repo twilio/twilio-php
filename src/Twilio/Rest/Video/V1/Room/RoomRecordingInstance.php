@@ -88,7 +88,7 @@ class RoomRecordingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RoomRecordingInstance
+     * Fetch the RoomRecordingInstance
      *
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class RoomRecordingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the RoomRecordingInstance
+     * Delete the RoomRecordingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

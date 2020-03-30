@@ -95,7 +95,7 @@ class SessionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SessionInstance
+     * Fetch the SessionInstance
      *
      * @return SessionInstance Fetched SessionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -105,7 +105,7 @@ class SessionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SessionInstance
+     * Delete the SessionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

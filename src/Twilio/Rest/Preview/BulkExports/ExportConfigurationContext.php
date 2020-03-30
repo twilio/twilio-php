@@ -36,19 +36,13 @@ class ExportConfigurationContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ExportConfigurationInstance
+     * Fetch the ExportConfigurationInstance
      *
      * @return ExportConfigurationInstance Fetched ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ExportConfigurationInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExportConfigurationInstance($this->version, $payload, $this->solution['resourceType']);
     }
@@ -69,12 +63,7 @@ class ExportConfigurationContext extends InstanceContext {
             'WebhookMethod' => $options['webhookMethod'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ExportConfigurationInstance($this->version, $payload, $this->solution['resourceType']);
     }

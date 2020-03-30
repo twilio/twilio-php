@@ -59,20 +59,14 @@ class AvailablePhoneNumberCountryContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AvailablePhoneNumberCountryInstance
+     * Fetch the AvailablePhoneNumberCountryInstance
      *
      * @return AvailablePhoneNumberCountryInstance Fetched
      *                                             AvailablePhoneNumberCountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AvailablePhoneNumberCountryInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AvailablePhoneNumberCountryInstance(
             $this->version,

@@ -43,10 +43,10 @@ class MessageInteractionList extends ListResource {
     }
 
     /**
-     * Create a new MessageInteractionInstance
+     * Create the MessageInteractionInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return MessageInteractionInstance Newly created MessageInteractionInstance
+     * @return MessageInteractionInstance Created MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): MessageInteractionInstance {
@@ -57,12 +57,7 @@ class MessageInteractionList extends ListResource {
             'MediaUrl' => Serialize::map($options['mediaUrl'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MessageInteractionInstance(
             $this->version,
@@ -131,11 +126,7 @@ class MessageInteractionList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessageInteractionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new MessageInteractionPage($this->version, $response, $this->solution);
     }

@@ -72,7 +72,7 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AuthCallsCredentialListMappingInstance
+     * Fetch the AuthCallsCredentialListMappingInstance
      *
      * @return AuthCallsCredentialListMappingInstance Fetched
      *                                                AuthCallsCredentialListMappingInstance
@@ -83,7 +83,7 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AuthCallsCredentialListMappingInstance
+     * Delete the AuthCallsCredentialListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

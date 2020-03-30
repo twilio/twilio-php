@@ -125,19 +125,13 @@ class AccountContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AccountInstance
+     * Fetch the AccountInstance
      *
      * @return AccountInstance Fetched AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AccountInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AccountInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -154,12 +148,7 @@ class AccountContext extends InstanceContext {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], 'Status' => $options['status'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AccountInstance($this->version, $payload, $this->solution['sid']);
     }

@@ -99,7 +99,7 @@ class HostedNumberOrderInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a HostedNumberOrderInstance
+     * Fetch the HostedNumberOrderInstance
      *
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -109,7 +109,7 @@ class HostedNumberOrderInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the HostedNumberOrderInstance
+     * Delete the HostedNumberOrderInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -63,7 +63,7 @@ class PublicKeyInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a PublicKeyInstance
+     * Fetch the PublicKeyInstance
      *
      * @return PublicKeyInstance Fetched PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class PublicKeyInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the PublicKeyInstance
+     * Delete the PublicKeyInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

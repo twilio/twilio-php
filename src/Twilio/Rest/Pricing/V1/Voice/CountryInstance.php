@@ -61,7 +61,7 @@ class CountryInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CountryInstance
+     * Fetch the CountryInstance
      *
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.

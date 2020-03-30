@@ -33,19 +33,13 @@ class SigningKeyContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SigningKeyInstance
+     * Fetch the SigningKeyInstance
      *
      * @return SigningKeyInstance Fetched SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SigningKeyInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SigningKeyInstance(
             $this->version,
@@ -67,12 +61,7 @@ class SigningKeyContext extends InstanceContext {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SigningKeyInstance(
             $this->version,
@@ -83,13 +72,13 @@ class SigningKeyContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SigningKeyInstance
+     * Delete the SigningKeyInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

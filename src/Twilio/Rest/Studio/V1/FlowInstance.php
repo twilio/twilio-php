@@ -73,7 +73,7 @@ class FlowInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FlowInstance
+     * Fetch the FlowInstance
      *
      * @return FlowInstance Fetched FlowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -83,7 +83,7 @@ class FlowInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FlowInstance
+     * Delete the FlowInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

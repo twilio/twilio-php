@@ -37,7 +37,7 @@ class WorkflowCumulativeStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkflowCumulativeStatisticsInstance
+     * Fetch the WorkflowCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkflowCumulativeStatisticsInstance Fetched
@@ -55,11 +55,7 @@ class WorkflowCumulativeStatisticsContext extends InstanceContext {
             'SplitByWaitTime' => $options['splitByWaitTime'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkflowCumulativeStatisticsInstance(
             $this->version,

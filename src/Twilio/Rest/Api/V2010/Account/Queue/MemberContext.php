@@ -35,19 +35,13 @@ class MemberContext extends InstanceContext {
     }
 
     /**
-     * Fetch a MemberInstance
+     * Fetch the MemberInstance
      *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): MemberInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new MemberInstance(
             $this->version,
@@ -71,12 +65,7 @@ class MemberContext extends InstanceContext {
 
         $data = Values::of(['Url' => $url, 'Method' => $options['method'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MemberInstance(
             $this->version,

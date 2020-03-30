@@ -34,12 +34,12 @@ class RateLimitList extends ListResource {
     }
 
     /**
-     * Create a new RateLimitInstance
+     * Create the RateLimitInstance
      *
      * @param string $uniqueName A unique, developer assigned name of this Rate
      *                           Limit.
      * @param array|Options $options Optional Arguments
-     * @return RateLimitInstance Newly created RateLimitInstance
+     * @return RateLimitInstance Created RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $uniqueName, array $options = []): RateLimitInstance {
@@ -47,12 +47,7 @@ class RateLimitList extends ListResource {
 
         $data = Values::of(['UniqueName' => $uniqueName, 'Description' => $options['description'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RateLimitInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -114,11 +109,7 @@ class RateLimitList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RateLimitPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RateLimitPage($this->version, $response, $this->solution);
     }

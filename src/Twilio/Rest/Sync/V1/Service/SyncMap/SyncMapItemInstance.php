@@ -87,7 +87,7 @@ class SyncMapItemInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SyncMapItemInstance
+     * Fetch the SyncMapItemInstance
      *
      * @return SyncMapItemInstance Fetched SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -97,7 +97,7 @@ class SyncMapItemInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SyncMapItemInstance
+     * Delete the SyncMapItemInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

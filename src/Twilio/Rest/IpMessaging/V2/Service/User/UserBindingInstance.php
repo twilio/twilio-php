@@ -86,7 +86,7 @@ class UserBindingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a UserBindingInstance
+     * Fetch the UserBindingInstance
      *
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -96,7 +96,7 @@ class UserBindingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the UserBindingInstance
+     * Delete the UserBindingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

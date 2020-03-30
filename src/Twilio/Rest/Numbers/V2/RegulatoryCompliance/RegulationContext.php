@@ -31,19 +31,13 @@ class RegulationContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RegulationInstance
+     * Fetch the RegulationInstance
      *
      * @return RegulationInstance Fetched RegulationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): RegulationInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new RegulationInstance($this->version, $payload, $this->solution['sid']);
     }

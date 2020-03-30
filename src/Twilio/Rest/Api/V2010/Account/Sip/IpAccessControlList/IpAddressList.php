@@ -96,11 +96,7 @@ class IpAddressList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAddressPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new IpAddressPage($this->version, $response, $this->solution);
     }
@@ -122,7 +118,7 @@ class IpAddressList extends ListResource {
     }
 
     /**
-     * Create a new IpAddressInstance
+     * Create the IpAddressInstance
      *
      * @param string $friendlyName A human readable descriptive text for this
      *                             resource, up to 64 characters long.
@@ -131,7 +127,7 @@ class IpAddressList extends ListResource {
      *                          this IP address will be allowed by Twilio. IPv4
      *                          only supported today.
      * @param array|Options $options Optional Arguments
-     * @return IpAddressInstance Newly created IpAddressInstance
+     * @return IpAddressInstance Created IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $ipAddress, array $options = []): IpAddressInstance {
@@ -143,12 +139,7 @@ class IpAddressList extends ListResource {
             'CidrPrefixLength' => $options['cidrPrefixLength'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IpAddressInstance(
             $this->version,

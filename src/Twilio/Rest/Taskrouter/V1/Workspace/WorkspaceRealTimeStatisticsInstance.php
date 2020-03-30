@@ -74,7 +74,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkspaceRealTimeStatisticsInstance
+     * Fetch the WorkspaceRealTimeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceRealTimeStatisticsInstance Fetched

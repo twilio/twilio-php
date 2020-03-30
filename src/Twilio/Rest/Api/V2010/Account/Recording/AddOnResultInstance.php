@@ -85,7 +85,7 @@ class AddOnResultInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AddOnResultInstance
+     * Fetch the AddOnResultInstance
      *
      * @return AddOnResultInstance Fetched AddOnResultInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,7 +95,7 @@ class AddOnResultInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AddOnResultInstance
+     * Delete the AddOnResultInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

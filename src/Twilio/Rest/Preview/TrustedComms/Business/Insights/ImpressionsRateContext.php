@@ -36,7 +36,7 @@ class ImpressionsRateContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ImpressionsRateInstance
+     * Fetch the ImpressionsRateInstance
      *
      * @param array|Options $options Optional Arguments
      * @return ImpressionsRateInstance Fetched ImpressionsRateInstance
@@ -55,11 +55,7 @@ class ImpressionsRateContext extends InstanceContext {
             'Interval' => $options['interval'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new ImpressionsRateInstance($this->version, $payload, $this->solution['businessSid']);
     }

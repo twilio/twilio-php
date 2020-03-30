@@ -46,19 +46,13 @@ class ExecutionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ExecutionInstance
+     * Fetch the ExecutionInstance
      *
      * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ExecutionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExecutionInstance(
             $this->version,
@@ -69,13 +63,13 @@ class ExecutionContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ExecutionInstance
+     * Delete the ExecutionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

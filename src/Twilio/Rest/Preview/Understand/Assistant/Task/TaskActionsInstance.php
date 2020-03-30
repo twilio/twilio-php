@@ -67,7 +67,7 @@ class TaskActionsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskActionsInstance
+     * Fetch the TaskActionsInstance
      *
      * @return TaskActionsInstance Fetched TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.

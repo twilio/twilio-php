@@ -133,7 +133,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a IncomingPhoneNumberInstance
+     * Fetch the IncomingPhoneNumberInstance
      *
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -143,7 +143,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the IncomingPhoneNumberInstance
+     * Delete the IncomingPhoneNumberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

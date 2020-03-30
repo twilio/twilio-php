@@ -32,10 +32,10 @@ class TokenList extends ListResource {
     }
 
     /**
-     * Create a new TokenInstance
+     * Create the TokenInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return TokenInstance Newly created TokenInstance
+     * @return TokenInstance Created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): TokenInstance {
@@ -43,12 +43,7 @@ class TokenList extends ListResource {
 
         $data = Values::of(['Ttl' => $options['ttl'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TokenInstance($this->version, $payload, $this->solution['accountSid']);
     }

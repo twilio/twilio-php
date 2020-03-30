@@ -36,10 +36,10 @@ class SyncListList extends ListResource {
     }
 
     /**
-     * Create a new SyncListInstance
+     * Create the SyncListInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return SyncListInstance Newly created SyncListInstance
+     * @return SyncListInstance Created SyncListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): SyncListInstance {
@@ -47,12 +47,7 @@ class SyncListList extends ListResource {
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncListInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -114,11 +109,7 @@ class SyncListList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncListPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SyncListPage($this->version, $response, $this->solution);
     }

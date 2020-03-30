@@ -35,21 +35,16 @@ class EntityList extends ListResource {
     }
 
     /**
-     * Create a new EntityInstance
+     * Create the EntityInstance
      *
      * @param string $identity Unique identity of the Entity
-     * @return EntityInstance Newly created EntityInstance
+     * @return EntityInstance Created EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $identity): EntityInstance {
         $data = Values::of(['Identity' => $identity, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new EntityInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -111,11 +106,7 @@ class EntityList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EntityPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new EntityPage($this->version, $response, $this->solution);
     }

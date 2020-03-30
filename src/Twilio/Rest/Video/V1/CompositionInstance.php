@@ -88,7 +88,7 @@ class CompositionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CompositionInstance
+     * Fetch the CompositionInstance
      *
      * @return CompositionInstance Fetched CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class CompositionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CompositionInstance
+     * Delete the CompositionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

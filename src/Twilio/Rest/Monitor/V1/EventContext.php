@@ -31,19 +31,13 @@ class EventContext extends InstanceContext {
     }
 
     /**
-     * Fetch a EventInstance
+     * Fetch the EventInstance
      *
      * @return EventInstance Fetched EventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EventInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EventInstance($this->version, $payload, $this->solution['sid']);
     }

@@ -91,6 +91,7 @@ class EventList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EventPage {
         $options = new Values($options);
+
         $params = Values::of([
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'EventType' => $options['eventType'],
@@ -108,11 +109,7 @@ class EventList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new EventPage($this->version, $response, $this->solution);
     }

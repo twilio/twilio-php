@@ -43,19 +43,13 @@ class AssetContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AssetInstance
+     * Fetch the AssetInstance
      *
      * @return AssetInstance Fetched AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AssetInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssetInstance(
             $this->version,
@@ -66,13 +60,13 @@ class AssetContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AssetInstance
+     * Delete the AssetInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -85,12 +79,7 @@ class AssetContext extends InstanceContext {
     public function update(string $friendlyName): AssetInstance {
         $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AssetInstance(
             $this->version,

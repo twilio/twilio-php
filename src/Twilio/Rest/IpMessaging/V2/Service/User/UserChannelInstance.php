@@ -85,7 +85,7 @@ class UserChannelInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a UserChannelInstance
+     * Fetch the UserChannelInstance
      *
      * @return UserChannelInstance Fetched UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,7 +95,7 @@ class UserChannelInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the UserChannelInstance
+     * Delete the UserChannelInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

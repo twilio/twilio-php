@@ -33,19 +33,13 @@ class RoleContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RoleInstance
+     * Fetch the RoleInstance
      *
      * @return RoleInstance Fetched RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): RoleInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new RoleInstance(
             $this->version,
@@ -56,13 +50,13 @@ class RoleContext extends InstanceContext {
     }
 
     /**
-     * Deletes the RoleInstance
+     * Delete the RoleInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -75,12 +69,7 @@ class RoleContext extends InstanceContext {
     public function update(array $permission): RoleInstance {
         $data = Values::of(['Permission' => Serialize::map($permission, function($e) { return $e; }), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RoleInstance(
             $this->version,

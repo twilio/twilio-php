@@ -35,10 +35,10 @@ class ChannelList extends ListResource {
     }
 
     /**
-     * Create a new ChannelInstance
+     * Create the ChannelInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return ChannelInstance Newly created ChannelInstance
+     * @return ChannelInstance Created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): ChannelInstance {
@@ -51,12 +51,7 @@ class ChannelList extends ListResource {
             'Type' => $options['type'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ChannelInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -120,6 +115,7 @@ class ChannelList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ChannelPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Type' => Serialize::map($options['type'], function($e) { return $e; }),
             'PageToken' => $pageToken,
@@ -127,11 +123,7 @@ class ChannelList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ChannelPage($this->version, $response, $this->solution);
     }

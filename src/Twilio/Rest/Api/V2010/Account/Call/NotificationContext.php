@@ -34,19 +34,13 @@ class NotificationContext extends InstanceContext {
     }
 
     /**
-     * Fetch a NotificationInstance
+     * Fetch the NotificationInstance
      *
      * @return NotificationInstance Fetched NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): NotificationInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new NotificationInstance(
             $this->version,

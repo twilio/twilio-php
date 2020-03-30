@@ -92,6 +92,7 @@ class TollFreeList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TollFreePage {
         $options = new Values($options);
+
         $params = Values::of([
             'Beta' => Serialize::booleanToString($options['beta']),
             'FriendlyName' => $options['friendlyName'],
@@ -102,11 +103,7 @@ class TollFreeList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TollFreePage($this->version, $response, $this->solution);
     }
@@ -128,11 +125,11 @@ class TollFreeList extends ListResource {
     }
 
     /**
-     * Create a new TollFreeInstance
+     * Create the TollFreeInstance
      *
      * @param string $phoneNumber The phone number to purchase in E.164 format
      * @param array|Options $options Optional Arguments
-     * @return TollFreeInstance Newly created TollFreeInstance
+     * @return TollFreeInstance Created TollFreeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $phoneNumber, array $options = []): TollFreeInstance {
@@ -164,12 +161,7 @@ class TollFreeList extends ListResource {
             'BundleSid' => $options['bundleSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TollFreeInstance($this->version, $payload, $this->solution['accountSid']);
     }

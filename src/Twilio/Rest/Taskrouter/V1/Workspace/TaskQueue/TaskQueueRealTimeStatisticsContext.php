@@ -35,7 +35,7 @@ class TaskQueueRealTimeStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TaskQueueRealTimeStatisticsInstance
+     * Fetch the TaskQueueRealTimeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueRealTimeStatisticsInstance Fetched
@@ -47,11 +47,7 @@ class TaskQueueRealTimeStatisticsContext extends InstanceContext {
 
         $params = Values::of(['TaskChannel' => $options['taskChannel'], ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new TaskQueueRealTimeStatisticsInstance(
             $this->version,

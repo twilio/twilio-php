@@ -82,7 +82,7 @@ class SyncStreamInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SyncStreamInstance
+     * Fetch the SyncStreamInstance
      *
      * @return SyncStreamInstance Fetched SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class SyncStreamInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SyncStreamInstance
+     * Delete the SyncStreamInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

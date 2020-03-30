@@ -74,7 +74,7 @@ class MemberInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a MemberInstance
+     * Fetch the MemberInstance
      *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.

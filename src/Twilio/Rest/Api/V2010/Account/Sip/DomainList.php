@@ -91,11 +91,7 @@ class DomainList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DomainPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new DomainPage($this->version, $response, $this->solution);
     }
@@ -117,11 +113,11 @@ class DomainList extends ListResource {
     }
 
     /**
-     * Create a new DomainInstance
+     * Create the DomainInstance
      *
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @param array|Options $options Optional Arguments
-     * @return DomainInstance Newly created DomainInstance
+     * @return DomainInstance Created DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $domainName, array $options = []): DomainInstance {
@@ -140,12 +136,7 @@ class DomainList extends ListResource {
             'EmergencyCallingEnabled' => Serialize::booleanToString($options['emergencyCallingEnabled']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new DomainInstance($this->version, $payload, $this->solution['accountSid']);
     }

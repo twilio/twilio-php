@@ -86,7 +86,7 @@ class MessagingConfigurationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a MessagingConfigurationInstance
+     * Fetch the MessagingConfigurationInstance
      *
      * @return MessagingConfigurationInstance Fetched MessagingConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -96,7 +96,7 @@ class MessagingConfigurationInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the MessagingConfigurationInstance
+     * Delete the MessagingConfigurationInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

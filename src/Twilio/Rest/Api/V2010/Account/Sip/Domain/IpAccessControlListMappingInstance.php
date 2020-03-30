@@ -78,7 +78,7 @@ class IpAccessControlListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a IpAccessControlListMappingInstance
+     * Fetch the IpAccessControlListMappingInstance
      *
      * @return IpAccessControlListMappingInstance Fetched
      *                                            IpAccessControlListMappingInstance
@@ -89,7 +89,7 @@ class IpAccessControlListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the IpAccessControlListMappingInstance
+     * Delete the IpAccessControlListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -42,19 +42,13 @@ class AuthorizationDocumentContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AuthorizationDocumentInstance
+     * Fetch the AuthorizationDocumentInstance
      *
      * @return AuthorizationDocumentInstance Fetched AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AuthorizationDocumentInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AuthorizationDocumentInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -79,12 +73,7 @@ class AuthorizationDocumentContext extends InstanceContext {
             'ContactPhoneNumber' => $options['contactPhoneNumber'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AuthorizationDocumentInstance($this->version, $payload, $this->solution['sid']);
     }

@@ -37,10 +37,10 @@ class DeviceList extends ListResource {
     }
 
     /**
-     * Create a new DeviceInstance
+     * Create the DeviceInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return DeviceInstance Newly created DeviceInstance
+     * @return DeviceInstance Created DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): DeviceInstance {
@@ -54,12 +54,7 @@ class DeviceList extends ListResource {
             'Enabled' => Serialize::booleanToString($options['enabled']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new DeviceInstance($this->version, $payload, $this->solution['fleetSid']);
     }
@@ -123,6 +118,7 @@ class DeviceList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DevicePage {
         $options = new Values($options);
+
         $params = Values::of([
             'DeploymentSid' => $options['deploymentSid'],
             'PageToken' => $pageToken,
@@ -130,11 +126,7 @@ class DeviceList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new DevicePage($this->version, $response, $this->solution);
     }

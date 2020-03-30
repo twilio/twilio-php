@@ -33,10 +33,10 @@ class TrunkList extends ListResource {
     }
 
     /**
-     * Create a new TrunkInstance
+     * Create the TrunkInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return TrunkInstance Newly created TrunkInstance
+     * @return TrunkInstance Created TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): TrunkInstance {
@@ -52,12 +52,7 @@ class TrunkList extends ListResource {
             'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TrunkInstance($this->version, $payload);
     }
@@ -119,11 +114,7 @@ class TrunkList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TrunkPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TrunkPage($this->version, $response, $this->solution);
     }

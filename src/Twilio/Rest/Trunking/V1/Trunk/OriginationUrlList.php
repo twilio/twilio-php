@@ -33,7 +33,7 @@ class OriginationUrlList extends ListResource {
     }
 
     /**
-     * Create a new OriginationUrlInstance
+     * Create the OriginationUrlInstance
      *
      * @param int $weight The value that determines the relative load the URI
      *                    should receive compared to others with the same priority
@@ -42,7 +42,7 @@ class OriginationUrlList extends ListResource {
      * @param string $friendlyName A string to describe the resource
      * @param string $sipUrl The SIP address you want Twilio to route your
      *                       Origination calls to
-     * @return OriginationUrlInstance Newly created OriginationUrlInstance
+     * @return OriginationUrlInstance Created OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(int $weight, int $priority, bool $enabled, string $friendlyName, string $sipUrl): OriginationUrlInstance {
@@ -54,12 +54,7 @@ class OriginationUrlList extends ListResource {
             'SipUrl' => $sipUrl,
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new OriginationUrlInstance($this->version, $payload, $this->solution['trunkSid']);
     }
@@ -121,11 +116,7 @@ class OriginationUrlList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): OriginationUrlPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new OriginationUrlPage($this->version, $response, $this->solution);
     }

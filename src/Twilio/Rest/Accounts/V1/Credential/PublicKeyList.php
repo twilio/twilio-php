@@ -88,11 +88,7 @@ class PublicKeyList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PublicKeyPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new PublicKeyPage($this->version, $response, $this->solution);
     }
@@ -114,11 +110,11 @@ class PublicKeyList extends ListResource {
     }
 
     /**
-     * Create a new PublicKeyInstance
+     * Create the PublicKeyInstance
      *
      * @param string $publicKey A URL encoded representation of the public key
      * @param array|Options $options Optional Arguments
-     * @return PublicKeyInstance Newly created PublicKeyInstance
+     * @return PublicKeyInstance Created PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $publicKey, array $options = []): PublicKeyInstance {
@@ -130,12 +126,7 @@ class PublicKeyList extends ListResource {
             'AccountSid' => $options['accountSid'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PublicKeyInstance($this->version, $payload);
     }

@@ -35,13 +35,13 @@ class ParticipantList extends ListResource {
     }
 
     /**
-     * Create a new ParticipantInstance
+     * Create the ParticipantInstance
      *
      * @param string $from The `from` phone number used to invite a participant
      * @param string $to The number, client id, or sip address of the new
      *                   participant
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Newly created ParticipantInstance
+     * @return ParticipantInstance Created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $from, string $to, array $options = []): ParticipantInstance {
@@ -83,12 +83,7 @@ class ParticipantList extends ListResource {
             'Byoc' => $options['byoc'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ParticipantInstance(
             $this->version,
@@ -157,6 +152,7 @@ class ParticipantList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ParticipantPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Muted' => Serialize::booleanToString($options['muted']),
             'Hold' => Serialize::booleanToString($options['hold']),
@@ -166,11 +162,7 @@ class ParticipantList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ParticipantPage($this->version, $response, $this->solution);
     }

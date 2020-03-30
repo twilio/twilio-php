@@ -40,19 +40,13 @@ class BundleContext extends InstanceContext {
     }
 
     /**
-     * Fetch a BundleInstance
+     * Fetch the BundleInstance
      *
      * @return BundleInstance Fetched BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): BundleInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new BundleInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -74,12 +68,7 @@ class BundleContext extends InstanceContext {
             'Email' => $options['email'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new BundleInstance($this->version, $payload, $this->solution['sid']);
     }

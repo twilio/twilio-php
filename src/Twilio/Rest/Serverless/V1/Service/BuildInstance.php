@@ -78,7 +78,7 @@ class BuildInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BuildInstance
+     * Fetch the BuildInstance
      *
      * @return BuildInstance Fetched BuildInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -88,7 +88,7 @@ class BuildInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the BuildInstance
+     * Delete the BuildInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

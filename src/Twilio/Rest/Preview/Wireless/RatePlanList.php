@@ -92,11 +92,7 @@ class RatePlanList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RatePlanPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RatePlanPage($this->version, $response, $this->solution);
     }
@@ -118,10 +114,10 @@ class RatePlanList extends ListResource {
     }
 
     /**
-     * Create a new RatePlanInstance
+     * Create the RatePlanInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return RatePlanInstance Newly created RatePlanInstance
+     * @return RatePlanInstance Created RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): RatePlanInstance {
@@ -140,12 +136,7 @@ class RatePlanList extends ListResource {
             'InternationalRoaming' => Serialize::map($options['internationalRoaming'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RatePlanInstance($this->version, $payload);
     }

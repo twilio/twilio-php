@@ -90,11 +90,7 @@ class IpAccessControlListList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpAccessControlListPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new IpAccessControlListPage($this->version, $response, $this->solution);
     }
@@ -116,21 +112,16 @@ class IpAccessControlListList extends ListResource {
     }
 
     /**
-     * Create a new IpAccessControlListInstance
+     * Create the IpAccessControlListInstance
      *
      * @param string $friendlyName A human readable description of this resource
-     * @return IpAccessControlListInstance Newly created IpAccessControlListInstance
+     * @return IpAccessControlListInstance Created IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName): IpAccessControlListInstance {
         $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IpAccessControlListInstance($this->version, $payload, $this->solution['accountSid']);
     }

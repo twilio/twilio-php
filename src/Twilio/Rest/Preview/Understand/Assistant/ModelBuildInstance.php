@@ -78,7 +78,7 @@ class ModelBuildInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ModelBuildInstance
+     * Fetch the ModelBuildInstance
      *
      * @return ModelBuildInstance Fetched ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -99,7 +99,7 @@ class ModelBuildInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ModelBuildInstance
+     * Delete the ModelBuildInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

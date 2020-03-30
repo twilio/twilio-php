@@ -46,19 +46,13 @@ class ConferenceContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ConferenceInstance
+     * Fetch the ConferenceInstance
      *
      * @return ConferenceInstance Fetched ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ConferenceInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ConferenceInstance(
             $this->version,
@@ -84,12 +78,7 @@ class ConferenceContext extends InstanceContext {
             'AnnounceMethod' => $options['announceMethod'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ConferenceInstance(
             $this->version,

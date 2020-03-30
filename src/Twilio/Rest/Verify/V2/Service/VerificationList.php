@@ -34,12 +34,12 @@ class VerificationList extends ListResource {
     }
 
     /**
-     * Create a new VerificationInstance
+     * Create the VerificationInstance
      *
      * @param string $to The phone number or email to verify
      * @param string $channel The verification method to use
      * @param array|Options $options Optional Arguments
-     * @return VerificationInstance Newly created VerificationInstance
+     * @return VerificationInstance Created VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $to, string $channel, array $options = []): VerificationInstance {
@@ -59,12 +59,7 @@ class VerificationList extends ListResource {
             'AppHash' => $options['appHash'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new VerificationInstance($this->version, $payload, $this->solution['serviceSid']);
     }

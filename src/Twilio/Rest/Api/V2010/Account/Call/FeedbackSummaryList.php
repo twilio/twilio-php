@@ -33,12 +33,12 @@ class FeedbackSummaryList extends ListResource {
     }
 
     /**
-     * Create a new FeedbackSummaryInstance
+     * Create the FeedbackSummaryInstance
      *
      * @param \DateTime $startDate Only include feedback given on or after this date
      * @param \DateTime $endDate Only include feedback given on or before this date
      * @param array|Options $options Optional Arguments
-     * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
+     * @return FeedbackSummaryInstance Created FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(\DateTime $startDate, \DateTime $endDate, array $options = []): FeedbackSummaryInstance {
@@ -52,12 +52,7 @@ class FeedbackSummaryList extends ListResource {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FeedbackSummaryInstance($this->version, $payload, $this->solution['accountSid']);
     }

@@ -81,7 +81,7 @@ class SyncMapPermissionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SyncMapPermissionInstance
+     * Fetch the SyncMapPermissionInstance
      *
      * @return SyncMapPermissionInstance Fetched SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,7 +91,7 @@ class SyncMapPermissionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SyncMapPermissionInstance
+     * Delete the SyncMapPermissionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -90,6 +90,7 @@ class OutgoingCallerIdList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): OutgoingCallerIdPage {
         $options = new Values($options);
+
         $params = Values::of([
             'PhoneNumber' => $options['phoneNumber'],
             'FriendlyName' => $options['friendlyName'],
@@ -98,11 +99,7 @@ class OutgoingCallerIdList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new OutgoingCallerIdPage($this->version, $response, $this->solution);
     }

@@ -91,6 +91,7 @@ class ConferenceList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ConferencePage {
         $options = new Values($options);
+
         $params = Values::of([
             'DateCreated<' => Serialize::iso8601Date($options['dateCreatedBefore']),
             'DateCreated' => Serialize::iso8601Date($options['dateCreated']),
@@ -105,11 +106,7 @@ class ConferenceList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ConferencePage($this->version, $response, $this->solution);
     }

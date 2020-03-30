@@ -34,7 +34,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkersCumulativeStatisticsInstance
+     * Fetch the WorkersCumulativeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkersCumulativeStatisticsInstance Fetched
@@ -51,11 +51,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
             'TaskChannel' => $options['taskChannel'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkersCumulativeStatisticsInstance(
             $this->version,

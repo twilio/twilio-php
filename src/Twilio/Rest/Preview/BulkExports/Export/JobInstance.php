@@ -71,7 +71,7 @@ class JobInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a JobInstance
+     * Fetch the JobInstance
      *
      * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -81,7 +81,7 @@ class JobInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the JobInstance
+     * Delete the JobInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

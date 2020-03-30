@@ -79,7 +79,7 @@ class DocumentPermissionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DocumentPermissionInstance
+     * Fetch the DocumentPermissionInstance
      *
      * @return DocumentPermissionInstance Fetched DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class DocumentPermissionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the DocumentPermissionInstance
+     * Delete the DocumentPermissionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

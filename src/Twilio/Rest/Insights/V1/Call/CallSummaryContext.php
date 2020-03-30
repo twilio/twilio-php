@@ -35,7 +35,7 @@ class CallSummaryContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CallSummaryInstance
+     * Fetch the CallSummaryInstance
      *
      * @param array|Options $options Optional Arguments
      * @return CallSummaryInstance Fetched CallSummaryInstance
@@ -46,11 +46,7 @@ class CallSummaryContext extends InstanceContext {
 
         $params = Values::of(['ProcessingState' => $options['processingState'], ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new CallSummaryInstance($this->version, $payload, $this->solution['callSid']);
     }

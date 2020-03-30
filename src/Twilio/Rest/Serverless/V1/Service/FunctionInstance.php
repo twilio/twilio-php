@@ -77,7 +77,7 @@ class FunctionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FunctionInstance
+     * Fetch the FunctionInstance
      *
      * @return FunctionInstance Fetched FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -87,7 +87,7 @@ class FunctionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FunctionInstance
+     * Delete the FunctionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

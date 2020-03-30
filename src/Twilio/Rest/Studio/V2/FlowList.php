@@ -36,13 +36,13 @@ class FlowList extends ListResource {
     }
 
     /**
-     * Create a new FlowInstance
+     * Create the FlowInstance
      *
      * @param string $friendlyName The string that you assigned to describe the Flow
      * @param string $status The status of the Flow
      * @param array $definition JSON representation of flow definition
      * @param array|Options $options Optional Arguments
-     * @return FlowInstance Newly created FlowInstance
+     * @return FlowInstance Created FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $status, array $definition, array $options = []): FlowInstance {
@@ -55,12 +55,7 @@ class FlowList extends ListResource {
             'CommitMessage' => $options['commitMessage'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FlowInstance($this->version, $payload);
     }
@@ -122,11 +117,7 @@ class FlowList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FlowPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FlowPage($this->version, $response, $this->solution);
     }

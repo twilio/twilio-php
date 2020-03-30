@@ -89,7 +89,7 @@ class PayloadInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a PayloadInstance
+     * Fetch the PayloadInstance
      *
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -99,7 +99,7 @@ class PayloadInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the PayloadInstance
+     * Delete the PayloadInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

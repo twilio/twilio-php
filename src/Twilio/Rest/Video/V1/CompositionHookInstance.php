@@ -83,7 +83,7 @@ class CompositionHookInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CompositionHookInstance
+     * Fetch the CompositionHookInstance
      *
      * @return CompositionHookInstance Fetched CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -93,7 +93,7 @@ class CompositionHookInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CompositionHookInstance
+     * Delete the CompositionHookInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

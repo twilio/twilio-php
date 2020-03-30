@@ -32,19 +32,13 @@ class SupportingDocumentTypeContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SupportingDocumentTypeInstance
+     * Fetch the SupportingDocumentTypeInstance
      *
      * @return SupportingDocumentTypeInstance Fetched SupportingDocumentTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SupportingDocumentTypeInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SupportingDocumentTypeInstance($this->version, $payload, $this->solution['sid']);
     }

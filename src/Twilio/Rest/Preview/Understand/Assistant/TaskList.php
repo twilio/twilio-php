@@ -93,11 +93,7 @@ class TaskList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TaskPage($this->version, $response, $this->solution);
     }
@@ -119,13 +115,13 @@ class TaskList extends ListResource {
     }
 
     /**
-     * Create a new TaskInstance
+     * Create the TaskInstance
      *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
      * @param array|Options $options Optional Arguments
-     * @return TaskInstance Newly created TaskInstance
+     * @return TaskInstance Created TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $uniqueName, array $options = []): TaskInstance {
@@ -138,12 +134,7 @@ class TaskList extends ListResource {
             'ActionsUrl' => $options['actionsUrl'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TaskInstance($this->version, $payload, $this->solution['assistantSid']);
     }

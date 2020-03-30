@@ -70,7 +70,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkflowStatisticsInstance
+     * Fetch the WorkflowStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance

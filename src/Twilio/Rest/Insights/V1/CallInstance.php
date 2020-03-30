@@ -64,7 +64,7 @@ class CallInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CallInstance
+     * Fetch the CallInstance
      *
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.

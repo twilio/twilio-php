@@ -36,10 +36,10 @@ class SyncMapList extends ListResource {
     }
 
     /**
-     * Create a new SyncMapInstance
+     * Create the SyncMapInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return SyncMapInstance Newly created SyncMapInstance
+     * @return SyncMapInstance Created SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): SyncMapInstance {
@@ -47,12 +47,7 @@ class SyncMapList extends ListResource {
 
         $data = Values::of(['UniqueName' => $options['uniqueName'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncMapInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -114,11 +109,7 @@ class SyncMapList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new SyncMapPage($this->version, $response, $this->solution);
     }

@@ -50,19 +50,13 @@ class DomainContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DomainInstance
+     * Fetch the DomainInstance
      *
      * @return DomainInstance Fetched DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DomainInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DomainInstance(
             $this->version,
@@ -95,12 +89,7 @@ class DomainContext extends InstanceContext {
             'EmergencyCallingEnabled' => Serialize::booleanToString($options['emergencyCallingEnabled']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DomainInstance(
             $this->version,
@@ -111,13 +100,13 @@ class DomainContext extends InstanceContext {
     }
 
     /**
-     * Deletes the DomainInstance
+     * Delete the DomainInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

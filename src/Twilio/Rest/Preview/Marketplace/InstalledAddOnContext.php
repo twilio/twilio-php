@@ -43,29 +43,23 @@ class InstalledAddOnContext extends InstanceContext {
     }
 
     /**
-     * Deletes the InstalledAddOnInstance
+     * Delete the InstalledAddOnInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
-     * Fetch a InstalledAddOnInstance
+     * Fetch the InstalledAddOnInstance
      *
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): InstalledAddOnInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new InstalledAddOnInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -85,12 +79,7 @@ class InstalledAddOnContext extends InstanceContext {
             'UniqueName' => $options['uniqueName'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new InstalledAddOnInstance($this->version, $payload, $this->solution['sid']);
     }

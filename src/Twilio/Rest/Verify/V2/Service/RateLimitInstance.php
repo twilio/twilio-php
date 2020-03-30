@@ -89,7 +89,7 @@ class RateLimitInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RateLimitInstance
+     * Fetch the RateLimitInstance
      *
      * @return RateLimitInstance Fetched RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -99,7 +99,7 @@ class RateLimitInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the RateLimitInstance
+     * Delete the RateLimitInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

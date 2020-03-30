@@ -37,19 +37,13 @@ class WorkerChannelContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkerChannelInstance
+     * Fetch the WorkerChannelInstance
      *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): WorkerChannelInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new WorkerChannelInstance(
             $this->version,
@@ -75,12 +69,7 @@ class WorkerChannelContext extends InstanceContext {
             'Available' => Serialize::booleanToString($options['available']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WorkerChannelInstance(
             $this->version,

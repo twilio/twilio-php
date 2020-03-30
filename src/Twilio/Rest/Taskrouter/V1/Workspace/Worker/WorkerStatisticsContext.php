@@ -36,7 +36,7 @@ class WorkerStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkerStatisticsInstance
+     * Fetch the WorkerStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
@@ -52,11 +52,7 @@ class WorkerStatisticsContext extends InstanceContext {
             'TaskChannel' => $options['taskChannel'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkerStatisticsInstance(
             $this->version,

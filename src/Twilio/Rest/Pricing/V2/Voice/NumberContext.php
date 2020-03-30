@@ -33,7 +33,7 @@ class NumberContext extends InstanceContext {
     }
 
     /**
-     * Fetch a NumberInstance
+     * Fetch the NumberInstance
      *
      * @param array|Options $options Optional Arguments
      * @return NumberInstance Fetched NumberInstance
@@ -44,11 +44,7 @@ class NumberContext extends InstanceContext {
 
         $params = Values::of(['OriginationNumber' => $options['originationNumber'], ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new NumberInstance($this->version, $payload, $this->solution['destinationNumber']);
     }

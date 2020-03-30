@@ -42,12 +42,12 @@ class CallList extends ListResource {
     }
 
     /**
-     * Create a new CallInstance
+     * Create the CallInstance
      *
      * @param string $to Phone number, SIP address, or client identifier to call
      * @param string $from Twilio number from which to originate the call
      * @param array|Options $options Optional Arguments
-     * @return CallInstance Newly created CallInstance
+     * @return CallInstance Created CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $to, string $from, array $options = []): CallInstance {
@@ -88,12 +88,7 @@ class CallList extends ListResource {
             'CallReason' => $options['callReason'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CallInstance($this->version, $payload, $this->solution['accountSid']);
     }
@@ -157,6 +152,7 @@ class CallList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CallPage {
         $options = new Values($options);
+
         $params = Values::of([
             'To' => $options['to'],
             'From' => $options['from'],
@@ -173,11 +169,7 @@ class CallList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CallPage($this->version, $response, $this->solution);
     }

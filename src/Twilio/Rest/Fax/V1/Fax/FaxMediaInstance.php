@@ -72,7 +72,7 @@ class FaxMediaInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FaxMediaInstance
+     * Fetch the FaxMediaInstance
      *
      * @return FaxMediaInstance Fetched FaxMediaInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -82,7 +82,7 @@ class FaxMediaInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FaxMediaInstance
+     * Delete the FaxMediaInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

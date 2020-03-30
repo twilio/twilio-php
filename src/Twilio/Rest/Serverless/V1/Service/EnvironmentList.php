@@ -93,11 +93,7 @@ class EnvironmentList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EnvironmentPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new EnvironmentPage($this->version, $response, $this->solution);
     }
@@ -119,12 +115,12 @@ class EnvironmentList extends ListResource {
     }
 
     /**
-     * Create a new EnvironmentInstance
+     * Create the EnvironmentInstance
      *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the Environment resource
      * @param array|Options $options Optional Arguments
-     * @return EnvironmentInstance Newly created EnvironmentInstance
+     * @return EnvironmentInstance Created EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $uniqueName, array $options = []): EnvironmentInstance {
@@ -132,12 +128,7 @@ class EnvironmentList extends ListResource {
 
         $data = Values::of(['UniqueName' => $uniqueName, 'DomainSuffix' => $options['domainSuffix'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new EnvironmentInstance($this->version, $payload, $this->solution['serviceSid']);
     }

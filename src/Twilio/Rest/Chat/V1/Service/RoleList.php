@@ -34,12 +34,12 @@ class RoleList extends ListResource {
     }
 
     /**
-     * Create a new RoleInstance
+     * Create the RoleInstance
      *
      * @param string $friendlyName A string to describe the new resource
      * @param string $type The type of role
      * @param string[] $permission A permission the role should have
-     * @return RoleInstance Newly created RoleInstance
+     * @return RoleInstance Created RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $type, array $permission): RoleInstance {
@@ -49,12 +49,7 @@ class RoleList extends ListResource {
             'Permission' => Serialize::map($permission, function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RoleInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -116,11 +111,7 @@ class RoleList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RolePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new RolePage($this->version, $response, $this->solution);
     }

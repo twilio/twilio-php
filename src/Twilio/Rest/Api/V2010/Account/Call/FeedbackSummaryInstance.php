@@ -84,7 +84,7 @@ class FeedbackSummaryInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FeedbackSummaryInstance
+     * Fetch the FeedbackSummaryInstance
      *
      * @return FeedbackSummaryInstance Fetched FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -94,7 +94,7 @@ class FeedbackSummaryInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FeedbackSummaryInstance
+     * Delete the FeedbackSummaryInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

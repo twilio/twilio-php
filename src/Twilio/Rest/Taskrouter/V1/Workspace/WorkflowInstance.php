@@ -90,7 +90,7 @@ class WorkflowInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkflowInstance
+     * Fetch the WorkflowInstance
      *
      * @return WorkflowInstance Fetched WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -111,7 +111,7 @@ class WorkflowInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the WorkflowInstance
+     * Delete the WorkflowInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

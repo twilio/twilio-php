@@ -35,20 +35,14 @@ class AuthCallsIpAccessControlListMappingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AuthCallsIpAccessControlListMappingInstance
+     * Fetch the AuthCallsIpAccessControlListMappingInstance
      *
      * @return AuthCallsIpAccessControlListMappingInstance Fetched
      *                                                     AuthCallsIpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AuthCallsIpAccessControlListMappingInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AuthCallsIpAccessControlListMappingInstance(
             $this->version,
@@ -60,13 +54,13 @@ class AuthCallsIpAccessControlListMappingContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AuthCallsIpAccessControlListMappingInstance
+     * Delete the AuthCallsIpAccessControlListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

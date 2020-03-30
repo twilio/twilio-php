@@ -42,19 +42,13 @@ class FaxContext extends InstanceContext {
     }
 
     /**
-     * Fetch a FaxInstance
+     * Fetch the FaxInstance
      *
      * @return FaxInstance Fetched FaxInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FaxInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FaxInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -71,24 +65,19 @@ class FaxContext extends InstanceContext {
 
         $data = Values::of(['Status' => $options['status'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FaxInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the FaxInstance
+     * Delete the FaxInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

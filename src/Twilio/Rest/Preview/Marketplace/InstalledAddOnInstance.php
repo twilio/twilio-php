@@ -76,7 +76,7 @@ class InstalledAddOnInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the InstalledAddOnInstance
+     * Delete the InstalledAddOnInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -86,7 +86,7 @@ class InstalledAddOnInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a InstalledAddOnInstance
+     * Fetch the InstalledAddOnInstance
      *
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.

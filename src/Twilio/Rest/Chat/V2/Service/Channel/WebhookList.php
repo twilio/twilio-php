@@ -93,11 +93,7 @@ class WebhookList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WebhookPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new WebhookPage($this->version, $response, $this->solution);
     }
@@ -119,11 +115,11 @@ class WebhookList extends ListResource {
     }
 
     /**
-     * Create a new WebhookInstance
+     * Create the WebhookInstance
      *
      * @param string $type The type of webhook
      * @param array|Options $options Optional Arguments
-     * @return WebhookInstance Newly created WebhookInstance
+     * @return WebhookInstance Created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $type, array $options = []): WebhookInstance {
@@ -139,12 +135,7 @@ class WebhookList extends ListResource {
             'Configuration.RetryCount' => $options['configurationRetryCount'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WebhookInstance(
             $this->version,

@@ -92,6 +92,7 @@ class TollFreeList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TollFreePage {
         $options = new Values($options);
+
         $params = Values::of([
             'AreaCode' => $options['areaCode'],
             'Contains' => $options['contains'],
@@ -116,11 +117,7 @@ class TollFreeList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TollFreePage($this->version, $response, $this->solution);
     }

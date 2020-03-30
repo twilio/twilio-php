@@ -86,7 +86,7 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AssignedAddOnExtensionInstance
+     * Fetch the AssignedAddOnExtensionInstance
      *
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.

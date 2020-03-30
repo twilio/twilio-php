@@ -90,7 +90,7 @@ class AddressInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AddressInstance
+     * Delete the AddressInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class AddressInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AddressInstance
+     * Fetch the AddressInstance
      *
      * @return AddressInstance Fetched AddressInstance
      * @throws TwilioException When an HTTP error occurs.

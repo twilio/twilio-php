@@ -39,19 +39,13 @@ class VariableContext extends InstanceContext {
     }
 
     /**
-     * Fetch a VariableInstance
+     * Fetch the VariableInstance
      *
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): VariableInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new VariableInstance(
             $this->version,
@@ -74,12 +68,7 @@ class VariableContext extends InstanceContext {
 
         $data = Values::of(['Key' => $options['key'], 'Value' => $options['value'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new VariableInstance(
             $this->version,
@@ -91,13 +80,13 @@ class VariableContext extends InstanceContext {
     }
 
     /**
-     * Deletes the VariableInstance
+     * Delete the VariableInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

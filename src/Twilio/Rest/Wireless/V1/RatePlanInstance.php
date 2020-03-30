@@ -83,7 +83,7 @@ class RatePlanInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RatePlanInstance
+     * Fetch the RatePlanInstance
      *
      * @return RatePlanInstance Fetched RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -104,7 +104,7 @@ class RatePlanInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the RatePlanInstance
+     * Delete the RatePlanInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

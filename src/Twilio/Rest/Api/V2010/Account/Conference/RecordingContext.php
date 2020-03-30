@@ -47,12 +47,7 @@ class RecordingContext extends InstanceContext {
 
         $data = Values::of(['Status' => $status, 'PauseBehavior' => $options['pauseBehavior'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RecordingInstance(
             $this->version,
@@ -64,19 +59,13 @@ class RecordingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RecordingInstance
+     * Fetch the RecordingInstance
      *
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): RecordingInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new RecordingInstance(
             $this->version,
@@ -88,13 +77,13 @@ class RecordingContext extends InstanceContext {
     }
 
     /**
-     * Deletes the RecordingInstance
+     * Delete the RecordingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

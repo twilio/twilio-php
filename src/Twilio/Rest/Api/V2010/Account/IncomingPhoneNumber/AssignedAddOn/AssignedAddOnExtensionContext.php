@@ -45,19 +45,13 @@ class AssignedAddOnExtensionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AssignedAddOnExtensionInstance
+     * Fetch the AssignedAddOnExtensionInstance
      *
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AssignedAddOnExtensionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssignedAddOnExtensionInstance(
             $this->version,

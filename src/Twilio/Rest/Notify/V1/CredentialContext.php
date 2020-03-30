@@ -36,19 +36,13 @@ class CredentialContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CredentialInstance
+     * Fetch the CredentialInstance
      *
      * @return CredentialInstance Fetched CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CredentialInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CredentialInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -72,24 +66,19 @@ class CredentialContext extends InstanceContext {
             'Secret' => $options['secret'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new CredentialInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the CredentialInstance
+     * Delete the CredentialInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

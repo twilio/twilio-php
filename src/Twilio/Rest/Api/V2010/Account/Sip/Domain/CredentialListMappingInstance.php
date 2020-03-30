@@ -77,7 +77,7 @@ class CredentialListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CredentialListMappingInstance
+     * Fetch the CredentialListMappingInstance
      *
      * @return CredentialListMappingInstance Fetched CredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -87,7 +87,7 @@ class CredentialListMappingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CredentialListMappingInstance
+     * Delete the CredentialListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

@@ -94,7 +94,7 @@ class TaskQueueInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskQueueInstance
+     * Fetch the TaskQueueInstance
      *
      * @return TaskQueueInstance Fetched TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -115,7 +115,7 @@ class TaskQueueInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the TaskQueueInstance
+     * Delete the TaskQueueInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

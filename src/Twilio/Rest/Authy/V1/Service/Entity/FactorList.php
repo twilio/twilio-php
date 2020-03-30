@@ -36,13 +36,13 @@ class FactorList extends ListResource {
     }
 
     /**
-     * Create a new FactorInstance
+     * Create the FactorInstance
      *
      * @param string $binding A unique binding for this Factor as a json string
      * @param string $friendlyName The friendly name of this Factor
      * @param string $factorType The Type of this Factor
      * @param string $config The config for this Factor as a json string
-     * @return FactorInstance Newly created FactorInstance
+     * @return FactorInstance Created FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $binding, string $friendlyName, string $factorType, string $config): FactorInstance {
@@ -53,12 +53,7 @@ class FactorList extends ListResource {
             'Config' => $config,
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FactorInstance(
             $this->version,
@@ -125,11 +120,7 @@ class FactorList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FactorPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new FactorPage($this->version, $response, $this->solution);
     }

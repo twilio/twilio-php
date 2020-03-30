@@ -92,6 +92,7 @@ class ReservationList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ReservationPage {
         $options = new Values($options);
+
         $params = Values::of([
             'ReservationStatus' => $options['reservationStatus'],
             'PageToken' => $pageToken,
@@ -99,11 +100,7 @@ class ReservationList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ReservationPage($this->version, $response, $this->solution);
     }

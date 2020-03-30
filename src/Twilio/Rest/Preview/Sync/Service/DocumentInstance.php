@@ -82,7 +82,7 @@ class DocumentInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DocumentInstance
+     * Fetch the DocumentInstance
      *
      * @return DocumentInstance Fetched DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -92,7 +92,7 @@ class DocumentInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the DocumentInstance
+     * Delete the DocumentInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

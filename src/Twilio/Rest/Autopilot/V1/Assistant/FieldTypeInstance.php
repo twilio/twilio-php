@@ -80,7 +80,7 @@ class FieldTypeInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FieldTypeInstance
+     * Fetch the FieldTypeInstance
      *
      * @return FieldTypeInstance Fetched FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -101,7 +101,7 @@ class FieldTypeInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FieldTypeInstance
+     * Delete the FieldTypeInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

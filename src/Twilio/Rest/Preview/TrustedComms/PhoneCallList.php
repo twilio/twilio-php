@@ -35,12 +35,12 @@ class PhoneCallList extends ListResource {
     }
 
     /**
-     * Create a new PhoneCallInstance
+     * Create the PhoneCallInstance
      *
      * @param string $from Twilio number from which to originate the call
      * @param string $to The terminating Phone Number
      * @param array|Options $options Optional Arguments
-     * @return PhoneCallInstance Newly created PhoneCallInstance
+     * @return PhoneCallInstance Created PhoneCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $from, string $to, array $options = []): PhoneCallInstance {
@@ -76,12 +76,7 @@ class PhoneCallList extends ListResource {
             'Url' => $options['url'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PhoneCallInstance($this->version, $payload);
     }

@@ -32,10 +32,10 @@ class AccountList extends ListResource {
     }
 
     /**
-     * Create a new AccountInstance
+     * Create the AccountInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return AccountInstance Newly created AccountInstance
+     * @return AccountInstance Created AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): AccountInstance {
@@ -43,12 +43,7 @@ class AccountList extends ListResource {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AccountInstance($this->version, $payload);
     }
@@ -112,6 +107,7 @@ class AccountList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AccountPage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'Status' => $options['status'],
@@ -120,11 +116,7 @@ class AccountList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AccountPage($this->version, $response, $this->solution);
     }

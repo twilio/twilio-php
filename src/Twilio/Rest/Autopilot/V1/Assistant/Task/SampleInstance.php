@@ -85,7 +85,7 @@ class SampleInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SampleInstance
+     * Fetch the SampleInstance
      *
      * @return SampleInstance Fetched SampleInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -106,7 +106,7 @@ class SampleInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SampleInstance
+     * Delete the SampleInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

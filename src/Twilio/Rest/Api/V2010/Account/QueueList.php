@@ -89,11 +89,7 @@ class QueueList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): QueuePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new QueuePage($this->version, $response, $this->solution);
     }
@@ -115,11 +111,11 @@ class QueueList extends ListResource {
     }
 
     /**
-     * Create a new QueueInstance
+     * Create the QueueInstance
      *
      * @param string $friendlyName A string to describe this resource
      * @param array|Options $options Optional Arguments
-     * @return QueueInstance Newly created QueueInstance
+     * @return QueueInstance Created QueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): QueueInstance {
@@ -127,12 +123,7 @@ class QueueList extends ListResource {
 
         $data = Values::of(['FriendlyName' => $friendlyName, 'MaxSize' => $options['maxSize'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new QueueInstance($this->version, $payload, $this->solution['accountSid']);
     }

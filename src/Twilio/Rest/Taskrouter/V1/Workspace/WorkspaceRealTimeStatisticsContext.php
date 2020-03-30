@@ -32,7 +32,7 @@ class WorkspaceRealTimeStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WorkspaceRealTimeStatisticsInstance
+     * Fetch the WorkspaceRealTimeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceRealTimeStatisticsInstance Fetched
@@ -44,11 +44,7 @@ class WorkspaceRealTimeStatisticsContext extends InstanceContext {
 
         $params = Values::of(['TaskChannel' => $options['taskChannel'], ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkspaceRealTimeStatisticsInstance(
             $this->version,

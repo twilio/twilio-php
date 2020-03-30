@@ -94,11 +94,7 @@ class VariableList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): VariablePage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new VariablePage($this->version, $response, $this->solution);
     }
@@ -120,22 +116,17 @@ class VariableList extends ListResource {
     }
 
     /**
-     * Create a new VariableInstance
+     * Create the VariableInstance
      *
      * @param string $key A string by which the Variable resource can be referenced
      * @param string $value A string that contains the actual value of the variable
-     * @return VariableInstance Newly created VariableInstance
+     * @return VariableInstance Created VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $key, string $value): VariableInstance {
         $data = Values::of(['Key' => $key, 'Value' => $value, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new VariableInstance(
             $this->version,

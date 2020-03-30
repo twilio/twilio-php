@@ -78,7 +78,7 @@ class ShortCodeInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ShortCodeInstance
+     * Delete the ShortCodeInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -88,7 +88,7 @@ class ShortCodeInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ShortCodeInstance
+     * Fetch the ShortCodeInstance
      *
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.

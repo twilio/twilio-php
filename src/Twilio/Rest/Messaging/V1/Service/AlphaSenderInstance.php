@@ -74,7 +74,7 @@ class AlphaSenderInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AlphaSenderInstance
+     * Fetch the AlphaSenderInstance
      *
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class AlphaSenderInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the AlphaSenderInstance
+     * Delete the AlphaSenderInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

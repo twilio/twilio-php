@@ -68,7 +68,7 @@ class StepContextInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a StepContextInstance
+     * Fetch the StepContextInstance
      *
      * @return StepContextInstance Fetched StepContextInstance
      * @throws TwilioException When an HTTP error occurs.

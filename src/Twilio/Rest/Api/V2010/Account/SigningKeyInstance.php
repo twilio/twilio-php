@@ -65,7 +65,7 @@ class SigningKeyInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a SigningKeyInstance
+     * Fetch the SigningKeyInstance
      *
      * @return SigningKeyInstance Fetched SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -86,7 +86,7 @@ class SigningKeyInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SigningKeyInstance
+     * Delete the SigningKeyInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

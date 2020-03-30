@@ -79,7 +79,7 @@ class EntityInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the EntityInstance
+     * Delete the EntityInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class EntityInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a EntityInstance
+     * Fetch the EntityInstance
      *
      * @return EntityInstance Fetched EntityInstance
      * @throws TwilioException When an HTTP error occurs.

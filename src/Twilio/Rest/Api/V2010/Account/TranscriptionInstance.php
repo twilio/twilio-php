@@ -81,7 +81,7 @@ class TranscriptionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TranscriptionInstance
+     * Fetch the TranscriptionInstance
      *
      * @return TranscriptionInstance Fetched TranscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,7 +91,7 @@ class TranscriptionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the TranscriptionInstance
+     * Delete the TranscriptionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

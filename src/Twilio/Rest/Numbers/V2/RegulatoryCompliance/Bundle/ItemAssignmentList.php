@@ -33,21 +33,16 @@ class ItemAssignmentList extends ListResource {
     }
 
     /**
-     * Create a new ItemAssignmentInstance
+     * Create the ItemAssignmentInstance
      *
      * @param string $objectSid The sid of an object bag
-     * @return ItemAssignmentInstance Newly created ItemAssignmentInstance
+     * @return ItemAssignmentInstance Created ItemAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $objectSid): ItemAssignmentInstance {
         $data = Values::of(['ObjectSid' => $objectSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ItemAssignmentInstance($this->version, $payload, $this->solution['bundleSid']);
     }
@@ -109,11 +104,7 @@ class ItemAssignmentList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ItemAssignmentPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ItemAssignmentPage($this->version, $response, $this->solution);
     }

@@ -41,19 +41,13 @@ class TaskContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TaskInstance
+     * Fetch the TaskInstance
      *
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): TaskInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskInstance(
             $this->version,
@@ -81,12 +75,7 @@ class TaskContext extends InstanceContext {
             'TaskChannel' => $options['taskChannel'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TaskInstance(
             $this->version,
@@ -97,13 +86,13 @@ class TaskContext extends InstanceContext {
     }
 
     /**
-     * Deletes the TaskInstance
+     * Delete the TaskInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

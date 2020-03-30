@@ -33,19 +33,13 @@ class SupportingDocumentContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SupportingDocumentInstance
+     * Fetch the SupportingDocumentInstance
      *
      * @return SupportingDocumentInstance Fetched SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SupportingDocumentInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SupportingDocumentInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -65,12 +59,7 @@ class SupportingDocumentContext extends InstanceContext {
             'Attributes' => Serialize::jsonObject($options['attributes']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SupportingDocumentInstance($this->version, $payload, $this->solution['sid']);
     }

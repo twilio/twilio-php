@@ -35,19 +35,13 @@ class OriginationUrlContext extends InstanceContext {
     }
 
     /**
-     * Fetch a OriginationUrlInstance
+     * Fetch the OriginationUrlInstance
      *
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): OriginationUrlInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new OriginationUrlInstance(
             $this->version,
@@ -58,13 +52,13 @@ class OriginationUrlContext extends InstanceContext {
     }
 
     /**
-     * Deletes the OriginationUrlInstance
+     * Delete the OriginationUrlInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -85,12 +79,7 @@ class OriginationUrlContext extends InstanceContext {
             'SipUrl' => $options['sipUrl'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new OriginationUrlInstance(
             $this->version,

@@ -37,10 +37,10 @@ class NotificationList extends ListResource {
     }
 
     /**
-     * Create a new NotificationInstance
+     * Create the NotificationInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return NotificationInstance Newly created NotificationInstance
+     * @return NotificationInstance Created NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): NotificationInstance {
@@ -67,12 +67,7 @@ class NotificationList extends ListResource {
             'DeliveryCallbackUrl' => $options['deliveryCallbackUrl'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new NotificationInstance($this->version, $payload, $this->solution['serviceSid']);
     }

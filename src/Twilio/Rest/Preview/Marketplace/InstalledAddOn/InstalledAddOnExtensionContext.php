@@ -37,20 +37,14 @@ class InstalledAddOnExtensionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a InstalledAddOnExtensionInstance
+     * Fetch the InstalledAddOnExtensionInstance
      *
      * @return InstalledAddOnExtensionInstance Fetched
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): InstalledAddOnExtensionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new InstalledAddOnExtensionInstance(
             $this->version,
@@ -71,12 +65,7 @@ class InstalledAddOnExtensionContext extends InstanceContext {
     public function update(bool $enabled): InstalledAddOnExtensionInstance {
         $data = Values::of(['Enabled' => Serialize::booleanToString($enabled), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new InstalledAddOnExtensionInstance(
             $this->version,

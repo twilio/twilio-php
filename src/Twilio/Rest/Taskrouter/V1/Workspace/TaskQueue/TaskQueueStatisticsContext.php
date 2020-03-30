@@ -36,7 +36,7 @@ class TaskQueueStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TaskQueueStatisticsInstance
+     * Fetch the TaskQueueStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
@@ -53,11 +53,7 @@ class TaskQueueStatisticsContext extends InstanceContext {
             'SplitByWaitTime' => $options['splitByWaitTime'],
         ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new TaskQueueStatisticsInstance(
             $this->version,

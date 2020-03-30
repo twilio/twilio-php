@@ -101,7 +101,7 @@ class InteractionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a InteractionInstance
+     * Fetch the InteractionInstance
      *
      * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -111,7 +111,7 @@ class InteractionInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the InteractionInstance
+     * Delete the InteractionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

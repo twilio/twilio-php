@@ -38,14 +38,14 @@ class BindingList extends ListResource {
     }
 
     /**
-     * Create a new BindingInstance
+     * Create the BindingInstance
      *
      * @param string $identity The `identity` value that identifies the new
      *                         resource's User
      * @param string $bindingType The type of the Binding
      * @param string $address The channel-specific address
      * @param array|Options $options Optional Arguments
-     * @return BindingInstance Newly created BindingInstance
+     * @return BindingInstance Created BindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $identity, string $bindingType, string $address, array $options = []): BindingInstance {
@@ -61,12 +61,7 @@ class BindingList extends ListResource {
             'Endpoint' => $options['endpoint'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BindingInstance($this->version, $payload, $this->solution['serviceSid']);
     }
@@ -130,6 +125,7 @@ class BindingList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BindingPage {
         $options = new Values($options);
+
         $params = Values::of([
             'StartDate' => Serialize::iso8601Date($options['startDate']),
             'EndDate' => Serialize::iso8601Date($options['endDate']),
@@ -140,11 +136,7 @@ class BindingList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new BindingPage($this->version, $response, $this->solution);
     }

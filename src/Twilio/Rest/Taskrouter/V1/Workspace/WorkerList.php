@@ -99,6 +99,7 @@ class WorkerList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkerPage {
         $options = new Values($options);
+
         $params = Values::of([
             'ActivityName' => $options['activityName'],
             'ActivitySid' => $options['activitySid'],
@@ -112,11 +113,7 @@ class WorkerList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new WorkerPage($this->version, $response, $this->solution);
     }
@@ -138,11 +135,11 @@ class WorkerList extends ListResource {
     }
 
     /**
-     * Create a new WorkerInstance
+     * Create the WorkerInstance
      *
      * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
-     * @return WorkerInstance Newly created WorkerInstance
+     * @return WorkerInstance Created WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): WorkerInstance {
@@ -154,12 +151,7 @@ class WorkerList extends ListResource {
             'Attributes' => $options['attributes'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WorkerInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

@@ -38,29 +38,23 @@ class PhoneNumberContext extends InstanceContext {
     }
 
     /**
-     * Deletes the PhoneNumberInstance
+     * Delete the PhoneNumberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
-     * Fetch a PhoneNumberInstance
+     * Fetch the PhoneNumberInstance
      *
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): PhoneNumberInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new PhoneNumberInstance(
             $this->version,
@@ -82,12 +76,7 @@ class PhoneNumberContext extends InstanceContext {
 
         $data = Values::of(['IsReserved' => Serialize::booleanToString($options['isReserved']), ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new PhoneNumberInstance(
             $this->version,

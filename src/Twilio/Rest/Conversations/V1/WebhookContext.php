@@ -35,19 +35,13 @@ class WebhookContext extends InstanceContext {
     }
 
     /**
-     * Fetch a WebhookInstance
+     * Fetch the WebhookInstance
      *
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): WebhookInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebhookInstance($this->version, $payload);
     }
@@ -70,12 +64,7 @@ class WebhookContext extends InstanceContext {
             'Target' => $options['target'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebhookInstance($this->version, $payload);
     }

@@ -36,12 +36,12 @@ class MemberList extends ListResource {
     }
 
     /**
-     * Create a new MemberInstance
+     * Create the MemberInstance
      *
      * @param string $identity The `identity` value that identifies the new
      *                         resource's User
      * @param array|Options $options Optional Arguments
-     * @return MemberInstance Newly created MemberInstance
+     * @return MemberInstance Created MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $identity, array $options = []): MemberInstance {
@@ -57,12 +57,7 @@ class MemberList extends ListResource {
             'Attributes' => $options['attributes'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MemberInstance(
             $this->version,
@@ -131,6 +126,7 @@ class MemberList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MemberPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
             'PageToken' => $pageToken,
@@ -138,11 +134,7 @@ class MemberList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new MemberPage($this->version, $response, $this->solution);
     }

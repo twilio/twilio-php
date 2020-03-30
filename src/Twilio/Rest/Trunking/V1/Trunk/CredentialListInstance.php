@@ -70,7 +70,7 @@ class CredentialListInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CredentialListInstance
+     * Fetch the CredentialListInstance
      *
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -80,7 +80,7 @@ class CredentialListInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CredentialListInstance
+     * Delete the CredentialListInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

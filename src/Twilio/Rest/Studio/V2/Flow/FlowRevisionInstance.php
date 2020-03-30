@@ -82,7 +82,7 @@ class FlowRevisionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FlowRevisionInstance
+     * Fetch the FlowRevisionInstance
      *
      * @return FlowRevisionInstance Fetched FlowRevisionInstance
      * @throws TwilioException When an HTTP error occurs.

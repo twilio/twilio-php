@@ -92,11 +92,7 @@ class AssetList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssetPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AssetPage($this->version, $response, $this->solution);
     }
@@ -118,21 +114,16 @@ class AssetList extends ListResource {
     }
 
     /**
-     * Create a new AssetInstance
+     * Create the AssetInstance
      *
      * @param string $friendlyName A string to describe the Asset resource
-     * @return AssetInstance Newly created AssetInstance
+     * @return AssetInstance Created AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName): AssetInstance {
         $data = Values::of(['FriendlyName' => $friendlyName, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AssetInstance($this->version, $payload, $this->solution['serviceSid']);
     }

@@ -35,7 +35,7 @@ class UsageContext extends InstanceContext {
     }
 
     /**
-     * Fetch a UsageInstance
+     * Fetch the UsageInstance
      *
      * @param array|Options $options Optional Arguments
      * @return UsageInstance Fetched UsageInstance
@@ -46,11 +46,7 @@ class UsageContext extends InstanceContext {
 
         $params = Values::of(['End' => $options['end'], 'Start' => $options['start'], ]);
 
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new UsageInstance($this->version, $payload, $this->solution['simSid']);
     }

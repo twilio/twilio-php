@@ -90,7 +90,7 @@ class WorkerChannelInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkerChannelInstance
+     * Fetch the WorkerChannelInstance
      *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.

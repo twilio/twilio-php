@@ -35,19 +35,13 @@ class TaskStatisticsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a TaskStatisticsInstance
+     * Fetch the TaskStatisticsInstance
      *
      * @return TaskStatisticsInstance Fetched TaskStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): TaskStatisticsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskStatisticsInstance(
             $this->version,

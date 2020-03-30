@@ -90,6 +90,7 @@ class ShortCodeList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ShortCodePage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'ShortCode' => $options['shortCode'],
@@ -98,11 +99,7 @@ class ShortCodeList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ShortCodePage($this->version, $response, $this->solution);
     }

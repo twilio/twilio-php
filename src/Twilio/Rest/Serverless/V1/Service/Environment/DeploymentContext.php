@@ -38,19 +38,13 @@ class DeploymentContext extends InstanceContext {
     }
 
     /**
-     * Fetch a DeploymentInstance
+     * Fetch the DeploymentInstance
      *
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): DeploymentInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new DeploymentInstance(
             $this->version,

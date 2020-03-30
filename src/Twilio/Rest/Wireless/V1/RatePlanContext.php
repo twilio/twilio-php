@@ -32,19 +32,13 @@ class RatePlanContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RatePlanInstance
+     * Fetch the RatePlanInstance
      *
      * @return RatePlanInstance Fetched RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): RatePlanInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new RatePlanInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -64,24 +58,19 @@ class RatePlanContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RatePlanInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the RatePlanInstance
+     * Delete the RatePlanInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

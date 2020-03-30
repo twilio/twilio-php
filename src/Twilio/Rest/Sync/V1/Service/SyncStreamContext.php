@@ -43,19 +43,13 @@ class SyncStreamContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SyncStreamInstance
+     * Fetch the SyncStreamInstance
      *
      * @return SyncStreamInstance Fetched SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SyncStreamInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SyncStreamInstance(
             $this->version,
@@ -66,13 +60,13 @@ class SyncStreamContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SyncStreamInstance
+     * Delete the SyncStreamInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -87,12 +81,7 @@ class SyncStreamContext extends InstanceContext {
 
         $data = Values::of(['Ttl' => $options['ttl'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SyncStreamInstance(
             $this->version,

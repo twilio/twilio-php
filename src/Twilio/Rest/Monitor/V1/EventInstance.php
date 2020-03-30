@@ -78,7 +78,7 @@ class EventInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a EventInstance
+     * Fetch the EventInstance
      *
      * @return EventInstance Fetched EventInstance
      * @throws TwilioException When an HTTP error occurs.

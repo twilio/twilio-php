@@ -42,12 +42,7 @@ class VerificationContext extends InstanceContext {
     public function update(string $status): VerificationInstance {
         $data = Values::of(['Status' => $status, ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new VerificationInstance(
             $this->version,
@@ -58,19 +53,13 @@ class VerificationContext extends InstanceContext {
     }
 
     /**
-     * Fetch a VerificationInstance
+     * Fetch the VerificationInstance
      *
      * @return VerificationInstance Fetched VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): VerificationInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new VerificationInstance(
             $this->version,

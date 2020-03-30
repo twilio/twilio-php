@@ -93,6 +93,7 @@ class ActivityList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ActivityPage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'Available' => $options['available'],
@@ -101,11 +102,7 @@ class ActivityList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ActivityPage($this->version, $response, $this->solution);
     }
@@ -127,11 +124,11 @@ class ActivityList extends ListResource {
     }
 
     /**
-     * Create a new ActivityInstance
+     * Create the ActivityInstance
      *
      * @param string $friendlyName A string to describe the Activity resource
      * @param array|Options $options Optional Arguments
-     * @return ActivityInstance Newly created ActivityInstance
+     * @return ActivityInstance Created ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): ActivityInstance {
@@ -142,12 +139,7 @@ class ActivityList extends ListResource {
             'Available' => Serialize::booleanToString($options['available']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ActivityInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

@@ -34,23 +34,17 @@ class CredentialListMappingList extends ListResource {
     }
 
     /**
-     * Create a new CredentialListMappingInstance
+     * Create the CredentialListMappingInstance
      *
      * @param string $credentialListSid A string that identifies the CredentialList
      *                                  resource to map to the SIP domain
-     * @return CredentialListMappingInstance Newly created
-     *                                       CredentialListMappingInstance
+     * @return CredentialListMappingInstance Created CredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $credentialListSid): CredentialListMappingInstance {
         $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CredentialListMappingInstance(
             $this->version,
@@ -118,11 +112,7 @@ class CredentialListMappingList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListMappingPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new CredentialListMappingPage($this->version, $response, $this->solution);
     }

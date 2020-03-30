@@ -45,19 +45,13 @@ class ParticipantContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch the ParticipantInstance
      *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ParticipantInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ParticipantInstance(
             $this->version,
@@ -69,13 +63,13 @@ class ParticipantContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ParticipantInstance
+     * Delete the ParticipantInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

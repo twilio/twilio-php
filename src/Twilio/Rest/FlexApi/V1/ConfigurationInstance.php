@@ -120,7 +120,7 @@ class ConfigurationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ConfigurationInstance
+     * Fetch the ConfigurationInstance
      *
      * @param array|Options $options Optional Arguments
      * @return ConfigurationInstance Fetched ConfigurationInstance
@@ -131,9 +131,9 @@ class ConfigurationInstance extends InstanceResource {
     }
 
     /**
-     * Create a new ConfigurationInstance
+     * Create the ConfigurationInstance
      *
-     * @return ConfigurationInstance Newly created ConfigurationInstance
+     * @return ConfigurationInstance Created ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(): ConfigurationInstance {

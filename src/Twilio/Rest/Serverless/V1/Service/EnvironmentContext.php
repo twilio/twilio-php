@@ -51,19 +51,13 @@ class EnvironmentContext extends InstanceContext {
     }
 
     /**
-     * Fetch a EnvironmentInstance
+     * Fetch the EnvironmentInstance
      *
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EnvironmentInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EnvironmentInstance(
             $this->version,
@@ -74,13 +68,13 @@ class EnvironmentContext extends InstanceContext {
     }
 
     /**
-     * Deletes the EnvironmentInstance
+     * Delete the EnvironmentInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

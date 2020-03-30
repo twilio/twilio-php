@@ -61,7 +61,7 @@ class StyleSheetInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a StyleSheetInstance
+     * Fetch the StyleSheetInstance
      *
      * @return StyleSheetInstance Fetched StyleSheetInstance
      * @throws TwilioException When an HTTP error occurs.

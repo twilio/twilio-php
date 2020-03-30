@@ -69,7 +69,7 @@ class ExecutionStepContextInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ExecutionStepContextInstance
+     * Fetch the ExecutionStepContextInstance
      *
      * @return ExecutionStepContextInstance Fetched ExecutionStepContextInstance
      * @throws TwilioException When an HTTP error occurs.

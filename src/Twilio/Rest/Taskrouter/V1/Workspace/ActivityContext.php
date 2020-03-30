@@ -34,19 +34,13 @@ class ActivityContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ActivityInstance
+     * Fetch the ActivityInstance
      *
      * @return ActivityInstance Fetched ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ActivityInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ActivityInstance(
             $this->version,
@@ -68,12 +62,7 @@ class ActivityContext extends InstanceContext {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ActivityInstance(
             $this->version,
@@ -84,13 +73,13 @@ class ActivityContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ActivityInstance
+     * Delete the ActivityInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

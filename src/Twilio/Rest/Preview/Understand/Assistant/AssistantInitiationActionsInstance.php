@@ -64,7 +64,7 @@ class AssistantInitiationActionsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AssistantInitiationActionsInstance
+     * Fetch the AssistantInitiationActionsInstance
      *
      * @return AssistantInitiationActionsInstance Fetched
      *                                            AssistantInitiationActionsInstance

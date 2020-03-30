@@ -32,19 +32,13 @@ class ItemAssignmentContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ItemAssignmentInstance
+     * Fetch the ItemAssignmentInstance
      *
      * @return ItemAssignmentInstance Fetched ItemAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ItemAssignmentInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ItemAssignmentInstance(
             $this->version,
@@ -55,13 +49,13 @@ class ItemAssignmentContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ItemAssignmentInstance
+     * Delete the ItemAssignmentInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

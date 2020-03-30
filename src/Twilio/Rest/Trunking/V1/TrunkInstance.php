@@ -90,7 +90,7 @@ class TrunkInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TrunkInstance
+     * Fetch the TrunkInstance
      *
      * @return TrunkInstance Fetched TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class TrunkInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the TrunkInstance
+     * Delete the TrunkInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

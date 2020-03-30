@@ -35,20 +35,14 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a AuthCallsCredentialListMappingInstance
+     * Fetch the AuthCallsCredentialListMappingInstance
      *
      * @return AuthCallsCredentialListMappingInstance Fetched
      *                                                AuthCallsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AuthCallsCredentialListMappingInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AuthCallsCredentialListMappingInstance(
             $this->version,
@@ -60,13 +54,13 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AuthCallsCredentialListMappingInstance
+     * Delete the AuthCallsCredentialListMappingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

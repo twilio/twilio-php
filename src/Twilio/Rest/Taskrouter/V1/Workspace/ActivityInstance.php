@@ -73,7 +73,7 @@ class ActivityInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ActivityInstance
+     * Fetch the ActivityInstance
      *
      * @return ActivityInstance Fetched ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -94,7 +94,7 @@ class ActivityInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ActivityInstance
+     * Delete the ActivityInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

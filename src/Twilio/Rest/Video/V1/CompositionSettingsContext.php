@@ -35,30 +35,24 @@ class CompositionSettingsContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CompositionSettingsInstance
+     * Fetch the CompositionSettingsInstance
      *
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CompositionSettingsInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CompositionSettingsInstance($this->version, $payload);
     }
 
     /**
-     * Create a new CompositionSettingsInstance
+     * Create the CompositionSettingsInstance
      *
      * @param string $friendlyName A descriptive string that you create to describe
      *                             the resource
      * @param array|Options $options Optional Arguments
-     * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
+     * @return CompositionSettingsInstance Created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): CompositionSettingsInstance {
@@ -73,12 +67,7 @@ class CompositionSettingsContext extends InstanceContext {
             'EncryptionEnabled' => Serialize::booleanToString($options['encryptionEnabled']),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CompositionSettingsInstance($this->version, $payload);
     }

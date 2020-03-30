@@ -90,7 +90,7 @@ class UserInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a UserInstance
+     * Fetch the UserInstance
      *
      * @return UserInstance Fetched UserInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class UserInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the UserInstance
+     * Delete the UserInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

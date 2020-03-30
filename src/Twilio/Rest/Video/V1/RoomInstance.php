@@ -91,7 +91,7 @@ class RoomInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RoomInstance
+     * Fetch the RoomInstance
      *
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -32,11 +32,11 @@ class ValidationRequestList extends ListResource {
     }
 
     /**
-     * Create a new ValidationRequestInstance
+     * Create the ValidationRequestInstance
      *
      * @param string $phoneNumber The phone number to verify in E.164 format
      * @param array|Options $options Optional Arguments
-     * @return ValidationRequestInstance Newly created ValidationRequestInstance
+     * @return ValidationRequestInstance Created ValidationRequestInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $phoneNumber, array $options = []): ValidationRequestInstance {
@@ -51,12 +51,7 @@ class ValidationRequestList extends ListResource {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ValidationRequestInstance($this->version, $payload, $this->solution['accountSid']);
     }

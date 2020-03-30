@@ -80,7 +80,7 @@ class FleetInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FleetInstance
+     * Fetch the FleetInstance
      *
      * @return FleetInstance Fetched FleetInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,7 +90,7 @@ class FleetInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FleetInstance
+     * Delete the FleetInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

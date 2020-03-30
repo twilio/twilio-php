@@ -92,6 +92,7 @@ class WorkflowList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkflowPage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
@@ -99,11 +100,7 @@ class WorkflowList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new WorkflowPage($this->version, $response, $this->solution);
     }
@@ -125,14 +122,14 @@ class WorkflowList extends ListResource {
     }
 
     /**
-     * Create a new WorkflowInstance
+     * Create the WorkflowInstance
      *
      * @param string $friendlyName descriptive string that you create to describe
      *                             the Workflow resource
      * @param string $configuration A JSON string that contains the rules to apply
      *                              to the Workflow
      * @param array|Options $options Optional Arguments
-     * @return WorkflowInstance Newly created WorkflowInstance
+     * @return WorkflowInstance Created WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, string $configuration, array $options = []): WorkflowInstance {
@@ -146,12 +143,7 @@ class WorkflowList extends ListResource {
             'TaskReservationTimeout' => $options['taskReservationTimeout'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WorkflowInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

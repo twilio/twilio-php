@@ -33,19 +33,13 @@ class EndUserContext extends InstanceContext {
     }
 
     /**
-     * Fetch a EndUserInstance
+     * Fetch the EndUserInstance
      *
      * @return EndUserInstance Fetched EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EndUserInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EndUserInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -65,12 +59,7 @@ class EndUserContext extends InstanceContext {
             'Attributes' => Serialize::jsonObject($options['attributes']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new EndUserInstance($this->version, $payload, $this->solution['sid']);
     }

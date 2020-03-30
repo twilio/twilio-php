@@ -32,19 +32,13 @@ class EndUserTypeContext extends InstanceContext {
     }
 
     /**
-     * Fetch a EndUserTypeInstance
+     * Fetch the EndUserTypeInstance
      *
      * @return EndUserTypeInstance Fetched EndUserTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): EndUserTypeInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EndUserTypeInstance($this->version, $payload, $this->solution['sid']);
     }

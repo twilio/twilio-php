@@ -36,12 +36,12 @@ class InviteList extends ListResource {
     }
 
     /**
-     * Create a new InviteInstance
+     * Create the InviteInstance
      *
      * @param string $identity The `identity` value that identifies the new
      *                         resource's User
      * @param array|Options $options Optional Arguments
-     * @return InviteInstance Newly created InviteInstance
+     * @return InviteInstance Created InviteInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $identity, array $options = []): InviteInstance {
@@ -49,12 +49,7 @@ class InviteList extends ListResource {
 
         $data = Values::of(['Identity' => $identity, 'RoleSid' => $options['roleSid'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new InviteInstance(
             $this->version,
@@ -123,6 +118,7 @@ class InviteList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): InvitePage {
         $options = new Values($options);
+
         $params = Values::of([
             'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
             'PageToken' => $pageToken,
@@ -130,11 +126,7 @@ class InviteList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new InvitePage($this->version, $response, $this->solution);
     }

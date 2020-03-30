@@ -37,19 +37,13 @@ class QueryContext extends InstanceContext {
     }
 
     /**
-     * Fetch a QueryInstance
+     * Fetch the QueryInstance
      *
      * @return QueryInstance Fetched QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): QueryInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new QueryInstance(
             $this->version,
@@ -71,12 +65,7 @@ class QueryContext extends InstanceContext {
 
         $data = Values::of(['SampleSid' => $options['sampleSid'], 'Status' => $options['status'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new QueryInstance(
             $this->version,
@@ -87,13 +76,13 @@ class QueryContext extends InstanceContext {
     }
 
     /**
-     * Deletes the QueryInstance
+     * Delete the QueryInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

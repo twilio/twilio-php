@@ -43,19 +43,13 @@ class RoomContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RoomInstance
+     * Fetch the RoomInstance
      *
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): RoomInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new RoomInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -70,12 +64,7 @@ class RoomContext extends InstanceContext {
     public function update(string $status): RoomInstance {
         $data = Values::of(['Status' => $status, ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RoomInstance($this->version, $payload, $this->solution['sid']);
     }

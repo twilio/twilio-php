@@ -63,7 +63,7 @@ class ExportConfigurationInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ExportConfigurationInstance
+     * Fetch the ExportConfigurationInstance
      *
      * @return ExportConfigurationInstance Fetched ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.

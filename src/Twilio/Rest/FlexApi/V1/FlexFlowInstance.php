@@ -79,7 +79,7 @@ class FlexFlowInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a FlexFlowInstance
+     * Fetch the FlexFlowInstance
      *
      * @return FlexFlowInstance Fetched FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class FlexFlowInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FlexFlowInstance
+     * Delete the FlexFlowInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

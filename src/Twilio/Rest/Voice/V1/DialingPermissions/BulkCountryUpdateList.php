@@ -33,21 +33,16 @@ class BulkCountryUpdateList extends ListResource {
     }
 
     /**
-     * Create a new BulkCountryUpdateInstance
+     * Create the BulkCountryUpdateInstance
      *
      * @param string $updateRequest URL encoded JSON array of update objects
-     * @return BulkCountryUpdateInstance Newly created BulkCountryUpdateInstance
+     * @return BulkCountryUpdateInstance Created BulkCountryUpdateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $updateRequest): BulkCountryUpdateInstance {
         $data = Values::of(['UpdateRequest' => $updateRequest, ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BulkCountryUpdateInstance($this->version, $payload);
     }

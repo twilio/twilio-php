@@ -42,29 +42,23 @@ class AddressContext extends InstanceContext {
     }
 
     /**
-     * Deletes the AddressInstance
+     * Delete the AddressInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
-     * Fetch a AddressInstance
+     * Fetch the AddressInstance
      *
      * @return AddressInstance Fetched AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): AddressInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new AddressInstance(
             $this->version,
@@ -95,12 +89,7 @@ class AddressContext extends InstanceContext {
             'AutoCorrectAddress' => Serialize::booleanToString($options['autoCorrectAddress']),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AddressInstance(
             $this->version,

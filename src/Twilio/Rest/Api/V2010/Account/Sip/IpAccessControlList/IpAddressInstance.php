@@ -83,7 +83,7 @@ class IpAddressInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a IpAddressInstance
+     * Fetch the IpAddressInstance
      *
      * @return IpAddressInstance Fetched IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -104,7 +104,7 @@ class IpAddressInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the IpAddressInstance
+     * Delete the IpAddressInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

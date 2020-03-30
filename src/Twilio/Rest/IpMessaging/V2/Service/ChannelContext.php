@@ -54,19 +54,13 @@ class ChannelContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ChannelInstance
+     * Fetch the ChannelInstance
      *
      * @return ChannelInstance Fetched ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ChannelInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ChannelInstance(
             $this->version,
@@ -77,13 +71,13 @@ class ChannelContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ChannelInstance
+     * Delete the ChannelInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -105,12 +99,7 @@ class ChannelContext extends InstanceContext {
             'CreatedBy' => $options['createdBy'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ChannelInstance(
             $this->version,

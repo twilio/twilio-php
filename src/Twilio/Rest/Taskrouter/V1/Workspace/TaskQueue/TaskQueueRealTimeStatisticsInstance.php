@@ -86,7 +86,7 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a TaskQueueRealTimeStatisticsInstance
+     * Fetch the TaskQueueRealTimeStatisticsInstance
      *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueRealTimeStatisticsInstance Fetched

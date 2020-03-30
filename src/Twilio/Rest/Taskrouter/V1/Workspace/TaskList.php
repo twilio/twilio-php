@@ -92,6 +92,7 @@ class TaskList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Priority' => $options['priority'],
             'AssignmentStatus' => Serialize::map($options['assignmentStatus'], function($e) { return $e; }),
@@ -107,11 +108,7 @@ class TaskList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new TaskPage($this->version, $response, $this->solution);
     }
@@ -133,10 +130,10 @@ class TaskList extends ListResource {
     }
 
     /**
-     * Create a new TaskInstance
+     * Create the TaskInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return TaskInstance Newly created TaskInstance
+     * @return TaskInstance Created TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): TaskInstance {
@@ -150,12 +147,7 @@ class TaskList extends ListResource {
             'Attributes' => $options['attributes'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TaskInstance($this->version, $payload, $this->solution['workspaceSid']);
     }

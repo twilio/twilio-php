@@ -78,12 +78,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'BundleSid' => $options['bundleSid'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new IncomingPhoneNumberInstance(
             $this->version,
@@ -94,19 +89,13 @@ class IncomingPhoneNumberContext extends InstanceContext {
     }
 
     /**
-     * Fetch a IncomingPhoneNumberInstance
+     * Fetch the IncomingPhoneNumberInstance
      *
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): IncomingPhoneNumberInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new IncomingPhoneNumberInstance(
             $this->version,
@@ -117,13 +106,13 @@ class IncomingPhoneNumberContext extends InstanceContext {
     }
 
     /**
-     * Deletes the IncomingPhoneNumberInstance
+     * Delete the IncomingPhoneNumberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

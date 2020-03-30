@@ -42,19 +42,13 @@ class SimContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SimInstance
+     * Fetch the SimInstance
      *
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SimInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SimInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -90,24 +84,19 @@ class SimContext extends InstanceContext {
             'AccountSid' => $options['accountSid'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SimInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the SimInstance
+     * Delete the SimInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

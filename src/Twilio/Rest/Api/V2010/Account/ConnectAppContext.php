@@ -35,19 +35,13 @@ class ConnectAppContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ConnectAppInstance
+     * Fetch the ConnectAppInstance
      *
      * @return ConnectAppInstance Fetched ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ConnectAppInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ConnectAppInstance(
             $this->version,
@@ -78,12 +72,7 @@ class ConnectAppContext extends InstanceContext {
             'Permissions' => Serialize::map($options['permissions'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ConnectAppInstance(
             $this->version,
@@ -94,13 +83,13 @@ class ConnectAppContext extends InstanceContext {
     }
 
     /**
-     * Deletes the ConnectAppInstance
+     * Delete the ConnectAppInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

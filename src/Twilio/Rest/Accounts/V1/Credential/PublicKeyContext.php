@@ -32,19 +32,13 @@ class PublicKeyContext extends InstanceContext {
     }
 
     /**
-     * Fetch a PublicKeyInstance
+     * Fetch the PublicKeyInstance
      *
      * @return PublicKeyInstance Fetched PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): PublicKeyInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new PublicKeyInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -61,24 +55,19 @@ class PublicKeyContext extends InstanceContext {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new PublicKeyInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the PublicKeyInstance
+     * Delete the PublicKeyInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

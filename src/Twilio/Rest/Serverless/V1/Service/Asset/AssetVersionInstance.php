@@ -82,7 +82,7 @@ class AssetVersionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a AssetVersionInstance
+     * Fetch the AssetVersionInstance
      *
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.

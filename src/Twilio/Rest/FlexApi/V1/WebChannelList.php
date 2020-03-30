@@ -88,11 +88,7 @@ class WebChannelList extends ListResource {
     public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WebChannelPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new WebChannelPage($this->version, $response, $this->solution);
     }
@@ -114,14 +110,14 @@ class WebChannelList extends ListResource {
     }
 
     /**
-     * Create a new WebChannelInstance
+     * Create the WebChannelInstance
      *
      * @param string $flexFlowSid The SID of the FlexFlow
      * @param string $identity The chat identity
      * @param string $customerFriendlyName The chat participant's friendly name
      * @param string $chatFriendlyName The chat channel's friendly name
      * @param array|Options $options Optional Arguments
-     * @return WebChannelInstance Newly created WebChannelInstance
+     * @return WebChannelInstance Created WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $flexFlowSid, string $identity, string $customerFriendlyName, string $chatFriendlyName, array $options = []): WebChannelInstance {
@@ -136,12 +132,7 @@ class WebChannelList extends ListResource {
             'PreEngagementData' => $options['preEngagementData'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WebChannelInstance($this->version, $payload);
     }

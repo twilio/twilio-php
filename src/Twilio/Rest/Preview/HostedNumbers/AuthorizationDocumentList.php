@@ -95,6 +95,7 @@ class AuthorizationDocumentList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthorizationDocumentPage {
         $options = new Values($options);
+
         $params = Values::of([
             'Email' => $options['email'],
             'Status' => $options['status'],
@@ -103,11 +104,7 @@ class AuthorizationDocumentList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new AuthorizationDocumentPage($this->version, $response, $this->solution);
     }
@@ -130,7 +127,7 @@ class AuthorizationDocumentList extends ListResource {
     }
 
     /**
-     * Create a new AuthorizationDocumentInstance
+     * Create the AuthorizationDocumentInstance
      *
      * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids.
      * @param string $addressSid Address sid.
@@ -139,8 +136,7 @@ class AuthorizationDocumentList extends ListResource {
      * @param string $contactPhoneNumber Authorization Document's signee's phone
      *                                   number.
      * @param array|Options $options Optional Arguments
-     * @return AuthorizationDocumentInstance Newly created
-     *                                       AuthorizationDocumentInstance
+     * @return AuthorizationDocumentInstance Created AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $hostedNumberOrderSids, string $addressSid, string $email, string $contactTitle, string $contactPhoneNumber, array $options = []): AuthorizationDocumentInstance {
@@ -155,12 +151,7 @@ class AuthorizationDocumentList extends ListResource {
             'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AuthorizationDocumentInstance($this->version, $payload);
     }

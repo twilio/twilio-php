@@ -74,7 +74,7 @@ class CommandInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a CommandInstance
+     * Fetch the CommandInstance
      *
      * @return CommandInstance Fetched CommandInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class CommandInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the CommandInstance
+     * Delete the CommandInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

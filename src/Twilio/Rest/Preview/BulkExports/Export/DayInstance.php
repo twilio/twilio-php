@@ -68,7 +68,7 @@ class DayInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a DayInstance
+     * Fetch the DayInstance
      *
      * @return DayInstance Fetched DayInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -59,12 +59,7 @@ class PaymentContext extends InstanceContext {
             'Status' => $options['status'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new PaymentInstance(
             $this->version,

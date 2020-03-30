@@ -31,19 +31,13 @@ class NumberContext extends InstanceContext {
     }
 
     /**
-     * Fetch a NumberInstance
+     * Fetch the NumberInstance
      *
      * @return NumberInstance Fetched NumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): NumberInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new NumberInstance($this->version, $payload, $this->solution['number']);
     }

@@ -34,19 +34,13 @@ class ExportAssistantContext extends InstanceContext {
     }
 
     /**
-     * Fetch a ExportAssistantInstance
+     * Fetch the ExportAssistantInstance
      *
      * @return ExportAssistantInstance Fetched ExportAssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): ExportAssistantInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExportAssistantInstance($this->version, $payload, $this->solution['assistantSid']);
     }

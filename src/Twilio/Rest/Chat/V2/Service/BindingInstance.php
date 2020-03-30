@@ -80,7 +80,7 @@ class BindingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BindingInstance
+     * Fetch the BindingInstance
      *
      * @return BindingInstance Fetched BindingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,7 +90,7 @@ class BindingInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the BindingInstance
+     * Delete the BindingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.

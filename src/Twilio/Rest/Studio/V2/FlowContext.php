@@ -68,42 +68,31 @@ class FlowContext extends InstanceContext {
             'CommitMessage' => $options['commitMessage'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlowInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Fetch a FlowInstance
+     * Fetch the FlowInstance
      *
      * @return FlowInstance Fetched FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): FlowInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlowInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Deletes the FlowInstance
+     * Delete the FlowInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

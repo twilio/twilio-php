@@ -48,19 +48,13 @@ class SessionContext extends InstanceContext {
     }
 
     /**
-     * Fetch a SessionInstance
+     * Fetch the SessionInstance
      *
      * @return SessionInstance Fetched SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): SessionInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new SessionInstance(
             $this->version,
@@ -71,13 +65,13 @@ class SessionContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SessionInstance
+     * Delete the SessionInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -96,12 +90,7 @@ class SessionContext extends InstanceContext {
             'Status' => $options['status'],
         ]);
 
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SessionInstance(
             $this->version,

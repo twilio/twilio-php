@@ -33,19 +33,13 @@ class CredentialListContext extends InstanceContext {
     }
 
     /**
-     * Fetch a CredentialListInstance
+     * Fetch the CredentialListInstance
      *
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch(): CredentialListInstance {
-        $params = Values::of([]);
-
-        $payload = $this->version->fetch(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new CredentialListInstance(
             $this->version,
@@ -56,13 +50,13 @@ class CredentialListContext extends InstanceContext {
     }
 
     /**
-     * Deletes the CredentialListInstance
+     * Delete the CredentialListInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
-        return $this->version->delete('delete', $this->uri);
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**

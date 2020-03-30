@@ -33,10 +33,10 @@ class NewSigningKeyList extends ListResource {
     }
 
     /**
-     * Create a new NewSigningKeyInstance
+     * Create the NewSigningKeyInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return NewSigningKeyInstance Newly created NewSigningKeyInstance
+     * @return NewSigningKeyInstance Created NewSigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(array $options = []): NewSigningKeyInstance {
@@ -44,12 +44,7 @@ class NewSigningKeyList extends ListResource {
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new NewSigningKeyInstance($this->version, $payload, $this->solution['accountSid']);
     }

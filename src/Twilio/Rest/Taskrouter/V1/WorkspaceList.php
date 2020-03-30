@@ -91,6 +91,7 @@ class WorkspaceList extends ListResource {
      */
     public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkspacePage {
         $options = new Values($options);
+
         $params = Values::of([
             'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
@@ -98,11 +99,7 @@ class WorkspaceList extends ListResource {
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page(
-            'GET',
-            $this->uri,
-            $params
-        );
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new WorkspacePage($this->version, $response, $this->solution);
     }
@@ -124,11 +121,11 @@ class WorkspaceList extends ListResource {
     }
 
     /**
-     * Create a new WorkspaceInstance
+     * Create the WorkspaceInstance
      *
      * @param string $friendlyName A string to describe the Workspace resource
      * @param array|Options $options Optional Arguments
-     * @return WorkspaceInstance Newly created WorkspaceInstance
+     * @return WorkspaceInstance Created WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function create(string $friendlyName, array $options = []): WorkspaceInstance {
@@ -143,12 +140,7 @@ class WorkspaceList extends ListResource {
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ]);
 
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            [],
-            $data
-        );
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WorkspaceInstance($this->version, $payload);
     }
