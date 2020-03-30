@@ -9,7 +9,7 @@ env:
 services:
   - docker
 before_script:
-  - composer config -g github-oauth.github.com "$GIT_HUB_TOKEN"
+  - if [ -n "$GIT_HUB_TOKEN" ]; then composer config -g github-oauth.github.com "$GIT_HUB_TOKEN"; fi;
   - composer install
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-stable -n; fi;
 script:
