@@ -31,8 +31,7 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
             'post',
             'https://voice.twilio.com/v1/DialingPermissions/BulkCountryUpdates',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

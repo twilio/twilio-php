@@ -31,8 +31,7 @@ class EndUserTest extends HolodeckTestCase {
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -72,10 +71,7 @@ class EndUserTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers'
         ));
     }
 
@@ -153,10 +149,7 @@ class EndUserTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers/ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers/ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -196,10 +189,7 @@ class EndUserTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers/ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers/ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

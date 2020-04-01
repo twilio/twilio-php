@@ -27,10 +27,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -72,10 +69,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -117,10 +111,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments'
         ));
     }
 
@@ -209,8 +200,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
             'post',
             'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

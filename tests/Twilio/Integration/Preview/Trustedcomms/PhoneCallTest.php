@@ -30,8 +30,7 @@ class PhoneCallTest extends HolodeckTestCase {
             'post',
             'https://preview.twilio.com/TrustedComms/Business/PhoneCalls',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

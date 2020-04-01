@@ -26,10 +26,7 @@ class UsageRecordTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/UsageRecords',
-            [],
-            [],
-            []
+            'https://supersim.twilio.com/v1/UsageRecords'
         ));
     }
 

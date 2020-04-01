@@ -27,10 +27,7 @@ class DefaultsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Defaults',
-            [],
-            [],
-            []
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Defaults'
         ));
     }
 
@@ -64,10 +61,7 @@ class DefaultsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Defaults',
-            [],
-            [],
-            []
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Defaults'
         ));
     }
 

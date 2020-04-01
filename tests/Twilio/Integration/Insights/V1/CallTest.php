@@ -26,10 +26,7 @@ class CallTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://insights.twilio.com/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://insights.twilio.com/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

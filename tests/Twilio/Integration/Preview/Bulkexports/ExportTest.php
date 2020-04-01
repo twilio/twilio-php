@@ -26,10 +26,7 @@ class ExportTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/BulkExports/Exports/resource_type'
         ));
     }
 

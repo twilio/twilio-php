@@ -31,8 +31,7 @@ class SupportingDocumentTest extends HolodeckTestCase {
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -75,10 +74,7 @@ class SupportingDocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments'
         ));
     }
 
@@ -159,10 +155,7 @@ class SupportingDocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments/RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments/RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -205,10 +198,7 @@ class SupportingDocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments/RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments/RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

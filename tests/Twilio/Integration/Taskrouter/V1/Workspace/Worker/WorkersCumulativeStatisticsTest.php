@@ -28,10 +28,7 @@ class WorkersCumulativeStatisticsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Workers/CumulativeStatistics',
-            [],
-            [],
-            []
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Workers/CumulativeStatistics'
         ));
     }
 

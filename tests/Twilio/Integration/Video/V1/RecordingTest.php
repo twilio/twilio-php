@@ -26,10 +26,7 @@ class RecordingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Recordings/RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://video.twilio.com/v1/Recordings/RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -80,10 +77,7 @@ class RecordingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Recordings',
-            [],
-            [],
-            []
+            'https://video.twilio.com/v1/Recordings'
         ));
     }
 
@@ -172,10 +166,7 @@ class RecordingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://video.twilio.com/v1/Recordings/RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://video.twilio.com/v1/Recordings/RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

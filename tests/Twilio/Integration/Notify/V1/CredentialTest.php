@@ -26,10 +26,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Credentials',
-            [],
-            [],
-            []
+            'https://notify.twilio.com/v1/Credentials'
         ));
     }
 
@@ -106,8 +103,7 @@ class CredentialTest extends HolodeckTestCase {
             'post',
             'https://notify.twilio.com/v1/Credentials',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -143,10 +139,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://notify.twilio.com/v1/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -182,10 +175,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://notify.twilio.com/v1/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://notify.twilio.com/v1/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -221,10 +211,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://notify.twilio.com/v1/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://notify.twilio.com/v1/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

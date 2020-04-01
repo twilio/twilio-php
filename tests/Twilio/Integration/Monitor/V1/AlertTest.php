@@ -26,10 +26,7 @@ class AlertTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://monitor.twilio.com/v1/Alerts/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://monitor.twilio.com/v1/Alerts/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -76,10 +73,7 @@ class AlertTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://monitor.twilio.com/v1/Alerts',
-            [],
-            [],
-            []
+            'https://monitor.twilio.com/v1/Alerts'
         ));
     }
 

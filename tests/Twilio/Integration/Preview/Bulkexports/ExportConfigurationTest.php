@@ -26,10 +26,7 @@ class ExportConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Configuration',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Configuration'
         ));
     }
 
@@ -62,10 +59,7 @@ class ExportConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Configuration',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Configuration'
         ));
     }
 

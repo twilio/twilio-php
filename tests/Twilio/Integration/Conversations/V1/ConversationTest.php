@@ -156,10 +156,7 @@ class ConversationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -201,10 +198,7 @@ class ConversationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://conversations.twilio.com/v1/Conversations',
-            [],
-            [],
-            []
+            'https://conversations.twilio.com/v1/Conversations'
         ));
     }
 

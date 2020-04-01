@@ -31,8 +31,7 @@ class VerificationTest extends HolodeckTestCase {
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -180,8 +179,7 @@ class VerificationTest extends HolodeckTestCase {
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -282,10 +280,7 @@ class VerificationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid',
-            [],
-            [],
-            []
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid'
         ));
     }
 

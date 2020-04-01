@@ -31,8 +31,7 @@ class VerificationCheckTest extends HolodeckTestCase {
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/VerificationCheck',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

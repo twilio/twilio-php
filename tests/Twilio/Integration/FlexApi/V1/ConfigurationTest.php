@@ -26,10 +26,7 @@ class ConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://flex-api.twilio.com/v1/Configuration',
-            [],
-            [],
-            []
+            'https://flex-api.twilio.com/v1/Configuration'
         ));
     }
 
@@ -225,10 +222,7 @@ class ConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://flex-api.twilio.com/v1/Configuration',
-            [],
-            [],
-            []
+            'https://flex-api.twilio.com/v1/Configuration'
         ));
     }
 
@@ -424,10 +418,7 @@ class ConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://flex-api.twilio.com/v1/Configuration',
-            [],
-            [],
-            []
+            'https://flex-api.twilio.com/v1/Configuration'
         ));
     }
 

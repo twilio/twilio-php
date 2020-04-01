@@ -32,8 +32,7 @@ class PaymentTest extends HolodeckTestCase {
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payments.json',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -75,8 +74,7 @@ class PaymentTest extends HolodeckTestCase {
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payments/PKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

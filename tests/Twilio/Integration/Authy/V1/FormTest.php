@@ -26,10 +26,7 @@ class FormTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://authy.twilio.com/v1/Forms/form-app-push',
-            [],
-            [],
-            []
+            'https://authy.twilio.com/v1/Forms/form-app-push'
         ));
     }
 

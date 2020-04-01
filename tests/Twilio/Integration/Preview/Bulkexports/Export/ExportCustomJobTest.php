@@ -27,10 +27,7 @@ class ExportCustomJobTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Jobs',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Jobs'
         ));
     }
 
@@ -107,10 +104,7 @@ class ExportCustomJobTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Jobs',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Jobs'
         ));
     }
 

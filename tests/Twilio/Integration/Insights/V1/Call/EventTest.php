@@ -27,10 +27,7 @@ class EventTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://insights.twilio.com/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Events',
-            [],
-            [],
-            []
+            'https://insights.twilio.com/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Events'
         ));
     }
 

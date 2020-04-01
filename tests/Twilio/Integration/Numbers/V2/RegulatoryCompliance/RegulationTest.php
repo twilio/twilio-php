@@ -27,10 +27,7 @@ class RegulationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Regulations',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Regulations'
         ));
     }
 
@@ -134,10 +131,7 @@ class RegulationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Regulations/RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Regulations/RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

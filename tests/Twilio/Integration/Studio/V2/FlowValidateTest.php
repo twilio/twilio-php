@@ -35,8 +35,7 @@ class FlowValidateTest extends HolodeckTestCase {
             'post',
             'https://studio.twilio.com/v2/Flows/Validate',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

@@ -26,10 +26,7 @@ class FaxTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -77,10 +74,7 @@ class FaxTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://fax.twilio.com/v1/Faxes',
-            [],
-            [],
-            []
+            'https://fax.twilio.com/v1/Faxes'
         ));
     }
 
@@ -169,8 +163,7 @@ class FaxTest extends HolodeckTestCase {
             'post',
             'https://fax.twilio.com/v1/Faxes',
             [],
-            $values,
-            []
+            $values
         ));
     }
 
@@ -218,10 +211,7 @@ class FaxTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -269,10 +259,7 @@ class FaxTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

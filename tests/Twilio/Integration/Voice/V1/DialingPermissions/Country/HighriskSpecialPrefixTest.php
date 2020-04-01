@@ -28,10 +28,7 @@ class HighriskSpecialPrefixTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes',
-            [],
-            [],
-            []
+            'https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes'
         ));
     }
 

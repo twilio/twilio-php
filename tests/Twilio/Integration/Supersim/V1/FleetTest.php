@@ -26,10 +26,7 @@ class FleetTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://supersim.twilio.com/v1/Fleets',
-            [],
-            [],
-            []
+            'https://supersim.twilio.com/v1/Fleets'
         ));
     }
 
@@ -68,10 +65,7 @@ class FleetTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/Fleets/HFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://supersim.twilio.com/v1/Fleets/HFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -110,10 +104,7 @@ class FleetTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/Fleets',
-            [],
-            [],
-            []
+            'https://supersim.twilio.com/v1/Fleets'
         ));
     }
 
@@ -189,10 +180,7 @@ class FleetTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://supersim.twilio.com/v1/Fleets/HFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://supersim.twilio.com/v1/Fleets/HFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

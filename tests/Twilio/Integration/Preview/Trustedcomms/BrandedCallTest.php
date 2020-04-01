@@ -30,8 +30,7 @@ class BrandedCallTest extends HolodeckTestCase {
             'post',
             'https://preview.twilio.com/TrustedComms/Business/BrandedCalls',
             [],
-            $values,
-            []
+            $values
         ));
     }
 

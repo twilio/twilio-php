@@ -27,10 +27,7 @@ class SettingsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://voice.twilio.com/v1/Settings',
-            [],
-            [],
-            []
+            'https://voice.twilio.com/v1/Settings'
         ));
     }
 
@@ -62,10 +59,7 @@ class SettingsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://voice.twilio.com/v1/Settings',
-            [],
-            [],
-            []
+            'https://voice.twilio.com/v1/Settings'
         ));
     }
 

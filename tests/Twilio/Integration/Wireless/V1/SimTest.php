@@ -26,10 +26,7 @@ class SimTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -85,10 +82,7 @@ class SimTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/Sims',
-            [],
-            [],
-            []
+            'https://wireless.twilio.com/v1/Sims'
         ));
     }
 
@@ -181,10 +175,7 @@ class SimTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -324,10 +315,7 @@ class SimTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

@@ -27,10 +27,7 @@ class CountryTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://voice.twilio.com/v1/DialingPermissions/Countries/US',
-            [],
-            [],
-            []
+            'https://voice.twilio.com/v1/DialingPermissions/Countries/US'
         ));
     }
 
@@ -73,10 +70,7 @@ class CountryTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://voice.twilio.com/v1/DialingPermissions/Countries',
-            [],
-            [],
-            []
+            'https://voice.twilio.com/v1/DialingPermissions/Countries'
         ));
     }
 

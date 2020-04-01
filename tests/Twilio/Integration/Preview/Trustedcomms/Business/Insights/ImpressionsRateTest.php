@@ -28,10 +28,7 @@ class ImpressionsRateTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Insights/ImpressionsRate',
-            [],
-            [],
-            []
+            'https://preview.twilio.com/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Insights/ImpressionsRate'
         ));
     }
 

@@ -27,10 +27,7 @@ class MetricTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://insights.twilio.com/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Metrics',
-            [],
-            [],
-            []
+            'https://insights.twilio.com/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Metrics'
         ));
     }
 

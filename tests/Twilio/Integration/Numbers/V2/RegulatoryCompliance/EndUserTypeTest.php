@@ -27,10 +27,7 @@ class EndUserTypeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUserTypes',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUserTypes'
         ));
     }
 
@@ -114,10 +111,7 @@ class EndUserTypeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUserTypes/OYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            []
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUserTypes/OYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
