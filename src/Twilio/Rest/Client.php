@@ -46,6 +46,7 @@ use Twilio\VersionInfo;
  * @property Voice $voice
  * @property Wireless $wireless
  * @property Supersim $supersim
+ * @property Bulkexports $bulkexports
  * @property \Twilio\Rest\Api\V2010\AccountInstance $account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList $addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList $applications
@@ -128,6 +129,7 @@ class Client {
     protected $_voice;
     protected $_wireless;
     protected $_supersim;
+    protected $_bulkexports;
 
     /**
      * Initializes the Twilio Client
@@ -840,6 +842,18 @@ class Client {
             $this->_supersim = new Supersim($this);
         }
         return $this->_supersim;
+    }
+
+    /**
+     * Access the Bulkexports Twilio Domain
+     *
+     * @return Bulkexports Bulkexports Twilio Domain
+     */
+    protected function getBulkexports(): Bulkexports {
+        if (!$this->_bulkexports) {
+            $this->_bulkexports = new Bulkexports($this);
+        }
+        return $this->_bulkexports;
     }
 
     /**

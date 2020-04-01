@@ -73,7 +73,7 @@ class ServiceContext extends InstanceContext {
     public function update(array $options = []): ServiceInstance {
         $options = new Values($options);
 
-        $data = Values::of(['FriendlyName' => $options['friendlyName'], ]);
+        $data = Values::of(['FriendlyName' => $options['friendlyName'], 'Push' => $options['push'], ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 

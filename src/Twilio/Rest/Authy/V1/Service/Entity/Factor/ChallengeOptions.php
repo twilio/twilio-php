@@ -29,6 +29,14 @@ abstract class ChallengeOptions {
     }
 
     /**
+     * @param string $status The Status of theChallenges to fetch
+     * @return ReadChallengeOptions Options builder
+     */
+    public static function read(string $status = Values::NONE): ReadChallengeOptions {
+        return new ReadChallengeOptions($status);
+    }
+
+    /**
      * @param string $authPayload Optional payload to verify the Challenge
      * @return UpdateChallengeOptions Options builder
      */
@@ -94,6 +102,36 @@ class CreateChallengeOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Authy.V1.CreateChallengeOptions ' . $options . ']';
+    }
+}
+
+class ReadChallengeOptions extends Options {
+    /**
+     * @param string $status The Status of theChallenges to fetch
+     */
+    public function __construct(string $status = Values::NONE) {
+        $this->options['status'] = $status;
+    }
+
+    /**
+     * The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`.
+     *
+     * @param string $status The Status of theChallenges to fetch
+     * @return $this Fluent Builder
+     */
+    public function setStatus(string $status): self {
+        $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Authy.V1.ReadChallengeOptions ' . $options . ']';
     }
 }
 

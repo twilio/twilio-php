@@ -104,17 +104,13 @@ class DeploymentTest extends HolodeckTestCase {
         try {
             $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->environments("ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->deployments->create("ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                         ->deployments->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['BuildSid' => "ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Deployments',
-            null,
-            $values
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Deployments'
         ));
     }
 
@@ -137,7 +133,7 @@ class DeploymentTest extends HolodeckTestCase {
 
         $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->environments("ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->deployments->create("ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                               ->deployments->create();
 
         $this->assertNotNull($actual);
     }

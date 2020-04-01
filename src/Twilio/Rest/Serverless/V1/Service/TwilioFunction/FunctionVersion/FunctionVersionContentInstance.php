@@ -7,12 +7,10 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service\TwilioFunction;
+namespace Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion;
 
-use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion\FunctionVersionContentList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,28 +21,23 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $serviceSid
  * @property string $functionSid
- * @property string $path
- * @property string $visibility
- * @property \DateTime $dateCreated
+ * @property string $content
  * @property string $url
- * @property array $links
  */
-class FunctionVersionInstance extends InstanceResource {
-    protected $_functionVersionContent;
-
+class FunctionVersionContentInstance extends InstanceResource {
     /**
-     * Initialize the FunctionVersionInstance
+     * Initialize the FunctionVersionContentInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the Function Version
      *                           resource is associated with
-     * @param string $functionSid The SID of the function that is the parent of the
-     *                            function version
-     * @param string $sid The SID that identifies the Function Version resource to
-     *                    fetch
+     * @param string $functionSid The SID of the Function that is the parent of the
+     *                            Function Version
+     * @param string $sid The unique string that identifies the Function Version
+     *                    resource
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -53,29 +46,23 @@ class FunctionVersionInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'functionSid' => Values::array_get($payload, 'function_sid'),
-            'path' => Values::array_get($payload, 'path'),
-            'visibility' => Values::array_get($payload, 'visibility'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'content' => Values::array_get($payload, 'content'),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = [
-            'serviceSid' => $serviceSid,
-            'functionSid' => $functionSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        ];
+        $this->solution = ['serviceSid' => $serviceSid, 'functionSid' => $functionSid, 'sid' => $sid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return FunctionVersionContext Context for this FunctionVersionInstance
+     * @return FunctionVersionContentContext Context for this
+     *                                       FunctionVersionContentInstance
      */
-    protected function proxy(): FunctionVersionContext {
+    protected function proxy(): FunctionVersionContentContext {
         if (!$this->context) {
-            $this->context = new FunctionVersionContext(
+            $this->context = new FunctionVersionContentContext(
                 $this->version,
                 $this->solution['serviceSid'],
                 $this->solution['functionSid'],
@@ -87,20 +74,13 @@ class FunctionVersionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch the FunctionVersionInstance
+     * Fetch the FunctionVersionContentInstance
      *
-     * @return FunctionVersionInstance Fetched FunctionVersionInstance
+     * @return FunctionVersionContentInstance Fetched FunctionVersionContentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FunctionVersionInstance {
+    public function fetch(): FunctionVersionContentInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Access the functionVersionContent
-     */
-    protected function getFunctionVersionContent(): FunctionVersionContentList {
-        return $this->proxy()->functionVersionContent;
     }
 
     /**
@@ -133,6 +113,6 @@ class FunctionVersionInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.FunctionVersionInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.FunctionVersionContentInstance ' . \implode(' ', $context) . ']';
     }
 }

@@ -180,6 +180,96 @@ class ChallengeTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testReadRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->entities("identity")
+                                    ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->challenges->read();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges'
+        ));
+    }
+
+    public function testReadEmptyResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "challenges": [],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "challenges"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->entities("identity")
+                                          ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->challenges->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "challenges": [
+                    {
+                        "sid": "YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "identity": "ff483d1ff591898a9942916050d2ca3f",
+                        "factor_sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "date_responded": "2015-07-30T20:00:00Z",
+                        "expiration_date": "2015-07-30T20:00:00Z",
+                        "status": "pending",
+                        "responded_reason": "none",
+                        "details": "details",
+                        "hidden_details": "hidden_details",
+                        "factor_type": "sms",
+                        "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "challenges"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->entities("identity")
+                                          ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->challenges->read();
+
+        $this->assertGreaterThan(0, \count($actual));
+    }
+
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

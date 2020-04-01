@@ -68,7 +68,7 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The new status of the resource. Can be: `active`, `deactivated`, or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.
+     * The new status of the resource. Can be: `active` or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.
      *
      * @param string $status The new status of the Super SIM
      * @return $this Fluent Builder
@@ -116,7 +116,7 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * The status of the Sim resources to read. Can be `new`, `active`, `deactivated`, `inactive`, or `scheduled`.
+     * The status of the Sim resources to read. Can be `new`, `active`, `inactive`, or `scheduled`.
      *
      * @param string $status The status of the Sim resources to read
      * @return $this Fluent Builder

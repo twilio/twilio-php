@@ -26,10 +26,11 @@ abstract class ServiceOptions {
 
     /**
      * @param string $friendlyName A human readable description of this resource.
+     * @param string $push Optional service level push factors configuration
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName);
+    public static function update(string $friendlyName = Values::NONE, string $push = Values::NONE): UpdateServiceOptions {
+        return new UpdateServiceOptions($friendlyName, $push);
     }
 }
 
@@ -42,7 +43,7 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}
+     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}
      *
      * @param string $push Optional service level push factors configuration
      * @return $this Fluent Builder
@@ -66,9 +67,11 @@ class CreateServiceOptions extends Options {
 class UpdateServiceOptions extends Options {
     /**
      * @param string $friendlyName A human readable description of this resource.
+     * @param string $push Optional service level push factors configuration
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $push = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['push'] = $push;
     }
 
     /**
@@ -79,6 +82,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setFriendlyName(string $friendlyName): self {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}
+     *
+     * @param string $push Optional service level push factors configuration
+     * @return $this Fluent Builder
+     */
+    public function setPush(string $push): self {
+        $this->options['push'] = $push;
         return $this;
     }
 

@@ -87,6 +87,7 @@ class DomainContext extends InstanceContext {
             'SipRegistration' => Serialize::booleanToString($options['sipRegistration']),
             'DomainName' => $options['domainName'],
             'EmergencyCallingEnabled' => Serialize::booleanToString($options['emergencyCallingEnabled']),
+            'Secure' => Serialize::booleanToString($options['secure']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

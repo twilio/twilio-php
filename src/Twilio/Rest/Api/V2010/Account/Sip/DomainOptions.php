@@ -28,10 +28,11 @@ abstract class DomainOptions {
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
+     * @param bool $secure Whether secure SIP is enabled for the domain
      * @return CreateDomainOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE): CreateDomainOptions {
-        return new CreateDomainOptions($friendlyName, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $voiceStatusCallbackUrl, $voiceStatusCallbackMethod, $sipRegistration, $emergencyCallingEnabled);
+    public static function create(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE): CreateDomainOptions {
+        return new CreateDomainOptions($friendlyName, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $voiceStatusCallbackUrl, $voiceStatusCallbackMethod, $sipRegistration, $emergencyCallingEnabled, $secure);
     }
 
     /**
@@ -50,10 +51,11 @@ abstract class DomainOptions {
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
+     * @param bool $secure Whether secure SIP is enabled for the domain
      * @return UpdateDomainOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE): UpdateDomainOptions {
-        return new UpdateDomainOptions($friendlyName, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceStatusCallbackMethod, $voiceStatusCallbackUrl, $voiceUrl, $sipRegistration, $domainName, $emergencyCallingEnabled);
+    public static function update(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE): UpdateDomainOptions {
+        return new UpdateDomainOptions($friendlyName, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceStatusCallbackMethod, $voiceStatusCallbackUrl, $voiceUrl, $sipRegistration, $domainName, $emergencyCallingEnabled, $secure);
     }
 }
 
@@ -73,8 +75,9 @@ class CreateDomainOptions extends Options {
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
+     * @param bool $secure Whether secure SIP is enabled for the domain
      */
-    public function __construct(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -84,6 +87,7 @@ class CreateDomainOptions extends Options {
         $this->options['voiceStatusCallbackMethod'] = $voiceStatusCallbackMethod;
         $this->options['sipRegistration'] = $sipRegistration;
         $this->options['emergencyCallingEnabled'] = $emergencyCallingEnabled;
+        $this->options['secure'] = $secure;
     }
 
     /**
@@ -191,6 +195,17 @@ class CreateDomainOptions extends Options {
     }
 
     /**
+     * Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+     *
+     * @param bool $secure Whether secure SIP is enabled for the domain
+     * @return $this Fluent Builder
+     */
+    public function setSecure(bool $secure): self {
+        $this->options['secure'] = $secure;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -218,8 +233,9 @@ class UpdateDomainOptions extends Options {
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
+     * @param bool $secure Whether secure SIP is enabled for the domain
      */
-    public function __construct(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
@@ -230,6 +246,7 @@ class UpdateDomainOptions extends Options {
         $this->options['sipRegistration'] = $sipRegistration;
         $this->options['domainName'] = $domainName;
         $this->options['emergencyCallingEnabled'] = $emergencyCallingEnabled;
+        $this->options['secure'] = $secure;
     }
 
     /**
@@ -344,6 +361,17 @@ class UpdateDomainOptions extends Options {
      */
     public function setEmergencyCallingEnabled(bool $emergencyCallingEnabled): self {
         $this->options['emergencyCallingEnabled'] = $emergencyCallingEnabled;
+        return $this;
+    }
+
+    /**
+     * Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+     *
+     * @param bool $secure Whether secure SIP is enabled for the domain
+     * @return $this Fluent Builder
+     */
+    public function setSecure(bool $secure): self {
+        $this->options['secure'] = $secure;
         return $this;
     }
 

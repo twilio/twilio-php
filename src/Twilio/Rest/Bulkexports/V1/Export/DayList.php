@@ -7,66 +7,35 @@
  * /       /
  */
 
-namespace Twilio\Rest\Authy\V1\Service\Entity\Factor;
+namespace Twilio\Rest\Bulkexports\V1\Export;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class ChallengeList extends ListResource {
+class DayList extends ListResource {
     /**
-     * Construct the ChallengeList
+     * Construct the DayList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
-     * @param string $factorSid Factor Sid.
+     * @param string $resourceType The type of communication – Messages, Calls
      */
-    public function __construct(Version $version, string $serviceSid, string $identity, string $factorSid) {
+    public function __construct(Version $version, string $resourceType) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, 'factorSid' => $factorSid, ];
+        $this->solution = ['resourceType' => $resourceType, ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors/' . \rawurlencode($factorSid) . '/Challenges';
+        $this->uri = '/Exports/' . \rawurlencode($resourceType) . '/Days';
     }
 
     /**
-     * Create the ChallengeInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return ChallengeInstance Created ChallengeInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): ChallengeInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'ExpirationDate' => Serialize::iso8601DateTime($options['expirationDate']),
-            'Details' => $options['details'],
-            'HiddenDetails' => $options['hiddenDetails'],
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new ChallengeInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['identity'],
-            $this->solution['factorSid']
-        );
-    }
-
-    /**
-     * Streams ChallengeInstance records from the API as a generator stream.
+     * Streams DayInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -93,7 +62,7 @@ class ChallengeList extends ListResource {
     }
 
     /**
-     * Reads ChallengeInstance records from the API as a list.
+     * Reads DayInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -106,27 +75,28 @@ class ChallengeList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ChallengeInstance[] Array of results
+     * @return DayInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ChallengeInstance records from the API.
+     * Retrieve a single page of DayInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return ChallengePage Page of ChallengeInstance
+     * @return DayPage Page of DayInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ChallengePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DayPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'Status' => $options['status'],
+            'NextToken' => $options['nextToken'],
+            'PreviousToken' => $options['previousToken'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -134,39 +104,32 @@ class ChallengeList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new ChallengePage($this->version, $response, $this->solution);
+        return new DayPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of ChallengeInstance records from the API.
+     * Retrieve a specific page of DayInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return ChallengePage Page of ChallengeInstance
+     * @return DayPage Page of DayInstance
      */
-    public function getPage(string $targetUrl): ChallengePage {
+    public function getPage(string $targetUrl): DayPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new ChallengePage($this->version, $response, $this->solution);
+        return new DayPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a ChallengeContext
+     * Constructs a DayContext
      *
-     * @param string $sid A string that uniquely identifies this Challenge, or
-     *                    `latest`.
+     * @param string $day The date of the data in the file
      */
-    public function getContext(string $sid): ChallengeContext {
-        return new ChallengeContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $this->solution['identity'],
-            $this->solution['factorSid'],
-            $sid
-        );
+    public function getContext(string $day): DayContext {
+        return new DayContext($this->version, $this->solution['resourceType'], $day);
     }
 
     /**
@@ -175,6 +138,6 @@ class ChallengeList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Authy.V1.ChallengeList]';
+        return '[Twilio.Bulkexports.V1.DayList]';
     }
 }
