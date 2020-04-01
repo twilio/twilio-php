@@ -26,7 +26,10 @@ class RatePlanTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/RatePlans'
+            'https://preview.twilio.com/wireless/RatePlans',
+            [],
+            [],
+            []
         ));
     }
 
@@ -109,7 +112,10 @@ class RatePlanTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -155,7 +161,10 @@ class RatePlanTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/wireless/RatePlans'
+            'https://preview.twilio.com/wireless/RatePlans',
+            [],
+            [],
+            []
         ));
     }
 
@@ -201,7 +210,10 @@ class RatePlanTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -247,7 +259,10 @@ class RatePlanTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

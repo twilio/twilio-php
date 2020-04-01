@@ -86,8 +86,9 @@ class UserContext extends InstanceContext {
             'Attributes' => $options['attributes'],
             'FriendlyName' => $options['friendlyName'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new UserInstance(
             $this->version,

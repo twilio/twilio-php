@@ -27,7 +27,10 @@ class FunctionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions',
+            [],
+            [],
+            []
         ));
     }
 
@@ -67,7 +70,10 @@ class FunctionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -107,7 +113,10 @@ class FunctionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -137,8 +146,9 @@ class FunctionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -181,8 +191,9 @@ class FunctionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

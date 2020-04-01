@@ -26,7 +26,10 @@ class UsageRecordTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/UsageRecords'
+            'https://wireless.twilio.com/v1/UsageRecords',
+            [],
+            [],
+            []
         ));
     }
 

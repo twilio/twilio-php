@@ -28,7 +28,10 @@ class TaskStatisticsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks/UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Statistics'
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks/UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Statistics',
+            [],
+            [],
+            []
         ));
     }
 

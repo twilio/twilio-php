@@ -26,7 +26,10 @@ class AssistantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -75,7 +78,10 @@ class AssistantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/understand/Assistants'
+            'https://preview.twilio.com/understand/Assistants',
+            [],
+            [],
+            []
         ));
     }
 
@@ -161,7 +167,10 @@ class AssistantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/understand/Assistants'
+            'https://preview.twilio.com/understand/Assistants',
+            [],
+            [],
+            []
         ));
     }
 
@@ -210,7 +219,10 @@ class AssistantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -259,7 +271,10 @@ class AssistantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

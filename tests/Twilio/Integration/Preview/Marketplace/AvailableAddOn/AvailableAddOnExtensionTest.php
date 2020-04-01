@@ -27,7 +27,10 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/marketplace/AvailableAddOns/XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions/XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/marketplace/AvailableAddOns/XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions/XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -63,7 +66,10 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/marketplace/AvailableAddOns/XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions'
+            'https://preview.twilio.com/marketplace/AvailableAddOns/XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions',
+            [],
+            [],
+            []
         ));
     }
 

@@ -28,7 +28,10 @@ class ExecutionContextTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Executions/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Context'
+            'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Executions/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Context',
+            [],
+            [],
+            []
         ));
     }
 

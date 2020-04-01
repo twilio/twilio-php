@@ -55,8 +55,9 @@ class MessageList extends ListResource {
             'Attributes' => $options['attributes'],
             'MediaSid' => $options['mediaSid'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new MessageInstance($this->version, $payload, $this->solution['conversationSid']);
     }

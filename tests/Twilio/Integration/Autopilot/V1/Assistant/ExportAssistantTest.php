@@ -27,7 +27,10 @@ class ExportAssistantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Export'
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Export',
+            [],
+            [],
+            []
         ));
     }
 

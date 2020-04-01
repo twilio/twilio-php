@@ -27,7 +27,10 @@ class DialogueTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Dialogues/UKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Dialogues/UKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

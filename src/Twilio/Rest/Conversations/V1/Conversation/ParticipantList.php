@@ -56,8 +56,9 @@ class ParticipantList extends ListResource {
             'Attributes' => $options['attributes'],
             'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ParticipantInstance($this->version, $payload, $this->solution['conversationSid']);
     }

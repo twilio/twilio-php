@@ -27,7 +27,10 @@ class StyleSheetTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/StyleSheet'
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/StyleSheet',
+            [],
+            [],
+            []
         ));
     }
 
@@ -61,7 +64,10 @@ class StyleSheetTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/StyleSheet'
+            'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/StyleSheet',
+            [],
+            [],
+            []
         ));
     }
 

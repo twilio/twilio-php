@@ -30,8 +30,9 @@ class AlphaSenderTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -71,7 +72,10 @@ class AlphaSenderTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders',
+            [],
+            [],
+            []
         ));
     }
 
@@ -124,7 +128,10 @@ class AlphaSenderTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders/AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders/AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -164,7 +171,10 @@ class AlphaSenderTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders/AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders/AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

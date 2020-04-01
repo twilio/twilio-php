@@ -27,7 +27,10 @@ class FlowRevisionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Revisions'
+            'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Revisions',
+            [],
+            [],
+            []
         ));
     }
 
@@ -82,7 +85,10 @@ class FlowRevisionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Revisions/revision'
+            'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Revisions/revision',
+            [],
+            [],
+            []
         ));
     }
 

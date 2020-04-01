@@ -27,7 +27,10 @@ class JobTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/Jobs/JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/BulkExports/Exports/Jobs/JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -67,7 +70,10 @@ class JobTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/BulkExports/Exports/Jobs/JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/BulkExports/Exports/Jobs/JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

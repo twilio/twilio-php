@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Sync\Service\SyncList;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -95,22 +96,24 @@ class SyncListItemInstance extends InstanceResource {
     /**
      * Delete the SyncListItemInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+    public function delete(array $options = []): bool {
+        return $this->proxy()->delete($options);
     }
 
     /**
      * Update the SyncListItemInstance
      *
      * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data): SyncListItemInstance {
-        return $this->proxy()->update($data);
+    public function update(array $data, array $options = []): SyncListItemInstance {
+        return $this->proxy()->update($data, $options);
     }
 
     /**

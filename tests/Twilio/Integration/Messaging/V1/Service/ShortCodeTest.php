@@ -30,8 +30,9 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -72,7 +73,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -99,7 +103,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes',
+            [],
+            [],
+            []
         ));
     }
 
@@ -153,7 +160,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

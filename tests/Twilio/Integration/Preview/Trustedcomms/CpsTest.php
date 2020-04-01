@@ -19,14 +19,21 @@ class CpsTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xXcnamSensitivePhoneNumber' => "x_xcnam_sensitive_phone_number", ];
+
         try {
-            $this->twilio->preview->trustedComms->cps()->fetch();
+            $this->twilio->preview->trustedComms->cps()->fetch($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Xcnam-Sensitive-Phone-Number' => "x_xcnam_sensitive_phone_number", ];
+
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/TrustedComms/CPS'
+            'https://preview.twilio.com/TrustedComms/CPS',
+            [],
+            [],
+            $headers
         ));
     }
 

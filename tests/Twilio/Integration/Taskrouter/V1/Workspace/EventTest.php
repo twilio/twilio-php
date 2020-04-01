@@ -27,7 +27,10 @@ class EventTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Events/EVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Events/EVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -84,7 +87,10 @@ class EventTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Events'
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Events',
+            [],
+            [],
+            []
         ));
     }
 

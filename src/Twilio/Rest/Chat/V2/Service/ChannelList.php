@@ -53,8 +53,9 @@ class ChannelList extends ListResource {
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'CreatedBy' => $options['createdBy'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ChannelInstance($this->version, $payload, $this->solution['serviceSid']);
     }

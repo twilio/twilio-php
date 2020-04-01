@@ -27,7 +27,10 @@ class PublicKeyTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://accounts.twilio.com/v1/Credentials/PublicKeys'
+            'https://accounts.twilio.com/v1/Credentials/PublicKeys',
+            [],
+            [],
+            []
         ));
     }
 
@@ -104,8 +107,9 @@ class PublicKeyTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://accounts.twilio.com/v1/Credentials/PublicKeys',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -141,7 +145,10 @@ class PublicKeyTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -177,7 +184,10 @@ class PublicKeyTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -213,7 +223,10 @@ class PublicKeyTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

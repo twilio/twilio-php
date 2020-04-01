@@ -34,8 +34,9 @@ class AuthRegistrationsCredentialListMappingTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings.json',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -78,7 +79,10 @@ class AuthRegistrationsCredentialListMappingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings.json',
+            [],
+            [],
+            []
         ));
     }
 
@@ -161,7 +165,10 @@ class AuthRegistrationsCredentialListMappingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
+            [],
+            [],
+            []
         ));
     }
 
@@ -204,7 +211,10 @@ class AuthRegistrationsCredentialListMappingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Auth/Registrations/CredentialListMappings/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
+            [],
+            [],
+            []
         ));
     }
 

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
 use Twilio\Values;
 use Twilio\Version;
@@ -94,22 +95,24 @@ class DocumentInstance extends InstanceResource {
     /**
      * Delete the DocumentInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+    public function delete(array $options = []): bool {
+        return $this->proxy()->delete($options);
     }
 
     /**
      * Update the DocumentInstance
      *
      * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return DocumentInstance Updated DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data): DocumentInstance {
-        return $this->proxy()->update($data);
+    public function update(array $data, array $options = []): DocumentInstance {
+        return $this->proxy()->update($data, $options);
     }
 
     /**

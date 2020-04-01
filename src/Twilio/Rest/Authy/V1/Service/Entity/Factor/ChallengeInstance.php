@@ -102,21 +102,23 @@ class ChallengeInstance extends InstanceResource {
     /**
      * Delete the ChallengeInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+    public function delete(array $options = []): bool {
+        return $this->proxy()->delete($options);
     }
 
     /**
      * Fetch the ChallengeInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ChallengeInstance {
-        return $this->proxy()->fetch();
+    public function fetch(array $options = []): ChallengeInstance {
+        return $this->proxy()->fetch($options);
     }
 
     /**

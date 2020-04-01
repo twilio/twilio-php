@@ -17,6 +17,14 @@ use Twilio\Values;
  */
 abstract class SyncListItemOptions {
     /**
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return DeleteSyncListItemOptions Options builder
+     */
+    public static function delete(string $ifMatch = Values::NONE): DeleteSyncListItemOptions {
+        return new DeleteSyncListItemOptions($ifMatch);
+    }
+
+    /**
      * @param string $order The order
      * @param string $from The from
      * @param string $bounds The bounds
@@ -24,6 +32,44 @@ abstract class SyncListItemOptions {
      */
     public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE): ReadSyncListItemOptions {
         return new ReadSyncListItemOptions($order, $from, $bounds);
+    }
+
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return UpdateSyncListItemOptions Options builder
+     */
+    public static function update(string $ifMatch = Values::NONE): UpdateSyncListItemOptions {
+        return new UpdateSyncListItemOptions($ifMatch);
+    }
+}
+
+class DeleteSyncListItemOptions extends Options {
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     */
+    public function __construct(string $ifMatch = Values::NONE) {
+        $this->options['ifMatch'] = $ifMatch;
+    }
+
+    /**
+     * The If-Match HTTP request header
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Sync.DeleteSyncListItemOptions ' . $options . ']';
     }
 }
 
@@ -80,5 +126,35 @@ class ReadSyncListItemOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.ReadSyncListItemOptions ' . $options . ']';
+    }
+}
+
+class UpdateSyncListItemOptions extends Options {
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     */
+    public function __construct(string $ifMatch = Values::NONE) {
+        $this->options['ifMatch'] = $ifMatch;
+    }
+
+    /**
+     * The If-Match HTTP request header
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Preview.Sync.UpdateSyncListItemOptions ' . $options . ']';
     }
 }

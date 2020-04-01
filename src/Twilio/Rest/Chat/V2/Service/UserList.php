@@ -51,8 +51,9 @@ class UserList extends ListResource {
             'Attributes' => $options['attributes'],
             'FriendlyName' => $options['friendlyName'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new UserInstance($this->version, $payload, $this->solution['serviceSid']);
     }

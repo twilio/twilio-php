@@ -29,8 +29,9 @@ class CommandTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://supersim.twilio.com/v1/Commands',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -90,7 +91,10 @@ class CommandTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/Commands/HCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://supersim.twilio.com/v1/Commands/HCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -127,7 +131,10 @@ class CommandTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/Commands'
+            'https://supersim.twilio.com/v1/Commands',
+            [],
+            [],
+            []
         ));
     }
 

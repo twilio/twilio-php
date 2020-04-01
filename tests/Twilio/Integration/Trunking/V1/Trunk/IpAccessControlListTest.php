@@ -27,7 +27,10 @@ class IpAccessControlListTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -64,7 +67,10 @@ class IpAccessControlListTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -94,8 +100,9 @@ class IpAccessControlListTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -132,7 +139,10 @@ class IpAccessControlListTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists',
+            [],
+            [],
+            []
         ));
     }
 

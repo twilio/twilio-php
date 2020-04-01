@@ -56,8 +56,9 @@ class MemberList extends ListResource {
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' => $options['attributes'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new MemberInstance(
             $this->version,

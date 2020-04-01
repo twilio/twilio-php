@@ -32,8 +32,9 @@ class StreamMessageTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams/TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

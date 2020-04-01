@@ -46,21 +46,31 @@ class ChallengeContext extends InstanceContext {
     /**
      * Delete the ChallengeInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->version->delete('DELETE', $this->uri);
+    public function delete(array $options = []): bool {
+        $options = new Values($options);
+
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
     /**
      * Fetch the ChallengeInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ChallengeInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
+    public function fetch(array $options = []): ChallengeInstance {
+        $options = new Values($options);
+
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ChallengeInstance(
             $this->version,
@@ -83,8 +93,9 @@ class ChallengeContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(['AuthPayload' => $options['authPayload'], ]);
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ChallengeInstance(
             $this->version,

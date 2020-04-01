@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,11 +36,16 @@ class CpsContext extends InstanceContext {
     /**
      * Fetch the CpsInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CpsInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
+    public function fetch(array $options = []): CpsInstance {
+        $options = new Values($options);
+
+        $headers = Values::of(['X-Xcnam-Sensitive-Phone-Number' => $options['xXcnamSensitivePhoneNumber'], ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CpsInstance($this->version, $payload);
     }

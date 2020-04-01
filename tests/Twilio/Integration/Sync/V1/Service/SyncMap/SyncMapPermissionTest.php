@@ -29,7 +29,10 @@ class SyncMapPermissionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity',
+            [],
+            [],
+            []
         ));
     }
 
@@ -69,7 +72,10 @@ class SyncMapPermissionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity',
+            [],
+            [],
+            []
         ));
     }
 
@@ -98,7 +104,10 @@ class SyncMapPermissionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions',
+            [],
+            [],
+            []
         ));
     }
 
@@ -184,8 +193,9 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

@@ -26,7 +26,10 @@ class CompositionHookTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://video.twilio.com/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -106,7 +109,10 @@ class CompositionHookTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/CompositionHooks'
+            'https://video.twilio.com/v1/CompositionHooks',
+            [],
+            [],
+            []
         ));
     }
 
@@ -221,7 +227,10 @@ class CompositionHookTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://video.twilio.com/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://video.twilio.com/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -249,8 +258,9 @@ class CompositionHookTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/CompositionHooks',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -322,8 +332,9 @@ class CompositionHookTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

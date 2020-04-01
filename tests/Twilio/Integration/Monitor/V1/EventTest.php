@@ -26,7 +26,10 @@ class EventTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://monitor.twilio.com/v1/Events/AEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://monitor.twilio.com/v1/Events/AEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -76,7 +79,10 @@ class EventTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://monitor.twilio.com/v1/Events'
+            'https://monitor.twilio.com/v1/Events',
+            [],
+            [],
+            []
         ));
     }
 

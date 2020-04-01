@@ -28,7 +28,10 @@ class InviteTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites/INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites/INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -73,8 +76,9 @@ class InviteTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -116,7 +120,10 @@ class InviteTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites'
+            'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites',
+            [],
+            [],
+            []
         ));
     }
 
@@ -197,7 +204,10 @@ class InviteTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites/INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites/INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

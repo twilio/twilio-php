@@ -27,7 +27,10 @@ class SupportingDocumentTypeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes',
+            [],
+            [],
+            []
         ));
     }
 
@@ -106,7 +109,10 @@ class SupportingDocumentTypeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/OYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/OYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

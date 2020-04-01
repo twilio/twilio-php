@@ -27,7 +27,10 @@ class TranscriptionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
+            [],
+            [],
+            []
         ));
     }
 
@@ -70,7 +73,10 @@ class TranscriptionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
+            [],
+            [],
+            []
         ));
     }
 
@@ -97,7 +103,10 @@ class TranscriptionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions.json',
+            [],
+            [],
+            []
         ));
     }
 

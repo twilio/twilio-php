@@ -19,15 +19,22 @@ class ParticipantTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
             $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                            ->participants->create();
+                                            ->participants->create($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -113,15 +120,22 @@ class ParticipantTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
             $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                            ->participants("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+                                            ->participants("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -156,15 +170,22 @@ class ParticipantTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
             $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                            ->participants("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+                                            ->participants("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -191,7 +212,10 @@ class ParticipantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -234,7 +258,10 @@ class ParticipantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants',
+            [],
+            [],
+            []
         ));
     }
 

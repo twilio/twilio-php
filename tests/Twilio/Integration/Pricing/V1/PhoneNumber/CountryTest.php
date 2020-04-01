@@ -27,7 +27,10 @@ class CountryTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://pricing.twilio.com/v1/PhoneNumbers/Countries'
+            'https://pricing.twilio.com/v1/PhoneNumbers/Countries',
+            [],
+            [],
+            []
         ));
     }
 
@@ -98,7 +101,10 @@ class CountryTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://pricing.twilio.com/v1/PhoneNumbers/Countries/US'
+            'https://pricing.twilio.com/v1/PhoneNumbers/Countries/US',
+            [],
+            [],
+            []
         ));
     }
 

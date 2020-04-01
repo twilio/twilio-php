@@ -30,8 +30,9 @@ class RateLimitTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -72,7 +73,10 @@ class RateLimitTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits/RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits/RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -113,7 +117,10 @@ class RateLimitTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits/RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits/RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -154,7 +161,10 @@ class RateLimitTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits',
+            [],
+            [],
+            []
         ));
     }
 
@@ -208,7 +218,10 @@ class RateLimitTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits/RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits/RKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

@@ -27,7 +27,10 @@ class DayTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Days/day'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Days/day',
+            [],
+            [],
+            []
         ));
     }
 
@@ -58,7 +61,10 @@ class DayTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Days'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Days',
+            [],
+            [],
+            []
         ));
     }
 

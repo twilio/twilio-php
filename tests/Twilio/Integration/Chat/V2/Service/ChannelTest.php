@@ -27,7 +27,10 @@ class ChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -69,15 +72,22 @@ class ChannelTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
             $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -96,15 +106,22 @@ class ChannelTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
             $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->channels->create();
+                                   ->channels->create($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -154,7 +171,10 @@ class ChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels',
+            [],
+            [],
+            []
         ));
     }
 
@@ -234,15 +254,22 @@ class ChannelTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
             $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 

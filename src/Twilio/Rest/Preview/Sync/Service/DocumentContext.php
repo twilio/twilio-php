@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
 use Twilio\Serialize;
 use Twilio\Values;
@@ -62,24 +63,33 @@ class DocumentContext extends InstanceContext {
     /**
      * Delete the DocumentInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->version->delete('DELETE', $this->uri);
+    public function delete(array $options = []): bool {
+        $options = new Values($options);
+
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
+
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
     /**
      * Update the DocumentInstance
      *
      * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return DocumentInstance Updated DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data): DocumentInstance {
-        $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
+    public function update(array $data, array $options = []): DocumentInstance {
+        $options = new Values($options);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $data = Values::of(['Data' => Serialize::jsonObject($data), ]);
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new DocumentInstance(
             $this->version,

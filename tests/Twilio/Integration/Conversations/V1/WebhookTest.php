@@ -26,7 +26,10 @@ class WebhookTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://conversations.twilio.com/v1/Conversations/Webhooks'
+            'https://conversations.twilio.com/v1/Conversations/Webhooks',
+            [],
+            [],
+            []
         ));
     }
 
@@ -64,7 +67,10 @@ class WebhookTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://conversations.twilio.com/v1/Conversations/Webhooks'
+            'https://conversations.twilio.com/v1/Conversations/Webhooks',
+            [],
+            [],
+            []
         ));
     }
 

@@ -68,8 +68,9 @@ class ConversationContext extends InstanceContext {
             'Attributes' => $options['attributes'],
             'MessagingServiceSid' => $options['messagingServiceSid'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ConversationInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -77,11 +78,16 @@ class ConversationContext extends InstanceContext {
     /**
      * Delete the ConversationInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->version->delete('DELETE', $this->uri);
+    public function delete(array $options = []): bool {
+        $options = new Values($options);
+
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
+
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
     /**

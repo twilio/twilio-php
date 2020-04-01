@@ -26,7 +26,10 @@ class TrunkTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -77,7 +80,10 @@ class TrunkTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -102,7 +108,10 @@ class TrunkTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://trunking.twilio.com/v1/Trunks'
+            'https://trunking.twilio.com/v1/Trunks',
+            [],
+            [],
+            []
         ));
     }
 
@@ -153,7 +162,10 @@ class TrunkTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks'
+            'https://trunking.twilio.com/v1/Trunks',
+            [],
+            [],
+            []
         ));
     }
 
@@ -241,7 +253,10 @@ class TrunkTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

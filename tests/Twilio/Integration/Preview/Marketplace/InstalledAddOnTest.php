@@ -33,8 +33,9 @@ class InstalledAddOnTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/marketplace/InstalledAddOns',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -77,7 +78,10 @@ class InstalledAddOnTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -102,7 +106,10 @@ class InstalledAddOnTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -145,7 +152,10 @@ class InstalledAddOnTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://preview.twilio.com/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -188,7 +198,10 @@ class InstalledAddOnTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/marketplace/InstalledAddOns'
+            'https://preview.twilio.com/marketplace/InstalledAddOns',
+            [],
+            [],
+            []
         ));
     }
 

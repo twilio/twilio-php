@@ -28,7 +28,10 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -72,7 +75,10 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -106,8 +112,9 @@ class RoleTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -151,7 +158,10 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles',
+            [],
+            [],
+            []
         ));
     }
 
@@ -236,8 +246,9 @@ class RoleTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

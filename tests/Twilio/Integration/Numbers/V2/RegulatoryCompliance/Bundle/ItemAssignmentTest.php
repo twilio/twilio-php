@@ -31,8 +31,9 @@ class ItemAssignmentTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -70,7 +71,10 @@ class ItemAssignmentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments',
+            [],
+            [],
+            []
         ));
     }
 
@@ -147,7 +151,10 @@ class ItemAssignmentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments/BVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments/BVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -185,7 +192,10 @@ class ItemAssignmentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments/BVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments/BVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

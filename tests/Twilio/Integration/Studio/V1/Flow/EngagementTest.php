@@ -27,7 +27,10 @@ class EngagementTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements'
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements',
+            [],
+            [],
+            []
         ));
     }
 
@@ -67,7 +70,10 @@ class EngagementTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -114,8 +120,9 @@ class EngagementTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -159,7 +166,10 @@ class EngagementTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

@@ -27,7 +27,10 @@ class NumberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://pricing.twilio.com/v2/Voice/Numbers/%2B15017122661'
+            'https://pricing.twilio.com/v2/Voice/Numbers/%2B15017122661',
+            [],
+            [],
+            []
         ));
     }
 

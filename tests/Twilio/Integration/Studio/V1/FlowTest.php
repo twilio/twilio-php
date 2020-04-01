@@ -26,7 +26,10 @@ class FlowTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v1/Flows'
+            'https://studio.twilio.com/v1/Flows',
+            [],
+            [],
+            []
         ));
     }
 
@@ -64,7 +67,10 @@ class FlowTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -104,7 +110,10 @@ class FlowTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

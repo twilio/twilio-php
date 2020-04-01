@@ -53,8 +53,9 @@ class ChallengeList extends ListResource {
             'Details' => $options['details'],
             'HiddenDetails' => $options['hiddenDetails'],
         ]);
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ChallengeInstance(
             $this->version,

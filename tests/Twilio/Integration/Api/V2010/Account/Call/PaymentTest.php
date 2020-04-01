@@ -31,8 +31,9 @@ class PaymentTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payments.json',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -73,8 +74,9 @@ class PaymentTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payments/PKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

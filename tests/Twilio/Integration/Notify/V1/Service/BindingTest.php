@@ -27,7 +27,10 @@ class BindingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -75,7 +78,10 @@ class BindingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -105,8 +111,9 @@ class BindingTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -154,7 +161,10 @@ class BindingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings',
+            [],
+            [],
+            []
         ));
     }
 

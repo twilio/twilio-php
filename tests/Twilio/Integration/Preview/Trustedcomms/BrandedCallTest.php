@@ -29,8 +29,9 @@ class BrandedCallTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/TrustedComms/Business/BrandedCalls',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

@@ -26,7 +26,10 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://serverless.twilio.com/v1/Services'
+            'https://serverless.twilio.com/v1/Services',
+            [],
+            [],
+            []
         ));
     }
 
@@ -64,7 +67,10 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -107,7 +113,10 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -135,8 +144,9 @@ class ServiceTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://serverless.twilio.com/v1/Services',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -179,7 +189,10 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

@@ -30,8 +30,9 @@ class BundleTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -74,7 +75,10 @@ class BundleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles',
+            [],
+            [],
+            []
         ));
     }
 
@@ -155,7 +159,10 @@ class BundleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -198,7 +205,10 @@ class BundleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

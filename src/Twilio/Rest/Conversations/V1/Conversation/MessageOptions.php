@@ -25,10 +25,12 @@ abstract class MessageOptions {
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
      * @param string $mediaSid The Media Sid to be attached to the new Message.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $mediaSid = Values::NONE): CreateMessageOptions {
-        return new CreateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes, $mediaSid);
+    public static function create(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $mediaSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateMessageOptions {
+        return new CreateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes, $mediaSid, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -39,10 +41,21 @@ abstract class MessageOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      * @return UpdateMessageOptions Options builder
      */
-    public static function update(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE): UpdateMessageOptions {
-        return new UpdateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes);
+    public static function update(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateMessageOptions {
+        return new UpdateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes, $xTwilioWebhookEnabled);
+    }
+
+    /**
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return DeleteMessageOptions Options builder
+     */
+    public static function delete(string $xTwilioWebhookEnabled = Values::NONE): DeleteMessageOptions {
+        return new DeleteMessageOptions($xTwilioWebhookEnabled);
     }
 }
 
@@ -56,14 +69,17 @@ class CreateMessageOptions extends Options {
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
      * @param string $mediaSid The Media Sid to be attached to the new Message.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      */
-    public function __construct(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $mediaSid = Values::NONE) {
+    public function __construct(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $mediaSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['mediaSid'] = $mediaSid;
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
     /**
@@ -135,6 +151,18 @@ class CreateMessageOptions extends Options {
     }
 
     /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -154,13 +182,16 @@ class UpdateMessageOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      */
-    public function __construct(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(string $author = Values::NONE, string $body = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
     /**
@@ -221,6 +252,18 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -228,5 +271,37 @@ class UpdateMessageOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.UpdateMessageOptions ' . $options . ']';
+    }
+}
+
+class DeleteMessageOptions extends Options {
+    /**
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     */
+    public function __construct(string $xTwilioWebhookEnabled = Values::NONE) {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+    }
+
+    /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Conversations.V1.DeleteMessageOptions ' . $options . ']';
     }
 }

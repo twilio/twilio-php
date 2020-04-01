@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -81,11 +82,12 @@ class CurrentCallInstance extends InstanceResource {
     /**
      * Fetch the CurrentCallInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CurrentCallInstance {
-        return $this->proxy()->fetch();
+    public function fetch(array $options = []): CurrentCallInstance {
+        return $this->proxy()->fetch($options);
     }
 
     /**

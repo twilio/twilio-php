@@ -26,7 +26,10 @@ class CommandTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/Commands/DCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://wireless.twilio.com/v1/Commands/DCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -92,7 +95,10 @@ class CommandTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/Commands'
+            'https://wireless.twilio.com/v1/Commands',
+            [],
+            [],
+            []
         ));
     }
 
@@ -211,8 +217,9 @@ class CommandTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://wireless.twilio.com/v1/Commands',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -278,7 +285,10 @@ class CommandTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://wireless.twilio.com/v1/Commands/DCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://wireless.twilio.com/v1/Commands/DCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

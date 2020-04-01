@@ -27,10 +27,12 @@ abstract class MemberOptions {
      *                               resource was updated
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      * @return CreateMemberOptions Options builder
      */
-    public static function create(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE): CreateMemberOptions {
-        return new CreateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes);
+    public static function create(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateMemberOptions {
+        return new CreateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -39,6 +41,15 @@ abstract class MemberOptions {
      */
     public static function read(array $identity = Values::ARRAY_NONE): ReadMemberOptions {
         return new ReadMemberOptions($identity);
+    }
+
+    /**
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return DeleteMemberOptions Options builder
+     */
+    public static function delete(string $xTwilioWebhookEnabled = Values::NONE): DeleteMemberOptions {
+        return new DeleteMemberOptions($xTwilioWebhookEnabled);
     }
 
     /**
@@ -55,10 +66,12 @@ abstract class MemberOptions {
      *                               resource was updated
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      * @return UpdateMemberOptions Options builder
      */
-    public static function update(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE): UpdateMemberOptions {
-        return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes);
+    public static function update(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateMemberOptions {
+        return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes, $xTwilioWebhookEnabled);
     }
 }
 
@@ -77,14 +90,17 @@ class CreateMemberOptions extends Options {
      *                               resource was updated
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      */
-    public function __construct(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
     /**
@@ -161,6 +177,18 @@ class CreateMemberOptions extends Options {
     }
 
     /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -201,6 +229,38 @@ class ReadMemberOptions extends Options {
     }
 }
 
+class DeleteMemberOptions extends Options {
+    /**
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     */
+    public function __construct(string $xTwilioWebhookEnabled = Values::NONE) {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+    }
+
+    /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Chat.V2.DeleteMemberOptions ' . $options . ']';
+    }
+}
+
 class UpdateMemberOptions extends Options {
     /**
      * @param string $roleSid The SID of the Role to assign to the member
@@ -216,14 +276,17 @@ class UpdateMemberOptions extends Options {
      *                               resource was updated
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      */
-    public function __construct(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
     /**
@@ -296,6 +359,18 @@ class UpdateMemberOptions extends Options {
      */
     public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
         return $this;
     }
 

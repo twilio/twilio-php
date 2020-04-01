@@ -28,7 +28,10 @@ class LogTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Logs'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Logs',
+            [],
+            [],
+            []
         ));
     }
 
@@ -70,7 +73,10 @@ class LogTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Logs/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Logs/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

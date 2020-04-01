@@ -28,7 +28,10 @@ class PublishedTrackTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PublishedTracks/MTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PublishedTracks/MTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -69,7 +72,10 @@ class PublishedTrackTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PublishedTracks'
+            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PublishedTracks',
+            [],
+            [],
+            []
         ));
     }
 

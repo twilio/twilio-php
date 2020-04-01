@@ -16,7 +16,6 @@ class Holodeck implements Client {
                             string $user = null, string $password = null,
                             int $timeout = null): Response {
         $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password);
-
         if (\count($this->responses) === 0) {
             return new Response(404, null, null);
         }
@@ -50,6 +49,11 @@ class Holodeck implements Client {
                 $request->url == $c->url &&
                 $request->params == $c->params &&
                 $request->data == $c->data) {
+                foreach ($request->headers as $h => $value) {
+                    if ($c->headers[$h] != $value) {
+                        return false;
+                    }
+                }
                 return true;
             }
         }
@@ -63,11 +67,14 @@ class Holodeck implements Client {
             $url .= '?' . \http_build_query($request->params);
         }
 
-
         $data = $request->data
             ? '-d ' . \http_build_query($request->data)
             : '';
 
-        return \implode(' ', [\strtoupper($request->method), $url, $data]);
+        $headers = $request->headers
+            ? '-h ' . \http_build_query($request->headers, null, ' ')
+            : '';
+
+        return \implode(' ', [\strtoupper($request->method), $url, $data, $headers]);
     }
 }

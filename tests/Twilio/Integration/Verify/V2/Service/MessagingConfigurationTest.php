@@ -30,8 +30,9 @@ class MessagingConfigurationTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -71,8 +72,9 @@ class MessagingConfigurationTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations/country',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -109,7 +111,10 @@ class MessagingConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations/country'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations/country',
+            [],
+            [],
+            []
         ));
     }
 
@@ -146,7 +151,10 @@ class MessagingConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations',
+            [],
+            [],
+            []
         ));
     }
 
@@ -221,7 +229,10 @@ class MessagingConfigurationTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations/country'
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations/country',
+            [],
+            [],
+            []
         ));
     }
 

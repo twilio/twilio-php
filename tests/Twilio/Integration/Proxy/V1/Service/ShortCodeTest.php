@@ -30,8 +30,9 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -74,7 +75,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -101,7 +105,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes',
+            [],
+            [],
+            []
         ));
     }
 
@@ -157,7 +164,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -200,7 +210,10 @@ class ShortCodeTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

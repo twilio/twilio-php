@@ -30,8 +30,9 @@ class VerificationCheckTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/VerificationCheck',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

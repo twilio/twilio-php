@@ -28,7 +28,10 @@ class OriginationUrlTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls/OUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls/OUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -69,7 +72,10 @@ class OriginationUrlTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls/OUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls/OUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -105,8 +111,9 @@ class OriginationUrlTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -147,7 +154,10 @@ class OriginationUrlTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls',
+            [],
+            [],
+            []
         ));
     }
 
@@ -226,7 +236,10 @@ class OriginationUrlTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls/OUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OriginationUrls/OUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

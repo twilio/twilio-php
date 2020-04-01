@@ -27,7 +27,10 @@ class AwsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://accounts.twilio.com/v1/Credentials/AWS'
+            'https://accounts.twilio.com/v1/Credentials/AWS',
+            [],
+            [],
+            []
         ));
     }
 
@@ -104,8 +107,9 @@ class AwsTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://accounts.twilio.com/v1/Credentials/AWS',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -141,7 +145,10 @@ class AwsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -177,7 +184,10 @@ class AwsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -213,7 +223,10 @@ class AwsTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

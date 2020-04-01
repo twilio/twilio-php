@@ -26,7 +26,10 @@ class WebChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://flex-api.twilio.com/v1/WebChannels'
+            'https://flex-api.twilio.com/v1/WebChannels',
+            [],
+            [],
+            []
         ));
     }
 
@@ -97,7 +100,10 @@ class WebChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://flex-api.twilio.com/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://flex-api.twilio.com/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -139,8 +145,9 @@ class WebChannelTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://flex-api.twilio.com/v1/WebChannels',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 
@@ -174,7 +181,10 @@ class WebChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://flex-api.twilio.com/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://flex-api.twilio.com/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -208,7 +218,10 @@ class WebChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://flex-api.twilio.com/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://flex-api.twilio.com/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 

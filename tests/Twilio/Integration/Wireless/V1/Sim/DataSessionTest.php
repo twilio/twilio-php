@@ -27,7 +27,10 @@ class DataSessionTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/DataSessions'
+            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/DataSessions',
+            [],
+            [],
+            []
         ));
     }
 

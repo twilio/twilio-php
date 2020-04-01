@@ -26,7 +26,10 @@ class RoomTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -77,7 +80,10 @@ class RoomTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://video.twilio.com/v1/Rooms'
+            'https://video.twilio.com/v1/Rooms',
+            [],
+            [],
+            []
         ));
     }
 
@@ -128,7 +134,10 @@ class RoomTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Rooms'
+            'https://video.twilio.com/v1/Rooms',
+            [],
+            [],
+            []
         ));
     }
 
@@ -219,8 +228,9 @@ class RoomTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            null,
-            $values
+            [],
+            $values,
+            []
         ));
     }
 

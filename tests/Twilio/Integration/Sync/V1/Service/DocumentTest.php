@@ -27,7 +27,10 @@ class DocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            []
         ));
     }
 
@@ -63,15 +66,22 @@ class DocumentTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['ifMatch' => "if_match", ];
+
         try {
             $this->twilio->sync->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->documents("ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+                                   ->documents("ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['If-Match' => "if_match", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -98,7 +108,10 @@ class DocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents',
+            [],
+            [],
+            []
         ));
     }
 
@@ -142,7 +155,10 @@ class DocumentTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents',
+            [],
+            [],
+            []
         ));
     }
 
@@ -216,15 +232,22 @@ class DocumentTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['ifMatch' => "if_match", ];
+
         try {
             $this->twilio->sync->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->documents("ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+                                   ->documents("ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['If-Match' => "if_match", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
