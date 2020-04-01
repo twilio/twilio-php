@@ -184,7 +184,7 @@ class SyncListPermissionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Lists/ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity',
-            [],
+            null,
             $values
         ));
     }

@@ -154,7 +154,7 @@ class FieldValueTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/FieldTypes/UBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/FieldValues',
-            [],
+            null,
             $values
         ));
     }

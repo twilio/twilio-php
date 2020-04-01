@@ -34,7 +34,7 @@ class FlowTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://studio.twilio.com/v2/Flows',
-            [],
+            null,
             $values
         ));
     }
@@ -86,7 +86,7 @@ class FlowTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
+            null,
             $values
         ));
     }

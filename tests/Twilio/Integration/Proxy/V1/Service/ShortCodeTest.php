@@ -30,7 +30,7 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes',
-            [],
+            null,
             $values
         ));
     }

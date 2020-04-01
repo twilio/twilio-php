@@ -287,7 +287,7 @@ class CompositionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/Compositions',
-            [],
+            null,
             $values
         ));
     }

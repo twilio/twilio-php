@@ -249,7 +249,7 @@ class CompositionHookTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/CompositionHooks',
-            [],
+            null,
             $values
         ));
     }
@@ -322,7 +322,7 @@ class CompositionHookTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
+            null,
             $values
         ));
     }

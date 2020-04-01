@@ -106,7 +106,7 @@ class RoleTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles',
-            [],
+            null,
             $values
         ));
     }
@@ -236,7 +236,7 @@ class RoleTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
+            null,
             $values
         ));
     }

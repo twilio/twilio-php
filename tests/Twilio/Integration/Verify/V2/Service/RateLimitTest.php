@@ -30,7 +30,7 @@ class RateLimitTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RateLimits',
-            [],
+            null,
             $values
         ));
     }

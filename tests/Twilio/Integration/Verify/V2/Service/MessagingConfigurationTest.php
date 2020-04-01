@@ -30,7 +30,7 @@ class MessagingConfigurationTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations',
-            [],
+            null,
             $values
         ));
     }
@@ -71,7 +71,7 @@ class MessagingConfigurationTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessagingConfigurations/country',
-            [],
+            null,
             $values
         ));
     }

@@ -182,7 +182,7 @@ class WebhookTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Webhooks',
-            [],
+            null,
             $values
         ));
     }

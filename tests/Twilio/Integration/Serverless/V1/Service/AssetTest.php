@@ -137,7 +137,7 @@ class AssetTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Assets',
-            [],
+            null,
             $values
         ));
     }
@@ -181,7 +181,7 @@ class AssetTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Assets/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
+            null,
             $values
         ));
     }

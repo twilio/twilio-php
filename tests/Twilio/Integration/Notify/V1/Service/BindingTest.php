@@ -105,7 +105,7 @@ class BindingTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings',
-            [],
+            null,
             $values
         ));
     }

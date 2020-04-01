@@ -141,7 +141,7 @@ class TollFreeTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IncomingPhoneNumbers/TollFree.json',
-            [],
+            null,
             $values
         ));
     }

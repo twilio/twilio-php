@@ -162,7 +162,7 @@ class FaxTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://fax.twilio.com/v1/Faxes',
-            [],
+            null,
             $values
         ));
     }

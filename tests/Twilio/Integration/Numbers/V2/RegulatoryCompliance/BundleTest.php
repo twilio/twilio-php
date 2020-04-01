@@ -30,7 +30,7 @@ class BundleTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles',
-            [],
+            null,
             $values
         ));
     }

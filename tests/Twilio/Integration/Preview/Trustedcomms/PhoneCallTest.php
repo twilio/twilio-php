@@ -29,7 +29,7 @@ class PhoneCallTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/TrustedComms/Business/PhoneCalls',
-            [],
+            null,
             $values
         ));
     }

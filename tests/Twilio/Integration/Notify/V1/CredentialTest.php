@@ -102,7 +102,7 @@ class CredentialTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://notify.twilio.com/v1/Credentials',
-            [],
+            null,
             $values
         ));
     }

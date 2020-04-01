@@ -94,7 +94,7 @@ class IpAccessControlListTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists',
-            [],
+            null,
             $values
         ));
     }

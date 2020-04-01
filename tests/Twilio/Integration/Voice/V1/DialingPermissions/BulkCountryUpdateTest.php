@@ -30,7 +30,7 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://voice.twilio.com/v1/DialingPermissions/BulkCountryUpdates',
-            [],
+            null,
             $values
         ));
     }

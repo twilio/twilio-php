@@ -31,7 +31,7 @@ class ItemAssignmentTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/Bundles/BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ItemAssignments',
-            [],
+            null,
             $values
         ));
     }

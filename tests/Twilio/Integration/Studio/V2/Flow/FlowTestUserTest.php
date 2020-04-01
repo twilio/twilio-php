@@ -67,7 +67,7 @@ class FlowTestUserTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://studio.twilio.com/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TestUsers',
-            [],
+            null,
             $values
         ));
     }

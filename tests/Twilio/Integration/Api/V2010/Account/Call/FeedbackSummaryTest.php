@@ -35,7 +35,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/FeedbackSummary.json',
-            [],
+            null,
             $values
         ));
     }

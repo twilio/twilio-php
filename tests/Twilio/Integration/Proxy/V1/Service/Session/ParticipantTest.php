@@ -151,7 +151,7 @@ class ParticipantTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants',
-            [],
+            null,
             $values
         ));
     }

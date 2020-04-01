@@ -211,7 +211,7 @@ class CommandTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://wireless.twilio.com/v1/Commands',
-            [],
+            null,
             $values
         ));
     }

@@ -143,7 +143,7 @@ class ChannelTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://flex-api.twilio.com/v1/Channels',
-            [],
+            null,
             $values
         ));
     }

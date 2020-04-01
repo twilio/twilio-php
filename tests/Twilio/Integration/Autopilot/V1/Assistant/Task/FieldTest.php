@@ -152,7 +152,7 @@ class FieldTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks/UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Fields',
-            [],
+            null,
             $values
         ));
     }

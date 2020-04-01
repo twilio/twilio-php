@@ -184,7 +184,7 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Permissions/identity',
-            [],
+            null,
             $values
         ));
     }

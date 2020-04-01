@@ -152,7 +152,7 @@ class WebhookTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://autopilot.twilio.com/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Webhooks',
-            [],
+            null,
             $values
         ));
     }

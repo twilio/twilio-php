@@ -30,7 +30,7 @@ class EndUserTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers',
-            [],
+            null,
             $values
         ));
     }

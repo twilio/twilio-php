@@ -135,7 +135,7 @@ class ServiceTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://serverless.twilio.com/v1/Services',
-            [],
+            null,
             $values
         ));
     }

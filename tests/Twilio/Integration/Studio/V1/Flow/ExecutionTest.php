@@ -114,7 +114,7 @@ class ExecutionTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Executions',
-            [],
+            null,
             $values
         ));
     }

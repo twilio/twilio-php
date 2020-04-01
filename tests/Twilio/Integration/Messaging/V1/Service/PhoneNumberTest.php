@@ -30,7 +30,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PhoneNumbers',
-            [],
+            null,
             $values
         ));
     }

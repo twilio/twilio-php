@@ -65,7 +65,7 @@ class CompositionSettingsTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/CompositionSettings/Default',
-            [],
+            null,
             $values
         ));
     }

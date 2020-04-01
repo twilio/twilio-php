@@ -30,7 +30,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications',
-            [],
+            null,
             $values
         ));
     }
@@ -178,7 +178,7 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid',
-            [],
+            null,
             $values
         ));
     }

@@ -30,7 +30,7 @@ class AlphaSenderTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders',
-            [],
+            null,
             $values
         ));
     }

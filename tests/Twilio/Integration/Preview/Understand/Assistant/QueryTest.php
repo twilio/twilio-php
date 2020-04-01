@@ -180,7 +180,7 @@ class QueryTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Queries',
-            [],
+            null,
             $values
         ));
     }

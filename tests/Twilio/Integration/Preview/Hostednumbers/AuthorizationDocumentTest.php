@@ -199,7 +199,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments',
-            [],
+            null,
             $values
         ));
     }

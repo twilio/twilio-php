@@ -104,7 +104,7 @@ class AwsTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://accounts.twilio.com/v1/Credentials/AWS',
-            [],
+            null,
             $values
         ));
     }

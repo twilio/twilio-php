@@ -65,7 +65,7 @@ class RecordingSettingsTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://video.twilio.com/v1/RecordingSettings/Default',
-            [],
+            null,
             $values
         ));
     }

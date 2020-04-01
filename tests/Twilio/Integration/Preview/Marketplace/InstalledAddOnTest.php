@@ -33,7 +33,7 @@ class InstalledAddOnTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/marketplace/InstalledAddOns',
-            [],
+            null,
             $values
         ));
     }

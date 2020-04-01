@@ -121,7 +121,7 @@ class WorkerTest extends HolodeckTestCase {
         $this->assertRequest(new Request(
             'post',
             'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Workers',
-            [],
+            null,
             $values
         ));
     }
