@@ -132,8 +132,9 @@ class ChallengeList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ]);
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new ChallengePage($this->version, $response, $this->solution);
     }

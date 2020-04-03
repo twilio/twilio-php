@@ -44,21 +44,31 @@ class ServiceContext extends InstanceContext {
     /**
      * Delete the ServiceInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->version->delete('DELETE', $this->uri);
+    public function delete(array $options = []): bool {
+        $options = new Values($options);
+
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
     /**
      * Fetch the ServiceInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ServiceInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
+    public function fetch(array $options = []): ServiceInstance {
+        $options = new Values($options);
+
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
@@ -74,8 +84,9 @@ class ServiceContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], 'Push' => $options['push'], ]);
+        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
