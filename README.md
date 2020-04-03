@@ -17,8 +17,6 @@ The PHP library documentation can be found [here][libdocs].
 
 ### Supported PHP Versions
 
-**On January 1, 2020, Twilio will no longer support PHP version 5.X, 7.0, and 7.1 via this helper library.** Please see [this issue](https://github.com/twilio/twilio-php/issues/582) for details.
-
 This library supports the following PHP implementations:
 
 * PHP 7.2
@@ -51,10 +49,10 @@ $token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
 $client = new Twilio\Rest\Client($sid, $token);
 $message = $client->messages->create(
   '8881231234', // Text this number
-  array(
+  [
     'from' => '9991231234', // From a valid Twilio number
     'body' => 'Hello from Twilio!'
-  )
+  ]
 );
 
 print $message->sid;
@@ -73,9 +71,9 @@ $client = new Twilio\Rest\Client($sid, $token);
 $call = $client->calls->create(
   '8881231234', // Call this number
   '9991231234', // From a valid Twilio number
-  array(
+  [
       'url' => 'https://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
-  )
+  ]
 );
 ```
 
@@ -89,7 +87,7 @@ Use `Twilio\TwiML\(Voice|Messaging|Fax)Response` to easily chain said responses.
 <?php
 $response = new Twilio\TwiML\VoiceResponse();
 $response->say('Hello');
-$response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
+$response->play('https://api.twilio.com/cowbell.mp3', ['loop' => 5]);
 print $response;
 ```
 
