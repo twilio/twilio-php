@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,11 +36,19 @@ class CurrentCallContext extends InstanceContext {
     /**
      * Fetch the CurrentCallInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CurrentCallInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
+    public function fetch(array $options = []): CurrentCallInstance {
+        $options = new Values($options);
+
+        $headers = Values::of([
+            'X-Xcnam-Sensitive-Phone-Number-From' => $options['xXcnamSensitivePhoneNumberFrom'],
+            'X-Xcnam-Sensitive-Phone-Number-To' => $options['xXcnamSensitivePhoneNumberTo'],
+        ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CurrentCallInstance($this->version, $payload);
     }

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Sync\Service\SyncMap;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -95,22 +96,24 @@ class SyncMapItemInstance extends InstanceResource {
     /**
      * Delete the SyncMapItemInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+    public function delete(array $options = []): bool {
+        return $this->proxy()->delete($options);
     }
 
     /**
      * Update the SyncMapItemInstance
      *
      * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data): SyncMapItemInstance {
-        return $this->proxy()->update($data);
+    public function update(array $data, array $options = []): SyncMapItemInstance {
+        return $this->proxy()->update($data, $options);
     }
 
     /**

@@ -19,14 +19,27 @@ class CurrentCallTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = [
+            'xXcnamSensitivePhoneNumberFrom' => "x_xcnam_sensitive_phone_number_from",
+            'xXcnamSensitivePhoneNumberTo' => "x_xcnam_sensitive_phone_number_to",
+        ];
+
         try {
-            $this->twilio->preview->trustedComms->currentCalls()->fetch();
+            $this->twilio->preview->trustedComms->currentCalls()->fetch($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = [
+            'X-Xcnam-Sensitive-Phone-Number-From' => "x_xcnam_sensitive_phone_number_from",
+            'X-Xcnam-Sensitive-Phone-Number-To' => "x_xcnam_sensitive_phone_number_to",
+        ];
+
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/TrustedComms/CurrentCall'
+            'https://preview.twilio.com/TrustedComms/CurrentCall',
+            [],
+            [],
+            $headers
         ));
     }
 

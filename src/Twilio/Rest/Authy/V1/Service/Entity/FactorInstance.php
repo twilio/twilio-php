@@ -95,21 +95,23 @@ class FactorInstance extends InstanceResource {
     /**
      * Delete the FactorInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+    public function delete(array $options = []): bool {
+        return $this->proxy()->delete($options);
     }
 
     /**
      * Fetch the FactorInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return FactorInstance Fetched FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FactorInstance {
-        return $this->proxy()->fetch();
+    public function fetch(array $options = []): FactorInstance {
+        return $this->proxy()->fetch($options);
     }
 
     /**

@@ -52,8 +52,9 @@ class ConversationList extends ListResource {
             'MessagingServiceSid' => $options['messagingServiceSid'],
             'Attributes' => $options['attributes'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ConversationInstance($this->version, $payload);
     }

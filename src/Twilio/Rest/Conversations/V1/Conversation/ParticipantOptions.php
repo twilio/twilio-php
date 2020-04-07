@@ -31,10 +31,12 @@ abstract class ParticipantOptions {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE): CreateParticipantOptions {
-        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes, $messagingBindingProjectedAddress);
+    public static function create(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateParticipantOptions {
+        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes, $messagingBindingProjectedAddress, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -42,10 +44,21 @@ abstract class ParticipantOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE): UpdateParticipantOptions {
-        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes);
+    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
+        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $xTwilioWebhookEnabled);
+    }
+
+    /**
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return DeleteParticipantOptions Options builder
+     */
+    public static function delete(string $xTwilioWebhookEnabled = Values::NONE): DeleteParticipantOptions {
+        return new DeleteParticipantOptions($xTwilioWebhookEnabled);
     }
 }
 
@@ -65,8 +78,10 @@ class CreateParticipantOptions extends Options {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      */
-    public function __construct(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE) {
+    public function __construct(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['messagingBindingAddress'] = $messagingBindingAddress;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
@@ -74,6 +89,7 @@ class CreateParticipantOptions extends Options {
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
     /**
@@ -161,6 +177,18 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -177,11 +205,14 @@ class UpdateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
      */
-    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
     /**
@@ -219,6 +250,18 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -226,5 +269,37 @@ class UpdateParticipantOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.UpdateParticipantOptions ' . $options . ']';
+    }
+}
+
+class DeleteParticipantOptions extends Options {
+    /**
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     */
+    public function __construct(string $xTwilioWebhookEnabled = Values::NONE) {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+    }
+
+    /**
+     * The X-Twilio-Webhook-Enabled HTTP request header
+     *
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
+     *                                      request header
+     * @return $this Fluent Builder
+     */
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+        $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Conversations.V1.DeleteParticipantOptions ' . $options . ']';
     }
 }

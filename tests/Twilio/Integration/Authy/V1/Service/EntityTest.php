@@ -19,19 +19,24 @@ class EntityTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                    ->entities->create("identity");
+                                    ->entities->create("identity", $options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['Identity' => "identity", ];
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'post',
             'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities',
-            null,
-            $values
+            [],
+            $values,
+            $headers
         ));
     }
 
@@ -63,15 +68,22 @@ class EntityTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                    ->entities("identity")->delete();
+                                    ->entities("identity")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity'
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -90,15 +102,22 @@ class EntityTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                    ->entities("identity")->fetch();
+                                    ->entities("identity")->fetch($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'get',
-            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity'
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -130,15 +149,22 @@ class EntityTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                    ->entities->read();
+                                    ->entities->read($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'get',
-            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities'
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities',
+            [],
+            [],
+            $headers
         ));
     }
 

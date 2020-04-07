@@ -39,7 +39,7 @@ class RecordingSettingsTest extends HolodeckTestCase {
                 "friendly_name": "string",
                 "aws_credentials_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "encryption_key_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "aws_s3_url": "https://www.twilio.com",
+                "aws_s3_url": "https://my-super-duper-bucket.s3.amazonaws.com/my/path/",
                 "aws_storage_enabled": true,
                 "encryption_enabled": true,
                 "url": "https://video.twilio.com/v1/RecordingSettings/Default"
@@ -79,7 +79,7 @@ class RecordingSettingsTest extends HolodeckTestCase {
                 "friendly_name": "friendly_name",
                 "aws_credentials_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "encryption_key_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "aws_s3_url": "https://www.twilio.com",
+                "aws_s3_url": "https://my-super-duper-bucket.s3.amazonaws.com/my/path/",
                 "aws_storage_enabled": true,
                 "encryption_enabled": true,
                 "url": "https://video.twilio.com/v1/RecordingSettings/Default"

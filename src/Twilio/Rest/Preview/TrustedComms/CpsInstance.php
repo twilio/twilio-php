@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -58,11 +59,12 @@ class CpsInstance extends InstanceResource {
     /**
      * Fetch the CpsInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CpsInstance {
-        return $this->proxy()->fetch();
+    public function fetch(array $options = []): CpsInstance {
+        return $this->proxy()->fetch($options);
     }
 
     /**

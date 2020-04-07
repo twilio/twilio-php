@@ -62,16 +62,23 @@ class SyncListItemTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['ifMatch' => "if_match", ];
+
         try {
             $this->twilio->preview->sync->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->syncLists("ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->syncListItems(1)->delete();
+                                        ->syncListItems(1)->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['If-Match' => "if_match", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Lists/ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/1'
+            'https://preview.twilio.com/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Lists/ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/1',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -218,20 +225,25 @@ class SyncListItemTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['ifMatch' => "if_match", ];
+
         try {
             $this->twilio->preview->sync->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->syncLists("ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->syncListItems(1)->update([]);
+                                        ->syncListItems(1)->update([], $options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['Data' => Serialize::jsonObject([]), ];
 
+        $headers = ['If-Match' => "if_match", ];
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Lists/ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/1',
-            null,
-            $values
+            [],
+            $values,
+            $headers
         ));
     }
 

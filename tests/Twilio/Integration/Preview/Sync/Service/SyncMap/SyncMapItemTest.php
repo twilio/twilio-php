@@ -62,16 +62,23 @@ class SyncMapItemTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['ifMatch' => "if_match", ];
+
         try {
             $this->twilio->preview->sync->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->syncMaps("MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->syncMapItems("key")->delete();
+                                        ->syncMapItems("key")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['If-Match' => "if_match", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/key'
+            'https://preview.twilio.com/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/key',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -218,20 +225,25 @@ class SyncMapItemTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['ifMatch' => "if_match", ];
+
         try {
             $this->twilio->preview->sync->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->syncMaps("MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->syncMapItems("key")->update([]);
+                                        ->syncMapItems("key")->update([], $options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['Data' => Serialize::jsonObject([]), ];
 
+        $headers = ['If-Match' => "if_match", ];
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Maps/MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/key',
-            null,
-            $values
+            [],
+            $values,
+            $headers
         ));
     }
 

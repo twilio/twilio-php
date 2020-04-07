@@ -3,6 +3,34 @@
 _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes
 posted here._
 
+[2020-04-15] 6.2.x to 6.3.x
+---------------------------
+### CHANGED - Optional header parameters added to `Authy` endpoints
+Custom headers are now supported in `twilio-php`. The addition of these optional parameters have caused a breaking change to the `read`, `page`, and `stream` functions for `Entity`, `Service`, and `Factor` resources. These functions now expect an array of optional parameters as the first argument.
+
+#### 6.2.x
+```php
+<? 
+use Twilio\Rest\Client;
+$twilio = new Client();
+
+$entities = $twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                              ->entities
+                              ->read(20);
+```
+
+#### 6.3.x
+```php
+<? 
+use Twilio\Rest\Client;
+$twilio = new Client();
+
+$entities = $twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                              ->entities
+                              ->read([], 20);
+```
+
+
 [2017-09-28] 5.1x.x to 5.15.x
 ---------------------------
 

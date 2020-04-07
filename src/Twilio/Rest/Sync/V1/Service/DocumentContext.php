@@ -64,11 +64,16 @@ class DocumentContext extends InstanceContext {
     /**
      * Delete the DocumentInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->version->delete('DELETE', $this->uri);
+    public function delete(array $options = []): bool {
+        $options = new Values($options);
+
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
+
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
     /**
@@ -82,8 +87,9 @@ class DocumentContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(['Data' => Serialize::jsonObject($options['data']), 'Ttl' => $options['ttl'], ]);
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new DocumentInstance(
             $this->version,

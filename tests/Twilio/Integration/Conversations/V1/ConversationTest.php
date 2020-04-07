@@ -19,14 +19,21 @@ class ConversationTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
-            $this->twilio->conversations->v1->conversations->create();
+            $this->twilio->conversations->v1->conversations->create($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://conversations.twilio.com/v1/Conversations'
+            'https://conversations.twilio.com/v1/Conversations',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -61,14 +68,21 @@ class ConversationTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
-            $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+            $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -103,14 +117,21 @@ class ConversationTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['xTwilioWebhookEnabled' => "true", ];
+
         try {
-            $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+            $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['X-Twilio-Webhook-Enabled' => "true", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://conversations.twilio.com/v1/Conversations/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 

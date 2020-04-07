@@ -19,18 +19,23 @@ class ServiceTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
-            $this->twilio->authy->v1->services->create("friendly_name");
+            $this->twilio->authy->v1->services->create("friendly_name", $options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['FriendlyName' => "friendly_name", ];
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'post',
             'https://authy.twilio.com/v1/Services',
-            null,
-            $values
+            [],
+            $values,
+            $headers
         ));
     }
 
@@ -61,14 +66,21 @@ class ServiceTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
-            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'delete',
-            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -86,14 +98,21 @@ class ServiceTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
-            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'get',
-            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -124,14 +143,21 @@ class ServiceTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
-            $this->twilio->authy->v1->services->read();
+            $this->twilio->authy->v1->services->read($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'get',
-            'https://authy.twilio.com/v1/Services'
+            'https://authy.twilio.com/v1/Services',
+            [],
+            [],
+            $headers
         ));
     }
 
@@ -199,14 +225,21 @@ class ServiceTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
+        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+
         try {
-            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+            $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://authy.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            [],
+            [],
+            $headers
         ));
     }
 

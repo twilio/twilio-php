@@ -36,7 +36,7 @@ class DayTest extends HolodeckTestCase {
             200,
             '
             {
-                "redirect_to": "https://www.twilio.com"
+                "redirect_to": "https://api.bulkexports.s3.amazonaws.com/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));

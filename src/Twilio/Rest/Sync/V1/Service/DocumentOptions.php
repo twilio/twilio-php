@@ -17,6 +17,14 @@ use Twilio\Values;
  */
 abstract class DocumentOptions {
     /**
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return DeleteDocumentOptions Options builder
+     */
+    public static function delete(string $ifMatch = Values::NONE): DeleteDocumentOptions {
+        return new DeleteDocumentOptions($ifMatch);
+    }
+
+    /**
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the Sync Document
      * @param array $data A JSON string that represents an arbitrary, schema-less
@@ -34,10 +42,41 @@ abstract class DocumentOptions {
      *                    object that the Sync Document stores
      * @param int $ttl How long, in seconds, before the Document resource expires
      *                 and is deleted
+     * @param string $ifMatch The If-Match HTTP request header
      * @return UpdateDocumentOptions Options builder
      */
-    public static function update(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE): UpdateDocumentOptions {
-        return new UpdateDocumentOptions($data, $ttl);
+    public static function update(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, string $ifMatch = Values::NONE): UpdateDocumentOptions {
+        return new UpdateDocumentOptions($data, $ttl, $ifMatch);
+    }
+}
+
+class DeleteDocumentOptions extends Options {
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     */
+    public function __construct(string $ifMatch = Values::NONE) {
+        $this->options['ifMatch'] = $ifMatch;
+    }
+
+    /**
+     * The If-Match HTTP request header
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Sync.V1.DeleteDocumentOptions ' . $options . ']';
     }
 }
 
@@ -109,10 +148,12 @@ class UpdateDocumentOptions extends Options {
      *                    object that the Sync Document stores
      * @param int $ttl How long, in seconds, before the Document resource expires
      *                 and is deleted
+     * @param string $ifMatch The If-Match HTTP request header
      */
-    public function __construct(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE) {
+    public function __construct(array $data = Values::ARRAY_NONE, int $ttl = Values::NONE, string $ifMatch = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
+        $this->options['ifMatch'] = $ifMatch;
     }
 
     /**
@@ -136,6 +177,17 @@ class UpdateDocumentOptions extends Options {
      */
     public function setTtl(int $ttl): self {
         $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * The If-Match HTTP request header
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
         return $this;
     }
 
