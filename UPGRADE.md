@@ -6,7 +6,7 @@ posted here._
 [2020-04-15] 6.2.x to 6.3.x
 ---------------------------
 ### CHANGED - Optional header parameters added to `Authy` endpoints
-Custom headers are now supported in the `twilio-php`. The addition of these optional parameters have caused a breaking change to the `read`, `page`, and `stream` functions for `Entity`, `Service`, and `Factor` resources. These functions now expect an array of optional parameters as the first argument.
+Custom headers are now supported in `twilio-php`. The addition of these optional parameters have caused a breaking change to the `read`, `page`, and `stream` functions for `Entity`, `Service`, and `Factor` resources. These functions now expect an array of optional parameters as the first argument.
 
 #### 6.2.x
 ```php
