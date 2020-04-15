@@ -1,6 +1,33 @@
 twilio-php Changelog
 ====================
 
+[2020-04-15] Version 6.3.0
+--------------------------
+**Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2020-04-15-62x-to-63x) for detailed migration notes.
+
+**Library - Feature**
+- [PR #623](https://github.com/twilio/twilio-php/pull/623): add custom header support. Thanks to [@eshanholtz](https://github.com/eshanholtz)! **(breaking change)**
+
+**Library - Chore**
+- [PR #625](https://github.com/twilio/twilio-php/pull/625): remove S3 URLs from test data. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Updated description for property `call_reason` in the call create request
+
+**Contacts**
+- Added Read, Delete All, and Delete by SID docs
+- Initial Release
+
+**Studio**
+- Rename `flow_valid` to `flow_validate`
+- Removed `errors` and `warnings` from flows error response and added new property named `details`
+- Add Update Execution endpoints to v1 and v2 to end execution via API
+- Add new `warnings` attribute v2 flow POST api
+
+**Twiml**
+- Add enhanced attribute to use with `speech_model` for the `Gather` verb
+
+
 [2020-04-01] Version 6.2.0
 --------------------------
 **Library - Chore**

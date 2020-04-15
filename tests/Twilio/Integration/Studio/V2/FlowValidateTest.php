@@ -21,7 +21,7 @@ class FlowValidateTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->studio->v2->flowValid->update("friendly_name", "draft", []);
+            $this->twilio->studio->v2->flowValidate->update("friendly_name", "draft", []);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -49,7 +49,7 @@ class FlowValidateTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->studio->v2->flowValid->update("friendly_name", "draft", []);
+        $actual = $this->twilio->studio->v2->flowValidate->update("friendly_name", "draft", []);
 
         $this->assertNotNull($actual);
     }

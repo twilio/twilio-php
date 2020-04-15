@@ -22,8 +22,8 @@ class ExecutionContextContext extends InstanceContext {
      * Initialize the ExecutionContextContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $executionSid The execution_sid
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
      */
     public function __construct(Version $version, $flowSid, $executionSid) {
         parent::__construct($version);

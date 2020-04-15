@@ -17,8 +17,10 @@ use Twilio\Values;
  */
 abstract class ExecutionOptions {
     /**
-     * @param \DateTime $dateCreatedFrom The date_created_from
-     * @param \DateTime $dateCreatedTo The date_created_to
+     * @param \DateTime $dateCreatedFrom Only show Executions that started on or
+     *                                   after this ISO 8601 date-time
+     * @param \DateTime $dateCreatedTo Only show Executions that started before
+     *                                 this ISO 8601 date-time
      * @return ReadExecutionOptions Options builder
      */
     public static function read(\DateTime $dateCreatedFrom = Values::NONE, \DateTime $dateCreatedTo = Values::NONE): ReadExecutionOptions {
@@ -26,7 +28,7 @@ abstract class ExecutionOptions {
     }
 
     /**
-     * @param array $parameters The parameters
+     * @param array $parameters JSON data that will be added to the Flow's context
      * @return CreateExecutionOptions Options builder
      */
     public static function create(array $parameters = Values::ARRAY_NONE): CreateExecutionOptions {
@@ -36,8 +38,10 @@ abstract class ExecutionOptions {
 
 class ReadExecutionOptions extends Options {
     /**
-     * @param \DateTime $dateCreatedFrom The date_created_from
-     * @param \DateTime $dateCreatedTo The date_created_to
+     * @param \DateTime $dateCreatedFrom Only show Executions that started on or
+     *                                   after this ISO 8601 date-time
+     * @param \DateTime $dateCreatedTo Only show Executions that started before
+     *                                 this ISO 8601 date-time
      */
     public function __construct(\DateTime $dateCreatedFrom = Values::NONE, \DateTime $dateCreatedTo = Values::NONE) {
         $this->options['dateCreatedFrom'] = $dateCreatedFrom;
@@ -45,9 +49,10 @@ class ReadExecutionOptions extends Options {
     }
 
     /**
-     * The date_created_from
+     * Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      *
-     * @param \DateTime $dateCreatedFrom The date_created_from
+     * @param \DateTime $dateCreatedFrom Only show Executions that started on or
+     *                                   after this ISO 8601 date-time
      * @return $this Fluent Builder
      */
     public function setDateCreatedFrom(\DateTime $dateCreatedFrom): self {
@@ -56,9 +61,10 @@ class ReadExecutionOptions extends Options {
     }
 
     /**
-     * The date_created_to
+     * Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      *
-     * @param \DateTime $dateCreatedTo The date_created_to
+     * @param \DateTime $dateCreatedTo Only show Executions that started before
+     *                                 this ISO 8601 date-time
      * @return $this Fluent Builder
      */
     public function setDateCreatedTo(\DateTime $dateCreatedTo): self {
@@ -79,16 +85,16 @@ class ReadExecutionOptions extends Options {
 
 class CreateExecutionOptions extends Options {
     /**
-     * @param array $parameters The parameters
+     * @param array $parameters JSON data that will be added to the Flow's context
      */
     public function __construct(array $parameters = Values::ARRAY_NONE) {
         $this->options['parameters'] = $parameters;
     }
 
     /**
-     * The parameters
+     * JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={"name":"Zeke"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns "Zeke". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.
      *
-     * @param array $parameters The parameters
+     * @param array $parameters JSON data that will be added to the Flow's context
      * @return $this Fluent Builder
      */
     public function setParameters(array $parameters): self {

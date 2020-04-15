@@ -33,8 +33,8 @@ class ExecutionContext extends InstanceContext {
      * Initialize the ExecutionContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $sid The sid
+     * @param string $flowSid The SID of the Flow
+     * @param string $sid The SID of the Execution resource to fetch
      */
     public function __construct(Version $version, $flowSid, $sid) {
         parent::__construct($version);
@@ -70,6 +70,26 @@ class ExecutionContext extends InstanceContext {
      */
     public function delete(): bool {
         return $this->version->delete('DELETE', $this->uri);
+    }
+
+    /**
+     * Update the ExecutionInstance
+     *
+     * @param string $status The status of the Execution
+     * @return ExecutionInstance Updated ExecutionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $status): ExecutionInstance {
+        $data = Values::of(['Status' => $status, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new ExecutionInstance(
+            $this->version,
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['sid']
+        );
     }
 
     /**

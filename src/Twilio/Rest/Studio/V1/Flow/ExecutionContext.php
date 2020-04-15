@@ -71,6 +71,26 @@ class ExecutionContext extends InstanceContext {
     }
 
     /**
+     * Update the ExecutionInstance
+     *
+     * @param string $status The status of the Execution
+     * @return ExecutionInstance Updated ExecutionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $status): ExecutionInstance {
+        $data = Values::of(['Status' => $status, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new ExecutionInstance(
+            $this->version,
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['sid']
+        );
+    }
+
+    /**
      * Access the steps
      */
     protected function getSteps(): ExecutionStepList {

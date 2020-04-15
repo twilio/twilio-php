@@ -18,12 +18,12 @@ use Twilio\Version;
 
 /**
  * @property FlowList $flows
- * @property FlowValidateList $flowValid
+ * @property FlowValidateList $flowValidate
  * @method \Twilio\Rest\Studio\V2\FlowContext flows(string $sid)
  */
 class V2 extends Version {
     protected $_flows;
-    protected $_flowValid;
+    protected $_flowValidate;
 
     /**
      * Construct the V2 version of Studio
@@ -42,11 +42,11 @@ class V2 extends Version {
         return $this->_flows;
     }
 
-    protected function getFlowValid(): FlowValidateList {
-        if (!$this->_flowValid) {
-            $this->_flowValid = new FlowValidateList($this);
+    protected function getFlowValidate(): FlowValidateList {
+        if (!$this->_flowValidate) {
+            $this->_flowValidate = new FlowValidateList($this);
         }
-        return $this->_flowValid;
+        return $this->_flowValidate;
     }
 
     /**

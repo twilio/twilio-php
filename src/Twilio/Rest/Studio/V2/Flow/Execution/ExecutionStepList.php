@@ -22,8 +22,8 @@ class ExecutionStepList extends ListResource {
      * Construct the ExecutionStepList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $executionSid The execution_sid
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
      */
     public function __construct(Version $version, string $flowSid, string $executionSid) {
         parent::__construct($version);
@@ -115,7 +115,7 @@ class ExecutionStepList extends ListResource {
     /**
      * Constructs a ExecutionStepContext
      *
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      */
     public function getContext(string $sid): ExecutionStepContext {
         return new ExecutionStepContext(

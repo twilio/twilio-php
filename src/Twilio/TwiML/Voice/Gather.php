@@ -208,4 +208,13 @@ class Gather extends TwiML {
     public function setSpeechModel($speechModel): self {
         return $this->setAttribute('speechModel', $speechModel);
     }
+
+    /**
+     * Add Enhanced attribute.
+     *
+     * @param bool $enhanced Use enhanced speech model
+     */
+    public function setEnhanced($enhanced): self {
+        return $this->setAttribute('enhanced', $enhanced);
+    }
 }

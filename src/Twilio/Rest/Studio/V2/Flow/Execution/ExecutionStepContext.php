@@ -29,9 +29,9 @@ class ExecutionStepContext extends InstanceContext {
      * Initialize the ExecutionStepContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $executionSid The execution_sid
-     * @param string $sid The sid
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
+     * @param string $sid The unique string that identifies the resource
      */
     public function __construct(Version $version, $flowSid, $executionSid, $sid) {
         parent::__construct($version);

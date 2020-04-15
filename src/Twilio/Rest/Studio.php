@@ -18,7 +18,7 @@ use Twilio\Rest\Studio\V2;
  * @property \Twilio\Rest\Studio\V1 $v1
  * @property \Twilio\Rest\Studio\V2 $v2
  * @property \Twilio\Rest\Studio\V2\FlowList $flows
- * @property \Twilio\Rest\Studio\V2\FlowValidateList $flowValid
+ * @property \Twilio\Rest\Studio\V2\FlowValidateList $flowValidate
  * @method \Twilio\Rest\Studio\V2\FlowContext flows(string $sid)
  */
 class Studio extends Domain {
@@ -100,8 +100,8 @@ class Studio extends Domain {
         return $this->v2->flows($sid);
     }
 
-    protected function getFlowValid(): \Twilio\Rest\Studio\V2\FlowValidateList {
-        return $this->v2->flowValid;
+    protected function getFlowValidate(): \Twilio\Rest\Studio\V2\FlowValidateList {
+        return $this->v2->flowValidate;
     }
 
     /**

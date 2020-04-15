@@ -102,6 +102,17 @@ class ExecutionInstance extends InstanceResource {
     }
 
     /**
+     * Update the ExecutionInstance
+     *
+     * @param string $status The status of the Execution
+     * @return ExecutionInstance Updated ExecutionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $status): ExecutionInstance {
+        return $this->proxy()->update($status);
+    }
+
+    /**
      * Access the steps
      */
     protected function getSteps(): ExecutionStepList {

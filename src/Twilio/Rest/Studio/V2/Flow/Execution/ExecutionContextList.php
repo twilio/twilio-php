@@ -20,8 +20,8 @@ class ExecutionContextList extends ListResource {
      * Construct the ExecutionContextList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $executionSid The execution_sid
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
      */
     public function __construct(Version $version, string $flowSid, string $executionSid) {
         parent::__construct($version);

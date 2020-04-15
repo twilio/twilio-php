@@ -25,7 +25,7 @@ class ExecutionList extends ListResource {
      * Construct the ExecutionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
+     * @param string $flowSid The SID of the Flow
      */
     public function __construct(Version $version, string $flowSid) {
         parent::__construct($version);
@@ -128,8 +128,9 @@ class ExecutionList extends ListResource {
     /**
      * Create the ExecutionInstance
      *
-     * @param string $to The to
-     * @param string $from The from
+     * @param string $to The Contact phone number to start a Studio Flow Execution
+     * @param string $from The Twilio phone number to send messages or initiate
+     *                     calls from during the Flow Execution
      * @param array|Options $options Optional Arguments
      * @return ExecutionInstance Created ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -151,7 +152,7 @@ class ExecutionList extends ListResource {
     /**
      * Constructs a ExecutionContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the Execution resource to fetch
      */
     public function getContext(string $sid): ExecutionContext {
         return new ExecutionContext($this->version, $this->solution['flowSid'], $sid);

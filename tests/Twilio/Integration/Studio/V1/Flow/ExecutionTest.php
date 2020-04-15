@@ -174,4 +174,52 @@ class ExecutionTest extends HolodeckTestCase {
 
         $this->assertTrue($actual);
     }
+
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->studio->v1->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->executions("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("active");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = ['Status' => "active", ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Executions/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            null,
+            $values
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "url": "https://studio.twilio.com/v1/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Executions/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "flow_sid": "FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "context": {},
+                "contact_sid": "FCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "contact_channel_address": "+14155555555",
+                "status": "ended",
+                "date_created": "2017-11-06T12:00:00Z",
+                "date_updated": "2017-11-06T12:00:00Z",
+                "links": {
+                    "steps": "https://studio.twilio.com/v1/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Executions/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Steps",
+                    "execution_context": "https://studio.twilio.com/v1/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Executions/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Context"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->studio->v1->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->executions("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("active");
+
+        $this->assertNotNull($actual);
+    }
 }

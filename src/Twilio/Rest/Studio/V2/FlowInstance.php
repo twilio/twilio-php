@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string $commitMessage
  * @property bool $valid
  * @property array[] $errors
+ * @property array[] $warnings
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $webhookUrl
@@ -63,6 +64,7 @@ class FlowInstance extends InstanceResource {
             'commitMessage' => Values::array_get($payload, 'commit_message'),
             'valid' => Values::array_get($payload, 'valid'),
             'errors' => Values::array_get($payload, 'errors'),
+            'warnings' => Values::array_get($payload, 'warnings'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'webhookUrl' => Values::array_get($payload, 'webhook_url'),

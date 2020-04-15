@@ -40,8 +40,8 @@ class ExecutionInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid The flow_sid
-     * @param string $sid The sid
+     * @param string $flowSid The SID of the Flow
+     * @param string $sid The SID of the Execution resource to fetch
      */
     public function __construct(Version $version, array $payload, string $flowSid, string $sid = null) {
         parent::__construct($version);
@@ -99,6 +99,17 @@ class ExecutionInstance extends InstanceResource {
      */
     public function delete(): bool {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Update the ExecutionInstance
+     *
+     * @param string $status The status of the Execution
+     * @return ExecutionInstance Updated ExecutionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $status): ExecutionInstance {
+        return $this->proxy()->update($status);
     }
 
     /**

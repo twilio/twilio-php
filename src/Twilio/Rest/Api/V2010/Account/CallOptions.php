@@ -67,7 +67,7 @@ abstract class CallOptions {
      * @param string $asyncAmdStatusCallbackMethod HTTP Method to use with
      *                                             async_amd_status_callback
      * @param string $byoc BYOC trunk SID (Beta)
-     * @param string $callReason Reason for the call (Beta)
+     * @param string $callReason Reason for the call (Branded Calls Beta)
      * @return CreateCallOptions Options builder
      */
     public static function create(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE, string $callReason = Values::NONE): CreateCallOptions {
@@ -164,7 +164,7 @@ class CreateCallOptions extends Options {
      * @param string $asyncAmdStatusCallbackMethod HTTP Method to use with
      *                                             async_amd_status_callback
      * @param string $byoc BYOC trunk SID (Beta)
-     * @param string $callReason Reason for the call (Beta)
+     * @param string $callReason Reason for the call (Branded Calls Beta)
      */
     public function __construct(string $url = Values::NONE, string $twiml = Values::NONE, string $applicationSid = Values::NONE, string $method = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $statusCallbackMethod = Values::NONE, string $sendDigits = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, string $trim = Values::NONE, string $callerId = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $asyncAmd = Values::NONE, string $asyncAmdStatusCallback = Values::NONE, string $asyncAmdStatusCallbackMethod = Values::NONE, string $byoc = Values::NONE, string $callReason = Values::NONE) {
         $this->options['url'] = $url;
@@ -543,9 +543,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The Reason for the outgoing call. Use call_reason to specify the purpose of the call that is presented on the called party's phone. (Beta).
+     * The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
      *
-     * @param string $callReason Reason for the call (Beta)
+     * @param string $callReason Reason for the call (Branded Calls Beta)
      * @return $this Fluent Builder
      */
     public function setCallReason(string $callReason): self {
