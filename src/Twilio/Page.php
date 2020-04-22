@@ -45,13 +45,15 @@ abstract class Page implements \Iterator {
             $code = $response->getStatusCode();
 
             $content = $response->getContent();
+            $details = null;
 
             if (\is_array($content)) {
                 $message .= isset($content['message']) ? ': ' . $content['message'] : '';
                 $code = $content['code'] ?? $code;
+                $details = isset($content['details']) ? $content['details'] : null;
             }
 
-            throw new RestException($message, $code, $response->getStatusCode());
+            throw new RestException($message, $code, $response->getStatusCode(), $details);
         }
         return $response->getContent();
     }

@@ -83,7 +83,8 @@ abstract class Version {
         if (\is_array($content)) {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
             $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
-            return new RestException($message, $code, $response->getStatusCode());
+            $details = isset($content['details']) ? $content['details'] : $response->getDetails();
+            return new RestException($message, $code, $response->getStatusCode(), $response->getDetails());
         }
 
         return new RestException($message, $response->getStatusCode(), $response->getStatusCode());
