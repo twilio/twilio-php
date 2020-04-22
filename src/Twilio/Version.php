@@ -84,7 +84,7 @@ abstract class Version {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
             $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
             $details = isset($content['details']) ? $content['details'] : $response->getDetails();
-            return new RestException($message, $code, $response->getStatusCode(), $response->getDetails());
+            return new RestException($message, $code, $response->getStatusCode(), $details);
         }
 
         return new RestException($message, $response->getStatusCode(), $response->getStatusCode());
