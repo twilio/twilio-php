@@ -4,6 +4,9 @@
 namespace Twilio\Tests\Unit;
 
 use Twilio\Domain;
+use Twilio\Exceptions\RestException;
+use Twilio\Http\CurlClient;
+use Twilio\Http\Response;
 use Twilio\Rest\Client;
 use Twilio\Values;
 use Twilio\Version;
@@ -49,6 +52,7 @@ class TestVersion extends Version {
 }
 
 class VersionTest extends UnitTest {
+    protected $curlClient;
     /** @var Client $client */
     protected $client;
     /** @var TestDomain $domain */
@@ -61,7 +65,8 @@ class VersionTest extends UnitTest {
      * This method is called before a test is executed.
      */
     protected function setUp(): void {
-        $this->client = new Client('username', 'password');
+        $this->curlClient = $this->createMock(CurlClient::class);
+        $this->client = new Client('username', 'password', null, null, $this->curlClient, null);
         $this->domain = new TestDomain($this->client);
         $this->version = new TestVersion($this->domain);
     }
@@ -221,6 +226,30 @@ class VersionTest extends UnitTest {
         $this->version->setVersion($prefix);
         $actual = $this->version->absoluteUrl($uri);
         $this->assertEquals($expected, $actual, $message);
+    }
+
+    public function testRestException(): void {
+        $this->curlClient
+            ->expects($this->once())
+            ->method('request')
+            ->willReturn(new Response(400, '{
+                                    "code": 20001,
+                                    "message": "Bad request",
+                                    "more_info": "https://www.twilio.com/docs/errors/20001",
+                                    "status": 400,
+                                    "details": {
+                                        "foo": "bar" }
+                                    }'));
+        try {
+            $this->version->fetch('get', 'http://foo.bar');
+            self::fail();
+        }catch (RestException $rex){
+            $this->assertEquals(20001, $rex->getCode());
+            $this->assertEquals(400, $rex->getStatusCode());
+            $this->assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
+            $this->assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
+            $this->assertEquals(array("foo" => "bar"), $rex->getDetails());
+        }
     }
 
     public function absoluteUrlProvider(): array {
