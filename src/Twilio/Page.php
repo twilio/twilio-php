@@ -51,8 +51,8 @@ abstract class Page implements \Iterator {
             if (\is_array($content)) {
                 $message .= isset($content['message']) ? ': ' . $content['message'] : '';
                 $code = $content['code'] ?? $code;
-                $moreInfo = isset($content['more_info']) ? $content['more_info'] : '';
-                $details = isset($content['details']) ? $content['details'] : [];
+                $moreInfo = $content['more_info'] ?? '';
+                $details = $content['details'] ?? [] ;
             }
 
             throw new RestException($message, $code, $response->getStatusCode(), $moreInfo, $details);
