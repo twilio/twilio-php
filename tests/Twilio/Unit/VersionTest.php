@@ -228,7 +228,7 @@ class VersionTest extends UnitTest {
         $this->assertEquals($expected, $actual, $message);
     }
 
-    public function testRestException(): void {
+    public function testRestExceptionWithDetails(): void {
         $this->curlClient
             ->expects($this->once())
             ->method('request')
@@ -248,7 +248,46 @@ class VersionTest extends UnitTest {
             $this->assertEquals(400, $rex->getStatusCode());
             $this->assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
             $this->assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
-            $this->assertEquals(array("foo" => "bar"), $rex->getDetails());
+            $this->assertEquals(["foo" => "bar"], $rex->getDetails());
+        }
+    }
+
+    public function testRestExceptionWithoutDetails(): void {
+        $this->curlClient
+            ->expects($this->once())
+            ->method('request')
+            ->willReturn(new Response(400, '{
+                                    "code": 20001,
+                                    "message": "Bad request",
+                                    "more_info": "https://www.twilio.com/docs/errors/20001",
+                                    "status": 400
+                                    }'));
+        try {
+            $this->version->fetch('get', 'http://foo.bar');
+            self::fail();
+        }catch (RestException $rex){
+            $this->assertEquals(20001, $rex->getCode());
+            $this->assertEquals(400, $rex->getStatusCode());
+            $this->assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
+            $this->assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
+            $this->assertEmpty($rex->getDetails());
+        }
+    }
+
+    public function testRestException(): void {
+        $this->curlClient
+            ->expects($this->once())
+            ->method('request')
+            ->willReturn(new Response(400, ''));
+        try {
+            $this->version->fetch('get', 'http://foo.bar');
+            self::fail();
+        }catch (RestException $rex){
+            $this->assertEquals(400, $rex->getCode());
+            $this->assertEquals(400, $rex->getStatusCode());
+            $this->assertEquals('[HTTP 400] Unable to fetch record', $rex->getMessage());
+            $this->assertEquals('', $rex->getMoreInfo());
+            $this->assertEmpty($rex->getDetails());
         }
     }
 

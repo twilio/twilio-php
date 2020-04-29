@@ -19,10 +19,10 @@ class RestException extends TwilioException {
      * @param array $details [optional] Additional details about the error.
      * @since 5.1.0
      */
-    public function __construct(string $message, int $code, int $statusCode, string $moreInfo = null, array $details = null) {
+    public function __construct(string $message, int $code, int $statusCode, string $moreInfo = '', array $details = []) {
         $this->statusCode = $statusCode;
-        $this->details = $details;
         $this->moreInfo = $moreInfo;
+        $this->details = $details;
         parent::__construct($message, $code);
     }
 
