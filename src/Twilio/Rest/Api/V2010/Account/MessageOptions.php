@@ -26,6 +26,8 @@ abstract class MessageOptions {
      * @param string $maxPrice The total maximum price up to 4 decimal places in US
      *                         dollars acceptable for the message to be delivered.
      * @param bool $provideFeedback Whether to confirm delivery of the message
+     * @param int $attempt Total numer of attempts made , this inclusive to send
+     *                     out the message
      * @param int $validityPeriod The number of seconds that the message can remain
      *                            in our outgoing queue.
      * @param bool $forceDelivery Reserved
@@ -38,8 +40,8 @@ abstract class MessageOptions {
      * @param string[] $persistentAction Rich actions for Channels Messages.
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE): CreateMessageOptions {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction);
+    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE): CreateMessageOptions {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $attempt, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction);
     }
 
     /**
@@ -69,6 +71,8 @@ class CreateMessageOptions extends Options {
      * @param string $maxPrice The total maximum price up to 4 decimal places in US
      *                         dollars acceptable for the message to be delivered.
      * @param bool $provideFeedback Whether to confirm delivery of the message
+     * @param int $attempt Total numer of attempts made , this inclusive to send
+     *                     out the message
      * @param int $validityPeriod The number of seconds that the message can remain
      *                            in our outgoing queue.
      * @param bool $forceDelivery Reserved
@@ -80,7 +84,7 @@ class CreateMessageOptions extends Options {
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
      */
-    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE) {
+    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -89,6 +93,7 @@ class CreateMessageOptions extends Options {
         $this->options['applicationSid'] = $applicationSid;
         $this->options['maxPrice'] = $maxPrice;
         $this->options['provideFeedback'] = $provideFeedback;
+        $this->options['attempt'] = $attempt;
         $this->options['validityPeriod'] = $validityPeriod;
         $this->options['forceDelivery'] = $forceDelivery;
         $this->options['contentRetention'] = $contentRetention;
@@ -186,6 +191,18 @@ class CreateMessageOptions extends Options {
      */
     public function setProvideFeedback(bool $provideFeedback): self {
         $this->options['provideFeedback'] = $provideFeedback;
+        return $this;
+    }
+
+    /**
+     * Total number of attempts made ( including this ) to send out the message regardless of the provider used
+     *
+     * @param int $attempt Total numer of attempts made , this inclusive to send
+     *                     out the message
+     * @return $this Fluent Builder
+     */
+    public function setAttempt(int $attempt): self {
+        $this->options['attempt'] = $attempt;
         return $this;
     }
 

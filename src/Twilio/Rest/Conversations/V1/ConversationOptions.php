@@ -24,12 +24,13 @@ abstract class ConversationOptions {
      *                                    conversation belongs to.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $state Current state of this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateConversationOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateConversationOptions {
-        return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid, $attributes, $xTwilioWebhookEnabled);
+    public static function create(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateConversationOptions {
+        return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid, $attributes, $state, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -40,12 +41,13 @@ abstract class ConversationOptions {
      *                           store any data you wish.
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
+     * @param string $state Current state of this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateConversationOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateConversationOptions {
-        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid, $xTwilioWebhookEnabled);
+    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateConversationOptions {
+        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid, $state, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -67,15 +69,17 @@ class CreateConversationOptions extends Options {
      *                                    conversation belongs to.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $state Current state of this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['attributes'] = $attributes;
+        $this->options['state'] = $state;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -133,6 +137,17 @@ class CreateConversationOptions extends Options {
      */
     public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * Current state of this conversation. Can be either `active`, `inactive` or `closed` and defaults to `active`
+     *
+     * @param string $state Current state of this conversation.
+     * @return $this Fluent Builder
+     */
+    public function setState(string $state): self {
+        $this->options['state'] = $state;
         return $this;
     }
 
@@ -168,15 +183,17 @@ class UpdateConversationOptions extends Options {
      *                           store any data you wish.
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
+     * @param string $state Current state of this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
+        $this->options['state'] = $state;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -234,6 +251,17 @@ class UpdateConversationOptions extends Options {
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self {
         $this->options['messagingServiceSid'] = $messagingServiceSid;
+        return $this;
+    }
+
+    /**
+     * Current state of this conversation. Can be either `active`, `inactive` or `closed` and defaults to `active`
+     *
+     * @param string $state Current state of this conversation.
+     * @return $this Fluent Builder
+     */
+    public function setState(string $state): self {
+        $this->options['state'] = $state;
         return $this;
     }
 

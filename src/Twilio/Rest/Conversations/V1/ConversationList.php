@@ -51,6 +51,7 @@ class ConversationList extends ListResource {
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'MessagingServiceSid' => $options['messagingServiceSid'],
             'Attributes' => $options['attributes'],
+            'State' => $options['state'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

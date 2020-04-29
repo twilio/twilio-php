@@ -35,9 +35,10 @@ abstract class FlexFlowOptions {
      * @param int $integrationPriority The task priority of a new task
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
-     * @param bool $longLived Whether new channels are long-lived
-     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
-     *                             Janitor
+     * @param bool $longLived Reuse this chat channel for future interactions with
+     *                        a contact
+     * @param bool $janitorEnabled Remove active Proxy sessions if the
+     *                             corresponding Task is deleted
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
      * @return CreateFlexFlowOptions Options builder
@@ -62,9 +63,10 @@ abstract class FlexFlowOptions {
      * @param int $integrationPriority The task priority of a new task
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
-     * @param bool $longLived Whether new channels created are long-lived
-     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
-     *                             Janitor
+     * @param bool $longLived Reuse this chat channel for future interactions with
+     *                        a contact
+     * @param bool $janitorEnabled Remove active Proxy sessions if the
+     *                             corresponding Task is deleted.
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
      * @return UpdateFlexFlowOptions Options builder
@@ -120,9 +122,10 @@ class CreateFlexFlowOptions extends Options {
      * @param int $integrationPriority The task priority of a new task
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
-     * @param bool $longLived Whether new channels are long-lived
-     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
-     *                             Janitor
+     * @param bool $longLived Reuse this chat channel for future interactions with
+     *                        a contact
+     * @param bool $janitorEnabled Remove active Proxy sessions if the
+     *                             corresponding Task is deleted
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
      */
@@ -266,9 +269,10 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether new channels are long-lived.
+     * When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.
      *
-     * @param bool $longLived Whether new channels are long-lived
+     * @param bool $longLived Reuse this chat channel for future interactions with
+     *                        a contact
      * @return $this Fluent Builder
      */
     public function setLongLived(bool $longLived): self {
@@ -277,10 +281,10 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * Boolean flag for enabling or disabling the Janitor.
+     * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.
      *
-     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
-     *                             Janitor
+     * @param bool $janitorEnabled Remove active Proxy sessions if the
+     *                             corresponding Task is deleted
      * @return $this Fluent Builder
      */
     public function setJanitorEnabled(bool $janitorEnabled): self {
@@ -328,9 +332,10 @@ class UpdateFlexFlowOptions extends Options {
      * @param int $integrationPriority The task priority of a new task
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
-     * @param bool $longLived Whether new channels created are long-lived
-     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
-     *                             Janitor
+     * @param bool $longLived Reuse this chat channel for future interactions with
+     *                        a contact
+     * @param bool $janitorEnabled Remove active Proxy sessions if the
+     *                             corresponding Task is deleted.
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
      */
@@ -510,9 +515,10 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether new channels created are long-lived.
+     * When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.
      *
-     * @param bool $longLived Whether new channels created are long-lived
+     * @param bool $longLived Reuse this chat channel for future interactions with
+     *                        a contact
      * @return $this Fluent Builder
      */
     public function setLongLived(bool $longLived): self {
@@ -521,10 +527,10 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * Boolean flag for enabling or disabling the Janitor.
+     * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.
      *
-     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
-     *                             Janitor
+     * @param bool $janitorEnabled Remove active Proxy sessions if the
+     *                             corresponding Task is deleted.
      * @return $this Fluent Builder
      */
     public function setJanitorEnabled(bool $janitorEnabled): self {

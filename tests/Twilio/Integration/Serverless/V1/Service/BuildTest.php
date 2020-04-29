@@ -86,7 +86,7 @@ class BuildTest extends HolodeckTestCase {
                         "service_sid": "ZS00000000000000000000000000000000",
                         "asset_sid": "ZH00000000000000000000000000000000",
                         "date_created": "2018-11-10T20:00:00Z",
-                        "path": "asset-path",
+                        "path": "/asset-path",
                         "visibility": "PUBLIC"
                     }
                 ],
@@ -97,7 +97,7 @@ class BuildTest extends HolodeckTestCase {
                         "service_sid": "ZS00000000000000000000000000000000",
                         "function_sid": "ZH00000000000000000000000000000001",
                         "date_created": "2018-11-10T20:00:00Z",
-                        "path": "function-path",
+                        "path": "/function-path",
                         "visibility": "PUBLIC"
                     }
                 ],
@@ -178,7 +178,7 @@ class BuildTest extends HolodeckTestCase {
                         "service_sid": "ZS00000000000000000000000000000000",
                         "asset_sid": "ZH00000000000000000000000000000000",
                         "date_created": "2018-11-10T20:00:00Z",
-                        "path": "asset-path",
+                        "path": "/asset-path",
                         "visibility": "PUBLIC"
                     }
                 ],
@@ -189,7 +189,7 @@ class BuildTest extends HolodeckTestCase {
                         "service_sid": "ZS00000000000000000000000000000000",
                         "function_sid": "ZH00000000000000000000000000000001",
                         "date_created": "2018-11-10T20:00:00Z",
-                        "path": "function-path",
+                        "path": "/function-path",
                         "visibility": "PUBLIC"
                     }
                 ],

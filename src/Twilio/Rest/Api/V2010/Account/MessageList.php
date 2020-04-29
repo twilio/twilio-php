@@ -54,6 +54,7 @@ class MessageList extends ListResource {
             'ApplicationSid' => $options['applicationSid'],
             'MaxPrice' => $options['maxPrice'],
             'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
+            'Attempt' => $options['attempt'],
             'ValidityPeriod' => $options['validityPeriod'],
             'ForceDelivery' => Serialize::booleanToString($options['forceDelivery']),
             'ContentRetention' => $options['contentRetention'],

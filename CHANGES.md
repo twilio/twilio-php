@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2020-04-29] Version 6.4.0
+--------------------------
+**Library - Feature**
+- [PR #629](https://github.com/twilio/twilio-php/pull/629): add details to rest exception. Thanks to [@ashish-s](https://github.com/ashish-s)!
+
+**Preview**
+- Added `Dispatch` version to `preview`
+
+**Studio**
+- Reroute Create Execution for V2 to the V2 downstream
+
+**Supersim**
+- Add Networks resource
+
+
 [2020-04-15] Version 6.3.0
 --------------------------
 **Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2020-04-15-62x-to-63x) for detailed migration notes.

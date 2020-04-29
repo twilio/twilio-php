@@ -67,6 +67,7 @@ class ConversationContext extends InstanceContext {
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' => $options['attributes'],
             'MessagingServiceSid' => $options['messagingServiceSid'],
+            'State' => $options['state'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
