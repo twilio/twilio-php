@@ -130,9 +130,9 @@ class ClientTest extends UnitTest {
         $client->validateSslCertificate($curlClient);
     }
 
-    protected static function callMethod(Client $obj, string $name, string $uri) {
+    protected static function callProtectedMethod(Client $obj, string $name, string $uri) {
         $class = new \ReflectionClass($obj);
-        $method = $class->getMethod('buildUri');
+        $method = $class->getMethod($name);
         $method->setAccessible(true);
         return $method->invokeArgs($obj, [$uri]);
     }
@@ -141,57 +141,60 @@ class ClientTest extends UnitTest {
         $client = new Client('username', 'password');
 
         $this->assertEquals('https://api.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.twilio.com'));
 
         $client->setEdge('edge');
         $this->assertEquals('https://api.edge.us1.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.twilio.com'));
 
-        $client = new Client('username', 'password', null, 'region', null, null, 'edge');
+        $client = new Client('username', 'password', null, 'region');
+        $client->setEdge('edge');
         $this->assertEquals('https://api.edge.region.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.twilio.com'));
 
         $client->setEdge();
         $this->assertEquals('https://api.region.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.twilio.com'));
     }
 
     public function testRegionInUrl(): void {
         $client = new Client('username', 'password');
 
         $this->assertEquals('https://api.urlRegion.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
 
         $client->setEdge('edge');
         $this->assertEquals('https://api.edge.urlRegion.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
 
-        $client = new Client('username', 'password', null, 'region', null, null, 'edge');
+        $client = new Client('username', 'password', null, 'region');
+        $client->setEdge('edge');
         $this->assertEquals('https://api.edge.region.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
 
         $client->setEdge();
         $this->assertEquals('https://api.region.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlRegion.twilio.com'));
     }
 
     public function testRegionAndEdgeInUrl(): void {
         $client = new Client('username', 'password');
 
         $this->assertEquals('https://api.urlEdge.urlRegion.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
 
         $client->setEdge('edge');
         $this->assertEquals('https://api.edge.urlRegion.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
 
-        $client = new Client('username', 'password', null, 'region', null, null, 'edge');
+        $client = new Client('username', 'password', null, 'region');
+        $client->setEdge('edge');
         $this->assertEquals('https://api.edge.region.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
 
         $client->setEdge();
         $this->assertEquals('https://api.urlEdge.region.twilio.com',
-            self::callMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com'));
     }
 
     public function testRegionAndEdgeEnvVars(): void {
@@ -200,7 +203,7 @@ class ClientTest extends UnitTest {
             Client::ENV_EDGE => 'edge'
         ]);
         $this->assertEquals('https://api.edge.region.twilio.com/path/to/something.json?foo=12.34',
-            self::callMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com/path/to/something.json?foo=12.34'));
+            self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com/path/to/something.json?foo=12.34'));
     }
 
 }

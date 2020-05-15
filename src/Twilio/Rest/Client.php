@@ -105,6 +105,7 @@ class Client {
     protected $region;
     protected $edge;
     protected $httpClient;
+    protected $environment;
     protected $_account;
     protected $_accounts;
     protected $_api;
@@ -148,45 +149,15 @@ class Client {
      * @param HttpClient $httpClient HttpClient, defaults to CurlClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
-     * @param string $edge Edge to send requests to, defaults to no Edge
      * @throws ConfigurationException If valid authentication is not present
      */
-    public function __construct(string $username = null, string $password = null, string $accountSid = null, string $region = null, HttpClient $httpClient = null, array $environment = null, string $edge = null) {
-        if ($environment === null) {
-            $environment = $_ENV;
-        }
+    public function __construct(string $username = null, string $password = null, string $accountSid = null, string $region = null, HttpClient $httpClient = null, array $environment = null) {
+        $this->environment = $environment ?: $_ENV;
 
-        if ($username) {
-            $this->username = $username;
-        } else {
-            if (\array_key_exists(self::ENV_ACCOUNT_SID, $environment)) {
-                $this->username = $environment[self::ENV_ACCOUNT_SID];
-            }
-        }
-
-        if ($password) {
-            $this->password = $password;
-        } else {
-            if (\array_key_exists(self::ENV_AUTH_TOKEN, $environment)) {
-                $this->password = $environment[self::ENV_AUTH_TOKEN];
-            }
-        }
-
-        if ($region) {
-            $this->region = $region;
-        } else {
-            if (\array_key_exists(self::ENV_REGION, $environment)) {
-                $this->region = $environment[self::ENV_REGION];
-            }
-        }
-
-        if ($edge) {
-            $this->edge = $edge;
-        } else {
-            if (\array_key_exists(self::ENV_EDGE, $environment)) {
-                $this->edge = $environment[self::ENV_EDGE];
-            }
-        }
+        $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
+        $this->password = $this->getArg($password, self::ENV_AUTH_TOKEN);
+        $this->region = $this->getArg($region, self::ENV_REGION);
+        $this->edge = $this->getArg(null, self::ENV_EDGE);
 
         if (!$this->username || !$this->password) {
             throw new ConfigurationException('Credentials are required to create a Client');
@@ -199,6 +170,25 @@ class Client {
         } else {
             $this->httpClient = new CurlClient();
         }
+    }
+
+    /**
+     * Determines argument value accounting for environment variables.
+     *
+     * @param string $arg The constructor argument
+     * @param string $envVar The environment variable name
+     * @return ?string Argument value
+     */
+    public function getArg(?string $arg = null, string $envVar = null): ?string {
+        if ($arg) {
+            return $arg;
+        }
+
+        if (\array_key_exists($envVar, $this->environment)) {
+            return $this->environment[$envVar];
+        }
+
+        return null;
     }
 
     /**
@@ -328,7 +318,7 @@ class Client {
      * @param string $uri Edge to use, unsets the Edge when called with no arguments
      */
     public function setEdge(string $edge = null): void {
-        $this->edge = $edge;
+        $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
 
     /**
