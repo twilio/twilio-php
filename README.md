@@ -38,6 +38,20 @@ composer require twilio/sdk
 
 ## Quickstart
 
+### Specify Region and/or Edge
+
+```php
+<?php
+$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/console
+$token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
+
+$client = new Twilio\Rest\Client($sid, $token, null, 'au1');
+$client->setEdge('sydney');
+```
+A `Client` constructor without these parameters will also look for `TWILIO_REGION` and `TWILIO_EDGE` variables inside the current environment.
+
+This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
+
 ### Send an SMS
 
 ```php

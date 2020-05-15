@@ -14,6 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
 use Twilio\Http\CurlClient;
 use Twilio\VersionInfo;
+use function Twilio\Security\unparse_url;
 
 /**
  * A client for accessing the Twilio API.
@@ -94,12 +95,17 @@ use Twilio\VersionInfo;
 class Client {
     const ENV_ACCOUNT_SID = 'TWILIO_ACCOUNT_SID';
     const ENV_AUTH_TOKEN = 'TWILIO_AUTH_TOKEN';
+    const ENV_REGION = 'TWILIO_REGION';
+    const ENV_EDGE = 'TWILIO_EDGE';
+    const DEFAULT_REGION = 'us1';
 
     protected $username;
     protected $password;
     protected $accountSid;
     protected $region;
+    protected $edge;
     protected $httpClient;
+    protected $environment;
     protected $_account;
     protected $_accounts;
     protected $_api;
@@ -138,46 +144,51 @@ class Client {
      * @param string $password Password to authenticate with
      * @param string $accountSid Account Sid to authenticate with, defaults to
      *                           $username
-     * @param string $region Region to send requests to, defaults to no region
-     *                       selection
+     * @param string $region Region to send requests to, defaults to 'us1' if Edge
+     *                       provided
      * @param HttpClient $httpClient HttpClient, defaults to CurlClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
      * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct(string $username = null, string $password = null, string $accountSid = null, string $region = null, HttpClient $httpClient = null, array $environment = null) {
-        if ($environment === null) {
-            $environment = $_ENV;
-        }
+        $this->environment = $environment ?: $_ENV;
 
-        if ($username) {
-            $this->username = $username;
-        } else {
-            if (\array_key_exists(self::ENV_ACCOUNT_SID, $environment)) {
-                $this->username = $environment[self::ENV_ACCOUNT_SID];
-            }
-        }
-
-        if ($password) {
-            $this->password = $password;
-        } else {
-            if (\array_key_exists(self::ENV_AUTH_TOKEN, $environment)) {
-                $this->password = $environment[self::ENV_AUTH_TOKEN];
-            }
-        }
+        $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
+        $this->password = $this->getArg($password, self::ENV_AUTH_TOKEN);
+        $this->region = $this->getArg($region, self::ENV_REGION);
+        $this->edge = $this->getArg(null, self::ENV_EDGE);
 
         if (!$this->username || !$this->password) {
             throw new ConfigurationException('Credentials are required to create a Client');
         }
 
         $this->accountSid = $accountSid ?: $this->username;
-        $this->region = $region;
 
         if ($httpClient) {
             $this->httpClient = $httpClient;
         } else {
             $this->httpClient = new CurlClient();
         }
+    }
+
+    /**
+     * Determines argument value accounting for environment variables.
+     *
+     * @param string $arg The constructor argument
+     * @param string $envVar The environment variable name
+     * @return ?string Argument value
+     */
+    public function getArg(?string $arg, string $envVar): ?string {
+        if ($arg) {
+            return $arg;
+        }
+
+        if (\array_key_exists($envVar, $this->environment)) {
+            return $this->environment[$envVar];
+        }
+
+        return null;
     }
 
     /**
@@ -210,13 +221,7 @@ class Client {
             $headers['Accept'] = 'application/json';
         }
 
-        if ($this->region) {
-            list($head, $tail) = \explode('.', $uri, 2);
-
-            if (\strpos($tail, $this->region) !== 0) {
-                $uri = \implode('.', [$head, $this->region, $tail]);
-            }
-        }
+        $uri = $this->buildUri($uri);
 
         return $this->getHttpClient()->request(
             $method,
@@ -228,6 +233,38 @@ class Client {
             $password,
             $timeout
         );
+    }
+
+    /**
+     * Build the final request uri
+     *
+     * @param string $uri The original request uri
+     * @return string Request uri
+     */
+    public function buildUri(string $uri): string {
+        if ($this->region == null && $this->edge == null) {
+            return $uri;
+        }
+
+        $parsedUrl = \parse_url($uri);
+        $pieces = \explode('.', $parsedUrl['host']);
+        $product = $pieces[0];
+        $domain = \implode('.', \array_slice($pieces, -2));
+        $newEdge = $this->edge;
+        $newRegion = $this->region;
+        if (count($pieces) == 4) { // product.region.twilio.com
+            $newRegion = $newRegion ?: $pieces[1];
+        } elseif (count($pieces) == 5) { // product.edge.region.twilio.com
+            $newEdge = $newEdge ?: $pieces[1];
+            $newRegion = $newRegion ?: $pieces[2];
+        }
+
+        if ($newEdge != null && $newRegion == null) {
+            $newRegion = self::DEFAULT_REGION;
+        }
+
+        $parsedUrl['host'] = \implode('.', \array_filter([$product, $newEdge, $newRegion, $domain]));
+        return unparse_url($parsedUrl);
     }
 
     /**
@@ -264,6 +301,24 @@ class Client {
      */
     public function getRegion(): string {
         return $this->region;
+    }
+
+    /**
+     * Retrieve the Edge
+     *
+     * @return string Current Edge
+     */
+    public function getEdge(): string {
+        return $this->edge;
+    }
+
+    /**
+     * Set Edge
+     *
+     * @param string $uri Edge to use, unsets the Edge when called with no arguments
+     */
+    public function setEdge(string $edge = null): void {
+        $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
 
     /**
