@@ -179,7 +179,7 @@ class Client {
      * @param string $envVar The environment variable name
      * @return ?string Argument value
      */
-    public function getArg(?string $arg = null, string $envVar = null): ?string {
+    public function getArg(?string $arg, string $envVar): ?string {
         if ($arg) {
             return $arg;
         }
