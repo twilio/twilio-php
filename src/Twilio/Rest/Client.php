@@ -13,8 +13,8 @@ use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
 use Twilio\Http\CurlClient;
+use Twilio\Security\RequestValidator;
 use Twilio\VersionInfo;
-use function Twilio\Security\unparse_url;
 
 /**
  * A client for accessing the Twilio API.
@@ -152,7 +152,7 @@ class Client {
      * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct(string $username = null, string $password = null, string $accountSid = null, string $region = null, HttpClient $httpClient = null, array $environment = null) {
-        $this->environment = $environment ?: $_ENV;
+        $this->environment = $environment ?: \getenv();
 
         $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
         $this->password = $this->getArg($password, self::ENV_AUTH_TOKEN);
@@ -264,7 +264,7 @@ class Client {
         }
 
         $parsedUrl['host'] = \implode('.', \array_filter([$product, $newEdge, $newRegion, $domain]));
-        return unparse_url($parsedUrl);
+        return RequestValidator::unparse_url($parsedUrl);
     }
 
     /**

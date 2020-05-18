@@ -140,7 +140,7 @@ final class RequestValidator {
      */
     private static function removePort(array $parsedUrl): string {
         unset($parsedUrl['port']);
-        return unparse_url($parsedUrl);
+        return self::unparse_url($parsedUrl);
     }
 
     /**
@@ -154,28 +154,29 @@ final class RequestValidator {
             $port = ($parsedUrl['scheme'] === 'https') ? 443 : 80;
             $parsedUrl['port'] = $port;
         }
-        return unparse_url($parsedUrl);
+        return self::unparse_url($parsedUrl);
+    }
+
+    /**
+     * Builds the URL from its parsed component pieces
+     *
+     * @param array $parsedUrl
+     * @return string Full URL
+     */
+    static function unparse_url(array $parsedUrl): string {
+        $parts = [];
+
+        $parts['scheme'] = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : '';
+        $parts['user'] = $parsedUrl['user'] ?? '';
+        $parts['pass'] = isset($parsedUrl['pass']) ? ':' . $parsedUrl['pass'] : '';
+        $parts['pass'] = ($parts['user'] || $parts['pass']) ? $parts['pass'] . '@' : '';
+        $parts['host'] = $parsedUrl['host'] ?? '';
+        $parts['port'] = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
+        $parts['path'] = $parsedUrl['path'] ?? '';
+        $parts['query'] = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
+        $parts['fragment'] = isset($parsedUrl['fragment']) ? '#' . $parsedUrl['fragment'] : '';
+
+        return \implode('', $parts);
     }
 }
 
-/**
- * Builds the URL from its parsed component pieces
- *
- * @param array $parsedUrl
- * @return string Full URL
- */
-function unparse_url(array $parsedUrl): string {
-    $parts = [];
-
-    $parts['scheme'] = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : '';
-    $parts['user'] = $parsedUrl['user'] ?? '';
-    $parts['pass'] = isset($parsedUrl['pass']) ? ':' . $parsedUrl['pass'] : '';
-    $parts['pass'] = ($parts['user'] || $parts['pass']) ? $parts['pass'] . '@' : '';
-    $parts['host'] = $parsedUrl['host'] ?? '';
-    $parts['port'] = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
-    $parts['path'] = $parsedUrl['path'] ?? '';
-    $parts['query'] = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
-    $parts['fragment'] = isset($parsedUrl['fragment']) ? '#' . $parsedUrl['fragment'] : '';
-
-    return \implode('', $parts);
-}
