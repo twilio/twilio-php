@@ -21,4 +21,8 @@ class InstanceResource {
     public function __toString(): string {
         return '[InstanceResource]';
     }
+
+    public function __isset($name): bool {
+        return \array_key_exists($name, $this->properties);
+    }
 }
