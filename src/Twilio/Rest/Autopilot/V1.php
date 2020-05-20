@@ -13,14 +13,17 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Autopilot\V1\AssistantList;
+use Twilio\Rest\Autopilot\V1\RestoreAssistantList;
 use Twilio\Version;
 
 /**
  * @property AssistantList $assistants
+ * @property RestoreAssistantList $restoreAssistant
  * @method \Twilio\Rest\Autopilot\V1\AssistantContext assistants(string $sid)
  */
 class V1 extends Version {
     protected $_assistants;
+    protected $_restoreAssistant;
 
     /**
      * Construct the V1 version of Autopilot
@@ -37,6 +40,13 @@ class V1 extends Version {
             $this->_assistants = new AssistantList($this);
         }
         return $this->_assistants;
+    }
+
+    protected function getRestoreAssistant(): RestoreAssistantList {
+        if (!$this->_restoreAssistant) {
+            $this->_restoreAssistant = new RestoreAssistantList($this);
+        }
+        return $this->_restoreAssistant;
     }
 
     /**

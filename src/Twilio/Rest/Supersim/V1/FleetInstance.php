@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property bool $commandsEnabled
  * @property string $commandsUrl
  * @property string $commandsMethod
+ * @property string $networkAccessProfileSid
  */
 class FleetInstance extends InstanceResource {
     /**
@@ -55,6 +56,7 @@ class FleetInstance extends InstanceResource {
             'commandsEnabled' => Values::array_get($payload, 'commands_enabled'),
             'commandsUrl' => Values::array_get($payload, 'commands_url'),
             'commandsMethod' => Values::array_get($payload, 'commands_method'),
+            'networkAccessProfileSid' => Values::array_get($payload, 'network_access_profile_sid'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

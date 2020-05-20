@@ -56,7 +56,10 @@ class FleetContext extends InstanceContext {
     public function update(array $options = []): FleetInstance {
         $options = new Values($options);
 
-        $data = Values::of(['UniqueName' => $options['uniqueName'], ]);
+        $data = Values::of([
+            'UniqueName' => $options['uniqueName'],
+            'NetworkAccessProfile' => $options['networkAccessProfile'],
+        ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 

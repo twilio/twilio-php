@@ -29,10 +29,13 @@ abstract class DomainOptions {
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
      * @param bool $secure Whether secure SIP is enabled for the domain
+     * @param string $byocTrunkSid The SID of the BYOC Trunk resource.
+     * @param string $emergencyCallerSid Whether an emergency caller sid is
+     *                                   configured for the domain.
      * @return CreateDomainOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE): CreateDomainOptions {
-        return new CreateDomainOptions($friendlyName, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $voiceStatusCallbackUrl, $voiceStatusCallbackMethod, $sipRegistration, $emergencyCallingEnabled, $secure);
+    public static function create(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE, string $byocTrunkSid = Values::NONE, string $emergencyCallerSid = Values::NONE): CreateDomainOptions {
+        return new CreateDomainOptions($friendlyName, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $voiceStatusCallbackUrl, $voiceStatusCallbackMethod, $sipRegistration, $emergencyCallingEnabled, $secure, $byocTrunkSid, $emergencyCallerSid);
     }
 
     /**
@@ -52,10 +55,13 @@ abstract class DomainOptions {
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
      * @param bool $secure Whether secure SIP is enabled for the domain
+     * @param string $byocTrunkSid The SID of the BYOC Trunk resource.
+     * @param string $emergencyCallerSid Whether an emergency caller sid is
+     *                                   configured for the domain.
      * @return UpdateDomainOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE): UpdateDomainOptions {
-        return new UpdateDomainOptions($friendlyName, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceStatusCallbackMethod, $voiceStatusCallbackUrl, $voiceUrl, $sipRegistration, $domainName, $emergencyCallingEnabled, $secure);
+    public static function update(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE, string $byocTrunkSid = Values::NONE, string $emergencyCallerSid = Values::NONE): UpdateDomainOptions {
+        return new UpdateDomainOptions($friendlyName, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceStatusCallbackMethod, $voiceStatusCallbackUrl, $voiceUrl, $sipRegistration, $domainName, $emergencyCallingEnabled, $secure, $byocTrunkSid, $emergencyCallerSid);
     }
 }
 
@@ -76,8 +82,11 @@ class CreateDomainOptions extends Options {
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
      * @param bool $secure Whether secure SIP is enabled for the domain
+     * @param string $byocTrunkSid The SID of the BYOC Trunk resource.
+     * @param string $emergencyCallerSid Whether an emergency caller sid is
+     *                                   configured for the domain.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, bool $sipRegistration = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE, string $byocTrunkSid = Values::NONE, string $emergencyCallerSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -88,6 +97,8 @@ class CreateDomainOptions extends Options {
         $this->options['sipRegistration'] = $sipRegistration;
         $this->options['emergencyCallingEnabled'] = $emergencyCallingEnabled;
         $this->options['secure'] = $secure;
+        $this->options['byocTrunkSid'] = $byocTrunkSid;
+        $this->options['emergencyCallerSid'] = $emergencyCallerSid;
     }
 
     /**
@@ -206,6 +217,29 @@ class CreateDomainOptions extends Options {
     }
 
     /**
+     * The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+     *
+     * @param string $byocTrunkSid The SID of the BYOC Trunk resource.
+     * @return $this Fluent Builder
+     */
+    public function setByocTrunkSid(string $byocTrunkSid): self {
+        $this->options['byocTrunkSid'] = $byocTrunkSid;
+        return $this;
+    }
+
+    /**
+     * Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+     *
+     * @param string $emergencyCallerSid Whether an emergency caller sid is
+     *                                   configured for the domain.
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyCallerSid(string $emergencyCallerSid): self {
+        $this->options['emergencyCallerSid'] = $emergencyCallerSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -234,8 +268,11 @@ class UpdateDomainOptions extends Options {
      * @param bool $emergencyCallingEnabled Whether emergency calling is enabled
      *                                      for the domain.
      * @param bool $secure Whether secure SIP is enabled for the domain
+     * @param string $byocTrunkSid The SID of the BYOC Trunk resource.
+     * @param string $emergencyCallerSid Whether an emergency caller sid is
+     *                                   configured for the domain.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceStatusCallbackMethod = Values::NONE, string $voiceStatusCallbackUrl = Values::NONE, string $voiceUrl = Values::NONE, bool $sipRegistration = Values::NONE, string $domainName = Values::NONE, bool $emergencyCallingEnabled = Values::NONE, bool $secure = Values::NONE, string $byocTrunkSid = Values::NONE, string $emergencyCallerSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
@@ -247,6 +284,8 @@ class UpdateDomainOptions extends Options {
         $this->options['domainName'] = $domainName;
         $this->options['emergencyCallingEnabled'] = $emergencyCallingEnabled;
         $this->options['secure'] = $secure;
+        $this->options['byocTrunkSid'] = $byocTrunkSid;
+        $this->options['emergencyCallerSid'] = $emergencyCallerSid;
     }
 
     /**
@@ -372,6 +411,29 @@ class UpdateDomainOptions extends Options {
      */
     public function setSecure(bool $secure): self {
         $this->options['secure'] = $secure;
+        return $this;
+    }
+
+    /**
+     * The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+     *
+     * @param string $byocTrunkSid The SID of the BYOC Trunk resource.
+     * @return $this Fluent Builder
+     */
+    public function setByocTrunkSid(string $byocTrunkSid): self {
+        $this->options['byocTrunkSid'] = $byocTrunkSid;
+        return $this;
+    }
+
+    /**
+     * Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+     *
+     * @param string $emergencyCallerSid Whether an emergency caller sid is
+     *                                   configured for the domain.
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyCallerSid(string $emergencyCallerSid): self {
+        $this->options['emergencyCallerSid'] = $emergencyCallerSid;
         return $this;
     }
 

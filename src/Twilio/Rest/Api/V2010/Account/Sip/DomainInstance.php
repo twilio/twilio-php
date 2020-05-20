@@ -39,6 +39,8 @@ use Twilio\Version;
  * @property bool $sipRegistration
  * @property bool $emergencyCallingEnabled
  * @property bool $secure
+ * @property string $byocTrunkSid
+ * @property string $emergencyCallerSid
  */
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings;
@@ -78,6 +80,8 @@ class DomainInstance extends InstanceResource {
             'sipRegistration' => Values::array_get($payload, 'sip_registration'),
             'emergencyCallingEnabled' => Values::array_get($payload, 'emergency_calling_enabled'),
             'secure' => Values::array_get($payload, 'secure'),
+            'byocTrunkSid' => Values::array_get($payload, 'byoc_trunk_sid'),
+            'emergencyCallerSid' => Values::array_get($payload, 'emergency_caller_sid'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

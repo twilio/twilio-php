@@ -27,19 +27,32 @@ abstract class FleetOptions {
      *                            the Fleet originates a machine-to-machine Command
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
      * @return CreateFleetOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE): CreateFleetOptions {
-        return new CreateFleetOptions($uniqueName, $dataEnabled, $commandsEnabled, $commandsUrl, $commandsMethod);
+    public static function create(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE, string $networkAccessProfile = Values::NONE): CreateFleetOptions {
+        return new CreateFleetOptions($uniqueName, $dataEnabled, $commandsEnabled, $commandsUrl, $commandsMethod, $networkAccessProfile);
+    }
+
+    /**
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
+     * @return ReadFleetOptions Options builder
+     */
+    public static function read(string $networkAccessProfile = Values::NONE): ReadFleetOptions {
+        return new ReadFleetOptions($networkAccessProfile);
     }
 
     /**
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
      * @return UpdateFleetOptions Options builder
      */
-    public static function update(string $uniqueName = Values::NONE): UpdateFleetOptions {
-        return new UpdateFleetOptions($uniqueName);
+    public static function update(string $uniqueName = Values::NONE, string $networkAccessProfile = Values::NONE): UpdateFleetOptions {
+        return new UpdateFleetOptions($uniqueName, $networkAccessProfile);
     }
 }
 
@@ -55,13 +68,16 @@ class CreateFleetOptions extends Options {
      *                            the Fleet originates a machine-to-machine Command
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
      */
-    public function __construct(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE, string $networkAccessProfile = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dataEnabled'] = $dataEnabled;
         $this->options['commandsEnabled'] = $commandsEnabled;
         $this->options['commandsUrl'] = $commandsUrl;
         $this->options['commandsMethod'] = $commandsMethod;
+        $this->options['networkAccessProfile'] = $networkAccessProfile;
     }
 
     /**
@@ -125,6 +141,18 @@ class CreateFleetOptions extends Options {
     }
 
     /**
+     * The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to
+     *
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
+     * @return $this Fluent Builder
+     */
+    public function setNetworkAccessProfile(string $networkAccessProfile): self {
+        $this->options['networkAccessProfile'] = $networkAccessProfile;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -135,13 +163,48 @@ class CreateFleetOptions extends Options {
     }
 }
 
+class ReadFleetOptions extends Options {
+    /**
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
+     */
+    public function __construct(string $networkAccessProfile = Values::NONE) {
+        $this->options['networkAccessProfile'] = $networkAccessProfile;
+    }
+
+    /**
+     * The SID or unique name of the Network Access Profile that controls which cellular network operators the Fleet's SIMs can connect to
+     *
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
+     * @return $this Fluent Builder
+     */
+    public function setNetworkAccessProfile(string $networkAccessProfile): self {
+        $this->options['networkAccessProfile'] = $networkAccessProfile;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Supersim.V1.ReadFleetOptions ' . $options . ']';
+    }
+}
+
 class UpdateFleetOptions extends Options {
     /**
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
      */
-    public function __construct(string $uniqueName = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, string $networkAccessProfile = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
+        $this->options['networkAccessProfile'] = $networkAccessProfile;
     }
 
     /**
@@ -153,6 +216,18 @@ class UpdateFleetOptions extends Options {
      */
     public function setUniqueName(string $uniqueName): self {
         $this->options['uniqueName'] = $uniqueName;
+        return $this;
+    }
+
+    /**
+     * The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to
+     *
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
+     * @return $this Fluent Builder
+     */
+    public function setNetworkAccessProfile(string $networkAccessProfile): self {
+        $this->options['networkAccessProfile'] = $networkAccessProfile;
         return $this;
     }
 

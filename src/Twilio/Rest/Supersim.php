@@ -17,10 +17,12 @@ use Twilio\Rest\Supersim\V1;
  * @property \Twilio\Rest\Supersim\V1 $v1
  * @property \Twilio\Rest\Supersim\V1\CommandList $commands
  * @property \Twilio\Rest\Supersim\V1\FleetList $fleets
+ * @property \Twilio\Rest\Supersim\V1\NetworkAccessProfileList $networkAccessProfiles
  * @property \Twilio\Rest\Supersim\V1\SimList $sims
  * @property \Twilio\Rest\Supersim\V1\UsageRecordList $usageRecords
  * @method \Twilio\Rest\Supersim\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Supersim\V1\FleetContext fleets(string $sid)
+ * @method \Twilio\Rest\Supersim\V1\NetworkAccessProfileContext networkAccessProfiles(string $sid)
  * @method \Twilio\Rest\Supersim\V1\SimContext sims(string $sid)
  */
 class Supersim extends Domain {
@@ -100,6 +102,17 @@ class Supersim extends Domain {
      */
     protected function contextFleets(string $sid): \Twilio\Rest\Supersim\V1\FleetContext {
         return $this->v1->fleets($sid);
+    }
+
+    protected function getNetworkAccessProfiles(): \Twilio\Rest\Supersim\V1\NetworkAccessProfileList {
+        return $this->v1->networkAccessProfiles;
+    }
+
+    /**
+     * @param string $sid The sid
+     */
+    protected function contextNetworkAccessProfiles(string $sid): \Twilio\Rest\Supersim\V1\NetworkAccessProfileContext {
+        return $this->v1->networkAccessProfiles($sid);
     }
 
     protected function getSims(): \Twilio\Rest\Supersim\V1\SimList {

@@ -12,14 +12,30 @@ namespace Twilio\Rest\Voice;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Voice\V1\ByocTrunkList;
+use Twilio\Rest\Voice\V1\ConnectionPolicyList;
 use Twilio\Rest\Voice\V1\DialingPermissionsList;
+use Twilio\Rest\Voice\V1\IpRecordList;
+use Twilio\Rest\Voice\V1\SourceIpMappingList;
 use Twilio\Version;
 
 /**
+ * @property ByocTrunkList $byocTrunks
+ * @property ConnectionPolicyList $connectionPolicies
  * @property DialingPermissionsList $dialingPermissions
+ * @property IpRecordList $ipRecords
+ * @property SourceIpMappingList $sourceIpMappings
+ * @method \Twilio\Rest\Voice\V1\ByocTrunkContext byocTrunks(string $sid)
+ * @method \Twilio\Rest\Voice\V1\ConnectionPolicyContext connectionPolicies(string $sid)
+ * @method \Twilio\Rest\Voice\V1\IpRecordContext ipRecords(string $sid)
+ * @method \Twilio\Rest\Voice\V1\SourceIpMappingContext sourceIpMappings(string $sid)
  */
 class V1 extends Version {
+    protected $_byocTrunks;
+    protected $_connectionPolicies;
     protected $_dialingPermissions;
+    protected $_ipRecords;
+    protected $_sourceIpMappings;
 
     /**
      * Construct the V1 version of Voice
@@ -31,11 +47,39 @@ class V1 extends Version {
         $this->version = 'v1';
     }
 
+    protected function getByocTrunks(): ByocTrunkList {
+        if (!$this->_byocTrunks) {
+            $this->_byocTrunks = new ByocTrunkList($this);
+        }
+        return $this->_byocTrunks;
+    }
+
+    protected function getConnectionPolicies(): ConnectionPolicyList {
+        if (!$this->_connectionPolicies) {
+            $this->_connectionPolicies = new ConnectionPolicyList($this);
+        }
+        return $this->_connectionPolicies;
+    }
+
     protected function getDialingPermissions(): DialingPermissionsList {
         if (!$this->_dialingPermissions) {
             $this->_dialingPermissions = new DialingPermissionsList($this);
         }
         return $this->_dialingPermissions;
+    }
+
+    protected function getIpRecords(): IpRecordList {
+        if (!$this->_ipRecords) {
+            $this->_ipRecords = new IpRecordList($this);
+        }
+        return $this->_ipRecords;
+    }
+
+    protected function getSourceIpMappings(): SourceIpMappingList {
+        if (!$this->_sourceIpMappings) {
+            $this->_sourceIpMappings = new SourceIpMappingList($this);
+        }
+        return $this->_sourceIpMappings;
     }
 
     /**

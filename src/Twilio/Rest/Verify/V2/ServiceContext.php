@@ -92,6 +92,7 @@ class ServiceContext extends InstanceContext {
             'TtsName' => $options['ttsName'],
             'Psd2Enabled' => Serialize::booleanToString($options['psd2Enabled']),
             'DoNotShareWarningEnabled' => Serialize::booleanToString($options['doNotShareWarningEnabled']),
+            'CustomCodeEnabled' => Serialize::booleanToString($options['customCodeEnabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

@@ -60,7 +60,9 @@ class DomainTest extends HolodeckTestCase {
                         "voice_status_callback_url": null,
                         "voice_url": "https://dundermifflin.example.com/twilio/app.php",
                         "emergency_calling_enabled": true,
-                        "secure": true
+                        "secure": true,
+                        "byoc_trunk_sid": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "emergency_caller_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
                 "start": 0,
@@ -153,7 +155,9 @@ class DomainTest extends HolodeckTestCase {
                 "voice_status_callback_url": null,
                 "voice_url": "https://dundermifflin.example.com/twilio/app.php",
                 "emergency_calling_enabled": true,
-                "secure": true
+                "secure": true,
+                "byoc_trunk_sid": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "emergency_caller_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -207,7 +211,9 @@ class DomainTest extends HolodeckTestCase {
                 "voice_status_callback_url": null,
                 "voice_url": "https://dundermifflin.example.com/twilio/app.php",
                 "emergency_calling_enabled": true,
-                "secure": true
+                "secure": true,
+                "byoc_trunk_sid": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "emergency_caller_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -261,7 +267,9 @@ class DomainTest extends HolodeckTestCase {
                 "voice_status_callback_url": null,
                 "voice_url": "https://dundermifflin.example.com/twilio/app.php",
                 "emergency_calling_enabled": true,
-                "secure": true
+                "secure": true,
+                "byoc_trunk_sid": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "emergency_caller_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));

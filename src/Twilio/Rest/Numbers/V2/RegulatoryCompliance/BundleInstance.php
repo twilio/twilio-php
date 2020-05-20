@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
 use Twilio\Values;
 use Twilio\Version;
@@ -31,6 +32,7 @@ use Twilio\Version;
  * @property array $links
  */
 class BundleInstance extends InstanceResource {
+    protected $_evaluations;
     protected $_itemAssignments;
 
     /**
@@ -94,6 +96,13 @@ class BundleInstance extends InstanceResource {
      */
     public function update(array $options = []): BundleInstance {
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Access the evaluations
+     */
+    protected function getEvaluations(): EvaluationList {
+        return $this->proxy()->evaluations;
     }
 
     /**

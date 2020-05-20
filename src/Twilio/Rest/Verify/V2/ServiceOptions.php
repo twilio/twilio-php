@@ -27,10 +27,12 @@ abstract class ServiceOptions {
      *                          starting a verification
      * @param bool $doNotShareWarningEnabled Whether to add a security warning at
      *                                       the end of an SMS.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a
+     *                                custom code.
      * @return CreateServiceOptions Options builder
      */
-    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled);
+    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE): CreateServiceOptions {
+        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled);
     }
 
     /**
@@ -48,10 +50,12 @@ abstract class ServiceOptions {
      *                          starting a verification
      * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at
      *                                       the end of an SMS.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a
+     *                                custom code.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled);
+    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE): UpdateServiceOptions {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled);
     }
 }
 
@@ -70,8 +74,10 @@ class CreateServiceOptions extends Options {
      *                          starting a verification
      * @param bool $doNotShareWarningEnabled Whether to add a security warning at
      *                                       the end of an SMS.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a
+     *                                custom code.
      */
-    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE) {
+    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
@@ -79,6 +85,7 @@ class CreateServiceOptions extends Options {
         $this->options['ttsName'] = $ttsName;
         $this->options['psd2Enabled'] = $psd2Enabled;
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
+        $this->options['customCodeEnabled'] = $customCodeEnabled;
     }
 
     /**
@@ -165,6 +172,18 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     *
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a
+     *                                custom code.
+     * @return $this Fluent Builder
+     */
+    public function setCustomCodeEnabled(bool $customCodeEnabled): self {
+        $this->options['customCodeEnabled'] = $customCodeEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -191,8 +210,10 @@ class UpdateServiceOptions extends Options {
      *                          starting a verification
      * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at
      *                                       the end of an SMS.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a
+     *                                custom code.
      */
-    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
@@ -201,6 +222,7 @@ class UpdateServiceOptions extends Options {
         $this->options['ttsName'] = $ttsName;
         $this->options['psd2Enabled'] = $psd2Enabled;
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
+        $this->options['customCodeEnabled'] = $customCodeEnabled;
     }
 
     /**
@@ -294,6 +316,18 @@ class UpdateServiceOptions extends Options {
      */
     public function setDoNotShareWarningEnabled(bool $doNotShareWarningEnabled): self {
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
+        return $this;
+    }
+
+    /**
+     * Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     *
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a
+     *                                custom code.
+     * @return $this Fluent Builder
+     */
+    public function setCustomCodeEnabled(bool $customCodeEnabled): self {
+        $this->options['customCodeEnabled'] = $customCodeEnabled;
         return $this;
     }
 

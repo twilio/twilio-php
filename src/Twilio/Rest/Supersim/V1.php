@@ -14,6 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Supersim\V1\CommandList;
 use Twilio\Rest\Supersim\V1\FleetList;
+use Twilio\Rest\Supersim\V1\NetworkAccessProfileList;
 use Twilio\Rest\Supersim\V1\SimList;
 use Twilio\Rest\Supersim\V1\UsageRecordList;
 use Twilio\Version;
@@ -21,15 +22,18 @@ use Twilio\Version;
 /**
  * @property CommandList $commands
  * @property FleetList $fleets
+ * @property NetworkAccessProfileList $networkAccessProfiles
  * @property SimList $sims
  * @property UsageRecordList $usageRecords
  * @method \Twilio\Rest\Supersim\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Supersim\V1\FleetContext fleets(string $sid)
+ * @method \Twilio\Rest\Supersim\V1\NetworkAccessProfileContext networkAccessProfiles(string $sid)
  * @method \Twilio\Rest\Supersim\V1\SimContext sims(string $sid)
  */
 class V1 extends Version {
     protected $_commands;
     protected $_fleets;
+    protected $_networkAccessProfiles;
     protected $_sims;
     protected $_usageRecords;
 
@@ -55,6 +59,13 @@ class V1 extends Version {
             $this->_fleets = new FleetList($this);
         }
         return $this->_fleets;
+    }
+
+    protected function getNetworkAccessProfiles(): NetworkAccessProfileList {
+        if (!$this->_networkAccessProfiles) {
+            $this->_networkAccessProfiles = new NetworkAccessProfileList($this);
+        }
+        return $this->_networkAccessProfiles;
     }
 
     protected function getSims(): SimList {

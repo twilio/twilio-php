@@ -15,7 +15,15 @@ use Twilio\Rest\Voice\V1;
 
 /**
  * @property \Twilio\Rest\Voice\V1 $v1
+ * @property \Twilio\Rest\Voice\V1\ByocTrunkList $byocTrunks
+ * @property \Twilio\Rest\Voice\V1\ConnectionPolicyList $connectionPolicies
  * @property \Twilio\Rest\Voice\V1\DialingPermissionsList $dialingPermissions
+ * @property \Twilio\Rest\Voice\V1\IpRecordList $ipRecords
+ * @property \Twilio\Rest\Voice\V1\SourceIpMappingList $sourceIpMappings
+ * @method \Twilio\Rest\Voice\V1\ByocTrunkContext byocTrunks(string $sid)
+ * @method \Twilio\Rest\Voice\V1\ConnectionPolicyContext connectionPolicies(string $sid)
+ * @method \Twilio\Rest\Voice\V1\IpRecordContext ipRecords(string $sid)
+ * @method \Twilio\Rest\Voice\V1\SourceIpMappingContext sourceIpMappings(string $sid)
  */
 class Voice extends Domain {
     protected $_v1;
@@ -74,8 +82,52 @@ class Voice extends Domain {
         throw new TwilioException('Unknown context ' . $name);
     }
 
+    protected function getByocTrunks(): \Twilio\Rest\Voice\V1\ByocTrunkList {
+        return $this->v1->byocTrunks;
+    }
+
+    /**
+     * @param string $sid The unique string that identifies the resource
+     */
+    protected function contextByocTrunks(string $sid): \Twilio\Rest\Voice\V1\ByocTrunkContext {
+        return $this->v1->byocTrunks($sid);
+    }
+
+    protected function getConnectionPolicies(): \Twilio\Rest\Voice\V1\ConnectionPolicyList {
+        return $this->v1->connectionPolicies;
+    }
+
+    /**
+     * @param string $sid The unique string that identifies the resource
+     */
+    protected function contextConnectionPolicies(string $sid): \Twilio\Rest\Voice\V1\ConnectionPolicyContext {
+        return $this->v1->connectionPolicies($sid);
+    }
+
     protected function getDialingPermissions(): \Twilio\Rest\Voice\V1\DialingPermissionsList {
         return $this->v1->dialingPermissions;
+    }
+
+    protected function getIpRecords(): \Twilio\Rest\Voice\V1\IpRecordList {
+        return $this->v1->ipRecords;
+    }
+
+    /**
+     * @param string $sid The unique string that identifies the resource
+     */
+    protected function contextIpRecords(string $sid): \Twilio\Rest\Voice\V1\IpRecordContext {
+        return $this->v1->ipRecords($sid);
+    }
+
+    protected function getSourceIpMappings(): \Twilio\Rest\Voice\V1\SourceIpMappingList {
+        return $this->v1->sourceIpMappings;
+    }
+
+    /**
+     * @param string $sid The unique string that identifies the resource
+     */
+    protected function contextSourceIpMappings(string $sid): \Twilio\Rest\Voice\V1\SourceIpMappingContext {
+        return $this->v1->sourceIpMappings($sid);
     }
 
     /**
