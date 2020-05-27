@@ -53,7 +53,7 @@ class FactorContext extends InstanceContext {
     public function delete(array $options = []): bool {
         $options = new Values($options);
 
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
@@ -68,7 +68,7 @@ class FactorContext extends InstanceContext {
     public function fetch(array $options = []): FactorInstance {
         $options = new Values($options);
 
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
@@ -96,7 +96,7 @@ class FactorContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'Config' => $options['config'],
         ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 

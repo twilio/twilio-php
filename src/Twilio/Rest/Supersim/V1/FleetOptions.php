@@ -21,6 +21,7 @@ abstract class FleetOptions {
      *                           identifies the resource
      * @param bool $dataEnabled Defines whether SIMs in the Fleet are capable of
      *                          using data connectivity
+     * @param int $dataLimit The data_limit
      * @param bool $commandsEnabled Defines whether SIMs in the Fleet are capable
      *                              of sending and receiving Commands via SMS
      * @param string $commandsUrl The URL that will receive a webhook when a SIM in
@@ -31,8 +32,8 @@ abstract class FleetOptions {
      *                                     Access Profile of the Fleet
      * @return CreateFleetOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE, string $networkAccessProfile = Values::NONE): CreateFleetOptions {
-        return new CreateFleetOptions($uniqueName, $dataEnabled, $commandsEnabled, $commandsUrl, $commandsMethod, $networkAccessProfile);
+    public static function create(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE, string $networkAccessProfile = Values::NONE): CreateFleetOptions {
+        return new CreateFleetOptions($uniqueName, $dataEnabled, $dataLimit, $commandsEnabled, $commandsUrl, $commandsMethod, $networkAccessProfile);
     }
 
     /**
@@ -62,6 +63,7 @@ class CreateFleetOptions extends Options {
      *                           identifies the resource
      * @param bool $dataEnabled Defines whether SIMs in the Fleet are capable of
      *                          using data connectivity
+     * @param int $dataLimit The data_limit
      * @param bool $commandsEnabled Defines whether SIMs in the Fleet are capable
      *                              of sending and receiving Commands via SMS
      * @param string $commandsUrl The URL that will receive a webhook when a SIM in
@@ -71,9 +73,10 @@ class CreateFleetOptions extends Options {
      * @param string $networkAccessProfile The SID or unique name of the Network
      *                                     Access Profile of the Fleet
      */
-    public function __construct(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE, string $networkAccessProfile = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, bool $commandsEnabled = Values::NONE, string $commandsUrl = Values::NONE, string $commandsMethod = Values::NONE, string $networkAccessProfile = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dataEnabled'] = $dataEnabled;
+        $this->options['dataLimit'] = $dataLimit;
         $this->options['commandsEnabled'] = $commandsEnabled;
         $this->options['commandsUrl'] = $commandsUrl;
         $this->options['commandsMethod'] = $commandsMethod;
@@ -101,6 +104,17 @@ class CreateFleetOptions extends Options {
      */
     public function setDataEnabled(bool $dataEnabled): self {
         $this->options['dataEnabled'] = $dataEnabled;
+        return $this;
+    }
+
+    /**
+     * The data_limit
+     *
+     * @param int $dataLimit The data_limit
+     * @return $this Fluent Builder
+     */
+    public function setDataLimit(int $dataLimit): self {
+        $this->options['dataLimit'] = $dataLimit;
         return $this;
     }
 

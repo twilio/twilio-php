@@ -48,6 +48,7 @@ class FleetList extends ListResource {
         $data = Values::of([
             'UniqueName' => $options['uniqueName'],
             'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
+            'DataLimit' => $options['dataLimit'],
             'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
             'CommandsUrl' => $options['commandsUrl'],
             'CommandsMethod' => $options['commandsMethod'],

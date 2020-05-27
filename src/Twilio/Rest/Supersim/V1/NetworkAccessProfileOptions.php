@@ -17,8 +17,10 @@ use Twilio\Values;
  */
 abstract class NetworkAccessProfileOptions {
     /**
-     * @param string $uniqueName The unique_name
-     * @param string[] $networks The networks
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param string[] $networks List of Network SIDs that this Network Access
+     *                           Profile will allow connections to
      * @return CreateNetworkAccessProfileOptions Options builder
      */
     public static function create(string $uniqueName = Values::NONE, array $networks = Values::ARRAY_NONE): CreateNetworkAccessProfileOptions {
@@ -26,7 +28,7 @@ abstract class NetworkAccessProfileOptions {
     }
 
     /**
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName The new unique name of the resource
      * @return UpdateNetworkAccessProfileOptions Options builder
      */
     public static function update(string $uniqueName = Values::NONE): UpdateNetworkAccessProfileOptions {
@@ -36,8 +38,10 @@ abstract class NetworkAccessProfileOptions {
 
 class CreateNetworkAccessProfileOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
-     * @param string[] $networks The networks
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param string[] $networks List of Network SIDs that this Network Access
+     *                           Profile will allow connections to
      */
     public function __construct(string $uniqueName = Values::NONE, array $networks = Values::ARRAY_NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -45,9 +49,10 @@ class CreateNetworkAccessProfileOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
      *
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName(string $uniqueName): self {
@@ -56,9 +61,10 @@ class CreateNetworkAccessProfileOptions extends Options {
     }
 
     /**
-     * The networks
+     * List of Network SIDs that this Network Access Profile will allow connections to.
      *
-     * @param string[] $networks The networks
+     * @param string[] $networks List of Network SIDs that this Network Access
+     *                           Profile will allow connections to
      * @return $this Fluent Builder
      */
     public function setNetworks(array $networks): self {
@@ -79,16 +85,16 @@ class CreateNetworkAccessProfileOptions extends Options {
 
 class UpdateNetworkAccessProfileOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName The new unique name of the resource
      */
     public function __construct(string $uniqueName = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
     }
 
     /**
-     * The unique_name
+     * The new unique name of the Network Access Profile.
      *
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName The new unique name of the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName(string $uniqueName): self {

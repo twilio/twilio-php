@@ -15,7 +15,9 @@ use Twilio\Rest\Verify\V2;
 
 /**
  * @property \Twilio\Rest\Verify\V2 $v2
+ * @property \Twilio\Rest\Verify\V2\FormList $forms
  * @property \Twilio\Rest\Verify\V2\ServiceList $services
+ * @method \Twilio\Rest\Verify\V2\FormContext forms(string $formType)
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class Verify extends Domain {
@@ -73,6 +75,17 @@ class Verify extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    protected function getForms(): \Twilio\Rest\Verify\V2\FormList {
+        return $this->v2->forms;
+    }
+
+    /**
+     * @param string $formType The Type of this Form
+     */
+    protected function contextForms(string $formType): \Twilio\Rest\Verify\V2\FormContext {
+        return $this->v2->forms($formType);
     }
 
     protected function getServices(): \Twilio\Rest\Verify\V2\ServiceList {

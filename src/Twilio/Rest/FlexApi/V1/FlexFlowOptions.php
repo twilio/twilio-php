@@ -269,7 +269,7 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.
+     * When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
      *
      * @param bool $longLived Reuse this chat channel for future interactions with
      *                        a contact
@@ -281,7 +281,7 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.
+     * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      *
      * @param bool $janitorEnabled Remove active Proxy sessions if the
      *                             corresponding Task is deleted
@@ -515,7 +515,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.
+     * When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
      *
      * @param bool $longLived Reuse this chat channel for future interactions with
      *                        a contact
@@ -527,7 +527,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.
+     * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      *
      * @param bool $janitorEnabled Remove active Proxy sessions if the
      *                             corresponding Task is deleted.

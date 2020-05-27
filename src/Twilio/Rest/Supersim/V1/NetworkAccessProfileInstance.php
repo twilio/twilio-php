@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,14 +26,17 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
+ * @property array $links
  */
 class NetworkAccessProfileInstance extends InstanceResource {
+    protected $_networks;
+
     /**
      * Initialize the NetworkAccessProfileInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid The SID that identifies the resource to fetch
      */
     public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
@@ -45,6 +49,7 @@ class NetworkAccessProfileInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -84,6 +89,13 @@ class NetworkAccessProfileInstance extends InstanceResource {
      */
     public function update(array $options = []): NetworkAccessProfileInstance {
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Access the networks
+     */
+    protected function getNetworks(): NetworkAccessProfileNetworkList {
+        return $this->proxy()->networks;
     }
 
     /**

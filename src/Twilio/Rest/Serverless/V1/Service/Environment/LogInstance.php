@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $serviceSid
  * @property string $environmentSid
+ * @property string $buildSid
  * @property string $deploymentSid
  * @property string $functionSid
  * @property string $requestSid
@@ -51,6 +52,7 @@ class LogInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'environmentSid' => Values::array_get($payload, 'environment_sid'),
+            'buildSid' => Values::array_get($payload, 'build_sid'),
             'deploymentSid' => Values::array_get($payload, 'deployment_sid'),
             'functionSid' => Values::array_get($payload, 'function_sid'),
             'requestSid' => Values::array_get($payload, 'request_sid'),

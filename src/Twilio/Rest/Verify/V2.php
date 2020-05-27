@@ -12,14 +12,18 @@ namespace Twilio\Rest\Verify;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Verify\V2\FormList;
 use Twilio\Rest\Verify\V2\ServiceList;
 use Twilio\Version;
 
 /**
+ * @property FormList $forms
  * @property ServiceList $services
+ * @method \Twilio\Rest\Verify\V2\FormContext forms(string $formType)
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class V2 extends Version {
+    protected $_forms;
     protected $_services;
 
     /**
@@ -30,6 +34,13 @@ class V2 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getForms(): FormList {
+        if (!$this->_forms) {
+            $this->_forms = new FormList($this);
+        }
+        return $this->_forms;
     }
 
     protected function getServices(): ServiceList {

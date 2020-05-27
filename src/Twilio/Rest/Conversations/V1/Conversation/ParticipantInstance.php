@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string $identity
  * @property string $attributes
  * @property array $messagingBinding
+ * @property string $roleSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -51,6 +52,7 @@ class ParticipantInstance extends InstanceResource {
             'identity' => Values::array_get($payload, 'identity'),
             'attributes' => Values::array_get($payload, 'attributes'),
             'messagingBinding' => Values::array_get($payload, 'messaging_binding'),
+            'roleSid' => Values::array_get($payload, 'role_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

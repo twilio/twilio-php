@@ -57,7 +57,7 @@ class FactorList extends ListResource {
             'Config' => $config,
         ]);
         $headers = Values::of([
-            'Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'],
+            'Twilio-Sandbox-Mode' => $options['twilioSandboxMode'],
             'Authorization' => $options['authorization'],
         ]);
 
@@ -132,7 +132,7 @@ class FactorList extends ListResource {
         $options = new Values($options);
 
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 

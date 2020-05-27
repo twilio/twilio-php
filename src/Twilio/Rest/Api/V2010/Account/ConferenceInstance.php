@@ -29,6 +29,8 @@ use Twilio\Version;
  * @property string $status
  * @property string $uri
  * @property array $subresourceUris
+ * @property string $reasonConferenceEnded
+ * @property string $callSidEndingConference
  */
 class ConferenceInstance extends InstanceResource {
     protected $_participants;
@@ -57,6 +59,8 @@ class ConferenceInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'uri' => Values::array_get($payload, 'uri'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
+            'reasonConferenceEnded' => Values::array_get($payload, 'reason_conference_ended'),
+            'callSidEndingConference' => Values::array_get($payload, 'call_sid_ending_conference'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

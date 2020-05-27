@@ -18,15 +18,15 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * @property \DateTime $dateUpdated
+ * @property int $currentSize
+ * @property string $friendlyName
+ * @property string $uri
  * @property string $accountSid
  * @property int $averageWaitTime
- * @property int $currentSize
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property int $maxSize
  * @property string $sid
- * @property string $uri
+ * @property \DateTime $dateCreated
+ * @property int $maxSize
  */
 class QueueInstance extends InstanceResource {
     protected $_members;
@@ -44,15 +44,15 @@ class QueueInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = [
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'currentSize' => Values::array_get($payload, 'current_size'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'uri' => Values::array_get($payload, 'uri'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'averageWaitTime' => Values::array_get($payload, 'average_wait_time'),
-            'currentSize' => Values::array_get($payload, 'current_size'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'maxSize' => Values::array_get($payload, 'max_size'),
             'sid' => Values::array_get($payload, 'sid'),
-            'uri' => Values::array_get($payload, 'uri'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'maxSize' => Values::array_get($payload, 'max_size'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

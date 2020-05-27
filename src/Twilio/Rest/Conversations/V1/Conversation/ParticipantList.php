@@ -55,6 +55,7 @@ class ParticipantList extends ListResource {
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' => $options['attributes'],
             'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
+            'RoleSid' => $options['roleSid'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

@@ -19,10 +19,7 @@ class FactorTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = [
-            'twilioAuthySandboxMode' => "twilio_authy_sandbox_mode",
-            'authorization' => "authorization",
-        ];
+        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", 'authorization' => "authorization", ];
 
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -38,10 +35,7 @@ class FactorTest extends HolodeckTestCase {
             'Config' => "config",
         ];
 
-        $headers = [
-            'Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode",
-            'Authorization' => "authorization",
-        ];
+        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", 'Authorization' => "authorization", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -91,7 +85,7 @@ class FactorTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
 
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -100,7 +94,7 @@ class FactorTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
 
         $this->assertRequest(new Request(
             'delete',
@@ -127,7 +121,7 @@ class FactorTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
 
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -136,7 +130,7 @@ class FactorTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
 
         $this->assertRequest(new Request(
             'get',
@@ -186,7 +180,7 @@ class FactorTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
 
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -195,7 +189,7 @@ class FactorTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
 
         $this->assertRequest(new Request(
             'get',
@@ -284,7 +278,7 @@ class FactorTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioAuthySandboxMode' => "twilio_authy_sandbox_mode", ];
+        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
 
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -293,7 +287,7 @@ class FactorTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Authy-Sandbox-Mode' => "twilio_authy_sandbox_mode", ];
+        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
 
         $this->assertRequest(new Request(
             'post',

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Verify\V2\Service\EntityList;
 use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
@@ -42,6 +43,7 @@ class ServiceInstance extends InstanceResource {
     protected $_verificationChecks;
     protected $_rateLimits;
     protected $_messagingConfigurations;
+    protected $_entities;
 
     /**
      * Initialize the ServiceInstance
@@ -146,6 +148,13 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getMessagingConfigurations(): MessagingConfigurationList {
         return $this->proxy()->messagingConfigurations;
+    }
+
+    /**
+     * Access the entities
+     */
+    protected function getEntities(): EntityList {
+        return $this->proxy()->entities;
     }
 
     /**

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
+use Twilio\Rest\Preview\TrustedComms\Business\BrandList;
 use Twilio\Rest\Preview\TrustedComms\Business\InsightsList;
 use Twilio\Values;
 use Twilio\Version;
@@ -19,9 +20,12 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
+ * @property BrandList $brands
  * @property InsightsList $insights
+ * @method \Twilio\Rest\Preview\TrustedComms\Business\BrandContext brands(string $sid)
  */
 class BusinessContext extends InstanceContext {
+    protected $_brands;
     protected $_insights;
 
     /**
@@ -49,6 +53,17 @@ class BusinessContext extends InstanceContext {
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new BusinessInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Access the brands
+     */
+    protected function getBrands(): BrandList {
+        if (!$this->_brands) {
+            $this->_brands = new BrandList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_brands;
     }
 
     /**

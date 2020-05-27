@@ -52,7 +52,7 @@ class EntityContext extends InstanceContext {
     public function delete(array $options = []): bool {
         $options = new Values($options);
 
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
@@ -67,7 +67,7 @@ class EntityContext extends InstanceContext {
     public function fetch(array $options = []): EntityInstance {
         $options = new Values($options);
 
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 

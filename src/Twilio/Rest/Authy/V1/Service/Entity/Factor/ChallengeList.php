@@ -53,7 +53,7 @@ class ChallengeList extends ListResource {
             'Details' => $options['details'],
             'HiddenDetails' => $options['hiddenDetails'],
         ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
@@ -132,7 +132,7 @@ class ChallengeList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 

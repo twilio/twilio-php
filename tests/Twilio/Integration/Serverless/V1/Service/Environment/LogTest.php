@@ -83,6 +83,7 @@ class LogTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "ZS00000000000000000000000000000000",
                 "environment_sid": "ZE00000000000000000000000000000000",
+                "build_sid": "ZB00000000000000000000000000000000",
                 "deployment_sid": "ZD00000000000000000000000000000000",
                 "function_sid": "ZH00000000000000000000000000000000",
                 "request_sid": "RQ00000000000000000000000000000000",

@@ -33,6 +33,7 @@ use Twilio\Version;
  * @property string $runtimeDomain
  * @property string $messagingServiceInstanceSid
  * @property string $chatServiceInstanceSid
+ * @property string $flexServiceInstanceSid
  * @property string $uiLanguage
  * @property array $uiAttributes
  * @property array $uiDependencies
@@ -83,6 +84,7 @@ class ConfigurationInstance extends InstanceResource {
             'runtimeDomain' => Values::array_get($payload, 'runtime_domain'),
             'messagingServiceInstanceSid' => Values::array_get($payload, 'messaging_service_instance_sid'),
             'chatServiceInstanceSid' => Values::array_get($payload, 'chat_service_instance_sid'),
+            'flexServiceInstanceSid' => Values::array_get($payload, 'flex_service_instance_sid'),
             'uiLanguage' => Values::array_get($payload, 'ui_language'),
             'uiAttributes' => Values::array_get($payload, 'ui_attributes'),
             'uiDependencies' => Values::array_get($payload, 'ui_dependencies'),

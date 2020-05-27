@@ -20,14 +20,14 @@ class CredentialListTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                        ->credentialsLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -47,7 +47,7 @@ class CredentialListTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        $actual = $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->credentialsLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
@@ -57,14 +57,14 @@ class CredentialListTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                        ->credentialsLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://trunking.twilio.com/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -74,7 +74,7 @@ class CredentialListTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        $actual = $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->credentialsLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
@@ -84,7 +84,7 @@ class CredentialListTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                        ->credentialsLists->create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -93,7 +93,7 @@ class CredentialListTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists',
+            'https://trunking.twilio.com/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists',
             null,
             $values
         ));
@@ -115,7 +115,7 @@ class CredentialListTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        $actual = $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->credentialsLists->create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
@@ -125,14 +125,14 @@ class CredentialListTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                        ->credentialsLists->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://trunking.twilio.com/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists'
+            'https://trunking.twilio.com/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists'
         ));
     }
 
@@ -165,7 +165,7 @@ class CredentialListTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        $actual = $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->credentialsLists->read();
 
         $this->assertGreaterThan(0, \count($actual));
@@ -190,7 +190,7 @@ class CredentialListTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        $actual = $this->twilio->trunking->v1->trunks("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->credentialsLists->read();
 
         $this->assertNotNull($actual);

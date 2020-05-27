@@ -11,19 +11,26 @@ namespace Twilio\Rest\Supersim\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ *
+ * @property NetworkAccessProfileNetworkList $networks
+ * @method \Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkContext networks(string $sid)
  */
 class NetworkAccessProfileContext extends InstanceContext {
+    protected $_networks;
+
     /**
      * Initialize the NetworkAccessProfileContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid The SID that identifies the resource to fetch
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -61,6 +68,50 @@ class NetworkAccessProfileContext extends InstanceContext {
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new NetworkAccessProfileInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Access the networks
+     */
+    protected function getNetworks(): NetworkAccessProfileNetworkList {
+        if (!$this->_networks) {
+            $this->_networks = new NetworkAccessProfileNetworkList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_networks;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     *
+     * @param string $name Subresource to return
+     * @return ListResource The requested subresource
+     * @throws TwilioException For unknown subresources
+     */
+    public function __get(string $name): ListResource {
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
+            return $this->$method();
+        }
+
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     *
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call(string $name, array $arguments): InstanceContext {
+        $property = $this->$name;
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

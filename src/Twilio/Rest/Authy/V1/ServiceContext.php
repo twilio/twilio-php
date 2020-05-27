@@ -51,7 +51,7 @@ class ServiceContext extends InstanceContext {
     public function delete(array $options = []): bool {
         $options = new Values($options);
 
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
@@ -66,7 +66,7 @@ class ServiceContext extends InstanceContext {
     public function fetch(array $options = []): ServiceInstance {
         $options = new Values($options);
 
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
@@ -84,7 +84,7 @@ class ServiceContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $options['friendlyName'], 'Push' => $options['push'], ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 

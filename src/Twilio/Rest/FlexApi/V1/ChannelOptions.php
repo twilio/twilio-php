@@ -81,7 +81,7 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The SID of the TaskRouter task.
+     * The SID of the TaskRouter task. Only valid when integration type is `task`. `null` for integration types `studio` & `external`
      *
      * @param string $taskSid The SID of the TaskRouter task
      * @return $this Fluent Builder

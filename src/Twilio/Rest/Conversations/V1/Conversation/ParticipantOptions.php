@@ -31,12 +31,13 @@ abstract class ParticipantOptions {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param string $roleSid The SID of the Role to assign to the participant
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateParticipantOptions {
-        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes, $messagingBindingProjectedAddress, $xTwilioWebhookEnabled);
+    public static function create(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateParticipantOptions {
+        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes, $messagingBindingProjectedAddress, $roleSid, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -44,12 +45,13 @@ abstract class ParticipantOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $roleSid The SID of the Role to assign to the participant
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
-        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $xTwilioWebhookEnabled);
+    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
+        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $roleSid, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -78,10 +80,11 @@ class CreateParticipantOptions extends Options {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param string $roleSid The SID of the Role to assign to the participant
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(string $identity = Values::NONE, string $messagingBindingAddress = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['messagingBindingAddress'] = $messagingBindingAddress;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
@@ -89,6 +92,7 @@ class CreateParticipantOptions extends Options {
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
+        $this->options['roleSid'] = $roleSid;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -177,6 +181,17 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the participant.
+     *
+     * @param string $roleSid The SID of the Role to assign to the participant
+     * @return $this Fluent Builder
+     */
+    public function setRoleSid(string $roleSid): self {
+        $this->options['roleSid'] = $roleSid;
+        return $this;
+    }
+
+    /**
      * The X-Twilio-Webhook-Enabled HTTP request header
      *
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
@@ -205,13 +220,15 @@ class UpdateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $roleSid The SID of the Role to assign to the participant
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['roleSid'] = $roleSid;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -246,6 +263,17 @@ class UpdateParticipantOptions extends Options {
      */
     public function setAttributes(string $attributes): self {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the participant.
+     *
+     * @param string $roleSid The SID of the Role to assign to the participant
+     * @return $this Fluent Builder
+     */
+    public function setRoleSid(string $roleSid): self {
+        $this->options['roleSid'] = $roleSid;
         return $this;
     }
 

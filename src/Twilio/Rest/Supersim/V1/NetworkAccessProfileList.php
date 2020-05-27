@@ -138,7 +138,7 @@ class NetworkAccessProfileList extends ListResource {
     /**
      * Constructs a NetworkAccessProfileContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID that identifies the resource to fetch
      */
     public function getContext(string $sid): NetworkAccessProfileContext {
         return new NetworkAccessProfileContext($this->version, $sid);

@@ -46,7 +46,7 @@ class ServiceList extends ListResource {
         $options = new Values($options);
 
         $data = Values::of(['FriendlyName' => $friendlyName, 'Push' => $options['push'], ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
@@ -114,7 +114,7 @@ class ServiceList extends ListResource {
         $options = new Values($options);
 
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
-        $headers = Values::of(['Twilio-Authy-Sandbox-Mode' => $options['twilioAuthySandboxMode'], ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
