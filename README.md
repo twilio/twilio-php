@@ -117,6 +117,10 @@ That will output XML that looks like this:
 </Response>
 ```
 
+##@ Handling Exceptions
+
+For an example on how to handle exceptions in this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/php/usage-guide#exceptions).
+
 ## Using a Custom HTTP Client
 
 To use a custom HTTP client with this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/php/custom-http-clients-php).
