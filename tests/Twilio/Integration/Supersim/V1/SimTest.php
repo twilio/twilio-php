@@ -180,13 +180,13 @@ class SimTest extends HolodeckTestCase {
             {
                 "sims": [],
                 "meta": {
-                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Iccid=11111111111111111111&PageSize=50&Page=0",
+                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
                     "key": "sims",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Iccid=11111111111111111111&PageSize=50&Page=0"
+                    "url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0"
                 }
             }
             '
@@ -197,19 +197,19 @@ class SimTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse(): void {
+    public function testReadFullByFleetSidResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
             {
                 "meta": {
-                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=MyFleet&Iccid=11111111111111111111&PageSize=50&Page=0",
+                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
                     "key": "sims",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=MyFleet&Iccid=11111111111111111111&PageSize=50&Page=0"
+                    "url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0"
                 },
                 "sims": [
                     {
@@ -217,7 +217,7 @@ class SimTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "unique_name": "My SIM",
                         "status": "new",
-                        "fleet_sid": null,
+                        "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "iccid": "iccid",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
@@ -230,6 +230,78 @@ class SimTest extends HolodeckTestCase {
 
         $actual = $this->twilio->supersim->v1->sims->read();
 
-        $this->assertGreaterThan(0, \count($actual));
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullByFleetNameResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=MyFleet&PageSize=50&Page=0",
+                    "key": "sims",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://supersim.twilio.com/v1/Sims?Status=new&Fleet=MyFleet&PageSize=50&Page=0"
+                },
+                "sims": [
+                    {
+                        "sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "unique_name": "My SIM",
+                        "status": "new",
+                        "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "iccid": "iccid",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ]
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->sims->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadByIccidResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Iccid=11111111111111111111&PageSize=50&Page=0",
+                    "key": "sims",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://supersim.twilio.com/v1/Sims?Iccid=11111111111111111111&PageSize=50&Page=0"
+                },
+                "sims": [
+                    {
+                        "sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "unique_name": "My SIM",
+                        "status": "new",
+                        "fleet_sid": null,
+                        "iccid": "11111111111111111111",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ]
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->sims->read();
+
+        $this->assertNotNull($actual);
     }
 }

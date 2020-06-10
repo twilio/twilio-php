@@ -13,6 +13,7 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Preview\TrustedComms\BrandedCallList;
+use Twilio\Rest\Preview\TrustedComms\BrandsInformationList;
 use Twilio\Rest\Preview\TrustedComms\BusinessList;
 use Twilio\Rest\Preview\TrustedComms\CpsList;
 use Twilio\Rest\Preview\TrustedComms\CurrentCallList;
@@ -21,6 +22,7 @@ use Twilio\Version;
 
 /**
  * @property BrandedCallList $brandedCalls
+ * @property BrandsInformationList $brandsInformation
  * @property BusinessList $businesses
  * @property CpsList $cps
  * @property CurrentCallList $currentCalls
@@ -29,6 +31,7 @@ use Twilio\Version;
  */
 class TrustedComms extends Version {
     protected $_brandedCalls;
+    protected $_brandsInformation;
     protected $_businesses;
     protected $_cps;
     protected $_currentCalls;
@@ -49,6 +52,13 @@ class TrustedComms extends Version {
             $this->_brandedCalls = new BrandedCallList($this);
         }
         return $this->_brandedCalls;
+    }
+
+    protected function getBrandsInformation(): BrandsInformationList {
+        if (!$this->_brandsInformation) {
+            $this->_brandsInformation = new BrandsInformationList($this);
+        }
+        return $this->_brandsInformation;
     }
 
     protected function getBusinesses(): BusinessList {

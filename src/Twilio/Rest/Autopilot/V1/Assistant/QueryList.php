@@ -100,6 +100,7 @@ class QueryList extends ListResource {
             'Language' => $options['language'],
             'ModelBuild' => $options['modelBuild'],
             'Status' => $options['status'],
+            'DialogueSid' => $options['dialogueSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

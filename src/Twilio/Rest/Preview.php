@@ -42,6 +42,7 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList $ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList $sims
  * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\BrandsInformationList $brandsInformation
  * @property \Twilio\Rest\Preview\TrustedComms\BusinessList $businesses
  * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
@@ -58,6 +59,7 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
+ * @method \Twilio\Rest\Preview\TrustedComms\BrandsInformationContext brandsInformation()
  * @method \Twilio\Rest\Preview\TrustedComms\BusinessContext businesses(string $sid)
  * @method \Twilio\Rest\Preview\TrustedComms\CpsContext cps()
  * @method \Twilio\Rest\Preview\TrustedComms\CurrentCallContext currentCalls()
@@ -331,6 +333,14 @@ class Preview extends Domain {
 
     protected function getBrandedCalls(): \Twilio\Rest\Preview\TrustedComms\BrandedCallList {
         return $this->trustedComms->brandedCalls;
+    }
+
+    protected function getBrandsInformation(): \Twilio\Rest\Preview\TrustedComms\BrandsInformationList {
+        return $this->trustedComms->brandsInformation;
+    }
+
+    protected function contextBrandsInformation(): \Twilio\Rest\Preview\TrustedComms\BrandsInformationContext {
+        return $this->trustedComms->brandsInformation();
     }
 
     protected function getBusinesses(): \Twilio\Rest\Preview\TrustedComms\BusinessList {

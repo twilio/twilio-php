@@ -186,7 +186,8 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      *
-     * @param string $callSid The Call SID of the resource to fetch
+     * @param string $callSid The Call SID or URL encoded label of the participant
+     *                        to fetch
      */
     public function getContext(string $callSid): ParticipantContext {
         return new ParticipantContext(

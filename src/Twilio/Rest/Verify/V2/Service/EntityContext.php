@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Verify\V2\Service\Entity\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
 use Twilio\Values;
 use Twilio\Version;
@@ -21,10 +22,12 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
  * @property FactorList $factors
+ * @property AccessTokenList $accessTokens
  * @method \Twilio\Rest\Verify\V2\Service\Entity\FactorContext factors(string $sid)
  */
 class EntityContext extends InstanceContext {
     protected $_factors;
+    protected $_accessTokens;
 
     /**
      * Initialize the EntityContext
@@ -92,6 +95,21 @@ class EntityContext extends InstanceContext {
         }
 
         return $this->_factors;
+    }
+
+    /**
+     * Access the accessTokens
+     */
+    protected function getAccessTokens(): AccessTokenList {
+        if (!$this->_accessTokens) {
+            $this->_accessTokens = new AccessTokenList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['identity']
+            );
+        }
+
+        return $this->_accessTokens;
     }
 
     /**

@@ -22,10 +22,12 @@ abstract class QueryOptions {
      * @param string $modelBuild The SID or unique name of the Model Build to be
      *                           queried
      * @param string $status The status of the resources to read
+     * @param string $dialogueSid The SID of the
+     *                            [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
      * @return ReadQueryOptions Options builder
      */
-    public static function read(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE): ReadQueryOptions {
-        return new ReadQueryOptions($language, $modelBuild, $status);
+    public static function read(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE, string $dialogueSid = Values::NONE): ReadQueryOptions {
+        return new ReadQueryOptions($language, $modelBuild, $status, $dialogueSid);
     }
 
     /**
@@ -56,11 +58,14 @@ class ReadQueryOptions extends Options {
      * @param string $modelBuild The SID or unique name of the Model Build to be
      *                           queried
      * @param string $status The status of the resources to read
+     * @param string $dialogueSid The SID of the
+     *                            [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
      */
-    public function __construct(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE) {
+    public function __construct(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE, string $dialogueSid = Values::NONE) {
         $this->options['language'] = $language;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['status'] = $status;
+        $this->options['dialogueSid'] = $dialogueSid;
     }
 
     /**
@@ -95,6 +100,18 @@ class ReadQueryOptions extends Options {
      */
     public function setStatus(string $status): self {
         $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
+     *
+     * @param string $dialogueSid The SID of the
+     *                            [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
+     * @return $this Fluent Builder
+     */
+    public function setDialogueSid(string $dialogueSid): self {
+        $this->options['dialogueSid'] = $dialogueSid;
         return $this;
     }
 

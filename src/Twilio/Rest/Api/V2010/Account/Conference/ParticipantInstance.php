@@ -39,7 +39,8 @@ class ParticipantInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $conferenceSid The SID of the conference the participant is in
-     * @param string $callSid The Call SID of the resource to fetch
+     * @param string $callSid The Call SID or URL encoded label of the participant
+     *                        to fetch
      */
     public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, string $callSid = null) {
         parent::__construct($version);

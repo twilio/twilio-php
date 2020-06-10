@@ -20,13 +20,17 @@ class FleetTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->supersim->v1->fleets->create();
+            $this->twilio->supersim->v1->fleets->create("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $values = ['NetworkAccessProfile' => "HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://supersim.twilio.com/v1/Fleets'
+            'https://supersim.twilio.com/v1/Fleets',
+            null,
+            $values
         ));
     }
 
@@ -52,7 +56,7 @@ class FleetTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->fleets->create();
+        $actual = $this->twilio->supersim->v1->fleets->create("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }

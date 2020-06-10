@@ -58,6 +58,8 @@ class ServiceList extends ListResource {
             'LogEnabled' => Serialize::booleanToString($options['logEnabled']),
             'AlexaSkillId' => $options['alexaSkillId'],
             'DefaultAlexaNotificationProtocolVersion' => $options['defaultAlexaNotificationProtocolVersion'],
+            'DeliveryCallbackUrl' => $options['deliveryCallbackUrl'],
+            'DeliveryCallbackEnabled' => Serialize::booleanToString($options['deliveryCallbackEnabled']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

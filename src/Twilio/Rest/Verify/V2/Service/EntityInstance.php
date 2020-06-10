@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Verify\V2\Service\Entity\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
 use Twilio\Values;
 use Twilio\Version;
@@ -31,6 +32,7 @@ use Twilio\Version;
  */
 class EntityInstance extends InstanceResource {
     protected $_factors;
+    protected $_accessTokens;
 
     /**
      * Initialize the EntityInstance
@@ -106,6 +108,13 @@ class EntityInstance extends InstanceResource {
      */
     protected function getFactors(): FactorList {
         return $this->proxy()->factors;
+    }
+
+    /**
+     * Access the accessTokens
+     */
+    protected function getAccessTokens(): AccessTokenList {
+        return $this->proxy()->accessTokens;
     }
 
     /**

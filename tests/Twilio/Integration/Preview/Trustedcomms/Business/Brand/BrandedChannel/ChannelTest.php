@@ -23,14 +23,11 @@ class ChannelTest extends HolodeckTestCase {
             $this->twilio->preview->trustedComms->businesses("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->brands("BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->brandedChannels("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                ->channels->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "phone_number");
+                                                ->channels->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = [
-            'PhoneNumberSid' => "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            'PhoneNumber' => "phone_number",
-        ];
+        $values = ['PhoneNumberSid' => "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -59,7 +56,7 @@ class ChannelTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->trustedComms->businesses("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                       ->brands("BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                       ->brandedChannels("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                      ->channels->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "phone_number");
+                                                      ->channels->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }

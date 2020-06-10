@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Verify\V2\Service\Entity;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -15,33 +15,26 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string $accountSid
- * @property string $callSid
- * @property string $friendlyName
- * @property string $phoneNumber
- * @property string $validationCode
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ *
+ * @property string $token
  */
-class ValidationRequestInstance extends InstanceResource {
+class AccessTokenInstance extends InstanceResource {
     /**
-     * Initialize the ValidationRequestInstance
+     * Initialize the AccessTokenInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $serviceSid Service Sid.
+     * @param string $identity Unique identity of the Entity
      */
-    public function __construct(Version $version, array $payload, string $accountSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $identity) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'callSid' => Values::array_get($payload, 'call_sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'phoneNumber' => Values::array_get($payload, 'phone_number'),
-            'validationCode' => Values::array_get($payload, 'validation_code'),
-        ];
+        $this->properties = ['token' => Values::array_get($payload, 'token'), ];
 
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, ];
     }
 
     /**
@@ -70,6 +63,6 @@ class ValidationRequestInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Api.V2010.ValidationRequestInstance]';
+        return '[Twilio.Verify.V2.AccessTokenInstance]';
     }
 }

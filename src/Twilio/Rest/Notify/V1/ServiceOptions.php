@@ -39,10 +39,12 @@ abstract class ServiceOptions {
      * @param bool $logEnabled Whether to log notifications
      * @param string $alexaSkillId Deprecated
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
+     * @param string $deliveryCallbackUrl Webhook URL
+     * @param bool $deliveryCallbackEnabled Enable delivery callbacks
      * @return CreateServiceOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $apnCredentialSid = Values::NONE, string $gcmCredentialSid = Values::NONE, string $messagingServiceSid = Values::NONE, string $facebookMessengerPageId = Values::NONE, string $defaultApnNotificationProtocolVersion = Values::NONE, string $defaultGcmNotificationProtocolVersion = Values::NONE, string $fcmCredentialSid = Values::NONE, string $defaultFcmNotificationProtocolVersion = Values::NONE, bool $logEnabled = Values::NONE, string $alexaSkillId = Values::NONE, string $defaultAlexaNotificationProtocolVersion = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled, $alexaSkillId, $defaultAlexaNotificationProtocolVersion);
+    public static function create(string $friendlyName = Values::NONE, string $apnCredentialSid = Values::NONE, string $gcmCredentialSid = Values::NONE, string $messagingServiceSid = Values::NONE, string $facebookMessengerPageId = Values::NONE, string $defaultApnNotificationProtocolVersion = Values::NONE, string $defaultGcmNotificationProtocolVersion = Values::NONE, string $fcmCredentialSid = Values::NONE, string $defaultFcmNotificationProtocolVersion = Values::NONE, bool $logEnabled = Values::NONE, string $alexaSkillId = Values::NONE, string $defaultAlexaNotificationProtocolVersion = Values::NONE, string $deliveryCallbackUrl = Values::NONE, bool $deliveryCallbackEnabled = Values::NONE): CreateServiceOptions {
+        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled, $alexaSkillId, $defaultAlexaNotificationProtocolVersion, $deliveryCallbackUrl, $deliveryCallbackEnabled);
     }
 
     /**
@@ -110,8 +112,10 @@ class CreateServiceOptions extends Options {
      * @param bool $logEnabled Whether to log notifications
      * @param string $alexaSkillId Deprecated
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
+     * @param string $deliveryCallbackUrl Webhook URL
+     * @param bool $deliveryCallbackEnabled Enable delivery callbacks
      */
-    public function __construct(string $friendlyName = Values::NONE, string $apnCredentialSid = Values::NONE, string $gcmCredentialSid = Values::NONE, string $messagingServiceSid = Values::NONE, string $facebookMessengerPageId = Values::NONE, string $defaultApnNotificationProtocolVersion = Values::NONE, string $defaultGcmNotificationProtocolVersion = Values::NONE, string $fcmCredentialSid = Values::NONE, string $defaultFcmNotificationProtocolVersion = Values::NONE, bool $logEnabled = Values::NONE, string $alexaSkillId = Values::NONE, string $defaultAlexaNotificationProtocolVersion = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $apnCredentialSid = Values::NONE, string $gcmCredentialSid = Values::NONE, string $messagingServiceSid = Values::NONE, string $facebookMessengerPageId = Values::NONE, string $defaultApnNotificationProtocolVersion = Values::NONE, string $defaultGcmNotificationProtocolVersion = Values::NONE, string $fcmCredentialSid = Values::NONE, string $defaultFcmNotificationProtocolVersion = Values::NONE, bool $logEnabled = Values::NONE, string $alexaSkillId = Values::NONE, string $defaultAlexaNotificationProtocolVersion = Values::NONE, string $deliveryCallbackUrl = Values::NONE, bool $deliveryCallbackEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -124,6 +128,8 @@ class CreateServiceOptions extends Options {
         $this->options['logEnabled'] = $logEnabled;
         $this->options['alexaSkillId'] = $alexaSkillId;
         $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
+        $this->options['deliveryCallbackUrl'] = $deliveryCallbackUrl;
+        $this->options['deliveryCallbackEnabled'] = $deliveryCallbackEnabled;
     }
 
     /**
@@ -265,6 +271,28 @@ class CreateServiceOptions extends Options {
      */
     public function setDefaultAlexaNotificationProtocolVersion(string $defaultAlexaNotificationProtocolVersion): self {
         $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
+        return $this;
+    }
+
+    /**
+     * URL to send delivery status callback.
+     *
+     * @param string $deliveryCallbackUrl Webhook URL
+     * @return $this Fluent Builder
+     */
+    public function setDeliveryCallbackUrl(string $deliveryCallbackUrl): self {
+        $this->options['deliveryCallbackUrl'] = $deliveryCallbackUrl;
+        return $this;
+    }
+
+    /**
+     * Callback configuration that enables delivery callbacks, default false
+     *
+     * @param bool $deliveryCallbackEnabled Enable delivery callbacks
+     * @return $this Fluent Builder
+     */
+    public function setDeliveryCallbackEnabled(bool $deliveryCallbackEnabled): self {
+        $this->options['deliveryCallbackEnabled'] = $deliveryCallbackEnabled;
         return $this;
     }
 

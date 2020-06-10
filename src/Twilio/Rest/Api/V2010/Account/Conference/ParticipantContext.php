@@ -25,7 +25,8 @@ class ParticipantContext extends InstanceContext {
      *                           to fetch
      * @param string $conferenceSid The SID of the conference with the participant
      *                              to fetch
-     * @param string $callSid The Call SID of the resource to fetch
+     * @param string $callSid The Call SID or URL encoded label of the participant
+     *                        to fetch
      */
     public function __construct(Version $version, $accountSid, $conferenceSid, $callSid) {
         parent::__construct($version);

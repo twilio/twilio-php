@@ -43,12 +43,11 @@ class ChannelList extends ListResource {
      * Create the ChannelInstance
      *
      * @param string $phoneNumberSid Phone Number Sid to be branded.
-     * @param string $phoneNumber Twilio number to assign to the Branded Channel
      * @return ChannelInstance Created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $phoneNumberSid, string $phoneNumber): ChannelInstance {
-        $data = Values::of(['PhoneNumberSid' => $phoneNumberSid, 'PhoneNumber' => $phoneNumber, ]);
+    public function create(string $phoneNumberSid): ChannelInstance {
+        $data = Values::of(['PhoneNumberSid' => $phoneNumberSid, ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 

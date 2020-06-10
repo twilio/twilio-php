@@ -38,21 +38,23 @@ class FleetList extends ListResource {
     /**
      * Create the FleetInstance
      *
+     * @param string $networkAccessProfile The SID or unique name of the Network
+     *                                     Access Profile of the Fleet
      * @param array|Options $options Optional Arguments
      * @return FleetInstance Created FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): FleetInstance {
+    public function create(string $networkAccessProfile, array $options = []): FleetInstance {
         $options = new Values($options);
 
         $data = Values::of([
+            'NetworkAccessProfile' => $networkAccessProfile,
             'UniqueName' => $options['uniqueName'],
             'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
             'DataLimit' => $options['dataLimit'],
             'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
             'CommandsUrl' => $options['commandsUrl'],
             'CommandsMethod' => $options['commandsMethod'],
-            'NetworkAccessProfile' => $options['networkAccessProfile'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
