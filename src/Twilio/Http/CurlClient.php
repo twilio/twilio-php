@@ -78,8 +78,8 @@ class CurlClient implements Client {
 
             \curl_close($curl);
 
-            if (isset($buffer) && \is_resource($buffer)) {
-                \fclose($buffer);
+            if (isset($options[CURLOPT_INFILE]) && \is_resource($options[CURLOPT_INFILE])) {
+                \fclose($options[CURLOPT_INFILE]);
             }
 
             if ($this->debugHttp) {
@@ -98,8 +98,8 @@ class CurlClient implements Client {
                 \curl_close($curl);
             }
 
-            if (isset($buffer) && \is_resource($buffer)) {
-                \fclose($buffer);
+            if (isset($options[CURLOPT_INFILE]) && \is_resource($options[CURLOPT_INFILE])) {
+                \fclose($options[CURLOPT_INFILE]);
             }
 
             throw $e;
