@@ -18,6 +18,7 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
+use Twilio\Rest\Verify\V2\Service\WebhookList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -28,10 +29,12 @@ use Twilio\Version;
  * @property RateLimitList $rateLimits
  * @property MessagingConfigurationList $messagingConfigurations
  * @property EntityList $entities
+ * @property WebhookList $webhooks
  * @method \Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext messagingConfigurations(string $country)
  * @method \Twilio\Rest\Verify\V2\Service\EntityContext entities(string $identity)
+ * @method \Twilio\Rest\Verify\V2\Service\WebhookContext webhooks(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_verifications;
@@ -39,6 +42,7 @@ class ServiceContext extends InstanceContext {
     protected $_rateLimits;
     protected $_messagingConfigurations;
     protected $_entities;
+    protected $_webhooks;
 
     /**
      * Initialize the ServiceContext
@@ -160,6 +164,17 @@ class ServiceContext extends InstanceContext {
         }
 
         return $this->_entities;
+    }
+
+    /**
+     * Access the webhooks
+     */
+    protected function getWebhooks(): WebhookList {
+        if (!$this->_webhooks) {
+            $this->_webhooks = new WebhookList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_webhooks;
     }
 
     /**

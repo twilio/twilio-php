@@ -21,7 +21,6 @@ use Twilio\VersionInfo;
  *
  * @property Accounts $accounts
  * @property Api $api
- * @property Authy $authy
  * @property Autopilot $autopilot
  * @property Chat $chat
  * @property Conversations $conversations
@@ -109,7 +108,6 @@ class Client {
     protected $_account;
     protected $_accounts;
     protected $_api;
-    protected $_authy;
     protected $_autopilot;
     protected $_chat;
     protected $_conversations;
@@ -585,18 +583,6 @@ class Client {
 
     protected function getValidationRequests(): \Twilio\Rest\Api\V2010\Account\ValidationRequestList {
         return $this->api->v2010->account->validationRequests;
-    }
-
-    /**
-     * Access the Authy Twilio Domain
-     *
-     * @return Authy Authy Twilio Domain
-     */
-    protected function getAuthy(): Authy {
-        if (!$this->_authy) {
-            $this->_authy = new Authy($this);
-        }
-        return $this->_authy;
     }
 
     /**

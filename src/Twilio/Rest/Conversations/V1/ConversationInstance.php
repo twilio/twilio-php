@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string $state
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property array $timers
  * @property string $url
  * @property array $links
  */
@@ -61,6 +62,7 @@ class ConversationInstance extends InstanceResource {
             'state' => Values::array_get($payload, 'state'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'timers' => Values::array_get($payload, 'timers'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Authy\V1;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class FormPage extends Page {
+class WebhookPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class FormPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return FormInstance \Twilio\Rest\Authy\V1\FormInstance
+     * @return WebhookInstance \Twilio\Rest\Verify\V2\Service\WebhookInstance
      */
-    public function buildInstance(array $payload): FormInstance {
-        return new FormInstance($this->version, $payload);
+    public function buildInstance(array $payload): WebhookInstance {
+        return new WebhookInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -43,6 +43,6 @@ class FormPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Authy.V1.FormPage]';
+        return '[Twilio.Verify.V2.WebhookPage]';
     }
 }

@@ -1,6 +1,41 @@
 twilio-php Changelog
 ====================
 
+[2020-06-24] Version 6.8.0
+--------------------------
+**Library - Fix**
+- [PR #644](https://github.com/twilio/twilio-php/pull/644): Remove undefined variable and close an open file pointer. Thanks to [@Clivern](https://github.com/Clivern)!
+
+**Api**
+- Added optional `JitterBufferSize` parameter for creating conference participant
+- Added optional `label` property for conference participants
+- Added optional parameter `caller_id` for creating conference participant endpoint.
+
+**Autopilot**
+- Remove Export resource from Autopilot Assistant
+
+**Conversations**
+- Expose Conversation timers
+
+**Monitor**
+- Update start/end date filter params to support date-or-time format **(breaking change)**
+
+**Numbers**
+- Add `provisionally-approved` as a Supporting Document status
+
+**Preview**
+- Removed `Authy` resources. **(breaking change)**
+
+**Supersim**
+- Add ready state to the allowed transitions in the sim update call behind the feature flag supersim.ready-state.v1
+
+**Verify**
+- Webhook resources added to Verify services and put behind the `api.verify.push` beta feature
+
+**Twiml**
+- Add more supported locales for the `Gather` verb.
+
+
 [2020-06-10] Version 6.7.0
 --------------------------
 **Library - Docs**

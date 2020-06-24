@@ -93,8 +93,8 @@ class AlertList extends ListResource {
 
         $params = Values::of([
             'LogLevel' => $options['logLevel'],
-            'StartDate' => Serialize::iso8601Date($options['startDate']),
-            'EndDate' => Serialize::iso8601Date($options['endDate']),
+            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
+            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

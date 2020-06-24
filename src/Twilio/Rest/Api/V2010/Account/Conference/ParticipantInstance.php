@@ -19,6 +19,7 @@ use Twilio\Version;
 /**
  * @property string $accountSid
  * @property string $callSid
+ * @property string $label
  * @property string $callSidToCoach
  * @property bool $coaching
  * @property string $conferenceSid
@@ -49,6 +50,7 @@ class ParticipantInstance extends InstanceResource {
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'callSid' => Values::array_get($payload, 'call_sid'),
+            'label' => Values::array_get($payload, 'label'),
             'callSidToCoach' => Values::array_get($payload, 'call_sid_to_coach'),
             'coaching' => Values::array_get($payload, 'coaching'),
             'conferenceSid' => Values::array_get($payload, 'conference_sid'),

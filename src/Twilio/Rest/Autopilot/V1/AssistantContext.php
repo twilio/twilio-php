@@ -15,7 +15,6 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Autopilot\V1\Assistant\DefaultsList;
 use Twilio\Rest\Autopilot\V1\Assistant\DialogueList;
-use Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantList;
 use Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList;
 use Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList;
 use Twilio\Rest\Autopilot\V1\Assistant\QueryList;
@@ -37,7 +36,6 @@ use Twilio\Version;
  * @property DefaultsList $defaults
  * @property DialogueList $dialogues
  * @property WebhookList $webhooks
- * @property ExportAssistantList $exportAssistant
  * @method \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext fieldTypes(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\TaskContext tasks(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildContext modelBuilds(string $sid)
@@ -46,7 +44,6 @@ use Twilio\Version;
  * @method \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext defaults()
  * @method \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext dialogues(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\WebhookContext webhooks(string $sid)
- * @method \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantContext exportAssistant()
  */
 class AssistantContext extends InstanceContext {
     protected $_fieldTypes;
@@ -57,7 +54,6 @@ class AssistantContext extends InstanceContext {
     protected $_defaults;
     protected $_dialogues;
     protected $_webhooks;
-    protected $_exportAssistant;
 
     /**
      * Initialize the AssistantContext
@@ -208,17 +204,6 @@ class AssistantContext extends InstanceContext {
         }
 
         return $this->_webhooks;
-    }
-
-    /**
-     * Access the exportAssistant
-     */
-    protected function getExportAssistant(): ExportAssistantList {
-        if (!$this->_exportAssistant) {
-            $this->_exportAssistant = new ExportAssistantList($this->version, $this->solution['sid']);
-        }
-
-        return $this->_exportAssistant;
     }
 
     /**

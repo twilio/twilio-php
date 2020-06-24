@@ -45,6 +45,7 @@ abstract class ParticipantOptions {
      *                                     `status_callback`
      * @param string[] $statusCallbackEvent Set state change events that will
      *                                      trigger a callback
+     * @param string $label The label of this participant
      * @param int $timeout he number of seconds that we should wait for an answer
      * @param bool $record Whether to record the participant and their conferences
      * @param bool $muted Whether to mute the agent
@@ -100,11 +101,15 @@ abstract class ParticipantOptions {
      * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
+     * @param string $jitterBufferSize Jitter Buffer size for the connecting
+     *                                 participant
      * @param string $byoc BYOC trunk SID (Beta)
+     * @param string $callerId The phone number, Client identifier, or username
+     *                         portion of SIP address that made this call.
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE): CreateParticipantOptions {
-        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach, $byoc);
+    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $label = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $jitterBufferSize = Values::NONE, string $byoc = Values::NONE, string $callerId = Values::NONE): CreateParticipantOptions {
+        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $label, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach, $jitterBufferSize, $byoc, $callerId);
     }
 
     /**
@@ -312,6 +317,7 @@ class CreateParticipantOptions extends Options {
      *                                     `status_callback`
      * @param string[] $statusCallbackEvent Set state change events that will
      *                                      trigger a callback
+     * @param string $label The label of this participant
      * @param int $timeout he number of seconds that we should wait for an answer
      * @param bool $record Whether to record the participant and their conferences
      * @param bool $muted Whether to mute the agent
@@ -367,12 +373,17 @@ class CreateParticipantOptions extends Options {
      * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
+     * @param string $jitterBufferSize Jitter Buffer size for the connecting
+     *                                 participant
      * @param string $byoc BYOC trunk SID (Beta)
+     * @param string $callerId The phone number, Client identifier, or username
+     *                         portion of SIP address that made this call.
      */
-    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $byoc = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $label = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $jitterBufferSize = Values::NONE, string $byoc = Values::NONE, string $callerId = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
+        $this->options['label'] = $label;
         $this->options['timeout'] = $timeout;
         $this->options['record'] = $record;
         $this->options['muted'] = $muted;
@@ -400,7 +411,9 @@ class CreateParticipantOptions extends Options {
         $this->options['conferenceRecordingStatusCallbackEvent'] = $conferenceRecordingStatusCallbackEvent;
         $this->options['coaching'] = $coaching;
         $this->options['callSidToCoach'] = $callSidToCoach;
+        $this->options['jitterBufferSize'] = $jitterBufferSize;
         $this->options['byoc'] = $byoc;
+        $this->options['callerId'] = $callerId;
     }
 
     /**
@@ -436,6 +449,17 @@ class CreateParticipantOptions extends Options {
      */
     public function setStatusCallbackEvent(array $statusCallbackEvent): self {
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
+        return $this;
+    }
+
+    /**
+     * A label for this participant. If one is supplied, it may subsequently be used to fetch, update or delete the participant.
+     *
+     * @param string $label The label of this participant
+     * @return $this Fluent Builder
+     */
+    public function setLabel(string $label): self {
+        $this->options['label'] = $label;
         return $this;
     }
 
@@ -765,6 +789,18 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
+     * Jitter buffer size for the connecting participant. Twilio will use this setting to apply Jitter Buffer before participant's audio is mixed into the conference. Can be: `off`, `small`, `medium`, and `large`. Default to `large`.
+     *
+     * @param string $jitterBufferSize Jitter Buffer size for the connecting
+     *                                 participant
+     * @return $this Fluent Builder
+     */
+    public function setJitterBufferSize(string $jitterBufferSize): self {
+        $this->options['jitterBufferSize'] = $jitterBufferSize;
+        return $this;
+    }
+
+    /**
      * The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
      *
      * @param string $byoc BYOC trunk SID (Beta)
@@ -772,6 +808,18 @@ class CreateParticipantOptions extends Options {
      */
     public function setByoc(string $byoc): self {
         $this->options['byoc'] = $byoc;
+        return $this;
+    }
+
+    /**
+     * The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `callerId` must also be a phone number. If `to` is sip address, this value of `callerId` should be a username portion to be used to populate the From header that is passed to the SIP endpoint.
+     *
+     * @param string $callerId The phone number, Client identifier, or username
+     *                         portion of SIP address that made this call.
+     * @return $this Fluent Builder
+     */
+    public function setCallerId(string $callerId): self {
+        $this->options['callerId'] = $callerId;
         return $this;
     }
 

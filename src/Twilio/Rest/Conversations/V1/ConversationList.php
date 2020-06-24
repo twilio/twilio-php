@@ -52,6 +52,8 @@ class ConversationList extends ListResource {
             'MessagingServiceSid' => $options['messagingServiceSid'],
             'Attributes' => $options['attributes'],
             'State' => $options['state'],
+            'Timers.Inactive' => $options['timersInactive'],
+            'Timers.Closed' => $options['timersClosed'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

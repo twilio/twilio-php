@@ -18,6 +18,7 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
+use Twilio\Rest\Verify\V2\Service\WebhookList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -44,6 +45,7 @@ class ServiceInstance extends InstanceResource {
     protected $_rateLimits;
     protected $_messagingConfigurations;
     protected $_entities;
+    protected $_webhooks;
 
     /**
      * Initialize the ServiceInstance
@@ -155,6 +157,13 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getEntities(): EntityList {
         return $this->proxy()->entities;
+    }
+
+    /**
+     * Access the webhooks
+     */
+    protected function getWebhooks(): WebhookList {
+        return $this->proxy()->webhooks;
     }
 
     /**

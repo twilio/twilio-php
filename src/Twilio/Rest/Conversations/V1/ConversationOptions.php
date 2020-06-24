@@ -25,12 +25,16 @@ abstract class ConversationOptions {
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @param string $state Current state of this conversation.
+     * @param string $timersInactive ISO8601 duration when conversation will be
+     *                               switched to `inactive` state.
+     * @param string $timersClosed ISO8601 duration when conversation will be
+     *                             switched to `closed` state.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateConversationOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateConversationOptions {
-        return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid, $attributes, $state, $xTwilioWebhookEnabled);
+    public static function create(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateConversationOptions {
+        return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid, $attributes, $state, $timersInactive, $timersClosed, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -42,12 +46,16 @@ abstract class ConversationOptions {
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
      * @param string $state Current state of this conversation.
+     * @param string $timersInactive ISO8601 duration when conversation will be
+     *                               switched to `inactive` state.
+     * @param string $timersClosed ISO8601 duration when conversation will be
+     *                             switched to `closed` state.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateConversationOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateConversationOptions {
-        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid, $state, $xTwilioWebhookEnabled);
+    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateConversationOptions {
+        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid, $state, $timersInactive, $timersClosed, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -70,16 +78,22 @@ class CreateConversationOptions extends Options {
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @param string $state Current state of this conversation.
+     * @param string $timersInactive ISO8601 duration when conversation will be
+     *                               switched to `inactive` state.
+     * @param string $timersClosed ISO8601 duration when conversation will be
+     *                             switched to `closed` state.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $messagingServiceSid = Values::NONE, string $attributes = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['attributes'] = $attributes;
         $this->options['state'] = $state;
+        $this->options['timersInactive'] = $timersInactive;
+        $this->options['timersClosed'] = $timersClosed;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -148,6 +162,30 @@ class CreateConversationOptions extends Options {
      */
     public function setState(string $state): self {
         $this->options['state'] = $state;
+        return $this;
+    }
+
+    /**
+     * ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
+     *
+     * @param string $timersInactive ISO8601 duration when conversation will be
+     *                               switched to `inactive` state.
+     * @return $this Fluent Builder
+     */
+    public function setTimersInactive(string $timersInactive): self {
+        $this->options['timersInactive'] = $timersInactive;
+        return $this;
+    }
+
+    /**
+     * ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
+     *
+     * @param string $timersClosed ISO8601 duration when conversation will be
+     *                             switched to `closed` state.
+     * @return $this Fluent Builder
+     */
+    public function setTimersClosed(string $timersClosed): self {
+        $this->options['timersClosed'] = $timersClosed;
         return $this;
     }
 
@@ -184,16 +222,22 @@ class UpdateConversationOptions extends Options {
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
      * @param string $state Current state of this conversation.
+     * @param string $timersInactive ISO8601 duration when conversation will be
+     *                               switched to `inactive` state.
+     * @param string $timersClosed ISO8601 duration when conversation will be
+     *                             switched to `closed` state.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['state'] = $state;
+        $this->options['timersInactive'] = $timersInactive;
+        $this->options['timersClosed'] = $timersClosed;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -262,6 +306,30 @@ class UpdateConversationOptions extends Options {
      */
     public function setState(string $state): self {
         $this->options['state'] = $state;
+        return $this;
+    }
+
+    /**
+     * ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
+     *
+     * @param string $timersInactive ISO8601 duration when conversation will be
+     *                               switched to `inactive` state.
+     * @return $this Fluent Builder
+     */
+    public function setTimersInactive(string $timersInactive): self {
+        $this->options['timersInactive'] = $timersInactive;
+        return $this;
+    }
+
+    /**
+     * ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
+     *
+     * @param string $timersClosed ISO8601 duration when conversation will be
+     *                             switched to `closed` state.
+     * @return $this Fluent Builder
+     */
+    public function setTimersClosed(string $timersClosed): self {
+        $this->options['timersClosed'] = $timersClosed;
         return $this;
     }
 

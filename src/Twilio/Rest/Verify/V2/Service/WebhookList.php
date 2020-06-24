@@ -7,11 +7,12 @@
  * /       /
  */
 
-namespace Twilio\Rest\Authy\V1\Service\Entity;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -19,67 +20,57 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class FactorList extends ListResource {
+class WebhookList extends ListResource {
     /**
-     * Construct the FactorList
+     * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
      */
-    public function __construct(Version $version, string $serviceSid, string $identity) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, ];
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Webhooks';
     }
 
     /**
-     * Create the FactorInstance
+     * Create the WebhookInstance
      *
-     * @param string $binding A unique binding for this Factor as a json string
-     * @param string $friendlyName The friendly name of this Factor
-     * @param string $factorType The Type of this Factor
-     * @param string $config The config for this Factor as a json string
+     * @param string $friendlyName The string that you assigned to describe the
+     *                             webhook
+     * @param string[] $eventTypes The array of events that this Webhook is
+     *                             subscribed to.
+     * @param string $webhookUrl The URL associated with this Webhook.
      * @param array|Options $options Optional Arguments
-     * @return FactorInstance Created FactorInstance
+     * @return WebhookInstance Created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $binding, string $friendlyName, string $factorType, string $config, array $options = []): FactorInstance {
+    public function create(string $friendlyName, array $eventTypes, string $webhookUrl, array $options = []): WebhookInstance {
         $options = new Values($options);
 
         $data = Values::of([
-            'Binding' => $binding,
             'FriendlyName' => $friendlyName,
-            'FactorType' => $factorType,
-            'Config' => $config,
-        ]);
-        $headers = Values::of([
-            'Twilio-Sandbox-Mode' => $options['twilioSandboxMode'],
-            'Authorization' => $options['authorization'],
+            'EventTypes' => Serialize::map($eventTypes, function($e) { return $e; }),
+            'WebhookUrl' => $webhookUrl,
+            'Status' => $options['status'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new FactorInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['identity']
-        );
+        return new WebhookInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
-     * Streams FactorInstance records from the API as a generator stream.
+     * Streams WebhookInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -90,20 +81,19 @@ class FactorList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads FactorInstance records from the API as a list.
+     * Reads WebhookInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -112,61 +102,52 @@ class FactorList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return FactorInstance[] Array of results
+     * @return WebhookInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
-        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read(int $limit = null, $pageSize = null): array {
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of FactorInstance records from the API.
+     * Retrieve a single page of WebhookInstance records from the API.
      * Request is executed immediately
      *
-     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return FactorPage Page of FactorInstance
+     * @return WebhookPage Page of WebhookInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FactorPage {
-        $options = new Values($options);
-
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WebhookPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
-        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
+        $response = $this->version->page('GET', $this->uri, $params);
 
-        return new FactorPage($this->version, $response, $this->solution);
+        return new WebhookPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of FactorInstance records from the API.
+     * Retrieve a specific page of WebhookInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return FactorPage Page of FactorInstance
+     * @return WebhookPage Page of WebhookInstance
      */
-    public function getPage(string $targetUrl): FactorPage {
+    public function getPage(string $targetUrl): WebhookPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new FactorPage($this->version, $response, $this->solution);
+        return new WebhookPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a FactorContext
+     * Constructs a WebhookContext
      *
-     * @param string $sid A string that uniquely identifies this Factor.
+     * @param string $sid The unique string that identifies the resource to fetch
      */
-    public function getContext(string $sid): FactorContext {
-        return new FactorContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $this->solution['identity'],
-            $sid
-        );
+    public function getContext(string $sid): WebhookContext {
+        return new WebhookContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**
@@ -175,6 +156,6 @@ class FactorList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Authy.V1.FactorList]';
+        return '[Twilio.Verify.V2.WebhookList]';
     }
 }
