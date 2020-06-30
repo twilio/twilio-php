@@ -15,7 +15,7 @@
         "php": ">=7.1.0"
     },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.3 || ^7.0",
         "phpunit/phpunit": ">=4.5",
         "theseer/phpdox": "^0.12.0"
     },
