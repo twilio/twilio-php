@@ -13,7 +13,6 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
-use Twilio\Rest\Verify\V2\Service\Entity\Factor\ChallengeList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -32,18 +31,15 @@ use Twilio\Version;
  * @property string $factorType
  * @property array $config
  * @property string $url
- * @property array $links
  */
 class FactorInstance extends InstanceResource {
-    protected $_challenges;
-
     /**
      * Initialize the FactorInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
+     * @param string $identity Unique external identifier of the Entity
      * @param string $sid A string that uniquely identifies this Factor.
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $identity, string $sid = null) {
@@ -63,7 +59,6 @@ class FactorInstance extends InstanceResource {
             'factorType' => Values::array_get($payload, 'factor_type'),
             'config' => Values::array_get($payload, 'config'),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = [
@@ -123,13 +118,6 @@ class FactorInstance extends InstanceResource {
      */
     public function update(array $options = []): FactorInstance {
         return $this->proxy()->update($options);
-    }
-
-    /**
-     * Access the challenges
-     */
-    protected function getChallenges(): ChallengeList {
-        return $this->proxy()->challenges;
     }
 
     /**

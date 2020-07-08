@@ -11,15 +11,22 @@ namespace Twilio\Rest\Conversations\V1\Conversation;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Conversations\V1\Conversation\Message\DeliveryReceiptList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ *
+ * @property DeliveryReceiptList $deliveryReceipts
+ * @method \Twilio\Rest\Conversations\V1\Conversation\Message\DeliveryReceiptContext deliveryReceipts(string $sid)
  */
 class MessageContext extends InstanceContext {
+    protected $_deliveryReceipts;
+
     /**
      * Initialize the MessageContext
      *
@@ -97,6 +104,54 @@ class MessageContext extends InstanceContext {
             $this->solution['conversationSid'],
             $this->solution['sid']
         );
+    }
+
+    /**
+     * Access the deliveryReceipts
+     */
+    protected function getDeliveryReceipts(): DeliveryReceiptList {
+        if (!$this->_deliveryReceipts) {
+            $this->_deliveryReceipts = new DeliveryReceiptList(
+                $this->version,
+                $this->solution['conversationSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_deliveryReceipts;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     *
+     * @param string $name Subresource to return
+     * @return ListResource The requested subresource
+     * @throws TwilioException For unknown subresources
+     */
+    public function __get(string $name): ListResource {
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
+            return $this->$method();
+        }
+
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     *
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call(string $name, array $arguments): InstanceContext {
+        $property = $this->$name;
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

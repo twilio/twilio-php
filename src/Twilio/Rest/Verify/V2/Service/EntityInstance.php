@@ -13,7 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
-use Twilio\Rest\Verify\V2\Service\Entity\AccessTokenList;
+use Twilio\Rest\Verify\V2\Service\Entity\ChallengeList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
 use Twilio\Values;
 use Twilio\Version;
@@ -32,7 +32,7 @@ use Twilio\Version;
  */
 class EntityInstance extends InstanceResource {
     protected $_factors;
-    protected $_accessTokens;
+    protected $_challenges;
 
     /**
      * Initialize the EntityInstance
@@ -40,7 +40,7 @@ class EntityInstance extends InstanceResource {
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
+     * @param string $identity Unique external identifier of the Entity
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $identity = null) {
         parent::__construct($version);
@@ -111,10 +111,10 @@ class EntityInstance extends InstanceResource {
     }
 
     /**
-     * Access the accessTokens
+     * Access the challenges
      */
-    protected function getAccessTokens(): AccessTokenList {
-        return $this->proxy()->accessTokens;
+    protected function getChallenges(): ChallengeList {
+        return $this->proxy()->challenges;
     }
 
     /**

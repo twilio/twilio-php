@@ -7,62 +7,36 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2;
+namespace Twilio\Rest\Conversations\V1\Conversation\Message;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
-use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class ServiceList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
+class DeliveryReceiptList extends ListResource {
     /**
-     * Construct the ServiceList
+     * Construct the DeliveryReceiptList
      *
      * @param Version $version Version that contains the resource
+     * @param string $conversationSid The conversation_sid
+     * @param string $messageSid The sid of the message the delivery receipt
+     *                           belongs to
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $conversationSid, string $messageSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['conversationSid' => $conversationSid, 'messageSid' => $messageSid, ];
 
-        $this->uri = '/Services';
+        $this->uri = '/Conversations/' . \rawurlencode($conversationSid) . '/Messages/' . \rawurlencode($messageSid) . '/Receipts';
     }
 
     /**
-     * Create the ServiceInstance
-     *
-     * @param string $friendlyName A string to describe the verification service
-     * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Created ServiceInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(string $friendlyName, array $options = []): ServiceInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'CodeLength' => $options['codeLength'],
-            'LookupEnabled' => Serialize::booleanToString($options['lookupEnabled']),
-            'SkipSmsToLandlines' => Serialize::booleanToString($options['skipSmsToLandlines']),
-            'DtmfInputRequired' => Serialize::booleanToString($options['dtmfInputRequired']),
-            'TtsName' => $options['ttsName'],
-            'Psd2Enabled' => Serialize::booleanToString($options['psd2Enabled']),
-            'DoNotShareWarningEnabled' => Serialize::booleanToString($options['doNotShareWarningEnabled']),
-            'CustomCodeEnabled' => Serialize::booleanToString($options['customCodeEnabled']),
-            'Push' => Serialize::jsonObject($options['push']),
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new ServiceInstance($this->version, $payload);
-    }
-
-    /**
-     * Streams ServiceInstance records from the API as a generator stream.
+     * Streams DeliveryReceiptInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -88,7 +62,7 @@ class ServiceList extends ListResource {
     }
 
     /**
-     * Reads ServiceInstance records from the API as a list.
+     * Reads DeliveryReceiptInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -100,52 +74,58 @@ class ServiceList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ServiceInstance[] Array of results
+     * @return DeliveryReceiptInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ServiceInstance records from the API.
+     * Retrieve a single page of DeliveryReceiptInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return ServicePage Page of ServiceInstance
+     * @return DeliveryReceiptPage Page of DeliveryReceiptInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ServicePage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DeliveryReceiptPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new ServicePage($this->version, $response, $this->solution);
+        return new DeliveryReceiptPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of ServiceInstance records from the API.
+     * Retrieve a specific page of DeliveryReceiptInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return ServicePage Page of ServiceInstance
+     * @return DeliveryReceiptPage Page of DeliveryReceiptInstance
      */
-    public function getPage(string $targetUrl): ServicePage {
+    public function getPage(string $targetUrl): DeliveryReceiptPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new ServicePage($this->version, $response, $this->solution);
+        return new DeliveryReceiptPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a ServiceContext
+     * Constructs a DeliveryReceiptContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      */
-    public function getContext(string $sid): ServiceContext {
-        return new ServiceContext($this->version, $sid);
+    public function getContext(string $sid): DeliveryReceiptContext {
+        return new DeliveryReceiptContext(
+            $this->version,
+            $this->solution['conversationSid'],
+            $this->solution['messageSid'],
+            $sid
+        );
     }
 
     /**
@@ -154,6 +134,6 @@ class ServiceList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Verify.V2.ServiceList]';
+        return '[Twilio.Conversations.V1.DeliveryReceiptList]';
     }
 }

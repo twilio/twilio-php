@@ -171,6 +171,34 @@ class ParticipantTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testUpdateGmmsResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "conversation_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "id",
+                "attributes": "{ \\"role\\": \\"driver\\" }",
+                "messaging_binding": {
+                    "type": "sms",
+                    "projected_address": "+15017122661"
+                },
+                "role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-12-16T22:18:37Z",
+                "date_updated": "2015-12-16T22:18:38Z",
+                "url": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->conversations->v1->conversations("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                  ->participants("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

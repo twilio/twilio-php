@@ -46,12 +46,18 @@ abstract class ParticipantOptions {
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $messagingBindingProxyAddress The address of the Twilio phone
+     *                                             number that the participant is
+     *                                             in contact with.
+     * @param string $messagingBindingProjectedAddress The address of the Twilio
+     *                                                 phone number that is used in
+     *                                                 Group MMS.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
-        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $roleSid, $xTwilioWebhookEnabled);
+    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
+        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $roleSid, $messagingBindingProxyAddress, $messagingBindingProjectedAddress, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -221,14 +227,22 @@ class UpdateParticipantOptions extends Options {
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $messagingBindingProxyAddress The address of the Twilio phone
+     *                                             number that the participant is
+     *                                             in contact with.
+     * @param string $messagingBindingProjectedAddress The address of the Twilio
+     *                                                 phone number that is used in
+     *                                                 Group MMS.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['roleSid'] = $roleSid;
+        $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
+        $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -274,6 +288,32 @@ class UpdateParticipantOptions extends Options {
      */
     public function setRoleSid(string $roleSid): self {
         $this->options['roleSid'] = $roleSid;
+        return $this;
+    }
+
+    /**
+     * The address of the Twilio phone number that the participant is in contact with. 'null' value will remove it.
+     *
+     * @param string $messagingBindingProxyAddress The address of the Twilio phone
+     *                                             number that the participant is
+     *                                             in contact with.
+     * @return $this Fluent Builder
+     */
+    public function setMessagingBindingProxyAddress(string $messagingBindingProxyAddress): self {
+        $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
+        return $this;
+    }
+
+    /**
+     * The address of the Twilio phone number that is used in Group MMS. 'null' value will remove it.
+     *
+     * @param string $messagingBindingProjectedAddress The address of the Twilio
+     *                                                 phone number that is used in
+     *                                                 Group MMS.
+     * @return $this Fluent Builder
+     */
+    public function setMessagingBindingProjectedAddress(string $messagingBindingProjectedAddress): self {
+        $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
         return $this;
     }
 

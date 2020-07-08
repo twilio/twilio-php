@@ -29,10 +29,11 @@ abstract class ServiceOptions {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
+     * @param array $push Optional service level push factors configuration
      * @return CreateServiceOptions Options builder
      */
-    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled);
+    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE): CreateServiceOptions {
+        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $push);
     }
 
     /**
@@ -52,10 +53,11 @@ abstract class ServiceOptions {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
+     * @param array $push Optional service level push factors configuration
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled);
+    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE): UpdateServiceOptions {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $push);
     }
 }
 
@@ -76,8 +78,9 @@ class CreateServiceOptions extends Options {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
+     * @param array $push Optional service level push factors configuration
      */
-    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE) {
+    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
@@ -86,6 +89,7 @@ class CreateServiceOptions extends Options {
         $this->options['psd2Enabled'] = $psd2Enabled;
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
         $this->options['customCodeEnabled'] = $customCodeEnabled;
+        $this->options['push'] = $push;
     }
 
     /**
@@ -184,6 +188,17 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}
+     *
+     * @param array $push Optional service level push factors configuration
+     * @return $this Fluent Builder
+     */
+    public function setPush(array $push): self {
+        $this->options['push'] = $push;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -212,8 +227,9 @@ class UpdateServiceOptions extends Options {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
+     * @param array $push Optional service level push factors configuration
      */
-    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
@@ -223,6 +239,7 @@ class UpdateServiceOptions extends Options {
         $this->options['psd2Enabled'] = $psd2Enabled;
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
         $this->options['customCodeEnabled'] = $customCodeEnabled;
+        $this->options['push'] = $push;
     }
 
     /**
@@ -328,6 +345,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setCustomCodeEnabled(bool $customCodeEnabled): self {
         $this->options['customCodeEnabled'] = $customCodeEnabled;
+        return $this;
+    }
+
+    /**
+     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}
+     *
+     * @param array $push Optional service level push factors configuration
+     * @return $this Fluent Builder
+     */
+    public function setPush(array $push): self {
+        $this->options['push'] = $push;
         return $this;
     }
 

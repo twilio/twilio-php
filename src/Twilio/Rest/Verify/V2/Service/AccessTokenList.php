@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service\Entity;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
@@ -22,36 +22,31 @@ class AccessTokenList extends ListResource {
      * Construct the AccessTokenList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
+     * @param string $serviceSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, string $serviceSid, string $identity) {
+    public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, ];
+        $this->solution = ['serviceSid' => $serviceSid, ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/AccessTokens';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/AccessTokens';
     }
 
     /**
      * Create the AccessTokenInstance
      *
+     * @param string $identity Unique external identifier of the Entity
      * @param string $factorType The Type of this Factor
      * @return AccessTokenInstance Created AccessTokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $factorType): AccessTokenInstance {
-        $data = Values::of(['FactorType' => $factorType, ]);
+    public function create(string $identity, string $factorType): AccessTokenInstance {
+        $data = Values::of(['Identity' => $identity, 'FactorType' => $factorType, ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new AccessTokenInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['identity']
-        );
+        return new AccessTokenInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

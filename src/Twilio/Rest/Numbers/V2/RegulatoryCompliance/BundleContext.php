@@ -78,6 +78,16 @@ class BundleContext extends InstanceContext {
     }
 
     /**
+     * Delete the BundleInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool {
+        return $this->version->delete('DELETE', $this->uri);
+    }
+
+    /**
      * Access the evaluations
      */
     protected function getEvaluations(): EvaluationList {

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service\Entity\Factor;
+namespace Twilio\Rest\Verify\V2\Service\Entity;
 
 use Twilio\Options;
 use Twilio\Values;
@@ -31,14 +31,6 @@ abstract class ChallengeOptions {
 
     /**
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
-     * @return DeleteChallengeOptions Options builder
-     */
-    public static function delete(string $twilioSandboxMode = Values::NONE): DeleteChallengeOptions {
-        return new DeleteChallengeOptions($twilioSandboxMode);
-    }
-
-    /**
-     * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      * @return FetchChallengeOptions Options builder
      */
     public static function fetch(string $twilioSandboxMode = Values::NONE): FetchChallengeOptions {
@@ -46,12 +38,13 @@ abstract class ChallengeOptions {
     }
 
     /**
+     * @param string $factorSid Factor Sid.
      * @param string $status The Status of theChallenges to fetch
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      * @return ReadChallengeOptions Options builder
      */
-    public static function read(string $status = Values::NONE, string $twilioSandboxMode = Values::NONE): ReadChallengeOptions {
-        return new ReadChallengeOptions($status, $twilioSandboxMode);
+    public static function read(string $factorSid = Values::NONE, string $status = Values::NONE, string $twilioSandboxMode = Values::NONE): ReadChallengeOptions {
+        return new ReadChallengeOptions($factorSid, $status, $twilioSandboxMode);
     }
 
     /**
@@ -137,36 +130,6 @@ class CreateChallengeOptions extends Options {
     }
 }
 
-class DeleteChallengeOptions extends Options {
-    /**
-     * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
-     */
-    public function __construct(string $twilioSandboxMode = Values::NONE) {
-        $this->options['twilioSandboxMode'] = $twilioSandboxMode;
-    }
-
-    /**
-     * The Twilio-Sandbox-Mode HTTP request header
-     *
-     * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
-     * @return $this Fluent Builder
-     */
-    public function setTwilioSandboxMode(string $twilioSandboxMode): self {
-        $this->options['twilioSandboxMode'] = $twilioSandboxMode;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     *
-     * @return string Machine friendly representation
-     */
-    public function __toString(): string {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Verify.V2.DeleteChallengeOptions ' . $options . ']';
-    }
-}
-
 class FetchChallengeOptions extends Options {
     /**
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
@@ -199,12 +162,25 @@ class FetchChallengeOptions extends Options {
 
 class ReadChallengeOptions extends Options {
     /**
+     * @param string $factorSid Factor Sid.
      * @param string $status The Status of theChallenges to fetch
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      */
-    public function __construct(string $status = Values::NONE, string $twilioSandboxMode = Values::NONE) {
+    public function __construct(string $factorSid = Values::NONE, string $status = Values::NONE, string $twilioSandboxMode = Values::NONE) {
+        $this->options['factorSid'] = $factorSid;
         $this->options['status'] = $status;
         $this->options['twilioSandboxMode'] = $twilioSandboxMode;
+    }
+
+    /**
+     * The unique SID identifier of the Factor.
+     *
+     * @param string $factorSid Factor Sid.
+     * @return $this Fluent Builder
+     */
+    public function setFactorSid(string $factorSid): self {
+        $this->options['factorSid'] = $factorSid;
+        return $this;
     }
 
     /**

@@ -88,7 +88,7 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes.
+     * The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes. Task Attributes for Events occuring more 43,200 minutes ago will be redacted.
      *
      * @param int $minutes The period of events to read in minutes
      * @return $this Fluent Builder
@@ -111,7 +111,7 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+     * Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Task Attributes for Events older than 30 days will be redacted.
      *
      * @param \DateTime $startDate Only include Events from on or after this date
      * @return $this Fluent Builder

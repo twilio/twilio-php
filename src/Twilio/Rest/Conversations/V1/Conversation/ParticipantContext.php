@@ -53,6 +53,8 @@ class ParticipantContext extends InstanceContext {
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' => $options['attributes'],
             'RoleSid' => $options['roleSid'],
+            'MessagingBinding.ProxyAddress' => $options['messagingBindingProxyAddress'],
+            'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

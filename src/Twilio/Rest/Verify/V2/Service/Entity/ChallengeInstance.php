@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service\Entity\Factor;
+namespace Twilio\Rest\Verify\V2\Service\Entity;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -43,12 +43,10 @@ class ChallengeInstance extends InstanceResource {
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
-     * @param string $factorSid Factor Sid.
-     * @param string $sid A string that uniquely identifies this Challenge, or
-     *                    `latest`.
+     * @param string $identity Unique external identifier of the Entity
+     * @param string $sid A string that uniquely identifies this Challenge.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $identity, string $factorSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $identity, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,7 +72,6 @@ class ChallengeInstance extends InstanceResource {
         $this->solution = [
             'serviceSid' => $serviceSid,
             'identity' => $identity,
-            'factorSid' => $factorSid,
             'sid' => $sid ?: $this->properties['sid'],
         ];
     }
@@ -91,23 +88,11 @@ class ChallengeInstance extends InstanceResource {
                 $this->version,
                 $this->solution['serviceSid'],
                 $this->solution['identity'],
-                $this->solution['factorSid'],
                 $this->solution['sid']
             );
         }
 
         return $this->context;
-    }
-
-    /**
-     * Delete the ChallengeInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return bool True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete(array $options = []): bool {
-        return $this->proxy()->delete($options);
     }
 
     /**

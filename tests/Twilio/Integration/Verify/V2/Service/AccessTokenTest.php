@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Verify\V2\Service\Entity;
+namespace Twilio\Tests\Integration\Verify\V2\Service;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -21,16 +21,15 @@ class AccessTokenTest extends HolodeckTestCase {
 
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->entities("identity")
-                                     ->accessTokens->create("push");
+                                     ->accessTokens->create("identity", "push");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['FactorType' => "push", ];
+        $values = ['Identity' => "identity", 'FactorType' => "push", ];
 
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/AccessTokens',
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AccessTokens',
             null,
             $values
         ));
@@ -47,8 +46,7 @@ class AccessTokenTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->entities("identity")
-                                           ->accessTokens->create("push");
+                                           ->accessTokens->create("identity", "push");
 
         $this->assertNotNull($actual);
     }

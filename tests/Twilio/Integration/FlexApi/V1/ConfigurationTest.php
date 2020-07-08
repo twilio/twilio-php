@@ -141,22 +141,6 @@ class ConfigurationTest extends HolodeckTestCase {
                         "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}"
                     }
                 ],
-                "wfm_integrations": [
-                    {
-                        "name": "teleopti",
-                        "type": "flex_wfm",
-                        "active": true,
-                        "config": "{\\"rta_callback_url\\":\\"https://twilio.com\\",\\"rta_feed_enabled\\": true, \\"historical_feed_enabled\\": true}",
-                        "logo": "logo1",
-                        "author": "somebody1"
-                    },
-                    {
-                        "name": "teleopti-stage",
-                        "type": "flex_wfm",
-                        "active": false,
-                        "config": "{\\"rta_callback_url\\":\\"https://twilio.com\\",\\"rta_feed_enabled\\": true, \\"historical_feed_enabled\\": true}"
-                    }
-                ],
                 "outbound_call_flows": {
                     "default": {
                         "caller_id": "+12345",
@@ -338,22 +322,6 @@ class ConfigurationTest extends HolodeckTestCase {
                         "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}"
                     }
                 ],
-                "wfm_integrations": [
-                    {
-                        "name": "teleopti",
-                        "type": "flex_wfm",
-                        "active": true,
-                        "config": "{\\"rta_callback_url\\":\\"https://twilio.com\\",\\"rta_feed_enabled\\": true, \\"historical_feed_enabled\\": true}",
-                        "logo": "logo1",
-                        "author": "somebody1"
-                    },
-                    {
-                        "name": "teleopti-stage",
-                        "type": "flex_wfm",
-                        "active": false,
-                        "config": "{\\"rta_callback_url\\":\\"https://twilio.com\\",\\"rta_feed_enabled\\": true, \\"historical_feed_enabled\\": true}"
-                    }
-                ],
                 "outbound_call_flows": {
                     "default": {
                         "caller_id": "+12345",
@@ -533,22 +501,6 @@ class ConfigurationTest extends HolodeckTestCase {
                         "type": "http",
                         "active": false,
                         "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}"
-                    }
-                ],
-                "wfm_integrations": [
-                    {
-                        "name": "teleopti",
-                        "type": "flex_wfm",
-                        "active": true,
-                        "config": "{\\"rta_callback_url\\":\\"https://twilio.com\\",\\"rta_feed_enabled\\": true, \\"historical_feed_enabled\\": true}",
-                        "logo": "logo1",
-                        "author": "somebody1"
-                    },
-                    {
-                        "name": "teleopti-stage",
-                        "type": "flex_wfm",
-                        "active": false,
-                        "config": "{\\"rta_callback_url\\":\\"https://twilio.com\\",\\"rta_feed_enabled\\": true, \\"historical_feed_enabled\\": true}"
                     }
                 ],
                 "outbound_call_flows": {

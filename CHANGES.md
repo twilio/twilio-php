@@ -1,6 +1,35 @@
 twilio-php Changelog
 ====================
 
+[2020-07-08] Version 6.9.0
+--------------------------
+**Library - Chore**
+- [PR #645](https://github.com/twilio/twilio-php/pull/645): Add Guzzle 7. Thanks to [@gmponos](https://github.com/gmponos)!
+
+**Conversations**
+- Allow Address updates for Participants
+- Message delivery receipts
+
+**Events**
+- Add account_sid to subscription and subscribed_events resources
+
+**Flex**
+- Changed `wfm_integrations` Flex Configuration key to private **(breaking change)**
+
+**Messaging**
+- Add error states to WhatsApp Sender status with failed reason **(breaking change)**
+- Delete WhatsApp Template API
+- Update WhatsApp Template API
+- Add WhatsApp Template Get Api (fetch and read)
+
+**Numbers**
+- Add `valid_until` in the Bundles resource
+- Add API for Bundle deletion
+
+**Verify**
+- Removed support for `sms`, `totp` and `app-push` factor types in Verify push **(breaking change)**
+
+
 [2020-06-24] Version 6.8.0
 --------------------------
 **Library - Fix**

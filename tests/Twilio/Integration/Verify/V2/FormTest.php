@@ -20,13 +20,13 @@ class FormTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->verify->v2->forms("form-app-push")->fetch();
+            $this->twilio->verify->v2->forms("form-push")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Forms/form-app-push'
+            'https://verify.twilio.com/v2/Forms/form-push'
         ));
     }
 
@@ -35,19 +35,19 @@ class FormTest extends HolodeckTestCase {
             200,
             '
             {
-                "form_type": "form-sms",
+                "form_type": "form-push",
                 "forms": {
                     "create_factor": {},
                     "verify_factor": {},
                     "create_challenge": {}
                 },
                 "form_meta": {},
-                "url": "https://verify.twilio.com/v2/Forms/form-sms"
+                "url": "https://verify.twilio.com/v2/Forms/form-push"
             }
             '
         ));
 
-        $actual = $this->twilio->verify->v2->forms("form-app-push")->fetch();
+        $actual = $this->twilio->verify->v2->forms("form-push")->fetch();
 
         $this->assertNotNull($actual);
     }

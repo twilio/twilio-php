@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service\Entity\Factor;
+namespace Twilio\Rest\Verify\V2\Service\Entity;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
@@ -24,38 +24,16 @@ class ChallengeContext extends InstanceContext {
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
-     * @param string $factorSid Factor Sid.
-     * @param string $sid A string that uniquely identifies this Challenge, or
-     *                    `latest`.
+     * @param string $identity Unique external identifier of the Entity
+     * @param string $sid A string that uniquely identifies this Challenge.
      */
-    public function __construct(Version $version, $serviceSid, $identity, $factorSid, $sid) {
+    public function __construct(Version $version, $serviceSid, $identity, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [
-            'serviceSid' => $serviceSid,
-            'identity' => $identity,
-            'factorSid' => $factorSid,
-            'sid' => $sid,
-        ];
+        $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, 'sid' => $sid, ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors/' . \rawurlencode($factorSid) . '/Challenges/' . \rawurlencode($sid) . '';
-    }
-
-    /**
-     * Delete the ChallengeInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return bool True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete(array $options = []): bool {
-        $options = new Values($options);
-
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
-
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Challenges/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -77,7 +55,6 @@ class ChallengeContext extends InstanceContext {
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['factorSid'],
             $this->solution['sid']
         );
     }
@@ -102,7 +79,6 @@ class ChallengeContext extends InstanceContext {
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['factorSid'],
             $this->solution['sid']
         );
     }

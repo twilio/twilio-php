@@ -7,16 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service\Entity\Factor;
+namespace Twilio\Rest\Conversations\V1\Conversation\Message;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class ChallengePage extends Page {
+class DeliveryReceiptPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,15 +31,14 @@ class ChallengePage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return ChallengeInstance \Twilio\Rest\Verify\V2\Service\Entity\Factor\ChallengeInstance
+     * @return DeliveryReceiptInstance \Twilio\Rest\Conversations\V1\Conversation\Message\DeliveryReceiptInstance
      */
-    public function buildInstance(array $payload): ChallengeInstance {
-        return new ChallengeInstance(
+    public function buildInstance(array $payload): DeliveryReceiptInstance {
+        return new DeliveryReceiptInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
-            $this->solution['identity'],
-            $this->solution['factorSid']
+            $this->solution['conversationSid'],
+            $this->solution['messageSid']
         );
     }
 
@@ -49,6 +48,6 @@ class ChallengePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Verify.V2.ChallengePage]';
+        return '[Twilio.Conversations.V1.DeliveryReceiptPage]';
     }
 }

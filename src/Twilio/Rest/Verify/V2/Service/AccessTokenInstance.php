@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service\Entity;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -25,16 +25,15 @@ class AccessTokenInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
+     * @param string $serviceSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $identity) {
+    public function __construct(Version $version, array $payload, string $serviceSid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = ['token' => Values::array_get($payload, 'token'), ];
 
-        $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, ];
+        $this->solution = ['serviceSid' => $serviceSid, ];
     }
 
     /**

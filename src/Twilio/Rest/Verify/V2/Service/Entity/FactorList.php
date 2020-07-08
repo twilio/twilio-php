@@ -25,7 +25,7 @@ class FactorList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
+     * @param string $identity Unique external identifier of the Entity
      */
     public function __construct(Version $version, string $serviceSid, string $identity) {
         parent::__construct($version);

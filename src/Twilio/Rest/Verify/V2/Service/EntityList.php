@@ -38,7 +38,7 @@ class EntityList extends ListResource {
     /**
      * Create the EntityInstance
      *
-     * @param string $identity Unique identity of the Entity
+     * @param string $identity Unique external identifier of the Entity
      * @param array|Options $options Optional Arguments
      * @return EntityInstance Created EntityInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -141,7 +141,7 @@ class EntityList extends ListResource {
     /**
      * Constructs a EntityContext
      *
-     * @param string $identity Unique identity of the Entity
+     * @param string $identity Unique external identifier of the Entity
      */
     public function getContext(string $identity): EntityContext {
         return new EntityContext($this->version, $this->solution['serviceSid'], $identity);

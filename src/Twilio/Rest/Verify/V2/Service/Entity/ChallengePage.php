@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class AccessTokenPage extends Page {
+class ChallengePage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class AccessTokenPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return AccessTokenInstance \Twilio\Rest\Verify\V2\Service\Entity\AccessTokenInstance
+     * @return ChallengeInstance \Twilio\Rest\Verify\V2\Service\Entity\ChallengeInstance
      */
-    public function buildInstance(array $payload): AccessTokenInstance {
-        return new AccessTokenInstance(
+    public function buildInstance(array $payload): ChallengeInstance {
+        return new ChallengeInstance(
             $this->version,
             $payload,
             $this->solution['serviceSid'],
@@ -48,6 +48,6 @@ class AccessTokenPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Verify.V2.AccessTokenPage]';
+        return '[Twilio.Verify.V2.ChallengePage]';
     }
 }
