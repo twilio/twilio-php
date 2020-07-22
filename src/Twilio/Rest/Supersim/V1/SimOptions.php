@@ -22,10 +22,14 @@ abstract class SimOptions {
      * @param string $status The new status of the Super SIM
      * @param string $fleet The SID or unique name of the Fleet to which the SIM
      *                      resource should be assigned
+     * @param string $callbackUrl The URL we should call after the update has
+     *                            finished
+     * @param string $callbackMethod The HTTP method we should use to call
+     *                               callback_url
      * @return UpdateSimOptions Options builder
      */
-    public static function update(string $uniqueName = Values::NONE, string $status = Values::NONE, string $fleet = Values::NONE): UpdateSimOptions {
-        return new UpdateSimOptions($uniqueName, $status, $fleet);
+    public static function update(string $uniqueName = Values::NONE, string $status = Values::NONE, string $fleet = Values::NONE, string $callbackUrl = Values::NONE, string $callbackMethod = Values::NONE): UpdateSimOptions {
+        return new UpdateSimOptions($uniqueName, $status, $fleet, $callbackUrl, $callbackMethod);
     }
 
     /**
@@ -48,11 +52,17 @@ class UpdateSimOptions extends Options {
      * @param string $status The new status of the Super SIM
      * @param string $fleet The SID or unique name of the Fleet to which the SIM
      *                      resource should be assigned
+     * @param string $callbackUrl The URL we should call after the update has
+     *                            finished
+     * @param string $callbackMethod The HTTP method we should use to call
+     *                               callback_url
      */
-    public function __construct(string $uniqueName = Values::NONE, string $status = Values::NONE, string $fleet = Values::NONE) {
+    public function __construct(string $uniqueName = Values::NONE, string $status = Values::NONE, string $fleet = Values::NONE, string $callbackUrl = Values::NONE, string $callbackMethod = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['status'] = $status;
         $this->options['fleet'] = $fleet;
+        $this->options['callbackUrl'] = $callbackUrl;
+        $this->options['callbackMethod'] = $callbackMethod;
     }
 
     /**
@@ -87,6 +97,30 @@ class UpdateSimOptions extends Options {
      */
     public function setFleet(string $fleet): self {
         $this->options['fleet'] = $fleet;
+        return $this;
+    }
+
+    /**
+     * The URL we should call using the `callback_method` after an asynchronous update has finished.
+     *
+     * @param string $callbackUrl The URL we should call after the update has
+     *                            finished
+     * @return $this Fluent Builder
+     */
+    public function setCallbackUrl(string $callbackUrl): self {
+        $this->options['callbackUrl'] = $callbackUrl;
+        return $this;
+    }
+
+    /**
+     * The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
+     *
+     * @param string $callbackMethod The HTTP method we should use to call
+     *                               callback_url
+     * @return $this Fluent Builder
+     */
+    public function setCallbackMethod(string $callbackMethod): self {
+        $this->options['callbackMethod'] = $callbackMethod;
         return $this;
     }
 
