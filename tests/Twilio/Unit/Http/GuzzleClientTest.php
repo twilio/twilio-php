@@ -48,6 +48,20 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertSame('https://www.whatever.com?myquerykey=myqueryvalue', (string)$request->getUri());
     }
 
+    public function testPostMethodArray(): void {
+        $this->mockHandler->append(new Response());
+        $response = $this->client->request('post', 'https://www.whatever.com', [], ['key' => ['value1', 'value2']]);
+        $this->assertNull($response->getContent());
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame([], $response->getHeaders());
+
+        $request = $this->mockHandler->getLastRequest();
+
+        $this->assertSame('POST', $request->getMethod());
+        $this->assertSame('key=value1&key=value2', $request->getBody()->getContents());
+        $this->assertSame('https://www.whatever.com', (string)$request->getUri());
+    }
+
     public function testPostMethodThatThrowsBadResponseException(): void {
         $this->mockHandler->append(new BadResponseException('Not found', new Request('get', 'https://www.whatever.com'), new Response(404)));
         $response = $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
@@ -68,8 +82,7 @@ final class GuzzleClientTest extends UnitTest {
         $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
     }
 
-    public function testQueryParams()
-    {
+    public function testQueryParams(): void {
         $this->mockHandler->append(new Response());
         $this->client->request('get', 'https://www.whatever.com?foo=bar');
         $request = $this->mockHandler->getLastRequest();
