@@ -106,7 +106,7 @@ Before you submit your pull request consider the following guidelines:
 * Make your changes in a new git branch:
 
     ```shell
-    git checkout -b my-fix-branch master
+    git checkout -b my-fix-branch main
     ```
 
 * Create your patch, **including appropriate test cases**.
@@ -133,7 +133,7 @@ Before you submit your pull request consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-In GitHub, send a pull request to `twilio-php:master`.
+In GitHub, send a pull request to `twilio-php:main`.
 If we suggest changes, then:
 
 * Make the required updates.
@@ -157,7 +157,7 @@ you are working:
 * All classes and methods **must be documented**.
 
 ## <a name="testing"></a> Local Testing with Docker
-We have included a [Dockerfile](https://github.com/twilio/twilio-php/blob/master/Dockerfile-dev) that enables easy local testing, given a specified PHP version.
+We have included a [Dockerfile](https://github.com/twilio/twilio-php/blob/HEAD/Dockerfile-dev) that enables easy local testing, given a specified PHP version.
 
 Sample simple workflow:
 1. `git clone https://github.com/twilio/twilio-php.git`

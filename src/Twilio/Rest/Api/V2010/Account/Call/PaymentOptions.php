@@ -254,7 +254,7 @@ class CreatePaymentOptions extends Options {
     }
 
     /**
-     * List of card types accepted with each card types separated by space. Can be: `visa`,`nmastercard`,`amex`,`maestro`,`discover`,`optima`,`jcb`,`diners-club`,`enroute`. The default value is `visa mastercard amex`.
+     * List of card types accepted with each card types separated by space. Can be: `visa`,`mastercard`,`amex`,`maestro`,`discover`,`optima`,`jcb`,`diners-club`,`enroute`. The default value is `visa mastercard amex`.
      *
      * @param string $validCardTypes List of card types accepted with each card
      *                               types separated by space.
