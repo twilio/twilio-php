@@ -58,8 +58,8 @@ class ChallengeTest extends HolodeckTestCase {
                 "expiration_date": "2015-07-30T20:00:00Z",
                 "status": "pending",
                 "responded_reason": "none",
-                "details": "Hi! Mr. John Doe, would you like to sign up?",
-                "hidden_details": "Hidden details about the sign up",
+                "details": "{\\"message\\": \\"Hi! Mr. John Doe, would you like to sign up?\\", \\"date\\":\\"2020-07-01T12:13:14Z\\", \\"fields\\": [{\\"label\\": \\"Action\\", \\"value\\": \\"Sign up in portal\\"}]}",
+                "hidden_details": "{\\"ip\\": \\"172.168.1.234\\"}",
                 "factor_type": "push",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -113,8 +113,8 @@ class ChallengeTest extends HolodeckTestCase {
                 "expiration_date": "2015-07-30T20:00:00Z",
                 "status": "pending",
                 "responded_reason": "none",
-                "details": "details",
-                "hidden_details": "hidden_details",
+                "details": "{\\"message\\": \\"Hi! Mr. John Doe, would you like to sign up?\\", \\"fields\\": [{\\"label\\": \\"Action\\", \\"value\\": \\"Sign up in portal\\"}]}",
+                "hidden_details": "{\\"ip\\": \\"172.168.1.234\\"}",
                 "factor_type": "push",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -196,8 +196,8 @@ class ChallengeTest extends HolodeckTestCase {
                         "expiration_date": "2015-07-30T20:00:00Z",
                         "status": "pending",
                         "responded_reason": "none",
-                        "details": "details",
-                        "hidden_details": "hidden_details",
+                        "details": "{\\"message\\": \\"Hi! Mr. John Doe, would you like to sign up?\\", \\"fields\\": [{\\"label\\": \\"Action\\", \\"value\\": \\"Sign up in portal\\"}]}",
+                        "hidden_details": "{\\"ip\\": \\"172.168.1.234\\"}",
                         "factor_type": "push",
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
@@ -262,8 +262,8 @@ class ChallengeTest extends HolodeckTestCase {
                 "expiration_date": "2015-07-30T20:00:00Z",
                 "status": "approved",
                 "responded_reason": "none",
-                "details": "Hi! Mr. John Doe, would you like to sign up?",
-                "hidden_details": "Hidden details about the sign up",
+                "details": "{\\"message\\": \\"Hi! Mr. John Doe, would you like to sign up?\\", \\"fields\\": [{\\"label\\": \\"Action\\", \\"value\\": \\"Sign up in portal\\"}]}",
+                "hidden_details": "{\\"ip\\": \\"172.168.1.234\\"}",
                 "factor_type": "push",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }

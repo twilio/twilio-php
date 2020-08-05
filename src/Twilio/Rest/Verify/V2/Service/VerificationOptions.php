@@ -14,6 +14,7 @@ use Twilio\Values;
 
 abstract class VerificationOptions {
     /**
+     * @param string $customFriendlyName A custom user defined friendly name
      * @param string $customMessage The text of a custom message to use for the
      *                              verification
      * @param string $sendDigits The digits to send after a phone call is answered
@@ -29,13 +30,14 @@ abstract class VerificationOptions {
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE): CreateVerificationOptions {
-        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash);
+    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE): CreateVerificationOptions {
+        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash);
     }
 }
 
 class CreateVerificationOptions extends Options {
     /**
+     * @param string $customFriendlyName A custom user defined friendly name
      * @param string $customMessage The text of a custom message to use for the
      *                              verification
      * @param string $sendDigits The digits to send after a phone call is answered
@@ -50,7 +52,8 @@ class CreateVerificationOptions extends Options {
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
      */
-    public function __construct(string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE) {
+    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE) {
+        $this->options['customFriendlyName'] = $customFriendlyName;
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
@@ -60,6 +63,17 @@ class CreateVerificationOptions extends Options {
         $this->options['rateLimits'] = $rateLimits;
         $this->options['channelConfiguration'] = $channelConfiguration;
         $this->options['appHash'] = $appHash;
+    }
+
+    /**
+     * A custom user defined friendly name that overwrites the existing one in the verification message
+     *
+     * @param string $customFriendlyName A custom user defined friendly name
+     * @return $this Fluent Builder
+     */
+    public function setCustomFriendlyName(string $customFriendlyName): self {
+        $this->options['customFriendlyName'] = $customFriendlyName;
+        return $this;
     }
 
     /**

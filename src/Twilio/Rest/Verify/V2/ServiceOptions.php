@@ -188,7 +188,7 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}
+     * Configurations for the Push factors (channel) created under this Service. If present, it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}. If `include_date` is set to `true`, which is the default, that means that the push challenge’s response will include the date created value. If `include_date` is set to `false`, then the date created value will not be included. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info
      *
      * @param array $push Optional service level push factors configuration
      * @return $this Fluent Builder
@@ -349,7 +349,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The optional service level push factors configuration. If present it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}
+     * Configurations for the Push factors (channel) created under this Service. If present, it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}. If `include_date` is set to `true`, which is the default, that means that the push challenge’s response will include the date created value. If `include_date` is set to `false`, then the date created value will not be included. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info
      *
      * @param array $push Optional service level push factors configuration
      * @return $this Fluent Builder
