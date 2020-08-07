@@ -35,10 +35,13 @@ abstract class SessionOptions {
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @param int $ttl When the session will expire
      * @param string $status The new status of the resource
+     * @param bool $failOnParticipantConflict Opt-in to enable Proxy to return 400
+     *                                        on detected conflict on re-open
+     *                                        request.
      * @return UpdateSessionOptions Options builder
      */
-    public static function update(\DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $status = Values::NONE): UpdateSessionOptions {
-        return new UpdateSessionOptions($dateExpiry, $ttl, $status);
+    public static function update(\DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $status = Values::NONE, bool $failOnParticipantConflict = Values::NONE): UpdateSessionOptions {
+        return new UpdateSessionOptions($dateExpiry, $ttl, $status, $failOnParticipantConflict);
     }
 }
 
@@ -146,11 +149,15 @@ class UpdateSessionOptions extends Options {
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @param int $ttl When the session will expire
      * @param string $status The new status of the resource
+     * @param bool $failOnParticipantConflict Opt-in to enable Proxy to return 400
+     *                                        on detected conflict on re-open
+     *                                        request.
      */
-    public function __construct(\DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $status = Values::NONE) {
+    public function __construct(\DateTime $dateExpiry = Values::NONE, int $ttl = Values::NONE, string $status = Values::NONE, bool $failOnParticipantConflict = Values::NONE) {
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
         $this->options['status'] = $status;
+        $this->options['failOnParticipantConflict'] = $failOnParticipantConflict;
     }
 
     /**
@@ -183,6 +190,19 @@ class UpdateSessionOptions extends Options {
      */
     public function setStatus(string $status): self {
         $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * Setting to true (recommended), enables Proxy to return a 400 error (Twilio error code 80604) when a request to set a Session to in-progress would cause Participants with the same identifier/proxy_identifier pair to be active in multiple Sessions. If not provided, or if set to false, requests will be allowed to succeed and a Debugger event (80801) will be emitted. This causes calls and messages from affected Participants to be routed incorrectly. Please note, in a future release, the default behavior will be to reject the request with a 400 error.
+     *
+     * @param bool $failOnParticipantConflict Opt-in to enable Proxy to return 400
+     *                                        on detected conflict on re-open
+     *                                        request.
+     * @return $this Fluent Builder
+     */
+    public function setFailOnParticipantConflict(bool $failOnParticipantConflict): self {
+        $this->options['failOnParticipantConflict'] = $failOnParticipantConflict;
         return $this;
     }
 
