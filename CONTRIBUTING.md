@@ -157,16 +157,16 @@ you are working:
 * All classes and methods **must be documented**.
 
 ## <a name="testing"></a> Local Testing with Docker
-We have included a [Dockerfile](https://github.com/twilio/twilio-php/blob/HEAD/Dockerfile-dev) that enables easy local testing, given a specified PHP version.
+We have included a [Dockerfile](Dockerfile-dev) that enables easy local testing, given a specified PHP version.
 
 Sample simple workflow:
 1. `git clone https://github.com/twilio/twilio-php.git`
-1. `cd twilio-php`
-1. `make install`
-1. `make docker-dev-build VERSION=7.4-rc`
-1. `make docker-dev-test VERSION=7.4-rc`
-1. Modify code
-1. `make docker-dev-test VERSION=7.4-rc`
+2. `cd twilio-php`
+3. `make install`
+4. `make docker-dev-build VERSION=7.4-rc`
+5. `make docker-dev-test VERSION=7.4-rc`
+6. Modify code
+7. `make docker-dev-test VERSION=7.4-rc`
 
 Tested versions: 7.1.32, 7.2.22, 7.3.9 and 7.4-rc. A complete list of supported PHP versions can be found at the [Docker docs page](https://docs.docker.com/samples/library/php).
 
