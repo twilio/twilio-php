@@ -40,11 +40,12 @@ class PaymentContext extends InstanceContext {
     /**
      * Update the PaymentInstance
      *
-     * @param string $idempotencyKey A unique token for each payment session that
-     *                               should be provided to maintain idempotency of
-     *                               the session.
-     * @param string $statusCallback The URL we should call to send status of
-     *                               payment session.
+     * @param string $idempotencyKey A unique token that will be used to ensure
+     *                               that multiple API calls with the same
+     *                               information do not result in multiple
+     *                               transactions.
+     * @param string $statusCallback Provide an absolute or relative URL to receive
+     *                               status updates regarding your Pay session.
      * @param array|Options $options Optional Arguments
      * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.

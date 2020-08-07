@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+[2020-08-05] Version 6.9.2
+--------------------------
+**Library - Fix**
+- [PR #650](https://github.com/twilio/twilio-php/pull/650): support array parameters for Guzzle POSTs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Messaging**
+- Add rejection reason support to WhatsApp API
+- Removed status parameter for create and update in WhatsApp Templates API
+
+**Proxy**
+- Add FailOnParticipantConflict param to Proxy Session update
+
+**Verify**
+- Add `CustomFriendlyName` optional parameter on Verification creation.
+- Changes in `Challenge` resource to update documentation of both `details` and `hidden_details` properties.
+
+
 [2020-07-22] Version 6.9.1
 --------------------------
 **Api**

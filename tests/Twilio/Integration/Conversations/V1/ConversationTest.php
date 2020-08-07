@@ -70,6 +70,36 @@ class ConversationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testCreateNoTimersNoAttributesResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "chat_service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "messaging_service_sid": "MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "friendly_name",
+                "attributes": "{}",
+                "date_created": "2020-07-01T22:18:37Z",
+                "date_updated": "2020-07-01T22:18:37Z",
+                "state": "active",
+                "timers": {},
+                "url": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
+                    "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
+                    "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->conversations->v1->conversations->create();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
