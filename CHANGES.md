@@ -2333,4 +2333,4 @@ Released on March 14, 2012
 - If no version is passed to the Services_Twilio constructor, the library will
   default to the most recent API version.
 
-[upgrade]: https://github.com/twilio/twilio-php/blob/master/UPGRADE.md
+[upgrade]: UPGRADE.md
