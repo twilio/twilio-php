@@ -99,7 +99,7 @@ class CreateFleetOptions extends Options {
     }
 
     /**
-     * Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity
+     * Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.
      *
      * @param bool $dataEnabled Defines whether SIMs in the Fleet are capable of
      *                          using data connectivity
@@ -111,7 +111,7 @@ class CreateFleetOptions extends Options {
     }
 
     /**
-     * The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000).
+     * The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).
      *
      * @param int $dataLimit The total data usage (download and upload combined) in
      *                       Megabytes that each Sim resource assigned to the Fleet
@@ -124,7 +124,7 @@ class CreateFleetOptions extends Options {
     }
 
     /**
-     * Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands.
+     * Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`.
      *
      * @param bool $commandsEnabled Defines whether SIMs in the Fleet are capable
      *                              of sending and receiving machine-to-machine SMS
@@ -150,7 +150,7 @@ class CreateFleetOptions extends Options {
     }
 
     /**
-     * A string representing the HTTP method to use when making a request to `commands_url`. Can be one of POST or GET. Defaults to POST.
+     * A string representing the HTTP method to use when making a request to `commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
      *
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
@@ -182,7 +182,7 @@ class ReadFleetOptions extends Options {
     }
 
     /**
-     * The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to
+     * The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.
      *
      * @param string $networkAccessProfile The SID or unique name of the Network
      *                                     Access Profile of the Fleet
@@ -229,7 +229,7 @@ class UpdateFleetOptions extends Options {
     }
 
     /**
-     * The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to
+     * The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.
      *
      * @param string $networkAccessProfile The SID or unique name of the Network
      *                                     Access Profile of the Fleet

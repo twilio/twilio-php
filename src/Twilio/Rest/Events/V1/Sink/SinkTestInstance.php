@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\Events\V1\Sink;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -17,40 +17,23 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $accountSid
- * @property string $simSid
- * @property string $networkSid
- * @property string $fleetSid
- * @property string $isoCountry
- * @property array $period
- * @property string $dataUpload
- * @property string $dataDownload
- * @property string $dataTotal
+ * @property string $result
  */
-class UsageRecordInstance extends InstanceResource {
+class SinkTestInstance extends InstanceResource {
     /**
-     * Initialize the UsageRecordInstance
+     * Initialize the SinkTestInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, string $sid) {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'simSid' => Values::array_get($payload, 'sim_sid'),
-            'networkSid' => Values::array_get($payload, 'network_sid'),
-            'fleetSid' => Values::array_get($payload, 'fleet_sid'),
-            'isoCountry' => Values::array_get($payload, 'iso_country'),
-            'period' => Values::array_get($payload, 'period'),
-            'dataUpload' => Values::array_get($payload, 'data_upload'),
-            'dataDownload' => Values::array_get($payload, 'data_download'),
-            'dataTotal' => Values::array_get($payload, 'data_total'),
-        ];
+        $this->properties = ['result' => Values::array_get($payload, 'result'), ];
 
-        $this->solution = [];
+        $this->solution = ['sid' => $sid, ];
     }
 
     /**
@@ -79,6 +62,6 @@ class UsageRecordInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Supersim.V1.UsageRecordInstance]';
+        return '[Twilio.Events.V1.SinkTestInstance]';
     }
 }

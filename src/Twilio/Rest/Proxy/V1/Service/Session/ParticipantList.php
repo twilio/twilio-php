@@ -12,6 +12,7 @@ namespace Twilio\Rest\Proxy\V1\Service\Session;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -130,6 +131,7 @@ class ParticipantList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'ProxyIdentifier' => $options['proxyIdentifier'],
             'ProxyIdentifierSid' => $options['proxyIdentifierSid'],
+            'FailOnParticipantConflict' => Serialize::booleanToString($options['failOnParticipantConflict']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

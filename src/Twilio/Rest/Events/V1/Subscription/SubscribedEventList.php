@@ -7,32 +7,36 @@
  * /       /
  */
 
-namespace Twilio\Rest\Wireless\V1\Sim;
+namespace Twilio\Rest\Events\V1\Subscription;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class DataSessionList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class SubscribedEventList extends ListResource {
     /**
-     * Construct the DataSessionList
+     * Construct the SubscribedEventList
      *
      * @param Version $version Version that contains the resource
-     * @param string $simSid The SID of the Sim resource that the Data Session is
-     *                       for
+     * @param string $subscriptionSid The subscription_sid
      */
-    public function __construct(Version $version, string $simSid) {
+    public function __construct(Version $version, string $subscriptionSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['simSid' => $simSid, ];
+        $this->solution = ['subscriptionSid' => $subscriptionSid, ];
 
-        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/DataSessions';
+        $this->uri = '/Subscriptions/' . \rawurlencode($subscriptionSid) . '/SubscribedEvents';
     }
 
     /**
-     * Streams DataSessionInstance records from the API as a generator stream.
+     * Streams SubscribedEventInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -58,7 +62,7 @@ class DataSessionList extends ListResource {
     }
 
     /**
-     * Reads DataSessionInstance records from the API as a list.
+     * Reads SubscribedEventInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -70,43 +74,70 @@ class DataSessionList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return DataSessionInstance[] Array of results
+     * @return SubscribedEventInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of DataSessionInstance records from the API.
+     * Retrieve a single page of SubscribedEventInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return DataSessionPage Page of DataSessionInstance
+     * @return SubscribedEventPage Page of SubscribedEventInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DataSessionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SubscribedEventPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new DataSessionPage($this->version, $response, $this->solution);
+        return new SubscribedEventPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of DataSessionInstance records from the API.
+     * Retrieve a specific page of SubscribedEventInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return DataSessionPage Page of DataSessionInstance
+     * @return SubscribedEventPage Page of SubscribedEventInstance
      */
-    public function getPage(string $targetUrl): DataSessionPage {
+    public function getPage(string $targetUrl): SubscribedEventPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new DataSessionPage($this->version, $response, $this->solution);
+        return new SubscribedEventPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Create the SubscribedEventInstance
+     *
+     * @param string $type The type
+     * @param array|Options $options Optional Arguments
+     * @return SubscribedEventInstance Created SubscribedEventInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $type, array $options = []): SubscribedEventInstance {
+        $options = new Values($options);
+
+        $data = Values::of(['Type' => $type, 'Version' => $options['version'], ]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data);
+
+        return new SubscribedEventInstance($this->version, $payload, $this->solution['subscriptionSid']);
+    }
+
+    /**
+     * Constructs a SubscribedEventContext
+     *
+     * @param string $type The type
+     */
+    public function getContext(string $type): SubscribedEventContext {
+        return new SubscribedEventContext($this->version, $this->solution['subscriptionSid'], $type);
     }
 
     /**
@@ -115,6 +146,6 @@ class DataSessionList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Wireless.V1.DataSessionList]';
+        return '[Twilio.Events.V1.SubscribedEventList]';
     }
 }

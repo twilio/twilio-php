@@ -96,6 +96,10 @@ class UsageRecordList extends ListResource {
 
         $params = Values::of([
             'Sim' => $options['sim'],
+            'Fleet' => $options['fleet'],
+            'Network' => $options['network'],
+            'IsoCountry' => $options['isoCountry'],
+            'Group' => $options['group'],
             'Granularity' => $options['granularity'],
             'StartTime' => Serialize::iso8601DateTime($options['startTime']),
             'EndTime' => Serialize::iso8601DateTime($options['endTime']),

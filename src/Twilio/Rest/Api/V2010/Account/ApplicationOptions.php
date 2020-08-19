@@ -70,8 +70,9 @@ abstract class ApplicationOptions {
      * @param string $smsFallbackUrl The URL to call when an error occurs while
      *                               retrieving or executing the TwiML
      * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
-     * @param string $smsStatusCallback The URL to send status information to your
-     *                                  application
+     * @param string $smsStatusCallback Same as message_status_callback.
+     *                                  Deprecated, included for backwards
+     *                                  compatibility.
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
      * @return UpdateApplicationOptions Options builder
@@ -359,8 +360,9 @@ class UpdateApplicationOptions extends Options {
      * @param string $smsFallbackUrl The URL to call when an error occurs while
      *                               retrieving or executing the TwiML
      * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
-     * @param string $smsStatusCallback The URL to send status information to your
-     *                                  application
+     * @param string $smsStatusCallback Same as message_status_callback.
+     *                                  Deprecated, included for backwards
+     *                                  compatibility.
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
      */
@@ -531,10 +533,11 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL we should call using a POST method to send status information about SMS messages sent by the application.
+     * Same as message_status_callback: The URL we should call using a POST method to send status information about SMS messages sent by the application. Deprecated, included for backwards compatibility.
      *
-     * @param string $smsStatusCallback The URL to send status information to your
-     *                                  application
+     * @param string $smsStatusCallback Same as message_status_callback.
+     *                                  Deprecated, included for backwards
+     *                                  compatibility.
      * @return $this Fluent Builder
      */
     public function setSmsStatusCallback(string $smsStatusCallback): self {

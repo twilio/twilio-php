@@ -7,13 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room\Participant;
+namespace Twilio\Rest\Events\V1\Sink;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SubscribeRulesPage extends Page {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class SinkValidatePage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,15 +31,10 @@ class SubscribeRulesPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return SubscribeRulesInstance \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesInstance
+     * @return SinkValidateInstance \Twilio\Rest\Events\V1\Sink\SinkValidateInstance
      */
-    public function buildInstance(array $payload): SubscribeRulesInstance {
-        return new SubscribeRulesInstance(
-            $this->version,
-            $payload,
-            $this->solution['roomSid'],
-            $this->solution['participantSid']
-        );
+    public function buildInstance(array $payload): SinkValidateInstance {
+        return new SinkValidateInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -45,6 +43,6 @@ class SubscribeRulesPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Video.V1.SubscribeRulesPage]';
+        return '[Twilio.Events.V1.SinkValidatePage]';
     }
 }

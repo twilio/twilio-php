@@ -24,6 +24,7 @@ use Twilio\VersionInfo;
  * @property Autopilot $autopilot
  * @property Chat $chat
  * @property Conversations $conversations
+ * @property Events $events
  * @property Fax $fax
  * @property FlexApi $flexApi
  * @property Insights $insights
@@ -111,6 +112,7 @@ class Client {
     protected $_autopilot;
     protected $_chat;
     protected $_conversations;
+    protected $_events;
     protected $_fax;
     protected $_flexApi;
     protected $_insights;
@@ -619,6 +621,18 @@ class Client {
             $this->_conversations = new Conversations($this);
         }
         return $this->_conversations;
+    }
+
+    /**
+     * Access the Events Twilio Domain
+     *
+     * @return Events Events Twilio Domain
+     */
+    protected function getEvents(): Events {
+        if (!$this->_events) {
+            $this->_events = new Events($this);
+        }
+        return $this->_events;
     }
 
     /**

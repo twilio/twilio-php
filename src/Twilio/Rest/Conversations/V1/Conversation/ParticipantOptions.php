@@ -52,12 +52,14 @@ abstract class ParticipantOptions {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param string $identity A unique string identifier for the conversation
+     *                         participant as Chat User.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
-        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $roleSid, $messagingBindingProxyAddress, $messagingBindingProjectedAddress, $xTwilioWebhookEnabled);
+    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $identity = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
+        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes, $roleSid, $messagingBindingProxyAddress, $messagingBindingProjectedAddress, $identity, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -233,16 +235,19 @@ class UpdateParticipantOptions extends Options {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param string $identity A unique string identifier for the conversation
+     *                         participant as Chat User.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $identity = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
         $this->options['roleSid'] = $roleSid;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
+        $this->options['identity'] = $identity;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -314,6 +319,18 @@ class UpdateParticipantOptions extends Options {
      */
     public function setMessagingBindingProjectedAddress(string $messagingBindingProjectedAddress): self {
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
+        return $this;
+    }
+
+    /**
+     * A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/chat/rest/user-resource). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.
+     *
+     * @param string $identity A unique string identifier for the conversation
+     *                         participant as Chat User.
+     * @return $this Fluent Builder
+     */
+    public function setIdentity(string $identity): self {
+        $this->options['identity'] = $identity;
         return $this;
     }
 
