@@ -37,9 +37,9 @@ class SinkList extends ListResource {
     /**
      * Create the SinkInstance
      *
-     * @param string $description The description
-     * @param array $sinkConfiguration The sink_configuration
-     * @param string $sinkType The sink_type
+     * @param string $description Sink Description
+     * @param array $sinkConfiguration JSON Sink configuration.
+     * @param string $sinkType Sink type.
      * @return SinkInstance Created SinkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -136,7 +136,7 @@ class SinkList extends ListResource {
     /**
      * Constructs a SinkContext
      *
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Sink.
      */
     public function getContext(string $sid): SinkContext {
         return new SinkContext($this->version, $sid);

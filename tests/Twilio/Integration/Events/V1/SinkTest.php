@@ -209,10 +209,10 @@ class SinkTest extends HolodeckTestCase {
                 ],
                 "meta": {
                     "page": 0,
-                    "page_size": 50,
-                    "first_page_url": "https://events.twilio.com/v1/Sinks?PageSize=50&Page=0",
+                    "page_size": 20,
+                    "first_page_url": "https://events.twilio.com/v1/Sinks?PageSize=20&Page=0",
                     "previous_page_url": null,
-                    "url": "https://events.twilio.com/v1/Sinks?PageSize=50&Page=0",
+                    "url": "https://events.twilio.com/v1/Sinks?PageSize=20&Page=0",
                     "next_page_url": null,
                     "key": "sinks"
                 }

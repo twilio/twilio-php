@@ -28,6 +28,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property bool $secure
  * @property array $recording
+ * @property string $transferMode
  * @property bool $cnamLookupEnabled
  * @property string $authType
  * @property string[] $authTypeSet
@@ -62,6 +63,7 @@ class TrunkInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'secure' => Values::array_get($payload, 'secure'),
             'recording' => Values::array_get($payload, 'recording'),
+            'transferMode' => Values::array_get($payload, 'transfer_mode'),
             'cnamLookupEnabled' => Values::array_get($payload, 'cnam_lookup_enabled'),
             'authType' => Values::array_get($payload, 'auth_type'),
             'authTypeSet' => Values::array_get($payload, 'auth_type_set'),

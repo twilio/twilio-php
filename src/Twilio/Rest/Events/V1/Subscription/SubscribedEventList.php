@@ -24,7 +24,7 @@ class SubscribedEventList extends ListResource {
      * Construct the SubscribedEventList
      *
      * @param Version $version Version that contains the resource
-     * @param string $subscriptionSid The subscription_sid
+     * @param string $subscriptionSid Subscription SID.
      */
     public function __construct(Version $version, string $subscriptionSid) {
         parent::__construct($version);
@@ -116,7 +116,7 @@ class SubscribedEventList extends ListResource {
     /**
      * Create the SubscribedEventInstance
      *
-     * @param string $type The type
+     * @param string $type Type of event being subscribed to.
      * @param array|Options $options Optional Arguments
      * @return SubscribedEventInstance Created SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -134,7 +134,7 @@ class SubscribedEventList extends ListResource {
     /**
      * Constructs a SubscribedEventContext
      *
-     * @param string $type The type
+     * @param string $type Type of event being subscribed to.
      */
     public function getContext(string $type): SubscribedEventContext {
         return new SubscribedEventContext($this->version, $this->solution['subscriptionSid'], $type);

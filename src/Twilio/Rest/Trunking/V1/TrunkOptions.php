@@ -23,13 +23,14 @@ abstract class TrunkOptions {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
+     * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      * @return CreateTrunkOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
-        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $secure, $cnamLookupEnabled);
+    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
+        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $transferMode, $secure, $cnamLookupEnabled);
     }
 
     /**
@@ -42,13 +43,14 @@ abstract class TrunkOptions {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
+     * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      * @return UpdateTrunkOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
-        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $secure, $cnamLookupEnabled);
+    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
+        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $transferMode, $secure, $cnamLookupEnabled);
     }
 }
 
@@ -63,16 +65,18 @@ class CreateTrunkOptions extends Options {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
+     * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
         $this->options['recording'] = $recording;
+        $this->options['transferMode'] = $transferMode;
         $this->options['secure'] = $secure;
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
     }
@@ -137,6 +141,17 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
+     * The call transfer settings for the trunk. Can be: `enable-all`, `sip-only` and `disable-all`. See [Transfer](https://www.twilio.com/docs/sip-trunking/call-transfer) for more information.
+     *
+     * @param string $transferMode The call transfer settings for the trunk
+     * @return $this Fluent Builder
+     */
+    public function setTransferMode(string $transferMode): self {
+        $this->options['transferMode'] = $transferMode;
+        return $this;
+    }
+
+    /**
      * Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
      *
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
@@ -181,16 +196,18 @@ class UpdateTrunkOptions extends Options {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
+     * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
         $this->options['recording'] = $recording;
+        $this->options['transferMode'] = $transferMode;
         $this->options['secure'] = $secure;
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
     }
@@ -251,6 +268,17 @@ class UpdateTrunkOptions extends Options {
      */
     public function setRecording(string $recording): self {
         $this->options['recording'] = $recording;
+        return $this;
+    }
+
+    /**
+     * The call transfer settings for the trunk. Can be: `enable-all`, `sip-only` and `disable-all`. See [Transfer](https://www.twilio.com/docs/sip-trunking/call-transfer) for more information.
+     *
+     * @param string $transferMode The call transfer settings for the trunk
+     * @return $this Fluent Builder
+     */
+    public function setTransferMode(string $transferMode): self {
+        $this->options['transferMode'] = $transferMode;
         return $this;
     }
 

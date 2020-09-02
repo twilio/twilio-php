@@ -22,8 +22,8 @@ class SubscribedEventContext extends InstanceContext {
      * Initialize the SubscribedEventContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $subscriptionSid The subscription_sid
-     * @param string $type The type
+     * @param string $subscriptionSid Subscription SID.
+     * @param string $type Type of event being subscribed to.
      */
     public function __construct(Version $version, $subscriptionSid, $type) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class SubscribedEventContext extends InstanceContext {
     /**
      * Update the SubscribedEventInstance
      *
-     * @param int $version The version
+     * @param int $version The schema version that the subscription should use.
      * @return SubscribedEventInstance Updated SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */

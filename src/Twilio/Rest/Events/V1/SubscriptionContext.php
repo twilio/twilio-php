@@ -29,7 +29,7 @@ class SubscriptionContext extends InstanceContext {
      * Initialize the SubscriptionContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Subscription.
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);

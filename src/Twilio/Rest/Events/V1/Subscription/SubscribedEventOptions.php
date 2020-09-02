@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class SubscribedEventOptions {
     /**
-     * @param int $version The version
+     * @param int $version The schema version that the subscription should use.
      * @return CreateSubscribedEventOptions Options builder
      */
     public static function create(int $version = Values::NONE): CreateSubscribedEventOptions {
@@ -27,16 +27,16 @@ abstract class SubscribedEventOptions {
 
 class CreateSubscribedEventOptions extends Options {
     /**
-     * @param int $version The version
+     * @param int $version The schema version that the subscription should use.
      */
     public function __construct(int $version = Values::NONE) {
         $this->options['version'] = $version;
     }
 
     /**
-     * The version
+     * The schema version that the subscription should use.
      *
-     * @param int $version The version
+     * @param int $version The schema version that the subscription should use.
      * @return $this Fluent Builder
      */
     public function setVersion(int $version): self {

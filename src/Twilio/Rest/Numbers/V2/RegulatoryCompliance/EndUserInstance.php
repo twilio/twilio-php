@@ -88,6 +88,16 @@ class EndUserInstance extends InstanceResource {
     }
 
     /**
+     * Delete the EndUserInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool {
+        return $this->proxy()->delete();
+    }
+
+    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access

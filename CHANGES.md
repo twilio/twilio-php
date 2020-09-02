@@ -1,6 +1,30 @@
 twilio-php Changelog
 ====================
 
+[2020-09-02] Version 6.10.1
+---------------------------
+**Ai**
+- Initial release
+
+**Bulkexports**
+- removing public beta feature flag from BulkExports Jobs API
+
+**Messaging**
+- Add Deactivation List API
+- Added page token parameter for fetch in WhatsApp Templates API
+
+**Numbers**
+- Add API endpoint for End User deletion
+
+**Routes**
+- Add Resource Route Configurations API
+- Add Route Configurations API
+- Initial Release
+
+**Trunking**
+- Added `transfer_mode` property on Trunks.
+
+
 [2020-08-19] Version 6.10.0
 ---------------------------
 **Library - Chore**

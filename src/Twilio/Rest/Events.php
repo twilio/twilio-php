@@ -82,7 +82,7 @@ class Events extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Sink.
      */
     protected function contextSinks(string $sid): \Twilio\Rest\Events\V1\SinkContext {
         return $this->v1->sinks($sid);
@@ -93,7 +93,7 @@ class Events extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Subscription.
      */
     protected function contextSubscriptions(string $sid): \Twilio\Rest\Events\V1\SubscriptionContext {
         return $this->v1->subscriptions($sid);

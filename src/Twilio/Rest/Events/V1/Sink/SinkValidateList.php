@@ -22,7 +22,7 @@ class SinkValidateList extends ListResource {
      * Construct the SinkValidateList
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Sink.
      */
     public function __construct(Version $version, string $sid) {
         parent::__construct($version);
@@ -36,7 +36,8 @@ class SinkValidateList extends ListResource {
     /**
      * Create the SinkValidateInstance
      *
-     * @param string $testId The test_id
+     * @param string $testId A string that uniquely identifies the test event for a
+     *                       Sink being validated.
      * @return SinkValidateInstance Created SinkValidateInstance
      * @throws TwilioException When an HTTP error occurs.
      */

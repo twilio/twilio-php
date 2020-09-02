@@ -115,9 +115,9 @@ class SubscriptionList extends ListResource {
     /**
      * Create the SubscriptionInstance
      *
-     * @param string $description The description
-     * @param string $sinkSid The sink_sid
-     * @param array[] $types The types
+     * @param string $description Subscription description
+     * @param string $sinkSid Sink SID.
+     * @param array[] $types Nested resource URLs.
      * @return SubscriptionInstance Created SubscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -136,7 +136,7 @@ class SubscriptionList extends ListResource {
     /**
      * Constructs a SubscriptionContext
      *
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Subscription.
      */
     public function getContext(string $sid): SubscriptionContext {
         return new SubscriptionContext($this->version, $sid);

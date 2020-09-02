@@ -65,6 +65,16 @@ class EndUserContext extends InstanceContext {
     }
 
     /**
+     * Delete the EndUserInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool {
+        return $this->version->delete('DELETE', $this->uri);
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

@@ -47,6 +47,7 @@ class TrunkTest extends HolodeckTestCase {
                     "mode": "do-not-record",
                     "trim": "do-not-trim"
                 },
+                "transfer_mode": "disable-all",
                 "auth_type": "",
                 "auth_type_set": [],
                 "date_created": "2015-01-02T11:23:45Z",
@@ -123,6 +124,7 @@ class TrunkTest extends HolodeckTestCase {
                     "mode": "do-not-record",
                     "trim": "do-not-trim"
                 },
+                "transfer_mode": "disable-all",
                 "auth_type": "",
                 "auth_type_set": [],
                 "date_created": "2015-01-02T11:23:45Z",
@@ -185,6 +187,7 @@ class TrunkTest extends HolodeckTestCase {
                             "mode": "do-not-record",
                             "trim": "do-not-trim"
                         },
+                        "transfer_mode": "disable-all",
                         "auth_type": "",
                         "auth_type_set": [],
                         "date_created": "2015-01-02T11:23:45Z",
@@ -262,6 +265,7 @@ class TrunkTest extends HolodeckTestCase {
                     "mode": "do-not-record",
                     "trim": "do-not-trim"
                 },
+                "transfer_mode": "disable-all",
                 "auth_type": "",
                 "auth_type_set": [],
                 "date_created": "2015-01-02T11:23:45Z",

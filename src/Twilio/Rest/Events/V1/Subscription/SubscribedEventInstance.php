@@ -29,8 +29,8 @@ class SubscribedEventInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $subscriptionSid The subscription_sid
-     * @param string $type The type
+     * @param string $subscriptionSid Subscription SID.
+     * @param string $type Type of event being subscribed to.
      */
     public function __construct(Version $version, array $payload, string $subscriptionSid, string $type = null) {
         parent::__construct($version);
@@ -71,7 +71,7 @@ class SubscribedEventInstance extends InstanceResource {
     /**
      * Update the SubscribedEventInstance
      *
-     * @param int $version The version
+     * @param int $version The schema version that the subscription should use.
      * @return SubscribedEventInstance Updated SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */

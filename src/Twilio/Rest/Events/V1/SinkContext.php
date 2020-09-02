@@ -31,7 +31,7 @@ class SinkContext extends InstanceContext {
      * Initialize the SinkContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Sink.
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);

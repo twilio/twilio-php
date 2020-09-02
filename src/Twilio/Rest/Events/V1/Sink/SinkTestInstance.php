@@ -25,7 +25,7 @@ class SinkTestInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Sink.
      */
     public function __construct(Version $version, array $payload, string $sid) {
         parent::__construct($version);

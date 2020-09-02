@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Bulkexports\V1;
+namespace Twilio\Tests\Integration\Messaging\V1;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -15,18 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class ExportTest extends HolodeckTestCase {
+class DeactivationsTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->bulkexports->v1->exports("resource_type")->fetch();
+            $this->twilio->messaging->v1->deactivations()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://bulkexports.twilio.com/v1/Exports/resource_type'
+            'https://messaging.twilio.com/v1/Deactivations'
         ));
     }
 
@@ -35,16 +35,12 @@ class ExportTest extends HolodeckTestCase {
             200,
             '
             {
-                "resource_type": "Messages",
-                "url": "https://bulkexports.twilio.com/v1/Exports/Messages",
-                "links": {
-                    "days": "https://bulkexports.twilio.com/v1/Exports/Messages/Days"
-                }
+                "redirect_to": "https://www.twilio.com"
             }
             '
         ));
 
-        $actual = $this->twilio->bulkexports->v1->exports("resource_type")->fetch();
+        $actual = $this->twilio->messaging->v1->deactivations()->fetch();
 
         $this->assertNotNull($actual);
     }

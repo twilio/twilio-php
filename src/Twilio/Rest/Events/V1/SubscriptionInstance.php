@@ -36,7 +36,7 @@ class SubscriptionInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Subscription.
      */
     public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);

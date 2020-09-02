@@ -217,4 +217,31 @@ class EndUserTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testDeleteRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->numbers->v2->regulatoryCompliance
+                                      ->endUsers("ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/EndUsers/ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testDeleteResponse(): void {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->numbers->v2->regulatoryCompliance
+                                            ->endUsers("ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
+    }
 }
