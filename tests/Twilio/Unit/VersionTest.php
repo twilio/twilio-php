@@ -7,6 +7,7 @@ use Twilio\Domain;
 use Twilio\Exceptions\RestException;
 use Twilio\Http\CurlClient;
 use Twilio\Http\Response;
+use Twilio\Page;
 use Twilio\Rest\Client;
 use Twilio\Values;
 use Twilio\Version;
@@ -51,6 +52,13 @@ class TestVersion extends Version {
     }
 }
 
+
+class TestPage extends Page {
+    public function buildInstance(array $payload): array {
+        return $payload;
+    }
+}
+
 class VersionTest extends UnitTest {
     protected $curlClient;
     /** @var Client $client */
@@ -77,14 +85,12 @@ class VersionTest extends UnitTest {
      * @param int|null $pageSize PageSize provided by the user
      * @param int|Values::NONE $expectedLimit Expected limit returned by readLimits
      * @param int|Values::NONE $expectedPageSize Expected page size returned by readLimits
-     * @param int|Values::NONe $expectedPageLimit Expected page limit returned by readLimits
      * @dataProvider readLimitProvider
      */
-    public function testReadLimits(string $message, ?int $limit, ?int $pageSize, $expectedLimit, $expectedPageSize, $expectedPageLimit): void {
+    public function testReadLimits(string $message, ?int $limit, ?int $pageSize, $expectedLimit, $expectedPageSize): void {
         $actual = $this->version->readLimits($limit, $pageSize);
-        $this->assertEquals($expectedLimit, $actual['limit'], "$message: Limit does not match");
-        $this->assertEquals($expectedPageSize, $actual['pageSize'], "$message: PageSize does not match");
-        $this->assertEquals($expectedPageLimit, $actual['pageLimit'], "$message: PageLimit does not match");
+        self::assertEquals($expectedLimit, $actual['limit'], "$message: Limit does not match");
+        self::assertEquals($expectedPageSize, $actual['pageSize'], "$message: PageSize does not match");
     }
 
     public function readLimitProvider(): array {
@@ -92,58 +98,84 @@ class VersionTest extends UnitTest {
             [
                 'Nothing Specified',
                 null, null,
-                Values::NONE, Values::NONE, Values::NONE,
+                Values::NONE, Values::NONE,
             ],
             [
                 'Limit Specified - Under Max Page Size',
                 Version::MAX_PAGE_SIZE - 1, null,
-                Version::MAX_PAGE_SIZE - 1, Version::MAX_PAGE_SIZE - 1, 1,
+                Version::MAX_PAGE_SIZE - 1, Version::MAX_PAGE_SIZE - 1,
             ],
             [
                 'Limit Specified - At Max Page Size',
                 Version::MAX_PAGE_SIZE, null,
-                Version::MAX_PAGE_SIZE, Version::MAX_PAGE_SIZE, 1,
+                Version::MAX_PAGE_SIZE, Version::MAX_PAGE_SIZE,
             ],
             [
                 'Limit Specified - Over Max Page Size',
                 Version::MAX_PAGE_SIZE + 1, null,
-                Version::MAX_PAGE_SIZE + 1, Version::MAX_PAGE_SIZE, 2,
+                Version::MAX_PAGE_SIZE + 1, Version::MAX_PAGE_SIZE,
             ],
             [
                 'Page Size Specified - Under Max Page Size',
                 null, Version::MAX_PAGE_SIZE - 1,
-                Values::NONE, Version::MAX_PAGE_SIZE - 1, Values::NONE,
+                Values::NONE, Version::MAX_PAGE_SIZE - 1
             ],
             [
                 'Page Size Specified - At Max Page Size',
                 null, Version::MAX_PAGE_SIZE,
-                Values::NONE, Version::MAX_PAGE_SIZE, Values::NONE,
+                Values::NONE, Version::MAX_PAGE_SIZE
             ],
             [
                 'Page Size Specified - Over Max Page Size',
                 null, Version::MAX_PAGE_SIZE + 1,
-                Values::NONE, Version::MAX_PAGE_SIZE, Values::NONE
+                Values::NONE, Version::MAX_PAGE_SIZE
             ],
-            [
-                'Limit less than Page Size',
-                50, 100,
-                50, 100, 1,
-            ],
-            [
-                'Limit equal to Page Size',
-                100, 100,
-                100, 100, 1,
-            ],
-            [
-                'Limit greater than Page Size - evenly divisible',
-                100, 50,
-                100, 50, 2,
-            ],
-            [
-                'Limit greater than Page Size - not evenly divisible',
-                100, 30,
-                100, 30, 4
-            ],
+        ];
+    }
+
+    /**
+     * @param string $message Case message to display on assertion error
+     * @param int|null $limit Limit provided by the user
+     * @param int|null $pageLimit Page limit provided by the user
+     * @param int $expectedCount Expected record count returned by stream
+     * @dataProvider streamProvider
+     */
+    public function testStream(string $message, ?int $limit, ?int $pageLimit, int $expectedCount): void {
+        $this->curlClient
+            ->method('request')
+            ->will(self::onConsecutiveCalls(
+                new Response(
+                    200,
+                    '{
+                        "next_page_uri": "/2010-04-01/Accounts/AC123/Messages.json?Page=1",
+                        "messages": [{"body": "payload0"}, {"body": "payload1"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "next_page_uri": "/2010-04-01/Accounts/AC123/Messages.json?Page=2",
+                        "messages": [{"body": "payload2"}, {"body": "payload3"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "next_page_uri": null,
+                        "messages": [{"body": "payload4"}]
+                    }')
+            ));
+
+        $response = $this->version->page('GET', '/Accounts/AC123/Messages.json');
+        $page = new TestPage($this->version, $response);
+        $messages = $this->version->stream($page, $limit, $pageLimit);
+
+        self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
+    }
+
+    public function streamProvider(): array {
+        return [
+            ['No limits', null, null, 5],
+            ['Item limit', 3, null, 3],
+            ['Page limit', null, 1, 2],
         ];
     }
 
@@ -157,7 +189,7 @@ class VersionTest extends UnitTest {
     public function testRelativeUri(string $message, string $prefix, string $uri, string $expected): void {
         $this->version->setVersion($prefix);
         $actual = $this->version->relativeUri($uri);
-        $this->assertEquals($expected, $actual, $message);
+        self::assertEquals($expected, $actual, $message);
     }
 
     public function relativeUriProvider(): array {
@@ -225,12 +257,12 @@ class VersionTest extends UnitTest {
     public function testAbsoluteUrl(string $message, string $prefix, string $uri, string $expected): void {
         $this->version->setVersion($prefix);
         $actual = $this->version->absoluteUrl($uri);
-        $this->assertEquals($expected, $actual, $message);
+        self::assertEquals($expected, $actual, $message);
     }
 
     public function testRestExceptionWithDetails(): void {
         $this->curlClient
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('request')
             ->willReturn(new Response(400, '{
                                     "code": 20001,
@@ -244,17 +276,17 @@ class VersionTest extends UnitTest {
             $this->version->fetch('get', 'http://foo.bar');
             self::fail();
         }catch (RestException $rex){
-            $this->assertEquals(20001, $rex->getCode());
-            $this->assertEquals(400, $rex->getStatusCode());
-            $this->assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
-            $this->assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
-            $this->assertEquals(["foo" => "bar"], $rex->getDetails());
+            self::assertEquals(20001, $rex->getCode());
+            self::assertEquals(400, $rex->getStatusCode());
+            self::assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
+            self::assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
+            self::assertEquals(["foo" => "bar"], $rex->getDetails());
         }
     }
 
     public function testRestExceptionWithoutDetails(): void {
         $this->curlClient
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('request')
             ->willReturn(new Response(400, '{
                                     "code": 20001,
@@ -266,28 +298,28 @@ class VersionTest extends UnitTest {
             $this->version->fetch('get', 'http://foo.bar');
             self::fail();
         }catch (RestException $rex){
-            $this->assertEquals(20001, $rex->getCode());
-            $this->assertEquals(400, $rex->getStatusCode());
-            $this->assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
-            $this->assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
-            $this->assertEmpty($rex->getDetails());
+            self::assertEquals(20001, $rex->getCode());
+            self::assertEquals(400, $rex->getStatusCode());
+            self::assertEquals('[HTTP 400] Unable to fetch record: Bad request', $rex->getMessage());
+            self::assertEquals('https://www.twilio.com/docs/errors/20001', $rex->getMoreInfo());
+            self::assertEmpty($rex->getDetails());
         }
     }
 
     public function testRestException(): void {
         $this->curlClient
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('request')
             ->willReturn(new Response(400, ''));
         try {
             $this->version->fetch('get', 'http://foo.bar');
             self::fail();
         }catch (RestException $rex){
-            $this->assertEquals(400, $rex->getCode());
-            $this->assertEquals(400, $rex->getStatusCode());
-            $this->assertEquals('[HTTP 400] Unable to fetch record', $rex->getMessage());
-            $this->assertEquals('', $rex->getMoreInfo());
-            $this->assertEmpty($rex->getDetails());
+            self::assertEquals(400, $rex->getCode());
+            self::assertEquals(400, $rex->getStatusCode());
+            self::assertEquals('[HTTP 400] Unable to fetch record', $rex->getMessage());
+            self::assertEquals('', $rex->getMoreInfo());
+            self::assertEmpty($rex->getDetails());
         }
     }
 

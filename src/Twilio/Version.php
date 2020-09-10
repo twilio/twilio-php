@@ -167,13 +167,8 @@ abstract class Version {
     }
 
     public function readLimits(int $limit = null, int $pageSize = null): array {
-        $pageLimit = Values::NONE;
-
-        if ($limit) {
-            if ($pageSize === null) {
-                $pageSize = \min($limit, self::MAX_PAGE_SIZE);
-            }
-            $pageLimit = (int)(\ceil($limit / (float)$pageSize));
+        if ($limit && $pageSize === null) {
+            $pageSize = $limit;
         }
 
         $pageSize = \min($pageSize, self::MAX_PAGE_SIZE);
@@ -181,7 +176,7 @@ abstract class Version {
         return [
             'limit' => $limit ?: Values::NONE,
             'pageSize' => $pageSize ?: Values::NONE,
-            'pageLimit' => $pageLimit,
+            'pageLimit' => Values::NONE,
         ];
     }
 
