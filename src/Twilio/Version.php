@@ -109,6 +109,7 @@ abstract class Version {
             $timeout
         );
 
+        // If there's an expected status, make sure it matches
         if ($expectedHttpStatus !== null) {
             if ($response->getStatusCode() != $expectedHttpStatus) {
                 throw $this->exception($response, 'Unable to fetch record');
