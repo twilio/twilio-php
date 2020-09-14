@@ -97,7 +97,7 @@ abstract class Version {
     public function fetch(string $method, string $uri,
                           array $params = [], array $data = [], array $headers = [],
                           string $username = null, string $password = null,
-                          int $timeout = null) {
+                          int $timeout = null, ?int $expectedHttpStatus = null) {
         $response = $this->request(
             $method,
             $uri,
@@ -109,7 +109,11 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
+        if ($expectedHttpStatus !== null) {
+            if ($response->getStatusCode() != $expectedHttpStatus) {
+                throw $this->exception($response, 'Unable to fetch record');
+            }
+        } else if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw $this->exception($response, 'Unable to fetch record');
         }
 
