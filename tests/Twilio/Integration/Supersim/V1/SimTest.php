@@ -159,6 +159,29 @@ class SimTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testTransferSimToAnotherAccountResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "unique_name": null,
+                "status": "new",
+                "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "iccid": "iccid",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->sims("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

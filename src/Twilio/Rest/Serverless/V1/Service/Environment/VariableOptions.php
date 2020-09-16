@@ -18,7 +18,7 @@ use Twilio\Values;
 abstract class VariableOptions {
     /**
      * @param string $key A string by which the Variable resource can be referenced
-     * @param string $value A string that contains the actual value of the variable
+     * @param string $value A string that contains the actual value of the Variable
      * @return UpdateVariableOptions Options builder
      */
     public static function update(string $key = Values::NONE, string $value = Values::NONE): UpdateVariableOptions {
@@ -29,7 +29,7 @@ abstract class VariableOptions {
 class UpdateVariableOptions extends Options {
     /**
      * @param string $key A string by which the Variable resource can be referenced
-     * @param string $value A string that contains the actual value of the variable
+     * @param string $value A string that contains the actual value of the Variable
      */
     public function __construct(string $key = Values::NONE, string $value = Values::NONE) {
         $this->options['key'] = $key;
@@ -37,7 +37,7 @@ class UpdateVariableOptions extends Options {
     }
 
     /**
-     * A string by which the Variable resource can be referenced. Must be less than 128 characters long.
+     * A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
      *
      * @param string $key A string by which the Variable resource can be referenced
      * @return $this Fluent Builder
@@ -48,9 +48,9 @@ class UpdateVariableOptions extends Options {
     }
 
     /**
-     * A string that contains the actual value of the variable. Must have less than 450 bytes.
+     * A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.
      *
-     * @param string $value A string that contains the actual value of the variable
+     * @param string $value A string that contains the actual value of the Variable
      * @return $this Fluent Builder
      */
     public function setValue(string $value): self {

@@ -25,7 +25,7 @@ class AssetVersionList extends ListResource {
      * @param string $serviceSid The SID of the Service that the Asset Version
      *                           resource is associated with
      * @param string $assetSid The SID of the Asset resource that is the parent of
-     *                         the asset version
+     *                         the Asset Version
      */
     public function __construct(Version $version, string $serviceSid, string $assetSid) {
         parent::__construct($version);

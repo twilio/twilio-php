@@ -229,4 +229,31 @@ class SupportingDocumentTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testDeleteRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->numbers->v2->regulatoryCompliance
+                                      ->supportingDocuments("RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments/RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testDeleteResponse(): void {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->numbers->v2->regulatoryCompliance
+                                            ->supportingDocuments("RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
+    }
 }

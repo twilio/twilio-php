@@ -36,7 +36,7 @@ class AssetVersionInstance extends InstanceResource {
      * @param string $serviceSid The SID of the Service that the Asset Version
      *                           resource is associated with
      * @param string $assetSid The SID of the Asset resource that is the parent of
-     *                         the asset version
+     *                         the Asset Version
      * @param string $sid The SID that identifies the Asset Version resource to
      *                    fetch
      */

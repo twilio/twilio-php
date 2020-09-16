@@ -22,7 +22,8 @@ class DeliveryReceiptList extends ListResource {
      * Construct the DeliveryReceiptList
      *
      * @param Version $version Version that contains the resource
-     * @param string $conversationSid The conversation_sid
+     * @param string $conversationSid The unique id of the Conversation for this
+     *                                message.
      * @param string $messageSid The sid of the message the delivery receipt
      *                           belongs to
      */

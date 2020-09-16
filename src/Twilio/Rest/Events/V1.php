@@ -12,17 +12,21 @@ namespace Twilio\Rest\Events;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Events\V1\EventTypeList;
 use Twilio\Rest\Events\V1\SinkList;
 use Twilio\Rest\Events\V1\SubscriptionList;
 use Twilio\Version;
 
 /**
+ * @property EventTypeList $eventTypes
  * @property SinkList $sinks
  * @property SubscriptionList $subscriptions
+ * @method \Twilio\Rest\Events\V1\EventTypeContext eventTypes(string $type)
  * @method \Twilio\Rest\Events\V1\SinkContext sinks(string $sid)
  * @method \Twilio\Rest\Events\V1\SubscriptionContext subscriptions(string $sid)
  */
 class V1 extends Version {
+    protected $_eventTypes;
     protected $_sinks;
     protected $_subscriptions;
 
@@ -34,6 +38,13 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getEventTypes(): EventTypeList {
+        if (!$this->_eventTypes) {
+            $this->_eventTypes = new EventTypeList($this);
+        }
+        return $this->_eventTypes;
     }
 
     protected function getSinks(): SinkList {

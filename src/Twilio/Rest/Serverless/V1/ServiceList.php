@@ -116,8 +116,8 @@ class ServiceList extends ListResource {
     /**
      * Create the ServiceInstance
      *
-     * @param string $uniqueName An application-defined string that uniquely
-     *                           identifies the Service resource
+     * @param string $uniqueName A user-defined string that uniquely identifies the
+     *                           Service resource
      * @param string $friendlyName A string to describe the Service resource
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Created ServiceInstance

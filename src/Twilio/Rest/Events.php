@@ -15,8 +15,10 @@ use Twilio\Rest\Events\V1;
 
 /**
  * @property \Twilio\Rest\Events\V1 $v1
+ * @property \Twilio\Rest\Events\V1\EventTypeList $eventTypes
  * @property \Twilio\Rest\Events\V1\SinkList $sinks
  * @property \Twilio\Rest\Events\V1\SubscriptionList $subscriptions
+ * @method \Twilio\Rest\Events\V1\EventTypeContext eventTypes(string $type)
  * @method \Twilio\Rest\Events\V1\SinkContext sinks(string $sid)
  * @method \Twilio\Rest\Events\V1\SubscriptionContext subscriptions(string $sid)
  */
@@ -75,6 +77,17 @@ class Events extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    protected function getEventTypes(): \Twilio\Rest\Events\V1\EventTypeList {
+        return $this->v1->eventTypes;
+    }
+
+    /**
+     * @param string $type The type
+     */
+    protected function contextEventTypes(string $type): \Twilio\Rest\Events\V1\EventTypeContext {
+        return $this->v1->eventTypes($type);
     }
 
     protected function getSinks(): \Twilio\Rest\Events\V1\SinkList {
