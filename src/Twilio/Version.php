@@ -109,6 +109,7 @@ abstract class Version {
             $timeout
         );
 
+        // 3XX response codes are allowed here to allow for 307 redirect from Deactivations API.
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 400) {
             throw $this->exception($response, 'Unable to fetch record');
         }
