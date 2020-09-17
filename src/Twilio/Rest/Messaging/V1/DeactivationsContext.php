@@ -43,7 +43,7 @@ class DeactivationsContext extends InstanceContext {
 
         $params = Values::of(['Date' => Serialize::iso8601Date($options['date']), ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], [], null, null, null, 307);
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new DeactivationsInstance($this->version, $payload);
     }
