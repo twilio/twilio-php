@@ -32,7 +32,7 @@ class DeactivationsTest extends HolodeckTestCase {
 
     public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
-            307,
+            200,
             '
             {
                 "redirect_to": "https://www.twilio.com"
