@@ -180,6 +180,19 @@ class VersionTest extends UnitTest {
     }
 
     /**
+     * Test HTTP 307 redirect for Deactivations API
+     */
+    public function testHttp307Redirect(): void {
+        $this->curlClient
+            ->expects(self::once())
+            ->method('request')
+            ->willReturn(new Response(307, '{
+                "redirect_to": "https://com-twilio-dev-messaging-deactivations.s3.amazonaws.com"
+            }'));
+        $response = $this->version->fetch('GET', 'http://foo.bar/Deactivations');
+    }
+
+    /**
      * @param string $message Case message to display on assertion error
      * @param string $prefix Version prefix to test
      * @param string $uri URI to make relative to the version
