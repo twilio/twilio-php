@@ -117,8 +117,8 @@ class EnvironmentList extends ListResource {
     /**
      * Create the EnvironmentInstance
      *
-     * @param string $uniqueName An application-defined string that uniquely
-     *                           identifies the Environment resource
+     * @param string $uniqueName A user-defined string that uniquely identifies the
+     *                           Environment resource
      * @param array|Options $options Optional Arguments
      * @return EnvironmentInstance Created EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.

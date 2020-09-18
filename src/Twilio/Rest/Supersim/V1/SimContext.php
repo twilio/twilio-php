@@ -62,6 +62,7 @@ class SimContext extends InstanceContext {
             'Fleet' => $options['fleet'],
             'CallbackUrl' => $options['callbackUrl'],
             'CallbackMethod' => $options['callbackMethod'],
+            'AccountSid' => $options['accountSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

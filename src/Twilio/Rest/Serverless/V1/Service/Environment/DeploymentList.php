@@ -26,7 +26,7 @@ class DeploymentList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the Deployment
      *                           resource is associated with
-     * @param string $environmentSid The SID of the environment for the deployment
+     * @param string $environmentSid The SID of the Environment for the Deployment
      */
     public function __construct(Version $version, string $serviceSid, string $environmentSid) {
         parent::__construct($version);

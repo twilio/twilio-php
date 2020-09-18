@@ -18,11 +18,11 @@ use Twilio\Values;
 abstract class BuildOptions {
     /**
      * @param string[] $assetVersions The list of Asset Version resource SIDs to
-     *                                include in the build
-     * @param string[] $functionVersions The list of the Variable resource SIDs to
-     *                                   include in the build
+     *                                include in the Build
+     * @param string[] $functionVersions The list of the Function Version resource
+     *                                   SIDs to include in the Build
      * @param string $dependencies A list of objects that describe the Dependencies
-     *                             included in the build
+     *                             included in the Build
      * @return CreateBuildOptions Options builder
      */
     public static function create(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE): CreateBuildOptions {
@@ -33,11 +33,11 @@ abstract class BuildOptions {
 class CreateBuildOptions extends Options {
     /**
      * @param string[] $assetVersions The list of Asset Version resource SIDs to
-     *                                include in the build
-     * @param string[] $functionVersions The list of the Variable resource SIDs to
-     *                                   include in the build
+     *                                include in the Build
+     * @param string[] $functionVersions The list of the Function Version resource
+     *                                   SIDs to include in the Build
      * @param string $dependencies A list of objects that describe the Dependencies
-     *                             included in the build
+     *                             included in the Build
      */
     public function __construct(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE) {
         $this->options['assetVersions'] = $assetVersions;
@@ -46,10 +46,10 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * The list of Asset Version resource SIDs to include in the build.
+     * The list of Asset Version resource SIDs to include in the Build.
      *
      * @param string[] $assetVersions The list of Asset Version resource SIDs to
-     *                                include in the build
+     *                                include in the Build
      * @return $this Fluent Builder
      */
     public function setAssetVersions(array $assetVersions): self {
@@ -58,10 +58,10 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * The list of the Variable resource SIDs to include in the build.
+     * The list of the Function Version resource SIDs to include in the Build.
      *
-     * @param string[] $functionVersions The list of the Variable resource SIDs to
-     *                                   include in the build
+     * @param string[] $functionVersions The list of the Function Version resource
+     *                                   SIDs to include in the Build
      * @return $this Fluent Builder
      */
     public function setFunctionVersions(array $functionVersions): self {
@@ -70,10 +70,10 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * A list of objects that describe the Dependencies included in the build. Each object contains the `name` and `version` of the dependency.
+     * A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency.
      *
      * @param string $dependencies A list of objects that describe the Dependencies
-     *                             included in the build
+     *                             included in the Build
      * @return $this Fluent Builder
      */
     public function setDependencies(string $dependencies): self {

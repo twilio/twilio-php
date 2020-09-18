@@ -47,6 +47,7 @@ class ConversationList extends ListResource {
 
         $data = Values::of([
             'FriendlyName' => $options['friendlyName'],
+            'UniqueName' => $options['uniqueName'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'MessagingServiceSid' => $options['messagingServiceSid'],

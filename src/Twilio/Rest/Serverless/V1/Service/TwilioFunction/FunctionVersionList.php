@@ -24,8 +24,8 @@ class FunctionVersionList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the Function Version
      *                           resource is associated with
-     * @param string $functionSid The SID of the function that is the parent of the
-     *                            function version
+     * @param string $functionSid The SID of the Function resource that is the
+     *                            parent of the Function Version resource
      */
     public function __construct(Version $version, string $serviceSid, string $functionSid) {
         parent::__construct($version);

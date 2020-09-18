@@ -65,6 +65,16 @@ class SupportingDocumentContext extends InstanceContext {
     }
 
     /**
+     * Delete the SupportingDocumentInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool {
+        return $this->version->delete('DELETE', $this->uri);
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

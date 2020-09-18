@@ -24,7 +24,7 @@ class DeploymentContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Deployment
      *                           resource from
-     * @param string $environmentSid The SID of the environment used by the
+     * @param string $environmentSid The SID of the Environment used by the
      *                               Deployment to fetch
      * @param string $sid The SID that identifies the Deployment resource to fetch
      */

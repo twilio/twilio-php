@@ -25,8 +25,8 @@ class VariableList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the Variable resource
      *                           is associated with
-     * @param string $environmentSid The SID of the environment in which the
-     *                               variable exists
+     * @param string $environmentSid The SID of the Environment in which the
+     *                               Variable exists
      */
     public function __construct(Version $version, string $serviceSid, string $environmentSid) {
         parent::__construct($version);
@@ -119,7 +119,7 @@ class VariableList extends ListResource {
      * Create the VariableInstance
      *
      * @param string $key A string by which the Variable resource can be referenced
-     * @param string $value A string that contains the actual value of the variable
+     * @param string $value A string that contains the actual value of the Variable
      * @return VariableInstance Created VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */

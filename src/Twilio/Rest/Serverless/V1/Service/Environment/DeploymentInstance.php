@@ -35,7 +35,7 @@ class DeploymentInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the Deployment
      *                           resource is associated with
-     * @param string $environmentSid The SID of the environment for the deployment
+     * @param string $environmentSid The SID of the Environment for the Deployment
      * @param string $sid The SID that identifies the Deployment resource to fetch
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null) {

@@ -25,7 +25,7 @@ class VariableContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the Variable
      *                           resource from
-     * @param string $environmentSid The SID of the environment with the Variable
+     * @param string $environmentSid The SID of the Environment with the Variable
      *                               resource to fetch
      * @param string $sid The SID of the Variable resource to fetch
      */

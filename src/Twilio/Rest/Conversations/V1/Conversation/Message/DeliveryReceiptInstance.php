@@ -18,9 +18,10 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
+ * @property string $accountSid
+ * @property string $conversationSid
  * @property string $sid
  * @property string $messageSid
- * @property string $conversationSid
  * @property string $channelMessageSid
  * @property string $participantSid
  * @property string $status
@@ -35,7 +36,8 @@ class DeliveryReceiptInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conversationSid The conversation_sid
+     * @param string $conversationSid The unique id of the Conversation for this
+     *                                message.
      * @param string $messageSid The sid of the message the delivery receipt
      *                           belongs to
      * @param string $sid A 34 character string that uniquely identifies this
@@ -46,9 +48,10 @@ class DeliveryReceiptInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = [
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'conversationSid' => Values::array_get($payload, 'conversation_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'messageSid' => Values::array_get($payload, 'message_sid'),
-            'conversationSid' => Values::array_get($payload, 'conversation_sid'),
             'channelMessageSid' => Values::array_get($payload, 'channel_message_sid'),
             'participantSid' => Values::array_get($payload, 'participant_sid'),
             'status' => Values::array_get($payload, 'status'),
