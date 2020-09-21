@@ -18,7 +18,7 @@ use Twilio\Values;
 abstract class ParticipantOptions {
     /**
      * @param string $identity A unique string identifier for the conversation
-     *                         participant as Chat User.
+     *                         participant as Conversation User.
      * @param string $messagingBindingAddress The address of the participant's
      *                                        device.
      * @param string $messagingBindingProxyAddress The address of the Twilio phone
@@ -31,7 +31,8 @@ abstract class ParticipantOptions {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
-     * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $roleSid The SID of a conversation-level Role to assign to the
+     *                        participant
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateParticipantOptions Options builder
@@ -45,7 +46,8 @@ abstract class ParticipantOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
-     * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $roleSid The SID of a conversation-level Role to assign to the
+     *                        participant
      * @param string $messagingBindingProxyAddress The address of the Twilio phone
      *                                             number that the participant is
      *                                             in contact with.
@@ -53,7 +55,7 @@ abstract class ParticipantOptions {
      *                                                 phone number that is used in
      *                                                 Group MMS.
      * @param string $identity A unique string identifier for the conversation
-     *                         participant as Chat User.
+     *                         participant as Conversation User.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateParticipantOptions Options builder
@@ -75,7 +77,7 @@ abstract class ParticipantOptions {
 class CreateParticipantOptions extends Options {
     /**
      * @param string $identity A unique string identifier for the conversation
-     *                         participant as Chat User.
+     *                         participant as Conversation User.
      * @param string $messagingBindingAddress The address of the participant's
      *                                        device.
      * @param string $messagingBindingProxyAddress The address of the Twilio phone
@@ -88,7 +90,8 @@ class CreateParticipantOptions extends Options {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
-     * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $roleSid The SID of a conversation-level Role to assign to the
+     *                        participant
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -105,10 +108,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/chat/rest/user-resource). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.
+     * A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
      *
      * @param string $identity A unique string identifier for the conversation
-     *                         participant as Chat User.
+     *                         participant as Conversation User.
      * @return $this Fluent Builder
      */
     public function setIdentity(string $identity): self {
@@ -117,7 +120,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
+     * The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from an SDK endpoint (see the 'identity' field).
      *
      * @param string $messagingBindingAddress The address of the participant's
      *                                        device.
@@ -129,7 +132,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
+     * The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the 'identity' field).
      *
      * @param string $messagingBindingProxyAddress The address of the Twilio phone
      *                                             number that the participant is
@@ -176,7 +179,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the Twilio phone number that is used in Group MMS. Communication mask for the Chat participant with Identity.
+     * The address of the Twilio phone number that is used in Group MMS. Communication mask for the Conversation participant with Identity.
      *
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
@@ -189,9 +192,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the participant.
+     * The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant.
      *
-     * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $roleSid The SID of a conversation-level Role to assign to the
+     *                        participant
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -228,7 +232,8 @@ class UpdateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
-     * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $roleSid The SID of a conversation-level Role to assign to the
+     *                        participant
      * @param string $messagingBindingProxyAddress The address of the Twilio phone
      *                                             number that the participant is
      *                                             in contact with.
@@ -236,7 +241,7 @@ class UpdateParticipantOptions extends Options {
      *                                                 phone number that is used in
      *                                                 Group MMS.
      * @param string $identity A unique string identifier for the conversation
-     *                         participant as Chat User.
+     *                         participant as Conversation User.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -286,9 +291,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the participant.
+     * The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant.
      *
-     * @param string $roleSid The SID of the Role to assign to the participant
+     * @param string $roleSid The SID of a conversation-level Role to assign to the
+     *                        participant
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -323,10 +329,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/chat/rest/user-resource). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.
+     * A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
      *
      * @param string $identity A unique string identifier for the conversation
-     *                         participant as Chat User.
+     *                         participant as Conversation User.
      * @return $this Fluent Builder
      */
     public function setIdentity(string $identity): self {

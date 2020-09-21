@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Conversations\V1;
+namespace Twilio\Tests\Integration\Conversations\V1\Configuration;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,13 +20,14 @@ class WebhookTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->conversations->v1->webhooks()->fetch();
+            $this->twilio->conversations->v1->configuration
+                                            ->webhooks()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://conversations.twilio.com/v1/Conversations/Webhooks'
+            'https://conversations.twilio.com/v1/Configuration/Webhooks'
         ));
     }
 
@@ -44,12 +45,13 @@ class WebhookTest extends HolodeckTestCase {
                     "onConversationUpdated"
                 ],
                 "target": "webhook",
-                "url": "https://conversations.twilio.com/v1/Conversations/Webhooks"
+                "url": "https://conversations.twilio.com/v1/Configuration/Webhooks"
             }
             '
         ));
 
-        $actual = $this->twilio->conversations->v1->webhooks()->fetch();
+        $actual = $this->twilio->conversations->v1->configuration
+                                                  ->webhooks()->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -58,13 +60,14 @@ class WebhookTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->conversations->v1->webhooks()->update();
+            $this->twilio->conversations->v1->configuration
+                                            ->webhooks()->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://conversations.twilio.com/v1/Conversations/Webhooks'
+            'https://conversations.twilio.com/v1/Configuration/Webhooks'
         ));
     }
 
@@ -81,12 +84,13 @@ class WebhookTest extends HolodeckTestCase {
                     "onConversationUpdated"
                 ],
                 "target": "webhook",
-                "url": "https://conversations.twilio.com/v1/Conversations/Webhooks"
+                "url": "https://conversations.twilio.com/v1/Configuration/Webhooks"
             }
             '
         ));
 
-        $actual = $this->twilio->conversations->v1->webhooks()->update();
+        $actual = $this->twilio->conversations->v1->configuration
+                                                  ->webhooks()->update();
 
         $this->assertNotNull($actual);
     }

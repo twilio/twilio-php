@@ -19,7 +19,8 @@ abstract class BindingOptions {
     /**
      * @param string[] $bindingType The push technology used by the Binding
      *                              resources to read.
-     * @param string[] $identity The `identity` value of the resources to read.
+     * @param string[] $identity The identity of Conversation User associated with
+     *                           this binding.
      * @return ReadBindingOptions Options builder
      */
     public static function read(array $bindingType = Values::ARRAY_NONE, array $identity = Values::ARRAY_NONE): ReadBindingOptions {
@@ -31,7 +32,8 @@ class ReadBindingOptions extends Options {
     /**
      * @param string[] $bindingType The push technology used by the Binding
      *                              resources to read.
-     * @param string[] $identity The `identity` value of the resources to read.
+     * @param string[] $identity The identity of Conversation User associated with
+     *                           this binding.
      */
     public function __construct(array $bindingType = Values::ARRAY_NONE, array $identity = Values::ARRAY_NONE) {
         $this->options['bindingType'] = $bindingType;
@@ -51,9 +53,10 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
+     * The identity of a [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource) this binding belongs to. See [access tokens](https://www.twilio.com/docs/conversations/create-tokens) for more details.
      *
-     * @param string[] $identity The `identity` value of the resources to read.
+     * @param string[] $identity The identity of Conversation User associated with
+     *                           this binding.
      * @return $this Fluent Builder
      */
     public function setIdentity(array $identity): self {

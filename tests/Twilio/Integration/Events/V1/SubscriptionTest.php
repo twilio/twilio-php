@@ -188,6 +188,44 @@ class SubscriptionTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://events.twilio.com/v1/Subscriptions/DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2020-07-30T20:01:33Z",
+                "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+                "description": "Updated description",
+                "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

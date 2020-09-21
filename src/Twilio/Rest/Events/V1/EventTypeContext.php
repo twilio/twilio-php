@@ -22,7 +22,7 @@ class EventTypeContext extends InstanceContext {
      * Initialize the EventTypeContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $type The type
+     * @param string $type A string that uniquely identifies this Event Type.
      */
     public function __construct(Version $version, $type) {
         parent::__construct($version);

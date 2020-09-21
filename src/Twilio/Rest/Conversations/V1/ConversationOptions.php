@@ -22,8 +22,8 @@ abstract class ConversationOptions {
      *                           identifies the resource
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the Messaging Service
+     *                                    this conversation belongs to.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @param string $state Current state of this conversation.
@@ -45,8 +45,8 @@ abstract class ConversationOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the Messaging Service
+     *                                    this conversation belongs to.
      * @param string $state Current state of this conversation.
      * @param string $timersInactive ISO8601 duration when conversation will be
      *                               switched to `inactive` state.
@@ -77,8 +77,8 @@ class CreateConversationOptions extends Options {
      *                           identifies the resource
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the Messaging Service
+     *                                    this conversation belongs to.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @param string $state Current state of this conversation.
@@ -148,10 +148,10 @@ class CreateConversationOptions extends Options {
     }
 
     /**
-     * The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
      *
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the Messaging Service
+     *                                    this conversation belongs to.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self {
@@ -236,8 +236,8 @@ class UpdateConversationOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the Messaging Service
+     *                                    this conversation belongs to.
      * @param string $state Current state of this conversation.
      * @param string $timersInactive ISO8601 duration when conversation will be
      *                               switched to `inactive` state.
@@ -304,10 +304,10 @@ class UpdateConversationOptions extends Options {
     }
 
     /**
-     * The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
      *
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the Messaging Service
+     *                                    this conversation belongs to.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self {

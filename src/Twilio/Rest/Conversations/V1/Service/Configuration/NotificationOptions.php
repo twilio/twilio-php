@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Conversations\V1\Service\Configuration;
 
 use Twilio\Options;
 use Twilio\Values;

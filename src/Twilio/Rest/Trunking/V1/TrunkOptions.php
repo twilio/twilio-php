@@ -22,15 +22,14 @@ abstract class TrunkOptions {
      *                                    towards your configured Origination URL
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
-     * @param string $recording The recording settings for the trunk
      * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      * @return CreateTrunkOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
-        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $transferMode, $secure, $cnamLookupEnabled);
+    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
+        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled);
     }
 
     /**
@@ -42,15 +41,14 @@ abstract class TrunkOptions {
      *                                    towards your configured Origination URL
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
-     * @param string $recording The recording settings for the trunk
      * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      * @return UpdateTrunkOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
-        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $recording, $transferMode, $secure, $cnamLookupEnabled);
+    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
+        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled);
     }
 }
 
@@ -64,18 +62,16 @@ class CreateTrunkOptions extends Options {
      *                                    towards your configured Origination URL
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
-     * @param string $recording The recording settings for the trunk
      * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
-        $this->options['recording'] = $recording;
         $this->options['transferMode'] = $transferMode;
         $this->options['secure'] = $secure;
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
@@ -126,17 +122,6 @@ class CreateTrunkOptions extends Options {
      */
     public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self {
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
-        return $this;
-    }
-
-    /**
-     * The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. The only way to change recording parameters is on a sub-resource of a Trunk after it has been created. e.g.`/Trunks/[Trunk_SID]/Recording -XPOST -d'Mode=record-from-answer'`. See [Recording](https://www.twilio.com/docs/sip-trunking#recording) for more information.
-     *
-     * @param string $recording The recording settings for the trunk
-     * @return $this Fluent Builder
-     */
-    public function setRecording(string $recording): self {
-        $this->options['recording'] = $recording;
         return $this;
     }
 
@@ -195,18 +180,16 @@ class UpdateTrunkOptions extends Options {
      *                                    towards your configured Origination URL
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
-     * @param string $recording The recording settings for the trunk
      * @param string $transferMode The call transfer settings for the trunk
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $recording = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
-        $this->options['recording'] = $recording;
         $this->options['transferMode'] = $transferMode;
         $this->options['secure'] = $secure;
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
@@ -257,17 +240,6 @@ class UpdateTrunkOptions extends Options {
      */
     public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self {
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
-        return $this;
-    }
-
-    /**
-     * The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. See [Recording](https://www.twilio.com/docs/sip-trunking#recording) for more information.
-     *
-     * @param string $recording The recording settings for the trunk
-     * @return $this Fluent Builder
-     */
-    public function setRecording(string $recording): self {
-        $this->options['recording'] = $recording;
         return $this;
     }
 

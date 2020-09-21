@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Conversations\V1\Service\Configuration;
 
 use Twilio\ListResource;
 use Twilio\Version;
@@ -20,22 +20,20 @@ class NotificationList extends ListResource {
      * Construct the NotificationList
      *
      * @param Version $version Version that contains the resource
+     * @param string $chatServiceSid The unique string that identifies the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $chatServiceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['chatServiceSid' => $chatServiceSid, ];
     }
 
     /**
      * Constructs a NotificationContext
-     *
-     * @param string $chatServiceSid The SID of the Chat Service that the
-     *                               Configuration applies to.
      */
-    public function getContext(string $chatServiceSid): NotificationContext {
-        return new NotificationContext($this->version, $chatServiceSid);
+    public function getContext(): NotificationContext {
+        return new NotificationContext($this->version, $this->solution['chatServiceSid']);
     }
 
     /**

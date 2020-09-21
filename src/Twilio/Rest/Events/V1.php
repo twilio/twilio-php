@@ -13,20 +13,24 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Events\V1\EventTypeList;
+use Twilio\Rest\Events\V1\SchemaList;
 use Twilio\Rest\Events\V1\SinkList;
 use Twilio\Rest\Events\V1\SubscriptionList;
 use Twilio\Version;
 
 /**
  * @property EventTypeList $eventTypes
+ * @property SchemaList $schemas
  * @property SinkList $sinks
  * @property SubscriptionList $subscriptions
  * @method \Twilio\Rest\Events\V1\EventTypeContext eventTypes(string $type)
+ * @method \Twilio\Rest\Events\V1\SchemaContext schemas(string $id)
  * @method \Twilio\Rest\Events\V1\SinkContext sinks(string $sid)
  * @method \Twilio\Rest\Events\V1\SubscriptionContext subscriptions(string $sid)
  */
 class V1 extends Version {
     protected $_eventTypes;
+    protected $_schemas;
     protected $_sinks;
     protected $_subscriptions;
 
@@ -45,6 +49,13 @@ class V1 extends Version {
             $this->_eventTypes = new EventTypeList($this);
         }
         return $this->_eventTypes;
+    }
+
+    protected function getSchemas(): SchemaList {
+        if (!$this->_schemas) {
+            $this->_schemas = new SchemaList($this);
+        }
+        return $this->_schemas;
     }
 
     protected function getSinks(): SinkList {

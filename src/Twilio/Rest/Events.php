@@ -16,9 +16,11 @@ use Twilio\Rest\Events\V1;
 /**
  * @property \Twilio\Rest\Events\V1 $v1
  * @property \Twilio\Rest\Events\V1\EventTypeList $eventTypes
+ * @property \Twilio\Rest\Events\V1\SchemaList $schemas
  * @property \Twilio\Rest\Events\V1\SinkList $sinks
  * @property \Twilio\Rest\Events\V1\SubscriptionList $subscriptions
  * @method \Twilio\Rest\Events\V1\EventTypeContext eventTypes(string $type)
+ * @method \Twilio\Rest\Events\V1\SchemaContext schemas(string $id)
  * @method \Twilio\Rest\Events\V1\SinkContext sinks(string $sid)
  * @method \Twilio\Rest\Events\V1\SubscriptionContext subscriptions(string $sid)
  */
@@ -84,10 +86,21 @@ class Events extends Domain {
     }
 
     /**
-     * @param string $type The type
+     * @param string $type A string that uniquely identifies this Event Type.
      */
     protected function contextEventTypes(string $type): \Twilio\Rest\Events\V1\EventTypeContext {
         return $this->v1->eventTypes($type);
+    }
+
+    protected function getSchemas(): \Twilio\Rest\Events\V1\SchemaList {
+        return $this->v1->schemas;
+    }
+
+    /**
+     * @param string $id The unique identifier of the schema.
+     */
+    protected function contextSchemas(string $id): \Twilio\Rest\Events\V1\SchemaContext {
+        return $this->v1->schemas($id);
     }
 
     protected function getSinks(): \Twilio\Rest\Events\V1\SinkList {

@@ -7,82 +7,78 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Events\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
+use Twilio\Rest\Events\V1\Schema\VersionList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $accountSid
- * @property string $method
- * @property string[] $filters
- * @property string $preWebhookUrl
- * @property string $postWebhookUrl
- * @property string $target
+ * @property string $id
  * @property string $url
+ * @property array $links
+ * @property \DateTime $lastCreated
+ * @property int $lastVersion
  */
-class WebhookInstance extends InstanceResource {
+class SchemaInstance extends InstanceResource {
+    protected $_versions;
+
     /**
-     * Initialize the WebhookInstance
+     * Initialize the SchemaInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $id The unique identifier of the schema.
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, string $id = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'method' => Values::array_get($payload, 'method'),
-            'filters' => Values::array_get($payload, 'filters'),
-            'preWebhookUrl' => Values::array_get($payload, 'pre_webhook_url'),
-            'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),
-            'target' => Values::array_get($payload, 'target'),
+            'id' => Values::array_get($payload, 'id'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
+            'lastCreated' => Deserialize::dateTime(Values::array_get($payload, 'last_created')),
+            'lastVersion' => Values::array_get($payload, 'last_version'),
         ];
 
-        $this->solution = [];
+        $this->solution = ['id' => $id ?: $this->properties['id'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return WebhookContext Context for this WebhookInstance
+     * @return SchemaContext Context for this SchemaInstance
      */
-    protected function proxy(): WebhookContext {
+    protected function proxy(): SchemaContext {
         if (!$this->context) {
-            $this->context = new WebhookContext($this->version);
+            $this->context = new SchemaContext($this->version, $this->solution['id']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the WebhookInstance
+     * Fetch the SchemaInstance
      *
-     * @return WebhookInstance Fetched WebhookInstance
+     * @return SchemaInstance Fetched SchemaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): SchemaInstance {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the WebhookInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return WebhookInstance Updated WebhookInstance
-     * @throws TwilioException When an HTTP error occurs.
+     * Access the versions
      */
-    public function update(array $options = []): WebhookInstance {
-        return $this->proxy()->update($options);
+    protected function getVersions(): VersionList {
+        return $this->proxy()->versions;
     }
 
     /**
@@ -115,6 +111,6 @@ class WebhookInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.WebhookInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Events.V1.SchemaInstance ' . \implode(' ', $context) . ']';
     }
 }

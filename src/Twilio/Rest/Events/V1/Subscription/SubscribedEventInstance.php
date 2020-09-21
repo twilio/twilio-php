@@ -30,9 +30,8 @@ class SubscribedEventInstance extends InstanceResource {
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $subscriptionSid Subscription SID.
-     * @param string $type Type of event being subscribed to.
      */
-    public function __construct(Version $version, array $payload, string $subscriptionSid, string $type = null) {
+    public function __construct(Version $version, array $payload, string $subscriptionSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -44,49 +43,7 @@ class SubscribedEventInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [
-            'subscriptionSid' => $subscriptionSid,
-            'type' => $type ?: $this->properties['type'],
-        ];
-    }
-
-    /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return SubscribedEventContext Context for this SubscribedEventInstance
-     */
-    protected function proxy(): SubscribedEventContext {
-        if (!$this->context) {
-            $this->context = new SubscribedEventContext(
-                $this->version,
-                $this->solution['subscriptionSid'],
-                $this->solution['type']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Update the SubscribedEventInstance
-     *
-     * @param int $version The schema version that the subscription should use.
-     * @return SubscribedEventInstance Updated SubscribedEventInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(int $version): SubscribedEventInstance {
-        return $this->proxy()->update($version);
-    }
-
-    /**
-     * Delete the SubscribedEventInstance
-     *
-     * @return bool True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+        $this->solution = ['subscriptionSid' => $subscriptionSid, ];
     }
 
     /**
@@ -115,10 +72,6 @@ class SubscribedEventInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Events.V1.SubscribedEventInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Events.V1.SubscribedEventInstance]';
     }
 }

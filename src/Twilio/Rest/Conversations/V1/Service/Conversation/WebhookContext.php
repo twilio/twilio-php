@@ -24,9 +24,9 @@ class WebhookContext extends InstanceContext {
      * Initialize the WebhookContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The SID of the Chat Service that the resource
-     *                               is associated with.
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $chatServiceSid The SID of the Conversation Service that the
+     *                               resource is associated with.
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                webhook.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.

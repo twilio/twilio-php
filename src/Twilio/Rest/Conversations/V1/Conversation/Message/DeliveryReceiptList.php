@@ -22,9 +22,9 @@ class DeliveryReceiptList extends ListResource {
      * Construct the DeliveryReceiptList
      *
      * @param Version $version Version that contains the resource
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                message.
-     * @param string $messageSid The sid of the message the delivery receipt
+     * @param string $messageSid The SID of the message the delivery receipt
      *                           belongs to
      */
     public function __construct(Version $version, string $conversationSid, string $messageSid) {

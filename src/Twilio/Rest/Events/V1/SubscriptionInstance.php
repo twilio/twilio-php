@@ -12,6 +12,7 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Rest\Events\V1\Subscription\SubscribedEventList;
 use Twilio\Values;
 use Twilio\Version;
@@ -78,6 +79,17 @@ class SubscriptionInstance extends InstanceResource {
      */
     public function fetch(): SubscriptionInstance {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the SubscriptionInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return SubscriptionInstance Updated SubscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): SubscriptionInstance {
+        return $this->proxy()->update($options);
     }
 
     /**

@@ -34,8 +34,8 @@ class RoleInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $chatServiceSid The SID of the Service that the resource is
-     *                               associated with
+     * @param string $chatServiceSid The SID of the Conversation Service that the
+     *                               resource is associated with
      * @param string $sid The SID of the Role resource to fetch
      */
     public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null) {

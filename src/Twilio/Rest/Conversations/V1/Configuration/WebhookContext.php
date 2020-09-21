@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Conversations\V1\Configuration;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
@@ -31,7 +31,7 @@ class WebhookContext extends InstanceContext {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Conversations/Webhooks';
+        $this->uri = '/Configuration/Webhooks';
     }
 
     /**

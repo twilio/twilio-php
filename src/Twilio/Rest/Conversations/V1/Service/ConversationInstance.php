@@ -46,7 +46,7 @@ class ConversationInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $chatServiceSid The unique id of the Chat Service this
+     * @param string $chatServiceSid The unique ID of the Conversation Service this
      *                               conversation belongs to.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.

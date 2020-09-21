@@ -36,9 +36,9 @@ class DeliveryReceiptInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                message.
-     * @param string $messageSid The sid of the message the delivery receipt
+     * @param string $messageSid The SID of the message the delivery receipt
      *                           belongs to
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.

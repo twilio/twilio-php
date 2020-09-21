@@ -17,6 +17,7 @@ use Twilio\Rest\Trunking\V1\Trunk\CredentialListList;
 use Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList;
 use Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList;
 use Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList;
+use Twilio\Rest\Trunking\V1\Trunk\RecordingList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -43,6 +44,7 @@ class TrunkInstance extends InstanceResource {
     protected $_credentialsLists;
     protected $_ipAccessControlLists;
     protected $_phoneNumbers;
+    protected $_recordings;
 
     /**
      * Initialize the TrunkInstance
@@ -148,6 +150,13 @@ class TrunkInstance extends InstanceResource {
      */
     protected function getPhoneNumbers(): PhoneNumberList {
         return $this->proxy()->phoneNumbers;
+    }
+
+    /**
+     * Access the recordings
+     */
+    protected function getRecordings(): RecordingList {
+        return $this->proxy()->recordings;
     }
 
     /**

@@ -15,37 +15,30 @@ use Twilio\InstanceContext;
 use Twilio\Rest\Conversations\V1\ConfigurationList;
 use Twilio\Rest\Conversations\V1\ConversationList;
 use Twilio\Rest\Conversations\V1\CredentialList;
-use Twilio\Rest\Conversations\V1\NotificationList;
 use Twilio\Rest\Conversations\V1\RoleList;
 use Twilio\Rest\Conversations\V1\ServiceList;
 use Twilio\Rest\Conversations\V1\UserList;
-use Twilio\Rest\Conversations\V1\WebhookList;
 use Twilio\Version;
 
 /**
  * @property ConfigurationList $configuration
  * @property ConversationList $conversations
- * @property WebhookList $webhooks
  * @property CredentialList $credentials
  * @property RoleList $roles
  * @property ServiceList $services
- * @property NotificationList $notifications
  * @property UserList $users
  * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
  * @method \Twilio\Rest\Conversations\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Conversations\V1\RoleContext roles(string $sid)
  * @method \Twilio\Rest\Conversations\V1\ServiceContext services(string $sid)
- * @method \Twilio\Rest\Conversations\V1\NotificationContext notifications(string $chatServiceSid)
  * @method \Twilio\Rest\Conversations\V1\UserContext users(string $sid)
  */
 class V1 extends Version {
     protected $_configuration;
     protected $_conversations;
-    protected $_webhooks;
     protected $_credentials;
     protected $_roles;
     protected $_services;
-    protected $_notifications;
     protected $_users;
 
     /**
@@ -72,13 +65,6 @@ class V1 extends Version {
         return $this->_conversations;
     }
 
-    protected function getWebhooks(): WebhookList {
-        if (!$this->_webhooks) {
-            $this->_webhooks = new WebhookList($this);
-        }
-        return $this->_webhooks;
-    }
-
     protected function getCredentials(): CredentialList {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
@@ -98,13 +84,6 @@ class V1 extends Version {
             $this->_services = new ServiceList($this);
         }
         return $this->_services;
-    }
-
-    protected function getNotifications(): NotificationList {
-        if (!$this->_notifications) {
-            $this->_notifications = new NotificationList($this);
-        }
-        return $this->_notifications;
     }
 
     protected function getUsers(): UserList {

@@ -21,7 +21,7 @@ abstract class UserOptions {
      *                             resource
      * @param string $attributes The JSON Object string that stores
      *                           application-specific data
-     * @param string $roleSid The SID of the Role to assign to the user
+     * @param string $roleSid The SID of a service-level Role to assign to the user
      * @return CreateUserOptions Options builder
      */
     public static function create(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE): CreateUserOptions {
@@ -33,7 +33,7 @@ abstract class UserOptions {
      *                             resource
      * @param string $attributes The JSON Object string that stores
      *                           application-specific data
-     * @param string $roleSid The SID of the Role to assign to the user
+     * @param string $roleSid The SID of a service-level Role to assign to the user
      * @return UpdateUserOptions Options builder
      */
     public static function update(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE): UpdateUserOptions {
@@ -47,7 +47,7 @@ class CreateUserOptions extends Options {
      *                             resource
      * @param string $attributes The JSON Object string that stores
      *                           application-specific data
-     * @param string $roleSid The SID of the Role to assign to the user
+     * @param string $roleSid The SID of a service-level Role to assign to the user
      */
     public function __construct(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -80,9 +80,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the user.
+     * The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
      *
-     * @param string $roleSid The SID of the Role to assign to the user
+     * @param string $roleSid The SID of a service-level Role to assign to the user
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -107,7 +107,7 @@ class UpdateUserOptions extends Options {
      *                             resource
      * @param string $attributes The JSON Object string that stores
      *                           application-specific data
-     * @param string $roleSid The SID of the Role to assign to the user
+     * @param string $roleSid The SID of a service-level Role to assign to the user
      */
     public function __construct(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -140,9 +140,9 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the user.
+     * The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
      *
-     * @param string $roleSid The SID of the Role to assign to the user
+     * @param string $roleSid The SID of a service-level Role to assign to the user
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {

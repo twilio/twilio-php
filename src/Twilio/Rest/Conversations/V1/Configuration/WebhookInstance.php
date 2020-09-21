@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Conversations\V1\Configuration;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -19,72 +19,70 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $accountSid
- * @property string $chatServiceSid
- * @property array $newMessage
- * @property array $addedToConversation
- * @property array $removedFromConversation
- * @property bool $logEnabled
+ * @property string $method
+ * @property string[] $filters
+ * @property string $preWebhookUrl
+ * @property string $postWebhookUrl
+ * @property string $target
  * @property string $url
  */
-class NotificationInstance extends InstanceResource {
+class WebhookInstance extends InstanceResource {
     /**
-     * Initialize the NotificationInstance
+     * Initialize the WebhookInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $chatServiceSid The SID of the Chat Service that the
-     *                               Configuration applies to.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid = null) {
+    public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'chatServiceSid' => Values::array_get($payload, 'chat_service_sid'),
-            'newMessage' => Values::array_get($payload, 'new_message'),
-            'addedToConversation' => Values::array_get($payload, 'added_to_conversation'),
-            'removedFromConversation' => Values::array_get($payload, 'removed_from_conversation'),
-            'logEnabled' => Values::array_get($payload, 'log_enabled'),
+            'method' => Values::array_get($payload, 'method'),
+            'filters' => Values::array_get($payload, 'filters'),
+            'preWebhookUrl' => Values::array_get($payload, 'pre_webhook_url'),
+            'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),
+            'target' => Values::array_get($payload, 'target'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['chatServiceSid' => $chatServiceSid ?: $this->properties['chatServiceSid'], ];
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return NotificationContext Context for this NotificationInstance
+     * @return WebhookContext Context for this WebhookInstance
      */
-    protected function proxy(): NotificationContext {
+    protected function proxy(): WebhookContext {
         if (!$this->context) {
-            $this->context = new NotificationContext($this->version, $this->solution['chatServiceSid']);
+            $this->context = new WebhookContext($this->version);
         }
 
         return $this->context;
     }
 
     /**
-     * Update the NotificationInstance
+     * Fetch the WebhookInstance
      *
-     * @param array|Options $options Optional Arguments
-     * @return NotificationInstance Updated NotificationInstance
+     * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): NotificationInstance {
-        return $this->proxy()->update($options);
+    public function fetch(): WebhookInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
-     * Fetch the NotificationInstance
+     * Update the WebhookInstance
      *
-     * @return NotificationInstance Fetched NotificationInstance
+     * @param array|Options $options Optional Arguments
+     * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NotificationInstance {
-        return $this->proxy()->fetch();
+    public function update(array $options = []): WebhookInstance {
+        return $this->proxy()->update($options);
     }
 
     /**
@@ -117,6 +115,6 @@ class NotificationInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.NotificationInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.WebhookInstance ' . \implode(' ', $context) . ']';
     }
 }

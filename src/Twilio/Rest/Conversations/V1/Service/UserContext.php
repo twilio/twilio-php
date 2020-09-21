@@ -23,8 +23,8 @@ class UserContext extends InstanceContext {
      * Initialize the UserContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The SID of the Service to fetch the resource
-     *                               from
+     * @param string $chatServiceSid The SID of the Conversation Service to fetch
+     *                               the resource from
      * @param string $sid The SID of the User resource to fetch
      */
     public function __construct(Version $version, $chatServiceSid, $sid) {

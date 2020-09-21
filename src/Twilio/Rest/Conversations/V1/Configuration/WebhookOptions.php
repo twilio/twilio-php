@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Conversations\V1\Configuration;
 
 use Twilio\Options;
 use Twilio\Values;
@@ -102,7 +102,7 @@ class UpdateWebhookOptions extends Options {
     }
 
     /**
-     * The routing target of the webhook. Can be ordinary or route internally to Flex
+     * The routing target of the webhook.
      *
      * @param string $target The routing target of the webhook.
      * @return $this Fluent Builder

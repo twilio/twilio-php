@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Conversations\V1;
+namespace Twilio\Tests\Integration\Conversations\V1\Service\Configuration;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,7 +20,9 @@ class NotificationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->conversations->v1->notifications("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+            $this->twilio->conversations->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                            ->configuration
+                                            ->notifications()->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -59,7 +61,9 @@ class NotificationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->conversations->v1->notifications("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        $actual = $this->twilio->conversations->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                  ->configuration
+                                                  ->notifications()->update();
 
         $this->assertNotNull($actual);
     }
@@ -68,7 +72,9 @@ class NotificationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->conversations->v1->notifications("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+            $this->twilio->conversations->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                            ->configuration
+                                            ->notifications()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -107,7 +113,9 @@ class NotificationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->conversations->v1->notifications("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+        $actual = $this->twilio->conversations->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                  ->configuration
+                                                  ->notifications()->fetch();
 
         $this->assertNotNull($actual);
     }

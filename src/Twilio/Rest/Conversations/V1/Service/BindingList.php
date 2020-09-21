@@ -24,8 +24,8 @@ class BindingList extends ListResource {
      * Construct the BindingList
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The SID of the Chat Service that the resource
-     *                               is associated with.
+     * @param string $chatServiceSid The SID of the Conversation Service that the
+     *                               resource is associated with.
      */
     public function __construct(Version $version, string $chatServiceSid) {
         parent::__construct($version);

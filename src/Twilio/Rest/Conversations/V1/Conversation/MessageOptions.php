@@ -24,7 +24,7 @@ abstract class MessageOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
-     * @param string $mediaSid The Media Sid to be attached to the new Message.
+     * @param string $mediaSid The Media SID to be attached to the new Message.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateMessageOptions Options builder
@@ -68,7 +68,7 @@ class CreateMessageOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
-     * @param string $mediaSid The Media Sid to be attached to the new Message.
+     * @param string $mediaSid The Media SID to be attached to the new Message.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -140,9 +140,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The Media Sid to be attached to the new Message.
+     * The Media SID to be attached to the new Message.
      *
-     * @param string $mediaSid The Media Sid to be attached to the new Message.
+     * @param string $mediaSid The Media SID to be attached to the new Message.
      * @return $this Fluent Builder
      */
     public function setMediaSid(string $mediaSid): self {

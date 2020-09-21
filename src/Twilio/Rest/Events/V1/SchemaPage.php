@@ -7,16 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Events\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class WebhookPage extends Page {
+class SchemaPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class WebhookPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return WebhookInstance \Twilio\Rest\Conversations\V1\WebhookInstance
+     * @return SchemaInstance \Twilio\Rest\Events\V1\SchemaInstance
      */
-    public function buildInstance(array $payload): WebhookInstance {
-        return new WebhookInstance($this->version, $payload);
+    public function buildInstance(array $payload): SchemaInstance {
+        return new SchemaInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +43,6 @@ class WebhookPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Conversations.V1.WebhookPage]';
+        return '[Twilio.Events.V1.SchemaPage]';
     }
 }

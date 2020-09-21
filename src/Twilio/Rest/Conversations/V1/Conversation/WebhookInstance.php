@@ -34,7 +34,7 @@ class WebhookInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                webhook.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.

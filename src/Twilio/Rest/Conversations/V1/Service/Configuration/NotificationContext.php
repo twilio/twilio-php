@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Conversations\V1\Service\Configuration;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
@@ -24,7 +24,7 @@ class NotificationContext extends InstanceContext {
      * Initialize the NotificationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The SID of the Chat Service that the
+     * @param string $chatServiceSid The SID of the Conversation Service that the
      *                               Configuration applies to.
      */
     public function __construct(Version $version, $chatServiceSid) {

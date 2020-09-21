@@ -12,6 +12,7 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Rest\Events\V1\Subscription\SubscribedEventList;
 use Twilio\Values;
 use Twilio\Version;
@@ -20,7 +21,6 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
  * @property SubscribedEventList $subscribedEvents
- * @method \Twilio\Rest\Events\V1\Subscription\SubscribedEventContext subscribedEvents(string $type)
  */
 class SubscriptionContext extends InstanceContext {
     protected $_subscribedEvents;
@@ -48,6 +48,23 @@ class SubscriptionContext extends InstanceContext {
      */
     public function fetch(): SubscriptionInstance {
         $payload = $this->version->fetch('GET', $this->uri);
+
+        return new SubscriptionInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Update the SubscriptionInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return SubscriptionInstance Updated SubscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): SubscriptionInstance {
+        $options = new Values($options);
+
+        $data = Values::of(['Description' => $options['description'], 'SinkSid' => $options['sinkSid'], ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SubscriptionInstance($this->version, $payload, $this->solution['sid']);
     }

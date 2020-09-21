@@ -25,7 +25,7 @@ class ParticipantList extends ListResource {
      * Construct the ParticipantList
      *
      * @param Version $version Version that contains the resource
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                participant.
      */
     public function __construct(Version $version, string $conversationSid) {

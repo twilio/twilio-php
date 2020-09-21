@@ -25,7 +25,7 @@ class ConversationList extends ListResource {
      * Construct the ConversationList
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The unique id of the Chat Service this
+     * @param string $chatServiceSid The unique ID of the Conversation Service this
      *                               conversation belongs to.
      */
     public function __construct(Version $version, string $chatServiceSid) {

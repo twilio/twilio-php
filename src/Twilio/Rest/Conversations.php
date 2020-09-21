@@ -17,19 +17,15 @@ use Twilio\Rest\Conversations\V1;
  * @property \Twilio\Rest\Conversations\V1 $v1
  * @property \Twilio\Rest\Conversations\V1\ConfigurationList $configuration
  * @property \Twilio\Rest\Conversations\V1\ConversationList $conversations
- * @property \Twilio\Rest\Conversations\V1\WebhookList $webhooks
  * @property \Twilio\Rest\Conversations\V1\CredentialList $credentials
  * @property \Twilio\Rest\Conversations\V1\RoleList $roles
  * @property \Twilio\Rest\Conversations\V1\ServiceList $services
- * @property \Twilio\Rest\Conversations\V1\NotificationList $notifications
  * @property \Twilio\Rest\Conversations\V1\UserList $users
  * @method \Twilio\Rest\Conversations\V1\ConfigurationContext configuration()
  * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
- * @method \Twilio\Rest\Conversations\V1\WebhookContext webhooks()
  * @method \Twilio\Rest\Conversations\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Conversations\V1\RoleContext roles(string $sid)
  * @method \Twilio\Rest\Conversations\V1\ServiceContext services(string $sid)
- * @method \Twilio\Rest\Conversations\V1\NotificationContext notifications(string $chatServiceSid)
  * @method \Twilio\Rest\Conversations\V1\UserContext users(string $sid)
  */
 class Conversations extends Domain {
@@ -109,14 +105,6 @@ class Conversations extends Domain {
         return $this->v1->conversations($sid);
     }
 
-    protected function getWebhooks(): \Twilio\Rest\Conversations\V1\WebhookList {
-        return $this->v1->webhooks;
-    }
-
-    protected function contextWebhooks(): \Twilio\Rest\Conversations\V1\WebhookContext {
-        return $this->v1->webhooks();
-    }
-
     protected function getCredentials(): \Twilio\Rest\Conversations\V1\CredentialList {
         return $this->v1->credentials;
     }
@@ -150,18 +138,6 @@ class Conversations extends Domain {
      */
     protected function contextServices(string $sid): \Twilio\Rest\Conversations\V1\ServiceContext {
         return $this->v1->services($sid);
-    }
-
-    protected function getNotifications(): \Twilio\Rest\Conversations\V1\NotificationList {
-        return $this->v1->notifications;
-    }
-
-    /**
-     * @param string $chatServiceSid The SID of the Chat Service that the
-     *                               Configuration applies to.
-     */
-    protected function contextNotifications(string $chatServiceSid): \Twilio\Rest\Conversations\V1\NotificationContext {
-        return $this->v1->notifications($chatServiceSid);
     }
 
     protected function getUsers(): \Twilio\Rest\Conversations\V1\UserList {

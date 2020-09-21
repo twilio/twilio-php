@@ -113,7 +113,7 @@ class EventTypeList extends ListResource {
     /**
      * Constructs a EventTypeContext
      *
-     * @param string $type The type
+     * @param string $type A string that uniquely identifies this Event Type.
      */
     public function getContext(string $type): EventTypeContext {
         return new EventTypeContext($this->version, $type);

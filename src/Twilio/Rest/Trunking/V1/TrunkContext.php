@@ -17,6 +17,7 @@ use Twilio\Rest\Trunking\V1\Trunk\CredentialListList;
 use Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList;
 use Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList;
 use Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList;
+use Twilio\Rest\Trunking\V1\Trunk\RecordingList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -26,16 +27,19 @@ use Twilio\Version;
  * @property CredentialListList $credentialsLists
  * @property IpAccessControlListList $ipAccessControlLists
  * @property PhoneNumberList $phoneNumbers
+ * @property RecordingList $recordings
  * @method \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext originationUrls(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext credentialsLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext ipAccessControlLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext phoneNumbers(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\RecordingContext recordings()
  */
 class TrunkContext extends InstanceContext {
     protected $_originationUrls;
     protected $_credentialsLists;
     protected $_ipAccessControlLists;
     protected $_phoneNumbers;
+    protected $_recordings;
 
     /**
      * Initialize the TrunkContext
@@ -89,7 +93,6 @@ class TrunkContext extends InstanceContext {
             'DomainName' => $options['domainName'],
             'DisasterRecoveryUrl' => $options['disasterRecoveryUrl'],
             'DisasterRecoveryMethod' => $options['disasterRecoveryMethod'],
-            'Recording' => $options['recording'],
             'TransferMode' => $options['transferMode'],
             'Secure' => Serialize::booleanToString($options['secure']),
             'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
@@ -142,6 +145,17 @@ class TrunkContext extends InstanceContext {
         }
 
         return $this->_phoneNumbers;
+    }
+
+    /**
+     * Access the recordings
+     */
+    protected function getRecordings(): RecordingList {
+        if (!$this->_recordings) {
+            $this->_recordings = new RecordingList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_recordings;
     }
 
     /**

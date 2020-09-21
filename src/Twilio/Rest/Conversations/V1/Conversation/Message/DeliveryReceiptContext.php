@@ -22,9 +22,9 @@ class DeliveryReceiptContext extends InstanceContext {
      * Initialize the DeliveryReceiptContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                delivery receipt.
-     * @param string $messageSid The sid of the message the delivery receipt
+     * @param string $messageSid The SID of the message the delivery receipt
      *                           belongs to.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.

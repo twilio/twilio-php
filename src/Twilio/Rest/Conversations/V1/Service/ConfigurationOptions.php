@@ -48,7 +48,7 @@ class UpdateConfigurationOptions extends Options {
     }
 
     /**
-     * The role assigned to a conversation creator when they join a new conversation. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
+     * The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      *
      * @param string $defaultConversationCreatorRoleSid The role assigned to a
      *                                                  conversation creator when
@@ -61,7 +61,7 @@ class UpdateConfigurationOptions extends Options {
     }
 
     /**
-     * The role assigned to users when they are added to a conversation. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
+     * The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      *
      * @param string $defaultConversationRoleSid The role assigned to users when
      *                                           they are added to a conversation
@@ -73,7 +73,7 @@ class UpdateConfigurationOptions extends Options {
     }
 
     /**
-     * The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
+     * The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      *
      * @param string $defaultChatServiceRoleSid The service role assigned to users
      *                                          when they are added to the service

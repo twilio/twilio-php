@@ -25,7 +25,7 @@ class MessageList extends ListResource {
      * Construct the MessageList
      *
      * @param Version $version Version that contains the resource
-     * @param string $conversationSid The unique id of the Conversation for this
+     * @param string $conversationSid The unique ID of the Conversation for this
      *                                message.
      */
     public function __construct(Version $version, string $conversationSid) {

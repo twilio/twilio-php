@@ -17,9 +17,9 @@ use Twilio\Values;
  */
 abstract class ConfigurationOptions {
     /**
-     * @param string $defaultChatServiceSid The SID of the default Chat Service
-     *                                      that every new conversation will be
-     *                                      associated with.
+     * @param string $defaultChatServiceSid The SID of the default Conversation
+     *                                      Service that every new conversation
+     *                                      will be associated with.
      * @param string $defaultMessagingServiceSid The SID of the default Messaging
      *                                           Service that every new
      *                                           conversation will be associated
@@ -38,9 +38,9 @@ abstract class ConfigurationOptions {
 
 class UpdateConfigurationOptions extends Options {
     /**
-     * @param string $defaultChatServiceSid The SID of the default Chat Service
-     *                                      that every new conversation will be
-     *                                      associated with.
+     * @param string $defaultChatServiceSid The SID of the default Conversation
+     *                                      Service that every new conversation
+     *                                      will be associated with.
      * @param string $defaultMessagingServiceSid The SID of the default Messaging
      *                                           Service that every new
      *                                           conversation will be associated
@@ -59,11 +59,11 @@ class UpdateConfigurationOptions extends Options {
     }
 
     /**
-     * The SID of the default [Chat Service](https://www.twilio.com/docs/chat/rest/service-resource) to use when creating a conversation.
+     * The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation.
      *
-     * @param string $defaultChatServiceSid The SID of the default Chat Service
-     *                                      that every new conversation will be
-     *                                      associated with.
+     * @param string $defaultChatServiceSid The SID of the default Conversation
+     *                                      Service that every new conversation
+     *                                      will be associated with.
      * @return $this Fluent Builder
      */
     public function setDefaultChatServiceSid(string $defaultChatServiceSid): self {

@@ -22,8 +22,8 @@ class BindingContext extends InstanceContext {
      * Initialize the BindingContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The SID of the Chat Service that the resource
-     *                               is associated with.
+     * @param string $chatServiceSid The SID of the Conversation Service that the
+     *                               resource is associated with.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
