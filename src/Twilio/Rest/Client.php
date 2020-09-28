@@ -213,10 +213,6 @@ class Client {
                                  ' (PHP ' . PHP_VERSION . ')';
         $headers['Accept-Charset'] = 'utf-8';
 
-        if ($method === 'POST' && !\array_key_exists('Content-Type', $headers)) {
-            $headers['Content-Type'] = 'application/x-www-form-urlencoded';
-        }
-
         if (!\array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
         }

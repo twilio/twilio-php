@@ -49,6 +49,7 @@ class SupportingDocumentList extends ListResource {
             'FriendlyName' => $friendlyName,
             'Type' => $type,
             'Attributes' => Serialize::jsonObject($options['attributes']),
+            'File' => $options->offsetGet('file'),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

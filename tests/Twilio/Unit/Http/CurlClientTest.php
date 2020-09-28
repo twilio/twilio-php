@@ -4,6 +4,7 @@
 namespace Twilio\Tests\Unit\Http;
 
 
+use Twilio\Exceptions\ConfigurationException;
 use Twilio\Http\CurlClient;
 use Twilio\Tests\Unit\UnitTest;
 
@@ -207,6 +208,13 @@ class CurlClientTest extends UnitTest {
                 'a=z&b=7&c=1&c=2&c=3',
             ],
         ];
+    }
+
+    public function testPostMultipart(): void {
+        $this->expectException(ConfigurationException::class);
+
+        $client = new CurlClient();
+        $client->request('POST', 'url', [], ['File' => 'raw file contents']);
     }
 
     public function testPutFile(): void {

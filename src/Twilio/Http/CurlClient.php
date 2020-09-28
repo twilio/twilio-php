@@ -4,6 +4,7 @@
 namespace Twilio\Http;
 
 
+use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\EnvironmentException;
 
 class CurlClient implements Client {
@@ -110,6 +111,14 @@ class CurlClient implements Client {
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
                             int $timeout = null): array {
+        if ($this->shouldSendRequestAsMultipart($data)) {
+            throw new ConfigurationException("The CurlClient doesn't currently support sending multipart requests. Switch to the GuzzleClient to send request.");
+        }
+
+        if ($method === 'POST' && !\array_key_exists('Content-Type', $headers)) {
+            $headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        }
+
         $timeout = $timeout ?? self::DEFAULT_TIMEOUT;
         $options = $this->curlOptions + [
             CURLOPT_URL => $url,
@@ -181,5 +190,9 @@ class CurlClient implements Client {
         }
 
         return \implode('&', $parts);
+    }
+
+    private function shouldSendRequestAsMultipart(array $data): bool {
+        return \array_key_exists('File', $data);
     }
 }

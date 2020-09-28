@@ -25,16 +25,30 @@ final class GuzzleClient implements Client {
                             string $user = null, string $password = null,
                             int $timeout = null): Response {
         try {
-            $body = build_query($data, PHP_QUERY_RFC1738);
-
             $options = [
                 'timeout' => $timeout,
                 'auth' => [$user, $password],
-                'body' => $body,
             ];
 
             if ($params) {
                 $options['query'] = $params;
+            }
+
+            if ($method === 'POST') {
+                if ($this->shouldSendRequestAsMultipart($data)) {
+                    $multipart = [];
+                    foreach ($data as $key => $value) {
+                        $multipart[] = [
+                            'name' => $key,
+                            'contents' => $value,
+                        ];
+                    }
+
+                    $options['multipart'] = $multipart;
+                } else {
+                    $options['body'] = build_query($data, PHP_QUERY_RFC1738);
+                    $headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                }
             }
 
             $response = $this->client->send(new Request($method, $url, $headers), $options);
@@ -47,5 +61,9 @@ final class GuzzleClient implements Client {
         // Casting the body (stream) to a string performs a rewind, ensuring we return the entire response.
         // See https://stackoverflow.com/a/30549372/86696
         return new Response($response->getStatusCode(), (string)$response->getBody(), $response->getHeaders());
+    }
+
+    private function shouldSendRequestAsMultipart(array $data): bool {
+        return \array_key_exists('File', $data);
     }
 }

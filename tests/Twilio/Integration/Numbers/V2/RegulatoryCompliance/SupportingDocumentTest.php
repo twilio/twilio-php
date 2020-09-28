@@ -35,6 +35,37 @@ class SupportingDocumentTest extends HolodeckTestCase {
         ));
     }
 
+    public function testCreateRequestWithFile(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->numbers->v2->regulatoryCompliance
+                                      ->supportingDocuments->create(
+                                          "friendly_name",
+                                          "type",
+                                          [
+                                              "attributes" => ["key" => "value"],
+                                              "file" => "file contents",
+                                          ]
+                                      );
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = [
+            'FriendlyName' => "friendly_name",
+            'Type' => "type",
+            'Attributes' => '{"key":"value"}',
+            'File' => "file contents",
+        ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments',
+            null,
+            $values
+        ));
+    }
+
     public function testCreateResponse(): void {
         $this->holodeck->mock(new Response(
             201,
