@@ -12,9 +12,6 @@ namespace Twilio\Rest\Conversations\V1\Service\Configuration;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class NotificationOptions {
     /**
      * @param bool $logEnabled Weather the notification logging is enabled.

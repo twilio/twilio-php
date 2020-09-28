@@ -7,80 +7,73 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Configuration;
+namespace Twilio\Rest\Serverless\V1\Service\Build;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ *
+ * @property string $sid
  * @property string $accountSid
- * @property string $method
- * @property string[] $filters
- * @property string $preWebhookUrl
- * @property string $postWebhookUrl
- * @property string $target
+ * @property string $serviceSid
+ * @property string $status
  * @property string $url
  */
-class WebhookInstance extends InstanceResource {
+class BuildStatusInstance extends InstanceResource {
     /**
-     * Initialize the WebhookInstance
+     * Initialize the BuildStatusInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $serviceSid The SID of the Service that the Build resource is
+     *                           associated with
+     * @param string $sid The unique string that identifies the Build resource
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
+            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'method' => Values::array_get($payload, 'method'),
-            'filters' => Values::array_get($payload, 'filters'),
-            'preWebhookUrl' => Values::array_get($payload, 'pre_webhook_url'),
-            'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),
-            'target' => Values::array_get($payload, 'target'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'status' => Values::array_get($payload, 'status'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [];
+        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return WebhookContext Context for this WebhookInstance
+     * @return BuildStatusContext Context for this BuildStatusInstance
      */
-    protected function proxy(): WebhookContext {
+    protected function proxy(): BuildStatusContext {
         if (!$this->context) {
-            $this->context = new WebhookContext($this->version);
+            $this->context = new BuildStatusContext(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the WebhookInstance
+     * Fetch the BuildStatusInstance
      *
-     * @return WebhookInstance Fetched WebhookInstance
+     * @return BuildStatusInstance Fetched BuildStatusInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): BuildStatusInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the WebhookInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return WebhookInstance Updated WebhookInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): WebhookInstance {
-        return $this->proxy()->update($options);
     }
 
     /**
@@ -113,6 +106,6 @@ class WebhookInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.WebhookInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.BuildStatusInstance ' . \implode(' ', $context) . ']';
     }
 }

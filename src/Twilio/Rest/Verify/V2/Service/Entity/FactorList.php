@@ -56,10 +56,7 @@ class FactorList extends ListResource {
             'FactorType' => $factorType,
             'Config' => $config,
         ]);
-        $headers = Values::of([
-            'Twilio-Sandbox-Mode' => $options['twilioSandboxMode'],
-            'Authorization' => $options['authorization'],
-        ]);
+        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 

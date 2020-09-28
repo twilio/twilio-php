@@ -80,7 +80,7 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * Deprecated. Whether to enable [Twilio's Network Traversal TURN service](https://www.twilio.com/stun-turn). TURN service is used when direct peer-to-peer media connections cannot be established due to firewall restrictions. This setting only applies to rooms with type `peer-to-peer`.
+     * Deprecated, now always considered to be true.
      *
      * @param bool $enableTurn Enable Twilio's Network Traversal TURN service
      * @return $this Fluent Builder
@@ -91,7 +91,7 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The type of room. Can be: `peer-to-peer`, `group-small`, or `group`. The default value is `group`.
+     * The type of room. Can be: `go`, `peer-to-peer`, `group-small`, or `group`. The default value is `group`.
      *
      * @param string $type The type of room
      * @return $this Fluent Builder

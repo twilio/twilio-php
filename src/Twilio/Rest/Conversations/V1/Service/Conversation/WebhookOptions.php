@@ -12,9 +12,6 @@ namespace Twilio\Rest\Conversations\V1\Service\Conversation;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class WebhookOptions {
     /**
      * @param string $configurationUrl The absolute url the webhook request should

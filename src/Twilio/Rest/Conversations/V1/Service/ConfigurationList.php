@@ -16,8 +16,6 @@ use Twilio\Rest\Conversations\V1\Service\Configuration\NotificationList;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property NotificationList $notifications
  * @method \Twilio\Rest\Conversations\V1\Service\Configuration\NotificationContext notifications()
  */

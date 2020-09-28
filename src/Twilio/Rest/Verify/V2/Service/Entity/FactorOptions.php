@@ -18,11 +18,10 @@ use Twilio\Values;
 abstract class FactorOptions {
     /**
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
-     * @param string $authorization The Authorization HTTP request header
      * @return CreateFactorOptions Options builder
      */
-    public static function create(string $twilioSandboxMode = Values::NONE, string $authorization = Values::NONE): CreateFactorOptions {
-        return new CreateFactorOptions($twilioSandboxMode, $authorization);
+    public static function create(string $twilioSandboxMode = Values::NONE): CreateFactorOptions {
+        return new CreateFactorOptions($twilioSandboxMode);
     }
 
     /**
@@ -65,11 +64,9 @@ abstract class FactorOptions {
 class CreateFactorOptions extends Options {
     /**
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
-     * @param string $authorization The Authorization HTTP request header
      */
-    public function __construct(string $twilioSandboxMode = Values::NONE, string $authorization = Values::NONE) {
+    public function __construct(string $twilioSandboxMode = Values::NONE) {
         $this->options['twilioSandboxMode'] = $twilioSandboxMode;
-        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -80,17 +77,6 @@ class CreateFactorOptions extends Options {
      */
     public function setTwilioSandboxMode(string $twilioSandboxMode): self {
         $this->options['twilioSandboxMode'] = $twilioSandboxMode;
-        return $this;
-    }
-
-    /**
-     * The Authorization HTTP request header
-     *
-     * @param string $authorization The Authorization HTTP request header
-     * @return $this Fluent Builder
-     */
-    public function setAuthorization(string $authorization): self {
-        $this->options['authorization'] = $authorization;
         return $this;
     }
 

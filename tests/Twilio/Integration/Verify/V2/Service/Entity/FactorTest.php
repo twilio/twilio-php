@@ -19,7 +19,7 @@ class FactorTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", 'authorization' => "authorization", ];
+        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
 
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -35,7 +35,7 @@ class FactorTest extends HolodeckTestCase {
             'Config' => "config",
         ];
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", 'Authorization' => "authorization", ];
+        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
 
         $this->assertRequest(new Request(
             'post',

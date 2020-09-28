@@ -7,13 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Serverless\V1\Service\Build;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class CredentialPage extends Page {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class BuildStatusPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,10 +31,15 @@ class CredentialPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return CredentialInstance \Twilio\Rest\Conversations\V1\CredentialInstance
+     * @return BuildStatusInstance \Twilio\Rest\Serverless\V1\Service\Build\BuildStatusInstance
      */
-    public function buildInstance(array $payload): CredentialInstance {
-        return new CredentialInstance($this->version, $payload);
+    public function buildInstance(array $payload): BuildStatusInstance {
+        return new BuildStatusInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
     }
 
     /**
@@ -40,6 +48,6 @@ class CredentialPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Conversations.V1.CredentialPage]';
+        return '[Twilio.Serverless.V1.BuildStatusPage]';
     }
 }

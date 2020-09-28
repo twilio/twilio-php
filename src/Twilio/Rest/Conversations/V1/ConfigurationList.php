@@ -16,8 +16,6 @@ use Twilio\Rest\Conversations\V1\Configuration\WebhookList;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property WebhookList $webhooks
  * @method \Twilio\Rest\Conversations\V1\Configuration\WebhookContext webhooks()
  */

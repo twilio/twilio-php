@@ -12,6 +12,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\Serverless\V1\Service\Build\BuildStatusList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -28,8 +29,11 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
+ * @property array $links
  */
 class BuildInstance extends InstanceResource {
+    protected $_buildStatus;
+
     /**
      * Initialize the BuildInstance
      *
@@ -54,6 +58,7 @@ class BuildInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
@@ -95,6 +100,13 @@ class BuildInstance extends InstanceResource {
      */
     public function delete(): bool {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Access the buildStatus
+     */
+    protected function getBuildStatus(): BuildStatusList {
+        return $this->proxy()->buildStatus;
     }
 
     /**
