@@ -35,16 +35,8 @@ final class GuzzleClient implements Client {
             }
 
             if ($method === 'POST') {
-                if ($this->shouldSendRequestAsMultipart($data)) {
-                    $multipart = [];
-                    foreach ($data as $key => $value) {
-                        $multipart[] = [
-                            'name' => $key,
-                            'contents' => $value,
-                        ];
-                    }
-
-                    $options['multipart'] = $multipart;
+                if ($this->hasFile($data)) {
+                    $options['multipart'] = $this->buildMultipartParam($data);
                 } else {
                     $options['body'] = build_query($data, PHP_QUERY_RFC1738);
                     $headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -63,7 +55,44 @@ final class GuzzleClient implements Client {
         return new Response($response->getStatusCode(), (string)$response->getBody(), $response->getHeaders());
     }
 
-    private function shouldSendRequestAsMultipart(array $data): bool {
-        return \array_key_exists('File', $data);
+    private function hasFile(array $data): bool {
+        foreach ($data as $value) {
+            if ($value instanceof File) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function buildMultipartParam(array $data): array {
+        $multipart = [];
+        foreach ($data as $key => $value) {
+            if ($value instanceof File) {
+                $contents = $value->getContents();
+                if ($contents === null) {
+                    $contents = fopen($value->getFileName(), 'rb');
+                }
+
+                $chunk = [
+                    'name' => $key,
+                    'contents' => $contents,
+                    'filename' => $value->getFileName(),
+                ];
+
+                if ($value->getContentType() !== null) {
+                    $chunk['headers']['Content-Type'] = $value->getContentType();
+                }
+            } else {
+                $chunk = [
+                    'name' => $key,
+                    'contents' => $value,
+                ];
+            }
+
+            $multipart[] = $chunk;
+        }
+
+        return $multipart;
     }
 }

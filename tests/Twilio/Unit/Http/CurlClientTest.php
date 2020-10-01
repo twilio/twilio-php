@@ -4,8 +4,8 @@
 namespace Twilio\Tests\Unit\Http;
 
 
-use Twilio\Exceptions\ConfigurationException;
 use Twilio\Http\CurlClient;
+use Twilio\Http\File;
 use Twilio\Tests\Unit\UnitTest;
 
 class CurlClientTest extends UnitTest {
@@ -169,16 +169,23 @@ class CurlClientTest extends UnitTest {
     /**
      * @param array|string $params Parameters to post
      * @param array|string $data Data to post
-     * @param string $expected Expected POSTFIELDS
+     * @param string $expectedContentType Excpected Content-Type header
+     * @param string $expectedBody Expected POSTFIELDS
      * @dataProvider postFieldsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testPostFields($params, $data, string $expected): void {
+    public function testPostFields($params, $data, string $expectedContentType, string $expectedBody): void {
         $client = new CurlClient();
 
         $actual = $client->options('POST', 'url', $params, $data);
+        foreach ($actual[CURLOPT_HTTPHEADER] as $header) {
+            if (strpos($header, 'Content-Type: ') === 0) {
+                $this->assertStringMatchesFormat($expectedContentType, substr($header, 14));
+                break;
+            }
+        }
 
-        $this->assertEquals($expected, $actual[CURLOPT_POSTFIELDS]);
+        $this->assertStringMatchesFormat($expectedBody, $actual[CURLOPT_POSTFIELDS]);
     }
 
     public function postFieldsProvider(): array {
@@ -186,17 +193,20 @@ class CurlClientTest extends UnitTest {
             [
                 [],
                 [],
+                'application/x-www-form-urlencoded',
                 '',
             ],
             [
                 ['a' => 'x'],
                 ['a' => 'b'],
-                'a=b'
+                'application/x-www-form-urlencoded',
+                'a=b',
             ],
             [
                 ['a' => 'x'],
                 ['a' => 'x'],
-                'a=x'
+                'application/x-www-form-urlencoded',
+                'a=x',
             ],
             [
                 ['a' => 'x'],
@@ -205,16 +215,37 @@ class CurlClientTest extends UnitTest {
                     'b' => 7,
                     'c' => [1, 2, 3],
                 ],
+                'application/x-www-form-urlencoded',
                 'a=z&b=7&c=1&c=2&c=3',
             ],
+            'file by its path' => [
+                [],
+                [
+                    'key' => 'value',
+                    'file' => new File(__DIR__ . '/file.txt'),
+                ],
+                'multipart/form-data; boundary=-------------%s',
+                "---------------%s\r\nContent-Disposition: form-data; name=\"key\"\r\n\r\nvalue\r\n---------------%s\r\nContent-Disposition: form-data; name=\"file\"; filename=\"file.txt\"\r\n\r\nMock contents\n\r\n---------------%s--\r\n",
+            ],
+            'file as a resource' => [
+                [],
+                [
+                    'key' => 'value',
+                    'file' => new File('file.txt', fopen(__DIR__ . '/file.txt', 'rb')),
+                ],
+                'multipart/form-data; boundary=-------------%s',
+                "---------------%s\r\nContent-Disposition: form-data; name=\"key\"\r\n\r\nvalue\r\n---------------%s\r\nContent-Disposition: form-data; name=\"file\"; filename=\"file.txt\"\r\n\r\nMock contents\n\r\n---------------%s--\r\n",
+            ],
+            'file as a string' => [
+                [],
+                [
+                    'key' => 'value',
+                    'file' => new File('file.txt', file_get_contents(__DIR__ . '/file.txt', 'rb'), 'custom/content'),
+                ],
+                'multipart/form-data; boundary=-------------%s',
+                "---------------%s\r\nContent-Disposition: form-data; name=\"key\"\r\n\r\nvalue\r\n---------------%s\r\nContent-Disposition: form-data; name=\"file\"; filename=\"file.txt\"\r\nContent-Type: custom/content\r\n\r\nMock contents\n\r\n---------------%s--\r\n",
+            ],
         ];
-    }
-
-    public function testPostMultipart(): void {
-        $this->expectException(ConfigurationException::class);
-
-        $client = new CurlClient();
-        $client->request('POST', 'url', [], ['File' => 'raw file contents']);
     }
 
     public function testPutFile(): void {

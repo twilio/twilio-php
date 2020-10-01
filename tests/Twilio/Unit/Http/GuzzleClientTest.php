@@ -12,8 +12,10 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Twilio\Exceptions\HttpException;
+use Twilio\Http\File;
 use Twilio\Http\GuzzleClient;
 use Twilio\Tests\Unit\UnitTest;
+use function GuzzleHttp\Psr7\stream_for;
 
 final class GuzzleClientTest extends UnitTest {
     /**
@@ -65,7 +67,13 @@ final class GuzzleClientTest extends UnitTest {
 
     public function testPostMethodMultipart(): void {
         $this->mockHandler->append(new Response());
-        $response = $this->client->request('POST', 'https://www.whatever.com', [], ['File' => 'binary file data', 'Field' => 'value']);
+        $response = $this->client->request('POST', 'https://www.whatever.com', [], [
+            'key' => 'value',
+            'fileAsPath' => new File(__DIR__ . '/file.txt'),
+            'fileAsResource' => new File('file.txt', fopen(__DIR__ . '/file.txt', 'rb')),
+            'fileAsString' => new File('file.txt', file_get_contents(__DIR__ . '/file.txt')),
+            'fileAsStream' => new File('file.txt', stream_for(fopen(__DIR__ . '/file.txt', 'rb'))),
+        ]);
         $this->assertNull($response->getContent());
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame([], $response->getHeaders());
@@ -73,7 +81,7 @@ final class GuzzleClientTest extends UnitTest {
         $request = $this->mockHandler->getLastRequest();
 
         $this->assertSame('POST', $request->getMethod());
-        $this->assertStringMatchesFormat("--%s\r\nContent-Disposition: form-data; name=\"File\"\r\nContent-Length: 16\r\n\r\nbinary file data\r\n--%s\r\nContent-Disposition: form-data; name=\"Field\"\r\nContent-Length: 5\r\n\r\nvalue\r\n--%s--\r\n", $request->getBody()->getContents());
+        $this->assertStringMatchesFormat("--%s\r\nContent-Disposition: form-data; name=\"key\"\r\nContent-Length: 5\r\n\r\nvalue\r\n--%s\r\nContent-Disposition: form-data; name=\"fileAsPath\"; filename=\"file.txt\"\r\nContent-Length: 14\r\nContent-Type: text/plain\r\n\r\nMock contents\n\r\n--%s\r\nContent-Disposition: form-data; name=\"fileAsResource\"; filename=\"file.txt\"\r\nContent-Length: 14\r\nContent-Type: text/plain\r\n\r\nMock contents\n\r\n--%s\r\nContent-Disposition: form-data; name=\"fileAsString\"; filename=\"file.txt\"\r\nContent-Length: 14\r\nContent-Type: text/plain\r\n\r\nMock contents\n\r\n--%s\r\nContent-Disposition: form-data; name=\"fileAsStream\"; filename=\"file.txt\"\r\nContent-Length: 14\r\nContent-Type: text/plain\r\n\r\nMock contents\n\r\n--%s--\r\n", $request->getBody()->getContents());
         $this->assertStringMatchesFormat('multipart/form-data; boundary=%s', $request->getHeaderLine('Content-Type'));
     }
 
