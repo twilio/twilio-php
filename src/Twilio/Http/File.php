@@ -7,12 +7,12 @@ final class File {
     /**
      * @var string
      */
-    public $fileName;
+    private $fileName;
 
     /**
      * @var resource|string|mixed|null
      */
-    public $contents;
+    private $contents;
 
     /**
      * @var string|null

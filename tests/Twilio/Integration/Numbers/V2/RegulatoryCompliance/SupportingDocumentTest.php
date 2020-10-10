@@ -11,7 +11,6 @@ namespace Twilio\Tests\Integration\Numbers\V2\RegulatoryCompliance;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Http\File;
 use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
@@ -27,38 +26,6 @@ class SupportingDocumentTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
 
         $values = ['FriendlyName' => "friendly_name", 'Type' => "type", ];
-
-        $this->assertRequest(new Request(
-            'post',
-            'https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocuments',
-            null,
-            $values
-        ));
-    }
-
-    public function testCreateRequestWithFile(): void {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $file = new File("file.txt", "file contents");
-            $this->twilio->numbers->v2->regulatoryCompliance
-                                      ->supportingDocuments->create(
-                                          "friendly_name",
-                                          "type",
-                                          [
-                                              "attributes" => ["key" => "value"],
-                                              "file" => $file,
-                                          ]
-                                      );
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $values = [
-            'FriendlyName' => "friendly_name",
-            'Type' => "type",
-            'Attributes' => '{"key":"value"}',
-            'File' => $file,
-        ];
 
         $this->assertRequest(new Request(
             'post',
