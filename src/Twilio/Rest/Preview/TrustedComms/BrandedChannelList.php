@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business\Brand;
+namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\ListResource;
 use Twilio\Version;
@@ -20,14 +20,12 @@ class BrandedChannelList extends ListResource {
      * Construct the BrandedChannelList
      *
      * @param Version $version Version that contains the resource
-     * @param string $businessSid Business Sid.
-     * @param string $brandSid Brand Sid.
      */
-    public function __construct(Version $version, string $businessSid, string $brandSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['businessSid' => $businessSid, 'brandSid' => $brandSid, ];
+        $this->solution = [];
     }
 
     /**
@@ -36,12 +34,7 @@ class BrandedChannelList extends ListResource {
      * @param string $sid Branded Channel Sid.
      */
     public function getContext(string $sid): BrandedChannelContext {
-        return new BrandedChannelContext(
-            $this->version,
-            $this->solution['businessSid'],
-            $this->solution['brandSid'],
-            $sid
-        );
+        return new BrandedChannelContext($this->version, $sid);
     }
 
     /**

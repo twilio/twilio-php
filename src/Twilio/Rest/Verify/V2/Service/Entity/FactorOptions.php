@@ -17,11 +17,21 @@ use Twilio\Values;
  */
 abstract class FactorOptions {
     /**
+     * @param string $bindingAlg The algorithm used when `factor_type` is `push`
+     * @param string $bindingPublicKey The public key encoded in Base64
+     * @param string $configAppId The ID that uniquely identifies your app in the
+     *                            Google or Apple store
+     * @param string $configNotificationPlatform The transport technology used to
+     *                                           generate the Notification Token
+     * @param string $configNotificationToken For APN, the device token. For FCM
+     *                                        the registration token
+     * @param string $configSdkVersion The Verify Push SDK version used to
+     *                                 configure the factor
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      * @return CreateFactorOptions Options builder
      */
-    public static function create(string $twilioSandboxMode = Values::NONE): CreateFactorOptions {
-        return new CreateFactorOptions($twilioSandboxMode);
+    public static function create(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $twilioSandboxMode = Values::NONE): CreateFactorOptions {
+        return new CreateFactorOptions($bindingAlg, $bindingPublicKey, $configAppId, $configNotificationPlatform, $configNotificationToken, $configSdkVersion, $twilioSandboxMode);
     }
 
     /**
@@ -52,21 +62,110 @@ abstract class FactorOptions {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @param string $friendlyName The friendly name of this Factor
-     * @param string $config The config for this Factor as a json string
+     * @param string $configNotificationToken For APN, the device token. For FCM
+     *                                        the registration token
+     * @param string $configSdkVersion The Verify Push SDK version used to
+     *                                 configure the factor
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      * @return UpdateFactorOptions Options builder
      */
-    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $config = Values::NONE, string $twilioSandboxMode = Values::NONE): UpdateFactorOptions {
-        return new UpdateFactorOptions($authPayload, $friendlyName, $config, $twilioSandboxMode);
+    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $twilioSandboxMode = Values::NONE): UpdateFactorOptions {
+        return new UpdateFactorOptions($authPayload, $friendlyName, $configNotificationToken, $configSdkVersion, $twilioSandboxMode);
     }
 }
 
 class CreateFactorOptions extends Options {
     /**
+     * @param string $bindingAlg The algorithm used when `factor_type` is `push`
+     * @param string $bindingPublicKey The public key encoded in Base64
+     * @param string $configAppId The ID that uniquely identifies your app in the
+     *                            Google or Apple store
+     * @param string $configNotificationPlatform The transport technology used to
+     *                                           generate the Notification Token
+     * @param string $configNotificationToken For APN, the device token. For FCM
+     *                                        the registration token
+     * @param string $configSdkVersion The Verify Push SDK version used to
+     *                                 configure the factor
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      */
-    public function __construct(string $twilioSandboxMode = Values::NONE) {
+    public function __construct(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $twilioSandboxMode = Values::NONE) {
+        $this->options['bindingAlg'] = $bindingAlg;
+        $this->options['bindingPublicKey'] = $bindingPublicKey;
+        $this->options['configAppId'] = $configAppId;
+        $this->options['configNotificationPlatform'] = $configNotificationPlatform;
+        $this->options['configNotificationToken'] = $configNotificationToken;
+        $this->options['configSdkVersion'] = $configSdkVersion;
         $this->options['twilioSandboxMode'] = $twilioSandboxMode;
+    }
+
+    /**
+     * The algorithm used when `factor_type` is `push`. Algorithm supported: `ES256`
+     *
+     * @param string $bindingAlg The algorithm used when `factor_type` is `push`
+     * @return $this Fluent Builder
+     */
+    public function setBindingAlg(string $bindingAlg): self {
+        $this->options['bindingAlg'] = $bindingAlg;
+        return $this;
+    }
+
+    /**
+     * The Ecdsa public key in PKIX, ASN.1 DER format encoded in Base64
+     *
+     * @param string $bindingPublicKey The public key encoded in Base64
+     * @return $this Fluent Builder
+     */
+    public function setBindingPublicKey(string $bindingPublicKey): self {
+        $this->options['bindingPublicKey'] = $bindingPublicKey;
+        return $this;
+    }
+
+    /**
+     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`. Required when `factor_type` is `push`
+     *
+     * @param string $configAppId The ID that uniquely identifies your app in the
+     *                            Google or Apple store
+     * @return $this Fluent Builder
+     */
+    public function setConfigAppId(string $configAppId): self {
+        $this->options['configAppId'] = $configAppId;
+        return $this;
+    }
+
+    /**
+     * The transport technology used to generate the Notification Token. Can be `apn` or `fcm`. Required when `factor_type` is `push`
+     *
+     * @param string $configNotificationPlatform The transport technology used to
+     *                                           generate the Notification Token
+     * @return $this Fluent Builder
+     */
+    public function setConfigNotificationPlatform(string $configNotificationPlatform): self {
+        $this->options['configNotificationPlatform'] = $configNotificationPlatform;
+        return $this;
+    }
+
+    /**
+     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`
+     *
+     * @param string $configNotificationToken For APN, the device token. For FCM
+     *                                        the registration token
+     * @return $this Fluent Builder
+     */
+    public function setConfigNotificationToken(string $configNotificationToken): self {
+        $this->options['configNotificationToken'] = $configNotificationToken;
+        return $this;
+    }
+
+    /**
+     * The Verify Push SDK version used to configure the factor
+     *
+     * @param string $configSdkVersion The Verify Push SDK version used to
+     *                                 configure the factor
+     * @return $this Fluent Builder
+     */
+    public function setConfigSdkVersion(string $configSdkVersion): self {
+        $this->options['configSdkVersion'] = $configSdkVersion;
+        return $this;
     }
 
     /**
@@ -186,13 +285,17 @@ class UpdateFactorOptions extends Options {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @param string $friendlyName The friendly name of this Factor
-     * @param string $config The config for this Factor as a json string
+     * @param string $configNotificationToken For APN, the device token. For FCM
+     *                                        the registration token
+     * @param string $configSdkVersion The Verify Push SDK version used to
+     *                                 configure the factor
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      */
-    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $config = Values::NONE, string $twilioSandboxMode = Values::NONE) {
+    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $twilioSandboxMode = Values::NONE) {
         $this->options['authPayload'] = $authPayload;
         $this->options['friendlyName'] = $friendlyName;
-        $this->options['config'] = $config;
+        $this->options['configNotificationToken'] = $configNotificationToken;
+        $this->options['configSdkVersion'] = $configSdkVersion;
         $this->options['twilioSandboxMode'] = $twilioSandboxMode;
     }
 
@@ -220,13 +323,26 @@ class UpdateFactorOptions extends Options {
     }
 
     /**
-     * The new config for this Factor. It must be a json string with the required properties for the given factor type
+     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`
      *
-     * @param string $config The config for this Factor as a json string
+     * @param string $configNotificationToken For APN, the device token. For FCM
+     *                                        the registration token
      * @return $this Fluent Builder
      */
-    public function setConfig(string $config): self {
-        $this->options['config'] = $config;
+    public function setConfigNotificationToken(string $configNotificationToken): self {
+        $this->options['configNotificationToken'] = $configNotificationToken;
+        return $this;
+    }
+
+    /**
+     * The Verify Push SDK version used to configure the factor
+     *
+     * @param string $configSdkVersion The Verify Push SDK version used to
+     *                                 configure the factor
+     * @return $this Fluent Builder
+     */
+    public function setConfigSdkVersion(string $configSdkVersion): self {
+        $this->options['configSdkVersion'] = $configSdkVersion;
         return $this;
     }
 

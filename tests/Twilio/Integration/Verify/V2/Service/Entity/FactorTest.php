@@ -24,16 +24,11 @@ class FactorTest extends HolodeckTestCase {
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors->create("binding", "friendly_name", "push", "config", $options);
+                                     ->factors->create("friendly_name", "push", $options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = [
-            'Binding' => "binding",
-            'FriendlyName' => "friendly_name",
-            'FactorType' => "push",
-            'Config' => "config",
-        ];
+        $values = ['FriendlyName' => "friendly_name", 'FactorType' => "push", ];
 
         $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
 
@@ -63,7 +58,7 @@ class FactorTest extends HolodeckTestCase {
                 "factor_type": "push",
                 "config": {
                     "sdk_version": "1.0",
-                    "app_id": "com.authy.authy",
+                    "app_id": "com.example.myapp",
                     "notification_platform": "fcm",
                     "notification_token": "test_token"
                 },
@@ -74,7 +69,7 @@ class FactorTest extends HolodeckTestCase {
 
         $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->entities("identity")
-                                           ->factors->create("binding", "friendly_name", "push", "config");
+                                           ->factors->create("friendly_name", "push");
 
         $this->assertNotNull($actual);
     }
@@ -155,7 +150,7 @@ class FactorTest extends HolodeckTestCase {
                 "factor_type": "push",
                 "config": {
                     "sdk_version": "1.0",
-                    "app_id": "com.authy.authy",
+                    "app_id": "com.example.myapp",
                     "notification_platform": "fcm",
                     "notification_token": "test_token"
                 },
@@ -239,7 +234,7 @@ class FactorTest extends HolodeckTestCase {
                         "factor_type": "push",
                         "config": {
                             "sdk_version": "1.0",
-                            "app_id": "com.authy.authy",
+                            "app_id": "com.example.myapp",
                             "notification_platform": "fcm",
                             "notification_token": "test_token"
                         },
@@ -306,7 +301,7 @@ class FactorTest extends HolodeckTestCase {
                 "factor_type": "push",
                 "config": {
                     "sdk_version": "1.0",
-                    "app_id": "com.authy.authy",
+                    "app_id": "com.example.myapp",
                     "notification_platform": "fcm",
                     "notification_token": "test_token"
                 },

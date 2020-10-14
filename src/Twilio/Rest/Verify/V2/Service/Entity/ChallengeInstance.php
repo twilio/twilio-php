@@ -31,8 +31,8 @@ use Twilio\Version;
  * @property \DateTime $expirationDate
  * @property string $status
  * @property string $respondedReason
- * @property string $details
- * @property string $hiddenDetails
+ * @property array $details
+ * @property array $hiddenDetails
  * @property string $factorType
  * @property string $url
  */

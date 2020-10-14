@@ -49,12 +49,14 @@ abstract class ConversationOptions {
      *                               switched to `inactive` state.
      * @param string $timersClosed ISO8601 duration when conversation will be
      *                             switched to `closed` state.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateConversationOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateConversationOptions {
-        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid, $state, $timersInactive, $timersClosed, $xTwilioWebhookEnabled);
+    public static function update(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $uniqueName = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateConversationOptions {
+        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes, $messagingServiceSid, $state, $timersInactive, $timersClosed, $uniqueName, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -240,10 +242,12 @@ class UpdateConversationOptions extends Options {
      *                               switched to `inactive` state.
      * @param string $timersClosed ISO8601 duration when conversation will be
      *                             switched to `closed` state.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, \DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $attributes = Values::NONE, string $messagingServiceSid = Values::NONE, string $state = Values::NONE, string $timersInactive = Values::NONE, string $timersClosed = Values::NONE, string $uniqueName = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
@@ -252,6 +256,7 @@ class UpdateConversationOptions extends Options {
         $this->options['state'] = $state;
         $this->options['timersInactive'] = $timersInactive;
         $this->options['timersClosed'] = $timersClosed;
+        $this->options['uniqueName'] = $uniqueName;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -344,6 +349,18 @@ class UpdateConversationOptions extends Options {
      */
     public function setTimersClosed(string $timersClosed): self {
         $this->options['timersClosed'] = $timersClosed;
+        return $this;
+    }
+
+    /**
+     * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+     *
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @return $this Fluent Builder
+     */
+    public function setUniqueName(string $uniqueName): self {
+        $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 

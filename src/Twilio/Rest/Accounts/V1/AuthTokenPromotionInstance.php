@@ -7,75 +7,65 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Accounts\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Preview\TrustedComms\Business\InsightsList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- *
  * @property string $accountSid
- * @property string $sid
+ * @property string $authToken
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
  * @property string $url
- * @property array $links
  */
-class BusinessInstance extends InstanceResource {
-    protected $_insights;
-
+class AuthTokenPromotionInstance extends InstanceResource {
     /**
-     * Initialize the BusinessInstance
+     * Initialize the AuthTokenPromotionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid A string that uniquely identifies this Business.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'sid' => Values::array_get($payload, 'sid'),
+            'authToken' => Values::array_get($payload, 'auth_token'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return BusinessContext Context for this BusinessInstance
+     * @return AuthTokenPromotionContext Context for this AuthTokenPromotionInstance
      */
-    protected function proxy(): BusinessContext {
+    protected function proxy(): AuthTokenPromotionContext {
         if (!$this->context) {
-            $this->context = new BusinessContext($this->version, $this->solution['sid']);
+            $this->context = new AuthTokenPromotionContext($this->version);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the BusinessInstance
+     * Update the AuthTokenPromotionInstance
      *
-     * @return BusinessInstance Fetched BusinessInstance
+     * @return AuthTokenPromotionInstance Updated AuthTokenPromotionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BusinessInstance {
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Access the insights
-     */
-    protected function getInsights(): InsightsList {
-        return $this->proxy()->insights;
+    public function update(): AuthTokenPromotionInstance {
+        return $this->proxy()->update();
     }
 
     /**
@@ -108,6 +98,6 @@ class BusinessInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.BusinessInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Accounts.V1.AuthTokenPromotionInstance ' . \implode(' ', $context) . ']';
     }
 }

@@ -37,7 +37,8 @@ class ConversationContext extends InstanceContext {
      * Initialize the ConversationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The chat_service_sid
+     * @param string $chatServiceSid The SID of the Conversation Service that the
+     *                               resource is associated with.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
      */
@@ -69,6 +70,7 @@ class ConversationContext extends InstanceContext {
             'State' => $options['state'],
             'Timers.Inactive' => $options['timersInactive'],
             'Timers.Closed' => $options['timersClosed'],
+            'UniqueName' => $options['uniqueName'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

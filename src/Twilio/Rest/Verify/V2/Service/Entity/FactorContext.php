@@ -87,7 +87,8 @@ class FactorContext extends InstanceContext {
         $data = Values::of([
             'AuthPayload' => $options['authPayload'],
             'FriendlyName' => $options['friendlyName'],
-            'Config' => $options['config'],
+            'Config.NotificationToken' => $options['configNotificationToken'],
+            'Config.SdkVersion' => $options['configSdkVersion'],
         ]);
         $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 

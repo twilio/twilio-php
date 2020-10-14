@@ -68,6 +68,7 @@ class ConversationContext extends InstanceContext {
             'State' => $options['state'],
             'Timers.Inactive' => $options['timersInactive'],
             'Timers.Closed' => $options['timersClosed'],
+            'UniqueName' => $options['uniqueName'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

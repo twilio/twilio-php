@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannel;
+namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
-class ChannelPage extends Page {
+class SecondaryAuthTokenPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,16 +28,10 @@ class ChannelPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return ChannelInstance \Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannel\ChannelInstance
+     * @return SecondaryAuthTokenInstance \Twilio\Rest\Accounts\V1\SecondaryAuthTokenInstance
      */
-    public function buildInstance(array $payload): ChannelInstance {
-        return new ChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['businessSid'],
-            $this->solution['brandSid'],
-            $this->solution['brandedChannelSid']
-        );
+    public function buildInstance(array $payload): SecondaryAuthTokenInstance {
+        return new SecondaryAuthTokenInstance($this->version, $payload);
     }
 
     /**
@@ -49,6 +40,6 @@ class ChannelPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.ChannelPage]';
+        return '[Twilio.Accounts.V1.SecondaryAuthTokenPage]';
     }
 }

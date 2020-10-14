@@ -39,22 +39,24 @@ class FactorList extends ListResource {
     /**
      * Create the FactorInstance
      *
-     * @param string $binding A unique binding for this Factor as a json string
      * @param string $friendlyName The friendly name of this Factor
      * @param string $factorType The Type of this Factor
-     * @param string $config The config for this Factor as a json string
      * @param array|Options $options Optional Arguments
      * @return FactorInstance Created FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $binding, string $friendlyName, string $factorType, string $config, array $options = []): FactorInstance {
+    public function create(string $friendlyName, string $factorType, array $options = []): FactorInstance {
         $options = new Values($options);
 
         $data = Values::of([
-            'Binding' => $binding,
             'FriendlyName' => $friendlyName,
             'FactorType' => $factorType,
-            'Config' => $config,
+            'Binding.Alg' => $options['bindingAlg'],
+            'Binding.PublicKey' => $options['bindingPublicKey'],
+            'Config.AppId' => $options['configAppId'],
+            'Config.NotificationPlatform' => $options['configNotificationPlatform'],
+            'Config.NotificationToken' => $options['configNotificationToken'],
+            'Config.SdkVersion' => $options['configSdkVersion'],
         ]);
         $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 

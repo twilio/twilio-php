@@ -29,11 +29,16 @@ abstract class ServiceOptions {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
-     * @param array $push Optional service level push factors configuration
+     * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
+     *                              reponse. Default: true
+     * @param string $pushApnCredentialSid Optional. Set APN Credential for this
+     *                                     service.
+     * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
+     *                                     service.
      * @return CreateServiceOptions Options builder
      */
-    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE): CreateServiceOptions {
-        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $push);
+    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE): CreateServiceOptions {
+        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid);
     }
 
     /**
@@ -53,11 +58,16 @@ abstract class ServiceOptions {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
-     * @param array $push Optional service level push factors configuration
+     * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
+     *                              reponse. Default: true
+     * @param string $pushApnCredentialSid Optional. Set APN Credential for this
+     *                                     service.
+     * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
+     *                                     service.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $push);
+    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE): UpdateServiceOptions {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid);
     }
 }
 
@@ -78,9 +88,14 @@ class CreateServiceOptions extends Options {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
-     * @param array $push Optional service level push factors configuration
+     * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
+     *                              reponse. Default: true
+     * @param string $pushApnCredentialSid Optional. Set APN Credential for this
+     *                                     service.
+     * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
+     *                                     service.
      */
-    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE) {
+    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
@@ -89,7 +104,9 @@ class CreateServiceOptions extends Options {
         $this->options['psd2Enabled'] = $psd2Enabled;
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
         $this->options['customCodeEnabled'] = $customCodeEnabled;
-        $this->options['push'] = $push;
+        $this->options['pushIncludeDate'] = $pushIncludeDate;
+        $this->options['pushApnCredentialSid'] = $pushApnCredentialSid;
+        $this->options['pushFcmCredentialSid'] = $pushFcmCredentialSid;
     }
 
     /**
@@ -188,13 +205,38 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configurations for the Push factors (channel) created under this Service. If present, it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}. If `include_date` is set to `true`, which is the default, that means that the push challenge’s response will include the date created value. If `include_date` is set to `false`, then the date created value will not be included. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info
+     * Optional configuration for the Push factors. If true, include the date in the Challenge's reponse. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: true
      *
-     * @param array $push Optional service level push factors configuration
+     * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
+     *                              reponse. Default: true
      * @return $this Fluent Builder
      */
-    public function setPush(array $push): self {
-        $this->options['push'] = $push;
+    public function setPushIncludeDate(bool $pushIncludeDate): self {
+        $this->options['pushIncludeDate'] = $pushIncludeDate;
+        return $this;
+    }
+
+    /**
+     * Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     *
+     * @param string $pushApnCredentialSid Optional. Set APN Credential for this
+     *                                     service.
+     * @return $this Fluent Builder
+     */
+    public function setPushApnCredentialSid(string $pushApnCredentialSid): self {
+        $this->options['pushApnCredentialSid'] = $pushApnCredentialSid;
+        return $this;
+    }
+
+    /**
+     * Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     *
+     * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
+     *                                     service.
+     * @return $this Fluent Builder
+     */
+    public function setPushFcmCredentialSid(string $pushFcmCredentialSid): self {
+        $this->options['pushFcmCredentialSid'] = $pushFcmCredentialSid;
         return $this;
     }
 
@@ -227,9 +269,14 @@ class UpdateServiceOptions extends Options {
      *                                       the end of an SMS.
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
-     * @param array $push Optional service level push factors configuration
+     * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
+     *                              reponse. Default: true
+     * @param string $pushApnCredentialSid Optional. Set APN Credential for this
+     *                                     service.
+     * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
+     *                                     service.
      */
-    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, array $push = Values::ARRAY_NONE) {
+    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
@@ -239,7 +286,9 @@ class UpdateServiceOptions extends Options {
         $this->options['psd2Enabled'] = $psd2Enabled;
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
         $this->options['customCodeEnabled'] = $customCodeEnabled;
-        $this->options['push'] = $push;
+        $this->options['pushIncludeDate'] = $pushIncludeDate;
+        $this->options['pushApnCredentialSid'] = $pushApnCredentialSid;
+        $this->options['pushFcmCredentialSid'] = $pushFcmCredentialSid;
     }
 
     /**
@@ -349,13 +398,38 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Configurations for the Push factors (channel) created under this Service. If present, it must be a json string with the following format: {"notify_service_sid": "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "include_date": true}. If `include_date` is set to `true`, which is the default, that means that the push challenge’s response will include the date created value. If `include_date` is set to `false`, then the date created value will not be included. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info
+     * Optional configuration for the Push factors. If true, include the date in the Challenge's reponse. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: true
      *
-     * @param array $push Optional service level push factors configuration
+     * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
+     *                              reponse. Default: true
      * @return $this Fluent Builder
      */
-    public function setPush(array $push): self {
-        $this->options['push'] = $push;
+    public function setPushIncludeDate(bool $pushIncludeDate): self {
+        $this->options['pushIncludeDate'] = $pushIncludeDate;
+        return $this;
+    }
+
+    /**
+     * Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     *
+     * @param string $pushApnCredentialSid Optional. Set APN Credential for this
+     *                                     service.
+     * @return $this Fluent Builder
+     */
+    public function setPushApnCredentialSid(string $pushApnCredentialSid): self {
+        $this->options['pushApnCredentialSid'] = $pushApnCredentialSid;
+        return $this;
+    }
+
+    /**
+     * Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     *
+     * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
+     *                                     service.
+     * @return $this Fluent Builder
+     */
+    public function setPushFcmCredentialSid(string $pushFcmCredentialSid): self {
+        $this->options['pushFcmCredentialSid'] = $pushFcmCredentialSid;
         return $this;
     }
 
