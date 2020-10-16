@@ -12,9 +12,6 @@ namespace Twilio\Rest\Conversations\V1\Configuration;
 use Twilio\ListResource;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class WebhookList extends ListResource {
     /**
      * Construct the WebhookList

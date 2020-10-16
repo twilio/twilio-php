@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannel;
+namespace Twilio\Rest\Preview\TrustedComms\BrandedChannel;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
@@ -22,21 +22,15 @@ class ChannelList extends ListResource {
      * Construct the ChannelList
      *
      * @param Version $version Version that contains the resource
-     * @param string $businessSid Business Sid.
-     * @param string $brandSid Brand Sid.
      * @param string $brandedChannelSid Branded Channel Sid.
      */
-    public function __construct(Version $version, string $businessSid, string $brandSid, string $brandedChannelSid) {
+    public function __construct(Version $version, string $brandedChannelSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [
-            'businessSid' => $businessSid,
-            'brandSid' => $brandSid,
-            'brandedChannelSid' => $brandedChannelSid,
-        ];
+        $this->solution = ['brandedChannelSid' => $brandedChannelSid, ];
 
-        $this->uri = '/Businesses/' . \rawurlencode($businessSid) . '/Brands/' . \rawurlencode($brandSid) . '/BrandedChannels/' . \rawurlencode($brandedChannelSid) . '/Channels';
+        $this->uri = '/BrandedChannels/' . \rawurlencode($brandedChannelSid) . '/Channels';
     }
 
     /**
@@ -51,13 +45,7 @@ class ChannelList extends ListResource {
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new ChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['businessSid'],
-            $this->solution['brandSid'],
-            $this->solution['brandedChannelSid']
-        );
+        return new ChannelInstance($this->version, $payload, $this->solution['brandedChannelSid']);
     }
 
     /**

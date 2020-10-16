@@ -12,14 +12,20 @@ namespace Twilio\Rest\Accounts;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Accounts\V1\AuthTokenPromotionList;
 use Twilio\Rest\Accounts\V1\CredentialList;
+use Twilio\Rest\Accounts\V1\SecondaryAuthTokenList;
 use Twilio\Version;
 
 /**
+ * @property AuthTokenPromotionList $authTokenPromotion
  * @property CredentialList $credentials
+ * @property SecondaryAuthTokenList $secondaryAuthToken
  */
 class V1 extends Version {
+    protected $_authTokenPromotion;
     protected $_credentials;
+    protected $_secondaryAuthToken;
 
     /**
      * Construct the V1 version of Accounts
@@ -31,11 +37,25 @@ class V1 extends Version {
         $this->version = 'v1';
     }
 
+    protected function getAuthTokenPromotion(): AuthTokenPromotionList {
+        if (!$this->_authTokenPromotion) {
+            $this->_authTokenPromotion = new AuthTokenPromotionList($this);
+        }
+        return $this->_authTokenPromotion;
+    }
+
     protected function getCredentials(): CredentialList {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
         return $this->_credentials;
+    }
+
+    protected function getSecondaryAuthToken(): SecondaryAuthTokenList {
+        if (!$this->_secondaryAuthToken) {
+            $this->_secondaryAuthToken = new SecondaryAuthTokenList($this);
+        }
+        return $this->_secondaryAuthToken;
     }
 
     /**

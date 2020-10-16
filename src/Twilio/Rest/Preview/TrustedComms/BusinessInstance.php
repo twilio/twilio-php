@@ -11,7 +11,6 @@ namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Preview\TrustedComms\Business\BrandList;
 use Twilio\Rest\Preview\TrustedComms\Business\InsightsList;
 use Twilio\Values;
 use Twilio\Version;
@@ -25,7 +24,6 @@ use Twilio\Version;
  * @property array $links
  */
 class BusinessInstance extends InstanceResource {
-    protected $_brands;
     protected $_insights;
 
     /**
@@ -71,13 +69,6 @@ class BusinessInstance extends InstanceResource {
      */
     public function fetch(): BusinessInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Access the brands
-     */
-    protected function getBrands(): BrandList {
-        return $this->proxy()->brands;
     }
 
     /**

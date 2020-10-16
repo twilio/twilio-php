@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business\Brand;
+namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannel\ChannelList;
+use Twilio\Rest\Preview\TrustedComms\BrandedChannel\ChannelList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -33,11 +33,9 @@ class BrandedChannelInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $businessSid Business Sid.
-     * @param string $brandSid Brand Sid.
      * @param string $sid Branded Channel Sid.
      */
-    public function __construct(Version $version, array $payload, string $businessSid, string $brandSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -50,11 +48,7 @@ class BrandedChannelInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [
-            'businessSid' => $businessSid,
-            'brandSid' => $brandSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        ];
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
@@ -65,12 +59,7 @@ class BrandedChannelInstance extends InstanceResource {
      */
     protected function proxy(): BrandedChannelContext {
         if (!$this->context) {
-            $this->context = new BrandedChannelContext(
-                $this->version,
-                $this->solution['businessSid'],
-                $this->solution['brandSid'],
-                $this->solution['sid']
-            );
+            $this->context = new BrandedChannelContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;

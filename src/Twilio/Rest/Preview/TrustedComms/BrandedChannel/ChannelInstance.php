@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannel;
+namespace Twilio\Rest\Preview\TrustedComms\BrandedChannel;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -31,11 +31,9 @@ class ChannelInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $businessSid Business Sid.
-     * @param string $brandSid Brand Sid.
      * @param string $brandedChannelSid Branded Channel Sid.
      */
-    public function __construct(Version $version, array $payload, string $businessSid, string $brandSid, string $brandedChannelSid) {
+    public function __construct(Version $version, array $payload, string $brandedChannelSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -49,11 +47,7 @@ class ChannelInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [
-            'businessSid' => $businessSid,
-            'brandSid' => $brandSid,
-            'brandedChannelSid' => $brandedChannelSid,
-        ];
+        $this->solution = ['brandedChannelSid' => $brandedChannelSid, ];
     }
 
     /**

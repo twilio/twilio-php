@@ -118,7 +118,7 @@ class RoomTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateP2PBasicResponse(): void {
+    public function testCreateWebrtcGoResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -127,7 +127,7 @@ class RoomTest extends HolodeckTestCase {
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "status": "in-progress",
-                "type": "peer-to-peer-basic",
+                "type": "go",
                 "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "enable_turn": true,
                 "unique_name": "room1",

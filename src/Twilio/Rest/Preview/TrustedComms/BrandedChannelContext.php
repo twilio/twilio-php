@@ -7,12 +7,12 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business\Brand;
+namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
-use Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannel\ChannelList;
+use Twilio\Rest\Preview\TrustedComms\BrandedChannel\ChannelList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -28,17 +28,15 @@ class BrandedChannelContext extends InstanceContext {
      * Initialize the BrandedChannelContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $businessSid Business Sid.
-     * @param string $brandSid Brand Sid.
      * @param string $sid Branded Channel Sid.
      */
-    public function __construct(Version $version, $businessSid, $brandSid, $sid) {
+    public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['businessSid' => $businessSid, 'brandSid' => $brandSid, 'sid' => $sid, ];
+        $this->solution = ['sid' => $sid, ];
 
-        $this->uri = '/Businesses/' . \rawurlencode($businessSid) . '/Brands/' . \rawurlencode($brandSid) . '/BrandedChannels/' . \rawurlencode($sid) . '';
+        $this->uri = '/BrandedChannels/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -50,13 +48,7 @@ class BrandedChannelContext extends InstanceContext {
     public function fetch(): BrandedChannelInstance {
         $payload = $this->version->fetch('GET', $this->uri);
 
-        return new BrandedChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['businessSid'],
-            $this->solution['brandSid'],
-            $this->solution['sid']
-        );
+        return new BrandedChannelInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -64,12 +56,7 @@ class BrandedChannelContext extends InstanceContext {
      */
     protected function getChannels(): ChannelList {
         if (!$this->_channels) {
-            $this->_channels = new ChannelList(
-                $this->version,
-                $this->solution['businessSid'],
-                $this->solution['brandSid'],
-                $this->solution['sid']
-            );
+            $this->_channels = new ChannelList($this->version, $this->solution['sid']);
         }
 
         return $this->_channels;

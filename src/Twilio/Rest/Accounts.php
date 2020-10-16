@@ -15,7 +15,11 @@ use Twilio\Rest\Accounts\V1;
 
 /**
  * @property \Twilio\Rest\Accounts\V1 $v1
+ * @property \Twilio\Rest\Accounts\V1\AuthTokenPromotionList $authTokenPromotion
  * @property \Twilio\Rest\Accounts\V1\CredentialList $credentials
+ * @property \Twilio\Rest\Accounts\V1\SecondaryAuthTokenList $secondaryAuthToken
+ * @method \Twilio\Rest\Accounts\V1\AuthTokenPromotionContext authTokenPromotion()
+ * @method \Twilio\Rest\Accounts\V1\SecondaryAuthTokenContext secondaryAuthToken()
  */
 class Accounts extends Domain {
     protected $_v1;
@@ -74,8 +78,24 @@ class Accounts extends Domain {
         throw new TwilioException('Unknown context ' . $name);
     }
 
+    protected function getAuthTokenPromotion(): \Twilio\Rest\Accounts\V1\AuthTokenPromotionList {
+        return $this->v1->authTokenPromotion;
+    }
+
+    protected function contextAuthTokenPromotion(): \Twilio\Rest\Accounts\V1\AuthTokenPromotionContext {
+        return $this->v1->authTokenPromotion();
+    }
+
     protected function getCredentials(): \Twilio\Rest\Accounts\V1\CredentialList {
         return $this->v1->credentials;
+    }
+
+    protected function getSecondaryAuthToken(): \Twilio\Rest\Accounts\V1\SecondaryAuthTokenList {
+        return $this->v1->secondaryAuthToken;
+    }
+
+    protected function contextSecondaryAuthToken(): \Twilio\Rest\Accounts\V1\SecondaryAuthTokenContext {
+        return $this->v1->secondaryAuthToken();
     }
 
     /**

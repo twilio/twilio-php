@@ -16,9 +16,6 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class UserList extends ListResource {
     /**
      * Construct the UserList
@@ -51,8 +48,9 @@ class UserList extends ListResource {
             'Attributes' => $options['attributes'],
             'RoleSid' => $options['roleSid'],
         ]);
+        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new UserInstance($this->version, $payload);
     }

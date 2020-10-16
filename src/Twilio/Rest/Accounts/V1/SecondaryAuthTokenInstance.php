@@ -7,82 +7,75 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\Business;
+namespace Twilio\Rest\Accounts\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Preview\TrustedComms\Business\Brand\BrandedChannelList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- *
  * @property string $accountSid
- * @property string $businessSid
- * @property string $sid
- * @property array $links
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $secondaryAuthToken
  * @property string $url
  */
-class BrandInstance extends InstanceResource {
-    protected $_brandedChannels;
-
+class SecondaryAuthTokenInstance extends InstanceResource {
     /**
-     * Initialize the BrandInstance
+     * Initialize the SecondaryAuthTokenInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $businessSid Business Sid.
-     * @param string $sid Brand Sid.
      */
-    public function __construct(Version $version, array $payload, string $businessSid, string $sid = null) {
+    public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'businessSid' => Values::array_get($payload, 'business_sid'),
-            'sid' => Values::array_get($payload, 'sid'),
-            'links' => Values::array_get($payload, 'links'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'secondaryAuthToken' => Values::array_get($payload, 'secondary_auth_token'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['businessSid' => $businessSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return BrandContext Context for this BrandInstance
+     * @return SecondaryAuthTokenContext Context for this SecondaryAuthTokenInstance
      */
-    protected function proxy(): BrandContext {
+    protected function proxy(): SecondaryAuthTokenContext {
         if (!$this->context) {
-            $this->context = new BrandContext(
-                $this->version,
-                $this->solution['businessSid'],
-                $this->solution['sid']
-            );
+            $this->context = new SecondaryAuthTokenContext($this->version);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the BrandInstance
+     * Create the SecondaryAuthTokenInstance
      *
-     * @return BrandInstance Fetched BrandInstance
+     * @return SecondaryAuthTokenInstance Created SecondaryAuthTokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BrandInstance {
-        return $this->proxy()->fetch();
+    public function create(): SecondaryAuthTokenInstance {
+        return $this->proxy()->create();
     }
 
     /**
-     * Access the brandedChannels
+     * Delete the SecondaryAuthTokenInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
-    protected function getBrandedChannels(): BrandedChannelList {
-        return $this->proxy()->brandedChannels;
+    public function delete(): bool {
+        return $this->proxy()->delete();
     }
 
     /**
@@ -115,6 +108,6 @@ class BrandInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.BrandInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Accounts.V1.SecondaryAuthTokenInstance ' . \implode(' ', $context) . ']';
     }
 }

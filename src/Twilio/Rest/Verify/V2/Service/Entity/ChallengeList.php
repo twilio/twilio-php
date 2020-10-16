@@ -51,8 +51,9 @@ class ChallengeList extends ListResource {
         $data = Values::of([
             'FactorSid' => $factorSid,
             'ExpirationDate' => Serialize::iso8601DateTime($options['expirationDate']),
-            'Details' => $options['details'],
-            'HiddenDetails' => $options['hiddenDetails'],
+            'Details.Message' => $options['detailsMessage'],
+            'Details.Fields' => Serialize::map($options['detailsFields'], function($e) { return Serialize::jsonObject($e); }),
+            'HiddenDetails' => Serialize::jsonObject($options['hiddenDetails']),
         ]);
         $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 

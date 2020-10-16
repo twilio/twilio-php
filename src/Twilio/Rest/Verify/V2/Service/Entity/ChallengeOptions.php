@@ -19,14 +19,17 @@ abstract class ChallengeOptions {
     /**
      * @param \DateTime $expirationDate The future date in which this Challenge
      *                                  will expire
-     * @param string $details Public details provided to contextualize the Challenge
-     * @param string $hiddenDetails Hidden details provided to contextualize the
-     *                              Challenge
+     * @param string $detailsMessage Shown to the user when the push notification
+     *                               arrives
+     * @param array[] $detailsFields A list of objects that describe the Fields
+     *                               included in the Challenge
+     * @param array $hiddenDetails Hidden details provided to contextualize the
+     *                             Challenge
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      * @return CreateChallengeOptions Options builder
      */
-    public static function create(\DateTime $expirationDate = Values::NONE, string $details = Values::NONE, string $hiddenDetails = Values::NONE, string $twilioSandboxMode = Values::NONE): CreateChallengeOptions {
-        return new CreateChallengeOptions($expirationDate, $details, $hiddenDetails, $twilioSandboxMode);
+    public static function create(\DateTime $expirationDate = Values::NONE, string $detailsMessage = Values::NONE, array $detailsFields = Values::ARRAY_NONE, array $hiddenDetails = Values::ARRAY_NONE, string $twilioSandboxMode = Values::NONE): CreateChallengeOptions {
+        return new CreateChallengeOptions($expirationDate, $detailsMessage, $detailsFields, $hiddenDetails, $twilioSandboxMode);
     }
 
     /**
@@ -61,14 +64,18 @@ class CreateChallengeOptions extends Options {
     /**
      * @param \DateTime $expirationDate The future date in which this Challenge
      *                                  will expire
-     * @param string $details Public details provided to contextualize the Challenge
-     * @param string $hiddenDetails Hidden details provided to contextualize the
-     *                              Challenge
+     * @param string $detailsMessage Shown to the user when the push notification
+     *                               arrives
+     * @param array[] $detailsFields A list of objects that describe the Fields
+     *                               included in the Challenge
+     * @param array $hiddenDetails Hidden details provided to contextualize the
+     *                             Challenge
      * @param string $twilioSandboxMode The Twilio-Sandbox-Mode HTTP request header
      */
-    public function __construct(\DateTime $expirationDate = Values::NONE, string $details = Values::NONE, string $hiddenDetails = Values::NONE, string $twilioSandboxMode = Values::NONE) {
+    public function __construct(\DateTime $expirationDate = Values::NONE, string $detailsMessage = Values::NONE, array $detailsFields = Values::ARRAY_NONE, array $hiddenDetails = Values::ARRAY_NONE, string $twilioSandboxMode = Values::NONE) {
         $this->options['expirationDate'] = $expirationDate;
-        $this->options['details'] = $details;
+        $this->options['detailsMessage'] = $detailsMessage;
+        $this->options['detailsFields'] = $detailsFields;
         $this->options['hiddenDetails'] = $hiddenDetails;
         $this->options['twilioSandboxMode'] = $twilioSandboxMode;
     }
@@ -86,24 +93,37 @@ class CreateChallengeOptions extends Options {
     }
 
     /**
-     * Details provided to give context about the Challenge. Shown to the end user. It must be a stringified JSON with the following structure: {"message": "string", "fields": [ { "label": "string", "value": "string"}]}. `message` is required. If you send the `fields` property, each field has to include `label` and `value` properties. If you had set `include_date=true` in the `push` configuration of the [service](https://www.twilio.com/docs/verify/api/service), the response will also include the challenge's date created value as an additional field called `date`
+     * Shown to the user when the push notification arrives. Required when `factor_type` is `push`
      *
-     * @param string $details Public details provided to contextualize the Challenge
+     * @param string $detailsMessage Shown to the user when the push notification
+     *                               arrives
      * @return $this Fluent Builder
      */
-    public function setDetails(string $details): self {
-        $this->options['details'] = $details;
+    public function setDetailsMessage(string $detailsMessage): self {
+        $this->options['detailsMessage'] = $detailsMessage;
+        return $this;
+    }
+
+    /**
+     * A list of objects that describe the Fields included in the Challenge. Each object contains the label and value of the field. Used when `factor_type` is `push`.
+     *
+     * @param array[] $detailsFields A list of objects that describe the Fields
+     *                               included in the Challenge
+     * @return $this Fluent Builder
+     */
+    public function setDetailsFields(array $detailsFields): self {
+        $this->options['detailsFields'] = $detailsFields;
         return $this;
     }
 
     /**
      * Details provided to give context about the Challenge. Not shown to the end user. It must be a stringified JSON with only strings values eg. `{"ip": "172.168.1.234"}`
      *
-     * @param string $hiddenDetails Hidden details provided to contextualize the
-     *                              Challenge
+     * @param array $hiddenDetails Hidden details provided to contextualize the
+     *                             Challenge
      * @return $this Fluent Builder
      */
-    public function setHiddenDetails(string $hiddenDetails): self {
+    public function setHiddenDetails(array $hiddenDetails): self {
         $this->options['hiddenDetails'] = $hiddenDetails;
         return $this;
     }

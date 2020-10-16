@@ -38,6 +38,7 @@ use Twilio\Version;
  * @property string $url
  * @property array $attributes
  * @property array $properties
+ * @property array $trust
  */
 class CallSummaryInstance extends InstanceResource {
     /**
@@ -71,6 +72,7 @@ class CallSummaryInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'attributes' => Values::array_get($payload, 'attributes'),
             'properties' => Values::array_get($payload, 'properties'),
+            'trust' => Values::array_get($payload, 'trust'),
         ];
 
         $this->solution = ['callSid' => $callSid, ];

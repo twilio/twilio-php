@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Preview\Trustedcomms\Business\Brand\BrandedChannel;
+namespace Twilio\Tests\Integration\Preview\Trustedcomms\BrandedChannel;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,9 +20,7 @@ class ChannelTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->trustedComms->businesses("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                ->brands("BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                ->brandedChannels("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            $this->twilio->preview->trustedComms->brandedChannels("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->channels->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -31,7 +29,7 @@ class ChannelTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Brands/BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/BrandedChannels/BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels',
+            'https://preview.twilio.com/TrustedComms/BrandedChannels/BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels',
             null,
             $values
         ));
@@ -48,14 +46,12 @@ class ChannelTest extends HolodeckTestCase {
                 "branded_channel_sid": "BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "phone_number_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "phone_number": "+15000000000",
-                "url": "https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands/BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BrandedChannels/BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels"
+                "url": "https://preview.twilio.com/TrustedComms/BrandedChannels/BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels"
             }
             '
         ));
 
-        $actual = $this->twilio->preview->trustedComms->businesses("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                      ->brands("BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                      ->brandedChannels("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        $actual = $this->twilio->preview->trustedComms->brandedChannels("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                       ->channels->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
