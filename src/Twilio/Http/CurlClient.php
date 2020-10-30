@@ -9,26 +9,33 @@ use Twilio\Exceptions\EnvironmentException;
 class CurlClient implements Client {
     public const DEFAULT_TIMEOUT = 60;
     protected $curlOptions = [];
-    protected $debugHttp = false;
 
     public $lastRequest;
     public $lastResponse;
 
     public function __construct(array $options = []) {
         $this->curlOptions = $options;
-        $this->debugHttp = \getenv('DEBUG_HTTP_TRAFFIC') === 'true';
     }
 
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null): Response {
+                            int $timeout = null, string $logLevel = null): Response {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
-
+        if ($logLevel === 'debug') {
+            \error_log('-- BEGIN Twilio API Request --');
+            \error_log('Request Method: ' . $method);
+            \error_log('Request URL: ' . $url);
+            \error_log('Request Headers: ');
+            foreach ($headers as $key => $value) {
+                \error_log("$key: $value");
+            }
+            \error_log('-- END Twilio API Request --');
+        }
         try {
             if (!$curl = \curl_init()) {
                 throw new EnvironmentException('Unable to initialize cURL');
@@ -52,20 +59,6 @@ class CurlClient implements Client {
                 ? array($parts[1], $parts[2])
                 : array($parts[0], $parts[1]);
 
-            if ($this->debugHttp) {
-                $u = \parse_url($url);
-                $hdrLine = $method . ' ' . $u['path'];
-                if (isset($u['query']) && \strlen($u['query']) > 0) {
-                    $hdrLine = $hdrLine . '?' . $u['query'];
-                }
-                \error_log($hdrLine);
-                foreach ($headers as $key => $value) {
-                    \error_log("$key: $value");
-                }
-                if ($method === 'POST') {
-                    \error_log("\n" . $options[CURLOPT_POSTFIELDS] . "\n");
-                }
-            }
             $statusCode = \curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
             $responseHeaders = [];
@@ -82,12 +75,12 @@ class CurlClient implements Client {
                 \fclose($options[CURLOPT_INFILE]);
             }
 
-            if ($this->debugHttp) {
-                \error_log("HTTP/1.1 $statusCode");
+            if ($logLevel === 'debug') {
+                \error_log('Status Code: ' . $statusCode);
+                \error_log('Response Headers:');
                 foreach ($responseHeaders as $key => $value) {
                     \error_log("$key: $value");
                 }
-                \error_log("\n$body");
             }
 
             $this->lastResponse = new Response($statusCode, $body, $responseHeaders);

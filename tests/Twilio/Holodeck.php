@@ -14,7 +14,7 @@ class Holodeck implements Client {
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null): Response {
+                            int $timeout = null, string $logLevel=null): Response {
         $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password);
         if (\count($this->responses) === 0) {
             return new Response(404, null, null);

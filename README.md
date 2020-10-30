@@ -95,6 +95,16 @@ A `Client` constructor without these parameters will also look for `TWILIO_REGIO
 
 This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
 
+### Enable Debug Logging
+There are two ways to enable debug logging in the default HTTP client. You can create an environment variable called `TWILIO_LOG_LEVEL` and set it to `debug` or you can set the log level to debug:
+```php
+$sid = "ACXXXXXX"; // Your Account SID from www.t**wilio.com/console
+$token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
+
+$client = new Twilio\Rest\Client($sid, $token);
+$client->setLogLevel('debug');
+```
+
 ### Generating TwiML
 
 To control phone calls, your application needs to output [TwiML][twiml].

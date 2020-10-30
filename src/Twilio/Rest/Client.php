@@ -98,6 +98,7 @@ class Client {
     const ENV_REGION = 'TWILIO_REGION';
     const ENV_EDGE = 'TWILIO_EDGE';
     const DEFAULT_REGION = 'us1';
+    const ENV_LOG = 'TWILIO_LOG_LEVEL';
 
     protected $username;
     protected $password;
@@ -106,6 +107,7 @@ class Client {
     protected $edge;
     protected $httpClient;
     protected $environment;
+    protected $logLevel;
     protected $_account;
     protected $_accounts;
     protected $_api;
@@ -158,6 +160,7 @@ class Client {
         $this->password = $this->getArg($password, self::ENV_AUTH_TOKEN);
         $this->region = $this->getArg($region, self::ENV_REGION);
         $this->edge = $this->getArg(null, self::ENV_EDGE);
+        $this->logLevel = $this->getArg(null, self::ENV_LOG);
 
         if (!$this->username || !$this->password) {
             throw new ConfigurationException('Credentials are required to create a Client');
@@ -208,6 +211,7 @@ class Client {
     public function request(string $method, string $uri, array $params = [], array $data = [], array $headers = [], string $username = null, string $password = null, int $timeout = null): \Twilio\Http\Response {
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
+        $logLevel = $this->logLevel;
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
                                  ' (PHP ' . PHP_VERSION . ')';
@@ -231,7 +235,8 @@ class Client {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            $logLevel
         );
     }
 
@@ -337,6 +342,15 @@ class Client {
      */
     public function setHttpClient(HttpClient $httpClient): void {
         $this->httpClient = $httpClient;
+    }
+
+    /**
+     * Set log level
+     *
+     * @param string $logLevel log level to use
+     */
+    public function setLogLevel(string $logLevel = null): void {
+        $this->logLevel = $this->getArg($logLevel, self::ENV_LOG);
     }
 
     /**
