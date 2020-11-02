@@ -28,7 +28,7 @@ class CurlClient implements Client {
         $this->lastResponse = null;
 
         if (getenv('DEBUG_HTTP_TRAFFIC') === 'true') {
-            $logLevel = "debug";
+            $logLevel = 'debug';
         }
 
         if ($logLevel === 'debug') {
