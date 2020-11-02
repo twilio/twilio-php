@@ -26,6 +26,11 @@ class CurlClient implements Client {
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
+
+        if (getenv('DEBUG_HTTP_TRAFFIC') === 'true') {
+            $logLevel = "debug";
+        }
+
         if ($logLevel === 'debug') {
             \error_log('-- BEGIN Twilio API Request --');
             \error_log('Request Method: ' . $method);

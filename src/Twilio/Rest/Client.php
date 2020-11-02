@@ -162,10 +162,6 @@ class Client {
         $this->edge = $this->getArg(null, self::ENV_EDGE);
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
 
-        if (getenv('DEBUG_HTTP_TRAFFIC') === 'true') {
-            $this->logLevel = 'debug';
-        }
-
         if (!$this->username || !$this->password) {
             throw new ConfigurationException('Credentials are required to create a Client');
         }
