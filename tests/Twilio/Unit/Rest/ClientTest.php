@@ -206,4 +206,19 @@ class ClientTest extends UnitTest {
             self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com/path/to/something.json?foo=12.34'));
     }
 
+    public function testActivatingLoggingPulledFromEnvironment(): void {
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'debug'
+        ]);
+        $this->assertEquals('debug', $client->getLogLevel());
+    }
+
+    public function testActivatingLoggingThroughSetterOverEnvironment(): void {
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'info'
+        ]);
+        $client->setLogLevel('debug');
+        $this->assertEquals('debug', $client->getLogLevel());
+    }
+
 }

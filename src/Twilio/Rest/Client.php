@@ -318,6 +318,15 @@ class Client {
     }
 
     /**
+     * Retrieve the log level
+     *
+     * @return string Current log level
+     */
+    public function getLogLevel(): string {
+        return $this->logLevel;
+    }
+
+    /**
      * Set Edge
      *
      * @param string $uri Edge to use, unsets the Edge when called with no arguments
