@@ -41,9 +41,6 @@ class CurlClient implements Client {
             if (isset($u['query']) && strlen($u['query']) > 0) {
                 error_log('Query Params: ' . $u['query']);
             }
-            if ($method === 'POST') {
-                \error_log('Post Params: ' . $options[CURLOPT_POSTFIELDS]);
-            }
             \error_log('Request Headers: ');
             foreach ($headers as $key => $value) {
                 \error_log("$key: $value");
