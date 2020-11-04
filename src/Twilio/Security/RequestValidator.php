@@ -11,7 +11,7 @@ use Twilio\Values;
  * $isFromTwilio = $validator->validate($_SERVER['HTTP_X_TWILIO_SIGNATURE'], 'https://your-example-url.com/api/route/', $_REQUEST);
  * $isFromTwilio // <- if this is true, the request did come from Twilio, if not, it didn't
  */
-final class RequestValidator {
+class RequestValidator {
 
     /**
      * @access private
