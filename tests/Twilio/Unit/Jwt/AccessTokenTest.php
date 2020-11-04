@@ -40,6 +40,29 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('{}', \json_encode($payload->grants));
     }
 
+    public function testMissingRegion(): void {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $header = JWT::getHeader($token);
+
+        $this->assertEquals('twilio-fpa;v=1', $header->cty);
+        $this->assertEquals('JWT', $header->typ);
+        $this->assertEquals(false, property_exists($header, 'twr'));
+    }
+
+    public function testValidRegion(): void {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat->setRegion('foo');
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $header = JWT::getHeader($token);
+
+        $this->assertEquals('twilio-fpa;v=1', $header->cty);
+        $this->assertEquals('JWT', $header->typ);
+        $this->assertEquals('foo', $header->twr);
+    }
+
     public function testNbf(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
 
