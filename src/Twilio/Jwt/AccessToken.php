@@ -12,16 +12,18 @@ class AccessToken {
     private $ttl;
     private $identity;
     private $nbf;
+    private $region;
     /** @var Grant[] $grants */
     private $grants;
     /** @var string[] $customClaims */
     private $customClaims;
 
-    public function __construct(string $accountSid, string $signingKeySid, string $secret, int $ttl = 3600, string $identity = null) {
+    public function __construct(string $accountSid, string $signingKeySid, string $secret, int $ttl = 3600, string $identity = null, string $region = null) {
         $this->signingKeySid = $signingKeySid;
         $this->accountSid = $accountSid;
         $this->secret = $secret;
         $this->ttl = $ttl;
+        $this->region = $region;
 
         if ($identity !== null) {
             $this->identity = $identity;
@@ -74,6 +76,27 @@ class AccessToken {
     }
 
     /**
+     * Set the region of this access token
+     *
+     * @param string $region Home region of the account sid in this access token
+     *
+     * @return $this updated access token
+     */
+    public function setRegion(string $region): self {
+        $this->region = $region;
+        return $this;
+    }
+
+    /**
+     * Returns the region of this access token
+     *
+     * @return string Home region of the account sid in this access token
+     */
+    public function getRegion(): string {
+        return $this->region;
+    }
+
+    /**
      * Add a grant to the access token
      *
      * @param Grant $grant to be added
@@ -100,6 +123,10 @@ class AccessToken {
             'cty' => 'twilio-fpa;v=1',
             'typ' => 'JWT'
         ];
+
+        if ($this->region) {
+            $header['twr'] = $this->region;
+        }
 
         $now = \time();
 

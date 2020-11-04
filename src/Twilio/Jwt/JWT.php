@@ -46,6 +46,24 @@ class JWT {
     }
 
     /**
+     * @param string $jwt The JWT
+     * @return object The JWT's header as a PHP object
+     * @throws \UnexpectedValueException
+     */
+    public static function getHeader(string $jwt) {
+        $tks = \explode('.', $jwt);
+        if (\count($tks) !== 3) {
+            throw new \UnexpectedValueException('Wrong number of segments');
+        }
+        list($headb64) = $tks;
+        if (null === ($header = self::jsonDecode(self::urlsafeB64Decode($headb64)))
+        ) {
+            throw new \UnexpectedValueException('Invalid segment encoding');
+        }
+        return $header;
+    }
+
+    /**
      * @param object|array $payload PHP object or array
      * @param string $key The secret key
      * @param string $algo The signing algorithm
