@@ -35,7 +35,9 @@ class CurlClient implements Client {
             \error_log('-- BEGIN Twilio API Request --');
             \error_log('Request Method: ' . $method);
             $u = \parse_url($url);
-            \error_log('Request URL: ' . $u['path']);
+            if (isset($u['path'])) {
+                \error_log('Request URL: ' . $u['path']);
+            }
             if (isset($u['query']) && strlen($u['query']) > 0) {
                 error_log('Query Params: ' . $u['query']);
             }
