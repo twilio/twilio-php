@@ -211,7 +211,7 @@ class Client {
     public function request(string $method, string $uri, array $params = [], array $data = [], array $headers = [], string $username = null, string $password = null, int $timeout = null): \Twilio\Http\Response {
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
-        $logLevel = $this->logLevel;
+        $logLevel = $this->getLogLevel();
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
                                  ' (PHP ' . PHP_VERSION . ')';
@@ -347,14 +347,14 @@ class Client {
     /**
      * Retrieve the log level
      *
-     * @return string Current log level
+     * @return ?string Current log level
      */
-    public function getLogLevel(): string {
+    public function getLogLevel(): ?string {
         return $this->logLevel;
     }
 
     /**
-     * Set log level
+     * Set log level to debug
      *
      * @param string $logLevel log level to use
      */
