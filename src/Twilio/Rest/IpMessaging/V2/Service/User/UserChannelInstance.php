@@ -34,11 +34,9 @@ class UserChannelInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
-     * @param string $userSid The SID of the User the User Channel belongs to
-     * @param string $channelSid The SID of the Channel that has the User Channel
-     *                           to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $userSid The user_sid
+     * @param string $channelSid The channel_sid
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $channelSid = null) {
         parent::__construct($version);

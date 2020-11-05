@@ -12,14 +12,13 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Rest\Verify\V2\Service\Entity\ChallengeList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $sid
  * @property string $identity
@@ -84,23 +83,21 @@ class EntityInstance extends InstanceResource {
     /**
      * Delete the EntityInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
-        return $this->proxy()->delete($options);
+    public function delete(): bool {
+        return $this->proxy()->delete();
     }
 
     /**
      * Fetch the EntityInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return EntityInstance Fetched EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): EntityInstance {
-        return $this->proxy()->fetch($options);
+    public function fetch(): EntityInstance {
+        return $this->proxy()->fetch();
     }
 
     /**

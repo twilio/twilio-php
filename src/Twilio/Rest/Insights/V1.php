@@ -13,14 +13,18 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Insights\V1\CallList;
+use Twilio\Rest\Insights\V1\RoomList;
 use Twilio\Version;
 
 /**
  * @property CallList $calls
+ * @property RoomList $rooms
  * @method \Twilio\Rest\Insights\V1\CallContext calls(string $sid)
+ * @method \Twilio\Rest\Insights\V1\RoomContext rooms(string $roomSid)
  */
 class V1 extends Version {
     protected $_calls;
+    protected $_rooms;
 
     /**
      * Construct the V1 version of Insights
@@ -37,6 +41,13 @@ class V1 extends Version {
             $this->_calls = new CallList($this);
         }
         return $this->_calls;
+    }
+
+    protected function getRooms(): RoomList {
+        if (!$this->_rooms) {
+            $this->_rooms = new RoomList($this);
+        }
+        return $this->_rooms;
     }
 
     /**

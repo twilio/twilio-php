@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class MemberOptions {
     /**
-     * @param string $roleSid The SID of the Role to assign to the member
+     * @param string $roleSid The role_sid
      * @return CreateMemberOptions Options builder
      */
     public static function create(string $roleSid = Values::NONE): CreateMemberOptions {
@@ -22,7 +22,7 @@ abstract class MemberOptions {
     }
 
     /**
-     * @param string[] $identity The `identity` value of the resources to read
+     * @param string[] $identity The identity
      * @return ReadMemberOptions Options builder
      */
     public static function read(array $identity = Values::ARRAY_NONE): ReadMemberOptions {
@@ -30,9 +30,8 @@ abstract class MemberOptions {
     }
 
     /**
-     * @param string $roleSid The SID of the Role to assign to the member
-     * @param int $lastConsumedMessageIndex The index of the last consumed Message
-     *                                      for the Channel for the Member
+     * @param string $roleSid The role_sid
+     * @param int $lastConsumedMessageIndex The last_consumed_message_index
      * @return UpdateMemberOptions Options builder
      */
     public static function update(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE): UpdateMemberOptions {
@@ -42,16 +41,16 @@ abstract class MemberOptions {
 
 class CreateMemberOptions extends Options {
     /**
-     * @param string $roleSid The SID of the Role to assign to the member
+     * @param string $roleSid The role_sid
      */
     public function __construct(string $roleSid = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
+     * The role_sid
      *
-     * @param string $roleSid The SID of the Role to assign to the member
+     * @param string $roleSid The role_sid
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -72,16 +71,16 @@ class CreateMemberOptions extends Options {
 
 class ReadMemberOptions extends Options {
     /**
-     * @param string[] $identity The `identity` value of the resources to read
+     * @param string[] $identity The identity
      */
     public function __construct(array $identity = Values::ARRAY_NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
-     * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
+     * The identity
      *
-     * @param string[] $identity The `identity` value of the resources to read
+     * @param string[] $identity The identity
      * @return $this Fluent Builder
      */
     public function setIdentity(array $identity): self {
@@ -102,9 +101,8 @@ class ReadMemberOptions extends Options {
 
 class UpdateMemberOptions extends Options {
     /**
-     * @param string $roleSid The SID of the Role to assign to the member
-     * @param int $lastConsumedMessageIndex The index of the last consumed Message
-     *                                      for the Channel for the Member
+     * @param string $roleSid The role_sid
+     * @param int $lastConsumedMessageIndex The last_consumed_message_index
      */
     public function __construct(string $roleSid = Values::NONE, int $lastConsumedMessageIndex = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -112,9 +110,9 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
+     * The role_sid
      *
-     * @param string $roleSid The SID of the Role to assign to the member
+     * @param string $roleSid The role_sid
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -123,10 +121,9 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The index of the last [Message](https://www.twilio.com/docs/api/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/api/chat/rest/channels).
+     * The last_consumed_message_index
      *
-     * @param int $lastConsumedMessageIndex The index of the last consumed Message
-     *                                      for the Channel for the Member
+     * @param int $lastConsumedMessageIndex The last_consumed_message_index
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex(int $lastConsumedMessageIndex): self {

@@ -12,14 +12,13 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
-use Twilio\Options;
 use Twilio\Rest\Verify\V2\Service\Entity\ChallengeList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property FactorList $factors
  * @property ChallengeList $challenges
@@ -49,31 +48,21 @@ class EntityContext extends InstanceContext {
     /**
      * Delete the EntityInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
-        $options = new Values($options);
-
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
-
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+    public function delete(): bool {
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
      * Fetch the EntityInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return EntityInstance Fetched EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): EntityInstance {
-        $options = new Values($options);
-
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
-
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
+    public function fetch(): EntityInstance {
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new EntityInstance(
             $this->version,

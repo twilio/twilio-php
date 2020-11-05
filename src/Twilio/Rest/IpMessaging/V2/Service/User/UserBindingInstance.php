@@ -35,10 +35,9 @@ class UserBindingInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
-     * @param string $userSid The SID of the User with the binding
-     * @param string $sid The SID of the User Binding resource to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $userSid The user_sid
+     * @param string $sid The sid
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $sid = null) {
         parent::__construct($version);

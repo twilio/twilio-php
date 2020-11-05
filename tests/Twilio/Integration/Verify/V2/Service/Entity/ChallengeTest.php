@@ -19,25 +19,20 @@ class ChallengeTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", $options);
+                                     ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['FactorSid' => "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges',
-            [],
-            $values,
-            $headers
+            null,
+            $values
         ));
     }
 
@@ -87,23 +82,16 @@ class ChallengeTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch($options);
+                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -153,23 +141,16 @@ class ChallengeTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges->read($options);
+                                     ->challenges->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges'
         ));
     }
 
@@ -258,23 +239,16 @@ class ChallengeTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
+                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 

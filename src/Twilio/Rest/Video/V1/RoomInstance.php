@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Rest\Video\V1\Room\ParticipantList;
+use Twilio\Rest\Video\V1\Room\RecordingRulesList;
 use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
@@ -40,6 +41,7 @@ use Twilio\Version;
 class RoomInstance extends InstanceResource {
     protected $_recordings;
     protected $_participants;
+    protected $_recordingRules;
 
     /**
      * Initialize the RoomInstance
@@ -123,6 +125,13 @@ class RoomInstance extends InstanceResource {
      */
     protected function getParticipants(): ParticipantList {
         return $this->proxy()->participants;
+    }
+
+    /**
+     * Access the recordingRules
+     */
+    protected function getRecordingRules(): RecordingRulesList {
+        return $this->proxy()->recordingRules;
     }
 
     /**

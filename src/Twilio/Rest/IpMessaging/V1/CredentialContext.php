@@ -21,7 +21,7 @@ class CredentialContext extends InstanceContext {
      * Initialize the CredentialContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The sid
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);

@@ -26,7 +26,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -48,10 +48,10 @@ class ServiceTest extends HolodeckTestCase {
                     "user_channels": 250
                 },
                 "links": {
-                    "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                    "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                    "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
+                    "channels": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "users": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                    "roles": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "bindings": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {},
                 "post_webhook_url": "post_webhook_url",
@@ -62,7 +62,7 @@ class ServiceTest extends HolodeckTestCase {
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "typing_indicator_timeout": 100,
-                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "webhook_filters": [
                     "webhook_filters"
                 ],
@@ -90,7 +90,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -117,7 +117,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v2/Services',
+            'https://ip-messaging.twilio.com/v2/Services',
             null,
             $values
         ));
@@ -141,10 +141,10 @@ class ServiceTest extends HolodeckTestCase {
                     "user_channels": 250
                 },
                 "links": {
-                    "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                    "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                    "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
+                    "channels": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "users": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                    "roles": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "bindings": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {},
                 "post_webhook_url": "post_webhook_url",
@@ -155,7 +155,7 @@ class ServiceTest extends HolodeckTestCase {
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "typing_indicator_timeout": 100,
-                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "webhook_filters": [
                     "webhook_filters"
                 ],
@@ -183,7 +183,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services'
+            'https://ip-messaging.twilio.com/v2/Services'
         ));
     }
 
@@ -193,13 +193,13 @@ class ServiceTest extends HolodeckTestCase {
             '
             {
                 "meta": {
-                    "first_page_url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0",
+                    "first_page_url": "https://ip-messaging.twilio.com/v2/Services?PageSize=50&Page=0",
                     "key": "services",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0"
+                    "url": "https://ip-messaging.twilio.com/v2/Services?PageSize=50&Page=0"
                 },
                 "services": []
             }
@@ -217,13 +217,13 @@ class ServiceTest extends HolodeckTestCase {
             '
             {
                 "meta": {
-                    "first_page_url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0",
+                    "first_page_url": "https://ip-messaging.twilio.com/v2/Services?PageSize=50&Page=0",
                     "key": "services",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0"
+                    "url": "https://ip-messaging.twilio.com/v2/Services?PageSize=50&Page=0"
                 },
                 "services": [
                     {
@@ -240,10 +240,10 @@ class ServiceTest extends HolodeckTestCase {
                             "user_channels": 250
                         },
                         "links": {
-                            "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                            "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                            "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                            "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
+                            "channels": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                            "users": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                            "roles": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                            "bindings": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                         },
                         "notifications": {},
                         "post_webhook_url": "post_webhook_url",
@@ -254,7 +254,7 @@ class ServiceTest extends HolodeckTestCase {
                         "read_status_enabled": false,
                         "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "typing_indicator_timeout": 100,
-                        "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "url": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "webhook_filters": [
                             "webhook_filters"
                         ],
@@ -284,7 +284,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -306,10 +306,10 @@ class ServiceTest extends HolodeckTestCase {
                     "user_channels": 600
                 },
                 "links": {
-                    "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                    "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                    "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
+                    "channels": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "users": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                    "roles": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "bindings": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {
                     "log_enabled": true,
@@ -339,7 +339,7 @@ class ServiceTest extends HolodeckTestCase {
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "typing_indicator_timeout": 100,
-                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "webhook_filters": [
                     "webhook_filters"
                 ],

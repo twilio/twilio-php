@@ -22,10 +22,8 @@ class WebhookList extends ListResource {
      * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the Channel Webhook
-     *                           resource is associated with
-     * @param string $channelSid The SID of the Channel the Channel Webhook
-     *                           resource belongs to
+     * @param string $serviceSid The service_sid
+     * @param string $channelSid The channel_sid
      */
     public function __construct(Version $version, string $serviceSid, string $channelSid) {
         parent::__construct($version);
@@ -117,7 +115,7 @@ class WebhookList extends ListResource {
     /**
      * Create the WebhookInstance
      *
-     * @param string $type The type of webhook
+     * @param string $type The type
      * @param array|Options $options Optional Arguments
      * @return WebhookInstance Created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -148,7 +146,7 @@ class WebhookList extends ListResource {
     /**
      * Constructs a WebhookContext
      *
-     * @param string $sid The SID of the Channel Webhook resource to fetch
+     * @param string $sid The sid
      */
     public function getContext(string $sid): WebhookContext {
         return new WebhookContext(
