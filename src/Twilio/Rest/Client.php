@@ -211,7 +211,7 @@ class Client {
     public function request(string $method, string $uri, array $params = [], array $data = [], array $headers = [], string $username = null, string $password = null, int $timeout = null): \Twilio\Http\Response {
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
-        getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? $logLevel = 'debug' : $logLevel = $this->getLogLevel();
+        $logLevel = (getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? 'debug' : $this->getLogLevel());
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
                                  ' (PHP ' . PHP_VERSION . ')';
@@ -260,7 +260,9 @@ class Client {
             error_log('Response Headers:');
             $responseHeaders = $response->getHeaders();
             foreach ($responseHeaders as $key => $value) {
-                error_log("$key: $value");
+                if (strpos(strtolower($key), 'authorization') === false) {
+                    error_log("$key: $value");
+                }
             }
         }
 
