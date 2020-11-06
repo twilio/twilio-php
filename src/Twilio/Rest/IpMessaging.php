@@ -34,7 +34,7 @@ class IpMessaging extends Domain {
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://chat.twilio.com';
+        $this->baseUrl = 'https://ip-messaging.twilio.com';
     }
 
     /**
@@ -95,7 +95,7 @@ class IpMessaging extends Domain {
     }
 
     /**
-     * @param string $sid The SID of the Credential resource to fetch
+     * @param string $sid The sid
      */
     protected function contextCredentials(string $sid): \Twilio\Rest\IpMessaging\V2\CredentialContext {
         return $this->v2->credentials($sid);
@@ -106,7 +106,7 @@ class IpMessaging extends Domain {
     }
 
     /**
-     * @param string $sid The SID of the Service resource to fetch
+     * @param string $sid The sid
      */
     protected function contextServices(string $sid): \Twilio\Rest\IpMessaging\V2\ServiceContext {
         return $this->v2->services($sid);

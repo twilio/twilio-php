@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class ChallengeContext extends InstanceContext {
     /**
@@ -39,16 +39,11 @@ class ChallengeContext extends InstanceContext {
     /**
      * Fetch the ChallengeInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): ChallengeInstance {
-        $options = new Values($options);
-
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
-
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
+    public function fetch(): ChallengeInstance {
+        $payload = $this->version->fetch('GET', $this->uri);
 
         return new ChallengeInstance(
             $this->version,
@@ -70,9 +65,8 @@ class ChallengeContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(['AuthPayload' => $options['authPayload'], ]);
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ChallengeInstance(
             $this->version,

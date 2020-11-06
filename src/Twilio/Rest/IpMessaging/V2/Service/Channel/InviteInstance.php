@@ -33,10 +33,9 @@ class InviteInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
-     * @param string $channelSid The SID of the Channel the new resource belongs to
-     * @param string $sid The SID of the Invite resource to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $channelSid The channel_sid
+     * @param string $sid The sid
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null) {
         parent::__construct($version);

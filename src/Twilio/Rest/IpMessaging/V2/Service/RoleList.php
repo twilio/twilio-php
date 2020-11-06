@@ -21,8 +21,7 @@ class RoleList extends ListResource {
      * Construct the RoleList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
+     * @param string $serviceSid The service_sid
      */
     public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
@@ -36,9 +35,9 @@ class RoleList extends ListResource {
     /**
      * Create the RoleInstance
      *
-     * @param string $friendlyName A string to describe the new resource
-     * @param string $type The type of role
-     * @param string[] $permission A permission the role should have
+     * @param string $friendlyName The friendly_name
+     * @param string $type The type
+     * @param string[] $permission The permission
      * @return RoleInstance Created RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -135,7 +134,7 @@ class RoleList extends ListResource {
     /**
      * Constructs a RoleContext
      *
-     * @param string $sid The SID of the Role resource to fetch
+     * @param string $sid The sid
      */
     public function getContext(string $sid): RoleContext {
         return new RoleContext($this->version, $this->solution['serviceSid'], $sid);

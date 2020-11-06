@@ -19,9 +19,9 @@ class UserBindingContext extends InstanceContext {
      * Initialize the UserBindingContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service to fetch the resource from
-     * @param string $userSid The SID of the User with the binding
-     * @param string $sid The SID of the User Binding resource to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $userSid The user_sid
+     * @param string $sid The sid
      */
     public function __construct(Version $version, $serviceSid, $userSid, $sid) {
         parent::__construct($version);

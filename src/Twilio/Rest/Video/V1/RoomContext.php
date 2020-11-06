@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Video\V1\Room\ParticipantList;
+use Twilio\Rest\Video\V1\Room\RecordingRulesList;
 use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
@@ -20,12 +21,14 @@ use Twilio\Version;
 /**
  * @property RoomRecordingList $recordings
  * @property ParticipantList $participants
+ * @property RecordingRulesList $recordingRules
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)
  */
 class RoomContext extends InstanceContext {
     protected $_recordings;
     protected $_participants;
+    protected $_recordingRules;
 
     /**
      * Initialize the RoomContext
@@ -89,6 +92,17 @@ class RoomContext extends InstanceContext {
         }
 
         return $this->_participants;
+    }
+
+    /**
+     * Access the recordingRules
+     */
+    protected function getRecordingRules(): RecordingRulesList {
+        if (!$this->_recordingRules) {
+            $this->_recordingRules = new RecordingRulesList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_recordingRules;
     }
 
     /**

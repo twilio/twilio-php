@@ -14,15 +14,9 @@ use Twilio\Values;
 
 abstract class UserChannelOptions {
     /**
-     * @param string $notificationLevel The push notification level to assign to
-     *                                  the User Channel
-     * @param int $lastConsumedMessageIndex The index of the last Message that the
-     *                                      Member has read within the Channel
-     * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string that represents the
-     *                                            datetime of the last Message read
-     *                                            event for the Member within the
-     *                                            Channel
+     * @param string $notificationLevel The notification_level
+     * @param int $lastConsumedMessageIndex The last_consumed_message_index
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
      * @return UpdateUserChannelOptions Options builder
      */
     public static function update(string $notificationLevel = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE): UpdateUserChannelOptions {
@@ -32,15 +26,9 @@ abstract class UserChannelOptions {
 
 class UpdateUserChannelOptions extends Options {
     /**
-     * @param string $notificationLevel The push notification level to assign to
-     *                                  the User Channel
-     * @param int $lastConsumedMessageIndex The index of the last Message that the
-     *                                      Member has read within the Channel
-     * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string that represents the
-     *                                            datetime of the last Message read
-     *                                            event for the Member within the
-     *                                            Channel
+     * @param string $notificationLevel The notification_level
+     * @param int $lastConsumedMessageIndex The last_consumed_message_index
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
      */
     public function __construct(string $notificationLevel = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE) {
         $this->options['notificationLevel'] = $notificationLevel;
@@ -49,10 +37,9 @@ class UpdateUserChannelOptions extends Options {
     }
 
     /**
-     * The push notification level to assign to the User Channel. Can be: `default` or `muted`.
+     * The notification_level
      *
-     * @param string $notificationLevel The push notification level to assign to
-     *                                  the User Channel
+     * @param string $notificationLevel The notification_level
      * @return $this Fluent Builder
      */
     public function setNotificationLevel(string $notificationLevel): self {
@@ -61,10 +48,9 @@ class UpdateUserChannelOptions extends Options {
     }
 
     /**
-     * The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read.
+     * The last_consumed_message_index
      *
-     * @param int $lastConsumedMessageIndex The index of the last Message that the
-     *                                      Member has read within the Channel
+     * @param int $lastConsumedMessageIndex The last_consumed_message_index
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex(int $lastConsumedMessageIndex): self {
@@ -73,13 +59,9 @@ class UpdateUserChannelOptions extends Options {
     }
 
     /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
+     * The last_consumption_timestamp
      *
-     * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string that represents the
-     *                                            datetime of the last Message read
-     *                                            event for the Member within the
-     *                                            Channel
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
      * @return $this Fluent Builder
      */
     public function setLastConsumptionTimestamp(\DateTime $lastConsumptionTimestamp): self {

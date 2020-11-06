@@ -98,13 +98,17 @@ class ExportCustomJobTest extends HolodeckTestCase {
 
         try {
             $this->twilio->preview->bulkExports->exports("resource_type")
-                                               ->exportCustomJobs->create();
+                                               ->exportCustomJobs->create("start_day", "end_day", "friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $values = ['StartDay' => "start_day", 'EndDay' => "end_day", 'FriendlyName' => "friendly_name", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/BulkExports/Exports/resource_type/Jobs'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Jobs',
+            null,
+            $values
         ));
     }
 
@@ -127,7 +131,7 @@ class ExportCustomJobTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->bulkExports->exports("resource_type")
-                                                     ->exportCustomJobs->create();
+                                                     ->exportCustomJobs->create("start_day", "end_day", "friendly_name");
 
         $this->assertNotNull($actual);
     }

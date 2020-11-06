@@ -19,25 +19,20 @@ class FactorTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors->create("friendly_name", "push", $options);
+                                     ->factors->create("friendly_name", "push");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['FriendlyName' => "friendly_name", 'FactorType' => "push", ];
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors',
-            [],
-            $values,
-            $headers
+            null,
+            $values
         ));
     }
 
@@ -77,23 +72,16 @@ class FactorTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
+                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'delete',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -113,23 +101,16 @@ class FactorTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch($options);
+                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -169,23 +150,16 @@ class FactorTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors->read($options);
+                                     ->factors->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors'
         ));
     }
 
@@ -264,23 +238,16 @@ class FactorTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
+                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
