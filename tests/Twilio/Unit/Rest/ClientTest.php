@@ -231,4 +231,14 @@ class ClientTest extends UnitTest {
         $this->assertStringContainsString('test header value', stream_get_contents($capturedLogging));
     }
 
+    public function testAuthorizationHeaderRemoval(): void {
+        $capturedLogging = tmpfile();
+        ini_set('error_log', stream_get_meta_data($capturedLogging)['uri']);
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'debug'
+        ]);
+        $client->request('GET', 'http://api.twilio.com', [], [], ['Authorization-header' => 'auth header value','test-header' => 'test header value'], 'test-user', 'test-password');
+        $this->assertStringNotContainsString('Authorization-header', stream_get_contents($capturedLogging));
+    }
+
 }

@@ -239,7 +239,9 @@ class Client {
             }
             error_log('Request Headers: ');
             foreach ($headers as $key => $value) {
-                error_log("$key: $value");
+                if (strpos(strtolower($key), 'authorization') === false) {
+                    error_log("$key: $value");
+                }
             }
             error_log('-- END Twilio API Request --');
         }
@@ -260,9 +262,7 @@ class Client {
             error_log('Response Headers:');
             $responseHeaders = $response->getHeaders();
             foreach ($responseHeaders as $key => $value) {
-                if (strpos(strtolower($key), 'authorization') === false) {
-                    error_log("$key: $value");
-                }
+                error_log("$key: $value");
             }
         }
 
