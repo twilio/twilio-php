@@ -23,7 +23,7 @@ final class GuzzleClient implements Client {
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null, string $loglevel = null): Response {
+                            int $timeout = null): Response {
         try {
             $body = build_query($data, PHP_QUERY_RFC1738);
 

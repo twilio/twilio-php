@@ -211,7 +211,7 @@ class Client {
     public function request(string $method, string $uri, array $params = [], array $data = [], array $headers = [], string $username = null, string $password = null, int $timeout = null): \Twilio\Http\Response {
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
-        $logLevel = $this->getLogLevel();
+        getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? $logLevel = 'debug' : $logLevel = $this->getLogLevel();
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
                                  ' (PHP ' . PHP_VERSION . ')';
@@ -227,7 +227,24 @@ class Client {
 
         $uri = $this->buildUri($uri);
 
-        return $this->getHttpClient()->request(
+        if ($logLevel === 'debug') {
+            \error_log('-- BEGIN Twilio API Request --');
+            \error_log('Request Method: ' . $method);
+            $u = \parse_url($uri);
+            if (isset($u['path'])) {
+                \error_log('Request URL: ' . $u['path']);
+            }
+            if (isset($u['query']) && strlen($u['query']) > 0) {
+                \error_log('Query Params: ' . $u['query']);
+            }
+            \error_log('Request Headers: ');
+            foreach ($headers as $key => $value) {
+                \error_log("$key: $value");
+            }
+            \error_log('-- END Twilio API Request --');
+        }
+
+        $response = $this->getHttpClient()->request(
             $method,
             $uri,
             $params,
@@ -235,9 +252,19 @@ class Client {
             $headers,
             $username,
             $password,
-            $timeout,
-            $logLevel
+            $timeout
         );
+
+        if ($logLevel === 'debug') {
+            \error_log('Status Code: ' . $response->getStatusCode());
+            \error_log('Response Headers:');
+            $responseHeaders = $response->getHeaders();
+            foreach ($responseHeaders as $key => $value) {
+                \error_log("$key: $value");
+            }
+        }
+
+        return $response;
     }
 
     /**

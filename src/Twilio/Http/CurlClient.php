@@ -20,33 +20,13 @@ class CurlClient implements Client {
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null, string $logLevel = null): Response {
+                            int $timeout = null): Response {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
 
-        if (getenv('DEBUG_HTTP_TRAFFIC') === 'true') {
-            $logLevel = 'debug';
-        }
-
-        if ($logLevel === 'debug') {
-            \error_log('-- BEGIN Twilio API Request --');
-            \error_log('Request Method: ' . $method);
-            $u = \parse_url($url);
-            if (isset($u['path'])) {
-                \error_log('Request URL: ' . $u['path']);
-            }
-            if (isset($u['query']) && strlen($u['query']) > 0) {
-                error_log('Query Params: ' . $u['query']);
-            }
-            \error_log('Request Headers: ');
-            foreach ($headers as $key => $value) {
-                \error_log("$key: $value");
-            }
-            \error_log('-- END Twilio API Request --');
-        }
         try {
             if (!$curl = \curl_init()) {
                 throw new EnvironmentException('Unable to initialize cURL');
@@ -84,14 +64,6 @@ class CurlClient implements Client {
 
             if (isset($options[CURLOPT_INFILE]) && \is_resource($options[CURLOPT_INFILE])) {
                 \fclose($options[CURLOPT_INFILE]);
-            }
-
-            if ($logLevel === 'debug') {
-                \error_log('Status Code: ' . $statusCode);
-                \error_log('Response Headers:');
-                foreach ($responseHeaders as $key => $value) {
-                    \error_log("$key: $value");
-                }
             }
 
             $this->lastResponse = new Response($statusCode, $body, $responseHeaders);
