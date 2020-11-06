@@ -206,4 +206,39 @@ class ClientTest extends UnitTest {
             self::callProtectedMethod($client, 'buildUri', 'https://api.urlEdge.urlRegion.twilio.com/path/to/something.json?foo=12.34'));
     }
 
+    public function testActivatingLoggingPulledFromEnvironment(): void {
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'debug'
+        ]);
+        $this->assertEquals('debug', $client->getLogLevel());
+    }
+
+    public function testActivatingLoggingThroughSetterOverEnvironment(): void {
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'info'
+        ]);
+        $client->setLogLevel('debug');
+        $this->assertEquals('debug', $client->getLogLevel());
+    }
+
+    public function testDebugLogging(): void {
+        $capturedLogging = tmpfile();
+        ini_set('error_log', stream_get_meta_data($capturedLogging)['uri']);
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'debug'
+        ]);
+        $client->request('GET', 'http://api.twilio.com', [], [], ['test-header' => 'test header value'], 'test-user', 'test-password');
+        $this->assertStringContainsString('test header value', stream_get_contents($capturedLogging));
+    }
+
+    public function testAuthorizationHeaderRemoval(): void {
+        $capturedLogging = tmpfile();
+        ini_set('error_log', stream_get_meta_data($capturedLogging)['uri']);
+        $client = new Client('username', 'password', null, null, null, [
+            Client::ENV_LOG => 'debug'
+        ]);
+        $client->request('GET', 'http://api.twilio.com', [], [], ['Authorization-header' => 'auth header value','test-header' => 'test header value'], 'test-user', 'test-password');
+        $this->assertStringNotContainsString('Authorization-header', stream_get_contents($capturedLogging));
+    }
+
 }
