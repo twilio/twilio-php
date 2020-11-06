@@ -228,20 +228,20 @@ class Client {
         $uri = $this->buildUri($uri);
 
         if ($logLevel === 'debug') {
-            \error_log('-- BEGIN Twilio API Request --');
-            \error_log('Request Method: ' . $method);
-            $u = \parse_url($uri);
+            error_log('-- BEGIN Twilio API Request --');
+            error_log('Request Method: ' . $method);
+            $u = parse_url($uri);
             if (isset($u['path'])) {
-                \error_log('Request URL: ' . $u['path']);
+                error_log('Request URL: ' . $u['path']);
             }
             if (isset($u['query']) && strlen($u['query']) > 0) {
-                \error_log('Query Params: ' . $u['query']);
+                error_log('Query Params: ' . $u['query']);
             }
-            \error_log('Request Headers: ');
+            error_log('Request Headers: ');
             foreach ($headers as $key => $value) {
-                \error_log("$key: $value");
+                error_log("$key: $value");
             }
-            \error_log('-- END Twilio API Request --');
+            error_log('-- END Twilio API Request --');
         }
 
         $response = $this->getHttpClient()->request(
@@ -256,11 +256,11 @@ class Client {
         );
 
         if ($logLevel === 'debug') {
-            \error_log('Status Code: ' . $response->getStatusCode());
-            \error_log('Response Headers:');
+            error_log('Status Code: ' . $response->getStatusCode());
+            error_log('Response Headers:');
             $responseHeaders = $response->getHeaders();
             foreach ($responseHeaders as $key => $value) {
-                \error_log("$key: $value");
+                error_log("$key: $value");
             }
         }
 
