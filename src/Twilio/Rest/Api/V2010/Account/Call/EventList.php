@@ -7,36 +7,32 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service;
+namespace Twilio\Rest\Api\V2010\Account\Call;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class FunctionList extends ListResource {
+class EventList extends ListResource {
     /**
-     * Construct the FunctionList
+     * Construct the EventList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the Function resource
-     *                           is associated with
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $callSid The unique string that identifies this resource
      */
-    public function __construct(Version $version, string $serviceSid) {
+    public function __construct(Version $version, string $accountSid, string $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Functions';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Events.json';
     }
 
     /**
-     * Streams FunctionInstance records from the API as a generator stream.
+     * Streams EventInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -62,7 +58,7 @@ class FunctionList extends ListResource {
     }
 
     /**
-     * Reads FunctionInstance records from the API as a list.
+     * Reads EventInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -74,67 +70,43 @@ class FunctionList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return FunctionInstance[] Array of results
+     * @return EventInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of FunctionInstance records from the API.
+     * Retrieve a single page of EventInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return FunctionPage Page of FunctionInstance
+     * @return EventPage Page of EventInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FunctionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EventPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new FunctionPage($this->version, $response, $this->solution);
+        return new EventPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of FunctionInstance records from the API.
+     * Retrieve a specific page of EventInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return FunctionPage Page of FunctionInstance
+     * @return EventPage Page of EventInstance
      */
-    public function getPage(string $targetUrl): FunctionPage {
+    public function getPage(string $targetUrl): EventPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new FunctionPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Create the FunctionInstance
-     *
-     * @param string $friendlyName A string to describe the Function resource
-     * @return FunctionInstance Created FunctionInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(string $friendlyName): FunctionInstance {
-        $data = Values::of(['FriendlyName' => $friendlyName, ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new FunctionInstance($this->version, $payload, $this->solution['serviceSid']);
-    }
-
-    /**
-     * Constructs a FunctionContext
-     *
-     * @param string $sid The SID of the Function resource to fetch
-     */
-    public function getContext(string $sid): FunctionContext {
-        return new FunctionContext($this->version, $this->solution['serviceSid'], $sid);
+        return new EventPage($this->version, $response, $this->solution);
     }
 
     /**
@@ -143,6 +115,6 @@ class FunctionList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Serverless.V1.FunctionList]';
+        return '[Twilio.Api.V2010.EventList]';
     }
 }

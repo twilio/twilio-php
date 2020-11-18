@@ -22,8 +22,8 @@ class TaskChannelList extends ListResource {
      * Construct the TaskChannelList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The SID of the Workspace that contains the
-     *                             TaskChannel
+     * @param string $workspaceSid The SID of the Workspace that contains the Task
+     *                             Channel
      */
     public function __construct(Version $version, string $workspaceSid) {
         parent::__construct($version);
@@ -115,9 +115,9 @@ class TaskChannelList extends ListResource {
     /**
      * Create the TaskChannelInstance
      *
-     * @param string $friendlyName A string to describe the TaskChannel resource
+     * @param string $friendlyName A string to describe the Task Channel resource
      * @param string $uniqueName An application-defined string that uniquely
-     *                           identifies the TaskChannel
+     *                           identifies the Task Channel
      * @param array|Options $options Optional Arguments
      * @return TaskChannelInstance Created TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -139,7 +139,7 @@ class TaskChannelList extends ListResource {
     /**
      * Constructs a TaskChannelContext
      *
-     * @param string $sid The SID of the TaskChannel resource to fetch
+     * @param string $sid The SID of the Task Channel resource to fetch
      */
     public function getContext(string $sid): TaskChannelContext {
         return new TaskChannelContext($this->version, $this->solution['workspaceSid'], $sid);

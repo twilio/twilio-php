@@ -40,10 +40,12 @@ abstract class SyncListItemOptions {
      * @param string $from The index of the first Sync List Item resource to read
      * @param string $bounds Whether to include the List Item referenced by the
      *                       from parameter
+     * @param string $hideExpired Hide expired Sync List items and show only active
+     *                            ones.
      * @return ReadSyncListItemOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE): ReadSyncListItemOptions {
-        return new ReadSyncListItemOptions($order, $from, $bounds);
+    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE, string $hideExpired = Values::NONE): ReadSyncListItemOptions {
+        return new ReadSyncListItemOptions($order, $from, $bounds, $hideExpired);
     }
 
     /**
@@ -155,11 +157,14 @@ class ReadSyncListItemOptions extends Options {
      * @param string $from The index of the first Sync List Item resource to read
      * @param string $bounds Whether to include the List Item referenced by the
      *                       from parameter
+     * @param string $hideExpired Hide expired Sync List items and show only active
+     *                            ones.
      */
-    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE) {
+    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE, string $hideExpired = Values::NONE) {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
+        $this->options['hideExpired'] = $hideExpired;
     }
 
     /**
@@ -193,6 +198,18 @@ class ReadSyncListItemOptions extends Options {
      */
     public function setBounds(string $bounds): self {
         $this->options['bounds'] = $bounds;
+        return $this;
+    }
+
+    /**
+     * The default list of Sync List items will show both active and expired items. It is possible to filter only the active ones by hiding the expired ones.
+     *
+     * @param string $hideExpired Hide expired Sync List items and show only active
+     *                            ones.
+     * @return $this Fluent Builder
+     */
+    public function setHideExpired(string $hideExpired): self {
+        $this->options['hideExpired'] = $hideExpired;
         return $this;
     }
 

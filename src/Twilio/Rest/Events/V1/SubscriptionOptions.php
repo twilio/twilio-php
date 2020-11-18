@@ -17,12 +17,50 @@ use Twilio\Values;
  */
 abstract class SubscriptionOptions {
     /**
+     * @param string $sinkSid Sink SID.
+     * @return ReadSubscriptionOptions Options builder
+     */
+    public static function read(string $sinkSid = Values::NONE): ReadSubscriptionOptions {
+        return new ReadSubscriptionOptions($sinkSid);
+    }
+
+    /**
      * @param string $description Subscription description.
      * @param string $sinkSid Sink SID.
      * @return UpdateSubscriptionOptions Options builder
      */
     public static function update(string $description = Values::NONE, string $sinkSid = Values::NONE): UpdateSubscriptionOptions {
         return new UpdateSubscriptionOptions($description, $sinkSid);
+    }
+}
+
+class ReadSubscriptionOptions extends Options {
+    /**
+     * @param string $sinkSid Sink SID.
+     */
+    public function __construct(string $sinkSid = Values::NONE) {
+        $this->options['sinkSid'] = $sinkSid;
+    }
+
+    /**
+     * The SID of the sink that the list of Subscriptions should be filtered by.
+     *
+     * @param string $sinkSid Sink SID.
+     * @return $this Fluent Builder
+     */
+    public function setSinkSid(string $sinkSid): self {
+        $this->options['sinkSid'] = $sinkSid;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Events.V1.ReadSubscriptionOptions ' . $options . ']';
     }
 }
 

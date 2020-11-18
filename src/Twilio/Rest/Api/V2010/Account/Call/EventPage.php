@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1;
+namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class ServicePage extends Page {
+class EventPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +28,15 @@ class ServicePage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return ServiceInstance \Twilio\Rest\Serverless\V1\ServiceInstance
+     * @return EventInstance \Twilio\Rest\Api\V2010\Account\Call\EventInstance
      */
-    public function buildInstance(array $payload): ServiceInstance {
-        return new ServiceInstance($this->version, $payload);
+    public function buildInstance(array $payload): EventInstance {
+        return new EventInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid']
+        );
     }
 
     /**
@@ -43,6 +45,6 @@ class ServicePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Serverless.V1.ServicePage]';
+        return '[Twilio.Api.V2010.EventPage]';
     }
 }

@@ -23,7 +23,6 @@ use Twilio\Version;
  * @property \DateTime $joinTime
  * @property \DateTime $leaveTime
  * @property string $durationSec
- * @property string $callSid
  * @property string $accountSid
  * @property string $roomSid
  * @property string $status
@@ -56,7 +55,6 @@ class ParticipantInstance extends InstanceResource {
             'joinTime' => Deserialize::dateTime(Values::array_get($payload, 'join_time')),
             'leaveTime' => Deserialize::dateTime(Values::array_get($payload, 'leave_time')),
             'durationSec' => Values::array_get($payload, 'duration_sec'),
-            'callSid' => Values::array_get($payload, 'call_sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
             'status' => Values::array_get($payload, 'status'),

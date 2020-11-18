@@ -17,8 +17,7 @@ use Twilio\Values;
  */
 abstract class ChallengeOptions {
     /**
-     * @param \DateTime $expirationDate The future date in which this Challenge
-     *                                  will expire
+     * @param \DateTime $expirationDate The date-time when this Challenge expires
      * @param string $detailsMessage Shown to the user when the push notification
      *                               arrives
      * @param array[] $detailsFields A list of objects that describe the Fields
@@ -51,8 +50,7 @@ abstract class ChallengeOptions {
 
 class CreateChallengeOptions extends Options {
     /**
-     * @param \DateTime $expirationDate The future date in which this Challenge
-     *                                  will expire
+     * @param \DateTime $expirationDate The date-time when this Challenge expires
      * @param string $detailsMessage Shown to the user when the push notification
      *                               arrives
      * @param array[] $detailsFields A list of objects that describe the Fields
@@ -68,10 +66,9 @@ class CreateChallengeOptions extends Options {
     }
 
     /**
-     * The future date in which this Challenge will expire, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+     * The date-time when this Challenge expires, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. The default value is five (5) minutes after Challenge creation. The max value is sixty (60) minutes after creation.
      *
-     * @param \DateTime $expirationDate The future date in which this Challenge
-     *                                  will expire
+     * @param \DateTime $expirationDate The date-time when this Challenge expires
      * @return $this Fluent Builder
      */
     public function setExpirationDate(\DateTime $expirationDate): self {

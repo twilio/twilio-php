@@ -104,6 +104,55 @@ class SubscriptionTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testReadResultsFilteredBySinkSidResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "subscriptions": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:01:33Z",
+                        "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "description": "A subscription",
+                        "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
+                        }
+                    },
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:01:33Z",
+                        "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+                        "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "description": "Another subscription",
+                        "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+                        "links": {
+                            "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/SubscribedEvents"
+                        }
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 10,
+                    "first_page_url": "https://events.twilio.com/v1/Subscriptions?SinkSid=DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=10&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://events.twilio.com/v1/Subscriptions?SinkSid=DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=10&Page=0",
+                    "next_page_url": null,
+                    "key": "subscriptions"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->subscriptions->read();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

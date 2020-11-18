@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\Call\EventList;
 use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Call\NotificationList;
 use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
@@ -53,6 +54,7 @@ class CallInstance extends InstanceResource {
     protected $_recordings;
     protected $_notifications;
     protected $_feedback;
+    protected $_events;
     protected $_payments;
 
     /**
@@ -168,6 +170,13 @@ class CallInstance extends InstanceResource {
      */
     protected function getFeedback(): FeedbackList {
         return $this->proxy()->feedback;
+    }
+
+    /**
+     * Access the events
+     */
+    protected function getEvents(): EventList {
+        return $this->proxy()->events;
     }
 
     /**

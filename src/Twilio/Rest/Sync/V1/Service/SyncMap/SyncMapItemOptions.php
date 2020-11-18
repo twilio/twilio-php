@@ -40,10 +40,12 @@ abstract class SyncMapItemOptions {
      * @param string $from The index of the first Sync Map Item resource to read
      * @param string $bounds Whether to include the Map Item referenced by the from
      *                       parameter
+     * @param string $hideExpired Hide expired Sync Map items and show only active
+     *                            ones.
      * @return ReadSyncMapItemOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE): ReadSyncMapItemOptions {
-        return new ReadSyncMapItemOptions($order, $from, $bounds);
+    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE, string $hideExpired = Values::NONE): ReadSyncMapItemOptions {
+        return new ReadSyncMapItemOptions($order, $from, $bounds, $hideExpired);
     }
 
     /**
@@ -155,11 +157,14 @@ class ReadSyncMapItemOptions extends Options {
      * @param string $from The index of the first Sync Map Item resource to read
      * @param string $bounds Whether to include the Map Item referenced by the from
      *                       parameter
+     * @param string $hideExpired Hide expired Sync Map items and show only active
+     *                            ones.
      */
-    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE) {
+    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE, string $hideExpired = Values::NONE) {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
+        $this->options['hideExpired'] = $hideExpired;
     }
 
     /**
@@ -193,6 +198,18 @@ class ReadSyncMapItemOptions extends Options {
      */
     public function setBounds(string $bounds): self {
         $this->options['bounds'] = $bounds;
+        return $this;
+    }
+
+    /**
+     * The default list of Sync Map items will show both active and expired items. It is possible to filter only the active ones by hiding the expired ones.
+     *
+     * @param string $hideExpired Hide expired Sync Map items and show only active
+     *                            ones.
+     * @return $this Fluent Builder
+     */
+    public function setHideExpired(string $hideExpired): self {
+        $this->options['hideExpired'] = $hideExpired;
         return $this;
     }
 

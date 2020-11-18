@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\Call\EventList;
 use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Call\NotificationList;
 use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
@@ -24,6 +25,7 @@ use Twilio\Version;
  * @property RecordingList $recordings
  * @property NotificationList $notifications
  * @property FeedbackList $feedback
+ * @property EventList $events
  * @property PaymentList $payments
  * @method \Twilio\Rest\Api\V2010\Account\Call\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\NotificationContext notifications(string $sid)
@@ -34,6 +36,7 @@ class CallContext extends InstanceContext {
     protected $_recordings;
     protected $_notifications;
     protected $_feedback;
+    protected $_events;
     protected $_payments;
 
     /**
@@ -154,6 +157,21 @@ class CallContext extends InstanceContext {
         }
 
         return $this->_feedback;
+    }
+
+    /**
+     * Access the events
+     */
+    protected function getEvents(): EventList {
+        if (!$this->_events) {
+            $this->_events = new EventList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_events;
     }
 
     /**
