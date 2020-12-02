@@ -34,6 +34,7 @@ use Twilio\Version;
  * @property int $channels
  * @property string $source
  * @property int $errorCode
+ * @property string $track
  */
 class RecordingInstance extends InstanceResource {
     /**
@@ -67,6 +68,7 @@ class RecordingInstance extends InstanceResource {
             'channels' => Values::array_get($payload, 'channels'),
             'source' => Values::array_get($payload, 'source'),
             'errorCode' => Values::array_get($payload, 'error_code'),
+            'track' => Values::array_get($payload, 'track'),
         ];
 
         $this->solution = [

@@ -53,6 +53,7 @@ class RecordingTest extends HolodeckTestCase {
                 "status": "in-progress",
                 "error_code": null,
                 "encryption_details": null,
+                "track": "both",
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -106,6 +107,7 @@ class RecordingTest extends HolodeckTestCase {
                 "status": "paused",
                 "error_code": null,
                 "encryption_details": null,
+                "track": "both",
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -159,6 +161,7 @@ class RecordingTest extends HolodeckTestCase {
                 "source": "StartCallRecordingAPI",
                 "status": "completed",
                 "error_code": null,
+                "track": "both",
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -248,6 +251,7 @@ class RecordingTest extends HolodeckTestCase {
                         },
                         "source": "StartCallRecordingAPI",
                         "status": "completed",
+                        "track": "both",
                         "error_code": null,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }

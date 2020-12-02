@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+[2020-12-02] Version 6.14.0
+---------------------------
+**Api**
+- Remove `RecordingTrack` parameter for create calls, create participants, and create call recordings **(breaking change)**
+- Added `RecordingTrack` parameter for create calls and create call recordings
+- Add optional property `recording_track` in the participant create request
+
+**Lookups**
+- Changed `caller_name` and `carrier` properties type to object **(breaking change)**
+
+**Trunking**
+- Added dual channel recording options for Trunks.
+
+**Twiml**
+- Add `jitterBufferSize` and `participantLabel` to `Conference`.
+
+
 [2020-11-18] Version 6.13.0
 ---------------------------
 **Library - Feature**
