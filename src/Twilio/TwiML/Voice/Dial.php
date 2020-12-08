@@ -208,4 +208,14 @@ class Dial extends TwiML {
     public function setRingTone($ringTone): self {
         return $this->setAttribute('ringTone', $ringTone);
     }
+
+    /**
+     * Add RecordingTrack attribute.
+     *
+     * @param string $recordingTrack To indicate which audio track should be
+     *                               recorded
+     */
+    public function setRecordingTrack($recordingTrack): self {
+        return $this->setAttribute('recordingTrack', $recordingTrack);
+    }
 }

@@ -86,6 +86,7 @@ class CallList extends ListResource {
             'AsyncAmdStatusCallbackMethod' => $options['asyncAmdStatusCallbackMethod'],
             'Byoc' => $options['byoc'],
             'CallReason' => $options['callReason'],
+            'RecordingTrack' => $options['recordingTrack'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

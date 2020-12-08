@@ -74,7 +74,7 @@ class CreateCompositionSettingsOptions extends Options {
     }
 
     /**
-     * The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>.
+     * The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>.
      *
      * @param string $awsS3Url The URL of the AWS S3 bucket where the compositions
      *                         should be stored
