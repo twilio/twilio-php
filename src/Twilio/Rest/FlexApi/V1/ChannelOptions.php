@@ -17,8 +17,8 @@ abstract class ChannelOptions {
      * @param string $target The Target Contact Identity
      * @param string $chatUniqueName The chat channel's unique name
      * @param string $preEngagementData The pre-engagement data
-     * @param string $taskSid The SID of the TaskRouter task
-     * @param string $taskAttributes The task attributes to be added for the
+     * @param string $taskSid The SID of the TaskRouter Task
+     * @param string $taskAttributes The Task attributes to be added for the
      *                               TaskRouter Task
      * @param bool $longLived Whether to create the channel as long-lived
      * @return CreateChannelOptions Options builder
@@ -33,8 +33,8 @@ class CreateChannelOptions extends Options {
      * @param string $target The Target Contact Identity
      * @param string $chatUniqueName The chat channel's unique name
      * @param string $preEngagementData The pre-engagement data
-     * @param string $taskSid The SID of the TaskRouter task
-     * @param string $taskAttributes The task attributes to be added for the
+     * @param string $taskSid The SID of the TaskRouter Task
+     * @param string $taskAttributes The Task attributes to be added for the
      *                               TaskRouter Task
      * @param bool $longLived Whether to create the channel as long-lived
      */
@@ -81,9 +81,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The SID of the TaskRouter task. Only valid when integration type is `task`. `null` for integration types `studio` & `external`
+     * The SID of the TaskRouter Task. Only valid when integration type is `task`. `null` for integration types `studio` & `external`
      *
-     * @param string $taskSid The SID of the TaskRouter task
+     * @param string $taskSid The SID of the TaskRouter Task
      * @return $this Fluent Builder
      */
     public function setTaskSid(string $taskSid): self {
@@ -92,9 +92,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The task attributes to be added for the TaskRouter Task.
+     * The Task attributes to be added for the TaskRouter Task.
      *
-     * @param string $taskAttributes The task attributes to be added for the
+     * @param string $taskAttributes The Task attributes to be added for the
      *                               TaskRouter Task
      * @return $this Fluent Builder
      */

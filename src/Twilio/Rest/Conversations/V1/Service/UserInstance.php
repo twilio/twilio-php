@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string $attributes
  * @property bool $isOnline
+ * @property bool $isNotifiable
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -52,6 +53,7 @@ class UserInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'attributes' => Values::array_get($payload, 'attributes'),
             'isOnline' => Values::array_get($payload, 'is_online'),
+            'isNotifiable' => Values::array_get($payload, 'is_notifiable'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

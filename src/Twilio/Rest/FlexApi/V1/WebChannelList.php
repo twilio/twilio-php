@@ -112,7 +112,7 @@ class WebChannelList extends ListResource {
     /**
      * Create the WebChannelInstance
      *
-     * @param string $flexFlowSid The SID of the FlexFlow
+     * @param string $flexFlowSid The SID of the Flex Flow
      * @param string $identity The chat identity
      * @param string $customerFriendlyName The chat participant's friendly name
      * @param string $chatFriendlyName The chat channel's friendly name
