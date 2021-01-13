@@ -32,6 +32,7 @@ use Twilio\Version;
  * @property int $duration
  * @property string $type
  * @property int $maxParticipants
+ * @property int $maxConcurrentPublishedTracks
  * @property bool $recordParticipantsOnConnect
  * @property string[] $videoCodecs
  * @property string $mediaRegion
@@ -68,6 +69,7 @@ class RoomInstance extends InstanceResource {
             'duration' => Values::array_get($payload, 'duration'),
             'type' => Values::array_get($payload, 'type'),
             'maxParticipants' => Values::array_get($payload, 'max_participants'),
+            'maxConcurrentPublishedTracks' => Values::array_get($payload, 'max_concurrent_published_tracks'),
             'recordParticipantsOnConnect' => Values::array_get($payload, 'record_participants_on_connect'),
             'videoCodecs' => Values::array_get($payload, 'video_codecs'),
             'mediaRegion' => Values::array_get($payload, 'media_region'),

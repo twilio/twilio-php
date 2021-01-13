@@ -17,13 +17,12 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- *
  * @property string $accountSid
  * @property string $callSid
  * @property string $callType
  * @property string $callState
  * @property string $processingState
+ * @property \DateTime $createdTime
  * @property \DateTime $startTime
  * @property \DateTime $endTime
  * @property int $duration
@@ -58,6 +57,7 @@ class CallSummaryInstance extends InstanceResource {
             'callType' => Values::array_get($payload, 'call_type'),
             'callState' => Values::array_get($payload, 'call_state'),
             'processingState' => Values::array_get($payload, 'processing_state'),
+            'createdTime' => Deserialize::dateTime(Values::array_get($payload, 'created_time')),
             'startTime' => Deserialize::dateTime(Values::array_get($payload, 'start_time')),
             'endTime' => Deserialize::dateTime(Values::array_get($payload, 'end_time')),
             'duration' => Values::array_get($payload, 'duration'),

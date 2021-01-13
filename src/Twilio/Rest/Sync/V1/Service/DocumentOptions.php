@@ -38,15 +38,6 @@ abstract class DocumentOptions {
     }
 
     /**
-     * @param string $hideExpired Hide expired Sync Documents and show only active
-     *                            ones.
-     * @return ReadDocumentOptions Options builder
-     */
-    public static function read(string $hideExpired = Values::NONE): ReadDocumentOptions {
-        return new ReadDocumentOptions($hideExpired);
-    }
-
-    /**
      * @param array $data A JSON string that represents an arbitrary, schema-less
      *                    object that the Sync Document stores
      * @param int $ttl How long, in seconds, before the Document resource expires
@@ -117,7 +108,7 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.
+     * A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length.
      *
      * @param array $data A JSON string that represents an arbitrary, schema-less
      *                    object that the Sync Document stores
@@ -151,38 +142,6 @@ class CreateDocumentOptions extends Options {
     }
 }
 
-class ReadDocumentOptions extends Options {
-    /**
-     * @param string $hideExpired Hide expired Sync Documents and show only active
-     *                            ones.
-     */
-    public function __construct(string $hideExpired = Values::NONE) {
-        $this->options['hideExpired'] = $hideExpired;
-    }
-
-    /**
-     * The default list of Sync Documents will show both active and expired items. It is possible to filter only the active ones by hiding the expired ones.
-     *
-     * @param string $hideExpired Hide expired Sync Documents and show only active
-     *                            ones.
-     * @return $this Fluent Builder
-     */
-    public function setHideExpired(string $hideExpired): self {
-        $this->options['hideExpired'] = $hideExpired;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     *
-     * @return string Machine friendly representation
-     */
-    public function __toString(): string {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Sync.V1.ReadDocumentOptions ' . $options . ']';
-    }
-}
-
 class UpdateDocumentOptions extends Options {
     /**
      * @param array $data A JSON string that represents an arbitrary, schema-less
@@ -198,7 +157,7 @@ class UpdateDocumentOptions extends Options {
     }
 
     /**
-     * A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.
+     * A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length.
      *
      * @param array $data A JSON string that represents an arbitrary, schema-less
      *                    object that the Sync Document stores

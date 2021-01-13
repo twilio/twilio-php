@@ -201,7 +201,8 @@ class Preview extends Domain {
     }
 
     /**
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     protected function contextExports(string $resourceType): \Twilio\Rest\Preview\BulkExports\ExportContext {
         return $this->bulkExports->exports($resourceType);
@@ -212,7 +213,8 @@ class Preview extends Domain {
     }
 
     /**
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     protected function contextExportConfiguration(string $resourceType): \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext {
         return $this->bulkExports->exportConfiguration($resourceType);

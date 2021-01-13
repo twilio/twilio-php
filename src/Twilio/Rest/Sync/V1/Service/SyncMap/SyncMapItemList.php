@@ -133,7 +133,6 @@ class SyncMapItemList extends ListResource {
             'Order' => $options['order'],
             'From' => $options['from'],
             'Bounds' => $options['bounds'],
-            'HideExpired' => $options['hideExpired'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

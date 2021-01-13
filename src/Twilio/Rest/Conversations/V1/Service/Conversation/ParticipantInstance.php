@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
- * @property string $lastReadMessageIndex
+ * @property int $lastReadMessageIndex
  * @property string $lastReadTimestamp
  */
 class ParticipantInstance extends InstanceResource {

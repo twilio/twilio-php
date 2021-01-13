@@ -1,6 +1,24 @@
 twilio-php Changelog
 ====================
 
+[2021-01-13] Version 6.16.0
+---------------------------
+**Api**
+- Add 'Electric Imp v1 Usage' to usage categories
+
+**Conversations**
+- Changed `last_read_message_index` type in Participant's resource **(breaking change)**
+
+**Insights**
+- Added `created_time` to call summary.
+
+**Sync**
+- Remove HideExpired query parameter for filtering Sync Documents with expired **(breaking change)**
+
+**Video**
+- [Rooms] Expose maxConcurrentPublishedTracks property in Room resource
+
+
 [2020-12-16] Version 6.15.1
 ---------------------------
 **Api**

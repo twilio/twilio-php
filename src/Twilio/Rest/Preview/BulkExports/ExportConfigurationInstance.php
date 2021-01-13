@@ -30,7 +30,8 @@ class ExportConfigurationInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     public function __construct(Version $version, array $payload, string $resourceType = null) {
         parent::__construct($version);

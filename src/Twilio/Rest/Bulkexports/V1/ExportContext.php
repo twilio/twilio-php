@@ -32,7 +32,8 @@ class ExportContext extends InstanceContext {
      * Initialize the ExportContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     public function __construct(Version $version, $resourceType) {
         parent::__construct($version);

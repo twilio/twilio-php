@@ -37,14 +37,6 @@ abstract class SyncListOptions {
     public static function update(int $ttl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncListOptions {
         return new UpdateSyncListOptions($ttl, $collectionTtl);
     }
-
-    /**
-     * @param string $hideExpired Hide expired Sync Lists and show only active ones.
-     * @return ReadSyncListOptions Options builder
-     */
-    public static function read(string $hideExpired = Values::NONE): ReadSyncListOptions {
-        return new ReadSyncListOptions($hideExpired);
-    }
 }
 
 class CreateSyncListOptions extends Options {
@@ -149,35 +141,5 @@ class UpdateSyncListOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Sync.V1.UpdateSyncListOptions ' . $options . ']';
-    }
-}
-
-class ReadSyncListOptions extends Options {
-    /**
-     * @param string $hideExpired Hide expired Sync Lists and show only active ones.
-     */
-    public function __construct(string $hideExpired = Values::NONE) {
-        $this->options['hideExpired'] = $hideExpired;
-    }
-
-    /**
-     * The default list of Sync Lists will show both active and expired items. It is possible to filter only the active ones by hiding the expired ones.
-     *
-     * @param string $hideExpired Hide expired Sync Lists and show only active ones.
-     * @return $this Fluent Builder
-     */
-    public function setHideExpired(string $hideExpired): self {
-        $this->options['hideExpired'] = $hideExpired;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     *
-     * @return string Machine friendly representation
-     */
-    public function __toString(): string {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Sync.V1.ReadSyncListOptions ' . $options . ']';
     }
 }

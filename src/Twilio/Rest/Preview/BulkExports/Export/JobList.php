@@ -31,7 +31,8 @@ class JobList extends ListResource {
     /**
      * Constructs a JobContext
      *
-     * @param string $jobSid The job_sid
+     * @param string $jobSid The unique string that that we created to identify the
+     *                       Bulk Export job
      */
     public function getContext(string $jobSid): JobContext {
         return new JobContext($this->version, $jobSid);
