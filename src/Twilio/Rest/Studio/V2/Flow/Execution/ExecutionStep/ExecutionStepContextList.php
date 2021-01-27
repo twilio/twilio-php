@@ -12,9 +12,6 @@ namespace Twilio\Rest\Studio\V2\Flow\Execution\ExecutionStep;
 use Twilio\ListResource;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class ExecutionStepContextList extends ListResource {
     /**
      * Construct the ExecutionStepContextList
