@@ -49,7 +49,8 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param int $timeout The amount of time in seconds the task is allowed to live
+     * @param int $timeout The amount of time in seconds the task can live before
+     *                     being assigned
      * @param int $priority The priority to assign the new task and override the
      *                      default
      * @param string $taskChannel When MultiTasking is enabled specify the
@@ -298,7 +299,8 @@ class ReadTaskOptions extends Options {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param int $timeout The amount of time in seconds the task is allowed to live
+     * @param int $timeout The amount of time in seconds the task can live before
+     *                     being assigned
      * @param int $priority The priority to assign the new task and override the
      *                      default
      * @param string $taskChannel When MultiTasking is enabled specify the
@@ -318,9 +320,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The amount of time in seconds the new task is allowed to live. Can be up to a maximum of 2 weeks (1,209,600 seconds). The default value is 24 hours (86,400 seconds). On timeout, the `task.canceled` event will fire with description `Task TTL Exceeded`.
+     * The amount of time in seconds the new task can live before being assigned. Can be up to a maximum of 2 weeks (1,209,600 seconds). The default value is 24 hours (86,400 seconds). On timeout, the `task.canceled` event will fire with description `Task TTL Exceeded`.
      *
-     * @param int $timeout The amount of time in seconds the task is allowed to live
+     * @param int $timeout The amount of time in seconds the task can live before
+     *                     being assigned
      * @return $this Fluent Builder
      */
     public function setTimeout(int $timeout): self {

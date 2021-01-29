@@ -66,4 +66,22 @@ class Stream extends TwiML {
     public function setTrack($track): self {
         return $this->setAttribute('track', $track);
     }
+
+    /**
+     * Add StatusCallback attribute.
+     *
+     * @param string $statusCallback Status Callback URL
+     */
+    public function setStatusCallback($statusCallback): self {
+        return $this->setAttribute('statusCallback', $statusCallback);
+    }
+
+    /**
+     * Add StatusCallbackMethod attribute.
+     *
+     * @param string $statusCallbackMethod Status Callback URL method
+     */
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
+        return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
+    }
 }
