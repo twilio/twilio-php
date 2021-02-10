@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Sync\V1\Service\SyncStream;
+namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -15,29 +15,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string $sid
- * @property array $data
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ *
+ * @property string $name
+ * @property string $code
+ * @property string $description
  */
-class StreamMessageInstance extends InstanceResource {
+class UseCaseInstance extends InstanceResource {
     /**
-     * Initialize the StreamMessageInstance
+     * Initialize the UseCaseInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Sync Service that the resource is
-     *                           associated with
-     * @param string $streamSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $streamSid) {
+    public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'data' => Values::array_get($payload, 'data'),
+            'name' => Values::array_get($payload, 'name'),
+            'code' => Values::array_get($payload, 'code'),
+            'description' => Values::array_get($payload, 'description'),
         ];
 
-        $this->solution = ['serviceSid' => $serviceSid, 'streamSid' => $streamSid, ];
+        $this->solution = [];
     }
 
     /**
@@ -66,6 +67,6 @@ class StreamMessageInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Sync.V1.StreamMessageInstance]';
+        return '[Twilio.Messaging.V1.UseCaseInstance]';
     }
 }

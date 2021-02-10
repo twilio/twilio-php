@@ -7,13 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Sync\V1\Service;
+namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SyncStreamPage extends Page {
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
+class UseCasePage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,10 +31,10 @@ class SyncStreamPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return SyncStreamInstance \Twilio\Rest\Sync\V1\Service\SyncStreamInstance
+     * @return UseCaseInstance \Twilio\Rest\Messaging\V1\UseCaseInstance
      */
-    public function buildInstance(array $payload): SyncStreamInstance {
-        return new SyncStreamInstance($this->version, $payload, $this->solution['serviceSid']);
+    public function buildInstance(array $payload): UseCaseInstance {
+        return new UseCaseInstance($this->version, $payload);
     }
 
     /**
@@ -40,6 +43,6 @@ class SyncStreamPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Sync.V1.SyncStreamPage]';
+        return '[Twilio.Messaging.V1.UseCasePage]';
     }
 }

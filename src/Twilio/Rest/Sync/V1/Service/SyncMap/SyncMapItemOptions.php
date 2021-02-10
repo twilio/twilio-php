@@ -12,9 +12,6 @@ namespace Twilio\Rest\Sync\V1\Service\SyncMap;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class SyncMapItemOptions {
     /**
      * @param string $ifMatch The If-Match HTTP request header
@@ -70,7 +67,7 @@ class DeleteSyncMapItemOptions extends Options {
     }
 
     /**
-     * The If-Match HTTP request header
+     * If provided, applies this mutation if (and only if) the “revision” field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      *
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder
@@ -272,7 +269,7 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * The If-Match HTTP request header
+     * If provided, applies this mutation if (and only if) the “revision” field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      *
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder

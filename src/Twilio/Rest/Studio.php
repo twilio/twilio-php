@@ -17,9 +17,9 @@ use Twilio\Rest\Studio\V2;
 /**
  * @property \Twilio\Rest\Studio\V1 $v1
  * @property \Twilio\Rest\Studio\V2 $v2
- * @property \Twilio\Rest\Studio\V1\FlowList $flows
+ * @property \Twilio\Rest\Studio\V2\FlowList $flows
  * @property \Twilio\Rest\Studio\V2\FlowValidateList $flowValidate
- * @method \Twilio\Rest\Studio\V1\FlowContext flows(string $sid)
+ * @method \Twilio\Rest\Studio\V2\FlowContext flows(string $sid)
  */
 class Studio extends Domain {
     protected $_v1;
@@ -89,15 +89,15 @@ class Studio extends Domain {
         throw new TwilioException('Unknown context ' . $name);
     }
 
-    protected function getFlows(): \Twilio\Rest\Studio\V1\FlowList {
-        return $this->v1->flows;
+    protected function getFlows(): \Twilio\Rest\Studio\V2\FlowList {
+        return $this->v2->flows;
     }
 
     /**
      * @param string $sid The SID that identifies the resource to fetch
      */
-    protected function contextFlows(string $sid): \Twilio\Rest\Studio\V1\FlowContext {
-        return $this->v1->flows($sid);
+    protected function contextFlows(string $sid): \Twilio\Rest\Studio\V2\FlowContext {
+        return $this->v2->flows($sid);
     }
 
     protected function getFlowValidate(): \Twilio\Rest\Studio\V2\FlowValidateList {

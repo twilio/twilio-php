@@ -7,108 +7,96 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service;
+namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Serverless\V1\Service\Build\BuildStatusList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string $sid
  * @property string $accountSid
- * @property string $serviceSid
- * @property string $status
- * @property array[] $assetVersions
- * @property array[] $functionVersions
- * @property array[] $dependencies
- * @property string $runtime
+ * @property string $messagingServiceSid
+ * @property string $brandRegistrationSid
+ * @property string $sid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property string $description
+ * @property string[] $messageSamples
+ * @property string $status
+ * @property string $failureReason
+ * @property string $useCase
+ * @property bool $hasEmbeddedLinks
+ * @property bool $hasEmbeddedPhone
  * @property string $url
- * @property array $links
  */
-class BuildInstance extends InstanceResource {
-    protected $_buildStatus;
-
+class CampaignInstance extends InstanceResource {
     /**
-     * Initialize the BuildInstance
+     * Initialize the CampaignInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Service that the Build resource is
-     *                           associated with
-     * @param string $sid The SID of the Build resource to fetch
+     * @param string $sid The SID that identifies the resource to fetch
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'serviceSid' => Values::array_get($payload, 'service_sid'),
-            'status' => Values::array_get($payload, 'status'),
-            'assetVersions' => Values::array_get($payload, 'asset_versions'),
-            'functionVersions' => Values::array_get($payload, 'function_versions'),
-            'dependencies' => Values::array_get($payload, 'dependencies'),
-            'runtime' => Values::array_get($payload, 'runtime'),
+            'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
+            'brandRegistrationSid' => Values::array_get($payload, 'brand_registration_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'description' => Values::array_get($payload, 'description'),
+            'messageSamples' => Values::array_get($payload, 'message_samples'),
+            'status' => Values::array_get($payload, 'status'),
+            'failureReason' => Values::array_get($payload, 'failure_reason'),
+            'useCase' => Values::array_get($payload, 'use_case'),
+            'hasEmbeddedLinks' => Values::array_get($payload, 'has_embedded_links'),
+            'hasEmbeddedPhone' => Values::array_get($payload, 'has_embedded_phone'),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return BuildContext Context for this BuildInstance
+     * @return CampaignContext Context for this CampaignInstance
      */
-    protected function proxy(): BuildContext {
+    protected function proxy(): CampaignContext {
         if (!$this->context) {
-            $this->context = new BuildContext(
-                $this->version,
-                $this->solution['serviceSid'],
-                $this->solution['sid']
-            );
+            $this->context = new CampaignContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the BuildInstance
+     * Fetch the CampaignInstance
      *
-     * @return BuildInstance Fetched BuildInstance
+     * @return CampaignInstance Fetched CampaignInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BuildInstance {
+    public function fetch(): CampaignInstance {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Delete the BuildInstance
+     * Delete the CampaignInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
         return $this->proxy()->delete();
-    }
-
-    /**
-     * Access the buildStatus
-     */
-    protected function getBuildStatus(): BuildStatusList {
-        return $this->proxy()->buildStatus;
     }
 
     /**
@@ -141,6 +129,6 @@ class BuildInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.BuildInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.CampaignInstance ' . \implode(' ', $context) . ']';
     }
 }

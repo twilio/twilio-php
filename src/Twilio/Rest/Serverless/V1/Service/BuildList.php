@@ -129,6 +129,7 @@ class BuildList extends ListResource {
             'AssetVersions' => Serialize::map($options['assetVersions'], function($e) { return $e; }),
             'FunctionVersions' => Serialize::map($options['functionVersions'], function($e) { return $e; }),
             'Dependencies' => $options['dependencies'],
+            'Runtime' => $options['runtime'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

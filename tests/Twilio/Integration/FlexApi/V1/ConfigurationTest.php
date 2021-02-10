@@ -187,6 +187,14 @@ class ConfigurationTest extends HolodeckTestCase {
                     "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
                 ],
+                "notifications": {
+                    "enabled": true,
+                    "mode": "whenNotInFocus"
+                },
+                "markdown": {
+                    "enabled": false,
+                    "mode": "readOnly"
+                },
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
@@ -368,6 +376,14 @@ class ConfigurationTest extends HolodeckTestCase {
                     "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
                 ],
+                "notifications": {
+                    "enabled": true,
+                    "mode": "whenNotInFocus"
+                },
+                "markdown": {
+                    "enabled": false,
+                    "mode": "readOnly"
+                },
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
@@ -549,6 +565,14 @@ class ConfigurationTest extends HolodeckTestCase {
                     "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
                 ],
+                "notifications": {
+                    "enabled": true,
+                    "mode": "whenNotInFocus"
+                },
+                "markdown": {
+                    "enabled": false,
+                    "mode": "readOnly"
+                },
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '

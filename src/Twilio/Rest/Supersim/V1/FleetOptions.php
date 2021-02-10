@@ -27,9 +27,9 @@ abstract class FleetOptions {
      * @param bool $commandsEnabled Defines whether SIMs in the Fleet are capable
      *                              of sending and receiving machine-to-machine SMS
      *                              via Commands
-     * @param string $commandsUrl The URL that will receive a webhook when a SIM in
-     *                            the Fleet is used to send an SMS from your device
-     *                            (mobile originated) to the Commands number
+     * @param string $commandsUrl The URL that will receive a webhook when a Super
+     *                            SIM in the Fleet is used to send an SMS from your
+     *                            device to the Commands number
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
      * @return CreateFleetOptions Options builder
@@ -52,9 +52,9 @@ abstract class FleetOptions {
      *                           identifies the resource
      * @param string $networkAccessProfile The SID or unique name of the Network
      *                                     Access Profile of the Fleet
-     * @param string $commandsUrl The URL that will receive a webhook when a SIM in
-     *                            the Fleet is used to send an SMS from your device
-     *                            (mobile originated) to the Commands number
+     * @param string $commandsUrl The URL that will receive a webhook when a Super
+     *                            SIM in the Fleet is used to send an SMS from your
+     *                            device to the Commands number
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
      * @return UpdateFleetOptions Options builder
@@ -76,9 +76,9 @@ class CreateFleetOptions extends Options {
      * @param bool $commandsEnabled Defines whether SIMs in the Fleet are capable
      *                              of sending and receiving machine-to-machine SMS
      *                              via Commands
-     * @param string $commandsUrl The URL that will receive a webhook when a SIM in
-     *                            the Fleet is used to send an SMS from your device
-     *                            (mobile originated) to the Commands number
+     * @param string $commandsUrl The URL that will receive a webhook when a Super
+     *                            SIM in the Fleet is used to send an SMS from your
+     *                            device to the Commands number
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
      */
@@ -142,11 +142,11 @@ class CreateFleetOptions extends Options {
     }
 
     /**
-     * The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+     * The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
      *
-     * @param string $commandsUrl The URL that will receive a webhook when a SIM in
-     *                            the Fleet is used to send an SMS from your device
-     *                            (mobile originated) to the Commands number
+     * @param string $commandsUrl The URL that will receive a webhook when a Super
+     *                            SIM in the Fleet is used to send an SMS from your
+     *                            device to the Commands number
      * @return $this Fluent Builder
      */
     public function setCommandsUrl(string $commandsUrl): self {
@@ -215,9 +215,9 @@ class UpdateFleetOptions extends Options {
      *                           identifies the resource
      * @param string $networkAccessProfile The SID or unique name of the Network
      *                                     Access Profile of the Fleet
-     * @param string $commandsUrl The URL that will receive a webhook when a SIM in
-     *                            the Fleet is used to send an SMS from your device
-     *                            (mobile originated) to the Commands number
+     * @param string $commandsUrl The URL that will receive a webhook when a Super
+     *                            SIM in the Fleet is used to send an SMS from your
+     *                            device to the Commands number
      * @param string $commandsMethod A string representing the HTTP method to use
      *                               when making a request to `commands_url`
      */
@@ -253,11 +253,11 @@ class UpdateFleetOptions extends Options {
     }
 
     /**
-     * The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+     * The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
      *
-     * @param string $commandsUrl The URL that will receive a webhook when a SIM in
-     *                            the Fleet is used to send an SMS from your device
-     *                            (mobile originated) to the Commands number
+     * @param string $commandsUrl The URL that will receive a webhook when a Super
+     *                            SIM in the Fleet is used to send an SMS from your
+     *                            device to the Commands number
      * @return $this Fluent Builder
      */
     public function setCommandsUrl(string $commandsUrl): self {

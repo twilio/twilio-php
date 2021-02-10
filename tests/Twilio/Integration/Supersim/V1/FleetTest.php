@@ -49,6 +49,8 @@ class FleetTest extends HolodeckTestCase {
                 "commands_enabled": true,
                 "commands_method": "GET",
                 "commands_url": "https://google.com",
+                "ip_commands_method": "GET",
+                "ip_commands_url": "https://google.com",
                 "network_access_profile_sid": "HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -90,6 +92,8 @@ class FleetTest extends HolodeckTestCase {
                 "commands_enabled": true,
                 "commands_method": "POST",
                 "commands_url": null,
+                "ip_commands_method": "POST",
+                "ip_commands_url": null,
                 "network_access_profile_sid": "HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -166,6 +170,8 @@ class FleetTest extends HolodeckTestCase {
                         "commands_enabled": true,
                         "commands_method": "POST",
                         "commands_url": null,
+                        "ip_commands_method": "POST",
+                        "ip_commands_url": null,
                         "network_access_profile_sid": "HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "url": "https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -209,6 +215,8 @@ class FleetTest extends HolodeckTestCase {
                 "commands_enabled": true,
                 "commands_method": "POST",
                 "commands_url": null,
+                "ip_commands_method": "POST",
+                "ip_commands_url": null,
                 "network_access_profile_sid": "HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"

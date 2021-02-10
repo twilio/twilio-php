@@ -230,4 +230,22 @@ class Dial extends TwiML {
     public function setSequential($sequential): self {
         return $this->setAttribute('sequential', $sequential);
     }
+
+    /**
+     * Add ReferUrl attribute.
+     *
+     * @param string $referUrl Webhook that will receive future SIP REFER requests
+     */
+    public function setReferUrl($referUrl): self {
+        return $this->setAttribute('referUrl', $referUrl);
+    }
+
+    /**
+     * Add ReferMethod attribute.
+     *
+     * @param string $referMethod The HTTP method to use for the refer Webhook
+     */
+    public function setReferMethod($referMethod): self {
+        return $this->setAttribute('referMethod', $referMethod);
+    }
 }

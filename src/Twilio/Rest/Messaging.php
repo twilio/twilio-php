@@ -15,8 +15,13 @@ use Twilio\Rest\Messaging\V1;
 
 /**
  * @property \Twilio\Rest\Messaging\V1 $v1
+ * @property \Twilio\Rest\Messaging\V1\BrandRegistrationList $brandRegistrations
+ * @property \Twilio\Rest\Messaging\V1\CampaignList $campaigns
  * @property \Twilio\Rest\Messaging\V1\DeactivationsList $deactivations
  * @property \Twilio\Rest\Messaging\V1\ServiceList $services
+ * @property \Twilio\Rest\Messaging\V1\UseCaseList $useCases
+ * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\CampaignContext campaigns(string $sid)
  * @method \Twilio\Rest\Messaging\V1\DeactivationsContext deactivations()
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  */
@@ -77,6 +82,28 @@ class Messaging extends Domain {
         throw new TwilioException('Unknown context ' . $name);
     }
 
+    protected function getBrandRegistrations(): \Twilio\Rest\Messaging\V1\BrandRegistrationList {
+        return $this->v1->brandRegistrations;
+    }
+
+    /**
+     * @param string $sid The SID that identifies the resource to fetch
+     */
+    protected function contextBrandRegistrations(string $sid): \Twilio\Rest\Messaging\V1\BrandRegistrationContext {
+        return $this->v1->brandRegistrations($sid);
+    }
+
+    protected function getCampaigns(): \Twilio\Rest\Messaging\V1\CampaignList {
+        return $this->v1->campaigns;
+    }
+
+    /**
+     * @param string $sid The SID that identifies the resource to fetch
+     */
+    protected function contextCampaigns(string $sid): \Twilio\Rest\Messaging\V1\CampaignContext {
+        return $this->v1->campaigns($sid);
+    }
+
     protected function getDeactivations(): \Twilio\Rest\Messaging\V1\DeactivationsList {
         return $this->v1->deactivations;
     }
@@ -94,6 +121,10 @@ class Messaging extends Domain {
      */
     protected function contextServices(string $sid): \Twilio\Rest\Messaging\V1\ServiceContext {
         return $this->v1->services($sid);
+    }
+
+    protected function getUseCases(): \Twilio\Rest\Messaging\V1\UseCaseList {
+        return $this->v1->useCases;
     }
 
     /**
