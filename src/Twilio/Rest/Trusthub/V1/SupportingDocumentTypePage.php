@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Trusthub\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class UseCasePage extends Page {
+class SupportingDocumentTypePage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +28,10 @@ class UseCasePage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return UseCaseInstance \Twilio\Rest\Messaging\V1\UseCaseInstance
+     * @return SupportingDocumentTypeInstance \Twilio\Rest\Trusthub\V1\SupportingDocumentTypeInstance
      */
-    public function buildInstance(array $payload): UseCaseInstance {
-        return new UseCaseInstance($this->version, $payload);
+    public function buildInstance(array $payload): SupportingDocumentTypeInstance {
+        return new SupportingDocumentTypeInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +40,6 @@ class UseCasePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Messaging.V1.UseCasePage]';
+        return '[Twilio.Trusthub.V1.SupportingDocumentTypePage]';
     }
 }

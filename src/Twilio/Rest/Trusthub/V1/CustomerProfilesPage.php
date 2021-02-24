@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Trusthub\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class CampaignPage extends Page {
+class CustomerProfilesPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +28,10 @@ class CampaignPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return CampaignInstance \Twilio\Rest\Messaging\V1\CampaignInstance
+     * @return CustomerProfilesInstance \Twilio\Rest\Trusthub\V1\CustomerProfilesInstance
      */
-    public function buildInstance(array $payload): CampaignInstance {
-        return new CampaignInstance($this->version, $payload);
+    public function buildInstance(array $payload): CustomerProfilesInstance {
+        return new CustomerProfilesInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +40,6 @@ class CampaignPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Messaging.V1.CampaignPage]';
+        return '[Twilio.Trusthub.V1.CustomerProfilesPage]';
     }
 }

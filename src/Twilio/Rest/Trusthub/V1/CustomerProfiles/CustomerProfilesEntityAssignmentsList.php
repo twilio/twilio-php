@@ -7,35 +7,54 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Trusthub\V1\CustomerProfiles;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class CampaignList extends ListResource {
+class CustomerProfilesEntityAssignmentsList extends ListResource {
     /**
-     * Construct the CampaignList
+     * Construct the CustomerProfilesEntityAssignmentsList
      *
      * @param Version $version Version that contains the resource
+     * @param string $customerProfileSid The unique string that identifies the
+     *                                   CustomerProfile resource.
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $customerProfileSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['customerProfileSid' => $customerProfileSid, ];
 
-        $this->uri = '/a2p/Campaigns';
+        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid) . '/EntityAssignments';
     }
 
     /**
-     * Streams CampaignInstance records from the API as a generator stream.
+     * Create the CustomerProfilesEntityAssignmentsInstance
+     *
+     * @param string $objectSid The sid of an object bag
+     * @return CustomerProfilesEntityAssignmentsInstance Created
+     *                                                   CustomerProfilesEntityAssignmentsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $objectSid): CustomerProfilesEntityAssignmentsInstance {
+        $data = Values::of(['ObjectSid' => $objectSid, ]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data);
+
+        return new CustomerProfilesEntityAssignmentsInstance(
+            $this->version,
+            $payload,
+            $this->solution['customerProfileSid']
+        );
+    }
+
+    /**
+     * Streams CustomerProfilesEntityAssignmentsInstance records from the API as a
+     * generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -61,7 +80,8 @@ class CampaignList extends ListResource {
     }
 
     /**
-     * Reads CampaignInstance records from the API as a list.
+     * Reads CustomerProfilesEntityAssignmentsInstance records from the API as a
+     * list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -73,83 +93,60 @@ class CampaignList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return CampaignInstance[] Array of results
+     * @return CustomerProfilesEntityAssignmentsInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of CampaignInstance records from the API.
+     * Retrieve a single page of CustomerProfilesEntityAssignmentsInstance records
+     * from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return CampaignPage Page of CampaignInstance
+     * @return CustomerProfilesEntityAssignmentsPage Page of
+     *                                               CustomerProfilesEntityAssignmentsInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CampaignPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CustomerProfilesEntityAssignmentsPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new CampaignPage($this->version, $response, $this->solution);
+        return new CustomerProfilesEntityAssignmentsPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of CampaignInstance records from the API.
+     * Retrieve a specific page of CustomerProfilesEntityAssignmentsInstance
+     * records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return CampaignPage Page of CampaignInstance
+     * @return CustomerProfilesEntityAssignmentsPage Page of
+     *                                               CustomerProfilesEntityAssignmentsInstance
      */
-    public function getPage(string $targetUrl): CampaignPage {
+    public function getPage(string $targetUrl): CustomerProfilesEntityAssignmentsPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new CampaignPage($this->version, $response, $this->solution);
+        return new CustomerProfilesEntityAssignmentsPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create the CampaignInstance
+     * Constructs a CustomerProfilesEntityAssignmentsContext
      *
-     * @param string $brandRegistrationSid A2P BrandRegistration Sid
-     * @param string $useCase A2P Campaign UseCase.
-     * @param string $description A short description of what this SMS campaign does
-     * @param string[] $messageSamples Message samples
-     * @param bool $hasEmbeddedLinks Indicate that this SMS campaign will send
-     *                               messages that contain links
-     * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send
-     *                               messages that contain phone numbers
-     * @param string $messagingServiceSid MessagingService SID
-     * @return CampaignInstance Created CampaignInstance
-     * @throws TwilioException When an HTTP error occurs.
+     * @param string $sid The unique string that identifies the resource
      */
-    public function create(string $brandRegistrationSid, string $useCase, string $description, array $messageSamples, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, string $messagingServiceSid): CampaignInstance {
-        $data = Values::of([
-            'BrandRegistrationSid' => $brandRegistrationSid,
-            'UseCase' => $useCase,
-            'Description' => $description,
-            'MessageSamples' => Serialize::map($messageSamples, function($e) { return $e; }),
-            'HasEmbeddedLinks' => Serialize::booleanToString($hasEmbeddedLinks),
-            'HasEmbeddedPhone' => Serialize::booleanToString($hasEmbeddedPhone),
-            'MessagingServiceSid' => $messagingServiceSid,
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new CampaignInstance($this->version, $payload);
-    }
-
-    /**
-     * Constructs a CampaignContext
-     *
-     * @param string $sid The SID that identifies the resource to fetch
-     */
-    public function getContext(string $sid): CampaignContext {
-        return new CampaignContext($this->version, $sid);
+    public function getContext(string $sid): CustomerProfilesEntityAssignmentsContext {
+        return new CustomerProfilesEntityAssignmentsContext(
+            $this->version,
+            $this->solution['customerProfileSid'],
+            $sid
+        );
     }
 
     /**
@@ -158,6 +155,6 @@ class CampaignList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Messaging.V1.CampaignList]';
+        return '[Twilio.Trusthub.V1.CustomerProfilesEntityAssignmentsList]';
     }
 }

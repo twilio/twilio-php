@@ -7,22 +7,18 @@
  * /       /
  */
 
-namespace Twilio\Rest\Events\V1;
+namespace Twilio\Rest\Trusthub\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
-class SubscriptionList extends ListResource {
+class CustomerProfilesList extends ListResource {
     /**
-     * Construct the SubscriptionList
+     * Construct the CustomerProfilesList
      *
      * @param Version $version Version that contains the resource
      */
@@ -32,11 +28,37 @@ class SubscriptionList extends ListResource {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Subscriptions';
+        $this->uri = '/CustomerProfiles';
     }
 
     /**
-     * Streams SubscriptionInstance records from the API as a generator stream.
+     * Create the CustomerProfilesInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the
+     *                             resource
+     * @param string $email The email address
+     * @param string $policySid The unique string of a policy.
+     * @param array|Options $options Optional Arguments
+     * @return CustomerProfilesInstance Created CustomerProfilesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $email, string $policySid, array $options = []): CustomerProfilesInstance {
+        $options = new Values($options);
+
+        $data = Values::of([
+            'FriendlyName' => $friendlyName,
+            'Email' => $email,
+            'PolicySid' => $policySid,
+            'StatusCallback' => $options['statusCallback'],
+        ]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data);
+
+        return new CustomerProfilesInstance($this->version, $payload);
+    }
+
+    /**
+     * Streams CustomerProfilesInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -63,7 +85,7 @@ class SubscriptionList extends ListResource {
     }
 
     /**
-     * Reads SubscriptionInstance records from the API as a list.
+     * Reads CustomerProfilesInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -76,27 +98,29 @@ class SubscriptionList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return SubscriptionInstance[] Array of results
+     * @return CustomerProfilesInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of SubscriptionInstance records from the API.
+     * Retrieve a single page of CustomerProfilesInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return SubscriptionPage Page of SubscriptionInstance
+     * @return CustomerProfilesPage Page of CustomerProfilesInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SubscriptionPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CustomerProfilesPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'SinkSid' => $options['sinkSid'],
+            'Status' => $options['status'],
+            'FriendlyName' => $options['friendlyName'],
+            'PolicySid' => $options['policySid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -104,53 +128,32 @@ class SubscriptionList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new SubscriptionPage($this->version, $response, $this->solution);
+        return new CustomerProfilesPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of SubscriptionInstance records from the API.
+     * Retrieve a specific page of CustomerProfilesInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return SubscriptionPage Page of SubscriptionInstance
+     * @return CustomerProfilesPage Page of CustomerProfilesInstance
      */
-    public function getPage(string $targetUrl): SubscriptionPage {
+    public function getPage(string $targetUrl): CustomerProfilesPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new SubscriptionPage($this->version, $response, $this->solution);
+        return new CustomerProfilesPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create the SubscriptionInstance
+     * Constructs a CustomerProfilesContext
      *
-     * @param string $description Subscription description
-     * @param string $sinkSid Sink SID.
-     * @param array[] $types Subscribed Event Types
-     * @return SubscriptionInstance Created SubscriptionInstance
-     * @throws TwilioException When an HTTP error occurs.
+     * @param string $sid The unique string that identifies the resource.
      */
-    public function create(string $description, string $sinkSid, array $types): SubscriptionInstance {
-        $data = Values::of([
-            'Description' => $description,
-            'SinkSid' => $sinkSid,
-            'Types' => Serialize::map($types, function($e) { return Serialize::jsonObject($e); }),
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new SubscriptionInstance($this->version, $payload);
-    }
-
-    /**
-     * Constructs a SubscriptionContext
-     *
-     * @param string $sid A string that uniquely identifies this Subscription.
-     */
-    public function getContext(string $sid): SubscriptionContext {
-        return new SubscriptionContext($this->version, $sid);
+    public function getContext(string $sid): CustomerProfilesContext {
+        return new CustomerProfilesContext($this->version, $sid);
     }
 
     /**
@@ -159,6 +162,6 @@ class SubscriptionList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Events.V1.SubscriptionList]';
+        return '[Twilio.Trusthub.V1.CustomerProfilesList]';
     }
 }

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Trusthub\V1\CustomerProfiles;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,81 +16,74 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
- * @property string $accountSid
- * @property string $messagingServiceSid
- * @property string $brandRegistrationSid
  * @property string $sid
+ * @property string $customerProfileSid
+ * @property string $accountSid
+ * @property string $objectSid
  * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $description
- * @property string[] $messageSamples
- * @property string $status
- * @property string $failureReason
- * @property string $useCase
- * @property bool $hasEmbeddedLinks
- * @property bool $hasEmbeddedPhone
  * @property string $url
  */
-class CampaignInstance extends InstanceResource {
+class CustomerProfilesEntityAssignmentsInstance extends InstanceResource {
     /**
-     * Initialize the CampaignInstance
+     * Initialize the CustomerProfilesEntityAssignmentsInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $customerProfileSid The unique string that identifies the
+     *                                   CustomerProfile resource.
+     * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $customerProfileSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
-            'brandRegistrationSid' => Values::array_get($payload, 'brand_registration_sid'),
             'sid' => Values::array_get($payload, 'sid'),
+            'customerProfileSid' => Values::array_get($payload, 'customer_profile_sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'objectSid' => Values::array_get($payload, 'object_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'description' => Values::array_get($payload, 'description'),
-            'messageSamples' => Values::array_get($payload, 'message_samples'),
-            'status' => Values::array_get($payload, 'status'),
-            'failureReason' => Values::array_get($payload, 'failure_reason'),
-            'useCase' => Values::array_get($payload, 'use_case'),
-            'hasEmbeddedLinks' => Values::array_get($payload, 'has_embedded_links'),
-            'hasEmbeddedPhone' => Values::array_get($payload, 'has_embedded_phone'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = [
+            'customerProfileSid' => $customerProfileSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return CampaignContext Context for this CampaignInstance
+     * @return CustomerProfilesEntityAssignmentsContext Context for this
+     *                                                  CustomerProfilesEntityAssignmentsInstance
      */
-    protected function proxy(): CampaignContext {
+    protected function proxy(): CustomerProfilesEntityAssignmentsContext {
         if (!$this->context) {
-            $this->context = new CampaignContext($this->version, $this->solution['sid']);
+            $this->context = new CustomerProfilesEntityAssignmentsContext(
+                $this->version,
+                $this->solution['customerProfileSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the CampaignInstance
+     * Fetch the CustomerProfilesEntityAssignmentsInstance
      *
-     * @return CampaignInstance Fetched CampaignInstance
+     * @return CustomerProfilesEntityAssignmentsInstance Fetched
+     *                                                   CustomerProfilesEntityAssignmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CampaignInstance {
+    public function fetch(): CustomerProfilesEntityAssignmentsInstance {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Delete the CampaignInstance
+     * Delete the CustomerProfilesEntityAssignmentsInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -129,6 +122,6 @@ class CampaignInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.CampaignInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Trusthub.V1.CustomerProfilesEntityAssignmentsInstance ' . \implode(' ', $context) . ']';
     }
 }

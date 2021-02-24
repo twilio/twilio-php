@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+[2021-02-24] Version 6.18.0
+---------------------------
+**Events**
+- Update description of types in the create sink resource
+
+**Messaging**
+- Add WA template header and footer
+- Remove A2P campaign and use cases API **(breaking change)**
+- Add number_registration_status field to read and fetch campaign responses
+
+**Trusthub**
+- Make all resources public
+
+**Verify**
+- Verify List Attempts API endpoints added.
+
+
 [2021-02-10] Version 6.17.0
 ---------------------------
 **Library - Fix**

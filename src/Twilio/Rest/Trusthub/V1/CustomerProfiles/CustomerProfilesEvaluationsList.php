@@ -7,33 +7,54 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Trusthub\V1\CustomerProfiles;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class UseCaseList extends ListResource {
+class CustomerProfilesEvaluationsList extends ListResource {
     /**
-     * Construct the UseCaseList
+     * Construct the CustomerProfilesEvaluationsList
      *
      * @param Version $version Version that contains the resource
+     * @param string $customerProfileSid The unique string that identifies the
+     *                                   resource
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $customerProfileSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['customerProfileSid' => $customerProfileSid, ];
 
-        $this->uri = '/a2p/UseCases';
+        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid) . '/Evaluations';
     }
 
     /**
-     * Streams UseCaseInstance records from the API as a generator stream.
+     * Create the CustomerProfilesEvaluationsInstance
+     *
+     * @param string $policySid The unique string of a policy
+     * @return CustomerProfilesEvaluationsInstance Created
+     *                                             CustomerProfilesEvaluationsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $policySid): CustomerProfilesEvaluationsInstance {
+        $data = Values::of(['PolicySid' => $policySid, ]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data);
+
+        return new CustomerProfilesEvaluationsInstance(
+            $this->version,
+            $payload,
+            $this->solution['customerProfileSid']
+        );
+    }
+
+    /**
+     * Streams CustomerProfilesEvaluationsInstance records from the API as a
+     * generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +80,7 @@ class UseCaseList extends ListResource {
     }
 
     /**
-     * Reads UseCaseInstance records from the API as a list.
+     * Reads CustomerProfilesEvaluationsInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -71,43 +92,60 @@ class UseCaseList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return UseCaseInstance[] Array of results
+     * @return CustomerProfilesEvaluationsInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of UseCaseInstance records from the API.
+     * Retrieve a single page of CustomerProfilesEvaluationsInstance records from
+     * the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return UseCasePage Page of UseCaseInstance
+     * @return CustomerProfilesEvaluationsPage Page of
+     *                                         CustomerProfilesEvaluationsInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UseCasePage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CustomerProfilesEvaluationsPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new UseCasePage($this->version, $response, $this->solution);
+        return new CustomerProfilesEvaluationsPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of UseCaseInstance records from the API.
+     * Retrieve a specific page of CustomerProfilesEvaluationsInstance records from
+     * the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return UseCasePage Page of UseCaseInstance
+     * @return CustomerProfilesEvaluationsPage Page of
+     *                                         CustomerProfilesEvaluationsInstance
      */
-    public function getPage(string $targetUrl): UseCasePage {
+    public function getPage(string $targetUrl): CustomerProfilesEvaluationsPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new UseCasePage($this->version, $response, $this->solution);
+        return new CustomerProfilesEvaluationsPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Constructs a CustomerProfilesEvaluationsContext
+     *
+     * @param string $sid The unique string that identifies the Evaluation resource
+     */
+    public function getContext(string $sid): CustomerProfilesEvaluationsContext {
+        return new CustomerProfilesEvaluationsContext(
+            $this->version,
+            $this->solution['customerProfileSid'],
+            $sid
+        );
     }
 
     /**
@@ -116,6 +154,6 @@ class UseCaseList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Messaging.V1.UseCaseList]';
+        return '[Twilio.Trusthub.V1.CustomerProfilesEvaluationsList]';
     }
 }

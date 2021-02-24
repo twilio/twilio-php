@@ -42,6 +42,7 @@ use Twilio\VersionInfo;
  * @property Sync $sync
  * @property Taskrouter $taskrouter
  * @property Trunking $trunking
+ * @property Trusthub $trusthub
  * @property Verify $verify
  * @property Video $video
  * @property Voice $voice
@@ -132,6 +133,7 @@ class Client {
     protected $_sync;
     protected $_taskrouter;
     protected $_trunking;
+    protected $_trusthub;
     protected $_verify;
     protected $_video;
     protected $_voice;
@@ -889,6 +891,18 @@ class Client {
             $this->_trunking = new Trunking($this);
         }
         return $this->_trunking;
+    }
+
+    /**
+     * Access the Trusthub Twilio Domain
+     *
+     * @return Trusthub Trusthub Twilio Domain
+     */
+    protected function getTrusthub(): Trusthub {
+        if (!$this->_trusthub) {
+            $this->_trusthub = new Trusthub($this);
+        }
+        return $this->_trusthub;
     }
 
     /**
