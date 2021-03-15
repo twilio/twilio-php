@@ -53,6 +53,16 @@ class Connect extends TwiML {
     }
 
     /**
+     * Add VirtualAgent child.
+     *
+     * @param array $attributes Optional attributes
+     * @return VirtualAgent Child element.
+     */
+    public function virtualAgent($attributes = []): VirtualAgent {
+        return $this->nest(new VirtualAgent($attributes));
+    }
+
+    /**
      * Add Action attribute.
      *
      * @param string $action Action URL

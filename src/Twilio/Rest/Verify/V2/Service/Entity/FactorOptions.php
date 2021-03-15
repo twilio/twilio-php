@@ -27,10 +27,16 @@ abstract class FactorOptions {
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
+     * @param string $bindingSecret The shared secret in Base32
+     * @param int $configTimeStep How often, in seconds, are TOTP codes generated
+     * @param int $configSkew The number of past and future time-steps valid at a
+     *                        given time
+     * @param int $configCodeLength Number of digits for generated TOTP codes
+     * @param string $configAlg The algorithm used to derive the TOTP codes
      * @return CreateFactorOptions Options builder
      */
-    public static function create(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE): CreateFactorOptions {
-        return new CreateFactorOptions($bindingAlg, $bindingPublicKey, $configAppId, $configNotificationPlatform, $configNotificationToken, $configSdkVersion);
+    public static function create(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $bindingSecret = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE): CreateFactorOptions {
+        return new CreateFactorOptions($bindingAlg, $bindingPublicKey, $configAppId, $configNotificationPlatform, $configNotificationToken, $configSdkVersion, $bindingSecret, $configTimeStep, $configSkew, $configCodeLength, $configAlg);
     }
 
     /**
@@ -41,10 +47,15 @@ abstract class FactorOptions {
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
+     * @param int $configTimeStep How often, in seconds, are TOTP codes generated
+     * @param int $configSkew The number of past and future time-steps valid at a
+     *                        given time
+     * @param int $configCodeLength Number of digits for generated TOTP codes
+     * @param string $configAlg The algorithm used to derive the TOTP codes
      * @return UpdateFactorOptions Options builder
      */
-    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE): UpdateFactorOptions {
-        return new UpdateFactorOptions($authPayload, $friendlyName, $configNotificationToken, $configSdkVersion);
+    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE): UpdateFactorOptions {
+        return new UpdateFactorOptions($authPayload, $friendlyName, $configNotificationToken, $configSdkVersion, $configTimeStep, $configSkew, $configCodeLength, $configAlg);
     }
 }
 
@@ -60,14 +71,25 @@ class CreateFactorOptions extends Options {
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
+     * @param string $bindingSecret The shared secret in Base32
+     * @param int $configTimeStep How often, in seconds, are TOTP codes generated
+     * @param int $configSkew The number of past and future time-steps valid at a
+     *                        given time
+     * @param int $configCodeLength Number of digits for generated TOTP codes
+     * @param string $configAlg The algorithm used to derive the TOTP codes
      */
-    public function __construct(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE) {
+    public function __construct(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $bindingSecret = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE) {
         $this->options['bindingAlg'] = $bindingAlg;
         $this->options['bindingPublicKey'] = $bindingPublicKey;
         $this->options['configAppId'] = $configAppId;
         $this->options['configNotificationPlatform'] = $configNotificationPlatform;
         $this->options['configNotificationToken'] = $configNotificationToken;
         $this->options['configSdkVersion'] = $configSdkVersion;
+        $this->options['bindingSecret'] = $bindingSecret;
+        $this->options['configTimeStep'] = $configTimeStep;
+        $this->options['configSkew'] = $configSkew;
+        $this->options['configCodeLength'] = $configCodeLength;
+        $this->options['configAlg'] = $configAlg;
     }
 
     /**
@@ -93,7 +115,7 @@ class CreateFactorOptions extends Options {
     }
 
     /**
-     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`. Required when `factor_type` is `push`
+     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`. Required when `factor_type` is `push`. If specified, it can be up to 100 characters long.
      *
      * @param string $configAppId The ID that uniquely identifies your app in the
      *                            Google or Apple store
@@ -117,7 +139,7 @@ class CreateFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`
+     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
      *
      * @param string $configNotificationToken For APN, the device token. For FCM
      *                                        the registration token
@@ -137,6 +159,62 @@ class CreateFactorOptions extends Options {
      */
     public function setConfigSdkVersion(string $configSdkVersion): self {
         $this->options['configSdkVersion'] = $configSdkVersion;
+        return $this;
+    }
+
+    /**
+     * The shared secret for TOTP factors encoded in Base32
+     *
+     * @param string $bindingSecret The shared secret in Base32
+     * @return $this Fluent Builder
+     */
+    public function setBindingSecret(string $bindingSecret): self {
+        $this->options['bindingSecret'] = $bindingSecret;
+        return $this;
+    }
+
+    /**
+     * Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds
+     *
+     * @param int $configTimeStep How often, in seconds, are TOTP codes generated
+     * @return $this Fluent Builder
+     */
+    public function setConfigTimeStep(int $configTimeStep): self {
+        $this->options['configTimeStep'] = $configTimeStep;
+        return $this;
+    }
+
+    /**
+     * The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
+     *
+     * @param int $configSkew The number of past and future time-steps valid at a
+     *                        given time
+     * @return $this Fluent Builder
+     */
+    public function setConfigSkew(int $configSkew): self {
+        $this->options['configSkew'] = $configSkew;
+        return $this;
+    }
+
+    /**
+     * Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
+     *
+     * @param int $configCodeLength Number of digits for generated TOTP codes
+     * @return $this Fluent Builder
+     */
+    public function setConfigCodeLength(int $configCodeLength): self {
+        $this->options['configCodeLength'] = $configCodeLength;
+        return $this;
+    }
+
+    /**
+     * The algorithm used to derive the TOTP codes. Can be `sha1`, `sha256` or `sha512`. Defaults to `sha1`
+     *
+     * @param string $configAlg The algorithm used to derive the TOTP codes
+     * @return $this Fluent Builder
+     */
+    public function setConfigAlg(string $configAlg): self {
+        $this->options['configAlg'] = $configAlg;
         return $this;
     }
 
@@ -160,12 +238,21 @@ class UpdateFactorOptions extends Options {
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
+     * @param int $configTimeStep How often, in seconds, are TOTP codes generated
+     * @param int $configSkew The number of past and future time-steps valid at a
+     *                        given time
+     * @param int $configCodeLength Number of digits for generated TOTP codes
+     * @param string $configAlg The algorithm used to derive the TOTP codes
      */
-    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE) {
+    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE) {
         $this->options['authPayload'] = $authPayload;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['configNotificationToken'] = $configNotificationToken;
         $this->options['configSdkVersion'] = $configSdkVersion;
+        $this->options['configTimeStep'] = $configTimeStep;
+        $this->options['configSkew'] = $configSkew;
+        $this->options['configCodeLength'] = $configCodeLength;
+        $this->options['configAlg'] = $configAlg;
     }
 
     /**
@@ -181,7 +268,7 @@ class UpdateFactorOptions extends Options {
     }
 
     /**
-     * The new friendly name of this Factor
+     * The new friendly name of this Factor. It can be up to 64 characters.
      *
      * @param string $friendlyName The friendly name of this Factor
      * @return $this Fluent Builder
@@ -192,7 +279,7 @@ class UpdateFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`
+     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
      *
      * @param string $configNotificationToken For APN, the device token. For FCM
      *                                        the registration token
@@ -212,6 +299,51 @@ class UpdateFactorOptions extends Options {
      */
     public function setConfigSdkVersion(string $configSdkVersion): self {
         $this->options['configSdkVersion'] = $configSdkVersion;
+        return $this;
+    }
+
+    /**
+     * Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive
+     *
+     * @param int $configTimeStep How often, in seconds, are TOTP codes generated
+     * @return $this Fluent Builder
+     */
+    public function setConfigTimeStep(int $configTimeStep): self {
+        $this->options['configTimeStep'] = $configTimeStep;
+        return $this;
+    }
+
+    /**
+     * The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive
+     *
+     * @param int $configSkew The number of past and future time-steps valid at a
+     *                        given time
+     * @return $this Fluent Builder
+     */
+    public function setConfigSkew(int $configSkew): self {
+        $this->options['configSkew'] = $configSkew;
+        return $this;
+    }
+
+    /**
+     * Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive
+     *
+     * @param int $configCodeLength Number of digits for generated TOTP codes
+     * @return $this Fluent Builder
+     */
+    public function setConfigCodeLength(int $configCodeLength): self {
+        $this->options['configCodeLength'] = $configCodeLength;
+        return $this;
+    }
+
+    /**
+     * The algorithm used to derive the TOTP codes. Can be `sha1`, `sha256` or `sha512`
+     *
+     * @param string $configAlg The algorithm used to derive the TOTP codes
+     * @return $this Fluent Builder
+     */
+    public function setConfigAlg(string $configAlg): self {
+        $this->options['configAlg'] = $configAlg;
         return $this;
     }
 

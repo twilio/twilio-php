@@ -129,7 +129,7 @@ class RoomList extends ListResource {
     /**
      * Constructs a RoomContext
      *
-     * @param string $roomSid The room_sid
+     * @param string $roomSid The SID of the Room resource.
      */
     public function getContext(string $roomSid): RoomContext {
         return new RoomContext($this->version, $roomSid);

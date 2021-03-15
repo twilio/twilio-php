@@ -57,6 +57,11 @@ class FactorList extends ListResource {
             'Config.NotificationPlatform' => $options['configNotificationPlatform'],
             'Config.NotificationToken' => $options['configNotificationToken'],
             'Config.SdkVersion' => $options['configSdkVersion'],
+            'Binding.Secret' => $options['bindingSecret'],
+            'Config.TimeStep' => $options['configTimeStep'],
+            'Config.Skew' => $options['configSkew'],
+            'Config.CodeLength' => $options['configCodeLength'],
+            'Config.Alg' => $options['configAlg'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

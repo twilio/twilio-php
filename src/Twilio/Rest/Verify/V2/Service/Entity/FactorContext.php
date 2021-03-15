@@ -79,6 +79,10 @@ class FactorContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'Config.NotificationToken' => $options['configNotificationToken'],
             'Config.SdkVersion' => $options['configSdkVersion'],
+            'Config.TimeStep' => $options['configTimeStep'],
+            'Config.Skew' => $options['configSkew'],
+            'Config.CodeLength' => $options['configCodeLength'],
+            'Config.Alg' => $options['configAlg'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

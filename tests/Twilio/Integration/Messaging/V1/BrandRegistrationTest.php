@@ -41,7 +41,7 @@ class BrandRegistrationTest extends HolodeckTestCase {
                 "a2p_profile_bundle_sid": "BU3344409f7e067e279523808d267e2d85",
                 "date_created": "2021-01-27T14:18:35Z",
                 "date_updated": "2021-01-27T14:18:36Z",
-                "status": "IN_PROGRESS",
+                "status": "PENDING",
                 "tcr_id": "BXXXXXX",
                 "failure_reason": "Registration error",
                 "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN0044409f7e067e279523808d267e2d85"
@@ -90,7 +90,7 @@ class BrandRegistrationTest extends HolodeckTestCase {
                         "a2p_profile_bundle_sid": "BU3344409f7e067e279523808d267e2d85",
                         "date_created": "2021-01-27T14:18:35Z",
                         "date_updated": "2021-01-27T14:18:36Z",
-                        "status": "IN_PROGRESS",
+                        "status": "APPROVED",
                         "tcr_id": "BXXXXXX",
                         "failure_reason": "Registration error",
                         "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN0044409f7e067e279523808d267e2d85"

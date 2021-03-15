@@ -36,7 +36,7 @@ class FactorTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse(): void {
+    public function testCreatePushResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -114,7 +114,7 @@ class FactorTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse(): void {
+    public function testFetchPushResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -251,7 +251,7 @@ class FactorTest extends HolodeckTestCase {
         ));
     }
 
-    public function testVerifyResponse(): void {
+    public function testVerifyPushResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

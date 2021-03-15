@@ -54,7 +54,7 @@ class RoomInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid The room_sid
+     * @param string $roomSid The SID of the Room resource.
      */
     public function __construct(Version $version, array $payload, string $roomSid = null) {
         parent::__construct($version);

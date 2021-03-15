@@ -42,8 +42,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid The room_sid
-     * @param string $participantSid The participant_sid
+     * @param string $roomSid Unique identifier for the room.
+     * @param string $participantSid The SID of the Participant resource.
      */
     public function __construct(Version $version, array $payload, string $roomSid, string $participantSid = null) {
         parent::__construct($version);

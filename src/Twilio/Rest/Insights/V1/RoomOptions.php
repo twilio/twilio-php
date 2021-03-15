@@ -17,11 +17,13 @@ use Twilio\Values;
  */
 abstract class RoomOptions {
     /**
-     * @param string[] $roomType The room_type
-     * @param string[] $codec The codec
-     * @param string $roomName The room_name
-     * @param \DateTime $createdAfter The created_after
-     * @param \DateTime $createdBefore The created_before
+     * @param string[] $roomType Type of room.
+     * @param string[] $codec Codecs used by participants in the room.
+     * @param string $roomName Room friendly name.
+     * @param \DateTime $createdAfter Only read rooms that started on or after this
+     *                                ISO 8601 timestamp.
+     * @param \DateTime $createdBefore Only read rooms that started before this ISO
+     *                                 8601 timestamp.
      * @return ReadRoomOptions Options builder
      */
     public static function read(array $roomType = Values::ARRAY_NONE, array $codec = Values::ARRAY_NONE, string $roomName = Values::NONE, \DateTime $createdAfter = Values::NONE, \DateTime $createdBefore = Values::NONE): ReadRoomOptions {
@@ -31,11 +33,13 @@ abstract class RoomOptions {
 
 class ReadRoomOptions extends Options {
     /**
-     * @param string[] $roomType The room_type
-     * @param string[] $codec The codec
-     * @param string $roomName The room_name
-     * @param \DateTime $createdAfter The created_after
-     * @param \DateTime $createdBefore The created_before
+     * @param string[] $roomType Type of room.
+     * @param string[] $codec Codecs used by participants in the room.
+     * @param string $roomName Room friendly name.
+     * @param \DateTime $createdAfter Only read rooms that started on or after this
+     *                                ISO 8601 timestamp.
+     * @param \DateTime $createdBefore Only read rooms that started before this ISO
+     *                                 8601 timestamp.
      */
     public function __construct(array $roomType = Values::ARRAY_NONE, array $codec = Values::ARRAY_NONE, string $roomName = Values::NONE, \DateTime $createdAfter = Values::NONE, \DateTime $createdBefore = Values::NONE) {
         $this->options['roomType'] = $roomType;
@@ -46,9 +50,9 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The room_type
+     * Type of room. Can be `go`, `peer_to_peer`, `group`, or `group_small`.
      *
-     * @param string[] $roomType The room_type
+     * @param string[] $roomType Type of room.
      * @return $this Fluent Builder
      */
     public function setRoomType(array $roomType): self {
@@ -57,9 +61,9 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The codec
+     * Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`.
      *
-     * @param string[] $codec The codec
+     * @param string[] $codec Codecs used by participants in the room.
      * @return $this Fluent Builder
      */
     public function setCodec(array $codec): self {
@@ -68,9 +72,9 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The room_name
+     * Room friendly name.
      *
-     * @param string $roomName The room_name
+     * @param string $roomName Room friendly name.
      * @return $this Fluent Builder
      */
     public function setRoomName(string $roomName): self {
@@ -79,9 +83,10 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The created_after
+     * Only read rooms that started on or after this ISO 8601 timestamp.
      *
-     * @param \DateTime $createdAfter The created_after
+     * @param \DateTime $createdAfter Only read rooms that started on or after this
+     *                                ISO 8601 timestamp.
      * @return $this Fluent Builder
      */
     public function setCreatedAfter(\DateTime $createdAfter): self {
@@ -90,9 +95,10 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The created_before
+     * Only read rooms that started before this ISO 8601 timestamp.
      *
-     * @param \DateTime $createdBefore The created_before
+     * @param \DateTime $createdBefore Only read rooms that started before this ISO
+     *                                 8601 timestamp.
      * @return $this Fluent Builder
      */
     public function setCreatedBefore(\DateTime $createdBefore): self {

@@ -22,8 +22,8 @@ class ParticipantContext extends InstanceContext {
      * Initialize the ParticipantContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
-     * @param string $participantSid The participant_sid
+     * @param string $roomSid The SID of the Room resource.
+     * @param string $participantSid The SID of the Participant resource.
      */
     public function __construct(Version $version, $roomSid, $participantSid) {
         parent::__construct($version);

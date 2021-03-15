@@ -29,7 +29,7 @@ class RoomContext extends InstanceContext {
      * Initialize the RoomContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
+     * @param string $roomSid The SID of the Room resource.
      */
     public function __construct(Version $version, $roomSid) {
         parent::__construct($version);

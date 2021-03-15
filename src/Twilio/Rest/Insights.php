@@ -93,7 +93,7 @@ class Insights extends Domain {
     }
 
     /**
-     * @param string $roomSid The room_sid
+     * @param string $roomSid The SID of the Room resource.
      */
     protected function contextRooms(string $roomSid): \Twilio\Rest\Insights\V1\RoomContext {
         return $this->v1->rooms($roomSid);

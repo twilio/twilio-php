@@ -22,7 +22,7 @@ class ParticipantList extends ListResource {
      * Construct the ParticipantList
      *
      * @param Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
+     * @param string $roomSid Unique identifier for the room.
      */
     public function __construct(Version $version, string $roomSid) {
         parent::__construct($version);
@@ -114,7 +114,7 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      *
-     * @param string $participantSid The participant_sid
+     * @param string $participantSid The SID of the Participant resource.
      */
     public function getContext(string $participantSid): ParticipantContext {
         return new ParticipantContext($this->version, $this->solution['roomSid'], $participantSid);

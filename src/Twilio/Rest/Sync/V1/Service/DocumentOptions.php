@@ -79,7 +79,7 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Sync Document expires and is deleted (the Sync Document's time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Document does not expire. The Sync Document will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Document expires and is deleted (the Sync Document's time-to-live).
      *
      * @param int $ttl How long, in seconds, before the Sync Document expires and
      *                 is deleted
@@ -128,7 +128,7 @@ class UpdateDocumentOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Sync Document expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Document resource does not expire. The Document resource will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Document expires and is deleted (time-to-live).
      *
      * @param int $ttl How long, in seconds, before the Document resource expires
      *                 and is deleted
