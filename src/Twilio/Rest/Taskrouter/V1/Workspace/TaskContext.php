@@ -74,8 +74,9 @@ class TaskContext extends InstanceContext {
             'Priority' => $options['priority'],
             'TaskChannel' => $options['taskChannel'],
         ]);
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new TaskInstance(
             $this->version,

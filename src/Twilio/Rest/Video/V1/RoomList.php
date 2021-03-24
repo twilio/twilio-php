@@ -52,6 +52,7 @@ class RoomList extends ListResource {
             'RecordParticipantsOnConnect' => Serialize::booleanToString($options['recordParticipantsOnConnect']),
             'VideoCodecs' => Serialize::map($options['videoCodecs'], function($e) { return $e; }),
             'MediaRegion' => $options['mediaRegion'],
+            'RecordingRules' => Serialize::jsonObject($options['recordingRules']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

@@ -12,7 +12,6 @@ namespace Twilio\Rest\Supersim\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -20,9 +19,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class FleetList extends ListResource {
+class SmsCommandList extends ListResource {
     /**
-     * Construct the FleetList
+     * Construct the SmsCommandList
      *
      * @param Version $version Version that contains the resource
      */
@@ -32,41 +31,36 @@ class FleetList extends ListResource {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Fleets';
+        $this->uri = '/SmsCommands';
     }
 
     /**
-     * Create the FleetInstance
+     * Create the SmsCommandInstance
      *
-     * @param string $networkAccessProfile The SID or unique name of the Network
-     *                                     Access Profile of the Fleet
+     * @param string $sim The sid or unique_name of the SIM to send the SMS Command
+     *                    to
+     * @param string $payload The message body of the SMS Command
      * @param array|Options $options Optional Arguments
-     * @return FleetInstance Created FleetInstance
+     * @return SmsCommandInstance Created SmsCommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $networkAccessProfile, array $options = []): FleetInstance {
+    public function create(string $sim, string $payload, array $options = []): SmsCommandInstance {
         $options = new Values($options);
 
         $data = Values::of([
-            'NetworkAccessProfile' => $networkAccessProfile,
-            'UniqueName' => $options['uniqueName'],
-            'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
-            'DataLimit' => $options['dataLimit'],
-            'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
-            'CommandsUrl' => $options['commandsUrl'],
-            'CommandsMethod' => $options['commandsMethod'],
-            'SmsCommandsEnabled' => Serialize::booleanToString($options['smsCommandsEnabled']),
-            'SmsCommandsUrl' => $options['smsCommandsUrl'],
-            'SmsCommandsMethod' => $options['smsCommandsMethod'],
+            'Sim' => $sim,
+            'Payload' => $payload,
+            'CallbackMethod' => $options['callbackMethod'],
+            'CallbackUrl' => $options['callbackUrl'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new FleetInstance($this->version, $payload);
+        return new SmsCommandInstance($this->version, $payload);
     }
 
     /**
-     * Streams FleetInstance records from the API as a generator stream.
+     * Streams SmsCommandInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -93,7 +87,7 @@ class FleetList extends ListResource {
     }
 
     /**
-     * Reads FleetInstance records from the API as a list.
+     * Reads SmsCommandInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -106,27 +100,29 @@ class FleetList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return FleetInstance[] Array of results
+     * @return SmsCommandInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of FleetInstance records from the API.
+     * Retrieve a single page of SmsCommandInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return FleetPage Page of FleetInstance
+     * @return SmsCommandPage Page of SmsCommandInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FleetPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SmsCommandPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'NetworkAccessProfile' => $options['networkAccessProfile'],
+            'Sim' => $options['sim'],
+            'Status' => $options['status'],
+            'Direction' => $options['direction'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -134,32 +130,32 @@ class FleetList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new FleetPage($this->version, $response, $this->solution);
+        return new SmsCommandPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of FleetInstance records from the API.
+     * Retrieve a specific page of SmsCommandInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return FleetPage Page of FleetInstance
+     * @return SmsCommandPage Page of SmsCommandInstance
      */
-    public function getPage(string $targetUrl): FleetPage {
+    public function getPage(string $targetUrl): SmsCommandPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new FleetPage($this->version, $response, $this->solution);
+        return new SmsCommandPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a FleetContext
+     * Constructs a SmsCommandContext
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext(string $sid): FleetContext {
-        return new FleetContext($this->version, $sid);
+    public function getContext(string $sid): SmsCommandContext {
+        return new SmsCommandContext($this->version, $sid);
     }
 
     /**
@@ -168,6 +164,6 @@ class FleetList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Supersim.V1.FleetList]';
+        return '[Twilio.Supersim.V1.SmsCommandList]';
     }
 }

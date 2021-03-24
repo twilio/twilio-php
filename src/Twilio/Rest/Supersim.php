@@ -20,12 +20,14 @@ use Twilio\Rest\Supersim\V1;
  * @property \Twilio\Rest\Supersim\V1\NetworkList $networks
  * @property \Twilio\Rest\Supersim\V1\NetworkAccessProfileList $networkAccessProfiles
  * @property \Twilio\Rest\Supersim\V1\SimList $sims
+ * @property \Twilio\Rest\Supersim\V1\SmsCommandList $smsCommands
  * @property \Twilio\Rest\Supersim\V1\UsageRecordList $usageRecords
  * @method \Twilio\Rest\Supersim\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Supersim\V1\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Supersim\V1\NetworkContext networks(string $sid)
  * @method \Twilio\Rest\Supersim\V1\NetworkAccessProfileContext networkAccessProfiles(string $sid)
  * @method \Twilio\Rest\Supersim\V1\SimContext sims(string $sid)
+ * @method \Twilio\Rest\Supersim\V1\SmsCommandContext smsCommands(string $sid)
  */
 class Supersim extends Domain {
     protected $_v1;
@@ -137,6 +139,17 @@ class Supersim extends Domain {
      */
     protected function contextSims(string $sid): \Twilio\Rest\Supersim\V1\SimContext {
         return $this->v1->sims($sid);
+    }
+
+    protected function getSmsCommands(): \Twilio\Rest\Supersim\V1\SmsCommandList {
+        return $this->v1->smsCommands;
+    }
+
+    /**
+     * @param string $sid The SID that identifies the resource to fetch
+     */
+    protected function contextSmsCommands(string $sid): \Twilio\Rest\Supersim\V1\SmsCommandContext {
+        return $this->v1->smsCommands($sid);
     }
 
     protected function getUsageRecords(): \Twilio\Rest\Supersim\V1\UsageRecordList {

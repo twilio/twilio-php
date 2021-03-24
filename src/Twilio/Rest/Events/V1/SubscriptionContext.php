@@ -21,6 +21,7 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property SubscribedEventList $subscribedEvents
+ * @method \Twilio\Rest\Events\V1\Subscription\SubscribedEventContext subscribedEvents(string $type)
  */
 class SubscriptionContext extends InstanceContext {
     protected $_subscribedEvents;

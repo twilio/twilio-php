@@ -27,6 +27,8 @@ use Twilio\Version;
  * @property string $webhookMethod
  * @property string $email
  * @property string $url
+ * @property string $jobQueuePosition
+ * @property string $estimatedCompletionTime
  */
 class JobInstance extends InstanceResource {
     /**
@@ -52,6 +54,8 @@ class JobInstance extends InstanceResource {
             'webhookMethod' => Values::array_get($payload, 'webhook_method'),
             'email' => Values::array_get($payload, 'email'),
             'url' => Values::array_get($payload, 'url'),
+            'jobQueuePosition' => Values::array_get($payload, 'job_queue_position'),
+            'estimatedCompletionTime' => Values::array_get($payload, 'estimated_completion_time'),
         ];
 
         $this->solution = ['jobSid' => $jobSid ?: $this->properties['jobSid'], ];

@@ -7,13 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room;
+namespace Twilio\Rest\Supersim\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class RecordingRulesPage extends Page {
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
+class SmsCommandPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,10 +31,10 @@ class RecordingRulesPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return RecordingRulesInstance \Twilio\Rest\Video\V1\Room\RecordingRulesInstance
+     * @return SmsCommandInstance \Twilio\Rest\Supersim\V1\SmsCommandInstance
      */
-    public function buildInstance(array $payload): RecordingRulesInstance {
-        return new RecordingRulesInstance($this->version, $payload, $this->solution['roomSid']);
+    public function buildInstance(array $payload): SmsCommandInstance {
+        return new SmsCommandInstance($this->version, $payload);
     }
 
     /**
@@ -40,6 +43,6 @@ class RecordingRulesPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Video.V1.RecordingRulesPage]';
+        return '[Twilio.Supersim.V1.SmsCommandPage]';
     }
 }

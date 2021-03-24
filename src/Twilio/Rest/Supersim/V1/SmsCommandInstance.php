@@ -12,33 +12,25 @@ namespace Twilio\Rest\Supersim\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string $accountSid
  * @property string $sid
- * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $simSid
+ * @property string $payload
+ * @property string $status
+ * @property string $direction
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
- * @property bool $dataEnabled
- * @property int $dataLimit
- * @property string $dataMetering
- * @property bool $commandsEnabled
- * @property string $commandsUrl
- * @property string $commandsMethod
- * @property bool $smsCommandsEnabled
- * @property string $smsCommandsUrl
- * @property string $smsCommandsMethod
- * @property string $networkAccessProfileSid
  */
-class FleetInstance extends InstanceResource {
+class SmsCommandInstance extends InstanceResource {
     /**
-     * Initialize the FleetInstance
+     * Initialize the SmsCommandInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -49,22 +41,15 @@ class FleetInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
             'sid' => Values::array_get($payload, 'sid'),
-            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'simSid' => Values::array_get($payload, 'sim_sid'),
+            'payload' => Values::array_get($payload, 'payload'),
+            'status' => Values::array_get($payload, 'status'),
+            'direction' => Values::array_get($payload, 'direction'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-            'dataEnabled' => Values::array_get($payload, 'data_enabled'),
-            'dataLimit' => Values::array_get($payload, 'data_limit'),
-            'dataMetering' => Values::array_get($payload, 'data_metering'),
-            'commandsEnabled' => Values::array_get($payload, 'commands_enabled'),
-            'commandsUrl' => Values::array_get($payload, 'commands_url'),
-            'commandsMethod' => Values::array_get($payload, 'commands_method'),
-            'smsCommandsEnabled' => Values::array_get($payload, 'sms_commands_enabled'),
-            'smsCommandsUrl' => Values::array_get($payload, 'sms_commands_url'),
-            'smsCommandsMethod' => Values::array_get($payload, 'sms_commands_method'),
-            'networkAccessProfileSid' => Values::array_get($payload, 'network_access_profile_sid'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -74,35 +59,24 @@ class FleetInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return FleetContext Context for this FleetInstance
+     * @return SmsCommandContext Context for this SmsCommandInstance
      */
-    protected function proxy(): FleetContext {
+    protected function proxy(): SmsCommandContext {
         if (!$this->context) {
-            $this->context = new FleetContext($this->version, $this->solution['sid']);
+            $this->context = new SmsCommandContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the FleetInstance
+     * Fetch the SmsCommandInstance
      *
-     * @return FleetInstance Fetched FleetInstance
+     * @return SmsCommandInstance Fetched SmsCommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FleetInstance {
+    public function fetch(): SmsCommandInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the FleetInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return FleetInstance Updated FleetInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): FleetInstance {
-        return $this->proxy()->update($options);
     }
 
     /**
@@ -135,6 +109,6 @@ class FleetInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Supersim.V1.FleetInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Supersim.V1.SmsCommandInstance ' . \implode(' ', $context) . ']';
     }
 }

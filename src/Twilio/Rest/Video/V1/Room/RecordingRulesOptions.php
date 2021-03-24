@@ -12,9 +12,6 @@ namespace Twilio\Rest\Video\V1\Room;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class RecordingRulesOptions {
     /**
      * @param array $rules A JSON-encoded array of recording rules

@@ -61,6 +61,8 @@ class FleetContext extends InstanceContext {
             'NetworkAccessProfile' => $options['networkAccessProfile'],
             'CommandsUrl' => $options['commandsUrl'],
             'CommandsMethod' => $options['commandsMethod'],
+            'SmsCommandsUrl' => $options['smsCommandsUrl'],
+            'SmsCommandsMethod' => $options['smsCommandsMethod'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

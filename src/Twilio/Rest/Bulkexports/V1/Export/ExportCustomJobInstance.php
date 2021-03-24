@@ -26,6 +26,8 @@ use Twilio\Version;
  * @property string $email
  * @property string $jobSid
  * @property array $details
+ * @property string $jobQueuePosition
+ * @property string $estimatedCompletionTime
  */
 class ExportCustomJobInstance extends InstanceResource {
     /**
@@ -50,6 +52,8 @@ class ExportCustomJobInstance extends InstanceResource {
             'email' => Values::array_get($payload, 'email'),
             'jobSid' => Values::array_get($payload, 'job_sid'),
             'details' => Values::array_get($payload, 'details'),
+            'jobQueuePosition' => Values::array_get($payload, 'job_queue_position'),
+            'estimatedCompletionTime' => Values::array_get($payload, 'estimated_completion_time'),
         ];
 
         $this->solution = ['resourceType' => $resourceType, ];
