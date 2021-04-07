@@ -88,7 +88,6 @@ class CallList extends ListResource {
             'CallReason' => $options['callReason'],
             'CallToken' => $options['callToken'],
             'RecordingTrack' => $options['recordingTrack'],
-            'TimeLimit' => $options['timeLimit'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

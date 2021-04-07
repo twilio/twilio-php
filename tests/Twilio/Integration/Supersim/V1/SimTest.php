@@ -16,6 +16,47 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class SimTest extends HolodeckTestCase {
+    public function testCreateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->supersim->v1->sims->create("iccid", "registration_code");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = ['Iccid' => "iccid", 'RegistrationCode' => "registration_code", ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://supersim.twilio.com/v1/Sims',
+            null,
+            $values
+        ));
+    }
+
+    public function testCreateResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "MySIM",
+                "status": "new",
+                "fleet_sid": null,
+                "iccid": "iccid",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->sims->create("iccid", "registration_code");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

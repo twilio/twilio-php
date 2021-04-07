@@ -14,6 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Rest\Verify\V2\Service\Entity\ChallengeList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
+use Twilio\Rest\Verify\V2\Service\Entity\NewFactorList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -31,6 +32,7 @@ use Twilio\Version;
  */
 class EntityInstance extends InstanceResource {
     protected $_factors;
+    protected $_newFactors;
     protected $_challenges;
 
     /**
@@ -105,6 +107,13 @@ class EntityInstance extends InstanceResource {
      */
     protected function getFactors(): FactorList {
         return $this->proxy()->factors;
+    }
+
+    /**
+     * Access the newFactors
+     */
+    protected function getNewFactors(): NewFactorList {
+        return $this->proxy()->newFactors;
     }
 
     /**

@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Rest\Verify\V2\Service\Entity\ChallengeList;
 use Twilio\Rest\Verify\V2\Service\Entity\FactorList;
+use Twilio\Rest\Verify\V2\Service\Entity\NewFactorList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,12 +22,14 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property FactorList $factors
+ * @property NewFactorList $newFactors
  * @property ChallengeList $challenges
  * @method \Twilio\Rest\Verify\V2\Service\Entity\FactorContext factors(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\Entity\ChallengeContext challenges(string $sid)
  */
 class EntityContext extends InstanceContext {
     protected $_factors;
+    protected $_newFactors;
     protected $_challenges;
 
     /**
@@ -85,6 +88,21 @@ class EntityContext extends InstanceContext {
         }
 
         return $this->_factors;
+    }
+
+    /**
+     * Access the newFactors
+     */
+    protected function getNewFactors(): NewFactorList {
+        if (!$this->_newFactors) {
+            $this->_newFactors = new NewFactorList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['identity']
+            );
+        }
+
+        return $this->_newFactors;
     }
 
     /**

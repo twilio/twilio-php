@@ -146,7 +146,7 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The If-Match HTTP request header
+     * If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      *
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder

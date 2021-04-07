@@ -9,9 +9,7 @@
 
 namespace Twilio\Rest\Verify\V2\Service\Entity;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
-use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -34,44 +32,6 @@ class FactorList extends ListResource {
         $this->solution = ['serviceSid' => $serviceSid, 'identity' => $identity, ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors';
-    }
-
-    /**
-     * Create the FactorInstance
-     *
-     * @param string $friendlyName The friendly name of this Factor
-     * @param string $factorType The Type of this Factor
-     * @param array|Options $options Optional Arguments
-     * @return FactorInstance Created FactorInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(string $friendlyName, string $factorType, array $options = []): FactorInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'FactorType' => $factorType,
-            'Binding.Alg' => $options['bindingAlg'],
-            'Binding.PublicKey' => $options['bindingPublicKey'],
-            'Config.AppId' => $options['configAppId'],
-            'Config.NotificationPlatform' => $options['configNotificationPlatform'],
-            'Config.NotificationToken' => $options['configNotificationToken'],
-            'Config.SdkVersion' => $options['configSdkVersion'],
-            'Binding.Secret' => $options['bindingSecret'],
-            'Config.TimeStep' => $options['configTimeStep'],
-            'Config.Skew' => $options['configSkew'],
-            'Config.CodeLength' => $options['configCodeLength'],
-            'Config.Alg' => $options['configAlg'],
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new FactorInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['identity']
-        );
     }
 
     /**

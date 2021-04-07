@@ -17,7 +17,9 @@ use Twilio\Rest\Messaging\V1;
  * @property \Twilio\Rest\Messaging\V1 $v1
  * @property \Twilio\Rest\Messaging\V1\BrandRegistrationList $brandRegistrations
  * @property \Twilio\Rest\Messaging\V1\DeactivationsList $deactivations
+ * @property \Twilio\Rest\Messaging\V1\ExternalCampaignList $externalCampaign
  * @property \Twilio\Rest\Messaging\V1\ServiceList $services
+ * @property \Twilio\Rest\Messaging\V1\UsecaseList $usecases
  * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
  * @method \Twilio\Rest\Messaging\V1\DeactivationsContext deactivations()
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
@@ -98,6 +100,10 @@ class Messaging extends Domain {
         return $this->v1->deactivations();
     }
 
+    protected function getExternalCampaign(): \Twilio\Rest\Messaging\V1\ExternalCampaignList {
+        return $this->v1->externalCampaign;
+    }
+
     protected function getServices(): \Twilio\Rest\Messaging\V1\ServiceList {
         return $this->v1->services;
     }
@@ -107,6 +113,10 @@ class Messaging extends Domain {
      */
     protected function contextServices(string $sid): \Twilio\Rest\Messaging\V1\ServiceContext {
         return $this->v1->services($sid);
+    }
+
+    protected function getUsecases(): \Twilio\Rest\Messaging\V1\UsecaseList {
+        return $this->v1->usecases;
     }
 
     /**

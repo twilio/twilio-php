@@ -634,7 +634,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, and `speaker`. Separate multiple values with a space. Defaults to `start end`.
+     * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
      *
      * @param string[] $conferenceStatusCallbackEvent The conference state changes
      *                                                that should generate a call

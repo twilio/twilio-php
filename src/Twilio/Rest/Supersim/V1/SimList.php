@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Supersim\V1;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Stream;
@@ -31,6 +32,24 @@ class SimList extends ListResource {
         $this->solution = [];
 
         $this->uri = '/Sims';
+    }
+
+    /**
+     * Create the SimInstance
+     *
+     * @param string $iccid The
+     *                      [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account
+     * @param string $registrationCode The 10 digit code required to claim the
+     *                                 Super SIM for your Account
+     * @return SimInstance Created SimInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $iccid, string $registrationCode): SimInstance {
+        $data = Values::of(['Iccid' => $iccid, 'RegistrationCode' => $registrationCode, ]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data);
+
+        return new SimInstance($this->version, $payload);
     }
 
     /**
