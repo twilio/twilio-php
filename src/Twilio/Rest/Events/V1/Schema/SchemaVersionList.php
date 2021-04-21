@@ -17,9 +17,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class VersionList extends ListResource {
+class SchemaVersionList extends ListResource {
     /**
-     * Construct the VersionList
+     * Construct the SchemaVersionList
      *
      * @param Version $version Version that contains the resource
      * @param string $id The unique identifier of the schema.
@@ -34,7 +34,7 @@ class VersionList extends ListResource {
     }
 
     /**
-     * Streams VersionInstance records from the API as a generator stream.
+     * Streams SchemaVersionInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -60,7 +60,7 @@ class VersionList extends ListResource {
     }
 
     /**
-     * Reads VersionInstance records from the API as a list.
+     * Reads SchemaVersionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -72,52 +72,52 @@ class VersionList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return VersionInstance[] Array of results
+     * @return SchemaVersionInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of VersionInstance records from the API.
+     * Retrieve a single page of SchemaVersionInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return VersionPage Page of VersionInstance
+     * @return SchemaVersionPage Page of SchemaVersionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): VersionPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SchemaVersionPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new VersionPage($this->version, $response, $this->solution);
+        return new SchemaVersionPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of VersionInstance records from the API.
+     * Retrieve a specific page of SchemaVersionInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return VersionPage Page of VersionInstance
+     * @return SchemaVersionPage Page of SchemaVersionInstance
      */
-    public function getPage(string $targetUrl): VersionPage {
+    public function getPage(string $targetUrl): SchemaVersionPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new VersionPage($this->version, $response, $this->solution);
+        return new SchemaVersionPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a VersionContext
+     * Constructs a SchemaVersionContext
      *
      * @param int $schemaVersion The version of the schema
      */
-    public function getContext(int $schemaVersion): VersionContext {
-        return new VersionContext($this->version, $this->solution['id'], $schemaVersion);
+    public function getContext(int $schemaVersion): SchemaVersionContext {
+        return new SchemaVersionContext($this->version, $this->solution['id'], $schemaVersion);
     }
 
     /**
@@ -126,6 +126,6 @@ class VersionList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Events.V1.VersionList]';
+        return '[Twilio.Events.V1.SchemaVersionList]';
     }
 }

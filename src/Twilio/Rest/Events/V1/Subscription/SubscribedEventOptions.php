@@ -17,38 +17,42 @@ use Twilio\Values;
  */
 abstract class SubscribedEventOptions {
     /**
-     * @param int $version The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the subscription should
+     *                           use.
      * @return CreateSubscribedEventOptions Options builder
      */
-    public static function create(int $version = Values::NONE): CreateSubscribedEventOptions {
-        return new CreateSubscribedEventOptions($version);
+    public static function create(int $schemaVersion = Values::NONE): CreateSubscribedEventOptions {
+        return new CreateSubscribedEventOptions($schemaVersion);
     }
 
     /**
-     * @param int $version The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the subscription should
+     *                           use.
      * @return UpdateSubscribedEventOptions Options builder
      */
-    public static function update(int $version = Values::NONE): UpdateSubscribedEventOptions {
-        return new UpdateSubscribedEventOptions($version);
+    public static function update(int $schemaVersion = Values::NONE): UpdateSubscribedEventOptions {
+        return new UpdateSubscribedEventOptions($schemaVersion);
     }
 }
 
 class CreateSubscribedEventOptions extends Options {
     /**
-     * @param int $version The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the subscription should
+     *                           use.
      */
-    public function __construct(int $version = Values::NONE) {
-        $this->options['version'] = $version;
+    public function __construct(int $schemaVersion = Values::NONE) {
+        $this->options['schemaVersion'] = $schemaVersion;
     }
 
     /**
      * The schema version that the subscription should use.
      *
-     * @param int $version The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the subscription should
+     *                           use.
      * @return $this Fluent Builder
      */
-    public function setVersion(int $version): self {
-        $this->options['version'] = $version;
+    public function setSchemaVersion(int $schemaVersion): self {
+        $this->options['schemaVersion'] = $schemaVersion;
         return $this;
     }
 
@@ -65,20 +69,22 @@ class CreateSubscribedEventOptions extends Options {
 
 class UpdateSubscribedEventOptions extends Options {
     /**
-     * @param int $version The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the subscription should
+     *                           use.
      */
-    public function __construct(int $version = Values::NONE) {
-        $this->options['version'] = $version;
+    public function __construct(int $schemaVersion = Values::NONE) {
+        $this->options['schemaVersion'] = $schemaVersion;
     }
 
     /**
      * The schema version that the subscription should use.
      *
-     * @param int $version The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the subscription should
+     *                           use.
      * @return $this Fluent Builder
      */
-    public function setVersion(int $version): self {
-        $this->options['version'] = $version;
+    public function setSchemaVersion(int $schemaVersion): self {
+        $this->options['schemaVersion'] = $schemaVersion;
         return $this;
     }
 

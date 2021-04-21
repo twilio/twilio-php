@@ -29,6 +29,14 @@ abstract class TaskOptions {
     }
 
     /**
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return DeleteTaskOptions Options builder
+     */
+    public static function delete(string $ifMatch = Values::NONE): DeleteTaskOptions {
+        return new DeleteTaskOptions($ifMatch);
+    }
+
+    /**
      * @param int $priority The priority value of the Tasks to read
      * @param string[] $assignmentStatus Returns the list of all Tasks in the
      *                                   Workspace with the specified
@@ -164,6 +172,36 @@ class UpdateTaskOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateTaskOptions ' . $options . ']';
+    }
+}
+
+class DeleteTaskOptions extends Options {
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     */
+    public function __construct(string $ifMatch = Values::NONE) {
+        $this->options['ifMatch'] = $ifMatch;
+    }
+
+    /**
+     * If provided, deletes this Task if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.DeleteTaskOptions ' . $options . ']';
     }
 }
 

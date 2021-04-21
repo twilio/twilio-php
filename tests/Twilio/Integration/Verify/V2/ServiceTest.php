@@ -56,6 +56,12 @@ class ServiceTest extends HolodeckTestCase {
                     "apn_credential_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "fcm_credential_sid": null
                 },
+                "totp": {
+                    "issuer": "test-issuer",
+                    "time_step": 30,
+                    "code_length": 3,
+                    "skew": 2
+                },
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -112,6 +118,12 @@ class ServiceTest extends HolodeckTestCase {
                     "include_date": true,
                     "apn_credential_sid": null,
                     "fcm_credential_sid": null
+                },
+                "totp": {
+                    "issuer": null,
+                    "time_step": null,
+                    "code_length": null,
+                    "skew": null
                 },
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
@@ -206,6 +218,12 @@ class ServiceTest extends HolodeckTestCase {
                             "apn_credential_sid": null,
                             "fcm_credential_sid": null
                         },
+                        "totp": {
+                            "issuer": null,
+                            "time_step": null,
+                            "code_length": null,
+                            "skew": null
+                        },
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -264,6 +282,12 @@ class ServiceTest extends HolodeckTestCase {
                     "include_date": true,
                     "apn_credential_sid": null,
                     "fcm_credential_sid": "CRbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                },
+                "totp": {
+                    "issuer": "test-issuer",
+                    "time_step": 30,
+                    "code_length": 3,
+                    "skew": 2
                 },
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",

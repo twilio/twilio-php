@@ -24,10 +24,11 @@ abstract class ChallengeOptions {
      *                               included in the Challenge
      * @param array $hiddenDetails Hidden details provided to contextualize the
      *                             Challenge
+     * @param string $authPayload Optional payload to verify the Challenge
      * @return CreateChallengeOptions Options builder
      */
-    public static function create(\DateTime $expirationDate = Values::NONE, string $detailsMessage = Values::NONE, array $detailsFields = Values::ARRAY_NONE, array $hiddenDetails = Values::ARRAY_NONE): CreateChallengeOptions {
-        return new CreateChallengeOptions($expirationDate, $detailsMessage, $detailsFields, $hiddenDetails);
+    public static function create(\DateTime $expirationDate = Values::NONE, string $detailsMessage = Values::NONE, array $detailsFields = Values::ARRAY_NONE, array $hiddenDetails = Values::ARRAY_NONE, string $authPayload = Values::NONE): CreateChallengeOptions {
+        return new CreateChallengeOptions($expirationDate, $detailsMessage, $detailsFields, $hiddenDetails, $authPayload);
     }
 
     /**
@@ -57,12 +58,14 @@ class CreateChallengeOptions extends Options {
      *                               included in the Challenge
      * @param array $hiddenDetails Hidden details provided to contextualize the
      *                             Challenge
+     * @param string $authPayload Optional payload to verify the Challenge
      */
-    public function __construct(\DateTime $expirationDate = Values::NONE, string $detailsMessage = Values::NONE, array $detailsFields = Values::ARRAY_NONE, array $hiddenDetails = Values::ARRAY_NONE) {
+    public function __construct(\DateTime $expirationDate = Values::NONE, string $detailsMessage = Values::NONE, array $detailsFields = Values::ARRAY_NONE, array $hiddenDetails = Values::ARRAY_NONE, string $authPayload = Values::NONE) {
         $this->options['expirationDate'] = $expirationDate;
         $this->options['detailsMessage'] = $detailsMessage;
         $this->options['detailsFields'] = $detailsFields;
         $this->options['hiddenDetails'] = $hiddenDetails;
+        $this->options['authPayload'] = $authPayload;
     }
 
     /**
@@ -109,6 +112,17 @@ class CreateChallengeOptions extends Options {
      */
     public function setHiddenDetails(array $hiddenDetails): self {
         $this->options['hiddenDetails'] = $hiddenDetails;
+        return $this;
+    }
+
+    /**
+     * Optional payload used to verify the Challenge upon creation. Only used with a Factor of type `totp` to carry an OTP used in the verification.
+     *
+     * @param string $authPayload Optional payload to verify the Challenge
+     * @return $this Fluent Builder
+     */
+    public function setAuthPayload(string $authPayload): self {
+        $this->options['authPayload'] = $authPayload;
         return $this;
     }
 

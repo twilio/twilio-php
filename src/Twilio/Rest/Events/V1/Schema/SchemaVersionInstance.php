@@ -24,9 +24,9 @@ use Twilio\Version;
  * @property string $url
  * @property string $raw
  */
-class VersionInstance extends InstanceResource {
+class SchemaVersionInstance extends InstanceResource {
     /**
-     * Initialize the VersionInstance
+     * Initialize the SchemaVersionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -55,11 +55,11 @@ class VersionInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return VersionContext Context for this VersionInstance
+     * @return SchemaVersionContext Context for this SchemaVersionInstance
      */
-    protected function proxy(): VersionContext {
+    protected function proxy(): SchemaVersionContext {
         if (!$this->context) {
-            $this->context = new VersionContext(
+            $this->context = new SchemaVersionContext(
                 $this->version,
                 $this->solution['id'],
                 $this->solution['schemaVersion']
@@ -70,12 +70,12 @@ class VersionInstance extends InstanceResource {
     }
 
     /**
-     * Fetch the VersionInstance
+     * Fetch the SchemaVersionInstance
      *
-     * @return VersionInstance Fetched VersionInstance
+     * @return SchemaVersionInstance Fetched SchemaVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VersionInstance {
+    public function fetch(): SchemaVersionInstance {
         return $this->proxy()->fetch();
     }
 
@@ -109,6 +109,6 @@ class VersionInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Events.V1.VersionInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Events.V1.SchemaVersionInstance ' . \implode(' ', $context) . ']';
     }
 }

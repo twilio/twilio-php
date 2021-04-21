@@ -36,7 +36,7 @@ class ChallengeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse(): void {
+    public function testCreateWithoutAuthPayloadResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -67,7 +67,56 @@ class ChallengeTest extends HolodeckTestCase {
                     "ip": "172.168.1.234"
                 },
                 "factor_type": "push",
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithAuthPayloadResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "ff483d1ff591898a9942916050d2ca3f",
+                "factor_sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "date_responded": "2015-07-30T20:00:00Z",
+                "expiration_date": "2015-07-30T20:00:00Z",
+                "status": "approved",
+                "responded_reason": "none",
+                "details": {
+                    "message": "Hi! Mr. John Doe, would you like to sign up?",
+                    "date": "2020-07-01T12:13:14Z",
+                    "fields": [
+                        {
+                            "label": "Action",
+                            "value": "Sign up in portal"
+                        }
+                    ]
+                },
+                "hidden_details": {
+                    "ip": "172.168.1.234"
+                },
+                "factor_type": "push",
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
             }
             '
         ));
@@ -126,7 +175,10 @@ class ChallengeTest extends HolodeckTestCase {
                     "ip": "172.168.1.234"
                 },
                 "factor_type": "push",
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
             }
             '
         ));
@@ -213,7 +265,10 @@ class ChallengeTest extends HolodeckTestCase {
                             "ip": "172.168.1.234"
                         },
                         "factor_type": "push",
-                        "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                        }
                     }
                 ],
                 "meta": {
@@ -283,7 +338,10 @@ class ChallengeTest extends HolodeckTestCase {
                     "ip": "172.168.1.234"
                 },
                 "factor_type": "push",
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
             }
             '
         ));

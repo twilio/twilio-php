@@ -62,7 +62,7 @@ class SubscribedEventContext extends InstanceContext {
     public function update(array $options = []): SubscribedEventInstance {
         $options = new Values($options);
 
-        $data = Values::of(['Version' => $options['version'], ]);
+        $data = Values::of(['SchemaVersion' => $options['schemaVersion'], ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 

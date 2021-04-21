@@ -155,7 +155,7 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds
+     * Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. The default value is defined at the service level in the property totp.time_step. If not configured defaults to 30 seconds
      *
      * @param int $configTimeStep How often, in seconds, are TOTP codes generated
      * @return $this Fluent Builder
@@ -166,7 +166,7 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
+     * The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. The default value is defined at the service level in the property totp.skew. If not configured defaults to 1
      *
      * @param int $configSkew The number of past and future time-steps valid at a
      *                        given time
@@ -178,7 +178,7 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
+     * Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. The default value is defined at the service level in the property totp.code_length. If not configured defaults to 6
      *
      * @param int $configCodeLength Number of digits for generated TOTP codes
      * @return $this Fluent Builder

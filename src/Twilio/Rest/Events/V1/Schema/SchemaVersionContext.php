@@ -17,9 +17,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class VersionContext extends InstanceContext {
+class SchemaVersionContext extends InstanceContext {
     /**
-     * Initialize the VersionContext
+     * Initialize the SchemaVersionContext
      *
      * @param Version $version Version that contains the resource
      * @param string $id The unique identifier of the schema.
@@ -35,15 +35,15 @@ class VersionContext extends InstanceContext {
     }
 
     /**
-     * Fetch the VersionInstance
+     * Fetch the SchemaVersionInstance
      *
-     * @return VersionInstance Fetched VersionInstance
+     * @return SchemaVersionInstance Fetched SchemaVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VersionInstance {
+    public function fetch(): SchemaVersionInstance {
         $payload = $this->version->fetch('GET', $this->uri);
 
-        return new VersionInstance(
+        return new SchemaVersionInstance(
             $this->version,
             $payload,
             $this->solution['id'],
@@ -61,6 +61,6 @@ class VersionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Events.V1.VersionContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Events.V1.SchemaVersionContext ' . \implode(' ', $context) . ']';
     }
 }

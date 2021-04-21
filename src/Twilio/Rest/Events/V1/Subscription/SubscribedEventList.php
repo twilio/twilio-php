@@ -124,7 +124,7 @@ class SubscribedEventList extends ListResource {
     public function create(string $type, array $options = []): SubscribedEventInstance {
         $options = new Values($options);
 
-        $data = Values::of(['Type' => $type, 'Version' => $options['version'], ]);
+        $data = Values::of(['Type' => $type, 'SchemaVersion' => $options['schemaVersion'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 

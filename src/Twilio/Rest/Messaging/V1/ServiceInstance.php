@@ -44,6 +44,7 @@ use Twilio\Version;
  * @property int $validityPeriod
  * @property string $url
  * @property array $links
+ * @property bool $useInboundWebhookOnNumber
  */
 class ServiceInstance extends InstanceResource {
     protected $_phoneNumbers;
@@ -84,6 +85,7 @@ class ServiceInstance extends InstanceResource {
             'validityPeriod' => Values::array_get($payload, 'validity_period'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'useInboundWebhookOnNumber' => Values::array_get($payload, 'use_inbound_webhook_on_number'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

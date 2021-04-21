@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Events\V1\Schema;
+namespace Twilio\Rest\Verify\V2\Service\Entity\Challenge;
 
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class VersionPage extends Page {
+class NotificationPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,16 @@ class VersionPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return VersionInstance \Twilio\Rest\Events\V1\Schema\VersionInstance
+     * @return NotificationInstance \Twilio\Rest\Verify\V2\Service\Entity\Challenge\NotificationInstance
      */
-    public function buildInstance(array $payload): VersionInstance {
-        return new VersionInstance($this->version, $payload, $this->solution['id']);
+    public function buildInstance(array $payload): NotificationInstance {
+        return new NotificationInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['identity'],
+            $this->solution['challengeSid']
+        );
     }
 
     /**
@@ -43,6 +49,6 @@ class VersionPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Events.V1.VersionPage]';
+        return '[Twilio.Verify.V2.NotificationPage]';
     }
 }

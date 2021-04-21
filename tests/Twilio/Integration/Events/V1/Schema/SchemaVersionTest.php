@@ -15,7 +15,7 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class VersionTest extends HolodeckTestCase {
+class SchemaVersionTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
@@ -40,9 +40,9 @@ class VersionTest extends HolodeckTestCase {
                 "meta": {
                     "page": 0,
                     "page_size": 10,
-                    "first_page_url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=10&Page=0",
+                    "first_page_url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=10&Page=0",
                     "previous_page_url": null,
-                    "url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=10&Page=0",
+                    "url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=10&Page=0",
                     "next_page_url": null,
                     "key": "schema_versions"
                 }
@@ -63,26 +63,26 @@ class VersionTest extends HolodeckTestCase {
             {
                 "schema_versions": [
                     {
-                        "id": "DataTaps.TestEventSchema",
+                        "id": "Messaging.MessageStatus",
                         "schema_version": 1,
                         "date_created": "2015-07-30T20:00:00Z",
-                        "url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions/1",
-                        "raw": "https://events-schemas.twilio.com/DataTaps.TestEventSchema/1"
+                        "url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1",
+                        "raw": "https://events-schemas.twilio.com/Messaging.MessageStatus/1"
                     },
                     {
-                        "id": "DataTaps.TestEventSchema",
+                        "id": "Messaging.MessageStatus",
                         "schema_version": 2,
                         "date_created": "2015-07-30T20:00:00Z",
-                        "url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions/2",
-                        "raw": "https://events-schemas.twilio.com/DataTaps.TestEventSchema/2"
+                        "url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/2",
+                        "raw": "https://events-schemas.twilio.com/Messaging.MessageStatus/2"
                     }
                 ],
                 "meta": {
                     "page": 0,
                     "page_size": 50,
-                    "first_page_url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=50&Page=0",
+                    "first_page_url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0",
                     "previous_page_url": null,
-                    "url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=50&Page=0",
+                    "url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0",
                     "next_page_url": null,
                     "key": "schema_versions"
                 }
@@ -116,11 +116,11 @@ class VersionTest extends HolodeckTestCase {
             200,
             '
             {
-                "id": "DataTaps.TestEventSchema",
+                "id": "Messaging.MessageStatus",
                 "schema_version": 1,
                 "date_created": "2015-07-30T20:00:00Z",
-                "url": "https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions/1",
-                "raw": "https://events-schemas.twilio.com/DataTaps.TestEventSchema/1"
+                "url": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1",
+                "raw": "https://events-schemas.twilio.com/Messaging.MessageStatus/1"
             }
             '
         ));
