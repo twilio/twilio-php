@@ -12,9 +12,6 @@ namespace Twilio\Rest\Bulkexports\V1\Export;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class ExportCustomJobOptions {
     /**
      * @param string $webhookUrl The optional webhook url called on completion of

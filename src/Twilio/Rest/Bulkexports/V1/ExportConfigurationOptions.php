@@ -12,9 +12,6 @@ namespace Twilio\Rest\Bulkexports\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class ExportConfigurationOptions {
     /**
      * @param bool $enabled Whether files are automatically generated

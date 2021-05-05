@@ -14,9 +14,6 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class JobContext extends InstanceContext {
     /**
      * Initialize the JobContext

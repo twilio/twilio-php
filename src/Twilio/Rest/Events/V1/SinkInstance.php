@@ -95,6 +95,17 @@ class SinkInstance extends InstanceResource {
     }
 
     /**
+     * Update the SinkInstance
+     *
+     * @param string $description Sink Description
+     * @return SinkInstance Updated SinkInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $description): SinkInstance {
+        return $this->proxy()->update($description);
+    }
+
+    /**
      * Access the sinkTest
      */
     protected function getSinkTest(): SinkTestList {

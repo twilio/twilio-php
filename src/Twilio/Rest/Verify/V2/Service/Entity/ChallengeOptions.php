@@ -116,7 +116,7 @@ class CreateChallengeOptions extends Options {
     }
 
     /**
-     * Optional payload used to verify the Challenge upon creation. Only used with a Factor of type `totp` to carry an OTP used in the verification.
+     * Optional payload used to verify the Challenge upon creation. Only used with a Factor of type `totp` to carry the TOTP code that needs to be verified.
      *
      * @param string $authPayload Optional payload to verify the Challenge
      * @return $this Fluent Builder

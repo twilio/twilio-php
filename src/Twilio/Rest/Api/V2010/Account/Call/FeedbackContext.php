@@ -34,6 +34,23 @@ class FeedbackContext extends InstanceContext {
     }
 
     /**
+     * Fetch the FeedbackInstance
+     *
+     * @return FeedbackInstance Fetched FeedbackInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): FeedbackInstance {
+        $payload = $this->version->fetch('GET', $this->uri);
+
+        return new FeedbackInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid']
+        );
+    }
+
+    /**
      * Create the FeedbackInstance
      *
      * @param int $qualityScore The call quality expressed as an integer from 1 to 5
@@ -60,35 +77,17 @@ class FeedbackContext extends InstanceContext {
     }
 
     /**
-     * Fetch the FeedbackInstance
-     *
-     * @return FeedbackInstance Fetched FeedbackInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): FeedbackInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
-
-        return new FeedbackInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['callSid']
-        );
-    }
-
-    /**
      * Update the FeedbackInstance
      *
-     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(int $qualityScore, array $options = []): FeedbackInstance {
+    public function update(array $options = []): FeedbackInstance {
         $options = new Values($options);
 
         $data = Values::of([
-            'QualityScore' => $qualityScore,
+            'QualityScore' => $options['qualityScore'],
             'Issue' => Serialize::map($options['issue'], function($e) { return $e; }),
         ]);
 

@@ -85,7 +85,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The Ecdsa public key in PKIX, ASN.1 DER format encoded in Base64
+     * The Ecdsa public key in PKIX, ASN.1 DER format encoded in Base64.
+
+    Required when `factor_type` is `push`
      *
      * @param string $bindingPublicKey The public key encoded in Base64
      * @return $this Fluent Builder
@@ -96,7 +98,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`. Required when `factor_type` is `push`. If specified, it can be up to 100 characters long.
+     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`.
+
+    Required when `factor_type` is `push`. If specified, it can be up to 100 characters long.
      *
      * @param string $configAppId The ID that uniquely identifies your app in the
      *                            Google or Apple store
@@ -108,7 +112,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The transport technology used to generate the Notification Token. Can be `apn` or `fcm`. Required when `factor_type` is `push`
+     * The transport technology used to generate the Notification Token. Can be `apn` or `fcm`.
+
+    Required when `factor_type` is `push`
      *
      * @param string $configNotificationPlatform The transport technology used to
      *                                           generate the Notification Token
@@ -120,7 +126,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
+     * For APN, the device token. For FCM the registration token. It used to send the push notifications.
+
+    Used when `factor_type` is `push`. If specified, must be between 32 and 255 characters long.
      *
      * @param string $configNotificationToken For APN, the device token. For FCM
      *                                        the registration token
@@ -133,6 +141,8 @@ class CreateNewFactorOptions extends Options {
 
     /**
      * The Verify Push SDK version used to configure the factor
+
+    Used when `factor_type` is `push`
      *
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -144,7 +154,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The shared secret for TOTP factors encoded in Base32
+     * The shared secret for TOTP factors encoded in Base32. This can be provided when creating the Factor, otherwise it will be generated.
+
+    Used when `factor_type` is `totp`
      *
      * @param string $bindingSecret The shared secret in Base32
      * @return $this Fluent Builder
@@ -155,7 +167,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. The default value is defined at the service level in the property totp.time_step. If not configured defaults to 30 seconds
+     * Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. The default value is defined at the service level in the property `totp.time_step`. Defaults to 30 seconds if not configured.
+
+    Used when `factor_type` is `totp`
      *
      * @param int $configTimeStep How often, in seconds, are TOTP codes generated
      * @return $this Fluent Builder
@@ -166,7 +180,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. The default value is defined at the service level in the property totp.skew. If not configured defaults to 1
+     * The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. The default value is defined at the service level in the property `totp.skew`. If not configured defaults to 1.
+
+    Used when `factor_type` is `totp`
      *
      * @param int $configSkew The number of past and future time-steps valid at a
      *                        given time
@@ -178,7 +194,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. The default value is defined at the service level in the property totp.code_length. If not configured defaults to 6
+     * Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. The default value is defined at the service level in the property `totp.code_length`. If not configured defaults to 6.
+
+    Used when `factor_type` is `totp`
      *
      * @param int $configCodeLength Number of digits for generated TOTP codes
      * @return $this Fluent Builder
@@ -189,7 +207,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The algorithm used to derive the TOTP codes. Can be `sha1`, `sha256` or `sha512`. Defaults to `sha1`
+     * The algorithm used to derive the TOTP codes. Can be `sha1`, `sha256` or `sha512`. Defaults to `sha1`.
+
+    Used when `factor_type` is `totp`
      *
      * @param string $configAlg The algorithm used to derive the TOTP codes
      * @return $this Fluent Builder

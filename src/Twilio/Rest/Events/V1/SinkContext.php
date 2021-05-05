@@ -65,6 +65,21 @@ class SinkContext extends InstanceContext {
     }
 
     /**
+     * Update the SinkInstance
+     *
+     * @param string $description Sink Description
+     * @return SinkInstance Updated SinkInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $description): SinkInstance {
+        $data = Values::of(['Description' => $description, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new SinkInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
      * Access the sinkTest
      */
     protected function getSinkTest(): SinkTestList {

@@ -12,9 +12,6 @@ namespace Twilio\Rest\Bulkexports\V1\Export;
 use Twilio\ListResource;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class JobList extends ListResource {
     /**
      * Construct the JobList

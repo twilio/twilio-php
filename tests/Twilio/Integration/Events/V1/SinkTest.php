@@ -37,8 +37,12 @@ class SinkTest extends HolodeckTestCase {
             '
             {
                 "status": "initialized",
-                "sink_configuration": {},
-                "description": "description",
+                "sink_configuration": {
+                    "arn": "arn:aws:kinesis:us-east-1:111111111:stream/test",
+                    "role_arn": "arn:aws:iam::111111111:role/Role",
+                    "external_id": "1234567890"
+                },
+                "description": "A Sink",
                 "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "sink_type": "kinesis",
@@ -86,11 +90,11 @@ class SinkTest extends HolodeckTestCase {
             {
                 "status": "initialized",
                 "sink_configuration": {
-                    "arn": "4242",
-                    "role_arn": "abc123",
-                    "external_id": "010101"
+                    "arn": "arn:aws:kinesis:us-east-1:111111111:stream/test",
+                    "role_arn": "arn:aws:iam::111111111:role/Role",
+                    "external_id": "1234567890"
                 },
-                "description": "description",
+                "description": "My Kinesis Sink",
                 "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "sink_type": "kinesis",
@@ -180,12 +184,16 @@ class SinkTest extends HolodeckTestCase {
                 "sinks": [
                     {
                         "status": "initialized",
-                        "sink_configuration": {},
+                        "sink_configuration": {
+                            "arn": "arn:aws:kinesis:us-east-1:111111111:stream/test",
+                            "role_arn": "arn:aws:iam::111111111:role/Role",
+                            "external_id": "1234567890"
+                        },
                         "description": "A Sink",
                         "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_created": "2015-07-30T19:00:00Z",
                         "sink_type": "kinesis",
-                        "date_updated": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T19:00:00Z",
                         "url": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "links": {
                             "sink_test": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test",
@@ -194,7 +202,11 @@ class SinkTest extends HolodeckTestCase {
                     },
                     {
                         "status": "initialized",
-                        "sink_configuration": {},
+                        "sink_configuration": {
+                            "arn": "arn:aws:kinesis:us-east-1:222222222:stream/test",
+                            "role_arn": "arn:aws:iam::111111111:role/Role",
+                            "external_id": "1234567890"
+                        },
                         "description": "ANOTHER Sink",
                         "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
                         "date_created": "2015-07-30T20:00:00Z",
@@ -208,12 +220,16 @@ class SinkTest extends HolodeckTestCase {
                     },
                     {
                         "status": "active",
-                        "sink_configuration": {},
+                        "sink_configuration": {
+                            "destination": "http://example.org/webhook",
+                            "method": "POST",
+                            "batch_events": true
+                        },
                         "description": "A webhook Sink",
                         "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac",
-                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_created": "2015-07-30T21:00:00Z",
                         "sink_type": "webhook",
-                        "date_updated": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T21:00:00Z",
                         "url": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac",
                         "links": {
                             "sink_test": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac/Test",
@@ -235,6 +251,54 @@ class SinkTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->events->v1->sinks->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->events->v1->sinks("DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("description");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = ['Description' => "description", ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://events.twilio.com/v1/Sinks/DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            null,
+            $values
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "status": "initialized",
+                "sink_configuration": {
+                    "arn": "arn:aws:kinesis:us-east-1:111111111:stream/test",
+                    "role_arn": "arn:aws:iam::111111111:role/Role",
+                    "external_id": "1234567890"
+                },
+                "description": "My Kinesis Sink",
+                "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "sink_type": "kinesis",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "sink_test": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test",
+                    "sink_validate": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->sinks("DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("description");
 
         $this->assertNotNull($actual);
     }

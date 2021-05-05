@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property string $usAppToPersonUsecase
  * @property bool $hasEmbeddedLinks
  * @property bool $hasEmbeddedPhone
- * @property string $status
+ * @property string $campaignStatus
  * @property string $campaignId
  * @property bool $isExternallyRegistered
  * @property array $rateLimits
@@ -56,7 +56,7 @@ class UsAppToPersonInstance extends InstanceResource {
             'usAppToPersonUsecase' => Values::array_get($payload, 'us_app_to_person_usecase'),
             'hasEmbeddedLinks' => Values::array_get($payload, 'has_embedded_links'),
             'hasEmbeddedPhone' => Values::array_get($payload, 'has_embedded_phone'),
-            'status' => Values::array_get($payload, 'status'),
+            'campaignStatus' => Values::array_get($payload, 'campaign_status'),
             'campaignId' => Values::array_get($payload, 'campaign_id'),
             'isExternallyRegistered' => Values::array_get($payload, 'is_externally_registered'),
             'rateLimits' => Values::array_get($payload, 'rate_limits'),
