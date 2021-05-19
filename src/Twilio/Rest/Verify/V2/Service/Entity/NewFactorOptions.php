@@ -98,9 +98,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`.
+     * The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`. It can be up to 100 characters long.
 
-    Required when `factor_type` is `push`. If specified, it can be up to 100 characters long.
+    Required when `factor_type` is `push`.
      *
      * @param string $configAppId The ID that uniquely identifies your app in the
      *                            Google or Apple store
@@ -114,7 +114,7 @@ class CreateNewFactorOptions extends Options {
     /**
      * The transport technology used to generate the Notification Token. Can be `apn` or `fcm`.
 
-    Required when `factor_type` is `push`
+    Required when `factor_type` is `push`.
      *
      * @param string $configNotificationPlatform The transport technology used to
      *                                           generate the Notification Token
@@ -126,9 +126,9 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications.
+     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Must be between 32 and 255 characters long.
 
-    Used when `factor_type` is `push`. If specified, must be between 32 and 255 characters long.
+    Required when `factor_type` is `push`.
      *
      * @param string $configNotificationToken For APN, the device token. For FCM
      *                                        the registration token
@@ -142,7 +142,7 @@ class CreateNewFactorOptions extends Options {
     /**
      * The Verify Push SDK version used to configure the factor
 
-    Used when `factor_type` is `push`
+    Required when `factor_type` is `push`
      *
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor

@@ -146,7 +146,7 @@ class Client {
      *
      * @param string $username Username to authenticate with
      * @param string $password Password to authenticate with
-     * @param string $accountSid Account Sid to authenticate with, defaults to
+     * @param string $accountSid Account SID to authenticate with, defaults to
      *                           $username
      * @param string $region Region to send requests to, defaults to 'us1' if Edge
      *                       provided

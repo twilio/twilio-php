@@ -37,7 +37,7 @@ class ParticipantTest extends HolodeckTestCase {
             '
             {
                 "publisher_info": {},
-                "edge_location": "Ashburn",
+                "edge_location": "ashburn",
                 "join_time": "2015-07-30T20:00:00Z",
                 "leave_time": "2015-07-30T20:00:00Z",
                 "end_reason": "disconnected_via_api",
@@ -122,7 +122,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "participants": [
                     {
                         "publisher_info": {},
-                        "edge_location": "Ashburn",
+                        "edge_location": "ashburn",
                         "join_time": "2015-07-30T20:00:00Z",
                         "leave_time": "2015-07-30T20:00:00Z",
                         "end_reason": "disconnected_via_api",

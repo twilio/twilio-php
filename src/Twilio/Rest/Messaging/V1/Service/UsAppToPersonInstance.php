@@ -18,6 +18,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
+ * @property string $sid
  * @property string $accountSid
  * @property string $brandRegistrationSid
  * @property string $messagingServiceSid
@@ -42,12 +43,15 @@ class UsAppToPersonInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $messagingServiceSid The SID of the Messaging Service the
      *                                    resource is associated with
+     * @param string $sid The SID that identifies the US A2P Compliance resource to
+     *                    fetch
      */
-    public function __construct(Version $version, array $payload, string $messagingServiceSid) {
+    public function __construct(Version $version, array $payload, string $messagingServiceSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
+            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'brandRegistrationSid' => Values::array_get($payload, 'brand_registration_sid'),
             'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
@@ -65,7 +69,48 @@ class UsAppToPersonInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['messagingServiceSid' => $messagingServiceSid, ];
+        $this->solution = [
+            'messagingServiceSid' => $messagingServiceSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return UsAppToPersonContext Context for this UsAppToPersonInstance
+     */
+    protected function proxy(): UsAppToPersonContext {
+        if (!$this->context) {
+            $this->context = new UsAppToPersonContext(
+                $this->version,
+                $this->solution['messagingServiceSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Delete the UsAppToPersonInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool {
+        return $this->proxy()->delete();
+    }
+
+    /**
+     * Fetch the UsAppToPersonInstance
+     *
+     * @return UsAppToPersonInstance Fetched UsAppToPersonInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): UsAppToPersonInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -94,6 +139,10 @@ class UsAppToPersonInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Messaging.V1.UsAppToPersonInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Messaging.V1.UsAppToPersonInstance ' . \implode(' ', $context) . ']';
     }
 }

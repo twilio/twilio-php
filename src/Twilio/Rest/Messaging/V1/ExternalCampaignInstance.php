@@ -18,6 +18,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
+ * @property string $sid
  * @property string $accountSid
  * @property string $campaignId
  * @property string $messagingServiceSid
@@ -35,6 +36,7 @@ class ExternalCampaignInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = [
+            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'campaignId' => Values::array_get($payload, 'campaign_id'),
             'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
