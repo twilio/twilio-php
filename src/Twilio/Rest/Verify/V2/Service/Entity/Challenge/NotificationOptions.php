@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class NotificationOptions {
     /**
-     * @param int $ttl How long, in seconds, the Notification is valid.
+     * @param int $ttl How long, in seconds, the notification is valid.
      * @return CreateNotificationOptions Options builder
      */
     public static function create(int $ttl = Values::NONE): CreateNotificationOptions {
@@ -27,16 +27,16 @@ abstract class NotificationOptions {
 
 class CreateNotificationOptions extends Options {
     /**
-     * @param int $ttl How long, in seconds, the Notification is valid.
+     * @param int $ttl How long, in seconds, the notification is valid.
      */
     public function __construct(int $ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * How long, in seconds, the Notification is valid. Delivery will be attempted if the device is offline until the TTL elapses. 0 means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. Must be an integer between 0 and 300 seconds, inclusive. Defaults to 300 seconds.
+     * How long, in seconds, the notification is valid. Can be an integer between 0 and 300. Default is 300. Delivery is attempted until the TTL elapses, even if the device is offline. 0 means that the notification delivery is attempted immediately, only once, and is not stored for future delivery.
      *
-     * @param int $ttl How long, in seconds, the Notification is valid.
+     * @param int $ttl How long, in seconds, the notification is valid.
      * @return $this Fluent Builder
      */
     public function setTtl(int $ttl): self {
