@@ -21,11 +21,11 @@ class CustomerProfilesEvaluationsTest extends HolodeckTestCase {
 
         try {
             $this->twilio->trusthub->v1->customerProfiles("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                       ->customerProfilesEvaluations->create("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                       ->customerProfilesEvaluations->create("RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['PolicySid' => "BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
+        $values = ['PolicySid' => "RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -203,7 +203,7 @@ class CustomerProfilesEvaluationsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->trusthub->v1->customerProfiles("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                             ->customerProfilesEvaluations->create("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                             ->customerProfilesEvaluations->create("RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }

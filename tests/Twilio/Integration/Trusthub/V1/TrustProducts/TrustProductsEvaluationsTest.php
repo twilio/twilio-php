@@ -21,11 +21,11 @@ class TrustProductsEvaluationsTest extends HolodeckTestCase {
 
         try {
             $this->twilio->trusthub->v1->trustProducts("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                       ->trustProductsEvaluations->create("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                       ->trustProductsEvaluations->create("RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['PolicySid' => "BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
+        $values = ['PolicySid' => "RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -203,7 +203,7 @@ class TrustProductsEvaluationsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->trusthub->v1->trustProducts("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                             ->trustProductsEvaluations->create("BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                             ->trustProductsEvaluations->create("RNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }
