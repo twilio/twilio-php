@@ -4,6 +4,7 @@
 namespace Twilio\Http;
 
 
+use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\EnvironmentException;
 
 class CurlClient implements Client {
@@ -104,9 +105,9 @@ class CurlClient implements Client {
             $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . \base64_encode("$user:$password");
         }
 
-        $body = $this->buildQuery($params);
-        if ($body) {
-            $options[CURLOPT_URL] .= '?' . $body;
+        $query = $this->buildQuery($params);
+        if ($query) {
+            $options[CURLOPT_URL] .= '?' . $query;
         }
 
         switch (\strtolower(\trim($method))) {
@@ -115,10 +116,18 @@ class CurlClient implements Client {
                 break;
             case 'post':
                 $options[CURLOPT_POST] = true;
-                $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
+                if ($this->hasFile($data)) {
+                    [$headers, $body] = $this->buildMultipartOptions($data);
+                    $options[CURLOPT_POSTFIELDS] = $body;
+                    $options[CURLOPT_HTTPHEADER] = \array_merge($options[CURLOPT_HTTPHEADER], $headers);
+                } else {
+                    $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
+                    $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/x-www-form-urlencoded';
+                }
 
                 break;
             case 'put':
+                // TODO: PUT doesn't used anywhere and it has strange implementation. Must investigate later
                 $options[CURLOPT_PUT] = true;
                 if ($data) {
                     if ($buffer = \fopen('php://memory', 'w+')) {
@@ -157,5 +166,73 @@ class CurlClient implements Client {
         }
 
         return \implode('&', $parts);
+    }
+
+    private function hasFile(array $data): bool {
+        foreach ($data as $value) {
+            if ($value instanceof File) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function buildMultipartOptions(array $data): array {
+        $boundary = \uniqid('', true);
+        $delimiter = "-------------{$boundary}";
+        $body = '';
+
+        foreach ($data as $key => $value) {
+            if ($value instanceof File) {
+                $contents = $value->getContents();
+                if ($contents === null) {
+                    $chunk = \file_get_contents($value->getFileName());
+                    $filename = \basename($value->getFileName());
+                } elseif (\is_resource($contents)) {
+                    $chunk = '';
+                    while (!\feof($contents)) {
+                        $chunk .= \fread($contents, 8096);
+                    }
+
+                    $filename = $value->getFileName();
+                } elseif (\is_string($contents)) {
+                    $chunk = $contents;
+                    $filename = $value->getFileName();
+                } else {
+                    throw new \InvalidArgumentException('Unsupported content type');
+                }
+
+                $headers = '';
+                $contentType = $value->getContentType();
+                if ($contentType !== null) {
+                    $headers .= "Content-Type: {$contentType}\r\n";
+                }
+
+                $body .= \vsprintf("--%s\r\nContent-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n%s\r\n%s\r\n", [
+                    $delimiter,
+                    $key,
+                    $filename,
+                    $headers,
+                    $chunk,
+                ]);
+            } else {
+                $body .= \vsprintf("--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s\r\n", [
+                    $delimiter,
+                    $key,
+                    $value,
+                ]);
+            }
+        }
+
+        $body .= "--{$delimiter}--\r\n";
+
+        return [
+            [
+                "Content-Type: multipart/form-data; boundary={$delimiter}",
+                'Content-Length: ' . \strlen($body),
+            ],
+            $body,
+        ];
     }
 }
