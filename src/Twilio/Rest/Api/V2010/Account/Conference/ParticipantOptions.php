@@ -634,7 +634,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
+     * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
      *
      * @param string[] $conferenceStatusCallbackEvent The conference state changes
      *                                                that should generate a call
@@ -744,7 +744,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The recording state changes that should generate a call to `recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
+     * The recording state changes that should generate a call to `recording_status_callback`. Can be: `started`, `in-progress`, `paused`, `resumed`, `stopped`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`.
      *
      * @param string[] $recordingStatusCallbackEvent The recording state changes
      *                                               that should generate a call to
@@ -757,7 +757,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
+     * The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`
      *
      * @param string[] $conferenceRecordingStatusCallbackEvent The conference
      *                                                         recording state

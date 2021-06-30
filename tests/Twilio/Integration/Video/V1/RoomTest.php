@@ -47,7 +47,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_concurrent_published_tracks": 0,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
@@ -100,7 +100,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_participants": 10,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
@@ -139,7 +139,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_concurrent_published_tracks": 0,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
@@ -178,7 +178,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_concurrent_published_tracks": 170,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
@@ -217,7 +217,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_concurrent_published_tracks": 170,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
@@ -256,7 +256,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_concurrent_published_tracks": 16,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
@@ -402,7 +402,7 @@ class RoomTest extends HolodeckTestCase {
                 "max_participants": 10,
                 "max_concurrent_published_tracks": 10,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
