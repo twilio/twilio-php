@@ -6,9 +6,9 @@ namespace Twilio\Http;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Request;
 use Twilio\Exceptions\HttpException;
-use function GuzzleHttp\Psr7\build_query;
 
 final class GuzzleClient implements Client {
     /**
@@ -25,7 +25,7 @@ final class GuzzleClient implements Client {
                             string $user = null, string $password = null,
                             int $timeout = null): Response {
         try {
-            $body = build_query($data, PHP_QUERY_RFC1738);
+            $body = Query::build($data, PHP_QUERY_RFC1738);
 
             $options = [
                 'timeout' => $timeout,
