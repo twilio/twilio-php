@@ -9,6 +9,12 @@ env:
 - dependencies=highest
 services:
 - docker
+jobs:
+  include:
+    - language: php
+      python: '8.0'
+      after_success:
+        - sonar-scanner
 before_script:
 - if [ -n "$GIT_HUB_TOKEN" ]; then composer config -g github-oauth.github.com "$GIT_HUB_TOKEN";
   fi;
@@ -19,7 +25,8 @@ script:
 - make test
 deploy:
   provider: script
-  script: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && make docker-build && make docker-push
+  script: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+    && make docker-build && make docker-push
   skip_cleanup: true
   on:
     tags: true
@@ -33,3 +40,8 @@ notifications:
     on_failure: change
     rooms:
       secure: EOXeLbYW0b0G8ZqMUcMH61cuRaARLqcGLv2ioDs/RUjW/wokGu+Zx+DOC+zyAoD5KtTsxRdO3wbUjCAXcpGz7UKQtnocsJxKoHChVH7xQ7iAK7hwJZ6d/JCsSVpFUigli1XlCNCzQ0qOoM3MLZe1CyyJ4XAjCtQFoAtdRnEbLOQ=
+addons:
+  sonarcloud:
+    organization: "twilio"
+    token:
+      secure: pqqA32yE4qJtL9PdbgaPEEQnzuP1DYIHjrr+/oqB3avqQ8n4vhCllUaYQcv8A1iXPhtg/GJhvWGiFgozzKx9y6RE2d0TyJU2KcxoQ+HD/nPlxhDKmhAmazJ+UjBxn+LGiqYQbH1C254cFC3dEZbIDej9Gg1B5o3TODEOHfx3YD0=
