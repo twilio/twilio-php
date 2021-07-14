@@ -7,78 +7,87 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Service;
+namespace Twilio\Rest\Conversations\V1\User;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
-use Twilio\Rest\Conversations\V1\Service\User\UserConversationList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string $sid
  * @property string $accountSid
  * @property string $chatServiceSid
- * @property string $roleSid
- * @property string $identity
+ * @property string $conversationSid
+ * @property int $unreadMessagesCount
+ * @property int $lastReadMessageIndex
+ * @property string $participantSid
+ * @property string $userSid
  * @property string $friendlyName
+ * @property string $conversationState
+ * @property array $timers
  * @property string $attributes
- * @property bool $isOnline
- * @property bool $isNotifiable
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property string $createdBy
+ * @property string $notificationLevel
+ * @property string $uniqueName
  * @property string $url
  * @property array $links
  */
-class UserInstance extends InstanceResource {
-    protected $_userConversations;
-
+class UserConversationInstance extends InstanceResource {
     /**
-     * Initialize the UserInstance
+     * Initialize the UserConversationInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $chatServiceSid The SID of the Conversation Service that the
-     *                               resource is associated with
-     * @param string $sid The SID of the User resource to fetch
+     * @param string $userSid The unique ID for the User.
+     * @param string $conversationSid The unique SID identifier of the Conversation.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $userSid, string $conversationSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'chatServiceSid' => Values::array_get($payload, 'chat_service_sid'),
-            'roleSid' => Values::array_get($payload, 'role_sid'),
-            'identity' => Values::array_get($payload, 'identity'),
+            'conversationSid' => Values::array_get($payload, 'conversation_sid'),
+            'unreadMessagesCount' => Values::array_get($payload, 'unread_messages_count'),
+            'lastReadMessageIndex' => Values::array_get($payload, 'last_read_message_index'),
+            'participantSid' => Values::array_get($payload, 'participant_sid'),
+            'userSid' => Values::array_get($payload, 'user_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'conversationState' => Values::array_get($payload, 'conversation_state'),
+            'timers' => Values::array_get($payload, 'timers'),
             'attributes' => Values::array_get($payload, 'attributes'),
-            'isOnline' => Values::array_get($payload, 'is_online'),
-            'isNotifiable' => Values::array_get($payload, 'is_notifiable'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'createdBy' => Values::array_get($payload, 'created_by'),
+            'notificationLevel' => Values::array_get($payload, 'notification_level'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['chatServiceSid' => $chatServiceSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = [
+            'userSid' => $userSid,
+            'conversationSid' => $conversationSid ?: $this->properties['conversationSid'],
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return UserContext Context for this UserInstance
+     * @return UserConversationContext Context for this UserConversationInstance
      */
-    protected function proxy(): UserContext {
+    protected function proxy(): UserConversationContext {
         if (!$this->context) {
-            $this->context = new UserContext(
+            $this->context = new UserConversationContext(
                 $this->version,
-                $this->solution['chatServiceSid'],
-                $this->solution['sid']
+                $this->solution['userSid'],
+                $this->solution['conversationSid']
             );
         }
 
@@ -86,42 +95,34 @@ class UserInstance extends InstanceResource {
     }
 
     /**
-     * Update the UserInstance
+     * Update the UserConversationInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return UserInstance Updated UserInstance
+     * @return UserConversationInstance Updated UserConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): UserInstance {
+    public function update(array $options = []): UserConversationInstance {
         return $this->proxy()->update($options);
     }
 
     /**
-     * Delete the UserInstance
+     * Delete the UserConversationInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
-        return $this->proxy()->delete($options);
+    public function delete(): bool {
+        return $this->proxy()->delete();
     }
 
     /**
-     * Fetch the UserInstance
+     * Fetch the UserConversationInstance
      *
-     * @return UserInstance Fetched UserInstance
+     * @return UserConversationInstance Fetched UserConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserInstance {
+    public function fetch(): UserConversationInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Access the userConversations
-     */
-    protected function getUserConversations(): UserConversationList {
-        return $this->proxy()->userConversations;
     }
 
     /**
@@ -154,6 +155,6 @@ class UserInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.UserInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.UserConversationInstance ' . \implode(' ', $context) . ']';
     }
 }

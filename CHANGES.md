@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2021-07-14] Version 6.27.0
+---------------------------
+**Library - Fix**
+- [PR #689](https://github.com/twilio/twilio-php/pull/689): replace deprecated method build_query with Query::build. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Conversations**
+- Changed `last_read_message_index` and `unread_messages_count` type in User Conversation's resource **(breaking change)**
+- Expose UserConversations resource
+
+**Messaging**
+- Add brand_score field to brand registration responses
+
+
 [2021-06-30] Version 6.26.0
 ---------------------------
 **Conversations**

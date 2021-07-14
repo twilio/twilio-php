@@ -55,7 +55,10 @@ class UserTest extends HolodeckTestCase {
                 "is_notifiable": null,
                 "date_created": "2019-12-16T22:18:37Z",
                 "date_updated": "2019-12-16T22:18:38Z",
-                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                }
             }
             '
         ));
@@ -102,7 +105,10 @@ class UserTest extends HolodeckTestCase {
                 "is_notifiable": null,
                 "date_created": "2019-12-16T22:18:37Z",
                 "date_updated": "2019-12-16T22:18:38Z",
-                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                }
             }
             '
         ));
@@ -174,7 +180,10 @@ class UserTest extends HolodeckTestCase {
                 "is_notifiable": null,
                 "date_created": "2019-12-16T22:18:37Z",
                 "date_updated": "2019-12-16T22:18:38Z",
-                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                }
             }
             '
         ));
@@ -225,7 +234,10 @@ class UserTest extends HolodeckTestCase {
                         "is_notifiable": null,
                         "date_created": "2019-12-16T22:18:37Z",
                         "date_updated": "2019-12-16T22:18:38Z",
-                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                        }
                     },
                     {
                         "sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -239,7 +251,10 @@ class UserTest extends HolodeckTestCase {
                         "is_notifiable": null,
                         "date_created": "2020-03-24T20:38:21Z",
                         "date_updated": "2020-03-24T20:38:21Z",
-                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                        }
                     }
                 ]
             }

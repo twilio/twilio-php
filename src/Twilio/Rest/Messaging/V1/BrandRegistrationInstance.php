@@ -28,6 +28,7 @@ use Twilio\Version;
  * @property string $tcrId
  * @property string $failureReason
  * @property string $url
+ * @property int $brandScore
  */
 class BrandRegistrationInstance extends InstanceResource {
     /**
@@ -52,6 +53,7 @@ class BrandRegistrationInstance extends InstanceResource {
             'tcrId' => Values::array_get($payload, 'tcr_id'),
             'failureReason' => Values::array_get($payload, 'failure_reason'),
             'url' => Values::array_get($payload, 'url'),
+            'brandScore' => Values::array_get($payload, 'brand_score'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
