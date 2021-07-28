@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2021-07-28] Version 6.27.1
+---------------------------
+**Conversations**
+- Expose ParticipantConversations resource
+
+**Taskrouter**
+- Adding `links` to the activity resource
+
+**Verify**
+- Added a `Version` to Verify Factors `Webhooks` to add new fields without breaking old Webhooks.
+
+
 [2021-07-14] Version 6.27.0
 ---------------------------
 **Library - Fix**

@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string $sid
  * @property string $workspaceSid
  * @property string $url
+ * @property array $links
  */
 class ActivityInstance extends InstanceResource {
     /**
@@ -49,6 +50,7 @@ class ActivityInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];

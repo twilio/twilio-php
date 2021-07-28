@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string[] $eventTypes
  * @property string $status
+ * @property string $version
  * @property string $webhookUrl
  * @property string $webhookMethod
  * @property \DateTime $dateCreated
@@ -51,6 +52,7 @@ class WebhookInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'eventTypes' => Values::array_get($payload, 'event_types'),
             'status' => Values::array_get($payload, 'status'),
+            'version' => Values::array_get($payload, 'version'),
             'webhookUrl' => Values::array_get($payload, 'webhook_url'),
             'webhookMethod' => Values::array_get($payload, 'webhook_method'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

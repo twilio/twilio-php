@@ -18,6 +18,7 @@ use Twilio\Rest\Conversations\V1;
  * @property \Twilio\Rest\Conversations\V1\ConfigurationList $configuration
  * @property \Twilio\Rest\Conversations\V1\ConversationList $conversations
  * @property \Twilio\Rest\Conversations\V1\CredentialList $credentials
+ * @property \Twilio\Rest\Conversations\V1\ParticipantConversationList $participantConversations
  * @property \Twilio\Rest\Conversations\V1\RoleList $roles
  * @property \Twilio\Rest\Conversations\V1\ServiceList $services
  * @property \Twilio\Rest\Conversations\V1\UserList $users
@@ -115,6 +116,10 @@ class Conversations extends Domain {
      */
     protected function contextCredentials(string $sid): \Twilio\Rest\Conversations\V1\CredentialContext {
         return $this->v1->credentials($sid);
+    }
+
+    protected function getParticipantConversations(): \Twilio\Rest\Conversations\V1\ParticipantConversationList {
+        return $this->v1->participantConversations;
     }
 
     protected function getRoles(): \Twilio\Rest\Conversations\V1\RoleList {

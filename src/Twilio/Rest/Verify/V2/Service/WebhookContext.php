@@ -51,6 +51,7 @@ class WebhookContext extends InstanceContext {
             'EventTypes' => Serialize::map($options['eventTypes'], function($e) { return $e; }),
             'WebhookUrl' => $options['webhookUrl'],
             'Status' => $options['status'],
+            'Version' => $options['version'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
