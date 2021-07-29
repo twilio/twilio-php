@@ -12,7 +12,7 @@ services:
 jobs:
   include:
     - language: php
-      python: '8.0'
+      php: '8.0'
       after_success:
         - sonar-scanner
 before_script:
