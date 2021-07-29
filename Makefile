@@ -53,4 +53,7 @@ docker-dev-clean:
 docker-dev-test:
 	docker exec -t twilio_php${VERSION} /bin/bash -c 'make all'
 
-.PHONY: all clean install test docs authors docker-dev-build docker-dev-clean docker-dev-test
+cover: install
+	@PATH=vendor/bin:$(PATH) phpunit --coverage-clover --disallow-test-output --colors --configuration tests/phpunit.xml
+
+.PHONY: all clean install test docs authors docker-dev-build docker-dev-clean docker-dev-test cover

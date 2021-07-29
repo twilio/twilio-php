@@ -23,6 +23,7 @@ before_script:
   -n; fi;
 script:
 - make test
+- make cover
 deploy:
   provider: script
   script: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
