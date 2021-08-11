@@ -11,6 +11,7 @@ namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -116,13 +117,17 @@ class BrandRegistrationList extends ListResource {
      *
      * @param string $customerProfileBundleSid Customer Profile Bundle Sid
      * @param string $a2PProfileBundleSid A2P Messaging Profile Bundle Sid
+     * @param array|Options $options Optional Arguments
      * @return BrandRegistrationInstance Created BrandRegistrationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $customerProfileBundleSid, string $a2PProfileBundleSid): BrandRegistrationInstance {
+    public function create(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): BrandRegistrationInstance {
+        $options = new Values($options);
+
         $data = Values::of([
             'CustomerProfileBundleSid' => $customerProfileBundleSid,
             'A2PProfileBundleSid' => $a2PProfileBundleSid,
+            'BrandType' => $options['brandType'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

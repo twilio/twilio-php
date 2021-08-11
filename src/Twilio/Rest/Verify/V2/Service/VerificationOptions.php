@@ -28,10 +28,11 @@ abstract class VerificationOptions {
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
+     * @param string $templateSid The SID of the custom template to be used.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE): CreateVerificationOptions {
-        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash);
+    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE): CreateVerificationOptions {
+        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash, $templateSid);
     }
 }
 
@@ -51,8 +52,9 @@ class CreateVerificationOptions extends Options {
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
+     * @param string $templateSid The SID of the custom template to be used.
      */
-    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE) {
+    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE) {
         $this->options['customFriendlyName'] = $customFriendlyName;
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
@@ -63,6 +65,7 @@ class CreateVerificationOptions extends Options {
         $this->options['rateLimits'] = $rateLimits;
         $this->options['channelConfiguration'] = $channelConfiguration;
         $this->options['appHash'] = $appHash;
+        $this->options['templateSid'] = $templateSid;
     }
 
     /**
@@ -176,6 +179,17 @@ class CreateVerificationOptions extends Options {
      */
     public function setAppHash(string $appHash): self {
         $this->options['appHash'] = $appHash;
+        return $this;
+    }
+
+    /**
+     * The SID of the custom template to be used.
+     *
+     * @param string $templateSid The SID of the custom template to be used.
+     * @return $this Fluent Builder
+     */
+    public function setTemplateSid(string $templateSid): self {
+        $this->options['templateSid'] = $templateSid;
         return $this;
     }
 

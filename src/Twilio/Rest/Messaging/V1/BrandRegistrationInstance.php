@@ -24,6 +24,7 @@ use Twilio\Version;
  * @property string $a2PProfileBundleSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property string $brandType
  * @property string $status
  * @property string $tcrId
  * @property string $failureReason
@@ -49,6 +50,7 @@ class BrandRegistrationInstance extends InstanceResource {
             'a2PProfileBundleSid' => Values::array_get($payload, 'a2p_profile_bundle_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'brandType' => Values::array_get($payload, 'brand_type'),
             'status' => Values::array_get($payload, 'status'),
             'tcrId' => Values::array_get($payload, 'tcr_id'),
             'failureReason' => Values::array_get($payload, 'failure_reason'),

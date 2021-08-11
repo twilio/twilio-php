@@ -342,7 +342,7 @@ class ConferenceTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadMyroomInprogressResponse(): void {
+    public function testReadMyroomResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -366,7 +366,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "call_sid_ending_conference": null
                     },
                     {
-                        "status": "in-progress",
+                        "status": "completed",
                         "region": "us1",
                         "sid": "CFbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
                         "date_updated": "Sat, 02 Jan 2021 11:23:45 +0000",
@@ -379,11 +379,11 @@ class ConferenceTest extends HolodeckTestCase {
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.json",
                         "api_version": "2010-04-01",
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "reason_conference_ended": null,
-                        "call_sid_ending_conference": null
+                        "reason_conference_ended": "last-participant-left",
+                        "call_sid_ending_conference": "CAbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
                     },
                     {
-                        "status": "in-progress",
+                        "status": "completed",
                         "region": "ie1",
                         "sid": "CFcccccccccccccccccccccccccccccccc",
                         "date_updated": "Fri, 01 Jan 2021 11:23:45 +0000",
@@ -396,14 +396,14 @@ class ConferenceTest extends HolodeckTestCase {
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFcccccccccccccccccccccccccccccccc.json",
                         "api_version": "2010-04-01",
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "reason_conference_ended": null,
-                        "call_sid_ending_conference": null
+                        "reason_conference_ended": "last-participant-left",
+                        "call_sid_ending_conference": "CAcccccccccccccccccccccccccccccccc"
                     }
                 ],
-                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences.json?FriendlyName=MyRoom&Status=in-progress&PageSize=20&Page=0",
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences.json?FriendlyName=MyRoom&PageSize=20&Page=0",
                 "next_page_uri": null,
                 "previous_page_uri": null,
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences.json?FriendlyName=MyRoom&Status=in-progress&PageSize=20&Page=0",
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences.json?FriendlyName=MyRoom&PageSize=20&Page=0",
                 "page": 0,
                 "page_size": 20,
                 "start": 0,

@@ -102,6 +102,7 @@ class CallContext extends InstanceContext {
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'Twiml' => $options['twiml'],
+            'TimeLimit' => $options['timeLimit'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
