@@ -31,10 +31,11 @@ abstract class CallSummariesOptions {
      * @param string $processingState The processing_state
      * @param string $sortBy The sort_by
      * @param string $subaccount The subaccount
+     * @param bool $abnormalSession The abnormal_session
      * @return ReadCallSummariesOptions Options builder
      */
-    public static function read(array $from = Values::ARRAY_NONE, array $to = Values::ARRAY_NONE, array $fromCarrier = Values::ARRAY_NONE, array $toCarrier = Values::ARRAY_NONE, array $fromCountryCode = Values::ARRAY_NONE, array $toCountryCode = Values::ARRAY_NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, array $callType = Values::ARRAY_NONE, array $callState = Values::ARRAY_NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE): ReadCallSummariesOptions {
-        return new ReadCallSummariesOptions($from, $to, $fromCarrier, $toCarrier, $fromCountryCode, $toCountryCode, $branded, $verifiedCaller, $hasTag, $startTime, $endTime, $callType, $callState, $direction, $processingState, $sortBy, $subaccount);
+    public static function read(array $from = Values::ARRAY_NONE, array $to = Values::ARRAY_NONE, array $fromCarrier = Values::ARRAY_NONE, array $toCarrier = Values::ARRAY_NONE, array $fromCountryCode = Values::ARRAY_NONE, array $toCountryCode = Values::ARRAY_NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, array $callType = Values::ARRAY_NONE, array $callState = Values::ARRAY_NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE): ReadCallSummariesOptions {
+        return new ReadCallSummariesOptions($from, $to, $fromCarrier, $toCarrier, $fromCountryCode, $toCountryCode, $branded, $verifiedCaller, $hasTag, $startTime, $endTime, $callType, $callState, $direction, $processingState, $sortBy, $subaccount, $abnormalSession);
     }
 }
 
@@ -57,8 +58,9 @@ class ReadCallSummariesOptions extends Options {
      * @param string $processingState The processing_state
      * @param string $sortBy The sort_by
      * @param string $subaccount The subaccount
+     * @param bool $abnormalSession The abnormal_session
      */
-    public function __construct(array $from = Values::ARRAY_NONE, array $to = Values::ARRAY_NONE, array $fromCarrier = Values::ARRAY_NONE, array $toCarrier = Values::ARRAY_NONE, array $fromCountryCode = Values::ARRAY_NONE, array $toCountryCode = Values::ARRAY_NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, array $callType = Values::ARRAY_NONE, array $callState = Values::ARRAY_NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE) {
+    public function __construct(array $from = Values::ARRAY_NONE, array $to = Values::ARRAY_NONE, array $fromCarrier = Values::ARRAY_NONE, array $toCarrier = Values::ARRAY_NONE, array $fromCountryCode = Values::ARRAY_NONE, array $toCountryCode = Values::ARRAY_NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, array $callType = Values::ARRAY_NONE, array $callState = Values::ARRAY_NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['to'] = $to;
         $this->options['fromCarrier'] = $fromCarrier;
@@ -76,6 +78,7 @@ class ReadCallSummariesOptions extends Options {
         $this->options['processingState'] = $processingState;
         $this->options['sortBy'] = $sortBy;
         $this->options['subaccount'] = $subaccount;
+        $this->options['abnormalSession'] = $abnormalSession;
     }
 
     /**
@@ -262,6 +265,17 @@ class ReadCallSummariesOptions extends Options {
      */
     public function setSubaccount(string $subaccount): self {
         $this->options['subaccount'] = $subaccount;
+        return $this;
+    }
+
+    /**
+     * The abnormal_session
+     *
+     * @param bool $abnormalSession The abnormal_session
+     * @return $this Fluent Builder
+     */
+    public function setAbnormalSession(bool $abnormalSession): self {
+        $this->options['abnormalSession'] = $abnormalSession;
         return $this;
     }
 

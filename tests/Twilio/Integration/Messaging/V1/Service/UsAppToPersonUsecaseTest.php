@@ -31,7 +31,34 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse(): void {
+    public function testFetchWithBrandRegistrationSidResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "us_app_to_person_usecases": [
+                    {
+                        "code": "MARKETING",
+                        "name": "Marketing",
+                        "description": "Send marketing messages about sales and offers to opted in customers."
+                    },
+                    {
+                        "code": "DELIVERY_NOTIFICATION",
+                        "name": "Delivery Notification",
+                        "description": "Information about the status of the delivery of a product or service."
+                    }
+                ]
+            }
+            '
+        ));
+
+        $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                              ->usAppToPersonUsecases->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchWithoutBrandRegistrationSidResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '

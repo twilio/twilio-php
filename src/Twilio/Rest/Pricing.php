@@ -20,6 +20,10 @@ use Twilio\Rest\Pricing\V2;
  * @property \Twilio\Rest\Pricing\V1\MessagingList $messaging
  * @property \Twilio\Rest\Pricing\V1\PhoneNumberList $phoneNumbers
  * @property \Twilio\Rest\Pricing\V2\VoiceList $voice
+ * @property \Twilio\Rest\Pricing\V2\CountryList $countries
+ * @property \Twilio\Rest\Pricing\V2\NumberList $numbers
+ * @method \Twilio\Rest\Pricing\V2\CountryContext countries(string $isoCountry)
+ * @method \Twilio\Rest\Pricing\V2\NumberContext numbers(string $destinationNumber)
  */
 class Pricing extends Domain {
     protected $_v1;
@@ -99,6 +103,30 @@ class Pricing extends Domain {
 
     protected function getVoice(): \Twilio\Rest\Pricing\V2\VoiceList {
         return $this->v2->voice;
+    }
+
+    protected function getCountries(): \Twilio\Rest\Pricing\V2\CountryList {
+        return $this->v2->countries;
+    }
+
+    /**
+     * @param string $isoCountry The ISO country code of the pricing information to
+     *                           fetch
+     */
+    protected function contextCountries(string $isoCountry): \Twilio\Rest\Pricing\V2\CountryContext {
+        return $this->v2->countries($isoCountry);
+    }
+
+    protected function getNumbers(): \Twilio\Rest\Pricing\V2\NumberList {
+        return $this->v2->numbers;
+    }
+
+    /**
+     * @param string $destinationNumber The destination number for which to fetch
+     *                                  pricing information
+     */
+    protected function contextNumbers(string $destinationNumber): \Twilio\Rest\Pricing\V2\NumberContext {
+        return $this->v2->numbers($destinationNumber);
     }
 
     /**

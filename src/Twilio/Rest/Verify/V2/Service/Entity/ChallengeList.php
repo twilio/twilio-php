@@ -130,6 +130,7 @@ class ChallengeList extends ListResource {
         $params = Values::of([
             'FactorSid' => $options['factorSid'],
             'Status' => $options['status'],
+            'Order' => $options['order'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

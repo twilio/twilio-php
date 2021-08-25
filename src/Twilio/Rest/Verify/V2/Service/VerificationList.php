@@ -58,7 +58,6 @@ class VerificationList extends ListResource {
             'RateLimits' => Serialize::jsonObject($options['rateLimits']),
             'ChannelConfiguration' => Serialize::jsonObject($options['channelConfiguration']),
             'AppHash' => $options['appHash'],
-            'TemplateSid' => $options['templateSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
