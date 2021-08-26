@@ -34,10 +34,11 @@ abstract class ChallengeOptions {
     /**
      * @param string $factorSid Factor Sid.
      * @param string $status The Status of theChallenges to fetch
+     * @param string $order The sort order of the Challenges list
      * @return ReadChallengeOptions Options builder
      */
-    public static function read(string $factorSid = Values::NONE, string $status = Values::NONE): ReadChallengeOptions {
-        return new ReadChallengeOptions($factorSid, $status);
+    public static function read(string $factorSid = Values::NONE, string $status = Values::NONE, string $order = Values::NONE): ReadChallengeOptions {
+        return new ReadChallengeOptions($factorSid, $status, $order);
     }
 
     /**
@@ -141,10 +142,12 @@ class ReadChallengeOptions extends Options {
     /**
      * @param string $factorSid Factor Sid.
      * @param string $status The Status of theChallenges to fetch
+     * @param string $order The sort order of the Challenges list
      */
-    public function __construct(string $factorSid = Values::NONE, string $status = Values::NONE) {
+    public function __construct(string $factorSid = Values::NONE, string $status = Values::NONE, string $order = Values::NONE) {
         $this->options['factorSid'] = $factorSid;
         $this->options['status'] = $status;
+        $this->options['order'] = $order;
     }
 
     /**
@@ -166,6 +169,17 @@ class ReadChallengeOptions extends Options {
      */
     public function setStatus(string $status): self {
         $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * The desired sort order of the Challenges list. One of `asc` or `desc` for ascending and descending respectively. Defaults to `asc`.
+     *
+     * @param string $order The sort order of the Challenges list
+     * @return $this Fluent Builder
+     */
+    public function setOrder(string $order): self {
+        $this->options['order'] = $order;
         return $this;
     }
 

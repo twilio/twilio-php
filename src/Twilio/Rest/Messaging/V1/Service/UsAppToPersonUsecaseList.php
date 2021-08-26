@@ -11,6 +11,7 @@ namespace Twilio\Rest\Messaging\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -37,11 +38,16 @@ class UsAppToPersonUsecaseList extends ListResource {
     /**
      * Fetch the UsAppToPersonUsecaseInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return UsAppToPersonUsecaseInstance Fetched UsAppToPersonUsecaseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UsAppToPersonUsecaseInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
+    public function fetch(array $options = []): UsAppToPersonUsecaseInstance {
+        $options = new Values($options);
+
+        $params = Values::of(['BrandRegistrationSid' => $options['brandRegistrationSid'], ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new UsAppToPersonUsecaseInstance(
             $this->version,

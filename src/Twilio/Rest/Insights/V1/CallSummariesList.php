@@ -109,6 +109,7 @@ class CallSummariesList extends ListResource {
             'ProcessingState' => $options['processingState'],
             'SortBy' => $options['sortBy'],
             'Subaccount' => $options['subaccount'],
+            'AbnormalSession' => Serialize::booleanToString($options['abnormalSession']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
