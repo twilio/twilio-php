@@ -18,6 +18,7 @@ use Twilio\Rest\Verify\V2;
  * @property \Twilio\Rest\Verify\V2\FormList $forms
  * @property \Twilio\Rest\Verify\V2\ServiceList $services
  * @property \Twilio\Rest\Verify\V2\VerificationAttemptList $verificationAttempts
+ * @property \Twilio\Rest\Verify\V2\VerificationTemplateList $verificationTemplates
  * @method \Twilio\Rest\Verify\V2\FormContext forms(string $formType)
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Verify\V2\VerificationAttemptContext verificationAttempts(string $sid)
@@ -110,6 +111,10 @@ class Verify extends Domain {
      */
     protected function contextVerificationAttempts(string $sid): \Twilio\Rest\Verify\V2\VerificationAttemptContext {
         return $this->v2->verificationAttempts($sid);
+    }
+
+    protected function getVerificationTemplates(): \Twilio\Rest\Verify\V2\VerificationTemplateList {
+        return $this->v2->verificationTemplates;
     }
 
     /**

@@ -19,10 +19,13 @@ abstract class BrandRegistrationOptions {
     /**
      * @param string $brandType Type of brand being created. One of: "STANDARD",
      *                          "STARTER".
+     * @param bool $mock A boolean that specifies whether brand should be a mock or
+     *                   not. If true, brand will be registered as a mock brand.
+     *                   Defaults to false if no value is provided.
      * @return CreateBrandRegistrationOptions Options builder
      */
-    public static function create(string $brandType = Values::NONE): CreateBrandRegistrationOptions {
-        return new CreateBrandRegistrationOptions($brandType);
+    public static function create(string $brandType = Values::NONE, bool $mock = Values::NONE): CreateBrandRegistrationOptions {
+        return new CreateBrandRegistrationOptions($brandType, $mock);
     }
 }
 
@@ -30,9 +33,13 @@ class CreateBrandRegistrationOptions extends Options {
     /**
      * @param string $brandType Type of brand being created. One of: "STANDARD",
      *                          "STARTER".
+     * @param bool $mock A boolean that specifies whether brand should be a mock or
+     *                   not. If true, brand will be registered as a mock brand.
+     *                   Defaults to false if no value is provided.
      */
-    public function __construct(string $brandType = Values::NONE) {
+    public function __construct(string $brandType = Values::NONE, bool $mock = Values::NONE) {
         $this->options['brandType'] = $brandType;
+        $this->options['mock'] = $mock;
     }
 
     /**
@@ -44,6 +51,19 @@ class CreateBrandRegistrationOptions extends Options {
      */
     public function setBrandType(string $brandType): self {
         $this->options['brandType'] = $brandType;
+        return $this;
+    }
+
+    /**
+     * A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+     *
+     * @param bool $mock A boolean that specifies whether brand should be a mock or
+     *                   not. If true, brand will be registered as a mock brand.
+     *                   Defaults to false if no value is provided.
+     * @return $this Fluent Builder
+     */
+    public function setMock(bool $mock): self {
+        $this->options['mock'] = $mock;
         return $this;
     }
 

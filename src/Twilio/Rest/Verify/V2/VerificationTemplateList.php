@@ -7,18 +7,17 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Verify\V2;
 
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class CallSummariesList extends ListResource {
+class VerificationTemplateList extends ListResource {
     /**
-     * Construct the CallSummariesList
+     * Construct the VerificationTemplateList
      *
      * @param Version $version Version that contains the resource
      */
@@ -28,11 +27,12 @@ class CallSummariesList extends ListResource {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Voice/Summaries';
+        $this->uri = '/Templates';
     }
 
     /**
-     * Streams CallSummariesInstance records from the API as a generator stream.
+     * Streams VerificationTemplateInstance records from the API as a generator
+     * stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +59,7 @@ class CallSummariesList extends ListResource {
     }
 
     /**
-     * Reads CallSummariesInstance records from the API as a list.
+     * Reads VerificationTemplateInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -72,44 +72,27 @@ class CallSummariesList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return CallSummariesInstance[] Array of results
+     * @return VerificationTemplateInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of CallSummariesInstance records from the API.
+     * Retrieve a single page of VerificationTemplateInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return CallSummariesPage Page of CallSummariesInstance
+     * @return VerificationTemplatePage Page of VerificationTemplateInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CallSummariesPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): VerificationTemplatePage {
         $options = new Values($options);
 
         $params = Values::of([
-            'From' => Serialize::map($options['from'], function($e) { return $e; }),
-            'To' => Serialize::map($options['to'], function($e) { return $e; }),
-            'FromCarrier' => Serialize::map($options['fromCarrier'], function($e) { return $e; }),
-            'ToCarrier' => Serialize::map($options['toCarrier'], function($e) { return $e; }),
-            'FromCountryCode' => Serialize::map($options['fromCountryCode'], function($e) { return $e; }),
-            'ToCountryCode' => Serialize::map($options['toCountryCode'], function($e) { return $e; }),
-            'Branded' => Serialize::booleanToString($options['branded']),
-            'VerifiedCaller' => Serialize::booleanToString($options['verifiedCaller']),
-            'HasTag' => Serialize::booleanToString($options['hasTag']),
-            'StartTime' => $options['startTime'],
-            'EndTime' => $options['endTime'],
-            'CallType' => Serialize::map($options['callType'], function($e) { return $e; }),
-            'CallState' => Serialize::map($options['callState'], function($e) { return $e; }),
-            'Direction' => Serialize::map($options['direction'], function($e) { return $e; }),
-            'ProcessingState' => $options['processingState'],
-            'SortBy' => $options['sortBy'],
-            'Subaccount' => $options['subaccount'],
-            'AbnormalSession' => Serialize::booleanToString($options['abnormalSession']),
+            'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -117,23 +100,24 @@ class CallSummariesList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new CallSummariesPage($this->version, $response, $this->solution);
+        return new VerificationTemplatePage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of CallSummariesInstance records from the API.
+     * Retrieve a specific page of VerificationTemplateInstance records from the
+     * API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return CallSummariesPage Page of CallSummariesInstance
+     * @return VerificationTemplatePage Page of VerificationTemplateInstance
      */
-    public function getPage(string $targetUrl): CallSummariesPage {
+    public function getPage(string $targetUrl): VerificationTemplatePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new CallSummariesPage($this->version, $response, $this->solution);
+        return new VerificationTemplatePage($this->version, $response, $this->solution);
     }
 
     /**
@@ -142,6 +126,6 @@ class CallSummariesList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Insights.V1.CallSummariesList]';
+        return '[Twilio.Verify.V2.VerificationTemplateList]';
     }
 }

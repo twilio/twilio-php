@@ -34,6 +34,7 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
+ * @property bool $mock
  */
 class UsAppToPersonInstance extends InstanceResource {
     /**
@@ -67,6 +68,7 @@ class UsAppToPersonInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'mock' => Values::array_get($payload, 'mock'),
         ];
 
         $this->solution = [

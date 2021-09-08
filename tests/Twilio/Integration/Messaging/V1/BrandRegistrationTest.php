@@ -46,7 +46,8 @@ class BrandRegistrationTest extends HolodeckTestCase {
                 "tcr_id": "BXXXXXX",
                 "failure_reason": "Registration error",
                 "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN0044409f7e067e279523808d267e2d85",
-                "brand_score": 42
+                "brand_score": 42,
+                "mock": false
             }
             '
         ));
@@ -97,7 +98,8 @@ class BrandRegistrationTest extends HolodeckTestCase {
                         "tcr_id": "BXXXXXX",
                         "failure_reason": "Registration error",
                         "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN0044409f7e067e279523808d267e2d85",
-                        "brand_score": 42
+                        "brand_score": 42,
+                        "mock": false
                     }
                 ]
             }
@@ -146,7 +148,8 @@ class BrandRegistrationTest extends HolodeckTestCase {
                 "tcr_id": "BXXXXXX",
                 "failure_reason": "Registration error",
                 "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN0044409f7e067e279523808d267e2d85",
-                "brand_score": 42
+                "brand_score": 42,
+                "mock": false
             }
             '
         ));

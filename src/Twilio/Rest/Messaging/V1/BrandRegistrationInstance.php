@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string $failureReason
  * @property string $url
  * @property int $brandScore
+ * @property bool $mock
  */
 class BrandRegistrationInstance extends InstanceResource {
     /**
@@ -56,6 +57,7 @@ class BrandRegistrationInstance extends InstanceResource {
             'failureReason' => Values::array_get($payload, 'failure_reason'),
             'url' => Values::array_get($payload, 'url'),
             'brandScore' => Values::array_get($payload, 'brand_score'),
+            'mock' => Values::array_get($payload, 'mock'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

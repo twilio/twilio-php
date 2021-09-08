@@ -106,12 +106,12 @@ class CountryTest extends HolodeckTestCase {
                 "country": "United States",
                 "originating_call_prices": [
                     {
-                        "base_price": "",
+                        "base_price": null,
                         "current_price": "0.0085",
                         "number_type": "local"
                     },
                     {
-                        "base_price": "",
+                        "base_price": null,
                         "current_price": "0.022",
                         "number_type": "toll free"
                     }
@@ -119,7 +119,7 @@ class CountryTest extends HolodeckTestCase {
                 "iso_country": "US",
                 "terminating_prefix_prices": [
                     {
-                        "base_price": "",
+                        "base_price": null,
                         "current_price": "0.090",
                         "destination_prefixes": [
                             "1907"
@@ -130,7 +130,7 @@ class CountryTest extends HolodeckTestCase {
                         ]
                     },
                     {
-                        "base_price": "",
+                        "base_price": null,
                         "current_price": "0.013",
                         "destination_prefixes": [
                             "1808"
@@ -141,7 +141,7 @@ class CountryTest extends HolodeckTestCase {
                         ]
                     },
                     {
-                        "base_price": "",
+                        "base_price": null,
                         "current_price": "0.013",
                         "destination_prefixes": [
                             "1800",
@@ -157,7 +157,7 @@ class CountryTest extends HolodeckTestCase {
                         ]
                     },
                     {
-                        "base_price": "",
+                        "base_price": null,
                         "current_price": "0.013",
                         "destination_prefixes": [
                             "1"

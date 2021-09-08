@@ -12,6 +12,7 @@ namespace Twilio\Rest\Messaging\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -128,6 +129,7 @@ class BrandRegistrationList extends ListResource {
             'CustomerProfileBundleSid' => $customerProfileBundleSid,
             'A2PProfileBundleSid' => $a2PProfileBundleSid,
             'BrandType' => $options['brandType'],
+            'Mock' => Serialize::booleanToString($options['mock']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
