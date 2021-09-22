@@ -30,6 +30,10 @@ use Twilio\Version;
  * @property string $failureReason
  * @property string $url
  * @property int $brandScore
+ * @property string $identityStatus
+ * @property bool $russell3000
+ * @property string $taxExemptStatus
+ * @property bool $skipAutomaticSecVet
  * @property bool $mock
  */
 class BrandRegistrationInstance extends InstanceResource {
@@ -57,6 +61,10 @@ class BrandRegistrationInstance extends InstanceResource {
             'failureReason' => Values::array_get($payload, 'failure_reason'),
             'url' => Values::array_get($payload, 'url'),
             'brandScore' => Values::array_get($payload, 'brand_score'),
+            'identityStatus' => Values::array_get($payload, 'identity_status'),
+            'russell3000' => Values::array_get($payload, 'russell_3000'),
+            'taxExemptStatus' => Values::array_get($payload, 'tax_exempt_status'),
+            'skipAutomaticSecVet' => Values::array_get($payload, 'skip_automatic_sec_vet'),
             'mock' => Values::array_get($payload, 'mock'),
         ];
 

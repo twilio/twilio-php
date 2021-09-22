@@ -22,10 +22,11 @@ abstract class BrandRegistrationOptions {
      * @param bool $mock A boolean that specifies whether brand should be a mock or
      *                   not. If true, brand will be registered as a mock brand.
      *                   Defaults to false if no value is provided.
+     * @param bool $skipAutomaticSecVet Skip Automatic Secondary Vetting
      * @return CreateBrandRegistrationOptions Options builder
      */
-    public static function create(string $brandType = Values::NONE, bool $mock = Values::NONE): CreateBrandRegistrationOptions {
-        return new CreateBrandRegistrationOptions($brandType, $mock);
+    public static function create(string $brandType = Values::NONE, bool $mock = Values::NONE, bool $skipAutomaticSecVet = Values::NONE): CreateBrandRegistrationOptions {
+        return new CreateBrandRegistrationOptions($brandType, $mock, $skipAutomaticSecVet);
     }
 }
 
@@ -36,10 +37,12 @@ class CreateBrandRegistrationOptions extends Options {
      * @param bool $mock A boolean that specifies whether brand should be a mock or
      *                   not. If true, brand will be registered as a mock brand.
      *                   Defaults to false if no value is provided.
+     * @param bool $skipAutomaticSecVet Skip Automatic Secondary Vetting
      */
-    public function __construct(string $brandType = Values::NONE, bool $mock = Values::NONE) {
+    public function __construct(string $brandType = Values::NONE, bool $mock = Values::NONE, bool $skipAutomaticSecVet = Values::NONE) {
         $this->options['brandType'] = $brandType;
         $this->options['mock'] = $mock;
+        $this->options['skipAutomaticSecVet'] = $skipAutomaticSecVet;
     }
 
     /**
@@ -64,6 +67,17 @@ class CreateBrandRegistrationOptions extends Options {
      */
     public function setMock(bool $mock): self {
         $this->options['mock'] = $mock;
+        return $this;
+    }
+
+    /**
+     * A flag to disable automatic secondary vetting for brands which it would otherwise be done.
+     *
+     * @param bool $skipAutomaticSecVet Skip Automatic Secondary Vetting
+     * @return $this Fluent Builder
+     */
+    public function setSkipAutomaticSecVet(bool $skipAutomaticSecVet): self {
+        $this->options['skipAutomaticSecVet'] = $skipAutomaticSecVet;
         return $this;
     }
 

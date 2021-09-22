@@ -113,6 +113,34 @@ class SinkTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testCreateSegmentResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "status": "initialized",
+                "sink_configuration": {
+                    "write_key": "MY_WRITEKEY"
+                },
+                "description": "My segment Sink",
+                "sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "sink_type": "segment",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "sink_test": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test",
+                    "sink_validate": "https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->sinks->create("description", [], "kinesis");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

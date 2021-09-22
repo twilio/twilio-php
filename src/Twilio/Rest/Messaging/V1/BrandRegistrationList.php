@@ -130,6 +130,7 @@ class BrandRegistrationList extends ListResource {
             'A2PProfileBundleSid' => $a2PProfileBundleSid,
             'BrandType' => $options['brandType'],
             'Mock' => Serialize::booleanToString($options['mock']),
+            'SkipAutomaticSecVet' => Serialize::booleanToString($options['skipAutomaticSecVet']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
