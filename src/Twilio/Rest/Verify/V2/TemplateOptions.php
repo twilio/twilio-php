@@ -12,17 +12,17 @@ namespace Twilio\Rest\Verify\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class VerificationTemplateOptions {
+abstract class TemplateOptions {
     /**
      * @param string $friendlyName Filter templates using friendly name
-     * @return ReadVerificationTemplateOptions Options builder
+     * @return ReadTemplateOptions Options builder
      */
-    public static function read(string $friendlyName = Values::NONE): ReadVerificationTemplateOptions {
-        return new ReadVerificationTemplateOptions($friendlyName);
+    public static function read(string $friendlyName = Values::NONE): ReadTemplateOptions {
+        return new ReadTemplateOptions($friendlyName);
     }
 }
 
-class ReadVerificationTemplateOptions extends Options {
+class ReadTemplateOptions extends Options {
     /**
      * @param string $friendlyName Filter templates using friendly name
      */
@@ -48,6 +48,6 @@ class ReadVerificationTemplateOptions extends Options {
      */
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Verify.V2.ReadVerificationTemplateOptions ' . $options . ']';
+        return '[Twilio.Verify.V2.ReadTemplateOptions ' . $options . ']';
     }
 }

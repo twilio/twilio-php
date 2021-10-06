@@ -40,8 +40,8 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $voiceMethod The HTTP method used with the voice_url
      * @param string $voiceUrl The URL we should call when the phone number
      *                         receives a call
-     * @param string $emergencyStatus Whether the phone number is enabled for
-     *                                emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @param string $emergencyAddressSid The emergency address configuration to
      *                                    use for emergency calling
      * @param string $trunkSid SID of the trunk to handle phone calls to the phone
@@ -101,8 +101,8 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $voiceMethod The HTTP method used with the voice_url
      * @param string $voiceUrl The URL we should call when the phone number
      *                         receives a call
-     * @param string $emergencyStatus Status determining whether the new phone
-     *                                number is enabled for emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @param string $emergencyAddressSid The emergency address configuration to
      *                                    use for emergency calling
      * @param string $trunkSid SID of the trunk to handle calls to the new phone
@@ -149,8 +149,8 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      * @param string $voiceMethod The HTTP method used with the voice_url
      * @param string $voiceUrl The URL we should call when the phone number
      *                         receives a call
-     * @param string $emergencyStatus Whether the phone number is enabled for
-     *                                emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @param string $emergencyAddressSid The emergency address configuration to
      *                                    use for emergency calling
      * @param string $trunkSid SID of the trunk to handle phone calls to the phone
@@ -376,10 +376,10 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The configuration status parameter that determines whether the phone number is enabled for emergency calling.
+     * The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
      *
-     * @param string $emergencyStatus Whether the phone number is enabled for
-     *                                emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @return $this Fluent Builder
      */
     public function setEmergencyStatus(string $emergencyStatus): self {
@@ -573,8 +573,8 @@ class CreateIncomingPhoneNumberOptions extends Options {
      * @param string $voiceMethod The HTTP method used with the voice_url
      * @param string $voiceUrl The URL we should call when the phone number
      *                         receives a call
-     * @param string $emergencyStatus Status determining whether the new phone
-     *                                number is enabled for emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @param string $emergencyAddressSid The emergency address configuration to
      *                                    use for emergency calling
      * @param string $trunkSid SID of the trunk to handle calls to the new phone
@@ -812,10 +812,10 @@ class CreateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The configuration status parameter that determines whether the new phone number is enabled for emergency calling.
+     * The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
      *
-     * @param string $emergencyStatus Status determining whether the new phone
-     *                                number is enabled for emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @return $this Fluent Builder
      */
     public function setEmergencyStatus(string $emergencyStatus): self {

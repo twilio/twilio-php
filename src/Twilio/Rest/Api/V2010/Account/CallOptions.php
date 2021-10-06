@@ -225,7 +225,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored.
+     * TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters.
      *
      * @param string $twiml TwiML instructions for the call
      * @return $this Fluent Builder

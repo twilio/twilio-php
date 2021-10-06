@@ -55,8 +55,8 @@ abstract class MobileOptions {
      *                            with the new phone number
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
-     * @param string $emergencyStatus Status determining whether the new phone
-     *                                number is enabled for emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @param string $emergencyAddressSid The emergency address configuration to
      *                                    use for emergency calling
      * @param string $trunkSid SID of the trunk to handle calls to the new phone
@@ -173,8 +173,8 @@ class CreateMobileOptions extends Options {
      *                            with the new phone number
      * @param string $addressSid The SID of the Address resource associated with
      *                           the phone number
-     * @param string $emergencyStatus Status determining whether the new phone
-     *                                number is enabled for emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @param string $emergencyAddressSid The emergency address configuration to
      *                                    use for emergency calling
      * @param string $trunkSid SID of the trunk to handle calls to the new phone
@@ -408,10 +408,10 @@ class CreateMobileOptions extends Options {
     }
 
     /**
-     * The configuration status parameter that determines whether the new phone number is enabled for emergency calling.
+     * The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
      *
-     * @param string $emergencyStatus Status determining whether the new phone
-     *                                number is enabled for emergency calling
+     * @param string $emergencyStatus Displays if emergency calling is enabled for
+     *                                this number.
      * @return $this Fluent Builder
      */
     public function setEmergencyStatus(string $emergencyStatus): self {

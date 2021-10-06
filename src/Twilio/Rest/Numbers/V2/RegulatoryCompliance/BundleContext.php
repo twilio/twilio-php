@@ -13,20 +13,26 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ReplaceItemsList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property EvaluationList $evaluations
  * @property ItemAssignmentList $itemAssignments
+ * @property BundleCopyList $bundleCopies
+ * @property ReplaceItemsList $replaceItems
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationContext evaluations(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentContext itemAssignments(string $sid)
  */
 class BundleContext extends InstanceContext {
     protected $_evaluations;
     protected $_itemAssignments;
+    protected $_bundleCopies;
+    protected $_replaceItems;
 
     /**
      * Initialize the BundleContext
@@ -107,6 +113,28 @@ class BundleContext extends InstanceContext {
         }
 
         return $this->_itemAssignments;
+    }
+
+    /**
+     * Access the bundleCopies
+     */
+    protected function getBundleCopies(): BundleCopyList {
+        if (!$this->_bundleCopies) {
+            $this->_bundleCopies = new BundleCopyList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_bundleCopies;
+    }
+
+    /**
+     * Access the replaceItems
+     */
+    protected function getReplaceItems(): ReplaceItemsList {
+        if (!$this->_replaceItems) {
+            $this->_replaceItems = new ReplaceItemsList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_replaceItems;
     }
 
     /**

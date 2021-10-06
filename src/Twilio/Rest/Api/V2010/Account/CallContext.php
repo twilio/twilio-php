@@ -18,6 +18,7 @@ use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Call\NotificationList;
 use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
 use Twilio\Rest\Api\V2010\Account\Call\RecordingList;
+use Twilio\Rest\Api\V2010\Account\Call\SiprecList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -27,10 +28,12 @@ use Twilio\Version;
  * @property FeedbackList $feedback
  * @property EventList $events
  * @property PaymentList $payments
+ * @property SiprecList $siprec
  * @method \Twilio\Rest\Api\V2010\Account\Call\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\NotificationContext notifications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext feedback()
  * @method \Twilio\Rest\Api\V2010\Account\Call\PaymentContext payments(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Call\SiprecContext siprec(string $sid)
  */
 class CallContext extends InstanceContext {
     protected $_recordings;
@@ -38,6 +41,7 @@ class CallContext extends InstanceContext {
     protected $_feedback;
     protected $_events;
     protected $_payments;
+    protected $_siprec;
 
     /**
      * Initialize the CallContext
@@ -188,6 +192,21 @@ class CallContext extends InstanceContext {
         }
 
         return $this->_payments;
+    }
+
+    /**
+     * Access the siprec
+     */
+    protected function getSiprec(): SiprecList {
+        if (!$this->_siprec) {
+            $this->_siprec = new SiprecList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_siprec;
     }
 
     /**

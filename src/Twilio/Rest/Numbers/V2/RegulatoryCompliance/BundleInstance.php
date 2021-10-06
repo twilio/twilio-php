@@ -13,8 +13,10 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ReplaceItemsList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,6 +37,8 @@ use Twilio\Version;
 class BundleInstance extends InstanceResource {
     protected $_evaluations;
     protected $_itemAssignments;
+    protected $_bundleCopies;
+    protected $_replaceItems;
 
     /**
      * Initialize the BundleInstance
@@ -122,6 +126,20 @@ class BundleInstance extends InstanceResource {
      */
     protected function getItemAssignments(): ItemAssignmentList {
         return $this->proxy()->itemAssignments;
+    }
+
+    /**
+     * Access the bundleCopies
+     */
+    protected function getBundleCopies(): BundleCopyList {
+        return $this->proxy()->bundleCopies;
+    }
+
+    /**
+     * Access the replaceItems
+     */
+    protected function getReplaceItems(): ReplaceItemsList {
+        return $this->proxy()->replaceItems;
     }
 
     /**

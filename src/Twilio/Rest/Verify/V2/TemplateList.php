@@ -15,9 +15,9 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class VerificationTemplateList extends ListResource {
+class TemplateList extends ListResource {
     /**
-     * Construct the VerificationTemplateList
+     * Construct the TemplateList
      *
      * @param Version $version Version that contains the resource
      */
@@ -31,8 +31,7 @@ class VerificationTemplateList extends ListResource {
     }
 
     /**
-     * Streams VerificationTemplateInstance records from the API as a generator
-     * stream.
+     * Streams TemplateInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +58,7 @@ class VerificationTemplateList extends ListResource {
     }
 
     /**
-     * Reads VerificationTemplateInstance records from the API as a list.
+     * Reads TemplateInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -72,23 +71,23 @@ class VerificationTemplateList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return VerificationTemplateInstance[] Array of results
+     * @return TemplateInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of VerificationTemplateInstance records from the API.
+     * Retrieve a single page of TemplateInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return VerificationTemplatePage Page of VerificationTemplateInstance
+     * @return TemplatePage Page of TemplateInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): VerificationTemplatePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TemplatePage {
         $options = new Values($options);
 
         $params = Values::of([
@@ -100,24 +99,23 @@ class VerificationTemplateList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new VerificationTemplatePage($this->version, $response, $this->solution);
+        return new TemplatePage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of VerificationTemplateInstance records from the
-     * API.
+     * Retrieve a specific page of TemplateInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return VerificationTemplatePage Page of VerificationTemplateInstance
+     * @return TemplatePage Page of TemplateInstance
      */
-    public function getPage(string $targetUrl): VerificationTemplatePage {
+    public function getPage(string $targetUrl): TemplatePage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new VerificationTemplatePage($this->version, $response, $this->solution);
+        return new TemplatePage($this->version, $response, $this->solution);
     }
 
     /**
@@ -126,6 +124,6 @@ class VerificationTemplateList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Verify.V2.VerificationTemplateList]';
+        return '[Twilio.Verify.V2.TemplateList]';
     }
 }

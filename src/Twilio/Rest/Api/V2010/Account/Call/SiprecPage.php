@@ -7,13 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2;
+namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class VerificationTemplatePage extends Page {
+class SiprecPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,10 +28,15 @@ class VerificationTemplatePage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return VerificationTemplateInstance \Twilio\Rest\Verify\V2\VerificationTemplateInstance
+     * @return SiprecInstance \Twilio\Rest\Api\V2010\Account\Call\SiprecInstance
      */
-    public function buildInstance(array $payload): VerificationTemplateInstance {
-        return new VerificationTemplateInstance($this->version, $payload);
+    public function buildInstance(array $payload): SiprecInstance {
+        return new SiprecInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid']
+        );
     }
 
     /**
@@ -40,6 +45,6 @@ class VerificationTemplatePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Verify.V2.VerificationTemplatePage]';
+        return '[Twilio.Api.V2010.SiprecPage]';
     }
 }

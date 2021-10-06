@@ -14,53 +14,53 @@ use Twilio\Values;
 
 abstract class CallSummariesOptions {
     /**
-     * @param string[] $from The from
-     * @param string[] $to The to
-     * @param string[] $fromCarrier The from_carrier
-     * @param string[] $toCarrier The to_carrier
-     * @param string[] $fromCountryCode The from_country_code
-     * @param string[] $toCountryCode The to_country_code
+     * @param string $from The from
+     * @param string $to The to
+     * @param string $fromCarrier The from_carrier
+     * @param string $toCarrier The to_carrier
+     * @param string $fromCountryCode The from_country_code
+     * @param string $toCountryCode The to_country_code
      * @param bool $branded The branded
      * @param bool $verifiedCaller The verified_caller
      * @param bool $hasTag The has_tag
      * @param string $startTime The start_time
      * @param string $endTime The end_time
-     * @param string[] $callType The call_type
-     * @param string[] $callState The call_state
-     * @param string[] $direction The direction
+     * @param string $callType The call_type
+     * @param string $callState The call_state
+     * @param string $direction The direction
      * @param string $processingState The processing_state
      * @param string $sortBy The sort_by
      * @param string $subaccount The subaccount
      * @param bool $abnormalSession The abnormal_session
      * @return ReadCallSummariesOptions Options builder
      */
-    public static function read(array $from = Values::ARRAY_NONE, array $to = Values::ARRAY_NONE, array $fromCarrier = Values::ARRAY_NONE, array $toCarrier = Values::ARRAY_NONE, array $fromCountryCode = Values::ARRAY_NONE, array $toCountryCode = Values::ARRAY_NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, array $callType = Values::ARRAY_NONE, array $callState = Values::ARRAY_NONE, array $direction = Values::ARRAY_NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE): ReadCallSummariesOptions {
+    public static function read(string $from = Values::NONE, string $to = Values::NONE, string $fromCarrier = Values::NONE, string $toCarrier = Values::NONE, string $fromCountryCode = Values::NONE, string $toCountryCode = Values::NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, string $callType = Values::NONE, string $callState = Values::NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE): ReadCallSummariesOptions {
         return new ReadCallSummariesOptions($from, $to, $fromCarrier, $toCarrier, $fromCountryCode, $toCountryCode, $branded, $verifiedCaller, $hasTag, $startTime, $endTime, $callType, $callState, $direction, $processingState, $sortBy, $subaccount, $abnormalSession);
     }
 }
 
 class ReadCallSummariesOptions extends Options {
     /**
-     * @param string[] $from The from
-     * @param string[] $to The to
-     * @param string[] $fromCarrier The from_carrier
-     * @param string[] $toCarrier The to_carrier
-     * @param string[] $fromCountryCode The from_country_code
-     * @param string[] $toCountryCode The to_country_code
+     * @param string $from The from
+     * @param string $to The to
+     * @param string $fromCarrier The from_carrier
+     * @param string $toCarrier The to_carrier
+     * @param string $fromCountryCode The from_country_code
+     * @param string $toCountryCode The to_country_code
      * @param bool $branded The branded
      * @param bool $verifiedCaller The verified_caller
      * @param bool $hasTag The has_tag
      * @param string $startTime The start_time
      * @param string $endTime The end_time
-     * @param string[] $callType The call_type
-     * @param string[] $callState The call_state
-     * @param string[] $direction The direction
+     * @param string $callType The call_type
+     * @param string $callState The call_state
+     * @param string $direction The direction
      * @param string $processingState The processing_state
      * @param string $sortBy The sort_by
      * @param string $subaccount The subaccount
      * @param bool $abnormalSession The abnormal_session
      */
-    public function __construct(array $from = Values::ARRAY_NONE, array $to = Values::ARRAY_NONE, array $fromCarrier = Values::ARRAY_NONE, array $toCarrier = Values::ARRAY_NONE, array $fromCountryCode = Values::ARRAY_NONE, array $toCountryCode = Values::ARRAY_NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, array $callType = Values::ARRAY_NONE, array $callState = Values::ARRAY_NONE, array $direction = Values::ARRAY_NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE) {
+    public function __construct(string $from = Values::NONE, string $to = Values::NONE, string $fromCarrier = Values::NONE, string $toCarrier = Values::NONE, string $fromCountryCode = Values::NONE, string $toCountryCode = Values::NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, string $callType = Values::NONE, string $callState = Values::NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['to'] = $to;
         $this->options['fromCarrier'] = $fromCarrier;
@@ -84,10 +84,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The from
      *
-     * @param string[] $from The from
+     * @param string $from The from
      * @return $this Fluent Builder
      */
-    public function setFrom(array $from): self {
+    public function setFrom(string $from): self {
         $this->options['from'] = $from;
         return $this;
     }
@@ -95,10 +95,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The to
      *
-     * @param string[] $to The to
+     * @param string $to The to
      * @return $this Fluent Builder
      */
-    public function setTo(array $to): self {
+    public function setTo(string $to): self {
         $this->options['to'] = $to;
         return $this;
     }
@@ -106,10 +106,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The from_carrier
      *
-     * @param string[] $fromCarrier The from_carrier
+     * @param string $fromCarrier The from_carrier
      * @return $this Fluent Builder
      */
-    public function setFromCarrier(array $fromCarrier): self {
+    public function setFromCarrier(string $fromCarrier): self {
         $this->options['fromCarrier'] = $fromCarrier;
         return $this;
     }
@@ -117,10 +117,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The to_carrier
      *
-     * @param string[] $toCarrier The to_carrier
+     * @param string $toCarrier The to_carrier
      * @return $this Fluent Builder
      */
-    public function setToCarrier(array $toCarrier): self {
+    public function setToCarrier(string $toCarrier): self {
         $this->options['toCarrier'] = $toCarrier;
         return $this;
     }
@@ -128,10 +128,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The from_country_code
      *
-     * @param string[] $fromCountryCode The from_country_code
+     * @param string $fromCountryCode The from_country_code
      * @return $this Fluent Builder
      */
-    public function setFromCountryCode(array $fromCountryCode): self {
+    public function setFromCountryCode(string $fromCountryCode): self {
         $this->options['fromCountryCode'] = $fromCountryCode;
         return $this;
     }
@@ -139,10 +139,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The to_country_code
      *
-     * @param string[] $toCountryCode The to_country_code
+     * @param string $toCountryCode The to_country_code
      * @return $this Fluent Builder
      */
-    public function setToCountryCode(array $toCountryCode): self {
+    public function setToCountryCode(string $toCountryCode): self {
         $this->options['toCountryCode'] = $toCountryCode;
         return $this;
     }
@@ -205,10 +205,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The call_type
      *
-     * @param string[] $callType The call_type
+     * @param string $callType The call_type
      * @return $this Fluent Builder
      */
-    public function setCallType(array $callType): self {
+    public function setCallType(string $callType): self {
         $this->options['callType'] = $callType;
         return $this;
     }
@@ -216,10 +216,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The call_state
      *
-     * @param string[] $callState The call_state
+     * @param string $callState The call_state
      * @return $this Fluent Builder
      */
-    public function setCallState(array $callState): self {
+    public function setCallState(string $callState): self {
         $this->options['callState'] = $callState;
         return $this;
     }
@@ -227,10 +227,10 @@ class ReadCallSummariesOptions extends Options {
     /**
      * The direction
      *
-     * @param string[] $direction The direction
+     * @param string $direction The direction
      * @return $this Fluent Builder
      */
-    public function setDirection(array $direction): self {
+    public function setDirection(string $direction): self {
         $this->options['direction'] = $direction;
         return $this;
     }

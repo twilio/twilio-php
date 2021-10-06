@@ -15,12 +15,12 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class VerificationTemplateTest extends HolodeckTestCase {
+class TemplateTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->verify->v2->verificationTemplates->read();
+            $this->twilio->verify->v2->templates->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -43,7 +43,7 @@ class VerificationTemplateTest extends HolodeckTestCase {
                         "translations": {
                             "en": {
                                 "text": "Hello, your code is {code}.",
-                                "locale": "es",
+                                "locale": "en",
                                 "status": "approved",
                                 "date_created": "2021-07-26T22:30:13.003505841Z",
                                 "date_updated": "2021-07-26T22:31:08.750971289Z"
@@ -52,19 +52,19 @@ class VerificationTemplateTest extends HolodeckTestCase {
                     }
                 ],
                 "meta": {
-                    "key": "templates",
                     "page": 0,
                     "page_size": 50,
                     "first_page_url": "https://verify.twilio.com/v2/Templates?PageSize=50&Page=0",
                     "previous_page_url": null,
                     "url": "https://verify.twilio.com/v2/Templates?PageSize=50&Page=0",
-                    "next_page_url": null
+                    "next_page_url": null,
+                    "key": "templates"
                 }
             }
             '
         ));
 
-        $actual = $this->twilio->verify->v2->verificationTemplates->read();
+        $actual = $this->twilio->verify->v2->templates->read();
 
         $this->assertNotNull($actual);
     }

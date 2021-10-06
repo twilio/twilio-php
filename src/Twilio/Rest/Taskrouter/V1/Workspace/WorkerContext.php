@@ -90,8 +90,9 @@ class WorkerContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'RejectPendingReservations' => Serialize::booleanToString($options['rejectPendingReservations']),
         ]);
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new WorkerInstance(
             $this->version,
@@ -104,11 +105,16 @@ class WorkerContext extends InstanceContext {
     /**
      * Delete the WorkerInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->version->delete('DELETE', $this->uri);
+    public function delete(array $options = []): bool {
+        $options = new Values($options);
+
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
+
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
     /**

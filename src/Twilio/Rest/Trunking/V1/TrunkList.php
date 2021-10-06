@@ -50,6 +50,7 @@ class TrunkList extends ListResource {
             'TransferMode' => $options['transferMode'],
             'Secure' => Serialize::booleanToString($options['secure']),
             'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
+            'TransferCallerId' => $options['transferCallerId'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
