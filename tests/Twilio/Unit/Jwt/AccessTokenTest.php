@@ -101,9 +101,9 @@ class AccessTokenTest extends UnitTest {
     public function testPlaybackGrant(): void {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new PlaybackGrant();
-        $playbackGrant = array('requestCredentials' => NULL,
+        $playbackGrant = ['requestCredentials' => NULL,
             'playbackUrl' => 'https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx',
-            'playerStreamerSid' => 'VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+            'playerStreamerSid' => 'VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'];
         $grant->setGrant($playbackGrant);
         $scat->addGrant($grant);
 

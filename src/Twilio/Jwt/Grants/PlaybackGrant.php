@@ -20,7 +20,7 @@ class PlaybackGrant implements Grant {
     /**
      * Set the playback grant that will allow access to a stream
      *
-     * @param string $grant playback grant from Twilio API
+     * @param array $grant playback grant from Twilio API
      * @return $this updated grant
      */
     public function setGrant(array $grant): self {
