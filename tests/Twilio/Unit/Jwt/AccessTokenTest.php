@@ -4,6 +4,7 @@ namespace Twilio\Tests\Unit\Jwt;
 
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\ChatGrant;
+use Twilio\Jwt\Grants\PlaybackGrant;
 use Twilio\Jwt\Grants\SyncGrant;
 use Twilio\Jwt\Grants\TaskRouterGrant;
 use Twilio\Jwt\Grants\VideoGrant;
@@ -95,6 +96,26 @@ class AccessTokenTest extends UnitTest {
         $this->assertArrayHasKey('chat', $grants);
         $this->assertEquals('EP123', $grants['chat']['endpoint_id']);
         $this->assertEquals('IS123', $grants['chat']['service_sid']);
+    }
+
+    public function testPlaybackGrant(): void {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new PlaybackGrant();
+        $playbackGrant = ['requestCredentials' => NULL,
+            'playbackUrl' => 'https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx',
+            'playerStreamerSid' => 'VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'];
+        $grant->setGrant($playbackGrant);
+        $scat->addGrant($grant);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertCount(1, $grants);
+        $this->assertArrayHasKey('player', $grants);
+        $this->assertEquals($playbackGrant, $grants['player']);
     }
 
     public function testSyncGrant(): void {
