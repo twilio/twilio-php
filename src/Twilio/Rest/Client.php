@@ -31,6 +31,7 @@ use Twilio\VersionInfo;
  * @property Insights $insights
  * @property IpMessaging $ipMessaging
  * @property Lookups $lookups
+ * @property Media $media
  * @property Messaging $messaging
  * @property Monitor $monitor
  * @property Notify $notify
@@ -123,6 +124,7 @@ class Client {
     protected $_insights;
     protected $_ipMessaging;
     protected $_lookups;
+    protected $_media;
     protected $_messaging;
     protected $_monitor;
     protected $_notify;
@@ -761,6 +763,18 @@ class Client {
             $this->_lookups = new Lookups($this);
         }
         return $this->_lookups;
+    }
+
+    /**
+     * Access the Media Twilio Domain
+     *
+     * @return Media Media Twilio Domain
+     */
+    protected function getMedia(): Media {
+        if (!$this->_media) {
+            $this->_media = new Media($this);
+        }
+        return $this->_media;
     }
 
     /**

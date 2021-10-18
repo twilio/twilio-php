@@ -7,62 +7,54 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1;
+namespace Twilio\Rest\Messaging\V1\BrandRegistration;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class RoomList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
+class BrandVettingList extends ListResource {
     /**
-     * Construct the RoomList
+     * Construct the BrandVettingList
      *
      * @param Version $version Version that contains the resource
+     * @param string $brandSid A2P BrandRegistration Sid
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $brandSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['brandSid' => $brandSid, ];
 
-        $this->uri = '/Rooms';
+        $this->uri = '/a2p/BrandRegistrations/' . \rawurlencode($brandSid) . '/Vettings';
     }
 
     /**
-     * Create the RoomInstance
+     * Create the BrandVettingInstance
      *
+     * @param string $vettingProvider Third-party provider of the vettings to create
      * @param array|Options $options Optional Arguments
-     * @return RoomInstance Created RoomInstance
+     * @return BrandVettingInstance Created BrandVettingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): RoomInstance {
+    public function create(string $vettingProvider, array $options = []): BrandVettingInstance {
         $options = new Values($options);
 
-        $data = Values::of([
-            'EnableTurn' => Serialize::booleanToString($options['enableTurn']),
-            'Type' => $options['type'],
-            'UniqueName' => $options['uniqueName'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'MaxParticipants' => $options['maxParticipants'],
-            'RecordParticipantsOnConnect' => Serialize::booleanToString($options['recordParticipantsOnConnect']),
-            'VideoCodecs' => Serialize::map($options['videoCodecs'], function($e) { return $e; }),
-            'MediaRegion' => $options['mediaRegion'],
-            'RecordingRules' => Serialize::jsonObject($options['recordingRules']),
-            'AudioOnly' => Serialize::booleanToString($options['audioOnly']),
-        ]);
+        $data = Values::of(['VettingProvider' => $vettingProvider, 'VettingId' => $options['vettingId'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new RoomInstance($this->version, $payload);
+        return new BrandVettingInstance($this->version, $payload, $this->solution['brandSid']);
     }
 
     /**
-     * Streams RoomInstance records from the API as a generator stream.
+     * Streams BrandVettingInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -89,7 +81,7 @@ class RoomList extends ListResource {
     }
 
     /**
-     * Reads RoomInstance records from the API as a list.
+     * Reads BrandVettingInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -102,30 +94,27 @@ class RoomList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RoomInstance[] Array of results
+     * @return BrandVettingInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RoomInstance records from the API.
+     * Retrieve a single page of BrandVettingInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return RoomPage Page of RoomInstance
+     * @return BrandVettingPage Page of BrandVettingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RoomPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BrandVettingPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'Status' => $options['status'],
-            'UniqueName' => $options['uniqueName'],
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'VettingProvider' => $options['vettingProvider'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -133,32 +122,23 @@ class RoomList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new RoomPage($this->version, $response, $this->solution);
+        return new BrandVettingPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of RoomInstance records from the API.
+     * Retrieve a specific page of BrandVettingInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return RoomPage Page of RoomInstance
+     * @return BrandVettingPage Page of BrandVettingInstance
      */
-    public function getPage(string $targetUrl): RoomPage {
+    public function getPage(string $targetUrl): BrandVettingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new RoomPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Constructs a RoomContext
-     *
-     * @param string $sid The SID that identifies the resource to fetch
-     */
-    public function getContext(string $sid): RoomContext {
-        return new RoomContext($this->version, $sid);
+        return new BrandVettingPage($this->version, $response, $this->solution);
     }
 
     /**
@@ -167,6 +147,6 @@ class RoomList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Video.V1.RoomList]';
+        return '[Twilio.Messaging.V1.BrandVettingList]';
     }
 }

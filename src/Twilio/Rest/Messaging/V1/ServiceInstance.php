@@ -44,6 +44,8 @@ use Twilio\Version;
  * @property int $validityPeriod
  * @property string $url
  * @property array $links
+ * @property string $usecase
+ * @property bool $usAppToPersonRegistered
  * @property bool $useInboundWebhookOnNumber
  */
 class ServiceInstance extends InstanceResource {
@@ -85,6 +87,8 @@ class ServiceInstance extends InstanceResource {
             'validityPeriod' => Values::array_get($payload, 'validity_period'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'usecase' => Values::array_get($payload, 'usecase'),
+            'usAppToPersonRegistered' => Values::array_get($payload, 'us_app_to_person_registered'),
             'useInboundWebhookOnNumber' => Values::array_get($payload, 'use_inbound_webhook_on_number'),
         ];
 

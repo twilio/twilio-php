@@ -48,6 +48,8 @@ abstract class ServiceOptions {
      * @param int $validityPeriod How long, in seconds, messages sent from the
      *                            Service are valid
      * @param bool $synchronousValidation Reserved
+     * @param string $usecase A string describing the scenario in which the
+     *                        Messaging Service will be used
      * @param bool $useInboundWebhookOnNumber If enabled, the webhook url
      *                                        configured on the phone number will
      *                                        be used and will override the
@@ -56,8 +58,8 @@ abstract class ServiceOptions {
      *                                        received.
      * @return CreateServiceOptions Options builder
      */
-    public static function create(string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation, $useInboundWebhookOnNumber);
+    public static function create(string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, string $usecase = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE): CreateServiceOptions {
+        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation, $usecase, $useInboundWebhookOnNumber);
     }
 
     /**
@@ -93,6 +95,8 @@ abstract class ServiceOptions {
      * @param int $validityPeriod How long, in seconds, messages sent from the
      *                            Service are valid
      * @param bool $synchronousValidation Reserved
+     * @param string $usecase A string describing the scenario in which the
+     *                        Messaging Service will be used
      * @param bool $useInboundWebhookOnNumber If enabled, the webhook url
      *                                        configured on the phone number will
      *                                        be used and will override the
@@ -101,8 +105,8 @@ abstract class ServiceOptions {
      *                                        received.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation, $useInboundWebhookOnNumber);
+    public static function update(string $friendlyName = Values::NONE, string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, string $usecase = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE): UpdateServiceOptions {
+        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation, $usecase, $useInboundWebhookOnNumber);
     }
 }
 
@@ -139,6 +143,8 @@ class CreateServiceOptions extends Options {
      * @param int $validityPeriod How long, in seconds, messages sent from the
      *                            Service are valid
      * @param bool $synchronousValidation Reserved
+     * @param string $usecase A string describing the scenario in which the
+     *                        Messaging Service will be used
      * @param bool $useInboundWebhookOnNumber If enabled, the webhook url
      *                                        configured on the phone number will
      *                                        be used and will override the
@@ -146,7 +152,7 @@ class CreateServiceOptions extends Options {
      *                                        url called when an inbound message is
      *                                        received.
      */
-    public function __construct(string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE) {
+    public function __construct(string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, string $usecase = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
         $this->options['fallbackUrl'] = $fallbackUrl;
@@ -160,6 +166,7 @@ class CreateServiceOptions extends Options {
         $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
         $this->options['validityPeriod'] = $validityPeriod;
         $this->options['synchronousValidation'] = $synchronousValidation;
+        $this->options['usecase'] = $usecase;
         $this->options['useInboundWebhookOnNumber'] = $useInboundWebhookOnNumber;
     }
 
@@ -325,6 +332,18 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..].
+     *
+     * @param string $usecase A string describing the scenario in which the
+     *                        Messaging Service will be used
+     * @return $this Fluent Builder
+     */
+    public function setUsecase(string $usecase): self {
+        $this->options['usecase'] = $usecase;
+        return $this;
+    }
+
+    /**
      * A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
      *
      * @param bool $useInboundWebhookOnNumber If enabled, the webhook url
@@ -385,6 +404,8 @@ class UpdateServiceOptions extends Options {
      * @param int $validityPeriod How long, in seconds, messages sent from the
      *                            Service are valid
      * @param bool $synchronousValidation Reserved
+     * @param string $usecase A string describing the scenario in which the
+     *                        Messaging Service will be used
      * @param bool $useInboundWebhookOnNumber If enabled, the webhook url
      *                                        configured on the phone number will
      *                                        be used and will override the
@@ -392,7 +413,7 @@ class UpdateServiceOptions extends Options {
      *                                        url called when an inbound message is
      *                                        received.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $inboundRequestUrl = Values::NONE, string $inboundMethod = Values::NONE, string $fallbackUrl = Values::NONE, string $fallbackMethod = Values::NONE, string $statusCallback = Values::NONE, bool $stickySender = Values::NONE, bool $mmsConverter = Values::NONE, bool $smartEncoding = Values::NONE, string $scanMessageContent = Values::NONE, bool $fallbackToLongCode = Values::NONE, bool $areaCodeGeomatch = Values::NONE, int $validityPeriod = Values::NONE, bool $synchronousValidation = Values::NONE, string $usecase = Values::NONE, bool $useInboundWebhookOnNumber = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
@@ -407,6 +428,7 @@ class UpdateServiceOptions extends Options {
         $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
         $this->options['validityPeriod'] = $validityPeriod;
         $this->options['synchronousValidation'] = $synchronousValidation;
+        $this->options['usecase'] = $usecase;
         $this->options['useInboundWebhookOnNumber'] = $useInboundWebhookOnNumber;
     }
 
@@ -579,6 +601,18 @@ class UpdateServiceOptions extends Options {
      */
     public function setSynchronousValidation(bool $synchronousValidation): self {
         $this->options['synchronousValidation'] = $synchronousValidation;
+        return $this;
+    }
+
+    /**
+     * A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]
+     *
+     * @param string $usecase A string describing the scenario in which the
+     *                        Messaging Service will be used
+     * @return $this Fluent Builder
+     */
+    public function setUsecase(string $usecase): self {
+        $this->options['usecase'] = $usecase;
         return $this;
     }
 

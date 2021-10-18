@@ -7,25 +7,24 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Media\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
-use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
+use Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
- * @property BrandVettingList $brandVettings
+ * @property PlaybackGrantList $playbackGrant
+ * @method \Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantContext playbackGrant()
  */
-class BrandRegistrationContext extends InstanceContext {
-    protected $_brandVettings;
+class PlayerStreamerContext extends InstanceContext {
+    protected $_playbackGrant;
 
     /**
-     * Initialize the BrandRegistrationContext
+     * Initialize the PlayerStreamerContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID that identifies the resource to fetch
@@ -36,30 +35,45 @@ class BrandRegistrationContext extends InstanceContext {
         // Path Solution
         $this->solution = ['sid' => $sid, ];
 
-        $this->uri = '/a2p/BrandRegistrations/' . \rawurlencode($sid) . '';
+        $this->uri = '/PlayerStreamers/' . \rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch the BrandRegistrationInstance
+     * Fetch the PlayerStreamerInstance
      *
-     * @return BrandRegistrationInstance Fetched BrandRegistrationInstance
+     * @return PlayerStreamerInstance Fetched PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BrandRegistrationInstance {
+    public function fetch(): PlayerStreamerInstance {
         $payload = $this->version->fetch('GET', $this->uri);
 
-        return new BrandRegistrationInstance($this->version, $payload, $this->solution['sid']);
+        return new PlayerStreamerInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Access the brandVettings
+     * Update the PlayerStreamerInstance
+     *
+     * @param string $status The status the PlayerStreamer should be transitioned to
+     * @return PlayerStreamerInstance Updated PlayerStreamerInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
-    protected function getBrandVettings(): BrandVettingList {
-        if (!$this->_brandVettings) {
-            $this->_brandVettings = new BrandVettingList($this->version, $this->solution['sid']);
+    public function update(string $status): PlayerStreamerInstance {
+        $data = Values::of(['Status' => $status, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new PlayerStreamerInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Access the playbackGrant
+     */
+    protected function getPlaybackGrant(): PlaybackGrantList {
+        if (!$this->_playbackGrant) {
+            $this->_playbackGrant = new PlaybackGrantList($this->version, $this->solution['sid']);
         }
 
-        return $this->_brandVettings;
+        return $this->_playbackGrant;
     }
 
     /**
@@ -105,6 +119,6 @@ class BrandRegistrationContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.BrandRegistrationContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Media.V1.PlayerStreamerContext ' . \implode(' ', $context) . ']';
     }
 }

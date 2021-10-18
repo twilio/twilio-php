@@ -116,6 +116,12 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
                         "post_approval_required": false
                     },
                     {
+                        "code": "POLITICAL",
+                        "name": "Political",
+                        "description": "Part of organized effort to influence decision making of specific group. All campaigns to be verified",
+                        "post_approval_required": false
+                    },
+                    {
                         "code": "POLLING_VOTING",
                         "name": "Polling and voting",
                         "description": "Polling and voting",
@@ -238,6 +244,12 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
                         "code": "MIXED",
                         "name": "Mixed",
                         "description": "Mixed messaging reserved for specific consumer service industry",
+                        "post_approval_required": false
+                    },
+                    {
+                        "code": "POLITICAL",
+                        "name": "Political",
+                        "description": "Part of organized effort to influence decision making of specific group. All campaigns to be verified",
                         "post_approval_required": false
                     },
                     {

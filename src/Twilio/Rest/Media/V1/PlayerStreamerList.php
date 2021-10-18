@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1;
+namespace Twilio\Rest\Media\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
@@ -17,9 +17,9 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class RoomList extends ListResource {
+class PlayerStreamerList extends ListResource {
     /**
-     * Construct the RoomList
+     * Construct the PlayerStreamerList
      *
      * @param Version $version Version that contains the resource
      */
@@ -29,40 +29,32 @@ class RoomList extends ListResource {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Rooms';
+        $this->uri = '/PlayerStreamers';
     }
 
     /**
-     * Create the RoomInstance
+     * Create the PlayerStreamerInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return RoomInstance Created RoomInstance
+     * @return PlayerStreamerInstance Created PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): RoomInstance {
+    public function create(array $options = []): PlayerStreamerInstance {
         $options = new Values($options);
 
         $data = Values::of([
-            'EnableTurn' => Serialize::booleanToString($options['enableTurn']),
-            'Type' => $options['type'],
-            'UniqueName' => $options['uniqueName'],
+            'Video' => Serialize::booleanToString($options['video']),
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'MaxParticipants' => $options['maxParticipants'],
-            'RecordParticipantsOnConnect' => Serialize::booleanToString($options['recordParticipantsOnConnect']),
-            'VideoCodecs' => Serialize::map($options['videoCodecs'], function($e) { return $e; }),
-            'MediaRegion' => $options['mediaRegion'],
-            'RecordingRules' => Serialize::jsonObject($options['recordingRules']),
-            'AudioOnly' => Serialize::booleanToString($options['audioOnly']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new RoomInstance($this->version, $payload);
+        return new PlayerStreamerInstance($this->version, $payload);
     }
 
     /**
-     * Streams RoomInstance records from the API as a generator stream.
+     * Streams PlayerStreamerInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -89,7 +81,7 @@ class RoomList extends ListResource {
     }
 
     /**
-     * Reads RoomInstance records from the API as a list.
+     * Reads PlayerStreamerInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -102,30 +94,28 @@ class RoomList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RoomInstance[] Array of results
+     * @return PlayerStreamerInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RoomInstance records from the API.
+     * Retrieve a single page of PlayerStreamerInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return RoomPage Page of RoomInstance
+     * @return PlayerStreamerPage Page of PlayerStreamerInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RoomPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PlayerStreamerPage {
         $options = new Values($options);
 
         $params = Values::of([
+            'Order' => $options['order'],
             'Status' => $options['status'],
-            'UniqueName' => $options['uniqueName'],
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -133,32 +123,32 @@ class RoomList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new RoomPage($this->version, $response, $this->solution);
+        return new PlayerStreamerPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of RoomInstance records from the API.
+     * Retrieve a specific page of PlayerStreamerInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return RoomPage Page of RoomInstance
+     * @return PlayerStreamerPage Page of PlayerStreamerInstance
      */
-    public function getPage(string $targetUrl): RoomPage {
+    public function getPage(string $targetUrl): PlayerStreamerPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new RoomPage($this->version, $response, $this->solution);
+        return new PlayerStreamerPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a RoomContext
+     * Constructs a PlayerStreamerContext
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext(string $sid): RoomContext {
-        return new RoomContext($this->version, $sid);
+    public function getContext(string $sid): PlayerStreamerContext {
+        return new PlayerStreamerContext($this->version, $sid);
     }
 
     /**
@@ -167,6 +157,6 @@ class RoomList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Video.V1.RoomList]';
+        return '[Twilio.Media.V1.PlayerStreamerList]';
     }
 }

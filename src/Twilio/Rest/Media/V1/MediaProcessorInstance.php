@@ -7,43 +7,30 @@
  * /       /
  */
 
-namespace Twilio\Rest\Messaging\V1;
+namespace Twilio\Rest\Media\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
- * @property string $sid
  * @property string $accountSid
- * @property string $customerProfileBundleSid
- * @property string $a2PProfileBundleSid
+ * @property string $sid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $brandType
+ * @property string $extension
+ * @property string $extensionContext
  * @property string $status
- * @property string $tcrId
- * @property string $failureReason
  * @property string $url
- * @property int $brandScore
- * @property string[] $brandFeedback
- * @property string $identityStatus
- * @property bool $russell3000
- * @property string $taxExemptStatus
- * @property bool $skipAutomaticSecVet
- * @property bool $mock
- * @property array $links
+ * @property string $endedReason
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
  */
-class BrandRegistrationInstance extends InstanceResource {
-    protected $_brandVettings;
-
+class MediaProcessorInstance extends InstanceResource {
     /**
-     * Initialize the BrandRegistrationInstance
+     * Initialize the MediaProcessorInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -54,25 +41,17 @@ class BrandRegistrationInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'customerProfileBundleSid' => Values::array_get($payload, 'customer_profile_bundle_sid'),
-            'a2PProfileBundleSid' => Values::array_get($payload, 'a2p_profile_bundle_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'brandType' => Values::array_get($payload, 'brand_type'),
+            'extension' => Values::array_get($payload, 'extension'),
+            'extensionContext' => Values::array_get($payload, 'extension_context'),
             'status' => Values::array_get($payload, 'status'),
-            'tcrId' => Values::array_get($payload, 'tcr_id'),
-            'failureReason' => Values::array_get($payload, 'failure_reason'),
             'url' => Values::array_get($payload, 'url'),
-            'brandScore' => Values::array_get($payload, 'brand_score'),
-            'brandFeedback' => Values::array_get($payload, 'brand_feedback'),
-            'identityStatus' => Values::array_get($payload, 'identity_status'),
-            'russell3000' => Values::array_get($payload, 'russell_3000'),
-            'taxExemptStatus' => Values::array_get($payload, 'tax_exempt_status'),
-            'skipAutomaticSecVet' => Values::array_get($payload, 'skip_automatic_sec_vet'),
-            'mock' => Values::array_get($payload, 'mock'),
-            'links' => Values::array_get($payload, 'links'),
+            'endedReason' => Values::array_get($payload, 'ended_reason'),
+            'statusCallback' => Values::array_get($payload, 'status_callback'),
+            'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -82,31 +61,35 @@ class BrandRegistrationInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return BrandRegistrationContext Context for this BrandRegistrationInstance
+     * @return MediaProcessorContext Context for this MediaProcessorInstance
      */
-    protected function proxy(): BrandRegistrationContext {
+    protected function proxy(): MediaProcessorContext {
         if (!$this->context) {
-            $this->context = new BrandRegistrationContext($this->version, $this->solution['sid']);
+            $this->context = new MediaProcessorContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the BrandRegistrationInstance
+     * Fetch the MediaProcessorInstance
      *
-     * @return BrandRegistrationInstance Fetched BrandRegistrationInstance
+     * @return MediaProcessorInstance Fetched MediaProcessorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BrandRegistrationInstance {
+    public function fetch(): MediaProcessorInstance {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Access the brandVettings
+     * Update the MediaProcessorInstance
+     *
+     * @param string $status The status of the MediaProcessor
+     * @return MediaProcessorInstance Updated MediaProcessorInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
-    protected function getBrandVettings(): BrandVettingList {
-        return $this->proxy()->brandVettings;
+    public function update(string $status): MediaProcessorInstance {
+        return $this->proxy()->update($status);
     }
 
     /**
@@ -139,6 +122,6 @@ class BrandRegistrationInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.BrandRegistrationInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Media.V1.MediaProcessorInstance ' . \implode(' ', $context) . ']';
     }
 }
