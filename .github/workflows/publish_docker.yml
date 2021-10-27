@@ -33,7 +33,7 @@ jobs:
         env:
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Build {2} in {1} failed{3} {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id, ':') }}
+          SLACK_MESSAGE: ${{ format('Failed to publish docker image for {1}{3} {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id, ':') }}
           SLACK_TITLE: Build Failure
           SLACK_USERNAME: GitHub Actions
           SLACK_MSG_AUTHOR: twilio-dx
