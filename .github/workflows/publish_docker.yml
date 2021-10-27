@@ -1,0 +1,43 @@
+name: Publish Docker
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Publish Docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout twilio-php
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
+
+      - name: Build & Push docker image
+        run: make docker-build docker-push
+
+
+  notify-on-failure:
+    name: Slack notify on failure
+    if: ${{ failure() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    needs: [ deploy ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON_EMOJI: ':github:'
+          SLACK_MESSAGE: ${{ format('Build {2} in {1} failed{3} {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id, ':') }}
+          SLACK_TITLE: Build Failure
+          SLACK_USERNAME: GitHub Actions
+          SLACK_MSG_AUTHOR: twilio-dx
+          SLACK_FOOTER: Posted automatically using GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          MSG_MINIMAL: true
+
