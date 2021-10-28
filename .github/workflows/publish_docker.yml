@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_COLOR: ${{ job.status }}
+          SLACK_COLOR: ${{ needs.deploy.status }}
           SLACK_ICON_EMOJI: ':github:'
           SLACK_MESSAGE: ${{ format('Failed to publish docker image for {1}{3} {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id, ':') }}
           SLACK_TITLE: Deployment Failure
