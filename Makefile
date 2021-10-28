@@ -36,7 +36,6 @@ docker-build:
 	docker tag twilio/twilio-php twilio/twilio-php:latest
 
 docker-push:
-	echo "${DOCKER_AUTH_TOKEN}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 	docker push twilio/twilio-php:${GITHUB_TAG}
 	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 	docker push twilio/twilio-php:latest
