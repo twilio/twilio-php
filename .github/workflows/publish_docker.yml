@@ -19,12 +19,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_AUTH_TOKEN }}
 
+      # The expression strips off the shortest match from the front of the string to yield just the tag name as the output
       - name: Get tagged version
         run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Build & Push docker image
         run: make docker-build docker-push
-
 
   notify-on-failure:
     name: Slack notify on failure
