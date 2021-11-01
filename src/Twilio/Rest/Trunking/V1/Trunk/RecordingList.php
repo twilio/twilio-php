@@ -17,7 +17,7 @@ class RecordingList extends ListResource {
      * Construct the RecordingList
      *
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid The trunk_sid
+     * @param string $trunkSid The unique string that identifies the resource
      */
     public function __construct(Version $version, string $trunkSid) {
         parent::__construct($version);

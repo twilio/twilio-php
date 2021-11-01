@@ -17,7 +17,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $sid
  * @property string $accountSid
@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property array[] $assetVersions
  * @property array[] $functionVersions
  * @property array[] $dependencies
+ * @property string $runtime
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -55,6 +56,7 @@ class BuildInstance extends InstanceResource {
             'assetVersions' => Values::array_get($payload, 'asset_versions'),
             'functionVersions' => Values::array_get($payload, 'function_versions'),
             'dependencies' => Values::array_get($payload, 'dependencies'),
+            'runtime' => Values::array_get($payload, 'runtime'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

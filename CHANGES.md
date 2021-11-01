@@ -1,6 +1,523 @@
 twilio-php Changelog
 ====================
 
+[2021-10-18] Version 6.30.0
+---------------------------
+**Library - Feature**
+- [PR #700](https://github.com/twilio/twilio-php/pull/700): Add PlaybackGrant. Thanks to [@sarahcstringer](https://github.com/sarahcstringer)!
+
+**Library - Fix**
+- [PR #699](https://github.com/twilio/twilio-php/pull/699): use time insensitive string comparison. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Chore**
+- [PR #698](https://github.com/twilio/twilio-php/pull/698): add time safe jwt verification logic. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
+- Clarify `emergency_address_status` values in `/IncomingPhoneNumbers` response.
+
+**Messaging**
+- Add PUT and List brand vettings api
+- Removes beta feature flag based visibility for us_app_to_person_registered and usecase field.Updates test cases to add POLITICAL usecase. **(breaking change)**
+- Add brand_feedback as optional field to BrandRegistrations
+
+**Video**
+- Add `AudioOnly` to create room
+
+
+[2021-10-06] Version 6.29.0
+---------------------------
+**Api**
+- Add `emergency_address_status` attribute to `/IncomingPhoneNumbers` response.
+- Add `siprec` resource
+
+**Conversations**
+- Added attachment parameters in configuration for `NewMessage` type of push notifications
+
+**Flex**
+- Adding `flex_insights_hr` object to Flex Configuration
+
+**Numbers**
+- Add API endpoint for Bundle ReplaceItems resource
+- Add API endpoint for Bundle Copies resource
+
+**Serverless**
+- Add domain_base field to Service response
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Worker Delete **(breaking change)**
+- Add `If-Match` Header based on Etag for Reservation Update
+- Add `If-Match` Header based on ETag for Worker Update
+- Add `If-Match` Header based on ETag for Worker Delete
+- Add `ETag` as Response Header to Worker
+
+**Trunking**
+- Added `transfer_caller_id` property on Trunks.
+
+**Verify**
+- Document new pilot `whatsapp` channel.
+
+
+[2021-09-22] Version 6.28.3
+---------------------------
+**Events**
+- Add segment sink
+
+**Messaging**
+- Add post_approval_required attribute in GET us_app_to_person_usecase api response
+- Add Identity Status, Russell 3000, Tax Exempt Status and Should Skip SecVet fields for Brand Registrations
+- Add Should Skip Secondary Vetting optional flag parameter to create Brand API
+
+
+[2021-09-08] Version 6.28.2
+---------------------------
+**Api**
+- Revert adding `siprec` resource
+- Add `siprec` resource
+
+**Messaging**
+- Add 'mock' as an optional field to brand_registration api
+- Add 'mock' as an optional field to us_app_to_person api
+- Adds more Use Cases in us_app_to_person_usecase api transaction and updates us_app_to_person_usecase docs
+
+**Verify**
+- Verify List Templates API endpoint added.
+
+
+[2021-08-25] Version 6.28.1
+---------------------------
+**Api**
+- Add Programmabled Voice SIP Refer call transfers (`calls-transfers`) to usage records
+- Add Flex Voice Usage category (`flex-usage`) to usage records
+
+**Conversations**
+- Add `Order` query parameter to Message resource read operation
+
+**Insights**
+- Added `partial` to enum processing_state_request
+- Added abnormal session filter in Call Summaries
+
+**Messaging**
+- Add brand_registration_sid as an optional query param for us_app_to_person_usecase api
+
+**Pricing**
+- add trunking_numbers resource (v2)
+- add trunking_country resource (v2)
+
+**Verify**
+- Changed to private beta the `TemplateSid` optional parameter on Verification creation.
+- Added the optional parameter `Order` to the list Challenges endpoint to define the list order.
+
+
+[2021-08-11] Version 6.28.0
+---------------------------
+**Api**
+- Corrected the `price`, `call_sid_to_coach`, and `uri` data types for Conference, Participant, and Recording **(breaking change)**
+- Made documentation for property `time_limit` in the call api public. **(breaking change)**
+- Added `domain_sid` in sip_credential_list_mapping and sip_ip_access_control_list_mapping APIs **(breaking change)**
+
+**Insights**
+- Added new endpoint to fetch Call Summaries
+
+**Messaging**
+- Add brand_type field to a2p brand_registration api
+- Revert brand registration api update to add brand_type field
+- Add brand_type field to a2p brand_registration api
+
+**Taskrouter**
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` as Response Headers to all TaskRouter endpoints
+
+**Verify**
+- Add `TemplateSid` optional parameter on Verification creation.
+- Include `whatsapp` as a channel type in the verifications API.
+
+
+[2021-07-28] Version 6.27.1
+---------------------------
+**Conversations**
+- Expose ParticipantConversations resource
+
+**Taskrouter**
+- Adding `links` to the activity resource
+
+**Verify**
+- Added a `Version` to Verify Factors `Webhooks` to add new fields without breaking old Webhooks.
+
+
+[2021-07-14] Version 6.27.0
+---------------------------
+**Library - Fix**
+- [PR #689](https://github.com/twilio/twilio-php/pull/689): replace deprecated method build_query with Query::build. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Conversations**
+- Changed `last_read_message_index` and `unread_messages_count` type in User Conversation's resource **(breaking change)**
+- Expose UserConversations resource
+
+**Messaging**
+- Add brand_score field to brand registration responses
+
+
+[2021-06-30] Version 6.26.0
+---------------------------
+**Conversations**
+- Read-only Conversation Email Binding property `binding`
+
+**Supersim**
+- Add Billing Period resource for the Super Sim Pilot
+- Add List endpoint to Billing Period resource for Super Sim Pilot
+- Add Fetch endpoint to Billing Period resource for Super Sim Pilot
+
+**Taskrouter**
+- Update `transcribe` & `transcription_configuration` form params in Reservation update endpoint to have private visibility **(breaking change)**
+- Add `transcribe` & `transcription_configuration` form params to Reservation update endpoint
+
+**Twiml**
+- Add `modify` event to `statusCallbackEvent` for `<Conference>`.
+
+
+[2021-06-16] Version 6.25.0
+---------------------------
+**Api**
+- Update `status` enum for Messages to include 'canceled'
+- Update `update_status` enum for Messages to include 'canceled'
+
+**Trusthub**
+- Corrected the sid for policy sid in customer_profile_evaluation.json and trust_product_evaluation.json **(breaking change)**
+
+
+[2021-06-02] Version 6.24.1
+---------------------------
+**Events**
+- join Sinks and Subscriptions service
+
+**Verify**
+- Improved the documentation of `challenge` adding the maximum and minimum expected lengths of some fields.
+- Improve documentation regarding `notification` by updating the documentation of the field `ttl`.
+
+
+[2021-05-19] Version 6.24.0
+---------------------------
+**Events**
+- add query param to return types filtered by Schema Id
+- Add query param to return sinks filtered by status
+- Add query param to return sinks used/not used by a subscription
+
+**Messaging**
+- Add fetch and delete instance endpoints to us_app_to_person api **(breaking change)**
+- Remove delete list endpoint from us_app_to_person api **(breaking change)**
+- Update read list endpoint to return a list of us_app_to_person compliance objects **(breaking change)**
+- Add `sid` field to Preregistered US App To Person response
+
+**Supersim**
+- Mark `unique_name` in Sim, Fleet, NAP resources as not PII
+
+**Video**
+- [Composer] GA maturity level
+
+
+[2021-05-05] Version 6.23.0
+---------------------------
+**Api**
+- Corrected the data types for feedback summary fields **(breaking change)**
+- Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+
+**Bulkexports**
+- promoting API maturity to GA
+
+**Events**
+- Add endpoint to update description in sink
+- Remove beta-feature account flag
+
+**Messaging**
+- Update `status` field in us_app_to_person api to `campaign_status` **(breaking change)**
+
+**Verify**
+- Improve documentation regarding `push` factor and include extra information about `totp` factor.
+
+
+[2021-04-21] Version 6.22.0
+---------------------------
+**Library - Chore**
+- [PR #684](https://github.com/twilio/twilio-php/pull/684): Travis test for PHP8. Thanks to [@ibpavlov](https://github.com/ibpavlov)!
+
+**Api**
+- Revert Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+- Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+
+**Bulkexports**
+- moving enum to doc root for auto generating documentation
+- adding status enum and default output properties
+
+**Events**
+- Change schema_versions prop and key to versions **(breaking change)**
+
+**Messaging**
+- Add `use_inbound_webhook_on_number` field in Service API for fetch, create, update, read
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Task Delete
+
+**Verify**
+- Add `AuthPayload` parameter to support verifying a `Challenge` upon creation. This is only supported for `totp` factors.
+- Add support to resend the notifications of a `Challenge`. This is only supported for `push` factors.
+
+**Twiml**
+- Add Polly Neural voices.
+
+
+[2021-04-07] Version 6.21.0
+---------------------------
+**Api**
+- Added `announcement` event to conference status callback events
+- Removed optional property `time_limit` in the call create request. **(breaking change)**
+
+**Messaging**
+- Add rate_limits field to Messaging Services US App To Person API
+- Add usecase field in Service API for fetch, create, update, read
+- Add us app to person api and us app to person usecase api as dependents in service
+- Add us_app_to_person_registered field in service api for fetch, read, create, update
+- Add us app to person api
+- Add us app to person usecase api
+- Add A2P external campaign api
+- Add Usecases API
+
+**Supersim**
+- Add Create endpoint to Sims resource
+
+**Verify**
+- The `Binding` field is now returned when creating a `Factor`. This value won't be returned for other endpoints.
+
+**Video**
+- [Rooms] max_concurrent_published_tracks has got GA maturity
+
+**Twiml**
+- Add `announcement` event to `statusCallbackEvent` for `<Conference>`.
+
+
+[2021-03-24] Version 6.20.0
+---------------------------
+**Api**
+- Added optional parameter `CallToken` for create calls api
+- Add optional property `time_limit` in the call create request.
+
+**Bulkexports**
+- adding two new fields with job api queue_position and estimated_completion_time
+
+**Events**
+- Add new endpoints to manage subscribed_events in subscriptions
+
+**Numbers**
+- Remove feature flags for RegulatoryCompliance endpoints
+
+**Supersim**
+- Add SmsCommands resource
+- Add fields `SmsCommandsUrl`, `SmsCommandsMethod` and `SmsCommandsEnabled` to a Fleet resource
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Task Update
+- Add `ETag` as Response Headers to Tasks and Reservations
+
+**Video**
+- Recording rule beta flag **(breaking change)**
+- [Rooms] Add RecordingRules param to Rooms
+
+
+[2021-03-15] Version 6.19.0
+---------------------------
+**Events**
+- Set maturity to beta
+
+**Messaging**
+- Adjust A2P brand registration status enum **(breaking change)**
+
+**Studio**
+- Remove internal safeguards for Studio V2 API usage now that it's GA
+
+**Verify**
+- Add support for creating and verifying totp factors. Support for totp factors is behind the `api.verify.totp` beta feature.
+
+**Twiml**
+- Add support for `<VirtualAgent>` noun
+
+
+[2021-02-24] Version 6.18.0
+---------------------------
+**Events**
+- Update description of types in the create sink resource
+
+**Messaging**
+- Add WA template header and footer
+- Remove A2P campaign and use cases API **(breaking change)**
+- Add number_registration_status field to read and fetch campaign responses
+
+**Trusthub**
+- Make all resources public
+
+**Verify**
+- Verify List Attempts API endpoints added.
+
+
+[2021-02-10] Version 6.17.0
+---------------------------
+**Library - Fix**
+- [PR #675](https://github.com/twilio/twilio-php/pull/675): shortcut syntax for new non-GA versions. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Revert change that conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+- Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+
+**Events**
+- Documentation should state that no fields are PII
+
+**Flex**
+- Adding `notifications` and `markdown` to Flex Configuration
+
+**Messaging**
+- Add A2P use cases API
+- Add Brand Registrations API
+- Add Campaigns API
+
+**Serverless**
+- Add runtime field to Build response and as an optional parameter to the Build create endpoint.
+- Add @twilio/runtime-handler dependency to Build response example.
+
+**Sync**
+- Remove If-Match header for Document **(breaking change)**
+
+**Twiml**
+- Add `refer_url` and `refer_method` to `Dial`.
+
+
+[2021-01-27] Version 6.16.1
+---------------------------
+**Studio**
+- Studio V2 API is now GA
+
+**Supersim**
+- Allow updating `CommandsUrl` and `CommandsMethod` on a Fleet
+
+**Twiml**
+- Add `status_callback` and `status_callback_method` to `Stream`.
+
+
+[2021-01-13] Version 6.16.0
+---------------------------
+**Api**
+- Add 'Electric Imp v1 Usage' to usage categories
+
+**Conversations**
+- Changed `last_read_message_index` type in Participant's resource **(breaking change)**
+
+**Insights**
+- Added `created_time` to call summary.
+
+**Sync**
+- Remove HideExpired query parameter for filtering Sync Documents with expired **(breaking change)**
+
+**Video**
+- [Rooms] Expose maxConcurrentPublishedTracks property in Room resource
+
+
+[2020-12-16] Version 6.15.1
+---------------------------
+**Api**
+- Updated `call_event` default_output_properties to request and response.
+
+**Conversations**
+- Added `last_read_message_index` and `last_read_timestamp` to Participant's resource update operation
+- Added `is_notifiable` and `is_online` to User's resource
+- Added `reachability_enabled` parameters to update method for Conversation Service Configuration resource
+
+**Messaging**
+- Added WA template quick reply, URL, and phone number buttons
+
+**Twiml**
+- Add `sequential` to `Dial`.
+
+
+[2020-12-08] Version 6.15.0
+---------------------------
+**Api**
+- Added optional `RecordingTrack` parameter for create calls, create participants, and create call recordings
+- Removed deprecated Programmable Chat usage record categories **(breaking change)**
+
+**Twiml**
+- Add `recordingTrack` to `Dial`.
+
+
+[2020-12-02] Version 6.14.0
+---------------------------
+**Api**
+- Remove `RecordingTrack` parameter for create calls, create participants, and create call recordings **(breaking change)**
+- Added `RecordingTrack` parameter for create calls and create call recordings
+- Add optional property `recording_track` in the participant create request
+
+**Lookups**
+- Changed `caller_name` and `carrier` properties type to object **(breaking change)**
+
+**Trunking**
+- Added dual channel recording options for Trunks.
+
+**Twiml**
+- Add `jitterBufferSize` and `participantLabel` to `Conference`.
+
+
+[2020-11-18] Version 6.13.0
+---------------------------
+**Library - Feature**
+- [PR #667](https://github.com/twilio/twilio-php/pull/667): add http logging for php. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Api**
+- Add new call events resource - GET /2010-04-01/Accounts/{account_sid}/Calls/{call_sid}/Events.json
+
+**Conversations**
+- Fixed default response property issue for Service Notifications Configuration
+
+**Insights**
+- Removing call_sid from participant summary. **(breaking change)**
+
+**Serverless**
+- Allow Service unique name to be used in path (in place of SID) in Service update request
+
+**Sync**
+- Added HideExpired query parameter for filtering Sync Documents with expired
+
+**Verify**
+- Challenge `Details` and `HiddenDetails` properties are now marked as `PII`
+- Challenge `expiration_date` attribute updated to set a default value of five (5) minutes and to allow max dates of one (1) hour after creation.
+- Entity `identity` attribute updated to allow values between 8 and 64 characters.
+- Verify Service frinedly_name attribute updated from 64 max lenght to 30 characters.
+
+
+[2020-11-05] Version 6.12.0
+---------------------------
+**Library - Feature**
+- [PR #669](https://github.com/twilio/twilio-php/pull/669): Add region to access token. Thanks to [@ryan-rowland](https://github.com/ryan-rowland)!
+- [PR #664](https://github.com/twilio/twilio-php/pull/664): Remove final from RequestValidator declaration. Thanks to [@hdimitrov1](https://github.com/hdimitrov1)!
+
+**Api**
+- Added `verify-push` to `usage_record` API
+
+**Bulkexports**
+- When creating a custom export the StartDay, EndDay, and FriendlyName fields were required but this was not reflected in the API documentation.  The API itself failed the request without these fields. **(breaking change)**
+- Added property descriptions for Custom Export create method
+- Clarified WebhookUrl and WebhookMethod must be provided together for Custom Export
+
+**Insights**
+- Added video room and participant summary apis.
+
+**Ip_messaging**
+- Create separate definition for ip-messaging
+- Restore v2 endpoints for ip-messaging
+
+**Verify**
+- Verify Push madurity were updated from `preview` to `beta`
+- `twilio_sandbox_mode` header was removed from Verify Push resources **(breaking change)**
+
+**Video**
+- [Rooms] Add Recording Rules API
+
+
 [2020-10-14] Version 6.11.0
 ---------------------------
 **Ai**

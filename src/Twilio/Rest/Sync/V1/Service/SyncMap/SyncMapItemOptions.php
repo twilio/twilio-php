@@ -12,9 +12,6 @@ namespace Twilio\Rest\Sync\V1\Service\SyncMap;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class SyncMapItemOptions {
     /**
      * @param string $ifMatch The If-Match HTTP request header
@@ -70,7 +67,7 @@ class DeleteSyncMapItemOptions extends Options {
     }
 
     /**
-     * The If-Match HTTP request header
+     * If provided, applies this mutation if (and only if) the “revision” field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      *
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder
@@ -116,7 +113,7 @@ class CreateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire.  The Map Item will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Map Item expires (time-to-live) and is deleted.
      *
      * @param int $itemTtl How long, in seconds, before the Map Item expires
      * @return $this Fluent Builder
@@ -127,7 +124,7 @@ class CreateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. The Sync Map will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Map Item's parent Sync Map expires (time-to-live) and is deleted.
      *
      * @param int $collectionTtl How long, in seconds, before the Map Item's parent
      *                           Sync Map expires and is deleted
@@ -226,7 +223,7 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16KB in length.
+     * A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.
      *
      * @param array $data A JSON string that represents an arbitrary, schema-less
      *                    object that the Map Item stores
@@ -249,7 +246,7 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire. The Map Item will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Map Item expires (time-to-live) and is deleted.
      *
      * @param int $itemTtl How long, in seconds, before the Map Item expires
      * @return $this Fluent Builder
@@ -260,7 +257,7 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. This parameter can only be used when the Map Item's `data` or `ttl` is updated in the same request. The Sync Map will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Map Item's parent Sync Map expires (time-to-live) and is deleted. This parameter can only be used when the Map Item's `data` or `ttl` is updated in the same request.
      *
      * @param int $collectionTtl How long, in seconds, before the Map Item's parent
      *                           Sync Map expires and is deleted
@@ -272,7 +269,7 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * The If-Match HTTP request header
+     * If provided, applies this mutation if (and only if) the “revision” field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      *
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder

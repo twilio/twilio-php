@@ -51,10 +51,14 @@ class UserTest extends HolodeckTestCase {
                 "identity": "admin",
                 "friendly_name": "name",
                 "attributes": "{ \\"duty\\": \\"tech\\" }",
-                "is_online": null,
+                "is_online": true,
+                "is_notifiable": null,
                 "date_created": "2019-12-16T22:18:37Z",
                 "date_updated": "2019-12-16T22:18:38Z",
-                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                }
             }
             '
         ));
@@ -97,10 +101,14 @@ class UserTest extends HolodeckTestCase {
                 "identity": "admin",
                 "friendly_name": "new name",
                 "attributes": "{ \\"duty\\": \\"tech\\", \\"team\\": \\"internals\\" }",
-                "is_online": null,
+                "is_online": true,
+                "is_notifiable": null,
                 "date_created": "2019-12-16T22:18:37Z",
                 "date_updated": "2019-12-16T22:18:38Z",
-                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                }
             }
             '
         ));
@@ -168,10 +176,14 @@ class UserTest extends HolodeckTestCase {
                 "identity": "admin",
                 "friendly_name": "name",
                 "attributes": "{ \\"duty\\": \\"tech\\" }",
-                "is_online": null,
+                "is_online": true,
+                "is_notifiable": null,
                 "date_created": "2019-12-16T22:18:37Z",
                 "date_updated": "2019-12-16T22:18:38Z",
-                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                }
             }
             '
         ));
@@ -218,10 +230,14 @@ class UserTest extends HolodeckTestCase {
                         "identity": "admin",
                         "friendly_name": "name",
                         "attributes": "{ \\"duty\\": \\"tech\\" }",
-                        "is_online": null,
+                        "is_online": true,
+                        "is_notifiable": null,
                         "date_created": "2019-12-16T22:18:37Z",
                         "date_updated": "2019-12-16T22:18:38Z",
-                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                        }
                     },
                     {
                         "sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -232,9 +248,13 @@ class UserTest extends HolodeckTestCase {
                         "friendly_name": "John from customs",
                         "attributes": "{ \\"duty\\": \\"agent\\" }",
                         "is_online": false,
+                        "is_notifiable": null,
                         "date_created": "2020-03-24T20:38:21Z",
                         "date_updated": "2020-03-24T20:38:21Z",
-                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "user_conversations": "https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations"
+                        }
                     }
                 ]
             }

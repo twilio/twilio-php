@@ -107,6 +107,10 @@ class ServiceContext extends InstanceContext {
             'Push.IncludeDate' => Serialize::booleanToString($options['pushIncludeDate']),
             'Push.ApnCredentialSid' => $options['pushApnCredentialSid'],
             'Push.FcmCredentialSid' => $options['pushFcmCredentialSid'],
+            'Totp.Issuer' => $options['totpIssuer'],
+            'Totp.TimeStep' => $options['totpTimeStep'],
+            'Totp.CodeLength' => $options['totpCodeLength'],
+            'Totp.Skew' => $options['totpSkew'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

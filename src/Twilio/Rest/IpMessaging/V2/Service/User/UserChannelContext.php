@@ -21,12 +21,9 @@ class UserChannelContext extends InstanceContext {
      * Initialize the UserChannelContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service to fetch the User Channel
-     *                           resource from
-     * @param string $userSid The SID of the User to fetch the User Channel
-     *                        resource from
-     * @param string $channelSid The SID of the Channel that has the User Channel
-     *                           to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $userSid The user_sid
+     * @param string $channelSid The channel_sid
      */
     public function __construct(Version $version, $serviceSid, $userSid, $channelSid) {
         parent::__construct($version);

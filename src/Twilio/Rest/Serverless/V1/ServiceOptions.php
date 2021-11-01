@@ -13,7 +13,7 @@ use Twilio\Options;
 use Twilio\Values;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 abstract class ServiceOptions {
     /**
@@ -53,7 +53,7 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Whether to inject Account credentials into a function invocation context. The default value is `false`.
+     * Whether to inject Account credentials into a function invocation context. The default value is `true`.
      *
      * @param bool $includeCredentials Whether to inject Account credentials into a
      *                                 function invocation context

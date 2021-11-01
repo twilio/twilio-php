@@ -22,9 +22,8 @@ class MemberList extends ListResource {
      * Construct the MemberList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
-     * @param string $channelSid The unique ID of the Channel for the member
+     * @param string $serviceSid The service_sid
+     * @param string $channelSid The channel_sid
      */
     public function __construct(Version $version, string $serviceSid, string $channelSid) {
         parent::__construct($version);
@@ -38,8 +37,7 @@ class MemberList extends ListResource {
     /**
      * Create the MemberInstance
      *
-     * @param string $identity The `identity` value that identifies the new
-     *                         resource's User
+     * @param string $identity The identity
      * @param array|Options $options Optional Arguments
      * @return MemberInstance Created MemberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -150,7 +148,7 @@ class MemberList extends ListResource {
     /**
      * Constructs a MemberContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The sid
      */
     public function getContext(string $sid): MemberContext {
         return new MemberContext(

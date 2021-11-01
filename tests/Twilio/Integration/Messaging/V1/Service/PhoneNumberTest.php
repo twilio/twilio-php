@@ -186,7 +186,7 @@ class PhoneNumberTest extends HolodeckTestCase {
             200,
             '
             {
-                "sid": "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:12:31Z",
@@ -194,7 +194,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "phone_number": "12345",
                 "country_code": "US",
                 "capabilities": [],
-                "url": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));

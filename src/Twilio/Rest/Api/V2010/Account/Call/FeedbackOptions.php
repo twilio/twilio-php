@@ -22,11 +22,12 @@ abstract class FeedbackOptions {
     }
 
     /**
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param string[] $issue Issues experienced during the call
      * @return UpdateFeedbackOptions Options builder
      */
-    public static function update(array $issue = Values::ARRAY_NONE): UpdateFeedbackOptions {
-        return new UpdateFeedbackOptions($issue);
+    public static function update(int $qualityScore = Values::NONE, array $issue = Values::ARRAY_NONE): UpdateFeedbackOptions {
+        return new UpdateFeedbackOptions($qualityScore, $issue);
     }
 }
 
@@ -62,10 +63,23 @@ class CreateFeedbackOptions extends Options {
 
 class UpdateFeedbackOptions extends Options {
     /**
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param string[] $issue Issues experienced during the call
      */
-    public function __construct(array $issue = Values::ARRAY_NONE) {
+    public function __construct(int $qualityScore = Values::NONE, array $issue = Values::ARRAY_NONE) {
+        $this->options['qualityScore'] = $qualityScore;
         $this->options['issue'] = $issue;
+    }
+
+    /**
+     * The call quality expressed as an integer from `1` to `5` where `1` represents very poor call quality and `5` represents a perfect call.
+     *
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
+     * @return $this Fluent Builder
+     */
+    public function setQualityScore(int $qualityScore): self {
+        $this->options['qualityScore'] = $qualityScore;
+        return $this;
     }
 
     /**

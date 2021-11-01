@@ -15,8 +15,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property string $friendlyName
  * @property string $resourceType
  * @property string $startDay
@@ -26,6 +24,8 @@ use Twilio\Version;
  * @property string $email
  * @property string $jobSid
  * @property array $details
+ * @property string $jobQueuePosition
+ * @property string $estimatedCompletionTime
  */
 class ExportCustomJobInstance extends InstanceResource {
     /**
@@ -33,7 +33,8 @@ class ExportCustomJobInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     public function __construct(Version $version, array $payload, string $resourceType) {
         parent::__construct($version);
@@ -49,6 +50,8 @@ class ExportCustomJobInstance extends InstanceResource {
             'email' => Values::array_get($payload, 'email'),
             'jobSid' => Values::array_get($payload, 'job_sid'),
             'details' => Values::array_get($payload, 'details'),
+            'jobQueuePosition' => Values::array_get($payload, 'job_queue_position'),
+            'estimatedCompletionTime' => Values::array_get($payload, 'estimated_completion_time'),
         ];
 
         $this->solution = ['resourceType' => $resourceType, ];

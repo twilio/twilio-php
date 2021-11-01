@@ -38,11 +38,30 @@ class JWT {
             if (empty($header->alg)) {
                 throw new \DomainException('Empty algorithm');
             }
-            if ($sig !== self::sign("$headb64.$payloadb64", $key, $header->alg)) {
+
+            if (!hash_equals($sig, self::sign("$headb64.$payloadb64", $key, $header->alg))) {
                 throw new \UnexpectedValueException('Signature verification failed');
             }
         }
         return $payload;
+    }
+
+    /**
+     * @param string $jwt The JWT
+     * @return object The JWT's header as a PHP object
+     * @throws \UnexpectedValueException
+     */
+    public static function getHeader(string $jwt) {
+        $tks = \explode('.', $jwt);
+        if (\count($tks) !== 3) {
+            throw new \UnexpectedValueException('Wrong number of segments');
+        }
+        list($headb64) = $tks;
+        if (null === ($header = self::jsonDecode(self::urlsafeB64Decode($headb64)))
+        ) {
+            throw new \UnexpectedValueException('Invalid segment encoding');
+        }
+        return $header;
     }
 
     /**

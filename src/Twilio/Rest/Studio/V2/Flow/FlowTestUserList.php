@@ -12,15 +12,12 @@ namespace Twilio\Rest\Studio\V2\Flow;
 use Twilio\ListResource;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class FlowTestUserList extends ListResource {
     /**
      * Construct the FlowTestUserList
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid Unique identifier of the flow.
      */
     public function __construct(Version $version, string $sid) {
         parent::__construct($version);

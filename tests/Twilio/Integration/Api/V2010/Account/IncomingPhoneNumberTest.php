@@ -51,6 +51,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
                 "emergency_status": "Inactive",
                 "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "emergency_address_status": "registered",
                 "friendly_name": "(808) 925-5327",
                 "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "origin": "origin",
@@ -75,10 +76,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "status": "in-use",
                 "bundle_sid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "subresource_uris": {
-                    "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json",
-                    "local": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Local.json",
-                    "mobile": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json",
-                    "toll_free": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/TollFree.json"
+                    "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json"
                 }
             }
             '
@@ -125,6 +123,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
                 "emergency_status": "Active",
                 "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "emergency_address_status": "registered",
                 "friendly_name": "(808) 925-5327",
                 "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "origin": "origin",
@@ -149,10 +148,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "status": "in-use",
                 "bundle_sid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "subresource_uris": {
-                    "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json",
-                    "local": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Local.json",
-                    "mobile": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json",
-                    "toll_free": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/TollFree.json"
+                    "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json"
                 }
             }
             '
@@ -230,6 +226,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                         "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
                         "emergency_status": "Active",
                         "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "emergency_address_status": "registered",
                         "friendly_name": "(808) 925-5327",
                         "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "origin": "origin",
@@ -254,10 +251,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                         "voice_receive_mode": "voice",
                         "status": "in-use",
                         "subresource_uris": {
-                            "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json",
-                            "local": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Local.json",
-                            "mobile": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json",
-                            "toll_free": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/TollFree.json"
+                            "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json"
                         }
                     }
                 ],
@@ -336,6 +330,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
                 "emergency_status": "Active",
                 "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "emergency_address_status": "registered",
                 "friendly_name": "friendly_name",
                 "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "origin": "origin",
@@ -360,10 +355,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "voice_receive_mode": "voice",
                 "status": "in-use",
                 "subresource_uris": {
-                    "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json",
-                    "local": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Local.json",
-                    "mobile": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json",
-                    "toll_free": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/TollFree.json"
+                    "assigned_add_ons": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AssignedAddOns.json"
                 }
             }
             '

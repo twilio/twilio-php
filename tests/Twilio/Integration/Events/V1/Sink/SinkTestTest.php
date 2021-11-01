@@ -36,7 +36,7 @@ class SinkTestTest extends HolodeckTestCase {
             201,
             '
             {
-                "result": "valid"
+                "result": "submitted"
             }
             '
         ));

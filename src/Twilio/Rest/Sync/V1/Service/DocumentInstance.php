@@ -18,8 +18,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property string $sid
  * @property string $uniqueName
  * @property string $accountSid
@@ -98,12 +96,11 @@ class DocumentInstance extends InstanceResource {
     /**
      * Delete the DocumentInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
-        return $this->proxy()->delete($options);
+    public function delete(): bool {
+        return $this->proxy()->delete();
     }
 
     /**

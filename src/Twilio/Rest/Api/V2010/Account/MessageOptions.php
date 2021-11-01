@@ -55,6 +55,14 @@ abstract class MessageOptions {
     public static function read(string $to = Values::NONE, string $from = Values::NONE, string $dateSentBefore = Values::NONE, string $dateSent = Values::NONE, string $dateSentAfter = Values::NONE): ReadMessageOptions {
         return new ReadMessageOptions($to, $from, $dateSentBefore, $dateSent, $dateSentAfter);
     }
+
+    /**
+     * @param string $body The text of the message you want to send
+     * @return UpdateMessageOptions Options builder
+     */
+    public static function update(string $body = Values::NONE): UpdateMessageOptions {
+        return new UpdateMessageOptions($body);
+    }
 }
 
 class CreateMessageOptions extends Options {
@@ -366,5 +374,35 @@ class ReadMessageOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.ReadMessageOptions ' . $options . ']';
+    }
+}
+
+class UpdateMessageOptions extends Options {
+    /**
+     * @param string $body The text of the message you want to send
+     */
+    public function __construct(string $body = Values::NONE) {
+        $this->options['body'] = $body;
+    }
+
+    /**
+     * The text of the message you want to send. Can be up to 1,600 characters long.
+     *
+     * @param string $body The text of the message you want to send
+     * @return $this Fluent Builder
+     */
+    public function setBody(string $body): self {
+        $this->options['body'] = $body;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.UpdateMessageOptions ' . $options . ']';
     }
 }

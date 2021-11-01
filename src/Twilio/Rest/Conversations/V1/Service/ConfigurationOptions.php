@@ -21,10 +21,12 @@ abstract class ConfigurationOptions {
      *                                           they are added to a conversation
      * @param string $defaultChatServiceRoleSid The service role assigned to users
      *                                          when they are added to the service
+     * @param bool $reachabilityEnabled Whether the Reachability Indicator feature
+     *                                  is enabled for this Conversations Service
      * @return UpdateConfigurationOptions Options builder
      */
-    public static function update(string $defaultConversationCreatorRoleSid = Values::NONE, string $defaultConversationRoleSid = Values::NONE, string $defaultChatServiceRoleSid = Values::NONE): UpdateConfigurationOptions {
-        return new UpdateConfigurationOptions($defaultConversationCreatorRoleSid, $defaultConversationRoleSid, $defaultChatServiceRoleSid);
+    public static function update(string $defaultConversationCreatorRoleSid = Values::NONE, string $defaultConversationRoleSid = Values::NONE, string $defaultChatServiceRoleSid = Values::NONE, bool $reachabilityEnabled = Values::NONE): UpdateConfigurationOptions {
+        return new UpdateConfigurationOptions($defaultConversationCreatorRoleSid, $defaultConversationRoleSid, $defaultChatServiceRoleSid, $reachabilityEnabled);
     }
 }
 
@@ -37,11 +39,14 @@ class UpdateConfigurationOptions extends Options {
      *                                           they are added to a conversation
      * @param string $defaultChatServiceRoleSid The service role assigned to users
      *                                          when they are added to the service
+     * @param bool $reachabilityEnabled Whether the Reachability Indicator feature
+     *                                  is enabled for this Conversations Service
      */
-    public function __construct(string $defaultConversationCreatorRoleSid = Values::NONE, string $defaultConversationRoleSid = Values::NONE, string $defaultChatServiceRoleSid = Values::NONE) {
+    public function __construct(string $defaultConversationCreatorRoleSid = Values::NONE, string $defaultConversationRoleSid = Values::NONE, string $defaultChatServiceRoleSid = Values::NONE, bool $reachabilityEnabled = Values::NONE) {
         $this->options['defaultConversationCreatorRoleSid'] = $defaultConversationCreatorRoleSid;
         $this->options['defaultConversationRoleSid'] = $defaultConversationRoleSid;
         $this->options['defaultChatServiceRoleSid'] = $defaultChatServiceRoleSid;
+        $this->options['reachabilityEnabled'] = $reachabilityEnabled;
     }
 
     /**
@@ -78,6 +83,18 @@ class UpdateConfigurationOptions extends Options {
      */
     public function setDefaultChatServiceRoleSid(string $defaultChatServiceRoleSid): self {
         $this->options['defaultChatServiceRoleSid'] = $defaultChatServiceRoleSid;
+        return $this;
+    }
+
+    /**
+     * Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`.
+     *
+     * @param bool $reachabilityEnabled Whether the Reachability Indicator feature
+     *                                  is enabled for this Conversations Service
+     * @return $this Fluent Builder
+     */
+    public function setReachabilityEnabled(bool $reachabilityEnabled): self {
+        $this->options['reachabilityEnabled'] = $reachabilityEnabled;
         return $this;
     }
 

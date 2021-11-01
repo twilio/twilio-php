@@ -13,7 +13,7 @@ use Twilio\Options;
 use Twilio\Values;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 abstract class BuildOptions {
     /**
@@ -23,10 +23,12 @@ abstract class BuildOptions {
      *                                   SIDs to include in the Build
      * @param string $dependencies A list of objects that describe the Dependencies
      *                             included in the Build
+     * @param string $runtime The Runtime version that will be used to run the
+     *                        Build.
      * @return CreateBuildOptions Options builder
      */
-    public static function create(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE): CreateBuildOptions {
-        return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies);
+    public static function create(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE, string $runtime = Values::NONE): CreateBuildOptions {
+        return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies, $runtime);
     }
 }
 
@@ -38,11 +40,14 @@ class CreateBuildOptions extends Options {
      *                                   SIDs to include in the Build
      * @param string $dependencies A list of objects that describe the Dependencies
      *                             included in the Build
+     * @param string $runtime The Runtime version that will be used to run the
+     *                        Build.
      */
-    public function __construct(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE) {
+    public function __construct(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE, string $runtime = Values::NONE) {
         $this->options['assetVersions'] = $assetVersions;
         $this->options['functionVersions'] = $functionVersions;
         $this->options['dependencies'] = $dependencies;
+        $this->options['runtime'] = $runtime;
     }
 
     /**
@@ -78,6 +83,18 @@ class CreateBuildOptions extends Options {
      */
     public function setDependencies(string $dependencies): self {
         $this->options['dependencies'] = $dependencies;
+        return $this;
+    }
+
+    /**
+     * The Runtime version that will be used to run the Build resource when it is deployed.
+     *
+     * @param string $runtime The Runtime version that will be used to run the
+     *                        Build.
+     * @return $this Fluent Builder
+     */
+    public function setRuntime(string $runtime): self {
+        $this->options['runtime'] = $runtime;
         return $this;
     }
 

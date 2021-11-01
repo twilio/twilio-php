@@ -11,13 +11,14 @@ namespace Twilio\Rest\Events\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class SinkList extends ListResource {
     /**
@@ -37,7 +38,7 @@ class SinkList extends ListResource {
     /**
      * Create the SinkInstance
      *
-     * @param string $description Sink Description
+     * @param string $description Sink Description.
      * @param array $sinkConfiguration JSON Sink configuration.
      * @param string $sinkType Sink type.
      * @return SinkInstance Created SinkInstance
@@ -63,6 +64,7 @@ class SinkList extends ListResource {
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -73,10 +75,10 @@ class SinkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page($options, $limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -86,6 +88,7 @@ class SinkList extends ListResource {
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -96,21 +99,30 @@ class SinkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SinkInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
-        return \iterator_to_array($this->stream($limit, $pageSize), false);
+    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
      * Retrieve a single page of SinkInstance records from the API.
      * Request is executed immediately
      *
+     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SinkPage Page of SinkInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SinkPage {
-        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SinkPage {
+        $options = new Values($options);
+
+        $params = Values::of([
+            'InUse' => Serialize::booleanToString($options['inUse']),
+            'Status' => $options['status'],
+            'PageToken' => $pageToken,
+            'Page' => $pageNumber,
+            'PageSize' => $pageSize,
+        ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 

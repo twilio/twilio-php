@@ -13,10 +13,12 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\Call\EventList;
 use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Call\NotificationList;
 use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
 use Twilio\Rest\Api\V2010\Account\Call\RecordingList;
+use Twilio\Rest\Api\V2010\Account\Call\SiprecList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -53,7 +55,9 @@ class CallInstance extends InstanceResource {
     protected $_recordings;
     protected $_notifications;
     protected $_feedback;
+    protected $_events;
     protected $_payments;
+    protected $_siprec;
 
     /**
      * Initialize the CallInstance
@@ -171,10 +175,24 @@ class CallInstance extends InstanceResource {
     }
 
     /**
+     * Access the events
+     */
+    protected function getEvents(): EventList {
+        return $this->proxy()->events;
+    }
+
+    /**
      * Access the payments
      */
     protected function getPayments(): PaymentList {
         return $this->proxy()->payments;
+    }
+
+    /**
+     * Access the siprec
+     */
+    protected function getSiprec(): SiprecList {
+        return $this->proxy()->siprec;
     }
 
     /**

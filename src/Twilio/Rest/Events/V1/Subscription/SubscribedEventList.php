@@ -9,13 +9,15 @@
 
 namespace Twilio\Rest\Events\V1\Subscription;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class SubscribedEventList extends ListResource {
     /**
@@ -109,6 +111,33 @@ class SubscribedEventList extends ListResource {
         );
 
         return new SubscribedEventPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Create the SubscribedEventInstance
+     *
+     * @param string $type Type of event being subscribed to.
+     * @param array|Options $options Optional Arguments
+     * @return SubscribedEventInstance Created SubscribedEventInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $type, array $options = []): SubscribedEventInstance {
+        $options = new Values($options);
+
+        $data = Values::of(['Type' => $type, 'SchemaVersion' => $options['schemaVersion'], ]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data);
+
+        return new SubscribedEventInstance($this->version, $payload, $this->solution['subscriptionSid']);
+    }
+
+    /**
+     * Constructs a SubscribedEventContext
+     *
+     * @param string $type Type of event being subscribed to.
+     */
+    public function getContext(string $type): SubscribedEventContext {
+        return new SubscribedEventContext($this->version, $this->solution['subscriptionSid'], $type);
     }
 
     /**

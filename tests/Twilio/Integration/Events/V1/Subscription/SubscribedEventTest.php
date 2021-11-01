@@ -64,17 +64,17 @@ class SubscribedEventTest extends HolodeckTestCase {
                 "types": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "type": "Voice.Calls",
-                        "version": 2,
+                        "type": "com.twilio.messaging.message.delivered",
+                        "schema_version": 2,
                         "subscription_sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/Voice.Calls"
+                        "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered"
                     },
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "type": "Video.Rooms",
-                        "version": 15,
+                        "type": "com.twilio.messaging.message.failed",
+                        "schema_version": 15,
                         "subscription_sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/Video.Rooms"
+                        "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.failed"
                     }
                 ],
                 "meta": {
@@ -94,5 +94,141 @@ class SubscribedEventTest extends HolodeckTestCase {
                                            ->subscribedEvents->read();
 
         $this->assertNotNull($actual);
+    }
+
+    public function testCreateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->subscribedEvents->create("type");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = ['Type' => "type", ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://events.twilio.com/v1/Subscriptions/DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SubscribedEvents',
+            null,
+            $values
+        ));
+    }
+
+    public function testCreateResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscription_sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "type": "com.twilio.messaging.message.delivered",
+                "schema_version": 2,
+                "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->subscribedEvents->create("type");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->subscribedEvents("type")->fetch();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://events.twilio.com/v1/Subscriptions/DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SubscribedEvents/type'
+        ));
+    }
+
+    public function testFetchResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscription_sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "type": "com.twilio.messaging.message.delivered",
+                "schema_version": 2,
+                "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->subscribedEvents("type")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->subscribedEvents("type")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://events.twilio.com/v1/Subscriptions/DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SubscribedEvents/type'
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscription_sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "type": "com.twilio.messaging.message.delivered",
+                "schema_version": 2,
+                "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->subscribedEvents("type")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testDeleteRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->subscribedEvents("type")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://events.twilio.com/v1/Subscriptions/DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SubscribedEvents/type'
+        ));
+    }
+
+    public function testDeleteResponse(): void {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->events->v1->subscriptions("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->subscribedEvents("type")->delete();
+
+        $this->assertTrue($actual);
     }
 }

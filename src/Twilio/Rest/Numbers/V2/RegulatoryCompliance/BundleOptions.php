@@ -94,7 +94,7 @@ class CreateBundleOptions extends Options {
     }
 
     /**
-     * The ISO country code of the Bundle's phone number country ownership request.
+     * The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
      *
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
@@ -105,7 +105,7 @@ class CreateBundleOptions extends Options {
     }
 
     /**
-     * The type of End User of the Bundle resource.
+     * The [type of End User](https://www.twilio.com/docs/phone-numbers/regulatory/api/end-user-types) of the Bundle resource.
      *
      * @param string $endUserType The type of End User of the Bundle resource
      * @return $this Fluent Builder
@@ -116,7 +116,7 @@ class CreateBundleOptions extends Options {
     }
 
     /**
-     * The type of phone number of the Bundle's ownership request.
+     * The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`.
      *
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder
@@ -189,7 +189,7 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * The ISO country code of the Bundle's phone number country ownership request.
+     * The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
      *
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
@@ -200,7 +200,7 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * The type of phone number of the Bundle's ownership request.
+     * The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`.
      *
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder

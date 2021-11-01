@@ -44,19 +44,22 @@ class RoomTest extends HolodeckTestCase {
                 "enable_turn": true,
                 "unique_name": "unique_name",
                 "max_participants": 10,
+                "max_concurrent_published_tracks": 0,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
                 ],
+                "audio_only": false,
                 "media_region": "us1",
                 "end_time": "2015-07-30T20:00:00Z",
                 "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
-                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings"
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
                 }
             }
             '
@@ -94,20 +97,23 @@ class RoomTest extends HolodeckTestCase {
                 "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "enable_turn": true,
                 "unique_name": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "max_concurrent_published_tracks": 0,
                 "max_participants": 10,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
                 ],
                 "media_region": "us1",
+                "audio_only": false,
                 "end_time": "2015-07-30T20:00:00Z",
                 "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
-                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings"
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
                 }
             }
             '
@@ -132,19 +138,218 @@ class RoomTest extends HolodeckTestCase {
                 "enable_turn": true,
                 "unique_name": "room1",
                 "max_participants": 10,
+                "max_concurrent_published_tracks": 0,
                 "duration": 0,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
                 ],
                 "media_region": "us1",
+                "audio_only": false,
                 "end_time": "2015-07-30T20:00:00Z",
                 "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
-                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings"
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->video->v1->rooms->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateGroupRoomsResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "status": "in-progress",
+                "type": "group",
+                "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "enable_turn": true,
+                "unique_name": "grouproom",
+                "max_participants": 50,
+                "max_concurrent_published_tracks": 170,
+                "duration": 0,
+                "status_callback_method": "POST",
+                "status_callback": null,
+                "record_participants_on_connect": false,
+                "video_codecs": [
+                    "VP8"
+                ],
+                "media_region": "us1",
+                "audio_only": false,
+                "end_time": "2015-07-30T20:00:00Z",
+                "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->video->v1->rooms->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateGroupRoomsWithAudioOnlyEnabledResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "status": "in-progress",
+                "type": "group",
+                "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "enable_turn": true,
+                "unique_name": "grouproom",
+                "max_participants": 50,
+                "max_concurrent_published_tracks": 170,
+                "duration": 0,
+                "status_callback_method": "POST",
+                "status_callback": null,
+                "record_participants_on_connect": false,
+                "video_codecs": [],
+                "media_region": "us1",
+                "audio_only": true,
+                "end_time": "2015-07-30T20:00:00Z",
+                "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->video->v1->rooms->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateSmallGroupRoomsResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "status": "in-progress",
+                "type": "group-small",
+                "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "enable_turn": true,
+                "unique_name": "SmallDailyStandup",
+                "max_participants": 4,
+                "max_concurrent_published_tracks": 170,
+                "duration": 0,
+                "status_callback_method": "POST",
+                "status_callback": null,
+                "record_participants_on_connect": false,
+                "video_codecs": [
+                    "VP8"
+                ],
+                "media_region": "us1",
+                "audio_only": false,
+                "end_time": "2015-07-30T20:00:00Z",
+                "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->video->v1->rooms->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateLargeGroupRoomsResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "status": "in-progress",
+                "type": "group",
+                "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "enable_turn": true,
+                "unique_name": "MyWebinar",
+                "max_participants": 50,
+                "max_concurrent_published_tracks": 16,
+                "duration": 0,
+                "status_callback_method": "POST",
+                "status_callback": null,
+                "record_participants_on_connect": false,
+                "video_codecs": [
+                    "VP8"
+                ],
+                "media_region": "us1",
+                "audio_only": false,
+                "end_time": "2015-07-30T20:00:00Z",
+                "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->video->v1->rooms->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateLargeGroupRoomsWithAudioOnlyEnabledResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "status": "in-progress",
+                "type": "group",
+                "sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "enable_turn": true,
+                "unique_name": "MyWebinar",
+                "max_participants": 50,
+                "max_concurrent_published_tracks": 16,
+                "duration": 0,
+                "status_callback_method": "POST",
+                "status_callback": null,
+                "record_participants_on_connect": false,
+                "video_codecs": [],
+                "media_region": "us1",
+                "audio_only": true,
+                "end_time": "2015-07-30T20:00:00Z",
+                "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
                 }
             }
             '
@@ -213,15 +418,18 @@ class RoomTest extends HolodeckTestCase {
                         "end_time": "2017-04-03T22:21:51Z",
                         "duration": 2,
                         "max_participants": 10,
+                        "max_concurrent_published_tracks": 10,
                         "record_participants_on_connect": false,
                         "video_codecs": [
                             "VP8"
                         ],
                         "media_region": "us1",
+                        "audio_only": false,
                         "url": "https://video.twilio.com/v1/Rooms/RM4070b618362c1682b2385b1f9982833c",
                         "links": {
                             "participants": "https://video.twilio.com/v1/Rooms/RM4070b618362c1682b2385b1f9982833c/Participants",
-                            "recordings": "https://video.twilio.com/v1/Rooms/RM4070b618362c1682b2385b1f9982833c/Recordings"
+                            "recordings": "https://video.twilio.com/v1/Rooms/RM4070b618362c1682b2385b1f9982833c/Recordings",
+                            "recording_rules": "https://video.twilio.com/v1/Rooms/RM4070b618362c1682b2385b1f9982833c/RecordingRules"
                         }
                     }
                 ],
@@ -275,19 +483,22 @@ class RoomTest extends HolodeckTestCase {
                 "enable_turn": true,
                 "unique_name": "unique_name",
                 "max_participants": 10,
+                "max_concurrent_published_tracks": 10,
                 "status_callback_method": "POST",
-                "status_callback": "",
+                "status_callback": null,
                 "record_participants_on_connect": false,
                 "video_codecs": [
                     "VP8"
                 ],
                 "media_region": "us1",
+                "audio_only": false,
                 "end_time": "2015-07-30T20:00:00Z",
                 "duration": 10,
                 "url": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "participants": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
-                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings"
+                    "recordings": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings",
+                    "recording_rules": "https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RecordingRules"
                 }
             }
             '

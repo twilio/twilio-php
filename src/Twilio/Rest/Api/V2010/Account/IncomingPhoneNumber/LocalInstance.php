@@ -47,6 +47,7 @@ use Twilio\Version;
  * @property string $voiceUrl
  * @property string $emergencyStatus
  * @property string $emergencyAddressSid
+ * @property string $emergencyAddressStatus
  * @property string $bundleSid
  * @property string $status
  */
@@ -94,6 +95,7 @@ class LocalInstance extends InstanceResource {
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
             'emergencyStatus' => Values::array_get($payload, 'emergency_status'),
             'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
+            'emergencyAddressStatus' => Values::array_get($payload, 'emergency_address_status'),
             'bundleSid' => Values::array_get($payload, 'bundle_sid'),
             'status' => Values::array_get($payload, 'status'),
         ];

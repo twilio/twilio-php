@@ -1,19 +1,25 @@
 language: php
 php:
-  - 7.2
-  - 7.3
-  - 7.4
+- 7.2
+- 7.3
+- 7.4
+- 8.0
 env:
-  - dependencies=lowest
-  - dependencies=highest
+- dependencies=lowest
+- dependencies=highest
 services:
-  - docker
+- docker
 before_script:
-  - if [ -n "$GIT_HUB_TOKEN" ]; then composer config -g github-oauth.github.com "$GIT_HUB_TOKEN"; fi;
-  - composer install
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-stable -n; fi;
+- if [ -n "$GIT_HUB_TOKEN" ]; then composer config -g github-oauth.github.com "$GIT_HUB_TOKEN";
+  fi;
+- composer install
+- if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-stable
+  -n; fi;
 script:
-  - make test
+- make test
+- if [[ "$TRAVIS_BRANCH" == "main"  ||  "$TRAVIS_BRANCH" == "travis" ]] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin;
+  fi
 deploy:
   provider: script
   script: make docker-build && make docker-push
@@ -21,8 +27,7 @@ deploy:
   on:
     tags: true
     php: '7.2'
-    condition: $dependencies = highest
-
+    condition: "$dependencies = highest"
 notifications:
   slack:
     if: branch = main
@@ -30,4 +35,4 @@ notifications:
     on_success: never
     on_failure: change
     rooms:
-      - secure: Y7wmqQY0fyTOyqA/P8XaDSZOEg1bj9BOuJfF3rBJcrbe70vwWMHbo5xrb1k07+lsx4B2mpa6kZYCU+NUENWqzBYnyZRYgN7qsMCeGAasaur8zyiehExQshk2LaPZM5Jw/+J3LUoXKTVxyP4GAzb0NbKdnJinuzB40TZOW5m+kZA=
+      secure: EOXeLbYW0b0G8ZqMUcMH61cuRaARLqcGLv2ioDs/RUjW/wokGu+Zx+DOC+zyAoD5KtTsxRdO3wbUjCAXcpGz7UKQtnocsJxKoHChVH7xQ7iAK7hwJZ6d/JCsSVpFUigli1XlCNCzQ0qOoM3MLZe1CyyJ4XAjCtQFoAtdRnEbLOQ=

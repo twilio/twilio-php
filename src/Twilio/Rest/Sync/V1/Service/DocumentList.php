@@ -17,9 +17,6 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class DocumentList extends ListResource {
     /**
      * Construct the DocumentList

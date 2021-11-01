@@ -90,12 +90,12 @@ class RequestValidator {
          *  since sig generation on the back end is inconsistent.
          */
         $validSignatureWithPort = self::compare(
-            $this->computeSignature($urlWithPort, $data),
-            $expectedSignature
+            $expectedSignature,
+            $this->computeSignature($urlWithPort, $data)
         );
         $validSignatureWithoutPort = self::compare(
-            $this->computeSignature($urlWithoutPort, $data),
-            $expectedSignature
+            $expectedSignature,
+            $this->computeSignature($urlWithoutPort, $data)
         );
 
         return $validBodyHash && ($validSignatureWithPort || $validSignatureWithoutPort);
@@ -110,26 +110,11 @@ class RequestValidator {
      * @return bool True if $a === $b, false otherwise.
      */
     public static function compare(?string $a, ?string $b): bool {
-        // if the strings are different lengths, obviously they're invalid
-        if (\strlen($a) !== \strlen($b)) {
-            return false;
+        if ($a && $b) {
+            return hash_equals($a, $b);
         }
 
-        if (!$a && !$b) {
-            return true;
-        }
-
-        $limit = \strlen($a);
-
-        // checking every character for an exact difference, if you find one, return false
-        for ($i = 0; $i < $limit; ++$i) {
-            if ($a[$i] !== $b[$i]) {
-                return false;
-            }
-        }
-
-        // there have been no differences found
-        return true;
+        return false;
     }
 
     /**

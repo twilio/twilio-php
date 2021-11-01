@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Conversations\V1\User\UserConversationList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,11 +26,15 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string $attributes
  * @property bool $isOnline
+ * @property bool $isNotifiable
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
+ * @property array $links
  */
 class UserInstance extends InstanceResource {
+    protected $_userConversations;
+
     /**
      * Initialize the UserInstance
      *
@@ -50,9 +55,11 @@ class UserInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'attributes' => Values::array_get($payload, 'attributes'),
             'isOnline' => Values::array_get($payload, 'is_online'),
+            'isNotifiable' => Values::array_get($payload, 'is_notifiable'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -102,6 +109,13 @@ class UserInstance extends InstanceResource {
      */
     public function fetch(): UserInstance {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Access the userConversations
+     */
+    protected function getUserConversations(): UserConversationList {
+        return $this->proxy()->userConversations;
     }
 
     /**

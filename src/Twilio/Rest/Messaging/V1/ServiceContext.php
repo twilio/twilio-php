@@ -16,6 +16,8 @@ use Twilio\Options;
 use Twilio\Rest\Messaging\V1\Service\AlphaSenderList;
 use Twilio\Rest\Messaging\V1\Service\PhoneNumberList;
 use Twilio\Rest\Messaging\V1\Service\ShortCodeList;
+use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
+use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -26,14 +28,19 @@ use Twilio\Version;
  * @property PhoneNumberList $phoneNumbers
  * @property ShortCodeList $shortCodes
  * @property AlphaSenderList $alphaSenders
+ * @property UsAppToPersonList $usAppToPerson
+ * @property UsAppToPersonUsecaseList $usAppToPersonUsecases
  * @method \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext alphaSenders(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\Service\UsAppToPersonContext usAppToPerson(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_phoneNumbers;
     protected $_shortCodes;
     protected $_alphaSenders;
+    protected $_usAppToPerson;
+    protected $_usAppToPersonUsecases;
 
     /**
      * Initialize the ServiceContext
@@ -75,6 +82,8 @@ class ServiceContext extends InstanceContext {
             'AreaCodeGeomatch' => Serialize::booleanToString($options['areaCodeGeomatch']),
             'ValidityPeriod' => $options['validityPeriod'],
             'SynchronousValidation' => Serialize::booleanToString($options['synchronousValidation']),
+            'Usecase' => $options['usecase'],
+            'UseInboundWebhookOnNumber' => Serialize::booleanToString($options['useInboundWebhookOnNumber']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
@@ -135,6 +144,31 @@ class ServiceContext extends InstanceContext {
         }
 
         return $this->_alphaSenders;
+    }
+
+    /**
+     * Access the usAppToPerson
+     */
+    protected function getUsAppToPerson(): UsAppToPersonList {
+        if (!$this->_usAppToPerson) {
+            $this->_usAppToPerson = new UsAppToPersonList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_usAppToPerson;
+    }
+
+    /**
+     * Access the usAppToPersonUsecases
+     */
+    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList {
+        if (!$this->_usAppToPersonUsecases) {
+            $this->_usAppToPersonUsecases = new UsAppToPersonUsecaseList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_usAppToPersonUsecases;
     }
 
     /**

@@ -12,9 +12,6 @@ namespace Twilio\Rest\Video\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
 abstract class CompositionHookOptions {
     /**
      * @param bool $enabled Read only CompositionHook resources with an enabled

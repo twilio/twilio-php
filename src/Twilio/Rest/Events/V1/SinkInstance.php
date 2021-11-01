@@ -18,7 +18,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
@@ -92,6 +92,17 @@ class SinkInstance extends InstanceResource {
      */
     public function delete(): bool {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Update the SinkInstance
+     *
+     * @param string $description Sink Description
+     * @return SinkInstance Updated SinkInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $description): SinkInstance {
+        return $this->proxy()->update($description);
     }
 
     /**

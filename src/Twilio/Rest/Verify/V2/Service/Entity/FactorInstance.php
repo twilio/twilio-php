@@ -17,7 +17,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $sid
  * @property string $accountSid
@@ -90,23 +90,21 @@ class FactorInstance extends InstanceResource {
     /**
      * Delete the FactorInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
-        return $this->proxy()->delete($options);
+    public function delete(): bool {
+        return $this->proxy()->delete();
     }
 
     /**
      * Fetch the FactorInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return FactorInstance Fetched FactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): FactorInstance {
-        return $this->proxy()->fetch($options);
+    public function fetch(): FactorInstance {
+        return $this->proxy()->fetch();
     }
 
     /**

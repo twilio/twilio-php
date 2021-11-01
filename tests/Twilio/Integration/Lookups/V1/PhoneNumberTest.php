@@ -70,7 +70,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "phone_number": "+15108675310",
                 "fraud": null,
                 "add_ons": null,
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+15108675310?Type=carrier"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+15108675310"
             }
             '
         ));
@@ -98,7 +98,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "phone_number": "+4402077651182",
                 "fraud": null,
                 "add_ons": null,
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+4402077651182?Type=carrier"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+4402077651182"
             }
             '
         ));
@@ -124,7 +124,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "national_format": "(510) 867-5310",
                 "phone_number": "+15108675310",
                 "add_ons": null,
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+15108675310?Type=caller-name"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+15108675310"
             }
             '
         ));
@@ -161,7 +161,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                     "code": null,
                     "results": {}
                 },
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+15108675310?Type=carrier&Type=caller-name"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+15108675310"
             }
             '
         ));
@@ -236,7 +236,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                         }
                     }
                 },
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+12127363100?Type=caller-name"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+12127363100"
             }
             '
         ));
@@ -281,7 +281,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                         }
                     }
                 },
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+19892008374?Type=carrier"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+19892008374"
             }
             '
         ));
@@ -331,7 +331,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                         }
                     }
                 },
-                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+16502530000?Type=carrier"
+                "url": "https://lookups.twilio.com/v1/PhoneNumbers/+16502530000"
             }
             '
         ));

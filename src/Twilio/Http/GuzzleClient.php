@@ -6,9 +6,9 @@ namespace Twilio\Http;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Request;
 use Twilio\Exceptions\HttpException;
-use function GuzzleHttp\Psr7\build_query;
 
 final class GuzzleClient implements Client {
     /**
@@ -38,7 +38,7 @@ final class GuzzleClient implements Client {
                 if ($this->hasFile($data)) {
                     $options['multipart'] = $this->buildMultipartParam($data);
                 } else {
-                    $options['body'] = build_query($data, PHP_QUERY_RFC1738);
+                    $options['body'] = Query::build($data, PHP_QUERY_RFC1738);
                     $headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 }
             }

@@ -12,9 +12,6 @@ namespace Twilio\Rest\Bulkexports\V1;
 use Twilio\ListResource;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class ExportConfigurationList extends ListResource {
     /**
      * Construct the ExportConfigurationList
@@ -31,7 +28,8 @@ class ExportConfigurationList extends ListResource {
     /**
      * Constructs a ExportConfigurationContext
      *
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     public function getContext(string $resourceType): ExportConfigurationContext {
         return new ExportConfigurationContext($this->version, $resourceType);

@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property \DateTime $endDate
  * @property bool $includeSubaccounts
- * @property string[] $issues
+ * @property array[] $issues
  * @property string $qualityScoreAverage
  * @property string $qualityScoreMedian
  * @property string $qualityScoreStandardDeviation

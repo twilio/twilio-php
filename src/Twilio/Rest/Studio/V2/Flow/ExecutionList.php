@@ -17,9 +17,6 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class ExecutionList extends ListResource {
     /**
      * Construct the ExecutionList
@@ -129,8 +126,8 @@ class ExecutionList extends ListResource {
      * Create the ExecutionInstance
      *
      * @param string $to The Contact phone number to start a Studio Flow Execution
-     * @param string $from The Twilio phone number to send messages or initiate
-     *                     calls from during the Flow Execution
+     * @param string $from The Twilio phone number or Messaging Service SID to send
+     *                     messages or initiate calls from during the Flow Execution
      * @param array|Options $options Optional Arguments
      * @return ExecutionInstance Created ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.

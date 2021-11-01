@@ -16,6 +16,50 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class SimTest extends HolodeckTestCase {
+    public function testCreateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->supersim->v1->sims->create("iccid", "registration_code");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = ['Iccid' => "iccid", 'RegistrationCode' => "registration_code", ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://supersim.twilio.com/v1/Sims',
+            null,
+            $values
+        ));
+    }
+
+    public function testCreateResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "",
+                "status": "new",
+                "fleet_sid": null,
+                "iccid": "89883070000123456789",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->sims->create("iccid", "registration_code");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
@@ -40,10 +84,13 @@ class SimTest extends HolodeckTestCase {
                 "unique_name": "My SIM",
                 "status": "new",
                 "fleet_sid": null,
-                "iccid": "iccid",
+                "iccid": "89883070000123456789",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
             }
             '
         ));
@@ -77,10 +124,13 @@ class SimTest extends HolodeckTestCase {
                 "unique_name": "MySIM",
                 "status": "new",
                 "fleet_sid": null,
-                "iccid": "iccid",
+                "iccid": "89883070000123456789",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
             }
             '
         ));
@@ -100,10 +150,13 @@ class SimTest extends HolodeckTestCase {
                 "unique_name": null,
                 "status": "scheduled",
                 "fleet_sid": null,
-                "iccid": "iccid",
+                "iccid": "89883070000123456789",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
             }
             '
         ));
@@ -123,10 +176,13 @@ class SimTest extends HolodeckTestCase {
                 "unique_name": null,
                 "status": "new",
                 "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "iccid": "iccid",
+                "iccid": "89883070000123456789",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
             }
             '
         ));
@@ -146,10 +202,13 @@ class SimTest extends HolodeckTestCase {
                 "unique_name": null,
                 "status": "new",
                 "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "iccid": "iccid",
+                "iccid": "89883070000123456789",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
             }
             '
         ));
@@ -169,10 +228,13 @@ class SimTest extends HolodeckTestCase {
                 "unique_name": null,
                 "status": "new",
                 "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "iccid": "iccid",
+                "iccid": "89883070000123456789",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                }
             }
             '
         ));
@@ -241,10 +303,13 @@ class SimTest extends HolodeckTestCase {
                         "unique_name": "My SIM",
                         "status": "new",
                         "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "iccid": "iccid",
+                        "iccid": "89883070000123456789",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
-                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                        }
                     }
                 ]
             }
@@ -277,10 +342,13 @@ class SimTest extends HolodeckTestCase {
                         "unique_name": "My SIM",
                         "status": "new",
                         "fleet_sid": "HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "iccid": "iccid",
+                        "iccid": "89883070000123456789",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
-                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                        }
                     }
                 ]
             }
@@ -298,13 +366,13 @@ class SimTest extends HolodeckTestCase {
             '
             {
                 "meta": {
-                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Iccid=11111111111111111111&PageSize=50&Page=0",
+                    "first_page_url": "https://supersim.twilio.com/v1/Sims?Iccid=89883070000123456789&PageSize=50&Page=0",
                     "key": "sims",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://supersim.twilio.com/v1/Sims?Iccid=11111111111111111111&PageSize=50&Page=0"
+                    "url": "https://supersim.twilio.com/v1/Sims?Iccid=89883070000123456789&PageSize=50&Page=0"
                 },
                 "sims": [
                     {
@@ -313,10 +381,13 @@ class SimTest extends HolodeckTestCase {
                         "unique_name": "My SIM",
                         "status": "new",
                         "fleet_sid": null,
-                        "iccid": "11111111111111111111",
+                        "iccid": "89883070000123456789",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
-                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "billing_periods": "https://supersim.twilio.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods"
+                        }
                     }
                 ]
             }

@@ -113,7 +113,7 @@ class ChannelList extends ListResource {
     /**
      * Create the ChannelInstance
      *
-     * @param string $flexFlowSid The SID of the FlexFlow
+     * @param string $flexFlowSid The SID of the Flex Flow
      * @param string $identity The identity value that identifies the new
      *                         resource's chat User
      * @param string $chatUserFriendlyName The chat participant's friendly name

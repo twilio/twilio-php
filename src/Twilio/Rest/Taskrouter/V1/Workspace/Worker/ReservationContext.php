@@ -117,8 +117,9 @@ class ReservationContext extends InstanceContext {
             'EndConferenceOnCustomerExit' => Serialize::booleanToString($options['endConferenceOnCustomerExit']),
             'BeepOnCustomerEntrance' => Serialize::booleanToString($options['beepOnCustomerEntrance']),
         ]);
+        $headers = Values::of(['If-Match' => $options['ifMatch'], ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ReservationInstance(
             $this->version,

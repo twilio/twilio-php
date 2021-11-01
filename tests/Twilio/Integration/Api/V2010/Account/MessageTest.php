@@ -146,6 +146,43 @@ class MessageTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testCreateWithQueuedStatusResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "api_version": "2010-04-01",
+                "body": "Hello! \ud83d\udc4d",
+                "date_created": "Thu, 30 Jul 2015 20:12:31 +0000",
+                "date_sent": "Thu, 30 Jul 2015 20:12:33 +0000",
+                "date_updated": "Thu, 30 Jul 2015 20:12:33 +0000",
+                "direction": "outbound-api",
+                "error_code": null,
+                "error_message": null,
+                "from": "+14155552345",
+                "messaging_service_sid": "MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "num_media": "0",
+                "num_segments": "1",
+                "price": null,
+                "price_unit": null,
+                "sid": "SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "queued",
+                "subresource_uris": {
+                    "media": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json"
+                },
+                "to": "+14155552345",
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->messages->create("+15558675310");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
@@ -465,53 +502,88 @@ class MessageTest extends HolodeckTestCase {
 
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->messages("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("body");
+                                     ->messages("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Body' => "body", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
-            null,
-            $values
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
-    public function testUpdateResponse(): void {
+    public function testRedactBodyResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
-                "body": "Hello, this is trash Benson cut and pasted and probably does not do anything useful! \ud83d\udc4d",
-                "date_created": "Thu, 30 Jul 2015 20:12:31 +0000",
-                "date_sent": "Thu, 30 Jul 2015 20:12:33 +0000",
-                "date_updated": "Thu, 30 Jul 2015 20:12:33 +0000",
+                "body": "",
+                "date_created": "Fri, 24 May 2019 17:18:27 +0000",
+                "date_sent": "Fri, 24 May 2019 17:18:28 +0000",
+                "date_updated": "Fri, 24 May 2019 17:18:28 +0000",
                 "direction": "outbound-api",
-                "error_code": null,
-                "error_message": null,
-                "from": "+14155552345",
-                "messaging_service_sid": "MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "error_code": 30007,
+                "error_message": "Carrier violation",
+                "from": "+12019235161",
+                "messaging_service_sid": "MGdeadbeefdeadbeefdeadbeefdeadbeef",
                 "num_media": "0",
                 "num_segments": "1",
                 "price": "-0.00750",
                 "price_unit": "USD",
-                "sid": "SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "SMb7c0a2ce80504485a6f653a7110836f5",
                 "status": "sent",
                 "subresource_uris": {
-                    "media": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json"
+                    "media": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Media.json",
+                    "feedback": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Feedback.json"
                 },
-                "to": "+14155552345",
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                "to": "+18182008801",
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5.json"
             }
             '
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->messages("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("body");
+                                           ->messages("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCancelMessageResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "api_version": "2010-04-01",
+                "body": "",
+                "date_created": "Fri, 24 May 2019 17:18:27 +0000",
+                "date_sent": "Fri, 24 May 2019 17:18:28 +0000",
+                "date_updated": "Fri, 24 May 2019 17:18:28 +0000",
+                "direction": "outbound-api",
+                "error_code": 30007,
+                "error_message": "Carrier violation",
+                "from": "+12019235161",
+                "messaging_service_sid": "MGdeadbeefdeadbeefdeadbeefdeadbeef",
+                "num_media": "0",
+                "num_segments": "1",
+                "price": "-0.00750",
+                "price_unit": "USD",
+                "sid": "SMb7c0a2ce80504485a6f653a7110836f5",
+                "status": "canceled",
+                "subresource_uris": {
+                    "media": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Media.json",
+                    "feedback": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Feedback.json"
+                },
+                "to": "+18182008801",
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->messages("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

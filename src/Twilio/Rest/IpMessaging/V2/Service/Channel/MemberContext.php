@@ -21,9 +21,9 @@ class MemberContext extends InstanceContext {
      * Initialize the MemberContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service to fetch the resource from
-     * @param string $channelSid The SID of the channel the member belongs to
-     * @param string $sid The SID of the Member resource to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $channelSid The channel_sid
+     * @param string $sid The sid
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);

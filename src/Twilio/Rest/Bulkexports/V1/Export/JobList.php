@@ -12,9 +12,6 @@ namespace Twilio\Rest\Bulkexports\V1\Export;
 use Twilio\ListResource;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class JobList extends ListResource {
     /**
      * Construct the JobList
@@ -31,7 +28,8 @@ class JobList extends ListResource {
     /**
      * Constructs a JobContext
      *
-     * @param string $jobSid The job_sid
+     * @param string $jobSid The unique string that that we created to identify the
+     *                       Bulk Export job
      */
     public function getContext(string $jobSid): JobContext {
         return new JobContext($this->version, $jobSid);

@@ -16,8 +16,6 @@ use Twilio\Rest\Bulkexports\V1\Export\JobList;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property JobList $jobs
  * @method \Twilio\Rest\Bulkexports\V1\Export\JobContext jobs(string $jobSid)
  */
@@ -50,7 +48,8 @@ class ExportList extends ListResource {
     /**
      * Constructs a ExportContext
      *
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      */
     public function getContext(string $resourceType): ExportContext {
         return new ExportContext($this->version, $resourceType);

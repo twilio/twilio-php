@@ -14,17 +14,13 @@ use Twilio\Values;
 
 abstract class MessageOptions {
     /**
-     * @param string $from The Identity of the new message's author
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
-     *                               resource was created
-     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
-     *                               resource was updated
-     * @param string $lastUpdatedBy The Identity of the User who last updated the
-     *                              Message
-     * @param string $body The message to send to the channel
-     * @param string $mediaSid The Media Sid to be attached to the new Message
+     * @param string $from The from
+     * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
+     * @param string $body The body
+     * @param string $mediaSid The media_sid
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateMessageOptions Options builder
@@ -34,7 +30,7 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $order The sort order of the returned messages
+     * @param string $order The order
      * @return ReadMessageOptions Options builder
      */
     public static function read(string $order = Values::NONE): ReadMessageOptions {
@@ -51,16 +47,12 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $body The message to send to the channel
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
-     *                               resource was created
-     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
-     *                               resource was updated
-     * @param string $lastUpdatedBy The Identity of the User who last updated the
-     *                              Message, if applicable
-     * @param string $from The Identity of the message's author
+     * @param string $body The body
+     * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
+     * @param string $from The from
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateMessageOptions Options builder
@@ -72,17 +64,13 @@ abstract class MessageOptions {
 
 class CreateMessageOptions extends Options {
     /**
-     * @param string $from The Identity of the new message's author
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
-     *                               resource was created
-     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
-     *                               resource was updated
-     * @param string $lastUpdatedBy The Identity of the User who last updated the
-     *                              Message
-     * @param string $body The message to send to the channel
-     * @param string $mediaSid The Media Sid to be attached to the new Message
+     * @param string $from The from
+     * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
+     * @param string $body The body
+     * @param string $mediaSid The media_sid
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -98,9 +86,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [Identity](https://www.twilio.com/docs/chat/identity) of the new message's author. The default value is `system`.
+     * The from
      *
-     * @param string $from The Identity of the new message's author
+     * @param string $from The from
      * @return $this Fluent Builder
      */
     public function setFrom(string $from): self {
@@ -109,10 +97,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * A valid JSON string that contains application-specific data.
+     * The attributes
      *
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
+     * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
     public function setAttributes(string $attributes): self {
@@ -121,10 +108,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default value is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
+     * The date_created
      *
-     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
-     *                               resource was created
+     * @param \DateTime $dateCreated The date_created
      * @return $this Fluent Builder
      */
     public function setDateCreated(\DateTime $dateCreated): self {
@@ -133,10 +119,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
+     * The date_updated
      *
-     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
-     *                               resource was updated
+     * @param \DateTime $dateUpdated The date_updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated(\DateTime $dateUpdated): self {
@@ -145,10 +130,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
+     * The last_updated_by
      *
-     * @param string $lastUpdatedBy The Identity of the User who last updated the
-     *                              Message
+     * @param string $lastUpdatedBy The last_updated_by
      * @return $this Fluent Builder
      */
     public function setLastUpdatedBy(string $lastUpdatedBy): self {
@@ -157,9 +141,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The message to send to the channel. Can be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     * The body
      *
-     * @param string $body The message to send to the channel
+     * @param string $body The body
      * @return $this Fluent Builder
      */
     public function setBody(string $body): self {
@@ -168,9 +152,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The SID of the [Media](https://www.twilio.com/docs/chat/rest/media) to attach to the new Message.
+     * The media_sid
      *
-     * @param string $mediaSid The Media Sid to be attached to the new Message
+     * @param string $mediaSid The media_sid
      * @return $this Fluent Builder
      */
     public function setMediaSid(string $mediaSid): self {
@@ -203,16 +187,16 @@ class CreateMessageOptions extends Options {
 
 class ReadMessageOptions extends Options {
     /**
-     * @param string $order The sort order of the returned messages
+     * @param string $order The order
      */
     public function __construct(string $order = Values::NONE) {
         $this->options['order'] = $order;
     }
 
     /**
-     * The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.
+     * The order
      *
-     * @param string $order The sort order of the returned messages
+     * @param string $order The order
      * @return $this Fluent Builder
      */
     public function setOrder(string $order): self {
@@ -265,16 +249,12 @@ class DeleteMessageOptions extends Options {
 
 class UpdateMessageOptions extends Options {
     /**
-     * @param string $body The message to send to the channel
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
-     *                               resource was created
-     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
-     *                               resource was updated
-     * @param string $lastUpdatedBy The Identity of the User who last updated the
-     *                              Message, if applicable
-     * @param string $from The Identity of the message's author
+     * @param string $body The body
+     * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
+     * @param string $from The from
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -289,9 +269,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The message to send to the channel. Can be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     * The body
      *
-     * @param string $body The message to send to the channel
+     * @param string $body The body
      * @return $this Fluent Builder
      */
     public function setBody(string $body): self {
@@ -300,10 +280,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * A valid JSON string that contains application-specific data.
+     * The attributes
      *
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
+     * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
     public function setAttributes(string $attributes): self {
@@ -312,10 +291,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default value is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
+     * The date_created
      *
-     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
-     *                               resource was created
+     * @param \DateTime $dateCreated The date_created
      * @return $this Fluent Builder
      */
     public function setDateCreated(\DateTime $dateCreated): self {
@@ -324,10 +302,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
+     * The date_updated
      *
-     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
-     *                               resource was updated
+     * @param \DateTime $dateUpdated The date_updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated(\DateTime $dateUpdated): self {
@@ -336,10 +313,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
+     * The last_updated_by
      *
-     * @param string $lastUpdatedBy The Identity of the User who last updated the
-     *                              Message, if applicable
+     * @param string $lastUpdatedBy The last_updated_by
      * @return $this Fluent Builder
      */
     public function setLastUpdatedBy(string $lastUpdatedBy): self {
@@ -348,9 +324,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The [Identity](https://www.twilio.com/docs/chat/identity) of the message's author.
+     * The from
      *
-     * @param string $from The Identity of the message's author
+     * @param string $from The from
      * @return $this Fluent Builder
      */
     public function setFrom(string $from): self {

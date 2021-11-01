@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class FlexFlowOptions {
     /**
-     * @param string $friendlyName The `friendly_name` of the FlexFlow resources to
-     *                             read
+     * @param string $friendlyName The `friendly_name` of the Flex Flow resources
+     *                             to read
      * @return ReadFlexFlowOptions Options builder
      */
     public static function read(string $friendlyName = Values::NONE): ReadFlexFlowOptions {
@@ -24,16 +24,17 @@ abstract class FlexFlowOptions {
 
     /**
      * @param string $contactIdentity The channel contact's Identity
-     * @param bool $enabled Whether the new FlexFlow is enabled
-     * @param string $integrationType The integration type
-     * @param string $integrationFlowSid The SID of the Flow
+     * @param bool $enabled Whether the new Flex Flow is enabled
+     * @param string $integrationType The software that will handle inbound
+     *                                messages.
+     * @param string $integrationFlowSid The SID of the Studio Flow
      * @param string $integrationUrl The External Webhook URL
-     * @param string $integrationWorkspaceSid The Workspace SID for a new task
-     * @param string $integrationWorkflowSid The Workflow SID for a new task
-     * @param string $integrationChannel The task channel for a new task
-     * @param int $integrationTimeout The task timeout in seconds for a new task
-     * @param int $integrationPriority The task priority of a new task
-     * @param bool $integrationCreationOnMessage Whether to create a task when the
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task
+     * @param string $integrationChannel The Task Channel for a new Task
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task
+     * @param int $integrationPriority The Task priority of a new Task
+     * @param bool $integrationCreationOnMessage Whether to create a Task when the
      *                                           first message arrives
      * @param bool $longLived Reuse this chat channel for future interactions with
      *                        a contact
@@ -52,21 +53,22 @@ abstract class FlexFlowOptions {
      * @param string $chatServiceSid The SID of the chat service
      * @param string $channelType The channel type
      * @param string $contactIdentity The channel contact's Identity
-     * @param bool $enabled Whether the FlexFlow is enabled
-     * @param string $integrationType The integration type
-     * @param string $integrationFlowSid The SID of the Flow
+     * @param bool $enabled Whether the new Flex Flow is enabled
+     * @param string $integrationType The software that will handle inbound
+     *                                messages.
+     * @param string $integrationFlowSid The SID of the Studio Flow
      * @param string $integrationUrl The External Webhook URL
-     * @param string $integrationWorkspaceSid The Workspace SID for a new task
-     * @param string $integrationWorkflowSid The Workflow SID for a new task
-     * @param string $integrationChannel task channel for a new task
-     * @param int $integrationTimeout The task timeout in seconds for a new task
-     * @param int $integrationPriority The task priority of a new task
-     * @param bool $integrationCreationOnMessage Whether to create a task when the
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task
+     * @param string $integrationChannel The Task Channel for a new Task
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task
+     * @param int $integrationPriority The Task priority of a new Task
+     * @param bool $integrationCreationOnMessage Whether to create a Task when the
      *                                           first message arrives
      * @param bool $longLived Reuse this chat channel for future interactions with
      *                        a contact
      * @param bool $janitorEnabled Remove active Proxy sessions if the
-     *                             corresponding Task is deleted.
+     *                             corresponding Task is deleted
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
      * @return UpdateFlexFlowOptions Options builder
@@ -78,18 +80,18 @@ abstract class FlexFlowOptions {
 
 class ReadFlexFlowOptions extends Options {
     /**
-     * @param string $friendlyName The `friendly_name` of the FlexFlow resources to
-     *                             read
+     * @param string $friendlyName The `friendly_name` of the Flex Flow resources
+     *                             to read
      */
     public function __construct(string $friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * The `friendly_name` of the FlexFlow resources to read.
+     * The `friendly_name` of the Flex Flow resources to read.
      *
-     * @param string $friendlyName The `friendly_name` of the FlexFlow resources to
-     *                             read
+     * @param string $friendlyName The `friendly_name` of the Flex Flow resources
+     *                             to read
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self {
@@ -111,16 +113,17 @@ class ReadFlexFlowOptions extends Options {
 class CreateFlexFlowOptions extends Options {
     /**
      * @param string $contactIdentity The channel contact's Identity
-     * @param bool $enabled Whether the new FlexFlow is enabled
-     * @param string $integrationType The integration type
-     * @param string $integrationFlowSid The SID of the Flow
+     * @param bool $enabled Whether the new Flex Flow is enabled
+     * @param string $integrationType The software that will handle inbound
+     *                                messages.
+     * @param string $integrationFlowSid The SID of the Studio Flow
      * @param string $integrationUrl The External Webhook URL
-     * @param string $integrationWorkspaceSid The Workspace SID for a new task
-     * @param string $integrationWorkflowSid The Workflow SID for a new task
-     * @param string $integrationChannel The task channel for a new task
-     * @param int $integrationTimeout The task timeout in seconds for a new task
-     * @param int $integrationPriority The task priority of a new task
-     * @param bool $integrationCreationOnMessage Whether to create a task when the
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task
+     * @param string $integrationChannel The Task Channel for a new Task
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task
+     * @param int $integrationPriority The Task priority of a new Task
+     * @param bool $integrationCreationOnMessage Whether to create a Task when the
      *                                           first message arrives
      * @param bool $longLived Reuse this chat channel for future interactions with
      *                        a contact
@@ -158,9 +161,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether the new FlexFlow is enabled.
+     * Whether the new Flex Flow is enabled.
      *
-     * @param bool $enabled Whether the new FlexFlow is enabled
+     * @param bool $enabled Whether the new Flex Flow is enabled
      * @return $this Fluent Builder
      */
     public function setEnabled(bool $enabled): self {
@@ -169,9 +172,10 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The integration type. Can be: `studio`, `external`, or `task`.
+     * The software that will handle inbound messages. [Integration Type](https://www.twilio.com/docs/flex/developer/messaging/manage-flows#integration-types) can be: `studio`, `external`, or `task`.
      *
-     * @param string $integrationType The integration type
+     * @param string $integrationType The software that will handle inbound
+     *                                messages.
      * @return $this Fluent Builder
      */
     public function setIntegrationType(string $integrationType): self {
@@ -180,9 +184,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The SID of the Flow when `integration_type` is `studio`.
+     * The SID of the Studio Flow. Required when `integrationType` is `studio`.
      *
-     * @param string $integrationFlowSid The SID of the Flow
+     * @param string $integrationFlowSid The SID of the Studio Flow
      * @return $this Fluent Builder
      */
     public function setIntegrationFlowSid(string $integrationFlowSid): self {
@@ -191,7 +195,7 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The External Webhook URL when `integration_type` is `external`.
+     * The URL of the external webhook. Required when `integrationType` is `external`.
      *
      * @param string $integrationUrl The External Webhook URL
      * @return $this Fluent Builder
@@ -202,9 +206,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The Workspace SID for a new task for Task `integration_type`.
+     * The Workspace SID for a new Task. Required when `integrationType` is `task`.
      *
-     * @param string $integrationWorkspaceSid The Workspace SID for a new task
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationWorkspaceSid(string $integrationWorkspaceSid): self {
@@ -213,9 +217,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The Workflow SID for a new task when `integration_type` is `task`.
+     * The Workflow SID for a new Task. Required when `integrationType` is `task`.
      *
-     * @param string $integrationWorkflowSid The Workflow SID for a new task
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationWorkflowSid(string $integrationWorkflowSid): self {
@@ -224,9 +228,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The task channel for a new task when `integration_type` is `task`. The default is `default`.
+     * The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`.
      *
-     * @param string $integrationChannel The task channel for a new task
+     * @param string $integrationChannel The Task Channel for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationChannel(string $integrationChannel): self {
@@ -235,9 +239,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).
+     * The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise.
      *
-     * @param int $integrationTimeout The task timeout in seconds for a new task
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationTimeout(int $integrationTimeout): self {
@@ -246,9 +250,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The task priority of a new task when `integration_type` is `task`. The default priority is `0`.
+     * The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise.
      *
-     * @param int $integrationPriority The task priority of a new task
+     * @param int $integrationPriority The Task priority of a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationPriority(int $integrationPriority): self {
@@ -257,9 +261,9 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.
+     * In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging.
      *
-     * @param bool $integrationCreationOnMessage Whether to create a task when the
+     * @param bool $integrationCreationOnMessage Whether to create a Task when the
      *                                           first message arrives
      * @return $this Fluent Builder
      */
@@ -293,7 +297,7 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.
+     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3 (inclusive), default is 3. Optional when `integrationType` is `external`, not applicable otherwise.
      *
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
@@ -321,21 +325,22 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $chatServiceSid The SID of the chat service
      * @param string $channelType The channel type
      * @param string $contactIdentity The channel contact's Identity
-     * @param bool $enabled Whether the FlexFlow is enabled
-     * @param string $integrationType The integration type
-     * @param string $integrationFlowSid The SID of the Flow
+     * @param bool $enabled Whether the new Flex Flow is enabled
+     * @param string $integrationType The software that will handle inbound
+     *                                messages.
+     * @param string $integrationFlowSid The SID of the Studio Flow
      * @param string $integrationUrl The External Webhook URL
-     * @param string $integrationWorkspaceSid The Workspace SID for a new task
-     * @param string $integrationWorkflowSid The Workflow SID for a new task
-     * @param string $integrationChannel task channel for a new task
-     * @param int $integrationTimeout The task timeout in seconds for a new task
-     * @param int $integrationPriority The task priority of a new task
-     * @param bool $integrationCreationOnMessage Whether to create a task when the
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task
+     * @param string $integrationChannel The Task Channel for a new Task
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task
+     * @param int $integrationPriority The Task priority of a new Task
+     * @param bool $integrationCreationOnMessage Whether to create a Task when the
      *                                           first message arrives
      * @param bool $longLived Reuse this chat channel for future interactions with
      *                        a contact
      * @param bool $janitorEnabled Remove active Proxy sessions if the
-     *                             corresponding Task is deleted.
+     *                             corresponding Task is deleted
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails
      */
@@ -360,7 +365,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the FlexFlow resource.
+     * A descriptive string that you create to describe the Flex Flow resource.
      *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
@@ -404,9 +409,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether the FlexFlow is enabled.
+     * Whether the new Flex Flow is enabled.
      *
-     * @param bool $enabled Whether the FlexFlow is enabled
+     * @param bool $enabled Whether the new Flex Flow is enabled
      * @return $this Fluent Builder
      */
     public function setEnabled(bool $enabled): self {
@@ -415,9 +420,10 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The integration type. Can be: `studio`, `external`, or `task`.
+     * The software that will handle inbound messages. [Integration Type](https://www.twilio.com/docs/flex/developer/messaging/manage-flows#integration-types) can be: `studio`, `external`, or `task`.
      *
-     * @param string $integrationType The integration type
+     * @param string $integrationType The software that will handle inbound
+     *                                messages.
      * @return $this Fluent Builder
      */
     public function setIntegrationType(string $integrationType): self {
@@ -426,9 +432,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The SID of the Flow when `integration_type` is `studio`.
+     * The SID of the Studio Flow. Required when `integrationType` is `studio`.
      *
-     * @param string $integrationFlowSid The SID of the Flow
+     * @param string $integrationFlowSid The SID of the Studio Flow
      * @return $this Fluent Builder
      */
     public function setIntegrationFlowSid(string $integrationFlowSid): self {
@@ -437,7 +443,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The External Webhook URL when `integration_type` is `external`.
+     * The URL of the external webhook. Required when `integrationType` is `external`.
      *
      * @param string $integrationUrl The External Webhook URL
      * @return $this Fluent Builder
@@ -448,9 +454,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The Workspace SID for a new task when `integration_type` is `task`.
+     * The Workspace SID for a new Task. Required when `integrationType` is `task`.
      *
-     * @param string $integrationWorkspaceSid The Workspace SID for a new task
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationWorkspaceSid(string $integrationWorkspaceSid): self {
@@ -459,9 +465,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The Workflow SID for a new task when `integration_type` is `task`.
+     * The Workflow SID for a new Task. Required when `integrationType` is `task`.
      *
-     * @param string $integrationWorkflowSid The Workflow SID for a new task
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationWorkflowSid(string $integrationWorkflowSid): self {
@@ -470,9 +476,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The task channel for a new task when `integration_type` is `task`. The default is `default`.
+     * The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`.
      *
-     * @param string $integrationChannel task channel for a new task
+     * @param string $integrationChannel The Task Channel for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationChannel(string $integrationChannel): self {
@@ -481,9 +487,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).
+     * The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise.
      *
-     * @param int $integrationTimeout The task timeout in seconds for a new task
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationTimeout(int $integrationTimeout): self {
@@ -492,9 +498,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The task priority of a new task when `integration_type` is `task`. The default priority is `0`.
+     * The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise.
      *
-     * @param int $integrationPriority The task priority of a new task
+     * @param int $integrationPriority The Task priority of a new Task
      * @return $this Fluent Builder
      */
     public function setIntegrationPriority(int $integrationPriority): self {
@@ -503,9 +509,9 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.
+     * In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging.
      *
-     * @param bool $integrationCreationOnMessage Whether to create a task when the
+     * @param bool $integrationCreationOnMessage Whether to create a Task when the
      *                                           first message arrives
      * @return $this Fluent Builder
      */
@@ -530,7 +536,7 @@ class UpdateFlexFlowOptions extends Options {
      * When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      *
      * @param bool $janitorEnabled Remove active Proxy sessions if the
-     *                             corresponding Task is deleted.
+     *                             corresponding Task is deleted
      * @return $this Fluent Builder
      */
     public function setJanitorEnabled(bool $janitorEnabled): self {
@@ -539,7 +545,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.
+     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3 (inclusive), default is 3. Optional when `integrationType` is `external`, not applicable otherwise.
      *
      * @param int $integrationRetryCount The number of times to retry the webhook
      *                                   if the first attempt fails

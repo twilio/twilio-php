@@ -21,9 +21,9 @@ class TaskChannelContext extends InstanceContext {
      * Initialize the TaskChannelContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The SID of the Workspace with the TaskChannel to
-     *                             fetch
-     * @param string $sid The SID of the TaskChannel resource to fetch
+     * @param string $workspaceSid The SID of the Workspace with the Task Channel
+     *                             to fetch
+     * @param string $sid The SID of the Task Channel resource to fetch
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);

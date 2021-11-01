@@ -208,4 +208,44 @@ class Dial extends TwiML {
     public function setRingTone($ringTone): self {
         return $this->setAttribute('ringTone', $ringTone);
     }
+
+    /**
+     * Add RecordingTrack attribute.
+     *
+     * @param string $recordingTrack To indicate which audio track should be
+     *                               recorded
+     */
+    public function setRecordingTrack($recordingTrack): self {
+        return $this->setAttribute('recordingTrack', $recordingTrack);
+    }
+
+    /**
+     * Add Sequential attribute.
+     *
+     * @param bool $sequential Used to determine if child TwiML nouns should be
+     *                         dialed in order, one after the other (sequential) or
+     *                         dial all at once (parallel). Default is false,
+     *                         parallel
+     */
+    public function setSequential($sequential): self {
+        return $this->setAttribute('sequential', $sequential);
+    }
+
+    /**
+     * Add ReferUrl attribute.
+     *
+     * @param string $referUrl Webhook that will receive future SIP REFER requests
+     */
+    public function setReferUrl($referUrl): self {
+        return $this->setAttribute('referUrl', $referUrl);
+    }
+
+    /**
+     * Add ReferMethod attribute.
+     *
+     * @param string $referMethod The HTTP method to use for the refer Webhook
+     */
+    public function setReferMethod($referMethod): self {
+        return $this->setAttribute('referMethod', $referMethod);
+    }
 }

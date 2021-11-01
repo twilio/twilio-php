@@ -15,8 +15,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property string $resourceType
  * @property string $friendlyName
  * @property array $details
@@ -27,6 +25,8 @@ use Twilio\Version;
  * @property string $webhookMethod
  * @property string $email
  * @property string $url
+ * @property string $jobQueuePosition
+ * @property string $estimatedCompletionTime
  */
 class JobInstance extends InstanceResource {
     /**
@@ -34,7 +34,8 @@ class JobInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $jobSid The job_sid
+     * @param string $jobSid The unique string that that we created to identify the
+     *                       Bulk Export job
      */
     public function __construct(Version $version, array $payload, string $jobSid = null) {
         parent::__construct($version);
@@ -51,6 +52,8 @@ class JobInstance extends InstanceResource {
             'webhookMethod' => Values::array_get($payload, 'webhook_method'),
             'email' => Values::array_get($payload, 'email'),
             'url' => Values::array_get($payload, 'url'),
+            'jobQueuePosition' => Values::array_get($payload, 'job_queue_position'),
+            'estimatedCompletionTime' => Values::array_get($payload, 'estimated_completion_time'),
         ];
 
         $this->solution = ['jobSid' => $jobSid ?: $this->properties['jobSid'], ];

@@ -21,10 +21,19 @@ abstract class TaskOptions {
      * @param int $priority The Task's new priority value
      * @param string $taskChannel When MultiTasking is enabled, specify the
      *                            TaskChannel with the task to update
+     * @param string $ifMatch The If-Match HTTP request header
      * @return UpdateTaskOptions Options builder
      */
-    public static function update(string $attributes = Values::NONE, string $assignmentStatus = Values::NONE, string $reason = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE): UpdateTaskOptions {
-        return new UpdateTaskOptions($attributes, $assignmentStatus, $reason, $priority, $taskChannel);
+    public static function update(string $attributes = Values::NONE, string $assignmentStatus = Values::NONE, string $reason = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE, string $ifMatch = Values::NONE): UpdateTaskOptions {
+        return new UpdateTaskOptions($attributes, $assignmentStatus, $reason, $priority, $taskChannel, $ifMatch);
+    }
+
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return DeleteTaskOptions Options builder
+     */
+    public static function delete(string $ifMatch = Values::NONE): DeleteTaskOptions {
+        return new DeleteTaskOptions($ifMatch);
     }
 
     /**
@@ -49,7 +58,8 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param int $timeout The amount of time in seconds the task is allowed to live
+     * @param int $timeout The amount of time in seconds the task can live before
+     *                     being assigned
      * @param int $priority The priority to assign the new task and override the
      *                      default
      * @param string $taskChannel When MultiTasking is enabled specify the
@@ -75,13 +85,15 @@ class UpdateTaskOptions extends Options {
      * @param int $priority The Task's new priority value
      * @param string $taskChannel When MultiTasking is enabled, specify the
      *                            TaskChannel with the task to update
+     * @param string $ifMatch The If-Match HTTP request header
      */
-    public function __construct(string $attributes = Values::NONE, string $assignmentStatus = Values::NONE, string $reason = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE) {
+    public function __construct(string $attributes = Values::NONE, string $assignmentStatus = Values::NONE, string $reason = Values::NONE, int $priority = Values::NONE, string $taskChannel = Values::NONE, string $ifMatch = Values::NONE) {
         $this->options['attributes'] = $attributes;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['reason'] = $reason;
         $this->options['priority'] = $priority;
         $this->options['taskChannel'] = $taskChannel;
+        $this->options['ifMatch'] = $ifMatch;
     }
 
     /**
@@ -142,6 +154,17 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
+     * If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -149,6 +172,36 @@ class UpdateTaskOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateTaskOptions ' . $options . ']';
+    }
+}
+
+class DeleteTaskOptions extends Options {
+    /**
+     * @param string $ifMatch The If-Match HTTP request header
+     */
+    public function __construct(string $ifMatch = Values::NONE) {
+        $this->options['ifMatch'] = $ifMatch;
+    }
+
+    /**
+     * If provided, deletes this Task if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
+     *
+     * @param string $ifMatch The If-Match HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setIfMatch(string $ifMatch): self {
+        $this->options['ifMatch'] = $ifMatch;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Taskrouter.V1.DeleteTaskOptions ' . $options . ']';
     }
 }
 
@@ -193,7 +246,7 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The `assignment_status` of the Tasks to read. Can be: `pending`, `reserved`, `assigned`, `canceled`, and `completed`. Returns all Tasks in the Workspace with the specified `assignment_status`.
+     * The `assignment_status` of the Tasks you want to read. Can be: `pending`, `reserved`, `assigned`, `canceled`, `wrapping`, or `completed`. Returns all Tasks in the Workspace with the specified `assignment_status`.
      *
      * @param string[] $assignmentStatus Returns the list of all Tasks in the
      *                                   Workspace with the specified
@@ -298,7 +351,8 @@ class ReadTaskOptions extends Options {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param int $timeout The amount of time in seconds the task is allowed to live
+     * @param int $timeout The amount of time in seconds the task can live before
+     *                     being assigned
      * @param int $priority The priority to assign the new task and override the
      *                      default
      * @param string $taskChannel When MultiTasking is enabled specify the
@@ -318,9 +372,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The amount of time in seconds the new task is allowed to live. Can be up to a maximum of 2 weeks (1,209,600 seconds). The default value is 24 hours (86,400 seconds). On timeout, the `task.canceled` event will fire with description `Task TTL Exceeded`.
+     * The amount of time in seconds the new task can live before being assigned. Can be up to a maximum of 2 weeks (1,209,600 seconds). The default value is 24 hours (86,400 seconds). On timeout, the `task.canceled` event will fire with description `Task TTL Exceeded`.
      *
-     * @param int $timeout The amount of time in seconds the task is allowed to live
+     * @param int $timeout The amount of time in seconds the task can live before
+     *                     being assigned
      * @return $this Fluent Builder
      */
     public function setTimeout(int $timeout): self {

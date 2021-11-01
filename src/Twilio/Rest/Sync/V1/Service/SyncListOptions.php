@@ -12,9 +12,6 @@ namespace Twilio\Rest\Sync\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class SyncListOptions {
     /**
      * @param string $uniqueName An application-defined string that uniquely
@@ -77,7 +74,7 @@ class CreateSyncListOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync List expires (time-to-live) and is deleted.
      *
      * @param int $collectionTtl How long, in seconds, before the Sync List expires
      *                           and is deleted
@@ -122,7 +119,7 @@ class UpdateSyncListOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Sync List expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync List expires (time-to-live) and is deleted.
      *
      * @param int $collectionTtl How long, in seconds, before the Sync List expires
      *                           and is deleted

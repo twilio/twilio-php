@@ -12,18 +12,18 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Events\V1\Schema\VersionList;
+use Twilio\Rest\Events\V1\Schema\SchemaVersionList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $id
  * @property string $url
  * @property array $links
- * @property \DateTime $lastCreated
- * @property int $lastVersion
+ * @property \DateTime $latestVersionDateCreated
+ * @property int $latestVersion
  */
 class SchemaInstance extends InstanceResource {
     protected $_versions;
@@ -43,8 +43,8 @@ class SchemaInstance extends InstanceResource {
             'id' => Values::array_get($payload, 'id'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-            'lastCreated' => Deserialize::dateTime(Values::array_get($payload, 'last_created')),
-            'lastVersion' => Values::array_get($payload, 'last_version'),
+            'latestVersionDateCreated' => Deserialize::dateTime(Values::array_get($payload, 'latest_version_date_created')),
+            'latestVersion' => Values::array_get($payload, 'latest_version'),
         ];
 
         $this->solution = ['id' => $id ?: $this->properties['id'], ];
@@ -77,7 +77,7 @@ class SchemaInstance extends InstanceResource {
     /**
      * Access the versions
      */
-    protected function getVersions(): VersionList {
+    protected function getVersions(): SchemaVersionList {
         return $this->proxy()->versions;
     }
 

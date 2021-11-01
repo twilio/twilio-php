@@ -11,14 +11,13 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string $mode
  * @property string $trim
- * @property string $url
- * @property string $trunkSid
  */
 class RecordingInstance extends InstanceResource {
     /**
@@ -26,7 +25,7 @@ class RecordingInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $trunkSid The trunk_sid
+     * @param string $trunkSid The unique string that identifies the resource
      */
     public function __construct(Version $version, array $payload, string $trunkSid) {
         parent::__construct($version);
@@ -35,8 +34,6 @@ class RecordingInstance extends InstanceResource {
         $this->properties = [
             'mode' => Values::array_get($payload, 'mode'),
             'trim' => Values::array_get($payload, 'trim'),
-            'url' => Values::array_get($payload, 'url'),
-            'trunkSid' => Values::array_get($payload, 'trunk_sid'),
         ];
 
         $this->solution = ['trunkSid' => $trunkSid, ];
@@ -69,11 +66,12 @@ class RecordingInstance extends InstanceResource {
     /**
      * Update the RecordingInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(): RecordingInstance {
-        return $this->proxy()->update();
+    public function update(array $options = []): RecordingInstance {
+        return $this->proxy()->update($options);
     }
 
     /**

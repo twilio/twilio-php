@@ -18,7 +18,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class BuildList extends ListResource {
     /**
@@ -129,6 +129,7 @@ class BuildList extends ListResource {
             'AssetVersions' => Serialize::map($options['assetVersions'], function($e) { return $e; }),
             'FunctionVersions' => Serialize::map($options['functionVersions'], function($e) { return $e; }),
             'Dependencies' => $options['dependencies'],
+            'Runtime' => $options['runtime'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

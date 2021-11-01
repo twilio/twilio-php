@@ -19,24 +19,19 @@ class EntityTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->entities->create("identity", $options);
+                                     ->entities->create("identity");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['Identity' => "identity", ];
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities',
-            [],
-            $values,
-            $headers
+            null,
+            $values
         ));
     }
 
@@ -54,6 +49,7 @@ class EntityTest extends HolodeckTestCase {
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f",
                 "links": {
                     "factors": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors",
+                    "new_factors": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors",
                     "challenges": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges"
                 }
             }
@@ -69,22 +65,15 @@ class EntityTest extends HolodeckTestCase {
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->entities("identity")->delete($options);
+                                     ->entities("identity")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'delete',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity'
         ));
     }
 
@@ -103,22 +92,15 @@ class EntityTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->entities("identity")->fetch($options);
+                                     ->entities("identity")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity'
         ));
     }
 
@@ -136,6 +118,7 @@ class EntityTest extends HolodeckTestCase {
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f",
                 "links": {
                     "factors": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors",
+                    "new_factors": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors",
                     "challenges": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges"
                 }
             }
@@ -151,22 +134,15 @@ class EntityTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->entities->read($options);
+                                     ->entities->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities'
         ));
     }
 
@@ -211,6 +187,7 @@ class EntityTest extends HolodeckTestCase {
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f",
                         "links": {
                             "factors": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors",
+                            "new_factors": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors",
                             "challenges": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges"
                         }
                     }

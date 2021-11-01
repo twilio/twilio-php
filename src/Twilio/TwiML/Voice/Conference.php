@@ -185,4 +185,22 @@ class Conference extends TwiML {
     public function setEventCallbackUrl($eventCallbackUrl): self {
         return $this->setAttribute('eventCallbackUrl', $eventCallbackUrl);
     }
+
+    /**
+     * Add JitterBufferSize attribute.
+     *
+     * @param string $jitterBufferSize Size of jitter buffer for participant
+     */
+    public function setJitterBufferSize($jitterBufferSize): self {
+        return $this->setAttribute('jitterBufferSize', $jitterBufferSize);
+    }
+
+    /**
+     * Add ParticipantLabel attribute.
+     *
+     * @param string $participantLabel A label for participant
+     */
+    public function setParticipantLabel($participantLabel): self {
+        return $this->setAttribute('participantLabel', $participantLabel);
+    }
 }

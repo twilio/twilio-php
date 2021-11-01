@@ -12,13 +12,21 @@ namespace Twilio\Rest\Pricing;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Pricing\V2\CountryList;
+use Twilio\Rest\Pricing\V2\NumberList;
 use Twilio\Rest\Pricing\V2\VoiceList;
 use Twilio\Version;
 
 /**
+ * @property CountryList $countries
+ * @property NumberList $numbers
  * @property VoiceList $voice
+ * @method \Twilio\Rest\Pricing\V2\CountryContext countries(string $isoCountry)
+ * @method \Twilio\Rest\Pricing\V2\NumberContext numbers(string $destinationNumber)
  */
 class V2 extends Version {
+    protected $_countries;
+    protected $_numbers;
     protected $_voice;
 
     /**
@@ -29,6 +37,20 @@ class V2 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getCountries(): CountryList {
+        if (!$this->_countries) {
+            $this->_countries = new CountryList($this);
+        }
+        return $this->_countries;
+    }
+
+    protected function getNumbers(): NumberList {
+        if (!$this->_numbers) {
+            $this->_numbers = new NumberList($this);
+        }
+        return $this->_numbers;
     }
 
     protected function getVoice(): VoiceList {

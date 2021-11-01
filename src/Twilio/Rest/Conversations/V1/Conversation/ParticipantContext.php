@@ -53,6 +53,8 @@ class ParticipantContext extends InstanceContext {
             'MessagingBinding.ProxyAddress' => $options['messagingBindingProxyAddress'],
             'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
             'Identity' => $options['identity'],
+            'LastReadMessageIndex' => $options['lastReadMessageIndex'],
+            'LastReadTimestamp' => $options['lastReadTimestamp'],
         ]);
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
 

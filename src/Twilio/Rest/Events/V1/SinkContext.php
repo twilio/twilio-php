@@ -18,7 +18,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property SinkTestList $sinkTest
  * @property SinkValidateList $sinkValidate
@@ -62,6 +62,21 @@ class SinkContext extends InstanceContext {
      */
     public function delete(): bool {
         return $this->version->delete('DELETE', $this->uri);
+    }
+
+    /**
+     * Update the SinkInstance
+     *
+     * @param string $description Sink Description
+     * @return SinkInstance Updated SinkInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $description): SinkInstance {
+        $data = Values::of(['Description' => $description, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new SinkInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

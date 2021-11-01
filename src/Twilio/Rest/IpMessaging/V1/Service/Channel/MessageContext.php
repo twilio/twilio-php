@@ -20,10 +20,9 @@ class MessageContext extends InstanceContext {
      * Initialize the MessageContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service to fetch the resource from
-     * @param string $channelSid The unique ID of the Channel the message to fetch
-     *                           belongs to
-     * @param string $sid The unique string that identifies the resource
+     * @param string $serviceSid The service_sid
+     * @param string $channelSid The channel_sid
+     * @param string $sid The sid
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);

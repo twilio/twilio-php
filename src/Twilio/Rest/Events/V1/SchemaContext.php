@@ -12,15 +12,15 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
-use Twilio\Rest\Events\V1\Schema\VersionList;
+use Twilio\Rest\Events\V1\Schema\SchemaVersionList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property VersionList $versions
- * @method \Twilio\Rest\Events\V1\Schema\VersionContext versions(int $schemaVersion)
+ * @property SchemaVersionList $versions
+ * @method \Twilio\Rest\Events\V1\Schema\SchemaVersionContext versions(int $schemaVersion)
  */
 class SchemaContext extends InstanceContext {
     protected $_versions;
@@ -55,9 +55,9 @@ class SchemaContext extends InstanceContext {
     /**
      * Access the versions
      */
-    protected function getVersions(): VersionList {
+    protected function getVersions(): SchemaVersionList {
         if (!$this->_versions) {
-            $this->_versions = new VersionList($this->version, $this->solution['id']);
+            $this->_versions = new SchemaVersionList($this->version, $this->solution['id']);
         }
 
         return $this->_versions;

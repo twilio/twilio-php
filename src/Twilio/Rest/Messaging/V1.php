@@ -12,18 +12,28 @@ namespace Twilio\Rest\Messaging;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Messaging\V1\BrandRegistrationList;
 use Twilio\Rest\Messaging\V1\DeactivationsList;
+use Twilio\Rest\Messaging\V1\ExternalCampaignList;
 use Twilio\Rest\Messaging\V1\ServiceList;
+use Twilio\Rest\Messaging\V1\UsecaseList;
 use Twilio\Version;
 
 /**
+ * @property BrandRegistrationList $brandRegistrations
  * @property DeactivationsList $deactivations
+ * @property ExternalCampaignList $externalCampaign
  * @property ServiceList $services
+ * @property UsecaseList $usecases
+ * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  */
 class V1 extends Version {
+    protected $_brandRegistrations;
     protected $_deactivations;
+    protected $_externalCampaign;
     protected $_services;
+    protected $_usecases;
 
     /**
      * Construct the V1 version of Messaging
@@ -35,6 +45,13 @@ class V1 extends Version {
         $this->version = 'v1';
     }
 
+    protected function getBrandRegistrations(): BrandRegistrationList {
+        if (!$this->_brandRegistrations) {
+            $this->_brandRegistrations = new BrandRegistrationList($this);
+        }
+        return $this->_brandRegistrations;
+    }
+
     protected function getDeactivations(): DeactivationsList {
         if (!$this->_deactivations) {
             $this->_deactivations = new DeactivationsList($this);
@@ -42,11 +59,25 @@ class V1 extends Version {
         return $this->_deactivations;
     }
 
+    protected function getExternalCampaign(): ExternalCampaignList {
+        if (!$this->_externalCampaign) {
+            $this->_externalCampaign = new ExternalCampaignList($this);
+        }
+        return $this->_externalCampaign;
+    }
+
     protected function getServices(): ServiceList {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
         return $this->_services;
+    }
+
+    protected function getUsecases(): UsecaseList {
+        if (!$this->_usecases) {
+            $this->_usecases = new UsecaseList($this);
+        }
+        return $this->_usecases;
     }
 
     /**

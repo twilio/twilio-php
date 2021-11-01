@@ -44,10 +44,19 @@ abstract class NotificationOptions {
      * @param string $removedFromConversationSound The name of the sound to play to
      *                                             a user when they are removed
      *                                             from a conversation.
+     * @param bool $newMessageWithMediaEnabled Whether to send a notification when
+     *                                         a new message with media/file
+     *                                         attachments is added to a
+     *                                         conversation.
+     * @param string $newMessageWithMediaTemplate The template to use to create the
+     *                                            notification text displayed when
+     *                                            a new message with media/file
+     *                                            attachments is added to a
+     *                                            conversation.
      * @return UpdateNotificationOptions Options builder
      */
-    public static function update(bool $logEnabled = Values::NONE, bool $newMessageEnabled = Values::NONE, string $newMessageTemplate = Values::NONE, string $newMessageSound = Values::NONE, bool $newMessageBadgeCountEnabled = Values::NONE, bool $addedToConversationEnabled = Values::NONE, string $addedToConversationTemplate = Values::NONE, string $addedToConversationSound = Values::NONE, bool $removedFromConversationEnabled = Values::NONE, string $removedFromConversationTemplate = Values::NONE, string $removedFromConversationSound = Values::NONE): UpdateNotificationOptions {
-        return new UpdateNotificationOptions($logEnabled, $newMessageEnabled, $newMessageTemplate, $newMessageSound, $newMessageBadgeCountEnabled, $addedToConversationEnabled, $addedToConversationTemplate, $addedToConversationSound, $removedFromConversationEnabled, $removedFromConversationTemplate, $removedFromConversationSound);
+    public static function update(bool $logEnabled = Values::NONE, bool $newMessageEnabled = Values::NONE, string $newMessageTemplate = Values::NONE, string $newMessageSound = Values::NONE, bool $newMessageBadgeCountEnabled = Values::NONE, bool $addedToConversationEnabled = Values::NONE, string $addedToConversationTemplate = Values::NONE, string $addedToConversationSound = Values::NONE, bool $removedFromConversationEnabled = Values::NONE, string $removedFromConversationTemplate = Values::NONE, string $removedFromConversationSound = Values::NONE, bool $newMessageWithMediaEnabled = Values::NONE, string $newMessageWithMediaTemplate = Values::NONE): UpdateNotificationOptions {
+        return new UpdateNotificationOptions($logEnabled, $newMessageEnabled, $newMessageTemplate, $newMessageSound, $newMessageBadgeCountEnabled, $addedToConversationEnabled, $addedToConversationTemplate, $addedToConversationSound, $removedFromConversationEnabled, $removedFromConversationTemplate, $removedFromConversationSound, $newMessageWithMediaEnabled, $newMessageWithMediaTemplate);
     }
 }
 
@@ -83,8 +92,17 @@ class UpdateNotificationOptions extends Options {
      * @param string $removedFromConversationSound The name of the sound to play to
      *                                             a user when they are removed
      *                                             from a conversation.
+     * @param bool $newMessageWithMediaEnabled Whether to send a notification when
+     *                                         a new message with media/file
+     *                                         attachments is added to a
+     *                                         conversation.
+     * @param string $newMessageWithMediaTemplate The template to use to create the
+     *                                            notification text displayed when
+     *                                            a new message with media/file
+     *                                            attachments is added to a
+     *                                            conversation.
      */
-    public function __construct(bool $logEnabled = Values::NONE, bool $newMessageEnabled = Values::NONE, string $newMessageTemplate = Values::NONE, string $newMessageSound = Values::NONE, bool $newMessageBadgeCountEnabled = Values::NONE, bool $addedToConversationEnabled = Values::NONE, string $addedToConversationTemplate = Values::NONE, string $addedToConversationSound = Values::NONE, bool $removedFromConversationEnabled = Values::NONE, string $removedFromConversationTemplate = Values::NONE, string $removedFromConversationSound = Values::NONE) {
+    public function __construct(bool $logEnabled = Values::NONE, bool $newMessageEnabled = Values::NONE, string $newMessageTemplate = Values::NONE, string $newMessageSound = Values::NONE, bool $newMessageBadgeCountEnabled = Values::NONE, bool $addedToConversationEnabled = Values::NONE, string $addedToConversationTemplate = Values::NONE, string $addedToConversationSound = Values::NONE, bool $removedFromConversationEnabled = Values::NONE, string $removedFromConversationTemplate = Values::NONE, string $removedFromConversationSound = Values::NONE, bool $newMessageWithMediaEnabled = Values::NONE, string $newMessageWithMediaTemplate = Values::NONE) {
         $this->options['logEnabled'] = $logEnabled;
         $this->options['newMessageEnabled'] = $newMessageEnabled;
         $this->options['newMessageTemplate'] = $newMessageTemplate;
@@ -96,6 +114,8 @@ class UpdateNotificationOptions extends Options {
         $this->options['removedFromConversationEnabled'] = $removedFromConversationEnabled;
         $this->options['removedFromConversationTemplate'] = $removedFromConversationTemplate;
         $this->options['removedFromConversationSound'] = $removedFromConversationSound;
+        $this->options['newMessageWithMediaEnabled'] = $newMessageWithMediaEnabled;
+        $this->options['newMessageWithMediaTemplate'] = $newMessageWithMediaTemplate;
     }
 
     /**
@@ -235,6 +255,35 @@ class UpdateNotificationOptions extends Options {
      */
     public function setRemovedFromConversationSound(string $removedFromConversationSound): self {
         $this->options['removedFromConversationSound'] = $removedFromConversationSound;
+        return $this;
+    }
+
+    /**
+     * Whether to send a notification when a new message with media/file attachments is added to a conversation. The default is `false`.
+     *
+     * @param bool $newMessageWithMediaEnabled Whether to send a notification when
+     *                                         a new message with media/file
+     *                                         attachments is added to a
+     *                                         conversation.
+     * @return $this Fluent Builder
+     */
+    public function setNewMessageWithMediaEnabled(bool $newMessageWithMediaEnabled): self {
+        $this->options['newMessageWithMediaEnabled'] = $newMessageWithMediaEnabled;
+        return $this;
+    }
+
+    /**
+     * The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation and `new_message.attachments.enabled` is `true`.
+     *
+     * @param string $newMessageWithMediaTemplate The template to use to create the
+     *                                            notification text displayed when
+     *                                            a new message with media/file
+     *                                            attachments is added to a
+     *                                            conversation.
+     * @return $this Fluent Builder
+     */
+    public function setNewMessageWithMediaTemplate(string $newMessageWithMediaTemplate): self {
+        $this->options['newMessageWithMediaTemplate'] = $newMessageWithMediaTemplate;
         return $this;
     }
 

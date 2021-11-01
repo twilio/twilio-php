@@ -26,10 +26,11 @@ abstract class TrunkOptions {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
+     * @param string $transferCallerId Caller Id for transfer target
      * @return CreateTrunkOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): CreateTrunkOptions {
-        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled);
+    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE): CreateTrunkOptions {
+        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled, $transferCallerId);
     }
 
     /**
@@ -45,10 +46,11 @@ abstract class TrunkOptions {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
+     * @param string $transferCallerId Caller Id for transfer target
      * @return UpdateTrunkOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE): UpdateTrunkOptions {
-        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled);
+    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE): UpdateTrunkOptions {
+        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled, $transferCallerId);
     }
 }
 
@@ -66,8 +68,9 @@ class CreateTrunkOptions extends Options {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
+     * @param string $transferCallerId Caller Id for transfer target
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -75,6 +78,7 @@ class CreateTrunkOptions extends Options {
         $this->options['transferMode'] = $transferMode;
         $this->options['secure'] = $secure;
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
+        $this->options['transferCallerId'] = $transferCallerId;
     }
 
     /**
@@ -156,6 +160,17 @@ class CreateTrunkOptions extends Options {
      */
     public function setCnamLookupEnabled(bool $cnamLookupEnabled): self {
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
+        return $this;
+    }
+
+    /**
+     * Caller Id for transfer target. Can be: `from-transferee` (default) or `from-transferor`.
+     *
+     * @param string $transferCallerId Caller Id for transfer target
+     * @return $this Fluent Builder
+     */
+    public function setTransferCallerId(string $transferCallerId): self {
+        $this->options['transferCallerId'] = $transferCallerId;
         return $this;
     }
 
@@ -184,8 +199,9 @@ class UpdateTrunkOptions extends Options {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
      *                                be enabled for the trunk
+     * @param string $transferCallerId Caller Id for transfer target
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -193,6 +209,7 @@ class UpdateTrunkOptions extends Options {
         $this->options['transferMode'] = $transferMode;
         $this->options['secure'] = $secure;
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
+        $this->options['transferCallerId'] = $transferCallerId;
     }
 
     /**
@@ -274,6 +291,17 @@ class UpdateTrunkOptions extends Options {
      */
     public function setCnamLookupEnabled(bool $cnamLookupEnabled): self {
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
+        return $this;
+    }
+
+    /**
+     * Caller Id for transfer target. Can be: `from-transferee` (default) or `from-transferor`.
+     *
+     * @param string $transferCallerId Caller Id for transfer target
+     * @return $this Fluent Builder
+     */
+    public function setTransferCallerId(string $transferCallerId): self {
+        $this->options['transferCallerId'] = $transferCallerId;
         return $this;
     }
 

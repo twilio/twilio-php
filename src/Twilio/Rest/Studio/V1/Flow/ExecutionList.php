@@ -126,8 +126,8 @@ class ExecutionList extends ListResource {
      * Create the ExecutionInstance
      *
      * @param string $to The Contact phone number to start a Studio Flow Execution
-     * @param string $from The Twilio phone number to send messages or initiate
-     *                     calls from during the Flow Execution
+     * @param string $from The Twilio phone number or Messaging Service SID to send
+     *                     messages or initiate calls from during the Flow Execution
      * @param array|Options $options Optional Arguments
      * @return ExecutionInstance Created ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.

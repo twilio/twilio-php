@@ -80,7 +80,9 @@ class ExportCustomJobTest extends HolodeckTestCase {
                         "end_day": "end_day",
                         "webhook_url": "webhook_url",
                         "email": "email",
-                        "resource_type": "resource_type"
+                        "resource_type": "resource_type",
+                        "job_queue_position": "1",
+                        "estimated_completion_time": "2021-03-15T20:20:14.547"
                     }
                 ]
             }
@@ -98,13 +100,17 @@ class ExportCustomJobTest extends HolodeckTestCase {
 
         try {
             $this->twilio->bulkexports->v1->exports("resource_type")
-                                          ->exportCustomJobs->create();
+                                          ->exportCustomJobs->create("start_day", "end_day", "friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $values = ['StartDay' => "start_day", 'EndDay' => "end_day", 'FriendlyName' => "friendly_name", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://bulkexports.twilio.com/v1/Exports/resource_type/Jobs'
+            'https://bulkexports.twilio.com/v1/Exports/resource_type/Jobs',
+            null,
+            $values
         ));
     }
 
@@ -121,13 +127,15 @@ class ExportCustomJobTest extends HolodeckTestCase {
                 "end_day": "end_day",
                 "webhook_url": "webhook_url",
                 "email": "email",
-                "resource_type": "resource_type"
+                "resource_type": "resource_type",
+                "job_queue_position": "1",
+                "estimated_completion_time": "2021-03-15T20:20:14.547"
             }
             '
         ));
 
         $actual = $this->twilio->bulkexports->v1->exports("resource_type")
-                                                ->exportCustomJobs->create();
+                                                ->exportCustomJobs->create("start_day", "end_day", "friendly_name");
 
         $this->assertNotNull($actual);
     }

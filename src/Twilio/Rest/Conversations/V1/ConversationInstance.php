@@ -33,6 +33,7 @@ use Twilio\Version;
  * @property array $timers
  * @property string $url
  * @property array $links
+ * @property array $bindings
  */
 class ConversationInstance extends InstanceResource {
     protected $_participants;
@@ -65,6 +66,7 @@ class ConversationInstance extends InstanceResource {
             'timers' => Values::array_get($payload, 'timers'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'bindings' => Values::array_get($payload, 'bindings'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

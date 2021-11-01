@@ -46,7 +46,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "connected",
                 "start_conference_on_enter": true,
                 "coaching": true,
                 "call_sid_to_coach": "CAbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -76,7 +76,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "connected",
                 "start_conference_on_enter": true,
                 "coaching": true,
                 "call_sid_to_coach": "CAbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -122,7 +122,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": true,
                 "hold": false,
-                "status": "complete",
+                "status": "connected",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -152,7 +152,67 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": true,
                 "hold": false,
-                "status": "complete",
+                "status": "connected",
+                "start_conference_on_enter": true,
+                "coaching": false,
+                "call_sid_to_coach": null,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->participants("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testHoldParticipantWithMusicResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "label": null,
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": true,
+                "status": "connected",
+                "start_conference_on_enter": true,
+                "coaching": false,
+                "call_sid_to_coach": null,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->participants("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testAnnounceToParticipantResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "label": null,
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": false,
+                "status": "connected",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -262,7 +322,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -292,7 +352,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -352,7 +412,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -382,7 +442,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -412,7 +472,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -441,7 +501,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -472,7 +532,97 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
-                "status": "complete",
+                "status": "queued",
+                "start_conference_on_enter": true,
+                "coaching": false,
+                "call_sid_to_coach": null,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->participants->create("+15017122661", "+15558675310");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithFriendlyNameRecordingTrackResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "label": null,
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": false,
+                "status": "queued",
+                "start_conference_on_enter": true,
+                "coaching": false,
+                "call_sid_to_coach": null,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->participants->create("+15017122661", "+15558675310");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithFromToClientResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "label": "customer",
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": false,
+                "status": "queued",
+                "start_conference_on_enter": true,
+                "coaching": false,
+                "call_sid_to_coach": null,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->participants->create("+15017122661", "+15558675310");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithFromToSipResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "label": "customer",
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": false,
+                "status": "queued",
                 "start_conference_on_enter": true,
                 "coaching": false,
                 "call_sid_to_coach": null,
@@ -598,8 +748,8 @@ class ParticipantTest extends HolodeckTestCase {
                         "call_sid": "CAbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
                         "label": null,
                         "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
-                        "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                        "date_created": "Sat, 19 Feb 2011 21:07:19 +0000",
+                        "date_updated": "Sat, 19 Feb 2011 21:07:19 +0000",
                         "end_conference_on_exit": false,
                         "muted": true,
                         "hold": false,

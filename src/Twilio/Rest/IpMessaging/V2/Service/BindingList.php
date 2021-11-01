@@ -21,8 +21,7 @@ class BindingList extends ListResource {
      * Construct the BindingList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the Binding resource
-     *                           is associated with
+     * @param string $serviceSid The service_sid
      */
     public function __construct(Version $version, string $serviceSid) {
         parent::__construct($version);
@@ -125,7 +124,7 @@ class BindingList extends ListResource {
     /**
      * Constructs a BindingContext
      *
-     * @param string $sid The SID of the resource to fetch
+     * @param string $sid The sid
      */
     public function getContext(string $sid): BindingContext {
         return new BindingContext($this->version, $this->solution['serviceSid'], $sid);

@@ -35,9 +35,8 @@ class BindingInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Service that the Binding resource
-     *                           is associated with
-     * @param string $sid The SID of the resource to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $sid The sid
      */
     public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
         parent::__construct($version);

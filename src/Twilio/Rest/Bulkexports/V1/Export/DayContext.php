@@ -14,15 +14,13 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class DayContext extends InstanceContext {
     /**
      * Initialize the DayContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      * @param string $day The date of the data in the file
      */
     public function __construct(Version $version, $resourceType, $day) {

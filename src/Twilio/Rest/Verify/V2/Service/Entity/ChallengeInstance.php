@@ -13,11 +13,12 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Rest\Verify\V2\Service\Entity\Challenge\NotificationList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $sid
  * @property string $accountSid
@@ -35,8 +36,11 @@ use Twilio\Version;
  * @property array $hiddenDetails
  * @property string $factorType
  * @property string $url
+ * @property array $links
  */
 class ChallengeInstance extends InstanceResource {
+    protected $_notifications;
+
     /**
      * Initialize the ChallengeInstance
      *
@@ -67,6 +71,7 @@ class ChallengeInstance extends InstanceResource {
             'hiddenDetails' => Values::array_get($payload, 'hidden_details'),
             'factorType' => Values::array_get($payload, 'factor_type'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = [
@@ -98,12 +103,11 @@ class ChallengeInstance extends InstanceResource {
     /**
      * Fetch the ChallengeInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): ChallengeInstance {
-        return $this->proxy()->fetch($options);
+    public function fetch(): ChallengeInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -115,6 +119,13 @@ class ChallengeInstance extends InstanceResource {
      */
     public function update(array $options = []): ChallengeInstance {
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Access the notifications
+     */
+    protected function getNotifications(): NotificationList {
+        return $this->proxy()->notifications;
     }
 
     /**

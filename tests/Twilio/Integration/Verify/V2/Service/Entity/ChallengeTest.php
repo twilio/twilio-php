@@ -19,39 +19,34 @@ class ChallengeTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", $options);
+                                     ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = ['FactorSid' => "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ];
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
             'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges',
-            [],
-            $values,
-            $headers
+            null,
+            $values
         ));
     }
 
-    public function testCreateResponse(): void {
+    public function testCreatePushWithoutAuthPayloadResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
             {
-                "sid": "YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "identity": "ff483d1ff591898a9942916050d2ca3f",
-                "factor_sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "factor_sid": "YF03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "date_responded": "2015-07-30T20:00:00Z",
@@ -72,7 +67,102 @@ class ChallengeTest extends HolodeckTestCase {
                     "ip": "172.168.1.234"
                 },
                 "factor_type": "push",
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateTotpWithoutAuthPayloadResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "ff483d1ff591898a9942916050d2ca3f",
+                "factor_sid": "YF02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "date_responded": "2015-07-30T20:00:00Z",
+                "expiration_date": "2015-07-30T20:00:00Z",
+                "status": "pending",
+                "responded_reason": "none",
+                "details": {
+                    "message": "Hi! Mr. John Doe, would you like to sign up?",
+                    "date": "2020-07-01T12:13:14Z",
+                    "fields": [
+                        {
+                            "label": "Action",
+                            "value": "Sign up in portal"
+                        }
+                    ]
+                },
+                "hidden_details": {
+                    "ip": "172.168.1.234"
+                },
+                "factor_type": "totp",
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->challenges->create("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateTotpWithAuthPayloadResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "ff483d1ff591898a9942916050d2ca3f",
+                "factor_sid": "YF02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "date_responded": "2015-07-30T20:00:00Z",
+                "expiration_date": "2015-07-30T20:00:00Z",
+                "status": "approved",
+                "responded_reason": "none",
+                "details": {
+                    "message": "Hi! Mr. John Doe, would you like to sign up?",
+                    "date": "2020-07-01T12:13:14Z",
+                    "fields": [
+                        {
+                            "label": "Action",
+                            "value": "Sign up in portal"
+                        }
+                    ]
+                },
+                "hidden_details": {
+                    "ip": "172.168.1.234"
+                },
+                "factor_type": "totp",
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
             }
             '
         ));
@@ -87,23 +177,16 @@ class ChallengeTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch($options);
+                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -138,7 +221,10 @@ class ChallengeTest extends HolodeckTestCase {
                     "ip": "172.168.1.234"
                 },
                 "factor_type": "push",
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
             }
             '
         ));
@@ -153,23 +239,16 @@ class ChallengeTest extends HolodeckTestCase {
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges->read($options);
+                                     ->challenges->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges'
         ));
     }
 
@@ -206,12 +285,12 @@ class ChallengeTest extends HolodeckTestCase {
             {
                 "challenges": [
                     {
-                        "sid": "YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sid": "YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "identity": "ff483d1ff591898a9942916050d2ca3f",
-                        "factor_sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "factor_sid": "YF03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "date_responded": "2015-07-30T20:00:00Z",
@@ -232,7 +311,42 @@ class ChallengeTest extends HolodeckTestCase {
                             "ip": "172.168.1.234"
                         },
                         "factor_type": "push",
-                        "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                        }
+                    },
+                    {
+                        "sid": "YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "identity": "ff483d1ff591898a9942916050d2ca3f",
+                        "factor_sid": "YF02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "date_responded": "2015-07-30T20:00:00Z",
+                        "expiration_date": "2015-07-30T20:00:00Z",
+                        "status": "pending",
+                        "responded_reason": "none",
+                        "details": {
+                            "message": "Hi! Mr. John Doe, would you like to sign up?",
+                            "date": "2020-07-01T12:13:14Z",
+                            "fields": [
+                                {
+                                    "label": "Action",
+                                    "value": "Sign up in portal"
+                                }
+                            ]
+                        },
+                        "hidden_details": {
+                            "ip": "172.168.1.234"
+                        },
+                        "factor_type": "totp",
+                        "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                        }
                     }
                 ],
                 "meta": {
@@ -258,37 +372,30 @@ class ChallengeTest extends HolodeckTestCase {
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
+                                     ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Challenges/YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
-    public function testVerifySidResponse(): void {
+    public function testVerifyPushResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
             {
-                "sid": "YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "identity": "ff483d1ff591898a9942916050d2ca3f",
-                "factor_sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "factor_sid": "YF03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "date_responded": "2015-07-30T20:00:00Z",
@@ -309,7 +416,56 @@ class ChallengeTest extends HolodeckTestCase {
                     "ip": "172.168.1.234"
                 },
                 "factor_type": "push",
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->challenges("YCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testVerifyTotpResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "ff483d1ff591898a9942916050d2ca3f",
+                "factor_sid": "YF02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "date_responded": "2015-07-30T20:00:00Z",
+                "expiration_date": "2015-07-30T20:00:00Z",
+                "status": "approved",
+                "responded_reason": "none",
+                "details": {
+                    "message": "Hi! Mr. John Doe, would you like to sign up?",
+                    "date": "2020-07-01T12:13:14Z",
+                    "fields": [
+                        {
+                            "label": "Action",
+                            "value": "Sign up in portal"
+                        }
+                    ]
+                },
+                "hidden_details": {
+                    "ip": "172.168.1.234"
+                },
+                "factor_type": "totp",
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "notifications": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications"
+                }
             }
             '
         ));

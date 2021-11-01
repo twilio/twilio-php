@@ -19,10 +19,10 @@ use Twilio\Version;
  * @property string $accountSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property string $domainSid
  * @property string $friendlyName
  * @property string $sid
  * @property string $uri
- * @property array $subresourceUris
  */
 class CredentialListMappingInstance extends InstanceResource {
     /**
@@ -32,7 +32,8 @@ class CredentialListMappingInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
-     * @param string $domainSid The unique string that identifies the resource
+     * @param string $domainSid The unique string that identifies the SipDomain
+     *                          resource.
      * @param string $sid A string that identifies the resource to fetch
      */
     public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null) {
@@ -43,10 +44,10 @@ class CredentialListMappingInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'domainSid' => Values::array_get($payload, 'domain_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
-            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         ];
 
         $this->solution = [

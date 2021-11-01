@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -46,11 +47,16 @@ class RecordingContext extends InstanceContext {
     /**
      * Update the RecordingInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(): RecordingInstance {
-        $payload = $this->version->update('POST', $this->uri);
+    public function update(array $options = []): RecordingInstance {
+        $options = new Values($options);
+
+        $data = Values::of(['Mode' => $options['mode'], 'Trim' => $options['trim'], ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RecordingInstance($this->version, $payload, $this->solution['trunkSid']);
     }

@@ -16,84 +16,19 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class FactorTest extends HolodeckTestCase {
-    public function testCreateRequest(): void {
-        $this->holodeck->mock(new Response(500, ''));
-
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
-        try {
-            $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->entities("identity")
-                                     ->factors->create("friendly_name", "push", $options);
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $values = ['FriendlyName' => "friendly_name", 'FactorType' => "push", ];
-
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
-        $this->assertRequest(new Request(
-            'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors',
-            [],
-            $values,
-            $headers
-        ));
-    }
-
-    public function testCreateResponse(): void {
-        $this->holodeck->mock(new Response(
-            201,
-            '
-            {
-                "sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "identity": "ff483d1ff591898a9942916050d2ca3f",
-                "date_created": "2015-07-30T20:00:00Z",
-                "date_updated": "2015-07-30T20:00:00Z",
-                "friendly_name": "friendly_name",
-                "status": "unverified",
-                "factor_type": "push",
-                "config": {
-                    "sdk_version": "1.0",
-                    "app_id": "com.example.myapp",
-                    "notification_platform": "fcm",
-                    "notification_token": "test_token"
-                },
-                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            }
-            '
-        ));
-
-        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->entities("identity")
-                                           ->factors->create("friendly_name", "push");
-
-        $this->assertNotNull($actual);
-    }
-
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete($options);
+                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'delete',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -113,27 +48,20 @@ class FactorTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch($options);
+                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
-    public function testFetchResponse(): void {
+    public function testFetchPushResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -166,26 +94,52 @@ class FactorTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testFetchTotpResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "ff483d1ff591898a9942916050d2ca3f",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
+                "status": "unverified",
+                "factor_type": "totp",
+                "config": {
+                    "alg": "sha1",
+                    "skew": 1,
+                    "code_length": 6,
+                    "time_step": 30
+                },
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
-
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
 
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors->read($options);
+                                     ->factors->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'get',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors'
         ));
     }
 
@@ -215,7 +169,7 @@ class FactorTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse(): void {
+    public function testReadFullPushResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -258,33 +212,72 @@ class FactorTest extends HolodeckTestCase {
                                            ->entities("identity")
                                            ->factors->read();
 
-        $this->assertGreaterThan(0, \count($actual));
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullTotpResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "factors": [
+                    {
+                        "sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "identity": "ff483d1ff591898a9942916050d2ca3f",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "friendly_name": "friendly_name",
+                        "status": "unverified",
+                        "factor_type": "totp",
+                        "config": {
+                            "alg": "sha1",
+                            "skew": 1,
+                            "code_length": 6,
+                            "time_step": 30
+                        },
+                        "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "factors"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->factors->read();
+
+        $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['twilioSandboxMode' => "twilio_sandbox_mode", ];
-
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->entities("identity")
-                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update($options);
+                                     ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Twilio-Sandbox-Mode' => "twilio_sandbox_mode", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            [],
-            [],
-            $headers
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
-    public function testVerifyResponse(): void {
+    public function testVerifyPushResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -304,6 +297,39 @@ class FactorTest extends HolodeckTestCase {
                     "app_id": "com.example.myapp",
                     "notification_platform": "fcm",
                     "notification_token": "test_token"
+                },
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->entities("identity")
+                                           ->factors("YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testVerifyTotpResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "entity_sid": "YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "ff483d1ff591898a9942916050d2ca3f",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
+                "status": "verified",
+                "factor_type": "totp",
+                "config": {
+                    "alg": "sha1",
+                    "skew": 1,
+                    "code_length": 6,
+                    "time_step": 30
                 },
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }

@@ -18,7 +18,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
 class ChallengeList extends ListResource {
     /**
@@ -54,10 +54,10 @@ class ChallengeList extends ListResource {
             'Details.Message' => $options['detailsMessage'],
             'Details.Fields' => Serialize::map($options['detailsFields'], function($e) { return Serialize::jsonObject($e); }),
             'HiddenDetails' => Serialize::jsonObject($options['hiddenDetails']),
+            'AuthPayload' => $options['authPayload'],
         ]);
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ChallengeInstance(
             $this->version,
@@ -130,13 +130,13 @@ class ChallengeList extends ListResource {
         $params = Values::of([
             'FactorSid' => $options['factorSid'],
             'Status' => $options['status'],
+            'Order' => $options['order'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ]);
-        $headers = Values::of(['Twilio-Sandbox-Mode' => $options['twilioSandboxMode'], ]);
 
-        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
+        $response = $this->version->page('GET', $this->uri, $params);
 
         return new ChallengePage($this->version, $response, $this->solution);
     }

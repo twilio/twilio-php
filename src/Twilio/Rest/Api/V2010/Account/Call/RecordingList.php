@@ -50,6 +50,7 @@ class RecordingList extends ListResource {
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
             'Trim' => $options['trim'],
             'RecordingChannels' => $options['recordingChannels'],
+            'RecordingTrack' => $options['recordingTrack'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

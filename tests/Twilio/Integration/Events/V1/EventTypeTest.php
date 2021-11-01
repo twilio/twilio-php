@@ -61,25 +61,27 @@ class EventTypeTest extends HolodeckTestCase {
             {
                 "types": [
                     {
-                        "date_created": "2020-08-13T12:50:18Z",
-                        "date_updated": "2020-08-13T13:28:48Z",
-                        "type": "com.twilio.test.example",
-                        "schema_id": "EventStreams.SampleSchema",
-                        "description": "A sample event type",
-                        "url": "https://events.twilio.com/v1/Types/com.twilio.test.example",
+                        "date_created": "2020-08-13T13:28:20Z",
+                        "date_updated": "2020-08-13T13:28:20Z",
+                        "type": "com.twilio.messaging.message.delivered",
+                        "schema_id": "Messaging.MessageStatus",
+                        "public": true,
+                        "description": "Messaging- delivered message",
+                        "url": "https://events.twilio.com/v1/Types/com.twilio.messaging.message.delivered",
                         "links": {
-                            "schema": "https://events.twilio.com/v1/Schemas/EventStreams.SampleSchema/Versions"
+                            "schema": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions"
                         }
                     },
                     {
-                        "date_created": "2020-08-13T12:50:19Z",
-                        "date_updated": "2020-08-13T13:28:49Z",
-                        "type": "com.twilio.test.example2",
-                        "schema_id": "EventStreams.SampleSchema",
-                        "description": "Another sample event type",
-                        "url": "https://events.twilio.com/v1/Types/com.twilio.test.example2",
+                        "date_created": "2020-08-13T13:28:19Z",
+                        "date_updated": "2020-08-13T13:28:19Z",
+                        "type": "com.twilio.messaging.message.failed",
+                        "schema_id": "Messaging.MessageStatus",
+                        "public": true,
+                        "description": "Messaging- failed message",
+                        "url": "https://events.twilio.com/v1/Types/com.twilio.messaging.message.failed",
                         "links": {
-                            "schema": "https://events.twilio.com/v1/Schemas/EventStreams.SampleSchema/Versions"
+                            "schema": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions"
                         }
                     }
                 ],
@@ -89,6 +91,55 @@ class EventTypeTest extends HolodeckTestCase {
                     "first_page_url": "https://events.twilio.com/v1/Types?PageSize=20&Page=0",
                     "previous_page_url": null,
                     "url": "https://events.twilio.com/v1/Types?PageSize=20&Page=0",
+                    "next_page_url": null,
+                    "key": "types"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->events->v1->eventTypes->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadResultsWithSchemaIdResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "types": [
+                    {
+                        "date_created": "2020-08-13T13:28:20Z",
+                        "date_updated": "2020-08-13T13:28:20Z",
+                        "type": "com.twilio.messaging.message.delivered",
+                        "schema_id": "Messaging.MessageStatus",
+                        "public": true,
+                        "description": "Messaging- delivered message",
+                        "url": "https://events.twilio.com/v1/Types/com.twilio.messaging.message.delivered",
+                        "links": {
+                            "schema": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions"
+                        }
+                    },
+                    {
+                        "date_created": "2020-08-13T13:28:19Z",
+                        "date_updated": "2020-08-13T13:28:19Z",
+                        "type": "com.twilio.messaging.message.failed",
+                        "schema_id": "Messaging.MessageStatus",
+                        "public": true,
+                        "description": "Messaging- failed message",
+                        "url": "https://events.twilio.com/v1/Types/com.twilio.messaging.message.failed",
+                        "links": {
+                            "schema": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions"
+                        }
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 20,
+                    "first_page_url": "https://events.twilio.com/v1/Types?SchemaId=Messaging.MessageStatus&PageSize=20&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://events.twilio.com/v1/Types?SchemaId=Messaging.MessageStatus&PageSize=20&Page=0",
                     "next_page_url": null,
                     "key": "types"
                 }
@@ -120,14 +171,15 @@ class EventTypeTest extends HolodeckTestCase {
             200,
             '
             {
-                "date_created": "2020-08-13T12:50:18Z",
-                "date_updated": "2020-08-13T13:28:48Z",
-                "type": "com.twilio.test.example",
-                "schema_id": "EventStreams.SampleSchema",
-                "description": "A sample subscription",
-                "url": "https://events.twilio.com/v1/Types/com.twilio.test.example",
+                "date_created": "2020-08-13T13:28:20Z",
+                "date_updated": "2020-08-13T13:28:20Z",
+                "type": "com.twilio.messaging.message.delivered",
+                "schema_id": "Messaging.MessageStatus",
+                "public": true,
+                "description": "Messaging- delivered message",
+                "url": "https://events.twilio.com/v1/Types/com.twilio.messaging.message.delivered",
                 "links": {
-                    "schema": "https://events.twilio.com/v1/Schemas/EventStreams.SampleSchema/Versions"
+                    "schema": "https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions"
                 }
             }
             '

@@ -53,12 +53,16 @@ abstract class ParticipantOptions {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param int $lastReadMessageIndex Index of last “read” message in the
+     *                                  Conversation for the Participant.
+     * @param string $lastReadTimestamp Timestamp of last “read” message in the
+     *                                  Conversation for the Participant.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $identity = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
-        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $identity, $attributes, $roleSid, $messagingBindingProxyAddress, $messagingBindingProjectedAddress, $xTwilioWebhookEnabled);
+    public static function update(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $identity = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, int $lastReadMessageIndex = Values::NONE, string $lastReadTimestamp = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateParticipantOptions {
+        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $identity, $attributes, $roleSid, $messagingBindingProxyAddress, $messagingBindingProjectedAddress, $lastReadMessageIndex, $lastReadTimestamp, $xTwilioWebhookEnabled);
     }
 
     /**
@@ -239,10 +243,14 @@ class UpdateParticipantOptions extends Options {
      * @param string $messagingBindingProjectedAddress The address of the Twilio
      *                                                 phone number that is used in
      *                                                 Group MMS.
+     * @param int $lastReadMessageIndex Index of last “read” message in the
+     *                                  Conversation for the Participant.
+     * @param string $lastReadTimestamp Timestamp of last “read” message in the
+     *                                  Conversation for the Participant.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
-    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $identity = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(\DateTime $dateCreated = Values::NONE, \DateTime $dateUpdated = Values::NONE, string $identity = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $messagingBindingProxyAddress = Values::NONE, string $messagingBindingProjectedAddress = Values::NONE, int $lastReadMessageIndex = Values::NONE, string $lastReadTimestamp = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['identity'] = $identity;
@@ -250,6 +258,8 @@ class UpdateParticipantOptions extends Options {
         $this->options['roleSid'] = $roleSid;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
+        $this->options['lastReadMessageIndex'] = $lastReadMessageIndex;
+        $this->options['lastReadTimestamp'] = $lastReadTimestamp;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -334,6 +344,30 @@ class UpdateParticipantOptions extends Options {
      */
     public function setMessagingBindingProjectedAddress(string $messagingBindingProjectedAddress): self {
         $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
+        return $this;
+    }
+
+    /**
+     * Index of last “read” message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.
+     *
+     * @param int $lastReadMessageIndex Index of last “read” message in the
+     *                                  Conversation for the Participant.
+     * @return $this Fluent Builder
+     */
+    public function setLastReadMessageIndex(int $lastReadMessageIndex): self {
+        $this->options['lastReadMessageIndex'] = $lastReadMessageIndex;
+        return $this;
+    }
+
+    /**
+     * Timestamp of last “read” message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.
+     *
+     * @param string $lastReadTimestamp Timestamp of last “read” message in the
+     *                                  Conversation for the Participant.
+     * @return $this Fluent Builder
+     */
+    public function setLastReadTimestamp(string $lastReadTimestamp): self {
+        $this->options['lastReadTimestamp'] = $lastReadTimestamp;
         return $this;
     }
 

@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class TaskChannelOptions {
     /**
-     * @param string $friendlyName A string to describe the TaskChannel resource
+     * @param string $friendlyName A string to describe the Task Channel resource
      * @param bool $channelOptimizedRouting Whether the TaskChannel should
      *                                      prioritize Workers that have been idle
      * @return UpdateTaskChannelOptions Options builder
@@ -24,7 +24,7 @@ abstract class TaskChannelOptions {
     }
 
     /**
-     * @param bool $channelOptimizedRouting Whether the TaskChannel should
+     * @param bool $channelOptimizedRouting Whether the Task Channel should
      *                                      prioritize Workers that have been idle
      * @return CreateTaskChannelOptions Options builder
      */
@@ -35,7 +35,7 @@ abstract class TaskChannelOptions {
 
 class UpdateTaskChannelOptions extends Options {
     /**
-     * @param string $friendlyName A string to describe the TaskChannel resource
+     * @param string $friendlyName A string to describe the Task Channel resource
      * @param bool $channelOptimizedRouting Whether the TaskChannel should
      *                                      prioritize Workers that have been idle
      */
@@ -45,9 +45,9 @@ class UpdateTaskChannelOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the TaskChannel. It can be up to 64 characters long.
+     * A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
      *
-     * @param string $friendlyName A string to describe the TaskChannel resource
+     * @param string $friendlyName A string to describe the Task Channel resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self {
@@ -80,7 +80,7 @@ class UpdateTaskChannelOptions extends Options {
 
 class CreateTaskChannelOptions extends Options {
     /**
-     * @param bool $channelOptimizedRouting Whether the TaskChannel should
+     * @param bool $channelOptimizedRouting Whether the Task Channel should
      *                                      prioritize Workers that have been idle
      */
     public function __construct(bool $channelOptimizedRouting = Values::NONE) {
@@ -88,9 +88,9 @@ class CreateTaskChannelOptions extends Options {
     }
 
     /**
-     * Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
+     * Whether the Task Channel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      *
-     * @param bool $channelOptimizedRouting Whether the TaskChannel should
+     * @param bool $channelOptimizedRouting Whether the Task Channel should
      *                                      prioritize Workers that have been idle
      * @return $this Fluent Builder
      */

@@ -33,7 +33,7 @@ class ServiceList extends ListResource {
     /**
      * Create the ServiceInstance
      *
-     * @param string $friendlyName A string to describe the resource
+     * @param string $friendlyName The friendly_name
      * @return ServiceInstance Created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -126,7 +126,7 @@ class ServiceList extends ListResource {
     /**
      * Constructs a ServiceContext
      *
-     * @param string $sid The SID of the Service resource to fetch
+     * @param string $sid The sid
      */
     public function getContext(string $sid): ServiceContext {
         return new ServiceContext($this->version, $sid);

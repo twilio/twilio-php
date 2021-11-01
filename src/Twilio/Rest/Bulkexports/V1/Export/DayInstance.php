@@ -15,8 +15,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property string $redirectTo
  * @property string $day
  * @property int $size
@@ -30,7 +28,8 @@ class DayInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $resourceType The type of communication – Messages, Calls
+     * @param string $resourceType The type of communication – Messages, Calls,
+     *                             Conferences, and Participants
      * @param string $day The date of the data in the file
      */
     public function __construct(Version $version, array $payload, string $resourceType, string $day = null) {

@@ -28,6 +28,8 @@ use Twilio\Version;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
+ * @property int $lastReadMessageIndex
+ * @property string $lastReadTimestamp
  */
 class ParticipantInstance extends InstanceResource {
     /**
@@ -58,6 +60,8 @@ class ParticipantInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'lastReadMessageIndex' => Values::array_get($payload, 'last_read_message_index'),
+            'lastReadTimestamp' => Values::array_get($payload, 'last_read_timestamp'),
         ];
 
         $this->solution = [

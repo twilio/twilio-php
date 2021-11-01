@@ -21,7 +21,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property string $sid
  * @property string $accountSid
@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string $uniqueName
  * @property bool $includeCredentials
  * @property bool $uiEditable
+ * @property string $domainBase
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -58,6 +59,7 @@ class ServiceInstance extends InstanceResource {
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'includeCredentials' => Values::array_get($payload, 'include_credentials'),
             'uiEditable' => Values::array_get($payload, 'ui_editable'),
+            'domainBase' => Values::array_get($payload, 'domain_base'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

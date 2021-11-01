@@ -14,10 +14,9 @@ use Twilio\Values;
 
 abstract class UserOptions {
     /**
-     * @param string $roleSid The SID of the Role assigned to this user
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param string $friendlyName A string to describe the new resource
+     * @param string $roleSid The role_sid
+     * @param string $attributes The attributes
+     * @param string $friendlyName The friendly_name
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return CreateUserOptions Options builder
@@ -27,10 +26,9 @@ abstract class UserOptions {
     }
 
     /**
-     * @param string $roleSid The SID id of the Role assigned to this user
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param string $friendlyName A string to describe the resource
+     * @param string $roleSid The role_sid
+     * @param string $attributes The attributes
+     * @param string $friendlyName The friendly_name
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      * @return UpdateUserOptions Options builder
@@ -42,10 +40,9 @@ abstract class UserOptions {
 
 class CreateUserOptions extends Options {
     /**
-     * @param string $roleSid The SID of the Role assigned to this user
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param string $friendlyName A string to describe the new resource
+     * @param string $roleSid The role_sid
+     * @param string $attributes The attributes
+     * @param string $friendlyName The friendly_name
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -57,9 +54,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the new User.
+     * The role_sid
      *
-     * @param string $roleSid The SID of the Role assigned to this user
+     * @param string $roleSid The role_sid
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -68,10 +65,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * A valid JSON string that contains application-specific data.
+     * The attributes
      *
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
+     * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
     public function setAttributes(string $attributes): self {
@@ -80,9 +76,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the new resource. This value is often used for display purposes.
+     * The friendly_name
      *
-     * @param string $friendlyName A string to describe the new resource
+     * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self {
@@ -115,10 +111,9 @@ class CreateUserOptions extends Options {
 
 class UpdateUserOptions extends Options {
     /**
-     * @param string $roleSid The SID id of the Role assigned to this user
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
-     * @param string $friendlyName A string to describe the resource
+     * @param string $roleSid The role_sid
+     * @param string $attributes The attributes
+     * @param string $friendlyName The friendly_name
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP
      *                                      request header
      */
@@ -130,9 +125,9 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the User.
+     * The role_sid
      *
-     * @param string $roleSid The SID id of the Role assigned to this user
+     * @param string $roleSid The role_sid
      * @return $this Fluent Builder
      */
     public function setRoleSid(string $roleSid): self {
@@ -141,10 +136,9 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * A valid JSON string that contains application-specific data.
+     * The attributes
      *
-     * @param string $attributes A valid JSON string that contains
-     *                           application-specific data
+     * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
     public function setAttributes(string $attributes): self {
@@ -153,9 +147,9 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the resource. It is often used for display purposes.
+     * The friendly_name
      *
-     * @param string $friendlyName A string to describe the resource
+     * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self {

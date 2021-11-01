@@ -34,9 +34,9 @@ class TaskChannelInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The SID of the Workspace that contains the
-     *                             TaskChannel
-     * @param string $sid The SID of the TaskChannel resource to fetch
+     * @param string $workspaceSid The SID of the Workspace that contains the Task
+     *                             Channel
+     * @param string $sid The SID of the Task Channel resource to fetch
      */
     public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null) {
         parent::__construct($version);
