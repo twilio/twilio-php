@@ -50,15 +50,10 @@ abstract class SimOptions {
      * @param string $smsMethod The HTTP method we should use to call sms_url
      * @param string $smsUrl The URL we should call when the SIM-connected device
      *                       sends an SMS message that is not a Command
-     * @param string $voiceFallbackMethod The HTTP method we should use to call
-     *                                    voice_fallback_url
-     * @param string $voiceFallbackUrl The URL we should call when an error occurs
-     *                                 while retrieving or executing the TwiML
-     *                                 requested from voice_url
-     * @param string $voiceMethod The HTTP method we should use when we call
-     *                            voice_url
-     * @param string $voiceUrl The URL we should call when the SIM-connected device
-     *                         makes a voice call
+     * @param string $voiceFallbackMethod Deprecated
+     * @param string $voiceFallbackUrl Deprecated
+     * @param string $voiceMethod Deprecated
+     * @param string $voiceUrl Deprecated
      * @param string $resetStatus Initiate a connectivity reset on a SIM
      * @param string $accountSid The SID of the Account to which the Sim resource
      *                           should belong
@@ -179,15 +174,10 @@ class UpdateSimOptions extends Options {
      * @param string $smsMethod The HTTP method we should use to call sms_url
      * @param string $smsUrl The URL we should call when the SIM-connected device
      *                       sends an SMS message that is not a Command
-     * @param string $voiceFallbackMethod The HTTP method we should use to call
-     *                                    voice_fallback_url
-     * @param string $voiceFallbackUrl The URL we should call when an error occurs
-     *                                 while retrieving or executing the TwiML
-     *                                 requested from voice_url
-     * @param string $voiceMethod The HTTP method we should use when we call
-     *                            voice_url
-     * @param string $voiceUrl The URL we should call when the SIM-connected device
-     *                         makes a voice call
+     * @param string $voiceFallbackMethod Deprecated
+     * @param string $voiceFallbackUrl Deprecated
+     * @param string $voiceMethod Deprecated
+     * @param string $voiceUrl Deprecated
      * @param string $resetStatus Initiate a connectivity reset on a SIM
      * @param string $accountSid The SID of the Account to which the Sim resource
      *                           should belong
@@ -356,10 +346,9 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+     * Deprecated.
      *
-     * @param string $voiceFallbackMethod The HTTP method we should use to call
-     *                                    voice_fallback_url
+     * @param string $voiceFallbackMethod Deprecated
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackMethod(string $voiceFallbackMethod): self {
@@ -368,11 +357,9 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we should call using the `voice_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `voice_url`.
+     * Deprecated.
      *
-     * @param string $voiceFallbackUrl The URL we should call when an error occurs
-     *                                 while retrieving or executing the TwiML
-     *                                 requested from voice_url
+     * @param string $voiceFallbackUrl Deprecated
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackUrl(string $voiceFallbackUrl): self {
@@ -381,10 +368,9 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we should use when we call `voice_url`. Can be: `GET` or `POST`.
+     * Deprecated.
      *
-     * @param string $voiceMethod The HTTP method we should use when we call
-     *                            voice_url
+     * @param string $voiceMethod Deprecated
      * @return $this Fluent Builder
      */
     public function setVoiceMethod(string $voiceMethod): self {
@@ -393,10 +379,9 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we should call using the `voice_method` when the SIM-connected device makes a voice call.
+     * Deprecated.
      *
-     * @param string $voiceUrl The URL we should call when the SIM-connected device
-     *                         makes a voice call
+     * @param string $voiceUrl Deprecated
      * @return $this Fluent Builder
      */
     public function setVoiceUrl(string $voiceUrl): self {

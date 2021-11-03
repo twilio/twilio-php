@@ -62,6 +62,7 @@ class ServiceTest extends HolodeckTestCase {
                     "code_length": 3,
                     "skew": 2
                 },
+                "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -125,6 +126,7 @@ class ServiceTest extends HolodeckTestCase {
                     "code_length": null,
                     "skew": null
                 },
+                "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -224,6 +226,7 @@ class ServiceTest extends HolodeckTestCase {
                             "code_length": null,
                             "skew": null
                         },
+                        "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -289,6 +292,7 @@ class ServiceTest extends HolodeckTestCase {
                     "code_length": 3,
                     "skew": 2
                 },
+                "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

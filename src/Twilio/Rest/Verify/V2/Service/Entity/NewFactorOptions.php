@@ -23,7 +23,7 @@ abstract class NewFactorOptions {
      *                            Google or Apple store
      * @param string $configNotificationPlatform The transport technology used to
      *                                           generate the Notification Token
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -48,7 +48,7 @@ class CreateNewFactorOptions extends Options {
      *                            Google or Apple store
      * @param string $configNotificationPlatform The transport technology used to
      *                                           generate the Notification Token
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -126,11 +126,11 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Must be between 32 and 255 characters long.
+     * For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Must be between 32 and 255 characters long.
 
     Required when `factor_type` is `push`.
      *
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @return $this Fluent Builder
      */

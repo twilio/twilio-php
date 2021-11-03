@@ -24,7 +24,7 @@ abstract class RatePlanOptions {
      * @param string $dataMetering The model used to meter data usage
      * @param bool $messagingEnabled Whether SIMs can make, send, and receive SMS
      *                               using Commands
-     * @param bool $voiceEnabled Whether SIMs can make and receive voice calls
+     * @param bool $voiceEnabled Deprecated
      * @param bool $nationalRoamingEnabled Whether SIMs can roam on networks other
      *                                     than the home network in the United
      *                                     States
@@ -68,7 +68,7 @@ class CreateRatePlanOptions extends Options {
      * @param string $dataMetering The model used to meter data usage
      * @param bool $messagingEnabled Whether SIMs can make, send, and receive SMS
      *                               using Commands
-     * @param bool $voiceEnabled Whether SIMs can make and receive voice calls
+     * @param bool $voiceEnabled Deprecated
      * @param bool $nationalRoamingEnabled Whether SIMs can roam on networks other
      *                                     than the home network in the United
      *                                     States
@@ -169,9 +169,9 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * Whether SIMs can make and receive voice calls.
+     * Deprecated.
      *
-     * @param bool $voiceEnabled Whether SIMs can make and receive voice calls
+     * @param bool $voiceEnabled Deprecated
      * @return $this Fluent Builder
      */
     public function setVoiceEnabled(bool $voiceEnabled): self {
@@ -193,7 +193,7 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can be: `data`, `voice`, and `messaging`.
+     * The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`.
      *
      * @param string[] $internationalRoaming The services that SIMs capable of
      *                                       using GPRS/3G/4G/LTE data connectivity

@@ -1,6 +1,28 @@
 twilio-php Changelog
 ====================
 
+[2021-11-03] Version 6.31.0
+---------------------------
+**Library - Chore**
+- [PR #702](https://github.com/twilio/twilio-php/pull/702): add github action for test and deploy. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Updated `media_url` property to be treated as PII
+
+**Messaging**
+- Added a new enum for brand registration status named DELETED **(breaking change)**
+- Add a new K12_EDUCATION use case in us_app_to_person_usecase api transaction
+- Added a new enum for brand registration status named IN_REVIEW
+
+**Serverless**
+- Add node14 as a valid Build runtime
+
+**Verify**
+- Fix typos in Verify Push Factor documentation for the `config.notification_token` parameter.
+- Added `TemplateCustomSubstitutions` on verification creation
+- Make `TemplateSid` parameter public for Verification resource and `DefaultTemplateSid` parameter public for Service resource. **(breaking change)**
+
+
 [2021-10-18] Version 6.30.0
 ---------------------------
 **Library - Feature**
