@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_COLOR: ${{ needs.tests.status }}
+          SLACK_COLOR: 'danger'
           SLACK_ICON_EMOJI: ':github:'
           SLACK_MESSAGE: ${{ format('Build {2} in {1} failed{3} {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id, ':') }}
           SLACK_TITLE: Build Failure
