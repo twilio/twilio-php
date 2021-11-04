@@ -18,7 +18,7 @@ install: clean
 
 vendor: install
 
-test: install
+test:
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs:

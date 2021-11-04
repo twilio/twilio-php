@@ -41,7 +41,7 @@ jobs:
         run: composer update --prefer-lowest --prefer-stable -n
 
       - name: Run Tests
-        run: make test
+        run: make install test
 
   notify-on-failure:
     name: Slack notify on failure
