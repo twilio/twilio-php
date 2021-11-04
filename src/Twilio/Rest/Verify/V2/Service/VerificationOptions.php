@@ -29,10 +29,14 @@ abstract class VerificationOptions {
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
+     * @param string $templateSid The verification template SMS messages.
+     * @param string $templateCustomSubstitutions The values of the special
+     *                                            variables declared on the message
+     *                                            template.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE): CreateVerificationOptions {
-        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash);
+    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE): CreateVerificationOptions {
+        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash, $templateSid, $templateCustomSubstitutions);
     }
 }
 
@@ -53,8 +57,12 @@ class CreateVerificationOptions extends Options {
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
+     * @param string $templateSid The verification template SMS messages.
+     * @param string $templateCustomSubstitutions The values of the special
+     *                                            variables declared on the message
+     *                                            template.
      */
-    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE) {
+    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE) {
         $this->options['customFriendlyName'] = $customFriendlyName;
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
@@ -65,6 +73,8 @@ class CreateVerificationOptions extends Options {
         $this->options['rateLimits'] = $rateLimits;
         $this->options['channelConfiguration'] = $channelConfiguration;
         $this->options['appHash'] = $appHash;
+        $this->options['templateSid'] = $templateSid;
+        $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
     }
 
     /**
@@ -179,6 +189,30 @@ class CreateVerificationOptions extends Options {
      */
     public function setAppHash(string $appHash): self {
         $this->options['appHash'] = $appHash;
+        return $this;
+    }
+
+    /**
+     * The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS channel only.
+     *
+     * @param string $templateSid The verification template SMS messages.
+     * @return $this Fluent Builder
+     */
+    public function setTemplateSid(string $templateSid): self {
+        $this->options['templateSid'] = $templateSid;
+        return $this;
+    }
+
+    /**
+     * A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
+     *
+     * @param string $templateCustomSubstitutions The values of the special
+     *                                            variables declared on the message
+     *                                            template.
+     * @return $this Fluent Builder
+     */
+    public function setTemplateCustomSubstitutions(string $templateCustomSubstitutions): self {
+        $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
         return $this;
     }
 

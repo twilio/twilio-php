@@ -111,6 +111,7 @@ class ServiceContext extends InstanceContext {
             'Totp.TimeStep' => $options['totpTimeStep'],
             'Totp.CodeLength' => $options['totpCodeLength'],
             'Totp.Skew' => $options['totpSkew'],
+            'DefaultTemplateSid' => $options['defaultTemplateSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

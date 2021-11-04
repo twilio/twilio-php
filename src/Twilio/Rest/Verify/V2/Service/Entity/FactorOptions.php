@@ -20,7 +20,7 @@ abstract class FactorOptions {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @param string $friendlyName The friendly name of this Factor
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -41,7 +41,7 @@ class UpdateFactorOptions extends Options {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @param string $friendlyName The friendly name of this Factor
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -86,9 +86,9 @@ class UpdateFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
+     * For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
      *
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @return $this Fluent Builder
      */

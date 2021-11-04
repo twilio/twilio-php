@@ -62,8 +62,8 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
                         "post_approval_required": false
                     },
                     {
-                        "code": "CONVERSATIONAL",
-                        "name": "Conversational Messaging",
+                        "code": "PROXY",
+                        "name": "Proxy",
                         "description": "Peer-to-peer app-based group messaging with proxy/pooled numbers (For example: GroupMe)\nSupporting personalized services and non-exposure of personal numbers for enterprise or A2P communications. (Examples include: Uber and AirBnb.)",
                         "post_approval_required": true
                     },
@@ -96,6 +96,12 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
                         "name": "Higher Education",
                         "description": "For campaigns created on behalf of Colleges or Universities and will also include School Districts etc that fall outside of any \\"free to the consumer\\" messaging model",
                         "post_approval_required": false
+                    },
+                    {
+                        "code": "K12_EDUCATION",
+                        "name": "K-12 Education",
+                        "description": "Campaigns created for messaging platforms that support schools from grades K-12 and distance learning centers. This is not for Post-Secondary schools.",
+                        "post_approval_required": true
                     },
                     {
                         "code": "LOW_VOLUME",
@@ -193,8 +199,8 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
                         "post_approval_required": false
                     },
                     {
-                        "code": "CONVERSATIONAL",
-                        "name": "Conversational Messaging",
+                        "code": "PROXY",
+                        "name": "Proxy",
                         "description": "Peer-to-peer app-based group messaging with proxy/pooled numbers (For example: GroupMe)\nSupporting personalized services and non-exposure of personal numbers for enterprise or A2P communications. (Examples include: Uber and AirBnb.)",
                         "post_approval_required": true
                     },
@@ -227,6 +233,12 @@ class UsAppToPersonUsecaseTest extends HolodeckTestCase {
                         "name": "Higher Education",
                         "description": "For campaigns created on behalf of Colleges or Universities and will also include School Districts etc that fall outside of any \\"free to the consumer\\" messaging model",
                         "post_approval_required": false
+                    },
+                    {
+                        "code": "K12_EDUCATION",
+                        "name": "K-12 Education",
+                        "description": "Campaigns created for messaging platforms that support schools from grades K-12 and distance learning centers. This is not for Post-Secondary schools.",
+                        "post_approval_required": true
                     },
                     {
                         "code": "LOW_VOLUME",

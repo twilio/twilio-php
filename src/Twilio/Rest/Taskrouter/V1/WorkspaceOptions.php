@@ -100,7 +100,7 @@ class UpdateWorkspaceOptions extends Options {
     }
 
     /**
-     * The URL we should call when an event occurs. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information.
+     * The URL we should call when an event occurs. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides).
      *
      * @param string $eventCallbackUrl The URL we should call when an event occurs
      * @return $this Fluent Builder
@@ -233,7 +233,7 @@ class CreateWorkspaceOptions extends Options {
     }
 
     /**
-     * The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information.
+     * The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides).
      *
      * @param string $eventCallbackUrl The URL we should call when an event occurs
      * @return $this Fluent Builder
