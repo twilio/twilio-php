@@ -1,6 +1,31 @@
 twilio-php Changelog
 ====================
 
+[2021-11-17] Version 6.31.1
+---------------------------
+**Library - Chore**
+- [PR #706](https://github.com/twilio/twilio-php/pull/706): ignore directory and not just the content. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #705](https://github.com/twilio/twilio-php/pull/705): remove install as a dependency of test. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Fix**
+- [PR #704](https://github.com/twilio/twilio-php/pull/704): docker publish issues. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #703](https://github.com/twilio/twilio-php/pull/703): git log retrieval issues. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Frontline**
+- Added `is_available` to User's resource
+
+**Messaging**
+- Added GET vetting API
+
+**Verify**
+- Add `WHATSAPP` to the attempts API.
+- Allow to update `config.notification_platform` from `none` to `apn` or `fcm` and viceversa for Verify Push
+- Add `none` as a valid `config.notification_platform` value for Verify Push
+
+**Twiml**
+- Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
 [2021-11-03] Version 6.31.0
 ---------------------------
 **Library - Chore**

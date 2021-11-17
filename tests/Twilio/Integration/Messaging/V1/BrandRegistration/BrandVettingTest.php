@@ -112,4 +112,44 @@ class BrandVettingTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testFetchRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->messaging->v1->brandRegistrations("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                        ->brandVettings("VTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://messaging.twilio.com/v1/a2p/BrandRegistrations/BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Vettings/VTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testFetchResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "AC78e8e67fc0246521490fb9907fd0c165",
+                "brand_sid": "BN0044409f7e067e279523808d267e2d85",
+                "brand_vetting_sid": "VT12445353",
+                "vetting_provider": "campaign-verify",
+                "vetting_id": "cv|1.0|tcr|10dlc|9975c339-d46f-49b7-a399-EXAMPLETOKEN|GQ3EXAMPLETOKENAXXBUNBT2AgL-LdQuPveFhEyY",
+                "vetting_class": "POLITICAL",
+                "vetting_status": "IN_PROGRESS",
+                "date_created": "2021-01-27T14:18:35Z",
+                "date_updated": "2021-01-27T14:18:35Z",
+                "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN0044409f7e067e279523808d267e2d85/Vettings/VT12445353"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->messaging->v1->brandRegistrations("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                              ->brandVettings("VTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
 }

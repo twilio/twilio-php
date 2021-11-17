@@ -112,7 +112,7 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The transport technology used to generate the Notification Token. Can be `apn` or `fcm`.
+     * The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.
 
     Required when `factor_type` is `push`.
      *

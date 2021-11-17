@@ -23,6 +23,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string $avatar
  * @property string $state
+ * @property bool $isAvailable
  * @property string $url
  */
 class UserInstance extends InstanceResource {
@@ -43,6 +44,7 @@ class UserInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'avatar' => Values::array_get($payload, 'avatar'),
             'state' => Values::array_get($payload, 'state'),
+            'isAvailable' => Values::array_get($payload, 'is_available'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

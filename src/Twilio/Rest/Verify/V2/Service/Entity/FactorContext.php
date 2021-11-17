@@ -83,6 +83,7 @@ class FactorContext extends InstanceContext {
             'Config.Skew' => $options['configSkew'],
             'Config.CodeLength' => $options['configCodeLength'],
             'Config.Alg' => $options['configAlg'],
+            'Config.NotificationPlatform' => $options['configNotificationPlatform'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

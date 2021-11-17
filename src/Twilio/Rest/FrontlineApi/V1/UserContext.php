@@ -12,6 +12,7 @@ namespace Twilio\Rest\FrontlineApi\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -60,6 +61,7 @@ class UserContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'Avatar' => $options['avatar'],
             'State' => $options['state'],
+            'IsAvailable' => Serialize::booleanToString($options['isAvailable']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
