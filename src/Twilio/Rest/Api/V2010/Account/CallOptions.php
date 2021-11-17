@@ -69,8 +69,7 @@ abstract class CallOptions {
      * @param string $byoc BYOC trunk SID (Beta)
      * @param string $callReason Reason for the call (Branded Calls Beta)
      * @param string $callToken A token string needed to invoke a forwarded call
-     *                          with a caller-id recieved on a previous incoming
-     *                          call
+     *                          with a CallerId recieved on a previous incoming call
      * @param string $recordingTrack Which track(s) to record
      * @param int $timeLimit The maximum duration of the call in seconds.
      * @return CreateCallOptions Options builder
@@ -172,8 +171,7 @@ class CreateCallOptions extends Options {
      * @param string $byoc BYOC trunk SID (Beta)
      * @param string $callReason Reason for the call (Branded Calls Beta)
      * @param string $callToken A token string needed to invoke a forwarded call
-     *                          with a caller-id recieved on a previous incoming
-     *                          call
+     *                          with a CallerId recieved on a previous incoming call
      * @param string $recordingTrack Which track(s) to record
      * @param int $timeLimit The maximum duration of the call in seconds.
      */
@@ -568,11 +566,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. this field should be populated by the incoming call's call_token to make this outgoing call as a forwarded call of incoming call. A forwarded call should bear the same caller-id of incoming call.
+     * A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
      *
      * @param string $callToken A token string needed to invoke a forwarded call
-     *                          with a caller-id recieved on a previous incoming
-     *                          call
+     *                          with a CallerId recieved on a previous incoming call
      * @return $this Fluent Builder
      */
     public function setCallToken(string $callToken): self {

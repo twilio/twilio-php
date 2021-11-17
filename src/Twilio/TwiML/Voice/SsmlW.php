@@ -23,6 +23,71 @@ class SsmlW extends TwiML {
     }
 
     /**
+     * Add Break child.
+     *
+     * @param array $attributes Optional attributes
+     * @return SsmlBreak Child element.
+     */
+    public function break_($attributes = []): SsmlBreak {
+        return $this->nest(new SsmlBreak($attributes));
+    }
+
+    /**
+     * Add Emphasis child.
+     *
+     * @param string $words Words to emphasize
+     * @param array $attributes Optional attributes
+     * @return SsmlEmphasis Child element.
+     */
+    public function emphasis($words, $attributes = []): SsmlEmphasis {
+        return $this->nest(new SsmlEmphasis($words, $attributes));
+    }
+
+    /**
+     * Add Phoneme child.
+     *
+     * @param string $words Words to speak
+     * @param array $attributes Optional attributes
+     * @return SsmlPhoneme Child element.
+     */
+    public function phoneme($words, $attributes = []): SsmlPhoneme {
+        return $this->nest(new SsmlPhoneme($words, $attributes));
+    }
+
+    /**
+     * Add Prosody child.
+     *
+     * @param string $words Words to speak
+     * @param array $attributes Optional attributes
+     * @return SsmlProsody Child element.
+     */
+    public function prosody($words, $attributes = []): SsmlProsody {
+        return $this->nest(new SsmlProsody($words, $attributes));
+    }
+
+    /**
+     * Add Say-As child.
+     *
+     * @param string $words Words to be interpreted
+     * @param array $attributes Optional attributes
+     * @return SsmlSayAs Child element.
+     */
+    public function say_As($words, $attributes = []): SsmlSayAs {
+        return $this->nest(new SsmlSayAs($words, $attributes));
+    }
+
+    /**
+     * Add Sub child.
+     *
+     * @param string $words Words to be substituted
+     * @param array $attributes Optional attributes
+     * @return SsmlSub Child element.
+     */
+    public function sub($words, $attributes = []): SsmlSub {
+        return $this->nest(new SsmlSub($words, $attributes));
+    }
+
+    /**
      * Add Role attribute.
      *
      * @param string $role Customize the pronunciation of words by specifying the

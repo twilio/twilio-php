@@ -40,6 +40,7 @@ class UserTest extends HolodeckTestCase {
                 "friendly_name": "John Doe",
                 "avatar": "https://example.com/profile.png",
                 "state": "active",
+                "is_available": true,
                 "url": "https://frontline-api.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -74,6 +75,7 @@ class UserTest extends HolodeckTestCase {
                 "friendly_name": "John Doe",
                 "avatar": "https://example.com/profile.png",
                 "state": "active",
+                "is_available": true,
                 "url": "https://frontline-api.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
