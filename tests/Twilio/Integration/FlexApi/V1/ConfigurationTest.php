@@ -209,7 +209,9 @@ class ConfigurationTest extends HolodeckTestCase {
                         }
                     ]
                 },
-                "url": "https://flex-api.twilio.com/v1/Configuration"
+                "url": "https://flex-api.twilio.com/v1/Configuration",
+                "flex_insights_drilldown": true,
+                "flex_url": "https://flex.twilio.com"
             }
             '
         ));
@@ -399,7 +401,9 @@ class ConfigurationTest extends HolodeckTestCase {
                     "mode": "readOnly"
                 },
                 "flex_insights_hr": null,
-                "url": "https://flex-api.twilio.com/v1/Configuration"
+                "url": "https://flex-api.twilio.com/v1/Configuration",
+                "flex_insights_drilldown": false,
+                "flex_url": "https://flex.twilio.com"
             }
             '
         ));
@@ -602,7 +606,9 @@ class ConfigurationTest extends HolodeckTestCase {
                         }
                     ]
                 },
-                "url": "https://flex-api.twilio.com/v1/Configuration"
+                "url": "https://flex-api.twilio.com/v1/Configuration",
+                "flex_insights_drilldown": true,
+                "flex_url": "https://flex.twilio.com"
             }
             '
         ));

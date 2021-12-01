@@ -1,6 +1,34 @@
 twilio-php Changelog
 ====================
 
+[2021-12-01] Version 6.31.2
+---------------------------
+**Library - Chore**
+- [PR #707](https://github.com/twilio/twilio-php/pull/707): Test against php 8.1. Thanks to [@sergiy-petrov](https://github.com/sergiy-petrov)!
+
+**Conversations**
+- Add `Service Webhook Configuration` resource
+
+**Flex**
+- Adding `flex_insights_drilldown` and `flex_url` objects to Flex Configuration
+
+**Messaging**
+- Update us_app_to_person endpoints to remove beta feature flag based access
+
+**Supersim**
+- Add IP Commands resource
+
+**Verify**
+- Add optional `factor_friendly_name` parameter to the create access token endpoint.
+
+**Video**
+- Add maxParticipantDuration param to Rooms
+
+**Twiml**
+- Unrevert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+- Revert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
 [2021-11-17] Version 6.31.1
 ---------------------------
 **Library - Chore**
