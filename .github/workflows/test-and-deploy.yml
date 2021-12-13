@@ -1,7 +1,8 @@
-name: Tests
+name: Test and Deploy
 on:
   push:
     branches: [ '*' ]
+    tags: [ '*' ]
   pull_request:
     branches: [ main ]
   schedule:
@@ -10,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  tests:
-    name: Tests
+  test:
+    name: Test
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -43,18 +44,45 @@ jobs:
       - name: Run Tests
         run: make install test
 
+  deploy:
+    name: Deploy
+    if: success() && github.ref_type == 'tag'
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout twilio-php
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
+
+      # The expression strips off the shortest match from the front of the string to yield just the tag name as the output
+      - name: Get tagged version
+        run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Build & Push docker image
+        run: make docker-build docker-push
+
   notify-on-failure:
     name: Slack notify on failure
-    if: ${{ failure() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
-    needs: [ tests ]
+    if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
+    needs: [ test, deploy ]
     runs-on: ubuntu-latest
     steps:
       - uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_COLOR: 'danger'
+          SLACK_COLOR: failure
           SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Build {2} in {1} failed{3} {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id, ':') }}
-          SLACK_TITLE: Build Failure
+          SLACK_MESSAGE: ${{ format('Tests *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
+          SLACK_TITLE: Action Failure - ${{ github.repository }}
           SLACK_USERNAME: GitHub Actions
           SLACK_MSG_AUTHOR: twilio-dx
           SLACK_FOOTER: Posted automatically using GitHub Actions
