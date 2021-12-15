@@ -12,6 +12,7 @@ namespace Twilio\Rest\Voice;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Voice\V1\ArchivedCallList;
 use Twilio\Rest\Voice\V1\ByocTrunkList;
 use Twilio\Rest\Voice\V1\ConnectionPolicyList;
 use Twilio\Rest\Voice\V1\DialingPermissionsList;
@@ -20,17 +21,20 @@ use Twilio\Rest\Voice\V1\SourceIpMappingList;
 use Twilio\Version;
 
 /**
+ * @property ArchivedCallList $archivedCalls
  * @property ByocTrunkList $byocTrunks
  * @property ConnectionPolicyList $connectionPolicies
  * @property DialingPermissionsList $dialingPermissions
  * @property IpRecordList $ipRecords
  * @property SourceIpMappingList $sourceIpMappings
+ * @method \Twilio\Rest\Voice\V1\ArchivedCallContext archivedCalls(\DateTime $date, string $sid)
  * @method \Twilio\Rest\Voice\V1\ByocTrunkContext byocTrunks(string $sid)
  * @method \Twilio\Rest\Voice\V1\ConnectionPolicyContext connectionPolicies(string $sid)
  * @method \Twilio\Rest\Voice\V1\IpRecordContext ipRecords(string $sid)
  * @method \Twilio\Rest\Voice\V1\SourceIpMappingContext sourceIpMappings(string $sid)
  */
 class V1 extends Version {
+    protected $_archivedCalls;
     protected $_byocTrunks;
     protected $_connectionPolicies;
     protected $_dialingPermissions;
@@ -45,6 +49,13 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getArchivedCalls(): ArchivedCallList {
+        if (!$this->_archivedCalls) {
+            $this->_archivedCalls = new ArchivedCallList($this);
+        }
+        return $this->_archivedCalls;
     }
 
     protected function getByocTrunks(): ByocTrunkList {

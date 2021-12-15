@@ -21,8 +21,8 @@ class WebhookContext extends InstanceContext {
      * Initialize the WebhookContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The unique ID of the Conversation Service this
-     *                               conversation belongs to.
+     * @param string $chatServiceSid The unique ID of the [Conversation
+     *                               Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
      */
     public function __construct(Version $version, $chatServiceSid) {
         parent::__construct($version);

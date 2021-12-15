@@ -49,7 +49,8 @@ class MediaProcessorTest extends HolodeckTestCase {
                 "status_callback": "http://www.example.com",
                 "status_callback_method": "POST",
                 "ended_reason": null,
-                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                "max_duration": 300
             }
             '
         ));
@@ -88,7 +89,8 @@ class MediaProcessorTest extends HolodeckTestCase {
                 "status_callback": "http://www.example.com",
                 "status_callback_method": "POST",
                 "ended_reason": null,
-                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                "max_duration": 300
             }
             '
         ));
@@ -131,7 +133,8 @@ class MediaProcessorTest extends HolodeckTestCase {
                 "status_callback": "http://www.example.com",
                 "status_callback_method": "POST",
                 "ended_reason": "ended-via-api",
-                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                "max_duration": 300
             }
             '
         ));
@@ -205,7 +208,8 @@ class MediaProcessorTest extends HolodeckTestCase {
                         "status_callback": "http://www.example.com",
                         "status_callback_method": "POST",
                         "ended_reason": "ended-via-api",
-                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "max_duration": 300
                     }
                 ]
             }
@@ -243,7 +247,8 @@ class MediaProcessorTest extends HolodeckTestCase {
                         "status_callback": "http://www.example.com",
                         "status_callback_method": "POST",
                         "ended_reason": "ended-via-api",
-                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "max_duration": 300
                     }
                 ]
             }
@@ -281,7 +286,8 @@ class MediaProcessorTest extends HolodeckTestCase {
                         "status_callback": "http://www.example.com",
                         "status_callback_method": "POST",
                         "ended_reason": "ended-via-api",
-                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "max_duration": 300
                     }
                 ]
             }

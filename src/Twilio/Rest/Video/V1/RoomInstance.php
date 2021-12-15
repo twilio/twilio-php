@@ -38,6 +38,8 @@ use Twilio\Version;
  * @property string[] $videoCodecs
  * @property string $mediaRegion
  * @property bool $audioOnly
+ * @property int $emptyRoomTimeout
+ * @property int $unusedRoomTimeout
  * @property string $url
  * @property array $links
  */
@@ -77,6 +79,8 @@ class RoomInstance extends InstanceResource {
             'videoCodecs' => Values::array_get($payload, 'video_codecs'),
             'mediaRegion' => Values::array_get($payload, 'media_region'),
             'audioOnly' => Values::array_get($payload, 'audio_only'),
+            'emptyRoomTimeout' => Values::array_get($payload, 'empty_room_timeout'),
+            'unusedRoomTimeout' => Values::array_get($payload, 'unused_room_timeout'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];

@@ -15,9 +15,11 @@ use Twilio\InstanceContext;
 use Twilio\Rest\Insights\V1\CallList;
 use Twilio\Rest\Insights\V1\CallSummariesList;
 use Twilio\Rest\Insights\V1\RoomList;
+use Twilio\Rest\Insights\V1\SettingList;
 use Twilio\Version;
 
 /**
+ * @property SettingList $settings
  * @property CallList $calls
  * @property CallSummariesList $callSummaries
  * @property RoomList $rooms
@@ -25,6 +27,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\Insights\V1\RoomContext rooms(string $roomSid)
  */
 class V1 extends Version {
+    protected $_settings;
     protected $_calls;
     protected $_callSummaries;
     protected $_rooms;
@@ -37,6 +40,13 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getSettings(): SettingList {
+        if (!$this->_settings) {
+            $this->_settings = new SettingList($this);
+        }
+        return $this->_settings;
     }
 
     protected function getCalls(): CallList {

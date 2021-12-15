@@ -34,10 +34,14 @@ abstract class RoomOptions {
      *                        track participants for group rooms.
      * @param int $maxParticipantDuration The maximum number of seconds a
      *                                    Participant can be connected to the room
+     * @param int $emptyRoomTimeout Configures the time a room will remain active
+     *                              after last participant leaves.
+     * @param int $unusedRoomTimeout Configures the time a room will remain active
+     *                               when no one joins.
      * @return CreateRoomOptions Options builder
      */
-    public static function create(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE): CreateRoomOptions {
-        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect, $videoCodecs, $mediaRegion, $recordingRules, $audioOnly, $maxParticipantDuration);
+    public static function create(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE, int $emptyRoomTimeout = Values::NONE, int $unusedRoomTimeout = Values::NONE): CreateRoomOptions {
+        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect, $videoCodecs, $mediaRegion, $recordingRules, $audioOnly, $maxParticipantDuration, $emptyRoomTimeout, $unusedRoomTimeout);
     }
 
     /**
@@ -76,8 +80,12 @@ class CreateRoomOptions extends Options {
      *                        track participants for group rooms.
      * @param int $maxParticipantDuration The maximum number of seconds a
      *                                    Participant can be connected to the room
+     * @param int $emptyRoomTimeout Configures the time a room will remain active
+     *                              after last participant leaves.
+     * @param int $unusedRoomTimeout Configures the time a room will remain active
+     *                               when no one joins.
      */
-    public function __construct(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE) {
+    public function __construct(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE, int $emptyRoomTimeout = Values::NONE, int $unusedRoomTimeout = Values::NONE) {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
@@ -90,6 +98,8 @@ class CreateRoomOptions extends Options {
         $this->options['recordingRules'] = $recordingRules;
         $this->options['audioOnly'] = $audioOnly;
         $this->options['maxParticipantDuration'] = $maxParticipantDuration;
+        $this->options['emptyRoomTimeout'] = $emptyRoomTimeout;
+        $this->options['unusedRoomTimeout'] = $unusedRoomTimeout;
     }
 
     /**
@@ -229,6 +239,30 @@ class CreateRoomOptions extends Options {
      */
     public function setMaxParticipantDuration(int $maxParticipantDuration): self {
         $this->options['maxParticipantDuration'] = $maxParticipantDuration;
+        return $this;
+    }
+
+    /**
+     * Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions).
+     *
+     * @param int $emptyRoomTimeout Configures the time a room will remain active
+     *                              after last participant leaves.
+     * @return $this Fluent Builder
+     */
+    public function setEmptyRoomTimeout(int $emptyRoomTimeout): self {
+        $this->options['emptyRoomTimeout'] = $emptyRoomTimeout;
+        return $this;
+    }
+
+    /**
+     * Configures how long (in minutes) a room will remain active if no one joins. Valid values range from 1 to 60 minutes (no fractions).
+     *
+     * @param int $unusedRoomTimeout Configures the time a room will remain active
+     *                               when no one joins.
+     * @return $this Fluent Builder
+     */
+    public function setUnusedRoomTimeout(int $unusedRoomTimeout): self {
+        $this->options['unusedRoomTimeout'] = $unusedRoomTimeout;
         return $this;
     }
 

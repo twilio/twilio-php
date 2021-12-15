@@ -18,8 +18,9 @@ abstract class WebhookOptions {
      *                              should be sent to.
      * @param string $postWebhookUrl The absolute url the post-event webhook
      *                               request should be sent to.
-     * @param string[] $filters The list of webhook event triggers that are enabled
-     *                          for this Service.
+     * @param string[] $filters The list of events that your configured webhook
+     *                          targets will receive. Events not configured here
+     *                          will not fire.
      * @param string $method The HTTP method to be used when sending a webhook
      *                       request
      * @return UpdateWebhookOptions Options builder
@@ -35,8 +36,9 @@ class UpdateWebhookOptions extends Options {
      *                              should be sent to.
      * @param string $postWebhookUrl The absolute url the post-event webhook
      *                               request should be sent to.
-     * @param string[] $filters The list of webhook event triggers that are enabled
-     *                          for this Service.
+     * @param string[] $filters The list of events that your configured webhook
+     *                          targets will receive. Events not configured here
+     *                          will not fire.
      * @param string $method The HTTP method to be used when sending a webhook
      *                       request
      */
@@ -72,10 +74,11 @@ class UpdateWebhookOptions extends Options {
     }
 
     /**
-     * The list of webhook event triggers that are enabled for this Service. Possible values are `onParticipantAdd`, `onParticipantAdded`, `onDeliveryUpdated`, `onConversationUpdated`, `onConversationRemove`, `onParticipantRemove`, `onConversationUpdate`, `onMessageAdd`, `onMessageRemoved`, `onParticipantUpdated`, `onConversationAdded`, `onMessageAdded`, `onConversationAdd`, `onConversationRemoved`, `onParticipantUpdate`, `onMessageRemove`, `onMessageUpdated`, `onParticipantRemoved`, `onMessageUpdate` or `onConversationStateUpdated`.
+     * The list of events that your configured webhook targets will receive. Events not configured here will not fire. Possible values are `onParticipantAdd`, `onParticipantAdded`, `onDeliveryUpdated`, `onConversationUpdated`, `onConversationRemove`, `onParticipantRemove`, `onConversationUpdate`, `onMessageAdd`, `onMessageRemoved`, `onParticipantUpdated`, `onConversationAdded`, `onMessageAdded`, `onConversationAdd`, `onConversationRemoved`, `onParticipantUpdate`, `onMessageRemove`, `onMessageUpdated`, `onParticipantRemoved`, `onMessageUpdate` or `onConversationStateUpdated`.
      *
-     * @param string[] $filters The list of webhook event triggers that are enabled
-     *                          for this Service.
+     * @param string[] $filters The list of events that your configured webhook
+     *                          targets will receive. Events not configured here
+     *                          will not fire.
      * @return $this Fluent Builder
      */
     public function setFilters(array $filters): self {
