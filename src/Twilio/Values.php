@@ -59,6 +59,7 @@ class Values implements \ArrayAccess {
      * </p>
      * @return mixed Can return all value types.
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset) {
         $offset = \strtolower($offset);
         return \array_key_exists($offset, $this->options) ? $this->options[$offset] : self::NONE;

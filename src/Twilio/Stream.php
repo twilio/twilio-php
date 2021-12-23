@@ -27,6 +27,7 @@ class Stream implements \Iterator {
      * @link http://php.net/manual/en/iterator.current.php
      * @return mixed Can return any type.
      */
+    #[\ReturnTypeWillChange]
     public function current() {
         return $this->page->current();
     }
@@ -60,6 +61,7 @@ class Stream implements \Iterator {
      * @link http://php.net/manual/en/iterator.key.php
      * @return mixed scalar on success, or null on failure.
      */
+    #[\ReturnTypeWillChange]
     public function key() {
         return $this->currentRecord;
     }
