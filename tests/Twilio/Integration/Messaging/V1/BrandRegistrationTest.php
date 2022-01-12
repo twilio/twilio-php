@@ -191,4 +191,56 @@ class BrandRegistrationTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->messaging->v1->brandRegistrations("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://messaging.twilio.com/v1/a2p/BrandRegistrations/BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "customer_profile_bundle_sid": "BU3344409f7e067e279523808d267e2d85",
+                "a2p_profile_bundle_sid": "BU3344409f7e067e279523808d267e2d85",
+                "date_created": "2021-01-27T14:18:35Z",
+                "date_updated": "2021-01-27T14:18:36Z",
+                "brand_type": "STANDARD",
+                "status": "PENDING",
+                "tcr_id": "BXXXXXX",
+                "failure_reason": "Registration error",
+                "url": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "brand_score": 42,
+                "brand_feedback": [
+                    "TAX_ID",
+                    "NONPROFIT"
+                ],
+                "identity_status": "VERIFIED",
+                "russell_3000": false,
+                "tax_exempt_status": "501c3",
+                "skip_automatic_sec_vet": false,
+                "mock": false,
+                "links": {
+                    "brand_vettings": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Vettings"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->messaging->v1->brandRegistrations("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
 }

@@ -53,6 +53,18 @@ class BrandRegistrationContext extends InstanceContext {
     }
 
     /**
+     * Update the BrandRegistrationInstance
+     *
+     * @return BrandRegistrationInstance Updated BrandRegistrationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): BrandRegistrationInstance {
+        $payload = $this->version->update('POST', $this->uri);
+
+        return new BrandRegistrationInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
      * Access the brandVettings
      */
     protected function getBrandVettings(): BrandVettingList {

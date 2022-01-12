@@ -1,6 +1,24 @@
 twilio-php Changelog
 ====================
 
+[2022-01-12] Version 6.33.0
+---------------------------
+**Library - Feature**
+- [PR #714](https://github.com/twilio/twilio-php/pull/714): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Make fixed time scheduling parameters public **(breaking change)**
+
+**Messaging**
+- Add update brand registration API
+
+**Numbers**
+- Add API endpoint for List Bundle Copies resource
+
+**Video**
+- Enable external storage for all customers
+
+
 [2021-12-15] Version 6.32.0
 ---------------------------
 **Library - Feature**

@@ -81,7 +81,7 @@ class MessageContext extends InstanceContext {
     public function update(array $options = []): MessageInstance {
         $options = new Values($options);
 
-        $data = Values::of(['Body' => $options['body'], ]);
+        $data = Values::of(['Body' => $options['body'], 'Status' => $options['status'], ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
