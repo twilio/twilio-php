@@ -40,8 +40,8 @@ abstract class FlexFlowOptions {
      *                        a contact
      * @param bool $janitorEnabled Remove active Proxy sessions if the
      *                             corresponding Task is deleted
-     * @param int $integrationRetryCount The number of times to retry the webhook
-     *                                   if the first attempt fails
+     * @param int $integrationRetryCount The number of times to retry the Studio
+     *                                   Flow or webhook in case of failure
      * @return CreateFlexFlowOptions Options builder
      */
     public static function create(string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE): CreateFlexFlowOptions {
@@ -69,8 +69,8 @@ abstract class FlexFlowOptions {
      *                        a contact
      * @param bool $janitorEnabled Remove active Proxy sessions if the
      *                             corresponding Task is deleted
-     * @param int $integrationRetryCount The number of times to retry the webhook
-     *                                   if the first attempt fails
+     * @param int $integrationRetryCount The number of times to retry the Studio
+     *                                   Flow or webhook in case of failure
      * @return UpdateFlexFlowOptions Options builder
      */
     public static function update(string $friendlyName = Values::NONE, string $chatServiceSid = Values::NONE, string $channelType = Values::NONE, string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE): UpdateFlexFlowOptions {
@@ -129,8 +129,8 @@ class CreateFlexFlowOptions extends Options {
      *                        a contact
      * @param bool $janitorEnabled Remove active Proxy sessions if the
      *                             corresponding Task is deleted
-     * @param int $integrationRetryCount The number of times to retry the webhook
-     *                                   if the first attempt fails
+     * @param int $integrationRetryCount The number of times to retry the Studio
+     *                                   Flow or webhook in case of failure
      */
     public function __construct(string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE) {
         $this->options['contactIdentity'] = $contactIdentity;
@@ -297,10 +297,10 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
-     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3 (inclusive), default is 3. Optional when `integrationType` is `external`, not applicable otherwise.
+     * The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      *
-     * @param int $integrationRetryCount The number of times to retry the webhook
-     *                                   if the first attempt fails
+     * @param int $integrationRetryCount The number of times to retry the Studio
+     *                                   Flow or webhook in case of failure
      * @return $this Fluent Builder
      */
     public function setIntegrationRetryCount(int $integrationRetryCount): self {
@@ -341,8 +341,8 @@ class UpdateFlexFlowOptions extends Options {
      *                        a contact
      * @param bool $janitorEnabled Remove active Proxy sessions if the
      *                             corresponding Task is deleted
-     * @param int $integrationRetryCount The number of times to retry the webhook
-     *                                   if the first attempt fails
+     * @param int $integrationRetryCount The number of times to retry the Studio
+     *                                   Flow or webhook in case of failure
      */
     public function __construct(string $friendlyName = Values::NONE, string $chatServiceSid = Values::NONE, string $channelType = Values::NONE, string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -387,7 +387,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.
+     * The channel type. One of `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`. By default, Studio’s Send to Flex widget passes it on to the Task attributes for Tasks created based on this Flex Flow. The Task attributes will be used by the Flex UI to render the respective Task as appropriate (applying channel-specific design and length limits). If `channelType` is `facebook`, `whatsapp` or `line`, the Send to Flex widget should set the Task Channel to Programmable Chat.
      *
      * @param string $channelType The channel type
      * @return $this Fluent Builder
@@ -545,10 +545,10 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3 (inclusive), default is 3. Optional when `integrationType` is `external`, not applicable otherwise.
+     * The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      *
-     * @param int $integrationRetryCount The number of times to retry the webhook
-     *                                   if the first attempt fails
+     * @param int $integrationRetryCount The number of times to retry the Studio
+     *                                   Flow or webhook in case of failure
      * @return $this Fluent Builder
      */
     public function setIntegrationRetryCount(int $integrationRetryCount): self {

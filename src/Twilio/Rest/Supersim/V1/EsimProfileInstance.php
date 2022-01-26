@@ -7,8 +7,9 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2\Service;
+namespace Twilio\Rest\Supersim\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -19,65 +20,68 @@ use Twilio\Version;
  *
  * @property string $sid
  * @property string $accountSid
- * @property string $serviceSid
- * @property string $entityIdentity
- * @property string $factorType
- * @property string $factorFriendlyName
- * @property string $token
+ * @property string $iccid
+ * @property string $simSid
+ * @property string $status
+ * @property string $eid
+ * @property string $smdpPlusAddress
+ * @property string $errorCode
+ * @property string $errorMessage
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
  * @property string $url
  */
-class AccessTokenInstance extends InstanceResource {
+class EsimProfileInstance extends InstanceResource {
     /**
-     * Initialize the AccessTokenInstance
+     * Initialize the EsimProfileInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Verify Service Sid.
-     * @param string $sid A string that uniquely identifies this Access Token.
+     * @param string $sid The SID of the eSIM Profile resource to fetch
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'serviceSid' => Values::array_get($payload, 'service_sid'),
-            'entityIdentity' => Values::array_get($payload, 'entity_identity'),
-            'factorType' => Values::array_get($payload, 'factor_type'),
-            'factorFriendlyName' => Values::array_get($payload, 'factor_friendly_name'),
-            'token' => Values::array_get($payload, 'token'),
+            'iccid' => Values::array_get($payload, 'iccid'),
+            'simSid' => Values::array_get($payload, 'sim_sid'),
+            'status' => Values::array_get($payload, 'status'),
+            'eid' => Values::array_get($payload, 'eid'),
+            'smdpPlusAddress' => Values::array_get($payload, 'smdp_plus_address'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
+            'errorMessage' => Values::array_get($payload, 'error_message'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return AccessTokenContext Context for this AccessTokenInstance
+     * @return EsimProfileContext Context for this EsimProfileInstance
      */
-    protected function proxy(): AccessTokenContext {
+    protected function proxy(): EsimProfileContext {
         if (!$this->context) {
-            $this->context = new AccessTokenContext(
-                $this->version,
-                $this->solution['serviceSid'],
-                $this->solution['sid']
-            );
+            $this->context = new EsimProfileContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the AccessTokenInstance
+     * Fetch the EsimProfileInstance
      *
-     * @return AccessTokenInstance Fetched AccessTokenInstance
+     * @return EsimProfileInstance Fetched EsimProfileInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AccessTokenInstance {
+    public function fetch(): EsimProfileInstance {
         return $this->proxy()->fetch();
     }
 
@@ -111,6 +115,6 @@ class AccessTokenInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Verify.V2.AccessTokenInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Supersim.V1.EsimProfileInstance ' . \implode(' ', $context) . ']';
     }
 }
