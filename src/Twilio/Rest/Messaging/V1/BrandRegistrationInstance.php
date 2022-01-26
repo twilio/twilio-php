@@ -103,6 +103,16 @@ class BrandRegistrationInstance extends InstanceResource {
     }
 
     /**
+     * Update the BrandRegistrationInstance
+     *
+     * @return BrandRegistrationInstance Updated BrandRegistrationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): BrandRegistrationInstance {
+        return $this->proxy()->update();
+    }
+
+    /**
      * Access the brandVettings
      */
     protected function getBrandVettings(): BrandVettingList {

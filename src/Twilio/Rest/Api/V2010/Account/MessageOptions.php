@@ -38,13 +38,17 @@ abstract class MessageOptions {
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
+     * @param string $scheduleType Pass the value `fixed` to schedule a message at
+     *                             a fixed time.
+     * @param \DateTime $sendAt The time that Twilio will send the message. Must be
+     *                          in ISO 8601 format.
      * @param bool $sendAsMms If set to True, Twilio will deliver the message as a
      *                        single MMS message, regardless of the presence of
      *                        media
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, bool $sendAsMms = Values::NONE): CreateMessageOptions {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $attempt, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction, $sendAsMms);
+    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE): CreateMessageOptions {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $attempt, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction, $scheduleType, $sendAt, $sendAsMms);
     }
 
     /**
@@ -61,10 +65,11 @@ abstract class MessageOptions {
 
     /**
      * @param string $body The text of the message you want to send
+     * @param string $status Set as `canceled` to cancel a message from being sent.
      * @return UpdateMessageOptions Options builder
      */
-    public static function update(string $body = Values::NONE): UpdateMessageOptions {
-        return new UpdateMessageOptions($body);
+    public static function update(string $body = Values::NONE, string $status = Values::NONE): UpdateMessageOptions {
+        return new UpdateMessageOptions($body, $status);
     }
 }
 
@@ -94,11 +99,15 @@ class CreateMessageOptions extends Options {
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
+     * @param string $scheduleType Pass the value `fixed` to schedule a message at
+     *                             a fixed time.
+     * @param \DateTime $sendAt The time that Twilio will send the message. Must be
+     *                          in ISO 8601 format.
      * @param bool $sendAsMms If set to True, Twilio will deliver the message as a
      *                        single MMS message, regardless of the presence of
      *                        media
      */
-    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, bool $sendAsMms = Values::NONE) {
+    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -114,6 +123,8 @@ class CreateMessageOptions extends Options {
         $this->options['addressRetention'] = $addressRetention;
         $this->options['smartEncoded'] = $smartEncoded;
         $this->options['persistentAction'] = $persistentAction;
+        $this->options['scheduleType'] = $scheduleType;
+        $this->options['sendAt'] = $sendAt;
         $this->options['sendAsMms'] = $sendAsMms;
     }
 
@@ -292,6 +303,30 @@ class CreateMessageOptions extends Options {
     }
 
     /**
+     * Indicates your intent to schedule a message. Pass the value `fixed` to schedule a message at a fixed time.
+     *
+     * @param string $scheduleType Pass the value `fixed` to schedule a message at
+     *                             a fixed time.
+     * @return $this Fluent Builder
+     */
+    public function setScheduleType(string $scheduleType): self {
+        $this->options['scheduleType'] = $scheduleType;
+        return $this;
+    }
+
+    /**
+     * The time that Twilio will send the message. Must be in ISO 8601 format.
+     *
+     * @param \DateTime $sendAt The time that Twilio will send the message. Must be
+     *                          in ISO 8601 format.
+     * @return $this Fluent Builder
+     */
+    public function setSendAt(\DateTime $sendAt): self {
+        $this->options['sendAt'] = $sendAt;
+        return $this;
+    }
+
+    /**
      * If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. This is a Beta Feature.
      *
      * @param bool $sendAsMms If set to True, Twilio will deliver the message as a
@@ -400,9 +435,11 @@ class ReadMessageOptions extends Options {
 class UpdateMessageOptions extends Options {
     /**
      * @param string $body The text of the message you want to send
+     * @param string $status Set as `canceled` to cancel a message from being sent.
      */
-    public function __construct(string $body = Values::NONE) {
+    public function __construct(string $body = Values::NONE, string $status = Values::NONE) {
         $this->options['body'] = $body;
+        $this->options['status'] = $status;
     }
 
     /**
@@ -413,6 +450,17 @@ class UpdateMessageOptions extends Options {
      */
     public function setBody(string $body): self {
         $this->options['body'] = $body;
+        return $this;
+    }
+
+    /**
+     * When set as `canceled`, allows a message cancelation request if a message has not yet been sent.
+     *
+     * @param string $status Set as `canceled` to cancel a message from being sent.
+     * @return $this Fluent Builder
+     */
+    public function setStatus(string $status): self {
+        $this->options['status'] = $status;
         return $this;
     }
 
