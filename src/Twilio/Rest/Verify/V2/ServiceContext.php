@@ -37,6 +37,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext messagingConfigurations(string $country)
  * @method \Twilio\Rest\Verify\V2\Service\EntityContext entities(string $identity)
  * @method \Twilio\Rest\Verify\V2\Service\WebhookContext webhooks(string $sid)
+ * @method \Twilio\Rest\Verify\V2\Service\AccessTokenContext accessTokens(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_verifications;

@@ -16,6 +16,7 @@ use Twilio\Rest\Supersim\V1;
 /**
  * @property \Twilio\Rest\Supersim\V1 $v1
  * @property \Twilio\Rest\Supersim\V1\CommandList $commands
+ * @property \Twilio\Rest\Supersim\V1\EsimProfileList $esimProfiles
  * @property \Twilio\Rest\Supersim\V1\FleetList $fleets
  * @property \Twilio\Rest\Supersim\V1\IpCommandList $ipCommands
  * @property \Twilio\Rest\Supersim\V1\NetworkList $networks
@@ -24,6 +25,7 @@ use Twilio\Rest\Supersim\V1;
  * @property \Twilio\Rest\Supersim\V1\SmsCommandList $smsCommands
  * @property \Twilio\Rest\Supersim\V1\UsageRecordList $usageRecords
  * @method \Twilio\Rest\Supersim\V1\CommandContext commands(string $sid)
+ * @method \Twilio\Rest\Supersim\V1\EsimProfileContext esimProfiles(string $sid)
  * @method \Twilio\Rest\Supersim\V1\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Supersim\V1\IpCommandContext ipCommands(string $sid)
  * @method \Twilio\Rest\Supersim\V1\NetworkContext networks(string $sid)
@@ -97,6 +99,17 @@ class Supersim extends Domain {
      */
     protected function contextCommands(string $sid): \Twilio\Rest\Supersim\V1\CommandContext {
         return $this->v1->commands($sid);
+    }
+
+    protected function getEsimProfiles(): \Twilio\Rest\Supersim\V1\EsimProfileList {
+        return $this->v1->esimProfiles;
+    }
+
+    /**
+     * @param string $sid The SID of the eSIM Profile resource to fetch
+     */
+    protected function contextEsimProfiles(string $sid): \Twilio\Rest\Supersim\V1\EsimProfileContext {
+        return $this->v1->esimProfiles($sid);
     }
 
     protected function getFleets(): \Twilio\Rest\Supersim\V1\FleetList {
