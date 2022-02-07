@@ -45,7 +45,7 @@ abstract class Version {
      * @return string Domain relative uri
      */
     public function relativeUri(string $uri): string {
-        return \trim($this->version, '/') . '/' . \trim($uri, '/');
+        return \trim($this->version ?? '', '/') . '/' . \trim($uri, '/');
     }
 
     public function request(string $method, string $uri,
