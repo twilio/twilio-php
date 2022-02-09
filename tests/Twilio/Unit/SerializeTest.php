@@ -60,7 +60,7 @@ class SerializeTest extends UnitTest {
     }
 
     public function testIso8601DateSameTimezone(): void {
-        $date = new \DateTime('now', new \DateTimeZone('UTC'));
+        $date = new \DateTime('now', new \DateTimeZone('+0000'));
         $actual = Serialize::iso8601Date($date);
         $this->assertEquals($date->format('Y-m-d'), $actual);
     }
