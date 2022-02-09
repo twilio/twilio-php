@@ -22,11 +22,12 @@ test:
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 PHPDOX_DIR=vendor-theseer
-docs:
+docs-install:
 	COMPOSER_VENDOR_DIR=${PHPDOX_DIR} composer require --dev theseer/phpdox:\^0.12.0
-	${PHPDOX_DIR}/bin/phpdox
 	composer remove --dev theseer/phpdox
-	rm -rf ${PHPDOX_DIR}
+
+docs:
+	${PHPDOX_DIR}/bin/phpdox
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
