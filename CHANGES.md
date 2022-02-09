@@ -1,6 +1,41 @@
 twilio-php Changelog
 ====================
 
+[2022-02-09] Version 6.34.0
+---------------------------
+**Library - Fix**
+- [PR #721](https://github.com/twilio/twilio-php/pull/721): install docs dependencies in separate step. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #720](https://github.com/twilio/twilio-php/pull/720): use offset +0000 for iso8601 conversion. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+- [PR #713](https://github.com/twilio/twilio-php/pull/713): Php 8.1 support. Thanks to [@phpfui](https://github.com/phpfui)!
+- [PR #719](https://github.com/twilio/twilio-php/pull/719): use offset +0000 for iso8601 conversions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #718](https://github.com/twilio/twilio-php/pull/718): install and remove phpdox as required. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add `stream` resource
+
+**Conversations**
+- Fixed DELETE request to accept "sid_like" params in Address Configuration resources **(breaking change)**
+- Expose Address Configuration resource for `sms` and `whatsapp`
+
+**Fax**
+- Removed deprecated Programmable Fax Create and Update methods **(breaking change)**
+
+**Insights**
+- Rename `call_state` to `call_status` and remove `whisper` in conference participant summary **(breaking change)**
+
+**Numbers**
+- Expose valid_until filters as part of provisionally-approved compliance feature on the List Bundles resource
+
+**Supersim**
+- Fix typo in Fleet resource docs
+- Updated documentation for the Fleet resource indicating that fields related to commands have been deprecated and to use sms_command fields instead.
+- Add support for setting and reading `ip_commands_url` and `ip_commands_method` on Fleets resource for helper libraries
+- Changed `sim` property in requests to create an SMS Command made to the /SmsCommands to accept SIM UniqueNames in addition to SIDs
+
+**Verify**
+- Update list attempts API to include new filters and response fields.
+
+
 [2022-01-26] Version 6.33.1
 ---------------------------
 **Insights**

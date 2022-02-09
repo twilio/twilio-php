@@ -25,14 +25,12 @@ use Twilio\Version;
  * @property string $callDirection
  * @property string $from
  * @property string $to
- * @property string $callState
+ * @property string $callStatus
  * @property string $countryCode
  * @property bool $isModerator
  * @property \DateTime $joinTime
  * @property \DateTime $leaveTime
  * @property int $durationSeconds
- * @property string $whisper
- * @property bool $agentAudio
  * @property int $outboundQueueLength
  * @property int $outboundTimeInQueue
  * @property string $jitterBufferSize
@@ -41,7 +39,7 @@ use Twilio\Version;
  * @property string $participantRegion
  * @property string $conferenceRegion
  * @property string $callType
- * @property int $qualityIssues
+ * @property string $processingState
  * @property array $properties
  * @property array $events
  * @property array $metrics
@@ -53,8 +51,8 @@ class ConferenceParticipantInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conferenceSid The conference_sid
-     * @param string $participantSid The participant_sid
+     * @param string $conferenceSid Conference SID.
+     * @param string $participantSid Participant SID.
      */
     public function __construct(Version $version, array $payload, string $conferenceSid, string $participantSid = null) {
         parent::__construct($version);
@@ -69,14 +67,12 @@ class ConferenceParticipantInstance extends InstanceResource {
             'callDirection' => Values::array_get($payload, 'call_direction'),
             'from' => Values::array_get($payload, 'from'),
             'to' => Values::array_get($payload, 'to'),
-            'callState' => Values::array_get($payload, 'call_state'),
+            'callStatus' => Values::array_get($payload, 'call_status'),
             'countryCode' => Values::array_get($payload, 'country_code'),
             'isModerator' => Values::array_get($payload, 'is_moderator'),
             'joinTime' => Deserialize::dateTime(Values::array_get($payload, 'join_time')),
             'leaveTime' => Deserialize::dateTime(Values::array_get($payload, 'leave_time')),
             'durationSeconds' => Values::array_get($payload, 'duration_seconds'),
-            'whisper' => Values::array_get($payload, 'whisper'),
-            'agentAudio' => Values::array_get($payload, 'agent_audio'),
             'outboundQueueLength' => Values::array_get($payload, 'outbound_queue_length'),
             'outboundTimeInQueue' => Values::array_get($payload, 'outbound_time_in_queue'),
             'jitterBufferSize' => Values::array_get($payload, 'jitter_buffer_size'),
@@ -85,7 +81,7 @@ class ConferenceParticipantInstance extends InstanceResource {
             'participantRegion' => Values::array_get($payload, 'participant_region'),
             'conferenceRegion' => Values::array_get($payload, 'conference_region'),
             'callType' => Values::array_get($payload, 'call_type'),
-            'qualityIssues' => Values::array_get($payload, 'quality_issues'),
+            'processingState' => Values::array_get($payload, 'processing_state'),
             'properties' => Values::array_get($payload, 'properties'),
             'events' => Values::array_get($payload, 'events'),
             'metrics' => Values::array_get($payload, 'metrics'),

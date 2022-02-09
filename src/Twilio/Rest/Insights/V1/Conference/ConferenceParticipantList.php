@@ -20,7 +20,7 @@ class ConferenceParticipantList extends ListResource {
      * Construct the ConferenceParticipantList
      *
      * @param Version $version Version that contains the resource
-     * @param string $conferenceSid The conference_sid
+     * @param string $conferenceSid Conference SID.
      */
     public function __construct(Version $version, string $conferenceSid) {
         parent::__construct($version);
@@ -126,7 +126,7 @@ class ConferenceParticipantList extends ListResource {
     /**
      * Constructs a ConferenceParticipantContext
      *
-     * @param string $participantSid The participant_sid
+     * @param string $participantSid Participant SID.
      */
     public function getContext(string $participantSid): ConferenceParticipantContext {
         return new ConferenceParticipantContext(

@@ -52,6 +52,7 @@ class ConferenceTest extends HolodeckTestCase {
                 "mixer_region": "us1",
                 "mixer_region_requested": "us1",
                 "recording_enabled": false,
+                "processing_state": "complete",
                 "detected_issues": {
                     "call_quality": 1,
                     "region_configuration": 0,
@@ -133,6 +134,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": "us1",
                         "mixer_region_requested": null,
                         "recording_enabled": false,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 1,
                             "region_configuration": 0,
@@ -163,6 +165,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": "us1",
                         "mixer_region_requested": null,
                         "recording_enabled": false,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 1,
                             "region_configuration": 0,
@@ -221,6 +224,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": "au1",
                         "mixer_region_requested": "au1",
                         "recording_enabled": true,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 0,
                             "region_configuration": 2,
@@ -253,6 +257,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": "au1",
                         "mixer_region_requested": null,
                         "recording_enabled": false,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 0,
                             "region_configuration": 2,
@@ -312,6 +317,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": null,
                         "mixer_region_requested": null,
                         "recording_enabled": false,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 0,
                             "region_configuration": 0,
@@ -374,6 +380,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": "us1",
                         "mixer_region_requested": null,
                         "recording_enabled": false,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 0,
                             "region_configuration": 0,
@@ -443,6 +450,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "mixer_region": "us1",
                         "mixer_region_requested": null,
                         "recording_enabled": false,
+                        "processing_state": "complete",
                         "detected_issues": {
                             "call_quality": 3,
                             "region_configuration": 0,

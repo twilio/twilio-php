@@ -20,8 +20,8 @@ class ConferenceParticipantContext extends InstanceContext {
      * Initialize the ConferenceParticipantContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $conferenceSid The conference_sid
-     * @param string $participantSid The participant_sid
+     * @param string $conferenceSid Conference SID.
+     * @param string $participantSid Participant SID.
      */
     public function __construct(Version $version, $conferenceSid, $participantSid) {
         parent::__construct($version);

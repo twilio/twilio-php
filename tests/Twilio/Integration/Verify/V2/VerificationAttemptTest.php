@@ -64,10 +64,15 @@ class VerificationAttemptTest extends HolodeckTestCase {
                         "sid": "VLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "verification_sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2020-08-11T18:36:59Z",
                         "date_updated": "2020-08-11T18:37:00Z",
                         "conversion_status": "unconverted",
                         "channel": "sms",
+                        "price": {
+                            "value": "0.005",
+                            "currency": "usd"
+                        },
                         "channel_data": {
                             "verification_sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                             "to": "+573003003030",
@@ -124,10 +129,15 @@ class VerificationAttemptTest extends HolodeckTestCase {
                 "sid": "VLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2020-08-11T18:36:59Z",
                 "date_updated": "2020-08-11T18:37:00Z",
                 "conversion_status": "unconverted",
                 "channel": "sms",
+                "price": {
+                    "value": "0.005",
+                    "currency": "usd"
+                },
                 "channel_data": {
                     "verification_sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "to": "+573003003030",

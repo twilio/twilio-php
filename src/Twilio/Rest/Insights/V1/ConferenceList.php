@@ -130,7 +130,7 @@ class ConferenceList extends ListResource {
     /**
      * Constructs a ConferenceContext
      *
-     * @param string $conferenceSid The conference_sid
+     * @param string $conferenceSid Conference SID.
      */
     public function getContext(string $conferenceSid): ConferenceContext {
         return new ConferenceContext($this->version, $conferenceSid);

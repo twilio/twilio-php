@@ -37,6 +37,7 @@ use Twilio\Version;
  * @property array $detectedIssues
  * @property string[] $tags
  * @property array $tagInfo
+ * @property string $processingState
  * @property string $url
  * @property array $links
  */
@@ -48,7 +49,7 @@ class ConferenceInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conferenceSid The conference_sid
+     * @param string $conferenceSid Conference SID.
      */
     public function __construct(Version $version, array $payload, string $conferenceSid = null) {
         parent::__construct($version);
@@ -75,6 +76,7 @@ class ConferenceInstance extends InstanceResource {
             'detectedIssues' => Values::array_get($payload, 'detected_issues'),
             'tags' => Values::array_get($payload, 'tags'),
             'tagInfo' => Values::array_get($payload, 'tag_info'),
+            'processingState' => Values::array_get($payload, 'processing_state'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];

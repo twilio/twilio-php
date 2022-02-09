@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Fax\V1;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -124,35 +123,6 @@ class FaxList extends ListResource {
         );
 
         return new FaxPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Create the FaxInstance
-     *
-     * @param string $to The phone number to receive the fax
-     * @param string $mediaUrl The URL of the PDF that contains the fax
-     * @param array|Options $options Optional Arguments
-     * @return FaxInstance Created FaxInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(string $to, string $mediaUrl, array $options = []): FaxInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'To' => $to,
-            'MediaUrl' => $mediaUrl,
-            'Quality' => $options['quality'],
-            'StatusCallback' => $options['statusCallback'],
-            'From' => $options['from'],
-            'SipAuthUsername' => $options['sipAuthUsername'],
-            'SipAuthPassword' => $options['sipAuthPassword'],
-            'StoreMedia' => Serialize::booleanToString($options['storeMedia']),
-            'Ttl' => $options['ttl'],
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new FaxInstance($this->version, $payload);
     }
 
     /**

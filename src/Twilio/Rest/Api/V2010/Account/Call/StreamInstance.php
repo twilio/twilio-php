@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Verify\V2;
+namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -18,68 +18,69 @@ use Twilio\Version;
 /**
  * @property string $sid
  * @property string $accountSid
- * @property string $serviceSid
- * @property string $verificationSid
- * @property \DateTime $dateCreated
+ * @property string $callSid
+ * @property string $name
+ * @property string $status
  * @property \DateTime $dateUpdated
- * @property string $conversionStatus
- * @property string $channel
- * @property array $price
- * @property array $channelData
- * @property string $url
  */
-class VerificationAttemptInstance extends InstanceResource {
+class StreamInstance extends InstanceResource {
     /**
-     * Initialize the VerificationAttemptInstance
+     * Initialize the StreamInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid Verification Attempt Sid.
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $callSid The SID of the Call the resource is associated with
+     * @param string $sid The SID of the Stream resource, or the `name`
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'serviceSid' => Values::array_get($payload, 'service_sid'),
-            'verificationSid' => Values::array_get($payload, 'verification_sid'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'callSid' => Values::array_get($payload, 'call_sid'),
+            'name' => Values::array_get($payload, 'name'),
+            'status' => Values::array_get($payload, 'status'),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'conversionStatus' => Values::array_get($payload, 'conversion_status'),
-            'channel' => Values::array_get($payload, 'channel'),
-            'price' => Values::array_get($payload, 'price'),
-            'channelData' => Values::array_get($payload, 'channel_data'),
-            'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = [
+            'accountSid' => $accountSid,
+            'callSid' => $callSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return VerificationAttemptContext Context for this
-     *                                    VerificationAttemptInstance
+     * @return StreamContext Context for this StreamInstance
      */
-    protected function proxy(): VerificationAttemptContext {
+    protected function proxy(): StreamContext {
         if (!$this->context) {
-            $this->context = new VerificationAttemptContext($this->version, $this->solution['sid']);
+            $this->context = new StreamContext(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['callSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the VerificationAttemptInstance
+     * Update the StreamInstance
      *
-     * @return VerificationAttemptInstance Fetched VerificationAttemptInstance
+     * @param string $status The status. Must have the value `stopped`
+     * @return StreamInstance Updated StreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VerificationAttemptInstance {
-        return $this->proxy()->fetch();
+    public function update(string $status): StreamInstance {
+        return $this->proxy()->update($status);
     }
 
     /**
@@ -112,6 +113,6 @@ class VerificationAttemptInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Verify.V2.VerificationAttemptInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.StreamInstance ' . \implode(' ', $context) . ']';
     }
 }

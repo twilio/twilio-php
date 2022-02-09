@@ -20,11 +20,11 @@ class SmsCommandTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->supersim->v1->smsCommands->create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "payload");
+            $this->twilio->supersim->v1->smsCommands->create("sim", "payload");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Sim' => "HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 'Payload' => "payload", ];
+        $values = ['Sim' => "sim", 'Payload' => "payload", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -52,7 +52,7 @@ class SmsCommandTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->smsCommands->create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "payload");
+        $actual = $this->twilio->supersim->v1->smsCommands->create("sim", "payload");
 
         $this->assertNotNull($actual);
     }
@@ -75,7 +75,7 @@ class SmsCommandTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->smsCommands->create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "payload");
+        $actual = $this->twilio->supersim->v1->smsCommands->create("sim", "payload");
 
         $this->assertNotNull($actual);
     }

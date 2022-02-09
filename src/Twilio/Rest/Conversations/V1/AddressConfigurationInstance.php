@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\Conversations\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -17,58 +17,38 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
- * @property string $accountSid
  * @property string $sid
- * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $type
+ * @property string $address
+ * @property string $friendlyName
+ * @property array $autoCreation
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
- * @property bool $dataEnabled
- * @property int $dataLimit
- * @property string $dataMetering
- * @property bool $commandsEnabled
- * @property string $commandsUrl
- * @property string $commandsMethod
- * @property bool $smsCommandsEnabled
- * @property string $smsCommandsUrl
- * @property string $smsCommandsMethod
- * @property string $networkAccessProfileSid
- * @property string $ipCommandsUrl
- * @property string $ipCommandsMethod
  */
-class FleetInstance extends InstanceResource {
+class AddressConfigurationInstance extends InstanceResource {
     /**
-     * Initialize the FleetInstance
+     * Initialize the AddressConfigurationInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $sid The SID or Address of the Configuration.
      */
     public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
             'sid' => Values::array_get($payload, 'sid'),
-            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'type' => Values::array_get($payload, 'type'),
+            'address' => Values::array_get($payload, 'address'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'autoCreation' => Values::array_get($payload, 'auto_creation'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-            'dataEnabled' => Values::array_get($payload, 'data_enabled'),
-            'dataLimit' => Values::array_get($payload, 'data_limit'),
-            'dataMetering' => Values::array_get($payload, 'data_metering'),
-            'commandsEnabled' => Values::array_get($payload, 'commands_enabled'),
-            'commandsUrl' => Values::array_get($payload, 'commands_url'),
-            'commandsMethod' => Values::array_get($payload, 'commands_method'),
-            'smsCommandsEnabled' => Values::array_get($payload, 'sms_commands_enabled'),
-            'smsCommandsUrl' => Values::array_get($payload, 'sms_commands_url'),
-            'smsCommandsMethod' => Values::array_get($payload, 'sms_commands_method'),
-            'networkAccessProfileSid' => Values::array_get($payload, 'network_access_profile_sid'),
-            'ipCommandsUrl' => Values::array_get($payload, 'ip_commands_url'),
-            'ipCommandsMethod' => Values::array_get($payload, 'ip_commands_method'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -78,35 +58,46 @@ class FleetInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return FleetContext Context for this FleetInstance
+     * @return AddressConfigurationContext Context for this
+     *                                     AddressConfigurationInstance
      */
-    protected function proxy(): FleetContext {
+    protected function proxy(): AddressConfigurationContext {
         if (!$this->context) {
-            $this->context = new FleetContext($this->version, $this->solution['sid']);
+            $this->context = new AddressConfigurationContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the FleetInstance
+     * Fetch the AddressConfigurationInstance
      *
-     * @return FleetInstance Fetched FleetInstance
+     * @return AddressConfigurationInstance Fetched AddressConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FleetInstance {
+    public function fetch(): AddressConfigurationInstance {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the FleetInstance
+     * Update the AddressConfigurationInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return FleetInstance Updated FleetInstance
+     * @return AddressConfigurationInstance Updated AddressConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FleetInstance {
+    public function update(array $options = []): AddressConfigurationInstance {
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Delete the AddressConfigurationInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool {
+        return $this->proxy()->delete();
     }
 
     /**
@@ -139,6 +130,6 @@ class FleetInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Supersim.V1.FleetInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.AddressConfigurationInstance ' . \implode(' ', $context) . ']';
     }
 }
