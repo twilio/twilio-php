@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string $name
  * @property string $status
  * @property \DateTime $dateUpdated
+ * @property string $uri
  */
 class SiprecInstance extends InstanceResource {
     /**
@@ -44,6 +45,7 @@ class SiprecInstance extends InstanceResource {
             'name' => Values::array_get($payload, 'name'),
             'status' => Values::array_get($payload, 'status'),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'uri' => Values::array_get($payload, 'uri'),
         ];
 
         $this->solution = [

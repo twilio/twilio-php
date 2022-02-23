@@ -30,7 +30,7 @@ abstract class AddressConfigurationOptions {
      *                                             webhook event for this
      *                                             Conversation.
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow
-     *                                          SID, where the webhook should be
+     *                                          SID where the webhook should be
      *                                          sent to.
      * @param int $autoCreationStudioRetryCount For type `studio`, number of times
      *                                          to retry the webhook request
@@ -57,7 +57,7 @@ abstract class AddressConfigurationOptions {
      *                                             webhook event for this
      *                                             Conversation.
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow
-     *                                          SID, where the webhook should be
+     *                                          SID where the webhook should be
      *                                          sent to.
      * @param int $autoCreationStudioRetryCount For type `studio`, number of times
      *                                          to retry the webhook request
@@ -86,7 +86,7 @@ class CreateAddressConfigurationOptions extends Options {
      *                                             webhook event for this
      *                                             Conversation.
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow
-     *                                          SID, where the webhook should be
+     *                                          SID where the webhook should be
      *                                          sent to.
      * @param int $autoCreationStudioRetryCount For type `studio`, number of times
      *                                          to retry the webhook request
@@ -127,7 +127,7 @@ class CreateAddressConfigurationOptions extends Options {
     }
 
     /**
-     * Type of Auto Creation. Value can be one of `webhook`, `studio`, `default`.
+     * Type of Auto Creation. Value can be one of `webhook`, `studio` or `default`.
      *
      * @param string $autoCreationType Type of Auto Creation.
      * @return $this Fluent Builder
@@ -176,7 +176,7 @@ class CreateAddressConfigurationOptions extends Options {
     }
 
     /**
-     * The list of events, firing webhook event for this Conversation.
+     * The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated`
      *
      * @param string[] $autoCreationWebhookFilters The list of events, firing
      *                                             webhook event for this
@@ -189,10 +189,10 @@ class CreateAddressConfigurationOptions extends Options {
     }
 
     /**
-     * For type `studio`, the studio flow SID, where the webhook should be sent to.
+     * For type `studio`, the studio flow SID where the webhook should be sent to.
      *
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow
-     *                                          SID, where the webhook should be
+     *                                          SID where the webhook should be
      *                                          sent to.
      * @return $this Fluent Builder
      */
@@ -242,7 +242,7 @@ class UpdateAddressConfigurationOptions extends Options {
      *                                             webhook event for this
      *                                             Conversation.
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow
-     *                                          SID, where the webhook should be
+     *                                          SID where the webhook should be
      *                                          sent to.
      * @param int $autoCreationStudioRetryCount For type `studio`, number of times
      *                                          to retry the webhook request
@@ -283,7 +283,7 @@ class UpdateAddressConfigurationOptions extends Options {
     }
 
     /**
-     * Type of Auto Creation. Value can be one of `webhook`, `studio`, `default`.
+     * Type of Auto Creation. Value can be one of `webhook`, `studio` or `default`.
      *
      * @param string $autoCreationType Type of Auto Creation.
      * @return $this Fluent Builder
@@ -332,7 +332,7 @@ class UpdateAddressConfigurationOptions extends Options {
     }
 
     /**
-     * The list of events, firing webhook event for this Conversation.
+     * The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated`
      *
      * @param string[] $autoCreationWebhookFilters The list of events, firing
      *                                             webhook event for this
@@ -345,10 +345,10 @@ class UpdateAddressConfigurationOptions extends Options {
     }
 
     /**
-     * For type `studio`, the studio flow SID, where the webhook should be sent to.
+     * For type `studio`, the studio flow SID where the webhook should be sent to.
      *
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow
-     *                                          SID, where the webhook should be
+     *                                          SID where the webhook should be
      *                                          sent to.
      * @return $this Fluent Builder
      */

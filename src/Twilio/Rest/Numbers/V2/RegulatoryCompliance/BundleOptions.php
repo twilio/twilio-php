@@ -35,8 +35,8 @@ abstract class BundleOptions {
      * @param string $numberType The type of phone number
      * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle
      *                                until a specified expiration date.
-     * @param string $sortBy Can be `ValidUntilDate` or `DateUpdated`. Defaults to
-     *                       `DateCreated`
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to
+     *                       `date-created`.
      * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
      * @param string $validUntilDateBefore Date to filter Bundles having their
      *                                     `valid_until_date` before or after the
@@ -168,8 +168,8 @@ class ReadBundleOptions extends Options {
      * @param string $numberType The type of phone number
      * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle
      *                                until a specified expiration date.
-     * @param string $sortBy Can be `ValidUntilDate` or `DateUpdated`. Defaults to
-     *                       `DateCreated`
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to
+     *                       `date-created`.
      * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
      * @param string $validUntilDateBefore Date to filter Bundles having their
      *                                     `valid_until_date` before or after the
@@ -271,10 +271,10 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * Can be `ValidUntilDate` or `DateUpdated`. Defaults to `DateCreated`
+     * Can be `valid-until` or `date-updated`. Defaults to `date-created`.
      *
-     * @param string $sortBy Can be `ValidUntilDate` or `DateUpdated`. Defaults to
-     *                       `DateCreated`
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to
+     *                       `date-created`.
      * @return $this Fluent Builder
      */
     public function setSortBy(string $sortBy): self {

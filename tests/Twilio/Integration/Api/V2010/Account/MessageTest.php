@@ -240,13 +240,13 @@ class MessageTest extends HolodeckTestCase {
                 "num_segments": "1",
                 "price": null,
                 "price_unit": null,
-                "sid": "SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "scheduled",
                 "subresource_uris": {
-                    "media": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json"
+                    "media": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json"
                 },
                 "to": "+15558675310",
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
         ));
@@ -635,13 +635,13 @@ class MessageTest extends HolodeckTestCase {
                 "date_sent": "Fri, 24 May 2019 17:18:28 +0000",
                 "date_updated": "Fri, 24 May 2019 17:18:28 +0000",
                 "direction": "outbound-api",
-                "error_code": 30007,
-                "error_message": "Carrier violation",
+                "error_code": null,
+                "error_message": null,
                 "from": "+12019235161",
                 "messaging_service_sid": "MGdeadbeefdeadbeefdeadbeefdeadbeef",
                 "num_media": "0",
                 "num_segments": "1",
-                "price": "-0.00750",
+                "price": null,
                 "price_unit": "USD",
                 "sid": "SMb7c0a2ce80504485a6f653a7110836f5",
                 "status": "sent",
@@ -668,18 +668,18 @@ class MessageTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
-                "body": "",
+                "body": "Hello World!",
                 "date_created": "Fri, 24 May 2019 17:18:27 +0000",
-                "date_sent": "Fri, 24 May 2019 17:18:28 +0000",
-                "date_updated": "Fri, 24 May 2019 17:18:28 +0000",
+                "date_sent": null,
+                "date_updated": "Fri, 24 May 2019 18:18:28 +0000",
                 "direction": "outbound-api",
-                "error_code": 30007,
-                "error_message": "Carrier violation",
-                "from": "+12019235161",
+                "error_code": null,
+                "error_message": null,
+                "from": null,
                 "messaging_service_sid": "MGdeadbeefdeadbeefdeadbeefdeadbeef",
                 "num_media": "0",
                 "num_segments": "1",
-                "price": "-0.00750",
+                "price": null,
                 "price_unit": "USD",
                 "sid": "SMb7c0a2ce80504485a6f653a7110836f5",
                 "status": "canceled",
