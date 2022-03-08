@@ -15,8 +15,9 @@
         "php": ">=7.1.0"
     },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "phpunit/phpunit": ">=7.0"
+        "guzzlehttp/guzzle": "^6.5.5 || ^7.4.1",
+        "guzzlehttp/psr7": "^1.8.3 || ^2.1",
+        "phpunit/phpunit": "^7.5.20 || ^8.5.24 || ^9.5.18"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
