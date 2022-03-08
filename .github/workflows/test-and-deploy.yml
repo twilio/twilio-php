@@ -17,16 +17,16 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        php: [ 7.2, 7.3, 7.4, 8.0, 8.1 ]
+        php: [ '7.1', '7.2', '7.3', '7.4', '8.0', '8.1' ]
         dependencies:
           - "lowest"
           - "highest"
     steps:
       - name: Checkout twilio-php
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP Action
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@2.17.1
         with:
           php-version: ${{ matrix.php }}
         id: php
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout twilio-php
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
