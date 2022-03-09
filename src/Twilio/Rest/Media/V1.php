@@ -13,17 +13,21 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Media\V1\MediaProcessorList;
+use Twilio\Rest\Media\V1\MediaRecordingList;
 use Twilio\Rest\Media\V1\PlayerStreamerList;
 use Twilio\Version;
 
 /**
  * @property MediaProcessorList $mediaProcessor
+ * @property MediaRecordingList $mediaRecording
  * @property PlayerStreamerList $playerStreamer
  * @method \Twilio\Rest\Media\V1\MediaProcessorContext mediaProcessor(string $sid)
+ * @method \Twilio\Rest\Media\V1\MediaRecordingContext mediaRecording(string $sid)
  * @method \Twilio\Rest\Media\V1\PlayerStreamerContext playerStreamer(string $sid)
  */
 class V1 extends Version {
     protected $_mediaProcessor;
+    protected $_mediaRecording;
     protected $_playerStreamer;
 
     /**
@@ -41,6 +45,13 @@ class V1 extends Version {
             $this->_mediaProcessor = new MediaProcessorList($this);
         }
         return $this->_mediaProcessor;
+    }
+
+    protected function getMediaRecording(): MediaRecordingList {
+        if (!$this->_mediaRecording) {
+            $this->_mediaRecording = new MediaRecordingList($this);
+        }
+        return $this->_mediaRecording;
     }
 
     protected function getPlayerStreamer(): PlayerStreamerList {

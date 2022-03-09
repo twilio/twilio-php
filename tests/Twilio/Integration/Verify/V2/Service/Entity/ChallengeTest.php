@@ -36,7 +36,7 @@ class ChallengeTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreatePushWithoutAuthPayloadResponse(): void {
+    public function testCreatePushResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -66,6 +66,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "hidden_details": {
                     "ip": "172.168.1.234"
                 },
+                "metadata": null,
                 "factor_type": "push",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
@@ -112,6 +113,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "hidden_details": {
                     "ip": "172.168.1.234"
                 },
+                "metadata": null,
                 "factor_type": "totp",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
@@ -158,6 +160,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "hidden_details": {
                     "ip": "172.168.1.234"
                 },
+                "metadata": null,
                 "factor_type": "totp",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
@@ -205,7 +208,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "date_responded": "2015-07-30T20:00:00Z",
                 "expiration_date": "2015-07-30T20:00:00Z",
-                "status": "pending",
+                "status": "approved",
                 "responded_reason": "none",
                 "details": {
                     "message": "Hi! Mr. John Doe, would you like to sign up?",
@@ -219,6 +222,9 @@ class ChallengeTest extends HolodeckTestCase {
                 },
                 "hidden_details": {
                     "ip": "172.168.1.234"
+                },
+                "metadata": {
+                    "os": "Android"
                 },
                 "factor_type": "push",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -310,6 +316,7 @@ class ChallengeTest extends HolodeckTestCase {
                         "hidden_details": {
                             "ip": "172.168.1.234"
                         },
+                        "metadata": null,
                         "factor_type": "push",
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "links": {
@@ -342,6 +349,7 @@ class ChallengeTest extends HolodeckTestCase {
                         "hidden_details": {
                             "ip": "172.168.1.234"
                         },
+                        "metadata": null,
                         "factor_type": "totp",
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "links": {
@@ -415,6 +423,9 @@ class ChallengeTest extends HolodeckTestCase {
                 "hidden_details": {
                     "ip": "172.168.1.234"
                 },
+                "metadata": {
+                    "os": "Android"
+                },
                 "factor_type": "push",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC03aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
@@ -461,6 +472,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "hidden_details": {
                     "ip": "172.168.1.234"
                 },
+                "metadata": null,
                 "factor_type": "totp",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges/YC02aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {

@@ -7,51 +7,62 @@
  * /       /
  */
 
-namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
+namespace Twilio\Rest\Media\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string $sid
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ *
  * @property string $accountSid
- * @property string $friendlyName
- * @property string $mimeType
- * @property string $status
- * @property string $failureReason
- * @property string $type
- * @property array $attributes
+ * @property int $bitrate
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property int $duration
+ * @property string $format
+ * @property array $links
+ * @property string $processorSid
+ * @property string $resolution
+ * @property string $sourceSid
+ * @property string $sid
+ * @property string $size
+ * @property string $status
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
  * @property string $url
  */
-class SupportingDocumentInstance extends InstanceResource {
+class MediaRecordingInstance extends InstanceResource {
     /**
-     * Initialize the SupportingDocumentInstance
+     * Initialize the MediaRecordingInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID that identifies the resource to fetch
      */
     public function __construct(Version $version, array $payload, string $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'mimeType' => Values::array_get($payload, 'mime_type'),
-            'status' => Values::array_get($payload, 'status'),
-            'failureReason' => Values::array_get($payload, 'failure_reason'),
-            'type' => Values::array_get($payload, 'type'),
-            'attributes' => Values::array_get($payload, 'attributes'),
+            'bitrate' => Values::array_get($payload, 'bitrate'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'duration' => Values::array_get($payload, 'duration'),
+            'format' => Values::array_get($payload, 'format'),
+            'links' => Values::array_get($payload, 'links'),
+            'processorSid' => Values::array_get($payload, 'processor_sid'),
+            'resolution' => Values::array_get($payload, 'resolution'),
+            'sourceSid' => Values::array_get($payload, 'source_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'size' => Values::array_get($payload, 'size'),
+            'status' => Values::array_get($payload, 'status'),
+            'statusCallback' => Values::array_get($payload, 'status_callback'),
+            'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
@@ -62,45 +73,34 @@ class SupportingDocumentInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return SupportingDocumentContext Context for this SupportingDocumentInstance
+     * @return MediaRecordingContext Context for this MediaRecordingInstance
      */
-    protected function proxy(): SupportingDocumentContext {
+    protected function proxy(): MediaRecordingContext {
         if (!$this->context) {
-            $this->context = new SupportingDocumentContext($this->version, $this->solution['sid']);
+            $this->context = new MediaRecordingContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the SupportingDocumentInstance
-     *
-     * @return SupportingDocumentInstance Fetched SupportingDocumentInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): SupportingDocumentInstance {
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the SupportingDocumentInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return SupportingDocumentInstance Updated SupportingDocumentInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): SupportingDocumentInstance {
-        return $this->proxy()->update($options);
-    }
-
-    /**
-     * Delete the SupportingDocumentInstance
+     * Delete the MediaRecordingInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete(): bool {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Fetch the MediaRecordingInstance
+     *
+     * @return MediaRecordingInstance Fetched MediaRecordingInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): MediaRecordingInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -133,6 +133,6 @@ class SupportingDocumentInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Numbers.V2.SupportingDocumentInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Media.V1.MediaRecordingInstance ' . \implode(' ', $context) . ']';
     }
 }

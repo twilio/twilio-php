@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList;
 use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
 use Twilio\Values;
@@ -98,11 +99,12 @@ class RecordingInstance extends InstanceResource {
     /**
      * Fetch the RecordingInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RecordingInstance {
-        return $this->proxy()->fetch();
+    public function fetch(array $options = []): RecordingInstance {
+        return $this->proxy()->fetch($options);
     }
 
     /**

@@ -7,33 +7,34 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Media\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class RecordingList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class MediaRecordingList extends ListResource {
     /**
-     * Construct the RecordingList
+     * Construct the MediaRecordingList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the Account that created the resource
      */
-    public function __construct(Version $version, string $accountSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings.json';
+        $this->uri = '/MediaRecordings';
     }
 
     /**
-     * Streams RecordingInstance records from the API as a generator stream.
+     * Streams MediaRecordingInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -60,7 +61,7 @@ class RecordingList extends ListResource {
     }
 
     /**
-     * Reads RecordingInstance records from the API as a list.
+     * Reads MediaRecordingInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -73,32 +74,28 @@ class RecordingList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RecordingInstance[] Array of results
+     * @return MediaRecordingInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RecordingInstance records from the API.
+     * Retrieve a single page of MediaRecordingInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return RecordingPage Page of RecordingInstance
+     * @return MediaRecordingPage Page of MediaRecordingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RecordingPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaRecordingPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'DateCreated<' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateCreated>' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'CallSid' => $options['callSid'],
-            'ConferenceSid' => $options['conferenceSid'],
-            'IncludeSoftDeleted' => Serialize::booleanToString($options['includeSoftDeleted']),
+            'Order' => $options['order'],
+            'Status' => $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -106,32 +103,32 @@ class RecordingList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new RecordingPage($this->version, $response, $this->solution);
+        return new MediaRecordingPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of RecordingInstance records from the API.
+     * Retrieve a specific page of MediaRecordingInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return RecordingPage Page of RecordingInstance
+     * @return MediaRecordingPage Page of MediaRecordingInstance
      */
-    public function getPage(string $targetUrl): RecordingPage {
+    public function getPage(string $targetUrl): MediaRecordingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new RecordingPage($this->version, $response, $this->solution);
+        return new MediaRecordingPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a RecordingContext
+     * Constructs a MediaRecordingContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext(string $sid): RecordingContext {
-        return new RecordingContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(string $sid): MediaRecordingContext {
+        return new MediaRecordingContext($this->version, $sid);
     }
 
     /**
@@ -140,6 +137,6 @@ class RecordingList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Api.V2010.RecordingList]';
+        return '[Twilio.Media.V1.MediaRecordingList]';
     }
 }
