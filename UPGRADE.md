@@ -29,52 +29,20 @@ $entities = $twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                               ->read([], 20);
 ```
 
-[2020-02-19] 6.x.x to 5.x.x
+[2020-02-19] 5.x.x to 6.x.x
 -----------------------------
 ### Overview
 Version `6.x.x` is the first version that officially drops support for Php versions 5.5, 5.6, 7.0, and 7.1.
 
-#### Removal and updates to support removing Php versions 5.5, 5.6, 7.0 and 7.1:
+#### Removal and updates to support removing Php versions 5.5, 5.6, 7.0, and 7.1:
   - [Drop 'array()' syntax and add return types](https://github.com/twilio/twilio-php/pull/603)
   - [Drop 'array()' syntax and add return types in generated code](https://github.com/twilio/twilio-php/pull/604)
   - [Add scalar param type declarations](https://github.com/twilio/twilio-php/pull/605)
   - [Add scalar param type declarations to generated code](https://github.com/twilio/twilio-php/pull/606)
   - [Drop support for end of life Php versions](https://github.com/twilio/twilio-php/pull/595)
 
-### CHANGED - Add Return Types
-
-**Added Return Types**
-```php
-// 5.x.x
-public function absoluteUrl($uri) {
-    return \implode('/', array(\trim($this->baseUrl, '/'), \trim($uri, '/')));
-}
-```
-
-```php
-// 6.x.x
-public function absoluteUrl($uri): string {
-    return \implode('/', [\trim($this->baseUrl, '/'), \trim($uri, '/')]);
-}
-```
-
-### CHANGED - Add Scalar Parameters Types
-
-**Added scalar param type**
-```php
-// 5.x.x
-public function absoluteUrl($uri): string {
-    return \implode('/', [\trim($this->baseUrl, '/'), \trim($uri, '/')]);
-}
-```
-
-```php
-// 6.x.x
-public function absoluteUrl(string $uri): string {
-    return \implode('/', [\trim($this->baseUrl, '/'), \trim($uri, '/')]);
-}
-```
-
+### CHANGED - Added Return and Parameter Types
+A [TypeError](https://www.php.net/manual/en/class.typeerror.php) may now be thrown if you pass an incompatible type into a php helper library function or if you depend on an incompatible return type from a Php helper library function.
 
 [2017-09-28] 5.1x.x to 5.15.x
 ---------------------------
