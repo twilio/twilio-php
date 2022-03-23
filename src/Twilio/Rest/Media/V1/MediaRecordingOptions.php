@@ -19,10 +19,12 @@ abstract class MediaRecordingOptions {
     /**
      * @param string $order The sort order of the list
      * @param string $status Status to filter by
+     * @param string $processorSid MediaProcessor to filter by
+     * @param string $sourceSid Source SID to filter by
      * @return ReadMediaRecordingOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $status = Values::NONE): ReadMediaRecordingOptions {
-        return new ReadMediaRecordingOptions($order, $status);
+    public static function read(string $order = Values::NONE, string $status = Values::NONE, string $processorSid = Values::NONE, string $sourceSid = Values::NONE): ReadMediaRecordingOptions {
+        return new ReadMediaRecordingOptions($order, $status, $processorSid, $sourceSid);
     }
 }
 
@@ -30,10 +32,14 @@ class ReadMediaRecordingOptions extends Options {
     /**
      * @param string $order The sort order of the list
      * @param string $status Status to filter by
+     * @param string $processorSid MediaProcessor to filter by
+     * @param string $sourceSid Source SID to filter by
      */
-    public function __construct(string $order = Values::NONE, string $status = Values::NONE) {
+    public function __construct(string $order = Values::NONE, string $status = Values::NONE, string $processorSid = Values::NONE, string $sourceSid = Values::NONE) {
         $this->options['order'] = $order;
         $this->options['status'] = $status;
+        $this->options['processorSid'] = $processorSid;
+        $this->options['sourceSid'] = $sourceSid;
     }
 
     /**
@@ -55,6 +61,28 @@ class ReadMediaRecordingOptions extends Options {
      */
     public function setStatus(string $status): self {
         $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * SID of a MediaProcessor to filter by.
+     *
+     * @param string $processorSid MediaProcessor to filter by
+     * @return $this Fluent Builder
+     */
+    public function setProcessorSid(string $processorSid): self {
+        $this->options['processorSid'] = $processorSid;
+        return $this;
+    }
+
+    /**
+     * SID of a MediaRecording source to filter by.
+     *
+     * @param string $sourceSid Source SID to filter by
+     * @return $this Fluent Builder
+     */
+    public function setSourceSid(string $sourceSid): self {
+        $this->options['sourceSid'] = $sourceSid;
         return $this;
     }
 

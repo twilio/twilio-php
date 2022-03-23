@@ -35,16 +35,17 @@ class StreamList extends ListResource {
     /**
      * Create the StreamInstance
      *
+     * @param string $url Url where WebSocket connection will be established.
      * @param array|Options $options Optional Arguments
      * @return StreamInstance Created StreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): StreamInstance {
+    public function create(string $url, array $options = []): StreamInstance {
         $options = new Values($options);
 
         $data = Values::of([
+            'Url' => $url,
             'Name' => $options['name'],
-            'Url' => $options['url'],
             'Track' => $options['track'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],

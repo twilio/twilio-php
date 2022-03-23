@@ -7,30 +7,26 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\FlexApi\V1;
 
-use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- *
  * @property string $sid
- * @property string $accountSid
- * @property string $simSid
- * @property string $command
- * @property string $status
- * @property string $direction
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property array $channel
+ * @property array $routing
  * @property string $url
+ * @property array $links
  */
-class CommandInstance extends InstanceResource {
+class InteractionInstance extends InstanceResource {
+    protected $_channels;
+
     /**
-     * Initialize the CommandInstance
+     * Initialize the InteractionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -42,14 +38,10 @@ class CommandInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'simSid' => Values::array_get($payload, 'sim_sid'),
-            'command' => Values::array_get($payload, 'command'),
-            'status' => Values::array_get($payload, 'status'),
-            'direction' => Values::array_get($payload, 'direction'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'channel' => Values::array_get($payload, 'channel'),
+            'routing' => Values::array_get($payload, 'routing'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -59,24 +51,31 @@ class CommandInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return CommandContext Context for this CommandInstance
+     * @return InteractionContext Context for this InteractionInstance
      */
-    protected function proxy(): CommandContext {
+    protected function proxy(): InteractionContext {
         if (!$this->context) {
-            $this->context = new CommandContext($this->version, $this->solution['sid']);
+            $this->context = new InteractionContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the CommandInstance
+     * Fetch the InteractionInstance
      *
-     * @return CommandInstance Fetched CommandInstance
+     * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CommandInstance {
+    public function fetch(): InteractionInstance {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Access the channels
+     */
+    protected function getChannels(): InteractionChannelList {
+        return $this->proxy()->channels;
     }
 
     /**
@@ -109,6 +108,6 @@ class CommandInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Supersim.V1.CommandInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InteractionInstance ' . \implode(' ', $context) . ']';
     }
 }

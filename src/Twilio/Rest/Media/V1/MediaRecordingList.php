@@ -96,6 +96,8 @@ class MediaRecordingList extends ListResource {
         $params = Values::of([
             'Order' => $options['order'],
             'Status' => $options['status'],
+            'ProcessorSid' => $options['processorSid'],
+            'SourceSid' => $options['sourceSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

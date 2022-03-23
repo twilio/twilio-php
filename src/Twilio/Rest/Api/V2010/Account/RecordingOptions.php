@@ -50,7 +50,7 @@ class FetchRecordingOptions extends Options {
     }
 
     /**
-     * A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings are kept after deletion for a retention period of 40 days.
+     * A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
      *
      * @param bool $includeSoftDeleted A boolean parameter indicating whether to
      *                                 retrieve soft deleted recordings or not.
@@ -153,7 +153,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings are kept after deletion for a retention period of 40 days.
+     * A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
      *
      * @param bool $includeSoftDeleted A boolean parameter indicating whether to
      *                                 retrieve soft deleted recordings or not.

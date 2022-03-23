@@ -33,6 +33,8 @@ use Twilio\Version;
  * @property string $size
  * @property int $duration
  * @property string $mediaExternalLocation
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
  * @property string $url
  * @property array $links
  */
@@ -66,6 +68,8 @@ class CompositionInstance extends InstanceResource {
             'size' => Values::array_get($payload, 'size'),
             'duration' => Values::array_get($payload, 'duration'),
             'mediaExternalLocation' => Values::array_get($payload, 'media_external_location'),
+            'statusCallback' => Values::array_get($payload, 'status_callback'),
+            'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];

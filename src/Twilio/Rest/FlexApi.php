@@ -18,10 +18,12 @@ use Twilio\Rest\FlexApi\V1;
  * @property \Twilio\Rest\FlexApi\V1\ChannelList $channel
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
+ * @property \Twilio\Rest\FlexApi\V1\InteractionList $interaction
  * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\InteractionContext interaction(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
 class FlexApi extends Domain {
@@ -110,6 +112,17 @@ class FlexApi extends Domain {
      */
     protected function contextFlexFlow(string $sid): \Twilio\Rest\FlexApi\V1\FlexFlowContext {
         return $this->v1->flexFlow($sid);
+    }
+
+    protected function getInteraction(): \Twilio\Rest\FlexApi\V1\InteractionList {
+        return $this->v1->interaction;
+    }
+
+    /**
+     * @param string $sid The SID that identifies the resource to fetch
+     */
+    protected function contextInteraction(string $sid): \Twilio\Rest\FlexApi\V1\InteractionContext {
+        return $this->v1->interaction($sid);
     }
 
     protected function getWebChannel(): \Twilio\Rest\FlexApi\V1\WebChannelList {
