@@ -11,6 +11,7 @@ use Twilio\Rest\Client;
 use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
 use Twilio\Tests\Unit\UnitTest;
+use Twilio\VersionInfo;
 
 class ClientTest extends UnitTest {
 
@@ -239,6 +240,23 @@ class ClientTest extends UnitTest {
         ]);
         $client->request('GET', 'http://api.twilio.com', [], [], ['Authorization-header' => 'auth header value','test-header' => 'test header value'], 'test-user', 'test-password');
         $this->assertStringNotContainsString('Authorization-header', stream_get_contents($capturedLogging));
+    }
+
+    public function testDefaultUserAgent(): void {
+        $client = new Client('username', 'password');
+        $client->request('GET', 'https://api.twilio.com');
+        $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
+        $expectedString = 'twilio-php/' . VersionInfo::string() . ' (' . php_uname("s") . ' ' . php_uname("m") . ')' . ' PHP/' . PHP_VERSION;
+        $this->assertStringContainsString($expectedString,$userAgent);
+    }
+
+    public function testUserAgentExtensionsWhenSet(): void {
+        $userAgentExtensions = ['twilio-run/2.0.0-test', 'flex-plugin/3.4.0'];
+        $client = new Client('username', 'password', null,null,null,null,$userAgentExtensions);
+        $client->request('GET', 'https://api.twilio.com');
+        $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
+        $expectedString = 'twilio-php/' . VersionInfo::string() . ' (' . php_uname("s") . ' ' . php_uname("m") . ')' . ' PHP/' . PHP_VERSION . ' ' . implode(' ',$userAgentExtensions);
+        $this->assertStringContainsString($expectedString,$userAgent);
     }
 
 }
