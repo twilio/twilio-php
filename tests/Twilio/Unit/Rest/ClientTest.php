@@ -11,8 +11,6 @@ use Twilio\Rest\Client;
 use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
 use Twilio\Tests\Unit\UnitTest;
-use Twilio\VersionInfo;
-use function PHPUnit\Framework\assertEquals;
 
 class ClientTest extends UnitTest {
 
