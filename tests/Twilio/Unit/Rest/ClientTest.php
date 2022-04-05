@@ -245,7 +245,7 @@ class ClientTest extends UnitTest {
         $client = new Client('username', 'password');
         $client->request('GET', 'https://api.twilio.com');
         $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
-        $this->assertRegExp('/^User-Agent: twilio-php\/[0-9.]+\s\(\w+\s\w+\)\sPHP\/[0-9.]+$/',$userAgent);
+        $this->assertRegExp('/^User-Agent: twilio-php\/[0-9.]+\s\(\w+\s\w+\)\sPHP\/[^\s]+$/',$userAgent);
     }
 
     public function testUserAgentExtensionsWhenSet(): void {
