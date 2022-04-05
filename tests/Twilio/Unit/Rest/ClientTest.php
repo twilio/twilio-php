@@ -12,6 +12,7 @@ use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
 use Twilio\Tests\Unit\UnitTest;
 use Twilio\VersionInfo;
+use function PHPUnit\Framework\assertEquals;
 
 class ClientTest extends UnitTest {
 
@@ -246,17 +247,16 @@ class ClientTest extends UnitTest {
         $client = new Client('username', 'password');
         $client->request('GET', 'https://api.twilio.com');
         $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
-        $expectedString = 'twilio-php/' . VersionInfo::string() . ' (' . php_uname("s") . ' ' . php_uname("m") . ')' . ' PHP/' . PHP_VERSION;
-        $this->assertStringContainsString($expectedString,$userAgent);
+        $this->assertMatchesRegularExpression('/^User-Agent: twilio-php\/[0-9.]*\s[(][\w]*\s[\w]*[)]\sPHP\/[0-9.]*/',$userAgent);
     }
 
     public function testUserAgentExtensionsWhenSet(): void {
-        $userAgentExtensions = ['twilio-run/2.0.0-test', 'flex-plugin/3.4.0'];
-        $client = new Client('username', 'password', null,null,null,null,$userAgentExtensions);
+        $expectedExtensions = ['twilio-run/2.0.0-test', 'flex-plugin/3.4.0'];
+        $client = new Client('username', 'password', null,null,null,null,$expectedExtensions);
         $client->request('GET', 'https://api.twilio.com');
         $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
-        $expectedString = 'twilio-php/' . VersionInfo::string() . ' (' . php_uname("s") . ' ' . php_uname("m") . ')' . ' PHP/' . PHP_VERSION . ' ' . implode(' ',$userAgentExtensions);
-        $this->assertStringContainsString($expectedString,$userAgent);
+        $userAgentExtensions = array_slice(explode(" ",$userAgent),-count($expectedExtensions));
+        $this->assertEquals($userAgentExtensions,$expectedExtensions);
     }
 
 }
