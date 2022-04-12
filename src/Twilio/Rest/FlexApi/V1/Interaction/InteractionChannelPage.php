@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\FlexApi\V1\Interaction;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class CommandPage extends Page {
+class InteractionChannelPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +28,10 @@ class CommandPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return CommandInstance \Twilio\Rest\Supersim\V1\CommandInstance
+     * @return InteractionChannelInstance \Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelInstance
      */
-    public function buildInstance(array $payload): CommandInstance {
-        return new CommandInstance($this->version, $payload);
+    public function buildInstance(array $payload): InteractionChannelInstance {
+        return new InteractionChannelInstance($this->version, $payload, $this->solution['interactionSid']);
     }
 
     /**
@@ -43,6 +40,6 @@ class CommandPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Supersim.V1.CommandPage]';
+        return '[Twilio.FlexApi.V1.InteractionChannelPage]';
     }
 }

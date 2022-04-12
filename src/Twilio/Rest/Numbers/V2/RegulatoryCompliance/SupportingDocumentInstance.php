@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string $mimeType
  * @property string $status
+ * @property string $failureReason
  * @property string $type
  * @property array $attributes
  * @property \DateTime $dateCreated
@@ -46,6 +47,7 @@ class SupportingDocumentInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'mimeType' => Values::array_get($payload, 'mime_type'),
             'status' => Values::array_get($payload, 'status'),
+            'failureReason' => Values::array_get($payload, 'failure_reason'),
             'type' => Values::array_get($payload, 'type'),
             'attributes' => Values::array_get($payload, 'attributes'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

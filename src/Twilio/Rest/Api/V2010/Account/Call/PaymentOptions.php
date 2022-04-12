@@ -28,9 +28,9 @@ abstract class PaymentOptions {
      * @param int $minPostalCodeLength A positive integer that is used to validate
      *                                 the length of the `PostalCode` inputted by
      *                                 the user.
-     * @param array $parameter A single level JSON string that is required when
-     *                         accepting certain information specific only to ACH
-     *                         payments.
+     * @param array $parameter A single-level JSON object used to pass custom
+     *                         parameters to payment processors. (Required for ACH
+     *                         payments)
      * @param string $paymentConnector This is the unique name corresponding to the
      *                                 Payment Gateway Connector installed in the
      *                                 Twilio Add-ons.
@@ -80,9 +80,9 @@ class CreatePaymentOptions extends Options {
      * @param int $minPostalCodeLength A positive integer that is used to validate
      *                                 the length of the `PostalCode` inputted by
      *                                 the user.
-     * @param array $parameter A single level JSON string that is required when
-     *                         accepting certain information specific only to ACH
-     *                         payments.
+     * @param array $parameter A single-level JSON object used to pass custom
+     *                         parameters to payment processors. (Required for ACH
+     *                         payments)
      * @param string $paymentConnector This is the unique name corresponding to the
      *                                 Payment Gateway Connector installed in the
      *                                 Twilio Add-ons.
@@ -191,11 +191,11 @@ class CreatePaymentOptions extends Options {
     }
 
     /**
-     * A single level JSON string that is required when accepting certain information specific only to ACH payments. The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).
+     * A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).
      *
-     * @param array $parameter A single level JSON string that is required when
-     *                         accepting certain information specific only to ACH
-     *                         payments.
+     * @param array $parameter A single-level JSON object used to pass custom
+     *                         parameters to payment processors. (Required for ACH
+     *                         payments)
      * @return $this Fluent Builder
      */
     public function setParameter(array $parameter): self {

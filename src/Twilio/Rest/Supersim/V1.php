@@ -12,7 +12,6 @@ namespace Twilio\Rest\Supersim;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Supersim\V1\CommandList;
 use Twilio\Rest\Supersim\V1\EsimProfileList;
 use Twilio\Rest\Supersim\V1\FleetList;
 use Twilio\Rest\Supersim\V1\IpCommandList;
@@ -24,7 +23,6 @@ use Twilio\Rest\Supersim\V1\UsageRecordList;
 use Twilio\Version;
 
 /**
- * @property CommandList $commands
  * @property EsimProfileList $esimProfiles
  * @property FleetList $fleets
  * @property IpCommandList $ipCommands
@@ -33,7 +31,6 @@ use Twilio\Version;
  * @property SimList $sims
  * @property SmsCommandList $smsCommands
  * @property UsageRecordList $usageRecords
- * @method \Twilio\Rest\Supersim\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Supersim\V1\EsimProfileContext esimProfiles(string $sid)
  * @method \Twilio\Rest\Supersim\V1\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Supersim\V1\IpCommandContext ipCommands(string $sid)
@@ -43,7 +40,6 @@ use Twilio\Version;
  * @method \Twilio\Rest\Supersim\V1\SmsCommandContext smsCommands(string $sid)
  */
 class V1 extends Version {
-    protected $_commands;
     protected $_esimProfiles;
     protected $_fleets;
     protected $_ipCommands;
@@ -61,13 +57,6 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
-    }
-
-    protected function getCommands(): CommandList {
-        if (!$this->_commands) {
-            $this->_commands = new CommandList($this);
-        }
-        return $this->_commands;
     }
 
     protected function getEsimProfiles(): EsimProfileList {

@@ -28,9 +28,6 @@ use Twilio\Version;
  * @property bool $dataEnabled
  * @property int $dataLimit
  * @property string $dataMetering
- * @property bool $commandsEnabled
- * @property string $commandsUrl
- * @property string $commandsMethod
  * @property bool $smsCommandsEnabled
  * @property string $smsCommandsUrl
  * @property string $smsCommandsMethod
@@ -60,9 +57,6 @@ class FleetInstance extends InstanceResource {
             'dataEnabled' => Values::array_get($payload, 'data_enabled'),
             'dataLimit' => Values::array_get($payload, 'data_limit'),
             'dataMetering' => Values::array_get($payload, 'data_metering'),
-            'commandsEnabled' => Values::array_get($payload, 'commands_enabled'),
-            'commandsUrl' => Values::array_get($payload, 'commands_url'),
-            'commandsMethod' => Values::array_get($payload, 'commands_method'),
             'smsCommandsEnabled' => Values::array_get($payload, 'sms_commands_enabled'),
             'smsCommandsUrl' => Values::array_get($payload, 'sms_commands_url'),
             'smsCommandsMethod' => Values::array_get($payload, 'sms_commands_method'),
