@@ -18,10 +18,12 @@ use Twilio\Rest\Verify\V2;
  * @property \Twilio\Rest\Verify\V2\FormList $forms
  * @property \Twilio\Rest\Verify\V2\ServiceList $services
  * @property \Twilio\Rest\Verify\V2\VerificationAttemptList $verificationAttempts
+ * @property \Twilio\Rest\Verify\V2\VerificationAttemptsSummaryList $verificationAttemptsSummary
  * @property \Twilio\Rest\Verify\V2\TemplateList $templates
  * @method \Twilio\Rest\Verify\V2\FormContext forms(string $formType)
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Verify\V2\VerificationAttemptContext verificationAttempts(string $sid)
+ * @method \Twilio\Rest\Verify\V2\VerificationAttemptsSummaryContext verificationAttemptsSummary()
  */
 class Verify extends Domain {
     protected $_v2;
@@ -111,6 +113,14 @@ class Verify extends Domain {
      */
     protected function contextVerificationAttempts(string $sid): \Twilio\Rest\Verify\V2\VerificationAttemptContext {
         return $this->v2->verificationAttempts($sid);
+    }
+
+    protected function getVerificationAttemptsSummary(): \Twilio\Rest\Verify\V2\VerificationAttemptsSummaryList {
+        return $this->v2->verificationAttemptsSummary;
+    }
+
+    protected function contextVerificationAttemptsSummary(): \Twilio\Rest\Verify\V2\VerificationAttemptsSummaryContext {
+        return $this->v2->verificationAttemptsSummary();
     }
 
     protected function getTemplates(): \Twilio\Rest\Verify\V2\TemplateList {

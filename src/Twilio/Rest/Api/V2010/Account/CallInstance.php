@@ -42,7 +42,6 @@ use Twilio\Version;
  * @property string $priceUnit
  * @property string $direction
  * @property string $answeredBy
- * @property string $annotation
  * @property string $apiVersion
  * @property string $forwardedFrom
  * @property string $groupSid
@@ -92,7 +91,6 @@ class CallInstance extends InstanceResource {
             'priceUnit' => Values::array_get($payload, 'price_unit'),
             'direction' => Values::array_get($payload, 'direction'),
             'answeredBy' => Values::array_get($payload, 'answered_by'),
-            'annotation' => Values::array_get($payload, 'annotation'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'forwardedFrom' => Values::array_get($payload, 'forwarded_from'),
             'groupSid' => Values::array_get($payload, 'group_sid'),

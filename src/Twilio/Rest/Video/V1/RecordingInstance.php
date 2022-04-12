@@ -31,6 +31,8 @@ use Twilio\Version;
  * @property string $trackName
  * @property string $offset
  * @property string $mediaExternalLocation
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
  * @property array $links
  */
 class RecordingInstance extends InstanceResource {
@@ -61,6 +63,8 @@ class RecordingInstance extends InstanceResource {
             'trackName' => Values::array_get($payload, 'track_name'),
             'offset' => Values::array_get($payload, 'offset'),
             'mediaExternalLocation' => Values::array_get($payload, 'media_external_location'),
+            'statusCallback' => Values::array_get($payload, 'status_callback'),
+            'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
             'links' => Values::array_get($payload, 'links'),
         ];
 

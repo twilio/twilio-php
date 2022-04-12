@@ -16,12 +16,14 @@ use Twilio\Rest\Verify\V2\FormList;
 use Twilio\Rest\Verify\V2\ServiceList;
 use Twilio\Rest\Verify\V2\TemplateList;
 use Twilio\Rest\Verify\V2\VerificationAttemptList;
+use Twilio\Rest\Verify\V2\VerificationAttemptsSummaryList;
 use Twilio\Version;
 
 /**
  * @property FormList $forms
  * @property ServiceList $services
  * @property VerificationAttemptList $verificationAttempts
+ * @property VerificationAttemptsSummaryList $verificationAttemptsSummary
  * @property TemplateList $templates
  * @method \Twilio\Rest\Verify\V2\FormContext forms(string $formType)
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
@@ -31,6 +33,7 @@ class V2 extends Version {
     protected $_forms;
     protected $_services;
     protected $_verificationAttempts;
+    protected $_verificationAttemptsSummary;
     protected $_templates;
 
     /**
@@ -62,6 +65,13 @@ class V2 extends Version {
             $this->_verificationAttempts = new VerificationAttemptList($this);
         }
         return $this->_verificationAttempts;
+    }
+
+    protected function getVerificationAttemptsSummary(): VerificationAttemptsSummaryList {
+        if (!$this->_verificationAttemptsSummary) {
+            $this->_verificationAttemptsSummary = new VerificationAttemptsSummaryList($this);
+        }
+        return $this->_verificationAttemptsSummary;
     }
 
     protected function getTemplates(): TemplateList {

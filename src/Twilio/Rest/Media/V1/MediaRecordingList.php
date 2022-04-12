@@ -7,9 +7,8 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\Media\V1;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Stream;
@@ -17,11 +16,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class CommandList extends ListResource {
+class MediaRecordingList extends ListResource {
     /**
-     * Construct the CommandList
+     * Construct the MediaRecordingList
      *
      * @param Version $version Version that contains the resource
      */
@@ -31,35 +30,11 @@ class CommandList extends ListResource {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Commands';
+        $this->uri = '/MediaRecordings';
     }
 
     /**
-     * Create the CommandInstance
-     *
-     * @param string $sim The sid or unique_name of the SIM to send the Command to
-     * @param string $command The message body of the command
-     * @param array|Options $options Optional Arguments
-     * @return CommandInstance Created CommandInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(string $sim, string $command, array $options = []): CommandInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'Sim' => $sim,
-            'Command' => $command,
-            'CallbackMethod' => $options['callbackMethod'],
-            'CallbackUrl' => $options['callbackUrl'],
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new CommandInstance($this->version, $payload);
-    }
-
-    /**
-     * Streams CommandInstance records from the API as a generator stream.
+     * Streams MediaRecordingInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -86,7 +61,7 @@ class CommandList extends ListResource {
     }
 
     /**
-     * Reads CommandInstance records from the API as a list.
+     * Reads MediaRecordingInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -99,29 +74,30 @@ class CommandList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return CommandInstance[] Array of results
+     * @return MediaRecordingInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of CommandInstance records from the API.
+     * Retrieve a single page of MediaRecordingInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return CommandPage Page of CommandInstance
+     * @return MediaRecordingPage Page of MediaRecordingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CommandPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaRecordingPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'Sim' => $options['sim'],
+            'Order' => $options['order'],
             'Status' => $options['status'],
-            'Direction' => $options['direction'],
+            'ProcessorSid' => $options['processorSid'],
+            'SourceSid' => $options['sourceSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -129,32 +105,32 @@ class CommandList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new CommandPage($this->version, $response, $this->solution);
+        return new MediaRecordingPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of CommandInstance records from the API.
+     * Retrieve a specific page of MediaRecordingInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return CommandPage Page of CommandInstance
+     * @return MediaRecordingPage Page of MediaRecordingInstance
      */
-    public function getPage(string $targetUrl): CommandPage {
+    public function getPage(string $targetUrl): MediaRecordingPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new CommandPage($this->version, $response, $this->solution);
+        return new MediaRecordingPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a CommandContext
+     * Constructs a MediaRecordingContext
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext(string $sid): CommandContext {
-        return new CommandContext($this->version, $sid);
+    public function getContext(string $sid): MediaRecordingContext {
+        return new MediaRecordingContext($this->version, $sid);
     }
 
     /**
@@ -163,6 +139,6 @@ class CommandList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Supersim.V1.CommandList]';
+        return '[Twilio.Media.V1.MediaRecordingList]';
     }
 }

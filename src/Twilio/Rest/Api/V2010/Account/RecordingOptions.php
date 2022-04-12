@@ -14,6 +14,15 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
+     * @param bool $includeSoftDeleted A boolean parameter indicating whether to
+     *                                 retrieve soft deleted recordings or not.
+     * @return FetchRecordingOptions Options builder
+     */
+    public static function fetch(bool $includeSoftDeleted = Values::NONE): FetchRecordingOptions {
+        return new FetchRecordingOptions($includeSoftDeleted);
+    }
+
+    /**
      * @param string $dateCreatedBefore Only include recordings that were created
      *                                  on this date
      * @param string $dateCreated Only include recordings that were created on this
@@ -22,10 +31,44 @@ abstract class RecordingOptions {
      *                                 this date
      * @param string $callSid The Call SID of the resources to read
      * @param string $conferenceSid Read by unique Conference SID for the recording
+     * @param bool $includeSoftDeleted A boolean parameter indicating whether to
+     *                                 retrieve soft deleted recordings or not.
      * @return ReadRecordingOptions Options builder
      */
-    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $callSid = Values::NONE, string $conferenceSid = Values::NONE): ReadRecordingOptions {
-        return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $callSid, $conferenceSid);
+    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $callSid = Values::NONE, string $conferenceSid = Values::NONE, bool $includeSoftDeleted = Values::NONE): ReadRecordingOptions {
+        return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $callSid, $conferenceSid, $includeSoftDeleted);
+    }
+}
+
+class FetchRecordingOptions extends Options {
+    /**
+     * @param bool $includeSoftDeleted A boolean parameter indicating whether to
+     *                                 retrieve soft deleted recordings or not.
+     */
+    public function __construct(bool $includeSoftDeleted = Values::NONE) {
+        $this->options['includeSoftDeleted'] = $includeSoftDeleted;
+    }
+
+    /**
+     * A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
+     *
+     * @param bool $includeSoftDeleted A boolean parameter indicating whether to
+     *                                 retrieve soft deleted recordings or not.
+     * @return $this Fluent Builder
+     */
+    public function setIncludeSoftDeleted(bool $includeSoftDeleted): self {
+        $this->options['includeSoftDeleted'] = $includeSoftDeleted;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Api.V2010.FetchRecordingOptions ' . $options . ']';
     }
 }
 
@@ -39,13 +82,16 @@ class ReadRecordingOptions extends Options {
      *                                 this date
      * @param string $callSid The Call SID of the resources to read
      * @param string $conferenceSid Read by unique Conference SID for the recording
+     * @param bool $includeSoftDeleted A boolean parameter indicating whether to
+     *                                 retrieve soft deleted recordings or not.
      */
-    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $callSid = Values::NONE, string $conferenceSid = Values::NONE) {
+    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $callSid = Values::NONE, string $conferenceSid = Values::NONE, bool $includeSoftDeleted = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['callSid'] = $callSid;
         $this->options['conferenceSid'] = $conferenceSid;
+        $this->options['includeSoftDeleted'] = $includeSoftDeleted;
     }
 
     /**
@@ -103,6 +149,18 @@ class ReadRecordingOptions extends Options {
      */
     public function setConferenceSid(string $conferenceSid): self {
         $this->options['conferenceSid'] = $conferenceSid;
+        return $this;
+    }
+
+    /**
+     * A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
+     *
+     * @param bool $includeSoftDeleted A boolean parameter indicating whether to
+     *                                 retrieve soft deleted recordings or not.
+     * @return $this Fluent Builder
+     */
+    public function setIncludeSoftDeleted(bool $includeSoftDeleted): self {
+        $this->options['includeSoftDeleted'] = $includeSoftDeleted;
         return $this;
     }
 

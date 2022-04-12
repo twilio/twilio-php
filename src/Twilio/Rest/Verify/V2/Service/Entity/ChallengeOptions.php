@@ -43,10 +43,11 @@ abstract class ChallengeOptions {
 
     /**
      * @param string $authPayload Optional payload to verify the Challenge
+     * @param array $metadata Metadata of the challenge.
      * @return UpdateChallengeOptions Options builder
      */
-    public static function update(string $authPayload = Values::NONE): UpdateChallengeOptions {
-        return new UpdateChallengeOptions($authPayload);
+    public static function update(string $authPayload = Values::NONE, array $metadata = Values::ARRAY_NONE): UpdateChallengeOptions {
+        return new UpdateChallengeOptions($authPayload, $metadata);
     }
 }
 
@@ -197,9 +198,11 @@ class ReadChallengeOptions extends Options {
 class UpdateChallengeOptions extends Options {
     /**
      * @param string $authPayload Optional payload to verify the Challenge
+     * @param array $metadata Metadata of the challenge.
      */
-    public function __construct(string $authPayload = Values::NONE) {
+    public function __construct(string $authPayload = Values::NONE, array $metadata = Values::ARRAY_NONE) {
         $this->options['authPayload'] = $authPayload;
+        $this->options['metadata'] = $metadata;
     }
 
     /**
@@ -210,6 +213,17 @@ class UpdateChallengeOptions extends Options {
      */
     public function setAuthPayload(string $authPayload): self {
         $this->options['authPayload'] = $authPayload;
+        return $this;
+    }
+
+    /**
+     * Custom metadata associated with the challenge. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{"os": "Android"}`. Can be up to 1024 characters in length.
+     *
+     * @param array $metadata Metadata of the challenge.
+     * @return $this Fluent Builder
+     */
+    public function setMetadata(array $metadata): self {
+        $this->options['metadata'] = $metadata;
         return $this;
     }
 

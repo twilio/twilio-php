@@ -12,8 +12,10 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList;
 use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -47,11 +49,18 @@ class RecordingContext extends InstanceContext {
     /**
      * Fetch the RecordingInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RecordingInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
+    public function fetch(array $options = []): RecordingInstance {
+        $options = new Values($options);
+
+        $params = Values::of([
+            'IncludeSoftDeleted' => Serialize::booleanToString($options['includeSoftDeleted']),
+        ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new RecordingInstance(
             $this->version,

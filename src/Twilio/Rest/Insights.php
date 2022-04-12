@@ -16,11 +16,13 @@ use Twilio\Rest\Insights\V1;
 /**
  * @property \Twilio\Rest\Insights\V1 $v1
  * @property \Twilio\Rest\Insights\V1\SettingList $settings
+ * @property \Twilio\Rest\Insights\V1\AnnotationList $annotation
  * @property \Twilio\Rest\Insights\V1\CallList $calls
  * @property \Twilio\Rest\Insights\V1\CallSummariesList $callSummaries
  * @property \Twilio\Rest\Insights\V1\ConferenceList $conferences
  * @property \Twilio\Rest\Insights\V1\RoomList $rooms
  * @method \Twilio\Rest\Insights\V1\SettingContext settings()
+ * @method \Twilio\Rest\Insights\V1\AnnotationContext annotation(string $callSid)
  * @method \Twilio\Rest\Insights\V1\CallContext calls(string $sid)
  * @method \Twilio\Rest\Insights\V1\ConferenceContext conferences(string $conferenceSid)
  * @method \Twilio\Rest\Insights\V1\RoomContext rooms(string $roomSid)
@@ -88,6 +90,17 @@ class Insights extends Domain {
 
     protected function contextSettings(): \Twilio\Rest\Insights\V1\SettingContext {
         return $this->v1->settings();
+    }
+
+    protected function getAnnotation(): \Twilio\Rest\Insights\V1\AnnotationList {
+        return $this->v1->annotation;
+    }
+
+    /**
+     * @param string $callSid The call_sid
+     */
+    protected function contextAnnotation(string $callSid): \Twilio\Rest\Insights\V1\AnnotationContext {
+        return $this->v1->annotation($callSid);
     }
 
     protected function getCalls(): \Twilio\Rest\Insights\V1\CallList {

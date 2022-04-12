@@ -50,6 +50,7 @@ class AccessTokenList extends ListResource {
             'Identity' => $identity,
             'FactorType' => $factorType,
             'FactorFriendlyName' => $options['factorFriendlyName'],
+            'Ttl' => $options['ttl'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

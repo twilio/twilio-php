@@ -22,13 +22,17 @@ class StreamTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->streams->create();
+                                     ->streams->create("https://example.com");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $values = ['Url' => "https://example.com", ];
+
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams.json',
+            null,
+            $values
         ));
     }
 
@@ -50,7 +54,7 @@ class StreamTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->streams->create();
+                                           ->streams->create("https://example.com");
 
         $this->assertNotNull($actual);
     }
@@ -73,7 +77,7 @@ class StreamTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->streams->create();
+                                           ->streams->create("https://example.com");
 
         $this->assertNotNull($actual);
     }

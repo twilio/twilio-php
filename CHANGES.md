@@ -1,6 +1,73 @@
 twilio-php Changelog
 ====================
 
+[2022-04-06] Version 6.36.1
+---------------------------
+**Library - Chore**
+- [PR #726](https://github.com/twilio/twilio-php/pull/726): update user agent string for twilio-php. Thanks to [@claudiachua](https://github.com/claudiachua)!
+
+**Api**
+- Updated `provider_sid` visibility to private
+
+**Verify**
+- Verify List Attempts API summary endpoint added.
+- Update PII documentation for `AccessTokens` `factor_friendly_name` property.
+
+**Voice**
+- make annotation parameter from /Calls API private
+
+
+[2022-03-23] Version 6.36.0
+---------------------------
+**Library - Docs**
+- [PR #725](https://github.com/twilio/twilio-php/pull/725): add upgrade guide for Php 5.x to 6.x. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Api**
+- Change `stream` url parameter to non optional
+- Add `verify-totp` and `verify-whatsapp-conversations-business-initiated` categories to `usage_record` API
+
+**Chat**
+- Added v3 Channel update endpoint to support Public to Private channel migration
+
+**Flex**
+- Private Beta release of the Interactions API to support the upcoming release of Flex Conversations at the end of Q1 2022.
+- Adding `channel_configs` object to Flex Configuration
+
+**Media**
+- Add max_duration param to PlayerStreamer
+
+**Supersim**
+- Remove Commands resource, use SmsCommands resource instead **(breaking change)**
+
+**Taskrouter**
+- Add limits to `split_by_wait_time` for Cumulative Statistics Endpoint
+
+**Video**
+- Change recording `status_callback_method` type from `enum` to `http_method` **(breaking change)**
+- Add `status_callback` and `status_callback_method` to composition
+- Add `status_callback` and `status_callback_method` to recording
+
+
+[2022-03-09] Version 6.35.1
+---------------------------
+**Library - Chore**
+- [PR #722](https://github.com/twilio/twilio-php/pull/722): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings
+
+**Chat**
+- Add `X-Twilio-Wehook-Enabled` header to `delete` method in UserChannel resource
+
+**Numbers**
+- Expose `failure_reason` in the Supporting Documents resources
+
+**Verify**
+- Add optional `metadata` parameter to "verify challenge" endpoint, so the SDK/App can attach relevant information from the device when responding to challenges.
+- remove beta feature flag to list atempt api operations.
+- Add `ttl` and `date_created` properties to `AccessTokens`.
+
+
 [2022-02-23] Version 6.35.0
 ---------------------------
 **Api**

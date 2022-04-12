@@ -19,10 +19,11 @@ abstract class PlayerStreamerOptions {
      *                               PlayerStreamer event updates
      * @param string $statusCallbackMethod The HTTP method Twilio should use to
      *                                     call the `status_callback` URL
+     * @param int $maxDuration Maximum PlayerStreamer duration in seconds
      * @return CreatePlayerStreamerOptions Options builder
      */
-    public static function create(bool $video = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): CreatePlayerStreamerOptions {
-        return new CreatePlayerStreamerOptions($video, $statusCallback, $statusCallbackMethod);
+    public static function create(bool $video = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxDuration = Values::NONE): CreatePlayerStreamerOptions {
+        return new CreatePlayerStreamerOptions($video, $statusCallback, $statusCallbackMethod, $maxDuration);
     }
 
     /**
@@ -42,11 +43,13 @@ class CreatePlayerStreamerOptions extends Options {
      *                               PlayerStreamer event updates
      * @param string $statusCallbackMethod The HTTP method Twilio should use to
      *                                     call the `status_callback` URL
+     * @param int $maxDuration Maximum PlayerStreamer duration in seconds
      */
-    public function __construct(bool $video = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
+    public function __construct(bool $video = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxDuration = Values::NONE) {
         $this->options['video'] = $video;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        $this->options['maxDuration'] = $maxDuration;
     }
 
     /**
@@ -81,6 +84,17 @@ class CreatePlayerStreamerOptions extends Options {
      */
     public function setStatusCallbackMethod(string $statusCallbackMethod): self {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        return $this;
+    }
+
+    /**
+     * The maximum time, in seconds, that the PlayerStreamer can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
+     *
+     * @param int $maxDuration Maximum PlayerStreamer duration in seconds
+     * @return $this Fluent Builder
+     */
+    public function setMaxDuration(int $maxDuration): self {
+        $this->options['maxDuration'] = $maxDuration;
         return $this;
     }
 
