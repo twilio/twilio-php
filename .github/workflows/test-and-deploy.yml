@@ -24,25 +24,38 @@ jobs:
     steps:
       - name: Checkout twilio-php
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Setup PHP Action
         uses: shivammathur/setup-php@2.15.0
         with:
           php-version: ${{ matrix.php }}
+          coverage: xdebug
         id: php
 
       - name: Composer webhook config
         run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: composer install
-
       - name: Update Dependencies
-        if: ${{ matrix.dependencies == 'lowest' }}
+        if: matrix.dependencies == 'lowest'
         run: composer update --prefer-lowest --prefer-stable -n
 
       - name: Run Tests
         run: make install test
+
+      - name: Fix code coverage paths
+        run: |
+          if [ -f "coverage.xml" ]; then
+            sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
+          fi
+
+      - name: Install SonarCloud scanner and run analysis
+        uses: SonarSource/sonarcloud-github-action@master
+        if: (github.event_name == 'pull_request' || github.ref_type == 'branch') && !github.event.pull_request.head.repo.fork && matrix.php == '8.1' && matrix.dependencies == 'highest'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     name: Deploy

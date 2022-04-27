@@ -19,7 +19,7 @@ install: clean
 vendor: install
 
 test:
-	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
+	@PATH=vendor/bin:$(PATH) phpunit -d memory_limit=512M --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml --coverage-clover=coverage.xml
 
 PHPDOX_DIR=vendor-theseer
 docs-install:
