@@ -2,7 +2,7 @@ vendor/
 vendor-theseer/
 composer.phar
 composer.lock
-coverage
+coverage.xml
 package.xml
 *.tgz
 docs
