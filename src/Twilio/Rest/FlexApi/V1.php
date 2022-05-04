@@ -15,6 +15,7 @@ use Twilio\InstanceContext;
 use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
+use Twilio\Rest\FlexApi\V1\InteractionList;
 use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
@@ -22,15 +23,18 @@ use Twilio\Version;
  * @property ChannelList $channel
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
+ * @property InteractionList $interaction
  * @property WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\InteractionContext interaction(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
 class V1 extends Version {
     protected $_channel;
     protected $_configuration;
     protected $_flexFlow;
+    protected $_interaction;
     protected $_webChannel;
 
     /**
@@ -62,6 +66,13 @@ class V1 extends Version {
             $this->_flexFlow = new FlexFlowList($this);
         }
         return $this->_flexFlow;
+    }
+
+    protected function getInteraction(): InteractionList {
+        if (!$this->_interaction) {
+            $this->_interaction = new InteractionList($this);
+        }
+        return $this->_interaction;
     }
 
     protected function getWebChannel(): WebChannelList {

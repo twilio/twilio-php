@@ -52,7 +52,7 @@ class ServiceTest extends HolodeckTestCase {
                 "do_not_share_warning_enabled": false,
                 "custom_code_enabled": true,
                 "push": {
-                    "include_date": true,
+                    "include_date": false,
                     "apn_credential_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "fcm_credential_sid": null
                 },
@@ -62,6 +62,7 @@ class ServiceTest extends HolodeckTestCase {
                     "code_length": 3,
                     "skew": 2
                 },
+                "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -115,7 +116,7 @@ class ServiceTest extends HolodeckTestCase {
                 "do_not_share_warning_enabled": false,
                 "custom_code_enabled": true,
                 "push": {
-                    "include_date": true,
+                    "include_date": false,
                     "apn_credential_sid": null,
                     "fcm_credential_sid": null
                 },
@@ -125,6 +126,7 @@ class ServiceTest extends HolodeckTestCase {
                     "code_length": null,
                     "skew": null
                 },
+                "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -214,7 +216,7 @@ class ServiceTest extends HolodeckTestCase {
                         "do_not_share_warning_enabled": false,
                         "custom_code_enabled": true,
                         "push": {
-                            "include_date": true,
+                            "include_date": false,
                             "apn_credential_sid": null,
                             "fcm_credential_sid": null
                         },
@@ -224,6 +226,7 @@ class ServiceTest extends HolodeckTestCase {
                             "code_length": null,
                             "skew": null
                         },
+                        "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -279,7 +282,7 @@ class ServiceTest extends HolodeckTestCase {
                 "do_not_share_warning_enabled": false,
                 "custom_code_enabled": true,
                 "push": {
-                    "include_date": true,
+                    "include_date": false,
                     "apn_credential_sid": null,
                     "fcm_credential_sid": "CRbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
                 },
@@ -289,6 +292,7 @@ class ServiceTest extends HolodeckTestCase {
                     "code_length": 3,
                     "skew": 2
                 },
+                "default_template_sid": "HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

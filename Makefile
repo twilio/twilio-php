@@ -18,11 +18,16 @@ install: clean
 
 vendor: install
 
-test: install
-	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
+test:
+	@PATH=vendor/bin:$(PATH) phpunit -d memory_limit=512M --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml --coverage-clover=coverage.xml
+
+PHPDOX_DIR=vendor-theseer
+docs-install:
+	COMPOSER_VENDOR_DIR=${PHPDOX_DIR} composer require --dev theseer/phpdox:\^0.12.0
+	composer remove --dev theseer/phpdox
 
 docs:
-	vendor/bin/phpdox
+	${PHPDOX_DIR}/bin/phpdox
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
@@ -31,13 +36,12 @@ authors:
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
 docker-build:
 	docker build -t twilio/twilio-php .
-	docker tag twilio/twilio-php twilio/twilio-php:${TRAVIS_TAG}
+	docker tag twilio/twilio-php twilio/twilio-php:${GITHUB_TAG}
 	docker tag twilio/twilio-php twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 	docker tag twilio/twilio-php twilio/twilio-php:latest
 
 docker-push:
-	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-	docker push twilio/twilio-php:${TRAVIS_TAG}
+	docker push twilio/twilio-php:${GITHUB_TAG}
 	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 	docker push twilio/twilio-php:latest
 

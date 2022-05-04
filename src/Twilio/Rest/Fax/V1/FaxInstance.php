@@ -12,7 +12,6 @@ namespace Twilio\Rest\Fax\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Rest\Fax\V1\Fax\FaxMediaList;
 use Twilio\Values;
 use Twilio\Version;
@@ -99,17 +98,6 @@ class FaxInstance extends InstanceResource {
      */
     public function fetch(): FaxInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the FaxInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return FaxInstance Updated FaxInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): FaxInstance {
-        return $this->proxy()->update($options);
     }
 
     /**

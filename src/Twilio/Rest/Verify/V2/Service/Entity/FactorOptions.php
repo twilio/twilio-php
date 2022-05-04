@@ -20,7 +20,7 @@ abstract class FactorOptions {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @param string $friendlyName The friendly name of this Factor
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -29,10 +29,12 @@ abstract class FactorOptions {
      *                        given time
      * @param int $configCodeLength Number of digits for generated TOTP codes
      * @param string $configAlg The algorithm used to derive the TOTP codes
+     * @param string $configNotificationPlatform The transport technology used to
+     *                                           generate the Notification Token
      * @return UpdateFactorOptions Options builder
      */
-    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE): UpdateFactorOptions {
-        return new UpdateFactorOptions($authPayload, $friendlyName, $configNotificationToken, $configSdkVersion, $configTimeStep, $configSkew, $configCodeLength, $configAlg);
+    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE, string $configNotificationPlatform = Values::NONE): UpdateFactorOptions {
+        return new UpdateFactorOptions($authPayload, $friendlyName, $configNotificationToken, $configSdkVersion, $configTimeStep, $configSkew, $configCodeLength, $configAlg, $configNotificationPlatform);
     }
 }
 
@@ -41,7 +43,7 @@ class UpdateFactorOptions extends Options {
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @param string $friendlyName The friendly name of this Factor
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -50,8 +52,10 @@ class UpdateFactorOptions extends Options {
      *                        given time
      * @param int $configCodeLength Number of digits for generated TOTP codes
      * @param string $configAlg The algorithm used to derive the TOTP codes
+     * @param string $configNotificationPlatform The transport technology used to
+     *                                           generate the Notification Token
      */
-    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE) {
+    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE, string $configNotificationPlatform = Values::NONE) {
         $this->options['authPayload'] = $authPayload;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['configNotificationToken'] = $configNotificationToken;
@@ -60,6 +64,7 @@ class UpdateFactorOptions extends Options {
         $this->options['configSkew'] = $configSkew;
         $this->options['configCodeLength'] = $configCodeLength;
         $this->options['configAlg'] = $configAlg;
+        $this->options['configNotificationPlatform'] = $configNotificationPlatform;
     }
 
     /**
@@ -86,9 +91,9 @@ class UpdateFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
+     * For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
      *
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @return $this Fluent Builder
      */
@@ -151,6 +156,20 @@ class UpdateFactorOptions extends Options {
      */
     public function setConfigAlg(string $configAlg): self {
         $this->options['configAlg'] = $configAlg;
+        return $this;
+    }
+
+    /**
+     * The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.
+
+    Required when `factor_type` is `push`.
+     *
+     * @param string $configNotificationPlatform The transport technology used to
+     *                                           generate the Notification Token
+     * @return $this Fluent Builder
+     */
+    public function setConfigNotificationPlatform(string $configNotificationPlatform): self {
+        $this->options['configNotificationPlatform'] = $configNotificationPlatform;
         return $this;
     }
 

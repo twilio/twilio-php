@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property array $groupingSids
  * @property string $trackName
  * @property string $offset
+ * @property string $mediaExternalLocation
  * @property string $roomSid
  * @property array $links
  */
@@ -62,6 +63,7 @@ class RoomRecordingInstance extends InstanceResource {
             'groupingSids' => Values::array_get($payload, 'grouping_sids'),
             'trackName' => Values::array_get($payload, 'track_name'),
             'offset' => Values::array_get($payload, 'offset'),
+            'mediaExternalLocation' => Values::array_get($payload, 'media_external_location'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
             'links' => Values::array_get($payload, 'links'),
         ];

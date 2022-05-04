@@ -13,18 +13,23 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Chat\V1;
 use Twilio\Rest\Chat\V2;
+use Twilio\Rest\Chat\V3;
 
 /**
  * @property \Twilio\Rest\Chat\V1 $v1
  * @property \Twilio\Rest\Chat\V2 $v2
+ * @property \Twilio\Rest\Chat\V3 $v3
  * @property \Twilio\Rest\Chat\V2\CredentialList $credentials
  * @property \Twilio\Rest\Chat\V2\ServiceList $services
+ * @property \Twilio\Rest\Chat\V3\ChannelList $channels
  * @method \Twilio\Rest\Chat\V2\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Chat\V2\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Chat\V3\ChannelContext channels(string $serviceSid, string $sid)
  */
 class Chat extends Domain {
     protected $_v1;
     protected $_v2;
+    protected $_v3;
 
     /**
      * Construct the Chat Domain
@@ -55,6 +60,16 @@ class Chat extends Domain {
             $this->_v2 = new V2($this);
         }
         return $this->_v2;
+    }
+
+    /**
+     * @return V3 Version v3 of chat
+     */
+    protected function getV3(): V3 {
+        if (!$this->_v3) {
+            $this->_v3 = new V3($this);
+        }
+        return $this->_v3;
     }
 
     /**
@@ -110,6 +125,18 @@ class Chat extends Domain {
      */
     protected function contextServices(string $sid): \Twilio\Rest\Chat\V2\ServiceContext {
         return $this->v2->services($sid);
+    }
+
+    protected function getChannels(): \Twilio\Rest\Chat\V3\ChannelList {
+        return $this->v3->channels;
+    }
+
+    /**
+     * @param string $serviceSid Service Sid.
+     * @param string $sid A string that uniquely identifies this Channel.
+     */
+    protected function contextChannels(string $serviceSid, string $sid): \Twilio\Rest\Chat\V3\ChannelContext {
+        return $this->v3->channels($serviceSid, $sid);
     }
 
     /**

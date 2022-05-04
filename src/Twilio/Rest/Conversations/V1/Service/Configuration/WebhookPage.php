@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\Conversations\V1\Service\Configuration;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class CommandPage extends Page {
+class WebhookPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +28,10 @@ class CommandPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return CommandInstance \Twilio\Rest\Supersim\V1\CommandInstance
+     * @return WebhookInstance \Twilio\Rest\Conversations\V1\Service\Configuration\WebhookInstance
      */
-    public function buildInstance(array $payload): CommandInstance {
-        return new CommandInstance($this->version, $payload);
+    public function buildInstance(array $payload): WebhookInstance {
+        return new WebhookInstance($this->version, $payload, $this->solution['chatServiceSid']);
     }
 
     /**
@@ -43,6 +40,6 @@ class CommandPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Supersim.V1.CommandPage]';
+        return '[Twilio.Conversations.V1.WebhookPage]';
     }
 }

@@ -16,6 +16,7 @@ use Twilio\Rest\Conversations\V1;
 /**
  * @property \Twilio\Rest\Conversations\V1 $v1
  * @property \Twilio\Rest\Conversations\V1\ConfigurationList $configuration
+ * @property \Twilio\Rest\Conversations\V1\AddressConfigurationList $addressConfigurations
  * @property \Twilio\Rest\Conversations\V1\ConversationList $conversations
  * @property \Twilio\Rest\Conversations\V1\CredentialList $credentials
  * @property \Twilio\Rest\Conversations\V1\ParticipantConversationList $participantConversations
@@ -23,6 +24,7 @@ use Twilio\Rest\Conversations\V1;
  * @property \Twilio\Rest\Conversations\V1\ServiceList $services
  * @property \Twilio\Rest\Conversations\V1\UserList $users
  * @method \Twilio\Rest\Conversations\V1\ConfigurationContext configuration()
+ * @method \Twilio\Rest\Conversations\V1\AddressConfigurationContext addressConfigurations(string $sid)
  * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
  * @method \Twilio\Rest\Conversations\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Conversations\V1\RoleContext roles(string $sid)
@@ -92,6 +94,17 @@ class Conversations extends Domain {
 
     protected function contextConfiguration(): \Twilio\Rest\Conversations\V1\ConfigurationContext {
         return $this->v1->configuration();
+    }
+
+    protected function getAddressConfigurations(): \Twilio\Rest\Conversations\V1\AddressConfigurationList {
+        return $this->v1->addressConfigurations;
+    }
+
+    /**
+     * @param string $sid The SID or Address of the Configuration.
+     */
+    protected function contextAddressConfigurations(string $sid): \Twilio\Rest\Conversations\V1\AddressConfigurationContext {
+        return $this->v1->addressConfigurations($sid);
     }
 
     protected function getConversations(): \Twilio\Rest\Conversations\V1\ConversationList {

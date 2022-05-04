@@ -33,10 +33,31 @@ abstract class BundleOptions {
      * @param string $regulationSid The unique string of a regulation.
      * @param string $isoCountry The ISO country code of the country
      * @param string $numberType The type of phone number
+     * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle
+     *                                until a specified expiration date.
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to
+     *                       `date-created`.
+     * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
+     * @param string $validUntilDateBefore Date to filter Bundles having their
+     *                                     `valid_until_date` before or after the
+     *                                     specified date. Can be
+     *                                     `ValidUntilDate>=` or
+     *                                     `ValidUntilDate<=`. Both can be used in
+     *                                     conjunction as well.
+     * @param string $validUntilDate Date to filter Bundles having their
+     *                               `valid_until_date` before or after the
+     *                               specified date. Can be `ValidUntilDate>=` or
+     *                               `ValidUntilDate<=`. Both can be used in
+     *                               conjunction as well.
+     * @param string $validUntilDateAfter Date to filter Bundles having their
+     *                                    `valid_until_date` before or after the
+     *                                    specified date. Can be `ValidUntilDate>=`
+     *                                    or `ValidUntilDate<=`. Both can be used
+     *                                    in conjunction as well.
      * @return ReadBundleOptions Options builder
      */
-    public static function read(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE): ReadBundleOptions {
-        return new ReadBundleOptions($status, $friendlyName, $regulationSid, $isoCountry, $numberType);
+    public static function read(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE, bool $hasValidUntilDate = Values::NONE, string $sortBy = Values::NONE, string $sortDirection = Values::NONE, string $validUntilDateBefore = Values::NONE, string $validUntilDate = Values::NONE, string $validUntilDateAfter = Values::NONE): ReadBundleOptions {
+        return new ReadBundleOptions($status, $friendlyName, $regulationSid, $isoCountry, $numberType, $hasValidUntilDate, $sortBy, $sortDirection, $validUntilDateBefore, $validUntilDate, $validUntilDateAfter);
     }
 
     /**
@@ -145,17 +166,44 @@ class ReadBundleOptions extends Options {
      * @param string $regulationSid The unique string of a regulation.
      * @param string $isoCountry The ISO country code of the country
      * @param string $numberType The type of phone number
+     * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle
+     *                                until a specified expiration date.
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to
+     *                       `date-created`.
+     * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
+     * @param string $validUntilDateBefore Date to filter Bundles having their
+     *                                     `valid_until_date` before or after the
+     *                                     specified date. Can be
+     *                                     `ValidUntilDate>=` or
+     *                                     `ValidUntilDate<=`. Both can be used in
+     *                                     conjunction as well.
+     * @param string $validUntilDate Date to filter Bundles having their
+     *                               `valid_until_date` before or after the
+     *                               specified date. Can be `ValidUntilDate>=` or
+     *                               `ValidUntilDate<=`. Both can be used in
+     *                               conjunction as well.
+     * @param string $validUntilDateAfter Date to filter Bundles having their
+     *                                    `valid_until_date` before or after the
+     *                                    specified date. Can be `ValidUntilDate>=`
+     *                                    or `ValidUntilDate<=`. Both can be used
+     *                                    in conjunction as well.
      */
-    public function __construct(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE) {
+    public function __construct(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE, bool $hasValidUntilDate = Values::NONE, string $sortBy = Values::NONE, string $sortDirection = Values::NONE, string $validUntilDateBefore = Values::NONE, string $validUntilDate = Values::NONE, string $validUntilDateAfter = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['regulationSid'] = $regulationSid;
         $this->options['isoCountry'] = $isoCountry;
         $this->options['numberType'] = $numberType;
+        $this->options['hasValidUntilDate'] = $hasValidUntilDate;
+        $this->options['sortBy'] = $sortBy;
+        $this->options['sortDirection'] = $sortDirection;
+        $this->options['validUntilDateBefore'] = $validUntilDateBefore;
+        $this->options['validUntilDate'] = $validUntilDate;
+        $this->options['validUntilDateAfter'] = $validUntilDateAfter;
     }
 
     /**
-     * The verification status of the Bundle resource.
+     * The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details.
      *
      * @param string $status The verification status of the Bundle resource
      * @return $this Fluent Builder
@@ -166,7 +214,7 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * The string that you assigned to describe the resource.
+     * The string that you assigned to describe the resource. The column can contain 255 variable characters.
      *
      * @param string $friendlyName The string that you assigned to describe the
      *                             resource
@@ -178,7 +226,7 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * The unique string of a regulation that is associated to the Bundle resource.
+     * The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource.
      *
      * @param string $regulationSid The unique string of a regulation.
      * @return $this Fluent Builder
@@ -189,7 +237,7 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
+     * The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
      *
      * @param string $isoCountry The ISO country code of the country
      * @return $this Fluent Builder
@@ -200,13 +248,94 @@ class ReadBundleOptions extends Options {
     }
 
     /**
-     * The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`.
+     * The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `tollfree`.
      *
      * @param string $numberType The type of phone number
      * @return $this Fluent Builder
      */
     public function setNumberType(string $numberType): self {
         $this->options['numberType'] = $numberType;
+        return $this;
+    }
+
+    /**
+     * Indicates that the Bundle is a valid Bundle until a specified expiration date.
+     *
+     * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle
+     *                                until a specified expiration date.
+     * @return $this Fluent Builder
+     */
+    public function setHasValidUntilDate(bool $hasValidUntilDate): self {
+        $this->options['hasValidUntilDate'] = $hasValidUntilDate;
+        return $this;
+    }
+
+    /**
+     * Can be `valid-until` or `date-updated`. Defaults to `date-created`.
+     *
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to
+     *                       `date-created`.
+     * @return $this Fluent Builder
+     */
+    public function setSortBy(string $sortBy): self {
+        $this->options['sortBy'] = $sortBy;
+        return $this;
+    }
+
+    /**
+     * Default is `DESC`. Can be `ASC` or `DESC`.
+     *
+     * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
+     * @return $this Fluent Builder
+     */
+    public function setSortDirection(string $sortDirection): self {
+        $this->options['sortDirection'] = $sortDirection;
+        return $this;
+    }
+
+    /**
+     * Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
+     *
+     * @param string $validUntilDateBefore Date to filter Bundles having their
+     *                                     `valid_until_date` before or after the
+     *                                     specified date. Can be
+     *                                     `ValidUntilDate>=` or
+     *                                     `ValidUntilDate<=`. Both can be used in
+     *                                     conjunction as well.
+     * @return $this Fluent Builder
+     */
+    public function setValidUntilDateBefore(string $validUntilDateBefore): self {
+        $this->options['validUntilDateBefore'] = $validUntilDateBefore;
+        return $this;
+    }
+
+    /**
+     * Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
+     *
+     * @param string $validUntilDate Date to filter Bundles having their
+     *                               `valid_until_date` before or after the
+     *                               specified date. Can be `ValidUntilDate>=` or
+     *                               `ValidUntilDate<=`. Both can be used in
+     *                               conjunction as well.
+     * @return $this Fluent Builder
+     */
+    public function setValidUntilDate(string $validUntilDate): self {
+        $this->options['validUntilDate'] = $validUntilDate;
+        return $this;
+    }
+
+    /**
+     * Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
+     *
+     * @param string $validUntilDateAfter Date to filter Bundles having their
+     *                                    `valid_until_date` before or after the
+     *                                    specified date. Can be `ValidUntilDate>=`
+     *                                    or `ValidUntilDate<=`. Both can be used
+     *                                    in conjunction as well.
+     * @return $this Fluent Builder
+     */
+    public function setValidUntilDateAfter(string $validUntilDateAfter): self {
+        $this->options['validUntilDateAfter'] = $validUntilDateAfter;
         return $this;
     }
 

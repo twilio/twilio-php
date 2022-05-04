@@ -42,14 +42,15 @@ class MediaProcessorTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "extension": "video-composer-v1-preview",
+                "extension": "video-composer-v1",
                 "extension_context": "{}",
                 "sid": "ZXdeadbeefdeadbeefdeadbeefdeadbeef",
                 "status": "started",
                 "status_callback": "http://www.example.com",
                 "status_callback_method": "POST",
                 "ended_reason": null,
-                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                "max_duration": 300
             }
             '
         ));
@@ -81,14 +82,15 @@ class MediaProcessorTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "extension": "video-composer-v1-preview",
+                "extension": "video-composer-v1",
                 "extension_context": "{}",
                 "sid": "ZXdeadbeefdeadbeefdeadbeefdeadbeef",
                 "status": "started",
                 "status_callback": "http://www.example.com",
                 "status_callback_method": "POST",
                 "ended_reason": null,
-                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                "max_duration": 300
             }
             '
         ));
@@ -124,14 +126,15 @@ class MediaProcessorTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:01:00Z",
-                "extension": "video-composer-v1-preview",
+                "extension": "video-composer-v1",
                 "extension_context": "{}",
                 "sid": "ZXdeadbeefdeadbeefdeadbeefdeadbeef",
                 "status": "ended",
                 "status_callback": "http://www.example.com",
                 "status_callback_method": "POST",
                 "ended_reason": "ended-via-api",
-                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                "max_duration": 300
             }
             '
         ));
@@ -198,14 +201,15 @@ class MediaProcessorTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:01:00Z",
-                        "extension": "video-composer-v1-preview",
+                        "extension": "video-composer-v1",
                         "extension_context": "{}",
                         "sid": "ZXdeadbeefdeadbeefdeadbeefdeadbeef",
                         "status": "ended",
                         "status_callback": "http://www.example.com",
                         "status_callback_method": "POST",
                         "ended_reason": "ended-via-api",
-                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "max_duration": 300
                     }
                 ]
             }
@@ -236,14 +240,15 @@ class MediaProcessorTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:01:00Z",
-                        "extension": "video-composer-v1-preview",
+                        "extension": "video-composer-v1",
                         "extension_context": "{}",
                         "sid": "ZXdeadbeefdeadbeefdeadbeefdeadbeef",
                         "status": "ended",
                         "status_callback": "http://www.example.com",
                         "status_callback_method": "POST",
                         "ended_reason": "ended-via-api",
-                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "max_duration": 300
                     }
                 ]
             }
@@ -274,14 +279,15 @@ class MediaProcessorTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:01:00Z",
-                        "extension": "video-composer-v1-preview",
+                        "extension": "video-composer-v1",
                         "extension_context": "{}",
                         "sid": "ZXdeadbeefdeadbeefdeadbeefdeadbeef",
                         "status": "ended",
                         "status_callback": "http://www.example.com",
                         "status_callback_method": "POST",
                         "ended_reason": "ended-via-api",
-                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef"
+                        "url": "https://media.twilio.com/v1/MediaProcessors/ZXdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "max_duration": 300
                     }
                 ]
             }

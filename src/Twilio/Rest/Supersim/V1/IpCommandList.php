@@ -19,9 +19,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class CommandList extends ListResource {
+class IpCommandList extends ListResource {
     /**
-     * Construct the CommandList
+     * Construct the IpCommandList
      *
      * @param Version $version Version that contains the resource
      */
@@ -31,35 +31,39 @@ class CommandList extends ListResource {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Commands';
+        $this->uri = '/IpCommands';
     }
 
     /**
-     * Create the CommandInstance
+     * Create the IpCommandInstance
      *
-     * @param string $sim The sid or unique_name of the SIM to send the Command to
-     * @param string $command The message body of the command
+     * @param string $sim The sid or unique_name of the Super SIM to send the IP
+     *                    Command to
+     * @param string $payload The payload to be delivered to the device
+     * @param int $devicePort The device port to which the IP Command will be sent
      * @param array|Options $options Optional Arguments
-     * @return CommandInstance Created CommandInstance
+     * @return IpCommandInstance Created IpCommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $sim, string $command, array $options = []): CommandInstance {
+    public function create(string $sim, string $payload, int $devicePort, array $options = []): IpCommandInstance {
         $options = new Values($options);
 
         $data = Values::of([
             'Sim' => $sim,
-            'Command' => $command,
-            'CallbackMethod' => $options['callbackMethod'],
+            'Payload' => $payload,
+            'DevicePort' => $devicePort,
+            'PayloadType' => $options['payloadType'],
             'CallbackUrl' => $options['callbackUrl'],
+            'CallbackMethod' => $options['callbackMethod'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
-        return new CommandInstance($this->version, $payload);
+        return new IpCommandInstance($this->version, $payload);
     }
 
     /**
-     * Streams CommandInstance records from the API as a generator stream.
+     * Streams IpCommandInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -86,7 +90,7 @@ class CommandList extends ListResource {
     }
 
     /**
-     * Reads CommandInstance records from the API as a list.
+     * Reads IpCommandInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -99,27 +103,28 @@ class CommandList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return CommandInstance[] Array of results
+     * @return IpCommandInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of CommandInstance records from the API.
+     * Retrieve a single page of IpCommandInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return CommandPage Page of CommandInstance
+     * @return IpCommandPage Page of IpCommandInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CommandPage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpCommandPage {
         $options = new Values($options);
 
         $params = Values::of([
             'Sim' => $options['sim'],
+            'SimIccid' => $options['simIccid'],
             'Status' => $options['status'],
             'Direction' => $options['direction'],
             'PageToken' => $pageToken,
@@ -129,32 +134,32 @@ class CommandList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new CommandPage($this->version, $response, $this->solution);
+        return new IpCommandPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of CommandInstance records from the API.
+     * Retrieve a specific page of IpCommandInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return CommandPage Page of CommandInstance
+     * @return IpCommandPage Page of IpCommandInstance
      */
-    public function getPage(string $targetUrl): CommandPage {
+    public function getPage(string $targetUrl): IpCommandPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new CommandPage($this->version, $response, $this->solution);
+        return new IpCommandPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a CommandContext
+     * Constructs a IpCommandContext
      *
      * @param string $sid The SID that identifies the resource to fetch
      */
-    public function getContext(string $sid): CommandContext {
-        return new CommandContext($this->version, $sid);
+    public function getContext(string $sid): IpCommandContext {
+        return new IpCommandContext($this->version, $sid);
     }
 
     /**
@@ -163,6 +168,6 @@ class CommandList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Supersim.V1.CommandList]';
+        return '[Twilio.Supersim.V1.IpCommandList]';
     }
 }

@@ -21,10 +21,11 @@ abstract class UserOptions {
      * @param string $avatar The avatar URL which will be shown in Frontline
      *                       application
      * @param string $state Current state of this user
+     * @param bool $isAvailable Whether the User is available for new conversations
      * @return UpdateUserOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $avatar = Values::NONE, string $state = Values::NONE): UpdateUserOptions {
-        return new UpdateUserOptions($friendlyName, $avatar, $state);
+    public static function update(string $friendlyName = Values::NONE, string $avatar = Values::NONE, string $state = Values::NONE, bool $isAvailable = Values::NONE): UpdateUserOptions {
+        return new UpdateUserOptions($friendlyName, $avatar, $state, $isAvailable);
     }
 }
 
@@ -34,11 +35,13 @@ class UpdateUserOptions extends Options {
      * @param string $avatar The avatar URL which will be shown in Frontline
      *                       application
      * @param string $state Current state of this user
+     * @param bool $isAvailable Whether the User is available for new conversations
      */
-    public function __construct(string $friendlyName = Values::NONE, string $avatar = Values::NONE, string $state = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $avatar = Values::NONE, string $state = Values::NONE, bool $isAvailable = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['avatar'] = $avatar;
         $this->options['state'] = $state;
+        $this->options['isAvailable'] = $isAvailable;
     }
 
     /**
@@ -65,13 +68,24 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * Current state of this user. Can be either `active` or `deactivated` and defaults to `active`
+     * Current state of this user. Can be either `active` or `deactivated`.
      *
      * @param string $state Current state of this user
      * @return $this Fluent Builder
      */
     public function setState(string $state): self {
         $this->options['state'] = $state;
+        return $this;
+    }
+
+    /**
+     * Whether the User is available for new conversations. Set to `false` to prevent User from receiving new inbound conversations if you are using [Pool Routing](https://www.twilio.com/docs/frontline/handle-incoming-conversations#3-pool-routing).
+     *
+     * @param bool $isAvailable Whether the User is available for new conversations
+     * @return $this Fluent Builder
+     */
+    public function setIsAvailable(bool $isAvailable): self {
+        $this->options['isAvailable'] = $isAvailable;
         return $this;
     }
 

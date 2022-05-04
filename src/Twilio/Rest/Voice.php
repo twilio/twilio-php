@@ -15,11 +15,13 @@ use Twilio\Rest\Voice\V1;
 
 /**
  * @property \Twilio\Rest\Voice\V1 $v1
+ * @property \Twilio\Rest\Voice\V1\ArchivedCallList $archivedCalls
  * @property \Twilio\Rest\Voice\V1\ByocTrunkList $byocTrunks
  * @property \Twilio\Rest\Voice\V1\ConnectionPolicyList $connectionPolicies
  * @property \Twilio\Rest\Voice\V1\DialingPermissionsList $dialingPermissions
  * @property \Twilio\Rest\Voice\V1\IpRecordList $ipRecords
  * @property \Twilio\Rest\Voice\V1\SourceIpMappingList $sourceIpMappings
+ * @method \Twilio\Rest\Voice\V1\ArchivedCallContext archivedCalls(\DateTime $date, string $sid)
  * @method \Twilio\Rest\Voice\V1\ByocTrunkContext byocTrunks(string $sid)
  * @method \Twilio\Rest\Voice\V1\ConnectionPolicyContext connectionPolicies(string $sid)
  * @method \Twilio\Rest\Voice\V1\IpRecordContext ipRecords(string $sid)
@@ -80,6 +82,18 @@ class Voice extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    protected function getArchivedCalls(): \Twilio\Rest\Voice\V1\ArchivedCallList {
+        return $this->v1->archivedCalls;
+    }
+
+    /**
+     * @param \DateTime $date The date of the Call in UTC.
+     * @param string $sid The unique string that identifies this resource
+     */
+    protected function contextArchivedCalls(\DateTime $date, string $sid): \Twilio\Rest\Voice\V1\ArchivedCallContext {
+        return $this->v1->archivedCalls($date, $sid);
     }
 
     protected function getByocTrunks(): \Twilio\Rest\Voice\V1\ByocTrunkList {

@@ -23,7 +23,7 @@ abstract class NewFactorOptions {
      *                            Google or Apple store
      * @param string $configNotificationPlatform The transport technology used to
      *                                           generate the Notification Token
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -33,10 +33,11 @@ abstract class NewFactorOptions {
      *                        given time
      * @param int $configCodeLength Number of digits for generated TOTP codes
      * @param string $configAlg The algorithm used to derive the TOTP codes
+     * @param array $metadata Metadata of the factor.
      * @return CreateNewFactorOptions Options builder
      */
-    public static function create(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $bindingSecret = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE): CreateNewFactorOptions {
-        return new CreateNewFactorOptions($bindingAlg, $bindingPublicKey, $configAppId, $configNotificationPlatform, $configNotificationToken, $configSdkVersion, $bindingSecret, $configTimeStep, $configSkew, $configCodeLength, $configAlg);
+    public static function create(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $bindingSecret = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE, array $metadata = Values::ARRAY_NONE): CreateNewFactorOptions {
+        return new CreateNewFactorOptions($bindingAlg, $bindingPublicKey, $configAppId, $configNotificationPlatform, $configNotificationToken, $configSdkVersion, $bindingSecret, $configTimeStep, $configSkew, $configCodeLength, $configAlg, $metadata);
     }
 }
 
@@ -48,7 +49,7 @@ class CreateNewFactorOptions extends Options {
      *                            Google or Apple store
      * @param string $configNotificationPlatform The transport technology used to
      *                                           generate the Notification Token
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @param string $configSdkVersion The Verify Push SDK version used to
      *                                 configure the factor
@@ -58,8 +59,9 @@ class CreateNewFactorOptions extends Options {
      *                        given time
      * @param int $configCodeLength Number of digits for generated TOTP codes
      * @param string $configAlg The algorithm used to derive the TOTP codes
+     * @param array $metadata Metadata of the factor.
      */
-    public function __construct(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $bindingSecret = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE) {
+    public function __construct(string $bindingAlg = Values::NONE, string $bindingPublicKey = Values::NONE, string $configAppId = Values::NONE, string $configNotificationPlatform = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, string $bindingSecret = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE, array $metadata = Values::ARRAY_NONE) {
         $this->options['bindingAlg'] = $bindingAlg;
         $this->options['bindingPublicKey'] = $bindingPublicKey;
         $this->options['configAppId'] = $configAppId;
@@ -71,6 +73,7 @@ class CreateNewFactorOptions extends Options {
         $this->options['configSkew'] = $configSkew;
         $this->options['configCodeLength'] = $configCodeLength;
         $this->options['configAlg'] = $configAlg;
+        $this->options['metadata'] = $metadata;
     }
 
     /**
@@ -112,7 +115,7 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * The transport technology used to generate the Notification Token. Can be `apn` or `fcm`.
+     * The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.
 
     Required when `factor_type` is `push`.
      *
@@ -126,11 +129,11 @@ class CreateNewFactorOptions extends Options {
     }
 
     /**
-     * For APN, the device token. For FCM the registration token. It used to send the push notifications. Must be between 32 and 255 characters long.
+     * For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Must be between 32 and 255 characters long.
 
     Required when `factor_type` is `push`.
      *
-     * @param string $configNotificationToken For APN, the device token. For FCM
+     * @param string $configNotificationToken For APN, the device token. For FCM,
      *                                        the registration token
      * @return $this Fluent Builder
      */
@@ -216,6 +219,17 @@ class CreateNewFactorOptions extends Options {
      */
     public function setConfigAlg(string $configAlg): self {
         $this->options['configAlg'] = $configAlg;
+        return $this;
+    }
+
+    /**
+     * Custom metadata associated with the factor. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{"os": "Android"}`. Can be up to 1024 characters in length.
+     *
+     * @param array $metadata Metadata of the factor.
+     * @return $this Fluent Builder
+     */
+    public function setMetadata(array $metadata): self {
+        $this->options['metadata'] = $metadata;
         return $this;
     }
 

@@ -11,11 +11,11 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Utils;
 use Twilio\Exceptions\HttpException;
 use Twilio\Http\File;
 use Twilio\Http\GuzzleClient;
 use Twilio\Tests\Unit\UnitTest;
-use function GuzzleHttp\Psr7\stream_for;
 
 final class GuzzleClientTest extends UnitTest {
     /**
@@ -72,7 +72,7 @@ final class GuzzleClientTest extends UnitTest {
             'fileAsPath' => new File(__DIR__ . '/file.txt'),
             'fileAsResource' => new File('file.txt', fopen(__DIR__ . '/file.txt', 'rb')),
             'fileAsString' => new File('file.txt', file_get_contents(__DIR__ . '/file.txt')),
-            'fileAsStream' => new File('file.txt', stream_for(fopen(__DIR__ . '/file.txt', 'rb'))),
+            'fileAsStream' => new File('file.txt', Utils::streamFor(fopen(__DIR__ . '/file.txt', 'rb'))),
         ]);
         $this->assertNull($response->getContent());
         $this->assertSame(200, $response->getStatusCode());

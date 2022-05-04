@@ -12,6 +12,7 @@ namespace Twilio\Rest\Conversations;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Conversations\V1\AddressConfigurationList;
 use Twilio\Rest\Conversations\V1\ConfigurationList;
 use Twilio\Rest\Conversations\V1\ConversationList;
 use Twilio\Rest\Conversations\V1\CredentialList;
@@ -23,12 +24,14 @@ use Twilio\Version;
 
 /**
  * @property ConfigurationList $configuration
+ * @property AddressConfigurationList $addressConfigurations
  * @property ConversationList $conversations
  * @property CredentialList $credentials
  * @property ParticipantConversationList $participantConversations
  * @property RoleList $roles
  * @property ServiceList $services
  * @property UserList $users
+ * @method \Twilio\Rest\Conversations\V1\AddressConfigurationContext addressConfigurations(string $sid)
  * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
  * @method \Twilio\Rest\Conversations\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Conversations\V1\RoleContext roles(string $sid)
@@ -37,6 +40,7 @@ use Twilio\Version;
  */
 class V1 extends Version {
     protected $_configuration;
+    protected $_addressConfigurations;
     protected $_conversations;
     protected $_credentials;
     protected $_participantConversations;
@@ -59,6 +63,13 @@ class V1 extends Version {
             $this->_configuration = new ConfigurationList($this);
         }
         return $this->_configuration;
+    }
+
+    protected function getAddressConfigurations(): AddressConfigurationList {
+        if (!$this->_addressConfigurations) {
+            $this->_addressConfigurations = new AddressConfigurationList($this);
+        }
+        return $this->_addressConfigurations;
     }
 
     protected function getConversations(): ConversationList {

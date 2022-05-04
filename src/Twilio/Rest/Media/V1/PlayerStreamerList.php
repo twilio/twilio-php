@@ -46,6 +46,7 @@ class PlayerStreamerList extends ListResource {
             'Video' => Serialize::booleanToString($options['video']),
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'MaxDuration' => $options['maxDuration'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

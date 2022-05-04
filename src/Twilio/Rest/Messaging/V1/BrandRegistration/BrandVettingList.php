@@ -142,6 +142,15 @@ class BrandVettingList extends ListResource {
     }
 
     /**
+     * Constructs a BrandVettingContext
+     *
+     * @param string $brandVettingSid SID for third-party vetting record
+     */
+    public function getContext(string $brandVettingSid): BrandVettingContext {
+        return new BrandVettingContext($this->version, $this->solution['brandSid'], $brandVettingSid);
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

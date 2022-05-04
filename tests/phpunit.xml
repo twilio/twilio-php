@@ -8,8 +8,10 @@
     <testsuite name="Twilio Integration Test Suite">
       <directory>./Twilio/Integration</directory>
     </testsuite>
-    <testsuite name="Twilio Services Test Suite">
-      <directory>./Services</directory>
-    </testsuite>
   </testsuites>
+  <coverage>
+    <include>
+      <directory suffix=".php">../src</directory>
+    </include>
+  </coverage>
 </phpunit>

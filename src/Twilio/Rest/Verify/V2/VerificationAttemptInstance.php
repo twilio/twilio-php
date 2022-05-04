@@ -19,10 +19,12 @@ use Twilio\Version;
  * @property string $sid
  * @property string $accountSid
  * @property string $serviceSid
+ * @property string $verificationSid
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $conversionStatus
  * @property string $channel
+ * @property array $price
  * @property array $channelData
  * @property string $url
  */
@@ -42,10 +44,12 @@ class VerificationAttemptInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'verificationSid' => Values::array_get($payload, 'verification_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'conversionStatus' => Values::array_get($payload, 'conversion_status'),
             'channel' => Values::array_get($payload, 'channel'),
+            'price' => Values::array_get($payload, 'price'),
             'channelData' => Values::array_get($payload, 'channel_data'),
             'url' => Values::array_get($payload, 'url'),
         ];

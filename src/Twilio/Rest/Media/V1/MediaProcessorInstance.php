@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property string $endedReason
  * @property string $statusCallback
  * @property string $statusCallbackMethod
+ * @property int $maxDuration
  */
 class MediaProcessorInstance extends InstanceResource {
     /**
@@ -52,6 +53,7 @@ class MediaProcessorInstance extends InstanceResource {
             'endedReason' => Values::array_get($payload, 'ended_reason'),
             'statusCallback' => Values::array_get($payload, 'status_callback'),
             'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
+            'maxDuration' => Values::array_get($payload, 'max_duration'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

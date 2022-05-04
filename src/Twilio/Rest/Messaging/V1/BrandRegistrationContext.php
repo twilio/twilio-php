@@ -20,6 +20,7 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property BrandVettingList $brandVettings
+ * @method \Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingContext brandVettings(string $brandVettingSid)
  */
 class BrandRegistrationContext extends InstanceContext {
     protected $_brandVettings;
@@ -47,6 +48,18 @@ class BrandRegistrationContext extends InstanceContext {
      */
     public function fetch(): BrandRegistrationInstance {
         $payload = $this->version->fetch('GET', $this->uri);
+
+        return new BrandRegistrationInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Update the BrandRegistrationInstance
+     *
+     * @return BrandRegistrationInstance Updated BrandRegistrationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): BrandRegistrationInstance {
+        $payload = $this->version->update('POST', $this->uri);
 
         return new BrandRegistrationInstance($this->version, $payload, $this->solution['sid']);
     }

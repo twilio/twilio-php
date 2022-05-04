@@ -30,7 +30,8 @@ abstract class ServiceOptions {
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
      * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
-     *                              reponse. Default: true
+     *                              response. Default: false. **Deprecated** do not
+     *                              use this parameter.
      * @param string $pushApnCredentialSid Optional. Set APN Credential for this
      *                                     service.
      * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
@@ -42,10 +43,11 @@ abstract class ServiceOptions {
      *                            codes
      * @param int $totpSkew Optional. The number of past and future time-steps
      *                      valid at a given time
+     * @param string $defaultTemplateSid The verification template SMS messages.
      * @return CreateServiceOptions Options builder
      */
-    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid, $totpIssuer, $totpTimeStep, $totpCodeLength, $totpSkew);
+    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE): CreateServiceOptions {
+        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid, $totpIssuer, $totpTimeStep, $totpCodeLength, $totpSkew, $defaultTemplateSid);
     }
 
     /**
@@ -66,7 +68,8 @@ abstract class ServiceOptions {
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
      * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
-     *                              reponse. Default: true
+     *                              response. Default: false. **Deprecated** do not
+     *                              use this parameter.
      * @param string $pushApnCredentialSid Optional. Set APN Credential for this
      *                                     service.
      * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
@@ -78,10 +81,11 @@ abstract class ServiceOptions {
      *                            codes
      * @param int $totpSkew Optional. The number of past and future time-steps
      *                      valid at a given time
+     * @param string $defaultTemplateSid The verification template SMS messages.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid, $totpIssuer, $totpTimeStep, $totpCodeLength, $totpSkew);
+    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE): UpdateServiceOptions {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid, $totpIssuer, $totpTimeStep, $totpCodeLength, $totpSkew, $defaultTemplateSid);
     }
 }
 
@@ -103,7 +107,8 @@ class CreateServiceOptions extends Options {
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
      * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
-     *                              reponse. Default: true
+     *                              response. Default: false. **Deprecated** do not
+     *                              use this parameter.
      * @param string $pushApnCredentialSid Optional. Set APN Credential for this
      *                                     service.
      * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
@@ -115,8 +120,9 @@ class CreateServiceOptions extends Options {
      *                            codes
      * @param int $totpSkew Optional. The number of past and future time-steps
      *                      valid at a given time
+     * @param string $defaultTemplateSid The verification template SMS messages.
      */
-    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE) {
+    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
@@ -132,6 +138,7 @@ class CreateServiceOptions extends Options {
         $this->options['totpTimeStep'] = $totpTimeStep;
         $this->options['totpCodeLength'] = $totpCodeLength;
         $this->options['totpSkew'] = $totpSkew;
+        $this->options['defaultTemplateSid'] = $defaultTemplateSid;
     }
 
     /**
@@ -230,10 +237,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Optional configuration for the Push factors. If true, include the date in the Challenge's reponse. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: true
+     * Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead.
      *
      * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
-     *                              reponse. Default: true
+     *                              response. Default: false. **Deprecated** do not
+     *                              use this parameter.
      * @return $this Fluent Builder
      */
     public function setPushIncludeDate(bool $pushIncludeDate): self {
@@ -313,6 +321,17 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
+     *
+     * @param string $defaultTemplateSid The verification template SMS messages.
+     * @return $this Fluent Builder
+     */
+    public function setDefaultTemplateSid(string $defaultTemplateSid): self {
+        $this->options['defaultTemplateSid'] = $defaultTemplateSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -342,7 +361,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $customCodeEnabled Whether to allow sending verifications with a
      *                                custom code.
      * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
-     *                              reponse. Default: true
+     *                              response. Default: false. **Deprecated** do not
+     *                              use this parameter.
      * @param string $pushApnCredentialSid Optional. Set APN Credential for this
      *                                     service.
      * @param string $pushFcmCredentialSid Optional. Set FCM Credential for this
@@ -354,8 +374,9 @@ class UpdateServiceOptions extends Options {
      *                            codes
      * @param int $totpSkew Optional. The number of past and future time-steps
      *                      valid at a given time
+     * @param string $defaultTemplateSid The verification template SMS messages.
      */
-    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
@@ -372,6 +393,7 @@ class UpdateServiceOptions extends Options {
         $this->options['totpTimeStep'] = $totpTimeStep;
         $this->options['totpCodeLength'] = $totpCodeLength;
         $this->options['totpSkew'] = $totpSkew;
+        $this->options['defaultTemplateSid'] = $defaultTemplateSid;
     }
 
     /**
@@ -481,10 +503,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Optional configuration for the Push factors. If true, include the date in the Challenge's reponse. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: true
+     * Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter.
      *
      * @param bool $pushIncludeDate Optional. Include the date in the Challenge's
-     *                              reponse. Default: true
+     *                              response. Default: false. **Deprecated** do not
+     *                              use this parameter.
      * @return $this Fluent Builder
      */
     public function setPushIncludeDate(bool $pushIncludeDate): self {
@@ -560,6 +583,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setTotpSkew(int $totpSkew): self {
         $this->options['totpSkew'] = $totpSkew;
+        return $this;
+    }
+
+    /**
+     * The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
+     *
+     * @param string $defaultTemplateSid The verification template SMS messages.
+     * @return $this Fluent Builder
+     */
+    public function setDefaultTemplateSid(string $defaultTemplateSid): self {
+        $this->options['defaultTemplateSid'] = $defaultTemplateSid;
         return $this;
     }
 

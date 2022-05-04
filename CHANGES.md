@@ -1,6 +1,283 @@
 twilio-php Changelog
 ====================
 
+[2022-05-04] Version 6.37.0
+---------------------------
+**Library - Test**
+- [PR #728](https://github.com/twilio/twilio-php/pull/728): add SonarCloud data collection. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Expose query parameter `type` in list operation on Address Configurations resource
+
+**Supersim**
+- Add `data_total_billed` and `billed_units` fields to Super SIM UsageRecords API response.
+- Change ESimProfiles `Eid` parameter to optional to enable Activation Code download method support **(breaking change)**
+
+**Verify**
+- Deprecate `push.include_date` parameter in create and update service.
+
+
+[2022-04-06] Version 6.36.1
+---------------------------
+**Library - Chore**
+- [PR #726](https://github.com/twilio/twilio-php/pull/726): update user agent string for twilio-php. Thanks to [@claudiachua](https://github.com/claudiachua)!
+
+**Api**
+- Updated `provider_sid` visibility to private
+
+**Verify**
+- Verify List Attempts API summary endpoint added.
+- Update PII documentation for `AccessTokens` `factor_friendly_name` property.
+
+**Voice**
+- make annotation parameter from /Calls API private
+
+
+[2022-03-23] Version 6.36.0
+---------------------------
+**Library - Docs**
+- [PR #725](https://github.com/twilio/twilio-php/pull/725): add upgrade guide for Php 5.x to 6.x. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Api**
+- Change `stream` url parameter to non optional
+- Add `verify-totp` and `verify-whatsapp-conversations-business-initiated` categories to `usage_record` API
+
+**Chat**
+- Added v3 Channel update endpoint to support Public to Private channel migration
+
+**Flex**
+- Private Beta release of the Interactions API to support the upcoming release of Flex Conversations at the end of Q1 2022.
+- Adding `channel_configs` object to Flex Configuration
+
+**Media**
+- Add max_duration param to PlayerStreamer
+
+**Supersim**
+- Remove Commands resource, use SmsCommands resource instead **(breaking change)**
+
+**Taskrouter**
+- Add limits to `split_by_wait_time` for Cumulative Statistics Endpoint
+
+**Video**
+- Change recording `status_callback_method` type from `enum` to `http_method` **(breaking change)**
+- Add `status_callback` and `status_callback_method` to composition
+- Add `status_callback` and `status_callback_method` to recording
+
+
+[2022-03-09] Version 6.35.1
+---------------------------
+**Library - Chore**
+- [PR #722](https://github.com/twilio/twilio-php/pull/722): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings
+
+**Chat**
+- Add `X-Twilio-Wehook-Enabled` header to `delete` method in UserChannel resource
+
+**Numbers**
+- Expose `failure_reason` in the Supporting Documents resources
+
+**Verify**
+- Add optional `metadata` parameter to "verify challenge" endpoint, so the SDK/App can attach relevant information from the device when responding to challenges.
+- remove beta feature flag to list atempt api operations.
+- Add `ttl` and `date_created` properties to `AccessTokens`.
+
+
+[2022-02-23] Version 6.35.0
+---------------------------
+**Api**
+- Add `uri` to `stream` resource
+- Add A2P Registration Fee category (`a2p-registration-fee`) to usage records
+- Detected a bug and removed optional boolean include_soft_deleted parameter to retrieve soft deleted recordings. **(breaking change)**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings.
+
+**Numbers**
+- Unrevert valid_until and sort filter params added to List Bundles resource
+- Revert valid_until and sort filter params added to List Bundles resource
+- Update sorting params added to List Bundles resource in the previous release
+
+**Preview**
+- Moved `web_channels` from preview to beta under `flex-api` **(breaking change)**
+
+**Taskrouter**
+- Add `ETag` as Response Header to List of Task, Reservation & Worker
+
+**Verify**
+- Remove outdated documentation commentary to contact sales. Product is already in public beta.
+- Add optional `metadata` to factors.
+
+**Twiml**
+- Add new Polly Neural voices
+
+
+[2022-02-09] Version 6.34.0
+---------------------------
+**Library - Fix**
+- [PR #721](https://github.com/twilio/twilio-php/pull/721): install docs dependencies in separate step. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #720](https://github.com/twilio/twilio-php/pull/720): use offset +0000 for iso8601 conversion. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+- [PR #713](https://github.com/twilio/twilio-php/pull/713): Php 8.1 support. Thanks to [@phpfui](https://github.com/phpfui)!
+- [PR #719](https://github.com/twilio/twilio-php/pull/719): use offset +0000 for iso8601 conversions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #718](https://github.com/twilio/twilio-php/pull/718): install and remove phpdox as required. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add `stream` resource
+
+**Conversations**
+- Fixed DELETE request to accept "sid_like" params in Address Configuration resources **(breaking change)**
+- Expose Address Configuration resource for `sms` and `whatsapp`
+
+**Fax**
+- Removed deprecated Programmable Fax Create and Update methods **(breaking change)**
+
+**Insights**
+- Rename `call_state` to `call_status` and remove `whisper` in conference participant summary **(breaking change)**
+
+**Numbers**
+- Expose valid_until filters as part of provisionally-approved compliance feature on the List Bundles resource
+
+**Supersim**
+- Fix typo in Fleet resource docs
+- Updated documentation for the Fleet resource indicating that fields related to commands have been deprecated and to use sms_command fields instead.
+- Add support for setting and reading `ip_commands_url` and `ip_commands_method` on Fleets resource for helper libraries
+- Changed `sim` property in requests to create an SMS Command made to the /SmsCommands to accept SIM UniqueNames in addition to SIDs
+
+**Verify**
+- Update list attempts API to include new filters and response fields.
+
+
+[2022-01-26] Version 6.33.1
+---------------------------
+**Insights**
+- Added new endpoint to fetch Conference Participant Summary
+- Added new endpoint to fetch Conference Summary
+
+**Messaging**
+- Add government_entity parameter to brand apis
+
+**Verify**
+- Add Access Token fetch endpoint to retrieve a previously created token.
+- Add Access Token payload to the Access Token creation endpoint, including a unique Sid, so it's addressable while it's TTL is valid.
+
+
+[2022-01-12] Version 6.33.0
+---------------------------
+**Library - Feature**
+- [PR #714](https://github.com/twilio/twilio-php/pull/714): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Make fixed time scheduling parameters public **(breaking change)**
+
+**Messaging**
+- Add update brand registration API
+
+**Numbers**
+- Add API endpoint for List Bundle Copies resource
+
+**Video**
+- Enable external storage for all customers
+
+
+[2021-12-15] Version 6.32.0
+---------------------------
+**Library - Feature**
+- [PR #708](https://github.com/twilio/twilio-php/pull/708): run tests before deploying. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add optional boolean send_as_mms parameter to the create action of Message resource **(breaking change)**
+- Change team ownership for `call` delete
+
+**Conversations**
+- Change wording for `Service Webhook Configuration` resource fields
+
+**Insights**
+- Added new APIs for updating and getting voice insights flags by accountSid.
+
+**Media**
+- Add max_duration param to MediaProcessor
+
+**Video**
+- Add `EmptyRoomTimeout` and `UnusedRoomTimeout` properties to a room; add corresponding parameters to room creation
+
+**Voice**
+- Add endpoint to delete archived Calls
+
+
+[2021-12-01] Version 6.31.2
+---------------------------
+**Library - Chore**
+- [PR #707](https://github.com/twilio/twilio-php/pull/707): Test against php 8.1. Thanks to [@sergiy-petrov](https://github.com/sergiy-petrov)!
+
+**Conversations**
+- Add `Service Webhook Configuration` resource
+
+**Flex**
+- Adding `flex_insights_drilldown` and `flex_url` objects to Flex Configuration
+
+**Messaging**
+- Update us_app_to_person endpoints to remove beta feature flag based access
+
+**Supersim**
+- Add IP Commands resource
+
+**Verify**
+- Add optional `factor_friendly_name` parameter to the create access token endpoint.
+
+**Video**
+- Add maxParticipantDuration param to Rooms
+
+**Twiml**
+- Unrevert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+- Revert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
+[2021-11-17] Version 6.31.1
+---------------------------
+**Library - Chore**
+- [PR #706](https://github.com/twilio/twilio-php/pull/706): ignore directory and not just the content. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #705](https://github.com/twilio/twilio-php/pull/705): remove install as a dependency of test. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Fix**
+- [PR #704](https://github.com/twilio/twilio-php/pull/704): docker publish issues. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #703](https://github.com/twilio/twilio-php/pull/703): git log retrieval issues. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Frontline**
+- Added `is_available` to User's resource
+
+**Messaging**
+- Added GET vetting API
+
+**Verify**
+- Add `WHATSAPP` to the attempts API.
+- Allow to update `config.notification_platform` from `none` to `apn` or `fcm` and viceversa for Verify Push
+- Add `none` as a valid `config.notification_platform` value for Verify Push
+
+**Twiml**
+- Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
+[2021-11-03] Version 6.31.0
+---------------------------
+**Library - Chore**
+- [PR #702](https://github.com/twilio/twilio-php/pull/702): add github action for test and deploy. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Updated `media_url` property to be treated as PII
+
+**Messaging**
+- Added a new enum for brand registration status named DELETED **(breaking change)**
+- Add a new K12_EDUCATION use case in us_app_to_person_usecase api transaction
+- Added a new enum for brand registration status named IN_REVIEW
+
+**Serverless**
+- Add node14 as a valid Build runtime
+
+**Verify**
+- Fix typos in Verify Push Factor documentation for the `config.notification_token` parameter.
+- Added `TemplateCustomSubstitutions` on verification creation
+- Make `TemplateSid` parameter public for Verification resource and `DefaultTemplateSid` parameter public for Service resource. **(breaking change)**
+
+
 [2021-10-18] Version 6.30.0
 ---------------------------
 **Library - Feature**

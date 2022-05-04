@@ -15,67 +15,75 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class CommandTest extends HolodeckTestCase {
+class IpCommandTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->supersim->v1->commands->create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "command");
+            $this->twilio->supersim->v1->ipCommands->create("sim", "payload", 1);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Sim' => "HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 'Command' => "command", ];
+        $values = ['Sim' => "sim", 'Payload' => "payload", 'DevicePort' => 1, ];
 
         $this->assertRequest(new Request(
             'post',
-            'https://supersim.twilio.com/v1/Commands',
+            'https://supersim.twilio.com/v1/IpCommands',
             null,
             $values
         ));
     }
 
-    public function testCreateCommandMinimalResponse(): void {
+    public function testCreateFullResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
             {
+                "sid": "HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "command": "command",
-                "date_created": "2015-07-30T20:00:00Z",
-                "date_updated": "2015-07-30T20:00:00Z",
                 "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "sid": "HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_iccid": "89883070000123456789",
                 "status": "queued",
                 "direction": "to_sim",
-                "url": "https://supersim.twilio.com/v1/Commands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "device_ip": "100.64.0.123",
+                "device_port": 100,
+                "payload_type": "text",
+                "payload": "checkin: firmware update",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->commands->create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "command");
+        $actual = $this->twilio->supersim->v1->ipCommands->create("sim", "payload", 1);
 
         $this->assertNotNull($actual);
     }
 
-    public function testCreateCommandFullResponse(): void {
+    public function testCreateMinimalResponse(): void {
         $this->holodeck->mock(new Response(
             201,
             '
             {
+                "sid": "HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "command": "command",
-                "date_created": "2015-07-30T20:00:00Z",
-                "date_updated": "2015-07-30T20:00:00Z",
                 "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "sid": "HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_iccid": "89883070000123456789",
                 "status": "queued",
                 "direction": "to_sim",
-                "url": "https://supersim.twilio.com/v1/Commands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "device_ip": "100.64.0.123",
+                "device_port": 100,
+                "payload_type": "text",
+                "payload": "checkin: firmware update",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->commands->create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "command");
+        $actual = $this->twilio->supersim->v1->ipCommands->create("sim", "payload", 1);
 
         $this->assertNotNull($actual);
     }
@@ -84,13 +92,13 @@ class CommandTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->supersim->v1->commands("HCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+            $this->twilio->supersim->v1->ipCommands("HGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/Commands/HCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+            'https://supersim.twilio.com/v1/IpCommands/HGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -99,20 +107,24 @@ class CommandTest extends HolodeckTestCase {
             200,
             '
             {
-                "sid": "HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "command": "content of the command",
                 "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_iccid": "89883070000123456789",
                 "status": "queued",
                 "direction": "to_sim",
+                "device_ip": "100.64.0.123",
+                "device_port": 100,
+                "payload_type": "text",
+                "payload": "checkin: firmware update",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "url": "https://supersim.twilio.com/v1/Commands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://supersim.twilio.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->commands("HCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+        $actual = $this->twilio->supersim->v1->ipCommands("HGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -121,13 +133,13 @@ class CommandTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->supersim->v1->commands->read();
+            $this->twilio->supersim->v1->ipCommands->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://supersim.twilio.com/v1/Commands'
+            'https://supersim.twilio.com/v1/IpCommands'
         ));
     }
 
@@ -136,21 +148,21 @@ class CommandTest extends HolodeckTestCase {
             200,
             '
             {
-                "commands": [],
+                "ip_commands": [],
                 "meta": {
-                    "first_page_url": "https://supersim.twilio.com/v1/Commands?Status=queued&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
-                    "key": "commands",
+                    "first_page_url": "https://supersim.twilio.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
+                    "key": "ip_commands",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://supersim.twilio.com/v1/Commands?Status=queued&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0"
+                    "url": "https://supersim.twilio.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0"
                 }
             }
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->commands->read();
+        $actual = $this->twilio->supersim->v1->ipCommands->read();
 
         $this->assertNotNull($actual);
     }
@@ -161,32 +173,36 @@ class CommandTest extends HolodeckTestCase {
             '
             {
                 "meta": {
-                    "first_page_url": "https://supersim.twilio.com/v1/Commands?Status=queued&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
-                    "key": "commands",
+                    "first_page_url": "https://supersim.twilio.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
+                    "key": "ip_commands",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://supersim.twilio.com/v1/Commands?Status=queued&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0"
+                    "url": "https://supersim.twilio.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0"
                 },
-                "commands": [
+                "ip_commands": [
                     {
-                        "sid": "HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sid": "HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "command": "content of the command",
                         "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "status": "queued",
+                        "sim_iccid": "89883070000123456789",
+                        "status": "received",
                         "direction": "from_sim",
+                        "device_ip": "100.64.0.123",
+                        "device_port": 100,
+                        "payload_type": "text",
+                        "payload": "checkin: firmware update",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
-                        "url": "https://supersim.twilio.com/v1/Commands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://supersim.twilio.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ]
             }
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->commands->read();
+        $actual = $this->twilio->supersim->v1->ipCommands->read();
 
         $this->assertGreaterThan(0, \count($actual));
     }

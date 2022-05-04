@@ -23,8 +23,8 @@ abstract class WorkflowCumulativeStatisticsOptions {
      * @param string $taskChannel Only calculate cumulative statistics on this
      *                            TaskChannel
      * @param string $splitByWaitTime A comma separated list of values that
-     *                                describes the thresholds to calculate
-     *                                statistics on
+     *                                describes the thresholds, in seconds, to
+     *                                calculate statistics on
      * @return FetchWorkflowCumulativeStatisticsOptions Options builder
      */
     public static function fetch(\DateTime $endDate = Values::NONE, int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, string $taskChannel = Values::NONE, string $splitByWaitTime = Values::NONE): FetchWorkflowCumulativeStatisticsOptions {
@@ -43,8 +43,8 @@ class FetchWorkflowCumulativeStatisticsOptions extends Options {
      * @param string $taskChannel Only calculate cumulative statistics on this
      *                            TaskChannel
      * @param string $splitByWaitTime A comma separated list of values that
-     *                                describes the thresholds to calculate
-     *                                statistics on
+     *                                describes the thresholds, in seconds, to
+     *                                calculate statistics on
      */
     public function __construct(\DateTime $endDate = Values::NONE, int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, string $taskChannel = Values::NONE, string $splitByWaitTime = Values::NONE) {
         $this->options['endDate'] = $endDate;
@@ -103,11 +103,11 @@ class FetchWorkflowCumulativeStatisticsOptions extends Options {
     }
 
     /**
-     * A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA.
+     * A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA. TaskRouter will calculate statistics on up to 10,000 Tasks for any given threshold.
      *
      * @param string $splitByWaitTime A comma separated list of values that
-     *                                describes the thresholds to calculate
-     *                                statistics on
+     *                                describes the thresholds, in seconds, to
+     *                                calculate statistics on
      * @return $this Fluent Builder
      */
     public function setSplitByWaitTime(string $splitByWaitTime): self {

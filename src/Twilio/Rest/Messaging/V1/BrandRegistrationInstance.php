@@ -34,6 +34,7 @@ use Twilio\Version;
  * @property string[] $brandFeedback
  * @property string $identityStatus
  * @property bool $russell3000
+ * @property bool $governmentEntity
  * @property string $taxExemptStatus
  * @property bool $skipAutomaticSecVet
  * @property bool $mock
@@ -69,6 +70,7 @@ class BrandRegistrationInstance extends InstanceResource {
             'brandFeedback' => Values::array_get($payload, 'brand_feedback'),
             'identityStatus' => Values::array_get($payload, 'identity_status'),
             'russell3000' => Values::array_get($payload, 'russell_3000'),
+            'governmentEntity' => Values::array_get($payload, 'government_entity'),
             'taxExemptStatus' => Values::array_get($payload, 'tax_exempt_status'),
             'skipAutomaticSecVet' => Values::array_get($payload, 'skip_automatic_sec_vet'),
             'mock' => Values::array_get($payload, 'mock'),
@@ -100,6 +102,16 @@ class BrandRegistrationInstance extends InstanceResource {
      */
     public function fetch(): BrandRegistrationInstance {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the BrandRegistrationInstance
+     *
+     * @return BrandRegistrationInstance Updated BrandRegistrationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): BrandRegistrationInstance {
+        return $this->proxy()->update();
     }
 
     /**

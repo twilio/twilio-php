@@ -7,42 +7,40 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\Voice\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class CommandContext extends InstanceContext {
+class ArchivedCallContext extends InstanceContext {
     /**
-     * Initialize the CommandContext
+     * Initialize the ArchivedCallContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param \DateTime $date The date of the Call in UTC.
+     * @param string $sid The unique string that identifies this resource
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $date, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid, ];
+        $this->solution = ['date' => $date, 'sid' => $sid, ];
 
-        $this->uri = '/Commands/' . \rawurlencode($sid) . '';
+        $this->uri = '/Archives/' . \rawurlencode($date->format('Y-m-d')) . '/Calls/' . \rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch the CommandInstance
+     * Delete the ArchivedCallInstance
      *
-     * @return CommandInstance Fetched CommandInstance
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CommandInstance {
-        $payload = $this->version->fetch('GET', $this->uri);
-
-        return new CommandInstance($this->version, $payload, $this->solution['sid']);
+    public function delete(): bool {
+        return $this->version->delete('DELETE', $this->uri);
     }
 
     /**
@@ -55,6 +53,6 @@ class CommandContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Supersim.V1.CommandContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Voice.V1.ArchivedCallContext ' . \implode(' ', $context) . ']';
     }
 }

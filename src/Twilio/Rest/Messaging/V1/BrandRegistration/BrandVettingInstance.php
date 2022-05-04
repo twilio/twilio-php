@@ -36,8 +36,9 @@ class BrandVettingInstance extends InstanceResource {
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $brandSid A2P BrandRegistration Sid
+     * @param string $brandVettingSid SID for third-party vetting record
      */
-    public function __construct(Version $version, array $payload, string $brandSid) {
+    public function __construct(Version $version, array $payload, string $brandSid, string $brandVettingSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -54,7 +55,38 @@ class BrandVettingInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['brandSid' => $brandSid, ];
+        $this->solution = [
+            'brandSid' => $brandSid,
+            'brandVettingSid' => $brandVettingSid ?: $this->properties['brandVettingSid'],
+        ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return BrandVettingContext Context for this BrandVettingInstance
+     */
+    protected function proxy(): BrandVettingContext {
+        if (!$this->context) {
+            $this->context = new BrandVettingContext(
+                $this->version,
+                $this->solution['brandSid'],
+                $this->solution['brandVettingSid']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Fetch the BrandVettingInstance
+     *
+     * @return BrandVettingInstance Fetched BrandVettingInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): BrandVettingInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -83,6 +115,10 @@ class BrandVettingInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Messaging.V1.BrandVettingInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Messaging.V1.BrandVettingInstance ' . \implode(' ', $context) . ']';
     }
 }
