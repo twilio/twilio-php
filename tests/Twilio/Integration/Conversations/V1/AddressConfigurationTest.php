@@ -131,6 +131,83 @@ class AddressConfigurationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testReadByAddressTypeResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://conversations.twilio.com/v1/Configuration/Addresses?Type=sms&PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://conversations.twilio.com/v1/Configuration/Addresses?Type=sms&PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "address_configurations"
+                },
+                "address_configurations": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sid": "IGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "address": "+37256123457",
+                        "type": "sms",
+                        "friendly_name": "My Test Configuration",
+                        "auto_creation": {
+                            "enabled": true,
+                            "type": "webhook",
+                            "conversation_service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "webhook_url": "https://example.com",
+                            "webhook_method": "POST",
+                            "webhook_filters": [
+                                "onParticipantAdded",
+                                "onMessageAdded"
+                            ]
+                        },
+                        "date_created": "2016-03-24T21:05:50Z",
+                        "date_updated": "2016-03-24T21:05:50Z",
+                        "url": "https://conversations.twilio.com/v1/Configuration/Addresses/IGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    },
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sid": "IGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+                        "address": "+37256123458",
+                        "type": "sms",
+                        "friendly_name": "Studio Test Configuration",
+                        "auto_creation": {
+                            "enabled": false,
+                            "type": "studio",
+                            "conversation_service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "studio_flow_sid": "FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "studio_retry_count": 3
+                        },
+                        "date_created": "2016-03-24T21:05:50Z",
+                        "date_updated": "2016-03-24T21:05:50Z",
+                        "url": "https://conversations.twilio.com/v1/Configuration/Addresses/IGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+                    },
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sid": "IGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac",
+                        "address": "+37256123459",
+                        "type": "sms",
+                        "friendly_name": "Default Test Configuration",
+                        "auto_creation": {
+                            "enabled": true,
+                            "type": "default"
+                        },
+                        "date_created": "2016-03-24T21:05:50Z",
+                        "date_updated": "2016-03-24T21:05:50Z",
+                        "url": "https://conversations.twilio.com/v1/Configuration/Addresses/IGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac"
+                    }
+                ]
+            }
+            '
+        ));
+
+        $actual = $this->twilio->conversations->v1->addressConfigurations->read();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

@@ -38,10 +38,11 @@ abstract class RoomOptions {
      *                              after last participant leaves.
      * @param int $unusedRoomTimeout Configures the time a room will remain active
      *                               when no one joins.
+     * @param bool $largeRoom Indicates whether this is a large room.
      * @return CreateRoomOptions Options builder
      */
-    public static function create(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE, int $emptyRoomTimeout = Values::NONE, int $unusedRoomTimeout = Values::NONE): CreateRoomOptions {
-        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect, $videoCodecs, $mediaRegion, $recordingRules, $audioOnly, $maxParticipantDuration, $emptyRoomTimeout, $unusedRoomTimeout);
+    public static function create(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE, int $emptyRoomTimeout = Values::NONE, int $unusedRoomTimeout = Values::NONE, bool $largeRoom = Values::NONE): CreateRoomOptions {
+        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect, $videoCodecs, $mediaRegion, $recordingRules, $audioOnly, $maxParticipantDuration, $emptyRoomTimeout, $unusedRoomTimeout, $largeRoom);
     }
 
     /**
@@ -84,8 +85,9 @@ class CreateRoomOptions extends Options {
      *                              after last participant leaves.
      * @param int $unusedRoomTimeout Configures the time a room will remain active
      *                               when no one joins.
+     * @param bool $largeRoom Indicates whether this is a large room.
      */
-    public function __construct(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE, int $emptyRoomTimeout = Values::NONE, int $unusedRoomTimeout = Values::NONE) {
+    public function __construct(bool $enableTurn = Values::NONE, string $type = Values::NONE, string $uniqueName = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxParticipants = Values::NONE, bool $recordParticipantsOnConnect = Values::NONE, array $videoCodecs = Values::ARRAY_NONE, string $mediaRegion = Values::NONE, array $recordingRules = Values::ARRAY_NONE, bool $audioOnly = Values::NONE, int $maxParticipantDuration = Values::NONE, int $emptyRoomTimeout = Values::NONE, int $unusedRoomTimeout = Values::NONE, bool $largeRoom = Values::NONE) {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
@@ -100,6 +102,7 @@ class CreateRoomOptions extends Options {
         $this->options['maxParticipantDuration'] = $maxParticipantDuration;
         $this->options['emptyRoomTimeout'] = $emptyRoomTimeout;
         $this->options['unusedRoomTimeout'] = $unusedRoomTimeout;
+        $this->options['largeRoom'] = $largeRoom;
     }
 
     /**
@@ -263,6 +266,17 @@ class CreateRoomOptions extends Options {
      */
     public function setUnusedRoomTimeout(int $unusedRoomTimeout): self {
         $this->options['unusedRoomTimeout'] = $unusedRoomTimeout;
+        return $this;
+    }
+
+    /**
+     * When set to true, indicated that this is the large room.
+     *
+     * @param bool $largeRoom Indicates whether this is a large room.
+     * @return $this Fluent Builder
+     */
+    public function setLargeRoom(bool $largeRoom): self {
+        $this->options['largeRoom'] = $largeRoom;
         return $this;
     }
 

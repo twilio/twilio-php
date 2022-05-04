@@ -20,17 +20,13 @@ class EsimProfileTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->supersim->v1->esimProfiles->create("eid");
+            $this->twilio->supersim->v1->esimProfiles->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Eid' => "eid", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://supersim.twilio.com/v1/ESimProfiles',
-            null,
-            $values
+            'https://supersim.twilio.com/v1/ESimProfiles'
         ));
     }
 
@@ -43,9 +39,11 @@ class EsimProfileTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "iccid": null,
                 "sim_sid": null,
-                "status": "reserving",
+                "status": "new",
                 "eid": "89049032005008882600033489aaaaaa",
                 "smdp_plus_address": null,
+                "matching_id": null,
+                "activation_code": null,
                 "error_code": null,
                 "error_message": null,
                 "date_created": "2020-09-01T20:00:00Z",
@@ -55,7 +53,35 @@ class EsimProfileTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->esimProfiles->create("eid");
+        $actual = $this->twilio->supersim->v1->esimProfiles->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateActivationCodeResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "iccid": null,
+                "sim_sid": null,
+                "status": "new",
+                "eid": null,
+                "smdp_plus_address": null,
+                "matching_id": null,
+                "activation_code": null,
+                "error_code": null,
+                "error_message": null,
+                "date_created": "2020-09-01T20:00:00Z",
+                "date_updated": "2020-09-01T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->esimProfiles->create();
 
         $this->assertNotNull($actual);
     }
@@ -72,6 +98,8 @@ class EsimProfileTest extends HolodeckTestCase {
                 "status": "reserving",
                 "eid": "89049032005008882600033489aaaaaa",
                 "smdp_plus_address": null,
+                "matching_id": null,
+                "activation_code": null,
                 "error_code": null,
                 "error_message": null,
                 "date_created": "2020-09-01T20:00:00Z",
@@ -81,7 +109,7 @@ class EsimProfileTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->supersim->v1->esimProfiles->create("eid");
+        $actual = $this->twilio->supersim->v1->esimProfiles->create();
 
         $this->assertNotNull($actual);
     }
@@ -100,7 +128,7 @@ class EsimProfileTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse(): void {
+    public function testFetchDefaultSmdpResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -111,7 +139,37 @@ class EsimProfileTest extends HolodeckTestCase {
                 "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "available",
                 "eid": "89049032005008882600033489aaaaaa",
-                "smdp_plus_address": "https://sm-dp-plus.twilio.com",
+                "smdp_plus_address": "sm-dp-plus.twilio.com",
+                "matching_id": null,
+                "activation_code": null,
+                "error_code": null,
+                "error_message": null,
+                "date_created": "2020-09-01T20:00:00Z",
+                "date_updated": "2020-09-01T20:00:00Z",
+                "url": "https://supersim.twilio.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->esimProfiles("HPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchActivationCodeResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "iccid": "8988307aaaaaaaaaaaaa",
+                "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "available",
+                "eid": null,
+                "smdp_plus_address": "sm-dp-plus.twilio.com",
+                "matching_id": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
+                "activation_code": "1$SM-DP-PLUS.TWILIO.COM$AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
                 "error_code": null,
                 "error_message": null,
                 "date_created": "2020-09-01T20:00:00Z",
@@ -153,7 +211,9 @@ class EsimProfileTest extends HolodeckTestCase {
                         "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "available",
                         "eid": "89049032005008882600033489aaaaaa",
-                        "smdp_plus_address": "https://sm-dp-plus.twilio.com",
+                        "smdp_plus_address": "sm-dp-plus.twilio.com",
+                        "matching_id": null,
+                        "activation_code": null,
                         "error_code": null,
                         "error_message": null,
                         "date_created": "2020-09-01T20:00:00Z",
@@ -192,7 +252,9 @@ class EsimProfileTest extends HolodeckTestCase {
                         "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "available",
                         "eid": "89049032005008882600033489aaaaaa",
-                        "smdp_plus_address": "https://sm-dp-plus.twilio.com",
+                        "smdp_plus_address": "sm-dp-plus.twilio.com",
+                        "matching_id": null,
+                        "activation_code": null,
                         "error_code": null,
                         "error_message": null,
                         "date_created": "2020-09-01T20:00:00Z",
@@ -231,7 +293,9 @@ class EsimProfileTest extends HolodeckTestCase {
                         "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "available",
                         "eid": "89049032005008882600033489aaaaaa",
-                        "smdp_plus_address": "https://sm-dp-plus.twilio.com",
+                        "smdp_plus_address": "sm-dp-plus.twilio.com",
+                        "matching_id": null,
+                        "activation_code": null,
                         "error_code": null,
                         "error_message": null,
                         "date_created": "2020-09-01T20:00:00Z",
@@ -270,7 +334,9 @@ class EsimProfileTest extends HolodeckTestCase {
                         "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "downloaded",
                         "eid": "89049032005008882600033489aaaaaa",
-                        "smdp_plus_address": "https://sm-dp-plus.twilio.com",
+                        "smdp_plus_address": "sm-dp-plus.twilio.com",
+                        "matching_id": null,
+                        "activation_code": null,
                         "error_code": null,
                         "error_message": null,
                         "date_created": "2020-09-01T20:00:00Z",

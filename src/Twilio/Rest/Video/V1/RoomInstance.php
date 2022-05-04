@@ -40,6 +40,7 @@ use Twilio\Version;
  * @property bool $audioOnly
  * @property int $emptyRoomTimeout
  * @property int $unusedRoomTimeout
+ * @property bool $largeRoom
  * @property string $url
  * @property array $links
  */
@@ -81,6 +82,7 @@ class RoomInstance extends InstanceResource {
             'audioOnly' => Values::array_get($payload, 'audio_only'),
             'emptyRoomTimeout' => Values::array_get($payload, 'empty_room_timeout'),
             'unusedRoomTimeout' => Values::array_get($payload, 'unused_room_timeout'),
+            'largeRoom' => Values::array_get($payload, 'large_room'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         ];

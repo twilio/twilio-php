@@ -26,6 +26,8 @@ use Twilio\Version;
  * @property string $dataUpload
  * @property string $dataDownload
  * @property string $dataTotal
+ * @property string $dataTotalBilled
+ * @property string $billedUnit
  */
 class UsageRecordInstance extends InstanceResource {
     /**
@@ -48,6 +50,8 @@ class UsageRecordInstance extends InstanceResource {
             'dataUpload' => Values::array_get($payload, 'data_upload'),
             'dataDownload' => Values::array_get($payload, 'data_download'),
             'dataTotal' => Values::array_get($payload, 'data_total'),
+            'dataTotalBilled' => Values::array_get($payload, 'data_total_billed'),
+            'billedUnit' => Values::array_get($payload, 'billed_unit'),
         ];
 
         $this->solution = [];

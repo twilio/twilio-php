@@ -1,6 +1,22 @@
 twilio-php Changelog
 ====================
 
+[2022-05-04] Version 6.37.0
+---------------------------
+**Library - Test**
+- [PR #728](https://github.com/twilio/twilio-php/pull/728): add SonarCloud data collection. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Expose query parameter `type` in list operation on Address Configurations resource
+
+**Supersim**
+- Add `data_total_billed` and `billed_units` fields to Super SIM UsageRecords API response.
+- Change ESimProfiles `Eid` parameter to optional to enable Activation Code download method support **(breaking change)**
+
+**Verify**
+- Deprecate `push.include_date` parameter in create and update service.
+
+
 [2022-04-06] Version 6.36.1
 ---------------------------
 **Library - Chore**

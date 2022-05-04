@@ -44,7 +44,7 @@ abstract class MessageOptions {
      *                          in ISO 8601 format.
      * @param bool $sendAsMms If set to True, Twilio will deliver the message as a
      *                        single MMS message, regardless of the presence of
-     *                        media
+     *                        media.
      * @return CreateMessageOptions Options builder
      */
     public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE): CreateMessageOptions {
@@ -105,7 +105,7 @@ class CreateMessageOptions extends Options {
      *                          in ISO 8601 format.
      * @param bool $sendAsMms If set to True, Twilio will deliver the message as a
      *                        single MMS message, regardless of the presence of
-     *                        media
+     *                        media.
      */
     public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE) {
         $this->options['from'] = $from;
@@ -327,11 +327,11 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. This is a Beta Feature.
+     * If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.
      *
      * @param bool $sendAsMms If set to True, Twilio will deliver the message as a
      *                        single MMS message, regardless of the presence of
-     *                        media
+     *                        media.
      * @return $this Fluent Builder
      */
     public function setSendAsMms(bool $sendAsMms): self {

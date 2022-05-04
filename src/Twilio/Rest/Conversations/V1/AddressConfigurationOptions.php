@@ -14,6 +14,14 @@ use Twilio\Values;
 
 abstract class AddressConfigurationOptions {
     /**
+     * @param string $type The type of address configuration.
+     * @return ReadAddressConfigurationOptions Options builder
+     */
+    public static function read(string $type = Values::NONE): ReadAddressConfigurationOptions {
+        return new ReadAddressConfigurationOptions($type);
+    }
+
+    /**
      * @param string $friendlyName The human-readable name of this configuration.
      * @param bool $autoCreationEnabled Enable/Disable auto-creating conversations
      *                                  for messages to this address
@@ -65,6 +73,36 @@ abstract class AddressConfigurationOptions {
      */
     public static function update(string $friendlyName = Values::NONE, bool $autoCreationEnabled = Values::NONE, string $autoCreationType = Values::NONE, string $autoCreationConversationServiceSid = Values::NONE, string $autoCreationWebhookUrl = Values::NONE, string $autoCreationWebhookMethod = Values::NONE, array $autoCreationWebhookFilters = Values::ARRAY_NONE, string $autoCreationStudioFlowSid = Values::NONE, int $autoCreationStudioRetryCount = Values::NONE): UpdateAddressConfigurationOptions {
         return new UpdateAddressConfigurationOptions($friendlyName, $autoCreationEnabled, $autoCreationType, $autoCreationConversationServiceSid, $autoCreationWebhookUrl, $autoCreationWebhookMethod, $autoCreationWebhookFilters, $autoCreationStudioFlowSid, $autoCreationStudioRetryCount);
+    }
+}
+
+class ReadAddressConfigurationOptions extends Options {
+    /**
+     * @param string $type The type of address configuration.
+     */
+    public function __construct(string $type = Values::NONE) {
+        $this->options['type'] = $type;
+    }
+
+    /**
+     * Filter the address configurations by its type. This value can be one of: `whatsapp`, `sms`.
+     *
+     * @param string $type The type of address configuration.
+     * @return $this Fluent Builder
+     */
+    public function setType(string $type): self {
+        $this->options['type'] = $type;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Conversations.V1.ReadAddressConfigurationOptions ' . $options . ']';
     }
 }
 
