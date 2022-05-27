@@ -9,8 +9,7 @@ class ConferenceTest extends TwiMLTest {
 
     private $conference;
 
-    protected function setUp(): void
-    {
+    protected function setUp(): void {
         $this->conference = new Conference("");
     }
 

@@ -9,8 +9,7 @@ class GatherTest extends TwiMLTest {
 
     private $gather;
 
-    protected function setUp(): void
-    {
+    protected function setUp(): void {
         $this->gather = new Gather();
     }
 
