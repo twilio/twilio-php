@@ -1,6 +1,6 @@
 <?php
 
-namespace Twilio\Tests\Unit\TwiML\Voice;
+namespace Twilio\Tests\Unit\TwiML\Messaging;
 
 use Twilio\Tests\Unit\TwiML\TwiMLTest;
 use Twilio\TwiML\Messaging\Redirect;
