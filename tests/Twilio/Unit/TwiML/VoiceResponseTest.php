@@ -9,7 +9,7 @@ class VoiceResponseTest extends TwiMLTest {
     private $response;
 
     protected function setUp(): void {
-        $this->response = new VoiceResponse("");
+        $this->response = new VoiceResponse();
     }
 
     public function testTextNode(): void {
