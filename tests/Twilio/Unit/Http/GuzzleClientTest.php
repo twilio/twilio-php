@@ -46,6 +46,10 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertSame('POST', $request->getMethod());
         $this->assertSame('myparamkey=myparamvalue', $request->getBody()->getContents());
         $this->assertSame('https://www.whatever.com?myquerykey=myqueryvalue', (string)$request->getUri());
+
+        $options = $this->mockHandler->getLastOptions();
+
+        $this->assertFalse($options['allow_redirects']);
     }
 
     public function testPostMethodArray(): void {
