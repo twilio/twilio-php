@@ -34,16 +34,17 @@ authors:
 	git log --raw | grep "^Author: " | cut -d ' ' -f2- | cut -d '<' -f1 | sed 's/^/- /' | sort | uniq >> AUTHORS.md
 
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
+CURRENT_TAG=$(shell [[ "${GITHUB_TAG}" == *"-rc"* ]] && echo "rc" || echo "latest")
 docker-build:
 	docker build -t twilio/twilio-php .
 	docker tag twilio/twilio-php twilio/twilio-php:${GITHUB_TAG}
 	docker tag twilio/twilio-php twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
-	docker tag twilio/twilio-php twilio/twilio-php:latest
+	docker tag twilio/twilio-php twilio/twilio-php:${CURRENT_TAG}
 
 docker-push:
 	docker push twilio/twilio-php:${GITHUB_TAG}
 	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
-	docker push twilio/twilio-php:latest
+	docker push twilio/twilio-php:${CURRENT_TAG}
 
 docker-dev-build:
 	-docker stop twilio_php${VERSION}
