@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2022-06-01] Version 6.37.2
+---------------------------
+**Library - Chore**
+- [PR #736](https://github.com/twilio/twilio-php/pull/736): use Docker 'rc' tag for release candidate images. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Test**
+- [PR #735](https://github.com/twilio/twilio-php/pull/735): increase code coverage for sonar analysis. Thanks to [@claudiachua](https://github.com/claudiachua)!
+- [PR #734](https://github.com/twilio/twilio-php/pull/734): increase code coverage for sonar analysis. Thanks to [@claudiachua](https://github.com/claudiachua)!
+
+**Library - Fix**
+- [PR #732](https://github.com/twilio/twilio-php/pull/732): Disable redirects for the Guzzle HTTP client. Thanks to [@erickskrauch](https://github.com/erickskrauch)!
+
+
 [2022-05-18] Version 6.37.1
 ---------------------------
 **Api**

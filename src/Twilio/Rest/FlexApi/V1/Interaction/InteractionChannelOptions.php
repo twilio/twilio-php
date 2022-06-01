@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class InteractionChannelOptions {
     /**
-     * @param array $routing The Interaction Channels's optional routing parameters
+     * @param array $routing Optional. The state of associated tasks.
      * @return UpdateInteractionChannelOptions Options builder
      */
     public static function update(array $routing = Values::ARRAY_NONE): UpdateInteractionChannelOptions {
@@ -24,16 +24,16 @@ abstract class InteractionChannelOptions {
 
 class UpdateInteractionChannelOptions extends Options {
     /**
-     * @param array $routing The Interaction Channels's optional routing parameters
+     * @param array $routing Optional. The state of associated tasks.
      */
     public function __construct(array $routing = Values::ARRAY_NONE) {
         $this->options['routing'] = $routing;
     }
 
     /**
-     * The Interaction Channel's routing parameters.  Optional, may contain `status` to set the agent's Reservation state to either `closed` or `wrapup`.  Default is `wrapup` if unspecified.
+     * Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
      *
-     * @param array $routing The Interaction Channels's optional routing parameters
+     * @param array $routing Optional. The state of associated tasks.
      * @return $this Fluent Builder
      */
     public function setRouting(array $routing): self {

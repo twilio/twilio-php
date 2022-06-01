@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property array[] $sendCodeAttempts
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property array $sna
  * @property string $url
  */
 class VerificationInstance extends InstanceResource {
@@ -59,6 +60,7 @@ class VerificationInstance extends InstanceResource {
             'sendCodeAttempts' => Values::array_get($payload, 'send_code_attempts'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'sna' => Values::array_get($payload, 'sna'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

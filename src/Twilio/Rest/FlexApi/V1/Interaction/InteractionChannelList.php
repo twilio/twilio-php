@@ -19,7 +19,7 @@ class InteractionChannelList extends ListResource {
      * Construct the InteractionChannelList
      *
      * @param Version $version Version that contains the resource
-     * @param string $interactionSid The Interaction Sid for this channel.
+     * @param string $interactionSid The unique string that identifies the resource
      */
     public function __construct(Version $version, string $interactionSid) {
         parent::__construct($version);
@@ -112,7 +112,7 @@ class InteractionChannelList extends ListResource {
     /**
      * Constructs a InteractionChannelContext
      *
-     * @param string $sid The Channel Sid for this Participant.
+     * @param string $sid The unique string that identifies the resource
      */
     public function getContext(string $sid): InteractionChannelContext {
         return new InteractionChannelContext($this->version, $this->solution['interactionSid'], $sid);
