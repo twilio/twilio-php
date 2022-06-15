@@ -22,6 +22,26 @@ class VirtualAgent extends TwiML {
     }
 
     /**
+     * Add Config child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Config Child element.
+     */
+    public function config($attributes = []): Config {
+        return $this->nest(new Config($attributes));
+    }
+
+    /**
+     * Add Parameter child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Parameter Child element.
+     */
+    public function parameter($attributes = []): Parameter {
+        return $this->nest(new Parameter($attributes));
+    }
+
+    /**
      * Add ConnectorName attribute.
      *
      * @param string $connectorName Defines the conversation profile Dialogflow
@@ -58,5 +78,15 @@ class VirtualAgent extends TwiML {
      */
     public function setStatusCallback($statusCallback): self {
         return $this->setAttribute('statusCallback', $statusCallback);
+    }
+
+    /**
+     * Add StatusCallbackMethod attribute.
+     *
+     * @param string $statusCallbackMethod HTTP method to use when requesting the
+     *                                     status callback URL
+     */
+    public function setStatusCallbackMethod($statusCallbackMethod): self {
+        return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
     }
 }

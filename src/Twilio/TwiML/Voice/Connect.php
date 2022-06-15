@@ -63,6 +63,16 @@ class Connect extends TwiML {
     }
 
     /**
+     * Add Conversation child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Conversation Child element.
+     */
+    public function conversation($attributes = []): Conversation {
+        return $this->nest(new Conversation($attributes));
+    }
+
+    /**
      * Add Action attribute.
      *
      * @param string $action Action URL

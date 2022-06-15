@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string $resolution
  * @property string $sourceSid
  * @property string $sid
- * @property string $size
+ * @property string $mediaSize
  * @property string $status
  * @property string $statusCallback
  * @property string $statusCallbackMethod
@@ -59,7 +59,7 @@ class MediaRecordingInstance extends InstanceResource {
             'resolution' => Values::array_get($payload, 'resolution'),
             'sourceSid' => Values::array_get($payload, 'source_sid'),
             'sid' => Values::array_get($payload, 'sid'),
-            'size' => Values::array_get($payload, 'size'),
+            'mediaSize' => Values::array_get($payload, 'media_size'),
             'status' => Values::array_get($payload, 'status'),
             'statusCallback' => Values::array_get($payload, 'status_callback'),
             'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
