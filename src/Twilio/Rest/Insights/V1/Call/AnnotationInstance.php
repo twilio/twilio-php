@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -16,6 +16,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ *
  * @property string $callSid
  * @property string $accountSid
  * @property string $answeredBy
@@ -33,9 +35,9 @@ class AnnotationInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $callSid The call_sid
+     * @param string $callSid Call SID.
      */
-    public function __construct(Version $version, array $payload, string $callSid = null) {
+    public function __construct(Version $version, array $payload, string $callSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -52,7 +54,7 @@ class AnnotationInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['callSid' => $callSid ?: $this->properties['callSid'], ];
+        $this->solution = ['callSid' => $callSid, ];
     }
 
     /**

@@ -7,31 +7,33 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\ListResource;
 use Twilio\Version;
 
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
 class AnnotationList extends ListResource {
     /**
      * Construct the AnnotationList
      *
      * @param Version $version Version that contains the resource
+     * @param string $callSid Call SID.
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['callSid' => $callSid, ];
     }
 
     /**
      * Constructs a AnnotationContext
-     *
-     * @param string $callSid The call_sid
      */
-    public function getContext(string $callSid): AnnotationContext {
-        return new AnnotationContext($this->version, $callSid);
+    public function getContext(): AnnotationContext {
+        return new AnnotationContext($this->version, $this->solution['callSid']);
     }
 
     /**

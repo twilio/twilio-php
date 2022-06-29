@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
@@ -16,12 +16,15 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
 class AnnotationContext extends InstanceContext {
     /**
      * Initialize the AnnotationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $callSid The call_sid
+     * @param string $callSid Call SID.
      */
     public function __construct(Version $version, $callSid) {
         parent::__construct($version);

@@ -19,7 +19,6 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
  * @property string $accountSid
- * @property int $bitrate
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property int $duration
@@ -49,7 +48,6 @@ class MediaRecordingInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'bitrate' => Values::array_get($payload, 'bitrate'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'duration' => Values::array_get($payload, 'duration'),
