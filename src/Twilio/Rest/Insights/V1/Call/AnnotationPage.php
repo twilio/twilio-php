@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Fax\V1\Fax;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class FaxMediaPage extends Page {
+class AnnotationPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class FaxMediaPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return FaxMediaInstance \Twilio\Rest\Fax\V1\Fax\FaxMediaInstance
+     * @return AnnotationInstance \Twilio\Rest\Insights\V1\Call\AnnotationInstance
      */
-    public function buildInstance(array $payload): FaxMediaInstance {
-        return new FaxMediaInstance($this->version, $payload, $this->solution['faxSid']);
+    public function buildInstance(array $payload): AnnotationInstance {
+        return new AnnotationInstance($this->version, $payload, $this->solution['callSid']);
     }
 
     /**
@@ -43,6 +43,6 @@ class FaxMediaPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Fax.V1.FaxMediaPage]';
+        return '[Twilio.Insights.V1.AnnotationPage]';
     }
 }

@@ -7,36 +7,36 @@
  * /       /
  */
 
-namespace Twilio\Rest\Fax;
+namespace Twilio\Rest\Lookups;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Fax\V1\FaxList;
+use Twilio\Rest\Lookups\V2\PhoneNumberList;
 use Twilio\Version;
 
 /**
- * @property FaxList $faxes
- * @method \Twilio\Rest\Fax\V1\FaxContext faxes(string $sid)
+ * @property PhoneNumberList $phoneNumbers
+ * @method \Twilio\Rest\Lookups\V2\PhoneNumberContext phoneNumbers(string $phoneNumber)
  */
-class V1 extends Version {
-    protected $_faxes;
+class V2 extends Version {
+    protected $_phoneNumbers;
 
     /**
-     * Construct the V1 version of Fax
+     * Construct the V2 version of Lookups
      *
      * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
-        $this->version = 'v1';
+        $this->version = 'v2';
     }
 
-    protected function getFaxes(): FaxList {
-        if (!$this->_faxes) {
-            $this->_faxes = new FaxList($this);
+    protected function getPhoneNumbers(): PhoneNumberList {
+        if (!$this->_phoneNumbers) {
+            $this->_phoneNumbers = new PhoneNumberList($this);
         }
-        return $this->_faxes;
+        return $this->_phoneNumbers;
     }
 
     /**
@@ -78,6 +78,6 @@ class V1 extends Version {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Fax.V1]';
+        return '[Twilio.Lookups.V2]';
     }
 }

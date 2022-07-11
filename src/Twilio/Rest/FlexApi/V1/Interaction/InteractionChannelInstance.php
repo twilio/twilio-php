@@ -33,8 +33,8 @@ class InteractionChannelInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $interactionSid The Interaction Sid for this channel.
-     * @param string $sid The Channel Sid for this Participant.
+     * @param string $interactionSid The unique string that identifies the resource
+     * @param string $sid The unique string that identifies the resource
      */
     public function __construct(Version $version, array $payload, string $interactionSid, string $sid = null) {
         parent::__construct($version);
@@ -82,7 +82,7 @@ class InteractionChannelInstance extends InstanceResource {
     /**
      * Update the InteractionChannelInstance
      *
-     * @param string $status The Interaction Channels's status
+     * @param string $status Required. The Interaction channels's status
      * @param array|Options $options Optional Arguments
      * @return InteractionChannelInstance Updated InteractionChannelInstance
      * @throws TwilioException When an HTTP error occurs.

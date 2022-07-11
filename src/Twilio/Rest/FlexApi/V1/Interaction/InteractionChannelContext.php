@@ -32,8 +32,8 @@ class InteractionChannelContext extends InstanceContext {
      * Initialize the InteractionChannelContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $interactionSid The Interaction Sid for this channel.
-     * @param string $sid The Channel Sid for this Participant.
+     * @param string $interactionSid The unique string that identifies the resource
+     * @param string $sid The unique string that identifies the resource
      */
     public function __construct(Version $version, $interactionSid, $sid) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class InteractionChannelContext extends InstanceContext {
     /**
      * Update the InteractionChannelInstance
      *
-     * @param string $status The Interaction Channels's status
+     * @param string $status Required. The Interaction channels's status
      * @param array|Options $options Optional Arguments
      * @return InteractionChannelInstance Updated InteractionChannelInstance
      * @throws TwilioException When an HTTP error occurs.

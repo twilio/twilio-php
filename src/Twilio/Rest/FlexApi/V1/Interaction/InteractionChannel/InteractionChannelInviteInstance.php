@@ -27,8 +27,8 @@ class InteractionChannelInviteInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $interactionSid The interaction_sid
-     * @param string $channelSid The channel_sid
+     * @param string $interactionSid The Interaction SID for this Channel
+     * @param string $channelSid The Channel SID for this Invite
      */
     public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid) {
         parent::__construct($version);

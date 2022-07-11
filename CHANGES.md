@@ -1,6 +1,50 @@
 twilio-php Changelog
 ====================
 
+[2022-06-29] Version 6.38.0
+---------------------------
+**Api**
+- Added `amazon-polly` to `usage_record` API.
+
+**Insights**
+- Added `annotation` field in call summary
+- Added new endpoint to fetch/create/update Call Annotations
+
+**Verify**
+- Remove `api.verify.totp` beta flag and set maturity to `beta` for Verify TOTP properties and parameters. **(breaking change)**
+- Changed summary param `verify_service_sid` to `service_sid` to be consistent with list attempts API **(breaking change)**
+
+**Twiml**
+- Add `maxQueueSize` to `Enqueue`
+
+
+[2022-06-15] Version 6.37.3
+---------------------------
+**Lookups**
+- Adding support for Lookup V2 API
+
+**Studio**
+- Corrected PII labels to be 30 days and added context to be PII
+
+**Twiml**
+- Add `statusCallbackMethod` attribute, nested `<Config` and `<Parameter>` elements to `<VirtualAgent>` noun.
+- Add support for new Amazon Polly voices (Q2 2022) for `Say` verb
+- Add support for `<Conversation>` noun
+
+
+[2022-06-01] Version 6.37.2
+---------------------------
+**Library - Chore**
+- [PR #736](https://github.com/twilio/twilio-php/pull/736): use Docker 'rc' tag for release candidate images. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Test**
+- [PR #735](https://github.com/twilio/twilio-php/pull/735): increase code coverage for sonar analysis. Thanks to [@claudiachua](https://github.com/claudiachua)!
+- [PR #734](https://github.com/twilio/twilio-php/pull/734): increase code coverage for sonar analysis. Thanks to [@claudiachua](https://github.com/claudiachua)!
+
+**Library - Fix**
+- [PR #732](https://github.com/twilio/twilio-php/pull/732): Disable redirects for the Guzzle HTTP client. Thanks to [@erickskrauch](https://github.com/erickskrauch)!
+
+
 [2022-05-18] Version 6.37.1
 ---------------------------
 **Api**

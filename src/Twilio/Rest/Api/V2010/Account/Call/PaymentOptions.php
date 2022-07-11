@@ -32,8 +32,8 @@ abstract class PaymentOptions {
      *                         parameters to payment processors. (Required for ACH
      *                         payments)
      * @param string $paymentConnector This is the unique name corresponding to the
-     *                                 Payment Gateway Connector installed in the
-     *                                 Twilio Add-ons.
+     *                                 Pay Connector installed in the Twilio
+     *                                 Add-ons.
      * @param string $paymentMethod Type of payment being captured.
      * @param bool $postalCode Indicates whether the credit card PostalCode (zip
      *                         code) is a required piece of payment information
@@ -84,8 +84,8 @@ class CreatePaymentOptions extends Options {
      *                         parameters to payment processors. (Required for ACH
      *                         payments)
      * @param string $paymentConnector This is the unique name corresponding to the
-     *                                 Payment Gateway Connector installed in the
-     *                                 Twilio Add-ons.
+     *                                 Pay Connector installed in the Twilio
+     *                                 Add-ons.
      * @param string $paymentMethod Type of payment being captured.
      * @param bool $postalCode Indicates whether the credit card PostalCode (zip
      *                         code) is a required piece of payment information
@@ -143,7 +143,7 @@ class CreatePaymentOptions extends Options {
     }
 
     /**
-     * The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the <Pay> Connector are accepted.
+     * The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the Pay Connector are accepted.
      *
      * @param string $currency The currency of the `charge_amount`.
      * @return $this Fluent Builder
@@ -204,11 +204,11 @@ class CreatePaymentOptions extends Options {
     }
 
     /**
-     * This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.
+     * This is the unique name corresponding to the Pay Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.
      *
      * @param string $paymentConnector This is the unique name corresponding to the
-     *                                 Payment Gateway Connector installed in the
-     *                                 Twilio Add-ons.
+     *                                 Pay Connector installed in the Twilio
+     *                                 Add-ons.
      * @return $this Fluent Builder
      */
     public function setPaymentConnector(string $paymentConnector): self {
@@ -327,7 +327,7 @@ class UpdatePaymentOptions extends Options {
     }
 
     /**
-     * Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected <Pay> connector for processing.
+     * Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected Pay Connector for processing.
      *
      * @param string $status Indicates whether the current payment session should
      *                       be cancelled or completed.

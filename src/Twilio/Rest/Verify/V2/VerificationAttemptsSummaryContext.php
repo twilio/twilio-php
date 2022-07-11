@@ -43,7 +43,7 @@ class VerificationAttemptsSummaryContext extends InstanceContext {
         $options = new Values($options);
 
         $params = Values::of([
-            'VerifyServiceSid' => $options['verifyServiceSid'],
+            'ServiceSid' => $options['serviceSid'],
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'Country' => $options['country'],

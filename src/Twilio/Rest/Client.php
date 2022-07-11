@@ -25,7 +25,6 @@ use Twilio\VersionInfo;
  * @property Chat $chat
  * @property Conversations $conversations
  * @property Events $events
- * @property Fax $fax
  * @property FlexApi $flexApi
  * @property FrontlineApi $frontlineApi
  * @property Insights $insights
@@ -119,7 +118,6 @@ class Client {
     protected $_chat;
     protected $_conversations;
     protected $_events;
-    protected $_fax;
     protected $_flexApi;
     protected $_frontlineApi;
     protected $_insights;
@@ -699,18 +697,6 @@ class Client {
             $this->_events = new Events($this);
         }
         return $this->_events;
-    }
-
-    /**
-     * Access the Fax Twilio Domain
-     *
-     * @return Fax Fax Twilio Domain
-     */
-    protected function getFax(): Fax {
-        if (!$this->_fax) {
-            $this->_fax = new Fax($this);
-        }
-        return $this->_fax;
     }
 
     /**

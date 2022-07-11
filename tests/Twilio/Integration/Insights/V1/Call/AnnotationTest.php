@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Insights\V1;
+namespace Twilio\Tests\Integration\Insights\V1\Call;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,7 +20,8 @@ class AnnotationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->insights->v1->annotation("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+            $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                       ->annotation()->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -40,7 +41,8 @@ class AnnotationTest extends HolodeckTestCase {
                 "answered_by": "human",
                 "connectivity_issue": "invalid_number",
                 "quality_issues": [
-                    "low_volume"
+                    "low_volume",
+                    "choppy_robotic"
                 ],
                 "spam": true,
                 "call_score": 2,
@@ -51,7 +53,8 @@ class AnnotationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->insights->v1->annotation("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        $actual = $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                             ->annotation()->update();
 
         $this->assertNotNull($actual);
     }
@@ -60,7 +63,8 @@ class AnnotationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->insights->v1->annotation("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+            $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                       ->annotation()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -91,7 +95,8 @@ class AnnotationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->insights->v1->annotation("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+        $actual = $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                             ->annotation()->fetch();
 
         $this->assertNotNull($actual);
     }

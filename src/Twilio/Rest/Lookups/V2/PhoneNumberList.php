@@ -7,14 +7,17 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Lookups\V2;
 
 use Twilio\ListResource;
 use Twilio\Version;
 
-class CallList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
+class PhoneNumberList extends ListResource {
     /**
-     * Construct the CallList
+     * Construct the PhoneNumberList
      *
      * @param Version $version Version that contains the resource
      */
@@ -26,12 +29,12 @@ class CallList extends ListResource {
     }
 
     /**
-     * Constructs a CallContext
+     * Constructs a PhoneNumberContext
      *
-     * @param string $sid The sid
+     * @param string $phoneNumber Phone number to lookup
      */
-    public function getContext(string $sid): CallContext {
-        return new CallContext($this->version, $sid);
+    public function getContext(string $phoneNumber): PhoneNumberContext {
+        return new PhoneNumberContext($this->version, $phoneNumber);
     }
 
     /**
@@ -40,6 +43,6 @@ class CallList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Insights.V1.CallList]';
+        return '[Twilio.Lookups.V2.PhoneNumberList]';
     }
 }

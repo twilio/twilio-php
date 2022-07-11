@@ -12,7 +12,6 @@ namespace Twilio\Rest\Insights;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Insights\V1\AnnotationList;
 use Twilio\Rest\Insights\V1\CallList;
 use Twilio\Rest\Insights\V1\CallSummariesList;
 use Twilio\Rest\Insights\V1\ConferenceList;
@@ -22,19 +21,16 @@ use Twilio\Version;
 
 /**
  * @property SettingList $settings
- * @property AnnotationList $annotation
  * @property CallList $calls
  * @property CallSummariesList $callSummaries
  * @property ConferenceList $conferences
  * @property RoomList $rooms
- * @method \Twilio\Rest\Insights\V1\AnnotationContext annotation(string $callSid)
  * @method \Twilio\Rest\Insights\V1\CallContext calls(string $sid)
  * @method \Twilio\Rest\Insights\V1\ConferenceContext conferences(string $conferenceSid)
  * @method \Twilio\Rest\Insights\V1\RoomContext rooms(string $roomSid)
  */
 class V1 extends Version {
     protected $_settings;
-    protected $_annotation;
     protected $_calls;
     protected $_callSummaries;
     protected $_conferences;
@@ -55,13 +51,6 @@ class V1 extends Version {
             $this->_settings = new SettingList($this);
         }
         return $this->_settings;
-    }
-
-    protected function getAnnotation(): AnnotationList {
-        if (!$this->_annotation) {
-            $this->_annotation = new AnnotationList($this);
-        }
-        return $this->_annotation;
     }
 
     protected function getCalls(): CallList {

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Fax\V1;
+namespace Twilio\Rest\Lookups\V2;
 
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class FaxPage extends Page {
+class PhoneNumberPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class FaxPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return FaxInstance \Twilio\Rest\Fax\V1\FaxInstance
+     * @return PhoneNumberInstance \Twilio\Rest\Lookups\V2\PhoneNumberInstance
      */
-    public function buildInstance(array $payload): FaxInstance {
-        return new FaxInstance($this->version, $payload);
+    public function buildInstance(array $payload): PhoneNumberInstance {
+        return new PhoneNumberInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +43,6 @@ class FaxPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Fax.V1.FaxPage]';
+        return '[Twilio.Lookups.V2.PhoneNumberPage]';
     }
 }
