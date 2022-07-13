@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class VerificationAttemptsSummaryOptions {
     /**
-     * @param string $serviceSid Filter the verification attempts considered on the
-     *                           summary by verify service.
+     * @param string $verifyServiceSid Filter the verification attempts considered
+     *                                 on the summary by verify service.
      * @param \DateTime $dateCreatedAfter Consider verification attempts create
      *                                    after this date on the summary.
      * @param \DateTime $dateCreatedBefore Consider verification attempts created
@@ -28,15 +28,15 @@ abstract class VerificationAttemptsSummaryOptions {
      *                                  summary by destination prefix.
      * @return FetchVerificationAttemptsSummaryOptions Options builder
      */
-    public static function fetch(string $serviceSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $country = Values::NONE, string $channel = Values::NONE, string $destinationPrefix = Values::NONE): FetchVerificationAttemptsSummaryOptions {
-        return new FetchVerificationAttemptsSummaryOptions($serviceSid, $dateCreatedAfter, $dateCreatedBefore, $country, $channel, $destinationPrefix);
+    public static function fetch(string $verifyServiceSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $country = Values::NONE, string $channel = Values::NONE, string $destinationPrefix = Values::NONE): FetchVerificationAttemptsSummaryOptions {
+        return new FetchVerificationAttemptsSummaryOptions($verifyServiceSid, $dateCreatedAfter, $dateCreatedBefore, $country, $channel, $destinationPrefix);
     }
 }
 
 class FetchVerificationAttemptsSummaryOptions extends Options {
     /**
-     * @param string $serviceSid Filter the verification attempts considered on the
-     *                           summary by verify service.
+     * @param string $verifyServiceSid Filter the verification attempts considered
+     *                                 on the summary by verify service.
      * @param \DateTime $dateCreatedAfter Consider verification attempts create
      *                                    after this date on the summary.
      * @param \DateTime $dateCreatedBefore Consider verification attempts created
@@ -48,8 +48,8 @@ class FetchVerificationAttemptsSummaryOptions extends Options {
      * @param string $destinationPrefix Filters the attempts considered on the
      *                                  summary by destination prefix.
      */
-    public function __construct(string $serviceSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $country = Values::NONE, string $channel = Values::NONE, string $destinationPrefix = Values::NONE) {
-        $this->options['serviceSid'] = $serviceSid;
+    public function __construct(string $verifyServiceSid = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE, string $country = Values::NONE, string $channel = Values::NONE, string $destinationPrefix = Values::NONE) {
+        $this->options['verifyServiceSid'] = $verifyServiceSid;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['country'] = $country;
@@ -60,12 +60,12 @@ class FetchVerificationAttemptsSummaryOptions extends Options {
     /**
      * Filter used to consider only Verification Attempts of the given verify service on the summary aggregation.
      *
-     * @param string $serviceSid Filter the verification attempts considered on the
-     *                           summary by verify service.
+     * @param string $verifyServiceSid Filter the verification attempts considered
+     *                                 on the summary by verify service.
      * @return $this Fluent Builder
      */
-    public function setServiceSid(string $serviceSid): self {
-        $this->options['serviceSid'] = $serviceSid;
+    public function setVerifyServiceSid(string $verifyServiceSid): self {
+        $this->options['verifyServiceSid'] = $verifyServiceSid;
         return $this;
     }
 

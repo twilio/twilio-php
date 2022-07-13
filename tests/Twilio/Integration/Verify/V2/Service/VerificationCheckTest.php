@@ -21,17 +21,13 @@ class VerificationCheckTest extends HolodeckTestCase {
 
         try {
             $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->verificationChecks->create("code");
+                                     ->verificationChecks->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Code' => "code", ];
-
         $this->assertRequest(new Request(
             'post',
-            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/VerificationCheck',
-            null,
-            $values
+            'https://verify.twilio.com/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/VerificationCheck'
         ));
     }
 
@@ -56,7 +52,7 @@ class VerificationCheckTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->verificationChecks->create("code");
+                                           ->verificationChecks->create();
 
         $this->assertNotNull($actual);
     }
@@ -82,7 +78,33 @@ class VerificationCheckTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->verificationChecks->create("code");
+                                           ->verificationChecks->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testSnaVerificationChecksResponse(): void {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "+15017122661",
+                "channel": "sna",
+                "status": "approved",
+                "valid": true,
+                "amount": null,
+                "payee": null,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->verificationChecks->create();
 
         $this->assertNotNull($actual);
     }

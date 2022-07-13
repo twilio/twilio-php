@@ -20,10 +20,11 @@ abstract class VerificationCheckOptions {
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
      * @param string $payee The payee of the associated PSD2 compliant transaction
+     * @param string $code The verification string
      * @return CreateVerificationCheckOptions Options builder
      */
-    public static function create(string $to = Values::NONE, string $verificationSid = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE): CreateVerificationCheckOptions {
-        return new CreateVerificationCheckOptions($to, $verificationSid, $amount, $payee);
+    public static function create(string $to = Values::NONE, string $verificationSid = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, string $code = Values::NONE): CreateVerificationCheckOptions {
+        return new CreateVerificationCheckOptions($to, $verificationSid, $amount, $payee, $code);
     }
 }
 
@@ -35,12 +36,14 @@ class CreateVerificationCheckOptions extends Options {
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
      * @param string $payee The payee of the associated PSD2 compliant transaction
+     * @param string $code The verification string
      */
-    public function __construct(string $to = Values::NONE, string $verificationSid = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE) {
+    public function __construct(string $to = Values::NONE, string $verificationSid = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, string $code = Values::NONE) {
         $this->options['to'] = $to;
         $this->options['verificationSid'] = $verificationSid;
         $this->options['amount'] = $amount;
         $this->options['payee'] = $payee;
+        $this->options['code'] = $code;
     }
 
     /**
@@ -86,6 +89,17 @@ class CreateVerificationCheckOptions extends Options {
      */
     public function setPayee(string $payee): self {
         $this->options['payee'] = $payee;
+        return $this;
+    }
+
+    /**
+     * The 4-10 character string being verified.
+     *
+     * @param string $code The verification string
+     * @return $this Fluent Builder
+     */
+    public function setCode(string $code): self {
+        $this->options['code'] = $code;
         return $this;
     }
 
