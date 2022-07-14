@@ -61,7 +61,6 @@ class MediaRecordingTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "bitrate": 1000,
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "duration": 2147483647,
@@ -74,7 +73,7 @@ class MediaRecordingTest extends HolodeckTestCase {
                 "resolution": "640x480",
                 "source_sid": "RMcafebabecafebabecafebabecafebabe",
                 "sid": "KVcafebabecafebabecafebabecafebabe",
-                "size": 2147483648,
+                "media_size": 2147483648,
                 "status": "completed",
                 "status_callback": "https://www.example.com",
                 "status_callback_method": "POST",
@@ -143,7 +142,6 @@ class MediaRecordingTest extends HolodeckTestCase {
                 "media_recordings": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "bitrate": 1000,
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "duration": 1000,
@@ -156,7 +154,7 @@ class MediaRecordingTest extends HolodeckTestCase {
                         "resolution": "640x480",
                         "source_sid": "RMcafebabecafebabecafebabecafebabe",
                         "sid": "KVcafebabecafebabecafebabecafebabe",
-                        "size": 1000,
+                        "media_size": 1000,
                         "status": "completed",
                         "status_callback": "https://www.example.com",
                         "status_callback_method": "POST",

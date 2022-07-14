@@ -7,88 +7,89 @@
  * /       /
  */
 
-namespace Twilio\Rest\Fax\V1\Fax;
+namespace Twilio\Rest\Insights\V1\Call;
 
-use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string $sid
+ * @property string $callSid
  * @property string $accountSid
- * @property string $faxSid
- * @property string $contentType
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string $answeredBy
+ * @property string $connectivityIssue
+ * @property string[] $qualityIssues
+ * @property bool $spam
+ * @property int $callScore
+ * @property string $comment
+ * @property string $incident
  * @property string $url
  */
-class FaxMediaInstance extends InstanceResource {
+class AnnotationInstance extends InstanceResource {
     /**
-     * Initialize the FaxMediaInstance
+     * Initialize the AnnotationInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $faxSid The SID of the fax the FaxMedia resource is associated
-     *                       with
-     * @param string $sid The unique string that identifies the resource to fetch
+     * @param string $callSid Call SID.
      */
-    public function __construct(Version $version, array $payload, string $faxSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $callSid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
+            'callSid' => Values::array_get($payload, 'call_sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'faxSid' => Values::array_get($payload, 'fax_sid'),
-            'contentType' => Values::array_get($payload, 'content_type'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'answeredBy' => Values::array_get($payload, 'answered_by'),
+            'connectivityIssue' => Values::array_get($payload, 'connectivity_issue'),
+            'qualityIssues' => Values::array_get($payload, 'quality_issues'),
+            'spam' => Values::array_get($payload, 'spam'),
+            'callScore' => Values::array_get($payload, 'call_score'),
+            'comment' => Values::array_get($payload, 'comment'),
+            'incident' => Values::array_get($payload, 'incident'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['faxSid' => $faxSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['callSid' => $callSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return FaxMediaContext Context for this FaxMediaInstance
+     * @return AnnotationContext Context for this AnnotationInstance
      */
-    protected function proxy(): FaxMediaContext {
+    protected function proxy(): AnnotationContext {
         if (!$this->context) {
-            $this->context = new FaxMediaContext(
-                $this->version,
-                $this->solution['faxSid'],
-                $this->solution['sid']
-            );
+            $this->context = new AnnotationContext($this->version, $this->solution['callSid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the FaxMediaInstance
+     * Update the AnnotationInstance
      *
-     * @return FaxMediaInstance Fetched FaxMediaInstance
+     * @param array|Options $options Optional Arguments
+     * @return AnnotationInstance Updated AnnotationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FaxMediaInstance {
-        return $this->proxy()->fetch();
+    public function update(array $options = []): AnnotationInstance {
+        return $this->proxy()->update($options);
     }
 
     /**
-     * Delete the FaxMediaInstance
+     * Fetch the AnnotationInstance
      *
-     * @return bool True if delete succeeds, false otherwise
+     * @return AnnotationInstance Fetched AnnotationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
-        return $this->proxy()->delete();
+    public function fetch(): AnnotationInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -121,6 +122,6 @@ class FaxMediaInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Fax.V1.FaxMediaInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Insights.V1.AnnotationInstance ' . \implode(' ', $context) . ']';
     }
 }

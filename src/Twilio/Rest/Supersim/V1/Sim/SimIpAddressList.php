@@ -7,11 +7,9 @@
  * /       /
  */
 
-namespace Twilio\Rest\Fax\V1;
+namespace Twilio\Rest\Supersim\V1\Sim;
 
 use Twilio\ListResource;
-use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -19,30 +17,30 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class FaxList extends ListResource {
+class SimIpAddressList extends ListResource {
     /**
-     * Construct the FaxList
+     * Construct the SimIpAddressList
      *
      * @param Version $version Version that contains the resource
+     * @param string $simSid The unique string that identifies the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $simSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['simSid' => $simSid, ];
 
-        $this->uri = '/Faxes';
+        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/IpAddresses';
     }
 
     /**
-     * Streams FaxInstance records from the API as a generator stream.
+     * Streams SimIpAddressInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -53,20 +51,19 @@ class FaxList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads FaxInstance records from the API as a list.
+     * Reads SimIpAddressInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -75,63 +72,43 @@ class FaxList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return FaxInstance[] Array of results
+     * @return SimIpAddressInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
-        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read(int $limit = null, $pageSize = null): array {
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of FaxInstance records from the API.
+     * Retrieve a single page of SimIpAddressInstance records from the API.
      * Request is executed immediately
      *
-     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return FaxPage Page of FaxInstance
+     * @return SimIpAddressPage Page of SimIpAddressInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FaxPage {
-        $options = new Values($options);
-
-        $params = Values::of([
-            'From' => $options['from'],
-            'To' => $options['to'],
-            'DateCreatedOnOrBefore' => Serialize::iso8601DateTime($options['dateCreatedOnOrBefore']),
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ]);
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SimIpAddressPage {
+        $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new FaxPage($this->version, $response, $this->solution);
+        return new SimIpAddressPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of FaxInstance records from the API.
+     * Retrieve a specific page of SimIpAddressInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return FaxPage Page of FaxInstance
+     * @return SimIpAddressPage Page of SimIpAddressInstance
      */
-    public function getPage(string $targetUrl): FaxPage {
+    public function getPage(string $targetUrl): SimIpAddressPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new FaxPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Constructs a FaxContext
-     *
-     * @param string $sid The unique string that identifies the resource
-     */
-    public function getContext(string $sid): FaxContext {
-        return new FaxContext($this->version, $sid);
+        return new SimIpAddressPage($this->version, $response, $this->solution);
     }
 
     /**
@@ -140,6 +117,6 @@ class FaxList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Fax.V1.FaxList]';
+        return '[Twilio.Supersim.V1.SimIpAddressList]';
     }
 }

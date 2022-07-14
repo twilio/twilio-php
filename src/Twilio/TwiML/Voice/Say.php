@@ -150,7 +150,7 @@ class Say extends TwiML {
     /**
      * Add Language attribute.
      *
-     * @param string $language Message langauge
+     * @param string $language Message language
      */
     public function setLanguage($language): self {
         return $this->setAttribute('language', $language);

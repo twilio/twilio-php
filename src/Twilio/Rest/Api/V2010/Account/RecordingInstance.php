@@ -37,6 +37,7 @@ use Twilio\Version;
  * @property string $uri
  * @property array $encryptionDetails
  * @property array $subresourceUris
+ * @property string $mediaUrl
  */
 class RecordingInstance extends InstanceResource {
     protected $_transcriptions;
@@ -73,6 +74,7 @@ class RecordingInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
             'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
+            'mediaUrl' => Values::array_get($payload, 'media_url'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

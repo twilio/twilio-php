@@ -21,8 +21,8 @@ class InteractionChannelInviteList extends ListResource {
      * Construct the InteractionChannelInviteList
      *
      * @param Version $version Version that contains the resource
-     * @param string $interactionSid The interaction_sid
-     * @param string $channelSid The channel_sid
+     * @param string $interactionSid The Interaction SID for this Channel
+     * @param string $channelSid The Channel SID for this Invite
      */
     public function __construct(Version $version, string $interactionSid, string $channelSid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class InteractionChannelInviteList extends ListResource {
     /**
      * Create the InteractionChannelInviteInstance
      *
-     * @param array $routing The routing
+     * @param array $routing The Interaction's routing logic
      * @return InteractionChannelInviteInstance Created
      *                                          InteractionChannelInviteInstance
      * @throws TwilioException When an HTTP error occurs.

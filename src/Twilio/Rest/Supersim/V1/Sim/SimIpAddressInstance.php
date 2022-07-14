@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel;
+namespace Twilio\Rest\Supersim\V1\Sim;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -15,34 +15,29 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string $sid
- * @property string $interactionSid
- * @property string $channelSid
- * @property array $routing
- * @property string $url
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ *
+ * @property string $ipAddress
+ * @property string $ipAddressVersion
  */
-class InteractionChannelInviteInstance extends InstanceResource {
+class SimIpAddressInstance extends InstanceResource {
     /**
-     * Initialize the InteractionChannelInviteInstance
+     * Initialize the SimIpAddressInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $interactionSid The Interaction SID for this Channel
-     * @param string $channelSid The Channel SID for this Invite
+     * @param string $simSid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid) {
+    public function __construct(Version $version, array $payload, string $simSid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'interactionSid' => Values::array_get($payload, 'interaction_sid'),
-            'channelSid' => Values::array_get($payload, 'channel_sid'),
-            'routing' => Values::array_get($payload, 'routing'),
-            'url' => Values::array_get($payload, 'url'),
+            'ipAddress' => Values::array_get($payload, 'ip_address'),
+            'ipAddressVersion' => Values::array_get($payload, 'ip_address_version'),
         ];
 
-        $this->solution = ['interactionSid' => $interactionSid, 'channelSid' => $channelSid, ];
+        $this->solution = ['simSid' => $simSid, ];
     }
 
     /**
@@ -71,6 +66,6 @@ class InteractionChannelInviteInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.FlexApi.V1.InteractionChannelInviteInstance]';
+        return '[Twilio.Supersim.V1.SimIpAddressInstance]';
     }
 }

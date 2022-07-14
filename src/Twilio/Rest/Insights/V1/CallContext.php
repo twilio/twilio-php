@@ -12,6 +12,7 @@ namespace Twilio\Rest\Insights\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
+use Twilio\Rest\Insights\V1\Call\AnnotationList;
 use Twilio\Rest\Insights\V1\Call\CallSummaryList;
 use Twilio\Rest\Insights\V1\Call\EventList;
 use Twilio\Rest\Insights\V1\Call\MetricList;
@@ -19,17 +20,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- *
  * @property EventList $events
  * @property MetricList $metrics
  * @property CallSummaryList $summary
+ * @property AnnotationList $annotation
  * @method \Twilio\Rest\Insights\V1\Call\CallSummaryContext summary()
+ * @method \Twilio\Rest\Insights\V1\Call\AnnotationContext annotation()
  */
 class CallContext extends InstanceContext {
     protected $_events;
     protected $_metrics;
     protected $_summary;
+    protected $_annotation;
 
     /**
      * Initialize the CallContext
@@ -89,6 +91,17 @@ class CallContext extends InstanceContext {
         }
 
         return $this->_summary;
+    }
+
+    /**
+     * Access the annotation
+     */
+    protected function getAnnotation(): AnnotationList {
+        if (!$this->_annotation) {
+            $this->_annotation = new AnnotationList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_annotation;
     }
 
     /**

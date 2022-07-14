@@ -43,6 +43,15 @@ class Enqueue extends TwiML {
     }
 
     /**
+     * Add MaxQueueSize attribute.
+     *
+     * @param int $maxQueueSize Maximum size of queue
+     */
+    public function setMaxQueueSize($maxQueueSize): self {
+        return $this->setAttribute('maxQueueSize', $maxQueueSize);
+    }
+
+    /**
      * Add Method attribute.
      *
      * @param string $method Action URL method

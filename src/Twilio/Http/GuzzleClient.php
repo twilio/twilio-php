@@ -28,6 +28,7 @@ final class GuzzleClient implements Client {
             $options = [
                 'timeout' => $timeout,
                 'auth' => [$user, $password],
+                'allow_redirects' => false,
             ];
 
             if ($params) {

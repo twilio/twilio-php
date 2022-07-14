@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Fax\V1\Fax;
+namespace Twilio\Rest\Supersim\V1\Sim;
 
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class FaxMediaPage extends Page {
+class SimIpAddressPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class FaxMediaPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return FaxMediaInstance \Twilio\Rest\Fax\V1\Fax\FaxMediaInstance
+     * @return SimIpAddressInstance \Twilio\Rest\Supersim\V1\Sim\SimIpAddressInstance
      */
-    public function buildInstance(array $payload): FaxMediaInstance {
-        return new FaxMediaInstance($this->version, $payload, $this->solution['faxSid']);
+    public function buildInstance(array $payload): SimIpAddressInstance {
+        return new SimIpAddressInstance($this->version, $payload, $this->solution['simSid']);
     }
 
     /**
@@ -43,6 +43,6 @@ class FaxMediaPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Fax.V1.FaxMediaPage]';
+        return '[Twilio.Supersim.V1.SimIpAddressPage]';
     }
 }

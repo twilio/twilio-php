@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Supersim\V1\Sim\BillingPeriodList;
+use Twilio\Rest\Supersim\V1\Sim\SimIpAddressList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,9 +22,11 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property BillingPeriodList $billingPeriods
+ * @property SimIpAddressList $simIpAddresses
  */
 class SimContext extends InstanceContext {
     protected $_billingPeriods;
+    protected $_simIpAddresses;
 
     /**
      * Initialize the SimContext
@@ -85,6 +88,17 @@ class SimContext extends InstanceContext {
         }
 
         return $this->_billingPeriods;
+    }
+
+    /**
+     * Access the simIpAddresses
+     */
+    protected function getSimIpAddresses(): SimIpAddressList {
+        if (!$this->_simIpAddresses) {
+            $this->_simIpAddresses = new SimIpAddressList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_simIpAddresses;
     }
 
     /**

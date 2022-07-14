@@ -7,12 +7,15 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
 class AnnotationPage extends Page {
     /**
      * @param Version $version Version that contains the resource
@@ -28,10 +31,10 @@ class AnnotationPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return AnnotationInstance \Twilio\Rest\Insights\V1\AnnotationInstance
+     * @return AnnotationInstance \Twilio\Rest\Insights\V1\Call\AnnotationInstance
      */
     public function buildInstance(array $payload): AnnotationInstance {
-        return new AnnotationInstance($this->version, $payload);
+        return new AnnotationInstance($this->version, $payload, $this->solution['callSid']);
     }
 
     /**
