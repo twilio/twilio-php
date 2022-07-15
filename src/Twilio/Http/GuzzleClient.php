@@ -25,17 +25,23 @@ final class GuzzleClient implements Client {
                             string $user = null, string $password = null,
                             int $timeout = null): Response {
         try {
-            $body = Query::build($data, PHP_QUERY_RFC1738);
-
             $options = [
                 'timeout' => $timeout,
                 'auth' => [$user, $password],
-                'body' => $body,
                 'allow_redirects' => false,
             ];
 
             if ($params) {
                 $options['query'] = $params;
+            }
+
+            if ($method === 'POST') {
+                if ($this->hasFile($data)) {
+                    $options['multipart'] = $this->buildMultipartParam($data);
+                } else {
+                    $options['body'] = Query::build($data, PHP_QUERY_RFC1738);
+                    $headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                }
             }
 
             $response = $this->client->send(new Request($method, $url, $headers), $options);
@@ -48,5 +54,46 @@ final class GuzzleClient implements Client {
         // Casting the body (stream) to a string performs a rewind, ensuring we return the entire response.
         // See https://stackoverflow.com/a/30549372/86696
         return new Response($response->getStatusCode(), (string)$response->getBody(), $response->getHeaders());
+    }
+
+    private function hasFile(array $data): bool {
+        foreach ($data as $value) {
+            if ($value instanceof File) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function buildMultipartParam(array $data): array {
+        $multipart = [];
+        foreach ($data as $key => $value) {
+            if ($value instanceof File) {
+                $contents = $value->getContents();
+                if ($contents === null) {
+                    $contents = fopen($value->getFileName(), 'rb');
+                }
+
+                $chunk = [
+                    'name' => $key,
+                    'contents' => $contents,
+                    'filename' => $value->getFileName(),
+                ];
+
+                if ($value->getContentType() !== null) {
+                    $chunk['headers']['Content-Type'] = $value->getContentType();
+                }
+            } else {
+                $chunk = [
+                    'name' => $key,
+                    'contents' => $value,
+                ];
+            }
+
+            $multipart[] = $chunk;
+        }
+
+        return $multipart;
     }
 }
