@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property string $payee
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
+ * @property array[] $snaAttemptsErrorCodes
  */
 class VerificationCheckInstance extends InstanceResource {
     /**
@@ -53,6 +54,7 @@ class VerificationCheckInstance extends InstanceResource {
             'payee' => Values::array_get($payload, 'payee'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'snaAttemptsErrorCodes' => Values::array_get($payload, 'sna_attempts_error_codes'),
         ];
 
         $this->solution = ['serviceSid' => $serviceSid, ];

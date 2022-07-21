@@ -43,11 +43,11 @@ class VerificationCheckList extends ListResource {
         $options = new Values($options);
 
         $data = Values::of([
+            'Code' => $options['code'],
             'To' => $options['to'],
             'VerificationSid' => $options['verificationSid'],
             'Amount' => $options['amount'],
             'Payee' => $options['payee'],
-            'Code' => $options['code'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

@@ -19,7 +19,7 @@ class InteractionChannelList extends ListResource {
      * Construct the InteractionChannelList
      *
      * @param Version $version Version that contains the resource
-     * @param string $interactionSid The unique string that identifies the resource
+     * @param string $interactionSid The unique string that identifies the resource.
      */
     public function __construct(Version $version, string $interactionSid) {
         parent::__construct($version);

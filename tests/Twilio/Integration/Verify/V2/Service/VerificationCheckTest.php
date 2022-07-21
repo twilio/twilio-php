@@ -45,6 +45,7 @@ class VerificationCheckTest extends HolodeckTestCase {
                 "valid": true,
                 "amount": null,
                 "payee": null,
+                "sna_attempts_error_codes": [],
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z"
             }
@@ -71,6 +72,7 @@ class VerificationCheckTest extends HolodeckTestCase {
                 "valid": true,
                 "amount": null,
                 "payee": null,
+                "sna_attempts_error_codes": [],
                 "date_created": "2020-01-30T20:00:00Z",
                 "date_updated": "2020-01-30T20:00:00Z"
             }
@@ -97,6 +99,12 @@ class VerificationCheckTest extends HolodeckTestCase {
                 "valid": true,
                 "amount": null,
                 "payee": null,
+                "sna_attempts_error_codes": [
+                    {
+                        "attempt_sid": "VLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "code": 60001
+                    }
+                ],
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z"
             }

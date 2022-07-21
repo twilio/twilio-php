@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+[2022-07-21] Version 6.40.0
+---------------------------
+**Library - Fix**
+- [PR #660](https://github.com/twilio/twilio-php/pull/660): Multipart support. Thanks to [@erickskrauch](https://github.com/erickskrauch)!
+
+**Flex**
+- Add `status`, `error_code`, and `error_message` fields to Interaction `Channel`
+- Adding `messenger` and `gbm` as supported channels for Interactions API
+
+**Messaging**
+- Update alpha_sender docs with new valid characters
+
+**Verify**
+- Reorder Verification Check parameters so `code` stays as the first parameter **(breaking change)**
+- Rollback List Attempts API V2 back to pilot stage.
+
+
 [2022-07-13] Version 6.39.0
 ---------------------------
 **Library - Fix**
