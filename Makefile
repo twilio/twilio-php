@@ -1,6 +1,6 @@
 # Twilio API helper library.
 # See LICENSE file for copyright and license details.
-.PHONY: all clean install vendor test test-docker docs-install docs authors docker-build docker-push docker-dev-build docker-dev-clean docker-dev-test
+.PHONY: all clean install test test-docker docs authors docker-dev-build docker-dev-clean docker-dev-test
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
@@ -62,5 +62,3 @@ docker-dev-clean:
 
 docker-dev-test:
 	docker exec -t twilio_php${VERSION} /bin/bash -c 'make all'
-
-.PHONY: all clean install test docs authors docker-dev-build docker-dev-clean docker-dev-test
