@@ -55,7 +55,8 @@ class ApplicationTest extends HolodeckTestCase {
                 "voice_fallback_method": "GET",
                 "voice_fallback_url": "http://www.example.com/voice-callback",
                 "voice_method": "GET",
-                "voice_url": "http://example.com"
+                "voice_url": "http://example.com",
+                "public_application_connect_enabled": true
             }
             '
         ));
@@ -132,7 +133,8 @@ class ApplicationTest extends HolodeckTestCase {
                 "voice_fallback_method": "GET",
                 "voice_fallback_url": "http://www.example.com/voice-callback",
                 "voice_method": "GET",
-                "voice_url": "http://example.com"
+                "voice_url": "http://example.com",
+                "public_application_connect_enabled": false
             }
             '
         ));
@@ -184,7 +186,8 @@ class ApplicationTest extends HolodeckTestCase {
                         "voice_fallback_method": "POST",
                         "voice_fallback_url": null,
                         "voice_method": "POST",
-                        "voice_url": null
+                        "voice_url": null,
+                        "public_application_connect_enabled": false
                     }
                 ],
                 "end": 0,
@@ -268,7 +271,8 @@ class ApplicationTest extends HolodeckTestCase {
                 "voice_fallback_method": "GET",
                 "voice_fallback_url": "http://www.example.com/voice-callback",
                 "voice_method": "GET",
-                "voice_url": "http://example.com"
+                "voice_url": "http://example.com",
+                "public_application_connect_enabled": true
             }
             '
         ));

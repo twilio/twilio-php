@@ -88,7 +88,7 @@ class CreatePlayerStreamerOptions extends Options {
     }
 
     /**
-     * The maximum time, in seconds, that the PlayerStreamer can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming. **Note: this feature has not yet been enabled but customers are advised to explicitly set it on all their new PlayerStreamer resources.**
+     * The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
      *
      * @param int $maxDuration Maximum PlayerStreamer duration in seconds
      * @return $this Fluent Builder

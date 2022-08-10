@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2022-08-10] Version 6.40.1
+---------------------------
+**Routes**
+- Inbound Proccessing Region API - Public GA
+
+**Supersim**
+- Allow updating `DataLimit` on a Fleet
+
+
 [2022-07-21] Version 6.40.0
 ---------------------------
 **Library - Fix**

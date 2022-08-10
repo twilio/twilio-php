@@ -121,7 +121,7 @@ class IpAddressList extends ListResource {
      * Create the IpAddressInstance
      *
      * @param string $friendlyName A human readable descriptive text for this
-     *                             resource, up to 64 characters long.
+     *                             resource, up to 255 characters long.
      * @param string $ipAddress An IP address in dotted decimal notation from which
      *                          you want to accept traffic. Any SIP requests from
      *                          this IP address will be allowed by Twilio. IPv4
