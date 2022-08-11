@@ -7,23 +7,24 @@
  * /       /
  */
 
-namespace Twilio\Rest\Supersim\V1;
+namespace Twilio\Rest\Microvisor\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class FleetContext extends InstanceContext {
+class DeviceContext extends InstanceContext {
     /**
-     * Initialize the FleetContext
+     * Initialize the DeviceContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $sid A string that uniquely identifies this Device.
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -31,44 +32,40 @@ class FleetContext extends InstanceContext {
         // Path Solution
         $this->solution = ['sid' => $sid, ];
 
-        $this->uri = '/Fleets/' . \rawurlencode($sid) . '';
+        $this->uri = '/Devices/' . \rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch the FleetInstance
+     * Fetch the DeviceInstance
      *
-     * @return FleetInstance Fetched FleetInstance
+     * @return DeviceInstance Fetched DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FleetInstance {
+    public function fetch(): DeviceInstance {
         $payload = $this->version->fetch('GET', $this->uri);
 
-        return new FleetInstance($this->version, $payload, $this->solution['sid']);
+        return new DeviceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Update the FleetInstance
+     * Update the DeviceInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return FleetInstance Updated FleetInstance
+     * @return DeviceInstance Updated DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FleetInstance {
+    public function update(array $options = []): DeviceInstance {
         $options = new Values($options);
 
         $data = Values::of([
             'UniqueName' => $options['uniqueName'],
-            'NetworkAccessProfile' => $options['networkAccessProfile'],
-            'IpCommandsUrl' => $options['ipCommandsUrl'],
-            'IpCommandsMethod' => $options['ipCommandsMethod'],
-            'SmsCommandsUrl' => $options['smsCommandsUrl'],
-            'SmsCommandsMethod' => $options['smsCommandsMethod'],
-            'DataLimit' => $options['dataLimit'],
+            'TargetApp' => $options['targetApp'],
+            'LoggingEnabled' => Serialize::booleanToString($options['loggingEnabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
-        return new FleetInstance($this->version, $payload, $this->solution['sid']);
+        return new DeviceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -81,6 +78,6 @@ class FleetContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Supersim.V1.FleetContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Microvisor.V1.DeviceContext ' . \implode(' ', $context) . ']';
     }
 }

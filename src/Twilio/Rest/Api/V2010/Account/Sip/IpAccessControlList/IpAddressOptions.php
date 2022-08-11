@@ -30,7 +30,7 @@ abstract class IpAddressOptions {
      *                          this IP address will be allowed by Twilio. IPv4
      *                          only supported today.
      * @param string $friendlyName A human readable descriptive text for this
-     *                             resource, up to 64 characters long.
+     *                             resource, up to 255 characters long.
      * @param int $cidrPrefixLength An integer representing the length of the CIDR
      *                              prefix to use with this IP address when
      *                              accepting traffic. By default the entire IP
@@ -85,7 +85,7 @@ class UpdateIpAddressOptions extends Options {
      *                          this IP address will be allowed by Twilio. IPv4
      *                          only supported today.
      * @param string $friendlyName A human readable descriptive text for this
-     *                             resource, up to 64 characters long.
+     *                             resource, up to 255 characters long.
      * @param int $cidrPrefixLength An integer representing the length of the CIDR
      *                              prefix to use with this IP address when
      *                              accepting traffic. By default the entire IP
@@ -112,10 +112,10 @@ class UpdateIpAddressOptions extends Options {
     }
 
     /**
-     * A human readable descriptive text for this resource, up to 64 characters long.
+     * A human readable descriptive text for this resource, up to 255 characters long.
      *
      * @param string $friendlyName A human readable descriptive text for this
-     *                             resource, up to 64 characters long.
+     *                             resource, up to 255 characters long.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self {

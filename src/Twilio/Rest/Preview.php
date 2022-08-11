@@ -11,7 +11,6 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\BulkExports as PreviewBulkExports;
 use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
 use Twilio\Rest\Preview\Marketplace as PreviewMarketplace;
@@ -21,7 +20,6 @@ use Twilio\Rest\Preview\Understand as PreviewUnderstand;
 use Twilio\Rest\Preview\Wireless as PreviewWireless;
 
 /**
- * @property \Twilio\Rest\Preview\BulkExports $bulkExports
  * @property \Twilio\Rest\Preview\DeployedDevices $deployedDevices
  * @property \Twilio\Rest\Preview\HostedNumbers $hostedNumbers
  * @property \Twilio\Rest\Preview\Marketplace $marketplace
@@ -29,8 +27,6 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Understand $understand
  * @property \Twilio\Rest\Preview\Wireless $wireless
  * @property \Twilio\Rest\Preview\TrustedComms $trustedComms
- * @property \Twilio\Rest\Preview\BulkExports\ExportList $exports
- * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList $exportConfiguration
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList $fleets
  * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList $authorizationDocuments
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList $hostedNumberOrders
@@ -45,8 +41,6 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\TrustedComms\BrandsInformationList $brandsInformation
  * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
- * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
- * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
@@ -63,7 +57,6 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @method \Twilio\Rest\Preview\TrustedComms\CurrentCallContext currentCalls()
  */
 class Preview extends Domain {
-    protected $_bulkExports;
     protected $_deployedDevices;
     protected $_hostedNumbers;
     protected $_marketplace;
@@ -81,16 +74,6 @@ class Preview extends Domain {
         parent::__construct($client);
 
         $this->baseUrl = 'https://preview.twilio.com';
-    }
-
-    /**
-     * @return PreviewBulkExports Version bulkExports of preview
-     */
-    protected function getBulkExports(): PreviewBulkExports {
-        if (!$this->_bulkExports) {
-            $this->_bulkExports = new PreviewBulkExports($this);
-        }
-        return $this->_bulkExports;
     }
 
     /**
@@ -194,30 +177,6 @@ class Preview extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
-    }
-
-    protected function getExports(): \Twilio\Rest\Preview\BulkExports\ExportList {
-        return $this->bulkExports->exports;
-    }
-
-    /**
-     * @param string $resourceType The type of communication – Messages, Calls,
-     *                             Conferences, and Participants
-     */
-    protected function contextExports(string $resourceType): \Twilio\Rest\Preview\BulkExports\ExportContext {
-        return $this->bulkExports->exports($resourceType);
-    }
-
-    protected function getExportConfiguration(): \Twilio\Rest\Preview\BulkExports\ExportConfigurationList {
-        return $this->bulkExports->exportConfiguration;
-    }
-
-    /**
-     * @param string $resourceType The type of communication – Messages, Calls,
-     *                             Conferences, and Participants
-     */
-    protected function contextExportConfiguration(string $resourceType): \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext {
-        return $this->bulkExports->exportConfiguration($resourceType);
     }
 
     protected function getFleets(): \Twilio\Rest\Preview\DeployedDevices\FleetList {

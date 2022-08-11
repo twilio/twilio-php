@@ -38,6 +38,7 @@ use Twilio\VersionInfo;
  * @property Preview $preview
  * @property Pricing $pricing
  * @property Proxy $proxy
+ * @property Routes $routes
  * @property Serverless $serverless
  * @property Studio $studio
  * @property Sync $sync
@@ -50,6 +51,7 @@ use Twilio\VersionInfo;
  * @property Wireless $wireless
  * @property Supersim $supersim
  * @property Bulkexports $bulkexports
+ * @property Microvisor $microvisor
  * @property \Twilio\Rest\Api\V2010\AccountInstance $account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList $addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList $applications
@@ -131,6 +133,7 @@ class Client {
     protected $_preview;
     protected $_pricing;
     protected $_proxy;
+    protected $_routes;
     protected $_serverless;
     protected $_studio;
     protected $_sync;
@@ -143,6 +146,7 @@ class Client {
     protected $_wireless;
     protected $_supersim;
     protected $_bulkexports;
+    protected $_microvisor;
 
     /**
      * Initializes the Twilio Client
@@ -852,6 +856,18 @@ class Client {
     }
 
     /**
+     * Access the Routes Twilio Domain
+     *
+     * @return Routes Routes Twilio Domain
+     */
+    protected function getRoutes(): Routes {
+        if (!$this->_routes) {
+            $this->_routes = new Routes($this);
+        }
+        return $this->_routes;
+    }
+
+    /**
      * Access the Serverless Twilio Domain
      *
      * @return Serverless Serverless Twilio Domain
@@ -993,6 +1009,18 @@ class Client {
             $this->_bulkexports = new Bulkexports($this);
         }
         return $this->_bulkexports;
+    }
+
+    /**
+     * Access the Microvisor Twilio Domain
+     *
+     * @return Microvisor Microvisor Twilio Domain
+     */
+    protected function getMicrovisor(): Microvisor {
+        if (!$this->_microvisor) {
+            $this->_microvisor = new Microvisor($this);
+        }
+        return $this->_microvisor;
     }
 
     /**
