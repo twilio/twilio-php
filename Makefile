@@ -1,5 +1,6 @@
 # Twilio API helper library.
 # See LICENSE file for copyright and license details.
+.PHONY: all clean install test test-docker docs authors docker-dev-build docker-dev-clean docker-dev-test
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
@@ -20,6 +21,10 @@ vendor: install
 
 test:
 	@PATH=vendor/bin:$(PATH) phpunit -d memory_limit=512M --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml --coverage-clover=coverage.xml
+
+test-docker:
+	docker build -t twilio/twilio-php .
+	docker run twilio/twilio-php phpunit -d memory_limit=512M --disallow-test-output --colors --configuration tests/phpunit.xml
 
 PHPDOX_DIR=vendor-theseer
 docs-install:
@@ -57,5 +62,3 @@ docker-dev-clean:
 
 docker-dev-test:
 	docker exec -t twilio_php${VERSION} /bin/bash -c 'make all'
-
-.PHONY: all clean install test docs authors docker-dev-build docker-dev-clean docker-dev-test
