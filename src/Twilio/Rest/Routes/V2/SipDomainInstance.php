@@ -67,17 +67,6 @@ class SipDomainInstance extends InstanceResource {
     }
 
     /**
-     * Create the SipDomainInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return SipDomainInstance Created SipDomainInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): SipDomainInstance {
-        return $this->proxy()->create($options);
-    }
-
-    /**
      * Update the SipDomainInstance
      *
      * @param array|Options $options Optional Arguments

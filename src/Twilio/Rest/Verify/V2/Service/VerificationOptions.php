@@ -18,8 +18,8 @@ abstract class VerificationOptions {
      * @param string $customMessage The text of a custom message to use for the
      *                              verification
      * @param string $sendDigits The digits to send after a phone call is answered
-     * @param string $locale The locale to use for the verification SMS, WhatsApp
-     *                       or call
+     * @param string $locale The override locale to use for the verification SMS,
+     *                       WhatsApp or call
      * @param string $customCode A pre-generated code
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
@@ -46,8 +46,8 @@ class CreateVerificationOptions extends Options {
      * @param string $customMessage The text of a custom message to use for the
      *                              verification
      * @param string $sendDigits The digits to send after a phone call is answered
-     * @param string $locale The locale to use for the verification SMS, WhatsApp
-     *                       or call
+     * @param string $locale The override locale to use for the verification SMS,
+     *                       WhatsApp or call
      * @param string $customCode A pre-generated code
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
@@ -112,10 +112,10 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * The locale to use for the verification SMS, WhatsApp or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `en-GB`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`
+     * Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here.](https://www.twilio.com/docs/verify/supported-languages).
      *
-     * @param string $locale The locale to use for the verification SMS, WhatsApp
-     *                       or call
+     * @param string $locale The override locale to use for the verification SMS,
+     *                       WhatsApp or call
      * @return $this Fluent Builder
      */
     public function setLocale(string $locale): self {

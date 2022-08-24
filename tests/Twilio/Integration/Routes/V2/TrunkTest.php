@@ -16,42 +16,6 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class TrunkTest extends HolodeckTestCase {
-    public function testCreateRequest(): void {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $this->twilio->routes->v2->trunks("sip_trunk_domain")->create();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $this->assertRequest(new Request(
-            'post',
-            'https://routes.twilio.com/v2/Trunks/sip_trunk_domain'
-        ));
-    }
-
-    public function testCreateResponse(): void {
-        $this->holodeck->mock(new Response(
-            201,
-            '
-            {
-                "sip_trunk_domain": "test.pstn.twilio.com",
-                "url": "https://routes.twilio.com/v2/Trunks/test.pstn.twilio.com",
-                "sid": "QQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "friendly_name",
-                "voice_region": "au1",
-                "date_created": "2020-08-07T22:29:24Z",
-                "date_updated": "2020-08-07T22:29:24Z"
-            }
-            '
-        ));
-
-        $actual = $this->twilio->routes->v2->trunks("sip_trunk_domain")->create();
-
-        $this->assertNotNull($actual);
-    }
-
     public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

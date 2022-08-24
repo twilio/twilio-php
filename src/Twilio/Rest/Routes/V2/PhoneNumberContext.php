@@ -32,36 +32,19 @@ class PhoneNumberContext extends InstanceContext {
     }
 
     /**
-     * Create the PhoneNumberInstance
+     * Update the PhoneNumberInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return PhoneNumberInstance Created PhoneNumberInstance
+     * @return PhoneNumberInstance Updated PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): PhoneNumberInstance {
+    public function update(array $options = []): PhoneNumberInstance {
         $options = new Values($options);
 
         $data = Values::of([
             'VoiceRegion' => $options['voiceRegion'],
             'FriendlyName' => $options['friendlyName'],
         ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new PhoneNumberInstance($this->version, $payload, $this->solution['phoneNumber']);
-    }
-
-    /**
-     * Update the PhoneNumberInstance
-     *
-     * @param string $voiceRegion The Inbound Processing Region used for this phone
-     *                            number for voice
-     * @param string $friendlyName A human readable description of this resource.
-     * @return PhoneNumberInstance Updated PhoneNumberInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(string $voiceRegion, string $friendlyName): PhoneNumberInstance {
-        $data = Values::of(['VoiceRegion' => $voiceRegion, 'FriendlyName' => $friendlyName, ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 

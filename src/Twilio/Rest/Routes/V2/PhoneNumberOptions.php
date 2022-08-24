@@ -17,14 +17,14 @@ abstract class PhoneNumberOptions {
      * @param string $voiceRegion The Inbound Processing Region used for this phone
      *                            number for voice
      * @param string $friendlyName A human readable description of this resource.
-     * @return CreatePhoneNumberOptions Options builder
+     * @return UpdatePhoneNumberOptions Options builder
      */
-    public static function create(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE): CreatePhoneNumberOptions {
-        return new CreatePhoneNumberOptions($voiceRegion, $friendlyName);
+    public static function update(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE): UpdatePhoneNumberOptions {
+        return new UpdatePhoneNumberOptions($voiceRegion, $friendlyName);
     }
 }
 
-class CreatePhoneNumberOptions extends Options {
+class UpdatePhoneNumberOptions extends Options {
     /**
      * @param string $voiceRegion The Inbound Processing Region used for this phone
      *                            number for voice
@@ -65,6 +65,6 @@ class CreatePhoneNumberOptions extends Options {
      */
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Routes.V2.CreatePhoneNumberOptions ' . $options . ']';
+        return '[Twilio.Routes.V2.UpdatePhoneNumberOptions ' . $options . ']';
     }
 }

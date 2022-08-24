@@ -32,26 +32,6 @@ class TrunkContext extends InstanceContext {
     }
 
     /**
-     * Create the TrunkInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return TrunkInstance Created TrunkInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): TrunkInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'VoiceRegion' => $options['voiceRegion'],
-            'FriendlyName' => $options['friendlyName'],
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new TrunkInstance($this->version, $payload, $this->solution['sipTrunkDomain']);
-    }
-
-    /**
      * Update the TrunkInstance
      *
      * @param array|Options $options Optional Arguments

@@ -67,17 +67,6 @@ class TrunkInstance extends InstanceResource {
     }
 
     /**
-     * Create the TrunkInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return TrunkInstance Created TrunkInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): TrunkInstance {
-        return $this->proxy()->create($options);
-    }
-
-    /**
      * Update the TrunkInstance
      *
      * @param array|Options $options Optional Arguments

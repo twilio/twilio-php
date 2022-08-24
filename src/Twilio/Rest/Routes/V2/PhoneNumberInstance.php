@@ -67,27 +67,14 @@ class PhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * Create the PhoneNumberInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return PhoneNumberInstance Created PhoneNumberInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): PhoneNumberInstance {
-        return $this->proxy()->create($options);
-    }
-
-    /**
      * Update the PhoneNumberInstance
      *
-     * @param string $voiceRegion The Inbound Processing Region used for this phone
-     *                            number for voice
-     * @param string $friendlyName A human readable description of this resource.
+     * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Updated PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $voiceRegion, string $friendlyName): PhoneNumberInstance {
-        return $this->proxy()->update($voiceRegion, $friendlyName);
+    public function update(array $options = []): PhoneNumberInstance {
+        return $this->proxy()->update($options);
     }
 
     /**

@@ -16,57 +16,17 @@ use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class PhoneNumberTest extends HolodeckTestCase {
-    public function testCreateRequest(): void {
+    public function testUpdateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->routes->v2->phoneNumbers("phone_number")->create();
+            $this->twilio->routes->v2->phoneNumbers("phone_number")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
             'https://routes.twilio.com/v2/PhoneNumbers/phone_number'
-        ));
-    }
-
-    public function testCreateResponse(): void {
-        $this->holodeck->mock(new Response(
-            201,
-            '
-            {
-                "phone_number": "+18001234567",
-                "url": "https://routes.twilio.com/v2/PhoneNumbers/+18001234567",
-                "sid": "QQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "friendly_name",
-                "voice_region": "au1",
-                "date_created": "2015-07-30T20:00:00Z",
-                "date_updated": "2015-07-30T20:00:00Z"
-            }
-            '
-        ));
-
-        $actual = $this->twilio->routes->v2->phoneNumbers("phone_number")->create();
-
-        $this->assertNotNull($actual);
-    }
-
-    public function testUpdateRequest(): void {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $this->twilio->routes->v2->phoneNumbers("phone_number")->update("voice_region", "friendly_name");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $values = ['VoiceRegion' => "voice_region", 'FriendlyName' => "friendly_name", ];
-
-        $this->assertRequest(new Request(
-            'post',
-            'https://routes.twilio.com/v2/PhoneNumbers/phone_number',
-            null,
-            $values
         ));
     }
 
@@ -87,7 +47,7 @@ class PhoneNumberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->routes->v2->phoneNumbers("phone_number")->update("voice_region", "friendly_name");
+        $actual = $this->twilio->routes->v2->phoneNumbers("phone_number")->update();
 
         $this->assertNotNull($actual);
     }

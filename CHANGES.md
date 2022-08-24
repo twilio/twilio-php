@@ -1,6 +1,22 @@
 twilio-php Changelog
 ====================
 
+[2022-08-24] Version 6.41.0
+---------------------------
+**Library - Test**
+- [PR #742](https://github.com/twilio/twilio-php/pull/742): add test-docker rule. Thanks to [@beebzz](https://github.com/beebzz)!
+
+**Api**
+- Remove `beta feature` from scheduling params and remove optimize parameters. **(breaking change)**
+
+**Routes**
+- Remove Duplicate Create Method - Update Method will work even if Inbound Processing Region is currently empty/404. **(breaking change)**
+
+**Twiml**
+- Add new Polly Neural voices
+- Add new languages to SSML `<lang>`.
+
+
 [2022-08-10] Version 6.40.1
 ---------------------------
 **Routes**

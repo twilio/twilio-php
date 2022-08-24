@@ -32,26 +32,6 @@ class SipDomainContext extends InstanceContext {
     }
 
     /**
-     * Create the SipDomainInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return SipDomainInstance Created SipDomainInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): SipDomainInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'VoiceRegion' => $options['voiceRegion'],
-            'FriendlyName' => $options['friendlyName'],
-        ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new SipDomainInstance($this->version, $payload, $this->solution['sipDomain']);
-    }
-
-    /**
      * Update the SipDomainInstance
      *
      * @param array|Options $options Optional Arguments
