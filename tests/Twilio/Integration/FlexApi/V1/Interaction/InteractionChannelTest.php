@@ -168,11 +168,11 @@ class InteractionChannelTest extends HolodeckTestCase {
 
         try {
             $this->twilio->flexApi->v1->interaction("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                      ->channels("UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("close");
+                                      ->channels("UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("closed");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Status' => "close", ];
+        $values = ['Status' => "closed", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -203,7 +203,7 @@ class InteractionChannelTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->flexApi->v1->interaction("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                            ->channels("UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("close");
+                                            ->channels("UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("closed");
 
         $this->assertNotNull($actual);
     }
@@ -229,7 +229,7 @@ class InteractionChannelTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->flexApi->v1->interaction("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                            ->channels("UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("close");
+                                            ->channels("UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("closed");
 
         $this->assertNotNull($actual);
     }

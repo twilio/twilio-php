@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Rest\Video\V1\Room\Participant\AnonymizeList;
 use Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList;
 use Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList;
 use Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList;
@@ -23,13 +24,16 @@ use Twilio\Version;
  * @property PublishedTrackList $publishedTracks
  * @property SubscribedTrackList $subscribedTracks
  * @property SubscribeRulesList $subscribeRules
+ * @property AnonymizeList $anonymize
  * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext subscribedTracks(string $sid)
+ * @method \Twilio\Rest\Video\V1\Room\Participant\AnonymizeContext anonymize()
  */
 class ParticipantContext extends InstanceContext {
     protected $_publishedTracks;
     protected $_subscribedTracks;
     protected $_subscribeRules;
+    protected $_anonymize;
 
     /**
      * Initialize the ParticipantContext
@@ -130,6 +134,21 @@ class ParticipantContext extends InstanceContext {
         }
 
         return $this->_subscribeRules;
+    }
+
+    /**
+     * Access the anonymize
+     */
+    protected function getAnonymize(): AnonymizeList {
+        if (!$this->_anonymize) {
+            $this->_anonymize = new AnonymizeList(
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_anonymize;
     }
 
     /**

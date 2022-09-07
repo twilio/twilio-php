@@ -7,16 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room;
+namespace Twilio\Rest\Video\V1\Room\Participant;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
-use Twilio\Rest\Video\V1\Room\Participant\AnonymizeList;
-use Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList;
-use Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList;
-use Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -32,23 +27,17 @@ use Twilio\Version;
  * @property \DateTime $endTime
  * @property int $duration
  * @property string $url
- * @property array $links
  */
-class ParticipantInstance extends InstanceResource {
-    protected $_publishedTracks;
-    protected $_subscribedTracks;
-    protected $_subscribeRules;
-    protected $_anonymize;
-
+class AnonymizeInstance extends InstanceResource {
     /**
-     * Initialize the ParticipantInstance
+     * Initialize the AnonymizeInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid The SID of the participant's room
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $sid The unique string that identifies the resource
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $sid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,21 +53,20 @@ class ParticipantInstance extends InstanceResource {
             'endTime' => Deserialize::dateTime(Values::array_get($payload, 'end_time')),
             'duration' => Values::array_get($payload, 'duration'),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['roomSid' => $roomSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['roomSid' => $roomSid, 'sid' => $sid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return ParticipantContext Context for this ParticipantInstance
+     * @return AnonymizeContext Context for this AnonymizeInstance
      */
-    protected function proxy(): ParticipantContext {
+    protected function proxy(): AnonymizeContext {
         if (!$this->context) {
-            $this->context = new ParticipantContext(
+            $this->context = new AnonymizeContext(
                 $this->version,
                 $this->solution['roomSid'],
                 $this->solution['sid']
@@ -89,52 +77,13 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Fetch the ParticipantInstance
+     * Update the AnonymizeInstance
      *
-     * @return ParticipantInstance Fetched ParticipantInstance
+     * @return AnonymizeInstance Updated AnonymizeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the ParticipantInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Updated ParticipantInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): ParticipantInstance {
-        return $this->proxy()->update($options);
-    }
-
-    /**
-     * Access the publishedTracks
-     */
-    protected function getPublishedTracks(): PublishedTrackList {
-        return $this->proxy()->publishedTracks;
-    }
-
-    /**
-     * Access the subscribedTracks
-     */
-    protected function getSubscribedTracks(): SubscribedTrackList {
-        return $this->proxy()->subscribedTracks;
-    }
-
-    /**
-     * Access the subscribeRules
-     */
-    protected function getSubscribeRules(): SubscribeRulesList {
-        return $this->proxy()->subscribeRules;
-    }
-
-    /**
-     * Access the anonymize
-     */
-    protected function getAnonymize(): AnonymizeList {
-        return $this->proxy()->anonymize;
+    public function update(): AnonymizeInstance {
+        return $this->proxy()->update();
     }
 
     /**
@@ -167,6 +116,6 @@ class ParticipantInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.ParticipantInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.AnonymizeInstance ' . \implode(' ', $context) . ']';
     }
 }

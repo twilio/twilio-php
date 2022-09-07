@@ -19,10 +19,12 @@ use Twilio\Rest\Messaging\V1;
  * @property \Twilio\Rest\Messaging\V1\DeactivationsList $deactivations
  * @property \Twilio\Rest\Messaging\V1\ExternalCampaignList $externalCampaign
  * @property \Twilio\Rest\Messaging\V1\ServiceList $services
+ * @property \Twilio\Rest\Messaging\V1\TollfreeVerificationList $tollfreeVerifications
  * @property \Twilio\Rest\Messaging\V1\UsecaseList $usecases
  * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
  * @method \Twilio\Rest\Messaging\V1\DeactivationsContext deactivations()
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\TollfreeVerificationContext tollfreeVerifications(string $sid)
  */
 class Messaging extends Domain {
     protected $_v1;
@@ -113,6 +115,17 @@ class Messaging extends Domain {
      */
     protected function contextServices(string $sid): \Twilio\Rest\Messaging\V1\ServiceContext {
         return $this->v1->services($sid);
+    }
+
+    protected function getTollfreeVerifications(): \Twilio\Rest\Messaging\V1\TollfreeVerificationList {
+        return $this->v1->tollfreeVerifications;
+    }
+
+    /**
+     * @param string $sid Tollfree Verification Sid
+     */
+    protected function contextTollfreeVerifications(string $sid): \Twilio\Rest\Messaging\V1\TollfreeVerificationContext {
+        return $this->v1->tollfreeVerifications($sid);
     }
 
     protected function getUsecases(): \Twilio\Rest\Messaging\V1\UsecaseList {

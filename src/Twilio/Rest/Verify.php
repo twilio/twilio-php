@@ -16,11 +16,13 @@ use Twilio\Rest\Verify\V2;
 /**
  * @property \Twilio\Rest\Verify\V2 $v2
  * @property \Twilio\Rest\Verify\V2\FormList $forms
+ * @property \Twilio\Rest\Verify\V2\SafelistList $safelist
  * @property \Twilio\Rest\Verify\V2\ServiceList $services
  * @property \Twilio\Rest\Verify\V2\VerificationAttemptList $verificationAttempts
  * @property \Twilio\Rest\Verify\V2\VerificationAttemptsSummaryList $verificationAttemptsSummary
  * @property \Twilio\Rest\Verify\V2\TemplateList $templates
  * @method \Twilio\Rest\Verify\V2\FormContext forms(string $formType)
+ * @method \Twilio\Rest\Verify\V2\SafelistContext safelist(string $phoneNumber)
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Verify\V2\VerificationAttemptContext verificationAttempts(string $sid)
  * @method \Twilio\Rest\Verify\V2\VerificationAttemptsSummaryContext verificationAttemptsSummary()
@@ -91,6 +93,17 @@ class Verify extends Domain {
      */
     protected function contextForms(string $formType): \Twilio\Rest\Verify\V2\FormContext {
         return $this->v2->forms($formType);
+    }
+
+    protected function getSafelist(): \Twilio\Rest\Verify\V2\SafelistList {
+        return $this->v2->safelist;
+    }
+
+    /**
+     * @param string $phoneNumber The phone number to be fetched from SafeList.
+     */
+    protected function contextSafelist(string $phoneNumber): \Twilio\Rest\Verify\V2\SafelistContext {
+        return $this->v2->safelist($phoneNumber);
     }
 
     protected function getServices(): \Twilio\Rest\Verify\V2\ServiceList {

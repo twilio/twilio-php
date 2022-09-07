@@ -250,7 +250,13 @@ class ConfigurationTest extends HolodeckTestCase {
                             ]
                         }
                     }
-                ]
+                ],
+                "debugger_integration": {
+                    "enabled": false
+                },
+                "flex_ui_status_report": {
+                    "enabled": false
+                }
             }
             '
         ));
@@ -461,7 +467,13 @@ class ConfigurationTest extends HolodeckTestCase {
                             ]
                         }
                     }
-                ]
+                ],
+                "debugger_integration": {
+                    "enabled": false
+                },
+                "flex_ui_status_report": {
+                    "enabled": false
+                }
             }
             '
         ));
@@ -685,7 +697,13 @@ class ConfigurationTest extends HolodeckTestCase {
                             ]
                         }
                     }
-                ]
+                ],
+                "debugger_integration": {
+                    "enabled": false
+                },
+                "flex_ui_status_report": {
+                    "enabled": false
+                }
             }
             '
         ));
