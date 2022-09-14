@@ -33,6 +33,17 @@ class RequestValidatorTest extends UnitTest {
         $this->assertFalse($isValid);
     }
 
+    public function testValidateWithArrayAndDuplicates(): void {
+        $paramsWithArray = [
+            'Sid' => 'CA123',
+            'SidAccount' => 'AC123',
+            'Digits' => ['5678', '1234', '1234'],
+        ];
+        $signatureWithArray = 'IK+Dwps556ElfBT0I3Rgjkr1wJU=';
+        $isValid = $this->validator->validate($signatureWithArray, $this->url, $paramsWithArray);
+        $this->assertTrue($isValid);
+    }
+
     public function testValidateBody(): void {
         $hash = $this->validator->computeBodyHash($this->body);
         $this->assertEquals($this->bodyHash, $hash);
