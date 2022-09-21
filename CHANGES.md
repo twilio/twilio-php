@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2022-09-21] Version 6.42.1
+---------------------------
+**Library - Fix**
+- [PR #745](https://github.com/twilio/twilio-php/pull/745): support duplicate query param values. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2022-09-07] Version 6.42.0
 ---------------------------
 **Flex**
