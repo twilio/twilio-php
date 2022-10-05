@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2022-10-05] Version 6.42.2
+---------------------------
+**Api**
+- Added `virtual-agent` to `usage_record` API.
+- Add AMD attributes to participant create request
+
+**Twiml**
+- Add AMD attributes to `Number` and `Sip`
+
+
 [2022-09-21] Version 6.42.1
 ---------------------------
 **Library - Fix**

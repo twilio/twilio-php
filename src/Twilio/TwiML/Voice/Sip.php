@@ -84,4 +84,75 @@ class Sip extends TwiML {
     public function setStatusCallbackMethod($statusCallbackMethod): self {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
     }
+
+    /**
+     * Add MachineDetection attribute.
+     *
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     */
+    public function setMachineDetection($machineDetection): self {
+        return $this->setAttribute('machineDetection', $machineDetection);
+    }
+
+    /**
+     * Add AmdStatusCallbackMethod attribute.
+     *
+     * @param string $amdStatusCallbackMethod HTTP Method to use with
+     *                                        amd_status_callback
+     */
+    public function setAmdStatusCallbackMethod($amdStatusCallbackMethod): self {
+        return $this->setAttribute('amdStatusCallbackMethod', $amdStatusCallbackMethod);
+    }
+
+    /**
+     * Add AmdStatusCallback attribute.
+     *
+     * @param string $amdStatusCallback The URL we should call to send amd status
+     *                                  information to your application
+     */
+    public function setAmdStatusCallback($amdStatusCallback): self {
+        return $this->setAttribute('amdStatusCallback', $amdStatusCallback);
+    }
+
+    /**
+     * Add MachineDetectionTimeout attribute.
+     *
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
+     */
+    public function setMachineDetectionTimeout($machineDetectionTimeout): self {
+        return $this->setAttribute('machineDetectionTimeout', $machineDetectionTimeout);
+    }
+
+    /**
+     * Add MachineDetectionSpeechThreshold attribute.
+     *
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
+     */
+    public function setMachineDetectionSpeechThreshold($machineDetectionSpeechThreshold): self {
+        return $this->setAttribute('machineDetectionSpeechThreshold', $machineDetectionSpeechThreshold);
+    }
+
+    /**
+     * Add MachineDetectionSpeechEndThreshold attribute.
+     *
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
+     */
+    public function setMachineDetectionSpeechEndThreshold($machineDetectionSpeechEndThreshold): self {
+        return $this->setAttribute('machineDetectionSpeechEndThreshold', $machineDetectionSpeechEndThreshold);
+    }
+
+    /**
+     * Add MachineDetectionSilenceTimeout attribute.
+     *
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
+     */
+    public function setMachineDetectionSilenceTimeout($machineDetectionSilenceTimeout): self {
+        return $this->setAttribute('machineDetectionSilenceTimeout', $machineDetectionSilenceTimeout);
+    }
 }

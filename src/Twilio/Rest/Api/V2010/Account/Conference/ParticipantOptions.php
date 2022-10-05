@@ -109,10 +109,25 @@ abstract class ParticipantOptions {
      * @param string $callReason Reason for the call (Branded Calls Beta)
      * @param string $recordingTrack The track(s) to record
      * @param int $timeLimit The maximum duration of the call in seconds.
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
+     * @param string $amdStatusCallback The URL we should call to send amd status
+     *                                  information to your application
+     * @param string $amdStatusCallbackMethod HTTP Method to use with
+     *                                        amd_status_callback
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $label = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $jitterBufferSize = Values::NONE, string $byoc = Values::NONE, string $callerId = Values::NONE, string $callReason = Values::NONE, string $recordingTrack = Values::NONE, int $timeLimit = Values::NONE): CreateParticipantOptions {
-        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $label, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach, $jitterBufferSize, $byoc, $callerId, $callReason, $recordingTrack, $timeLimit);
+    public static function create(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $label = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $jitterBufferSize = Values::NONE, string $byoc = Values::NONE, string $callerId = Values::NONE, string $callReason = Values::NONE, string $recordingTrack = Values::NONE, int $timeLimit = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $amdStatusCallback = Values::NONE, string $amdStatusCallbackMethod = Values::NONE): CreateParticipantOptions {
+        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $label, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $coaching, $callSidToCoach, $jitterBufferSize, $byoc, $callerId, $callReason, $recordingTrack, $timeLimit, $machineDetection, $machineDetectionTimeout, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout, $amdStatusCallback, $amdStatusCallbackMethod);
     }
 
     /**
@@ -384,8 +399,23 @@ class CreateParticipantOptions extends Options {
      * @param string $callReason Reason for the call (Branded Calls Beta)
      * @param string $recordingTrack The track(s) to record
      * @param int $timeLimit The maximum duration of the call in seconds.
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
+     * @param string $amdStatusCallback The URL we should call to send amd status
+     *                                  information to your application
+     * @param string $amdStatusCallbackMethod HTTP Method to use with
+     *                                        amd_status_callback
      */
-    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $label = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $jitterBufferSize = Values::NONE, string $byoc = Values::NONE, string $callerId = Values::NONE, string $callReason = Values::NONE, string $recordingTrack = Values::NONE, int $timeLimit = Values::NONE) {
+    public function __construct(string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, array $statusCallbackEvent = Values::ARRAY_NONE, string $label = Values::NONE, int $timeout = Values::NONE, bool $record = Values::NONE, bool $muted = Values::NONE, string $beep = Values::NONE, bool $startConferenceOnEnter = Values::NONE, bool $endConferenceOnExit = Values::NONE, string $waitUrl = Values::NONE, string $waitMethod = Values::NONE, bool $earlyMedia = Values::NONE, int $maxParticipants = Values::NONE, string $conferenceRecord = Values::NONE, string $conferenceTrim = Values::NONE, string $conferenceStatusCallback = Values::NONE, string $conferenceStatusCallbackMethod = Values::NONE, array $conferenceStatusCallbackEvent = Values::ARRAY_NONE, string $recordingChannels = Values::NONE, string $recordingStatusCallback = Values::NONE, string $recordingStatusCallbackMethod = Values::NONE, string $sipAuthUsername = Values::NONE, string $sipAuthPassword = Values::NONE, string $region = Values::NONE, string $conferenceRecordingStatusCallback = Values::NONE, string $conferenceRecordingStatusCallbackMethod = Values::NONE, array $recordingStatusCallbackEvent = Values::ARRAY_NONE, array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE, bool $coaching = Values::NONE, string $callSidToCoach = Values::NONE, string $jitterBufferSize = Values::NONE, string $byoc = Values::NONE, string $callerId = Values::NONE, string $callReason = Values::NONE, string $recordingTrack = Values::NONE, int $timeLimit = Values::NONE, string $machineDetection = Values::NONE, int $machineDetectionTimeout = Values::NONE, int $machineDetectionSpeechThreshold = Values::NONE, int $machineDetectionSpeechEndThreshold = Values::NONE, int $machineDetectionSilenceTimeout = Values::NONE, string $amdStatusCallback = Values::NONE, string $amdStatusCallbackMethod = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
@@ -423,6 +453,13 @@ class CreateParticipantOptions extends Options {
         $this->options['callReason'] = $callReason;
         $this->options['recordingTrack'] = $recordingTrack;
         $this->options['timeLimit'] = $timeLimit;
+        $this->options['machineDetection'] = $machineDetection;
+        $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
+        $this->options['machineDetectionSpeechThreshold'] = $machineDetectionSpeechThreshold;
+        $this->options['machineDetectionSpeechEndThreshold'] = $machineDetectionSpeechEndThreshold;
+        $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
+        $this->options['amdStatusCallback'] = $amdStatusCallback;
+        $this->options['amdStatusCallbackMethod'] = $amdStatusCallbackMethod;
     }
 
     /**
@@ -862,6 +899,91 @@ class CreateParticipantOptions extends Options {
      */
     public function setTimeLimit(int $timeLimit): self {
         $this->options['timeLimit'] = $timeLimit;
+        return $this;
+    }
+
+    /**
+     * Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+     *
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetection(string $machineDetection): self {
+        $this->options['machineDetection'] = $machineDetection;
+        return $this;
+    }
+
+    /**
+     * The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
+     *
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetectionTimeout(int $machineDetectionTimeout): self {
+        $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
+        return $this;
+    }
+
+    /**
+     * The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
+     *
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetectionSpeechThreshold(int $machineDetectionSpeechThreshold): self {
+        $this->options['machineDetectionSpeechThreshold'] = $machineDetectionSpeechThreshold;
+        return $this;
+    }
+
+    /**
+     * The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
+     *
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetectionSpeechEndThreshold(int $machineDetectionSpeechEndThreshold): self {
+        $this->options['machineDetectionSpeechEndThreshold'] = $machineDetectionSpeechEndThreshold;
+        return $this;
+    }
+
+    /**
+     * The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
+     *
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetectionSilenceTimeout(int $machineDetectionSilenceTimeout): self {
+        $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
+        return $this;
+    }
+
+    /**
+     * The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
+     *
+     * @param string $amdStatusCallback The URL we should call to send amd status
+     *                                  information to your application
+     * @return $this Fluent Builder
+     */
+    public function setAmdStatusCallback(string $amdStatusCallback): self {
+        $this->options['amdStatusCallback'] = $amdStatusCallback;
+        return $this;
+    }
+
+    /**
+     * The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+     *
+     * @param string $amdStatusCallbackMethod HTTP Method to use with
+     *                                        amd_status_callback
+     * @return $this Fluent Builder
+     */
+    public function setAmdStatusCallbackMethod(string $amdStatusCallbackMethod): self {
+        $this->options['amdStatusCallbackMethod'] = $amdStatusCallbackMethod;
         return $this;
     }
 
