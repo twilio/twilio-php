@@ -201,7 +201,7 @@ class UpdateConferenceOptions extends Options {
     }
 
     /**
-     * The URL we should call to announce something into the conference. The URL can return an MP3, a WAV, or a TwiML document with `<Play>` or `<Say>`.
+     * The URL we should call to announce something into the conference. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
      *
      * @param string $announceUrl The URL we should call to announce something into
      *                            the conference

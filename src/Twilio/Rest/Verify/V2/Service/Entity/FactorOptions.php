@@ -12,9 +12,6 @@ namespace Twilio\Rest\Verify\V2\Service\Entity;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class FactorOptions {
     /**
      * @param string $authPayload Optional payload to verify the Factor for the

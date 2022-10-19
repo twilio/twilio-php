@@ -18,6 +18,7 @@ use Twilio\Version;
  * @property string $sid
  * @property string $accountSid
  * @property string $friendlyName
+ * @property string[] $channels
  * @property array $translations
  */
 class TemplateInstance extends InstanceResource {
@@ -35,6 +36,7 @@ class TemplateInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'channels' => Values::array_get($payload, 'channels'),
             'translations' => Values::array_get($payload, 'translations'),
         ];
 

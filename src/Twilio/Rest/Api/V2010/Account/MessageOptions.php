@@ -38,6 +38,8 @@ abstract class MessageOptions {
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
+     * @param bool $shortenUrls Sets whether to shorten and track links included in
+     *                          the body of this message.
      * @param string $scheduleType Pass the value `fixed` to schedule a message at
      *                             a fixed time.
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be
@@ -47,8 +49,8 @@ abstract class MessageOptions {
      *                        media.
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE): CreateMessageOptions {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $attempt, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction, $scheduleType, $sendAt, $sendAsMms);
+    public static function create(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, bool $shortenUrls = Values::NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE): CreateMessageOptions {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $attempt, $validityPeriod, $forceDelivery, $contentRetention, $addressRetention, $smartEncoded, $persistentAction, $shortenUrls, $scheduleType, $sendAt, $sendAsMms);
     }
 
     /**
@@ -99,6 +101,8 @@ class CreateMessageOptions extends Options {
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
      * @param string[] $persistentAction Rich actions for Channels Messages.
+     * @param bool $shortenUrls Sets whether to shorten and track links included in
+     *                          the body of this message.
      * @param string $scheduleType Pass the value `fixed` to schedule a message at
      *                             a fixed time.
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be
@@ -107,7 +111,7 @@ class CreateMessageOptions extends Options {
      *                        single MMS message, regardless of the presence of
      *                        media.
      */
-    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE) {
+    public function __construct(string $from = Values::NONE, string $messagingServiceSid = Values::NONE, string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $applicationSid = Values::NONE, string $maxPrice = Values::NONE, bool $provideFeedback = Values::NONE, int $attempt = Values::NONE, int $validityPeriod = Values::NONE, bool $forceDelivery = Values::NONE, string $contentRetention = Values::NONE, string $addressRetention = Values::NONE, bool $smartEncoded = Values::NONE, array $persistentAction = Values::ARRAY_NONE, bool $shortenUrls = Values::NONE, string $scheduleType = Values::NONE, \DateTime $sendAt = Values::NONE, bool $sendAsMms = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -123,6 +127,7 @@ class CreateMessageOptions extends Options {
         $this->options['addressRetention'] = $addressRetention;
         $this->options['smartEncoded'] = $smartEncoded;
         $this->options['persistentAction'] = $persistentAction;
+        $this->options['shortenUrls'] = $shortenUrls;
         $this->options['scheduleType'] = $scheduleType;
         $this->options['sendAt'] = $sendAt;
         $this->options['sendAsMms'] = $sendAsMms;
@@ -299,6 +304,18 @@ class CreateMessageOptions extends Options {
      */
     public function setPersistentAction(array $persistentAction): self {
         $this->options['persistentAction'] = $persistentAction;
+        return $this;
+    }
+
+    /**
+     * Determines the usage of Click Tracking. Setting it to `true` will instruct Twilio to replace all links in the Message with a shortened version based on the associated Domain Sid and track clicks on them. If this parameter is not set on an API call, we will use the value set on the Messaging Service. If this parameter is not set and the value is not configured on the Messaging Service used this will default to `false`.
+     *
+     * @param bool $shortenUrls Sets whether to shorten and track links included in
+     *                          the body of this message.
+     * @return $this Fluent Builder
+     */
+    public function setShortenUrls(bool $shortenUrls): self {
+        $this->options['shortenUrls'] = $shortenUrls;
         return $this;
     }
 

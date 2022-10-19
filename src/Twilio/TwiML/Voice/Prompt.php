@@ -88,4 +88,14 @@ class Prompt extends TwiML {
     public function setAttempt($attempt): self {
         return $this->setAttribute('attempt', $attempt);
     }
+
+    /**
+     * Add RequireMatchingInputs attribute.
+     *
+     * @param bool $requireMatchingInputs Require customer to input requested
+     *                                    information twice and verify matching.
+     */
+    public function setRequireMatchingInputs($requireMatchingInputs): self {
+        return $this->setAttribute('requireMatchingInputs', $requireMatchingInputs);
+    }
 }

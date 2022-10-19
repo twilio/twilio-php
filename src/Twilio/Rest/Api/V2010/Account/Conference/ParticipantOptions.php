@@ -16,14 +16,16 @@ abstract class ParticipantOptions {
     /**
      * @param bool $muted Whether the participant should be muted
      * @param bool $hold Whether the participant should be on hold
-     * @param string $holdUrl The URL we call using the `hold_method` for  music
+     * @param string $holdUrl The URL we call using the `hold_method` for music
      *                        that plays when the participant is on hold
      * @param string $holdMethod The HTTP method we should use to call hold_url
      * @param string $announceUrl The URL we call using the `announce_method` for
      *                            an announcement to the participant
      * @param string $announceMethod The HTTP method we should use to call
      *                               announce_url
-     * @param string $waitUrl URL that hosts pre-conference hold music
+     * @param string $waitUrl The URL we call using the `wait_method` for the music
+     *                        to play while participants are waiting for the
+     *                        conference to start
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
      * @param bool $beepOnExit Whether to play a notification beep to the
      *                         conference when the participant exit
@@ -146,14 +148,16 @@ class UpdateParticipantOptions extends Options {
     /**
      * @param bool $muted Whether the participant should be muted
      * @param bool $hold Whether the participant should be on hold
-     * @param string $holdUrl The URL we call using the `hold_method` for  music
+     * @param string $holdUrl The URL we call using the `hold_method` for music
      *                        that plays when the participant is on hold
      * @param string $holdMethod The HTTP method we should use to call hold_url
      * @param string $announceUrl The URL we call using the `announce_method` for
      *                            an announcement to the participant
      * @param string $announceMethod The HTTP method we should use to call
      *                               announce_url
-     * @param string $waitUrl URL that hosts pre-conference hold music
+     * @param string $waitUrl The URL we call using the `wait_method` for the music
+     *                        to play while participants are waiting for the
+     *                        conference to start
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
      * @param bool $beepOnExit Whether to play a notification beep to the
      *                         conference when the participant exit
@@ -201,9 +205,9 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The URL we call using the `hold_method` for  music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains the `<Play>`, `<Say>` or `<Redirect>` commands.
+     * The URL we call using the `hold_method` for music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
      *
-     * @param string $holdUrl The URL we call using the `hold_method` for  music
+     * @param string $holdUrl The URL we call using the `hold_method` for music
      *                        that plays when the participant is on hold
      * @return $this Fluent Builder
      */
@@ -224,7 +228,7 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The URL we call using the `announce_method` for an announcement to the participant. The URL must return an MP3 file, a WAV file, or a TwiML document that contains `<Play>` or `<Say>` commands.
+     * The URL we call using the `announce_method` for an announcement to the participant. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
      *
      * @param string $announceUrl The URL we call using the `announce_method` for
      *                            an announcement to the participant
@@ -248,9 +252,11 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
+     * The URL we call using the `wait_method` for the music to play while participants are waiting for the conference to start. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
      *
-     * @param string $waitUrl URL that hosts pre-conference hold music
+     * @param string $waitUrl The URL we call using the `wait_method` for the music
+     *                        to play while participants are waiting for the
+     *                        conference to start
      * @return $this Fluent Builder
      */
     public function setWaitUrl(string $waitUrl): self {

@@ -20,6 +20,7 @@ use Twilio\Rest\Supersim\V1;
  * @property \Twilio\Rest\Supersim\V1\IpCommandList $ipCommands
  * @property \Twilio\Rest\Supersim\V1\NetworkList $networks
  * @property \Twilio\Rest\Supersim\V1\NetworkAccessProfileList $networkAccessProfiles
+ * @property \Twilio\Rest\Supersim\V1\SettingsUpdateList $settingsUpdates
  * @property \Twilio\Rest\Supersim\V1\SimList $sims
  * @property \Twilio\Rest\Supersim\V1\SmsCommandList $smsCommands
  * @property \Twilio\Rest\Supersim\V1\UsageRecordList $usageRecords
@@ -141,6 +142,10 @@ class Supersim extends Domain {
      */
     protected function contextNetworkAccessProfiles(string $sid): \Twilio\Rest\Supersim\V1\NetworkAccessProfileContext {
         return $this->v1->networkAccessProfiles($sid);
+    }
+
+    protected function getSettingsUpdates(): \Twilio\Rest\Supersim\V1\SettingsUpdateList {
+        return $this->v1->settingsUpdates;
     }
 
     protected function getSims(): \Twilio\Rest\Supersim\V1\SimList {
