@@ -131,7 +131,6 @@ class SessionList extends ListResource {
             'Mode' => $options['mode'],
             'Status' => $options['status'],
             'Participants' => Serialize::map($options['participants'], function($e) { return Serialize::jsonObject($e); }),
-            'FailOnParticipantConflict' => Serialize::booleanToString($options['failOnParticipantConflict']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

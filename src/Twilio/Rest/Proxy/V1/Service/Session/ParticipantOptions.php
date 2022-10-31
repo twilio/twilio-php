@@ -22,13 +22,10 @@ abstract class ParticipantOptions {
      * @param string $proxyIdentifier The proxy phone number to use for the
      *                                Participant
      * @param string $proxyIdentifierSid The Proxy Identifier Sid
-     * @param bool $failOnParticipantConflict An experimental parameter to override
-     *                                        the ProxyAllowParticipantConflict
-     *                                        account flag on a per-request basis.
      * @return CreateParticipantOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $proxyIdentifier = Values::NONE, string $proxyIdentifierSid = Values::NONE, bool $failOnParticipantConflict = Values::NONE): CreateParticipantOptions {
-        return new CreateParticipantOptions($friendlyName, $proxyIdentifier, $proxyIdentifierSid, $failOnParticipantConflict);
+    public static function create(string $friendlyName = Values::NONE, string $proxyIdentifier = Values::NONE, string $proxyIdentifierSid = Values::NONE): CreateParticipantOptions {
+        return new CreateParticipantOptions($friendlyName, $proxyIdentifier, $proxyIdentifierSid);
     }
 }
 
@@ -39,15 +36,11 @@ class CreateParticipantOptions extends Options {
      * @param string $proxyIdentifier The proxy phone number to use for the
      *                                Participant
      * @param string $proxyIdentifierSid The Proxy Identifier Sid
-     * @param bool $failOnParticipantConflict An experimental parameter to override
-     *                                        the ProxyAllowParticipantConflict
-     *                                        account flag on a per-request basis.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $proxyIdentifier = Values::NONE, string $proxyIdentifierSid = Values::NONE, bool $failOnParticipantConflict = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $proxyIdentifier = Values::NONE, string $proxyIdentifierSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['proxyIdentifier'] = $proxyIdentifier;
         $this->options['proxyIdentifierSid'] = $proxyIdentifierSid;
-        $this->options['failOnParticipantConflict'] = $failOnParticipantConflict;
     }
 
     /**
@@ -82,19 +75,6 @@ class CreateParticipantOptions extends Options {
      */
     public function setProxyIdentifierSid(string $proxyIdentifierSid): self {
         $this->options['proxyIdentifierSid'] = $proxyIdentifierSid;
-        return $this;
-    }
-
-    /**
-     * [Experimental] For accounts with the ProxyAllowParticipantConflict account flag, setting to true enables per-request opt-in to allowing Proxy to reject a Participant create request that could cause the same Identifier/ProxyIdentifier pair to be active in multiple Sessions. Depending on the context, this could be a 409 error (Twilio error code 80623) or a 400 error (Twilio error code 80604). If not provided, requests will be allowed to succeed and a Debugger notification (80802) will be emitted. Having multiple, active Participants with the same Identifier/ProxyIdentifier pair causes calls and messages from affected Participants to be routed incorrectly. Please note, the default behavior for accounts without the ProxyAllowParticipantConflict flag is to reject the request as described.  This will eventually be the default for all accounts.
-     *
-     * @param bool $failOnParticipantConflict An experimental parameter to override
-     *                                        the ProxyAllowParticipantConflict
-     *                                        account flag on a per-request basis.
-     * @return $this Fluent Builder
-     */
-    public function setFailOnParticipantConflict(bool $failOnParticipantConflict): self {
-        $this->options['failOnParticipantConflict'] = $failOnParticipantConflict;
         return $this;
     }
 

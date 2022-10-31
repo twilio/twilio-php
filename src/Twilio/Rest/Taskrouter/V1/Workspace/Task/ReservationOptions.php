@@ -16,10 +16,11 @@ abstract class ReservationOptions {
     /**
      * @param string $reservationStatus Returns the list of reservations for a task
      *                                  with a specified ReservationStatus
+     * @param string $workerSid The SID of the reserved Worker resource to read
      * @return ReadReservationOptions Options builder
      */
-    public static function read(string $reservationStatus = Values::NONE): ReadReservationOptions {
-        return new ReadReservationOptions($reservationStatus);
+    public static function read(string $reservationStatus = Values::NONE, string $workerSid = Values::NONE): ReadReservationOptions {
+        return new ReadReservationOptions($reservationStatus, $workerSid);
     }
 
     /**
@@ -138,9 +139,11 @@ class ReadReservationOptions extends Options {
     /**
      * @param string $reservationStatus Returns the list of reservations for a task
      *                                  with a specified ReservationStatus
+     * @param string $workerSid The SID of the reserved Worker resource to read
      */
-    public function __construct(string $reservationStatus = Values::NONE) {
+    public function __construct(string $reservationStatus = Values::NONE, string $workerSid = Values::NONE) {
         $this->options['reservationStatus'] = $reservationStatus;
+        $this->options['workerSid'] = $workerSid;
     }
 
     /**
@@ -152,6 +155,17 @@ class ReadReservationOptions extends Options {
      */
     public function setReservationStatus(string $reservationStatus): self {
         $this->options['reservationStatus'] = $reservationStatus;
+        return $this;
+    }
+
+    /**
+     * The SID of the reserved Worker resource to read.
+     *
+     * @param string $workerSid The SID of the reserved Worker resource to read
+     * @return $this Fluent Builder
+     */
+    public function setWorkerSid(string $workerSid): self {
+        $this->options['workerSid'] = $workerSid;
         return $this;
     }
 

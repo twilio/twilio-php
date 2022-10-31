@@ -29,7 +29,7 @@ abstract class VerificationOptions {
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
-     * @param string $templateSid The verification template SMS messages.
+     * @param string $templateSid The verification template SMS or Voice message.
      * @param string $templateCustomSubstitutions The values of the special
      *                                            variables declared on the message
      *                                            template.
@@ -57,7 +57,7 @@ class CreateVerificationOptions extends Options {
      * @param array $channelConfiguration Channel specific configuration in json
      *                                    format.
      * @param string $appHash Your App Hash to be appended at the end of an SMS.
-     * @param string $templateSid The verification template SMS messages.
+     * @param string $templateSid The verification template SMS or Voice message.
      * @param string $templateCustomSubstitutions The values of the special
      *                                            variables declared on the message
      *                                            template.
@@ -112,7 +112,7 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here.](https://www.twilio.com/docs/verify/supported-languages).
+     * Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages).
      *
      * @param string $locale The override locale to use for the verification SMS,
      *                       WhatsApp or call
@@ -193,9 +193,9 @@ class CreateVerificationOptions extends Options {
     }
 
     /**
-     * The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS channel only.
+     * The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      *
-     * @param string $templateSid The verification template SMS messages.
+     * @param string $templateSid The verification template SMS or Voice message.
      * @return $this Fluent Builder
      */
     public function setTemplateSid(string $templateSid): self {

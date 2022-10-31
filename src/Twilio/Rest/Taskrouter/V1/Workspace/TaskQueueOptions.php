@@ -38,10 +38,11 @@ abstract class TaskQueueOptions {
      * @param string $evaluateWorkerAttributes The attributes of the Workers to read
      * @param string $workerSid The SID of the Worker with the TaskQueue resources
      *                          to read
+     * @param string $ordering Sorting parameter for TaskQueues
      * @return ReadTaskQueueOptions Options builder
      */
-    public static function read(string $friendlyName = Values::NONE, string $evaluateWorkerAttributes = Values::NONE, string $workerSid = Values::NONE): ReadTaskQueueOptions {
-        return new ReadTaskQueueOptions($friendlyName, $evaluateWorkerAttributes, $workerSid);
+    public static function read(string $friendlyName = Values::NONE, string $evaluateWorkerAttributes = Values::NONE, string $workerSid = Values::NONE, string $ordering = Values::NONE): ReadTaskQueueOptions {
+        return new ReadTaskQueueOptions($friendlyName, $evaluateWorkerAttributes, $workerSid, $ordering);
     }
 
     /**
@@ -175,11 +176,13 @@ class ReadTaskQueueOptions extends Options {
      * @param string $evaluateWorkerAttributes The attributes of the Workers to read
      * @param string $workerSid The SID of the Worker with the TaskQueue resources
      *                          to read
+     * @param string $ordering Sorting parameter for TaskQueues
      */
-    public function __construct(string $friendlyName = Values::NONE, string $evaluateWorkerAttributes = Values::NONE, string $workerSid = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $evaluateWorkerAttributes = Values::NONE, string $workerSid = Values::NONE, string $ordering = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['evaluateWorkerAttributes'] = $evaluateWorkerAttributes;
         $this->options['workerSid'] = $workerSid;
+        $this->options['ordering'] = $ordering;
     }
 
     /**
@@ -214,6 +217,17 @@ class ReadTaskQueueOptions extends Options {
      */
     public function setWorkerSid(string $workerSid): self {
         $this->options['workerSid'] = $workerSid;
+        return $this;
+    }
+
+    /**
+     * Sorting parameter for TaskQueues
+     *
+     * @param string $ordering Sorting parameter for TaskQueues
+     * @return $this Fluent Builder
+     */
+    public function setOrdering(string $ordering): self {
+        $this->options['ordering'] = $ordering;
         return $this;
     }
 

@@ -88,7 +88,6 @@ class SessionContext extends InstanceContext {
             'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
             'Ttl' => $options['ttl'],
             'Status' => $options['status'],
-            'FailOnParticipantConflict' => Serialize::booleanToString($options['failOnParticipantConflict']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

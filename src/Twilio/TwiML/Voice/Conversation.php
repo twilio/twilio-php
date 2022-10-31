@@ -58,6 +58,24 @@ class Conversation extends TwiML {
     }
 
     /**
+     * Add Url attribute.
+     *
+     * @param string $url TwiML URL
+     */
+    public function setUrl($url): self {
+        return $this->setAttribute('url', $url);
+    }
+
+    /**
+     * Add Method attribute.
+     *
+     * @param string $method TwiML URL method
+     */
+    public function setMethod($method): self {
+        return $this->setAttribute('method', $method);
+    }
+
+    /**
      * Add Record attribute.
      *
      * @param string $record Record
