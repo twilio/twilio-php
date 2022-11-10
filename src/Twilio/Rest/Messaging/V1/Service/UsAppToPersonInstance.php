@@ -31,6 +31,13 @@ use Twilio\Version;
  * @property string $campaignId
  * @property bool $isExternallyRegistered
  * @property array $rateLimits
+ * @property string $messageFlow
+ * @property string $optInMessage
+ * @property string $optOutMessage
+ * @property string $helpMessage
+ * @property string[] $optInKeywords
+ * @property string[] $optOutKeywords
+ * @property string[] $helpKeywords
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -65,6 +72,13 @@ class UsAppToPersonInstance extends InstanceResource {
             'campaignId' => Values::array_get($payload, 'campaign_id'),
             'isExternallyRegistered' => Values::array_get($payload, 'is_externally_registered'),
             'rateLimits' => Values::array_get($payload, 'rate_limits'),
+            'messageFlow' => Values::array_get($payload, 'message_flow'),
+            'optInMessage' => Values::array_get($payload, 'opt_in_message'),
+            'optOutMessage' => Values::array_get($payload, 'opt_out_message'),
+            'helpMessage' => Values::array_get($payload, 'help_message'),
+            'optInKeywords' => Values::array_get($payload, 'opt_in_keywords'),
+            'optOutKeywords' => Values::array_get($payload, 'opt_out_keywords'),
+            'helpKeywords' => Values::array_get($payload, 'help_keywords'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

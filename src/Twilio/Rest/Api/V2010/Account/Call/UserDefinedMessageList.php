@@ -20,8 +20,8 @@ class UserDefinedMessageList extends ListResource {
      * Construct the UserDefinedMessageList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid Account Sid.
-     * @param string $callSid Call Sid.
+     * @param string $accountSid Account SID.
+     * @param string $callSid Call SID.
      */
     public function __construct(Version $version, string $accountSid, string $callSid) {
         parent::__construct($version);
@@ -35,9 +35,8 @@ class UserDefinedMessageList extends ListResource {
     /**
      * Create the UserDefinedMessageInstance
      *
-     * @param string $content A unique string value to identify API call. This
-     *                        should be a unique string value per API call and can
-     *                        be a randomly generated.
+     * @param string $content The User Defined Message in the form of URL-encoded
+     *                        JSON string.
      * @param array|Options $options Optional Arguments
      * @return UserDefinedMessageInstance Created UserDefinedMessageInstance
      * @throws TwilioException When an HTTP error occurs.

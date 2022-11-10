@@ -28,9 +28,9 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid Account Sid.
-     * @param string $callSid Call Sid.
-     * @param string $sid User Defined Message Subscription Sid
+     * @param string $accountSid Account SID.
+     * @param string $callSid Call SID.
+     * @param string $sid User Defined Message Subscription SID.
      */
     public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
         parent::__construct($version);

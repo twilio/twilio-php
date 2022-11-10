@@ -27,8 +27,8 @@ class UserDefinedMessageInstance extends InstanceResource {
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid Account Sid.
-     * @param string $callSid Call Sid.
+     * @param string $accountSid Account SID.
+     * @param string $callSid Call SID.
      */
     public function __construct(Version $version, array $payload, string $accountSid, string $callSid) {
         parent::__construct($version);

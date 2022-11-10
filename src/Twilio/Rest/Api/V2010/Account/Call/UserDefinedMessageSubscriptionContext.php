@@ -18,9 +18,9 @@ class UserDefinedMessageSubscriptionContext extends InstanceContext {
      * Initialize the UserDefinedMessageSubscriptionContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid Account Sid.
-     * @param string $callSid Call Sid.
-     * @param string $sid User Defined Message Subscription Sid
+     * @param string $accountSid Account SID.
+     * @param string $callSid Call SID.
+     * @param string $sid User Defined Message Subscription SID.
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);

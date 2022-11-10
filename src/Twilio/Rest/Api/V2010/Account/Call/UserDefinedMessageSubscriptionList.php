@@ -20,8 +20,8 @@ class UserDefinedMessageSubscriptionList extends ListResource {
      * Construct the UserDefinedMessageSubscriptionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid Account Sid.
-     * @param string $callSid Call Sid.
+     * @param string $accountSid Account SID.
+     * @param string $callSid Call SID.
      */
     public function __construct(Version $version, string $accountSid, string $callSid) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class UserDefinedMessageSubscriptionList extends ListResource {
     /**
      * Constructs a UserDefinedMessageSubscriptionContext
      *
-     * @param string $sid User Defined Message Subscription Sid
+     * @param string $sid User Defined Message Subscription SID.
      */
     public function getContext(string $sid): UserDefinedMessageSubscriptionContext {
         return new UserDefinedMessageSubscriptionContext(
