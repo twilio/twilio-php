@@ -18,6 +18,7 @@ use Twilio\Version;
 /**
  * @property string $accountSid
  * @property string $callSid
+ * @property string $answeredBy
  * @property string $callType
  * @property string $callState
  * @property string $processingState
@@ -52,6 +53,7 @@ class CallSummariesInstance extends InstanceResource {
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'callSid' => Values::array_get($payload, 'call_sid'),
+            'answeredBy' => Values::array_get($payload, 'answered_by'),
             'callType' => Values::array_get($payload, 'call_type'),
             'callState' => Values::array_get($payload, 'call_state'),
             'processingState' => Values::array_get($payload, 'processing_state'),

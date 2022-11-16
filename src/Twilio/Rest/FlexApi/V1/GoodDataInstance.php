@@ -19,6 +19,7 @@ use Twilio\Version;
  * @property string $workspaceId
  * @property string $sessionExpiry
  * @property string $sessionId
+ * @property string $gdBaseUrl
  * @property string $url
  */
 class GoodDataInstance extends InstanceResource {
@@ -36,6 +37,7 @@ class GoodDataInstance extends InstanceResource {
             'workspaceId' => Values::array_get($payload, 'workspace_id'),
             'sessionExpiry' => Values::array_get($payload, 'session_expiry'),
             'sessionId' => Values::array_get($payload, 'session_id'),
+            'gdBaseUrl' => Values::array_get($payload, 'gd_base_url'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

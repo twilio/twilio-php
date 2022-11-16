@@ -23,6 +23,7 @@ use Twilio\VersionInfo;
  * @property Api $api
  * @property Autopilot $autopilot
  * @property Chat $chat
+ * @property Content $content
  * @property Conversations $conversations
  * @property Events $events
  * @property FlexApi $flexApi
@@ -119,6 +120,7 @@ class Client {
     protected $_api;
     protected $_autopilot;
     protected $_chat;
+    protected $_content;
     protected $_conversations;
     protected $_events;
     protected $_flexApi;
@@ -675,6 +677,18 @@ class Client {
             $this->_chat = new Chat($this);
         }
         return $this->_chat;
+    }
+
+    /**
+     * Access the Content Twilio Domain
+     *
+     * @return Content Content Twilio Domain
+     */
+    protected function getContent(): Content {
+        if (!$this->_content) {
+            $this->_content = new Content($this);
+        }
+        return $this->_content;
     }
 
     /**
