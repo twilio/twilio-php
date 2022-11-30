@@ -12,6 +12,7 @@ namespace Twilio\Rest\FlexApi;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\FlexApi\V1\AssessmentsList;
 use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
@@ -22,6 +23,7 @@ use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
 /**
+ * @property AssessmentsList $assessments
  * @property ChannelList $channel
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
@@ -35,6 +37,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
 class V1 extends Version {
+    protected $_assessments;
     protected $_channel;
     protected $_configuration;
     protected $_flexFlow;
@@ -51,6 +54,13 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getAssessments(): AssessmentsList {
+        if (!$this->_assessments) {
+            $this->_assessments = new AssessmentsList($this);
+        }
+        return $this->_assessments;
     }
 
     protected function getChannel(): ChannelList {

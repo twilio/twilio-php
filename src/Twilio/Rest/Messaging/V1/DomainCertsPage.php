@@ -7,16 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class CurrentCallPage extends Page {
+class DomainCertsPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class CurrentCallPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return CurrentCallInstance \Twilio\Rest\Preview\TrustedComms\CurrentCallInstance
+     * @return DomainCertsInstance \Twilio\Rest\Messaging\V1\DomainCertsInstance
      */
-    public function buildInstance(array $payload): CurrentCallInstance {
-        return new CurrentCallInstance($this->version, $payload);
+    public function buildInstance(array $payload): DomainCertsInstance {
+        return new DomainCertsInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +43,6 @@ class CurrentCallPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.CurrentCallPage]';
+        return '[Twilio.Messaging.V1.DomainCertsPage]';
     }
 }

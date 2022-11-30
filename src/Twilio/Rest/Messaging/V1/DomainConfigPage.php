@@ -7,16 +7,16 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms\BrandedChannel;
+namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class ChannelPage extends Page {
+class DomainConfigPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +31,10 @@ class ChannelPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return ChannelInstance \Twilio\Rest\Preview\TrustedComms\BrandedChannel\ChannelInstance
+     * @return DomainConfigInstance \Twilio\Rest\Messaging\V1\DomainConfigInstance
      */
-    public function buildInstance(array $payload): ChannelInstance {
-        return new ChannelInstance($this->version, $payload, $this->solution['brandedChannelSid']);
+    public function buildInstance(array $payload): DomainConfigInstance {
+        return new DomainConfigInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +43,6 @@ class ChannelPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.ChannelPage]';
+        return '[Twilio.Messaging.V1.DomainConfigPage]';
     }
 }

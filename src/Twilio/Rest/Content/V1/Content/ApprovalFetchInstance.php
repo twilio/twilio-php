@@ -7,87 +7,65 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Content\V1\Content;
 
-use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $bgColor
- * @property string $caller
- * @property \DateTime $createdAt
- * @property string $fontColor
- * @property string $from
- * @property string $logo
- * @property string $manager
- * @property string $reason
- * @property string $shieldImg
  * @property string $sid
- * @property string $status
- * @property string $to
+ * @property string $accountSid
+ * @property array $whatsapp
  * @property string $url
- * @property string $useCase
  */
-class CurrentCallInstance extends InstanceResource {
+class ApprovalFetchInstance extends InstanceResource {
     /**
-     * Initialize the CurrentCallInstance
+     * Initialize the ApprovalFetchInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $sid The unique string that identifies the Content resource
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, string $sid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'bgColor' => Values::array_get($payload, 'bg_color'),
-            'caller' => Values::array_get($payload, 'caller'),
-            'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'created_at')),
-            'fontColor' => Values::array_get($payload, 'font_color'),
-            'from' => Values::array_get($payload, 'from'),
-            'logo' => Values::array_get($payload, 'logo'),
-            'manager' => Values::array_get($payload, 'manager'),
-            'reason' => Values::array_get($payload, 'reason'),
-            'shieldImg' => Values::array_get($payload, 'shield_img'),
             'sid' => Values::array_get($payload, 'sid'),
-            'status' => Values::array_get($payload, 'status'),
-            'to' => Values::array_get($payload, 'to'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'whatsapp' => Values::array_get($payload, 'whatsapp'),
             'url' => Values::array_get($payload, 'url'),
-            'useCase' => Values::array_get($payload, 'use_case'),
         ];
 
-        $this->solution = [];
+        $this->solution = ['sid' => $sid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return CurrentCallContext Context for this CurrentCallInstance
+     * @return ApprovalFetchContext Context for this ApprovalFetchInstance
      */
-    protected function proxy(): CurrentCallContext {
+    protected function proxy(): ApprovalFetchContext {
         if (!$this->context) {
-            $this->context = new CurrentCallContext($this->version);
+            $this->context = new ApprovalFetchContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the CurrentCallInstance
+     * Fetch the ApprovalFetchInstance
      *
-     * @param array|Options $options Optional Arguments
-     * @return CurrentCallInstance Fetched CurrentCallInstance
+     * @return ApprovalFetchInstance Fetched ApprovalFetchInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): CurrentCallInstance {
-        return $this->proxy()->fetch($options);
+    public function fetch(): ApprovalFetchInstance {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -120,6 +98,6 @@ class CurrentCallInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CurrentCallInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Content.V1.ApprovalFetchInstance ' . \implode(' ', $context) . ']';
     }
 }

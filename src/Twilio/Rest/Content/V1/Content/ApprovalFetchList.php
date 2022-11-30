@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Content\V1\Content;
 
 use Twilio\ListResource;
 use Twilio\Version;
@@ -15,24 +15,25 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class BrandsInformationList extends ListResource {
+class ApprovalFetchList extends ListResource {
     /**
-     * Construct the BrandsInformationList
+     * Construct the ApprovalFetchList
      *
      * @param Version $version Version that contains the resource
+     * @param string $sid The unique string that identifies the Content resource
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, string $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['sid' => $sid, ];
     }
 
     /**
-     * Constructs a BrandsInformationContext
+     * Constructs a ApprovalFetchContext
      */
-    public function getContext(): BrandsInformationContext {
-        return new BrandsInformationContext($this->version);
+    public function getContext(): ApprovalFetchContext {
+        return new ApprovalFetchContext($this->version, $this->solution['sid']);
     }
 
     /**
@@ -41,6 +42,6 @@ class BrandsInformationList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.BrandsInformationList]';
+        return '[Twilio.Content.V1.ApprovalFetchList]';
     }
 }

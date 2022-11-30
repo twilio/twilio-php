@@ -15,6 +15,7 @@ use Twilio\Rest\FlexApi\V1;
 
 /**
  * @property \Twilio\Rest\FlexApi\V1 $v1
+ * @property \Twilio\Rest\FlexApi\V1\AssessmentsList $assessments
  * @property \Twilio\Rest\FlexApi\V1\ChannelList $channel
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
@@ -22,6 +23,7 @@ use Twilio\Rest\FlexApi\V1;
  * @property \Twilio\Rest\FlexApi\V1\InteractionList $interaction
  * @property \Twilio\Rest\FlexApi\V1\UserRolesList $userRoles
  * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
+ * @method \Twilio\Rest\FlexApi\V1\AssessmentsContext assessments()
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
@@ -85,6 +87,14 @@ class FlexApi extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    protected function getAssessments(): \Twilio\Rest\FlexApi\V1\AssessmentsList {
+        return $this->v1->assessments;
+    }
+
+    protected function contextAssessments(): \Twilio\Rest\FlexApi\V1\AssessmentsContext {
+        return $this->v1->assessments();
     }
 
     protected function getChannel(): \Twilio\Rest\FlexApi\V1\ChannelList {

@@ -7,26 +7,19 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\FlexApi\V1;
 
-use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- *
- * @property \DateTime $updateTime
- * @property string $fileLink
- * @property string $fileLinkTtlInSeconds
  * @property string $url
  */
-class BrandsInformationInstance extends InstanceResource {
+class AssessmentsInstance extends InstanceResource {
     /**
-     * Initialize the BrandsInformationInstance
+     * Initialize the AssessmentsInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -35,12 +28,7 @@ class BrandsInformationInstance extends InstanceResource {
         parent::__construct($version);
 
         // Marshaled Properties
-        $this->properties = [
-            'updateTime' => Deserialize::dateTime(Values::array_get($payload, 'update_time')),
-            'fileLink' => Values::array_get($payload, 'file_link'),
-            'fileLinkTtlInSeconds' => Values::array_get($payload, 'file_link_ttl_in_seconds'),
-            'url' => Values::array_get($payload, 'url'),
-        ];
+        $this->properties = ['url' => Values::array_get($payload, 'url'), ];
 
         $this->solution = [];
     }
@@ -49,25 +37,24 @@ class BrandsInformationInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return BrandsInformationContext Context for this BrandsInformationInstance
+     * @return AssessmentsContext Context for this AssessmentsInstance
      */
-    protected function proxy(): BrandsInformationContext {
+    protected function proxy(): AssessmentsContext {
         if (!$this->context) {
-            $this->context = new BrandsInformationContext($this->version);
+            $this->context = new AssessmentsContext($this->version);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the BrandsInformationInstance
+     * Create the AssessmentsInstance
      *
-     * @param array|Options $options Optional Arguments
-     * @return BrandsInformationInstance Fetched BrandsInformationInstance
+     * @return AssessmentsInstance Created AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): BrandsInformationInstance {
-        return $this->proxy()->fetch($options);
+    public function create(): AssessmentsInstance {
+        return $this->proxy()->create();
     }
 
     /**
@@ -100,6 +87,6 @@ class BrandsInformationInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.BrandsInformationInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.AssessmentsInstance ' . \implode(' ', $context) . ']';
     }
 }

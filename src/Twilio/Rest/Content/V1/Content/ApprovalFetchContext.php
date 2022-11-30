@@ -7,47 +7,42 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Content\V1\Content;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class CpsContext extends InstanceContext {
+class ApprovalFetchContext extends InstanceContext {
     /**
-     * Initialize the CpsContext
+     * Initialize the ApprovalFetchContext
      *
      * @param Version $version Version that contains the resource
+     * @param string $sid The unique string that identifies the Content resource
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['sid' => $sid, ];
 
-        $this->uri = '/CPS';
+        $this->uri = '/Content/' . \rawurlencode($sid) . '/ApprovalRequests';
     }
 
     /**
-     * Fetch the CpsInstance
+     * Fetch the ApprovalFetchInstance
      *
-     * @param array|Options $options Optional Arguments
-     * @return CpsInstance Fetched CpsInstance
+     * @return ApprovalFetchInstance Fetched ApprovalFetchInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): CpsInstance {
-        $options = new Values($options);
+    public function fetch(): ApprovalFetchInstance {
+        $payload = $this->version->fetch('GET', $this->uri);
 
-        $headers = Values::of(['X-Xcnam-Sensitive-Phone-Number' => $options['xXcnamSensitivePhoneNumber'], ]);
-
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
-        return new CpsInstance($this->version, $payload);
+        return new ApprovalFetchInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -60,6 +55,6 @@ class CpsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CpsContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Content.V1.ApprovalFetchContext ' . \implode(' ', $context) . ']';
     }
 }

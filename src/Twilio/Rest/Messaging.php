@@ -17,12 +17,16 @@ use Twilio\Rest\Messaging\V1;
  * @property \Twilio\Rest\Messaging\V1 $v1
  * @property \Twilio\Rest\Messaging\V1\BrandRegistrationList $brandRegistrations
  * @property \Twilio\Rest\Messaging\V1\DeactivationsList $deactivations
+ * @property \Twilio\Rest\Messaging\V1\DomainCertsList $domainCerts
+ * @property \Twilio\Rest\Messaging\V1\DomainConfigList $domainConfig
  * @property \Twilio\Rest\Messaging\V1\ExternalCampaignList $externalCampaign
  * @property \Twilio\Rest\Messaging\V1\ServiceList $services
  * @property \Twilio\Rest\Messaging\V1\TollfreeVerificationList $tollfreeVerifications
  * @property \Twilio\Rest\Messaging\V1\UsecaseList $usecases
  * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
  * @method \Twilio\Rest\Messaging\V1\DeactivationsContext deactivations()
+ * @method \Twilio\Rest\Messaging\V1\DomainCertsContext domainCerts(string $domainSid)
+ * @method \Twilio\Rest\Messaging\V1\DomainConfigContext domainConfig(string $domainSid)
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Messaging\V1\TollfreeVerificationContext tollfreeVerifications(string $sid)
  */
@@ -100,6 +104,30 @@ class Messaging extends Domain {
 
     protected function contextDeactivations(): \Twilio\Rest\Messaging\V1\DeactivationsContext {
         return $this->v1->deactivations();
+    }
+
+    protected function getDomainCerts(): \Twilio\Rest\Messaging\V1\DomainCertsList {
+        return $this->v1->domainCerts;
+    }
+
+    /**
+     * @param string $domainSid Unique string used to identify the domain that this
+     *                          certificate should be associated with.
+     */
+    protected function contextDomainCerts(string $domainSid): \Twilio\Rest\Messaging\V1\DomainCertsContext {
+        return $this->v1->domainCerts($domainSid);
+    }
+
+    protected function getDomainConfig(): \Twilio\Rest\Messaging\V1\DomainConfigList {
+        return $this->v1->domainConfig;
+    }
+
+    /**
+     * @param string $domainSid Unique string used to identify the domain that this
+     *                          config should be associated with.
+     */
+    protected function contextDomainConfig(string $domainSid): \Twilio\Rest\Messaging\V1\DomainConfigContext {
+        return $this->v1->domainConfig($domainSid);
     }
 
     protected function getExternalCampaign(): \Twilio\Rest\Messaging\V1\ExternalCampaignList {

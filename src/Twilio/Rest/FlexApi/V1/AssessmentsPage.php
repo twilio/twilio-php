@@ -7,16 +7,13 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
-class BrandsInformationPage extends Page {
+class AssessmentsPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -31,10 +28,10 @@ class BrandsInformationPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return BrandsInformationInstance \Twilio\Rest\Preview\TrustedComms\BrandsInformationInstance
+     * @return AssessmentsInstance \Twilio\Rest\FlexApi\V1\AssessmentsInstance
      */
-    public function buildInstance(array $payload): BrandsInformationInstance {
-        return new BrandsInformationInstance($this->version, $payload);
+    public function buildInstance(array $payload): AssessmentsInstance {
+        return new AssessmentsInstance($this->version, $payload);
     }
 
     /**
@@ -43,6 +40,6 @@ class BrandsInformationPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Preview.TrustedComms.BrandsInformationPage]';
+        return '[Twilio.FlexApi.V1.AssessmentsPage]';
     }
 }

@@ -19,10 +19,21 @@ abstract class PhoneNumberOptions {
     /**
      * @param string $fields Fields to return
      * @param string $countryCode Country code for national phone number lookups
+     * @param string $firstName User’s first name.
+     * @param string $lastName User’s last name.
+     * @param string $addressLine1 User’s first address line.
+     * @param string $addressLine2 User’s second address line.
+     * @param string $city User’s city.
+     * @param string $state User’s country subdivision, such as state, province, or
+     *                      locality.
+     * @param string $postalCode User’s postal zip code.
+     * @param string $addressCountryCode User’s country, up to two characters.
+     * @param string $nationalId User’s national ID, such as SSN or Passport ID.
+     * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format.
      * @return FetchPhoneNumberOptions Options builder
      */
-    public static function fetch(string $fields = Values::NONE, string $countryCode = Values::NONE): FetchPhoneNumberOptions {
-        return new FetchPhoneNumberOptions($fields, $countryCode);
+    public static function fetch(string $fields = Values::NONE, string $countryCode = Values::NONE, string $firstName = Values::NONE, string $lastName = Values::NONE, string $addressLine1 = Values::NONE, string $addressLine2 = Values::NONE, string $city = Values::NONE, string $state = Values::NONE, string $postalCode = Values::NONE, string $addressCountryCode = Values::NONE, string $nationalId = Values::NONE, string $dateOfBirth = Values::NONE): FetchPhoneNumberOptions {
+        return new FetchPhoneNumberOptions($fields, $countryCode, $firstName, $lastName, $addressLine1, $addressLine2, $city, $state, $postalCode, $addressCountryCode, $nationalId, $dateOfBirth);
     }
 }
 
@@ -30,14 +41,35 @@ class FetchPhoneNumberOptions extends Options {
     /**
      * @param string $fields Fields to return
      * @param string $countryCode Country code for national phone number lookups
+     * @param string $firstName User’s first name.
+     * @param string $lastName User’s last name.
+     * @param string $addressLine1 User’s first address line.
+     * @param string $addressLine2 User’s second address line.
+     * @param string $city User’s city.
+     * @param string $state User’s country subdivision, such as state, province, or
+     *                      locality.
+     * @param string $postalCode User’s postal zip code.
+     * @param string $addressCountryCode User’s country, up to two characters.
+     * @param string $nationalId User’s national ID, such as SSN or Passport ID.
+     * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format.
      */
-    public function __construct(string $fields = Values::NONE, string $countryCode = Values::NONE) {
+    public function __construct(string $fields = Values::NONE, string $countryCode = Values::NONE, string $firstName = Values::NONE, string $lastName = Values::NONE, string $addressLine1 = Values::NONE, string $addressLine2 = Values::NONE, string $city = Values::NONE, string $state = Values::NONE, string $postalCode = Values::NONE, string $addressCountryCode = Values::NONE, string $nationalId = Values::NONE, string $dateOfBirth = Values::NONE) {
         $this->options['fields'] = $fields;
         $this->options['countryCode'] = $countryCode;
+        $this->options['firstName'] = $firstName;
+        $this->options['lastName'] = $lastName;
+        $this->options['addressLine1'] = $addressLine1;
+        $this->options['addressLine2'] = $addressLine2;
+        $this->options['city'] = $city;
+        $this->options['state'] = $state;
+        $this->options['postalCode'] = $postalCode;
+        $this->options['addressCountryCode'] = $addressCountryCode;
+        $this->options['nationalId'] = $nationalId;
+        $this->options['dateOfBirth'] = $dateOfBirth;
     }
 
     /**
-     * A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence.
+     * A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match.
      *
      * @param string $fields Fields to return
      * @return $this Fluent Builder
@@ -55,6 +87,117 @@ class FetchPhoneNumberOptions extends Options {
      */
     public function setCountryCode(string $countryCode): self {
         $this->options['countryCode'] = $countryCode;
+        return $this;
+    }
+
+    /**
+     * User’s first name. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $firstName User’s first name.
+     * @return $this Fluent Builder
+     */
+    public function setFirstName(string $firstName): self {
+        $this->options['firstName'] = $firstName;
+        return $this;
+    }
+
+    /**
+     * User’s last name. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $lastName User’s last name.
+     * @return $this Fluent Builder
+     */
+    public function setLastName(string $lastName): self {
+        $this->options['lastName'] = $lastName;
+        return $this;
+    }
+
+    /**
+     * User’s first address line. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $addressLine1 User’s first address line.
+     * @return $this Fluent Builder
+     */
+    public function setAddressLine1(string $addressLine1): self {
+        $this->options['addressLine1'] = $addressLine1;
+        return $this;
+    }
+
+    /**
+     * User’s second address line. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $addressLine2 User’s second address line.
+     * @return $this Fluent Builder
+     */
+    public function setAddressLine2(string $addressLine2): self {
+        $this->options['addressLine2'] = $addressLine2;
+        return $this;
+    }
+
+    /**
+     * User’s city. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $city User’s city.
+     * @return $this Fluent Builder
+     */
+    public function setCity(string $city): self {
+        $this->options['city'] = $city;
+        return $this;
+    }
+
+    /**
+     * User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $state User’s country subdivision, such as state, province, or
+     *                      locality.
+     * @return $this Fluent Builder
+     */
+    public function setState(string $state): self {
+        $this->options['state'] = $state;
+        return $this;
+    }
+
+    /**
+     * User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $postalCode User’s postal zip code.
+     * @return $this Fluent Builder
+     */
+    public function setPostalCode(string $postalCode): self {
+        $this->options['postalCode'] = $postalCode;
+        return $this;
+    }
+
+    /**
+     * User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $addressCountryCode User’s country, up to two characters.
+     * @return $this Fluent Builder
+     */
+    public function setAddressCountryCode(string $addressCountryCode): self {
+        $this->options['addressCountryCode'] = $addressCountryCode;
+        return $this;
+    }
+
+    /**
+     * User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $nationalId User’s national ID, such as SSN or Passport ID.
+     * @return $this Fluent Builder
+     */
+    public function setNationalId(string $nationalId): self {
+        $this->options['nationalId'] = $nationalId;
+        return $this;
+    }
+
+    /**
+     * User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests.
+     *
+     * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format.
+     * @return $this Fluent Builder
+     */
+    public function setDateOfBirth(string $dateOfBirth): self {
+        $this->options['dateOfBirth'] = $dateOfBirth;
         return $this;
     }
 

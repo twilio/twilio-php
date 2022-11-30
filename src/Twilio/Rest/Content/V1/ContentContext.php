@@ -11,13 +11,20 @@ namespace Twilio\Rest\Content\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
+use Twilio\Rest\Content\V1\Content\ApprovalFetchList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ *
+ * @property ApprovalFetchList $approvalFetch
+ * @method \Twilio\Rest\Content\V1\Content\ApprovalFetchContext approvalFetch()
  */
 class ContentContext extends InstanceContext {
+    protected $_approvalFetch;
+
     /**
      * Initialize the ContentContext
      *
@@ -53,6 +60,50 @@ class ContentContext extends InstanceContext {
      */
     public function delete(): bool {
         return $this->version->delete('DELETE', $this->uri);
+    }
+
+    /**
+     * Access the approvalFetch
+     */
+    protected function getApprovalFetch(): ApprovalFetchList {
+        if (!$this->_approvalFetch) {
+            $this->_approvalFetch = new ApprovalFetchList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_approvalFetch;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     *
+     * @param string $name Subresource to return
+     * @return ListResource The requested subresource
+     * @throws TwilioException For unknown subresources
+     */
+    public function __get(string $name): ListResource {
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
+            return $this->$method();
+        }
+
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     *
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call(string $name, array $arguments): InstanceContext {
+        $property = $this->$name;
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

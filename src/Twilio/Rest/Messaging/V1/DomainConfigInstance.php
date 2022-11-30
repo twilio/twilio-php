@@ -7,98 +7,89 @@
  * /       /
  */
 
-namespace Twilio\Rest\Content\V1;
+namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Content\V1\Content\ApprovalFetchList;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
+ * @property string $domainSid
+ * @property string $configSid
+ * @property string[] $messagingServiceSids
+ * @property string $fallbackUrl
+ * @property string $callbackUrl
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $language
- * @property array $variables
- * @property array $types
  * @property string $url
- * @property array $links
  */
-class ContentInstance extends InstanceResource {
-    protected $_approvalFetch;
-
+class DomainConfigInstance extends InstanceResource {
     /**
-     * Initialize the ContentInstance
+     * Initialize the DomainConfigInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique string that identifies the resource
+     * @param string $domainSid Unique string used to identify the domain that this
+     *                          config should be associated with.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $domainSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
+            'domainSid' => Values::array_get($payload, 'domain_sid'),
+            'configSid' => Values::array_get($payload, 'config_sid'),
+            'messagingServiceSids' => Values::array_get($payload, 'messaging_service_sids'),
+            'fallbackUrl' => Values::array_get($payload, 'fallback_url'),
+            'callbackUrl' => Values::array_get($payload, 'callback_url'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'sid' => Values::array_get($payload, 'sid'),
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'language' => Values::array_get($payload, 'language'),
-            'variables' => Values::array_get($payload, 'variables'),
-            'types' => Values::array_get($payload, 'types'),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['domainSid' => $domainSid ?: $this->properties['domainSid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return ContentContext Context for this ContentInstance
+     * @return DomainConfigContext Context for this DomainConfigInstance
      */
-    protected function proxy(): ContentContext {
+    protected function proxy(): DomainConfigContext {
         if (!$this->context) {
-            $this->context = new ContentContext($this->version, $this->solution['sid']);
+            $this->context = new DomainConfigContext($this->version, $this->solution['domainSid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the ContentInstance
+     * Update the DomainConfigInstance
      *
-     * @return ContentInstance Fetched ContentInstance
+     * @param string[] $messagingServiceSids A list of messagingServiceSids (with
+     *                                       prefix MG)
+     * @param array|Options $options Optional Arguments
+     * @return DomainConfigInstance Updated DomainConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ContentInstance {
+    public function update(array $messagingServiceSids, array $options = []): DomainConfigInstance {
+        return $this->proxy()->update($messagingServiceSids, $options);
+    }
+
+    /**
+     * Fetch the DomainConfigInstance
+     *
+     * @return DomainConfigInstance Fetched DomainConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): DomainConfigInstance {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Delete the ContentInstance
-     *
-     * @return bool True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete(): bool {
-        return $this->proxy()->delete();
-    }
-
-    /**
-     * Access the approvalFetch
-     */
-    protected function getApprovalFetch(): ApprovalFetchList {
-        return $this->proxy()->approvalFetch;
     }
 
     /**
@@ -131,6 +122,6 @@ class ContentInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Content.V1.ContentInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.DomainConfigInstance ' . \implode(' ', $context) . ']';
     }
 }
