@@ -17,7 +17,6 @@ use Twilio\Values;
  */
 abstract class UsAppToPersonOptions {
     /**
-     * @param string $messageFlow The message flow of the campaign
      * @param string $optInMessage Opt In Message
      * @param string $optOutMessage Opt Out Message
      * @param string $helpMessage Help Message
@@ -26,14 +25,13 @@ abstract class UsAppToPersonOptions {
      * @param string[] $helpKeywords Help Keywords
      * @return CreateUsAppToPersonOptions Options builder
      */
-    public static function create(string $messageFlow = Values::NONE, string $optInMessage = Values::NONE, string $optOutMessage = Values::NONE, string $helpMessage = Values::NONE, array $optInKeywords = Values::ARRAY_NONE, array $optOutKeywords = Values::ARRAY_NONE, array $helpKeywords = Values::ARRAY_NONE): CreateUsAppToPersonOptions {
-        return new CreateUsAppToPersonOptions($messageFlow, $optInMessage, $optOutMessage, $helpMessage, $optInKeywords, $optOutKeywords, $helpKeywords);
+    public static function create(string $optInMessage = Values::NONE, string $optOutMessage = Values::NONE, string $helpMessage = Values::NONE, array $optInKeywords = Values::ARRAY_NONE, array $optOutKeywords = Values::ARRAY_NONE, array $helpKeywords = Values::ARRAY_NONE): CreateUsAppToPersonOptions {
+        return new CreateUsAppToPersonOptions($optInMessage, $optOutMessage, $helpMessage, $optInKeywords, $optOutKeywords, $helpKeywords);
     }
 }
 
 class CreateUsAppToPersonOptions extends Options {
     /**
-     * @param string $messageFlow The message flow of the campaign
      * @param string $optInMessage Opt In Message
      * @param string $optOutMessage Opt Out Message
      * @param string $helpMessage Help Message
@@ -41,8 +39,7 @@ class CreateUsAppToPersonOptions extends Options {
      * @param string[] $optOutKeywords Opt Out Keywords
      * @param string[] $helpKeywords Help Keywords
      */
-    public function __construct(string $messageFlow = Values::NONE, string $optInMessage = Values::NONE, string $optOutMessage = Values::NONE, string $helpMessage = Values::NONE, array $optInKeywords = Values::ARRAY_NONE, array $optOutKeywords = Values::ARRAY_NONE, array $helpKeywords = Values::ARRAY_NONE) {
-        $this->options['messageFlow'] = $messageFlow;
+    public function __construct(string $optInMessage = Values::NONE, string $optOutMessage = Values::NONE, string $helpMessage = Values::NONE, array $optInKeywords = Values::ARRAY_NONE, array $optOutKeywords = Values::ARRAY_NONE, array $helpKeywords = Values::ARRAY_NONE) {
         $this->options['optInMessage'] = $optInMessage;
         $this->options['optOutMessage'] = $optOutMessage;
         $this->options['helpMessage'] = $helpMessage;
@@ -52,18 +49,7 @@ class CreateUsAppToPersonOptions extends Options {
     }
 
     /**
-     * Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages.
-     *
-     * @param string $messageFlow The message flow of the campaign
-     * @return $this Fluent Builder
-     */
-    public function setMessageFlow(string $messageFlow): self {
-        $this->options['messageFlow'] = $messageFlow;
-        return $this;
-    }
-
-    /**
-     * The message that will be sent to the user when they opt in to the SMS campaign.
+     * If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum.
      *
      * @param string $optInMessage Opt In Message
      * @return $this Fluent Builder
@@ -74,7 +60,7 @@ class CreateUsAppToPersonOptions extends Options {
     }
 
     /**
-     * The message that will be sent to the user when they opt out of the SMS campaign.
+     * Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum.
      *
      * @param string $optOutMessage Opt Out Message
      * @return $this Fluent Builder
@@ -85,7 +71,7 @@ class CreateUsAppToPersonOptions extends Options {
     }
 
     /**
-     * The message that will be sent to the user when they request help for the SMS campaign.
+     * When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum.
      *
      * @param string $helpMessage Help Message
      * @return $this Fluent Builder
@@ -96,7 +82,7 @@ class CreateUsAppToPersonOptions extends Options {
     }
 
     /**
-     * The keywords that will be used to opt in to the SMS campaign.
+     * If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum.
      *
      * @param string[] $optInKeywords Opt In Keywords
      * @return $this Fluent Builder
@@ -107,7 +93,7 @@ class CreateUsAppToPersonOptions extends Options {
     }
 
     /**
-     * The keywords that will be used to opt out of the SMS campaign.
+     * End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
      *
      * @param string[] $optOutKeywords Opt Out Keywords
      * @return $this Fluent Builder
@@ -118,7 +104,7 @@ class CreateUsAppToPersonOptions extends Options {
     }
 
     /**
-     * The keywords that will be used to request help for the SMS campaign.
+     * End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
      *
      * @param string[] $helpKeywords Help Keywords
      * @return $this Fluent Builder

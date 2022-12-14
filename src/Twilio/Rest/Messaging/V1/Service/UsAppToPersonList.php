@@ -42,6 +42,7 @@ class UsAppToPersonList extends ListResource {
      *
      * @param string $brandRegistrationSid A2P Brand Registration SID
      * @param string $description A short description of what this SMS campaign does
+     * @param string $messageFlow The message flow of the campaign
      * @param string[] $messageSamples Message samples
      * @param string $usAppToPersonUsecase A2P Campaign Use Case.
      * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send
@@ -52,17 +53,17 @@ class UsAppToPersonList extends ListResource {
      * @return UsAppToPersonInstance Created UsAppToPersonInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $brandRegistrationSid, string $description, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): UsAppToPersonInstance {
+    public function create(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): UsAppToPersonInstance {
         $options = new Values($options);
 
         $data = Values::of([
             'BrandRegistrationSid' => $brandRegistrationSid,
             'Description' => $description,
+            'MessageFlow' => $messageFlow,
             'MessageSamples' => Serialize::map($messageSamples, function($e) { return $e; }),
             'UsAppToPersonUsecase' => $usAppToPersonUsecase,
             'HasEmbeddedLinks' => Serialize::booleanToString($hasEmbeddedLinks),
             'HasEmbeddedPhone' => Serialize::booleanToString($hasEmbeddedPhone),
-            'MessageFlow' => $options['messageFlow'],
             'OptInMessage' => $options['optInMessage'],
             'OptOutMessage' => $options['optOutMessage'],
             'HelpMessage' => $options['helpMessage'],

@@ -12,9 +12,11 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\FlexApi\V1;
+use Twilio\Rest\FlexApi\V2;
 
 /**
  * @property \Twilio\Rest\FlexApi\V1 $v1
+ * @property \Twilio\Rest\FlexApi\V2 $v2
  * @property \Twilio\Rest\FlexApi\V1\AssessmentsList $assessments
  * @property \Twilio\Rest\FlexApi\V1\ChannelList $channel
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
@@ -23,6 +25,7 @@ use Twilio\Rest\FlexApi\V1;
  * @property \Twilio\Rest\FlexApi\V1\InteractionList $interaction
  * @property \Twilio\Rest\FlexApi\V1\UserRolesList $userRoles
  * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
+ * @property \Twilio\Rest\FlexApi\V2\WebChannelsList $webChannels
  * @method \Twilio\Rest\FlexApi\V1\AssessmentsContext assessments()
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
@@ -34,6 +37,7 @@ use Twilio\Rest\FlexApi\V1;
  */
 class FlexApi extends Domain {
     protected $_v1;
+    protected $_v2;
 
     /**
      * Construct the FlexApi Domain
@@ -54,6 +58,16 @@ class FlexApi extends Domain {
             $this->_v1 = new V1($this);
         }
         return $this->_v1;
+    }
+
+    /**
+     * @return V2 Version v2 of flex_api
+     */
+    protected function getV2(): V2 {
+        if (!$this->_v2) {
+            $this->_v2 = new V2($this);
+        }
+        return $this->_v2;
     }
 
     /**
@@ -164,6 +178,10 @@ class FlexApi extends Domain {
      */
     protected function contextWebChannel(string $sid): \Twilio\Rest\FlexApi\V1\WebChannelContext {
         return $this->v1->webChannel($sid);
+    }
+
+    protected function getWebChannels(): \Twilio\Rest\FlexApi\V2\WebChannelsList {
+        return $this->v2->webChannels;
     }
 
     /**

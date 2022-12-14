@@ -30,7 +30,7 @@ class UserRolesTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://flex-api.twilio.com/v1/Accounts/UserRoles',
+            'https://flex-api.twilio.com/v1/Insights/UserRoles',
             [],
             [],
             $headers
@@ -45,7 +45,7 @@ class UserRolesTest extends HolodeckTestCase {
                 "roles": [
                     "wfo.full_access"
                 ],
-                "url": "https://flex-api.twilio.com/v1/Accounts/UserRoles"
+                "url": "https://flex-api.twilio.com/v1/Insights/UserRoles"
             }
             '
         ));

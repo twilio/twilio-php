@@ -19,10 +19,12 @@ abstract class AddressOptions {
      *                               address
      * @param bool $autoCorrectAddress Whether we should automatically correct the
      *                                 address
+     * @param string $streetSecondary The additional number and street address of
+     *                                the address
      * @return CreateAddressOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE): CreateAddressOptions {
-        return new CreateAddressOptions($friendlyName, $emergencyEnabled, $autoCorrectAddress);
+    public static function create(string $friendlyName = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE): CreateAddressOptions {
+        return new CreateAddressOptions($friendlyName, $emergencyEnabled, $autoCorrectAddress, $streetSecondary);
     }
 
     /**
@@ -36,10 +38,12 @@ abstract class AddressOptions {
      *                               address
      * @param bool $autoCorrectAddress Whether we should automatically correct the
      *                                 address
+     * @param string $streetSecondary The additional number and street address of
+     *                                the address
      * @return UpdateAddressOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $customerName = Values::NONE, string $street = Values::NONE, string $city = Values::NONE, string $region = Values::NONE, string $postalCode = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE): UpdateAddressOptions {
-        return new UpdateAddressOptions($friendlyName, $customerName, $street, $city, $region, $postalCode, $emergencyEnabled, $autoCorrectAddress);
+    public static function update(string $friendlyName = Values::NONE, string $customerName = Values::NONE, string $street = Values::NONE, string $city = Values::NONE, string $region = Values::NONE, string $postalCode = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE): UpdateAddressOptions {
+        return new UpdateAddressOptions($friendlyName, $customerName, $street, $city, $region, $postalCode, $emergencyEnabled, $autoCorrectAddress, $streetSecondary);
     }
 
     /**
@@ -63,11 +67,14 @@ class CreateAddressOptions extends Options {
      *                               address
      * @param bool $autoCorrectAddress Whether we should automatically correct the
      *                                 address
+     * @param string $streetSecondary The additional number and street address of
+     *                                the address
      */
-    public function __construct(string $friendlyName = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
+        $this->options['streetSecondary'] = $streetSecondary;
     }
 
     /**
@@ -106,6 +113,18 @@ class CreateAddressOptions extends Options {
     }
 
     /**
+     * The additional number and street address of the address.
+     *
+     * @param string $streetSecondary The additional number and street address of
+     *                                the address
+     * @return $this Fluent Builder
+     */
+    public function setStreetSecondary(string $streetSecondary): self {
+        $this->options['streetSecondary'] = $streetSecondary;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -128,8 +147,10 @@ class UpdateAddressOptions extends Options {
      *                               address
      * @param bool $autoCorrectAddress Whether we should automatically correct the
      *                                 address
+     * @param string $streetSecondary The additional number and street address of
+     *                                the address
      */
-    public function __construct(string $friendlyName = Values::NONE, string $customerName = Values::NONE, string $street = Values::NONE, string $city = Values::NONE, string $region = Values::NONE, string $postalCode = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $customerName = Values::NONE, string $street = Values::NONE, string $city = Values::NONE, string $region = Values::NONE, string $postalCode = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['customerName'] = $customerName;
         $this->options['street'] = $street;
@@ -138,6 +159,7 @@ class UpdateAddressOptions extends Options {
         $this->options['postalCode'] = $postalCode;
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
+        $this->options['streetSecondary'] = $streetSecondary;
     }
 
     /**
@@ -227,6 +249,18 @@ class UpdateAddressOptions extends Options {
      */
     public function setAutoCorrectAddress(bool $autoCorrectAddress): self {
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
+        return $this;
+    }
+
+    /**
+     * The additional number and street address of the address.
+     *
+     * @param string $streetSecondary The additional number and street address of
+     *                                the address
+     * @return $this Fluent Builder
+     */
+    public function setStreetSecondary(string $streetSecondary): self {
+        $this->options['streetSecondary'] = $streetSecondary;
         return $this;
     }
 

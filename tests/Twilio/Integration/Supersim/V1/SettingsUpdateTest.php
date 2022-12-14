@@ -39,9 +39,91 @@ class SettingsUpdateTest extends HolodeckTestCase {
                 "meta": {
                     "page": 0,
                     "page_size": 50,
+                    "first_page_url": "https://supersim.twilio.com/v1/SettingsUpdates?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://supersim.twilio.com/v1/SettingsUpdates?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "settings_updates"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->settingsUpdates->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadSimOnlyResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "settings_updates": [
+                    {
+                        "sid": "OBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "iccid": "89883070000123456789",
+                        "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "status": "successful",
+                        "packages": [
+                            {
+                                "name": "base-settings",
+                                "version": "1.0.0",
+                                "more_info": "https://twilio.com/docs/iot/supersim/settings-packages/base-settings"
+                            }
+                        ],
+                        "date_completed": "2015-07-30T20:00:00Z",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
                     "first_page_url": "https://supersim.twilio.com/v1/SettingsUpdates?Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
                     "previous_page_url": null,
                     "url": "https://supersim.twilio.com/v1/SettingsUpdates?Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "settings_updates"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->supersim->v1->settingsUpdates->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadStatusOnlyResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "settings_updates": [
+                    {
+                        "sid": "OBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "iccid": "89883070000123456789",
+                        "sim_sid": "HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "status": "scheduled",
+                        "packages": [
+                            {
+                                "name": "base-settings",
+                                "version": "1.0.0",
+                                "more_info": "https://twilio.com/docs/iot/supersim/settings-packages/base-settings"
+                            }
+                        ],
+                        "date_completed": null,
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://supersim.twilio.com/v1/SettingsUpdates?Status=scheduled&PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://supersim.twilio.com/v1/SettingsUpdates?Status=scheduled&PageSize=50&Page=0",
                     "next_page_url": null,
                     "key": "settings_updates"
                 }
@@ -72,7 +154,7 @@ class SettingsUpdateTest extends HolodeckTestCase {
                                 "more_info": "https://twilio.com/docs/iot/supersim/settings-packages/base-settings"
                             }
                         ],
-                        "date_completed": "2015-07-30T20:00:00Z",
+                        "date_completed": null,
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z"
                     }
@@ -80,9 +162,9 @@ class SettingsUpdateTest extends HolodeckTestCase {
                 "meta": {
                     "page": 0,
                     "page_size": 50,
-                    "first_page_url": "https://supersim.twilio.com/v1/SettingsUpdates?Sim=1234567890123456789&PageSize=50&Page=0",
+                    "first_page_url": "https://supersim.twilio.com/v1/SettingsUpdates?Status=scheduled&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
                     "previous_page_url": null,
-                    "url": "https://supersim.twilio.com/v1/SettingsUpdates?Sim=1234567890123456789&PageSize=50&Page=0",
+                    "url": "https://supersim.twilio.com/v1/SettingsUpdates?Status=scheduled&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0",
                     "next_page_url": null,
                     "key": "settings_updates"
                 }

@@ -26,7 +26,7 @@ class OpenidDiscoveryTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://oauth.twilio.com/v1/well-known/openid-configuration'
+            'https://oauth.twilio.com/v1/.well-known/openid-configuration'
         ));
     }
 
@@ -72,7 +72,7 @@ class OpenidDiscoveryTest extends HolodeckTestCase {
                     "scp",
                     "sub"
                 ],
-                "url": "https://oauth.twilio.com/v1/well-known/openid-configuration"
+                "url": "https://oauth.twilio.com/v1/.well-known/openid-configuration"
             }
             '
         ));

@@ -27,7 +27,7 @@ class UserRolesContext extends InstanceContext {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Accounts/UserRoles';
+        $this->uri = '/Insights/UserRoles';
     }
 
     /**

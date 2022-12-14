@@ -7,75 +7,35 @@
  * /       /
  */
 
-namespace Twilio\Rest\Oauth;
+namespace Twilio\Rest\FlexApi;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Oauth\V1\DeviceCodeList;
-use Twilio\Rest\Oauth\V1\OauthList;
-use Twilio\Rest\Oauth\V1\OpenidDiscoveryList;
-use Twilio\Rest\Oauth\V1\TokenList;
-use Twilio\Rest\Oauth\V1\UserInfoList;
+use Twilio\Rest\FlexApi\V2\WebChannelsList;
 use Twilio\Version;
 
 /**
- * @property OauthList $oauth
- * @property DeviceCodeList $deviceCode
- * @property OpenidDiscoveryList $openidDiscovery
- * @property TokenList $token
- * @property UserInfoList $userInfo
+ * @property WebChannelsList $webChannels
  */
-class V1 extends Version {
-    protected $_oauth;
-    protected $_deviceCode;
-    protected $_openidDiscovery;
-    protected $_token;
-    protected $_userInfo;
+class V2 extends Version {
+    protected $_webChannels;
 
     /**
-     * Construct the V1 version of Oauth
+     * Construct the V2 version of FlexApi
      *
      * @param Domain $domain Domain that contains the version
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
-        $this->version = 'v1';
+        $this->version = 'v2';
     }
 
-    protected function getOauth(): OauthList {
-        if (!$this->_oauth) {
-            $this->_oauth = new OauthList($this);
+    protected function getWebChannels(): WebChannelsList {
+        if (!$this->_webChannels) {
+            $this->_webChannels = new WebChannelsList($this);
         }
-        return $this->_oauth;
-    }
-
-    protected function getDeviceCode(): DeviceCodeList {
-        if (!$this->_deviceCode) {
-            $this->_deviceCode = new DeviceCodeList($this);
-        }
-        return $this->_deviceCode;
-    }
-
-    protected function getOpenidDiscovery(): OpenidDiscoveryList {
-        if (!$this->_openidDiscovery) {
-            $this->_openidDiscovery = new OpenidDiscoveryList($this);
-        }
-        return $this->_openidDiscovery;
-    }
-
-    protected function getToken(): TokenList {
-        if (!$this->_token) {
-            $this->_token = new TokenList($this);
-        }
-        return $this->_token;
-    }
-
-    protected function getUserInfo(): UserInfoList {
-        if (!$this->_userInfo) {
-            $this->_userInfo = new UserInfoList($this);
-        }
-        return $this->_userInfo;
+        return $this->_webChannels;
     }
 
     /**
@@ -117,6 +77,6 @@ class V1 extends Version {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Oauth.V1]';
+        return '[Twilio.FlexApi.V2]';
     }
 }

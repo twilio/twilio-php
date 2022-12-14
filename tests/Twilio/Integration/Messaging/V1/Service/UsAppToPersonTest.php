@@ -22,13 +22,14 @@ class UsAppToPersonTest extends HolodeckTestCase {
 
         try {
             $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->usAppToPerson->create("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", ["message_samples"], "us_app_to_person_usecase", True, True);
+                                        ->usAppToPerson->create("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", "message_flow", ["message_samples"], "us_app_to_person_usecase", True, True);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = [
             'BrandRegistrationSid' => "BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             'Description' => "description",
+            'MessageFlow' => "message_flow",
             'MessageSamples' => Serialize::map(["message_samples"], function($e) { return $e; }),
             'UsAppToPersonUsecase' => "us_app_to_person_usecase",
             'HasEmbeddedLinks' => Serialize::booleanToString(True),
@@ -94,7 +95,7 @@ class UsAppToPersonTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                              ->usAppToPerson->create("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", ["message_samples"], "us_app_to_person_usecase", True, True);
+                                              ->usAppToPerson->create("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", "message_flow", ["message_samples"], "us_app_to_person_usecase", True, True);
 
         $this->assertNotNull($actual);
     }
@@ -156,7 +157,7 @@ class UsAppToPersonTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                              ->usAppToPerson->create("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", ["message_samples"], "us_app_to_person_usecase", True, True);
+                                              ->usAppToPerson->create("BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", "message_flow", ["message_samples"], "us_app_to_person_usecase", True, True);
 
         $this->assertNotNull($actual);
     }

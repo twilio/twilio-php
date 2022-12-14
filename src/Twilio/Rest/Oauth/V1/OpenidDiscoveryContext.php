@@ -26,7 +26,7 @@ class OpenidDiscoveryContext extends InstanceContext {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/well-known/openid-configuration';
+        $this->uri = '/.well-known/openid-configuration';
     }
 
     /**

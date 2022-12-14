@@ -17,10 +17,11 @@ abstract class UserDefinedMessageSubscriptionOptions {
      * @param string $idempotencyKey A unique string value to identify API call.
      *                               This should be a unique string value per API
      *                               call and can be a randomly generated.
+     * @param string $method HTTP method used with the callback.
      * @return CreateUserDefinedMessageSubscriptionOptions Options builder
      */
-    public static function create(string $idempotencyKey = Values::NONE): CreateUserDefinedMessageSubscriptionOptions {
-        return new CreateUserDefinedMessageSubscriptionOptions($idempotencyKey);
+    public static function create(string $idempotencyKey = Values::NONE, string $method = Values::NONE): CreateUserDefinedMessageSubscriptionOptions {
+        return new CreateUserDefinedMessageSubscriptionOptions($idempotencyKey, $method);
     }
 }
 
@@ -29,9 +30,11 @@ class CreateUserDefinedMessageSubscriptionOptions extends Options {
      * @param string $idempotencyKey A unique string value to identify API call.
      *                               This should be a unique string value per API
      *                               call and can be a randomly generated.
+     * @param string $method HTTP method used with the callback.
      */
-    public function __construct(string $idempotencyKey = Values::NONE) {
+    public function __construct(string $idempotencyKey = Values::NONE, string $method = Values::NONE) {
         $this->options['idempotencyKey'] = $idempotencyKey;
+        $this->options['method'] = $method;
     }
 
     /**
@@ -44,6 +47,17 @@ class CreateUserDefinedMessageSubscriptionOptions extends Options {
      */
     public function setIdempotencyKey(string $idempotencyKey): self {
         $this->options['idempotencyKey'] = $idempotencyKey;
+        return $this;
+    }
+
+    /**
+     * The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`.
+     *
+     * @param string $method HTTP method used with the callback.
+     * @return $this Fluent Builder
+     */
+    public function setMethod(string $method): self {
+        $this->options['method'] = $method;
         return $this;
     }
 

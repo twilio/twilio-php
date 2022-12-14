@@ -22,11 +22,11 @@ class UserDefinedMessageSubscriptionTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->userDefinedMessageSubscriptions->create("https://example.com", "GET");
+                                     ->userDefinedMessageSubscriptions->create("https://example.com");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = ['Callback' => "https://example.com", 'Method' => "GET", ];
+        $values = ['Callback' => "https://example.com", ];
 
         $this->assertRequest(new Request(
             'post',
@@ -52,7 +52,7 @@ class UserDefinedMessageSubscriptionTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->userDefinedMessageSubscriptions->create("https://example.com", "GET");
+                                           ->userDefinedMessageSubscriptions->create("https://example.com");
 
         $this->assertNotNull($actual);
     }

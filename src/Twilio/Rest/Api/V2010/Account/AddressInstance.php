@@ -33,6 +33,7 @@ use Twilio\Version;
  * @property bool $emergencyEnabled
  * @property bool $validated
  * @property bool $verified
+ * @property string $streetSecondary
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers;
@@ -66,6 +67,7 @@ class AddressInstance extends InstanceResource {
             'emergencyEnabled' => Values::array_get($payload, 'emergency_enabled'),
             'validated' => Values::array_get($payload, 'validated'),
             'verified' => Values::array_get($payload, 'verified'),
+            'streetSecondary' => Values::array_get($payload, 'street_secondary'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

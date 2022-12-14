@@ -16,6 +16,7 @@ use Twilio\Rest\Oauth\V1;
 /**
  * @property \Twilio\Rest\Oauth\V1 $v1
  * @property \Twilio\Rest\Oauth\V1\OauthList $oauth
+ * @property \Twilio\Rest\Oauth\V1\DeviceCodeList $deviceCode
  * @property \Twilio\Rest\Oauth\V1\OpenidDiscoveryList $openidDiscovery
  * @property \Twilio\Rest\Oauth\V1\TokenList $token
  * @property \Twilio\Rest\Oauth\V1\UserInfoList $userInfo
@@ -86,6 +87,10 @@ class Oauth extends Domain {
 
     protected function contextOauth(): \Twilio\Rest\Oauth\V1\OauthContext {
         return $this->v1->oauth();
+    }
+
+    protected function getDeviceCode(): \Twilio\Rest\Oauth\V1\DeviceCodeList {
+        return $this->v1->deviceCode;
     }
 
     protected function getOpenidDiscovery(): \Twilio\Rest\Oauth\V1\OpenidDiscoveryList {

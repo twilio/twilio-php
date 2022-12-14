@@ -87,6 +87,7 @@ class AddressContext extends InstanceContext {
             'PostalCode' => $options['postalCode'],
             'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
             'AutoCorrectAddress' => Serialize::booleanToString($options['autoCorrectAddress']),
+            'StreetSecondary' => $options['streetSecondary'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

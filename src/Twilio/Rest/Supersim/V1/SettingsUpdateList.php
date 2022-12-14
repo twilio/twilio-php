@@ -95,6 +95,7 @@ class SettingsUpdateList extends ListResource {
 
         $params = Values::of([
             'Sim' => $options['sim'],
+            'Status' => $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

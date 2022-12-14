@@ -27,7 +27,7 @@ class GoodDataContext extends InstanceContext {
         // Path Solution
         $this->solution = [];
 
-        $this->uri = '/Accounts/GoodData';
+        $this->uri = '/Insights/Session';
     }
 
     /**

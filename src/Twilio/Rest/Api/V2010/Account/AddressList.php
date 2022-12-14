@@ -60,6 +60,7 @@ class AddressList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
             'AutoCorrectAddress' => Serialize::booleanToString($options['autoCorrectAddress']),
+            'StreetSecondary' => $options['streetSecondary'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

@@ -36,19 +36,18 @@ class UserDefinedMessageSubscriptionList extends ListResource {
      * Create the UserDefinedMessageSubscriptionInstance
      *
      * @param string $callback The URL we should call to send user defined messages.
-     * @param string $method HTTP method used with the callback.
      * @param array|Options $options Optional Arguments
      * @return UserDefinedMessageSubscriptionInstance Created
      *                                                UserDefinedMessageSubscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $callback, string $method, array $options = []): UserDefinedMessageSubscriptionInstance {
+    public function create(string $callback, array $options = []): UserDefinedMessageSubscriptionInstance {
         $options = new Values($options);
 
         $data = Values::of([
             'Callback' => $callback,
-            'Method' => $method,
             'IdempotencyKey' => $options['idempotencyKey'],
+            'Method' => $options['method'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

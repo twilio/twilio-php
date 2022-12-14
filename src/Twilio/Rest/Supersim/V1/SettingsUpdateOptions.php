@@ -18,19 +18,22 @@ use Twilio\Values;
 abstract class SettingsUpdateOptions {
     /**
      * @param string $sim Filter the Settings Updates by Super SIM
+     * @param string $status Filter the Settings Updates by status
      * @return ReadSettingsUpdateOptions Options builder
      */
-    public static function read(string $sim = Values::NONE): ReadSettingsUpdateOptions {
-        return new ReadSettingsUpdateOptions($sim);
+    public static function read(string $sim = Values::NONE, string $status = Values::NONE): ReadSettingsUpdateOptions {
+        return new ReadSettingsUpdateOptions($sim, $status);
     }
 }
 
 class ReadSettingsUpdateOptions extends Options {
     /**
      * @param string $sim Filter the Settings Updates by Super SIM
+     * @param string $status Filter the Settings Updates by status
      */
-    public function __construct(string $sim = Values::NONE) {
+    public function __construct(string $sim = Values::NONE, string $status = Values::NONE) {
         $this->options['sim'] = $sim;
+        $this->options['status'] = $status;
     }
 
     /**
@@ -41,6 +44,17 @@ class ReadSettingsUpdateOptions extends Options {
      */
     public function setSim(string $sim): self {
         $this->options['sim'] = $sim;
+        return $this;
+    }
+
+    /**
+     * Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`.
+     *
+     * @param string $status Filter the Settings Updates by status
+     * @return $this Fluent Builder
+     */
+    public function setStatus(string $status): self {
+        $this->options['status'] = $status;
         return $this;
     }
 
