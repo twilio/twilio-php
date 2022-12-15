@@ -31,7 +31,7 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
             ]
         );
         $this->assertNotNull($message);
-        $this->assertTrue(strpos($message->body, "Twilio-php Cluster test message"));
+        $this->assertTrue(strpos($message->body, "Twilio-php Cluster test message") !== false);
         $this->assertEquals(self::$fromNumber, $message->from);
         $this->assertEquals(self::$toNumber, $message->to);
     }
