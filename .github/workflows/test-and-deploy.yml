@@ -49,6 +49,15 @@ jobs:
           if [ -f "coverage.xml" ]; then
             sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
           fi
+      - name: Run Cluster Test
+        if: (!github.event.pull_request.head.repo.fork)
+        env:
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_API_KEY: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY}}
+          TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
+        run: make cluster-test
 
       - name: Install SonarCloud scanner and run analysis
         uses: SonarSource/sonarcloud-github-action@master
