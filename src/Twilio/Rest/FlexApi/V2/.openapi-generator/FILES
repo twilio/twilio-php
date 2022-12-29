@@ -1,0 +1,6 @@
+../V2.php
+.openapi-generator-ignore
+WebChannelsInstance.php
+WebChannelsList.php
+WebChannelsOptions.php
+WebChannelsPage.php
