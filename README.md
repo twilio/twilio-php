@@ -39,6 +39,12 @@ You can install **twilio-php** via composer or by downloading the source.
 composer require twilio/sdk
 ```
 
+## Installing release candidates via Composer:
+
+```
+composer require twilio/sdk:7.x.x-rc.x
+```
+
 ## Quickstart
 
 ### Send an SMS
