@@ -5,7 +5,7 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Accounts\V1;
 
-class Accounts extends AccountBase {
+class Accounts extends AccountsBase {
 
     /**
      * @deprecated Use v1->authTokenPromotion instead

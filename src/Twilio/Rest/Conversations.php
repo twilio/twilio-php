@@ -7,7 +7,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Conversations\V1;
 use Twilio\TwiML\Voice\Conversation;
 
-class Conversations extends ConversationBase {
+class Conversations extends ConversationsBase {
 
     /**
      * @deprecated Use v1->configuration instead.
