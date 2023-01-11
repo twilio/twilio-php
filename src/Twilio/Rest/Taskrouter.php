@@ -2,8 +2,6 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Taskrouter\V1;
 class Taskrouter extends TaskRouterBase {
 

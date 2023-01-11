@@ -2,14 +2,6 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
-use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
-use Twilio\Rest\Preview\Marketplace as PreviewMarketplace;
-use Twilio\Rest\Preview\Sync as PreviewSync;
-use Twilio\Rest\Preview\Understand as PreviewUnderstand;
-use Twilio\Rest\Preview\Wireless as PreviewWireless;
 
 class Preview extends PreviewBase {
 

@@ -2,10 +2,7 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Conversations\V1;
-use Twilio\TwiML\Voice\Conversation;
 
 class Conversations extends ConversationsBase {
 

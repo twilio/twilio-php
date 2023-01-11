@@ -2,8 +2,6 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Bulkexports\V1;
 
 class Bulkexports extends BulkExportsBase {

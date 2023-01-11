@@ -2,9 +2,6 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Chat\V1;
 use Twilio\Rest\Chat\V2;
 use Twilio\Rest\Chat\V3;
 class Chat extends ChatBase {

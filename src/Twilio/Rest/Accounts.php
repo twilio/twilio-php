@@ -1,8 +1,6 @@
 <?php
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Accounts\V1;
 
 class Accounts extends AccountsBase {

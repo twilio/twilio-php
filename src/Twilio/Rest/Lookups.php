@@ -2,10 +2,7 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Lookups\V1;
-use Twilio\Rest\Lookups\V2;
 
 class Lookups extends  LookupsBase {
 

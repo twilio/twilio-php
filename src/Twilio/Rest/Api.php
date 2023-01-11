@@ -1,8 +1,6 @@
 <?php
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010;
 
 class Api extends ApiBase {

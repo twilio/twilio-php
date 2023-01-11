@@ -2,9 +2,6 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Studio\V1;
 use Twilio\Rest\Studio\V2;
 
 class Studio extends StudioBase {

@@ -1,5 +1,70 @@
 twilio-php Changelog
 ====================
+[2023-01-11] Version 7.0.0-rc.1
+-------------------------------
+**Library - Chore**
+- [PR #758](https://github.com/twilio/twilio-php/pull/758): sync up with main branch. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #751](https://github.com/twilio/twilio-php/pull/751): create BaseClient in Base folder. Thanks to [@rohith-prakash](https://github.com/rohith-prakash)!
+
+**Library - Fix**
+- [PR #757](https://github.com/twilio/twilio-php/pull/757): base file name. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #756](https://github.com/twilio/twilio-php/pull/756): Add handcrafted domain files. Thanks to [@rohith-prakash](https://github.com/rohith-prakash)!
+- [PR #755](https://github.com/twilio/twilio-php/pull/755): Add Cluster test. Thanks to [@rohith-prakash](https://github.com/rohith-prakash)!
+
+**Api**
+- Add `street_secondary` param to address create and update
+- Make `method` optional for user defined message subscription **(breaking change)**
+- Set the Content resource to have public visibility as Preview
+
+**Conversations**
+- Add support for creating Multi-Channel Rich Content Messages
+
+**Flex**
+- Flex Conversations is now Generally Available
+- Adding the ie1 mapping for authorization api, updating service base uri and base url response attribute **(breaking change)**
+- Change web channels to GA and library visibility to public
+- Changing the uri for authorization api from using Accounts to Insights **(breaking change)**
+- Adding new `assessments` api in version `v1`
+- Adding new parameter `base_url` to 'gooddata' response in version `v1`
+- Adding two new authorization API 'user_roles' and 'gooddata' in version `v1`
+
+**Insights**
+- Added `answered_by` field in List Call Summary
+- Added `answered_by` field in call summary
+
+**Lookups**
+- Changed the no data message for match postal code from `no_data` to `data_not_available` in identity match package
+- Add `identity_match` package to the lookup response
+
+**Media**
+- Gate Twilio Live endpoints behind beta_feature for EOS
+
+**Messaging**
+- Add update/edit tollfree verification API
+- Mark `MessageFlow` as a required field for Campaign Creation **(breaking change)**
+- Added `validated` parameter to Link Shortening API
+- Add new Campaign properties (MessageFlow, OptInMessage, OptInKeywords, OptOutMessage, OptOutKeywords, HelpMessage, HelpKeywords)
+
+**Oauth**
+- updated openid discovery endpoint uri **(breaking change)**
+- Added device code authorization endpoint
+
+**Serverless**
+- Add node16 as a valid Build runtime
+- Add ie1 and au1 as supported regions for all endpoints.
+
+**Supersim**
+- Allow filtering the SettingsUpdates resource by `status`
+
+**Twiml**
+- Add new Polly Neural voices
+- Add tr-TR, ar-AE, yue-CN, fi-FI languages to SSML `<lang>` element.
+- Add x-amazon-jyutping, x-amazon-pinyin, x-amazon-pron-kana, x-amazon-yomigana alphabets to SSML `<phoneme>` element.
+- Rename `character` value for SSML `<say-as>` `interpret-as` attribute to `characters`. **(breaking change)**
+- Rename `role` attribute to `format` in SSML `<say-as>` element. **(breaking change)**
+- Add new speech models to `Gather`.
+
+
 [2022-11-16] Version 7.0.0-rc.0
 ---------------------------
 - Release Candidate prep

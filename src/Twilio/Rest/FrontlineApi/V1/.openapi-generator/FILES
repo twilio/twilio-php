@@ -1,0 +1,7 @@
+../V1.php
+.openapi-generator-ignore
+UserContext.php
+UserInstance.php
+UserList.php
+UserOptions.php
+UserPage.php

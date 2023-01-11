@@ -2,9 +2,6 @@
 
 namespace Twilio\Rest;
 
-use Twilio\Domain;
-use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\IpMessaging\V1;
 use Twilio\Rest\IpMessaging\V2;
 
 class IpMessaging extends IpMessagingBase {
