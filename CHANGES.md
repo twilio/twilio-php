@@ -4,6 +4,83 @@ twilio-php Changelog
 ---------------------------
 - Release Candidate prep
 
+[2022-12-14] Version 6.44.0
+---------------------------
+**Api**
+- Add `street_secondary` param to address create and update
+- Make `method` optional for user defined message subscription **(breaking change)**
+
+**Flex**
+- Flex Conversations is now Generally Available
+- Adding the ie1 mapping for authorization api, updating service base uri and base url response attribute **(breaking change)**
+- Change web channels to GA and library visibility to public
+- Changing the uri for authorization api from using Accounts to Insights **(breaking change)**
+
+**Media**
+- Gate Twilio Live endpoints behind beta_feature for EOS
+
+**Messaging**
+- Mark `MessageFlow` as a required field for Campaign Creation **(breaking change)**
+
+**Oauth**
+- updated openid discovery endpoint uri **(breaking change)**
+- Added device code authorization endpoint
+
+**Supersim**
+- Allow filtering the SettingsUpdates resource by `status`
+
+**Twiml**
+- Add new Polly Neural voices
+- Add tr-TR, ar-AE, yue-CN, fi-FI languages to SSML `<lang>` element.
+- Add x-amazon-jyutping, x-amazon-pinyin, x-amazon-pron-kana, x-amazon-yomigana alphabets to SSML `<phoneme>` element.
+- Rename `character` value for SSML `<say-as>` `interpret-as` attribute to `characters`. **(breaking change)**
+- Rename `role` attribute to `format` in SSML `<say-as>` element. **(breaking change)**
+
+
+[2022-11-30] Version 6.43.4
+---------------------------
+**Flex**
+- Adding new `assessments` api in version `v1`
+
+**Lookups**
+- Add `identity_match` package to the lookup response
+
+**Messaging**
+- Added `validated` parameter to Link Shortening API
+
+**Serverless**
+- Add node16 as a valid Build runtime
+- Add ie1 and au1 as supported regions for all endpoints.
+
+
+[2022-11-16] Version 6.43.3
+---------------------------
+**Library - Chore**
+- [PR #749](https://github.com/twilio/twilio-php/pull/749): upgrade GitHub Actions dependencies. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Set the Content resource to have public visibility as Preview
+
+**Flex**
+- Adding new parameter `base_url` to 'gooddata' response in version `v1`
+
+**Insights**
+- Added `answered_by` field in List Call Summary
+- Added `answered_by` field in call summary
+
+
+[2022-11-10] Version 6.43.2
+---------------------------
+**Flex**
+- Adding two new authorization API 'user_roles' and 'gooddata' in version `v1`
+
+**Messaging**
+- Add new Campaign properties (MessageFlow, OptInMessage, OptInKeywords, OptOutMessage, OptOutKeywords, HelpMessage, HelpKeywords)
+
+**Twiml**
+- Add new speech models to `Gather`.
+
+
 [2022-10-31] Version 6.43.1
 ---------------------------
 **Api**
