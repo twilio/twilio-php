@@ -32,6 +32,7 @@ use Twilio\Version;
  * @property string $url
  * @property array $delivery
  * @property array $links
+ * @property string $contentSid
  */
 class MessageInstance extends InstanceResource {
     protected $_deliveryReceipts;
@@ -65,6 +66,7 @@ class MessageInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'delivery' => Values::array_get($payload, 'delivery'),
             'links' => Values::array_get($payload, 'links'),
+            'contentSid' => Values::array_get($payload, 'content_sid'),
         ];
 
         $this->solution = [

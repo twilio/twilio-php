@@ -57,7 +57,7 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                 "business_contact_phone": "+16504988765",
                 "notification_email": "vikram@gmail.com",
                 "use_case_categories": [
-                    "2FA",
+                    "TWO_FACTOR_AUTHENTICATION",
                     "MARKETING"
                 ],
                 "use_case_summary": "test",
@@ -137,7 +137,7 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                         "business_contact_phone": "+16504988765",
                         "notification_email": "vikram@gmail.com",
                         "use_case_categories": [
-                            "2FA",
+                            "TWO_FACTOR_AUTHENTICATION",
                             "MARKETING"
                         ],
                         "use_case_summary": "test",
@@ -224,7 +224,7 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                 "business_contact_phone": "+16504988765",
                 "notification_email": "vikram@gmail.com",
                 "use_case_categories": [
-                    "2FA",
+                    "TWO_FACTOR_AUTHENTICATION",
                     "MARKETING"
                 ],
                 "use_case_summary": "test",
@@ -244,6 +244,71 @@ class TollfreeVerificationTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->messaging->v1->tollfreeVerifications->create("business_name", "business_website", "notification_email", ["use_case_categories"], "use_case_summary", "production_message_sample", ["opt_in_image_urls"], "VERBAL", "message_volume", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->messaging->v1->tollfreeVerifications("HHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://messaging.twilio.com/v1/Tollfree/Verifications/HHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "HHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "regulated_item_sid": null,
+                "customer_profile_sid": "BU3344409f7e067e279523808d267e2d85",
+                "trust_product_sid": null,
+                "status": "PENDING_REVIEW",
+                "date_created": "2021-01-27T14:18:35Z",
+                "date_updated": "2021-01-27T14:18:36Z",
+                "business_name": "Agent",
+                "business_street_address": "927 Terrace St",
+                "business_street_address2": "Unit 4",
+                "business_city": "Tempe",
+                "business_state_province_region": "AZ",
+                "business_postal_code": "85281",
+                "business_country": "USA",
+                "business_website": "www.ghost.com",
+                "business_contact_first_name": "Vikram",
+                "business_contact_last_name": "Amar",
+                "business_contact_email": "vikram@gmail.com",
+                "business_contact_phone": "+16504988765",
+                "notification_email": "vikram@gmail.com",
+                "use_case_categories": [
+                    "TWO_FACTOR_AUTHENTICATION",
+                    "MARKETING"
+                ],
+                "use_case_summary": "test",
+                "production_message_sample": "test1",
+                "opt_in_image_urls": [
+                    "https://zipwhiptestbusiness.com/images/image1.jpg",
+                    "https://zipwhiptestbusiness.com/images/image2.jpg"
+                ],
+                "opt_in_type": "VERBAL",
+                "message_volume": "1,000",
+                "additional_information": "info",
+                "tollfree_phone_number_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "resource_links": {},
+                "url": "https://messaging.twilio.com/v1/Tollfree/Verifications/HHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->messaging->v1->tollfreeVerifications("HHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

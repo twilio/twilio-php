@@ -39,7 +39,11 @@ class IpCommandList extends ListResource {
      *
      * @param string $sim The sid or unique_name of the Super SIM to send the IP
      *                    Command to
-     * @param string $payload The payload to be delivered to the device
+     * @param string $payload The data to be delivered to the device. If
+     *                        payload_type has been specified as binary, payload
+     *                        should be encoded using base64 encoding. Twilio will
+     *                        decode the the binary payload before sending to the
+     *                        device.
      * @param int $devicePort The device port to which the IP Command will be sent
      * @param array|Options $options Optional Arguments
      * @return IpCommandInstance Created IpCommandInstance

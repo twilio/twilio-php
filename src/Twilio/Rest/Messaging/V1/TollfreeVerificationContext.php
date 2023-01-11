@@ -11,6 +11,8 @@ namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -41,6 +43,44 @@ class TollfreeVerificationContext extends InstanceContext {
      */
     public function fetch(): TollfreeVerificationInstance {
         $payload = $this->version->fetch('GET', $this->uri);
+
+        return new TollfreeVerificationInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Update the TollfreeVerificationInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return TollfreeVerificationInstance Updated TollfreeVerificationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): TollfreeVerificationInstance {
+        $options = new Values($options);
+
+        $data = Values::of([
+            'BusinessName' => $options['businessName'],
+            'BusinessWebsite' => $options['businessWebsite'],
+            'NotificationEmail' => $options['notificationEmail'],
+            'UseCaseCategories' => Serialize::map($options['useCaseCategories'], function($e) { return $e; }),
+            'UseCaseSummary' => $options['useCaseSummary'],
+            'ProductionMessageSample' => $options['productionMessageSample'],
+            'OptInImageUrls' => Serialize::map($options['optInImageUrls'], function($e) { return $e; }),
+            'OptInType' => $options['optInType'],
+            'MessageVolume' => $options['messageVolume'],
+            'BusinessStreetAddress' => $options['businessStreetAddress'],
+            'BusinessStreetAddress2' => $options['businessStreetAddress2'],
+            'BusinessCity' => $options['businessCity'],
+            'BusinessStateProvinceRegion' => $options['businessStateProvinceRegion'],
+            'BusinessPostalCode' => $options['businessPostalCode'],
+            'BusinessCountry' => $options['businessCountry'],
+            'AdditionalInformation' => $options['additionalInformation'],
+            'BusinessContactFirstName' => $options['businessContactFirstName'],
+            'BusinessContactLastName' => $options['businessContactLastName'],
+            'BusinessContactEmail' => $options['businessContactEmail'],
+            'BusinessContactPhone' => $options['businessContactPhone'],
+        ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TollfreeVerificationInstance($this->version, $payload, $this->solution['sid']);
     }

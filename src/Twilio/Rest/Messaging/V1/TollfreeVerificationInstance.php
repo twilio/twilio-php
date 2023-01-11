@@ -12,6 +12,7 @@ namespace Twilio\Rest\Messaging\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -122,6 +123,17 @@ class TollfreeVerificationInstance extends InstanceResource {
      */
     public function fetch(): TollfreeVerificationInstance {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the TollfreeVerificationInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return TollfreeVerificationInstance Updated TollfreeVerificationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): TollfreeVerificationInstance {
+        return $this->proxy()->update($options);
     }
 
     /**
