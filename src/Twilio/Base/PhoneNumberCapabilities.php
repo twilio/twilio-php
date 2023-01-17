@@ -3,6 +3,7 @@
 namespace Twilio\Base;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 
 /**
  * @property bool $mms
@@ -19,10 +20,10 @@ class PhoneNumberCapabilities
 
     public function __construct(array $capabilities)
     {
-        $this->_mms = $capabilities['mms'];
-        $this->_sms = $capabilities['sms'];
-        $this->_voice = $capabilities['voice'];
-        $this->_fax = $capabilities['fax'];
+        $this->_mms = Values::array_get($capabilities, 'mms', "false");
+        $this->_sms = Values::array_get($capabilities, 'sms', "false");
+        $this->_voice = Values::array_get($capabilities, 'voice', "false");
+        $this->_fax = Values::array_get($capabilities,'fax', "false");
     }
 
     /**

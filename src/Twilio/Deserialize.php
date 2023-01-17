@@ -34,7 +34,10 @@ class Deserialize {
     public static function phoneNumberCapabilities(?array $arr) {
         try {
             if ($arr) {
-                return new PhoneNumberCapabilities($arr);
+                $required = ["mms", "sms", "voice", "fax"];
+                if (count(array_intersect($required, array_keys($arr))) > 1) {
+                    return new PhoneNumberCapabilities($arr);
+                }
             }
         } catch (\Exception $e) {
             // no-op

@@ -53,7 +53,6 @@ class DeserializeTest extends UnitTest {
     public function testPhoneNumberCapabilitiesException(): void {
         $actual = Deserialize::phoneNumberCapabilities([
             "voice" => true,
-            "sms" => true,
             "mms" => false,
             "fax" => false ]);
         try{
