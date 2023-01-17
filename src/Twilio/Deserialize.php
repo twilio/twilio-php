@@ -2,6 +2,8 @@
 
 namespace Twilio;
 
+use Twilio\Base\PhoneNumberCapabilities;
+
 class Deserialize {
 
     /**
@@ -21,5 +23,23 @@ class Deserialize {
         }
 
         return $s;
+    }
+
+    /**
+     * Deserialize an array into a PhoneNumberCapabilities object
+     *
+     * @param array|null $arr An array
+     * @return PhoneNumberCapabilities|array PhoneNumberCapabilities object corresponding to the input array.
+     */
+    public static function phoneNumberCapabilities(?array $arr) {
+        try {
+            if ($arr) {
+                return new PhoneNumberCapabilities($arr);
+            }
+        } catch (\Exception $e) {
+            // no-op
+        }
+
+        return $arr;
     }
 }

@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
@@ -34,7 +35,7 @@ use Twilio\Deserialize;
  * @property string $phoneNumber
  * @property string $friendlyName
  * @property string $isoCountry
- * @property string $capabilities
+ * @property PhoneNumberCapabilities $capabilities
  * @property string $url
  * @property bool $isReserved
  * @property int $inUse
@@ -61,7 +62,7 @@ class PhoneNumberInstance extends InstanceResource {
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'isoCountry' => Values::array_get($payload, 'iso_country'),
-            'capabilities' => Values::array_get($payload, 'capabilities'),
+            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
             'url' => Values::array_get($payload, 'url'),
             'isReserved' => Values::array_get($payload, 'is_reserved'),
             'inUse' => Values::array_get($payload, 'in_use'),
