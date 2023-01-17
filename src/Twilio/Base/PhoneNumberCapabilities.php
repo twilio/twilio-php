@@ -70,10 +70,10 @@ class PhoneNumberCapabilities
     {
         return "[Twilio.Base.PhoneNumberCapabilities " .
             "( 
-            mms: $this->_mms,
-            sms: $this->_sms,
-            voice: $this->_voice,
-            fax: $this->_fax
+            mms: " . json_encode($this->_mms) . ",
+            sms: " . json_encode($this->_sms) . ",
+            voice: " . json_encode($this->_voice) . ",
+            fax: " . json_encode($this->_fax) . "
         )]";
     }
 }
