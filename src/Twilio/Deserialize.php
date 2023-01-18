@@ -35,7 +35,7 @@ class Deserialize {
         try {
             if ($arr) {
                 $required = ["mms", "sms", "voice", "fax"];
-                if (count(array_intersect($required, array_keys($arr))) > 1) {
+                if (count(array_intersect($required, array_keys($arr))) > 0) {
                     return new PhoneNumberCapabilities($arr);
                 }
             }
