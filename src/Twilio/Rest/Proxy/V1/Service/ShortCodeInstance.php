@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
@@ -33,7 +34,7 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $shortCode
  * @property string $isoCountry
- * @property string $capabilities
+ * @property PhoneNumberCapabilities $capabilities
  * @property string $url
  * @property bool $isReserved
  */
@@ -58,7 +59,7 @@ class ShortCodeInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'shortCode' => Values::array_get($payload, 'short_code'),
             'isoCountry' => Values::array_get($payload, 'iso_country'),
-            'capabilities' => Values::array_get($payload, 'capabilities'),
+            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
             'url' => Values::array_get($payload, 'url'),
             'isReserved' => Values::array_get($payload, 'is_reserved'),
         ];

@@ -21,6 +21,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Deserialize;
+use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
@@ -36,7 +38,7 @@ use Twilio\Version;
  * @property string $isoCountry
  * @property string $addressRequirements
  * @property bool $beta
- * @property string $capabilities
+ * @property PhoneNumberCapabilities $capabilities
  */
 class SharedCostInstance extends InstanceResource {
     /**
@@ -64,7 +66,7 @@ class SharedCostInstance extends InstanceResource {
             'isoCountry' => Values::array_get($payload, 'iso_country'),
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
             'beta' => Values::array_get($payload, 'beta'),
-            'capabilities' => Values::array_get($payload, 'capabilities'),
+            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'countryCode' => $countryCode, ];

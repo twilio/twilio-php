@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Base\PhoneNumberCapabilities;
 use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList;
 
 
@@ -32,7 +33,7 @@ use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList;
  * @property string $addressRequirements
  * @property string $apiVersion
  * @property bool $beta
- * @property string $capabilities
+ * @property PhoneNumberCapabilities $capabilities
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $friendlyName
@@ -83,7 +84,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'beta' => Values::array_get($payload, 'beta'),
-            'capabilities' => Values::array_get($payload, 'capabilities'),
+            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),

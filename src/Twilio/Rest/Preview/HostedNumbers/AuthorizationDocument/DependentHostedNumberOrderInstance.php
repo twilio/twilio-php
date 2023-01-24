@@ -22,6 +22,7 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
@@ -31,7 +32,7 @@ use Twilio\Deserialize;
  * @property string $addressSid
  * @property string $signingDocumentSid
  * @property string $phoneNumber
- * @property string $capabilities
+ * @property PhoneNumberCapabilities $capabilities
  * @property string $friendlyName
  * @property string $uniqueName
  * @property string $status
@@ -67,7 +68,7 @@ class DependentHostedNumberOrderInstance extends InstanceResource {
             'addressSid' => Values::array_get($payload, 'address_sid'),
             'signingDocumentSid' => Values::array_get($payload, 'signing_document_sid'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
-            'capabilities' => Values::array_get($payload, 'capabilities'),
+            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'status' => Values::array_get($payload, 'status'),
