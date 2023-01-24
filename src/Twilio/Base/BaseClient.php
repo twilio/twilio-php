@@ -47,9 +47,14 @@ class BaseClient
      * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct(
-       string $username = null, string $password = null, string $accountSid = null, string $region = null,
-       HttpClient $httpClient = null, array $environment = null, array $userAgentExtensions = null
-    ){
+       string $username = null,
+       string $password = null,
+       string $accountSid = null,
+       string $region = null,
+       HttpClient $httpClient = null,
+       array $environment = null,
+       array $userAgentExtensions = null
+    ) {
         $this->environment = $environment ?: \getenv();
 
         $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
@@ -107,8 +112,14 @@ class BaseClient
      * @return \Twilio\Http\Response Response from the Twilio API
      */
     public function request(
-       string $method, string $uri, array $params = [], array $data = [], array $headers = [],
-       string $username = null, string $password = null, int $timeout = null
+       string $method,
+       string $uri,
+       array $params = [],
+       array $data = [],
+       array $headers = [],
+       string $username = null,
+       string $password = null,
+       int $timeout = null
     ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
