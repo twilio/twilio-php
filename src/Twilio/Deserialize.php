@@ -4,7 +4,8 @@ namespace Twilio;
 
 use Twilio\Base\PhoneNumberCapabilities;
 
-class Deserialize {
+class Deserialize
+{
 
     /**
      * Deserialize a string date into a DateTime object
@@ -13,7 +14,8 @@ class Deserialize {
      *                  YYYY-MM-DD format.
      * @return \DateTime|string DateTime corresponding to the input string, in UTC time.
      */
-    public static function dateTime(?string $s) {
+    public static function dateTime(?string $s)
+    {
         try {
             if ($s) {
                 return new \DateTime($s, new \DateTimeZone('UTC'));
@@ -31,7 +33,8 @@ class Deserialize {
      * @param array|null $arr An array
      * @return PhoneNumberCapabilities|array PhoneNumberCapabilities object corresponding to the input array.
      */
-    public static function phoneNumberCapabilities(?array $arr) {
+    public static function phoneNumberCapabilities(?array $arr)
+    {
         try {
             if ($arr) {
                 $required = ["mms", "sms", "voice", "fax"];

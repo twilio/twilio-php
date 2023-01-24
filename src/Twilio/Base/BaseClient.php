@@ -11,7 +11,8 @@ use Twilio\VersionInfo;
 /**
  * @property \Twilio\Rest\Api\V2010\AccountInstance $account
  */
-class BaseClient {
+class BaseClient
+{
     const ENV_ACCOUNT_SID = 'TWILIO_ACCOUNT_SID';
     const ENV_AUTH_TOKEN = 'TWILIO_AUTH_TOKEN';
     const ENV_REGION = 'TWILIO_REGION';
@@ -45,7 +46,15 @@ class BaseClient {
      * @param string[] $userAgentExtensions Additions to the user agent string
      * @throws ConfigurationException If valid authentication is not present
      */
-    public function __construct(string $username = null, string $password = null, string $accountSid = null, string $region = null, HttpClient $httpClient = null, array $environment = null, array $userAgentExtensions = null) {
+    public function __construct(
+        string $username = null,
+        string $password = null,
+        string $accountSid = null,
+        string $region = null,
+        HttpClient $httpClient = null,
+        array $environment = null,
+        array $userAgentExtensions = null
+    ) {
         $this->environment = $environment ?: \getenv();
 
         $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
@@ -75,7 +84,8 @@ class BaseClient {
      * @param string $envVar The environment variable name
      * @return ?string Argument value
      */
-    public function getArg(?string $arg, string $envVar): ?string {
+    public function getArg(?string $arg, string $envVar): ?string
+    {
         if ($arg) {
             return $arg;
         }
@@ -101,7 +111,16 @@ class BaseClient {
      * @param int $timeout Timeout in seconds
      * @return \Twilio\Http\Response Response from the Twilio API
      */
-    public function request(string $method, string $uri, array $params = [], array $data = [], array $headers = [], string $username = null, string $password = null, int $timeout = null): \Twilio\Http\Response {
+    public function request(
+        string $method,
+        string $uri,
+        array $params = [],
+        array $data = [],
+        array $headers = [],
+        string $username = null,
+        string $password = null,
+        int $timeout = null
+    ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
         $logLevel = (getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? 'debug' : $this->getLogLevel());
@@ -169,7 +188,8 @@ class BaseClient {
      * @param string $uri The original request uri
      * @return string Request uri
      */
-    public function buildUri(string $uri): string {
+    public function buildUri(string $uri): string
+    {
         if ($this->region == null && $this->edge == null) {
             return $uri;
         }
@@ -202,7 +222,8 @@ class BaseClient {
      * @return \Twilio\Domain The requested domain
      * @throws TwilioException For unknown domains
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -219,7 +240,8 @@ class BaseClient {
      * @return \Twilio\InstanceContext The requested context
      * @throws TwilioException For unknown contexts
      */
-    public function __call(string $name, array $arguments) {
+    public function __call(string $name, array $arguments)
+    {
         $method = 'context' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return \call_user_func_array([$this, $method], $arguments);
@@ -233,7 +255,8 @@ class BaseClient {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Client ' . $this->getAccountSid() . ']';
     }
 
@@ -243,7 +266,8 @@ class BaseClient {
      * @param CurlClient $client
      * @throws TwilioException if request fails
      */
-    public function validateSslCertificate(CurlClient $client): void {
+    public function validateSslCertificate(CurlClient $client): void
+    {
         $response = $client->request('GET', 'https://api.twilio.com:8443');
 
         if ($response->getStatusCode() < 200 || $response->getStatusCode() > 300) {
@@ -255,7 +279,8 @@ class BaseClient {
      * @return \Twilio\Rest\Api\V2010\AccountContext Account provided as the
      *                                               authenticating account
      */
-    public function getAccount(): \Twilio\Rest\Api\V2010\AccountContext {
+    public function getAccount(): \Twilio\Rest\Api\V2010\AccountContext
+    {
         return $this->api->v2010->account;
     }
 
@@ -264,7 +289,8 @@ class BaseClient {
      *
      * @return string Current Username
      */
-    public function getUsername(): string {
+    public function getUsername(): string
+    {
         return $this->username;
     }
 
@@ -273,7 +299,8 @@ class BaseClient {
      *
      * @return string Current Password
      */
-    public function getPassword(): string {
+    public function getPassword(): string
+    {
         return $this->password;
     }
 
@@ -282,7 +309,8 @@ class BaseClient {
      *
      * @return string Current AccountSid
      */
-    public function getAccountSid(): string {
+    public function getAccountSid(): string
+    {
         return $this->accountSid;
     }
 
@@ -291,7 +319,8 @@ class BaseClient {
      *
      * @return string Current Region
      */
-    public function getRegion(): string {
+    public function getRegion(): string
+    {
         return $this->region;
     }
 
@@ -300,7 +329,8 @@ class BaseClient {
      *
      * @return string Current Edge
      */
-    public function getEdge(): string {
+    public function getEdge(): string
+    {
         return $this->edge;
     }
 
@@ -309,7 +339,8 @@ class BaseClient {
      *
      * @param string $uri Edge to use, unsets the Edge when called with no arguments
      */
-    public function setEdge(string $edge = null): void {
+    public function setEdge(string $edge = null): void
+    {
         $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
 
@@ -318,7 +349,8 @@ class BaseClient {
      *
      * @return HttpClient Current HttpClient
      */
-    public function getHttpClient(): HttpClient {
+    public function getHttpClient(): HttpClient
+    {
         return $this->httpClient;
     }
 
@@ -327,7 +359,8 @@ class BaseClient {
      *
      * @param HttpClient $httpClient HttpClient to use
      */
-    public function setHttpClient(HttpClient $httpClient): void {
+    public function setHttpClient(HttpClient $httpClient): void
+    {
         $this->httpClient = $httpClient;
     }
 
@@ -336,7 +369,8 @@ class BaseClient {
      *
      * @return ?string Current log level
      */
-    public function getLogLevel(): ?string {
+    public function getLogLevel(): ?string
+    {
         return $this->logLevel;
     }
 
@@ -345,7 +379,8 @@ class BaseClient {
      *
      * @param string $logLevel log level to use
      */
-    public function setLogLevel(string $logLevel = null): void {
+    public function setLogLevel(string $logLevel = null): void
+    {
         $this->logLevel = $this->getArg($logLevel, self::ENV_LOG);
     }
 }

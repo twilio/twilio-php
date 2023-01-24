@@ -13,17 +13,17 @@ use Twilio\Values;
  */
 class PhoneNumberCapabilities
 {
-    protected $_mms;
-    protected $_sms;
-    protected $_voice;
-    protected $_fax;
+    protected $mms;
+    protected $sms;
+    protected $voice;
+    protected $fax;
 
     public function __construct(array $capabilities)
     {
-        $this->_mms = Values::array_get($capabilities, 'mms', "false");
-        $this->_sms = Values::array_get($capabilities, 'sms', "false");
-        $this->_voice = Values::array_get($capabilities, 'voice', "false");
-        $this->_fax = Values::array_get($capabilities,'fax', "false");
+        $this->mms = Values::array_get($capabilities, 'mms', "false");
+        $this->sms = Values::array_get($capabilities, 'sms', "false");
+        $this->voice = Values::array_get($capabilities, 'voice', "false");
+        $this->fax = Values::array_get($capabilities, 'fax', "false");
     }
 
     /**
@@ -31,7 +31,7 @@ class PhoneNumberCapabilities
      */
     public function getMms(): bool
     {
-        return $this->_mms;
+        return $this->mms;
     }
 
     /**
@@ -39,7 +39,7 @@ class PhoneNumberCapabilities
      */
     public function getSms(): bool
     {
-        return $this->_sms;
+        return $this->sms;
     }
 
     /**
@@ -47,7 +47,7 @@ class PhoneNumberCapabilities
      */
     public function getVoice(): bool
     {
-        return $this->_voice;
+        return $this->voice;
     }
 
     /**
@@ -55,12 +55,12 @@ class PhoneNumberCapabilities
      */
     public function getFax(): bool
     {
-        return $this->_fax;
+        return $this->fax;
     }
 
     public function __get(string $name)
     {
-        if (\property_exists($this, "_" . $name)) {
+        if (\property_exists($this, $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
@@ -70,11 +70,11 @@ class PhoneNumberCapabilities
     public function __toString(): string
     {
         return "[Twilio.Base.PhoneNumberCapabilities " .
-            "( 
-            mms: " . json_encode($this->_mms) . ",
-            sms: " . json_encode($this->_sms) . ",
-            voice: " . json_encode($this->_voice) . ",
-            fax: " . json_encode($this->_fax) . "
+            "(
+            mms: " . json_encode($this->mms) . ",
+            sms: " . json_encode($this->sms) . ",
+            voice: " . json_encode($this->voice) . ",
+            fax: " . json_encode($this->fax) . "
         )]";
     }
 }

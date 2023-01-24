@@ -41,7 +41,7 @@ class DeserializeTest extends UnitTest {
         $this->assertEquals(true, $actual->voice);
         $this->assertEquals(false, $actual->fax);
         $this->assertEquals("[Twilio.Base.PhoneNumberCapabilities " .
-            "( 
+            "(
             mms: true,
             sms: false,
             voice: true,
