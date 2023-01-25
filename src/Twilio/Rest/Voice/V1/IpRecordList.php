@@ -24,17 +24,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class IpRecordList extends ListResource {
+class IpRecordList extends ListResource
+    {
     /**
      * Construct the IpRecordList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/IpRecords';
     }
@@ -47,22 +51,28 @@ class IpRecordList extends ListResource {
      * @return IpRecordInstance Created IpRecordInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $ipAddress, array $options = []): IpRecordInstance {
+    public function create(string $ipAddress, array $options = []): IpRecordInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'IpAddress' => $ipAddress,
-            'FriendlyName' => $options['friendlyName'],
-            'CidrPrefixLength' => $options['cidrPrefixLength'],
+            'IpAddress' =>
+                $ipAddress,
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'CidrPrefixLength' =>
+                $options['cidrPrefixLength'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IpRecordInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads IpRecordInstance records from the API as a list.
@@ -79,7 +89,8 @@ class IpRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return IpRecordInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -101,7 +112,8 @@ class IpRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -118,7 +130,12 @@ class IpRecordList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return IpRecordPage Page of IpRecordInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IpRecordPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): IpRecordPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -138,7 +155,8 @@ class IpRecordList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return IpRecordPage Page of IpRecordInstance
      */
-    public function getPage(string $targetUrl): IpRecordPage {
+    public function getPage(string $targetUrl): IpRecordPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -153,8 +171,15 @@ class IpRecordList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the IP Record resource to delete.
      */
-    public function getContext(string $sid): IpRecordContext {
-        return new IpRecordContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): IpRecordContext
+    {
+        return new IpRecordContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -162,7 +187,8 @@ class IpRecordList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1.IpRecordList]';
     }
 }

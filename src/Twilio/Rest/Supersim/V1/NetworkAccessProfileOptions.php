@@ -18,34 +18,58 @@ namespace Twilio\Rest\Supersim\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class NetworkAccessProfileOptions {
+abstract class NetworkAccessProfileOptions
+{
     /**
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. 
-     * @param string[] $networks List of Network SIDs that this Network Access Profile will allow connections to. 
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+     * @param string[] $networks List of Network SIDs that this Network Access Profile will allow connections to.
      * @return CreateNetworkAccessProfileOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, array $networks = Values::ARRAY_NONE): CreateNetworkAccessProfileOptions {
-        return new CreateNetworkAccessProfileOptions($uniqueName, $networks);
+    public static function create(
+        
+        string $uniqueName = Values::NONE,
+        array $networks = Values::ARRAY_NONE
+
+    ): CreateNetworkAccessProfileOptions
+    {
+        return new CreateNetworkAccessProfileOptions(
+            $uniqueName,
+            $networks
+        );
     }
 
 
 
     /**
-     * @param string $uniqueName The new unique name of the Network Access Profile. 
+     * @param string $uniqueName The new unique name of the Network Access Profile.
      * @return UpdateNetworkAccessProfileOptions Options builder
      */
-    public static function update(string $uniqueName = Values::NONE): UpdateNetworkAccessProfileOptions {
-        return new UpdateNetworkAccessProfileOptions($uniqueName);
+    public static function update(
+        
+        string $uniqueName = Values::NONE
+
+    ): UpdateNetworkAccessProfileOptions
+    {
+        return new UpdateNetworkAccessProfileOptions(
+            $uniqueName
+        );
     }
 
 }
 
-class CreateNetworkAccessProfileOptions extends Options {
+class CreateNetworkAccessProfileOptions extends Options
+    {
     /**
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
      * @param string[] $networks List of Network SIDs that this Network Access Profile will allow connections to.
      */
-    public function __construct(string $uniqueName = Values::NONE, array $networks = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        array $networks = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['networks'] = $networks;
     }
@@ -56,7 +80,8 @@ class CreateNetworkAccessProfileOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -67,7 +92,8 @@ class CreateNetworkAccessProfileOptions extends Options {
      * @param string[] $networks List of Network SIDs that this Network Access Profile will allow connections to.
      * @return $this Fluent Builder
      */
-    public function setNetworks(array $networks): self {
+    public function setNetworks(array $networks): self
+    {
         $this->options['networks'] = $networks;
         return $this;
     }
@@ -77,7 +103,8 @@ class CreateNetworkAccessProfileOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Supersim.V1.CreateNetworkAccessProfileOptions ' . $options . ']';
     }
@@ -85,11 +112,17 @@ class CreateNetworkAccessProfileOptions extends Options {
 
 
 
-class UpdateNetworkAccessProfileOptions extends Options {
+class UpdateNetworkAccessProfileOptions extends Options
+    {
     /**
      * @param string $uniqueName The new unique name of the Network Access Profile.
      */
-    public function __construct(string $uniqueName = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
     }
 
@@ -99,7 +132,8 @@ class UpdateNetworkAccessProfileOptions extends Options {
      * @param string $uniqueName The new unique name of the Network Access Profile.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -109,7 +143,8 @@ class UpdateNetworkAccessProfileOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Supersim.V1.UpdateNetworkAccessProfileOptions ' . $options . ']';
     }

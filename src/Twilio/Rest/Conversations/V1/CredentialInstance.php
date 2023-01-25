@@ -35,7 +35,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class CredentialInstance extends InstanceResource {
+class CredentialInstance extends InstanceResource
+{
     /**
      * Initialize the CredentialInstance
      *
@@ -43,7 +44,8 @@ class CredentialInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class CredentialInstance extends InstanceResource {
      *
      * @return CredentialContext Context for this CredentialInstance
      */
-    protected function proxy(): CredentialContext {
+    protected function proxy(): CredentialContext
+    {
         if (!$this->context) {
             $this->context = new CredentialContext(
                 $this->version,
@@ -84,7 +87,9 @@ class CredentialInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -94,7 +99,9 @@ class CredentialInstance extends InstanceResource {
      * @return CredentialInstance Fetched CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CredentialInstance {
+    public function fetch(): CredentialInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -105,7 +112,9 @@ class CredentialInstance extends InstanceResource {
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): CredentialInstance {
+    public function update(array $options = []): CredentialInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +125,8 @@ class CredentialInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +144,8 @@ class CredentialInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

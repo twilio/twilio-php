@@ -33,7 +33,8 @@ use Twilio\Version;
  * @property bool $manage
  * @property string $url
  */
-class SyncListPermissionInstance extends InstanceResource {
+class SyncListPermissionInstance extends InstanceResource
+{
     /**
      * Initialize the SyncListPermissionInstance
      *
@@ -43,7 +44,8 @@ class SyncListPermissionInstance extends InstanceResource {
      * @param string $listSid Identifier of the Sync List. Either a SID or a unique name.
      * @param string $identity Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, string $identity = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, string $identity = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class SyncListPermissionInstance extends InstanceResource {
      *
      * @return SyncListPermissionContext Context for this SyncListPermissionInstance
      */
-    protected function proxy(): SyncListPermissionContext {
+    protected function proxy(): SyncListPermissionContext
+    {
         if (!$this->context) {
             $this->context = new SyncListPermissionContext(
                 $this->version,
@@ -86,7 +89,9 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -96,7 +101,9 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return SyncListPermissionInstance Fetched SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncListPermissionInstance {
+    public function fetch(): SyncListPermissionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,7 +116,9 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(bool $read, bool $write, bool $manage): SyncListPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): SyncListPermissionInstance
+    {
+
         return $this->proxy()->update($read, $write, $manage);
     }
 
@@ -120,7 +129,8 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +148,8 @@ class SyncListPermissionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -36,7 +36,8 @@ use Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEvaluationsList;
  * @method \Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEntityAssignmentsContext customerProfilesEntityAssignments(string $sid)
  * @method \Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEvaluationsContext customerProfilesEvaluations(string $sid)
  */
-class CustomerProfilesContext extends InstanceContext {
+class CustomerProfilesContext extends InstanceContext
+    {
     protected $_customerProfilesChannelEndpointAssignment;
     protected $_customerProfilesEntityAssignments;
     protected $_customerProfilesEvaluations;
@@ -47,13 +48,21 @@ class CustomerProfilesContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string that we created to identify the Customer-Profile resource.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/CustomerProfiles/' . \rawurlencode($sid) . '';
+        $this->uri = '/CustomerProfiles/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -62,9 +71,12 @@ class CustomerProfilesContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the CustomerProfilesInstance
@@ -72,15 +84,18 @@ class CustomerProfilesContext extends InstanceContext {
      * @return CustomerProfilesInstance Fetched CustomerProfilesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CustomerProfilesInstance {
+    public function fetch(): CustomerProfilesInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new CustomerProfilesInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the CustomerProfilesInstance
@@ -89,33 +104,41 @@ class CustomerProfilesContext extends InstanceContext {
      * @return CustomerProfilesInstance Updated CustomerProfilesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): CustomerProfilesInstance {
+    public function update(array $options = []): CustomerProfilesInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Status' => $options['status'],
-            'StatusCallback' => $options['statusCallback'],
-            'FriendlyName' => $options['friendlyName'],
-            'Email' => $options['email'],
+            'Status' =>
+                $options['status'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Email' =>
+                $options['email'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new CustomerProfilesInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the customerProfilesChannelEndpointAssignment
      */
-    protected function getCustomerProfilesChannelEndpointAssignment(): CustomerProfilesChannelEndpointAssignmentList {
+    protected function getCustomerProfilesChannelEndpointAssignment(): CustomerProfilesChannelEndpointAssignmentList
+    {
         if (!$this->_customerProfilesChannelEndpointAssignment) {
             $this->_customerProfilesChannelEndpointAssignment = new CustomerProfilesChannelEndpointAssignmentList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -125,11 +148,12 @@ class CustomerProfilesContext extends InstanceContext {
     /**
      * Access the customerProfilesEntityAssignments
      */
-    protected function getCustomerProfilesEntityAssignments(): CustomerProfilesEntityAssignmentsList {
+    protected function getCustomerProfilesEntityAssignments(): CustomerProfilesEntityAssignmentsList
+    {
         if (!$this->_customerProfilesEntityAssignments) {
             $this->_customerProfilesEntityAssignments = new CustomerProfilesEntityAssignmentsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -139,11 +163,12 @@ class CustomerProfilesContext extends InstanceContext {
     /**
      * Access the customerProfilesEvaluations
      */
-    protected function getCustomerProfilesEvaluations(): CustomerProfilesEvaluationsList {
+    protected function getCustomerProfilesEvaluations(): CustomerProfilesEvaluationsList
+    {
         if (!$this->_customerProfilesEvaluations) {
             $this->_customerProfilesEvaluations = new CustomerProfilesEvaluationsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -157,7 +182,8 @@ class CustomerProfilesContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -174,7 +200,8 @@ class CustomerProfilesContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -188,7 +215,8 @@ class CustomerProfilesContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

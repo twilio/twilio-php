@@ -48,7 +48,8 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @method \Twilio\Rest\Verify\V2\Service\EntityContext entities(string $identity)
  * @method \Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)
  */
-class ServiceContext extends InstanceContext {
+class ServiceContext extends InstanceContext
+    {
     protected $_entities;
     protected $_verificationChecks;
     protected $_verifications;
@@ -63,13 +64,21 @@ class ServiceContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The Twilio-provided string that uniquely identifies the Verification Service resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -78,9 +87,12 @@ class ServiceContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ServiceInstance
@@ -88,15 +100,18 @@ class ServiceContext extends InstanceContext {
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ServiceInstance {
+    public function fetch(): ServiceInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ServiceInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ServiceInstance
@@ -105,46 +120,67 @@ class ServiceContext extends InstanceContext {
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ServiceInstance {
+    public function update(array $options = []): ServiceInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'CodeLength' => $options['codeLength'],
-            'LookupEnabled' => Serialize::booleanToString($options['lookupEnabled']),
-            'SkipSmsToLandlines' => Serialize::booleanToString($options['skipSmsToLandlines']),
-            'DtmfInputRequired' => Serialize::booleanToString($options['dtmfInputRequired']),
-            'TtsName' => $options['ttsName'],
-            'Psd2Enabled' => Serialize::booleanToString($options['psd2Enabled']),
-            'DoNotShareWarningEnabled' => Serialize::booleanToString($options['doNotShareWarningEnabled']),
-            'CustomCodeEnabled' => Serialize::booleanToString($options['customCodeEnabled']),
-            'Push.IncludeDate' => Serialize::booleanToString($options['pushIncludeDate']),
-            'Push.ApnCredentialSid' => $options['pushApnCredentialSid'],
-            'Push.FcmCredentialSid' => $options['pushFcmCredentialSid'],
-            'Totp.Issuer' => $options['totpIssuer'],
-            'Totp.TimeStep' => $options['totpTimeStep'],
-            'Totp.CodeLength' => $options['totpCodeLength'],
-            'Totp.Skew' => $options['totpSkew'],
-            'DefaultTemplateSid' => $options['defaultTemplateSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'CodeLength' =>
+                $options['codeLength'],
+            'LookupEnabled' =>
+                Serialize::booleanToString($options['lookupEnabled']),
+            'SkipSmsToLandlines' =>
+                Serialize::booleanToString($options['skipSmsToLandlines']),
+            'DtmfInputRequired' =>
+                Serialize::booleanToString($options['dtmfInputRequired']),
+            'TtsName' =>
+                $options['ttsName'],
+            'Psd2Enabled' =>
+                Serialize::booleanToString($options['psd2Enabled']),
+            'DoNotShareWarningEnabled' =>
+                Serialize::booleanToString($options['doNotShareWarningEnabled']),
+            'CustomCodeEnabled' =>
+                Serialize::booleanToString($options['customCodeEnabled']),
+            'Push.IncludeDate' =>
+                Serialize::booleanToString($options['pushIncludeDate']),
+            'Push.ApnCredentialSid' =>
+                $options['pushApnCredentialSid'],
+            'Push.FcmCredentialSid' =>
+                $options['pushFcmCredentialSid'],
+            'Totp.Issuer' =>
+                $options['totpIssuer'],
+            'Totp.TimeStep' =>
+                $options['totpTimeStep'],
+            'Totp.CodeLength' =>
+                $options['totpCodeLength'],
+            'Totp.Skew' =>
+                $options['totpSkew'],
+            'DefaultTemplateSid' =>
+                $options['defaultTemplateSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ServiceInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the entities
      */
-    protected function getEntities(): EntityList {
+    protected function getEntities(): EntityList
+    {
         if (!$this->_entities) {
             $this->_entities = new EntityList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -154,11 +190,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the verificationChecks
      */
-    protected function getVerificationChecks(): VerificationCheckList {
+    protected function getVerificationChecks(): VerificationCheckList
+    {
         if (!$this->_verificationChecks) {
             $this->_verificationChecks = new VerificationCheckList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -168,11 +205,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the verifications
      */
-    protected function getVerifications(): VerificationList {
+    protected function getVerifications(): VerificationList
+    {
         if (!$this->_verifications) {
             $this->_verifications = new VerificationList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -182,11 +220,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the accessTokens
      */
-    protected function getAccessTokens(): AccessTokenList {
+    protected function getAccessTokens(): AccessTokenList
+    {
         if (!$this->_accessTokens) {
             $this->_accessTokens = new AccessTokenList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -196,11 +235,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the rateLimits
      */
-    protected function getRateLimits(): RateLimitList {
+    protected function getRateLimits(): RateLimitList
+    {
         if (!$this->_rateLimits) {
             $this->_rateLimits = new RateLimitList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -210,11 +250,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the webhooks
      */
-    protected function getWebhooks(): WebhookList {
+    protected function getWebhooks(): WebhookList
+    {
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -224,11 +265,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the messagingConfigurations
      */
-    protected function getMessagingConfigurations(): MessagingConfigurationList {
+    protected function getMessagingConfigurations(): MessagingConfigurationList
+    {
         if (!$this->_messagingConfigurations) {
             $this->_messagingConfigurations = new MessagingConfigurationList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -242,7 +284,8 @@ class ServiceContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -259,7 +302,8 @@ class ServiceContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -273,7 +317,8 @@ class ServiceContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -18,35 +18,59 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class DocumentOptions {
+abstract class DocumentOptions
+{
     /**
-     * @param string $uniqueName  
-     * @param array $data  
+     * @param string $uniqueName 
+     * @param array $data 
      * @return CreateDocumentOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, array $data = Values::ARRAY_NONE): CreateDocumentOptions {
-        return new CreateDocumentOptions($uniqueName, $data);
+    public static function create(
+        
+        string $uniqueName = Values::NONE,
+        array $data = Values::ARRAY_NONE
+
+    ): CreateDocumentOptions
+    {
+        return new CreateDocumentOptions(
+            $uniqueName,
+            $data
+        );
     }
 
 
 
 
     /**
-     * @param string $ifMatch The If-Match HTTP request header 
+     * @param string $ifMatch The If-Match HTTP request header
      * @return UpdateDocumentOptions Options builder
      */
-    public static function update(string $ifMatch = Values::NONE): UpdateDocumentOptions {
-        return new UpdateDocumentOptions($ifMatch);
+    public static function update(
+        
+        string $ifMatch = Values::NONE
+
+    ): UpdateDocumentOptions
+    {
+        return new UpdateDocumentOptions(
+            $ifMatch
+        );
     }
 
 }
 
-class CreateDocumentOptions extends Options {
+class CreateDocumentOptions extends Options
+    {
     /**
      * @param string $uniqueName 
      * @param array $data 
      */
-    public function __construct(string $uniqueName = Values::NONE, array $data = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        array $data = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['data'] = $data;
     }
@@ -57,7 +81,8 @@ class CreateDocumentOptions extends Options {
      * @param string $uniqueName 
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -68,7 +93,8 @@ class CreateDocumentOptions extends Options {
      * @param array $data 
      * @return $this Fluent Builder
      */
-    public function setData(array $data): self {
+    public function setData(array $data): self
+    {
         $this->options['data'] = $data;
         return $this;
     }
@@ -78,7 +104,8 @@ class CreateDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.CreateDocumentOptions ' . $options . ']';
     }
@@ -87,11 +114,17 @@ class CreateDocumentOptions extends Options {
 
 
 
-class UpdateDocumentOptions extends Options {
+class UpdateDocumentOptions extends Options
+    {
     /**
      * @param string $ifMatch The If-Match HTTP request header
      */
-    public function __construct(string $ifMatch = Values::NONE) {
+    public function __construct(
+        
+        string $ifMatch = Values::NONE
+
+    )
+    {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -101,7 +134,8 @@ class UpdateDocumentOptions extends Options {
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder
      */
-    public function setIfMatch(string $ifMatch): self {
+    public function setIfMatch(string $ifMatch): self
+    {
         $this->options['ifMatch'] = $ifMatch;
         return $this;
     }
@@ -111,7 +145,8 @@ class UpdateDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.UpdateDocumentOptions ' . $options . ']';
     }

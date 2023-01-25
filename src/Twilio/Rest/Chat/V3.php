@@ -25,7 +25,8 @@ use Twilio\Version;
  * @property ChannelList $channels
  * @method \Twilio\Rest\Chat\V3\ChannelContext channels(string $serviceSid, string $sid)
  */
-class V3 extends Version {
+class V3 extends Version
+{
     protected $_channels;
 
     /**
@@ -33,12 +34,14 @@ class V3 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v3';
     }
 
-    protected function getChannels(): ChannelList {
+    protected function getChannels(): ChannelList
+    {
         if (!$this->_channels) {
             $this->_channels = new ChannelList($this);
         }
@@ -52,7 +55,8 @@ class V3 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -69,7 +73,8 @@ class V3 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -83,7 +88,8 @@ class V3 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Chat.V3]';
     }
 }

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class TaskQueueRealTimeStatisticsPage extends Page {
+class TaskQueueRealTimeStatisticsPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class TaskQueueRealTimeStatisticsPage extends Page {
      * @param array $payload Payload response from the API
      * @return TaskQueueRealTimeStatisticsInstance \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsInstance
      */
-    public function buildInstance(array $payload): TaskQueueRealTimeStatisticsInstance {
+    public function buildInstance(array $payload): TaskQueueRealTimeStatisticsInstance
+    {
         return new TaskQueueRealTimeStatisticsInstance($this->version, $payload, $this->solution['workspaceSid'], $this->solution['taskQueueSid']);
     }
 
@@ -45,7 +48,8 @@ class TaskQueueRealTimeStatisticsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.TaskQueueRealTimeStatisticsPage]';
     }
 }

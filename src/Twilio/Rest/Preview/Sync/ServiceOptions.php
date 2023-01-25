@@ -18,42 +18,78 @@ namespace Twilio\Rest\Preview\Sync;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ServiceOptions {
+abstract class ServiceOptions
+{
     /**
-     * @param string $friendlyName  
-     * @param string $webhookUrl  
-     * @param bool $reachabilityWebhooksEnabled  
-     * @param bool $aclEnabled  
+     * @param string $friendlyName 
+     * @param string $webhookUrl 
+     * @param bool $reachabilityWebhooksEnabled 
+     * @param bool $aclEnabled 
      * @return CreateServiceOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $webhookUrl = Values::NONE, bool $reachabilityWebhooksEnabled = Values::NONE, bool $aclEnabled = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled);
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $webhookUrl = Values::NONE,
+        bool $reachabilityWebhooksEnabled = Values::NONE,
+        bool $aclEnabled = Values::NONE
+
+    ): CreateServiceOptions
+    {
+        return new CreateServiceOptions(
+            $friendlyName,
+            $webhookUrl,
+            $reachabilityWebhooksEnabled,
+            $aclEnabled
+        );
     }
 
 
 
 
     /**
-     * @param string $webhookUrl  
-     * @param string $friendlyName  
-     * @param bool $reachabilityWebhooksEnabled  
-     * @param bool $aclEnabled  
+     * @param string $webhookUrl 
+     * @param string $friendlyName 
+     * @param bool $reachabilityWebhooksEnabled 
+     * @param bool $aclEnabled 
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $webhookUrl = Values::NONE, string $friendlyName = Values::NONE, bool $reachabilityWebhooksEnabled = Values::NONE, bool $aclEnabled = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled);
+    public static function update(
+        
+        string $webhookUrl = Values::NONE,
+        string $friendlyName = Values::NONE,
+        bool $reachabilityWebhooksEnabled = Values::NONE,
+        bool $aclEnabled = Values::NONE
+
+    ): UpdateServiceOptions
+    {
+        return new UpdateServiceOptions(
+            $webhookUrl,
+            $friendlyName,
+            $reachabilityWebhooksEnabled,
+            $aclEnabled
+        );
     }
 
 }
 
-class CreateServiceOptions extends Options {
+class CreateServiceOptions extends Options
+    {
     /**
      * @param string $friendlyName 
      * @param string $webhookUrl 
      * @param bool $reachabilityWebhooksEnabled 
      * @param bool $aclEnabled 
      */
-    public function __construct(string $friendlyName = Values::NONE, string $webhookUrl = Values::NONE, bool $reachabilityWebhooksEnabled = Values::NONE, bool $aclEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $webhookUrl = Values::NONE,
+        bool $reachabilityWebhooksEnabled = Values::NONE,
+        bool $aclEnabled = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
@@ -66,7 +102,8 @@ class CreateServiceOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -77,7 +114,8 @@ class CreateServiceOptions extends Options {
      * @param string $webhookUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl(string $webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self
+    {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -88,7 +126,8 @@ class CreateServiceOptions extends Options {
      * @param bool $reachabilityWebhooksEnabled 
      * @return $this Fluent Builder
      */
-    public function setReachabilityWebhooksEnabled(bool $reachabilityWebhooksEnabled): self {
+    public function setReachabilityWebhooksEnabled(bool $reachabilityWebhooksEnabled): self
+    {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         return $this;
     }
@@ -99,7 +138,8 @@ class CreateServiceOptions extends Options {
      * @param bool $aclEnabled 
      * @return $this Fluent Builder
      */
-    public function setAclEnabled(bool $aclEnabled): self {
+    public function setAclEnabled(bool $aclEnabled): self
+    {
         $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
@@ -109,7 +149,8 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.CreateServiceOptions ' . $options . ']';
     }
@@ -118,14 +159,23 @@ class CreateServiceOptions extends Options {
 
 
 
-class UpdateServiceOptions extends Options {
+class UpdateServiceOptions extends Options
+    {
     /**
      * @param string $webhookUrl 
      * @param string $friendlyName 
      * @param bool $reachabilityWebhooksEnabled 
      * @param bool $aclEnabled 
      */
-    public function __construct(string $webhookUrl = Values::NONE, string $friendlyName = Values::NONE, bool $reachabilityWebhooksEnabled = Values::NONE, bool $aclEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $webhookUrl = Values::NONE,
+        string $friendlyName = Values::NONE,
+        bool $reachabilityWebhooksEnabled = Values::NONE,
+        bool $aclEnabled = Values::NONE
+
+    )
+    {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
@@ -138,7 +188,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhookUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl(string $webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self
+    {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -149,7 +200,8 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -160,7 +212,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $reachabilityWebhooksEnabled 
      * @return $this Fluent Builder
      */
-    public function setReachabilityWebhooksEnabled(bool $reachabilityWebhooksEnabled): self {
+    public function setReachabilityWebhooksEnabled(bool $reachabilityWebhooksEnabled): self
+    {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         return $this;
     }
@@ -171,7 +224,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $aclEnabled 
      * @return $this Fluent Builder
      */
-    public function setAclEnabled(bool $aclEnabled): self {
+    public function setAclEnabled(bool $aclEnabled): self
+    {
         $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
@@ -181,7 +235,8 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.UpdateServiceOptions ' . $options . ']';
     }

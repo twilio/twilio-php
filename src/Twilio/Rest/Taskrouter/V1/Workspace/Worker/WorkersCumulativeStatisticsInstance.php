@@ -39,7 +39,8 @@ use Twilio\Deserialize;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkersCumulativeStatisticsInstance extends InstanceResource {
+class WorkersCumulativeStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkersCumulativeStatisticsInstance
      *
@@ -47,7 +48,8 @@ class WorkersCumulativeStatisticsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace with the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -75,7 +77,8 @@ class WorkersCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return WorkersCumulativeStatisticsContext Context for this WorkersCumulativeStatisticsInstance
      */
-    protected function proxy(): WorkersCumulativeStatisticsContext {
+    protected function proxy(): WorkersCumulativeStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new WorkersCumulativeStatisticsContext(
                 $this->version,
@@ -93,7 +96,9 @@ class WorkersCumulativeStatisticsInstance extends InstanceResource {
      * @return WorkersCumulativeStatisticsInstance Fetched WorkersCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkersCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkersCumulativeStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -104,7 +109,8 @@ class WorkersCumulativeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +128,8 @@ class WorkersCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class NetworkAccessProfilePage extends Page {
+class NetworkAccessProfilePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class NetworkAccessProfilePage extends Page {
      * @param array $payload Payload response from the API
      * @return NetworkAccessProfileInstance \Twilio\Rest\Supersim\V1\NetworkAccessProfileInstance
      */
-    public function buildInstance(array $payload): NetworkAccessProfileInstance {
+    public function buildInstance(array $payload): NetworkAccessProfileInstance
+    {
         return new NetworkAccessProfileInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class NetworkAccessProfilePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.NetworkAccessProfilePage]';
     }
 }

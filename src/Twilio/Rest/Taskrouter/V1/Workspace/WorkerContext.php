@@ -43,7 +43,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext cumulativeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext workerChannels(string $sid)
  */
-class WorkerContext extends InstanceContext {
+class WorkerContext extends InstanceContext
+    {
     protected $_workerChannels;
     protected $_reservations;
     protected $_realTimeStatistics;
@@ -57,13 +58,25 @@ class WorkerContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace that the new Worker belongs to.
      * @param string $sid The SID of the Worker resource to delete.
      */
-    public function __construct(Version $version, $workspaceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/' . \rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workers/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -73,7 +86,9 @@ class WorkerContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         $options = new Values($options);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
@@ -81,22 +96,26 @@ class WorkerContext extends InstanceContext {
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
+
     /**
      * Fetch the WorkerInstance
      *
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WorkerInstance {
+    public function fetch(): WorkerInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new WorkerInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the WorkerInstance
@@ -105,14 +124,20 @@ class WorkerContext extends InstanceContext {
      * @return WorkerInstance Updated WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkerInstance {
+    public function update(array $options = []): WorkerInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'ActivitySid' => $options['activitySid'],
-            'Attributes' => $options['attributes'],
-            'FriendlyName' => $options['friendlyName'],
-            'RejectPendingReservations' => Serialize::booleanToString($options['rejectPendingReservations']),
+            'ActivitySid' =>
+                $options['activitySid'],
+            'Attributes' =>
+                $options['attributes'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'RejectPendingReservations' =>
+                Serialize::booleanToString($options['rejectPendingReservations']),
         ]);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
@@ -121,21 +146,23 @@ class WorkerContext extends InstanceContext {
 
         return new WorkerInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the workerChannels
      */
-    protected function getWorkerChannels(): WorkerChannelList {
+    protected function getWorkerChannels(): WorkerChannelList
+    {
         if (!$this->_workerChannels) {
             $this->_workerChannels = new WorkerChannelList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -145,12 +172,13 @@ class WorkerContext extends InstanceContext {
     /**
      * Access the reservations
      */
-    protected function getReservations(): ReservationList {
+    protected function getReservations(): ReservationList
+    {
         if (!$this->_reservations) {
             $this->_reservations = new ReservationList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -160,12 +188,13 @@ class WorkerContext extends InstanceContext {
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): WorkersRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): WorkersRealTimeStatisticsList
+    {
         if (!$this->_realTimeStatistics) {
             $this->_realTimeStatistics = new WorkersRealTimeStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -175,12 +204,13 @@ class WorkerContext extends InstanceContext {
     /**
      * Access the statistics
      */
-    protected function getStatistics(): WorkerStatisticsList {
+    protected function getStatistics(): WorkerStatisticsList
+    {
         if (!$this->_statistics) {
             $this->_statistics = new WorkerStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -190,12 +220,13 @@ class WorkerContext extends InstanceContext {
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): WorkersCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): WorkersCumulativeStatisticsList
+    {
         if (!$this->_cumulativeStatistics) {
             $this->_cumulativeStatistics = new WorkersCumulativeStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -209,7 +240,8 @@ class WorkerContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -226,7 +258,8 @@ class WorkerContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -240,7 +273,8 @@ class WorkerContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

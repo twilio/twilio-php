@@ -57,8 +57,10 @@ use Twilio\Deserialize;
  * @property string $status
  * @property string $url
  * @property array $resourceLinks
+ * @property string $externalReferenceId
  */
-class TollfreeVerificationInstance extends InstanceResource {
+class TollfreeVerificationInstance extends InstanceResource
+{
     /**
      * Initialize the TollfreeVerificationInstance
      *
@@ -66,7 +68,8 @@ class TollfreeVerificationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string to identify Tollfree Verification.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -102,6 +105,7 @@ class TollfreeVerificationInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'url' => Values::array_get($payload, 'url'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
+            'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -113,7 +117,8 @@ class TollfreeVerificationInstance extends InstanceResource {
      *
      * @return TollfreeVerificationContext Context for this TollfreeVerificationInstance
      */
-    protected function proxy(): TollfreeVerificationContext {
+    protected function proxy(): TollfreeVerificationContext
+    {
         if (!$this->context) {
             $this->context = new TollfreeVerificationContext(
                 $this->version,
@@ -130,7 +135,9 @@ class TollfreeVerificationInstance extends InstanceResource {
      * @return TollfreeVerificationInstance Fetched TollfreeVerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TollfreeVerificationInstance {
+    public function fetch(): TollfreeVerificationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -141,7 +148,9 @@ class TollfreeVerificationInstance extends InstanceResource {
      * @return TollfreeVerificationInstance Updated TollfreeVerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TollfreeVerificationInstance {
+    public function update(array $options = []): TollfreeVerificationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -152,7 +161,8 @@ class TollfreeVerificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -170,7 +180,8 @@ class TollfreeVerificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

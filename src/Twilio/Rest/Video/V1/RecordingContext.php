@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class RecordingContext extends InstanceContext {
+class RecordingContext extends InstanceContext
+    {
     /**
      * Initialize the RecordingContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Recording resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Recordings/' . \rawurlencode($sid) . '';
+        $this->uri = '/Recordings/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -44,9 +53,12 @@ class RecordingContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the RecordingInstance
@@ -54,22 +66,26 @@ class RecordingContext extends InstanceContext {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RecordingInstance {
+    public function fetch(): RecordingInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new RecordingInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

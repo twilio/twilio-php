@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class RoleList extends ListResource {
+class RoleList extends ListResource
+    {
     /**
      * Construct the RoleList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Roles';
     }
@@ -43,25 +47,31 @@ class RoleList extends ListResource {
      * Create the RoleInstance
      *
      * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
-     * @param string $type 
+     * @param string $type
      * @param string[] $permission A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type`.
      * @return RoleInstance Created RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $type, array $permission): RoleInstance {
+    public function create(string $friendlyName, string $type, array $permission): RoleInstance
+    {
+
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'Type' => $type,
-            'Permission' => Serialize::map($permission,function($e) { return $e; }),
+            'FriendlyName' =>
+                $friendlyName,
+            'Type' =>
+                $type,
+            'Permission' =>
+                Serialize::map($permission,function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RoleInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads RoleInstance records from the API as a list.
@@ -78,7 +88,8 @@ class RoleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RoleInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -100,7 +111,8 @@ class RoleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -117,7 +129,12 @@ class RoleList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RolePage Page of RoleInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RolePage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): RolePage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -137,7 +154,8 @@ class RoleList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RolePage Page of RoleInstance
      */
-    public function getPage(string $targetUrl): RolePage {
+    public function getPage(string $targetUrl): RolePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -152,8 +170,15 @@ class RoleList extends ListResource {
      *
      * @param string $sid The SID of the Role resource to delete.
      */
-    public function getContext(string $sid): RoleContext {
-        return new RoleContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): RoleContext
+    {
+        return new RoleContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -161,7 +186,8 @@ class RoleList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.RoleList]';
     }
 }

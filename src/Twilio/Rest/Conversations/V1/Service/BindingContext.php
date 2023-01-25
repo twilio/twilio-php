@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class BindingContext extends InstanceContext {
+class BindingContext extends InstanceContext
+    {
     /**
      * Initialize the BindingContext
      *
@@ -30,13 +31,25 @@ class BindingContext extends InstanceContext {
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Binding resource from.
      * @param string $sid The SID of the Binding resource to delete.
      */
-    public function __construct(Version $version, $chatServiceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $chatServiceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['chatServiceSid' => $chatServiceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'chatServiceSid' =>
+            $chatServiceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($chatServiceSid) . '/Bindings/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($chatServiceSid)
+        .'/Bindings/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class BindingContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the BindingInstance
@@ -55,23 +71,27 @@ class BindingContext extends InstanceContext {
      * @return BindingInstance Fetched BindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BindingInstance {
+    public function fetch(): BindingInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new BindingInstance(
             $this->version,
-            $payload
-            , $this->solution['chatServiceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['chatServiceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

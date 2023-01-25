@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class AnnotationList extends ListResource {
+class AnnotationList extends ListResource
+    {
     /**
      * Construct the AnnotationList
      *
      * @param Version $version Version that contains the resource
      * @param string $callSid The unique SID identifier of the Call.
      */
-    public function __construct(Version $version, string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['callSid' => $callSid, ];
+        $this->solution = [
+        'callSid' =>
+            $callSid,
+        
+        ];
     }
 
     /**
      * Constructs a AnnotationContext
      */
-    public function getContext(): AnnotationContext {
-        return new AnnotationContext($this->version, $this->solution['callSid']);
+    public function getContext(
+        
+    ): AnnotationContext
+    {
+        return new AnnotationContext(
+            $this->version,
+            $this->solution['callSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class AnnotationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.AnnotationList]';
     }
 }

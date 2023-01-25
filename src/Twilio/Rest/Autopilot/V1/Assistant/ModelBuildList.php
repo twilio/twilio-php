@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ModelBuildList extends ListResource {
+class ModelBuildList extends ListResource
+    {
     /**
      * Construct the ModelBuildList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/ModelBuilds';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/ModelBuilds';
     }
 
     /**
@@ -47,22 +57,27 @@ class ModelBuildList extends ListResource {
      * @return ModelBuildInstance Created ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ModelBuildInstance {
+    public function create(array $options = []): ModelBuildInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'StatusCallback' => $options['statusCallback'],
-            'UniqueName' => $options['uniqueName'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'UniqueName' =>
+                $options['uniqueName'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ModelBuildInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Reads ModelBuildInstance records from the API as a list.
@@ -79,7 +94,8 @@ class ModelBuildList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ModelBuildInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -101,7 +117,8 @@ class ModelBuildList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -118,7 +135,12 @@ class ModelBuildList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ModelBuildPage Page of ModelBuildInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ModelBuildPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ModelBuildPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -138,7 +160,8 @@ class ModelBuildList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ModelBuildPage Page of ModelBuildInstance
      */
-    public function getPage(string $targetUrl): ModelBuildPage {
+    public function getPage(string $targetUrl): ModelBuildPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -153,8 +176,16 @@ class ModelBuildList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the ModelBuild resource to delete.
      */
-    public function getContext(string $sid): ModelBuildContext {
-        return new ModelBuildContext($this->version, $this->solution['assistantSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ModelBuildContext
+    {
+        return new ModelBuildContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $sid
+        );
     }
 
     /**
@@ -162,7 +193,8 @@ class ModelBuildList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.ModelBuildList]';
     }
 }

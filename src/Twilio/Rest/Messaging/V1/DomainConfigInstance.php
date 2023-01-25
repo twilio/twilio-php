@@ -35,7 +35,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class DomainConfigInstance extends InstanceResource {
+class DomainConfigInstance extends InstanceResource
+{
     /**
      * Initialize the DomainConfigInstance
      *
@@ -43,7 +44,8 @@ class DomainConfigInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $domainSid Unique string used to identify the domain that this config should be associated with.
      */
-    public function __construct(Version $version, array $payload, string $domainSid = null) {
+    public function __construct(Version $version, array $payload, string $domainSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class DomainConfigInstance extends InstanceResource {
      *
      * @return DomainConfigContext Context for this DomainConfigInstance
      */
-    protected function proxy(): DomainConfigContext {
+    protected function proxy(): DomainConfigContext
+    {
         if (!$this->context) {
             $this->context = new DomainConfigContext(
                 $this->version,
@@ -84,7 +87,9 @@ class DomainConfigInstance extends InstanceResource {
      * @return DomainConfigInstance Fetched DomainConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DomainConfigInstance {
+    public function fetch(): DomainConfigInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -96,7 +101,9 @@ class DomainConfigInstance extends InstanceResource {
      * @return DomainConfigInstance Updated DomainConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $messagingServiceSids, array $options = []): DomainConfigInstance {
+    public function update(array $messagingServiceSids, array $options = []): DomainConfigInstance
+    {
+
         return $this->proxy()->update($messagingServiceSids, $options);
     }
 
@@ -107,7 +114,8 @@ class DomainConfigInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -125,7 +133,8 @@ class DomainConfigInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

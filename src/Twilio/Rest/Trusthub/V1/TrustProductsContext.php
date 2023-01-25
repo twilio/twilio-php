@@ -36,7 +36,8 @@ use Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsList;
  * @method \Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsContext trustProductsEntityAssignments(string $sid)
  * @method \Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEvaluationsContext trustProductsEvaluations(string $sid)
  */
-class TrustProductsContext extends InstanceContext {
+class TrustProductsContext extends InstanceContext
+    {
     protected $_trustProductsChannelEndpointAssignment;
     protected $_trustProductsEvaluations;
     protected $_trustProductsEntityAssignments;
@@ -47,13 +48,21 @@ class TrustProductsContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string that we created to identify the Customer-Profile resource.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/TrustProducts/' . \rawurlencode($sid) . '';
+        $this->uri = '/TrustProducts/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -62,9 +71,12 @@ class TrustProductsContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the TrustProductsInstance
@@ -72,15 +84,18 @@ class TrustProductsContext extends InstanceContext {
      * @return TrustProductsInstance Fetched TrustProductsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrustProductsInstance {
+    public function fetch(): TrustProductsInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TrustProductsInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the TrustProductsInstance
@@ -89,33 +104,41 @@ class TrustProductsContext extends InstanceContext {
      * @return TrustProductsInstance Updated TrustProductsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TrustProductsInstance {
+    public function update(array $options = []): TrustProductsInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Status' => $options['status'],
-            'StatusCallback' => $options['statusCallback'],
-            'FriendlyName' => $options['friendlyName'],
-            'Email' => $options['email'],
+            'Status' =>
+                $options['status'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Email' =>
+                $options['email'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TrustProductsInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the trustProductsChannelEndpointAssignment
      */
-    protected function getTrustProductsChannelEndpointAssignment(): TrustProductsChannelEndpointAssignmentList {
+    protected function getTrustProductsChannelEndpointAssignment(): TrustProductsChannelEndpointAssignmentList
+    {
         if (!$this->_trustProductsChannelEndpointAssignment) {
             $this->_trustProductsChannelEndpointAssignment = new TrustProductsChannelEndpointAssignmentList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -125,11 +148,12 @@ class TrustProductsContext extends InstanceContext {
     /**
      * Access the trustProductsEvaluations
      */
-    protected function getTrustProductsEvaluations(): TrustProductsEvaluationsList {
+    protected function getTrustProductsEvaluations(): TrustProductsEvaluationsList
+    {
         if (!$this->_trustProductsEvaluations) {
             $this->_trustProductsEvaluations = new TrustProductsEvaluationsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -139,11 +163,12 @@ class TrustProductsContext extends InstanceContext {
     /**
      * Access the trustProductsEntityAssignments
      */
-    protected function getTrustProductsEntityAssignments(): TrustProductsEntityAssignmentsList {
+    protected function getTrustProductsEntityAssignments(): TrustProductsEntityAssignmentsList
+    {
         if (!$this->_trustProductsEntityAssignments) {
             $this->_trustProductsEntityAssignments = new TrustProductsEntityAssignmentsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -157,7 +182,8 @@ class TrustProductsContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -174,7 +200,8 @@ class TrustProductsContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -188,7 +215,8 @@ class TrustProductsContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

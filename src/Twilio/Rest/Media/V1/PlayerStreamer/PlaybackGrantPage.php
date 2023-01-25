@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class PlaybackGrantPage extends Page {
+class PlaybackGrantPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class PlaybackGrantPage extends Page {
      * @param array $payload Payload response from the API
      * @return PlaybackGrantInstance \Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantInstance
      */
-    public function buildInstance(array $payload): PlaybackGrantInstance {
+    public function buildInstance(array $payload): PlaybackGrantInstance
+    {
         return new PlaybackGrantInstance($this->version, $payload, $this->solution['sid']);
     }
 
@@ -45,7 +48,8 @@ class PlaybackGrantPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Media.V1.PlaybackGrantPage]';
     }
 }

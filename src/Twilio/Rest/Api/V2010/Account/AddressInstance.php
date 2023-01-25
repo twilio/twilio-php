@@ -44,7 +44,8 @@ use Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList;
  * @property bool $verified
  * @property string $streetSecondary
  */
-class AddressInstance extends InstanceResource {
+class AddressInstance extends InstanceResource
+{
     protected $_dependentPhoneNumbers;
 
     /**
@@ -55,7 +56,8 @@ class AddressInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Address resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Address resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -87,7 +89,8 @@ class AddressInstance extends InstanceResource {
      *
      * @return AddressContext Context for this AddressInstance
      */
-    protected function proxy(): AddressContext {
+    protected function proxy(): AddressContext
+    {
         if (!$this->context) {
             $this->context = new AddressContext(
                 $this->version,
@@ -105,7 +108,9 @@ class AddressInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -115,7 +120,9 @@ class AddressInstance extends InstanceResource {
      * @return AddressInstance Fetched AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AddressInstance {
+    public function fetch(): AddressInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -126,14 +133,17 @@ class AddressInstance extends InstanceResource {
      * @return AddressInstance Updated AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AddressInstance {
+    public function update(array $options = []): AddressInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the dependentPhoneNumbers
      */
-    protected function getDependentPhoneNumbers(): DependentPhoneNumberList {
+    protected function getDependentPhoneNumbers(): DependentPhoneNumberList
+    {
         return $this->proxy()->dependentPhoneNumbers;
     }
 
@@ -144,7 +154,8 @@ class AddressInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -162,7 +173,8 @@ class AddressInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

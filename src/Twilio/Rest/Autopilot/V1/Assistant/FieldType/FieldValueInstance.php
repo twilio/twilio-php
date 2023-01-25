@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property string $synonymOf
  */
-class FieldValueInstance extends InstanceResource {
+class FieldValueInstance extends InstanceResource
+{
     /**
      * Initialize the FieldValueInstance
      *
@@ -46,7 +47,8 @@ class FieldValueInstance extends InstanceResource {
      * @param string $fieldTypeSid The SID of the Field Type associated with the Field Value.
      * @param string $sid The Twilio-provided string that uniquely identifies the FieldValue resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $assistantSid, string $fieldTypeSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $fieldTypeSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class FieldValueInstance extends InstanceResource {
      *
      * @return FieldValueContext Context for this FieldValueInstance
      */
-    protected function proxy(): FieldValueContext {
+    protected function proxy(): FieldValueContext
+    {
         if (!$this->context) {
             $this->context = new FieldValueContext(
                 $this->version,
@@ -91,7 +94,9 @@ class FieldValueInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class FieldValueInstance extends InstanceResource {
      * @return FieldValueInstance Fetched FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FieldValueInstance {
+    public function fetch(): FieldValueInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,7 +119,8 @@ class FieldValueInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -130,7 +138,8 @@ class FieldValueInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

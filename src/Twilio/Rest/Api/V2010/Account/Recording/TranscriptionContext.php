@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class TranscriptionContext extends InstanceContext {
+class TranscriptionContext extends InstanceContext
+    {
     /**
      * Initialize the TranscriptionContext
      *
@@ -31,13 +32,29 @@ class TranscriptionContext extends InstanceContext {
      * @param string $recordingSid The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcription to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Transcription resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $recordingSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $recordingSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'recordingSid' => $recordingSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'recordingSid' =>
+            $recordingSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($recordingSid) . '/Transcriptions/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Recordings/' . \rawurlencode($recordingSid)
+        .'/Transcriptions/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -46,9 +63,12 @@ class TranscriptionContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the TranscriptionInstance
@@ -56,24 +76,28 @@ class TranscriptionContext extends InstanceContext {
      * @return TranscriptionInstance Fetched TranscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TranscriptionInstance {
+    public function fetch(): TranscriptionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TranscriptionInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['recordingSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['recordingSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

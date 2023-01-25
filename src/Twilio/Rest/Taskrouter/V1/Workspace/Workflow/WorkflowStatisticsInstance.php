@@ -32,7 +32,8 @@ use Twilio\Version;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkflowStatisticsInstance extends InstanceResource {
+class WorkflowStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkflowStatisticsInstance
      *
@@ -41,7 +42,8 @@ class WorkflowStatisticsInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace with the Workflow to fetch.
      * @param string $workflowSid Returns the list of Tasks that are being controlled by the Workflow with the specified SID value.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $workflowSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $workflowSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class WorkflowStatisticsInstance extends InstanceResource {
      *
      * @return WorkflowStatisticsContext Context for this WorkflowStatisticsInstance
      */
-    protected function proxy(): WorkflowStatisticsContext {
+    protected function proxy(): WorkflowStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new WorkflowStatisticsContext(
                 $this->version,
@@ -82,7 +85,9 @@ class WorkflowStatisticsInstance extends InstanceResource {
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkflowStatisticsInstance {
+    public function fetch(array $options = []): WorkflowStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -93,7 +98,8 @@ class WorkflowStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -111,7 +117,8 @@ class WorkflowStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

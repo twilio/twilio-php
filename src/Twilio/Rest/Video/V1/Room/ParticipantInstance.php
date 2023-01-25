@@ -43,7 +43,8 @@ use Twilio\Rest\Video\V1\Room\Participant\AnonymizeList;
  * @property string $url
  * @property array $links
  */
-class ParticipantInstance extends InstanceResource {
+class ParticipantInstance extends InstanceResource
+{
     protected $_subscribeRules;
     protected $_subscribedTracks;
     protected $_publishedTracks;
@@ -57,7 +58,8 @@ class ParticipantInstance extends InstanceResource {
      * @param string $roomSid The SID of the room with the Participant resource to fetch.
      * @param string $sid The SID of the RoomParticipant resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +87,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return ParticipantContext Context for this ParticipantInstance
      */
-    protected function proxy(): ParticipantContext {
+    protected function proxy(): ParticipantContext
+    {
         if (!$this->context) {
             $this->context = new ParticipantContext(
                 $this->version,
@@ -103,7 +106,9 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
+    public function fetch(): ParticipantInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -114,35 +119,41 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ParticipantInstance {
+    public function update(array $options = []): ParticipantInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the subscribeRules
      */
-    protected function getSubscribeRules(): SubscribeRulesList {
+    protected function getSubscribeRules(): SubscribeRulesList
+    {
         return $this->proxy()->subscribeRules;
     }
 
     /**
      * Access the subscribedTracks
      */
-    protected function getSubscribedTracks(): SubscribedTrackList {
+    protected function getSubscribedTracks(): SubscribedTrackList
+    {
         return $this->proxy()->subscribedTracks;
     }
 
     /**
      * Access the publishedTracks
      */
-    protected function getPublishedTracks(): PublishedTrackList {
+    protected function getPublishedTracks(): PublishedTrackList
+    {
         return $this->proxy()->publishedTracks;
     }
 
     /**
      * Access the anonymize
      */
-    protected function getAnonymize(): AnonymizeList {
+    protected function getAnonymize(): AnonymizeList
+    {
         return $this->proxy()->anonymize;
     }
 
@@ -153,7 +164,8 @@ class ParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -171,7 +183,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

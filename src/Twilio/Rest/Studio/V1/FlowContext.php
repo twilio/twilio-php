@@ -31,7 +31,8 @@ use Twilio\Rest\Studio\V1\Flow\ExecutionList;
  * @method \Twilio\Rest\Studio\V1\Flow\ExecutionContext executions(string $sid)
  * @method \Twilio\Rest\Studio\V1\Flow\EngagementContext engagements(string $sid)
  */
-class FlowContext extends InstanceContext {
+class FlowContext extends InstanceContext
+    {
     protected $_engagements;
     protected $_executions;
 
@@ -41,13 +42,21 @@ class FlowContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Flow resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($sid) . '';
+        $this->uri = '/Flows/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -56,9 +65,12 @@ class FlowContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the FlowInstance
@@ -66,24 +78,28 @@ class FlowContext extends InstanceContext {
      * @return FlowInstance Fetched FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlowInstance {
+    public function fetch(): FlowInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlowInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the engagements
      */
-    protected function getEngagements(): EngagementList {
+    protected function getEngagements(): EngagementList
+    {
         if (!$this->_engagements) {
             $this->_engagements = new EngagementList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -93,11 +109,12 @@ class FlowContext extends InstanceContext {
     /**
      * Access the executions
      */
-    protected function getExecutions(): ExecutionList {
+    protected function getExecutions(): ExecutionList
+    {
         if (!$this->_executions) {
             $this->_executions = new ExecutionList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -111,7 +128,8 @@ class FlowContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -128,7 +146,8 @@ class FlowContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -142,7 +161,8 @@ class FlowContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

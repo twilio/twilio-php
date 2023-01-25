@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property string[] $capabilities
  * @property string $url
  */
-class AlphaSenderInstance extends InstanceResource {
+class AlphaSenderInstance extends InstanceResource
+{
     /**
      * Initialize the AlphaSenderInstance
      *
@@ -43,7 +44,8 @@ class AlphaSenderInstance extends InstanceResource {
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.
      * @param string $sid The SID of the AlphaSender resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class AlphaSenderInstance extends InstanceResource {
      *
      * @return AlphaSenderContext Context for this AlphaSenderInstance
      */
-    protected function proxy(): AlphaSenderContext {
+    protected function proxy(): AlphaSenderContext
+    {
         if (!$this->context) {
             $this->context = new AlphaSenderContext(
                 $this->version,
@@ -85,7 +88,9 @@ class AlphaSenderInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -95,7 +100,9 @@ class AlphaSenderInstance extends InstanceResource {
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AlphaSenderInstance {
+    public function fetch(): AlphaSenderInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -106,7 +113,8 @@ class AlphaSenderInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -124,7 +132,8 @@ class AlphaSenderInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

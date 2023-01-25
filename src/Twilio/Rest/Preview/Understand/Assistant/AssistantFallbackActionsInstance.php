@@ -30,7 +30,8 @@ use Twilio\Version;
  * @property string $url
  * @property array $data
  */
-class AssistantFallbackActionsInstance extends InstanceResource {
+class AssistantFallbackActionsInstance extends InstanceResource
+{
     /**
      * Initialize the AssistantFallbackActionsInstance
      *
@@ -38,7 +39,8 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $assistantSid 
      */
-    public function __construct(Version $version, array $payload, string $assistantSid) {
+    public function __construct(Version $version, array $payload, string $assistantSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -58,7 +60,8 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      *
      * @return AssistantFallbackActionsContext Context for this AssistantFallbackActionsInstance
      */
-    protected function proxy(): AssistantFallbackActionsContext {
+    protected function proxy(): AssistantFallbackActionsContext
+    {
         if (!$this->context) {
             $this->context = new AssistantFallbackActionsContext(
                 $this->version,
@@ -75,7 +78,9 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      * @return AssistantFallbackActionsInstance Fetched AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssistantFallbackActionsInstance {
+    public function fetch(): AssistantFallbackActionsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -86,7 +91,9 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      * @return AssistantFallbackActionsInstance Updated AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AssistantFallbackActionsInstance {
+    public function update(array $options = []): AssistantFallbackActionsInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -97,7 +104,8 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -115,7 +123,8 @@ class AssistantFallbackActionsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

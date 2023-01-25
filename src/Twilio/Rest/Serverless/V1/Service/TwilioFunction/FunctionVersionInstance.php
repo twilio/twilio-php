@@ -36,7 +36,8 @@ use Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion\FunctionVer
  * @property string $url
  * @property array $links
  */
-class FunctionVersionInstance extends InstanceResource {
+class FunctionVersionInstance extends InstanceResource
+{
     protected $_functionVersionContent;
 
     /**
@@ -48,7 +49,8 @@ class FunctionVersionInstance extends InstanceResource {
      * @param string $functionSid The SID of the function that is the parent of the Function Version resource to fetch.
      * @param string $sid The SID of the Function Version resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class FunctionVersionInstance extends InstanceResource {
      *
      * @return FunctionVersionContext Context for this FunctionVersionInstance
      */
-    protected function proxy(): FunctionVersionContext {
+    protected function proxy(): FunctionVersionContext
+    {
         if (!$this->context) {
             $this->context = new FunctionVersionContext(
                 $this->version,
@@ -92,14 +95,17 @@ class FunctionVersionInstance extends InstanceResource {
      * @return FunctionVersionInstance Fetched FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FunctionVersionInstance {
+    public function fetch(): FunctionVersionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the functionVersionContent
      */
-    protected function getFunctionVersionContent(): FunctionVersionContentList {
+    protected function getFunctionVersionContent(): FunctionVersionContentList
+    {
         return $this->proxy()->functionVersionContent;
     }
 
@@ -110,7 +116,8 @@ class FunctionVersionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -128,7 +135,8 @@ class FunctionVersionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

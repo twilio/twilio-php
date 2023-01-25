@@ -37,7 +37,8 @@ use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentContext itemAssignments(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationContext evaluations(string $sid)
  */
-class BundleContext extends InstanceContext {
+class BundleContext extends InstanceContext
+    {
     protected $_bundleCopies;
     protected $_replaceItems;
     protected $_evaluations;
@@ -49,13 +50,21 @@ class BundleContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string that we created to identify the Bundle resource.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($sid) . '';
+        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -64,9 +73,12 @@ class BundleContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the BundleInstance
@@ -74,15 +86,18 @@ class BundleContext extends InstanceContext {
      * @return BundleInstance Fetched BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BundleInstance {
+    public function fetch(): BundleInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new BundleInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the BundleInstance
@@ -91,33 +106,41 @@ class BundleContext extends InstanceContext {
      * @return BundleInstance Updated BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): BundleInstance {
+    public function update(array $options = []): BundleInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Status' => $options['status'],
-            'StatusCallback' => $options['statusCallback'],
-            'FriendlyName' => $options['friendlyName'],
-            'Email' => $options['email'],
+            'Status' =>
+                $options['status'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Email' =>
+                $options['email'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new BundleInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the bundleCopies
      */
-    protected function getBundleCopies(): BundleCopyList {
+    protected function getBundleCopies(): BundleCopyList
+    {
         if (!$this->_bundleCopies) {
             $this->_bundleCopies = new BundleCopyList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -127,11 +150,12 @@ class BundleContext extends InstanceContext {
     /**
      * Access the replaceItems
      */
-    protected function getReplaceItems(): ReplaceItemsList {
+    protected function getReplaceItems(): ReplaceItemsList
+    {
         if (!$this->_replaceItems) {
             $this->_replaceItems = new ReplaceItemsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -141,11 +165,12 @@ class BundleContext extends InstanceContext {
     /**
      * Access the evaluations
      */
-    protected function getEvaluations(): EvaluationList {
+    protected function getEvaluations(): EvaluationList
+    {
         if (!$this->_evaluations) {
             $this->_evaluations = new EvaluationList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -155,11 +180,12 @@ class BundleContext extends InstanceContext {
     /**
      * Access the itemAssignments
      */
-    protected function getItemAssignments(): ItemAssignmentList {
+    protected function getItemAssignments(): ItemAssignmentList
+    {
         if (!$this->_itemAssignments) {
             $this->_itemAssignments = new ItemAssignmentList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -173,7 +199,8 @@ class BundleContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -190,7 +217,8 @@ class BundleContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -204,7 +232,8 @@ class BundleContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

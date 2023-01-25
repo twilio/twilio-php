@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class AvailablePhoneNumberCountryList extends ListResource {
+class AvailablePhoneNumberCountryList extends ListResource
+    {
     /**
      * Construct the AvailablePhoneNumberCountryList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/AvailablePhoneNumbers.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/AvailablePhoneNumbers.json';
     }
 
     /**
@@ -53,7 +63,8 @@ class AvailablePhoneNumberCountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AvailablePhoneNumberCountryInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class AvailablePhoneNumberCountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class AvailablePhoneNumberCountryList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AvailablePhoneNumberCountryPage Page of AvailablePhoneNumberCountryInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AvailablePhoneNumberCountryPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): AvailablePhoneNumberCountryPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class AvailablePhoneNumberCountryList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AvailablePhoneNumberCountryPage Page of AvailablePhoneNumberCountryInstance
      */
-    public function getPage(string $targetUrl): AvailablePhoneNumberCountryPage {
+    public function getPage(string $targetUrl): AvailablePhoneNumberCountryPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,8 +145,16 @@ class AvailablePhoneNumberCountryList extends ListResource {
      *
      * @param string $countryCode The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country to fetch available phone number information about.
      */
-    public function getContext(string $countryCode): AvailablePhoneNumberCountryContext {
-        return new AvailablePhoneNumberCountryContext($this->version, $this->solution['accountSid'], $countryCode);
+    public function getContext(
+        string $countryCode
+        
+    ): AvailablePhoneNumberCountryContext
+    {
+        return new AvailablePhoneNumberCountryContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $countryCode
+        );
     }
 
     /**
@@ -136,7 +162,8 @@ class AvailablePhoneNumberCountryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AvailablePhoneNumberCountryList]';
     }
 }

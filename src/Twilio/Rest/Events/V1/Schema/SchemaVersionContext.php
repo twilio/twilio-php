@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SchemaVersionContext extends InstanceContext {
+class SchemaVersionContext extends InstanceContext
+    {
     /**
      * Initialize the SchemaVersionContext
      *
@@ -30,13 +31,25 @@ class SchemaVersionContext extends InstanceContext {
      * @param string $id The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
      * @param int $schemaVersion The version of the schema
      */
-    public function __construct(Version $version, $id , $schemaVersion ) {
+    public function __construct(
+        Version $version,
+        $id,
+        $schemaVersion
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['id' => $id,  'schemaVersion' => $schemaVersion,  ];
+        $this->solution = [
+        'id' =>
+            $id,
+        'schemaVersion' =>
+            $schemaVersion,
+        ];
 
-        $this->uri = '/Schemas/' . \rawurlencode($id) . '/Versions/' . \rawurlencode($schemaVersion) . '';
+        $this->uri = '/Schemas/' . \rawurlencode($id)
+        .'/Versions/' . \rawurlencode($schemaVersion)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class SchemaVersionContext extends InstanceContext {
      * @return SchemaVersionInstance Fetched SchemaVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SchemaVersionInstance {
+    public function fetch(): SchemaVersionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SchemaVersionInstance(
             $this->version,
-            $payload
-            , $this->solution['id']
-            , $this->solution['schemaVersion']
+            $payload,
+            $this->solution['id'],
+            $this->solution['schemaVersion'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

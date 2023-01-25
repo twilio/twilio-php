@@ -50,7 +50,8 @@ use Twilio\Deserialize;
  * @property array $trust
  * @property array $annotation
  */
-class CallSummaryInstance extends InstanceResource {
+class CallSummaryInstance extends InstanceResource
+{
     /**
      * Initialize the CallSummaryInstance
      *
@@ -58,7 +59,8 @@ class CallSummaryInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $callSid 
      */
-    public function __construct(Version $version, array $payload, string $callSid) {
+    public function __construct(Version $version, array $payload, string $callSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -97,7 +99,8 @@ class CallSummaryInstance extends InstanceResource {
      *
      * @return CallSummaryContext Context for this CallSummaryInstance
      */
-    protected function proxy(): CallSummaryContext {
+    protected function proxy(): CallSummaryContext
+    {
         if (!$this->context) {
             $this->context = new CallSummaryContext(
                 $this->version,
@@ -115,7 +118,9 @@ class CallSummaryInstance extends InstanceResource {
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): CallSummaryInstance {
+    public function fetch(array $options = []): CallSummaryInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -126,7 +131,8 @@ class CallSummaryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,7 +150,8 @@ class CallSummaryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

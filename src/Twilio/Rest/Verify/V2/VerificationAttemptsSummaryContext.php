@@ -25,17 +25,22 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class VerificationAttemptsSummaryContext extends InstanceContext {
+class VerificationAttemptsSummaryContext extends InstanceContext
+    {
     /**
      * Initialize the VerificationAttemptsSummaryContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Attempts/Summary';
     }
@@ -47,32 +52,42 @@ class VerificationAttemptsSummaryContext extends InstanceContext {
      * @return VerificationAttemptsSummaryInstance Fetched VerificationAttemptsSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): VerificationAttemptsSummaryInstance {
+    public function fetch(array $options = []): VerificationAttemptsSummaryInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'VerifyServiceSid' => $options['verifyServiceSid'],
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
-            'Country' => $options['country'],
-            'Channel' => $options['channel'],
-            'DestinationPrefix' => $options['destinationPrefix'],
+            'VerifyServiceSid' =>
+                $options['verifyServiceSid'],
+            'DateCreatedAfter' =>
+                Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' =>
+                Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'Country' =>
+                $options['country'],
+            'Channel' =>
+                $options['channel'],
+            'DestinationPrefix' =>
+                $options['destinationPrefix'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new VerificationAttemptsSummaryInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

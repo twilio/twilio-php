@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class UserConversationList extends ListResource {
+class UserConversationList extends ListResource
+    {
     /**
      * Construct the UserConversationList
      *
@@ -30,13 +31,28 @@ class UserConversationList extends ListResource {
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.
      * @param string $userSid The unique SID identifier of the [User resource](https://www.twilio.com/docs/conversations/api/user-resource). This value can be either the `sid` or the `identity` of the User resource.
      */
-    public function __construct(Version $version, string $chatServiceSid , string $userSid ) {
+    public function __construct(
+        Version $version,
+        string $chatServiceSid
+        ,
+        string $userSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['chatServiceSid' => $chatServiceSid, 'userSid' => $userSid, ];
+        $this->solution = [
+        'chatServiceSid' =>
+            $chatServiceSid,
+        
+        'userSid' =>
+            $userSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($chatServiceSid) . '/Users/' . \rawurlencode($userSid) . '/Conversations';
+        $this->uri = '/Services/' . \rawurlencode($chatServiceSid)
+        .'/Users/' . \rawurlencode($userSid)
+        .'/Conversations';
     }
 
     /**
@@ -54,7 +70,8 @@ class UserConversationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UserConversationInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class UserConversationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class UserConversationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UserConversationPage Page of UserConversationInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UserConversationPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): UserConversationPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class UserConversationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UserConversationPage Page of UserConversationInstance
      */
-    public function getPage(string $targetUrl): UserConversationPage {
+    public function getPage(string $targetUrl): UserConversationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class UserConversationList extends ListResource {
      *
      * @param string $conversationSid The unique SID identifier of the Conversation. This value can be either the `sid` or the `unique_name` of the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource).
      */
-    public function getContext(string $conversationSid): UserConversationContext {
-        return new UserConversationContext($this->version, $this->solution['chatServiceSid'], $this->solution['userSid'], $conversationSid);
+    public function getContext(
+        string $conversationSid
+        
+    ): UserConversationContext
+    {
+        return new UserConversationContext(
+            $this->version,
+            $this->solution['chatServiceSid'],
+            $this->solution['userSid'],
+            $conversationSid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class UserConversationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.UserConversationList]';
     }
 }

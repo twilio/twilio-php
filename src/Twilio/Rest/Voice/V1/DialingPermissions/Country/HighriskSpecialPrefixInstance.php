@@ -26,7 +26,8 @@ use Twilio\Version;
 /**
  * @property string $prefix
  */
-class HighriskSpecialPrefixInstance extends InstanceResource {
+class HighriskSpecialPrefixInstance extends InstanceResource
+{
     /**
      * Initialize the HighriskSpecialPrefixInstance
      *
@@ -34,7 +35,8 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $isoCode The [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to identify the country permissions from which high-risk special service number prefixes are fetched
      */
-    public function __construct(Version $version, array $payload, string $isoCode) {
+    public function __construct(Version $version, array $payload, string $isoCode)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -52,7 +54,8 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -70,7 +73,8 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1.HighriskSpecialPrefixInstance]';
     }
 }

@@ -18,34 +18,57 @@ namespace Twilio\Rest\Studio\V2\Flow;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ExecutionOptions {
+abstract class ExecutionOptions
+{
     /**
-     * @param array $parameters JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\\\"name\\\":\\\"Zeke\\\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \\\"Zeke\\\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string. 
+     * @param array $parameters JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\\\"name\\\":\\\"Zeke\\\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \\\"Zeke\\\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.
      * @return CreateExecutionOptions Options builder
      */
-    public static function create(array $parameters = Values::ARRAY_NONE): CreateExecutionOptions {
-        return new CreateExecutionOptions($parameters);
+    public static function create(
+        
+        array $parameters = Values::ARRAY_NONE
+
+    ): CreateExecutionOptions
+    {
+        return new CreateExecutionOptions(
+            $parameters
+        );
     }
 
 
 
     /**
-     * @param \DateTime $dateCreatedFrom Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. 
-     * @param \DateTime $dateCreatedTo Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. 
+     * @param \DateTime $dateCreatedFrom Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * @param \DateTime $dateCreatedTo Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * @return ReadExecutionOptions Options builder
      */
-    public static function read(\DateTime $dateCreatedFrom = Values::NONE, \DateTime $dateCreatedTo = Values::NONE): ReadExecutionOptions {
-        return new ReadExecutionOptions($dateCreatedFrom, $dateCreatedTo);
+    public static function read(
+        
+        \DateTime $dateCreatedFrom = Values::NONE,
+        \DateTime $dateCreatedTo = Values::NONE
+
+    ): ReadExecutionOptions
+    {
+        return new ReadExecutionOptions(
+            $dateCreatedFrom,
+            $dateCreatedTo
+        );
     }
 
 
 }
 
-class CreateExecutionOptions extends Options {
+class CreateExecutionOptions extends Options
+    {
     /**
      * @param array $parameters JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\\\"name\\\":\\\"Zeke\\\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \\\"Zeke\\\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.
      */
-    public function __construct(array $parameters = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $parameters = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['parameters'] = $parameters;
     }
 
@@ -55,7 +78,8 @@ class CreateExecutionOptions extends Options {
      * @param array $parameters JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\\\"name\\\":\\\"Zeke\\\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \\\"Zeke\\\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.
      * @return $this Fluent Builder
      */
-    public function setParameters(array $parameters): self {
+    public function setParameters(array $parameters): self
+    {
         $this->options['parameters'] = $parameters;
         return $this;
     }
@@ -65,7 +89,8 @@ class CreateExecutionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Studio.V2.CreateExecutionOptions ' . $options . ']';
     }
@@ -73,12 +98,19 @@ class CreateExecutionOptions extends Options {
 
 
 
-class ReadExecutionOptions extends Options {
+class ReadExecutionOptions extends Options
+    {
     /**
      * @param \DateTime $dateCreatedFrom Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * @param \DateTime $dateCreatedTo Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      */
-    public function __construct(\DateTime $dateCreatedFrom = Values::NONE, \DateTime $dateCreatedTo = Values::NONE) {
+    public function __construct(
+        
+        \DateTime $dateCreatedFrom = Values::NONE,
+        \DateTime $dateCreatedTo = Values::NONE
+
+    )
+    {
         $this->options['dateCreatedFrom'] = $dateCreatedFrom;
         $this->options['dateCreatedTo'] = $dateCreatedTo;
     }
@@ -89,7 +121,8 @@ class ReadExecutionOptions extends Options {
      * @param \DateTime $dateCreatedFrom Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedFrom(\DateTime $dateCreatedFrom): self {
+    public function setDateCreatedFrom(\DateTime $dateCreatedFrom): self
+    {
         $this->options['dateCreatedFrom'] = $dateCreatedFrom;
         return $this;
     }
@@ -100,7 +133,8 @@ class ReadExecutionOptions extends Options {
      * @param \DateTime $dateCreatedTo Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedTo(\DateTime $dateCreatedTo): self {
+    public function setDateCreatedTo(\DateTime $dateCreatedTo): self
+    {
         $this->options['dateCreatedTo'] = $dateCreatedTo;
         return $this;
     }
@@ -110,7 +144,8 @@ class ReadExecutionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Studio.V2.ReadExecutionOptions ' . $options . ']';
     }

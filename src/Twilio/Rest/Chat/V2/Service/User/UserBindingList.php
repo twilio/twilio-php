@@ -23,7 +23,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class UserBindingList extends ListResource {
+class UserBindingList extends ListResource
+    {
     /**
      * Construct the UserBindingList
      *
@@ -31,13 +32,28 @@ class UserBindingList extends ListResource {
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the User Binding resource from.
      * @param string $userSid The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
      */
-    public function __construct(Version $version, string $serviceSid , string $userSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $userSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'userSid' => $userSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'userSid' =>
+            $userSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Bindings';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Users/' . \rawurlencode($userSid)
+        .'/Bindings';
     }
 
     /**
@@ -56,7 +72,8 @@ class UserBindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UserBindingInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +96,8 @@ class UserBindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,11 +114,18 @@ class UserBindingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UserBindingPage Page of UserBindingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UserBindingPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): UserBindingPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'BindingType' => $options['bindingType'],
+            'BindingType' =>
+                $options['bindingType'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -118,7 +143,8 @@ class UserBindingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UserBindingPage Page of UserBindingInstance
      */
-    public function getPage(string $targetUrl): UserBindingPage {
+    public function getPage(string $targetUrl): UserBindingPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -133,8 +159,17 @@ class UserBindingList extends ListResource {
      *
      * @param string $sid The SID of the User Binding resource to delete.
      */
-    public function getContext(string $sid): UserBindingContext {
-        return new UserBindingContext($this->version, $this->solution['serviceSid'], $this->solution['userSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): UserBindingContext
+    {
+        return new UserBindingContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['userSid'],
+            $sid
+        );
     }
 
     /**
@@ -142,7 +177,8 @@ class UserBindingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Chat.V2.UserBindingList]';
     }
 }

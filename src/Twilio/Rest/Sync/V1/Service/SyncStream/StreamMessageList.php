@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class StreamMessageList extends ListResource {
+class StreamMessageList extends ListResource
+    {
     /**
      * Construct the StreamMessageList
      *
@@ -32,13 +33,28 @@ class StreamMessageList extends ListResource {
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream Message in.
      * @param string $streamSid The SID of the Sync Stream to create the new Stream Message resource for.
      */
-    public function __construct(Version $version, string $serviceSid , string $streamSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $streamSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'streamSid' => $streamSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'streamSid' =>
+            $streamSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Streams/' . \rawurlencode($streamSid) . '/Messages';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Streams/' . \rawurlencode($streamSid)
+        .'/Messages';
     }
 
     /**
@@ -48,27 +64,32 @@ class StreamMessageList extends ListResource {
      * @return StreamMessageInstance Created StreamMessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $data): StreamMessageInstance {
+    public function create(array $data): StreamMessageInstance
+    {
+
         $data = Values::of([
-            'Data' => Serialize::jsonObject($data),
+            'Data' =>
+                Serialize::jsonObject($data),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new StreamMessageInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['streamSid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['streamSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Sync.V1.StreamMessageList]';
     }
 }

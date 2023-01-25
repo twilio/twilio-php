@@ -54,7 +54,8 @@ use Twilio\Deserialize;
  * @property array $metrics
  * @property string $url
  */
-class ConferenceParticipantInstance extends InstanceResource {
+class ConferenceParticipantInstance extends InstanceResource
+{
     /**
      * Initialize the ConferenceParticipantInstance
      *
@@ -63,7 +64,8 @@ class ConferenceParticipantInstance extends InstanceResource {
      * @param string $conferenceSid The unique SID identifier of the Conference.
      * @param string $participantSid The unique SID identifier of the Participant.
      */
-    public function __construct(Version $version, array $payload, string $conferenceSid, string $participantSid = null) {
+    public function __construct(Version $version, array $payload, string $conferenceSid, string $participantSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -106,7 +108,8 @@ class ConferenceParticipantInstance extends InstanceResource {
      *
      * @return ConferenceParticipantContext Context for this ConferenceParticipantInstance
      */
-    protected function proxy(): ConferenceParticipantContext {
+    protected function proxy(): ConferenceParticipantContext
+    {
         if (!$this->context) {
             $this->context = new ConferenceParticipantContext(
                 $this->version,
@@ -125,7 +128,9 @@ class ConferenceParticipantInstance extends InstanceResource {
      * @return ConferenceParticipantInstance Fetched ConferenceParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): ConferenceParticipantInstance {
+    public function fetch(array $options = []): ConferenceParticipantInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -136,7 +141,8 @@ class ConferenceParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -154,7 +160,8 @@ class ConferenceParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

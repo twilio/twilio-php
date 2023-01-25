@@ -32,7 +32,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property string $url
  */
-class TrustProductsEntityAssignmentsInstance extends InstanceResource {
+class TrustProductsEntityAssignmentsInstance extends InstanceResource
+{
     /**
      * Initialize the TrustProductsEntityAssignmentsInstance
      *
@@ -41,7 +42,8 @@ class TrustProductsEntityAssignmentsInstance extends InstanceResource {
      * @param string $trustProductSid The unique string that we created to identify the TrustProduct resource.
      * @param string $sid The unique string that we created to identify the Identity resource.
      */
-    public function __construct(Version $version, array $payload, string $trustProductSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $trustProductSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class TrustProductsEntityAssignmentsInstance extends InstanceResource {
      *
      * @return TrustProductsEntityAssignmentsContext Context for this TrustProductsEntityAssignmentsInstance
      */
-    protected function proxy(): TrustProductsEntityAssignmentsContext {
+    protected function proxy(): TrustProductsEntityAssignmentsContext
+    {
         if (!$this->context) {
             $this->context = new TrustProductsEntityAssignmentsContext(
                 $this->version,
@@ -81,7 +84,9 @@ class TrustProductsEntityAssignmentsInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -91,7 +96,9 @@ class TrustProductsEntityAssignmentsInstance extends InstanceResource {
      * @return TrustProductsEntityAssignmentsInstance Fetched TrustProductsEntityAssignmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrustProductsEntityAssignmentsInstance {
+    public function fetch(): TrustProductsEntityAssignmentsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -102,7 +109,8 @@ class TrustProductsEntityAssignmentsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -120,7 +128,8 @@ class TrustProductsEntityAssignmentsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

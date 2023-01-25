@@ -39,7 +39,8 @@ use Twilio\Deserialize;
  * @property string $type
  * @property string $uri
  */
-class TranscriptionInstance extends InstanceResource {
+class TranscriptionInstance extends InstanceResource
+{
     /**
      * Initialize the TranscriptionInstance
      *
@@ -48,7 +49,8 @@ class TranscriptionInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Transcription resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -77,7 +79,8 @@ class TranscriptionInstance extends InstanceResource {
      *
      * @return TranscriptionContext Context for this TranscriptionInstance
      */
-    protected function proxy(): TranscriptionContext {
+    protected function proxy(): TranscriptionContext
+    {
         if (!$this->context) {
             $this->context = new TranscriptionContext(
                 $this->version,
@@ -95,7 +98,9 @@ class TranscriptionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -105,7 +110,9 @@ class TranscriptionInstance extends InstanceResource {
      * @return TranscriptionInstance Fetched TranscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TranscriptionInstance {
+    public function fetch(): TranscriptionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -116,7 +123,8 @@ class TranscriptionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +142,8 @@ class TranscriptionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

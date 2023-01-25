@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class FeedbackContext extends InstanceContext {
+class FeedbackContext extends InstanceContext
+    {
     /**
      * Initialize the FeedbackContext
      *
@@ -32,13 +33,25 @@ class FeedbackContext extends InstanceContext {
      * @param string $accountSid The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
      * @param string $callSid The call sid that uniquely identifies the call
      */
-    public function __construct(Version $version, $accountSid , $callSid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $callSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'callSid' => $callSid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'callSid' =>
+            $callSid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Feedback.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/Feedback.json';
     }
 
     /**
@@ -47,16 +60,19 @@ class FeedbackContext extends InstanceContext {
      * @return FeedbackInstance Fetched FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FeedbackInstance {
+    public function fetch(): FeedbackInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FeedbackInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Update the FeedbackInstance
@@ -65,30 +81,36 @@ class FeedbackContext extends InstanceContext {
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FeedbackInstance {
+    public function update(array $options = []): FeedbackInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'QualityScore' => $options['qualityScore'],
-            'Issue' => $options['issue'],
+            'QualityScore' =>
+                $options['qualityScore'],
+            'Issue' =>
+                $options['issue'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FeedbackInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

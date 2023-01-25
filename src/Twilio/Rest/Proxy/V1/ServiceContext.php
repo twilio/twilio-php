@@ -36,7 +36,8 @@ use Twilio\Rest\Proxy\V1\Service\SessionList;
  * @method \Twilio\Rest\Proxy\V1\Service\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
  */
-class ServiceContext extends InstanceContext {
+class ServiceContext extends InstanceContext
+    {
     protected $_phoneNumbers;
     protected $_shortCodes;
     protected $_sessions;
@@ -47,13 +48,21 @@ class ServiceContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The Twilio-provided string that uniquely identifies the Service resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -62,9 +71,12 @@ class ServiceContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ServiceInstance
@@ -72,15 +84,18 @@ class ServiceContext extends InstanceContext {
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ServiceInstance {
+    public function fetch(): ServiceInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ServiceInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ServiceInstance
@@ -89,37 +104,49 @@ class ServiceContext extends InstanceContext {
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ServiceInstance {
+    public function update(array $options = []): ServiceInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
-            'DefaultTtl' => $options['defaultTtl'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'GeoMatchLevel' => $options['geoMatchLevel'],
-            'NumberSelectionBehavior' => $options['numberSelectionBehavior'],
-            'InterceptCallbackUrl' => $options['interceptCallbackUrl'],
-            'OutOfSessionCallbackUrl' => $options['outOfSessionCallbackUrl'],
-            'ChatInstanceSid' => $options['chatInstanceSid'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'DefaultTtl' =>
+                $options['defaultTtl'],
+            'CallbackUrl' =>
+                $options['callbackUrl'],
+            'GeoMatchLevel' =>
+                $options['geoMatchLevel'],
+            'NumberSelectionBehavior' =>
+                $options['numberSelectionBehavior'],
+            'InterceptCallbackUrl' =>
+                $options['interceptCallbackUrl'],
+            'OutOfSessionCallbackUrl' =>
+                $options['outOfSessionCallbackUrl'],
+            'ChatInstanceSid' =>
+                $options['chatInstanceSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ServiceInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the phoneNumbers
      */
-    protected function getPhoneNumbers(): PhoneNumberList {
+    protected function getPhoneNumbers(): PhoneNumberList
+    {
         if (!$this->_phoneNumbers) {
             $this->_phoneNumbers = new PhoneNumberList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -129,11 +156,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the shortCodes
      */
-    protected function getShortCodes(): ShortCodeList {
+    protected function getShortCodes(): ShortCodeList
+    {
         if (!$this->_shortCodes) {
             $this->_shortCodes = new ShortCodeList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -143,11 +171,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the sessions
      */
-    protected function getSessions(): SessionList {
+    protected function getSessions(): SessionList
+    {
         if (!$this->_sessions) {
             $this->_sessions = new SessionList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -161,7 +190,8 @@ class ServiceContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -178,7 +208,8 @@ class ServiceContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -192,7 +223,8 @@ class ServiceContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class WebChannelInstance extends InstanceResource {
+class WebChannelInstance extends InstanceResource
+{
     /**
      * Initialize the WebChannelInstance
      *
@@ -41,7 +42,8 @@ class WebChannelInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the WebChannel resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class WebChannelInstance extends InstanceResource {
      *
      * @return WebChannelContext Context for this WebChannelInstance
      */
-    protected function proxy(): WebChannelContext {
+    protected function proxy(): WebChannelContext
+    {
         if (!$this->context) {
             $this->context = new WebChannelContext(
                 $this->version,
@@ -80,7 +83,9 @@ class WebChannelInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -90,7 +95,9 @@ class WebChannelInstance extends InstanceResource {
      * @return WebChannelInstance Fetched WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebChannelInstance {
+    public function fetch(): WebChannelInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -101,7 +108,9 @@ class WebChannelInstance extends InstanceResource {
      * @return WebChannelInstance Updated WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebChannelInstance {
+    public function update(array $options = []): WebChannelInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -112,7 +121,8 @@ class WebChannelInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -130,7 +140,8 @@ class WebChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

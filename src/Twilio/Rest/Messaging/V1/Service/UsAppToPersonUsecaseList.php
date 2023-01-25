@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class UsAppToPersonUsecaseList extends ListResource {
+class UsAppToPersonUsecaseList extends ListResource
+    {
     /**
      * Construct the UsAppToPersonUsecaseList
      *
      * @param Version $version Version that contains the resource
      * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from.
      */
-    public function __construct(Version $version, string $messagingServiceSid ) {
+    public function __construct(
+        Version $version,
+        string $messagingServiceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['messagingServiceSid' => $messagingServiceSid, ];
+        $this->solution = [
+        'messagingServiceSid' =>
+            $messagingServiceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($messagingServiceSid) . '/Compliance/Usa2p/Usecases';
+        $this->uri = '/Services/' . \rawurlencode($messagingServiceSid)
+        .'/Compliance/Usa2p/Usecases';
     }
 
     /**
@@ -46,28 +56,33 @@ class UsAppToPersonUsecaseList extends ListResource {
      * @return UsAppToPersonUsecaseInstance Fetched UsAppToPersonUsecaseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): UsAppToPersonUsecaseInstance {
+    public function fetch(array $options = []): UsAppToPersonUsecaseInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'BrandRegistrationSid' => $options['brandRegistrationSid'],
+            'BrandRegistrationSid' =>
+                $options['brandRegistrationSid'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new UsAppToPersonUsecaseInstance(
             $this->version,
-            $payload
-            , $this->solution['messagingServiceSid']
+            $payload,
+            $this->solution['messagingServiceSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.UsAppToPersonUsecaseList]';
     }
 }

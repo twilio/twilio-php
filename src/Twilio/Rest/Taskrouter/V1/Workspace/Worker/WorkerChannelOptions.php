@@ -18,28 +18,45 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WorkerChannelOptions {
+abstract class WorkerChannelOptions
+{
 
 
     /**
-     * @param int $capacity The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created. 
-     * @param bool $available Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type. 
+     * @param int $capacity The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created.
+     * @param bool $available Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type.
      * @return UpdateWorkerChannelOptions Options builder
      */
-    public static function update(int $capacity = Values::NONE, bool $available = Values::NONE): UpdateWorkerChannelOptions {
-        return new UpdateWorkerChannelOptions($capacity, $available);
+    public static function update(
+        
+        int $capacity = Values::NONE,
+        bool $available = Values::NONE
+
+    ): UpdateWorkerChannelOptions
+    {
+        return new UpdateWorkerChannelOptions(
+            $capacity,
+            $available
+        );
     }
 
 }
 
 
 
-class UpdateWorkerChannelOptions extends Options {
+class UpdateWorkerChannelOptions extends Options
+    {
     /**
      * @param int $capacity The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created.
      * @param bool $available Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type.
      */
-    public function __construct(int $capacity = Values::NONE, bool $available = Values::NONE) {
+    public function __construct(
+        
+        int $capacity = Values::NONE,
+        bool $available = Values::NONE
+
+    )
+    {
         $this->options['capacity'] = $capacity;
         $this->options['available'] = $available;
     }
@@ -50,7 +67,8 @@ class UpdateWorkerChannelOptions extends Options {
      * @param int $capacity The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created.
      * @return $this Fluent Builder
      */
-    public function setCapacity(int $capacity): self {
+    public function setCapacity(int $capacity): self
+    {
         $this->options['capacity'] = $capacity;
         return $this;
     }
@@ -61,7 +79,8 @@ class UpdateWorkerChannelOptions extends Options {
      * @param bool $available Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type.
      * @return $this Fluent Builder
      */
-    public function setAvailable(bool $available): self {
+    public function setAvailable(bool $available): self
+    {
         $this->options['available'] = $available;
         return $this;
     }
@@ -71,7 +90,8 @@ class UpdateWorkerChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateWorkerChannelOptions ' . $options . ']';
     }

@@ -41,7 +41,8 @@ use Twilio\Rest\Api\V2010\Account\Conference\RecordingList;
  * @property string $reasonConferenceEnded
  * @property string $callSidEndingConference
  */
-class ConferenceInstance extends InstanceResource {
+class ConferenceInstance extends InstanceResource
+{
     protected $_participants;
     protected $_recordings;
 
@@ -53,7 +54,8 @@ class ConferenceInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to fetch.
      * @param string $sid The Twilio-provided string that uniquely identifies the Conference resource to fetch
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class ConferenceInstance extends InstanceResource {
      *
      * @return ConferenceContext Context for this ConferenceInstance
      */
-    protected function proxy(): ConferenceContext {
+    protected function proxy(): ConferenceContext
+    {
         if (!$this->context) {
             $this->context = new ConferenceContext(
                 $this->version,
@@ -99,7 +102,9 @@ class ConferenceInstance extends InstanceResource {
      * @return ConferenceInstance Fetched ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConferenceInstance {
+    public function fetch(): ConferenceInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -110,21 +115,25 @@ class ConferenceInstance extends InstanceResource {
      * @return ConferenceInstance Updated ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConferenceInstance {
+    public function update(array $options = []): ConferenceInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the participants
      */
-    protected function getParticipants(): ParticipantList {
+    protected function getParticipants(): ParticipantList
+    {
         return $this->proxy()->participants;
     }
 
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RecordingList {
+    protected function getRecordings(): RecordingList
+    {
         return $this->proxy()->recordings;
     }
 
@@ -135,7 +144,8 @@ class ConferenceInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -153,7 +163,8 @@ class ConferenceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

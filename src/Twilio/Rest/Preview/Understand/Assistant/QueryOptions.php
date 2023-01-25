@@ -18,47 +18,87 @@ namespace Twilio\Rest\Preview\Understand\Assistant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class QueryOptions {
+abstract class QueryOptions
+{
     /**
-     * @param string $tasks Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2* 
-     * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried. 
-     * @param string $field Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name* 
+     * @param string $tasks Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*
+     * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried.
+     * @param string $field Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name*
      * @return CreateQueryOptions Options builder
      */
-    public static function create(string $tasks = Values::NONE, string $modelBuild = Values::NONE, string $field = Values::NONE): CreateQueryOptions {
-        return new CreateQueryOptions($tasks, $modelBuild, $field);
+    public static function create(
+        
+        string $tasks = Values::NONE,
+        string $modelBuild = Values::NONE,
+        string $field = Values::NONE
+
+    ): CreateQueryOptions
+    {
+        return new CreateQueryOptions(
+            $tasks,
+            $modelBuild,
+            $field
+        );
     }
 
 
 
     /**
-     * @param string $language An ISO language-country string of the sample. 
-     * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried. 
-     * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded 
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried.
+     * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded
      * @return ReadQueryOptions Options builder
      */
-    public static function read(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE): ReadQueryOptions {
-        return new ReadQueryOptions($language, $modelBuild, $status);
+    public static function read(
+        
+        string $language = Values::NONE,
+        string $modelBuild = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadQueryOptions
+    {
+        return new ReadQueryOptions(
+            $language,
+            $modelBuild,
+            $status
+        );
     }
 
     /**
-     * @param string $sampleSid An optional reference to the Sample created from this query. 
-     * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded 
+     * @param string $sampleSid An optional reference to the Sample created from this query.
+     * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded
      * @return UpdateQueryOptions Options builder
      */
-    public static function update(string $sampleSid = Values::NONE, string $status = Values::NONE): UpdateQueryOptions {
-        return new UpdateQueryOptions($sampleSid, $status);
+    public static function update(
+        
+        string $sampleSid = Values::NONE,
+        string $status = Values::NONE
+
+    ): UpdateQueryOptions
+    {
+        return new UpdateQueryOptions(
+            $sampleSid,
+            $status
+        );
     }
 
 }
 
-class CreateQueryOptions extends Options {
+class CreateQueryOptions extends Options
+    {
     /**
      * @param string $tasks Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*
      * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried.
      * @param string $field Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name*
      */
-    public function __construct(string $tasks = Values::NONE, string $modelBuild = Values::NONE, string $field = Values::NONE) {
+    public function __construct(
+        
+        string $tasks = Values::NONE,
+        string $modelBuild = Values::NONE,
+        string $field = Values::NONE
+
+    )
+    {
         $this->options['tasks'] = $tasks;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['field'] = $field;
@@ -70,7 +110,8 @@ class CreateQueryOptions extends Options {
      * @param string $tasks Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*
      * @return $this Fluent Builder
      */
-    public function setTasks(string $tasks): self {
+    public function setTasks(string $tasks): self
+    {
         $this->options['tasks'] = $tasks;
         return $this;
     }
@@ -81,7 +122,8 @@ class CreateQueryOptions extends Options {
      * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild(string $modelBuild): self {
+    public function setModelBuild(string $modelBuild): self
+    {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -92,7 +134,8 @@ class CreateQueryOptions extends Options {
      * @param string $field Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name*
      * @return $this Fluent Builder
      */
-    public function setField(string $field): self {
+    public function setField(string $field): self
+    {
         $this->options['field'] = $field;
         return $this;
     }
@@ -102,7 +145,8 @@ class CreateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Understand.CreateQueryOptions ' . $options . ']';
     }
@@ -110,13 +154,21 @@ class CreateQueryOptions extends Options {
 
 
 
-class ReadQueryOptions extends Options {
+class ReadQueryOptions extends Options
+    {
     /**
      * @param string $language An ISO language-country string of the sample.
      * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried.
      * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded
      */
-    public function __construct(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $language = Values::NONE,
+        string $modelBuild = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['language'] = $language;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['status'] = $status;
@@ -128,7 +180,8 @@ class ReadQueryOptions extends Options {
      * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
-    public function setLanguage(string $language): self {
+    public function setLanguage(string $language): self
+    {
         $this->options['language'] = $language;
         return $this;
     }
@@ -139,7 +192,8 @@ class ReadQueryOptions extends Options {
      * @param string $modelBuild The Model Build Sid or unique name of the Model Build to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild(string $modelBuild): self {
+    public function setModelBuild(string $modelBuild): self
+    {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -150,7 +204,8 @@ class ReadQueryOptions extends Options {
      * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -160,18 +215,26 @@ class ReadQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Understand.ReadQueryOptions ' . $options . ']';
     }
 }
 
-class UpdateQueryOptions extends Options {
+class UpdateQueryOptions extends Options
+    {
     /**
      * @param string $sampleSid An optional reference to the Sample created from this query.
      * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded
      */
-    public function __construct(string $sampleSid = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $sampleSid = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['sampleSid'] = $sampleSid;
         $this->options['status'] = $status;
     }
@@ -182,7 +245,8 @@ class UpdateQueryOptions extends Options {
      * @param string $sampleSid An optional reference to the Sample created from this query.
      * @return $this Fluent Builder
      */
-    public function setSampleSid(string $sampleSid): self {
+    public function setSampleSid(string $sampleSid): self
+    {
         $this->options['sampleSid'] = $sampleSid;
         return $this;
     }
@@ -193,7 +257,8 @@ class UpdateQueryOptions extends Options {
      * @param string $status A string that described the query status. The values can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -203,7 +268,8 @@ class UpdateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Understand.UpdateQueryOptions ' . $options . ']';
     }

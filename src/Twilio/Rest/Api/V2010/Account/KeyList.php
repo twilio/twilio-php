@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class KeyList extends ListResource {
+class KeyList extends ListResource
+    {
     /**
      * Construct the KeyList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to delete.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Keys.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Keys.json';
     }
 
     /**
@@ -53,7 +63,8 @@ class KeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return KeyInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class KeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class KeyList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return KeyPage Page of KeyInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): KeyPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): KeyPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class KeyList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return KeyPage Page of KeyInstance
      */
-    public function getPage(string $targetUrl): KeyPage {
+    public function getPage(string $targetUrl): KeyPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,8 +145,16 @@ class KeyList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Key resource to delete.
      */
-    public function getContext(string $sid): KeyContext {
-        return new KeyContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): KeyContext
+    {
+        return new KeyContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -136,7 +162,8 @@ class KeyList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.KeyList]';
     }
 }

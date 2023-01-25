@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ExecutionList extends ListResource {
+class ExecutionList extends ListResource
+    {
     /**
      * Construct the ExecutionList
      *
      * @param Version $version Version that contains the resource
      * @param string $flowSid The SID of the Excecution's Flow.
      */
-    public function __construct(Version $version, string $flowSid ) {
+    public function __construct(
+        Version $version,
+        string $flowSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid, ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid)
+        .'/Executions';
     }
 
     /**
@@ -50,23 +60,29 @@ class ExecutionList extends ListResource {
      * @return ExecutionInstance Created ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $to, string $from, array $options = []): ExecutionInstance {
+    public function create(string $to, string $from, array $options = []): ExecutionInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'To' => $to,
-            'From' => $from,
-            'Parameters' => Serialize::jsonObject($options['parameters']),
+            'To' =>
+                $to,
+            'From' =>
+                $from,
+            'Parameters' =>
+                Serialize::jsonObject($options['parameters']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ExecutionInstance(
             $this->version,
-            $payload
-            , $this->solution['flowSid']
+            $payload,
+            $this->solution['flowSid'],
         );
     }
+
 
     /**
      * Reads ExecutionInstance records from the API as a list.
@@ -84,7 +100,8 @@ class ExecutionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ExecutionInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -107,7 +124,8 @@ class ExecutionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -124,12 +142,20 @@ class ExecutionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ExecutionPage Page of ExecutionInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ExecutionPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ExecutionPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'DateCreatedFrom' => Serialize::iso8601DateTime($options['dateCreatedFrom']),
-            'DateCreatedTo' => Serialize::iso8601DateTime($options['dateCreatedTo']),
+            'DateCreatedFrom' =>
+                Serialize::iso8601DateTime($options['dateCreatedFrom']),
+            'DateCreatedTo' =>
+                Serialize::iso8601DateTime($options['dateCreatedTo']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -147,7 +173,8 @@ class ExecutionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ExecutionPage Page of ExecutionInstance
      */
-    public function getPage(string $targetUrl): ExecutionPage {
+    public function getPage(string $targetUrl): ExecutionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -162,8 +189,16 @@ class ExecutionList extends ListResource {
      *
      * @param string $sid The SID of the Execution resource to delete.
      */
-    public function getContext(string $sid): ExecutionContext {
-        return new ExecutionContext($this->version, $this->solution['flowSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ExecutionContext
+    {
+        return new ExecutionContext(
+            $this->version,
+            $this->solution['flowSid'],
+            $sid
+        );
     }
 
     /**
@@ -171,7 +206,8 @@ class ExecutionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Studio.V1.ExecutionList]';
     }
 }

@@ -24,20 +24,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class FlowTestUserContext extends InstanceContext {
+class FlowTestUserContext extends InstanceContext
+    {
     /**
      * Initialize the FlowTestUserContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid Unique identifier of the flow.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($sid) . '/TestUsers';
+        $this->uri = '/Flows/' . \rawurlencode($sid)
+        .'/TestUsers';
     }
 
     /**
@@ -46,15 +55,18 @@ class FlowTestUserContext extends InstanceContext {
      * @return FlowTestUserInstance Fetched FlowTestUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlowTestUserInstance {
+    public function fetch(): FlowTestUserInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlowTestUserInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the FlowTestUserInstance
@@ -63,26 +75,31 @@ class FlowTestUserContext extends InstanceContext {
      * @return FlowTestUserInstance Updated FlowTestUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $testUsers): FlowTestUserInstance {
+    public function update(array $testUsers): FlowTestUserInstance
+    {
+
         $data = Values::of([
-            'TestUsers' => Serialize::map($testUsers,function($e) { return $e; }),
+            'TestUsers' =>
+                Serialize::map($testUsers,function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlowTestUserInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

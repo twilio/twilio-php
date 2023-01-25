@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property string $url
  */
-class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource {
+class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
+{
     /**
      * Initialize the CustomerProfilesChannelEndpointAssignmentInstance
      *
@@ -42,7 +43,8 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      * @param string $customerProfileSid The unique string that we created to identify the CustomerProfile resource.
      * @param string $sid The unique string that we created to identify the resource.
      */
-    public function __construct(Version $version, array $payload, string $customerProfileSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $customerProfileSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -65,7 +67,8 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      *
      * @return CustomerProfilesChannelEndpointAssignmentContext Context for this CustomerProfilesChannelEndpointAssignmentInstance
      */
-    protected function proxy(): CustomerProfilesChannelEndpointAssignmentContext {
+    protected function proxy(): CustomerProfilesChannelEndpointAssignmentContext
+    {
         if (!$this->context) {
             $this->context = new CustomerProfilesChannelEndpointAssignmentContext(
                 $this->version,
@@ -83,7 +86,9 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -93,7 +98,9 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      * @return CustomerProfilesChannelEndpointAssignmentInstance Fetched CustomerProfilesChannelEndpointAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CustomerProfilesChannelEndpointAssignmentInstance {
+    public function fetch(): CustomerProfilesChannelEndpointAssignmentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,7 +111,8 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +130,8 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

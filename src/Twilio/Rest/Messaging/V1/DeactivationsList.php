@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class DeactivationsList extends ListResource {
+class DeactivationsList extends ListResource
+    {
     /**
      * Construct the DeactivationsList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a DeactivationsContext
      */
-    public function getContext(): DeactivationsContext {
-        return new DeactivationsContext($this->version);
+    public function getContext(
+        
+    ): DeactivationsContext
+    {
+        return new DeactivationsContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class DeactivationsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.DeactivationsList]';
     }
 }

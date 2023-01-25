@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $createdBy
  */
-class SyncMapItemInstance extends InstanceResource {
+class SyncMapItemInstance extends InstanceResource
+{
     /**
      * Initialize the SyncMapItemInstance
      *
@@ -47,7 +48,8 @@ class SyncMapItemInstance extends InstanceResource {
      * @param string $mapSid 
      * @param string $key 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, string $key = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, string $key = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class SyncMapItemInstance extends InstanceResource {
      *
      * @return SyncMapItemContext Context for this SyncMapItemInstance
      */
-    protected function proxy(): SyncMapItemContext {
+    protected function proxy(): SyncMapItemContext
+    {
         if (!$this->context) {
             $this->context = new SyncMapItemContext(
                 $this->version,
@@ -93,7 +96,9 @@ class SyncMapItemInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         return $this->proxy()->delete($options);
     }
 
@@ -103,7 +108,9 @@ class SyncMapItemInstance extends InstanceResource {
      * @return SyncMapItemInstance Fetched SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncMapItemInstance {
+    public function fetch(): SyncMapItemInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -115,7 +122,9 @@ class SyncMapItemInstance extends InstanceResource {
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data, array $options = []): SyncMapItemInstance {
+    public function update(array $data, array $options = []): SyncMapItemInstance
+    {
+
         return $this->proxy()->update($data, $options);
     }
 
@@ -126,7 +135,8 @@ class SyncMapItemInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,7 +154,8 @@ class SyncMapItemInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -37,7 +37,8 @@ use Twilio\Rest\Studio\V1\Flow\ExecutionList;
  * @property string $url
  * @property array $links
  */
-class FlowInstance extends InstanceResource {
+class FlowInstance extends InstanceResource
+{
     protected $_engagements;
     protected $_executions;
 
@@ -48,7 +49,8 @@ class FlowInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Flow resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class FlowInstance extends InstanceResource {
      *
      * @return FlowContext Context for this FlowInstance
      */
-    protected function proxy(): FlowContext {
+    protected function proxy(): FlowContext
+    {
         if (!$this->context) {
             $this->context = new FlowContext(
                 $this->version,
@@ -90,7 +93,9 @@ class FlowInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,21 +105,25 @@ class FlowInstance extends InstanceResource {
      * @return FlowInstance Fetched FlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlowInstance {
+    public function fetch(): FlowInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the engagements
      */
-    protected function getEngagements(): EngagementList {
+    protected function getEngagements(): EngagementList
+    {
         return $this->proxy()->engagements;
     }
 
     /**
      * Access the executions
      */
-    protected function getExecutions(): ExecutionList {
+    protected function getExecutions(): ExecutionList
+    {
         return $this->proxy()->executions;
     }
 
@@ -125,7 +134,8 @@ class FlowInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -143,7 +153,8 @@ class FlowInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -24,17 +24,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class PublicKeyList extends ListResource {
+class PublicKeyList extends ListResource
+    {
     /**
      * Construct the PublicKeyList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Credentials/PublicKeys';
     }
@@ -47,22 +51,28 @@ class PublicKeyList extends ListResource {
      * @return PublicKeyInstance Created PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $publicKey, array $options = []): PublicKeyInstance {
+    public function create(string $publicKey, array $options = []): PublicKeyInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'PublicKey' => $publicKey,
-            'FriendlyName' => $options['friendlyName'],
-            'AccountSid' => $options['accountSid'],
+            'PublicKey' =>
+                $publicKey,
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'AccountSid' =>
+                $options['accountSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PublicKeyInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads PublicKeyInstance records from the API as a list.
@@ -79,7 +89,8 @@ class PublicKeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return PublicKeyInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -101,7 +112,8 @@ class PublicKeyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -118,7 +130,12 @@ class PublicKeyList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return PublicKeyPage Page of PublicKeyInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PublicKeyPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PublicKeyPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -138,7 +155,8 @@ class PublicKeyList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return PublicKeyPage Page of PublicKeyInstance
      */
-    public function getPage(string $targetUrl): PublicKeyPage {
+    public function getPage(string $targetUrl): PublicKeyPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -153,8 +171,15 @@ class PublicKeyList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the PublicKey resource to delete.
      */
-    public function getContext(string $sid): PublicKeyContext {
-        return new PublicKeyContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): PublicKeyContext
+    {
+        return new PublicKeyContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -162,7 +187,8 @@ class PublicKeyList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Accounts.V1.PublicKeyList]';
     }
 }

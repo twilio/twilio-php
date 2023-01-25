@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class CustomerProfilesEvaluationsList extends ListResource {
+class CustomerProfilesEvaluationsList extends ListResource
+    {
     /**
      * Construct the CustomerProfilesEvaluationsList
      *
      * @param Version $version Version that contains the resource
      * @param string $customerProfileSid The unique string that we created to identify the CustomerProfile resource.
      */
-    public function __construct(Version $version, string $customerProfileSid ) {
+    public function __construct(
+        Version $version,
+        string $customerProfileSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['customerProfileSid' => $customerProfileSid, ];
+        $this->solution = [
+        'customerProfileSid' =>
+            $customerProfileSid,
+        
+        ];
 
-        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid) . '/Evaluations';
+        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid)
+        .'/Evaluations';
     }
 
     /**
@@ -46,19 +56,23 @@ class CustomerProfilesEvaluationsList extends ListResource {
      * @return CustomerProfilesEvaluationsInstance Created CustomerProfilesEvaluationsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $policySid): CustomerProfilesEvaluationsInstance {
+    public function create(string $policySid): CustomerProfilesEvaluationsInstance
+    {
+
         $data = Values::of([
-            'PolicySid' => $policySid,
+            'PolicySid' =>
+                $policySid,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CustomerProfilesEvaluationsInstance(
             $this->version,
-            $payload
-            , $this->solution['customerProfileSid']
+            $payload,
+            $this->solution['customerProfileSid'],
         );
     }
+
 
     /**
      * Reads CustomerProfilesEvaluationsInstance records from the API as a list.
@@ -75,7 +89,8 @@ class CustomerProfilesEvaluationsList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CustomerProfilesEvaluationsInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -97,7 +112,8 @@ class CustomerProfilesEvaluationsList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -114,7 +130,12 @@ class CustomerProfilesEvaluationsList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CustomerProfilesEvaluationsPage Page of CustomerProfilesEvaluationsInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CustomerProfilesEvaluationsPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CustomerProfilesEvaluationsPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -134,7 +155,8 @@ class CustomerProfilesEvaluationsList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CustomerProfilesEvaluationsPage Page of CustomerProfilesEvaluationsInstance
      */
-    public function getPage(string $targetUrl): CustomerProfilesEvaluationsPage {
+    public function getPage(string $targetUrl): CustomerProfilesEvaluationsPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -149,8 +171,16 @@ class CustomerProfilesEvaluationsList extends ListResource {
      *
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function getContext(string $sid): CustomerProfilesEvaluationsContext {
-        return new CustomerProfilesEvaluationsContext($this->version, $this->solution['customerProfileSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): CustomerProfilesEvaluationsContext
+    {
+        return new CustomerProfilesEvaluationsContext(
+            $this->version,
+            $this->solution['customerProfileSid'],
+            $sid
+        );
     }
 
     /**
@@ -158,7 +188,8 @@ class CustomerProfilesEvaluationsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Trusthub.V1.CustomerProfilesEvaluationsList]';
     }
 }

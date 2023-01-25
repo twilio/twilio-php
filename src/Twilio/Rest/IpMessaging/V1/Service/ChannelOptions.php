@@ -18,48 +18,89 @@ namespace Twilio\Rest\IpMessaging\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ChannelOptions {
-    /**
-     * @param string $friendlyName  
-     * @param string $uniqueName  
-     * @param string $attributes  
-     * @param string $type  
-     * @return CreateChannelOptions Options builder
-     */
-    public static function create(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE): CreateChannelOptions {
-        return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type);
-    }
-
-
-
-    /**
-     * @param string $type  
-     * @return ReadChannelOptions Options builder
-     */
-    public static function read(array $type = Values::ARRAY_NONE): ReadChannelOptions {
-        return new ReadChannelOptions($type);
-    }
-
-    /**
-     * @param string $friendlyName  
-     * @param string $uniqueName  
-     * @param string $attributes  
-     * @return UpdateChannelOptions Options builder
-     */
-    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE): UpdateChannelOptions {
-        return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes);
-    }
-
-}
-
-class CreateChannelOptions extends Options {
+abstract class ChannelOptions
+{
     /**
      * @param string $friendlyName 
      * @param string $uniqueName 
      * @param string $attributes 
-     * @param string $type 
+     * @param string $type
+     * @return CreateChannelOptions Options builder
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE) {
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $type = Values::NONE
+
+    ): CreateChannelOptions
+    {
+        return new CreateChannelOptions(
+            $friendlyName,
+            $uniqueName,
+            $attributes,
+            $type
+        );
+    }
+
+
+
+    /**
+     * @param string $type 
+     * @return ReadChannelOptions Options builder
+     */
+    public static function read(
+        
+        array $type = Values::ARRAY_NONE
+
+    ): ReadChannelOptions
+    {
+        return new ReadChannelOptions(
+            $type
+        );
+    }
+
+    /**
+     * @param string $friendlyName 
+     * @param string $uniqueName 
+     * @param string $attributes 
+     * @return UpdateChannelOptions Options builder
+     */
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE
+
+    ): UpdateChannelOptions
+    {
+        return new UpdateChannelOptions(
+            $friendlyName,
+            $uniqueName,
+            $attributes
+        );
+    }
+
+}
+
+class CreateChannelOptions extends Options
+    {
+    /**
+     * @param string $friendlyName 
+     * @param string $uniqueName 
+     * @param string $attributes 
+     * @param string $type
+     */
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $type = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -72,7 +113,8 @@ class CreateChannelOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -83,7 +125,8 @@ class CreateChannelOptions extends Options {
      * @param string $uniqueName 
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -94,16 +137,18 @@ class CreateChannelOptions extends Options {
      * @param string $attributes 
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
 
     /**
-     * @param string $type 
+     * @param string $type
      * @return $this Fluent Builder
      */
-    public function setType(string $type): self {
+    public function setType(string $type): self
+    {
         $this->options['type'] = $type;
         return $this;
     }
@@ -113,7 +158,8 @@ class CreateChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.CreateChannelOptions ' . $options . ']';
     }
@@ -121,11 +167,17 @@ class CreateChannelOptions extends Options {
 
 
 
-class ReadChannelOptions extends Options {
+class ReadChannelOptions extends Options
+    {
     /**
      * @param string $type 
      */
-    public function __construct(array $type = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $type = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['type'] = $type;
     }
 
@@ -135,7 +187,8 @@ class ReadChannelOptions extends Options {
      * @param string $type 
      * @return $this Fluent Builder
      */
-    public function setType(array $type): self {
+    public function setType(array $type): self
+    {
         $this->options['type'] = $type;
         return $this;
     }
@@ -145,19 +198,28 @@ class ReadChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.ReadChannelOptions ' . $options . ']';
     }
 }
 
-class UpdateChannelOptions extends Options {
+class UpdateChannelOptions extends Options
+    {
     /**
      * @param string $friendlyName 
      * @param string $uniqueName 
      * @param string $attributes 
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -169,7 +231,8 @@ class UpdateChannelOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -180,7 +243,8 @@ class UpdateChannelOptions extends Options {
      * @param string $uniqueName 
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -191,7 +255,8 @@ class UpdateChannelOptions extends Options {
      * @param string $attributes 
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -201,7 +266,8 @@ class UpdateChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.UpdateChannelOptions ' . $options . ']';
     }

@@ -23,17 +23,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class WebChannelsList extends ListResource {
+class WebChannelsList extends ListResource
+    {
     /**
      * Construct the WebChannelsList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/WebChats';
     }
@@ -46,30 +50,38 @@ class WebChannelsList extends ListResource {
      * @return WebChannelsInstance Created WebChannelsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $addressSid, array $options = []): WebChannelsInstance {
+    public function create(string $addressSid, array $options = []): WebChannelsInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'AddressSid' => $addressSid,
-            'ChatFriendlyName' => $options['chatFriendlyName'],
-            'CustomerFriendlyName' => $options['customerFriendlyName'],
-            'PreEngagementData' => $options['preEngagementData'],
+            'AddressSid' =>
+                $addressSid,
+            'ChatFriendlyName' =>
+                $options['chatFriendlyName'],
+            'CustomerFriendlyName' =>
+                $options['customerFriendlyName'],
+            'PreEngagementData' =>
+                $options['preEngagementData'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WebChannelsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V2.WebChannelsList]';
     }
 }

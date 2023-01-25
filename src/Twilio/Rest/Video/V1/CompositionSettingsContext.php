@@ -25,17 +25,22 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class CompositionSettingsContext extends InstanceContext {
+class CompositionSettingsContext extends InstanceContext
+    {
     /**
      * Initialize the CompositionSettingsContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/CompositionSettings/Default';
     }
@@ -48,25 +53,34 @@ class CompositionSettingsContext extends InstanceContext {
      * @return CompositionSettingsInstance Created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): CompositionSettingsInstance {
+    public function create(string $friendlyName, array $options = []): CompositionSettingsInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'AwsCredentialsSid' => $options['awsCredentialsSid'],
-            'EncryptionKeySid' => $options['encryptionKeySid'],
-            'AwsS3Url' => $options['awsS3Url'],
-            'AwsStorageEnabled' => Serialize::booleanToString($options['awsStorageEnabled']),
-            'EncryptionEnabled' => Serialize::booleanToString($options['encryptionEnabled']),
+            'FriendlyName' =>
+                $friendlyName,
+            'AwsCredentialsSid' =>
+                $options['awsCredentialsSid'],
+            'EncryptionKeySid' =>
+                $options['encryptionKeySid'],
+            'AwsS3Url' =>
+                $options['awsS3Url'],
+            'AwsStorageEnabled' =>
+                Serialize::booleanToString($options['awsStorageEnabled']),
+            'EncryptionEnabled' =>
+                Serialize::booleanToString($options['encryptionEnabled']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CompositionSettingsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Fetch the CompositionSettingsInstance
@@ -74,21 +88,25 @@ class CompositionSettingsContext extends InstanceContext {
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CompositionSettingsInstance {
+    public function fetch(): CompositionSettingsInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new CompositionSettingsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

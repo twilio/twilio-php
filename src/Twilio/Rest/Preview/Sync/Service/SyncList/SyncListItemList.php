@@ -25,7 +25,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class SyncListItemList extends ListResource {
+class SyncListItemList extends ListResource
+    {
     /**
      * Construct the SyncListItemList
      *
@@ -33,13 +34,28 @@ class SyncListItemList extends ListResource {
      * @param string $serviceSid 
      * @param string $listSid 
      */
-    public function __construct(Version $version, string $serviceSid , string $listSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $listSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'listSid' => $listSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'listSid' =>
+            $listSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Items';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Lists/' . \rawurlencode($listSid)
+        .'/Items';
     }
 
     /**
@@ -49,20 +65,24 @@ class SyncListItemList extends ListResource {
      * @return SyncListItemInstance Created SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $data): SyncListItemInstance {
+    public function create(array $data): SyncListItemInstance
+    {
+
         $data = Values::of([
-            'Data' => Serialize::jsonObject($data),
+            'Data' =>
+                Serialize::jsonObject($data),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncListItemInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['listSid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['listSid'],
         );
     }
+
 
     /**
      * Reads SyncListItemInstance records from the API as a list.
@@ -80,7 +100,8 @@ class SyncListItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncListItemInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -103,7 +124,8 @@ class SyncListItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -120,13 +142,22 @@ class SyncListItemList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncListItemPage Page of SyncListItemInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncListItemPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SyncListItemPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
-            'From' => $options['from'],
-            'Bounds' => $options['bounds'],
+            'Order' =>
+                $options['order'],
+            'From' =>
+                $options['from'],
+            'Bounds' =>
+                $options['bounds'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -144,7 +175,8 @@ class SyncListItemList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncListItemPage Page of SyncListItemInstance
      */
-    public function getPage(string $targetUrl): SyncListItemPage {
+    public function getPage(string $targetUrl): SyncListItemPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -159,8 +191,17 @@ class SyncListItemList extends ListResource {
      *
      * @param int $index 
      */
-    public function getContext(int $index): SyncListItemContext {
-        return new SyncListItemContext($this->version, $this->solution['serviceSid'], $this->solution['listSid'], $index);
+    public function getContext(
+        int $index
+        
+    ): SyncListItemContext
+    {
+        return new SyncListItemContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['listSid'],
+            $index
+        );
     }
 
     /**
@@ -168,7 +209,8 @@ class SyncListItemList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Sync.SyncListItemList]';
     }
 }

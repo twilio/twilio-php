@@ -18,46 +18,88 @@ namespace Twilio\Rest\Preview\HostedNumbers;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AuthorizationDocumentOptions {
+abstract class AuthorizationDocumentOptions
+{
     /**
-     * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed. 
+     * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed.
      * @return CreateAuthorizationDocumentOptions Options builder
      */
-    public static function create(array $ccEmails = Values::ARRAY_NONE): CreateAuthorizationDocumentOptions {
-        return new CreateAuthorizationDocumentOptions($ccEmails);
+    public static function create(
+        
+        array $ccEmails = Values::ARRAY_NONE
+
+    ): CreateAuthorizationDocumentOptions
+    {
+        return new CreateAuthorizationDocumentOptions(
+            $ccEmails
+        );
     }
 
 
     /**
-     * @param string $email Email that this AuthorizationDocument will be sent to for signing. 
-     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses. 
+     * @param string $email Email that this AuthorizationDocument will be sent to for signing.
+     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
      * @return ReadAuthorizationDocumentOptions Options builder
      */
-    public static function read(string $email = Values::NONE, string $status = Values::NONE): ReadAuthorizationDocumentOptions {
-        return new ReadAuthorizationDocumentOptions($email, $status);
+    public static function read(
+        
+        string $email = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadAuthorizationDocumentOptions
+    {
+        return new ReadAuthorizationDocumentOptions(
+            $email,
+            $status
+        );
     }
 
     /**
-     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. 
-     * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. 
-     * @param string $email Email that this AuthorizationDocument will be sent to for signing. 
-     * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed 
-     * @param string $status  
-     * @param string $contactTitle The title of the person authorized to sign the Authorization Document for this phone number. 
-     * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document. 
+     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
+     * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
+     * @param string $email Email that this AuthorizationDocument will be sent to for signing.
+     * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed
+     * @param string $status
+     * @param string $contactTitle The title of the person authorized to sign the Authorization Document for this phone number.
+     * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
      * @return UpdateAuthorizationDocumentOptions Options builder
      */
-    public static function update(array $hostedNumberOrderSids = Values::ARRAY_NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::ARRAY_NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE): UpdateAuthorizationDocumentOptions {
-        return new UpdateAuthorizationDocumentOptions($hostedNumberOrderSids, $addressSid, $email, $ccEmails, $status, $contactTitle, $contactPhoneNumber);
+    public static function update(
+        
+        array $hostedNumberOrderSids = Values::ARRAY_NONE,
+        string $addressSid = Values::NONE,
+        string $email = Values::NONE,
+        array $ccEmails = Values::ARRAY_NONE,
+        string $status = Values::NONE,
+        string $contactTitle = Values::NONE,
+        string $contactPhoneNumber = Values::NONE
+
+    ): UpdateAuthorizationDocumentOptions
+    {
+        return new UpdateAuthorizationDocumentOptions(
+            $hostedNumberOrderSids,
+            $addressSid,
+            $email,
+            $ccEmails,
+            $status,
+            $contactTitle,
+            $contactPhoneNumber
+        );
     }
 
 }
 
-class CreateAuthorizationDocumentOptions extends Options {
+class CreateAuthorizationDocumentOptions extends Options
+    {
     /**
      * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed.
      */
-    public function __construct(array $ccEmails = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $ccEmails = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['ccEmails'] = $ccEmails;
     }
 
@@ -67,7 +109,8 @@ class CreateAuthorizationDocumentOptions extends Options {
      * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed.
      * @return $this Fluent Builder
      */
-    public function setCcEmails(array $ccEmails): self {
+    public function setCcEmails(array $ccEmails): self
+    {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
@@ -77,19 +120,27 @@ class CreateAuthorizationDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.HostedNumbers.CreateAuthorizationDocumentOptions ' . $options . ']';
     }
 }
 
 
-class ReadAuthorizationDocumentOptions extends Options {
+class ReadAuthorizationDocumentOptions extends Options
+    {
     /**
      * @param string $email Email that this AuthorizationDocument will be sent to for signing.
      * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
      */
-    public function __construct(string $email = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $email = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['email'] = $email;
         $this->options['status'] = $status;
     }
@@ -100,7 +151,8 @@ class ReadAuthorizationDocumentOptions extends Options {
      * @param string $email Email that this AuthorizationDocument will be sent to for signing.
      * @return $this Fluent Builder
      */
-    public function setEmail(string $email): self {
+    public function setEmail(string $email): self
+    {
         $this->options['email'] = $email;
         return $this;
     }
@@ -111,7 +163,8 @@ class ReadAuthorizationDocumentOptions extends Options {
      * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -121,23 +174,36 @@ class ReadAuthorizationDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . $options . ']';
     }
 }
 
-class UpdateAuthorizationDocumentOptions extends Options {
+class UpdateAuthorizationDocumentOptions extends Options
+    {
     /**
      * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
      * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
      * @param string $email Email that this AuthorizationDocument will be sent to for signing.
      * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed
-     * @param string $status 
+     * @param string $status
      * @param string $contactTitle The title of the person authorized to sign the Authorization Document for this phone number.
      * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
      */
-    public function __construct(array $hostedNumberOrderSids = Values::ARRAY_NONE, string $addressSid = Values::NONE, string $email = Values::NONE, array $ccEmails = Values::ARRAY_NONE, string $status = Values::NONE, string $contactTitle = Values::NONE, string $contactPhoneNumber = Values::NONE) {
+    public function __construct(
+        
+        array $hostedNumberOrderSids = Values::ARRAY_NONE,
+        string $addressSid = Values::NONE,
+        string $email = Values::NONE,
+        array $ccEmails = Values::ARRAY_NONE,
+        string $status = Values::NONE,
+        string $contactTitle = Values::NONE,
+        string $contactPhoneNumber = Values::NONE
+
+    )
+    {
         $this->options['hostedNumberOrderSids'] = $hostedNumberOrderSids;
         $this->options['addressSid'] = $addressSid;
         $this->options['email'] = $email;
@@ -153,7 +219,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
      * @return $this Fluent Builder
      */
-    public function setHostedNumberOrderSids(array $hostedNumberOrderSids): self {
+    public function setHostedNumberOrderSids(array $hostedNumberOrderSids): self
+    {
         $this->options['hostedNumberOrderSids'] = $hostedNumberOrderSids;
         return $this;
     }
@@ -164,7 +231,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
      * @return $this Fluent Builder
      */
-    public function setAddressSid(string $addressSid): self {
+    public function setAddressSid(string $addressSid): self
+    {
         $this->options['addressSid'] = $addressSid;
         return $this;
     }
@@ -175,7 +243,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string $email Email that this AuthorizationDocument will be sent to for signing.
      * @return $this Fluent Builder
      */
-    public function setEmail(string $email): self {
+    public function setEmail(string $email): self
+    {
         $this->options['email'] = $email;
         return $this;
     }
@@ -186,16 +255,18 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string[] $ccEmails Email recipients who will be informed when an Authorization Document has been sent and signed
      * @return $this Fluent Builder
      */
-    public function setCcEmails(array $ccEmails): self {
+    public function setCcEmails(array $ccEmails): self
+    {
         $this->options['ccEmails'] = $ccEmails;
         return $this;
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -206,7 +277,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string $contactTitle The title of the person authorized to sign the Authorization Document for this phone number.
      * @return $this Fluent Builder
      */
-    public function setContactTitle(string $contactTitle): self {
+    public function setContactTitle(string $contactTitle): self
+    {
         $this->options['contactTitle'] = $contactTitle;
         return $this;
     }
@@ -217,7 +289,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
      * @return $this Fluent Builder
      */
-    public function setContactPhoneNumber(string $contactPhoneNumber): self {
+    public function setContactPhoneNumber(string $contactPhoneNumber): self
+    {
         $this->options['contactPhoneNumber'] = $contactPhoneNumber;
         return $this;
     }
@@ -227,7 +300,8 @@ class UpdateAuthorizationDocumentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . $options . ']';
     }

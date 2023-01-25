@@ -18,37 +18,71 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ConferenceOptions {
+abstract class ConferenceOptions
+{
 
     /**
-     * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. 
-     * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. 
-     * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. 
-     * @param string $dateUpdatedBefore The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. 
-     * @param string $dateUpdated The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. 
-     * @param string $dateUpdatedAfter The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. 
-     * @param string $friendlyName The string that identifies the Conference resources to read. 
-     * @param string $status The status of the resources to read. Can be: `init`, `in-progress`, or `completed`. 
+     * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+     * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+     * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+     * @param string $dateUpdatedBefore The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+     * @param string $dateUpdated The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+     * @param string $dateUpdatedAfter The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+     * @param string $friendlyName The string that identifies the Conference resources to read.
+     * @param string $status The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
      * @return ReadConferenceOptions Options builder
      */
-    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $dateUpdatedBefore = Values::NONE, string $dateUpdated = Values::NONE, string $dateUpdatedAfter = Values::NONE, string $friendlyName = Values::NONE, string $status = Values::NONE): ReadConferenceOptions {
-        return new ReadConferenceOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $dateUpdatedBefore, $dateUpdated, $dateUpdatedAfter, $friendlyName, $status);
+    public static function read(
+        
+        string $dateCreatedBefore = Values::NONE,
+        string $dateCreated = Values::NONE,
+        string $dateCreatedAfter = Values::NONE,
+        string $dateUpdatedBefore = Values::NONE,
+        string $dateUpdated = Values::NONE,
+        string $dateUpdatedAfter = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadConferenceOptions
+    {
+        return new ReadConferenceOptions(
+            $dateCreatedBefore,
+            $dateCreated,
+            $dateCreatedAfter,
+            $dateUpdatedBefore,
+            $dateUpdated,
+            $dateUpdatedAfter,
+            $friendlyName,
+            $status
+        );
     }
 
     /**
-     * @param string $status  
-     * @param string $announceUrl The URL we should call to announce something into the conference. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs. 
-     * @param string $announceMethod The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST` 
+     * @param string $status
+     * @param string $announceUrl The URL we should call to announce something into the conference. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
+     * @param string $announceMethod The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
      * @return UpdateConferenceOptions Options builder
      */
-    public static function update(string $status = Values::NONE, string $announceUrl = Values::NONE, string $announceMethod = Values::NONE): UpdateConferenceOptions {
-        return new UpdateConferenceOptions($status, $announceUrl, $announceMethod);
+    public static function update(
+        
+        string $status = Values::NONE,
+        string $announceUrl = Values::NONE,
+        string $announceMethod = Values::NONE
+
+    ): UpdateConferenceOptions
+    {
+        return new UpdateConferenceOptions(
+            $status,
+            $announceUrl,
+            $announceMethod
+        );
     }
 
 }
 
 
-class ReadConferenceOptions extends Options {
+class ReadConferenceOptions extends Options
+    {
     /**
      * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
      * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
@@ -59,7 +93,19 @@ class ReadConferenceOptions extends Options {
      * @param string $friendlyName The string that identifies the Conference resources to read.
      * @param string $status The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
      */
-    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE, string $dateUpdatedBefore = Values::NONE, string $dateUpdated = Values::NONE, string $dateUpdatedAfter = Values::NONE, string $friendlyName = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $dateCreatedBefore = Values::NONE,
+        string $dateCreated = Values::NONE,
+        string $dateCreatedAfter = Values::NONE,
+        string $dateUpdatedBefore = Values::NONE,
+        string $dateUpdated = Values::NONE,
+        string $dateUpdatedAfter = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -76,7 +122,8 @@ class ReadConferenceOptions extends Options {
      * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore(string $dateCreatedBefore): self {
+    public function setDateCreatedBefore(string $dateCreatedBefore): self
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -87,7 +134,8 @@ class ReadConferenceOptions extends Options {
      * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
      * @return $this Fluent Builder
      */
-    public function setDateCreated(string $dateCreated): self {
+    public function setDateCreated(string $dateCreated): self
+    {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -98,7 +146,8 @@ class ReadConferenceOptions extends Options {
      * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter(string $dateCreatedAfter): self {
+    public function setDateCreatedAfter(string $dateCreatedAfter): self
+    {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -109,7 +158,8 @@ class ReadConferenceOptions extends Options {
      * @param string $dateUpdatedBefore The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
      * @return $this Fluent Builder
      */
-    public function setDateUpdatedBefore(string $dateUpdatedBefore): self {
+    public function setDateUpdatedBefore(string $dateUpdatedBefore): self
+    {
         $this->options['dateUpdatedBefore'] = $dateUpdatedBefore;
         return $this;
     }
@@ -120,7 +170,8 @@ class ReadConferenceOptions extends Options {
      * @param string $dateUpdated The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
      * @return $this Fluent Builder
      */
-    public function setDateUpdated(string $dateUpdated): self {
+    public function setDateUpdated(string $dateUpdated): self
+    {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
@@ -131,7 +182,8 @@ class ReadConferenceOptions extends Options {
      * @param string $dateUpdatedAfter The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
      * @return $this Fluent Builder
      */
-    public function setDateUpdatedAfter(string $dateUpdatedAfter): self {
+    public function setDateUpdatedAfter(string $dateUpdatedAfter): self
+    {
         $this->options['dateUpdatedAfter'] = $dateUpdatedAfter;
         return $this;
     }
@@ -142,7 +194,8 @@ class ReadConferenceOptions extends Options {
      * @param string $friendlyName The string that identifies the Conference resources to read.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -153,7 +206,8 @@ class ReadConferenceOptions extends Options {
      * @param string $status The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -163,29 +217,39 @@ class ReadConferenceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.ReadConferenceOptions ' . $options . ']';
     }
 }
 
-class UpdateConferenceOptions extends Options {
+class UpdateConferenceOptions extends Options
+    {
     /**
-     * @param string $status 
+     * @param string $status
      * @param string $announceUrl The URL we should call to announce something into the conference. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
      * @param string $announceMethod The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
      */
-    public function __construct(string $status = Values::NONE, string $announceUrl = Values::NONE, string $announceMethod = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $announceUrl = Values::NONE,
+        string $announceMethod = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['announceUrl'] = $announceUrl;
         $this->options['announceMethod'] = $announceMethod;
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -196,7 +260,8 @@ class UpdateConferenceOptions extends Options {
      * @param string $announceUrl The URL we should call to announce something into the conference. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
      * @return $this Fluent Builder
      */
-    public function setAnnounceUrl(string $announceUrl): self {
+    public function setAnnounceUrl(string $announceUrl): self
+    {
         $this->options['announceUrl'] = $announceUrl;
         return $this;
     }
@@ -207,7 +272,8 @@ class UpdateConferenceOptions extends Options {
      * @param string $announceMethod The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
      * @return $this Fluent Builder
      */
-    public function setAnnounceMethod(string $announceMethod): self {
+    public function setAnnounceMethod(string $announceMethod): self
+    {
         $this->options['announceMethod'] = $announceMethod;
         return $this;
     }
@@ -217,7 +283,8 @@ class UpdateConferenceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.UpdateConferenceOptions ' . $options . ']';
     }

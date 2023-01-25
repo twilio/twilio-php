@@ -43,7 +43,8 @@ use Twilio\Deserialize;
  * @property string $usageCategory
  * @property string $usageRecordUri
  */
-class TriggerInstance extends InstanceResource {
+class TriggerInstance extends InstanceResource
+{
     /**
      * Initialize the TriggerInstance
      *
@@ -52,7 +53,8 @@ class TriggerInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the UsageTrigger resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -84,7 +86,8 @@ class TriggerInstance extends InstanceResource {
      *
      * @return TriggerContext Context for this TriggerInstance
      */
-    protected function proxy(): TriggerContext {
+    protected function proxy(): TriggerContext
+    {
         if (!$this->context) {
             $this->context = new TriggerContext(
                 $this->version,
@@ -102,7 +105,9 @@ class TriggerInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -112,7 +117,9 @@ class TriggerInstance extends InstanceResource {
      * @return TriggerInstance Fetched TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TriggerInstance {
+    public function fetch(): TriggerInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -123,7 +130,9 @@ class TriggerInstance extends InstanceResource {
      * @return TriggerInstance Updated TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TriggerInstance {
+    public function update(array $options = []): TriggerInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -134,7 +143,8 @@ class TriggerInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -152,7 +162,8 @@ class TriggerInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

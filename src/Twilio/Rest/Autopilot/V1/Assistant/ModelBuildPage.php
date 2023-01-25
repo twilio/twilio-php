@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class ModelBuildPage extends Page {
+class ModelBuildPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class ModelBuildPage extends Page {
      * @param array $payload Payload response from the API
      * @return ModelBuildInstance \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildInstance
      */
-    public function buildInstance(array $payload): ModelBuildInstance {
+    public function buildInstance(array $payload): ModelBuildInstance
+    {
         return new ModelBuildInstance($this->version, $payload, $this->solution['assistantSid']);
     }
 
@@ -45,7 +48,8 @@ class ModelBuildPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.ModelBuildPage]';
     }
 }

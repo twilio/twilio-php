@@ -18,28 +18,48 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class FeedbackSummaryOptions {
+abstract class FeedbackSummaryOptions
+{
     /**
-     * @param bool $includeSubaccounts Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account. 
-     * @param string $statusCallback The URL that we will request when the feedback summary is complete. 
-     * @param string $statusCallbackMethod The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL. 
+     * @param bool $includeSubaccounts Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
+     * @param string $statusCallback The URL that we will request when the feedback summary is complete.
+     * @param string $statusCallbackMethod The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL.
      * @return CreateFeedbackSummaryOptions Options builder
      */
-    public static function create(bool $includeSubaccounts = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE): CreateFeedbackSummaryOptions {
-        return new CreateFeedbackSummaryOptions($includeSubaccounts, $statusCallback, $statusCallbackMethod);
+    public static function create(
+        
+        bool $includeSubaccounts = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE
+
+    ): CreateFeedbackSummaryOptions
+    {
+        return new CreateFeedbackSummaryOptions(
+            $includeSubaccounts,
+            $statusCallback,
+            $statusCallbackMethod
+        );
     }
 
 
 
 }
 
-class CreateFeedbackSummaryOptions extends Options {
+class CreateFeedbackSummaryOptions extends Options
+    {
     /**
      * @param bool $includeSubaccounts Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
      * @param string $statusCallback The URL that we will request when the feedback summary is complete.
      * @param string $statusCallbackMethod The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL.
      */
-    public function __construct(bool $includeSubaccounts = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE) {
+    public function __construct(
+        
+        bool $includeSubaccounts = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE
+
+    )
+    {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
@@ -51,7 +71,8 @@ class CreateFeedbackSummaryOptions extends Options {
      * @param bool $includeSubaccounts Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
      * @return $this Fluent Builder
      */
-    public function setIncludeSubaccounts(bool $includeSubaccounts): self {
+    public function setIncludeSubaccounts(bool $includeSubaccounts): self
+    {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         return $this;
     }
@@ -62,7 +83,8 @@ class CreateFeedbackSummaryOptions extends Options {
      * @param string $statusCallback The URL that we will request when the feedback summary is complete.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -73,7 +95,8 @@ class CreateFeedbackSummaryOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL.
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self
+    {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -83,7 +106,8 @@ class CreateFeedbackSummaryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateFeedbackSummaryOptions ' . $options . ']';
     }

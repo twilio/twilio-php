@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class PaymentContext extends InstanceContext {
+class PaymentContext extends InstanceContext
+    {
     /**
      * Initialize the PaymentContext
      *
@@ -33,13 +34,29 @@ class PaymentContext extends InstanceContext {
      * @param string $callSid The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF.
      * @param string $sid The SID of Payments session that needs to be updated.
      */
-    public function __construct(Version $version, $accountSid , $callSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $callSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'callSid' => $callSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'callSid' =>
+            $callSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Payments/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/Payments/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -51,33 +68,41 @@ class PaymentContext extends InstanceContext {
      * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance {
+    public function update(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'IdempotencyKey' => $idempotencyKey,
-            'StatusCallback' => $statusCallback,
-            'Capture' => $options['capture'],
-            'Status' => $options['status'],
+            'IdempotencyKey' =>
+                $idempotencyKey,
+            'StatusCallback' =>
+                $statusCallback,
+            'Capture' =>
+                $options['capture'],
+            'Status' =>
+                $options['status'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new PaymentInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

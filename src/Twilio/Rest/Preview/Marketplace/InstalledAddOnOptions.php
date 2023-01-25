@@ -18,36 +18,62 @@ namespace Twilio\Rest\Preview\Marketplace;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class InstalledAddOnOptions {
+abstract class InstalledAddOnOptions
+{
     /**
-     * @param array $configuration The JSON object that represents the configuration of the new Add-on being installed. 
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account. 
+     * @param array $configuration The JSON object that represents the configuration of the new Add-on being installed.
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      * @return CreateInstalledAddOnOptions Options builder
      */
-    public static function create(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE): CreateInstalledAddOnOptions {
-        return new CreateInstalledAddOnOptions($configuration, $uniqueName);
+    public static function create(
+        
+        array $configuration = Values::ARRAY_NONE,
+        string $uniqueName = Values::NONE
+
+    ): CreateInstalledAddOnOptions
+    {
+        return new CreateInstalledAddOnOptions(
+            $configuration,
+            $uniqueName
+        );
     }
 
 
 
 
     /**
-     * @param array $configuration Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured 
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account. 
+     * @param array $configuration Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      * @return UpdateInstalledAddOnOptions Options builder
      */
-    public static function update(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE): UpdateInstalledAddOnOptions {
-        return new UpdateInstalledAddOnOptions($configuration, $uniqueName);
+    public static function update(
+        
+        array $configuration = Values::ARRAY_NONE,
+        string $uniqueName = Values::NONE
+
+    ): UpdateInstalledAddOnOptions
+    {
+        return new UpdateInstalledAddOnOptions(
+            $configuration,
+            $uniqueName
+        );
     }
 
 }
 
-class CreateInstalledAddOnOptions extends Options {
+class CreateInstalledAddOnOptions extends Options
+    {
     /**
      * @param array $configuration The JSON object that represents the configuration of the new Add-on being installed.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      */
-    public function __construct(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE) {
+    public function __construct(
+        
+        array $configuration = Values::ARRAY_NONE,
+        string $uniqueName = Values::NONE
+
+    )
+    {
         $this->options['configuration'] = $configuration;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -58,7 +84,8 @@ class CreateInstalledAddOnOptions extends Options {
      * @param array $configuration The JSON object that represents the configuration of the new Add-on being installed.
      * @return $this Fluent Builder
      */
-    public function setConfiguration(array $configuration): self {
+    public function setConfiguration(array $configuration): self
+    {
         $this->options['configuration'] = $configuration;
         return $this;
     }
@@ -69,7 +96,8 @@ class CreateInstalledAddOnOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -79,7 +107,8 @@ class CreateInstalledAddOnOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Marketplace.CreateInstalledAddOnOptions ' . $options . ']';
     }
@@ -88,12 +117,19 @@ class CreateInstalledAddOnOptions extends Options {
 
 
 
-class UpdateInstalledAddOnOptions extends Options {
+class UpdateInstalledAddOnOptions extends Options
+    {
     /**
      * @param array $configuration Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      */
-    public function __construct(array $configuration = Values::ARRAY_NONE, string $uniqueName = Values::NONE) {
+    public function __construct(
+        
+        array $configuration = Values::ARRAY_NONE,
+        string $uniqueName = Values::NONE
+
+    )
+    {
         $this->options['configuration'] = $configuration;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -104,7 +140,8 @@ class UpdateInstalledAddOnOptions extends Options {
      * @param array $configuration Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured
      * @return $this Fluent Builder
      */
-    public function setConfiguration(array $configuration): self {
+    public function setConfiguration(array $configuration): self
+    {
         $this->options['configuration'] = $configuration;
         return $this;
     }
@@ -115,7 +152,8 @@ class UpdateInstalledAddOnOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -125,7 +163,8 @@ class UpdateInstalledAddOnOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Marketplace.UpdateInstalledAddOnOptions ' . $options . ']';
     }

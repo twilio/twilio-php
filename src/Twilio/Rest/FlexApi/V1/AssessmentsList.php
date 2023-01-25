@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class AssessmentsList extends ListResource {
+class AssessmentsList extends ListResource
+    {
     /**
      * Construct the AssessmentsList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a AssessmentsContext
      */
-    public function getContext(): AssessmentsContext {
-        return new AssessmentsContext($this->version);
+    public function getContext(
+        
+    ): AssessmentsContext
+    {
+        return new AssessmentsContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class AssessmentsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1.AssessmentsList]';
     }
 }

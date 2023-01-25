@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ParticipantList extends ListResource {
+class ParticipantList extends ListResource
+    {
     /**
      * Construct the ParticipantList
      *
      * @param Version $version Version that contains the resource
      * @param string $conversationSid The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.
      */
-    public function __construct(Version $version, string $conversationSid ) {
+    public function __construct(
+        Version $version,
+        string $conversationSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['conversationSid' => $conversationSid, ];
+        $this->solution = [
+        'conversationSid' =>
+            $conversationSid,
+        
+        ];
 
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid) . '/Participants';
+        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        .'/Participants';
     }
 
     /**
@@ -48,18 +58,28 @@ class ParticipantList extends ListResource {
      * @return ParticipantInstance Created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ParticipantInstance {
+    public function create(array $options = []): ParticipantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Identity' => $options['identity'],
-            'MessagingBinding.Address' => $options['messagingBindingAddress'],
-            'MessagingBinding.ProxyAddress' => $options['messagingBindingProxyAddress'],
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'Attributes' => $options['attributes'],
-            'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
-            'RoleSid' => $options['roleSid'],
+            'Identity' =>
+                $options['identity'],
+            'MessagingBinding.Address' =>
+                $options['messagingBindingAddress'],
+            'MessagingBinding.ProxyAddress' =>
+                $options['messagingBindingProxyAddress'],
+            'DateCreated' =>
+                Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' =>
+                Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' =>
+                $options['attributes'],
+            'MessagingBinding.ProjectedAddress' =>
+                $options['messagingBindingProjectedAddress'],
+            'RoleSid' =>
+                $options['roleSid'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -68,10 +88,11 @@ class ParticipantList extends ListResource {
 
         return new ParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['conversationSid']
+            $payload,
+            $this->solution['conversationSid'],
         );
     }
+
 
     /**
      * Reads ParticipantInstance records from the API as a list.
@@ -88,7 +109,8 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ParticipantInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -110,7 +132,8 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -127,7 +150,12 @@ class ParticipantList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ParticipantPage Page of ParticipantInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ParticipantPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ParticipantPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -147,7 +175,8 @@ class ParticipantList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ParticipantPage Page of ParticipantInstance
      */
-    public function getPage(string $targetUrl): ParticipantPage {
+    public function getPage(string $targetUrl): ParticipantPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -162,8 +191,16 @@ class ParticipantList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function getContext(string $sid): ParticipantContext {
-        return new ParticipantContext($this->version, $this->solution['conversationSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ParticipantContext
+    {
+        return new ParticipantContext(
+            $this->version,
+            $this->solution['conversationSid'],
+            $sid
+        );
     }
 
     /**
@@ -171,7 +208,8 @@ class ParticipantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.ParticipantList]';
     }
 }

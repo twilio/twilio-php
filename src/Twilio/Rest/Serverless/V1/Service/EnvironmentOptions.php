@@ -18,13 +18,21 @@ namespace Twilio\Rest\Serverless\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class EnvironmentOptions {
+abstract class EnvironmentOptions
+{
     /**
-     * @param string $domainSuffix A URL-friendly name that represents the environment and forms part of the domain name. It can be a maximum of 16 characters. 
+     * @param string $domainSuffix A URL-friendly name that represents the environment and forms part of the domain name. It can be a maximum of 16 characters.
      * @return CreateEnvironmentOptions Options builder
      */
-    public static function create(string $domainSuffix = Values::NONE): CreateEnvironmentOptions {
-        return new CreateEnvironmentOptions($domainSuffix);
+    public static function create(
+        
+        string $domainSuffix = Values::NONE
+
+    ): CreateEnvironmentOptions
+    {
+        return new CreateEnvironmentOptions(
+            $domainSuffix
+        );
     }
 
 
@@ -32,11 +40,17 @@ abstract class EnvironmentOptions {
 
 }
 
-class CreateEnvironmentOptions extends Options {
+class CreateEnvironmentOptions extends Options
+    {
     /**
      * @param string $domainSuffix A URL-friendly name that represents the environment and forms part of the domain name. It can be a maximum of 16 characters.
      */
-    public function __construct(string $domainSuffix = Values::NONE) {
+    public function __construct(
+        
+        string $domainSuffix = Values::NONE
+
+    )
+    {
         $this->options['domainSuffix'] = $domainSuffix;
     }
 
@@ -46,7 +60,8 @@ class CreateEnvironmentOptions extends Options {
      * @param string $domainSuffix A URL-friendly name that represents the environment and forms part of the domain name. It can be a maximum of 16 characters.
      * @return $this Fluent Builder
      */
-    public function setDomainSuffix(string $domainSuffix): self {
+    public function setDomainSuffix(string $domainSuffix): self
+    {
         $this->options['domainSuffix'] = $domainSuffix;
         return $this;
     }
@@ -56,7 +71,8 @@ class CreateEnvironmentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Serverless.V1.CreateEnvironmentOptions ' . $options . ']';
     }

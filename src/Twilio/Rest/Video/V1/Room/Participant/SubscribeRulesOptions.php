@@ -18,24 +18,38 @@ namespace Twilio\Rest\Video\V1\Room\Participant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SubscribeRulesOptions {
+abstract class SubscribeRulesOptions
+{
 
     /**
-     * @param array $rules A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information. 
+     * @param array $rules A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
      * @return UpdateSubscribeRulesOptions Options builder
      */
-    public static function update(array $rules = Values::ARRAY_NONE): UpdateSubscribeRulesOptions {
-        return new UpdateSubscribeRulesOptions($rules);
+    public static function update(
+        
+        array $rules = Values::ARRAY_NONE
+
+    ): UpdateSubscribeRulesOptions
+    {
+        return new UpdateSubscribeRulesOptions(
+            $rules
+        );
     }
 
 }
 
 
-class UpdateSubscribeRulesOptions extends Options {
+class UpdateSubscribeRulesOptions extends Options
+    {
     /**
      * @param array $rules A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
      */
-    public function __construct(array $rules = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $rules = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['rules'] = $rules;
     }
 
@@ -45,7 +59,8 @@ class UpdateSubscribeRulesOptions extends Options {
      * @param array $rules A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
      * @return $this Fluent Builder
      */
-    public function setRules(array $rules): self {
+    public function setRules(array $rules): self
+    {
         $this->options['rules'] = $rules;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateSubscribeRulesOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Video.V1.UpdateSubscribeRulesOptions ' . $options . ']';
     }

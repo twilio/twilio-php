@@ -18,24 +18,38 @@ namespace Twilio\Rest\Preview\Understand\Assistant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AssistantInitiationActionsOptions {
+abstract class AssistantInitiationActionsOptions
+{
 
     /**
-     * @param array $initiationActions  
+     * @param array $initiationActions 
      * @return UpdateAssistantInitiationActionsOptions Options builder
      */
-    public static function update(array $initiationActions = Values::ARRAY_NONE): UpdateAssistantInitiationActionsOptions {
-        return new UpdateAssistantInitiationActionsOptions($initiationActions);
+    public static function update(
+        
+        array $initiationActions = Values::ARRAY_NONE
+
+    ): UpdateAssistantInitiationActionsOptions
+    {
+        return new UpdateAssistantInitiationActionsOptions(
+            $initiationActions
+        );
     }
 
 }
 
 
-class UpdateAssistantInitiationActionsOptions extends Options {
+class UpdateAssistantInitiationActionsOptions extends Options
+    {
     /**
      * @param array $initiationActions 
      */
-    public function __construct(array $initiationActions = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $initiationActions = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['initiationActions'] = $initiationActions;
     }
 
@@ -45,7 +59,8 @@ class UpdateAssistantInitiationActionsOptions extends Options {
      * @param array $initiationActions 
      * @return $this Fluent Builder
      */
-    public function setInitiationActions(array $initiationActions): self {
+    public function setInitiationActions(array $initiationActions): self
+    {
         $this->options['initiationActions'] = $initiationActions;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateAssistantInitiationActionsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Understand.UpdateAssistantInitiationActionsOptions ' . $options . ']';
     }

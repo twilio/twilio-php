@@ -18,24 +18,38 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class EventTypeOptions {
+abstract class EventTypeOptions
+{
 
     /**
-     * @param string $schemaId A string parameter filtering the results to return only the Event Types using a given schema. 
+     * @param string $schemaId A string parameter filtering the results to return only the Event Types using a given schema.
      * @return ReadEventTypeOptions Options builder
      */
-    public static function read(string $schemaId = Values::NONE): ReadEventTypeOptions {
-        return new ReadEventTypeOptions($schemaId);
+    public static function read(
+        
+        string $schemaId = Values::NONE
+
+    ): ReadEventTypeOptions
+    {
+        return new ReadEventTypeOptions(
+            $schemaId
+        );
     }
 
 }
 
 
-class ReadEventTypeOptions extends Options {
+class ReadEventTypeOptions extends Options
+    {
     /**
      * @param string $schemaId A string parameter filtering the results to return only the Event Types using a given schema.
      */
-    public function __construct(string $schemaId = Values::NONE) {
+    public function __construct(
+        
+        string $schemaId = Values::NONE
+
+    )
+    {
         $this->options['schemaId'] = $schemaId;
     }
 
@@ -45,7 +59,8 @@ class ReadEventTypeOptions extends Options {
      * @param string $schemaId A string parameter filtering the results to return only the Event Types using a given schema.
      * @return $this Fluent Builder
      */
-    public function setSchemaId(string $schemaId): self {
+    public function setSchemaId(string $schemaId): self
+    {
         $this->options['schemaId'] = $schemaId;
         return $this;
     }
@@ -55,7 +70,8 @@ class ReadEventTypeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Events.V1.ReadEventTypeOptions ' . $options . ']';
     }

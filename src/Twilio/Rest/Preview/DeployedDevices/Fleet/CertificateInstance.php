@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class CertificateInstance extends InstanceResource {
+class CertificateInstance extends InstanceResource
+{
     /**
      * Initialize the CertificateInstance
      *
@@ -45,7 +46,8 @@ class CertificateInstance extends InstanceResource {
      * @param string $fleetSid 
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Certificate credential resource.
      */
-    public function __construct(Version $version, array $payload, string $fleetSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $fleetSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class CertificateInstance extends InstanceResource {
      *
      * @return CertificateContext Context for this CertificateInstance
      */
-    protected function proxy(): CertificateContext {
+    protected function proxy(): CertificateContext
+    {
         if (!$this->context) {
             $this->context = new CertificateContext(
                 $this->version,
@@ -88,7 +91,9 @@ class CertificateInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -98,7 +103,9 @@ class CertificateInstance extends InstanceResource {
      * @return CertificateInstance Fetched CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CertificateInstance {
+    public function fetch(): CertificateInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,7 +116,9 @@ class CertificateInstance extends InstanceResource {
      * @return CertificateInstance Updated CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): CertificateInstance {
+    public function update(array $options = []): CertificateInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -120,7 +129,8 @@ class CertificateInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +148,8 @@ class CertificateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

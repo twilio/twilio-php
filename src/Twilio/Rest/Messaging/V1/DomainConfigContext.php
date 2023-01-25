@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class DomainConfigContext extends InstanceContext {
+class DomainConfigContext extends InstanceContext
+    {
     /**
      * Initialize the DomainConfigContext
      *
      * @param Version $version Version that contains the resource
      * @param string $domainSid Unique string used to identify the domain that this config should be associated with.
      */
-    public function __construct(Version $version, $domainSid ) {
+    public function __construct(
+        Version $version,
+        $domainSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['domainSid' => $domainSid,  ];
+        $this->solution = [
+        'domainSid' =>
+            $domainSid,
+        ];
 
-        $this->uri = '/LinkShortening/Domains/' . \rawurlencode($domainSid) . '/Config';
+        $this->uri = '/LinkShortening/Domains/' . \rawurlencode($domainSid)
+        .'/Config';
     }
 
     /**
@@ -47,15 +56,18 @@ class DomainConfigContext extends InstanceContext {
      * @return DomainConfigInstance Fetched DomainConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DomainConfigInstance {
+    public function fetch(): DomainConfigInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DomainConfigInstance(
             $this->version,
-            $payload
-            , $this->solution['domainSid']
+            $payload,
+            $this->solution['domainSid'],
         );
     }
+
 
     /**
      * Update the DomainConfigInstance
@@ -65,31 +77,39 @@ class DomainConfigContext extends InstanceContext {
      * @return DomainConfigInstance Updated DomainConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $messagingServiceSids, array $options = []): DomainConfigInstance {
+    public function update(array $messagingServiceSids, array $options = []): DomainConfigInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'MessagingServiceSids' => Serialize::map($messagingServiceSids,function($e) { return $e; }),
-            'FallbackUrl' => $options['fallbackUrl'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'MessagingServiceSidsAction' => $options['messagingServiceSidsAction'],
+            'MessagingServiceSids' =>
+                Serialize::map($messagingServiceSids,function ($e) { return $e; }),
+            'FallbackUrl' =>
+                $options['fallbackUrl'],
+            'CallbackUrl' =>
+                $options['callbackUrl'],
+            'MessagingServiceSidsAction' =>
+                $options['messagingServiceSidsAction'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DomainConfigInstance(
             $this->version,
-            $payload
-            , $this->solution['domainSid']
+            $payload,
+            $this->solution['domainSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

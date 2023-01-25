@@ -40,7 +40,8 @@ use Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList;
  * @property string $url
  * @property array $links
  */
-class ParticipantInstance extends InstanceResource {
+class ParticipantInstance extends InstanceResource
+{
     protected $_messageInteractions;
 
     /**
@@ -52,7 +53,8 @@ class ParticipantInstance extends InstanceResource {
      * @param string $sessionSid The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Participant resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return ParticipantContext Context for this ParticipantInstance
      */
-    protected function proxy(): ParticipantContext {
+    protected function proxy(): ParticipantContext
+    {
         if (!$this->context) {
             $this->context = new ParticipantContext(
                 $this->version,
@@ -100,7 +103,9 @@ class ParticipantInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -110,14 +115,17 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
+    public function fetch(): ParticipantInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the messageInteractions
      */
-    protected function getMessageInteractions(): MessageInteractionList {
+    protected function getMessageInteractions(): MessageInteractionList
+    {
         return $this->proxy()->messageInteractions;
     }
 
@@ -128,7 +136,8 @@ class ParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -146,7 +155,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

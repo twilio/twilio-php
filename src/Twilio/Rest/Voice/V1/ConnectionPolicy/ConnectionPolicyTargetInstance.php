@@ -38,7 +38,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class ConnectionPolicyTargetInstance extends InstanceResource {
+class ConnectionPolicyTargetInstance extends InstanceResource
+{
     /**
      * Initialize the ConnectionPolicyTargetInstance
      *
@@ -47,7 +48,8 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      * @param string $connectionPolicySid The SID of the Connection Policy that owns the Target.
      * @param string $sid The unique string that we created to identify the Target resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $connectionPolicySid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $connectionPolicySid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,7 +76,8 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      *
      * @return ConnectionPolicyTargetContext Context for this ConnectionPolicyTargetInstance
      */
-    protected function proxy(): ConnectionPolicyTargetContext {
+    protected function proxy(): ConnectionPolicyTargetContext
+    {
         if (!$this->context) {
             $this->context = new ConnectionPolicyTargetContext(
                 $this->version,
@@ -92,7 +95,9 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -102,7 +107,9 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      * @return ConnectionPolicyTargetInstance Fetched ConnectionPolicyTargetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConnectionPolicyTargetInstance {
+    public function fetch(): ConnectionPolicyTargetInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -113,7 +120,9 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      * @return ConnectionPolicyTargetInstance Updated ConnectionPolicyTargetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConnectionPolicyTargetInstance {
+    public function update(array $options = []): ConnectionPolicyTargetInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -124,7 +133,8 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +152,8 @@ class ConnectionPolicyTargetInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

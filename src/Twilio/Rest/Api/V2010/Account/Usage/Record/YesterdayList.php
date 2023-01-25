@@ -24,20 +24,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class YesterdayList extends ListResource {
+class YesterdayList extends ListResource
+    {
     /**
      * Construct the YesterdayList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Usage/Records/Yesterday.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Usage/Records/Yesterday.json';
     }
 
     /**
@@ -56,7 +66,8 @@ class YesterdayList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return YesterdayInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +90,8 @@ class YesterdayList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,14 +108,24 @@ class YesterdayList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return YesterdayPage Page of YesterdayInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): YesterdayPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): YesterdayPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Category' => $options['category'],
-            'StartDate' => Serialize::iso8601Date($options['startDate']),
-            'EndDate' => Serialize::iso8601Date($options['endDate']),
-            'IncludeSubaccounts' => Serialize::booleanToString($options['includeSubaccounts']),
+            'Category' =>
+                $options['category'],
+            'StartDate' =>
+                Serialize::iso8601Date($options['startDate']),
+            'EndDate' =>
+                Serialize::iso8601Date($options['endDate']),
+            'IncludeSubaccounts' =>
+                Serialize::booleanToString($options['includeSubaccounts']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -121,7 +143,8 @@ class YesterdayList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return YesterdayPage Page of YesterdayInstance
      */
-    public function getPage(string $targetUrl): YesterdayPage {
+    public function getPage(string $targetUrl): YesterdayPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -136,7 +159,8 @@ class YesterdayList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.YesterdayList]';
     }
 }

@@ -49,7 +49,8 @@ use Twilio\Rest\Autopilot\V1\Assistant\DialogueList;
  * @property string $callbackUrl
  * @property string $callbackEvents
  */
-class AssistantInstance extends InstanceResource {
+class AssistantInstance extends InstanceResource
+{
     protected $_fieldTypes;
     protected $_modelBuilds;
     protected $_queries;
@@ -66,7 +67,8 @@ class AssistantInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the Assistant resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -96,7 +98,8 @@ class AssistantInstance extends InstanceResource {
      *
      * @return AssistantContext Context for this AssistantInstance
      */
-    protected function proxy(): AssistantContext {
+    protected function proxy(): AssistantContext
+    {
         if (!$this->context) {
             $this->context = new AssistantContext(
                 $this->version,
@@ -113,7 +116,9 @@ class AssistantInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -123,7 +128,9 @@ class AssistantInstance extends InstanceResource {
      * @return AssistantInstance Fetched AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssistantInstance {
+    public function fetch(): AssistantInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -134,63 +141,73 @@ class AssistantInstance extends InstanceResource {
      * @return AssistantInstance Updated AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AssistantInstance {
+    public function update(array $options = []): AssistantInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the fieldTypes
      */
-    protected function getFieldTypes(): FieldTypeList {
+    protected function getFieldTypes(): FieldTypeList
+    {
         return $this->proxy()->fieldTypes;
     }
 
     /**
      * Access the modelBuilds
      */
-    protected function getModelBuilds(): ModelBuildList {
+    protected function getModelBuilds(): ModelBuildList
+    {
         return $this->proxy()->modelBuilds;
     }
 
     /**
      * Access the queries
      */
-    protected function getQueries(): QueryList {
+    protected function getQueries(): QueryList
+    {
         return $this->proxy()->queries;
     }
 
     /**
      * Access the webhooks
      */
-    protected function getWebhooks(): WebhookList {
+    protected function getWebhooks(): WebhookList
+    {
         return $this->proxy()->webhooks;
     }
 
     /**
      * Access the tasks
      */
-    protected function getTasks(): TaskList {
+    protected function getTasks(): TaskList
+    {
         return $this->proxy()->tasks;
     }
 
     /**
      * Access the defaults
      */
-    protected function getDefaults(): DefaultsList {
+    protected function getDefaults(): DefaultsList
+    {
         return $this->proxy()->defaults;
     }
 
     /**
      * Access the styleSheet
      */
-    protected function getStyleSheet(): StyleSheetList {
+    protected function getStyleSheet(): StyleSheetList
+    {
         return $this->proxy()->styleSheet;
     }
 
     /**
      * Access the dialogues
      */
-    protected function getDialogues(): DialogueList {
+    protected function getDialogues(): DialogueList
+    {
         return $this->proxy()->dialogues;
     }
 
@@ -201,7 +218,8 @@ class AssistantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -219,7 +237,8 @@ class AssistantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class FormList extends ListResource {
+class FormList extends ListResource
+    {
     /**
      * Construct the FormList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class FormList extends ListResource {
      *
      * @param string $formType The Type of this Form. Currently only `form-push` is supported.
      */
-    public function getContext(string $formType): FormContext {
-        return new FormContext($this->version, $formType);
+    public function getContext(
+        string $formType
+        
+    ): FormContext
+    {
+        return new FormContext(
+            $this->version,
+            $formType
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class FormList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.FormList]';
     }
 }

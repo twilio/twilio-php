@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class FieldValuePage extends Page {
+class FieldValuePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class FieldValuePage extends Page {
      * @param array $payload Payload response from the API
      * @return FieldValueInstance \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueInstance
      */
-    public function buildInstance(array $payload): FieldValueInstance {
+    public function buildInstance(array $payload): FieldValueInstance
+    {
         return new FieldValueInstance($this->version, $payload, $this->solution['assistantSid'], $this->solution['fieldTypeSid']);
     }
 
@@ -45,7 +48,8 @@ class FieldValuePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.FieldValuePage]';
     }
 }

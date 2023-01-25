@@ -33,7 +33,8 @@ use Twilio\Version;
  * @property string $method
  * @property string $url
  */
-class WebhookInstance extends InstanceResource {
+class WebhookInstance extends InstanceResource
+{
     /**
      * Initialize the WebhookInstance
      *
@@ -41,7 +42,8 @@ class WebhookInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $chatServiceSid The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid) {
+    public function __construct(Version $version, array $payload, string $chatServiceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,7 +66,8 @@ class WebhookInstance extends InstanceResource {
      *
      * @return WebhookContext Context for this WebhookInstance
      */
-    protected function proxy(): WebhookContext {
+    protected function proxy(): WebhookContext
+    {
         if (!$this->context) {
             $this->context = new WebhookContext(
                 $this->version,
@@ -81,7 +84,9 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): WebhookInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -92,7 +97,9 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -103,7 +110,8 @@ class WebhookInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -121,7 +129,8 @@ class WebhookInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

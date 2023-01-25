@@ -18,33 +18,54 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RateLimitOptions {
+abstract class RateLimitOptions
+{
     /**
-     * @param string $description Description of this Rate Limit 
+     * @param string $description Description of this Rate Limit
      * @return CreateRateLimitOptions Options builder
      */
-    public static function create(string $description = Values::NONE): CreateRateLimitOptions {
-        return new CreateRateLimitOptions($description);
+    public static function create(
+        
+        string $description = Values::NONE
+
+    ): CreateRateLimitOptions
+    {
+        return new CreateRateLimitOptions(
+            $description
+        );
     }
 
 
 
 
     /**
-     * @param string $description Description of this Rate Limit 
+     * @param string $description Description of this Rate Limit
      * @return UpdateRateLimitOptions Options builder
      */
-    public static function update(string $description = Values::NONE): UpdateRateLimitOptions {
-        return new UpdateRateLimitOptions($description);
+    public static function update(
+        
+        string $description = Values::NONE
+
+    ): UpdateRateLimitOptions
+    {
+        return new UpdateRateLimitOptions(
+            $description
+        );
     }
 
 }
 
-class CreateRateLimitOptions extends Options {
+class CreateRateLimitOptions extends Options
+    {
     /**
      * @param string $description Description of this Rate Limit
      */
-    public function __construct(string $description = Values::NONE) {
+    public function __construct(
+        
+        string $description = Values::NONE
+
+    )
+    {
         $this->options['description'] = $description;
     }
 
@@ -54,7 +75,8 @@ class CreateRateLimitOptions extends Options {
      * @param string $description Description of this Rate Limit
      * @return $this Fluent Builder
      */
-    public function setDescription(string $description): self {
+    public function setDescription(string $description): self
+    {
         $this->options['description'] = $description;
         return $this;
     }
@@ -64,7 +86,8 @@ class CreateRateLimitOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.CreateRateLimitOptions ' . $options . ']';
     }
@@ -73,11 +96,17 @@ class CreateRateLimitOptions extends Options {
 
 
 
-class UpdateRateLimitOptions extends Options {
+class UpdateRateLimitOptions extends Options
+    {
     /**
      * @param string $description Description of this Rate Limit
      */
-    public function __construct(string $description = Values::NONE) {
+    public function __construct(
+        
+        string $description = Values::NONE
+
+    )
+    {
         $this->options['description'] = $description;
     }
 
@@ -87,7 +116,8 @@ class UpdateRateLimitOptions extends Options {
      * @param string $description Description of this Rate Limit
      * @return $this Fluent Builder
      */
-    public function setDescription(string $description): self {
+    public function setDescription(string $description): self
+    {
         $this->options['description'] = $description;
         return $this;
     }
@@ -97,7 +127,8 @@ class UpdateRateLimitOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.UpdateRateLimitOptions ' . $options . ']';
     }

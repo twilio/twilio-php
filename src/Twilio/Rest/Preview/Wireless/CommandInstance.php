@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class CommandInstance extends InstanceResource {
+class CommandInstance extends InstanceResource
+{
     /**
      * Initialize the CommandInstance
      *
@@ -45,7 +46,8 @@ class CommandInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class CommandInstance extends InstanceResource {
      *
      * @return CommandContext Context for this CommandInstance
      */
-    protected function proxy(): CommandContext {
+    protected function proxy(): CommandContext
+    {
         if (!$this->context) {
             $this->context = new CommandContext(
                 $this->version,
@@ -89,7 +92,9 @@ class CommandInstance extends InstanceResource {
      * @return CommandInstance Fetched CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CommandInstance {
+    public function fetch(): CommandInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +105,8 @@ class CommandInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -118,7 +124,8 @@ class CommandInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

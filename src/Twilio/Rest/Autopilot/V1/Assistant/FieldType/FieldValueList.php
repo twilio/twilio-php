@@ -24,7 +24,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class FieldValueList extends ListResource {
+class FieldValueList extends ListResource
+    {
     /**
      * Construct the FieldValueList
      *
@@ -32,13 +33,28 @@ class FieldValueList extends ListResource {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the FieldType associated with the new resource.
      * @param string $fieldTypeSid The SID of the Field Type associated with the Field Value.
      */
-    public function __construct(Version $version, string $assistantSid , string $fieldTypeSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        ,
+        string $fieldTypeSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, 'fieldTypeSid' => $fieldTypeSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        'fieldTypeSid' =>
+            $fieldTypeSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($fieldTypeSid) . '/FieldValues';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/FieldTypes/' . \rawurlencode($fieldTypeSid)
+        .'/FieldValues';
     }
 
     /**
@@ -50,24 +66,30 @@ class FieldValueList extends ListResource {
      * @return FieldValueInstance Created FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $language, string $value, array $options = []): FieldValueInstance {
+    public function create(string $language, string $value, array $options = []): FieldValueInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Language' => $language,
-            'Value' => $value,
-            'SynonymOf' => $options['synonymOf'],
+            'Language' =>
+                $language,
+            'Value' =>
+                $value,
+            'SynonymOf' =>
+                $options['synonymOf'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FieldValueInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['fieldTypeSid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['fieldTypeSid'],
         );
     }
+
 
     /**
      * Reads FieldValueInstance records from the API as a list.
@@ -85,7 +107,8 @@ class FieldValueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FieldValueInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -108,7 +131,8 @@ class FieldValueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -125,11 +149,18 @@ class FieldValueList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FieldValuePage Page of FieldValueInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldValuePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): FieldValuePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Language' => $options['language'],
+            'Language' =>
+                $options['language'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -147,7 +178,8 @@ class FieldValueList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FieldValuePage Page of FieldValueInstance
      */
-    public function getPage(string $targetUrl): FieldValuePage {
+    public function getPage(string $targetUrl): FieldValuePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -162,8 +194,17 @@ class FieldValueList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the FieldValue resource to delete.
      */
-    public function getContext(string $sid): FieldValueContext {
-        return new FieldValueContext($this->version, $this->solution['assistantSid'], $this->solution['fieldTypeSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): FieldValueContext
+    {
+        return new FieldValueContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $this->solution['fieldTypeSid'],
+            $sid
+        );
     }
 
     /**
@@ -171,7 +212,8 @@ class FieldValueList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.FieldValueList]';
     }
 }

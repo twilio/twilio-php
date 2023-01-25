@@ -18,35 +18,67 @@ namespace Twilio\Rest\Preview\Wireless;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CommandOptions {
+abstract class CommandOptions
+{
     /**
-     * @param string $device  
-     * @param string $sim  
-     * @param string $callbackMethod  
-     * @param string $callbackUrl  
-     * @param string $commandMode  
-     * @param string $includeSid  
+     * @param string $device 
+     * @param string $sim 
+     * @param string $callbackMethod 
+     * @param string $callbackUrl 
+     * @param string $commandMode 
+     * @param string $includeSid 
      * @return CreateCommandOptions Options builder
      */
-    public static function create(string $device = Values::NONE, string $sim = Values::NONE, string $callbackMethod = Values::NONE, string $callbackUrl = Values::NONE, string $commandMode = Values::NONE, string $includeSid = Values::NONE): CreateCommandOptions {
-        return new CreateCommandOptions($device, $sim, $callbackMethod, $callbackUrl, $commandMode, $includeSid);
+    public static function create(
+        
+        string $device = Values::NONE,
+        string $sim = Values::NONE,
+        string $callbackMethod = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $commandMode = Values::NONE,
+        string $includeSid = Values::NONE
+
+    ): CreateCommandOptions
+    {
+        return new CreateCommandOptions(
+            $device,
+            $sim,
+            $callbackMethod,
+            $callbackUrl,
+            $commandMode,
+            $includeSid
+        );
     }
 
 
     /**
-     * @param string $device  
-     * @param string $sim  
-     * @param string $status  
-     * @param string $direction  
+     * @param string $device 
+     * @param string $sim 
+     * @param string $status 
+     * @param string $direction 
      * @return ReadCommandOptions Options builder
      */
-    public static function read(string $device = Values::NONE, string $sim = Values::NONE, string $status = Values::NONE, string $direction = Values::NONE): ReadCommandOptions {
-        return new ReadCommandOptions($device, $sim, $status, $direction);
+    public static function read(
+        
+        string $device = Values::NONE,
+        string $sim = Values::NONE,
+        string $status = Values::NONE,
+        string $direction = Values::NONE
+
+    ): ReadCommandOptions
+    {
+        return new ReadCommandOptions(
+            $device,
+            $sim,
+            $status,
+            $direction
+        );
     }
 
 }
 
-class CreateCommandOptions extends Options {
+class CreateCommandOptions extends Options
+    {
     /**
      * @param string $device 
      * @param string $sim 
@@ -55,7 +87,17 @@ class CreateCommandOptions extends Options {
      * @param string $commandMode 
      * @param string $includeSid 
      */
-    public function __construct(string $device = Values::NONE, string $sim = Values::NONE, string $callbackMethod = Values::NONE, string $callbackUrl = Values::NONE, string $commandMode = Values::NONE, string $includeSid = Values::NONE) {
+    public function __construct(
+        
+        string $device = Values::NONE,
+        string $sim = Values::NONE,
+        string $callbackMethod = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $commandMode = Values::NONE,
+        string $includeSid = Values::NONE
+
+    )
+    {
         $this->options['device'] = $device;
         $this->options['sim'] = $sim;
         $this->options['callbackMethod'] = $callbackMethod;
@@ -70,7 +112,8 @@ class CreateCommandOptions extends Options {
      * @param string $device 
      * @return $this Fluent Builder
      */
-    public function setDevice(string $device): self {
+    public function setDevice(string $device): self
+    {
         $this->options['device'] = $device;
         return $this;
     }
@@ -81,7 +124,8 @@ class CreateCommandOptions extends Options {
      * @param string $sim 
      * @return $this Fluent Builder
      */
-    public function setSim(string $sim): self {
+    public function setSim(string $sim): self
+    {
         $this->options['sim'] = $sim;
         return $this;
     }
@@ -92,7 +136,8 @@ class CreateCommandOptions extends Options {
      * @param string $callbackMethod 
      * @return $this Fluent Builder
      */
-    public function setCallbackMethod(string $callbackMethod): self {
+    public function setCallbackMethod(string $callbackMethod): self
+    {
         $this->options['callbackMethod'] = $callbackMethod;
         return $this;
     }
@@ -103,7 +148,8 @@ class CreateCommandOptions extends Options {
      * @param string $callbackUrl 
      * @return $this Fluent Builder
      */
-    public function setCallbackUrl(string $callbackUrl): self {
+    public function setCallbackUrl(string $callbackUrl): self
+    {
         $this->options['callbackUrl'] = $callbackUrl;
         return $this;
     }
@@ -114,7 +160,8 @@ class CreateCommandOptions extends Options {
      * @param string $commandMode 
      * @return $this Fluent Builder
      */
-    public function setCommandMode(string $commandMode): self {
+    public function setCommandMode(string $commandMode): self
+    {
         $this->options['commandMode'] = $commandMode;
         return $this;
     }
@@ -125,7 +172,8 @@ class CreateCommandOptions extends Options {
      * @param string $includeSid 
      * @return $this Fluent Builder
      */
-    public function setIncludeSid(string $includeSid): self {
+    public function setIncludeSid(string $includeSid): self
+    {
         $this->options['includeSid'] = $includeSid;
         return $this;
     }
@@ -135,21 +183,31 @@ class CreateCommandOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Wireless.CreateCommandOptions ' . $options . ']';
     }
 }
 
 
-class ReadCommandOptions extends Options {
+class ReadCommandOptions extends Options
+    {
     /**
      * @param string $device 
      * @param string $sim 
      * @param string $status 
      * @param string $direction 
      */
-    public function __construct(string $device = Values::NONE, string $sim = Values::NONE, string $status = Values::NONE, string $direction = Values::NONE) {
+    public function __construct(
+        
+        string $device = Values::NONE,
+        string $sim = Values::NONE,
+        string $status = Values::NONE,
+        string $direction = Values::NONE
+
+    )
+    {
         $this->options['device'] = $device;
         $this->options['sim'] = $sim;
         $this->options['status'] = $status;
@@ -162,7 +220,8 @@ class ReadCommandOptions extends Options {
      * @param string $device 
      * @return $this Fluent Builder
      */
-    public function setDevice(string $device): self {
+    public function setDevice(string $device): self
+    {
         $this->options['device'] = $device;
         return $this;
     }
@@ -173,7 +232,8 @@ class ReadCommandOptions extends Options {
      * @param string $sim 
      * @return $this Fluent Builder
      */
-    public function setSim(string $sim): self {
+    public function setSim(string $sim): self
+    {
         $this->options['sim'] = $sim;
         return $this;
     }
@@ -184,7 +244,8 @@ class ReadCommandOptions extends Options {
      * @param string $status 
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -195,7 +256,8 @@ class ReadCommandOptions extends Options {
      * @param string $direction 
      * @return $this Fluent Builder
      */
-    public function setDirection(string $direction): self {
+    public function setDirection(string $direction): self
+    {
         $this->options['direction'] = $direction;
         return $this;
     }
@@ -205,7 +267,8 @@ class ReadCommandOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Wireless.ReadCommandOptions ' . $options . ']';
     }

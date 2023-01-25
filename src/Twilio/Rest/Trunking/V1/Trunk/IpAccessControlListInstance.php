@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class IpAccessControlListInstance extends InstanceResource {
+class IpAccessControlListInstance extends InstanceResource
+{
     /**
      * Initialize the IpAccessControlListInstance
      *
@@ -42,7 +43,8 @@ class IpAccessControlListInstance extends InstanceResource {
      * @param string $trunkSid The SID of the Trunk to associate the IP Access Control List with.
      * @param string $sid The unique string that we created to identify the IpAccessControlList resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $trunkSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $trunkSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -65,7 +67,8 @@ class IpAccessControlListInstance extends InstanceResource {
      *
      * @return IpAccessControlListContext Context for this IpAccessControlListInstance
      */
-    protected function proxy(): IpAccessControlListContext {
+    protected function proxy(): IpAccessControlListContext
+    {
         if (!$this->context) {
             $this->context = new IpAccessControlListContext(
                 $this->version,
@@ -83,7 +86,9 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -93,7 +98,9 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): IpAccessControlListInstance {
+    public function fetch(): IpAccessControlListInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,7 +111,8 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +130,8 @@ class IpAccessControlListInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

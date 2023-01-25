@@ -18,36 +18,60 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class OutgoingCallerIdOptions {
+abstract class OutgoingCallerIdOptions
+{
 
 
     /**
-     * @param string $phoneNumber The phone number of the OutgoingCallerId resources to read. 
-     * @param string $friendlyName The string that identifies the OutgoingCallerId resources to read. 
+     * @param string $phoneNumber The phone number of the OutgoingCallerId resources to read.
+     * @param string $friendlyName The string that identifies the OutgoingCallerId resources to read.
      * @return ReadOutgoingCallerIdOptions Options builder
      */
-    public static function read(string $phoneNumber = Values::NONE, string $friendlyName = Values::NONE): ReadOutgoingCallerIdOptions {
-        return new ReadOutgoingCallerIdOptions($phoneNumber, $friendlyName);
+    public static function read(
+        
+        string $phoneNumber = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): ReadOutgoingCallerIdOptions
+    {
+        return new ReadOutgoingCallerIdOptions(
+            $phoneNumber,
+            $friendlyName
+        );
     }
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return UpdateOutgoingCallerIdOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE): UpdateOutgoingCallerIdOptions {
-        return new UpdateOutgoingCallerIdOptions($friendlyName);
+    public static function update(
+        
+        string $friendlyName = Values::NONE
+
+    ): UpdateOutgoingCallerIdOptions
+    {
+        return new UpdateOutgoingCallerIdOptions(
+            $friendlyName
+        );
     }
 
 }
 
 
 
-class ReadOutgoingCallerIdOptions extends Options {
+class ReadOutgoingCallerIdOptions extends Options
+    {
     /**
      * @param string $phoneNumber The phone number of the OutgoingCallerId resources to read.
      * @param string $friendlyName The string that identifies the OutgoingCallerId resources to read.
      */
-    public function __construct(string $phoneNumber = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $phoneNumber = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['friendlyName'] = $friendlyName;
     }
@@ -58,7 +82,8 @@ class ReadOutgoingCallerIdOptions extends Options {
      * @param string $phoneNumber The phone number of the OutgoingCallerId resources to read.
      * @return $this Fluent Builder
      */
-    public function setPhoneNumber(string $phoneNumber): self {
+    public function setPhoneNumber(string $phoneNumber): self
+    {
         $this->options['phoneNumber'] = $phoneNumber;
         return $this;
     }
@@ -69,7 +94,8 @@ class ReadOutgoingCallerIdOptions extends Options {
      * @param string $friendlyName The string that identifies the OutgoingCallerId resources to read.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -79,17 +105,24 @@ class ReadOutgoingCallerIdOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.ReadOutgoingCallerIdOptions ' . $options . ']';
     }
 }
 
-class UpdateOutgoingCallerIdOptions extends Options {
+class UpdateOutgoingCallerIdOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -99,7 +132,8 @@ class UpdateOutgoingCallerIdOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -109,7 +143,8 @@ class UpdateOutgoingCallerIdOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.UpdateOutgoingCallerIdOptions ' . $options . ']';
     }

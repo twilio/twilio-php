@@ -18,39 +18,71 @@ namespace Twilio\Rest\Media\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class PlayerStreamerOptions {
+abstract class PlayerStreamerOptions
+{
     /**
-     * @param bool $video Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`. 
-     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. 
-     * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. 
-     * @param int $maxDuration The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming. 
+     * @param bool $video Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`.
+     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
+     * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
+     * @param int $maxDuration The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
      * @return CreatePlayerStreamerOptions Options builder
      */
-    public static function create(bool $video = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxDuration = Values::NONE): CreatePlayerStreamerOptions {
-        return new CreatePlayerStreamerOptions($video, $statusCallback, $statusCallbackMethod, $maxDuration);
+    public static function create(
+        
+        bool $video = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE,
+        int $maxDuration = Values::NONE
+
+    ): CreatePlayerStreamerOptions
+    {
+        return new CreatePlayerStreamerOptions(
+            $video,
+            $statusCallback,
+            $statusCallbackMethod,
+            $maxDuration
+        );
     }
 
 
     /**
-     * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default. 
-     * @param string $status Status to filter by, with possible values `created`, `started`, `ended`, or `failed`. 
+     * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
+     * @param string $status Status to filter by, with possible values `created`, `started`, `ended`, or `failed`.
      * @return ReadPlayerStreamerOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $status = Values::NONE): ReadPlayerStreamerOptions {
-        return new ReadPlayerStreamerOptions($order, $status);
+    public static function read(
+        
+        string $order = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadPlayerStreamerOptions
+    {
+        return new ReadPlayerStreamerOptions(
+            $order,
+            $status
+        );
     }
 
 
 }
 
-class CreatePlayerStreamerOptions extends Options {
+class CreatePlayerStreamerOptions extends Options
+    {
     /**
      * @param bool $video Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`.
      * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
      * @param int $maxDuration The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
      */
-    public function __construct(bool $video = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxDuration = Values::NONE) {
+    public function __construct(
+        
+        bool $video = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE,
+        int $maxDuration = Values::NONE
+
+    )
+    {
         $this->options['video'] = $video;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
@@ -63,7 +95,8 @@ class CreatePlayerStreamerOptions extends Options {
      * @param bool $video Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`.
      * @return $this Fluent Builder
      */
-    public function setVideo(bool $video): self {
+    public function setVideo(bool $video): self
+    {
         $this->options['video'] = $video;
         return $this;
     }
@@ -74,7 +107,8 @@ class CreatePlayerStreamerOptions extends Options {
      * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -85,7 +119,8 @@ class CreatePlayerStreamerOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self
+    {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -96,7 +131,8 @@ class CreatePlayerStreamerOptions extends Options {
      * @param int $maxDuration The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
      * @return $this Fluent Builder
      */
-    public function setMaxDuration(int $maxDuration): self {
+    public function setMaxDuration(int $maxDuration): self
+    {
         $this->options['maxDuration'] = $maxDuration;
         return $this;
     }
@@ -106,19 +142,27 @@ class CreatePlayerStreamerOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Media.V1.CreatePlayerStreamerOptions ' . $options . ']';
     }
 }
 
 
-class ReadPlayerStreamerOptions extends Options {
+class ReadPlayerStreamerOptions extends Options
+    {
     /**
      * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
      * @param string $status Status to filter by, with possible values `created`, `started`, `ended`, or `failed`.
      */
-    public function __construct(string $order = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $order = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['order'] = $order;
         $this->options['status'] = $status;
     }
@@ -129,7 +173,8 @@ class ReadPlayerStreamerOptions extends Options {
      * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
      * @return $this Fluent Builder
      */
-    public function setOrder(string $order): self {
+    public function setOrder(string $order): self
+    {
         $this->options['order'] = $order;
         return $this;
     }
@@ -140,7 +185,8 @@ class ReadPlayerStreamerOptions extends Options {
      * @param string $status Status to filter by, with possible values `created`, `started`, `ended`, or `failed`.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -150,7 +196,8 @@ class ReadPlayerStreamerOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Media.V1.ReadPlayerStreamerOptions ' . $options . ']';
     }

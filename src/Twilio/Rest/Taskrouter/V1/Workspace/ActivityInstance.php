@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property array $links
  */
-class ActivityInstance extends InstanceResource {
+class ActivityInstance extends InstanceResource
+{
     /**
      * Initialize the ActivityInstance
      *
@@ -45,7 +46,8 @@ class ActivityInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace that the new Activity belongs to.
      * @param string $sid The SID of the Activity resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class ActivityInstance extends InstanceResource {
      *
      * @return ActivityContext Context for this ActivityInstance
      */
-    protected function proxy(): ActivityContext {
+    protected function proxy(): ActivityContext
+    {
         if (!$this->context) {
             $this->context = new ActivityContext(
                 $this->version,
@@ -88,7 +91,9 @@ class ActivityInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -98,7 +103,9 @@ class ActivityInstance extends InstanceResource {
      * @return ActivityInstance Fetched ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ActivityInstance {
+    public function fetch(): ActivityInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,7 +116,9 @@ class ActivityInstance extends InstanceResource {
      * @return ActivityInstance Updated ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ActivityInstance {
+    public function update(array $options = []): ActivityInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -120,7 +129,8 @@ class ActivityInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +148,8 @@ class ActivityInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

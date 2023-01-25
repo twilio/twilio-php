@@ -26,7 +26,8 @@ use Twilio\Version;
 /**
  * @property array[] $usAppToPersonUsecases
  */
-class UsAppToPersonUsecaseInstance extends InstanceResource {
+class UsAppToPersonUsecaseInstance extends InstanceResource
+{
     /**
      * Initialize the UsAppToPersonUsecaseInstance
      *
@@ -34,7 +35,8 @@ class UsAppToPersonUsecaseInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from.
      */
-    public function __construct(Version $version, array $payload, string $messagingServiceSid) {
+    public function __construct(Version $version, array $payload, string $messagingServiceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -52,7 +54,8 @@ class UsAppToPersonUsecaseInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -70,7 +73,8 @@ class UsAppToPersonUsecaseInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.UsAppToPersonUsecaseInstance]';
     }
 }

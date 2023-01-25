@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class UserDefinedMessageSubscriptionContext extends InstanceContext {
+class UserDefinedMessageSubscriptionContext extends InstanceContext
+    {
     /**
      * Initialize the UserDefinedMessageSubscriptionContext
      *
@@ -31,13 +32,29 @@ class UserDefinedMessageSubscriptionContext extends InstanceContext {
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages.
      * @param string $sid The SID that uniquely identifies this User Defined Message Subscription.
      */
-    public function __construct(Version $version, $accountSid , $callSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $callSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'callSid' => $callSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'callSid' =>
+            $callSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/UserDefinedMessageSubscriptions/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/UserDefinedMessageSubscriptions/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -46,16 +63,20 @@ class UserDefinedMessageSubscriptionContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

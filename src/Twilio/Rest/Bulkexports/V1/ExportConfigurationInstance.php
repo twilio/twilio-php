@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property string $resourceType
  * @property string $url
  */
-class ExportConfigurationInstance extends InstanceResource {
+class ExportConfigurationInstance extends InstanceResource
+{
     /**
      * Initialize the ExportConfigurationInstance
      *
@@ -39,7 +40,8 @@ class ExportConfigurationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      */
-    public function __construct(Version $version, array $payload, string $resourceType = null) {
+    public function __construct(Version $version, array $payload, string $resourceType = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class ExportConfigurationInstance extends InstanceResource {
      *
      * @return ExportConfigurationContext Context for this ExportConfigurationInstance
      */
-    protected function proxy(): ExportConfigurationContext {
+    protected function proxy(): ExportConfigurationContext
+    {
         if (!$this->context) {
             $this->context = new ExportConfigurationContext(
                 $this->version,
@@ -77,7 +80,9 @@ class ExportConfigurationInstance extends InstanceResource {
      * @return ExportConfigurationInstance Fetched ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ExportConfigurationInstance {
+    public function fetch(): ExportConfigurationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -88,7 +93,9 @@ class ExportConfigurationInstance extends InstanceResource {
      * @return ExportConfigurationInstance Updated ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ExportConfigurationInstance {
+    public function update(array $options = []): ExportConfigurationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -99,7 +106,8 @@ class ExportConfigurationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -117,7 +125,8 @@ class ExportConfigurationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

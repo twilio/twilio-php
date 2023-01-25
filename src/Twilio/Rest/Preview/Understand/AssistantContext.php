@@ -52,7 +52,8 @@ use Twilio\Rest\Preview\Understand\Assistant\DialogueList;
  * @method \Twilio\Rest\Preview\Understand\Assistant\StyleSheetContext styleSheet()
  * @method \Twilio\Rest\Preview\Understand\Assistant\QueryContext queries(string $sid)
  */
-class AssistantContext extends InstanceContext {
+class AssistantContext extends InstanceContext
+    {
     protected $_fieldTypes;
     protected $_queries;
     protected $_tasks;
@@ -68,13 +69,21 @@ class AssistantContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -83,9 +92,12 @@ class AssistantContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the AssistantInstance
@@ -93,15 +105,18 @@ class AssistantContext extends InstanceContext {
      * @return AssistantInstance Fetched AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssistantInstance {
+    public function fetch(): AssistantInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssistantInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the AssistantInstance
@@ -110,37 +125,49 @@ class AssistantContext extends InstanceContext {
      * @return AssistantInstance Updated AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AssistantInstance {
+    public function update(array $options = []): AssistantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'LogQueries' => Serialize::booleanToString($options['logQueries']),
-            'UniqueName' => $options['uniqueName'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'CallbackEvents' => $options['callbackEvents'],
-            'FallbackActions' => Serialize::jsonObject($options['fallbackActions']),
-            'InitiationActions' => Serialize::jsonObject($options['initiationActions']),
-            'StyleSheet' => Serialize::jsonObject($options['styleSheet']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'LogQueries' =>
+                Serialize::booleanToString($options['logQueries']),
+            'UniqueName' =>
+                $options['uniqueName'],
+            'CallbackUrl' =>
+                $options['callbackUrl'],
+            'CallbackEvents' =>
+                $options['callbackEvents'],
+            'FallbackActions' =>
+                Serialize::jsonObject($options['fallbackActions']),
+            'InitiationActions' =>
+                Serialize::jsonObject($options['initiationActions']),
+            'StyleSheet' =>
+                Serialize::jsonObject($options['styleSheet']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AssistantInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the fieldTypes
      */
-    protected function getFieldTypes(): FieldTypeList {
+    protected function getFieldTypes(): FieldTypeList
+    {
         if (!$this->_fieldTypes) {
             $this->_fieldTypes = new FieldTypeList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -150,11 +177,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the queries
      */
-    protected function getQueries(): QueryList {
+    protected function getQueries(): QueryList
+    {
         if (!$this->_queries) {
             $this->_queries = new QueryList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -164,11 +192,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the tasks
      */
-    protected function getTasks(): TaskList {
+    protected function getTasks(): TaskList
+    {
         if (!$this->_tasks) {
             $this->_tasks = new TaskList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -178,11 +207,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the modelBuilds
      */
-    protected function getModelBuilds(): ModelBuildList {
+    protected function getModelBuilds(): ModelBuildList
+    {
         if (!$this->_modelBuilds) {
             $this->_modelBuilds = new ModelBuildList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -192,11 +222,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the assistantFallbackActions
      */
-    protected function getAssistantFallbackActions(): AssistantFallbackActionsList {
+    protected function getAssistantFallbackActions(): AssistantFallbackActionsList
+    {
         if (!$this->_assistantFallbackActions) {
             $this->_assistantFallbackActions = new AssistantFallbackActionsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -206,11 +237,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the assistantInitiationActions
      */
-    protected function getAssistantInitiationActions(): AssistantInitiationActionsList {
+    protected function getAssistantInitiationActions(): AssistantInitiationActionsList
+    {
         if (!$this->_assistantInitiationActions) {
             $this->_assistantInitiationActions = new AssistantInitiationActionsList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -220,11 +252,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the styleSheet
      */
-    protected function getStyleSheet(): StyleSheetList {
+    protected function getStyleSheet(): StyleSheetList
+    {
         if (!$this->_styleSheet) {
             $this->_styleSheet = new StyleSheetList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -234,11 +267,12 @@ class AssistantContext extends InstanceContext {
     /**
      * Access the dialogues
      */
-    protected function getDialogues(): DialogueList {
+    protected function getDialogues(): DialogueList
+    {
         if (!$this->_dialogues) {
             $this->_dialogues = new DialogueList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -252,7 +286,8 @@ class AssistantContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -269,7 +304,8 @@ class AssistantContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -283,7 +319,8 @@ class AssistantContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

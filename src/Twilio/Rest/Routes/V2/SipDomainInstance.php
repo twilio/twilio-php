@@ -35,7 +35,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class SipDomainInstance extends InstanceResource {
+class SipDomainInstance extends InstanceResource
+{
     /**
      * Initialize the SipDomainInstance
      *
@@ -43,7 +44,8 @@ class SipDomainInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sipDomain 
      */
-    public function __construct(Version $version, array $payload, string $sipDomain = null) {
+    public function __construct(Version $version, array $payload, string $sipDomain = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class SipDomainInstance extends InstanceResource {
      *
      * @return SipDomainContext Context for this SipDomainInstance
      */
-    protected function proxy(): SipDomainContext {
+    protected function proxy(): SipDomainContext
+    {
         if (!$this->context) {
             $this->context = new SipDomainContext(
                 $this->version,
@@ -84,7 +87,9 @@ class SipDomainInstance extends InstanceResource {
      * @return SipDomainInstance Fetched SipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SipDomainInstance {
+    public function fetch(): SipDomainInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -95,7 +100,9 @@ class SipDomainInstance extends InstanceResource {
      * @return SipDomainInstance Updated SipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SipDomainInstance {
+    public function update(array $options = []): SipDomainInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -106,7 +113,8 @@ class SipDomainInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -124,7 +132,8 @@ class SipDomainInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

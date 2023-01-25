@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class ConferencePage extends Page {
+class ConferencePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class ConferencePage extends Page {
      * @param array $payload Payload response from the API
      * @return ConferenceInstance \Twilio\Rest\Insights\V1\ConferenceInstance
      */
-    public function buildInstance(array $payload): ConferenceInstance {
+    public function buildInstance(array $payload): ConferenceInstance
+    {
         return new ConferenceInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class ConferencePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.ConferencePage]';
     }
 }

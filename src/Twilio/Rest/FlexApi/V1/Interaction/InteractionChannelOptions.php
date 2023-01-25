@@ -18,26 +18,40 @@ namespace Twilio\Rest\FlexApi\V1\Interaction;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class InteractionChannelOptions {
+abstract class InteractionChannelOptions
+{
 
 
     /**
-     * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`. 
+     * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
      * @return UpdateInteractionChannelOptions Options builder
      */
-    public static function update(array $routing = Values::ARRAY_NONE): UpdateInteractionChannelOptions {
-        return new UpdateInteractionChannelOptions($routing);
+    public static function update(
+        
+        array $routing = Values::ARRAY_NONE
+
+    ): UpdateInteractionChannelOptions
+    {
+        return new UpdateInteractionChannelOptions(
+            $routing
+        );
     }
 
 }
 
 
 
-class UpdateInteractionChannelOptions extends Options {
+class UpdateInteractionChannelOptions extends Options
+    {
     /**
      * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
      */
-    public function __construct(array $routing = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $routing = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['routing'] = $routing;
     }
 
@@ -47,7 +61,8 @@ class UpdateInteractionChannelOptions extends Options {
      * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
      * @return $this Fluent Builder
      */
-    public function setRouting(array $routing): self {
+    public function setRouting(array $routing): self
+    {
         $this->options['routing'] = $routing;
         return $this;
     }
@@ -57,7 +72,8 @@ class UpdateInteractionChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateInteractionChannelOptions ' . $options . ']';
     }

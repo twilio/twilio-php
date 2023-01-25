@@ -18,22 +18,36 @@ namespace Twilio\Rest\Insights\V1\Call;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class EventOptions {
+abstract class EventOptions
+{
     /**
-     * @param string $edge  
+     * @param string $edge 
      * @return ReadEventOptions Options builder
      */
-    public static function read(string $edge = Values::NONE): ReadEventOptions {
-        return new ReadEventOptions($edge);
+    public static function read(
+        
+        string $edge = Values::NONE
+
+    ): ReadEventOptions
+    {
+        return new ReadEventOptions(
+            $edge
+        );
     }
 
 }
 
-class ReadEventOptions extends Options {
+class ReadEventOptions extends Options
+    {
     /**
      * @param string $edge 
      */
-    public function __construct(string $edge = Values::NONE) {
+    public function __construct(
+        
+        string $edge = Values::NONE
+
+    )
+    {
         $this->options['edge'] = $edge;
     }
 
@@ -43,7 +57,8 @@ class ReadEventOptions extends Options {
      * @param string $edge 
      * @return $this Fluent Builder
      */
-    public function setEdge(string $edge): self {
+    public function setEdge(string $edge): self
+    {
         $this->options['edge'] = $edge;
         return $this;
     }
@@ -53,7 +68,8 @@ class ReadEventOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.ReadEventOptions ' . $options . ']';
     }

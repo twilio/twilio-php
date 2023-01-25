@@ -23,7 +23,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SiprecContext extends InstanceContext {
+class SiprecContext extends InstanceContext
+    {
     /**
      * Initialize the SiprecContext
      *
@@ -32,44 +33,65 @@ class SiprecContext extends InstanceContext {
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with.
      * @param string $sid The SID of the Siprec resource, or the `name` used when creating the resource
      */
-    public function __construct(Version $version, $accountSid , $callSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $callSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'callSid' => $callSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'callSid' =>
+            $callSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Siprec/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/Siprec/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
      * Update the SiprecInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return SiprecInstance Updated SiprecInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): SiprecInstance {
+    public function update(string $status): SiprecInstance
+    {
+
         $data = Values::of([
-            'Status' => $status,
+            'Status' =>
+                $status,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SiprecInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

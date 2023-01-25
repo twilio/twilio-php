@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class RoomList extends ListResource {
+class RoomList extends ListResource
+    {
     /**
      * Construct the RoomList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Video/Rooms';
     }
@@ -55,7 +59,8 @@ class RoomList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RoomInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +83,8 @@ class RoomList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,15 +101,26 @@ class RoomList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RoomPage Page of RoomInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RoomPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): RoomPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'RoomType' => $options['roomType'],
-            'Codec' => $options['codec'],
-            'RoomName' => $options['roomName'],
-            'CreatedAfter' => Serialize::iso8601DateTime($options['createdAfter']),
-            'CreatedBefore' => Serialize::iso8601DateTime($options['createdBefore']),
+            'RoomType' =>
+                $options['roomType'],
+            'Codec' =>
+                $options['codec'],
+            'RoomName' =>
+                $options['roomName'],
+            'CreatedAfter' =>
+                Serialize::iso8601DateTime($options['createdAfter']),
+            'CreatedBefore' =>
+                Serialize::iso8601DateTime($options['createdBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -121,7 +138,8 @@ class RoomList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RoomPage Page of RoomInstance
      */
-    public function getPage(string $targetUrl): RoomPage {
+    public function getPage(string $targetUrl): RoomPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -136,8 +154,15 @@ class RoomList extends ListResource {
      *
      * @param string $roomSid The SID of the Room resource.
      */
-    public function getContext(string $roomSid): RoomContext {
-        return new RoomContext($this->version, $roomSid);
+    public function getContext(
+        string $roomSid
+        
+    ): RoomContext
+    {
+        return new RoomContext(
+            $this->version,
+            $roomSid
+        );
     }
 
     /**
@@ -145,7 +170,8 @@ class RoomList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.RoomList]';
     }
 }

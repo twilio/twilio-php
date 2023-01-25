@@ -29,7 +29,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 /**
  * @property TaskQueuesStatisticsList $statistics
  */
-class TaskQueueList extends ListResource {
+class TaskQueueList extends ListResource
+    {
     protected $_statistics = null;
 
     /**
@@ -38,13 +39,22 @@ class TaskQueueList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that the new TaskQueue belongs to.
      */
-    public function __construct(Version $version, string $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/TaskQueues';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/TaskQueues';
     }
 
     /**
@@ -55,26 +65,35 @@ class TaskQueueList extends ListResource {
      * @return TaskQueueInstance Created TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): TaskQueueInstance {
+    public function create(string $friendlyName, array $options = []): TaskQueueInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'TargetWorkers' => $options['targetWorkers'],
-            'MaxReservedWorkers' => $options['maxReservedWorkers'],
-            'TaskOrder' => $options['taskOrder'],
-            'ReservationActivitySid' => $options['reservationActivitySid'],
-            'AssignmentActivitySid' => $options['assignmentActivitySid'],
+            'FriendlyName' =>
+                $friendlyName,
+            'TargetWorkers' =>
+                $options['targetWorkers'],
+            'MaxReservedWorkers' =>
+                $options['maxReservedWorkers'],
+            'TaskOrder' =>
+                $options['taskOrder'],
+            'ReservationActivitySid' =>
+                $options['reservationActivitySid'],
+            'AssignmentActivitySid' =>
+                $options['assignmentActivitySid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TaskQueueInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
+            $payload,
+            $this->solution['workspaceSid'],
         );
     }
+
 
     /**
      * Reads TaskQueueInstance records from the API as a list.
@@ -92,7 +111,8 @@ class TaskQueueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskQueueInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -115,7 +135,8 @@ class TaskQueueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -132,14 +153,24 @@ class TaskQueueList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TaskQueuePage Page of TaskQueueInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskQueuePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): TaskQueuePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'EvaluateWorkerAttributes' => $options['evaluateWorkerAttributes'],
-            'WorkerSid' => $options['workerSid'],
-            'Ordering' => $options['ordering'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'EvaluateWorkerAttributes' =>
+                $options['evaluateWorkerAttributes'],
+            'WorkerSid' =>
+                $options['workerSid'],
+            'Ordering' =>
+                $options['ordering'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -157,7 +188,8 @@ class TaskQueueList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TaskQueuePage Page of TaskQueueInstance
      */
-    public function getPage(string $targetUrl): TaskQueuePage {
+    public function getPage(string $targetUrl): TaskQueuePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -172,21 +204,30 @@ class TaskQueueList extends ListResource {
      *
      * @param string $sid The SID of the TaskQueue resource to delete.
      */
-    public function getContext(string $sid): TaskQueueContext {
-        return new TaskQueueContext($this->version, $this->solution['workspaceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): TaskQueueContext
+    {
+        return new TaskQueueContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $sid
+        );
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): TaskQueuesStatisticsList {
+    protected function getStatistics(): TaskQueuesStatisticsList
+    {
         if (!$this->_statistics) {
             $this->_statistics = new TaskQueuesStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
+                $this->version,
+                $this->solution['workspaceSid']
+                
             );
         }
-
         return $this->_statistics;
     }
 
@@ -197,7 +238,8 @@ class TaskQueueList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -214,7 +256,8 @@ class TaskQueueList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -228,7 +271,8 @@ class TaskQueueList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.TaskQueueList]';
     }
 }

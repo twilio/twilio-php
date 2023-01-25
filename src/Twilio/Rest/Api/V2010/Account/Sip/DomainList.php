@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class DomainList extends ListResource {
+class DomainList extends ListResource
+    {
     /**
      * Construct the DomainList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SIP/Domains.json';
     }
 
     /**
@@ -49,33 +59,49 @@ class DomainList extends ListResource {
      * @return DomainInstance Created DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $domainName, array $options = []): DomainInstance {
+    public function create(string $domainName, array $options = []): DomainInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'DomainName' => $domainName,
-            'FriendlyName' => $options['friendlyName'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'VoiceStatusCallbackUrl' => $options['voiceStatusCallbackUrl'],
-            'VoiceStatusCallbackMethod' => $options['voiceStatusCallbackMethod'],
-            'SipRegistration' => Serialize::booleanToString($options['sipRegistration']),
-            'EmergencyCallingEnabled' => Serialize::booleanToString($options['emergencyCallingEnabled']),
-            'Secure' => Serialize::booleanToString($options['secure']),
-            'ByocTrunkSid' => $options['byocTrunkSid'],
-            'EmergencyCallerSid' => $options['emergencyCallerSid'],
+            'DomainName' =>
+                $domainName,
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'VoiceUrl' =>
+                $options['voiceUrl'],
+            'VoiceMethod' =>
+                $options['voiceMethod'],
+            'VoiceFallbackUrl' =>
+                $options['voiceFallbackUrl'],
+            'VoiceFallbackMethod' =>
+                $options['voiceFallbackMethod'],
+            'VoiceStatusCallbackUrl' =>
+                $options['voiceStatusCallbackUrl'],
+            'VoiceStatusCallbackMethod' =>
+                $options['voiceStatusCallbackMethod'],
+            'SipRegistration' =>
+                Serialize::booleanToString($options['sipRegistration']),
+            'EmergencyCallingEnabled' =>
+                Serialize::booleanToString($options['emergencyCallingEnabled']),
+            'Secure' =>
+                Serialize::booleanToString($options['secure']),
+            'ByocTrunkSid' =>
+                $options['byocTrunkSid'],
+            'EmergencyCallerSid' =>
+                $options['emergencyCallerSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new DomainInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Reads DomainInstance records from the API as a list.
@@ -92,7 +118,8 @@ class DomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DomainInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -114,7 +141,8 @@ class DomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -131,7 +159,12 @@ class DomainList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DomainPage Page of DomainInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DomainPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): DomainPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -151,7 +184,8 @@ class DomainList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DomainPage Page of DomainInstance
      */
-    public function getPage(string $targetUrl): DomainPage {
+    public function getPage(string $targetUrl): DomainPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -166,8 +200,16 @@ class DomainList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the SipDomain resource to delete.
      */
-    public function getContext(string $sid): DomainContext {
-        return new DomainContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): DomainContext
+    {
+        return new DomainContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -175,7 +217,8 @@ class DomainList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.DomainList]';
     }
 }

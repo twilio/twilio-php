@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class JobPage extends Page {
+class JobPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class JobPage extends Page {
      * @param array $payload Payload response from the API
      * @return JobInstance \Twilio\Rest\Bulkexports\V1\Export\JobInstance
      */
-    public function buildInstance(array $payload): JobInstance {
+    public function buildInstance(array $payload): JobInstance
+    {
         return new JobInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class JobPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Bulkexports.V1.JobPage]';
     }
 }

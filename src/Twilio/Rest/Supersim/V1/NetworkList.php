@@ -23,17 +23,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class NetworkList extends ListResource {
+class NetworkList extends ListResource
+    {
     /**
      * Construct the NetworkList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Networks';
     }
@@ -54,7 +58,8 @@ class NetworkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return NetworkInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -77,7 +82,8 @@ class NetworkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -94,13 +100,22 @@ class NetworkList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return NetworkPage Page of NetworkInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): NetworkPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): NetworkPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'IsoCountry' => $options['isoCountry'],
-            'Mcc' => $options['mcc'],
-            'Mnc' => $options['mnc'],
+            'IsoCountry' =>
+                $options['isoCountry'],
+            'Mcc' =>
+                $options['mcc'],
+            'Mnc' =>
+                $options['mnc'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -118,7 +133,8 @@ class NetworkList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return NetworkPage Page of NetworkInstance
      */
-    public function getPage(string $targetUrl): NetworkPage {
+    public function getPage(string $targetUrl): NetworkPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -133,8 +149,15 @@ class NetworkList extends ListResource {
      *
      * @param string $sid The SID of the Network resource to fetch.
      */
-    public function getContext(string $sid): NetworkContext {
-        return new NetworkContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): NetworkContext
+    {
+        return new NetworkContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -142,7 +165,8 @@ class NetworkList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.NetworkList]';
     }
 }

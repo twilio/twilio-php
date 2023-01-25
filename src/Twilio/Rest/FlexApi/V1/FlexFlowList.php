@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class FlexFlowList extends ListResource {
+class FlexFlowList extends ListResource
+    {
     /**
      * Construct the FlexFlowList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/FlexFlows';
     }
@@ -45,41 +49,61 @@ class FlexFlowList extends ListResource {
      *
      * @param string $friendlyName A descriptive string that you create to describe the Flex Flow resource.
      * @param string $chatServiceSid The SID of the chat service.
-     * @param string $channelType 
+     * @param string $channelType
      * @param array|Options $options Optional Arguments
      * @return FlexFlowInstance Created FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $chatServiceSid, string $channelType, array $options = []): FlexFlowInstance {
+    public function create(string $friendlyName, string $chatServiceSid, string $channelType, array $options = []): FlexFlowInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'ChatServiceSid' => $chatServiceSid,
-            'ChannelType' => $channelType,
-            'ContactIdentity' => $options['contactIdentity'],
-            'Enabled' => Serialize::booleanToString($options['enabled']),
-            'IntegrationType' => $options['integrationType'],
-            'Integration.FlowSid' => $options['integrationFlowSid'],
-            'Integration.Url' => $options['integrationUrl'],
-            'Integration.WorkspaceSid' => $options['integrationWorkspaceSid'],
-            'Integration.WorkflowSid' => $options['integrationWorkflowSid'],
-            'Integration.Channel' => $options['integrationChannel'],
-            'Integration.Timeout' => $options['integrationTimeout'],
-            'Integration.Priority' => $options['integrationPriority'],
-            'Integration.CreationOnMessage' => Serialize::booleanToString($options['integrationCreationOnMessage']),
-            'LongLived' => Serialize::booleanToString($options['longLived']),
-            'JanitorEnabled' => Serialize::booleanToString($options['janitorEnabled']),
-            'Integration.RetryCount' => $options['integrationRetryCount'],
+            'FriendlyName' =>
+                $friendlyName,
+            'ChatServiceSid' =>
+                $chatServiceSid,
+            'ChannelType' =>
+                $channelType,
+            'ContactIdentity' =>
+                $options['contactIdentity'],
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
+            'IntegrationType' =>
+                $options['integrationType'],
+            'Integration.FlowSid' =>
+                $options['integrationFlowSid'],
+            'Integration.Url' =>
+                $options['integrationUrl'],
+            'Integration.WorkspaceSid' =>
+                $options['integrationWorkspaceSid'],
+            'Integration.WorkflowSid' =>
+                $options['integrationWorkflowSid'],
+            'Integration.Channel' =>
+                $options['integrationChannel'],
+            'Integration.Timeout' =>
+                $options['integrationTimeout'],
+            'Integration.Priority' =>
+                $options['integrationPriority'],
+            'Integration.CreationOnMessage' =>
+                Serialize::booleanToString($options['integrationCreationOnMessage']),
+            'LongLived' =>
+                Serialize::booleanToString($options['longLived']),
+            'JanitorEnabled' =>
+                Serialize::booleanToString($options['janitorEnabled']),
+            'Integration.RetryCount' =>
+                $options['integrationRetryCount'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FlexFlowInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads FlexFlowInstance records from the API as a list.
@@ -97,7 +121,8 @@ class FlexFlowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FlexFlowInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -120,7 +145,8 @@ class FlexFlowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -137,11 +163,18 @@ class FlexFlowList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FlexFlowPage Page of FlexFlowInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FlexFlowPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): FlexFlowPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'FriendlyName' => $options['friendlyName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -159,7 +192,8 @@ class FlexFlowList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FlexFlowPage Page of FlexFlowInstance
      */
-    public function getPage(string $targetUrl): FlexFlowPage {
+    public function getPage(string $targetUrl): FlexFlowPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -174,8 +208,15 @@ class FlexFlowList extends ListResource {
      *
      * @param string $sid The SID of the Flex Flow resource to delete.
      */
-    public function getContext(string $sid): FlexFlowContext {
-        return new FlexFlowContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): FlexFlowContext
+    {
+        return new FlexFlowContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -183,7 +224,8 @@ class FlexFlowList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1.FlexFlowList]';
     }
 }

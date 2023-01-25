@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class ConfigurationList extends ListResource {
+class ConfigurationList extends ListResource
+    {
     /**
      * Construct the ConfigurationList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a ConfigurationContext
      */
-    public function getContext(): ConfigurationContext {
-        return new ConfigurationContext($this->version);
+    public function getContext(
+        
+    ): ConfigurationContext
+    {
+        return new ConfigurationContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class ConfigurationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1.ConfigurationList]';
     }
 }

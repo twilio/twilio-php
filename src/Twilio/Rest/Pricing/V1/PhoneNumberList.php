@@ -27,7 +27,8 @@ use Twilio\Rest\Pricing\V1\PhoneNumber\CountryList;
  * @property CountryList $countries
  * @method \Twilio\Rest\Pricing\V1\PhoneNumber\CountryContext countries(string $isoCountry)
  */
-class PhoneNumberList extends ListResource {
+class PhoneNumberList extends ListResource
+    {
     protected $_countries = null;
 
     /**
@@ -35,23 +36,26 @@ class PhoneNumberList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Access the countries
      */
-    protected function getCountries(): CountryList {
+    protected function getCountries(): CountryList
+    {
         if (!$this->_countries) {
             $this->_countries = new CountryList(
                 $this->version
             );
         }
-
         return $this->_countries;
     }
 
@@ -62,7 +66,8 @@ class PhoneNumberList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -79,7 +84,8 @@ class PhoneNumberList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -93,7 +99,8 @@ class PhoneNumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Pricing.V1.PhoneNumberList]';
     }
 }

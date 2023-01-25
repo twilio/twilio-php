@@ -51,7 +51,8 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList;
  * @property string $byocTrunkSid
  * @property string $emergencyCallerSid
  */
-class DomainInstance extends InstanceResource {
+class DomainInstance extends InstanceResource
+{
     protected $_credentialListMappings;
     protected $_ipAccessControlListMappings;
     protected $_auth;
@@ -64,7 +65,8 @@ class DomainInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the SipDomain resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -101,7 +103,8 @@ class DomainInstance extends InstanceResource {
      *
      * @return DomainContext Context for this DomainInstance
      */
-    protected function proxy(): DomainContext {
+    protected function proxy(): DomainContext
+    {
         if (!$this->context) {
             $this->context = new DomainContext(
                 $this->version,
@@ -119,7 +122,9 @@ class DomainInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -129,7 +134,9 @@ class DomainInstance extends InstanceResource {
      * @return DomainInstance Fetched DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DomainInstance {
+    public function fetch(): DomainInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -140,28 +147,33 @@ class DomainInstance extends InstanceResource {
      * @return DomainInstance Updated DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): DomainInstance {
+    public function update(array $options = []): DomainInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the credentialListMappings
      */
-    protected function getCredentialListMappings(): CredentialListMappingList {
+    protected function getCredentialListMappings(): CredentialListMappingList
+    {
         return $this->proxy()->credentialListMappings;
     }
 
     /**
      * Access the ipAccessControlListMappings
      */
-    protected function getIpAccessControlListMappings(): IpAccessControlListMappingList {
+    protected function getIpAccessControlListMappings(): IpAccessControlListMappingList
+    {
         return $this->proxy()->ipAccessControlListMappings;
     }
 
     /**
      * Access the auth
      */
-    protected function getAuth(): AuthTypesList {
+    protected function getAuth(): AuthTypesList
+    {
         return $this->proxy()->auth;
     }
 
@@ -172,7 +184,8 @@ class DomainInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -190,7 +203,8 @@ class DomainInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

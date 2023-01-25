@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ConversationList extends ListResource {
+class ConversationList extends ListResource
+    {
     /**
      * Construct the ConversationList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Conversations';
     }
@@ -47,19 +51,30 @@ class ConversationList extends ListResource {
      * @return ConversationInstance Created ConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ConversationInstance {
+    public function create(array $options = []): ConversationInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'MessagingServiceSid' => $options['messagingServiceSid'],
-            'Attributes' => $options['attributes'],
-            'State' => $options['state'],
-            'Timers.Inactive' => $options['timersInactive'],
-            'Timers.Closed' => $options['timersClosed'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'DateCreated' =>
+                Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' =>
+                Serialize::iso8601DateTime($options['dateUpdated']),
+            'MessagingServiceSid' =>
+                $options['messagingServiceSid'],
+            'Attributes' =>
+                $options['attributes'],
+            'State' =>
+                $options['state'],
+            'Timers.Inactive' =>
+                $options['timersInactive'],
+            'Timers.Closed' =>
+                $options['timersClosed'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -68,9 +83,10 @@ class ConversationList extends ListResource {
 
         return new ConversationInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads ConversationInstance records from the API as a list.
@@ -87,7 +103,8 @@ class ConversationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ConversationInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -109,7 +126,8 @@ class ConversationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -126,7 +144,12 @@ class ConversationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ConversationPage Page of ConversationInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ConversationPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ConversationPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -146,7 +169,8 @@ class ConversationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ConversationPage Page of ConversationInstance
      */
-    public function getPage(string $targetUrl): ConversationPage {
+    public function getPage(string $targetUrl): ConversationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -161,8 +185,15 @@ class ConversationList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.
      */
-    public function getContext(string $sid): ConversationContext {
-        return new ConversationContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): ConversationContext
+    {
+        return new ConversationContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -170,7 +201,8 @@ class ConversationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.ConversationList]';
     }
 }

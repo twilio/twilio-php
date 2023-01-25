@@ -1,5 +1,27 @@
 twilio-php Changelog
 ====================
+[2023-01-25] Version 7.0.0-rc.2
+-------------------------------
+**Library - Chore**
+- [PR #762](https://github.com/twilio/twilio-php/pull/762): remove code smells. Thanks to [@isha689](https://github.com/isha689)!
+
+**Library - Fix**
+- [PR #760](https://github.com/twilio/twilio-php/pull/760): type hint for $capabilities to PhoneNumberCapabilities. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #759](https://github.com/twilio/twilio-php/pull/759): support array parameters for Guzzle GETs. Thanks to [@isha689](https://github.com/isha689)!
+
+**Api**
+- Add `public_application_connect_enabled` param to Application resource
+
+**Messaging**
+- Add new tollfree verification API property (ExternalReferenceId)]
+
+**Verify**
+- Add `device_ip` parameter and channel `auto` for sna/sms orchestration
+
+**Twiml**
+- Add support for `<Application>` noun and `<ApplicationSid>` noun, nested `<Parameter>` to `<Hangup>` and `<Leave>` verb
+
+
 [2023-01-11] Version 7.0.0-rc.1
 -------------------------------
 **Library - Chore**

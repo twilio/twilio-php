@@ -18,26 +18,43 @@ namespace Twilio\Rest\Routes\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class PhoneNumberOptions {
+abstract class PhoneNumberOptions
+{
 
     /**
-     * @param string $voiceRegion The Inbound Processing Region used for this phone number for voice 
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters. 
+     * @param string $voiceRegion The Inbound Processing Region used for this phone number for voice
+     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @return UpdatePhoneNumberOptions Options builder
      */
-    public static function update(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE): UpdatePhoneNumberOptions {
-        return new UpdatePhoneNumberOptions($voiceRegion, $friendlyName);
+    public static function update(
+        
+        string $voiceRegion = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): UpdatePhoneNumberOptions
+    {
+        return new UpdatePhoneNumberOptions(
+            $voiceRegion,
+            $friendlyName
+        );
     }
 
 }
 
 
-class UpdatePhoneNumberOptions extends Options {
+class UpdatePhoneNumberOptions extends Options
+    {
     /**
      * @param string $voiceRegion The Inbound Processing Region used for this phone number for voice
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      */
-    public function __construct(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $voiceRegion = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['voiceRegion'] = $voiceRegion;
         $this->options['friendlyName'] = $friendlyName;
     }
@@ -48,7 +65,8 @@ class UpdatePhoneNumberOptions extends Options {
      * @param string $voiceRegion The Inbound Processing Region used for this phone number for voice
      * @return $this Fluent Builder
      */
-    public function setVoiceRegion(string $voiceRegion): self {
+    public function setVoiceRegion(string $voiceRegion): self
+    {
         $this->options['voiceRegion'] = $voiceRegion;
         return $this;
     }
@@ -59,7 +77,8 @@ class UpdatePhoneNumberOptions extends Options {
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -69,7 +88,8 @@ class UpdatePhoneNumberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Routes.V2.UpdatePhoneNumberOptions ' . $options . ']';
     }

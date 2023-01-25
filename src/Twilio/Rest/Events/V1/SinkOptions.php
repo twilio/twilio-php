@@ -18,17 +18,27 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SinkOptions {
+abstract class SinkOptions
+{
 
 
 
     /**
-     * @param bool $inUse A boolean query parameter filtering the results to return sinks used/not used by a subscription. 
-     * @param string $status A String query parameter filtering the results by status `initialized`, `validating`, `active` or `failed`. 
+     * @param bool $inUse A boolean query parameter filtering the results to return sinks used/not used by a subscription.
+     * @param string $status A String query parameter filtering the results by status `initialized`, `validating`, `active` or `failed`.
      * @return ReadSinkOptions Options builder
      */
-    public static function read(bool $inUse = Values::NONE, string $status = Values::NONE): ReadSinkOptions {
-        return new ReadSinkOptions($inUse, $status);
+    public static function read(
+        
+        bool $inUse = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadSinkOptions
+    {
+        return new ReadSinkOptions(
+            $inUse,
+            $status
+        );
     }
 
 
@@ -37,12 +47,19 @@ abstract class SinkOptions {
 
 
 
-class ReadSinkOptions extends Options {
+class ReadSinkOptions extends Options
+    {
     /**
      * @param bool $inUse A boolean query parameter filtering the results to return sinks used/not used by a subscription.
      * @param string $status A String query parameter filtering the results by status `initialized`, `validating`, `active` or `failed`.
      */
-    public function __construct(bool $inUse = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        bool $inUse = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['inUse'] = $inUse;
         $this->options['status'] = $status;
     }
@@ -53,7 +70,8 @@ class ReadSinkOptions extends Options {
      * @param bool $inUse A boolean query parameter filtering the results to return sinks used/not used by a subscription.
      * @return $this Fluent Builder
      */
-    public function setInUse(bool $inUse): self {
+    public function setInUse(bool $inUse): self
+    {
         $this->options['inUse'] = $inUse;
         return $this;
     }
@@ -64,7 +82,8 @@ class ReadSinkOptions extends Options {
      * @param string $status A String query parameter filtering the results by status `initialized`, `validating`, `active` or `failed`.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -74,7 +93,8 @@ class ReadSinkOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Events.V1.ReadSinkOptions ' . $options . ']';
     }

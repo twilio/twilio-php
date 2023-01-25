@@ -25,38 +25,47 @@ use Twilio\Version;
 
 
 /**
- * @property string[] $roles
+ * @property string $accountSid
+ * @property string $categoryId
+ * @property string $name
  * @property string $url
  */
-class UserRolesInstance extends InstanceResource {
+class InsightsQuestionnairesCategoryInstance extends InstanceResource
+{
     /**
-     * Initialize the UserRolesInstance
+     * Initialize the InsightsQuestionnairesCategoryInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $categoryId The ID of the category to be deleted
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, string $categoryId = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'roles' => Values::array_get($payload, 'roles'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'categoryId' => Values::array_get($payload, 'category_id'),
+            'name' => Values::array_get($payload, 'name'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [];
+        $this->solution = ['categoryId' => $categoryId ?: $this->properties['categoryId'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return UserRolesContext Context for this UserRolesInstance
+     * @return InsightsQuestionnairesCategoryContext Context for this InsightsQuestionnairesCategoryInstance
      */
-    protected function proxy(): UserRolesContext {
+    protected function proxy(): InsightsQuestionnairesCategoryContext
+    {
         if (!$this->context) {
-            $this->context = new UserRolesContext(
-                $this->version
+            $this->context = new InsightsQuestionnairesCategoryContext(
+                $this->version,
+                $this->solution['categoryId']
             );
         }
 
@@ -64,14 +73,30 @@ class UserRolesInstance extends InstanceResource {
     }
 
     /**
-     * Fetch the UserRolesInstance
+     * Delete the InsightsQuestionnairesCategoryInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return UserRolesInstance Fetched UserRolesInstance
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): UserRolesInstance {
-        return $this->proxy()->fetch($options);
+    public function delete(array $options = []): bool
+    {
+
+        return $this->proxy()->delete($options);
+    }
+
+    /**
+     * Update the InsightsQuestionnairesCategoryInstance
+     *
+     * @param string $name The name of this category.
+     * @param array|Options $options Optional Arguments
+     * @return InsightsQuestionnairesCategoryInstance Updated InsightsQuestionnairesCategoryInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $name, array $options = []): InsightsQuestionnairesCategoryInstance
+    {
+
+        return $this->proxy()->update($name, $options);
     }
 
     /**
@@ -81,7 +106,8 @@ class UserRolesInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -99,12 +125,13 @@ class UserRolesInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.UserRolesInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsQuestionnairesCategoryInstance ' . \implode(' ', $context) . ']';
     }
 }
 

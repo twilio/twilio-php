@@ -18,22 +18,36 @@ namespace Twilio\Rest\Studio\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class FlowValidateOptions {
+abstract class FlowValidateOptions
+{
     /**
-     * @param string $commitMessage Description of change made in the revision. 
+     * @param string $commitMessage Description of change made in the revision.
      * @return UpdateFlowValidateOptions Options builder
      */
-    public static function update(string $commitMessage = Values::NONE): UpdateFlowValidateOptions {
-        return new UpdateFlowValidateOptions($commitMessage);
+    public static function update(
+        
+        string $commitMessage = Values::NONE
+
+    ): UpdateFlowValidateOptions
+    {
+        return new UpdateFlowValidateOptions(
+            $commitMessage
+        );
     }
 
 }
 
-class UpdateFlowValidateOptions extends Options {
+class UpdateFlowValidateOptions extends Options
+    {
     /**
      * @param string $commitMessage Description of change made in the revision.
      */
-    public function __construct(string $commitMessage = Values::NONE) {
+    public function __construct(
+        
+        string $commitMessage = Values::NONE
+
+    )
+    {
         $this->options['commitMessage'] = $commitMessage;
     }
 
@@ -43,7 +57,8 @@ class UpdateFlowValidateOptions extends Options {
      * @param string $commitMessage Description of change made in the revision.
      * @return $this Fluent Builder
      */
-    public function setCommitMessage(string $commitMessage): self {
+    public function setCommitMessage(string $commitMessage): self
+    {
         $this->options['commitMessage'] = $commitMessage;
         return $this;
     }
@@ -53,7 +68,8 @@ class UpdateFlowValidateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Studio.V2.UpdateFlowValidateOptions ' . $options . ']';
     }

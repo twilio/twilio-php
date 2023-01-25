@@ -28,14 +28,16 @@ use Twilio\Version;
  * @property bool $dialingPermissionsInheritance
  * @property string $url
  */
-class SettingsInstance extends InstanceResource {
+class SettingsInstance extends InstanceResource
+{
     /**
      * Initialize the SettingsInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -53,7 +55,8 @@ class SettingsInstance extends InstanceResource {
      *
      * @return SettingsContext Context for this SettingsInstance
      */
-    protected function proxy(): SettingsContext {
+    protected function proxy(): SettingsContext
+    {
         if (!$this->context) {
             $this->context = new SettingsContext(
                 $this->version
@@ -69,7 +72,9 @@ class SettingsInstance extends InstanceResource {
      * @return SettingsInstance Fetched SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SettingsInstance {
+    public function fetch(): SettingsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -80,7 +85,9 @@ class SettingsInstance extends InstanceResource {
      * @return SettingsInstance Updated SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SettingsInstance {
+    public function update(array $options = []): SettingsInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -91,7 +98,8 @@ class SettingsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -109,7 +117,8 @@ class SettingsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

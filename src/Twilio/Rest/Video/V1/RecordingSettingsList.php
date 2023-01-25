@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class RecordingSettingsList extends ListResource {
+class RecordingSettingsList extends ListResource
+    {
     /**
      * Construct the RecordingSettingsList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a RecordingSettingsContext
      */
-    public function getContext(): RecordingSettingsContext {
-        return new RecordingSettingsContext($this->version);
+    public function getContext(
+        
+    ): RecordingSettingsContext
+    {
+        return new RecordingSettingsContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class RecordingSettingsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.RecordingSettingsList]';
     }
 }

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SchemaPage extends Page {
+class SchemaPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class SchemaPage extends Page {
      * @param array $payload Payload response from the API
      * @return SchemaInstance \Twilio\Rest\Events\V1\SchemaInstance
      */
-    public function buildInstance(array $payload): SchemaInstance {
+    public function buildInstance(array $payload): SchemaInstance
+    {
         return new SchemaInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class SchemaPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.SchemaPage]';
     }
 }

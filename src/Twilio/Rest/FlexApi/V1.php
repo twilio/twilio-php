@@ -22,9 +22,13 @@ use Twilio\Rest\FlexApi\V1\AssessmentsList;
 use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
-use Twilio\Rest\FlexApi\V1\GoodDataList;
+use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryList;
+use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionList;
+use Twilio\Rest\FlexApi\V1\InsightsSessionList;
+use Twilio\Rest\FlexApi\V1\InsightsSettingsAnswerSetsList;
+use Twilio\Rest\FlexApi\V1\InsightsSettingsCommentList;
+use Twilio\Rest\FlexApi\V1\InsightsUserRolesList;
 use Twilio\Rest\FlexApi\V1\InteractionList;
-use Twilio\Rest\FlexApi\V1\UserRolesList;
 use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
@@ -33,23 +37,34 @@ use Twilio\Version;
  * @property ChannelList $channel
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
- * @property GoodDataList $goodData
+ * @property InsightsQuestionnairesCategoryList $insightsQuestionnairesCategory
+ * @property InsightsQuestionnairesQuestionList $insightsQuestionnairesQuestion
+ * @property InsightsSessionList $insightsSession
+ * @property InsightsSettingsAnswerSetsList $insightsSettingsAnswerSets
+ * @property InsightsSettingsCommentList $insightsSettingsComment
+ * @property InsightsUserRolesList $insightsUserRoles
  * @property InteractionList $interaction
- * @property UserRolesList $userRoles
  * @property WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryContext insightsQuestionnairesCategory(string $categoryId)
+ * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionContext insightsQuestionnairesQuestion(string $questionId)
  * @method \Twilio\Rest\FlexApi\V1\InteractionContext interaction(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_assessments;
     protected $_channel;
     protected $_configuration;
     protected $_flexFlow;
-    protected $_goodData;
+    protected $_insightsQuestionnairesCategory;
+    protected $_insightsQuestionnairesQuestion;
+    protected $_insightsSession;
+    protected $_insightsSettingsAnswerSets;
+    protected $_insightsSettingsComment;
+    protected $_insightsUserRoles;
     protected $_interaction;
-    protected $_userRoles;
     protected $_webChannel;
 
     /**
@@ -57,61 +72,102 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getAssessments(): AssessmentsList {
+    protected function getAssessments(): AssessmentsList
+    {
         if (!$this->_assessments) {
             $this->_assessments = new AssessmentsList($this);
         }
         return $this->_assessments;
     }
 
-    protected function getChannel(): ChannelList {
+    protected function getChannel(): ChannelList
+    {
         if (!$this->_channel) {
             $this->_channel = new ChannelList($this);
         }
         return $this->_channel;
     }
 
-    protected function getConfiguration(): ConfigurationList {
+    protected function getConfiguration(): ConfigurationList
+    {
         if (!$this->_configuration) {
             $this->_configuration = new ConfigurationList($this);
         }
         return $this->_configuration;
     }
 
-    protected function getFlexFlow(): FlexFlowList {
+    protected function getFlexFlow(): FlexFlowList
+    {
         if (!$this->_flexFlow) {
             $this->_flexFlow = new FlexFlowList($this);
         }
         return $this->_flexFlow;
     }
 
-    protected function getGoodData(): GoodDataList {
-        if (!$this->_goodData) {
-            $this->_goodData = new GoodDataList($this);
+    protected function getInsightsQuestionnairesCategory(): InsightsQuestionnairesCategoryList
+    {
+        if (!$this->_insightsQuestionnairesCategory) {
+            $this->_insightsQuestionnairesCategory = new InsightsQuestionnairesCategoryList($this);
         }
-        return $this->_goodData;
+        return $this->_insightsQuestionnairesCategory;
     }
 
-    protected function getInteraction(): InteractionList {
+    protected function getInsightsQuestionnairesQuestion(): InsightsQuestionnairesQuestionList
+    {
+        if (!$this->_insightsQuestionnairesQuestion) {
+            $this->_insightsQuestionnairesQuestion = new InsightsQuestionnairesQuestionList($this);
+        }
+        return $this->_insightsQuestionnairesQuestion;
+    }
+
+    protected function getInsightsSession(): InsightsSessionList
+    {
+        if (!$this->_insightsSession) {
+            $this->_insightsSession = new InsightsSessionList($this);
+        }
+        return $this->_insightsSession;
+    }
+
+    protected function getInsightsSettingsAnswerSets(): InsightsSettingsAnswerSetsList
+    {
+        if (!$this->_insightsSettingsAnswerSets) {
+            $this->_insightsSettingsAnswerSets = new InsightsSettingsAnswerSetsList($this);
+        }
+        return $this->_insightsSettingsAnswerSets;
+    }
+
+    protected function getInsightsSettingsComment(): InsightsSettingsCommentList
+    {
+        if (!$this->_insightsSettingsComment) {
+            $this->_insightsSettingsComment = new InsightsSettingsCommentList($this);
+        }
+        return $this->_insightsSettingsComment;
+    }
+
+    protected function getInsightsUserRoles(): InsightsUserRolesList
+    {
+        if (!$this->_insightsUserRoles) {
+            $this->_insightsUserRoles = new InsightsUserRolesList($this);
+        }
+        return $this->_insightsUserRoles;
+    }
+
+    protected function getInteraction(): InteractionList
+    {
         if (!$this->_interaction) {
             $this->_interaction = new InteractionList($this);
         }
         return $this->_interaction;
     }
 
-    protected function getUserRoles(): UserRolesList {
-        if (!$this->_userRoles) {
-            $this->_userRoles = new UserRolesList($this);
-        }
-        return $this->_userRoles;
-    }
-
-    protected function getWebChannel(): WebChannelList {
+    protected function getWebChannel(): WebChannelList
+    {
         if (!$this->_webChannel) {
             $this->_webChannel = new WebChannelList($this);
         }
@@ -125,7 +181,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -142,7 +199,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -156,7 +214,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1]';
     }
 }

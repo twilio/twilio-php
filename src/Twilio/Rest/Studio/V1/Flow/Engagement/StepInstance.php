@@ -39,7 +39,8 @@ use Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList;
  * @property string $url
  * @property array $links
  */
-class StepInstance extends InstanceResource {
+class StepInstance extends InstanceResource
+{
     protected $_stepContext;
 
     /**
@@ -51,7 +52,8 @@ class StepInstance extends InstanceResource {
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      * @param string $sid The SID of the Step resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class StepInstance extends InstanceResource {
      *
      * @return StepContext Context for this StepInstance
      */
-    protected function proxy(): StepContext {
+    protected function proxy(): StepContext
+    {
         if (!$this->context) {
             $this->context = new StepContext(
                 $this->version,
@@ -98,14 +101,17 @@ class StepInstance extends InstanceResource {
      * @return StepInstance Fetched StepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): StepInstance {
+    public function fetch(): StepInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the stepContext
      */
-    protected function getStepContext(): StepContextList {
+    protected function getStepContext(): StepContextList
+    {
         return $this->proxy()->stepContext;
     }
 
@@ -116,7 +122,8 @@ class StepInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +141,8 @@ class StepInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

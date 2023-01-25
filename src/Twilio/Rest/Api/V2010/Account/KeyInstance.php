@@ -31,7 +31,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class KeyInstance extends InstanceResource {
+class KeyInstance extends InstanceResource
+{
     /**
      * Initialize the KeyInstance
      *
@@ -40,7 +41,8 @@ class KeyInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Key resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class KeyInstance extends InstanceResource {
      *
      * @return KeyContext Context for this KeyInstance
      */
-    protected function proxy(): KeyContext {
+    protected function proxy(): KeyContext
+    {
         if (!$this->context) {
             $this->context = new KeyContext(
                 $this->version,
@@ -78,7 +81,9 @@ class KeyInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -88,7 +93,9 @@ class KeyInstance extends InstanceResource {
      * @return KeyInstance Fetched KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): KeyInstance {
+    public function fetch(): KeyInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -99,7 +106,9 @@ class KeyInstance extends InstanceResource {
      * @return KeyInstance Updated KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): KeyInstance {
+    public function update(array $options = []): KeyInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -110,7 +119,8 @@ class KeyInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -128,7 +138,8 @@ class KeyInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

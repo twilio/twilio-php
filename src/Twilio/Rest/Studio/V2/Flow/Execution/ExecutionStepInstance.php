@@ -39,7 +39,8 @@ use Twilio\Rest\Studio\V2\Flow\Execution\ExecutionStep\ExecutionStepContextList;
  * @property string $url
  * @property array $links
  */
-class ExecutionStepInstance extends InstanceResource {
+class ExecutionStepInstance extends InstanceResource
+{
     protected $_stepContext;
 
     /**
@@ -51,7 +52,8 @@ class ExecutionStepInstance extends InstanceResource {
      * @param string $executionSid The SID of the Execution resource with the Step to fetch.
      * @param string $sid The SID of the ExecutionStep resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class ExecutionStepInstance extends InstanceResource {
      *
      * @return ExecutionStepContext Context for this ExecutionStepInstance
      */
-    protected function proxy(): ExecutionStepContext {
+    protected function proxy(): ExecutionStepContext
+    {
         if (!$this->context) {
             $this->context = new ExecutionStepContext(
                 $this->version,
@@ -98,14 +101,17 @@ class ExecutionStepInstance extends InstanceResource {
      * @return ExecutionStepInstance Fetched ExecutionStepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ExecutionStepInstance {
+    public function fetch(): ExecutionStepInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the stepContext
      */
-    protected function getStepContext(): ExecutionStepContextList {
+    protected function getStepContext(): ExecutionStepContextList
+    {
         return $this->proxy()->stepContext;
     }
 
@@ -116,7 +122,8 @@ class ExecutionStepInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +141,8 @@ class ExecutionStepInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

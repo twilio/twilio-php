@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class InteractionChannelList extends ListResource {
+class InteractionChannelList extends ListResource
+    {
     /**
      * Construct the InteractionChannelList
      *
      * @param Version $version Version that contains the resource
      * @param string $interactionSid The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
      */
-    public function __construct(Version $version, string $interactionSid ) {
+    public function __construct(
+        Version $version,
+        string $interactionSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['interactionSid' => $interactionSid, ];
+        $this->solution = [
+        'interactionSid' =>
+            $interactionSid,
+        
+        ];
 
-        $this->uri = '/Interactions/' . \rawurlencode($interactionSid) . '/Channels';
+        $this->uri = '/Interactions/' . \rawurlencode($interactionSid)
+        .'/Channels';
     }
 
     /**
@@ -53,7 +63,8 @@ class InteractionChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return InteractionChannelInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class InteractionChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class InteractionChannelList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return InteractionChannelPage Page of InteractionChannelInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): InteractionChannelPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): InteractionChannelPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class InteractionChannelList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return InteractionChannelPage Page of InteractionChannelInstance
      */
-    public function getPage(string $targetUrl): InteractionChannelPage {
+    public function getPage(string $targetUrl): InteractionChannelPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,8 +145,16 @@ class InteractionChannelList extends ListResource {
      *
      * @param string $sid The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
      */
-    public function getContext(string $sid): InteractionChannelContext {
-        return new InteractionChannelContext($this->version, $this->solution['interactionSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): InteractionChannelContext
+    {
+        return new InteractionChannelContext(
+            $this->version,
+            $this->solution['interactionSid'],
+            $sid
+        );
     }
 
     /**
@@ -136,7 +162,8 @@ class InteractionChannelList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1.InteractionChannelList]';
     }
 }

@@ -23,7 +23,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class FieldList extends ListResource {
+class FieldList extends ListResource
+    {
     /**
      * Construct the FieldList
      *
@@ -31,13 +32,28 @@ class FieldList extends ListResource {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource.
      * @param string $taskSid The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the new Field resource.
      */
-    public function __construct(Version $version, string $assistantSid , string $taskSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        ,
+        string $taskSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        'taskSid' =>
+            $taskSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Fields';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Tasks/' . \rawurlencode($taskSid)
+        .'/Fields';
     }
 
     /**
@@ -48,21 +64,26 @@ class FieldList extends ListResource {
      * @return FieldInstance Created FieldInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $fieldType, string $uniqueName): FieldInstance {
+    public function create(string $fieldType, string $uniqueName): FieldInstance
+    {
+
         $data = Values::of([
-            'FieldType' => $fieldType,
-            'UniqueName' => $uniqueName,
+            'FieldType' =>
+                $fieldType,
+            'UniqueName' =>
+                $uniqueName,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new FieldInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['taskSid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid'],
         );
     }
+
 
     /**
      * Reads FieldInstance records from the API as a list.
@@ -79,7 +100,8 @@ class FieldList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FieldInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -101,7 +123,8 @@ class FieldList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -118,7 +141,12 @@ class FieldList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FieldPage Page of FieldInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FieldPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): FieldPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -138,7 +166,8 @@ class FieldList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FieldPage Page of FieldInstance
      */
-    public function getPage(string $targetUrl): FieldPage {
+    public function getPage(string $targetUrl): FieldPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -153,8 +182,17 @@ class FieldList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Field resource to delete.
      */
-    public function getContext(string $sid): FieldContext {
-        return new FieldContext($this->version, $this->solution['assistantSid'], $this->solution['taskSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): FieldContext
+    {
+        return new FieldContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid'],
+            $sid
+        );
     }
 
     /**
@@ -162,7 +200,8 @@ class FieldList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.FieldList]';
     }
 }

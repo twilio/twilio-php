@@ -28,7 +28,8 @@ use Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList;
  * @property StepContextList $stepContext
  * @method \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext stepContext()
  */
-class StepContext extends InstanceContext {
+class StepContext extends InstanceContext
+    {
     protected $_stepContext;
 
     /**
@@ -39,13 +40,29 @@ class StepContext extends InstanceContext {
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      * @param string $sid The SID of the Step resource to fetch.
      */
-    public function __construct(Version $version, $flowSid , $engagementSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $flowSid,
+        $engagementSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid,  'engagementSid' => $engagementSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        'engagementSid' =>
+            $engagementSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($engagementSid) . '/Steps/' . \rawurlencode($sid) . '';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid)
+        .'/Engagements/' . \rawurlencode($engagementSid)
+        .'/Steps/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -54,28 +71,32 @@ class StepContext extends InstanceContext {
      * @return StepInstance Fetched StepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): StepInstance {
+    public function fetch(): StepInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new StepInstance(
             $this->version,
-            $payload
-            , $this->solution['flowSid']
-            , $this->solution['engagementSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['engagementSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the stepContext
      */
-    protected function getStepContext(): StepContextList {
+    protected function getStepContext(): StepContextList
+    {
         if (!$this->_stepContext) {
             $this->_stepContext = new StepContextList(
-                $this->version
-                , $this->solution['flowSid']
-                , $this->solution['engagementSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['engagementSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -89,7 +110,8 @@ class StepContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -106,7 +128,8 @@ class StepContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -120,7 +143,8 @@ class StepContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

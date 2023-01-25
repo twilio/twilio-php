@@ -18,28 +18,48 @@ namespace Twilio\Rest\Serverless\V1\Service\Environment;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class LogOptions {
+abstract class LogOptions
+{
 
     /**
-     * @param string $functionSid The SID of the function whose invocation produced the Log resources to read. 
-     * @param \DateTime $startDate The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time. 
-     * @param \DateTime $endDate The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time. 
+     * @param string $functionSid The SID of the function whose invocation produced the Log resources to read.
+     * @param \DateTime $startDate The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time.
+     * @param \DateTime $endDate The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time.
      * @return ReadLogOptions Options builder
      */
-    public static function read(string $functionSid = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE): ReadLogOptions {
-        return new ReadLogOptions($functionSid, $startDate, $endDate);
+    public static function read(
+        
+        string $functionSid = Values::NONE,
+        \DateTime $startDate = Values::NONE,
+        \DateTime $endDate = Values::NONE
+
+    ): ReadLogOptions
+    {
+        return new ReadLogOptions(
+            $functionSid,
+            $startDate,
+            $endDate
+        );
     }
 
 }
 
 
-class ReadLogOptions extends Options {
+class ReadLogOptions extends Options
+    {
     /**
      * @param string $functionSid The SID of the function whose invocation produced the Log resources to read.
      * @param \DateTime $startDate The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time.
      * @param \DateTime $endDate The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time.
      */
-    public function __construct(string $functionSid = Values::NONE, \DateTime $startDate = Values::NONE, \DateTime $endDate = Values::NONE) {
+    public function __construct(
+        
+        string $functionSid = Values::NONE,
+        \DateTime $startDate = Values::NONE,
+        \DateTime $endDate = Values::NONE
+
+    )
+    {
         $this->options['functionSid'] = $functionSid;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
@@ -51,7 +71,8 @@ class ReadLogOptions extends Options {
      * @param string $functionSid The SID of the function whose invocation produced the Log resources to read.
      * @return $this Fluent Builder
      */
-    public function setFunctionSid(string $functionSid): self {
+    public function setFunctionSid(string $functionSid): self
+    {
         $this->options['functionSid'] = $functionSid;
         return $this;
     }
@@ -62,7 +83,8 @@ class ReadLogOptions extends Options {
      * @param \DateTime $startDate The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time.
      * @return $this Fluent Builder
      */
-    public function setStartDate(\DateTime $startDate): self {
+    public function setStartDate(\DateTime $startDate): self
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -73,7 +95,8 @@ class ReadLogOptions extends Options {
      * @param \DateTime $endDate The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time.
      * @return $this Fluent Builder
      */
-    public function setEndDate(\DateTime $endDate): self {
+    public function setEndDate(\DateTime $endDate): self
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -83,7 +106,8 @@ class ReadLogOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Serverless.V1.ReadLogOptions ' . $options . ']';
     }

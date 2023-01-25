@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class UsAppToPersonList extends ListResource {
+class UsAppToPersonList extends ListResource
+    {
     /**
      * Construct the UsAppToPersonList
      *
      * @param Version $version Version that contains the resource
      * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
      */
-    public function __construct(Version $version, string $messagingServiceSid ) {
+    public function __construct(
+        Version $version,
+        string $messagingServiceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['messagingServiceSid' => $messagingServiceSid, ];
+        $this->solution = [
+        'messagingServiceSid' =>
+            $messagingServiceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($messagingServiceSid) . '/Compliance/Usa2p';
+        $this->uri = '/Services/' . \rawurlencode($messagingServiceSid)
+        .'/Compliance/Usa2p';
     }
 
     /**
@@ -55,33 +65,49 @@ class UsAppToPersonList extends ListResource {
      * @return UsAppToPersonInstance Created UsAppToPersonInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): UsAppToPersonInstance {
+    public function create(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): UsAppToPersonInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'BrandRegistrationSid' => $brandRegistrationSid,
-            'Description' => $description,
-            'MessageFlow' => $messageFlow,
-            'MessageSamples' => Serialize::map($messageSamples,function($e) { return $e; }),
-            'UsAppToPersonUsecase' => $usAppToPersonUsecase,
-            'HasEmbeddedLinks' => Serialize::booleanToString($hasEmbeddedLinks),
-            'HasEmbeddedPhone' => Serialize::booleanToString($hasEmbeddedPhone),
-            'OptInMessage' => $options['optInMessage'],
-            'OptOutMessage' => $options['optOutMessage'],
-            'HelpMessage' => $options['helpMessage'],
-            'OptInKeywords' => Serialize::map($options['optInKeywords'], function($e) { return $e; }),
-            'OptOutKeywords' => Serialize::map($options['optOutKeywords'], function($e) { return $e; }),
-            'HelpKeywords' => Serialize::map($options['helpKeywords'], function($e) { return $e; }),
+            'BrandRegistrationSid' =>
+                $brandRegistrationSid,
+            'Description' =>
+                $description,
+            'MessageFlow' =>
+                $messageFlow,
+            'MessageSamples' =>
+                Serialize::map($messageSamples,function ($e) { return $e; }),
+            'UsAppToPersonUsecase' =>
+                $usAppToPersonUsecase,
+            'HasEmbeddedLinks' =>
+                Serialize::booleanToString($hasEmbeddedLinks),
+            'HasEmbeddedPhone' =>
+                Serialize::booleanToString($hasEmbeddedPhone),
+            'OptInMessage' =>
+                $options['optInMessage'],
+            'OptOutMessage' =>
+                $options['optOutMessage'],
+            'HelpMessage' =>
+                $options['helpMessage'],
+            'OptInKeywords' =>
+                Serialize::map($options['optInKeywords'], function ($e) { return $e; }),
+            'OptOutKeywords' =>
+                Serialize::map($options['optOutKeywords'], function ($e) { return $e; }),
+            'HelpKeywords' =>
+                Serialize::map($options['helpKeywords'], function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new UsAppToPersonInstance(
             $this->version,
-            $payload
-            , $this->solution['messagingServiceSid']
+            $payload,
+            $this->solution['messagingServiceSid'],
         );
     }
+
 
     /**
      * Reads UsAppToPersonInstance records from the API as a list.
@@ -98,7 +124,8 @@ class UsAppToPersonList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UsAppToPersonInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -120,7 +147,8 @@ class UsAppToPersonList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -137,7 +165,12 @@ class UsAppToPersonList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UsAppToPersonPage Page of UsAppToPersonInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UsAppToPersonPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): UsAppToPersonPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -157,7 +190,8 @@ class UsAppToPersonList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UsAppToPersonPage Page of UsAppToPersonInstance
      */
-    public function getPage(string $targetUrl): UsAppToPersonPage {
+    public function getPage(string $targetUrl): UsAppToPersonPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -172,8 +206,16 @@ class UsAppToPersonList extends ListResource {
      *
      * @param string $sid The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`.
      */
-    public function getContext(string $sid): UsAppToPersonContext {
-        return new UsAppToPersonContext($this->version, $this->solution['messagingServiceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): UsAppToPersonContext
+    {
+        return new UsAppToPersonContext(
+            $this->version,
+            $this->solution['messagingServiceSid'],
+            $sid
+        );
     }
 
     /**
@@ -181,7 +223,8 @@ class UsAppToPersonList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.UsAppToPersonList]';
     }
 }

@@ -39,7 +39,8 @@ use Twilio\Version;
  * @property array $identityMatch
  * @property string $url
  */
-class PhoneNumberInstance extends InstanceResource {
+class PhoneNumberInstance extends InstanceResource
+{
     /**
      * Initialize the PhoneNumberInstance
      *
@@ -47,7 +48,8 @@ class PhoneNumberInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $phoneNumber The phone number to lookup in E.164 or national format. Default country code is +1 (North America).
      */
-    public function __construct(Version $version, array $payload, string $phoneNumber = null) {
+    public function __construct(Version $version, array $payload, string $phoneNumber = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +78,8 @@ class PhoneNumberInstance extends InstanceResource {
      *
      * @return PhoneNumberContext Context for this PhoneNumberInstance
      */
-    protected function proxy(): PhoneNumberContext {
+    protected function proxy(): PhoneNumberContext
+    {
         if (!$this->context) {
             $this->context = new PhoneNumberContext(
                 $this->version,
@@ -94,7 +97,9 @@ class PhoneNumberInstance extends InstanceResource {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): PhoneNumberInstance {
+    public function fetch(array $options = []): PhoneNumberInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -105,7 +110,8 @@ class PhoneNumberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -123,7 +129,8 @@ class PhoneNumberInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

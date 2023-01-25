@@ -18,70 +18,184 @@ namespace Twilio\Rest\IpMessaging\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ServiceOptions {
+abstract class ServiceOptions
+{
 
 
 
 
     /**
-     * @param string $friendlyName  
-     * @param string $defaultServiceRoleSid  
-     * @param string $defaultChannelRoleSid  
-     * @param string $defaultChannelCreatorRoleSid  
-     * @param bool $readStatusEnabled  
-     * @param bool $reachabilityEnabled  
-     * @param int $typingIndicatorTimeout  
-     * @param int $consumptionReportInterval  
-     * @param bool $notificationsNewMessageEnabled  
-     * @param string $notificationsNewMessageTemplate  
-     * @param bool $notificationsAddedToChannelEnabled  
-     * @param string $notificationsAddedToChannelTemplate  
-     * @param bool $notificationsRemovedFromChannelEnabled  
-     * @param string $notificationsRemovedFromChannelTemplate  
-     * @param bool $notificationsInvitedToChannelEnabled  
-     * @param string $notificationsInvitedToChannelTemplate  
-     * @param string $preWebhookUrl  
-     * @param string $postWebhookUrl  
-     * @param string $webhookMethod  
-     * @param string[] $webhookFilters  
-     * @param string $webhooksOnMessageSendUrl  
-     * @param string $webhooksOnMessageSendMethod  
-     * @param string $webhooksOnMessageUpdateUrl  
-     * @param string $webhooksOnMessageUpdateMethod  
-     * @param string $webhooksOnMessageRemoveUrl  
-     * @param string $webhooksOnMessageRemoveMethod  
-     * @param string $webhooksOnChannelAddUrl  
-     * @param string $webhooksOnChannelAddMethod  
-     * @param string $webhooksOnChannelDestroyUrl  
-     * @param string $webhooksOnChannelDestroyMethod  
-     * @param string $webhooksOnChannelUpdateUrl  
-     * @param string $webhooksOnChannelUpdateMethod  
-     * @param string $webhooksOnMemberAddUrl  
-     * @param string $webhooksOnMemberAddMethod  
-     * @param string $webhooksOnMemberRemoveUrl  
-     * @param string $webhooksOnMemberRemoveMethod  
-     * @param string $webhooksOnMessageSentUrl  
-     * @param string $webhooksOnMessageSentMethod  
-     * @param string $webhooksOnMessageUpdatedUrl  
-     * @param string $webhooksOnMessageUpdatedMethod  
-     * @param string $webhooksOnMessageRemovedUrl  
-     * @param string $webhooksOnMessageRemovedMethod  
-     * @param string $webhooksOnChannelAddedUrl  
-     * @param string $webhooksOnChannelAddedMethod  
-     * @param string $webhooksOnChannelDestroyedUrl  
-     * @param string $webhooksOnChannelDestroyedMethod  
-     * @param string $webhooksOnChannelUpdatedUrl  
-     * @param string $webhooksOnChannelUpdatedMethod  
-     * @param string $webhooksOnMemberAddedUrl  
-     * @param string $webhooksOnMemberAddedMethod  
-     * @param string $webhooksOnMemberRemovedUrl  
-     * @param string $webhooksOnMemberRemovedMethod  
-     * @param int $limitsChannelMembers  
-     * @param int $limitsUserChannels  
+     * @param string $friendlyName 
+     * @param string $defaultServiceRoleSid 
+     * @param string $defaultChannelRoleSid 
+     * @param string $defaultChannelCreatorRoleSid 
+     * @param bool $readStatusEnabled 
+     * @param bool $reachabilityEnabled 
+     * @param int $typingIndicatorTimeout 
+     * @param int $consumptionReportInterval 
+     * @param bool $notificationsNewMessageEnabled 
+     * @param string $notificationsNewMessageTemplate 
+     * @param bool $notificationsAddedToChannelEnabled 
+     * @param string $notificationsAddedToChannelTemplate 
+     * @param bool $notificationsRemovedFromChannelEnabled 
+     * @param string $notificationsRemovedFromChannelTemplate 
+     * @param bool $notificationsInvitedToChannelEnabled 
+     * @param string $notificationsInvitedToChannelTemplate 
+     * @param string $preWebhookUrl 
+     * @param string $postWebhookUrl 
+     * @param string $webhookMethod 
+     * @param string[] $webhookFilters 
+     * @param string $webhooksOnMessageSendUrl 
+     * @param string $webhooksOnMessageSendMethod 
+     * @param string $webhooksOnMessageUpdateUrl 
+     * @param string $webhooksOnMessageUpdateMethod 
+     * @param string $webhooksOnMessageRemoveUrl 
+     * @param string $webhooksOnMessageRemoveMethod 
+     * @param string $webhooksOnChannelAddUrl 
+     * @param string $webhooksOnChannelAddMethod 
+     * @param string $webhooksOnChannelDestroyUrl 
+     * @param string $webhooksOnChannelDestroyMethod 
+     * @param string $webhooksOnChannelUpdateUrl 
+     * @param string $webhooksOnChannelUpdateMethod 
+     * @param string $webhooksOnMemberAddUrl 
+     * @param string $webhooksOnMemberAddMethod 
+     * @param string $webhooksOnMemberRemoveUrl 
+     * @param string $webhooksOnMemberRemoveMethod 
+     * @param string $webhooksOnMessageSentUrl 
+     * @param string $webhooksOnMessageSentMethod 
+     * @param string $webhooksOnMessageUpdatedUrl 
+     * @param string $webhooksOnMessageUpdatedMethod 
+     * @param string $webhooksOnMessageRemovedUrl 
+     * @param string $webhooksOnMessageRemovedMethod 
+     * @param string $webhooksOnChannelAddedUrl 
+     * @param string $webhooksOnChannelAddedMethod 
+     * @param string $webhooksOnChannelDestroyedUrl 
+     * @param string $webhooksOnChannelDestroyedMethod 
+     * @param string $webhooksOnChannelUpdatedUrl 
+     * @param string $webhooksOnChannelUpdatedMethod 
+     * @param string $webhooksOnMemberAddedUrl 
+     * @param string $webhooksOnMemberAddedMethod 
+     * @param string $webhooksOnMemberRemovedUrl 
+     * @param string $webhooksOnMemberRemovedMethod 
+     * @param int $limitsChannelMembers 
+     * @param int $limitsUserChannels 
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $defaultServiceRoleSid = Values::NONE, string $defaultChannelRoleSid = Values::NONE, string $defaultChannelCreatorRoleSid = Values::NONE, bool $readStatusEnabled = Values::NONE, bool $reachabilityEnabled = Values::NONE, int $typingIndicatorTimeout = Values::NONE, int $consumptionReportInterval = Values::NONE, bool $notificationsNewMessageEnabled = Values::NONE, string $notificationsNewMessageTemplate = Values::NONE, bool $notificationsAddedToChannelEnabled = Values::NONE, string $notificationsAddedToChannelTemplate = Values::NONE, bool $notificationsRemovedFromChannelEnabled = Values::NONE, string $notificationsRemovedFromChannelTemplate = Values::NONE, bool $notificationsInvitedToChannelEnabled = Values::NONE, string $notificationsInvitedToChannelTemplate = Values::NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $webhookMethod = Values::NONE, array $webhookFilters = Values::ARRAY_NONE, string $webhooksOnMessageSendUrl = Values::NONE, string $webhooksOnMessageSendMethod = Values::NONE, string $webhooksOnMessageUpdateUrl = Values::NONE, string $webhooksOnMessageUpdateMethod = Values::NONE, string $webhooksOnMessageRemoveUrl = Values::NONE, string $webhooksOnMessageRemoveMethod = Values::NONE, string $webhooksOnChannelAddUrl = Values::NONE, string $webhooksOnChannelAddMethod = Values::NONE, string $webhooksOnChannelDestroyUrl = Values::NONE, string $webhooksOnChannelDestroyMethod = Values::NONE, string $webhooksOnChannelUpdateUrl = Values::NONE, string $webhooksOnChannelUpdateMethod = Values::NONE, string $webhooksOnMemberAddUrl = Values::NONE, string $webhooksOnMemberAddMethod = Values::NONE, string $webhooksOnMemberRemoveUrl = Values::NONE, string $webhooksOnMemberRemoveMethod = Values::NONE, string $webhooksOnMessageSentUrl = Values::NONE, string $webhooksOnMessageSentMethod = Values::NONE, string $webhooksOnMessageUpdatedUrl = Values::NONE, string $webhooksOnMessageUpdatedMethod = Values::NONE, string $webhooksOnMessageRemovedUrl = Values::NONE, string $webhooksOnMessageRemovedMethod = Values::NONE, string $webhooksOnChannelAddedUrl = Values::NONE, string $webhooksOnChannelAddedMethod = Values::NONE, string $webhooksOnChannelDestroyedUrl = Values::NONE, string $webhooksOnChannelDestroyedMethod = Values::NONE, string $webhooksOnChannelUpdatedUrl = Values::NONE, string $webhooksOnChannelUpdatedMethod = Values::NONE, string $webhooksOnMemberAddedUrl = Values::NONE, string $webhooksOnMemberAddedMethod = Values::NONE, string $webhooksOnMemberRemovedUrl = Values::NONE, string $webhooksOnMemberRemovedMethod = Values::NONE, int $limitsChannelMembers = Values::NONE, int $limitsUserChannels = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $reachabilityEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $notificationsNewMessageEnabled, $notificationsNewMessageTemplate, $notificationsAddedToChannelEnabled, $notificationsAddedToChannelTemplate, $notificationsRemovedFromChannelEnabled, $notificationsRemovedFromChannelTemplate, $notificationsInvitedToChannelEnabled, $notificationsInvitedToChannelTemplate, $preWebhookUrl, $postWebhookUrl, $webhookMethod, $webhookFilters, $webhooksOnMessageSendUrl, $webhooksOnMessageSendMethod, $webhooksOnMessageUpdateUrl, $webhooksOnMessageUpdateMethod, $webhooksOnMessageRemoveUrl, $webhooksOnMessageRemoveMethod, $webhooksOnChannelAddUrl, $webhooksOnChannelAddMethod, $webhooksOnChannelDestroyUrl, $webhooksOnChannelDestroyMethod, $webhooksOnChannelUpdateUrl, $webhooksOnChannelUpdateMethod, $webhooksOnMemberAddUrl, $webhooksOnMemberAddMethod, $webhooksOnMemberRemoveUrl, $webhooksOnMemberRemoveMethod, $webhooksOnMessageSentUrl, $webhooksOnMessageSentMethod, $webhooksOnMessageUpdatedUrl, $webhooksOnMessageUpdatedMethod, $webhooksOnMessageRemovedUrl, $webhooksOnMessageRemovedMethod, $webhooksOnChannelAddedUrl, $webhooksOnChannelAddedMethod, $webhooksOnChannelDestroyedUrl, $webhooksOnChannelDestroyedMethod, $webhooksOnChannelUpdatedUrl, $webhooksOnChannelUpdatedMethod, $webhooksOnMemberAddedUrl, $webhooksOnMemberAddedMethod, $webhooksOnMemberRemovedUrl, $webhooksOnMemberRemovedMethod, $limitsChannelMembers, $limitsUserChannels);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $defaultServiceRoleSid = Values::NONE,
+        string $defaultChannelRoleSid = Values::NONE,
+        string $defaultChannelCreatorRoleSid = Values::NONE,
+        bool $readStatusEnabled = Values::NONE,
+        bool $reachabilityEnabled = Values::NONE,
+        int $typingIndicatorTimeout = Values::NONE,
+        int $consumptionReportInterval = Values::NONE,
+        bool $notificationsNewMessageEnabled = Values::NONE,
+        string $notificationsNewMessageTemplate = Values::NONE,
+        bool $notificationsAddedToChannelEnabled = Values::NONE,
+        string $notificationsAddedToChannelTemplate = Values::NONE,
+        bool $notificationsRemovedFromChannelEnabled = Values::NONE,
+        string $notificationsRemovedFromChannelTemplate = Values::NONE,
+        bool $notificationsInvitedToChannelEnabled = Values::NONE,
+        string $notificationsInvitedToChannelTemplate = Values::NONE,
+        string $preWebhookUrl = Values::NONE,
+        string $postWebhookUrl = Values::NONE,
+        string $webhookMethod = Values::NONE,
+        array $webhookFilters = Values::ARRAY_NONE,
+        string $webhooksOnMessageSendUrl = Values::NONE,
+        string $webhooksOnMessageSendMethod = Values::NONE,
+        string $webhooksOnMessageUpdateUrl = Values::NONE,
+        string $webhooksOnMessageUpdateMethod = Values::NONE,
+        string $webhooksOnMessageRemoveUrl = Values::NONE,
+        string $webhooksOnMessageRemoveMethod = Values::NONE,
+        string $webhooksOnChannelAddUrl = Values::NONE,
+        string $webhooksOnChannelAddMethod = Values::NONE,
+        string $webhooksOnChannelDestroyUrl = Values::NONE,
+        string $webhooksOnChannelDestroyMethod = Values::NONE,
+        string $webhooksOnChannelUpdateUrl = Values::NONE,
+        string $webhooksOnChannelUpdateMethod = Values::NONE,
+        string $webhooksOnMemberAddUrl = Values::NONE,
+        string $webhooksOnMemberAddMethod = Values::NONE,
+        string $webhooksOnMemberRemoveUrl = Values::NONE,
+        string $webhooksOnMemberRemoveMethod = Values::NONE,
+        string $webhooksOnMessageSentUrl = Values::NONE,
+        string $webhooksOnMessageSentMethod = Values::NONE,
+        string $webhooksOnMessageUpdatedUrl = Values::NONE,
+        string $webhooksOnMessageUpdatedMethod = Values::NONE,
+        string $webhooksOnMessageRemovedUrl = Values::NONE,
+        string $webhooksOnMessageRemovedMethod = Values::NONE,
+        string $webhooksOnChannelAddedUrl = Values::NONE,
+        string $webhooksOnChannelAddedMethod = Values::NONE,
+        string $webhooksOnChannelDestroyedUrl = Values::NONE,
+        string $webhooksOnChannelDestroyedMethod = Values::NONE,
+        string $webhooksOnChannelUpdatedUrl = Values::NONE,
+        string $webhooksOnChannelUpdatedMethod = Values::NONE,
+        string $webhooksOnMemberAddedUrl = Values::NONE,
+        string $webhooksOnMemberAddedMethod = Values::NONE,
+        string $webhooksOnMemberRemovedUrl = Values::NONE,
+        string $webhooksOnMemberRemovedMethod = Values::NONE,
+        int $limitsChannelMembers = Values::NONE,
+        int $limitsUserChannels = Values::NONE
+
+    ): UpdateServiceOptions
+    {
+        return new UpdateServiceOptions(
+            $friendlyName,
+            $defaultServiceRoleSid,
+            $defaultChannelRoleSid,
+            $defaultChannelCreatorRoleSid,
+            $readStatusEnabled,
+            $reachabilityEnabled,
+            $typingIndicatorTimeout,
+            $consumptionReportInterval,
+            $notificationsNewMessageEnabled,
+            $notificationsNewMessageTemplate,
+            $notificationsAddedToChannelEnabled,
+            $notificationsAddedToChannelTemplate,
+            $notificationsRemovedFromChannelEnabled,
+            $notificationsRemovedFromChannelTemplate,
+            $notificationsInvitedToChannelEnabled,
+            $notificationsInvitedToChannelTemplate,
+            $preWebhookUrl,
+            $postWebhookUrl,
+            $webhookMethod,
+            $webhookFilters,
+            $webhooksOnMessageSendUrl,
+            $webhooksOnMessageSendMethod,
+            $webhooksOnMessageUpdateUrl,
+            $webhooksOnMessageUpdateMethod,
+            $webhooksOnMessageRemoveUrl,
+            $webhooksOnMessageRemoveMethod,
+            $webhooksOnChannelAddUrl,
+            $webhooksOnChannelAddMethod,
+            $webhooksOnChannelDestroyUrl,
+            $webhooksOnChannelDestroyMethod,
+            $webhooksOnChannelUpdateUrl,
+            $webhooksOnChannelUpdateMethod,
+            $webhooksOnMemberAddUrl,
+            $webhooksOnMemberAddMethod,
+            $webhooksOnMemberRemoveUrl,
+            $webhooksOnMemberRemoveMethod,
+            $webhooksOnMessageSentUrl,
+            $webhooksOnMessageSentMethod,
+            $webhooksOnMessageUpdatedUrl,
+            $webhooksOnMessageUpdatedMethod,
+            $webhooksOnMessageRemovedUrl,
+            $webhooksOnMessageRemovedMethod,
+            $webhooksOnChannelAddedUrl,
+            $webhooksOnChannelAddedMethod,
+            $webhooksOnChannelDestroyedUrl,
+            $webhooksOnChannelDestroyedMethod,
+            $webhooksOnChannelUpdatedUrl,
+            $webhooksOnChannelUpdatedMethod,
+            $webhooksOnMemberAddedUrl,
+            $webhooksOnMemberAddedMethod,
+            $webhooksOnMemberRemovedUrl,
+            $webhooksOnMemberRemovedMethod,
+            $limitsChannelMembers,
+            $limitsUserChannels
+        );
     }
 
 }
@@ -90,7 +204,8 @@ abstract class ServiceOptions {
 
 
 
-class UpdateServiceOptions extends Options {
+class UpdateServiceOptions extends Options
+    {
     /**
      * @param string $friendlyName 
      * @param string $defaultServiceRoleSid 
@@ -147,7 +262,65 @@ class UpdateServiceOptions extends Options {
      * @param int $limitsChannelMembers 
      * @param int $limitsUserChannels 
      */
-    public function __construct(string $friendlyName = Values::NONE, string $defaultServiceRoleSid = Values::NONE, string $defaultChannelRoleSid = Values::NONE, string $defaultChannelCreatorRoleSid = Values::NONE, bool $readStatusEnabled = Values::NONE, bool $reachabilityEnabled = Values::NONE, int $typingIndicatorTimeout = Values::NONE, int $consumptionReportInterval = Values::NONE, bool $notificationsNewMessageEnabled = Values::NONE, string $notificationsNewMessageTemplate = Values::NONE, bool $notificationsAddedToChannelEnabled = Values::NONE, string $notificationsAddedToChannelTemplate = Values::NONE, bool $notificationsRemovedFromChannelEnabled = Values::NONE, string $notificationsRemovedFromChannelTemplate = Values::NONE, bool $notificationsInvitedToChannelEnabled = Values::NONE, string $notificationsInvitedToChannelTemplate = Values::NONE, string $preWebhookUrl = Values::NONE, string $postWebhookUrl = Values::NONE, string $webhookMethod = Values::NONE, array $webhookFilters = Values::ARRAY_NONE, string $webhooksOnMessageSendUrl = Values::NONE, string $webhooksOnMessageSendMethod = Values::NONE, string $webhooksOnMessageUpdateUrl = Values::NONE, string $webhooksOnMessageUpdateMethod = Values::NONE, string $webhooksOnMessageRemoveUrl = Values::NONE, string $webhooksOnMessageRemoveMethod = Values::NONE, string $webhooksOnChannelAddUrl = Values::NONE, string $webhooksOnChannelAddMethod = Values::NONE, string $webhooksOnChannelDestroyUrl = Values::NONE, string $webhooksOnChannelDestroyMethod = Values::NONE, string $webhooksOnChannelUpdateUrl = Values::NONE, string $webhooksOnChannelUpdateMethod = Values::NONE, string $webhooksOnMemberAddUrl = Values::NONE, string $webhooksOnMemberAddMethod = Values::NONE, string $webhooksOnMemberRemoveUrl = Values::NONE, string $webhooksOnMemberRemoveMethod = Values::NONE, string $webhooksOnMessageSentUrl = Values::NONE, string $webhooksOnMessageSentMethod = Values::NONE, string $webhooksOnMessageUpdatedUrl = Values::NONE, string $webhooksOnMessageUpdatedMethod = Values::NONE, string $webhooksOnMessageRemovedUrl = Values::NONE, string $webhooksOnMessageRemovedMethod = Values::NONE, string $webhooksOnChannelAddedUrl = Values::NONE, string $webhooksOnChannelAddedMethod = Values::NONE, string $webhooksOnChannelDestroyedUrl = Values::NONE, string $webhooksOnChannelDestroyedMethod = Values::NONE, string $webhooksOnChannelUpdatedUrl = Values::NONE, string $webhooksOnChannelUpdatedMethod = Values::NONE, string $webhooksOnMemberAddedUrl = Values::NONE, string $webhooksOnMemberAddedMethod = Values::NONE, string $webhooksOnMemberRemovedUrl = Values::NONE, string $webhooksOnMemberRemovedMethod = Values::NONE, int $limitsChannelMembers = Values::NONE, int $limitsUserChannels = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $defaultServiceRoleSid = Values::NONE,
+        string $defaultChannelRoleSid = Values::NONE,
+        string $defaultChannelCreatorRoleSid = Values::NONE,
+        bool $readStatusEnabled = Values::NONE,
+        bool $reachabilityEnabled = Values::NONE,
+        int $typingIndicatorTimeout = Values::NONE,
+        int $consumptionReportInterval = Values::NONE,
+        bool $notificationsNewMessageEnabled = Values::NONE,
+        string $notificationsNewMessageTemplate = Values::NONE,
+        bool $notificationsAddedToChannelEnabled = Values::NONE,
+        string $notificationsAddedToChannelTemplate = Values::NONE,
+        bool $notificationsRemovedFromChannelEnabled = Values::NONE,
+        string $notificationsRemovedFromChannelTemplate = Values::NONE,
+        bool $notificationsInvitedToChannelEnabled = Values::NONE,
+        string $notificationsInvitedToChannelTemplate = Values::NONE,
+        string $preWebhookUrl = Values::NONE,
+        string $postWebhookUrl = Values::NONE,
+        string $webhookMethod = Values::NONE,
+        array $webhookFilters = Values::ARRAY_NONE,
+        string $webhooksOnMessageSendUrl = Values::NONE,
+        string $webhooksOnMessageSendMethod = Values::NONE,
+        string $webhooksOnMessageUpdateUrl = Values::NONE,
+        string $webhooksOnMessageUpdateMethod = Values::NONE,
+        string $webhooksOnMessageRemoveUrl = Values::NONE,
+        string $webhooksOnMessageRemoveMethod = Values::NONE,
+        string $webhooksOnChannelAddUrl = Values::NONE,
+        string $webhooksOnChannelAddMethod = Values::NONE,
+        string $webhooksOnChannelDestroyUrl = Values::NONE,
+        string $webhooksOnChannelDestroyMethod = Values::NONE,
+        string $webhooksOnChannelUpdateUrl = Values::NONE,
+        string $webhooksOnChannelUpdateMethod = Values::NONE,
+        string $webhooksOnMemberAddUrl = Values::NONE,
+        string $webhooksOnMemberAddMethod = Values::NONE,
+        string $webhooksOnMemberRemoveUrl = Values::NONE,
+        string $webhooksOnMemberRemoveMethod = Values::NONE,
+        string $webhooksOnMessageSentUrl = Values::NONE,
+        string $webhooksOnMessageSentMethod = Values::NONE,
+        string $webhooksOnMessageUpdatedUrl = Values::NONE,
+        string $webhooksOnMessageUpdatedMethod = Values::NONE,
+        string $webhooksOnMessageRemovedUrl = Values::NONE,
+        string $webhooksOnMessageRemovedMethod = Values::NONE,
+        string $webhooksOnChannelAddedUrl = Values::NONE,
+        string $webhooksOnChannelAddedMethod = Values::NONE,
+        string $webhooksOnChannelDestroyedUrl = Values::NONE,
+        string $webhooksOnChannelDestroyedMethod = Values::NONE,
+        string $webhooksOnChannelUpdatedUrl = Values::NONE,
+        string $webhooksOnChannelUpdatedMethod = Values::NONE,
+        string $webhooksOnMemberAddedUrl = Values::NONE,
+        string $webhooksOnMemberAddedMethod = Values::NONE,
+        string $webhooksOnMemberRemovedUrl = Values::NONE,
+        string $webhooksOnMemberRemovedMethod = Values::NONE,
+        int $limitsChannelMembers = Values::NONE,
+        int $limitsUserChannels = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;
@@ -210,7 +383,8 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -221,7 +395,8 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultServiceRoleSid 
      * @return $this Fluent Builder
      */
-    public function setDefaultServiceRoleSid(string $defaultServiceRoleSid): self {
+    public function setDefaultServiceRoleSid(string $defaultServiceRoleSid): self
+    {
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         return $this;
     }
@@ -232,7 +407,8 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultChannelRoleSid 
      * @return $this Fluent Builder
      */
-    public function setDefaultChannelRoleSid(string $defaultChannelRoleSid): self {
+    public function setDefaultChannelRoleSid(string $defaultChannelRoleSid): self
+    {
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;
         return $this;
     }
@@ -243,7 +419,8 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultChannelCreatorRoleSid 
      * @return $this Fluent Builder
      */
-    public function setDefaultChannelCreatorRoleSid(string $defaultChannelCreatorRoleSid): self {
+    public function setDefaultChannelCreatorRoleSid(string $defaultChannelCreatorRoleSid): self
+    {
         $this->options['defaultChannelCreatorRoleSid'] = $defaultChannelCreatorRoleSid;
         return $this;
     }
@@ -254,7 +431,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $readStatusEnabled 
      * @return $this Fluent Builder
      */
-    public function setReadStatusEnabled(bool $readStatusEnabled): self {
+    public function setReadStatusEnabled(bool $readStatusEnabled): self
+    {
         $this->options['readStatusEnabled'] = $readStatusEnabled;
         return $this;
     }
@@ -265,7 +443,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $reachabilityEnabled 
      * @return $this Fluent Builder
      */
-    public function setReachabilityEnabled(bool $reachabilityEnabled): self {
+    public function setReachabilityEnabled(bool $reachabilityEnabled): self
+    {
         $this->options['reachabilityEnabled'] = $reachabilityEnabled;
         return $this;
     }
@@ -276,7 +455,8 @@ class UpdateServiceOptions extends Options {
      * @param int $typingIndicatorTimeout 
      * @return $this Fluent Builder
      */
-    public function setTypingIndicatorTimeout(int $typingIndicatorTimeout): self {
+    public function setTypingIndicatorTimeout(int $typingIndicatorTimeout): self
+    {
         $this->options['typingIndicatorTimeout'] = $typingIndicatorTimeout;
         return $this;
     }
@@ -287,7 +467,8 @@ class UpdateServiceOptions extends Options {
      * @param int $consumptionReportInterval 
      * @return $this Fluent Builder
      */
-    public function setConsumptionReportInterval(int $consumptionReportInterval): self {
+    public function setConsumptionReportInterval(int $consumptionReportInterval): self
+    {
         $this->options['consumptionReportInterval'] = $consumptionReportInterval;
         return $this;
     }
@@ -298,7 +479,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $notificationsNewMessageEnabled 
      * @return $this Fluent Builder
      */
-    public function setNotificationsNewMessageEnabled(bool $notificationsNewMessageEnabled): self {
+    public function setNotificationsNewMessageEnabled(bool $notificationsNewMessageEnabled): self
+    {
         $this->options['notificationsNewMessageEnabled'] = $notificationsNewMessageEnabled;
         return $this;
     }
@@ -309,7 +491,8 @@ class UpdateServiceOptions extends Options {
      * @param string $notificationsNewMessageTemplate 
      * @return $this Fluent Builder
      */
-    public function setNotificationsNewMessageTemplate(string $notificationsNewMessageTemplate): self {
+    public function setNotificationsNewMessageTemplate(string $notificationsNewMessageTemplate): self
+    {
         $this->options['notificationsNewMessageTemplate'] = $notificationsNewMessageTemplate;
         return $this;
     }
@@ -320,7 +503,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $notificationsAddedToChannelEnabled 
      * @return $this Fluent Builder
      */
-    public function setNotificationsAddedToChannelEnabled(bool $notificationsAddedToChannelEnabled): self {
+    public function setNotificationsAddedToChannelEnabled(bool $notificationsAddedToChannelEnabled): self
+    {
         $this->options['notificationsAddedToChannelEnabled'] = $notificationsAddedToChannelEnabled;
         return $this;
     }
@@ -331,7 +515,8 @@ class UpdateServiceOptions extends Options {
      * @param string $notificationsAddedToChannelTemplate 
      * @return $this Fluent Builder
      */
-    public function setNotificationsAddedToChannelTemplate(string $notificationsAddedToChannelTemplate): self {
+    public function setNotificationsAddedToChannelTemplate(string $notificationsAddedToChannelTemplate): self
+    {
         $this->options['notificationsAddedToChannelTemplate'] = $notificationsAddedToChannelTemplate;
         return $this;
     }
@@ -342,7 +527,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $notificationsRemovedFromChannelEnabled 
      * @return $this Fluent Builder
      */
-    public function setNotificationsRemovedFromChannelEnabled(bool $notificationsRemovedFromChannelEnabled): self {
+    public function setNotificationsRemovedFromChannelEnabled(bool $notificationsRemovedFromChannelEnabled): self
+    {
         $this->options['notificationsRemovedFromChannelEnabled'] = $notificationsRemovedFromChannelEnabled;
         return $this;
     }
@@ -353,7 +539,8 @@ class UpdateServiceOptions extends Options {
      * @param string $notificationsRemovedFromChannelTemplate 
      * @return $this Fluent Builder
      */
-    public function setNotificationsRemovedFromChannelTemplate(string $notificationsRemovedFromChannelTemplate): self {
+    public function setNotificationsRemovedFromChannelTemplate(string $notificationsRemovedFromChannelTemplate): self
+    {
         $this->options['notificationsRemovedFromChannelTemplate'] = $notificationsRemovedFromChannelTemplate;
         return $this;
     }
@@ -364,7 +551,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $notificationsInvitedToChannelEnabled 
      * @return $this Fluent Builder
      */
-    public function setNotificationsInvitedToChannelEnabled(bool $notificationsInvitedToChannelEnabled): self {
+    public function setNotificationsInvitedToChannelEnabled(bool $notificationsInvitedToChannelEnabled): self
+    {
         $this->options['notificationsInvitedToChannelEnabled'] = $notificationsInvitedToChannelEnabled;
         return $this;
     }
@@ -375,7 +563,8 @@ class UpdateServiceOptions extends Options {
      * @param string $notificationsInvitedToChannelTemplate 
      * @return $this Fluent Builder
      */
-    public function setNotificationsInvitedToChannelTemplate(string $notificationsInvitedToChannelTemplate): self {
+    public function setNotificationsInvitedToChannelTemplate(string $notificationsInvitedToChannelTemplate): self
+    {
         $this->options['notificationsInvitedToChannelTemplate'] = $notificationsInvitedToChannelTemplate;
         return $this;
     }
@@ -386,7 +575,8 @@ class UpdateServiceOptions extends Options {
      * @param string $preWebhookUrl 
      * @return $this Fluent Builder
      */
-    public function setPreWebhookUrl(string $preWebhookUrl): self {
+    public function setPreWebhookUrl(string $preWebhookUrl): self
+    {
         $this->options['preWebhookUrl'] = $preWebhookUrl;
         return $this;
     }
@@ -397,7 +587,8 @@ class UpdateServiceOptions extends Options {
      * @param string $postWebhookUrl 
      * @return $this Fluent Builder
      */
-    public function setPostWebhookUrl(string $postWebhookUrl): self {
+    public function setPostWebhookUrl(string $postWebhookUrl): self
+    {
         $this->options['postWebhookUrl'] = $postWebhookUrl;
         return $this;
     }
@@ -408,7 +599,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhookMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod(string $webhookMethod): self {
+    public function setWebhookMethod(string $webhookMethod): self
+    {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -419,7 +611,8 @@ class UpdateServiceOptions extends Options {
      * @param string[] $webhookFilters 
      * @return $this Fluent Builder
      */
-    public function setWebhookFilters(array $webhookFilters): self {
+    public function setWebhookFilters(array $webhookFilters): self
+    {
         $this->options['webhookFilters'] = $webhookFilters;
         return $this;
     }
@@ -430,7 +623,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageSendUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageSendUrl(string $webhooksOnMessageSendUrl): self {
+    public function setWebhooksOnMessageSendUrl(string $webhooksOnMessageSendUrl): self
+    {
         $this->options['webhooksOnMessageSendUrl'] = $webhooksOnMessageSendUrl;
         return $this;
     }
@@ -441,7 +635,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageSendMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageSendMethod(string $webhooksOnMessageSendMethod): self {
+    public function setWebhooksOnMessageSendMethod(string $webhooksOnMessageSendMethod): self
+    {
         $this->options['webhooksOnMessageSendMethod'] = $webhooksOnMessageSendMethod;
         return $this;
     }
@@ -452,7 +647,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageUpdateUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageUpdateUrl(string $webhooksOnMessageUpdateUrl): self {
+    public function setWebhooksOnMessageUpdateUrl(string $webhooksOnMessageUpdateUrl): self
+    {
         $this->options['webhooksOnMessageUpdateUrl'] = $webhooksOnMessageUpdateUrl;
         return $this;
     }
@@ -463,7 +659,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageUpdateMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageUpdateMethod(string $webhooksOnMessageUpdateMethod): self {
+    public function setWebhooksOnMessageUpdateMethod(string $webhooksOnMessageUpdateMethod): self
+    {
         $this->options['webhooksOnMessageUpdateMethod'] = $webhooksOnMessageUpdateMethod;
         return $this;
     }
@@ -474,7 +671,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageRemoveUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageRemoveUrl(string $webhooksOnMessageRemoveUrl): self {
+    public function setWebhooksOnMessageRemoveUrl(string $webhooksOnMessageRemoveUrl): self
+    {
         $this->options['webhooksOnMessageRemoveUrl'] = $webhooksOnMessageRemoveUrl;
         return $this;
     }
@@ -485,7 +683,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageRemoveMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageRemoveMethod(string $webhooksOnMessageRemoveMethod): self {
+    public function setWebhooksOnMessageRemoveMethod(string $webhooksOnMessageRemoveMethod): self
+    {
         $this->options['webhooksOnMessageRemoveMethod'] = $webhooksOnMessageRemoveMethod;
         return $this;
     }
@@ -496,7 +695,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelAddUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelAddUrl(string $webhooksOnChannelAddUrl): self {
+    public function setWebhooksOnChannelAddUrl(string $webhooksOnChannelAddUrl): self
+    {
         $this->options['webhooksOnChannelAddUrl'] = $webhooksOnChannelAddUrl;
         return $this;
     }
@@ -507,7 +707,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelAddMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelAddMethod(string $webhooksOnChannelAddMethod): self {
+    public function setWebhooksOnChannelAddMethod(string $webhooksOnChannelAddMethod): self
+    {
         $this->options['webhooksOnChannelAddMethod'] = $webhooksOnChannelAddMethod;
         return $this;
     }
@@ -518,7 +719,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelDestroyUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelDestroyUrl(string $webhooksOnChannelDestroyUrl): self {
+    public function setWebhooksOnChannelDestroyUrl(string $webhooksOnChannelDestroyUrl): self
+    {
         $this->options['webhooksOnChannelDestroyUrl'] = $webhooksOnChannelDestroyUrl;
         return $this;
     }
@@ -529,7 +731,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelDestroyMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelDestroyMethod(string $webhooksOnChannelDestroyMethod): self {
+    public function setWebhooksOnChannelDestroyMethod(string $webhooksOnChannelDestroyMethod): self
+    {
         $this->options['webhooksOnChannelDestroyMethod'] = $webhooksOnChannelDestroyMethod;
         return $this;
     }
@@ -540,7 +743,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelUpdateUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelUpdateUrl(string $webhooksOnChannelUpdateUrl): self {
+    public function setWebhooksOnChannelUpdateUrl(string $webhooksOnChannelUpdateUrl): self
+    {
         $this->options['webhooksOnChannelUpdateUrl'] = $webhooksOnChannelUpdateUrl;
         return $this;
     }
@@ -551,7 +755,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelUpdateMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelUpdateMethod(string $webhooksOnChannelUpdateMethod): self {
+    public function setWebhooksOnChannelUpdateMethod(string $webhooksOnChannelUpdateMethod): self
+    {
         $this->options['webhooksOnChannelUpdateMethod'] = $webhooksOnChannelUpdateMethod;
         return $this;
     }
@@ -562,7 +767,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberAddUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberAddUrl(string $webhooksOnMemberAddUrl): self {
+    public function setWebhooksOnMemberAddUrl(string $webhooksOnMemberAddUrl): self
+    {
         $this->options['webhooksOnMemberAddUrl'] = $webhooksOnMemberAddUrl;
         return $this;
     }
@@ -573,7 +779,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberAddMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberAddMethod(string $webhooksOnMemberAddMethod): self {
+    public function setWebhooksOnMemberAddMethod(string $webhooksOnMemberAddMethod): self
+    {
         $this->options['webhooksOnMemberAddMethod'] = $webhooksOnMemberAddMethod;
         return $this;
     }
@@ -584,7 +791,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberRemoveUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberRemoveUrl(string $webhooksOnMemberRemoveUrl): self {
+    public function setWebhooksOnMemberRemoveUrl(string $webhooksOnMemberRemoveUrl): self
+    {
         $this->options['webhooksOnMemberRemoveUrl'] = $webhooksOnMemberRemoveUrl;
         return $this;
     }
@@ -595,7 +803,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberRemoveMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberRemoveMethod(string $webhooksOnMemberRemoveMethod): self {
+    public function setWebhooksOnMemberRemoveMethod(string $webhooksOnMemberRemoveMethod): self
+    {
         $this->options['webhooksOnMemberRemoveMethod'] = $webhooksOnMemberRemoveMethod;
         return $this;
     }
@@ -606,7 +815,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageSentUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageSentUrl(string $webhooksOnMessageSentUrl): self {
+    public function setWebhooksOnMessageSentUrl(string $webhooksOnMessageSentUrl): self
+    {
         $this->options['webhooksOnMessageSentUrl'] = $webhooksOnMessageSentUrl;
         return $this;
     }
@@ -617,7 +827,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageSentMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageSentMethod(string $webhooksOnMessageSentMethod): self {
+    public function setWebhooksOnMessageSentMethod(string $webhooksOnMessageSentMethod): self
+    {
         $this->options['webhooksOnMessageSentMethod'] = $webhooksOnMessageSentMethod;
         return $this;
     }
@@ -628,7 +839,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageUpdatedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageUpdatedUrl(string $webhooksOnMessageUpdatedUrl): self {
+    public function setWebhooksOnMessageUpdatedUrl(string $webhooksOnMessageUpdatedUrl): self
+    {
         $this->options['webhooksOnMessageUpdatedUrl'] = $webhooksOnMessageUpdatedUrl;
         return $this;
     }
@@ -639,7 +851,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageUpdatedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageUpdatedMethod(string $webhooksOnMessageUpdatedMethod): self {
+    public function setWebhooksOnMessageUpdatedMethod(string $webhooksOnMessageUpdatedMethod): self
+    {
         $this->options['webhooksOnMessageUpdatedMethod'] = $webhooksOnMessageUpdatedMethod;
         return $this;
     }
@@ -650,7 +863,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageRemovedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageRemovedUrl(string $webhooksOnMessageRemovedUrl): self {
+    public function setWebhooksOnMessageRemovedUrl(string $webhooksOnMessageRemovedUrl): self
+    {
         $this->options['webhooksOnMessageRemovedUrl'] = $webhooksOnMessageRemovedUrl;
         return $this;
     }
@@ -661,7 +875,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMessageRemovedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMessageRemovedMethod(string $webhooksOnMessageRemovedMethod): self {
+    public function setWebhooksOnMessageRemovedMethod(string $webhooksOnMessageRemovedMethod): self
+    {
         $this->options['webhooksOnMessageRemovedMethod'] = $webhooksOnMessageRemovedMethod;
         return $this;
     }
@@ -672,7 +887,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelAddedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelAddedUrl(string $webhooksOnChannelAddedUrl): self {
+    public function setWebhooksOnChannelAddedUrl(string $webhooksOnChannelAddedUrl): self
+    {
         $this->options['webhooksOnChannelAddedUrl'] = $webhooksOnChannelAddedUrl;
         return $this;
     }
@@ -683,7 +899,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelAddedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelAddedMethod(string $webhooksOnChannelAddedMethod): self {
+    public function setWebhooksOnChannelAddedMethod(string $webhooksOnChannelAddedMethod): self
+    {
         $this->options['webhooksOnChannelAddedMethod'] = $webhooksOnChannelAddedMethod;
         return $this;
     }
@@ -694,7 +911,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelDestroyedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelDestroyedUrl(string $webhooksOnChannelDestroyedUrl): self {
+    public function setWebhooksOnChannelDestroyedUrl(string $webhooksOnChannelDestroyedUrl): self
+    {
         $this->options['webhooksOnChannelDestroyedUrl'] = $webhooksOnChannelDestroyedUrl;
         return $this;
     }
@@ -705,7 +923,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelDestroyedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelDestroyedMethod(string $webhooksOnChannelDestroyedMethod): self {
+    public function setWebhooksOnChannelDestroyedMethod(string $webhooksOnChannelDestroyedMethod): self
+    {
         $this->options['webhooksOnChannelDestroyedMethod'] = $webhooksOnChannelDestroyedMethod;
         return $this;
     }
@@ -716,7 +935,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelUpdatedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelUpdatedUrl(string $webhooksOnChannelUpdatedUrl): self {
+    public function setWebhooksOnChannelUpdatedUrl(string $webhooksOnChannelUpdatedUrl): self
+    {
         $this->options['webhooksOnChannelUpdatedUrl'] = $webhooksOnChannelUpdatedUrl;
         return $this;
     }
@@ -727,7 +947,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnChannelUpdatedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnChannelUpdatedMethod(string $webhooksOnChannelUpdatedMethod): self {
+    public function setWebhooksOnChannelUpdatedMethod(string $webhooksOnChannelUpdatedMethod): self
+    {
         $this->options['webhooksOnChannelUpdatedMethod'] = $webhooksOnChannelUpdatedMethod;
         return $this;
     }
@@ -738,7 +959,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberAddedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberAddedUrl(string $webhooksOnMemberAddedUrl): self {
+    public function setWebhooksOnMemberAddedUrl(string $webhooksOnMemberAddedUrl): self
+    {
         $this->options['webhooksOnMemberAddedUrl'] = $webhooksOnMemberAddedUrl;
         return $this;
     }
@@ -749,7 +971,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberAddedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberAddedMethod(string $webhooksOnMemberAddedMethod): self {
+    public function setWebhooksOnMemberAddedMethod(string $webhooksOnMemberAddedMethod): self
+    {
         $this->options['webhooksOnMemberAddedMethod'] = $webhooksOnMemberAddedMethod;
         return $this;
     }
@@ -760,7 +983,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberRemovedUrl 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberRemovedUrl(string $webhooksOnMemberRemovedUrl): self {
+    public function setWebhooksOnMemberRemovedUrl(string $webhooksOnMemberRemovedUrl): self
+    {
         $this->options['webhooksOnMemberRemovedUrl'] = $webhooksOnMemberRemovedUrl;
         return $this;
     }
@@ -771,7 +995,8 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberRemovedMethod 
      * @return $this Fluent Builder
      */
-    public function setWebhooksOnMemberRemovedMethod(string $webhooksOnMemberRemovedMethod): self {
+    public function setWebhooksOnMemberRemovedMethod(string $webhooksOnMemberRemovedMethod): self
+    {
         $this->options['webhooksOnMemberRemovedMethod'] = $webhooksOnMemberRemovedMethod;
         return $this;
     }
@@ -782,7 +1007,8 @@ class UpdateServiceOptions extends Options {
      * @param int $limitsChannelMembers 
      * @return $this Fluent Builder
      */
-    public function setLimitsChannelMembers(int $limitsChannelMembers): self {
+    public function setLimitsChannelMembers(int $limitsChannelMembers): self
+    {
         $this->options['limitsChannelMembers'] = $limitsChannelMembers;
         return $this;
     }
@@ -793,7 +1019,8 @@ class UpdateServiceOptions extends Options {
      * @param int $limitsUserChannels 
      * @return $this Fluent Builder
      */
-    public function setLimitsUserChannels(int $limitsUserChannels): self {
+    public function setLimitsUserChannels(int $limitsUserChannels): self
+    {
         $this->options['limitsUserChannels'] = $limitsUserChannels;
         return $this;
     }
@@ -803,7 +1030,8 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.UpdateServiceOptions ' . $options . ']';
     }

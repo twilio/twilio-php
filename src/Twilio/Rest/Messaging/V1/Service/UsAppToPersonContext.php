@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class UsAppToPersonContext extends InstanceContext {
+class UsAppToPersonContext extends InstanceContext
+    {
     /**
      * Initialize the UsAppToPersonContext
      *
@@ -30,13 +31,25 @@ class UsAppToPersonContext extends InstanceContext {
      * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
      * @param string $sid The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`.
      */
-    public function __construct(Version $version, $messagingServiceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $messagingServiceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['messagingServiceSid' => $messagingServiceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'messagingServiceSid' =>
+            $messagingServiceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($messagingServiceSid) . '/Compliance/Usa2p/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($messagingServiceSid)
+        .'/Compliance/Usa2p/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class UsAppToPersonContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the UsAppToPersonInstance
@@ -55,23 +71,27 @@ class UsAppToPersonContext extends InstanceContext {
      * @return UsAppToPersonInstance Fetched UsAppToPersonInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UsAppToPersonInstance {
+    public function fetch(): UsAppToPersonInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new UsAppToPersonInstance(
             $this->version,
-            $payload
-            , $this->solution['messagingServiceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['messagingServiceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

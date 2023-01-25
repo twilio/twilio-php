@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class BillingPeriodList extends ListResource {
+class BillingPeriodList extends ListResource
+    {
     /**
      * Construct the BillingPeriodList
      *
      * @param Version $version Version that contains the resource
      * @param string $simSid The SID of the Super SIM to list Billing Periods for.
      */
-    public function __construct(Version $version, string $simSid ) {
+    public function __construct(
+        Version $version,
+        string $simSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['simSid' => $simSid, ];
+        $this->solution = [
+        'simSid' =>
+            $simSid,
+        
+        ];
 
-        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/BillingPeriods';
+        $this->uri = '/Sims/' . \rawurlencode($simSid)
+        .'/BillingPeriods';
     }
 
     /**
@@ -53,7 +63,8 @@ class BillingPeriodList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BillingPeriodInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class BillingPeriodList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class BillingPeriodList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return BillingPeriodPage Page of BillingPeriodInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BillingPeriodPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): BillingPeriodPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class BillingPeriodList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return BillingPeriodPage Page of BillingPeriodInstance
      */
-    public function getPage(string $targetUrl): BillingPeriodPage {
+    public function getPage(string $targetUrl): BillingPeriodPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,7 +145,8 @@ class BillingPeriodList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.BillingPeriodList]';
     }
 }

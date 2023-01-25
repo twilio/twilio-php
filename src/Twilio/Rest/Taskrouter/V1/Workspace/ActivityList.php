@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ActivityList extends ListResource {
+class ActivityList extends ListResource
+    {
     /**
      * Construct the ActivityList
      *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that the new Activity belongs to.
      */
-    public function __construct(Version $version, string $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Activities';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Activities';
     }
 
     /**
@@ -49,22 +59,27 @@ class ActivityList extends ListResource {
      * @return ActivityInstance Created ActivityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): ActivityInstance {
+    public function create(string $friendlyName, array $options = []): ActivityInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'Available' => Serialize::booleanToString($options['available']),
+            'FriendlyName' =>
+                $friendlyName,
+            'Available' =>
+                Serialize::booleanToString($options['available']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ActivityInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
+            $payload,
+            $this->solution['workspaceSid'],
         );
     }
+
 
     /**
      * Reads ActivityInstance records from the API as a list.
@@ -82,7 +97,8 @@ class ActivityList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ActivityInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -105,7 +121,8 @@ class ActivityList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -122,12 +139,20 @@ class ActivityList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ActivityPage Page of ActivityInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ActivityPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ActivityPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'Available' => $options['available'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Available' =>
+                $options['available'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -145,7 +170,8 @@ class ActivityList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ActivityPage Page of ActivityInstance
      */
-    public function getPage(string $targetUrl): ActivityPage {
+    public function getPage(string $targetUrl): ActivityPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -160,8 +186,16 @@ class ActivityList extends ListResource {
      *
      * @param string $sid The SID of the Activity resource to delete.
      */
-    public function getContext(string $sid): ActivityContext {
-        return new ActivityContext($this->version, $this->solution['workspaceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ActivityContext
+    {
+        return new ActivityContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $sid
+        );
     }
 
     /**
@@ -169,7 +203,8 @@ class ActivityList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.ActivityList]';
     }
 }

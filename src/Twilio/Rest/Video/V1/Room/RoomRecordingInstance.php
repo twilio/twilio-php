@@ -43,7 +43,8 @@ use Twilio\Deserialize;
  * @property string $roomSid
  * @property array $links
  */
-class RoomRecordingInstance extends InstanceResource {
+class RoomRecordingInstance extends InstanceResource
+{
     /**
      * Initialize the RoomRecordingInstance
      *
@@ -52,7 +53,8 @@ class RoomRecordingInstance extends InstanceResource {
      * @param string $roomSid The SID of the room with the RoomRecording resource to delete.
      * @param string $sid The SID of the RoomRecording resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +87,8 @@ class RoomRecordingInstance extends InstanceResource {
      *
      * @return RoomRecordingContext Context for this RoomRecordingInstance
      */
-    protected function proxy(): RoomRecordingContext {
+    protected function proxy(): RoomRecordingContext
+    {
         if (!$this->context) {
             $this->context = new RoomRecordingContext(
                 $this->version,
@@ -103,7 +106,9 @@ class RoomRecordingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -113,7 +118,9 @@ class RoomRecordingInstance extends InstanceResource {
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RoomRecordingInstance {
+    public function fetch(): RoomRecordingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -124,7 +131,8 @@ class RoomRecordingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +150,8 @@ class RoomRecordingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

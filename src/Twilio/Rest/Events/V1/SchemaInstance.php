@@ -32,7 +32,8 @@ use Twilio\Rest\Events\V1\Schema\SchemaVersionList;
  * @property \DateTime $latestVersionDateCreated
  * @property int $latestVersion
  */
-class SchemaInstance extends InstanceResource {
+class SchemaInstance extends InstanceResource
+{
     protected $_versions;
 
     /**
@@ -42,7 +43,8 @@ class SchemaInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $id The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
      */
-    public function __construct(Version $version, array $payload, string $id = null) {
+    public function __construct(Version $version, array $payload, string $id = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class SchemaInstance extends InstanceResource {
      *
      * @return SchemaContext Context for this SchemaInstance
      */
-    protected function proxy(): SchemaContext {
+    protected function proxy(): SchemaContext
+    {
         if (!$this->context) {
             $this->context = new SchemaContext(
                 $this->version,
@@ -80,14 +83,17 @@ class SchemaInstance extends InstanceResource {
      * @return SchemaInstance Fetched SchemaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SchemaInstance {
+    public function fetch(): SchemaInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the versions
      */
-    protected function getVersions(): SchemaVersionList {
+    protected function getVersions(): SchemaVersionList
+    {
         return $this->proxy()->versions;
     }
 
@@ -98,7 +104,8 @@ class SchemaInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -116,7 +123,8 @@ class SchemaInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

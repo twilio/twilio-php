@@ -24,20 +24,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ParticipantList extends ListResource {
+class ParticipantList extends ListResource
+    {
     /**
      * Construct the ParticipantList
      *
      * @param Version $version Version that contains the resource
      * @param string $roomSid The SID of the room with the Participant resource to fetch.
      */
-    public function __construct(Version $version, string $roomSid ) {
+    public function __construct(
+        Version $version,
+        string $roomSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['roomSid' => $roomSid, ];
+        $this->solution = [
+        'roomSid' =>
+            $roomSid,
+        
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid)
+        .'/Participants';
     }
 
     /**
@@ -56,7 +66,8 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ParticipantInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +90,8 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,14 +108,24 @@ class ParticipantList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ParticipantPage Page of ParticipantInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ParticipantPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ParticipantPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Status' => $options['status'],
-            'Identity' => $options['identity'],
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'Status' =>
+                $options['status'],
+            'Identity' =>
+                $options['identity'],
+            'DateCreatedAfter' =>
+                Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' =>
+                Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -121,7 +143,8 @@ class ParticipantList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ParticipantPage Page of ParticipantInstance
      */
-    public function getPage(string $targetUrl): ParticipantPage {
+    public function getPage(string $targetUrl): ParticipantPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -136,8 +159,16 @@ class ParticipantList extends ListResource {
      *
      * @param string $sid The SID of the RoomParticipant resource to fetch.
      */
-    public function getContext(string $sid): ParticipantContext {
-        return new ParticipantContext($this->version, $this->solution['roomSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ParticipantContext
+    {
+        return new ParticipantContext(
+            $this->version,
+            $this->solution['roomSid'],
+            $sid
+        );
     }
 
     /**
@@ -145,7 +176,8 @@ class ParticipantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.ParticipantList]';
     }
 }

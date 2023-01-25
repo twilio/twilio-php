@@ -41,7 +41,8 @@ use Twilio\Rest\Preview\Understand\Assistant\Task\TaskStatisticsList;
  * @property string $actionsUrl
  * @property string $url
  */
-class TaskInstance extends InstanceResource {
+class TaskInstance extends InstanceResource
+{
     protected $_samples;
     protected $_fields;
     protected $_taskActions;
@@ -55,7 +56,8 @@ class TaskInstance extends InstanceResource {
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class TaskInstance extends InstanceResource {
      *
      * @return TaskContext Context for this TaskInstance
      */
-    protected function proxy(): TaskContext {
+    protected function proxy(): TaskContext
+    {
         if (!$this->context) {
             $this->context = new TaskContext(
                 $this->version,
@@ -99,7 +102,9 @@ class TaskInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -109,7 +114,9 @@ class TaskInstance extends InstanceResource {
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TaskInstance {
+    public function fetch(): TaskInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -120,35 +127,41 @@ class TaskInstance extends InstanceResource {
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TaskInstance {
+    public function update(array $options = []): TaskInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the samples
      */
-    protected function getSamples(): SampleList {
+    protected function getSamples(): SampleList
+    {
         return $this->proxy()->samples;
     }
 
     /**
      * Access the fields
      */
-    protected function getFields(): FieldList {
+    protected function getFields(): FieldList
+    {
         return $this->proxy()->fields;
     }
 
     /**
      * Access the taskActions
      */
-    protected function getTaskActions(): TaskActionsList {
+    protected function getTaskActions(): TaskActionsList
+    {
         return $this->proxy()->taskActions;
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): TaskStatisticsList {
+    protected function getStatistics(): TaskStatisticsList
+    {
         return $this->proxy()->statistics;
     }
 
@@ -159,7 +172,8 @@ class TaskInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -177,7 +191,8 @@ class TaskInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class MessageList extends ListResource {
+class MessageList extends ListResource
+    {
     /**
      * Construct the MessageList
      *
      * @param Version $version Version that contains the resource
      * @param string $conversationSid The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.
      */
-    public function __construct(Version $version, string $conversationSid ) {
+    public function __construct(
+        Version $version,
+        string $conversationSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['conversationSid' => $conversationSid, ];
+        $this->solution = [
+        'conversationSid' =>
+            $conversationSid,
+        
+        ];
 
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid) . '/Messages';
+        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        .'/Messages';
     }
 
     /**
@@ -48,18 +58,28 @@ class MessageList extends ListResource {
      * @return MessageInstance Created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): MessageInstance {
+    public function create(array $options = []): MessageInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Author' => $options['author'],
-            'Body' => $options['body'],
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'Attributes' => $options['attributes'],
-            'MediaSid' => $options['mediaSid'],
-            'ContentSid' => $options['contentSid'],
-            'ContentVariables' => $options['contentVariables'],
+            'Author' =>
+                $options['author'],
+            'Body' =>
+                $options['body'],
+            'DateCreated' =>
+                Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' =>
+                Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' =>
+                $options['attributes'],
+            'MediaSid' =>
+                $options['mediaSid'],
+            'ContentSid' =>
+                $options['contentSid'],
+            'ContentVariables' =>
+                $options['contentVariables'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -68,10 +88,11 @@ class MessageList extends ListResource {
 
         return new MessageInstance(
             $this->version,
-            $payload
-            , $this->solution['conversationSid']
+            $payload,
+            $this->solution['conversationSid'],
         );
     }
+
 
     /**
      * Reads MessageInstance records from the API as a list.
@@ -89,7 +110,8 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MessageInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -112,7 +134,8 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -129,11 +152,18 @@ class MessageList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MessagePage Page of MessageInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MessagePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
+            'Order' =>
+                $options['order'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -151,7 +181,8 @@ class MessageList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MessagePage Page of MessageInstance
      */
-    public function getPage(string $targetUrl): MessagePage {
+    public function getPage(string $targetUrl): MessagePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -166,8 +197,16 @@ class MessageList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function getContext(string $sid): MessageContext {
-        return new MessageContext($this->version, $this->solution['conversationSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): MessageContext
+    {
+        return new MessageContext(
+            $this->version,
+            $this->solution['conversationSid'],
+            $sid
+        );
     }
 
     /**
@@ -175,7 +214,8 @@ class MessageList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.MessageList]';
     }
 }

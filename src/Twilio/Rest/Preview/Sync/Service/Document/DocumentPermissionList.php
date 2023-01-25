@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class DocumentPermissionList extends ListResource {
+class DocumentPermissionList extends ListResource
+    {
     /**
      * Construct the DocumentPermissionList
      *
@@ -30,13 +31,28 @@ class DocumentPermissionList extends ListResource {
      * @param string $serviceSid 
      * @param string $documentSid Identifier of the Sync Document. Either a SID or a unique name.
      */
-    public function __construct(Version $version, string $serviceSid , string $documentSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $documentSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'documentSid' => $documentSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'documentSid' =>
+            $documentSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($documentSid) . '/Permissions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Documents/' . \rawurlencode($documentSid)
+        .'/Permissions';
     }
 
     /**
@@ -54,7 +70,8 @@ class DocumentPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DocumentPermissionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class DocumentPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class DocumentPermissionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DocumentPermissionPage Page of DocumentPermissionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DocumentPermissionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): DocumentPermissionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class DocumentPermissionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DocumentPermissionPage Page of DocumentPermissionInstance
      */
-    public function getPage(string $targetUrl): DocumentPermissionPage {
+    public function getPage(string $targetUrl): DocumentPermissionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class DocumentPermissionList extends ListResource {
      *
      * @param string $identity Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.
      */
-    public function getContext(string $identity): DocumentPermissionContext {
-        return new DocumentPermissionContext($this->version, $this->solution['serviceSid'], $this->solution['documentSid'], $identity);
+    public function getContext(
+        string $identity
+        
+    ): DocumentPermissionContext
+    {
+        return new DocumentPermissionContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['documentSid'],
+            $identity
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class DocumentPermissionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Sync.DocumentPermissionList]';
     }
 }

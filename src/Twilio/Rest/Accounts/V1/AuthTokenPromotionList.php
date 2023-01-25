@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class AuthTokenPromotionList extends ListResource {
+class AuthTokenPromotionList extends ListResource
+    {
     /**
      * Construct the AuthTokenPromotionList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a AuthTokenPromotionContext
      */
-    public function getContext(): AuthTokenPromotionContext {
-        return new AuthTokenPromotionContext($this->version);
+    public function getContext(
+        
+    ): AuthTokenPromotionContext
+    {
+        return new AuthTokenPromotionContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class AuthTokenPromotionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Accounts.V1.AuthTokenPromotionList]';
     }
 }

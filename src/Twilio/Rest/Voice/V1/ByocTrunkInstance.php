@@ -42,7 +42,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class ByocTrunkInstance extends InstanceResource {
+class ByocTrunkInstance extends InstanceResource
+{
     /**
      * Initialize the ByocTrunkInstance
      *
@@ -50,7 +51,8 @@ class ByocTrunkInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the BYOC Trunk resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class ByocTrunkInstance extends InstanceResource {
      *
      * @return ByocTrunkContext Context for this ByocTrunkInstance
      */
-    protected function proxy(): ByocTrunkContext {
+    protected function proxy(): ByocTrunkContext
+    {
         if (!$this->context) {
             $this->context = new ByocTrunkContext(
                 $this->version,
@@ -98,7 +101,9 @@ class ByocTrunkInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -108,7 +113,9 @@ class ByocTrunkInstance extends InstanceResource {
      * @return ByocTrunkInstance Fetched ByocTrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ByocTrunkInstance {
+    public function fetch(): ByocTrunkInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -119,7 +126,9 @@ class ByocTrunkInstance extends InstanceResource {
      * @return ByocTrunkInstance Updated ByocTrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ByocTrunkInstance {
+    public function update(array $options = []): ByocTrunkInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -130,7 +139,8 @@ class ByocTrunkInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +158,8 @@ class ByocTrunkInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -24,17 +24,22 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ConfigurationContext extends InstanceContext {
+class ConfigurationContext extends InstanceContext
+    {
     /**
      * Initialize the ConfigurationContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Configuration';
     }
@@ -46,27 +51,32 @@ class ConfigurationContext extends InstanceContext {
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): ConfigurationInstance {
+    public function fetch(array $options = []): ConfigurationInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'UiVersion' => $options['uiVersion'],
+            'UiVersion' =>
+                $options['uiVersion'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new ConfigurationInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -52,7 +52,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList;
  * @property string $url
  * @property array $links
  */
-class WorkspaceInstance extends InstanceResource {
+class WorkspaceInstance extends InstanceResource
+{
     protected $_taskQueues;
     protected $_events;
     protected $_taskChannels;
@@ -71,7 +72,8 @@ class WorkspaceInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Workspace resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -102,7 +104,8 @@ class WorkspaceInstance extends InstanceResource {
      *
      * @return WorkspaceContext Context for this WorkspaceInstance
      */
-    protected function proxy(): WorkspaceContext {
+    protected function proxy(): WorkspaceContext
+    {
         if (!$this->context) {
             $this->context = new WorkspaceContext(
                 $this->version,
@@ -119,7 +122,9 @@ class WorkspaceInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -129,7 +134,9 @@ class WorkspaceInstance extends InstanceResource {
      * @return WorkspaceInstance Fetched WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WorkspaceInstance {
+    public function fetch(): WorkspaceInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -140,77 +147,89 @@ class WorkspaceInstance extends InstanceResource {
      * @return WorkspaceInstance Updated WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkspaceInstance {
+    public function update(array $options = []): WorkspaceInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the taskQueues
      */
-    protected function getTaskQueues(): TaskQueueList {
+    protected function getTaskQueues(): TaskQueueList
+    {
         return $this->proxy()->taskQueues;
     }
 
     /**
      * Access the events
      */
-    protected function getEvents(): EventList {
+    protected function getEvents(): EventList
+    {
         return $this->proxy()->events;
     }
 
     /**
      * Access the taskChannels
      */
-    protected function getTaskChannels(): TaskChannelList {
+    protected function getTaskChannels(): TaskChannelList
+    {
         return $this->proxy()->taskChannels;
     }
 
     /**
      * Access the activities
      */
-    protected function getActivities(): ActivityList {
+    protected function getActivities(): ActivityList
+    {
         return $this->proxy()->activities;
     }
 
     /**
      * Access the workers
      */
-    protected function getWorkers(): WorkerList {
+    protected function getWorkers(): WorkerList
+    {
         return $this->proxy()->workers;
     }
 
     /**
      * Access the workflows
      */
-    protected function getWorkflows(): WorkflowList {
+    protected function getWorkflows(): WorkflowList
+    {
         return $this->proxy()->workflows;
     }
 
     /**
      * Access the tasks
      */
-    protected function getTasks(): TaskList {
+    protected function getTasks(): TaskList
+    {
         return $this->proxy()->tasks;
     }
 
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): WorkspaceCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): WorkspaceCumulativeStatisticsList
+    {
         return $this->proxy()->cumulativeStatistics;
     }
 
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): WorkspaceRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): WorkspaceRealTimeStatisticsList
+    {
         return $this->proxy()->realTimeStatistics;
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): WorkspaceStatisticsList {
+    protected function getStatistics(): WorkspaceStatisticsList
+    {
         return $this->proxy()->statistics;
     }
 
@@ -221,7 +240,8 @@ class WorkspaceInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -239,7 +259,8 @@ class WorkspaceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property string $content
  * @property string $url
  */
-class FunctionVersionContentInstance extends InstanceResource {
+class FunctionVersionContentInstance extends InstanceResource
+{
     /**
      * Initialize the FunctionVersionContentInstance
      *
@@ -41,7 +42,8 @@ class FunctionVersionContentInstance extends InstanceResource {
      * @param string $functionSid The SID of the Function that is the parent of the Function Version content to fetch.
      * @param string $sid The SID of the Function Version content to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class FunctionVersionContentInstance extends InstanceResource {
      *
      * @return FunctionVersionContentContext Context for this FunctionVersionContentInstance
      */
-    protected function proxy(): FunctionVersionContentContext {
+    protected function proxy(): FunctionVersionContentContext
+    {
         if (!$this->context) {
             $this->context = new FunctionVersionContentContext(
                 $this->version,
@@ -82,7 +85,9 @@ class FunctionVersionContentInstance extends InstanceResource {
      * @return FunctionVersionContentInstance Fetched FunctionVersionContentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FunctionVersionContentInstance {
+    public function fetch(): FunctionVersionContentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -93,7 +98,8 @@ class FunctionVersionContentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -111,7 +117,8 @@ class FunctionVersionContentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -53,7 +53,8 @@ use Twilio\Rest\Video\V1\Room\RoomRecordingList;
  * @property string $url
  * @property array $links
  */
-class RoomInstance extends InstanceResource {
+class RoomInstance extends InstanceResource
+{
     protected $_recordingRules;
     protected $_participants;
     protected $_recordings;
@@ -65,7 +66,8 @@ class RoomInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Room resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -105,7 +107,8 @@ class RoomInstance extends InstanceResource {
      *
      * @return RoomContext Context for this RoomInstance
      */
-    protected function proxy(): RoomContext {
+    protected function proxy(): RoomContext
+    {
         if (!$this->context) {
             $this->context = new RoomContext(
                 $this->version,
@@ -122,39 +125,46 @@ class RoomInstance extends InstanceResource {
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RoomInstance {
+    public function fetch(): RoomInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the RoomInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): RoomInstance {
+    public function update(string $status): RoomInstance
+    {
+
         return $this->proxy()->update($status);
     }
 
     /**
      * Access the recordingRules
      */
-    protected function getRecordingRules(): RecordingRulesList {
+    protected function getRecordingRules(): RecordingRulesList
+    {
         return $this->proxy()->recordingRules;
     }
 
     /**
      * Access the participants
      */
-    protected function getParticipants(): ParticipantList {
+    protected function getParticipants(): ParticipantList
+    {
         return $this->proxy()->participants;
     }
 
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RoomRecordingList {
+    protected function getRecordings(): RoomRecordingList
+    {
         return $this->proxy()->recordings;
     }
 
@@ -165,7 +175,8 @@ class RoomInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -183,7 +194,8 @@ class RoomInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

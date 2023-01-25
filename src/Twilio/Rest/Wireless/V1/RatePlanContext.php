@@ -24,20 +24,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class RatePlanContext extends InstanceContext {
+class RatePlanContext extends InstanceContext
+    {
     /**
      * Initialize the RatePlanContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the RatePlan resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/RatePlans/' . \rawurlencode($sid) . '';
+        $this->uri = '/RatePlans/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,9 +55,12 @@ class RatePlanContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the RatePlanInstance
@@ -56,15 +68,18 @@ class RatePlanContext extends InstanceContext {
      * @return RatePlanInstance Fetched RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RatePlanInstance {
+    public function fetch(): RatePlanInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new RatePlanInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the RatePlanInstance
@@ -73,29 +88,35 @@ class RatePlanContext extends InstanceContext {
      * @return RatePlanInstance Updated RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): RatePlanInstance {
+    public function update(array $options = []): RatePlanInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
-            'FriendlyName' => $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RatePlanInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

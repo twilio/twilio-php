@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class TrunkList extends ListResource {
+class TrunkList extends ListResource
+    {
     /**
      * Construct the TrunkList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class TrunkList extends ListResource {
      *
      * @param string $sipTrunkDomain The absolute URL of the SIP Trunk
      */
-    public function getContext(string $sipTrunkDomain): TrunkContext {
-        return new TrunkContext($this->version, $sipTrunkDomain);
+    public function getContext(
+        string $sipTrunkDomain
+        
+    ): TrunkContext
+    {
+        return new TrunkContext(
+            $this->version,
+            $sipTrunkDomain
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class TrunkList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Routes.V2.TrunkList]';
     }
 }

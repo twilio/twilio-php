@@ -35,7 +35,8 @@ use Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList;
  * @property string $url
  * @property array $links
  */
-class CountryInstance extends InstanceResource {
+class CountryInstance extends InstanceResource
+{
     protected $_highriskSpecialPrefixes;
 
     /**
@@ -45,7 +46,8 @@ class CountryInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $isoCode The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the DialingPermissions Country resource to fetch
      */
-    public function __construct(Version $version, array $payload, string $isoCode = null) {
+    public function __construct(Version $version, array $payload, string $isoCode = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class CountryInstance extends InstanceResource {
      *
      * @return CountryContext Context for this CountryInstance
      */
-    protected function proxy(): CountryContext {
+    protected function proxy(): CountryContext
+    {
         if (!$this->context) {
             $this->context = new CountryContext(
                 $this->version,
@@ -87,14 +90,17 @@ class CountryInstance extends InstanceResource {
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CountryInstance {
+    public function fetch(): CountryInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the highriskSpecialPrefixes
      */
-    protected function getHighriskSpecialPrefixes(): HighriskSpecialPrefixList {
+    protected function getHighriskSpecialPrefixes(): HighriskSpecialPrefixList
+    {
         return $this->proxy()->highriskSpecialPrefixes;
     }
 
@@ -105,7 +111,8 @@ class CountryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -123,7 +130,8 @@ class CountryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

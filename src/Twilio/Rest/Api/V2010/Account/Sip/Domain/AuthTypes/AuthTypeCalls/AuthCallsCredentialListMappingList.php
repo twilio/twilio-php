@@ -23,7 +23,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class AuthCallsCredentialListMappingList extends ListResource {
+class AuthCallsCredentialListMappingList extends ListResource
+    {
     /**
      * Construct the AuthCallsCredentialListMappingList
      *
@@ -31,13 +32,28 @@ class AuthCallsCredentialListMappingList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $domainSid The SID of the SIP domain that will contain the new resource.
      */
-    public function __construct(Version $version, string $accountSid , string $domainSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $domainSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'domainSid' =>
+            $domainSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/Auth/Calls/CredentialListMappings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SIP/Domains/' . \rawurlencode($domainSid)
+        .'/Auth/Calls/CredentialListMappings.json';
     }
 
     /**
@@ -47,20 +63,24 @@ class AuthCallsCredentialListMappingList extends ListResource {
      * @return AuthCallsCredentialListMappingInstance Created AuthCallsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $credentialListSid): AuthCallsCredentialListMappingInstance {
+    public function create(string $credentialListSid): AuthCallsCredentialListMappingInstance
+    {
+
         $data = Values::of([
-            'CredentialListSid' => $credentialListSid,
+            'CredentialListSid' =>
+                $credentialListSid,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AuthCallsCredentialListMappingInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['domainSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['domainSid'],
         );
     }
+
 
     /**
      * Reads AuthCallsCredentialListMappingInstance records from the API as a list.
@@ -77,7 +97,8 @@ class AuthCallsCredentialListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AuthCallsCredentialListMappingInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -99,7 +120,8 @@ class AuthCallsCredentialListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -116,7 +138,12 @@ class AuthCallsCredentialListMappingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AuthCallsCredentialListMappingPage Page of AuthCallsCredentialListMappingInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthCallsCredentialListMappingPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): AuthCallsCredentialListMappingPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -136,7 +163,8 @@ class AuthCallsCredentialListMappingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AuthCallsCredentialListMappingPage Page of AuthCallsCredentialListMappingInstance
      */
-    public function getPage(string $targetUrl): AuthCallsCredentialListMappingPage {
+    public function getPage(string $targetUrl): AuthCallsCredentialListMappingPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -151,8 +179,17 @@ class AuthCallsCredentialListMappingList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete.
      */
-    public function getContext(string $sid): AuthCallsCredentialListMappingContext {
-        return new AuthCallsCredentialListMappingContext($this->version, $this->solution['accountSid'], $this->solution['domainSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): AuthCallsCredentialListMappingContext
+    {
+        return new AuthCallsCredentialListMappingContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['domainSid'],
+            $sid
+        );
     }
 
     /**
@@ -160,7 +197,8 @@ class AuthCallsCredentialListMappingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AuthCallsCredentialListMappingList]';
     }
 }

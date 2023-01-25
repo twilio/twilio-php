@@ -44,7 +44,8 @@ use Twilio\Rest\Conversations\V1\Service\Conversation\Message\DeliveryReceiptLis
  * @property array $links
  * @property string $contentSid
  */
-class MessageInstance extends InstanceResource {
+class MessageInstance extends InstanceResource
+{
     protected $_deliveryReceipts;
 
     /**
@@ -56,7 +57,8 @@ class MessageInstance extends InstanceResource {
      * @param string $conversationSid The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $conversationSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $chatServiceSid, string $conversationSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -88,7 +90,8 @@ class MessageInstance extends InstanceResource {
      *
      * @return MessageContext Context for this MessageInstance
      */
-    protected function proxy(): MessageContext {
+    protected function proxy(): MessageContext
+    {
         if (!$this->context) {
             $this->context = new MessageContext(
                 $this->version,
@@ -108,7 +111,9 @@ class MessageInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         return $this->proxy()->delete($options);
     }
 
@@ -118,7 +123,9 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MessageInstance {
+    public function fetch(): MessageInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -129,14 +136,17 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): MessageInstance {
+    public function update(array $options = []): MessageInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the deliveryReceipts
      */
-    protected function getDeliveryReceipts(): DeliveryReceiptList {
+    protected function getDeliveryReceipts(): DeliveryReceiptList
+    {
         return $this->proxy()->deliveryReceipts;
     }
 
@@ -147,7 +157,8 @@ class MessageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -165,7 +176,8 @@ class MessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

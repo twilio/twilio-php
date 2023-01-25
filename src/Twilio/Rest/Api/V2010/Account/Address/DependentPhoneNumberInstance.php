@@ -52,7 +52,8 @@ use Twilio\Deserialize;
  * @property string $emergencyAddressSid
  * @property string $uri
  */
-class DependentPhoneNumberInstance extends InstanceResource {
+class DependentPhoneNumberInstance extends InstanceResource
+{
     /**
      * Initialize the DependentPhoneNumberInstance
      *
@@ -61,7 +62,8 @@ class DependentPhoneNumberInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DependentPhoneNumber resources to read.
      * @param string $addressSid The SID of the Address resource associated with the phone number.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $addressSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $addressSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -104,7 +106,8 @@ class DependentPhoneNumberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +125,8 @@ class DependentPhoneNumberInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.DependentPhoneNumberInstance]';
     }
 }

@@ -38,7 +38,8 @@ use Twilio\Deserialize;
  * @property string $statusCallbackMethod
  * @property int $maxDuration
  */
-class MediaProcessorInstance extends InstanceResource {
+class MediaProcessorInstance extends InstanceResource
+{
     /**
      * Initialize the MediaProcessorInstance
      *
@@ -46,7 +47,8 @@ class MediaProcessorInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the MediaProcessor resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,7 +76,8 @@ class MediaProcessorInstance extends InstanceResource {
      *
      * @return MediaProcessorContext Context for this MediaProcessorInstance
      */
-    protected function proxy(): MediaProcessorContext {
+    protected function proxy(): MediaProcessorContext
+    {
         if (!$this->context) {
             $this->context = new MediaProcessorContext(
                 $this->version,
@@ -91,18 +94,22 @@ class MediaProcessorInstance extends InstanceResource {
      * @return MediaProcessorInstance Fetched MediaProcessorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MediaProcessorInstance {
+    public function fetch(): MediaProcessorInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the MediaProcessorInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return MediaProcessorInstance Updated MediaProcessorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): MediaProcessorInstance {
+    public function update(string $status): MediaProcessorInstance
+    {
+
         return $this->proxy()->update($status);
     }
 
@@ -113,7 +120,8 @@ class MediaProcessorInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -131,7 +139,8 @@ class MediaProcessorInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

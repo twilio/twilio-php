@@ -18,24 +18,38 @@ namespace Twilio\Rest\Serverless\V1\Service\Environment;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class DeploymentOptions {
+abstract class DeploymentOptions
+{
     /**
-     * @param string $buildSid The SID of the Build for the Deployment. 
+     * @param string $buildSid The SID of the Build for the Deployment.
      * @return CreateDeploymentOptions Options builder
      */
-    public static function create(string $buildSid = Values::NONE): CreateDeploymentOptions {
-        return new CreateDeploymentOptions($buildSid);
+    public static function create(
+        
+        string $buildSid = Values::NONE
+
+    ): CreateDeploymentOptions
+    {
+        return new CreateDeploymentOptions(
+            $buildSid
+        );
     }
 
 
 
 }
 
-class CreateDeploymentOptions extends Options {
+class CreateDeploymentOptions extends Options
+    {
     /**
      * @param string $buildSid The SID of the Build for the Deployment.
      */
-    public function __construct(string $buildSid = Values::NONE) {
+    public function __construct(
+        
+        string $buildSid = Values::NONE
+
+    )
+    {
         $this->options['buildSid'] = $buildSid;
     }
 
@@ -45,7 +59,8 @@ class CreateDeploymentOptions extends Options {
      * @param string $buildSid The SID of the Build for the Deployment.
      * @return $this Fluent Builder
      */
-    public function setBuildSid(string $buildSid): self {
+    public function setBuildSid(string $buildSid): self
+    {
         $this->options['buildSid'] = $buildSid;
         return $this;
     }
@@ -55,7 +70,8 @@ class CreateDeploymentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Serverless.V1.CreateDeploymentOptions ' . $options . ']';
     }

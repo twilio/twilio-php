@@ -18,48 +18,89 @@ namespace Twilio\Rest\Chat\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ChannelOptions {
-    /**
-     * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long. 
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service. 
-     * @param string $attributes A valid JSON string that contains application-specific data. 
-     * @param string $type  
-     * @return CreateChannelOptions Options builder
-     */
-    public static function create(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE): CreateChannelOptions {
-        return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type);
-    }
-
-
-
-    /**
-     * @param string $type The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`. 
-     * @return ReadChannelOptions Options builder
-     */
-    public static function read(array $type = Values::ARRAY_NONE): ReadChannelOptions {
-        return new ReadChannelOptions($type);
-    }
-
-    /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service. 
-     * @param string $attributes A valid JSON string that contains application-specific data. 
-     * @return UpdateChannelOptions Options builder
-     */
-    public static function update(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE): UpdateChannelOptions {
-        return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes);
-    }
-
-}
-
-class CreateChannelOptions extends Options {
+abstract class ChannelOptions
+{
     /**
      * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
      * @param string $attributes A valid JSON string that contains application-specific data.
-     * @param string $type 
+     * @param string $type
+     * @return CreateChannelOptions Options builder
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE, string $type = Values::NONE) {
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $type = Values::NONE
+
+    ): CreateChannelOptions
+    {
+        return new CreateChannelOptions(
+            $friendlyName,
+            $uniqueName,
+            $attributes,
+            $type
+        );
+    }
+
+
+
+    /**
+     * @param string $type The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
+     * @return ReadChannelOptions Options builder
+     */
+    public static function read(
+        
+        array $type = Values::ARRAY_NONE
+
+    ): ReadChannelOptions
+    {
+        return new ReadChannelOptions(
+            $type
+        );
+    }
+
+    /**
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
+     * @param string $attributes A valid JSON string that contains application-specific data.
+     * @return UpdateChannelOptions Options builder
+     */
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE
+
+    ): UpdateChannelOptions
+    {
+        return new UpdateChannelOptions(
+            $friendlyName,
+            $uniqueName,
+            $attributes
+        );
+    }
+
+}
+
+class CreateChannelOptions extends Options
+    {
+    /**
+     * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
+     * @param string $attributes A valid JSON string that contains application-specific data.
+     * @param string $type
+     */
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $type = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -72,7 +113,8 @@ class CreateChannelOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -83,7 +125,8 @@ class CreateChannelOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -94,16 +137,18 @@ class CreateChannelOptions extends Options {
      * @param string $attributes A valid JSON string that contains application-specific data.
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
 
     /**
-     * @param string $type 
+     * @param string $type
      * @return $this Fluent Builder
      */
-    public function setType(string $type): self {
+    public function setType(string $type): self
+    {
         $this->options['type'] = $type;
         return $this;
     }
@@ -113,7 +158,8 @@ class CreateChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V1.CreateChannelOptions ' . $options . ']';
     }
@@ -121,11 +167,17 @@ class CreateChannelOptions extends Options {
 
 
 
-class ReadChannelOptions extends Options {
+class ReadChannelOptions extends Options
+    {
     /**
      * @param string $type The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      */
-    public function __construct(array $type = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $type = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['type'] = $type;
     }
 
@@ -135,7 +187,8 @@ class ReadChannelOptions extends Options {
      * @param string $type The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      * @return $this Fluent Builder
      */
-    public function setType(array $type): self {
+    public function setType(array $type): self
+    {
         $this->options['type'] = $type;
         return $this;
     }
@@ -145,19 +198,28 @@ class ReadChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V1.ReadChannelOptions ' . $options . ']';
     }
 }
 
-class UpdateChannelOptions extends Options {
+class UpdateChannelOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
      * @param string $attributes A valid JSON string that contains application-specific data.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $uniqueName = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $uniqueName = Values::NONE,
+        string $attributes = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -169,7 +231,8 @@ class UpdateChannelOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -180,7 +243,8 @@ class UpdateChannelOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -191,7 +255,8 @@ class UpdateChannelOptions extends Options {
      * @param string $attributes A valid JSON string that contains application-specific data.
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -201,7 +266,8 @@ class UpdateChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V1.UpdateChannelOptions ' . $options . ']';
     }

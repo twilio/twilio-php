@@ -18,23 +18,37 @@ namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class BundleCopyOptions {
+abstract class BundleCopyOptions
+{
     /**
-     * @param string $friendlyName The string that you assigned to describe the copied bundle. 
+     * @param string $friendlyName The string that you assigned to describe the copied bundle.
      * @return CreateBundleCopyOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE): CreateBundleCopyOptions {
-        return new CreateBundleCopyOptions($friendlyName);
+    public static function create(
+        
+        string $friendlyName = Values::NONE
+
+    ): CreateBundleCopyOptions
+    {
+        return new CreateBundleCopyOptions(
+            $friendlyName
+        );
     }
 
 
 }
 
-class CreateBundleCopyOptions extends Options {
+class CreateBundleCopyOptions extends Options
+    {
     /**
      * @param string $friendlyName The string that you assigned to describe the copied bundle.
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -44,7 +58,8 @@ class CreateBundleCopyOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the copied bundle.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -54,7 +69,8 @@ class CreateBundleCopyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.CreateBundleCopyOptions ' . $options . ']';
     }

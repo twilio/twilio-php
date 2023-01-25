@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class BuildStatusList extends ListResource {
+class BuildStatusList extends ListResource
+    {
     /**
      * Construct the BuildStatusList
      *
@@ -28,18 +29,38 @@ class BuildStatusList extends ListResource {
      * @param string $serviceSid The SID of the Service to fetch the Build resource from.
      * @param string $sid The SID of the Build resource to fetch.
      */
-    public function __construct(Version $version, string $serviceSid , string $sid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $sid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'sid' => $sid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'sid' =>
+            $sid,
+        
+        ];
     }
 
     /**
      * Constructs a BuildStatusContext
      */
-    public function getContext(): BuildStatusContext {
-        return new BuildStatusContext($this->version, $this->solution['serviceSid'], $this->solution['sid']);
+    public function getContext(
+        
+    ): BuildStatusContext
+    {
+        return new BuildStatusContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
     }
 
     /**
@@ -47,7 +68,8 @@ class BuildStatusList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Serverless.V1.BuildStatusList]';
     }
 }

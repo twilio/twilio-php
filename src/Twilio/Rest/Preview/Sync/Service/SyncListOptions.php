@@ -18,13 +18,21 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SyncListOptions {
+abstract class SyncListOptions
+{
     /**
-     * @param string $uniqueName  
+     * @param string $uniqueName 
      * @return CreateSyncListOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE): CreateSyncListOptions {
-        return new CreateSyncListOptions($uniqueName);
+    public static function create(
+        
+        string $uniqueName = Values::NONE
+
+    ): CreateSyncListOptions
+    {
+        return new CreateSyncListOptions(
+            $uniqueName
+        );
     }
 
 
@@ -32,11 +40,17 @@ abstract class SyncListOptions {
 
 }
 
-class CreateSyncListOptions extends Options {
+class CreateSyncListOptions extends Options
+    {
     /**
      * @param string $uniqueName 
      */
-    public function __construct(string $uniqueName = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
     }
 
@@ -46,7 +60,8 @@ class CreateSyncListOptions extends Options {
      * @param string $uniqueName 
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -56,7 +71,8 @@ class CreateSyncListOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.CreateSyncListOptions ' . $options . ']';
     }

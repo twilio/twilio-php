@@ -18,22 +18,36 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class NewKeyOptions {
+abstract class NewKeyOptions
+{
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return CreateNewKeyOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE): CreateNewKeyOptions {
-        return new CreateNewKeyOptions($friendlyName);
+    public static function create(
+        
+        string $friendlyName = Values::NONE
+
+    ): CreateNewKeyOptions
+    {
+        return new CreateNewKeyOptions(
+            $friendlyName
+        );
     }
 
 }
 
-class CreateNewKeyOptions extends Options {
+class CreateNewKeyOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -43,7 +57,8 @@ class CreateNewKeyOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -53,7 +68,8 @@ class CreateNewKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateNewKeyOptions ' . $options . ']';
     }

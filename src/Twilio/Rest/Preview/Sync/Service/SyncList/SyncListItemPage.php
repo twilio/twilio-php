@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SyncListItemPage extends Page {
+class SyncListItemPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class SyncListItemPage extends Page {
      * @param array $payload Payload response from the API
      * @return SyncListItemInstance \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemInstance
      */
-    public function buildInstance(array $payload): SyncListItemInstance {
+    public function buildInstance(array $payload): SyncListItemInstance
+    {
         return new SyncListItemInstance($this->version, $payload, $this->solution['serviceSid'], $this->solution['listSid']);
     }
 
@@ -45,7 +48,8 @@ class SyncListItemPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Sync.SyncListItemPage]';
     }
 }

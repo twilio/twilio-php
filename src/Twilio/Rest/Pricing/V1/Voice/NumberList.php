@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class NumberList extends ListResource {
+class NumberList extends ListResource
+    {
     /**
      * Construct the NumberList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class NumberList extends ListResource {
      *
      * @param string $number The phone number to fetch.
      */
-    public function getContext(string $number): NumberContext {
-        return new NumberContext($this->version, $number);
+    public function getContext(
+        string $number
+        
+    ): NumberContext
+    {
+        return new NumberContext(
+            $this->version,
+            $number
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class NumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Pricing.V1.NumberList]';
     }
 }

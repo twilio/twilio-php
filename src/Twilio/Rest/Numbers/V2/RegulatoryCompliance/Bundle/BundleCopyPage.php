@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class BundleCopyPage extends Page {
+class BundleCopyPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class BundleCopyPage extends Page {
      * @param array $payload Payload response from the API
      * @return BundleCopyInstance \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyInstance
      */
-    public function buildInstance(array $payload): BundleCopyInstance {
+    public function buildInstance(array $payload): BundleCopyInstance
+    {
         return new BundleCopyInstance($this->version, $payload, $this->solution['bundleSid']);
     }
 
@@ -45,7 +48,8 @@ class BundleCopyPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.BundleCopyPage]';
     }
 }

@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SyncMapList extends ListResource {
+class SyncMapList extends ListResource
+    {
     /**
      * Construct the SyncMapList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Sync Map in.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Maps';
     }
 
     /**
@@ -47,23 +57,29 @@ class SyncMapList extends ListResource {
      * @return SyncMapInstance Created SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): SyncMapInstance {
+    public function create(array $options = []): SyncMapInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
-            'Ttl' => $options['ttl'],
-            'CollectionTtl' => $options['collectionTtl'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'Ttl' =>
+                $options['ttl'],
+            'CollectionTtl' =>
+                $options['collectionTtl'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncMapInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Reads SyncMapInstance records from the API as a list.
@@ -80,7 +96,8 @@ class SyncMapList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -102,7 +119,8 @@ class SyncMapList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -119,7 +137,12 @@ class SyncMapList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncMapPage Page of SyncMapInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SyncMapPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -139,7 +162,8 @@ class SyncMapList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncMapPage Page of SyncMapInstance
      */
-    public function getPage(string $targetUrl): SyncMapPage {
+    public function getPage(string $targetUrl): SyncMapPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,8 +178,16 @@ class SyncMapList extends ListResource {
      *
      * @param string $sid The SID of the Sync Map resource to delete. Can be the Sync Map's `sid` or its `unique_name`.
      */
-    public function getContext(string $sid): SyncMapContext {
-        return new SyncMapContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): SyncMapContext
+    {
+        return new SyncMapContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -163,7 +195,8 @@ class SyncMapList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Sync.V1.SyncMapList]';
     }
 }

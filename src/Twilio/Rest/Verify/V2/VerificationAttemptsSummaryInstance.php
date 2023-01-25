@@ -31,14 +31,16 @@ use Twilio\Version;
  * @property string $conversionRatePercentage
  * @property string $url
  */
-class VerificationAttemptsSummaryInstance extends InstanceResource {
+class VerificationAttemptsSummaryInstance extends InstanceResource
+{
     /**
      * Initialize the VerificationAttemptsSummaryInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +61,8 @@ class VerificationAttemptsSummaryInstance extends InstanceResource {
      *
      * @return VerificationAttemptsSummaryContext Context for this VerificationAttemptsSummaryInstance
      */
-    protected function proxy(): VerificationAttemptsSummaryContext {
+    protected function proxy(): VerificationAttemptsSummaryContext
+    {
         if (!$this->context) {
             $this->context = new VerificationAttemptsSummaryContext(
                 $this->version
@@ -76,7 +79,9 @@ class VerificationAttemptsSummaryInstance extends InstanceResource {
      * @return VerificationAttemptsSummaryInstance Fetched VerificationAttemptsSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): VerificationAttemptsSummaryInstance {
+    public function fetch(array $options = []): VerificationAttemptsSummaryInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -87,7 +92,8 @@ class VerificationAttemptsSummaryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -105,7 +111,8 @@ class VerificationAttemptsSummaryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

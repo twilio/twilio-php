@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class WorkersCumulativeStatisticsPage extends Page {
+class WorkersCumulativeStatisticsPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class WorkersCumulativeStatisticsPage extends Page {
      * @param array $payload Payload response from the API
      * @return WorkersCumulativeStatisticsInstance \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsInstance
      */
-    public function buildInstance(array $payload): WorkersCumulativeStatisticsInstance {
+    public function buildInstance(array $payload): WorkersCumulativeStatisticsInstance
+    {
         return new WorkersCumulativeStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
@@ -45,7 +48,8 @@ class WorkersCumulativeStatisticsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkersCumulativeStatisticsPage]';
     }
 }

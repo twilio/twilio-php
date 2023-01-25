@@ -32,7 +32,8 @@ use Twilio\Rest\Api\V2010\Account\Message\MediaList;
  * @property MediaList $media
  * @method \Twilio\Rest\Api\V2010\Account\Message\MediaContext media(string $sid)
  */
-class MessageContext extends InstanceContext {
+class MessageContext extends InstanceContext
+    {
     protected $_feedback;
     protected $_media;
 
@@ -43,13 +44,25 @@ class MessageContext extends InstanceContext {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Message resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Messages/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Messages/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -58,9 +71,12 @@ class MessageContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the MessageInstance
@@ -68,16 +84,19 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MessageInstance {
+    public function fetch(): MessageInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new MessageInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the MessageInstance
@@ -86,33 +105,39 @@ class MessageContext extends InstanceContext {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): MessageInstance {
+    public function update(array $options = []): MessageInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Body' => $options['body'],
-            'Status' => $options['status'],
+            'Body' =>
+                $options['body'],
+            'Status' =>
+                $options['status'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MessageInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the feedback
      */
-    protected function getFeedback(): FeedbackList {
+    protected function getFeedback(): FeedbackList
+    {
         if (!$this->_feedback) {
             $this->_feedback = new FeedbackList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -122,12 +147,13 @@ class MessageContext extends InstanceContext {
     /**
      * Access the media
      */
-    protected function getMedia(): MediaList {
+    protected function getMedia(): MediaList
+    {
         if (!$this->_media) {
             $this->_media = new MediaList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -141,7 +167,8 @@ class MessageContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -158,7 +185,8 @@ class MessageContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -172,7 +200,8 @@ class MessageContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

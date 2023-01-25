@@ -42,7 +42,8 @@ use Twilio\Deserialize;
  * @property string $statusCallbackMethod
  * @property string $url
  */
-class CompositionHookInstance extends InstanceResource {
+class CompositionHookInstance extends InstanceResource
+{
     /**
      * Initialize the CompositionHookInstance
      *
@@ -50,7 +51,8 @@ class CompositionHookInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the CompositionHook resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class CompositionHookInstance extends InstanceResource {
      *
      * @return CompositionHookContext Context for this CompositionHookInstance
      */
-    protected function proxy(): CompositionHookContext {
+    protected function proxy(): CompositionHookContext
+    {
         if (!$this->context) {
             $this->context = new CompositionHookContext(
                 $this->version,
@@ -98,7 +101,9 @@ class CompositionHookInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -108,7 +113,9 @@ class CompositionHookInstance extends InstanceResource {
      * @return CompositionHookInstance Fetched CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CompositionHookInstance {
+    public function fetch(): CompositionHookInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -120,7 +127,9 @@ class CompositionHookInstance extends InstanceResource {
      * @return CompositionHookInstance Updated CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $friendlyName, array $options = []): CompositionHookInstance {
+    public function update(string $friendlyName, array $options = []): CompositionHookInstance
+    {
+
         return $this->proxy()->update($friendlyName, $options);
     }
 
@@ -131,7 +140,8 @@ class CompositionHookInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -149,7 +159,8 @@ class CompositionHookInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -36,7 +36,8 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInvi
  * @property string $url
  * @property array $links
  */
-class InteractionChannelInstance extends InstanceResource {
+class InteractionChannelInstance extends InstanceResource
+{
     protected $_participants;
     protected $_invites;
 
@@ -48,7 +49,8 @@ class InteractionChannelInstance extends InstanceResource {
      * @param string $interactionSid The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
      * @param string $sid The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $interactionSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class InteractionChannelInstance extends InstanceResource {
      *
      * @return InteractionChannelContext Context for this InteractionChannelInstance
      */
-    protected function proxy(): InteractionChannelContext {
+    protected function proxy(): InteractionChannelContext
+    {
         if (!$this->context) {
             $this->context = new InteractionChannelContext(
                 $this->version,
@@ -90,33 +93,39 @@ class InteractionChannelInstance extends InstanceResource {
      * @return InteractionChannelInstance Fetched InteractionChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionChannelInstance {
+    public function fetch(): InteractionChannelInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the InteractionChannelInstance
      *
-     * @param string $status 
+     * @param string $status
      * @param array|Options $options Optional Arguments
      * @return InteractionChannelInstance Updated InteractionChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status, array $options = []): InteractionChannelInstance {
+    public function update(string $status, array $options = []): InteractionChannelInstance
+    {
+
         return $this->proxy()->update($status, $options);
     }
 
     /**
      * Access the participants
      */
-    protected function getParticipants(): InteractionChannelParticipantList {
+    protected function getParticipants(): InteractionChannelParticipantList
+    {
         return $this->proxy()->participants;
     }
 
     /**
      * Access the invites
      */
-    protected function getInvites(): InteractionChannelInviteList {
+    protected function getInvites(): InteractionChannelInviteList
+    {
         return $this->proxy()->invites;
     }
 
@@ -127,7 +136,8 @@ class InteractionChannelInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -145,7 +155,8 @@ class InteractionChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

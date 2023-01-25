@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class DeploymentContext extends InstanceContext {
+class DeploymentContext extends InstanceContext
+    {
     /**
      * Initialize the DeploymentContext
      *
@@ -31,13 +32,29 @@ class DeploymentContext extends InstanceContext {
      * @param string $environmentSid The SID of the Environment for the Deployment.
      * @param string $sid The SID that identifies the Deployment resource to fetch.
      */
-    public function __construct(Version $version, $serviceSid , $environmentSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $environmentSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'environmentSid' => $environmentSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'environmentSid' =>
+            $environmentSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Deployments/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Environments/' . \rawurlencode($environmentSid)
+        .'/Deployments/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,24 +63,28 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DeploymentInstance {
+    public function fetch(): DeploymentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DeploymentInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['environmentSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['environmentSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

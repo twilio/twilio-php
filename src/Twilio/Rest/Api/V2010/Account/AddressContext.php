@@ -30,7 +30,8 @@ use Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList;
 /**
  * @property DependentPhoneNumberList $dependentPhoneNumbers
  */
-class AddressContext extends InstanceContext {
+class AddressContext extends InstanceContext
+    {
     protected $_dependentPhoneNumbers;
 
     /**
@@ -40,13 +41,25 @@ class AddressContext extends InstanceContext {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Address resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Address resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Addresses/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Addresses/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -55,9 +68,12 @@ class AddressContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the AddressInstance
@@ -65,16 +81,19 @@ class AddressContext extends InstanceContext {
      * @return AddressInstance Fetched AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AddressInstance {
+    public function fetch(): AddressInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AddressInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the AddressInstance
@@ -83,40 +102,53 @@ class AddressContext extends InstanceContext {
      * @return AddressInstance Updated AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AddressInstance {
+    public function update(array $options = []): AddressInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'CustomerName' => $options['customerName'],
-            'Street' => $options['street'],
-            'City' => $options['city'],
-            'Region' => $options['region'],
-            'PostalCode' => $options['postalCode'],
-            'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
-            'AutoCorrectAddress' => Serialize::booleanToString($options['autoCorrectAddress']),
-            'StreetSecondary' => $options['streetSecondary'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'CustomerName' =>
+                $options['customerName'],
+            'Street' =>
+                $options['street'],
+            'City' =>
+                $options['city'],
+            'Region' =>
+                $options['region'],
+            'PostalCode' =>
+                $options['postalCode'],
+            'EmergencyEnabled' =>
+                Serialize::booleanToString($options['emergencyEnabled']),
+            'AutoCorrectAddress' =>
+                Serialize::booleanToString($options['autoCorrectAddress']),
+            'StreetSecondary' =>
+                $options['streetSecondary'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AddressInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the dependentPhoneNumbers
      */
-    protected function getDependentPhoneNumbers(): DependentPhoneNumberList {
+    protected function getDependentPhoneNumbers(): DependentPhoneNumberList
+    {
         if (!$this->_dependentPhoneNumbers) {
             $this->_dependentPhoneNumbers = new DependentPhoneNumberList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -130,7 +162,8 @@ class AddressContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -147,7 +180,8 @@ class AddressContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -161,7 +195,8 @@ class AddressContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -18,31 +18,8 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class VerificationOptions {
-    /**
-     * @param string $customFriendlyName A custom user defined friendly name that overwrites the existing one in the verification message 
-     * @param string $customMessage The text of a custom message to use for the verification. 
-     * @param string $sendDigits The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). 
-     * @param string $locale Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages). 
-     * @param string $customCode A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive. 
-     * @param string $amount The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. 
-     * @param string $payee The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. 
-     * @param array $rateLimits The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request. 
-     * @param array $channelConfiguration [`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address. 
-     * @param string $appHash Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. 
-     * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. 
-     * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. 
-     * @return CreateVerificationOptions Options builder
-     */
-    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE): CreateVerificationOptions {
-        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash, $templateSid, $templateCustomSubstitutions);
-    }
-
-
-
-}
-
-class CreateVerificationOptions extends Options {
+abstract class VerificationOptions
+{
     /**
      * @param string $customFriendlyName A custom user defined friendly name that overwrites the existing one in the verification message
      * @param string $customMessage The text of a custom message to use for the verification.
@@ -56,8 +33,83 @@ class CreateVerificationOptions extends Options {
      * @param string $appHash Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.
      * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
+     * @param string $deviceIp The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @return CreateVerificationOptions Options builder
      */
-    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE) {
+    public static function create(
+        
+        string $customFriendlyName = Values::NONE,
+        string $customMessage = Values::NONE,
+        string $sendDigits = Values::NONE,
+        string $locale = Values::NONE,
+        string $customCode = Values::NONE,
+        string $amount = Values::NONE,
+        string $payee = Values::NONE,
+        array $rateLimits = Values::ARRAY_NONE,
+        array $channelConfiguration = Values::ARRAY_NONE,
+        string $appHash = Values::NONE,
+        string $templateSid = Values::NONE,
+        string $templateCustomSubstitutions = Values::NONE,
+        string $deviceIp = Values::NONE
+
+    ): CreateVerificationOptions
+    {
+        return new CreateVerificationOptions(
+            $customFriendlyName,
+            $customMessage,
+            $sendDigits,
+            $locale,
+            $customCode,
+            $amount,
+            $payee,
+            $rateLimits,
+            $channelConfiguration,
+            $appHash,
+            $templateSid,
+            $templateCustomSubstitutions,
+            $deviceIp
+        );
+    }
+
+
+
+}
+
+class CreateVerificationOptions extends Options
+    {
+    /**
+     * @param string $customFriendlyName A custom user defined friendly name that overwrites the existing one in the verification message
+     * @param string $customMessage The text of a custom message to use for the verification.
+     * @param string $sendDigits The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).
+     * @param string $locale Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages).
+     * @param string $customCode A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.
+     * @param string $amount The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * @param string $payee The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * @param array $rateLimits The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request.
+     * @param array $channelConfiguration [`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address.
+     * @param string $appHash Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.
+     * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
+     * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
+     * @param string $deviceIp The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     */
+    public function __construct(
+        
+        string $customFriendlyName = Values::NONE,
+        string $customMessage = Values::NONE,
+        string $sendDigits = Values::NONE,
+        string $locale = Values::NONE,
+        string $customCode = Values::NONE,
+        string $amount = Values::NONE,
+        string $payee = Values::NONE,
+        array $rateLimits = Values::ARRAY_NONE,
+        array $channelConfiguration = Values::ARRAY_NONE,
+        string $appHash = Values::NONE,
+        string $templateSid = Values::NONE,
+        string $templateCustomSubstitutions = Values::NONE,
+        string $deviceIp = Values::NONE
+
+    )
+    {
         $this->options['customFriendlyName'] = $customFriendlyName;
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
@@ -70,6 +122,7 @@ class CreateVerificationOptions extends Options {
         $this->options['appHash'] = $appHash;
         $this->options['templateSid'] = $templateSid;
         $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
+        $this->options['deviceIp'] = $deviceIp;
     }
 
     /**
@@ -78,7 +131,8 @@ class CreateVerificationOptions extends Options {
      * @param string $customFriendlyName A custom user defined friendly name that overwrites the existing one in the verification message
      * @return $this Fluent Builder
      */
-    public function setCustomFriendlyName(string $customFriendlyName): self {
+    public function setCustomFriendlyName(string $customFriendlyName): self
+    {
         $this->options['customFriendlyName'] = $customFriendlyName;
         return $this;
     }
@@ -89,7 +143,8 @@ class CreateVerificationOptions extends Options {
      * @param string $customMessage The text of a custom message to use for the verification.
      * @return $this Fluent Builder
      */
-    public function setCustomMessage(string $customMessage): self {
+    public function setCustomMessage(string $customMessage): self
+    {
         $this->options['customMessage'] = $customMessage;
         return $this;
     }
@@ -100,7 +155,8 @@ class CreateVerificationOptions extends Options {
      * @param string $sendDigits The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).
      * @return $this Fluent Builder
      */
-    public function setSendDigits(string $sendDigits): self {
+    public function setSendDigits(string $sendDigits): self
+    {
         $this->options['sendDigits'] = $sendDigits;
         return $this;
     }
@@ -111,7 +167,8 @@ class CreateVerificationOptions extends Options {
      * @param string $locale Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages).
      * @return $this Fluent Builder
      */
-    public function setLocale(string $locale): self {
+    public function setLocale(string $locale): self
+    {
         $this->options['locale'] = $locale;
         return $this;
     }
@@ -122,7 +179,8 @@ class CreateVerificationOptions extends Options {
      * @param string $customCode A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.
      * @return $this Fluent Builder
      */
-    public function setCustomCode(string $customCode): self {
+    public function setCustomCode(string $customCode): self
+    {
         $this->options['customCode'] = $customCode;
         return $this;
     }
@@ -133,7 +191,8 @@ class CreateVerificationOptions extends Options {
      * @param string $amount The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
      * @return $this Fluent Builder
      */
-    public function setAmount(string $amount): self {
+    public function setAmount(string $amount): self
+    {
         $this->options['amount'] = $amount;
         return $this;
     }
@@ -144,7 +203,8 @@ class CreateVerificationOptions extends Options {
      * @param string $payee The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
      * @return $this Fluent Builder
      */
-    public function setPayee(string $payee): self {
+    public function setPayee(string $payee): self
+    {
         $this->options['payee'] = $payee;
         return $this;
     }
@@ -155,7 +215,8 @@ class CreateVerificationOptions extends Options {
      * @param array $rateLimits The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request.
      * @return $this Fluent Builder
      */
-    public function setRateLimits(array $rateLimits): self {
+    public function setRateLimits(array $rateLimits): self
+    {
         $this->options['rateLimits'] = $rateLimits;
         return $this;
     }
@@ -166,7 +227,8 @@ class CreateVerificationOptions extends Options {
      * @param array $channelConfiguration [`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address.
      * @return $this Fluent Builder
      */
-    public function setChannelConfiguration(array $channelConfiguration): self {
+    public function setChannelConfiguration(array $channelConfiguration): self
+    {
         $this->options['channelConfiguration'] = $channelConfiguration;
         return $this;
     }
@@ -177,7 +239,8 @@ class CreateVerificationOptions extends Options {
      * @param string $appHash Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.
      * @return $this Fluent Builder
      */
-    public function setAppHash(string $appHash): self {
+    public function setAppHash(string $appHash): self
+    {
         $this->options['appHash'] = $appHash;
         return $this;
     }
@@ -188,7 +251,8 @@ class CreateVerificationOptions extends Options {
      * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      * @return $this Fluent Builder
      */
-    public function setTemplateSid(string $templateSid): self {
+    public function setTemplateSid(string $templateSid): self
+    {
         $this->options['templateSid'] = $templateSid;
         return $this;
     }
@@ -199,8 +263,21 @@ class CreateVerificationOptions extends Options {
      * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
      * @return $this Fluent Builder
      */
-    public function setTemplateCustomSubstitutions(string $templateCustomSubstitutions): self {
+    public function setTemplateCustomSubstitutions(string $templateCustomSubstitutions): self
+    {
         $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
+        return $this;
+    }
+
+    /**
+     * The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     *
+     * @param string $deviceIp The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @return $this Fluent Builder
+     */
+    public function setDeviceIp(string $deviceIp): self
+    {
+        $this->options['deviceIp'] = $deviceIp;
         return $this;
     }
 
@@ -209,7 +286,8 @@ class CreateVerificationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.CreateVerificationOptions ' . $options . ']';
     }

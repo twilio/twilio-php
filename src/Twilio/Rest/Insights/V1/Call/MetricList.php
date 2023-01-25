@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class MetricList extends ListResource {
+class MetricList extends ListResource
+    {
     /**
      * Construct the MetricList
      *
      * @param Version $version Version that contains the resource
      * @param string $callSid 
      */
-    public function __construct(Version $version, string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['callSid' => $callSid, ];
+        $this->solution = [
+        'callSid' =>
+            $callSid,
+        
+        ];
 
-        $this->uri = '/Voice/' . \rawurlencode($callSid) . '/Metrics';
+        $this->uri = '/Voice/' . \rawurlencode($callSid)
+        .'/Metrics';
     }
 
     /**
@@ -55,7 +65,8 @@ class MetricList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MetricInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +89,8 @@ class MetricList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,12 +107,20 @@ class MetricList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MetricPage Page of MetricInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MetricPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MetricPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Edge' => $options['edge'],
-            'Direction' => $options['direction'],
+            'Edge' =>
+                $options['edge'],
+            'Direction' =>
+                $options['direction'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -118,7 +138,8 @@ class MetricList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MetricPage Page of MetricInstance
      */
-    public function getPage(string $targetUrl): MetricPage {
+    public function getPage(string $targetUrl): MetricPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -133,7 +154,8 @@ class MetricList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.MetricList]';
     }
 }

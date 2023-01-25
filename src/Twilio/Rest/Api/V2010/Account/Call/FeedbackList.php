@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class FeedbackList extends ListResource {
+class FeedbackList extends ListResource
+    {
     /**
      * Construct the FeedbackList
      *
@@ -28,18 +29,38 @@ class FeedbackList extends ListResource {
      * @param string $accountSid The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
      * @param string $callSid The call sid that uniquely identifies the call
      */
-    public function __construct(Version $version, string $accountSid , string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'callSid' =>
+            $callSid,
+        
+        ];
     }
 
     /**
      * Constructs a FeedbackContext
      */
-    public function getContext(): FeedbackContext {
-        return new FeedbackContext($this->version, $this->solution['accountSid'], $this->solution['callSid']);
+    public function getContext(
+        
+    ): FeedbackContext
+    {
+        return new FeedbackContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['callSid']
+        );
     }
 
     /**
@@ -47,7 +68,8 @@ class FeedbackList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.FeedbackList]';
     }
 }

@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class DeploymentContext extends InstanceContext {
+class DeploymentContext extends InstanceContext
+    {
     /**
      * Initialize the DeploymentContext
      *
@@ -32,13 +33,25 @@ class DeploymentContext extends InstanceContext {
      * @param string $fleetSid 
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Deployment resource.
      */
-    public function __construct(Version $version, $fleetSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $fleetSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['fleetSid' => $fleetSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'fleetSid' =>
+            $fleetSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Deployments/' . \rawurlencode($sid) . '';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid)
+        .'/Deployments/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +60,12 @@ class DeploymentContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the DeploymentInstance
@@ -57,16 +73,19 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DeploymentInstance {
+    public function fetch(): DeploymentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DeploymentInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the DeploymentInstance
@@ -75,30 +94,36 @@ class DeploymentContext extends InstanceContext {
      * @return DeploymentInstance Updated DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): DeploymentInstance {
+    public function update(array $options = []): DeploymentInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'SyncServiceSid' => $options['syncServiceSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'SyncServiceSid' =>
+                $options['syncServiceSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DeploymentInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

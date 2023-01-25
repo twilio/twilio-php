@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ConnectAppContext extends InstanceContext {
+class ConnectAppContext extends InstanceContext
+    {
     /**
      * Initialize the ConnectAppContext
      *
@@ -32,13 +33,25 @@ class ConnectAppContext extends InstanceContext {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resource to fetch.
      * @param string $sid The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch.
      */
-    public function __construct(Version $version, $accountSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/ConnectApps/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/ConnectApps/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -47,9 +60,12 @@ class ConnectAppContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ConnectAppInstance
@@ -57,16 +73,19 @@ class ConnectAppContext extends InstanceContext {
      * @return ConnectAppInstance Fetched ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConnectAppInstance {
+    public function fetch(): ConnectAppInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ConnectAppInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ConnectAppInstance
@@ -75,36 +94,48 @@ class ConnectAppContext extends InstanceContext {
      * @return ConnectAppInstance Updated ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConnectAppInstance {
+    public function update(array $options = []): ConnectAppInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'AuthorizeRedirectUrl' => $options['authorizeRedirectUrl'],
-            'CompanyName' => $options['companyName'],
-            'DeauthorizeCallbackMethod' => $options['deauthorizeCallbackMethod'],
-            'DeauthorizeCallbackUrl' => $options['deauthorizeCallbackUrl'],
-            'Description' => $options['description'],
-            'FriendlyName' => $options['friendlyName'],
-            'HomepageUrl' => $options['homepageUrl'],
-            'Permissions' => $options['permissions'],
+            'AuthorizeRedirectUrl' =>
+                $options['authorizeRedirectUrl'],
+            'CompanyName' =>
+                $options['companyName'],
+            'DeauthorizeCallbackMethod' =>
+                $options['deauthorizeCallbackMethod'],
+            'DeauthorizeCallbackUrl' =>
+                $options['deauthorizeCallbackUrl'],
+            'Description' =>
+                $options['description'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'HomepageUrl' =>
+                $options['homepageUrl'],
+            'Permissions' =>
+                $options['permissions'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ConnectAppInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

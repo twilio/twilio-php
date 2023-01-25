@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class TrustProductsChannelEndpointAssignmentContext extends InstanceContext {
+class TrustProductsChannelEndpointAssignmentContext extends InstanceContext
+    {
     /**
      * Initialize the TrustProductsChannelEndpointAssignmentContext
      *
@@ -30,13 +31,25 @@ class TrustProductsChannelEndpointAssignmentContext extends InstanceContext {
      * @param string $trustProductSid The unique string that we created to identify the CustomerProfile resource.
      * @param string $sid The unique string that we created to identify the resource.
      */
-    public function __construct(Version $version, $trustProductSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $trustProductSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['trustProductSid' => $trustProductSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'trustProductSid' =>
+            $trustProductSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/TrustProducts/' . \rawurlencode($trustProductSid) . '/ChannelEndpointAssignments/' . \rawurlencode($sid) . '';
+        $this->uri = '/TrustProducts/' . \rawurlencode($trustProductSid)
+        .'/ChannelEndpointAssignments/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class TrustProductsChannelEndpointAssignmentContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the TrustProductsChannelEndpointAssignmentInstance
@@ -55,23 +71,27 @@ class TrustProductsChannelEndpointAssignmentContext extends InstanceContext {
      * @return TrustProductsChannelEndpointAssignmentInstance Fetched TrustProductsChannelEndpointAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrustProductsChannelEndpointAssignmentInstance {
+    public function fetch(): TrustProductsChannelEndpointAssignmentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TrustProductsChannelEndpointAssignmentInstance(
             $this->version,
-            $payload
-            , $this->solution['trustProductSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['trustProductSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

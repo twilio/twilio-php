@@ -32,7 +32,8 @@ use Twilio\Rest\Insights\V1\Call\AnnotationList;
  * @property string $url
  * @property array $links
  */
-class CallInstance extends InstanceResource {
+class CallInstance extends InstanceResource
+{
     protected $_metrics;
     protected $_events;
     protected $_summary;
@@ -45,7 +46,8 @@ class CallInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,7 +66,8 @@ class CallInstance extends InstanceResource {
      *
      * @return CallContext Context for this CallInstance
      */
-    protected function proxy(): CallContext {
+    protected function proxy(): CallContext
+    {
         if (!$this->context) {
             $this->context = new CallContext(
                 $this->version,
@@ -81,35 +84,41 @@ class CallInstance extends InstanceResource {
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CallInstance {
+    public function fetch(): CallInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the metrics
      */
-    protected function getMetrics(): MetricList {
+    protected function getMetrics(): MetricList
+    {
         return $this->proxy()->metrics;
     }
 
     /**
      * Access the events
      */
-    protected function getEvents(): EventList {
+    protected function getEvents(): EventList
+    {
         return $this->proxy()->events;
     }
 
     /**
      * Access the summary
      */
-    protected function getSummary(): CallSummaryList {
+    protected function getSummary(): CallSummaryList
+    {
         return $this->proxy()->summary;
     }
 
     /**
      * Access the annotation
      */
-    protected function getAnnotation(): AnnotationList {
+    protected function getAnnotation(): AnnotationList
+    {
         return $this->proxy()->annotation;
     }
 
@@ -120,7 +129,8 @@ class CallInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +148,8 @@ class CallInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class InteractionPage extends Page {
+class InteractionPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class InteractionPage extends Page {
      * @param array $payload Payload response from the API
      * @return InteractionInstance \Twilio\Rest\Proxy\V1\Service\Session\InteractionInstance
      */
-    public function buildInstance(array $payload): InteractionInstance {
+    public function buildInstance(array $payload): InteractionInstance
+    {
         return new InteractionInstance($this->version, $payload, $this->solution['serviceSid'], $this->solution['sessionSid']);
     }
 
@@ -45,7 +48,8 @@ class InteractionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Proxy.V1.InteractionPage]';
     }
 }

@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class UserBindingContext extends InstanceContext {
+class UserBindingContext extends InstanceContext
+    {
     /**
      * Initialize the UserBindingContext
      *
@@ -31,13 +32,29 @@ class UserBindingContext extends InstanceContext {
      * @param string $userSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, $serviceSid , $userSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $userSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'userSid' => $userSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'userSid' =>
+            $userSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Bindings/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Users/' . \rawurlencode($userSid)
+        .'/Bindings/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,9 +63,12 @@ class UserBindingContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the UserBindingInstance
@@ -56,24 +76,28 @@ class UserBindingContext extends InstanceContext {
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserBindingInstance {
+    public function fetch(): UserBindingInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new UserBindingInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['userSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['userSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

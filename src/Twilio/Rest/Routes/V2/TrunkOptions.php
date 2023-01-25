@@ -18,26 +18,43 @@ namespace Twilio\Rest\Routes\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TrunkOptions {
+abstract class TrunkOptions
+{
 
     /**
-     * @param string $voiceRegion The Inbound Processing Region used for this SIP Trunk for voice 
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters. 
+     * @param string $voiceRegion The Inbound Processing Region used for this SIP Trunk for voice
+     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @return UpdateTrunkOptions Options builder
      */
-    public static function update(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE): UpdateTrunkOptions {
-        return new UpdateTrunkOptions($voiceRegion, $friendlyName);
+    public static function update(
+        
+        string $voiceRegion = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): UpdateTrunkOptions
+    {
+        return new UpdateTrunkOptions(
+            $voiceRegion,
+            $friendlyName
+        );
     }
 
 }
 
 
-class UpdateTrunkOptions extends Options {
+class UpdateTrunkOptions extends Options
+    {
     /**
      * @param string $voiceRegion The Inbound Processing Region used for this SIP Trunk for voice
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      */
-    public function __construct(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $voiceRegion = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['voiceRegion'] = $voiceRegion;
         $this->options['friendlyName'] = $friendlyName;
     }
@@ -48,7 +65,8 @@ class UpdateTrunkOptions extends Options {
      * @param string $voiceRegion The Inbound Processing Region used for this SIP Trunk for voice
      * @return $this Fluent Builder
      */
-    public function setVoiceRegion(string $voiceRegion): self {
+    public function setVoiceRegion(string $voiceRegion): self
+    {
         $this->options['voiceRegion'] = $voiceRegion;
         return $this;
     }
@@ -59,7 +77,8 @@ class UpdateTrunkOptions extends Options {
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -69,7 +88,8 @@ class UpdateTrunkOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Routes.V2.UpdateTrunkOptions ' . $options . ']';
     }

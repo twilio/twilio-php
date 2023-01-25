@@ -18,22 +18,36 @@ namespace Twilio\Rest\Oauth\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class DeviceCodeOptions {
+abstract class DeviceCodeOptions
+{
     /**
-     * @param string[] $audiences An array of intended audiences for token requests 
+     * @param string[] $audiences An array of intended audiences for token requests
      * @return CreateDeviceCodeOptions Options builder
      */
-    public static function create(array $audiences = Values::ARRAY_NONE): CreateDeviceCodeOptions {
-        return new CreateDeviceCodeOptions($audiences);
+    public static function create(
+        
+        array $audiences = Values::ARRAY_NONE
+
+    ): CreateDeviceCodeOptions
+    {
+        return new CreateDeviceCodeOptions(
+            $audiences
+        );
     }
 
 }
 
-class CreateDeviceCodeOptions extends Options {
+class CreateDeviceCodeOptions extends Options
+    {
     /**
      * @param string[] $audiences An array of intended audiences for token requests
      */
-    public function __construct(array $audiences = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $audiences = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['audiences'] = $audiences;
     }
 
@@ -43,7 +57,8 @@ class CreateDeviceCodeOptions extends Options {
      * @param string[] $audiences An array of intended audiences for token requests
      * @return $this Fluent Builder
      */
-    public function setAudiences(array $audiences): self {
+    public function setAudiences(array $audiences): self
+    {
         $this->options['audiences'] = $audiences;
         return $this;
     }
@@ -53,7 +68,8 @@ class CreateDeviceCodeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Oauth.V1.CreateDeviceCodeOptions ' . $options . ']';
     }

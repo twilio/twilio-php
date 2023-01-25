@@ -28,7 +28,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Notify\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Notify\V1\ServiceContext services(string $sid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_credentials;
     protected $_services;
 
@@ -37,19 +38,22 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getCredentials(): CredentialList {
+    protected function getCredentials(): CredentialList
+    {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
         return $this->_credentials;
     }
 
-    protected function getServices(): ServiceList {
+    protected function getServices(): ServiceList
+    {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
@@ -63,7 +67,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -80,7 +85,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -94,7 +100,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Notify.V1]';
     }
 }

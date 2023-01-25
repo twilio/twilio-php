@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class MonthlyPage extends Page {
+class MonthlyPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class MonthlyPage extends Page {
      * @param array $payload Payload response from the API
      * @return MonthlyInstance \Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyInstance
      */
-    public function buildInstance(array $payload): MonthlyInstance {
+    public function buildInstance(array $payload): MonthlyInstance
+    {
         return new MonthlyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
@@ -45,7 +48,8 @@ class MonthlyPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.MonthlyPage]';
     }
 }

@@ -18,22 +18,36 @@ namespace Twilio\Rest\Insights\V1\Call;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CallSummaryOptions {
+abstract class CallSummaryOptions
+{
     /**
-     * @param string $processingState  
+     * @param string $processingState 
      * @return FetchCallSummaryOptions Options builder
      */
-    public static function fetch(string $processingState = Values::NONE): FetchCallSummaryOptions {
-        return new FetchCallSummaryOptions($processingState);
+    public static function fetch(
+        
+        string $processingState = Values::NONE
+
+    ): FetchCallSummaryOptions
+    {
+        return new FetchCallSummaryOptions(
+            $processingState
+        );
     }
 
 }
 
-class FetchCallSummaryOptions extends Options {
+class FetchCallSummaryOptions extends Options
+    {
     /**
      * @param string $processingState 
      */
-    public function __construct(string $processingState = Values::NONE) {
+    public function __construct(
+        
+        string $processingState = Values::NONE
+
+    )
+    {
         $this->options['processingState'] = $processingState;
     }
 
@@ -43,7 +57,8 @@ class FetchCallSummaryOptions extends Options {
      * @param string $processingState 
      * @return $this Fluent Builder
      */
-    public function setProcessingState(string $processingState): self {
+    public function setProcessingState(string $processingState): self
+    {
         $this->options['processingState'] = $processingState;
         return $this;
     }
@@ -53,7 +68,8 @@ class FetchCallSummaryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.FetchCallSummaryOptions ' . $options . ']';
     }

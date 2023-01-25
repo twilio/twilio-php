@@ -31,7 +31,8 @@ use Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextList;
  * @method \Twilio\Rest\Studio\V1\Flow\Engagement\StepContext steps(string $sid)
  * @method \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext engagementContext()
  */
-class EngagementContext extends InstanceContext {
+class EngagementContext extends InstanceContext
+    {
     protected $_steps;
     protected $_engagementContext;
 
@@ -42,13 +43,25 @@ class EngagementContext extends InstanceContext {
      * @param string $flowSid The SID of the Flow.
      * @param string $sid The SID of the Engagement resource to delete.
      */
-    public function __construct(Version $version, $flowSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $flowSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($sid) . '';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid)
+        .'/Engagements/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -57,9 +70,12 @@ class EngagementContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the EngagementInstance
@@ -67,26 +83,30 @@ class EngagementContext extends InstanceContext {
      * @return EngagementInstance Fetched EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EngagementInstance {
+    public function fetch(): EngagementInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new EngagementInstance(
             $this->version,
-            $payload
-            , $this->solution['flowSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the steps
      */
-    protected function getSteps(): StepList {
+    protected function getSteps(): StepList
+    {
         if (!$this->_steps) {
             $this->_steps = new StepList(
-                $this->version
-                , $this->solution['flowSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -96,12 +116,13 @@ class EngagementContext extends InstanceContext {
     /**
      * Access the engagementContext
      */
-    protected function getEngagementContext(): EngagementContextList {
+    protected function getEngagementContext(): EngagementContextList
+    {
         if (!$this->_engagementContext) {
             $this->_engagementContext = new EngagementContextList(
-                $this->version
-                , $this->solution['flowSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -115,7 +136,8 @@ class EngagementContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -132,7 +154,8 @@ class EngagementContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -146,7 +169,8 @@ class EngagementContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

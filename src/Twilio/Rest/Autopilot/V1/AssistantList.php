@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class AssistantList extends ListResource {
+class AssistantList extends ListResource
+    {
     /**
      * Construct the AssistantList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Assistants';
     }
@@ -47,26 +51,36 @@ class AssistantList extends ListResource {
      * @return AssistantInstance Created AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): AssistantInstance {
+    public function create(array $options = []): AssistantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'LogQueries' => Serialize::booleanToString($options['logQueries']),
-            'UniqueName' => $options['uniqueName'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'CallbackEvents' => $options['callbackEvents'],
-            'StyleSheet' => Serialize::jsonObject($options['styleSheet']),
-            'Defaults' => Serialize::jsonObject($options['defaults']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'LogQueries' =>
+                Serialize::booleanToString($options['logQueries']),
+            'UniqueName' =>
+                $options['uniqueName'],
+            'CallbackUrl' =>
+                $options['callbackUrl'],
+            'CallbackEvents' =>
+                $options['callbackEvents'],
+            'StyleSheet' =>
+                Serialize::jsonObject($options['styleSheet']),
+            'Defaults' =>
+                Serialize::jsonObject($options['defaults']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AssistantInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads AssistantInstance records from the API as a list.
@@ -83,7 +97,8 @@ class AssistantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AssistantInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -105,7 +120,8 @@ class AssistantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -122,7 +138,12 @@ class AssistantList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AssistantPage Page of AssistantInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AssistantPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): AssistantPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -142,7 +163,8 @@ class AssistantList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AssistantPage Page of AssistantInstance
      */
-    public function getPage(string $targetUrl): AssistantPage {
+    public function getPage(string $targetUrl): AssistantPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -157,8 +179,15 @@ class AssistantList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Assistant resource to delete.
      */
-    public function getContext(string $sid): AssistantContext {
-        return new AssistantContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): AssistantContext
+    {
+        return new AssistantContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -166,7 +195,8 @@ class AssistantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.AssistantList]';
     }
 }

@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class EventContext extends InstanceContext {
+class EventContext extends InstanceContext
+    {
     /**
      * Initialize the EventContext
      *
@@ -30,13 +31,25 @@ class EventContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace with the Event to fetch.
      * @param string $sid The SID of the Event resource to fetch.
      */
-    public function __construct(Version $version, $workspaceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Events/' . \rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Events/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class EventContext extends InstanceContext {
      * @return EventInstance Fetched EventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EventInstance {
+    public function fetch(): EventInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new EventInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

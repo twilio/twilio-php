@@ -25,7 +25,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ParticipantList extends ListResource {
+class ParticipantList extends ListResource
+    {
     /**
      * Construct the ParticipantList
      *
@@ -33,13 +34,28 @@ class ParticipantList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $conferenceSid The SID of the participant's conference.
      */
-    public function __construct(Version $version, string $accountSid , string $conferenceSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $conferenceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'conferenceSid' => $conferenceSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'conferenceSid' =>
+            $conferenceSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Conferences/' . \rawurlencode($conferenceSid) . '/Participants.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Conferences/' . \rawurlencode($conferenceSid)
+        .'/Participants.json';
     }
 
     /**
@@ -51,67 +67,116 @@ class ParticipantList extends ListResource {
      * @return ParticipantInstance Created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $from, string $to, array $options = []): ParticipantInstance {
+    public function create(string $from, string $to, array $options = []): ParticipantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'From' => $from,
-            'To' => $to,
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
-            'Label' => $options['label'],
-            'Timeout' => $options['timeout'],
-            'Record' => Serialize::booleanToString($options['record']),
-            'Muted' => Serialize::booleanToString($options['muted']),
-            'Beep' => $options['beep'],
-            'StartConferenceOnEnter' => Serialize::booleanToString($options['startConferenceOnEnter']),
-            'EndConferenceOnExit' => Serialize::booleanToString($options['endConferenceOnExit']),
-            'WaitUrl' => $options['waitUrl'],
-            'WaitMethod' => $options['waitMethod'],
-            'EarlyMedia' => Serialize::booleanToString($options['earlyMedia']),
-            'MaxParticipants' => $options['maxParticipants'],
-            'ConferenceRecord' => $options['conferenceRecord'],
-            'ConferenceTrim' => $options['conferenceTrim'],
-            'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
-            'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
-            'ConferenceStatusCallbackEvent' => Serialize::map($options['conferenceStatusCallbackEvent'], function($e) { return $e; }),
-            'RecordingChannels' => $options['recordingChannels'],
-            'RecordingStatusCallback' => $options['recordingStatusCallback'],
-            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
-            'SipAuthUsername' => $options['sipAuthUsername'],
-            'SipAuthPassword' => $options['sipAuthPassword'],
-            'Region' => $options['region'],
-            'ConferenceRecordingStatusCallback' => $options['conferenceRecordingStatusCallback'],
-            'ConferenceRecordingStatusCallbackMethod' => $options['conferenceRecordingStatusCallbackMethod'],
-            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
-            'ConferenceRecordingStatusCallbackEvent' => Serialize::map($options['conferenceRecordingStatusCallbackEvent'], function($e) { return $e; }),
-            'Coaching' => Serialize::booleanToString($options['coaching']),
-            'CallSidToCoach' => $options['callSidToCoach'],
-            'JitterBufferSize' => $options['jitterBufferSize'],
-            'Byoc' => $options['byoc'],
-            'CallerId' => $options['callerId'],
-            'CallReason' => $options['callReason'],
-            'RecordingTrack' => $options['recordingTrack'],
-            'TimeLimit' => $options['timeLimit'],
-            'MachineDetection' => $options['machineDetection'],
-            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
-            'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
-            'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
-            'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
-            'AmdStatusCallback' => $options['amdStatusCallback'],
-            'AmdStatusCallbackMethod' => $options['amdStatusCallbackMethod'],
+            'From' =>
+                $from,
+            'To' =>
+                $to,
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'StatusCallbackEvent' =>
+                Serialize::map($options['statusCallbackEvent'], function ($e) { return $e; }),
+            'Label' =>
+                $options['label'],
+            'Timeout' =>
+                $options['timeout'],
+            'Record' =>
+                Serialize::booleanToString($options['record']),
+            'Muted' =>
+                Serialize::booleanToString($options['muted']),
+            'Beep' =>
+                $options['beep'],
+            'StartConferenceOnEnter' =>
+                Serialize::booleanToString($options['startConferenceOnEnter']),
+            'EndConferenceOnExit' =>
+                Serialize::booleanToString($options['endConferenceOnExit']),
+            'WaitUrl' =>
+                $options['waitUrl'],
+            'WaitMethod' =>
+                $options['waitMethod'],
+            'EarlyMedia' =>
+                Serialize::booleanToString($options['earlyMedia']),
+            'MaxParticipants' =>
+                $options['maxParticipants'],
+            'ConferenceRecord' =>
+                $options['conferenceRecord'],
+            'ConferenceTrim' =>
+                $options['conferenceTrim'],
+            'ConferenceStatusCallback' =>
+                $options['conferenceStatusCallback'],
+            'ConferenceStatusCallbackMethod' =>
+                $options['conferenceStatusCallbackMethod'],
+            'ConferenceStatusCallbackEvent' =>
+                Serialize::map($options['conferenceStatusCallbackEvent'], function ($e) { return $e; }),
+            'RecordingChannels' =>
+                $options['recordingChannels'],
+            'RecordingStatusCallback' =>
+                $options['recordingStatusCallback'],
+            'RecordingStatusCallbackMethod' =>
+                $options['recordingStatusCallbackMethod'],
+            'SipAuthUsername' =>
+                $options['sipAuthUsername'],
+            'SipAuthPassword' =>
+                $options['sipAuthPassword'],
+            'Region' =>
+                $options['region'],
+            'ConferenceRecordingStatusCallback' =>
+                $options['conferenceRecordingStatusCallback'],
+            'ConferenceRecordingStatusCallbackMethod' =>
+                $options['conferenceRecordingStatusCallbackMethod'],
+            'RecordingStatusCallbackEvent' =>
+                Serialize::map($options['recordingStatusCallbackEvent'], function ($e) { return $e; }),
+            'ConferenceRecordingStatusCallbackEvent' =>
+                Serialize::map($options['conferenceRecordingStatusCallbackEvent'], function ($e) { return $e; }),
+            'Coaching' =>
+                Serialize::booleanToString($options['coaching']),
+            'CallSidToCoach' =>
+                $options['callSidToCoach'],
+            'JitterBufferSize' =>
+                $options['jitterBufferSize'],
+            'Byoc' =>
+                $options['byoc'],
+            'CallerId' =>
+                $options['callerId'],
+            'CallReason' =>
+                $options['callReason'],
+            'RecordingTrack' =>
+                $options['recordingTrack'],
+            'TimeLimit' =>
+                $options['timeLimit'],
+            'MachineDetection' =>
+                $options['machineDetection'],
+            'MachineDetectionTimeout' =>
+                $options['machineDetectionTimeout'],
+            'MachineDetectionSpeechThreshold' =>
+                $options['machineDetectionSpeechThreshold'],
+            'MachineDetectionSpeechEndThreshold' =>
+                $options['machineDetectionSpeechEndThreshold'],
+            'MachineDetectionSilenceTimeout' =>
+                $options['machineDetectionSilenceTimeout'],
+            'AmdStatusCallback' =>
+                $options['amdStatusCallback'],
+            'AmdStatusCallbackMethod' =>
+                $options['amdStatusCallbackMethod'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['conferenceSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['conferenceSid'],
         );
     }
+
 
     /**
      * Reads ParticipantInstance records from the API as a list.
@@ -129,7 +194,8 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ParticipantInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -152,7 +218,8 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -169,13 +236,22 @@ class ParticipantList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ParticipantPage Page of ParticipantInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ParticipantPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ParticipantPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Muted' => Serialize::booleanToString($options['muted']),
-            'Hold' => Serialize::booleanToString($options['hold']),
-            'Coaching' => Serialize::booleanToString($options['coaching']),
+            'Muted' =>
+                Serialize::booleanToString($options['muted']),
+            'Hold' =>
+                Serialize::booleanToString($options['hold']),
+            'Coaching' =>
+                Serialize::booleanToString($options['coaching']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -193,7 +269,8 @@ class ParticipantList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ParticipantPage Page of ParticipantInstance
      */
-    public function getPage(string $targetUrl): ParticipantPage {
+    public function getPage(string $targetUrl): ParticipantPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -208,8 +285,17 @@ class ParticipantList extends ListResource {
      *
      * @param string $callSid The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
      */
-    public function getContext(string $callSid): ParticipantContext {
-        return new ParticipantContext($this->version, $this->solution['accountSid'], $this->solution['conferenceSid'], $callSid);
+    public function getContext(
+        string $callSid
+        
+    ): ParticipantContext
+    {
+        return new ParticipantContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['conferenceSid'],
+            $callSid
+        );
     }
 
     /**
@@ -217,7 +303,8 @@ class ParticipantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.ParticipantList]';
     }
 }

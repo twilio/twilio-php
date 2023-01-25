@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class StepContextContext extends InstanceContext {
+class StepContextContext extends InstanceContext
+    {
     /**
      * Initialize the StepContextContext
      *
@@ -31,13 +32,29 @@ class StepContextContext extends InstanceContext {
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      * @param string $stepSid The SID of the Step to fetch
      */
-    public function __construct(Version $version, $flowSid , $engagementSid , $stepSid ) {
+    public function __construct(
+        Version $version,
+        $flowSid,
+        $engagementSid,
+        $stepSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid,  'engagementSid' => $engagementSid,  'stepSid' => $stepSid,  ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        'engagementSid' =>
+            $engagementSid,
+        'stepSid' =>
+            $stepSid,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($engagementSid) . '/Steps/' . \rawurlencode($stepSid) . '/Context';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid)
+        .'/Engagements/' . \rawurlencode($engagementSid)
+        .'/Steps/' . \rawurlencode($stepSid)
+        .'/Context';
     }
 
     /**
@@ -46,24 +63,28 @@ class StepContextContext extends InstanceContext {
      * @return StepContextInstance Fetched StepContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): StepContextInstance {
+    public function fetch(): StepContextInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new StepContextInstance(
             $this->version,
-            $payload
-            , $this->solution['flowSid']
-            , $this->solution['engagementSid']
-            , $this->solution['stepSid']
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['engagementSid'],
+            $this->solution['stepSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

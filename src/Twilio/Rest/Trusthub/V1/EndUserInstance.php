@@ -35,7 +35,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class EndUserInstance extends InstanceResource {
+class EndUserInstance extends InstanceResource
+{
     /**
      * Initialize the EndUserInstance
      *
@@ -43,7 +44,8 @@ class EndUserInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string created by Twilio to identify the End User resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class EndUserInstance extends InstanceResource {
      *
      * @return EndUserContext Context for this EndUserInstance
      */
-    protected function proxy(): EndUserContext {
+    protected function proxy(): EndUserContext
+    {
         if (!$this->context) {
             $this->context = new EndUserContext(
                 $this->version,
@@ -84,7 +87,9 @@ class EndUserInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -94,7 +99,9 @@ class EndUserInstance extends InstanceResource {
      * @return EndUserInstance Fetched EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EndUserInstance {
+    public function fetch(): EndUserInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -105,7 +112,9 @@ class EndUserInstance extends InstanceResource {
      * @return EndUserInstance Updated EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): EndUserInstance {
+    public function update(array $options = []): EndUserInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +125,8 @@ class EndUserInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +144,8 @@ class EndUserInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

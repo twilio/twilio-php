@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class CredentialListMappingPage extends Page {
+class CredentialListMappingPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class CredentialListMappingPage extends Page {
      * @param array $payload Payload response from the API
      * @return CredentialListMappingInstance \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingInstance
      */
-    public function buildInstance(array $payload): CredentialListMappingInstance {
+    public function buildInstance(array $payload): CredentialListMappingInstance
+    {
         return new CredentialListMappingInstance($this->version, $payload, $this->solution['accountSid'], $this->solution['domainSid']);
     }
 
@@ -45,7 +48,8 @@ class CredentialListMappingPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.CredentialListMappingPage]';
     }
 }

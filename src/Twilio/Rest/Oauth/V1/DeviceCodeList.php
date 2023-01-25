@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class DeviceCodeList extends ListResource {
+class DeviceCodeList extends ListResource
+    {
     /**
      * Construct the DeviceCodeList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/device/code';
     }
@@ -48,29 +52,36 @@ class DeviceCodeList extends ListResource {
      * @return DeviceCodeInstance Created DeviceCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $clientSid, array $scopes, array $options = []): DeviceCodeInstance {
+    public function create(string $clientSid, array $scopes, array $options = []): DeviceCodeInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'ClientSid' => $clientSid,
-            'Scopes' => Serialize::map($scopes,function($e) { return $e; }),
-            'Audiences' => Serialize::map($options['audiences'], function($e) { return $e; }),
+            'ClientSid' =>
+                $clientSid,
+            'Scopes' =>
+                Serialize::map($scopes,function ($e) { return $e; }),
+            'Audiences' =>
+                Serialize::map($options['audiences'], function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new DeviceCodeInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.DeviceCodeList]';
     }
 }

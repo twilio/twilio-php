@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class BillingPeriodInstance extends InstanceResource {
+class BillingPeriodInstance extends InstanceResource
+{
     /**
      * Initialize the BillingPeriodInstance
      *
@@ -42,7 +43,8 @@ class BillingPeriodInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $simSid The SID of the Super SIM to list Billing Periods for.
      */
-    public function __construct(Version $version, array $payload, string $simSid) {
+    public function __construct(Version $version, array $payload, string $simSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class BillingPeriodInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -85,7 +88,8 @@ class BillingPeriodInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.BillingPeriodInstance]';
     }
 }

@@ -18,25 +18,44 @@ namespace Twilio\Rest\Voice\V1\DialingPermissions;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CountryOptions {
+abstract class CountryOptions
+{
 
     /**
-     * @param string $isoCode Filter to retrieve the country permissions by specifying the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 
-     * @param string $continent Filter to retrieve the country permissions by specifying the continent 
-     * @param string $countryCode Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html) 
-     * @param bool $lowRiskNumbersEnabled Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`. 
-     * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false` 
-     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`. 
+     * @param string $isoCode Filter to retrieve the country permissions by specifying the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+     * @param string $continent Filter to retrieve the country permissions by specifying the continent
+     * @param string $countryCode Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
+     * @param bool $lowRiskNumbersEnabled Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`.
+     * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`
+     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
      * @return ReadCountryOptions Options builder
      */
-    public static function read(string $isoCode = Values::NONE, string $continent = Values::NONE, string $countryCode = Values::NONE, bool $lowRiskNumbersEnabled = Values::NONE, bool $highRiskSpecialNumbersEnabled = Values::NONE, bool $highRiskTollfraudNumbersEnabled = Values::NONE): ReadCountryOptions {
-        return new ReadCountryOptions($isoCode, $continent, $countryCode, $lowRiskNumbersEnabled, $highRiskSpecialNumbersEnabled, $highRiskTollfraudNumbersEnabled);
+    public static function read(
+        
+        string $isoCode = Values::NONE,
+        string $continent = Values::NONE,
+        string $countryCode = Values::NONE,
+        bool $lowRiskNumbersEnabled = Values::NONE,
+        bool $highRiskSpecialNumbersEnabled = Values::NONE,
+        bool $highRiskTollfraudNumbersEnabled = Values::NONE
+
+    ): ReadCountryOptions
+    {
+        return new ReadCountryOptions(
+            $isoCode,
+            $continent,
+            $countryCode,
+            $lowRiskNumbersEnabled,
+            $highRiskSpecialNumbersEnabled,
+            $highRiskTollfraudNumbersEnabled
+        );
     }
 
 }
 
 
-class ReadCountryOptions extends Options {
+class ReadCountryOptions extends Options
+    {
     /**
      * @param string $isoCode Filter to retrieve the country permissions by specifying the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @param string $continent Filter to retrieve the country permissions by specifying the continent
@@ -45,7 +64,17 @@ class ReadCountryOptions extends Options {
      * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`
      * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
      */
-    public function __construct(string $isoCode = Values::NONE, string $continent = Values::NONE, string $countryCode = Values::NONE, bool $lowRiskNumbersEnabled = Values::NONE, bool $highRiskSpecialNumbersEnabled = Values::NONE, bool $highRiskTollfraudNumbersEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $isoCode = Values::NONE,
+        string $continent = Values::NONE,
+        string $countryCode = Values::NONE,
+        bool $lowRiskNumbersEnabled = Values::NONE,
+        bool $highRiskSpecialNumbersEnabled = Values::NONE,
+        bool $highRiskTollfraudNumbersEnabled = Values::NONE
+
+    )
+    {
         $this->options['isoCode'] = $isoCode;
         $this->options['continent'] = $continent;
         $this->options['countryCode'] = $countryCode;
@@ -60,7 +89,8 @@ class ReadCountryOptions extends Options {
      * @param string $isoCode Filter to retrieve the country permissions by specifying the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @return $this Fluent Builder
      */
-    public function setIsoCode(string $isoCode): self {
+    public function setIsoCode(string $isoCode): self
+    {
         $this->options['isoCode'] = $isoCode;
         return $this;
     }
@@ -71,7 +101,8 @@ class ReadCountryOptions extends Options {
      * @param string $continent Filter to retrieve the country permissions by specifying the continent
      * @return $this Fluent Builder
      */
-    public function setContinent(string $continent): self {
+    public function setContinent(string $continent): self
+    {
         $this->options['continent'] = $continent;
         return $this;
     }
@@ -82,7 +113,8 @@ class ReadCountryOptions extends Options {
      * @param string $countryCode Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
      * @return $this Fluent Builder
      */
-    public function setCountryCode(string $countryCode): self {
+    public function setCountryCode(string $countryCode): self
+    {
         $this->options['countryCode'] = $countryCode;
         return $this;
     }
@@ -93,7 +125,8 @@ class ReadCountryOptions extends Options {
      * @param bool $lowRiskNumbersEnabled Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`.
      * @return $this Fluent Builder
      */
-    public function setLowRiskNumbersEnabled(bool $lowRiskNumbersEnabled): self {
+    public function setLowRiskNumbersEnabled(bool $lowRiskNumbersEnabled): self
+    {
         $this->options['lowRiskNumbersEnabled'] = $lowRiskNumbersEnabled;
         return $this;
     }
@@ -104,7 +137,8 @@ class ReadCountryOptions extends Options {
      * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`
      * @return $this Fluent Builder
      */
-    public function setHighRiskSpecialNumbersEnabled(bool $highRiskSpecialNumbersEnabled): self {
+    public function setHighRiskSpecialNumbersEnabled(bool $highRiskSpecialNumbersEnabled): self
+    {
         $this->options['highRiskSpecialNumbersEnabled'] = $highRiskSpecialNumbersEnabled;
         return $this;
     }
@@ -115,7 +149,8 @@ class ReadCountryOptions extends Options {
      * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
      * @return $this Fluent Builder
      */
-    public function setHighRiskTollfraudNumbersEnabled(bool $highRiskTollfraudNumbersEnabled): self {
+    public function setHighRiskTollfraudNumbersEnabled(bool $highRiskTollfraudNumbersEnabled): self
+    {
         $this->options['highRiskTollfraudNumbersEnabled'] = $highRiskTollfraudNumbersEnabled;
         return $this;
     }
@@ -125,7 +160,8 @@ class ReadCountryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Voice.V1.ReadCountryOptions ' . $options . ']';
     }

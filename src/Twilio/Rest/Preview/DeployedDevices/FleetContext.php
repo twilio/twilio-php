@@ -39,7 +39,8 @@ use Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList;
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext deployments(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)
  */
-class FleetContext extends InstanceContext {
+class FleetContext extends InstanceContext
+    {
     protected $_certificates;
     protected $_devices;
     protected $_keys;
@@ -51,13 +52,21 @@ class FleetContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Fleet resource.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Fleets/' . \rawurlencode($sid) . '';
+        $this->uri = '/Fleets/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -66,9 +75,12 @@ class FleetContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the FleetInstance
@@ -76,15 +88,18 @@ class FleetContext extends InstanceContext {
      * @return FleetInstance Fetched FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FleetInstance {
+    public function fetch(): FleetInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FleetInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the FleetInstance
@@ -93,31 +108,37 @@ class FleetContext extends InstanceContext {
      * @return FleetInstance Updated FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FleetInstance {
+    public function update(array $options = []): FleetInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'DefaultDeploymentSid' => $options['defaultDeploymentSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'DefaultDeploymentSid' =>
+                $options['defaultDeploymentSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FleetInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the certificates
      */
-    protected function getCertificates(): CertificateList {
+    protected function getCertificates(): CertificateList
+    {
         if (!$this->_certificates) {
             $this->_certificates = new CertificateList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -127,11 +148,12 @@ class FleetContext extends InstanceContext {
     /**
      * Access the devices
      */
-    protected function getDevices(): DeviceList {
+    protected function getDevices(): DeviceList
+    {
         if (!$this->_devices) {
             $this->_devices = new DeviceList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -141,11 +163,12 @@ class FleetContext extends InstanceContext {
     /**
      * Access the keys
      */
-    protected function getKeys(): KeyList {
+    protected function getKeys(): KeyList
+    {
         if (!$this->_keys) {
             $this->_keys = new KeyList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -155,11 +178,12 @@ class FleetContext extends InstanceContext {
     /**
      * Access the deployments
      */
-    protected function getDeployments(): DeploymentList {
+    protected function getDeployments(): DeploymentList
+    {
         if (!$this->_deployments) {
             $this->_deployments = new DeploymentList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -173,7 +197,8 @@ class FleetContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -190,7 +215,8 @@ class FleetContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -204,7 +230,8 @@ class FleetContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

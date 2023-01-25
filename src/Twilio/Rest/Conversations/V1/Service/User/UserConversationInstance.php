@@ -45,7 +45,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property array $links
  */
-class UserConversationInstance extends InstanceResource {
+class UserConversationInstance extends InstanceResource
+{
     /**
      * Initialize the UserConversationInstance
      *
@@ -55,7 +56,8 @@ class UserConversationInstance extends InstanceResource {
      * @param string $userSid The unique SID identifier of the [User resource](https://www.twilio.com/docs/conversations/api/user-resource). This value can be either the `sid` or the `identity` of the User resource.
      * @param string $conversationSid The unique SID identifier of the Conversation. This value can be either the `sid` or the `unique_name` of the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource).
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $userSid, string $conversationSid = null) {
+    public function __construct(Version $version, array $payload, string $chatServiceSid, string $userSid, string $conversationSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -89,7 +91,8 @@ class UserConversationInstance extends InstanceResource {
      *
      * @return UserConversationContext Context for this UserConversationInstance
      */
-    protected function proxy(): UserConversationContext {
+    protected function proxy(): UserConversationContext
+    {
         if (!$this->context) {
             $this->context = new UserConversationContext(
                 $this->version,
@@ -108,7 +111,9 @@ class UserConversationInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -118,7 +123,9 @@ class UserConversationInstance extends InstanceResource {
      * @return UserConversationInstance Fetched UserConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserConversationInstance {
+    public function fetch(): UserConversationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -129,7 +136,9 @@ class UserConversationInstance extends InstanceResource {
      * @return UserConversationInstance Updated UserConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): UserConversationInstance {
+    public function update(array $options = []): UserConversationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -140,7 +149,8 @@ class UserConversationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -158,7 +168,8 @@ class UserConversationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

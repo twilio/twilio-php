@@ -25,7 +25,8 @@ use Twilio\Version;
  * @property AssistantList $assistants
  * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
  */
-class Understand extends Version {
+class Understand extends Version
+{
     protected $_assistants;
 
     /**
@@ -33,12 +34,14 @@ class Understand extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'understand';
     }
 
-    protected function getAssistants(): AssistantList {
+    protected function getAssistants(): AssistantList
+    {
         if (!$this->_assistants) {
             $this->_assistants = new AssistantList($this);
         }
@@ -52,7 +55,8 @@ class Understand extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -69,7 +73,8 @@ class Understand extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -83,7 +88,8 @@ class Understand extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand]';
     }
 }

@@ -29,7 +29,8 @@ use Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantList;
  * @property PlaybackGrantList $playbackGrant
  * @method \Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantContext playbackGrant()
  */
-class PlayerStreamerContext extends InstanceContext {
+class PlayerStreamerContext extends InstanceContext
+    {
     protected $_playbackGrant;
 
     /**
@@ -38,13 +39,21 @@ class PlayerStreamerContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the PlayerStreamer resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/PlayerStreamers/' . \rawurlencode($sid) . '';
+        $this->uri = '/PlayerStreamers/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -53,45 +62,53 @@ class PlayerStreamerContext extends InstanceContext {
      * @return PlayerStreamerInstance Fetched PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PlayerStreamerInstance {
+    public function fetch(): PlayerStreamerInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new PlayerStreamerInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the PlayerStreamerInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return PlayerStreamerInstance Updated PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): PlayerStreamerInstance {
+    public function update(string $status): PlayerStreamerInstance
+    {
+
         $data = Values::of([
-            'Status' => $status,
+            'Status' =>
+                $status,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new PlayerStreamerInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the playbackGrant
      */
-    protected function getPlaybackGrant(): PlaybackGrantList {
+    protected function getPlaybackGrant(): PlaybackGrantList
+    {
         if (!$this->_playbackGrant) {
             $this->_playbackGrant = new PlaybackGrantList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -105,7 +122,8 @@ class PlayerStreamerContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -122,7 +140,8 @@ class PlayerStreamerContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -136,7 +155,8 @@ class PlayerStreamerContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

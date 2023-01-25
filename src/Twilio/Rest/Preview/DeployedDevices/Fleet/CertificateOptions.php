@@ -18,43 +18,76 @@ namespace Twilio\Rest\Preview\DeployedDevices\Fleet;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CertificateOptions {
+abstract class CertificateOptions
+{
     /**
-     * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long. 
-     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential. 
+     * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
+     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
      * @return CreateCertificateOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE): CreateCertificateOptions {
-        return new CreateCertificateOptions($friendlyName, $deviceSid);
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    ): CreateCertificateOptions
+    {
+        return new CreateCertificateOptions(
+            $friendlyName,
+            $deviceSid
+        );
     }
 
 
 
     /**
-     * @param string $deviceSid Filters the resulting list of Certificates by a unique string identifier of an authenticated Device. 
+     * @param string $deviceSid Filters the resulting list of Certificates by a unique string identifier of an authenticated Device.
      * @return ReadCertificateOptions Options builder
      */
-    public static function read(string $deviceSid = Values::NONE): ReadCertificateOptions {
-        return new ReadCertificateOptions($deviceSid);
+    public static function read(
+        
+        string $deviceSid = Values::NONE
+
+    ): ReadCertificateOptions
+    {
+        return new ReadCertificateOptions(
+            $deviceSid
+        );
     }
 
     /**
-     * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long. 
-     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential. 
+     * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
+     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
      * @return UpdateCertificateOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE): UpdateCertificateOptions {
-        return new UpdateCertificateOptions($friendlyName, $deviceSid);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    ): UpdateCertificateOptions
+    {
+        return new UpdateCertificateOptions(
+            $friendlyName,
+            $deviceSid
+        );
     }
 
 }
 
-class CreateCertificateOptions extends Options {
+class CreateCertificateOptions extends Options
+    {
     /**
      * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -65,7 +98,8 @@ class CreateCertificateOptions extends Options {
      * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -76,7 +110,8 @@ class CreateCertificateOptions extends Options {
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid(string $deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self
+    {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -86,7 +121,8 @@ class CreateCertificateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.CreateCertificateOptions ' . $options . ']';
     }
@@ -94,11 +130,17 @@ class CreateCertificateOptions extends Options {
 
 
 
-class ReadCertificateOptions extends Options {
+class ReadCertificateOptions extends Options
+    {
     /**
      * @param string $deviceSid Filters the resulting list of Certificates by a unique string identifier of an authenticated Device.
      */
-    public function __construct(string $deviceSid = Values::NONE) {
+    public function __construct(
+        
+        string $deviceSid = Values::NONE
+
+    )
+    {
         $this->options['deviceSid'] = $deviceSid;
     }
 
@@ -108,7 +150,8 @@ class ReadCertificateOptions extends Options {
      * @param string $deviceSid Filters the resulting list of Certificates by a unique string identifier of an authenticated Device.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid(string $deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self
+    {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -118,18 +161,26 @@ class ReadCertificateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.ReadCertificateOptions ' . $options . ']';
     }
 }
 
-class UpdateCertificateOptions extends Options {
+class UpdateCertificateOptions extends Options
+    {
     /**
      * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -140,7 +191,8 @@ class UpdateCertificateOptions extends Options {
      * @param string $friendlyName Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -151,7 +203,8 @@ class UpdateCertificateOptions extends Options {
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid(string $deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self
+    {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -161,7 +214,8 @@ class UpdateCertificateOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.UpdateCertificateOptions ' . $options . ']';
     }

@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class ChannelList extends ListResource {
+class ChannelList extends ListResource
+    {
     /**
      * Construct the ChannelList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -40,8 +44,17 @@ class ChannelList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this Channel.
      */
-    public function getContext(string $serviceSid, string $sid): ChannelContext {
-        return new ChannelContext($this->version, $serviceSid, $sid);
+    public function getContext(
+        string $serviceSid
+        , string $sid
+        
+    ): ChannelContext
+    {
+        return new ChannelContext(
+            $this->version,
+            $serviceSid,
+            $sid
+        );
     }
 
     /**
@@ -49,7 +62,8 @@ class ChannelList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Chat.V3.ChannelList]';
     }
 }

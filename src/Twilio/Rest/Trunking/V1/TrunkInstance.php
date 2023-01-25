@@ -49,7 +49,8 @@ use Twilio\Rest\Trunking\V1\Trunk\RecordingList;
  * @property string $url
  * @property array $links
  */
-class TrunkInstance extends InstanceResource {
+class TrunkInstance extends InstanceResource
+{
     protected $_ipAccessControlLists;
     protected $_phoneNumbers;
     protected $_credentialsLists;
@@ -63,7 +64,8 @@ class TrunkInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that we created to identify the Trunk resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -96,7 +98,8 @@ class TrunkInstance extends InstanceResource {
      *
      * @return TrunkContext Context for this TrunkInstance
      */
-    protected function proxy(): TrunkContext {
+    protected function proxy(): TrunkContext
+    {
         if (!$this->context) {
             $this->context = new TrunkContext(
                 $this->version,
@@ -113,7 +116,9 @@ class TrunkInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -123,7 +128,9 @@ class TrunkInstance extends InstanceResource {
      * @return TrunkInstance Fetched TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrunkInstance {
+    public function fetch(): TrunkInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -134,42 +141,49 @@ class TrunkInstance extends InstanceResource {
      * @return TrunkInstance Updated TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TrunkInstance {
+    public function update(array $options = []): TrunkInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the ipAccessControlLists
      */
-    protected function getIpAccessControlLists(): IpAccessControlListList {
+    protected function getIpAccessControlLists(): IpAccessControlListList
+    {
         return $this->proxy()->ipAccessControlLists;
     }
 
     /**
      * Access the phoneNumbers
      */
-    protected function getPhoneNumbers(): PhoneNumberList {
+    protected function getPhoneNumbers(): PhoneNumberList
+    {
         return $this->proxy()->phoneNumbers;
     }
 
     /**
      * Access the credentialsLists
      */
-    protected function getCredentialsLists(): CredentialListList {
+    protected function getCredentialsLists(): CredentialListList
+    {
         return $this->proxy()->credentialsLists;
     }
 
     /**
      * Access the originationUrls
      */
-    protected function getOriginationUrls(): OriginationUrlList {
+    protected function getOriginationUrls(): OriginationUrlList
+    {
         return $this->proxy()->originationUrls;
     }
 
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RecordingList {
+    protected function getRecordings(): RecordingList
+    {
         return $this->proxy()->recordings;
     }
 
@@ -180,7 +194,8 @@ class TrunkInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -198,7 +213,8 @@ class TrunkInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

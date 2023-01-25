@@ -21,20 +21,30 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class BalanceList extends ListResource {
+class BalanceList extends ListResource
+    {
     /**
      * Construct the BalanceList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique SID identifier of the Account.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Balance.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Balance.json';
     }
 
     /**
@@ -43,22 +53,26 @@ class BalanceList extends ListResource {
      * @return BalanceInstance Fetched BalanceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BalanceInstance {
+    public function fetch(): BalanceInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new BalanceInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.BalanceList]';
     }
 }

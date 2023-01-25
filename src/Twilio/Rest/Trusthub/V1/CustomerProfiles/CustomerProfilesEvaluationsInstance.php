@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property string $url
  */
-class CustomerProfilesEvaluationsInstance extends InstanceResource {
+class CustomerProfilesEvaluationsInstance extends InstanceResource
+{
     /**
      * Initialize the CustomerProfilesEvaluationsInstance
      *
@@ -43,7 +44,8 @@ class CustomerProfilesEvaluationsInstance extends InstanceResource {
      * @param string $customerProfileSid The unique string that we created to identify the CustomerProfile resource.
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function __construct(Version $version, array $payload, string $customerProfileSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $customerProfileSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class CustomerProfilesEvaluationsInstance extends InstanceResource {
      *
      * @return CustomerProfilesEvaluationsContext Context for this CustomerProfilesEvaluationsInstance
      */
-    protected function proxy(): CustomerProfilesEvaluationsContext {
+    protected function proxy(): CustomerProfilesEvaluationsContext
+    {
         if (!$this->context) {
             $this->context = new CustomerProfilesEvaluationsContext(
                 $this->version,
@@ -85,7 +88,9 @@ class CustomerProfilesEvaluationsInstance extends InstanceResource {
      * @return CustomerProfilesEvaluationsInstance Fetched CustomerProfilesEvaluationsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CustomerProfilesEvaluationsInstance {
+    public function fetch(): CustomerProfilesEvaluationsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -96,7 +101,8 @@ class CustomerProfilesEvaluationsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -114,7 +120,8 @@ class CustomerProfilesEvaluationsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

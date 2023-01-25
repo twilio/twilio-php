@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $uri
  */
-class SiprecInstance extends InstanceResource {
+class SiprecInstance extends InstanceResource
+{
     /**
      * Initialize the SiprecInstance
      *
@@ -43,7 +44,8 @@ class SiprecInstance extends InstanceResource {
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with.
      * @param string $sid The SID of the Siprec resource, or the `name` used when creating the resource
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,7 +68,8 @@ class SiprecInstance extends InstanceResource {
      *
      * @return SiprecContext Context for this SiprecInstance
      */
-    protected function proxy(): SiprecContext {
+    protected function proxy(): SiprecContext
+    {
         if (!$this->context) {
             $this->context = new SiprecContext(
                 $this->version,
@@ -82,11 +85,13 @@ class SiprecInstance extends InstanceResource {
     /**
      * Update the SiprecInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return SiprecInstance Updated SiprecInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): SiprecInstance {
+    public function update(string $status): SiprecInstance
+    {
+
         return $this->proxy()->update($status);
     }
 
@@ -97,7 +102,8 @@ class SiprecInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -115,7 +121,8 @@ class SiprecInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

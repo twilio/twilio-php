@@ -18,43 +18,76 @@ namespace Twilio\Rest\Preview\DeployedDevices\Fleet;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class KeyOptions {
+abstract class KeyOptions
+{
     /**
-     * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long. 
-     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential. 
+     * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long.
+     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
      * @return CreateKeyOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE): CreateKeyOptions {
-        return new CreateKeyOptions($friendlyName, $deviceSid);
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    ): CreateKeyOptions
+    {
+        return new CreateKeyOptions(
+            $friendlyName,
+            $deviceSid
+        );
     }
 
 
 
     /**
-     * @param string $deviceSid Filters the resulting list of Keys by a unique string identifier of an authenticated Device. 
+     * @param string $deviceSid Filters the resulting list of Keys by a unique string identifier of an authenticated Device.
      * @return ReadKeyOptions Options builder
      */
-    public static function read(string $deviceSid = Values::NONE): ReadKeyOptions {
-        return new ReadKeyOptions($deviceSid);
+    public static function read(
+        
+        string $deviceSid = Values::NONE
+
+    ): ReadKeyOptions
+    {
+        return new ReadKeyOptions(
+            $deviceSid
+        );
     }
 
     /**
-     * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long. 
-     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential. 
+     * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long.
+     * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
      * @return UpdateKeyOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE): UpdateKeyOptions {
-        return new UpdateKeyOptions($friendlyName, $deviceSid);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    ): UpdateKeyOptions
+    {
+        return new UpdateKeyOptions(
+            $friendlyName,
+            $deviceSid
+        );
     }
 
 }
 
-class CreateKeyOptions extends Options {
+class CreateKeyOptions extends Options
+    {
     /**
      * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long.
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -65,7 +98,8 @@ class CreateKeyOptions extends Options {
      * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -76,7 +110,8 @@ class CreateKeyOptions extends Options {
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid(string $deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self
+    {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -86,7 +121,8 @@ class CreateKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.CreateKeyOptions ' . $options . ']';
     }
@@ -94,11 +130,17 @@ class CreateKeyOptions extends Options {
 
 
 
-class ReadKeyOptions extends Options {
+class ReadKeyOptions extends Options
+    {
     /**
      * @param string $deviceSid Filters the resulting list of Keys by a unique string identifier of an authenticated Device.
      */
-    public function __construct(string $deviceSid = Values::NONE) {
+    public function __construct(
+        
+        string $deviceSid = Values::NONE
+
+    )
+    {
         $this->options['deviceSid'] = $deviceSid;
     }
 
@@ -108,7 +150,8 @@ class ReadKeyOptions extends Options {
      * @param string $deviceSid Filters the resulting list of Keys by a unique string identifier of an authenticated Device.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid(string $deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self
+    {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -118,18 +161,26 @@ class ReadKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.ReadKeyOptions ' . $options . ']';
     }
 }
 
-class UpdateKeyOptions extends Options {
+class UpdateKeyOptions extends Options
+    {
     /**
      * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long.
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $deviceSid = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $deviceSid = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -140,7 +191,8 @@ class UpdateKeyOptions extends Options {
      * @param string $friendlyName Provides a human readable descriptive text for this Key credential, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -151,7 +203,8 @@ class UpdateKeyOptions extends Options {
      * @param string $deviceSid Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
      * @return $this Fluent Builder
      */
-    public function setDeviceSid(string $deviceSid): self {
+    public function setDeviceSid(string $deviceSid): self
+    {
         $this->options['deviceSid'] = $deviceSid;
         return $this;
     }
@@ -161,7 +214,8 @@ class UpdateKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.UpdateKeyOptions ' . $options . ']';
     }

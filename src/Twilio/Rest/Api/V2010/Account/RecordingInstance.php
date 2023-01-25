@@ -48,7 +48,8 @@ use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
  * @property array $subresourceUris
  * @property string $mediaUrl
  */
-class RecordingInstance extends InstanceResource {
+class RecordingInstance extends InstanceResource
+{
     protected $_addOnResults;
     protected $_transcriptions;
 
@@ -60,7 +61,8 @@ class RecordingInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -95,7 +97,8 @@ class RecordingInstance extends InstanceResource {
      *
      * @return RecordingContext Context for this RecordingInstance
      */
-    protected function proxy(): RecordingContext {
+    protected function proxy(): RecordingContext
+    {
         if (!$this->context) {
             $this->context = new RecordingContext(
                 $this->version,
@@ -113,7 +116,9 @@ class RecordingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -124,21 +129,25 @@ class RecordingInstance extends InstanceResource {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): RecordingInstance {
+    public function fetch(array $options = []): RecordingInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
     /**
      * Access the addOnResults
      */
-    protected function getAddOnResults(): AddOnResultList {
+    protected function getAddOnResults(): AddOnResultList
+    {
         return $this->proxy()->addOnResults;
     }
 
     /**
      * Access the transcriptions
      */
-    protected function getTranscriptions(): TranscriptionList {
+    protected function getTranscriptions(): TranscriptionList
+    {
         return $this->proxy()->transcriptions;
     }
 
@@ -149,7 +158,8 @@ class RecordingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -167,7 +177,8 @@ class RecordingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

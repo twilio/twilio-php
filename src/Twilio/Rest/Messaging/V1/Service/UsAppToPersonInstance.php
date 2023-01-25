@@ -50,7 +50,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property bool $mock
  */
-class UsAppToPersonInstance extends InstanceResource {
+class UsAppToPersonInstance extends InstanceResource
+{
     /**
      * Initialize the UsAppToPersonInstance
      *
@@ -59,7 +60,8 @@ class UsAppToPersonInstance extends InstanceResource {
      * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
      * @param string $sid The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`.
      */
-    public function __construct(Version $version, array $payload, string $messagingServiceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $messagingServiceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -99,7 +101,8 @@ class UsAppToPersonInstance extends InstanceResource {
      *
      * @return UsAppToPersonContext Context for this UsAppToPersonInstance
      */
-    protected function proxy(): UsAppToPersonContext {
+    protected function proxy(): UsAppToPersonContext
+    {
         if (!$this->context) {
             $this->context = new UsAppToPersonContext(
                 $this->version,
@@ -117,7 +120,9 @@ class UsAppToPersonInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -127,7 +132,9 @@ class UsAppToPersonInstance extends InstanceResource {
      * @return UsAppToPersonInstance Fetched UsAppToPersonInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UsAppToPersonInstance {
+    public function fetch(): UsAppToPersonInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -138,7 +145,8 @@ class UsAppToPersonInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -156,7 +164,8 @@ class UsAppToPersonInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -42,7 +42,8 @@ use Twilio\Deserialize;
  * @property string $ipCommandsUrl
  * @property string $ipCommandsMethod
  */
-class FleetInstance extends InstanceResource {
+class FleetInstance extends InstanceResource
+{
     /**
      * Initialize the FleetInstance
      *
@@ -50,7 +51,8 @@ class FleetInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Fleet resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class FleetInstance extends InstanceResource {
      *
      * @return FleetContext Context for this FleetInstance
      */
-    protected function proxy(): FleetContext {
+    protected function proxy(): FleetContext
+    {
         if (!$this->context) {
             $this->context = new FleetContext(
                 $this->version,
@@ -98,7 +101,9 @@ class FleetInstance extends InstanceResource {
      * @return FleetInstance Fetched FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FleetInstance {
+    public function fetch(): FleetInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,7 +114,9 @@ class FleetInstance extends InstanceResource {
      * @return FleetInstance Updated FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FleetInstance {
+    public function update(array $options = []): FleetInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -120,7 +127,8 @@ class FleetInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +146,8 @@ class FleetInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

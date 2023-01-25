@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class CompositionSettingsList extends ListResource {
+class CompositionSettingsList extends ListResource
+    {
     /**
      * Construct the CompositionSettingsList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a CompositionSettingsContext
      */
-    public function getContext(): CompositionSettingsContext {
-        return new CompositionSettingsContext($this->version);
+    public function getContext(
+        
+    ): CompositionSettingsContext
+    {
+        return new CompositionSettingsContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class CompositionSettingsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.CompositionSettingsList]';
     }
 }

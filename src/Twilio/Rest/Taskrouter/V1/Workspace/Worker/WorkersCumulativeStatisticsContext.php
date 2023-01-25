@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class WorkersCumulativeStatisticsContext extends InstanceContext {
+class WorkersCumulativeStatisticsContext extends InstanceContext
+    {
     /**
      * Initialize the WorkersCumulativeStatisticsContext
      *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace with the resource to fetch.
      */
-    public function __construct(Version $version, $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/CumulativeStatistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workers/CumulativeStatistics';
     }
 
     /**
@@ -48,31 +57,39 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
      * @return WorkersCumulativeStatisticsInstance Fetched WorkersCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkersCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkersCumulativeStatisticsInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
-            'Minutes' => $options['minutes'],
-            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
-            'TaskChannel' => $options['taskChannel'],
+            'EndDate' =>
+                Serialize::iso8601DateTime($options['endDate']),
+            'Minutes' =>
+                $options['minutes'],
+            'StartDate' =>
+                Serialize::iso8601DateTime($options['startDate']),
+            'TaskChannel' =>
+                $options['taskChannel'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkersCumulativeStatisticsInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
+            $payload,
+            $this->solution['workspaceSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

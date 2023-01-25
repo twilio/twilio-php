@@ -38,7 +38,8 @@ use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList;
  * @property \DateTime $dateUpdated
  * @property string $createdBy
  */
-class SyncMapInstance extends InstanceResource {
+class SyncMapInstance extends InstanceResource
+{
     protected $_syncMapItems;
     protected $_syncMapPermissions;
 
@@ -50,7 +51,8 @@ class SyncMapInstance extends InstanceResource {
      * @param string $serviceSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +78,8 @@ class SyncMapInstance extends InstanceResource {
      *
      * @return SyncMapContext Context for this SyncMapInstance
      */
-    protected function proxy(): SyncMapContext {
+    protected function proxy(): SyncMapContext
+    {
         if (!$this->context) {
             $this->context = new SyncMapContext(
                 $this->version,
@@ -94,7 +97,9 @@ class SyncMapInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -104,21 +109,25 @@ class SyncMapInstance extends InstanceResource {
      * @return SyncMapInstance Fetched SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncMapInstance {
+    public function fetch(): SyncMapInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the syncMapItems
      */
-    protected function getSyncMapItems(): SyncMapItemList {
+    protected function getSyncMapItems(): SyncMapItemList
+    {
         return $this->proxy()->syncMapItems;
     }
 
     /**
      * Access the syncMapPermissions
      */
-    protected function getSyncMapPermissions(): SyncMapPermissionList {
+    protected function getSyncMapPermissions(): SyncMapPermissionList
+    {
         return $this->proxy()->syncMapPermissions;
     }
 
@@ -129,7 +138,8 @@ class SyncMapInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -147,7 +157,8 @@ class SyncMapInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -18,24 +18,38 @@ namespace Twilio\Rest\Voice\V1\DialingPermissions;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SettingsOptions {
+abstract class SettingsOptions
+{
 
     /**
-     * @param bool $dialingPermissionsInheritance `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`. 
+     * @param bool $dialingPermissionsInheritance `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.
      * @return UpdateSettingsOptions Options builder
      */
-    public static function update(bool $dialingPermissionsInheritance = Values::NONE): UpdateSettingsOptions {
-        return new UpdateSettingsOptions($dialingPermissionsInheritance);
+    public static function update(
+        
+        bool $dialingPermissionsInheritance = Values::NONE
+
+    ): UpdateSettingsOptions
+    {
+        return new UpdateSettingsOptions(
+            $dialingPermissionsInheritance
+        );
     }
 
 }
 
 
-class UpdateSettingsOptions extends Options {
+class UpdateSettingsOptions extends Options
+    {
     /**
      * @param bool $dialingPermissionsInheritance `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.
      */
-    public function __construct(bool $dialingPermissionsInheritance = Values::NONE) {
+    public function __construct(
+        
+        bool $dialingPermissionsInheritance = Values::NONE
+
+    )
+    {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
     }
 
@@ -45,7 +59,8 @@ class UpdateSettingsOptions extends Options {
      * @param bool $dialingPermissionsInheritance `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.
      * @return $this Fluent Builder
      */
-    public function setDialingPermissionsInheritance(bool $dialingPermissionsInheritance): self {
+    public function setDialingPermissionsInheritance(bool $dialingPermissionsInheritance): self
+    {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateSettingsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Voice.V1.UpdateSettingsOptions ' . $options . ']';
     }

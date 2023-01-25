@@ -45,7 +45,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList;
  * @property string $url
  * @property array $links
  */
-class WorkerInstance extends InstanceResource {
+class WorkerInstance extends InstanceResource
+{
     protected $_workerChannels;
     protected $_reservations;
     protected $_realTimeStatistics;
@@ -60,7 +61,8 @@ class WorkerInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace that the new Worker belongs to.
      * @param string $sid The SID of the Worker resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -89,7 +91,8 @@ class WorkerInstance extends InstanceResource {
      *
      * @return WorkerContext Context for this WorkerInstance
      */
-    protected function proxy(): WorkerContext {
+    protected function proxy(): WorkerContext
+    {
         if (!$this->context) {
             $this->context = new WorkerContext(
                 $this->version,
@@ -108,7 +111,9 @@ class WorkerInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         return $this->proxy()->delete($options);
     }
 
@@ -118,7 +123,9 @@ class WorkerInstance extends InstanceResource {
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WorkerInstance {
+    public function fetch(): WorkerInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -129,42 +136,49 @@ class WorkerInstance extends InstanceResource {
      * @return WorkerInstance Updated WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkerInstance {
+    public function update(array $options = []): WorkerInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the workerChannels
      */
-    protected function getWorkerChannels(): WorkerChannelList {
+    protected function getWorkerChannels(): WorkerChannelList
+    {
         return $this->proxy()->workerChannels;
     }
 
     /**
      * Access the reservations
      */
-    protected function getReservations(): ReservationList {
+    protected function getReservations(): ReservationList
+    {
         return $this->proxy()->reservations;
     }
 
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): WorkersRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): WorkersRealTimeStatisticsList
+    {
         return $this->proxy()->realTimeStatistics;
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): WorkerStatisticsList {
+    protected function getStatistics(): WorkerStatisticsList
+    {
         return $this->proxy()->statistics;
     }
 
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): WorkersCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): WorkersCumulativeStatisticsList
+    {
         return $this->proxy()->cumulativeStatistics;
     }
 
@@ -175,7 +189,8 @@ class WorkerInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -193,7 +208,8 @@ class WorkerInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

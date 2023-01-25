@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ChannelList extends ListResource {
+class ChannelList extends ListResource
+    {
     /**
      * Construct the ChannelList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Channels';
     }
 
     /**
@@ -47,24 +57,31 @@ class ChannelList extends ListResource {
      * @return ChannelInstance Created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ChannelInstance {
+    public function create(array $options = []): ChannelInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
-            'Attributes' => $options['attributes'],
-            'Type' => $options['type'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'Attributes' =>
+                $options['attributes'],
+            'Type' =>
+                $options['type'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Reads ChannelInstance records from the API as a list.
@@ -82,7 +99,8 @@ class ChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ChannelInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -105,7 +123,8 @@ class ChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -122,11 +141,18 @@ class ChannelList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ChannelPage Page of ChannelInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ChannelPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ChannelPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Type' => $options['type'],
+            'Type' =>
+                $options['type'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -144,7 +170,8 @@ class ChannelList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ChannelPage Page of ChannelInstance
      */
-    public function getPage(string $targetUrl): ChannelPage {
+    public function getPage(string $targetUrl): ChannelPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -159,8 +186,16 @@ class ChannelList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Channel resource to delete.
      */
-    public function getContext(string $sid): ChannelContext {
-        return new ChannelContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ChannelContext
+    {
+        return new ChannelContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -168,7 +203,8 @@ class ChannelList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Chat.V1.ChannelList]';
     }
 }

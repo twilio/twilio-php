@@ -18,21 +18,37 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class OriginationUrlOptions {
+abstract class OriginationUrlOptions
+{
 
 
 
 
     /**
-     * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority. 
-     * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI. 
-     * @param bool $enabled Whether the URL is enabled. The default is `true`. 
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
-     * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. `sips` is NOT supported. 
+     * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
+     * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
+     * @param bool $enabled Whether the URL is enabled. The default is `true`.
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. `sips` is NOT supported.
      * @return UpdateOriginationUrlOptions Options builder
      */
-    public static function update(int $weight = Values::NONE, int $priority = Values::NONE, bool $enabled = Values::NONE, string $friendlyName = Values::NONE, string $sipUrl = Values::NONE): UpdateOriginationUrlOptions {
-        return new UpdateOriginationUrlOptions($weight, $priority, $enabled, $friendlyName, $sipUrl);
+    public static function update(
+        
+        int $weight = Values::NONE,
+        int $priority = Values::NONE,
+        bool $enabled = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $sipUrl = Values::NONE
+
+    ): UpdateOriginationUrlOptions
+    {
+        return new UpdateOriginationUrlOptions(
+            $weight,
+            $priority,
+            $enabled,
+            $friendlyName,
+            $sipUrl
+        );
     }
 
 }
@@ -41,7 +57,8 @@ abstract class OriginationUrlOptions {
 
 
 
-class UpdateOriginationUrlOptions extends Options {
+class UpdateOriginationUrlOptions extends Options
+    {
     /**
      * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
      * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
@@ -49,7 +66,16 @@ class UpdateOriginationUrlOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. `sips` is NOT supported.
      */
-    public function __construct(int $weight = Values::NONE, int $priority = Values::NONE, bool $enabled = Values::NONE, string $friendlyName = Values::NONE, string $sipUrl = Values::NONE) {
+    public function __construct(
+        
+        int $weight = Values::NONE,
+        int $priority = Values::NONE,
+        bool $enabled = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $sipUrl = Values::NONE
+
+    )
+    {
         $this->options['weight'] = $weight;
         $this->options['priority'] = $priority;
         $this->options['enabled'] = $enabled;
@@ -63,7 +89,8 @@ class UpdateOriginationUrlOptions extends Options {
      * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
      * @return $this Fluent Builder
      */
-    public function setWeight(int $weight): self {
+    public function setWeight(int $weight): self
+    {
         $this->options['weight'] = $weight;
         return $this;
     }
@@ -74,7 +101,8 @@ class UpdateOriginationUrlOptions extends Options {
      * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
      * @return $this Fluent Builder
      */
-    public function setPriority(int $priority): self {
+    public function setPriority(int $priority): self
+    {
         $this->options['priority'] = $priority;
         return $this;
     }
@@ -85,7 +113,8 @@ class UpdateOriginationUrlOptions extends Options {
      * @param bool $enabled Whether the URL is enabled. The default is `true`.
      * @return $this Fluent Builder
      */
-    public function setEnabled(bool $enabled): self {
+    public function setEnabled(bool $enabled): self
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -96,7 +125,8 @@ class UpdateOriginationUrlOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -107,7 +137,8 @@ class UpdateOriginationUrlOptions extends Options {
      * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. `sips` is NOT supported.
      * @return $this Fluent Builder
      */
-    public function setSipUrl(string $sipUrl): self {
+    public function setSipUrl(string $sipUrl): self
+    {
         $this->options['sipUrl'] = $sipUrl;
         return $this;
     }
@@ -117,7 +148,8 @@ class UpdateOriginationUrlOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trunking.V1.UpdateOriginationUrlOptions ' . $options . ']';
     }

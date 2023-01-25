@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class DeactivationsPage extends Page {
+class DeactivationsPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class DeactivationsPage extends Page {
      * @param array $payload Payload response from the API
      * @return DeactivationsInstance \Twilio\Rest\Messaging\V1\DeactivationsInstance
      */
-    public function buildInstance(array $payload): DeactivationsInstance {
+    public function buildInstance(array $payload): DeactivationsInstance
+    {
         return new DeactivationsInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class DeactivationsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.DeactivationsPage]';
     }
 }

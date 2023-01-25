@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class CustomerProfilesChannelEndpointAssignmentPage extends Page {
+class CustomerProfilesChannelEndpointAssignmentPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class CustomerProfilesChannelEndpointAssignmentPage extends Page {
      * @param array $payload Payload response from the API
      * @return CustomerProfilesChannelEndpointAssignmentInstance \Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesChannelEndpointAssignmentInstance
      */
-    public function buildInstance(array $payload): CustomerProfilesChannelEndpointAssignmentInstance {
+    public function buildInstance(array $payload): CustomerProfilesChannelEndpointAssignmentInstance
+    {
         return new CustomerProfilesChannelEndpointAssignmentInstance($this->version, $payload, $this->solution['customerProfileSid']);
     }
 
@@ -45,7 +48,8 @@ class CustomerProfilesChannelEndpointAssignmentPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Trusthub.V1.CustomerProfilesChannelEndpointAssignmentPage]';
     }
 }

@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class TaskActionsList extends ListResource {
+class TaskActionsList extends ListResource
+    {
     /**
      * Construct the TaskActionsList
      *
@@ -28,18 +29,38 @@ class TaskActionsList extends ListResource {
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $taskSid The unique ID of the Task.
      */
-    public function __construct(Version $version, string $assistantSid , string $taskSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        ,
+        string $taskSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        'taskSid' =>
+            $taskSid,
+        
+        ];
     }
 
     /**
      * Constructs a TaskActionsContext
      */
-    public function getContext(): TaskActionsContext {
-        return new TaskActionsContext($this->version, $this->solution['assistantSid'], $this->solution['taskSid']);
+    public function getContext(
+        
+    ): TaskActionsContext
+    {
+        return new TaskActionsContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid']
+        );
     }
 
     /**
@@ -47,7 +68,8 @@ class TaskActionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.TaskActionsList]';
     }
 }

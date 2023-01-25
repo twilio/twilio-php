@@ -24,20 +24,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class PlaybackGrantContext extends InstanceContext {
+class PlaybackGrantContext extends InstanceContext
+    {
     /**
      * Initialize the PlaybackGrantContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string generated to identify the PlayerStreamer resource associated with this PlaybackGrant
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/PlayerStreamers/' . \rawurlencode($sid) . '/PlaybackGrant';
+        $this->uri = '/PlayerStreamers/' . \rawurlencode($sid)
+        .'/PlaybackGrant';
     }
 
     /**
@@ -47,22 +56,27 @@ class PlaybackGrantContext extends InstanceContext {
      * @return PlaybackGrantInstance Created PlaybackGrantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): PlaybackGrantInstance {
+    public function create(array $options = []): PlaybackGrantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Ttl' => $options['ttl'],
-            'AccessControlAllowOrigin' => $options['accessControlAllowOrigin'],
+            'Ttl' =>
+                $options['ttl'],
+            'AccessControlAllowOrigin' =>
+                $options['accessControlAllowOrigin'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PlaybackGrantInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Fetch the PlaybackGrantInstance
@@ -70,22 +84,26 @@ class PlaybackGrantContext extends InstanceContext {
      * @return PlaybackGrantInstance Fetched PlaybackGrantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PlaybackGrantInstance {
+    public function fetch(): PlaybackGrantInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new PlaybackGrantInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

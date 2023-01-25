@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ShortCodeContext extends InstanceContext {
+class ShortCodeContext extends InstanceContext
+    {
     /**
      * Initialize the ShortCodeContext
      *
@@ -30,13 +31,25 @@ class ShortCodeContext extends InstanceContext {
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.
      * @param string $sid The SID of the ShortCode resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/ShortCodes/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/ShortCodes/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class ShortCodeContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ShortCodeInstance
@@ -55,23 +71,27 @@ class ShortCodeContext extends InstanceContext {
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ShortCodeInstance {
+    public function fetch(): ShortCodeInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ShortCodeInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class DefaultsContext extends InstanceContext {
+class DefaultsContext extends InstanceContext
+    {
     /**
      * Initialize the DefaultsContext
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.
      */
-    public function __construct(Version $version, $assistantSid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Defaults';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Defaults';
     }
 
     /**
@@ -47,15 +56,18 @@ class DefaultsContext extends InstanceContext {
      * @return DefaultsInstance Fetched DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DefaultsInstance {
+    public function fetch(): DefaultsInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DefaultsInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Update the DefaultsInstance
@@ -64,28 +76,33 @@ class DefaultsContext extends InstanceContext {
      * @return DefaultsInstance Updated DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): DefaultsInstance {
+    public function update(array $options = []): DefaultsInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Defaults' => Serialize::jsonObject($options['defaults']),
+            'Defaults' =>
+                Serialize::jsonObject($options['defaults']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DefaultsInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

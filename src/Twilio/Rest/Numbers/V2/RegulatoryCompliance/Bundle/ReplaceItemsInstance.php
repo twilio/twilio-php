@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class ReplaceItemsInstance extends InstanceResource {
+class ReplaceItemsInstance extends InstanceResource
+{
     /**
      * Initialize the ReplaceItemsInstance
      *
@@ -44,7 +45,8 @@ class ReplaceItemsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $bundleSid The unique string that identifies the Bundle where the item assignments are going to be replaced.
      */
-    public function __construct(Version $version, array $payload, string $bundleSid) {
+    public function __construct(Version $version, array $payload, string $bundleSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -71,7 +73,8 @@ class ReplaceItemsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -89,7 +92,8 @@ class ReplaceItemsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.ReplaceItemsInstance]';
     }
 }

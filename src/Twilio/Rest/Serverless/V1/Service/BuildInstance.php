@@ -39,7 +39,8 @@ use Twilio\Rest\Serverless\V1\Service\Build\BuildStatusList;
  * @property string $url
  * @property array $links
  */
-class BuildInstance extends InstanceResource {
+class BuildInstance extends InstanceResource
+{
     protected $_buildStatus;
 
     /**
@@ -50,7 +51,8 @@ class BuildInstance extends InstanceResource {
      * @param string $serviceSid The SID of the Service to create the Build resource under.
      * @param string $sid The SID of the Build resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -78,7 +80,8 @@ class BuildInstance extends InstanceResource {
      *
      * @return BuildContext Context for this BuildInstance
      */
-    protected function proxy(): BuildContext {
+    protected function proxy(): BuildContext
+    {
         if (!$this->context) {
             $this->context = new BuildContext(
                 $this->version,
@@ -96,7 +99,9 @@ class BuildInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -106,14 +111,17 @@ class BuildInstance extends InstanceResource {
      * @return BuildInstance Fetched BuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BuildInstance {
+    public function fetch(): BuildInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the buildStatus
      */
-    protected function getBuildStatus(): BuildStatusList {
+    protected function getBuildStatus(): BuildStatusList
+    {
         return $this->proxy()->buildStatus;
     }
 
@@ -124,7 +132,8 @@ class BuildInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +151,8 @@ class BuildInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

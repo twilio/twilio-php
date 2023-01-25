@@ -34,7 +34,8 @@ use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
  * @method \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext addOnResults(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionContext transcriptions(string $sid)
  */
-class RecordingContext extends InstanceContext {
+class RecordingContext extends InstanceContext
+    {
     protected $_addOnResults;
     protected $_transcriptions;
 
@@ -45,13 +46,25 @@ class RecordingContext extends InstanceContext {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Recordings/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -60,9 +73,12 @@ class RecordingContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the RecordingInstance
@@ -71,32 +87,37 @@ class RecordingContext extends InstanceContext {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): RecordingInstance {
+    public function fetch(array $options = []): RecordingInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'IncludeSoftDeleted' => Serialize::booleanToString($options['includeSoftDeleted']),
+            'IncludeSoftDeleted' =>
+                Serialize::booleanToString($options['includeSoftDeleted']),
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new RecordingInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the addOnResults
      */
-    protected function getAddOnResults(): AddOnResultList {
+    protected function getAddOnResults(): AddOnResultList
+    {
         if (!$this->_addOnResults) {
             $this->_addOnResults = new AddOnResultList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -106,12 +127,13 @@ class RecordingContext extends InstanceContext {
     /**
      * Access the transcriptions
      */
-    protected function getTranscriptions(): TranscriptionList {
+    protected function getTranscriptions(): TranscriptionList
+    {
         if (!$this->_transcriptions) {
             $this->_transcriptions = new TranscriptionList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -125,7 +147,8 @@ class RecordingContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -142,7 +165,8 @@ class RecordingContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -156,7 +180,8 @@ class RecordingContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

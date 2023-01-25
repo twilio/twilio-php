@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class InviteContext extends InstanceContext {
+class InviteContext extends InstanceContext
+    {
     /**
      * Initialize the InviteContext
      *
@@ -31,13 +32,29 @@ class InviteContext extends InstanceContext {
      * @param string $channelSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, $serviceSid , $channelSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $channelSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'channelSid' => $channelSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'channelSid' =>
+            $channelSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($channelSid) . '/Invites/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Channels/' . \rawurlencode($channelSid)
+        .'/Invites/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,9 +63,12 @@ class InviteContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the InviteInstance
@@ -56,24 +76,28 @@ class InviteContext extends InstanceContext {
      * @return InviteInstance Fetched InviteInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InviteInstance {
+    public function fetch(): InviteInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new InviteInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['channelSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

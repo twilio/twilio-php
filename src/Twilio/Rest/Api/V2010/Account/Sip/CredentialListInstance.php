@@ -34,7 +34,8 @@ use Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList;
  * @property array $subresourceUris
  * @property string $uri
  */
-class CredentialListInstance extends InstanceResource {
+class CredentialListInstance extends InstanceResource
+{
     protected $_credentials;
 
     /**
@@ -45,7 +46,8 @@ class CredentialListInstance extends InstanceResource {
      * @param string $accountSid The unique id of the Account that is responsible for this resource.
      * @param string $sid The credential list Sid that uniquely identifies this resource
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +70,8 @@ class CredentialListInstance extends InstanceResource {
      *
      * @return CredentialListContext Context for this CredentialListInstance
      */
-    protected function proxy(): CredentialListContext {
+    protected function proxy(): CredentialListContext
+    {
         if (!$this->context) {
             $this->context = new CredentialListContext(
                 $this->version,
@@ -86,7 +89,9 @@ class CredentialListInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -96,7 +101,9 @@ class CredentialListInstance extends InstanceResource {
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CredentialListInstance {
+    public function fetch(): CredentialListInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -107,14 +114,17 @@ class CredentialListInstance extends InstanceResource {
      * @return CredentialListInstance Updated CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $friendlyName): CredentialListInstance {
+    public function update(string $friendlyName): CredentialListInstance
+    {
+
         return $this->proxy()->update($friendlyName);
     }
 
     /**
      * Access the credentials
      */
-    protected function getCredentials(): CredentialList {
+    protected function getCredentials(): CredentialList
+    {
         return $this->proxy()->credentials;
     }
 
@@ -125,7 +135,8 @@ class CredentialListInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -143,7 +154,8 @@ class CredentialListInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

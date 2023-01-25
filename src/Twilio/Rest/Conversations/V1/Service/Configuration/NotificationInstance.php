@@ -33,7 +33,8 @@ use Twilio\Version;
  * @property bool $logEnabled
  * @property string $url
  */
-class NotificationInstance extends InstanceResource {
+class NotificationInstance extends InstanceResource
+{
     /**
      * Initialize the NotificationInstance
      *
@@ -41,7 +42,8 @@ class NotificationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid) {
+    public function __construct(Version $version, array $payload, string $chatServiceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,7 +66,8 @@ class NotificationInstance extends InstanceResource {
      *
      * @return NotificationContext Context for this NotificationInstance
      */
-    protected function proxy(): NotificationContext {
+    protected function proxy(): NotificationContext
+    {
         if (!$this->context) {
             $this->context = new NotificationContext(
                 $this->version,
@@ -81,7 +84,9 @@ class NotificationInstance extends InstanceResource {
      * @return NotificationInstance Fetched NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NotificationInstance {
+    public function fetch(): NotificationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -92,7 +97,9 @@ class NotificationInstance extends InstanceResource {
      * @return NotificationInstance Updated NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): NotificationInstance {
+    public function update(array $options = []): NotificationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -103,7 +110,8 @@ class NotificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -121,7 +129,8 @@ class NotificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

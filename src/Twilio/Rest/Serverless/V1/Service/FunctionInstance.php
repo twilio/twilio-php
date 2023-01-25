@@ -35,7 +35,8 @@ use Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList;
  * @property string $url
  * @property array $links
  */
-class FunctionInstance extends InstanceResource {
+class FunctionInstance extends InstanceResource
+{
     protected $_functionVersions;
 
     /**
@@ -46,7 +47,8 @@ class FunctionInstance extends InstanceResource {
      * @param string $serviceSid The SID of the Service to create the Function resource under.
      * @param string $sid The SID of the Function resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class FunctionInstance extends InstanceResource {
      *
      * @return FunctionContext Context for this FunctionInstance
      */
-    protected function proxy(): FunctionContext {
+    protected function proxy(): FunctionContext
+    {
         if (!$this->context) {
             $this->context = new FunctionContext(
                 $this->version,
@@ -88,7 +91,9 @@ class FunctionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -98,7 +103,9 @@ class FunctionInstance extends InstanceResource {
      * @return FunctionInstance Fetched FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FunctionInstance {
+    public function fetch(): FunctionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,14 +116,17 @@ class FunctionInstance extends InstanceResource {
      * @return FunctionInstance Updated FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $friendlyName): FunctionInstance {
+    public function update(string $friendlyName): FunctionInstance
+    {
+
         return $this->proxy()->update($friendlyName);
     }
 
     /**
      * Access the functionVersions
      */
-    protected function getFunctionVersions(): FunctionVersionList {
+    protected function getFunctionVersions(): FunctionVersionList
+    {
         return $this->proxy()->functionVersions;
     }
 
@@ -127,7 +137,8 @@ class FunctionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -145,7 +156,8 @@ class FunctionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

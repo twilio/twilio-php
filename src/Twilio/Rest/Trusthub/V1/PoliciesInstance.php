@@ -29,7 +29,8 @@ use Twilio\Version;
  * @property array $requirements
  * @property string $url
  */
-class PoliciesInstance extends InstanceResource {
+class PoliciesInstance extends InstanceResource
+{
     /**
      * Initialize the PoliciesInstance
      *
@@ -37,7 +38,8 @@ class PoliciesInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the Policy resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -57,7 +59,8 @@ class PoliciesInstance extends InstanceResource {
      *
      * @return PoliciesContext Context for this PoliciesInstance
      */
-    protected function proxy(): PoliciesContext {
+    protected function proxy(): PoliciesContext
+    {
         if (!$this->context) {
             $this->context = new PoliciesContext(
                 $this->version,
@@ -74,7 +77,9 @@ class PoliciesInstance extends InstanceResource {
      * @return PoliciesInstance Fetched PoliciesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PoliciesInstance {
+    public function fetch(): PoliciesInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -85,7 +90,8 @@ class PoliciesInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -103,7 +109,8 @@ class PoliciesInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

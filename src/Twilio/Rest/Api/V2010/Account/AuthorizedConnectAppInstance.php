@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string[] $permissions
  * @property string $uri
  */
-class AuthorizedConnectAppInstance extends InstanceResource {
+class AuthorizedConnectAppInstance extends InstanceResource
+{
     /**
      * Initialize the AuthorizedConnectAppInstance
      *
@@ -45,7 +46,8 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resource to fetch.
      * @param string $connectAppSid The SID of the Connect App to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $connectAppSid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $connectAppSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -71,7 +73,8 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      *
      * @return AuthorizedConnectAppContext Context for this AuthorizedConnectAppInstance
      */
-    protected function proxy(): AuthorizedConnectAppContext {
+    protected function proxy(): AuthorizedConnectAppContext
+    {
         if (!$this->context) {
             $this->context = new AuthorizedConnectAppContext(
                 $this->version,
@@ -89,7 +92,9 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * @return AuthorizedConnectAppInstance Fetched AuthorizedConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AuthorizedConnectAppInstance {
+    public function fetch(): AuthorizedConnectAppInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +105,8 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -118,7 +124,8 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

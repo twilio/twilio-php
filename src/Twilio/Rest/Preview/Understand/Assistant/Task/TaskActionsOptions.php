@@ -18,24 +18,38 @@ namespace Twilio\Rest\Preview\Understand\Assistant\Task;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TaskActionsOptions {
+abstract class TaskActionsOptions
+{
 
     /**
-     * @param array $actions The JSON actions that instruct the Assistant how to perform this task. 
+     * @param array $actions The JSON actions that instruct the Assistant how to perform this task.
      * @return UpdateTaskActionsOptions Options builder
      */
-    public static function update(array $actions = Values::ARRAY_NONE): UpdateTaskActionsOptions {
-        return new UpdateTaskActionsOptions($actions);
+    public static function update(
+        
+        array $actions = Values::ARRAY_NONE
+
+    ): UpdateTaskActionsOptions
+    {
+        return new UpdateTaskActionsOptions(
+            $actions
+        );
     }
 
 }
 
 
-class UpdateTaskActionsOptions extends Options {
+class UpdateTaskActionsOptions extends Options
+    {
     /**
      * @param array $actions The JSON actions that instruct the Assistant how to perform this task.
      */
-    public function __construct(array $actions = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $actions = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['actions'] = $actions;
     }
 
@@ -45,7 +59,8 @@ class UpdateTaskActionsOptions extends Options {
      * @param array $actions The JSON actions that instruct the Assistant how to perform this task.
      * @return $this Fluent Builder
      */
-    public function setActions(array $actions): self {
+    public function setActions(array $actions): self
+    {
         $this->options['actions'] = $actions;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateTaskActionsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Understand.UpdateTaskActionsOptions ' . $options . ']';
     }

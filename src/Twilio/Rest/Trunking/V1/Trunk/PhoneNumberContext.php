@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class PhoneNumberContext extends InstanceContext {
+class PhoneNumberContext extends InstanceContext
+    {
     /**
      * Initialize the PhoneNumberContext
      *
@@ -30,13 +31,25 @@ class PhoneNumberContext extends InstanceContext {
      * @param string $trunkSid The SID of the Trunk to associate the phone number with.
      * @param string $sid The unique string that we created to identify the PhoneNumber resource to delete.
      */
-    public function __construct(Version $version, $trunkSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $trunkSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['trunkSid' => $trunkSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'trunkSid' =>
+            $trunkSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/PhoneNumbers/' . \rawurlencode($sid) . '';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid)
+        .'/PhoneNumbers/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class PhoneNumberContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the PhoneNumberInstance
@@ -55,23 +71,27 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PhoneNumberInstance {
+    public function fetch(): PhoneNumberInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new PhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['trunkSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['trunkSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

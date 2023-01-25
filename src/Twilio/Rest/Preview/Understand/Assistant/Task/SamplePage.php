@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SamplePage extends Page {
+class SamplePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class SamplePage extends Page {
      * @param array $payload Payload response from the API
      * @return SampleInstance \Twilio\Rest\Preview\Understand\Assistant\Task\SampleInstance
      */
-    public function buildInstance(array $payload): SampleInstance {
+    public function buildInstance(array $payload): SampleInstance
+    {
         return new SampleInstance($this->version, $payload, $this->solution['assistantSid'], $this->solution['taskSid']);
     }
 
@@ -45,7 +48,8 @@ class SamplePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.SamplePage]';
     }
 }

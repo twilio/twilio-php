@@ -19,223 +19,634 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 
-abstract class StreamOptions {
+abstract class StreamOptions
+{
     /**
-     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream. 
-     * @param string $track  
-     * @param string $statusCallback Absolute URL of the status callback. 
-     * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST). 
-     * @param string $parameter1Name Parameter name 
-     * @param string $parameter1Value Parameter value 
-     * @param string $parameter2Name Parameter name 
-     * @param string $parameter2Value Parameter value 
-     * @param string $parameter3Name Parameter name 
-     * @param string $parameter3Value Parameter value 
-     * @param string $parameter4Name Parameter name 
-     * @param string $parameter4Value Parameter value 
-     * @param string $parameter5Name Parameter name 
-     * @param string $parameter5Value Parameter value 
-     * @param string $parameter6Name Parameter name 
-     * @param string $parameter6Value Parameter value 
-     * @param string $parameter7Name Parameter name 
-     * @param string $parameter7Value Parameter value 
-     * @param string $parameter8Name Parameter name 
-     * @param string $parameter8Value Parameter value 
-     * @param string $parameter9Name Parameter name 
-     * @param string $parameter9Value Parameter value 
-     * @param string $parameter10Name Parameter name 
-     * @param string $parameter10Value Parameter value 
-     * @param string $parameter11Name Parameter name 
-     * @param string $parameter11Value Parameter value 
-     * @param string $parameter12Name Parameter name 
-     * @param string $parameter12Value Parameter value 
-     * @param string $parameter13Name Parameter name 
-     * @param string $parameter13Value Parameter value 
-     * @param string $parameter14Name Parameter name 
-     * @param string $parameter14Value Parameter value 
-     * @param string $parameter15Name Parameter name 
-     * @param string $parameter15Value Parameter value 
-     * @param string $parameter16Name Parameter name 
-     * @param string $parameter16Value Parameter value 
-     * @param string $parameter17Name Parameter name 
-     * @param string $parameter17Value Parameter value 
-     * @param string $parameter18Name Parameter name 
-     * @param string $parameter18Value Parameter value 
-     * @param string $parameter19Name Parameter name 
-     * @param string $parameter19Value Parameter value 
-     * @param string $parameter20Name Parameter name 
-     * @param string $parameter20Value Parameter value 
-     * @param string $parameter21Name Parameter name 
-     * @param string $parameter21Value Parameter value 
-     * @param string $parameter22Name Parameter name 
-     * @param string $parameter22Value Parameter value 
-     * @param string $parameter23Name Parameter name 
-     * @param string $parameter23Value Parameter value 
-     * @param string $parameter24Name Parameter name 
-     * @param string $parameter24Value Parameter value 
-     * @param string $parameter25Name Parameter name 
-     * @param string $parameter25Value Parameter value 
-     * @param string $parameter26Name Parameter name 
-     * @param string $parameter26Value Parameter value 
-     * @param string $parameter27Name Parameter name 
-     * @param string $parameter27Value Parameter value 
-     * @param string $parameter28Name Parameter name 
-     * @param string $parameter28Value Parameter value 
-     * @param string $parameter29Name Parameter name 
-     * @param string $parameter29Value Parameter value 
-     * @param string $parameter30Name Parameter name 
-     * @param string $parameter30Value Parameter value 
-     * @param string $parameter31Name Parameter name 
-     * @param string $parameter31Value Parameter value 
-     * @param string $parameter32Name Parameter name 
-     * @param string $parameter32Value Parameter value 
-     * @param string $parameter33Name Parameter name 
-     * @param string $parameter33Value Parameter value 
-     * @param string $parameter34Name Parameter name 
-     * @param string $parameter34Value Parameter value 
-     * @param string $parameter35Name Parameter name 
-     * @param string $parameter35Value Parameter value 
-     * @param string $parameter36Name Parameter name 
-     * @param string $parameter36Value Parameter value 
-     * @param string $parameter37Name Parameter name 
-     * @param string $parameter37Value Parameter value 
-     * @param string $parameter38Name Parameter name 
-     * @param string $parameter38Value Parameter value 
-     * @param string $parameter39Name Parameter name 
-     * @param string $parameter39Value Parameter value 
-     * @param string $parameter40Name Parameter name 
-     * @param string $parameter40Value Parameter value 
-     * @param string $parameter41Name Parameter name 
-     * @param string $parameter41Value Parameter value 
-     * @param string $parameter42Name Parameter name 
-     * @param string $parameter42Value Parameter value 
-     * @param string $parameter43Name Parameter name 
-     * @param string $parameter43Value Parameter value 
-     * @param string $parameter44Name Parameter name 
-     * @param string $parameter44Value Parameter value 
-     * @param string $parameter45Name Parameter name 
-     * @param string $parameter45Value Parameter value 
-     * @param string $parameter46Name Parameter name 
-     * @param string $parameter46Value Parameter value 
-     * @param string $parameter47Name Parameter name 
-     * @param string $parameter47Value Parameter value 
-     * @param string $parameter48Name Parameter name 
-     * @param string $parameter48Value Parameter value 
-     * @param string $parameter49Name Parameter name 
-     * @param string $parameter49Value Parameter value 
-     * @param string $parameter50Name Parameter name 
-     * @param string $parameter50Value Parameter value 
-     * @param string $parameter51Name Parameter name 
-     * @param string $parameter51Value Parameter value 
-     * @param string $parameter52Name Parameter name 
-     * @param string $parameter52Value Parameter value 
-     * @param string $parameter53Name Parameter name 
-     * @param string $parameter53Value Parameter value 
-     * @param string $parameter54Name Parameter name 
-     * @param string $parameter54Value Parameter value 
-     * @param string $parameter55Name Parameter name 
-     * @param string $parameter55Value Parameter value 
-     * @param string $parameter56Name Parameter name 
-     * @param string $parameter56Value Parameter value 
-     * @param string $parameter57Name Parameter name 
-     * @param string $parameter57Value Parameter value 
-     * @param string $parameter58Name Parameter name 
-     * @param string $parameter58Value Parameter value 
-     * @param string $parameter59Name Parameter name 
-     * @param string $parameter59Value Parameter value 
-     * @param string $parameter60Name Parameter name 
-     * @param string $parameter60Value Parameter value 
-     * @param string $parameter61Name Parameter name 
-     * @param string $parameter61Value Parameter value 
-     * @param string $parameter62Name Parameter name 
-     * @param string $parameter62Value Parameter value 
-     * @param string $parameter63Name Parameter name 
-     * @param string $parameter63Value Parameter value 
-     * @param string $parameter64Name Parameter name 
-     * @param string $parameter64Value Parameter value 
-     * @param string $parameter65Name Parameter name 
-     * @param string $parameter65Value Parameter value 
-     * @param string $parameter66Name Parameter name 
-     * @param string $parameter66Value Parameter value 
-     * @param string $parameter67Name Parameter name 
-     * @param string $parameter67Value Parameter value 
-     * @param string $parameter68Name Parameter name 
-     * @param string $parameter68Value Parameter value 
-     * @param string $parameter69Name Parameter name 
-     * @param string $parameter69Value Parameter value 
-     * @param string $parameter70Name Parameter name 
-     * @param string $parameter70Value Parameter value 
-     * @param string $parameter71Name Parameter name 
-     * @param string $parameter71Value Parameter value 
-     * @param string $parameter72Name Parameter name 
-     * @param string $parameter72Value Parameter value 
-     * @param string $parameter73Name Parameter name 
-     * @param string $parameter73Value Parameter value 
-     * @param string $parameter74Name Parameter name 
-     * @param string $parameter74Value Parameter value 
-     * @param string $parameter75Name Parameter name 
-     * @param string $parameter75Value Parameter value 
-     * @param string $parameter76Name Parameter name 
-     * @param string $parameter76Value Parameter value 
-     * @param string $parameter77Name Parameter name 
-     * @param string $parameter77Value Parameter value 
-     * @param string $parameter78Name Parameter name 
-     * @param string $parameter78Value Parameter value 
-     * @param string $parameter79Name Parameter name 
-     * @param string $parameter79Value Parameter value 
-     * @param string $parameter80Name Parameter name 
-     * @param string $parameter80Value Parameter value 
-     * @param string $parameter81Name Parameter name 
-     * @param string $parameter81Value Parameter value 
-     * @param string $parameter82Name Parameter name 
-     * @param string $parameter82Value Parameter value 
-     * @param string $parameter83Name Parameter name 
-     * @param string $parameter83Value Parameter value 
-     * @param string $parameter84Name Parameter name 
-     * @param string $parameter84Value Parameter value 
-     * @param string $parameter85Name Parameter name 
-     * @param string $parameter85Value Parameter value 
-     * @param string $parameter86Name Parameter name 
-     * @param string $parameter86Value Parameter value 
-     * @param string $parameter87Name Parameter name 
-     * @param string $parameter87Value Parameter value 
-     * @param string $parameter88Name Parameter name 
-     * @param string $parameter88Value Parameter value 
-     * @param string $parameter89Name Parameter name 
-     * @param string $parameter89Value Parameter value 
-     * @param string $parameter90Name Parameter name 
-     * @param string $parameter90Value Parameter value 
-     * @param string $parameter91Name Parameter name 
-     * @param string $parameter91Value Parameter value 
-     * @param string $parameter92Name Parameter name 
-     * @param string $parameter92Value Parameter value 
-     * @param string $parameter93Name Parameter name 
-     * @param string $parameter93Value Parameter value 
-     * @param string $parameter94Name Parameter name 
-     * @param string $parameter94Value Parameter value 
-     * @param string $parameter95Name Parameter name 
-     * @param string $parameter95Value Parameter value 
-     * @param string $parameter96Name Parameter name 
-     * @param string $parameter96Value Parameter value 
-     * @param string $parameter97Name Parameter name 
-     * @param string $parameter97Value Parameter value 
-     * @param string $parameter98Name Parameter name 
-     * @param string $parameter98Value Parameter value 
-     * @param string $parameter99Name Parameter name 
-     * @param string $parameter99Value Parameter value 
+     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
+     * @param string $track
+     * @param string $statusCallback Absolute URL of the status callback.
+     * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST).
+     * @param string $parameter1Name Parameter name
+     * @param string $parameter1Value Parameter value
+     * @param string $parameter2Name Parameter name
+     * @param string $parameter2Value Parameter value
+     * @param string $parameter3Name Parameter name
+     * @param string $parameter3Value Parameter value
+     * @param string $parameter4Name Parameter name
+     * @param string $parameter4Value Parameter value
+     * @param string $parameter5Name Parameter name
+     * @param string $parameter5Value Parameter value
+     * @param string $parameter6Name Parameter name
+     * @param string $parameter6Value Parameter value
+     * @param string $parameter7Name Parameter name
+     * @param string $parameter7Value Parameter value
+     * @param string $parameter8Name Parameter name
+     * @param string $parameter8Value Parameter value
+     * @param string $parameter9Name Parameter name
+     * @param string $parameter9Value Parameter value
+     * @param string $parameter10Name Parameter name
+     * @param string $parameter10Value Parameter value
+     * @param string $parameter11Name Parameter name
+     * @param string $parameter11Value Parameter value
+     * @param string $parameter12Name Parameter name
+     * @param string $parameter12Value Parameter value
+     * @param string $parameter13Name Parameter name
+     * @param string $parameter13Value Parameter value
+     * @param string $parameter14Name Parameter name
+     * @param string $parameter14Value Parameter value
+     * @param string $parameter15Name Parameter name
+     * @param string $parameter15Value Parameter value
+     * @param string $parameter16Name Parameter name
+     * @param string $parameter16Value Parameter value
+     * @param string $parameter17Name Parameter name
+     * @param string $parameter17Value Parameter value
+     * @param string $parameter18Name Parameter name
+     * @param string $parameter18Value Parameter value
+     * @param string $parameter19Name Parameter name
+     * @param string $parameter19Value Parameter value
+     * @param string $parameter20Name Parameter name
+     * @param string $parameter20Value Parameter value
+     * @param string $parameter21Name Parameter name
+     * @param string $parameter21Value Parameter value
+     * @param string $parameter22Name Parameter name
+     * @param string $parameter22Value Parameter value
+     * @param string $parameter23Name Parameter name
+     * @param string $parameter23Value Parameter value
+     * @param string $parameter24Name Parameter name
+     * @param string $parameter24Value Parameter value
+     * @param string $parameter25Name Parameter name
+     * @param string $parameter25Value Parameter value
+     * @param string $parameter26Name Parameter name
+     * @param string $parameter26Value Parameter value
+     * @param string $parameter27Name Parameter name
+     * @param string $parameter27Value Parameter value
+     * @param string $parameter28Name Parameter name
+     * @param string $parameter28Value Parameter value
+     * @param string $parameter29Name Parameter name
+     * @param string $parameter29Value Parameter value
+     * @param string $parameter30Name Parameter name
+     * @param string $parameter30Value Parameter value
+     * @param string $parameter31Name Parameter name
+     * @param string $parameter31Value Parameter value
+     * @param string $parameter32Name Parameter name
+     * @param string $parameter32Value Parameter value
+     * @param string $parameter33Name Parameter name
+     * @param string $parameter33Value Parameter value
+     * @param string $parameter34Name Parameter name
+     * @param string $parameter34Value Parameter value
+     * @param string $parameter35Name Parameter name
+     * @param string $parameter35Value Parameter value
+     * @param string $parameter36Name Parameter name
+     * @param string $parameter36Value Parameter value
+     * @param string $parameter37Name Parameter name
+     * @param string $parameter37Value Parameter value
+     * @param string $parameter38Name Parameter name
+     * @param string $parameter38Value Parameter value
+     * @param string $parameter39Name Parameter name
+     * @param string $parameter39Value Parameter value
+     * @param string $parameter40Name Parameter name
+     * @param string $parameter40Value Parameter value
+     * @param string $parameter41Name Parameter name
+     * @param string $parameter41Value Parameter value
+     * @param string $parameter42Name Parameter name
+     * @param string $parameter42Value Parameter value
+     * @param string $parameter43Name Parameter name
+     * @param string $parameter43Value Parameter value
+     * @param string $parameter44Name Parameter name
+     * @param string $parameter44Value Parameter value
+     * @param string $parameter45Name Parameter name
+     * @param string $parameter45Value Parameter value
+     * @param string $parameter46Name Parameter name
+     * @param string $parameter46Value Parameter value
+     * @param string $parameter47Name Parameter name
+     * @param string $parameter47Value Parameter value
+     * @param string $parameter48Name Parameter name
+     * @param string $parameter48Value Parameter value
+     * @param string $parameter49Name Parameter name
+     * @param string $parameter49Value Parameter value
+     * @param string $parameter50Name Parameter name
+     * @param string $parameter50Value Parameter value
+     * @param string $parameter51Name Parameter name
+     * @param string $parameter51Value Parameter value
+     * @param string $parameter52Name Parameter name
+     * @param string $parameter52Value Parameter value
+     * @param string $parameter53Name Parameter name
+     * @param string $parameter53Value Parameter value
+     * @param string $parameter54Name Parameter name
+     * @param string $parameter54Value Parameter value
+     * @param string $parameter55Name Parameter name
+     * @param string $parameter55Value Parameter value
+     * @param string $parameter56Name Parameter name
+     * @param string $parameter56Value Parameter value
+     * @param string $parameter57Name Parameter name
+     * @param string $parameter57Value Parameter value
+     * @param string $parameter58Name Parameter name
+     * @param string $parameter58Value Parameter value
+     * @param string $parameter59Name Parameter name
+     * @param string $parameter59Value Parameter value
+     * @param string $parameter60Name Parameter name
+     * @param string $parameter60Value Parameter value
+     * @param string $parameter61Name Parameter name
+     * @param string $parameter61Value Parameter value
+     * @param string $parameter62Name Parameter name
+     * @param string $parameter62Value Parameter value
+     * @param string $parameter63Name Parameter name
+     * @param string $parameter63Value Parameter value
+     * @param string $parameter64Name Parameter name
+     * @param string $parameter64Value Parameter value
+     * @param string $parameter65Name Parameter name
+     * @param string $parameter65Value Parameter value
+     * @param string $parameter66Name Parameter name
+     * @param string $parameter66Value Parameter value
+     * @param string $parameter67Name Parameter name
+     * @param string $parameter67Value Parameter value
+     * @param string $parameter68Name Parameter name
+     * @param string $parameter68Value Parameter value
+     * @param string $parameter69Name Parameter name
+     * @param string $parameter69Value Parameter value
+     * @param string $parameter70Name Parameter name
+     * @param string $parameter70Value Parameter value
+     * @param string $parameter71Name Parameter name
+     * @param string $parameter71Value Parameter value
+     * @param string $parameter72Name Parameter name
+     * @param string $parameter72Value Parameter value
+     * @param string $parameter73Name Parameter name
+     * @param string $parameter73Value Parameter value
+     * @param string $parameter74Name Parameter name
+     * @param string $parameter74Value Parameter value
+     * @param string $parameter75Name Parameter name
+     * @param string $parameter75Value Parameter value
+     * @param string $parameter76Name Parameter name
+     * @param string $parameter76Value Parameter value
+     * @param string $parameter77Name Parameter name
+     * @param string $parameter77Value Parameter value
+     * @param string $parameter78Name Parameter name
+     * @param string $parameter78Value Parameter value
+     * @param string $parameter79Name Parameter name
+     * @param string $parameter79Value Parameter value
+     * @param string $parameter80Name Parameter name
+     * @param string $parameter80Value Parameter value
+     * @param string $parameter81Name Parameter name
+     * @param string $parameter81Value Parameter value
+     * @param string $parameter82Name Parameter name
+     * @param string $parameter82Value Parameter value
+     * @param string $parameter83Name Parameter name
+     * @param string $parameter83Value Parameter value
+     * @param string $parameter84Name Parameter name
+     * @param string $parameter84Value Parameter value
+     * @param string $parameter85Name Parameter name
+     * @param string $parameter85Value Parameter value
+     * @param string $parameter86Name Parameter name
+     * @param string $parameter86Value Parameter value
+     * @param string $parameter87Name Parameter name
+     * @param string $parameter87Value Parameter value
+     * @param string $parameter88Name Parameter name
+     * @param string $parameter88Value Parameter value
+     * @param string $parameter89Name Parameter name
+     * @param string $parameter89Value Parameter value
+     * @param string $parameter90Name Parameter name
+     * @param string $parameter90Value Parameter value
+     * @param string $parameter91Name Parameter name
+     * @param string $parameter91Value Parameter value
+     * @param string $parameter92Name Parameter name
+     * @param string $parameter92Value Parameter value
+     * @param string $parameter93Name Parameter name
+     * @param string $parameter93Value Parameter value
+     * @param string $parameter94Name Parameter name
+     * @param string $parameter94Value Parameter value
+     * @param string $parameter95Name Parameter name
+     * @param string $parameter95Value Parameter value
+     * @param string $parameter96Name Parameter name
+     * @param string $parameter96Value Parameter value
+     * @param string $parameter97Name Parameter name
+     * @param string $parameter97Value Parameter value
+     * @param string $parameter98Name Parameter name
+     * @param string $parameter98Value Parameter value
+     * @param string $parameter99Name Parameter name
+     * @param string $parameter99Value Parameter value
      * @return CreateStreamOptions Options builder
      */
-    public static function create(string $name = Values::NONE, string $track = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string $parameter1Name = Values::NONE, string $parameter1Value = Values::NONE, string $parameter2Name = Values::NONE, string $parameter2Value = Values::NONE, string $parameter3Name = Values::NONE, string $parameter3Value = Values::NONE, string $parameter4Name = Values::NONE, string $parameter4Value = Values::NONE, string $parameter5Name = Values::NONE, string $parameter5Value = Values::NONE, string $parameter6Name = Values::NONE, string $parameter6Value = Values::NONE, string $parameter7Name = Values::NONE, string $parameter7Value = Values::NONE, string $parameter8Name = Values::NONE, string $parameter8Value = Values::NONE, string $parameter9Name = Values::NONE, string $parameter9Value = Values::NONE, string $parameter10Name = Values::NONE, string $parameter10Value = Values::NONE, string $parameter11Name = Values::NONE, string $parameter11Value = Values::NONE, string $parameter12Name = Values::NONE, string $parameter12Value = Values::NONE, string $parameter13Name = Values::NONE, string $parameter13Value = Values::NONE, string $parameter14Name = Values::NONE, string $parameter14Value = Values::NONE, string $parameter15Name = Values::NONE, string $parameter15Value = Values::NONE, string $parameter16Name = Values::NONE, string $parameter16Value = Values::NONE, string $parameter17Name = Values::NONE, string $parameter17Value = Values::NONE, string $parameter18Name = Values::NONE, string $parameter18Value = Values::NONE, string $parameter19Name = Values::NONE, string $parameter19Value = Values::NONE, string $parameter20Name = Values::NONE, string $parameter20Value = Values::NONE, string $parameter21Name = Values::NONE, string $parameter21Value = Values::NONE, string $parameter22Name = Values::NONE, string $parameter22Value = Values::NONE, string $parameter23Name = Values::NONE, string $parameter23Value = Values::NONE, string $parameter24Name = Values::NONE, string $parameter24Value = Values::NONE, string $parameter25Name = Values::NONE, string $parameter25Value = Values::NONE, string $parameter26Name = Values::NONE, string $parameter26Value = Values::NONE, string $parameter27Name = Values::NONE, string $parameter27Value = Values::NONE, string $parameter28Name = Values::NONE, string $parameter28Value = Values::NONE, string $parameter29Name = Values::NONE, string $parameter29Value = Values::NONE, string $parameter30Name = Values::NONE, string $parameter30Value = Values::NONE, string $parameter31Name = Values::NONE, string $parameter31Value = Values::NONE, string $parameter32Name = Values::NONE, string $parameter32Value = Values::NONE, string $parameter33Name = Values::NONE, string $parameter33Value = Values::NONE, string $parameter34Name = Values::NONE, string $parameter34Value = Values::NONE, string $parameter35Name = Values::NONE, string $parameter35Value = Values::NONE, string $parameter36Name = Values::NONE, string $parameter36Value = Values::NONE, string $parameter37Name = Values::NONE, string $parameter37Value = Values::NONE, string $parameter38Name = Values::NONE, string $parameter38Value = Values::NONE, string $parameter39Name = Values::NONE, string $parameter39Value = Values::NONE, string $parameter40Name = Values::NONE, string $parameter40Value = Values::NONE, string $parameter41Name = Values::NONE, string $parameter41Value = Values::NONE, string $parameter42Name = Values::NONE, string $parameter42Value = Values::NONE, string $parameter43Name = Values::NONE, string $parameter43Value = Values::NONE, string $parameter44Name = Values::NONE, string $parameter44Value = Values::NONE, string $parameter45Name = Values::NONE, string $parameter45Value = Values::NONE, string $parameter46Name = Values::NONE, string $parameter46Value = Values::NONE, string $parameter47Name = Values::NONE, string $parameter47Value = Values::NONE, string $parameter48Name = Values::NONE, string $parameter48Value = Values::NONE, string $parameter49Name = Values::NONE, string $parameter49Value = Values::NONE, string $parameter50Name = Values::NONE, string $parameter50Value = Values::NONE, string $parameter51Name = Values::NONE, string $parameter51Value = Values::NONE, string $parameter52Name = Values::NONE, string $parameter52Value = Values::NONE, string $parameter53Name = Values::NONE, string $parameter53Value = Values::NONE, string $parameter54Name = Values::NONE, string $parameter54Value = Values::NONE, string $parameter55Name = Values::NONE, string $parameter55Value = Values::NONE, string $parameter56Name = Values::NONE, string $parameter56Value = Values::NONE, string $parameter57Name = Values::NONE, string $parameter57Value = Values::NONE, string $parameter58Name = Values::NONE, string $parameter58Value = Values::NONE, string $parameter59Name = Values::NONE, string $parameter59Value = Values::NONE, string $parameter60Name = Values::NONE, string $parameter60Value = Values::NONE, string $parameter61Name = Values::NONE, string $parameter61Value = Values::NONE, string $parameter62Name = Values::NONE, string $parameter62Value = Values::NONE, string $parameter63Name = Values::NONE, string $parameter63Value = Values::NONE, string $parameter64Name = Values::NONE, string $parameter64Value = Values::NONE, string $parameter65Name = Values::NONE, string $parameter65Value = Values::NONE, string $parameter66Name = Values::NONE, string $parameter66Value = Values::NONE, string $parameter67Name = Values::NONE, string $parameter67Value = Values::NONE, string $parameter68Name = Values::NONE, string $parameter68Value = Values::NONE, string $parameter69Name = Values::NONE, string $parameter69Value = Values::NONE, string $parameter70Name = Values::NONE, string $parameter70Value = Values::NONE, string $parameter71Name = Values::NONE, string $parameter71Value = Values::NONE, string $parameter72Name = Values::NONE, string $parameter72Value = Values::NONE, string $parameter73Name = Values::NONE, string $parameter73Value = Values::NONE, string $parameter74Name = Values::NONE, string $parameter74Value = Values::NONE, string $parameter75Name = Values::NONE, string $parameter75Value = Values::NONE, string $parameter76Name = Values::NONE, string $parameter76Value = Values::NONE, string $parameter77Name = Values::NONE, string $parameter77Value = Values::NONE, string $parameter78Name = Values::NONE, string $parameter78Value = Values::NONE, string $parameter79Name = Values::NONE, string $parameter79Value = Values::NONE, string $parameter80Name = Values::NONE, string $parameter80Value = Values::NONE, string $parameter81Name = Values::NONE, string $parameter81Value = Values::NONE, string $parameter82Name = Values::NONE, string $parameter82Value = Values::NONE, string $parameter83Name = Values::NONE, string $parameter83Value = Values::NONE, string $parameter84Name = Values::NONE, string $parameter84Value = Values::NONE, string $parameter85Name = Values::NONE, string $parameter85Value = Values::NONE, string $parameter86Name = Values::NONE, string $parameter86Value = Values::NONE, string $parameter87Name = Values::NONE, string $parameter87Value = Values::NONE, string $parameter88Name = Values::NONE, string $parameter88Value = Values::NONE, string $parameter89Name = Values::NONE, string $parameter89Value = Values::NONE, string $parameter90Name = Values::NONE, string $parameter90Value = Values::NONE, string $parameter91Name = Values::NONE, string $parameter91Value = Values::NONE, string $parameter92Name = Values::NONE, string $parameter92Value = Values::NONE, string $parameter93Name = Values::NONE, string $parameter93Value = Values::NONE, string $parameter94Name = Values::NONE, string $parameter94Value = Values::NONE, string $parameter95Name = Values::NONE, string $parameter95Value = Values::NONE, string $parameter96Name = Values::NONE, string $parameter96Value = Values::NONE, string $parameter97Name = Values::NONE, string $parameter97Value = Values::NONE, string $parameter98Name = Values::NONE, string $parameter98Value = Values::NONE, string $parameter99Name = Values::NONE, string $parameter99Value = Values::NONE): CreateStreamOptions {
-        return new CreateStreamOptions($name, $track, $statusCallback, $statusCallbackMethod, $parameter1Name, $parameter1Value, $parameter2Name, $parameter2Value, $parameter3Name, $parameter3Value, $parameter4Name, $parameter4Value, $parameter5Name, $parameter5Value, $parameter6Name, $parameter6Value, $parameter7Name, $parameter7Value, $parameter8Name, $parameter8Value, $parameter9Name, $parameter9Value, $parameter10Name, $parameter10Value, $parameter11Name, $parameter11Value, $parameter12Name, $parameter12Value, $parameter13Name, $parameter13Value, $parameter14Name, $parameter14Value, $parameter15Name, $parameter15Value, $parameter16Name, $parameter16Value, $parameter17Name, $parameter17Value, $parameter18Name, $parameter18Value, $parameter19Name, $parameter19Value, $parameter20Name, $parameter20Value, $parameter21Name, $parameter21Value, $parameter22Name, $parameter22Value, $parameter23Name, $parameter23Value, $parameter24Name, $parameter24Value, $parameter25Name, $parameter25Value, $parameter26Name, $parameter26Value, $parameter27Name, $parameter27Value, $parameter28Name, $parameter28Value, $parameter29Name, $parameter29Value, $parameter30Name, $parameter30Value, $parameter31Name, $parameter31Value, $parameter32Name, $parameter32Value, $parameter33Name, $parameter33Value, $parameter34Name, $parameter34Value, $parameter35Name, $parameter35Value, $parameter36Name, $parameter36Value, $parameter37Name, $parameter37Value, $parameter38Name, $parameter38Value, $parameter39Name, $parameter39Value, $parameter40Name, $parameter40Value, $parameter41Name, $parameter41Value, $parameter42Name, $parameter42Value, $parameter43Name, $parameter43Value, $parameter44Name, $parameter44Value, $parameter45Name, $parameter45Value, $parameter46Name, $parameter46Value, $parameter47Name, $parameter47Value, $parameter48Name, $parameter48Value, $parameter49Name, $parameter49Value, $parameter50Name, $parameter50Value, $parameter51Name, $parameter51Value, $parameter52Name, $parameter52Value, $parameter53Name, $parameter53Value, $parameter54Name, $parameter54Value, $parameter55Name, $parameter55Value, $parameter56Name, $parameter56Value, $parameter57Name, $parameter57Value, $parameter58Name, $parameter58Value, $parameter59Name, $parameter59Value, $parameter60Name, $parameter60Value, $parameter61Name, $parameter61Value, $parameter62Name, $parameter62Value, $parameter63Name, $parameter63Value, $parameter64Name, $parameter64Value, $parameter65Name, $parameter65Value, $parameter66Name, $parameter66Value, $parameter67Name, $parameter67Value, $parameter68Name, $parameter68Value, $parameter69Name, $parameter69Value, $parameter70Name, $parameter70Value, $parameter71Name, $parameter71Value, $parameter72Name, $parameter72Value, $parameter73Name, $parameter73Value, $parameter74Name, $parameter74Value, $parameter75Name, $parameter75Value, $parameter76Name, $parameter76Value, $parameter77Name, $parameter77Value, $parameter78Name, $parameter78Value, $parameter79Name, $parameter79Value, $parameter80Name, $parameter80Value, $parameter81Name, $parameter81Value, $parameter82Name, $parameter82Value, $parameter83Name, $parameter83Value, $parameter84Name, $parameter84Value, $parameter85Name, $parameter85Value, $parameter86Name, $parameter86Value, $parameter87Name, $parameter87Value, $parameter88Name, $parameter88Value, $parameter89Name, $parameter89Value, $parameter90Name, $parameter90Value, $parameter91Name, $parameter91Value, $parameter92Name, $parameter92Value, $parameter93Name, $parameter93Value, $parameter94Name, $parameter94Value, $parameter95Name, $parameter95Value, $parameter96Name, $parameter96Value, $parameter97Name, $parameter97Value, $parameter98Name, $parameter98Value, $parameter99Name, $parameter99Value);
+    public static function create(
+        
+        string $name = Values::NONE,
+        string $track = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE,
+        string $parameter1Name = Values::NONE,
+        string $parameter1Value = Values::NONE,
+        string $parameter2Name = Values::NONE,
+        string $parameter2Value = Values::NONE,
+        string $parameter3Name = Values::NONE,
+        string $parameter3Value = Values::NONE,
+        string $parameter4Name = Values::NONE,
+        string $parameter4Value = Values::NONE,
+        string $parameter5Name = Values::NONE,
+        string $parameter5Value = Values::NONE,
+        string $parameter6Name = Values::NONE,
+        string $parameter6Value = Values::NONE,
+        string $parameter7Name = Values::NONE,
+        string $parameter7Value = Values::NONE,
+        string $parameter8Name = Values::NONE,
+        string $parameter8Value = Values::NONE,
+        string $parameter9Name = Values::NONE,
+        string $parameter9Value = Values::NONE,
+        string $parameter10Name = Values::NONE,
+        string $parameter10Value = Values::NONE,
+        string $parameter11Name = Values::NONE,
+        string $parameter11Value = Values::NONE,
+        string $parameter12Name = Values::NONE,
+        string $parameter12Value = Values::NONE,
+        string $parameter13Name = Values::NONE,
+        string $parameter13Value = Values::NONE,
+        string $parameter14Name = Values::NONE,
+        string $parameter14Value = Values::NONE,
+        string $parameter15Name = Values::NONE,
+        string $parameter15Value = Values::NONE,
+        string $parameter16Name = Values::NONE,
+        string $parameter16Value = Values::NONE,
+        string $parameter17Name = Values::NONE,
+        string $parameter17Value = Values::NONE,
+        string $parameter18Name = Values::NONE,
+        string $parameter18Value = Values::NONE,
+        string $parameter19Name = Values::NONE,
+        string $parameter19Value = Values::NONE,
+        string $parameter20Name = Values::NONE,
+        string $parameter20Value = Values::NONE,
+        string $parameter21Name = Values::NONE,
+        string $parameter21Value = Values::NONE,
+        string $parameter22Name = Values::NONE,
+        string $parameter22Value = Values::NONE,
+        string $parameter23Name = Values::NONE,
+        string $parameter23Value = Values::NONE,
+        string $parameter24Name = Values::NONE,
+        string $parameter24Value = Values::NONE,
+        string $parameter25Name = Values::NONE,
+        string $parameter25Value = Values::NONE,
+        string $parameter26Name = Values::NONE,
+        string $parameter26Value = Values::NONE,
+        string $parameter27Name = Values::NONE,
+        string $parameter27Value = Values::NONE,
+        string $parameter28Name = Values::NONE,
+        string $parameter28Value = Values::NONE,
+        string $parameter29Name = Values::NONE,
+        string $parameter29Value = Values::NONE,
+        string $parameter30Name = Values::NONE,
+        string $parameter30Value = Values::NONE,
+        string $parameter31Name = Values::NONE,
+        string $parameter31Value = Values::NONE,
+        string $parameter32Name = Values::NONE,
+        string $parameter32Value = Values::NONE,
+        string $parameter33Name = Values::NONE,
+        string $parameter33Value = Values::NONE,
+        string $parameter34Name = Values::NONE,
+        string $parameter34Value = Values::NONE,
+        string $parameter35Name = Values::NONE,
+        string $parameter35Value = Values::NONE,
+        string $parameter36Name = Values::NONE,
+        string $parameter36Value = Values::NONE,
+        string $parameter37Name = Values::NONE,
+        string $parameter37Value = Values::NONE,
+        string $parameter38Name = Values::NONE,
+        string $parameter38Value = Values::NONE,
+        string $parameter39Name = Values::NONE,
+        string $parameter39Value = Values::NONE,
+        string $parameter40Name = Values::NONE,
+        string $parameter40Value = Values::NONE,
+        string $parameter41Name = Values::NONE,
+        string $parameter41Value = Values::NONE,
+        string $parameter42Name = Values::NONE,
+        string $parameter42Value = Values::NONE,
+        string $parameter43Name = Values::NONE,
+        string $parameter43Value = Values::NONE,
+        string $parameter44Name = Values::NONE,
+        string $parameter44Value = Values::NONE,
+        string $parameter45Name = Values::NONE,
+        string $parameter45Value = Values::NONE,
+        string $parameter46Name = Values::NONE,
+        string $parameter46Value = Values::NONE,
+        string $parameter47Name = Values::NONE,
+        string $parameter47Value = Values::NONE,
+        string $parameter48Name = Values::NONE,
+        string $parameter48Value = Values::NONE,
+        string $parameter49Name = Values::NONE,
+        string $parameter49Value = Values::NONE,
+        string $parameter50Name = Values::NONE,
+        string $parameter50Value = Values::NONE,
+        string $parameter51Name = Values::NONE,
+        string $parameter51Value = Values::NONE,
+        string $parameter52Name = Values::NONE,
+        string $parameter52Value = Values::NONE,
+        string $parameter53Name = Values::NONE,
+        string $parameter53Value = Values::NONE,
+        string $parameter54Name = Values::NONE,
+        string $parameter54Value = Values::NONE,
+        string $parameter55Name = Values::NONE,
+        string $parameter55Value = Values::NONE,
+        string $parameter56Name = Values::NONE,
+        string $parameter56Value = Values::NONE,
+        string $parameter57Name = Values::NONE,
+        string $parameter57Value = Values::NONE,
+        string $parameter58Name = Values::NONE,
+        string $parameter58Value = Values::NONE,
+        string $parameter59Name = Values::NONE,
+        string $parameter59Value = Values::NONE,
+        string $parameter60Name = Values::NONE,
+        string $parameter60Value = Values::NONE,
+        string $parameter61Name = Values::NONE,
+        string $parameter61Value = Values::NONE,
+        string $parameter62Name = Values::NONE,
+        string $parameter62Value = Values::NONE,
+        string $parameter63Name = Values::NONE,
+        string $parameter63Value = Values::NONE,
+        string $parameter64Name = Values::NONE,
+        string $parameter64Value = Values::NONE,
+        string $parameter65Name = Values::NONE,
+        string $parameter65Value = Values::NONE,
+        string $parameter66Name = Values::NONE,
+        string $parameter66Value = Values::NONE,
+        string $parameter67Name = Values::NONE,
+        string $parameter67Value = Values::NONE,
+        string $parameter68Name = Values::NONE,
+        string $parameter68Value = Values::NONE,
+        string $parameter69Name = Values::NONE,
+        string $parameter69Value = Values::NONE,
+        string $parameter70Name = Values::NONE,
+        string $parameter70Value = Values::NONE,
+        string $parameter71Name = Values::NONE,
+        string $parameter71Value = Values::NONE,
+        string $parameter72Name = Values::NONE,
+        string $parameter72Value = Values::NONE,
+        string $parameter73Name = Values::NONE,
+        string $parameter73Value = Values::NONE,
+        string $parameter74Name = Values::NONE,
+        string $parameter74Value = Values::NONE,
+        string $parameter75Name = Values::NONE,
+        string $parameter75Value = Values::NONE,
+        string $parameter76Name = Values::NONE,
+        string $parameter76Value = Values::NONE,
+        string $parameter77Name = Values::NONE,
+        string $parameter77Value = Values::NONE,
+        string $parameter78Name = Values::NONE,
+        string $parameter78Value = Values::NONE,
+        string $parameter79Name = Values::NONE,
+        string $parameter79Value = Values::NONE,
+        string $parameter80Name = Values::NONE,
+        string $parameter80Value = Values::NONE,
+        string $parameter81Name = Values::NONE,
+        string $parameter81Value = Values::NONE,
+        string $parameter82Name = Values::NONE,
+        string $parameter82Value = Values::NONE,
+        string $parameter83Name = Values::NONE,
+        string $parameter83Value = Values::NONE,
+        string $parameter84Name = Values::NONE,
+        string $parameter84Value = Values::NONE,
+        string $parameter85Name = Values::NONE,
+        string $parameter85Value = Values::NONE,
+        string $parameter86Name = Values::NONE,
+        string $parameter86Value = Values::NONE,
+        string $parameter87Name = Values::NONE,
+        string $parameter87Value = Values::NONE,
+        string $parameter88Name = Values::NONE,
+        string $parameter88Value = Values::NONE,
+        string $parameter89Name = Values::NONE,
+        string $parameter89Value = Values::NONE,
+        string $parameter90Name = Values::NONE,
+        string $parameter90Value = Values::NONE,
+        string $parameter91Name = Values::NONE,
+        string $parameter91Value = Values::NONE,
+        string $parameter92Name = Values::NONE,
+        string $parameter92Value = Values::NONE,
+        string $parameter93Name = Values::NONE,
+        string $parameter93Value = Values::NONE,
+        string $parameter94Name = Values::NONE,
+        string $parameter94Value = Values::NONE,
+        string $parameter95Name = Values::NONE,
+        string $parameter95Value = Values::NONE,
+        string $parameter96Name = Values::NONE,
+        string $parameter96Value = Values::NONE,
+        string $parameter97Name = Values::NONE,
+        string $parameter97Value = Values::NONE,
+        string $parameter98Name = Values::NONE,
+        string $parameter98Value = Values::NONE,
+        string $parameter99Name = Values::NONE,
+        string $parameter99Value = Values::NONE
+
+    ): CreateStreamOptions
+    {
+        return new CreateStreamOptions(
+            $name,
+            $track,
+            $statusCallback,
+            $statusCallbackMethod,
+            $parameter1Name,
+            $parameter1Value,
+            $parameter2Name,
+            $parameter2Value,
+            $parameter3Name,
+            $parameter3Value,
+            $parameter4Name,
+            $parameter4Value,
+            $parameter5Name,
+            $parameter5Value,
+            $parameter6Name,
+            $parameter6Value,
+            $parameter7Name,
+            $parameter7Value,
+            $parameter8Name,
+            $parameter8Value,
+            $parameter9Name,
+            $parameter9Value,
+            $parameter10Name,
+            $parameter10Value,
+            $parameter11Name,
+            $parameter11Value,
+            $parameter12Name,
+            $parameter12Value,
+            $parameter13Name,
+            $parameter13Value,
+            $parameter14Name,
+            $parameter14Value,
+            $parameter15Name,
+            $parameter15Value,
+            $parameter16Name,
+            $parameter16Value,
+            $parameter17Name,
+            $parameter17Value,
+            $parameter18Name,
+            $parameter18Value,
+            $parameter19Name,
+            $parameter19Value,
+            $parameter20Name,
+            $parameter20Value,
+            $parameter21Name,
+            $parameter21Value,
+            $parameter22Name,
+            $parameter22Value,
+            $parameter23Name,
+            $parameter23Value,
+            $parameter24Name,
+            $parameter24Value,
+            $parameter25Name,
+            $parameter25Value,
+            $parameter26Name,
+            $parameter26Value,
+            $parameter27Name,
+            $parameter27Value,
+            $parameter28Name,
+            $parameter28Value,
+            $parameter29Name,
+            $parameter29Value,
+            $parameter30Name,
+            $parameter30Value,
+            $parameter31Name,
+            $parameter31Value,
+            $parameter32Name,
+            $parameter32Value,
+            $parameter33Name,
+            $parameter33Value,
+            $parameter34Name,
+            $parameter34Value,
+            $parameter35Name,
+            $parameter35Value,
+            $parameter36Name,
+            $parameter36Value,
+            $parameter37Name,
+            $parameter37Value,
+            $parameter38Name,
+            $parameter38Value,
+            $parameter39Name,
+            $parameter39Value,
+            $parameter40Name,
+            $parameter40Value,
+            $parameter41Name,
+            $parameter41Value,
+            $parameter42Name,
+            $parameter42Value,
+            $parameter43Name,
+            $parameter43Value,
+            $parameter44Name,
+            $parameter44Value,
+            $parameter45Name,
+            $parameter45Value,
+            $parameter46Name,
+            $parameter46Value,
+            $parameter47Name,
+            $parameter47Value,
+            $parameter48Name,
+            $parameter48Value,
+            $parameter49Name,
+            $parameter49Value,
+            $parameter50Name,
+            $parameter50Value,
+            $parameter51Name,
+            $parameter51Value,
+            $parameter52Name,
+            $parameter52Value,
+            $parameter53Name,
+            $parameter53Value,
+            $parameter54Name,
+            $parameter54Value,
+            $parameter55Name,
+            $parameter55Value,
+            $parameter56Name,
+            $parameter56Value,
+            $parameter57Name,
+            $parameter57Value,
+            $parameter58Name,
+            $parameter58Value,
+            $parameter59Name,
+            $parameter59Value,
+            $parameter60Name,
+            $parameter60Value,
+            $parameter61Name,
+            $parameter61Value,
+            $parameter62Name,
+            $parameter62Value,
+            $parameter63Name,
+            $parameter63Value,
+            $parameter64Name,
+            $parameter64Value,
+            $parameter65Name,
+            $parameter65Value,
+            $parameter66Name,
+            $parameter66Value,
+            $parameter67Name,
+            $parameter67Value,
+            $parameter68Name,
+            $parameter68Value,
+            $parameter69Name,
+            $parameter69Value,
+            $parameter70Name,
+            $parameter70Value,
+            $parameter71Name,
+            $parameter71Value,
+            $parameter72Name,
+            $parameter72Value,
+            $parameter73Name,
+            $parameter73Value,
+            $parameter74Name,
+            $parameter74Value,
+            $parameter75Name,
+            $parameter75Value,
+            $parameter76Name,
+            $parameter76Value,
+            $parameter77Name,
+            $parameter77Value,
+            $parameter78Name,
+            $parameter78Value,
+            $parameter79Name,
+            $parameter79Value,
+            $parameter80Name,
+            $parameter80Value,
+            $parameter81Name,
+            $parameter81Value,
+            $parameter82Name,
+            $parameter82Value,
+            $parameter83Name,
+            $parameter83Value,
+            $parameter84Name,
+            $parameter84Value,
+            $parameter85Name,
+            $parameter85Value,
+            $parameter86Name,
+            $parameter86Value,
+            $parameter87Name,
+            $parameter87Value,
+            $parameter88Name,
+            $parameter88Value,
+            $parameter89Name,
+            $parameter89Value,
+            $parameter90Name,
+            $parameter90Value,
+            $parameter91Name,
+            $parameter91Value,
+            $parameter92Name,
+            $parameter92Value,
+            $parameter93Name,
+            $parameter93Value,
+            $parameter94Name,
+            $parameter94Value,
+            $parameter95Name,
+            $parameter95Value,
+            $parameter96Name,
+            $parameter96Value,
+            $parameter97Name,
+            $parameter97Value,
+            $parameter98Name,
+            $parameter98Value,
+            $parameter99Name,
+            $parameter99Value
+        );
     }
 
 
 }
 
-class CreateStreamOptions extends Options {
+class CreateStreamOptions extends Options
+    {
     /**
      * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
-     * @param string $track 
+     * @param string $track
      * @param string $statusCallback Absolute URL of the status callback.
      * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST).
      * @param string $parameter1Name Parameter name
@@ -437,7 +848,213 @@ class CreateStreamOptions extends Options {
      * @param string $parameter99Name Parameter name
      * @param string $parameter99Value Parameter value
      */
-    public function __construct(string $name = Values::NONE, string $track = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, string $parameter1Name = Values::NONE, string $parameter1Value = Values::NONE, string $parameter2Name = Values::NONE, string $parameter2Value = Values::NONE, string $parameter3Name = Values::NONE, string $parameter3Value = Values::NONE, string $parameter4Name = Values::NONE, string $parameter4Value = Values::NONE, string $parameter5Name = Values::NONE, string $parameter5Value = Values::NONE, string $parameter6Name = Values::NONE, string $parameter6Value = Values::NONE, string $parameter7Name = Values::NONE, string $parameter7Value = Values::NONE, string $parameter8Name = Values::NONE, string $parameter8Value = Values::NONE, string $parameter9Name = Values::NONE, string $parameter9Value = Values::NONE, string $parameter10Name = Values::NONE, string $parameter10Value = Values::NONE, string $parameter11Name = Values::NONE, string $parameter11Value = Values::NONE, string $parameter12Name = Values::NONE, string $parameter12Value = Values::NONE, string $parameter13Name = Values::NONE, string $parameter13Value = Values::NONE, string $parameter14Name = Values::NONE, string $parameter14Value = Values::NONE, string $parameter15Name = Values::NONE, string $parameter15Value = Values::NONE, string $parameter16Name = Values::NONE, string $parameter16Value = Values::NONE, string $parameter17Name = Values::NONE, string $parameter17Value = Values::NONE, string $parameter18Name = Values::NONE, string $parameter18Value = Values::NONE, string $parameter19Name = Values::NONE, string $parameter19Value = Values::NONE, string $parameter20Name = Values::NONE, string $parameter20Value = Values::NONE, string $parameter21Name = Values::NONE, string $parameter21Value = Values::NONE, string $parameter22Name = Values::NONE, string $parameter22Value = Values::NONE, string $parameter23Name = Values::NONE, string $parameter23Value = Values::NONE, string $parameter24Name = Values::NONE, string $parameter24Value = Values::NONE, string $parameter25Name = Values::NONE, string $parameter25Value = Values::NONE, string $parameter26Name = Values::NONE, string $parameter26Value = Values::NONE, string $parameter27Name = Values::NONE, string $parameter27Value = Values::NONE, string $parameter28Name = Values::NONE, string $parameter28Value = Values::NONE, string $parameter29Name = Values::NONE, string $parameter29Value = Values::NONE, string $parameter30Name = Values::NONE, string $parameter30Value = Values::NONE, string $parameter31Name = Values::NONE, string $parameter31Value = Values::NONE, string $parameter32Name = Values::NONE, string $parameter32Value = Values::NONE, string $parameter33Name = Values::NONE, string $parameter33Value = Values::NONE, string $parameter34Name = Values::NONE, string $parameter34Value = Values::NONE, string $parameter35Name = Values::NONE, string $parameter35Value = Values::NONE, string $parameter36Name = Values::NONE, string $parameter36Value = Values::NONE, string $parameter37Name = Values::NONE, string $parameter37Value = Values::NONE, string $parameter38Name = Values::NONE, string $parameter38Value = Values::NONE, string $parameter39Name = Values::NONE, string $parameter39Value = Values::NONE, string $parameter40Name = Values::NONE, string $parameter40Value = Values::NONE, string $parameter41Name = Values::NONE, string $parameter41Value = Values::NONE, string $parameter42Name = Values::NONE, string $parameter42Value = Values::NONE, string $parameter43Name = Values::NONE, string $parameter43Value = Values::NONE, string $parameter44Name = Values::NONE, string $parameter44Value = Values::NONE, string $parameter45Name = Values::NONE, string $parameter45Value = Values::NONE, string $parameter46Name = Values::NONE, string $parameter46Value = Values::NONE, string $parameter47Name = Values::NONE, string $parameter47Value = Values::NONE, string $parameter48Name = Values::NONE, string $parameter48Value = Values::NONE, string $parameter49Name = Values::NONE, string $parameter49Value = Values::NONE, string $parameter50Name = Values::NONE, string $parameter50Value = Values::NONE, string $parameter51Name = Values::NONE, string $parameter51Value = Values::NONE, string $parameter52Name = Values::NONE, string $parameter52Value = Values::NONE, string $parameter53Name = Values::NONE, string $parameter53Value = Values::NONE, string $parameter54Name = Values::NONE, string $parameter54Value = Values::NONE, string $parameter55Name = Values::NONE, string $parameter55Value = Values::NONE, string $parameter56Name = Values::NONE, string $parameter56Value = Values::NONE, string $parameter57Name = Values::NONE, string $parameter57Value = Values::NONE, string $parameter58Name = Values::NONE, string $parameter58Value = Values::NONE, string $parameter59Name = Values::NONE, string $parameter59Value = Values::NONE, string $parameter60Name = Values::NONE, string $parameter60Value = Values::NONE, string $parameter61Name = Values::NONE, string $parameter61Value = Values::NONE, string $parameter62Name = Values::NONE, string $parameter62Value = Values::NONE, string $parameter63Name = Values::NONE, string $parameter63Value = Values::NONE, string $parameter64Name = Values::NONE, string $parameter64Value = Values::NONE, string $parameter65Name = Values::NONE, string $parameter65Value = Values::NONE, string $parameter66Name = Values::NONE, string $parameter66Value = Values::NONE, string $parameter67Name = Values::NONE, string $parameter67Value = Values::NONE, string $parameter68Name = Values::NONE, string $parameter68Value = Values::NONE, string $parameter69Name = Values::NONE, string $parameter69Value = Values::NONE, string $parameter70Name = Values::NONE, string $parameter70Value = Values::NONE, string $parameter71Name = Values::NONE, string $parameter71Value = Values::NONE, string $parameter72Name = Values::NONE, string $parameter72Value = Values::NONE, string $parameter73Name = Values::NONE, string $parameter73Value = Values::NONE, string $parameter74Name = Values::NONE, string $parameter74Value = Values::NONE, string $parameter75Name = Values::NONE, string $parameter75Value = Values::NONE, string $parameter76Name = Values::NONE, string $parameter76Value = Values::NONE, string $parameter77Name = Values::NONE, string $parameter77Value = Values::NONE, string $parameter78Name = Values::NONE, string $parameter78Value = Values::NONE, string $parameter79Name = Values::NONE, string $parameter79Value = Values::NONE, string $parameter80Name = Values::NONE, string $parameter80Value = Values::NONE, string $parameter81Name = Values::NONE, string $parameter81Value = Values::NONE, string $parameter82Name = Values::NONE, string $parameter82Value = Values::NONE, string $parameter83Name = Values::NONE, string $parameter83Value = Values::NONE, string $parameter84Name = Values::NONE, string $parameter84Value = Values::NONE, string $parameter85Name = Values::NONE, string $parameter85Value = Values::NONE, string $parameter86Name = Values::NONE, string $parameter86Value = Values::NONE, string $parameter87Name = Values::NONE, string $parameter87Value = Values::NONE, string $parameter88Name = Values::NONE, string $parameter88Value = Values::NONE, string $parameter89Name = Values::NONE, string $parameter89Value = Values::NONE, string $parameter90Name = Values::NONE, string $parameter90Value = Values::NONE, string $parameter91Name = Values::NONE, string $parameter91Value = Values::NONE, string $parameter92Name = Values::NONE, string $parameter92Value = Values::NONE, string $parameter93Name = Values::NONE, string $parameter93Value = Values::NONE, string $parameter94Name = Values::NONE, string $parameter94Value = Values::NONE, string $parameter95Name = Values::NONE, string $parameter95Value = Values::NONE, string $parameter96Name = Values::NONE, string $parameter96Value = Values::NONE, string $parameter97Name = Values::NONE, string $parameter97Value = Values::NONE, string $parameter98Name = Values::NONE, string $parameter98Value = Values::NONE, string $parameter99Name = Values::NONE, string $parameter99Value = Values::NONE) {
+    public function __construct(
+        
+        string $name = Values::NONE,
+        string $track = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE,
+        string $parameter1Name = Values::NONE,
+        string $parameter1Value = Values::NONE,
+        string $parameter2Name = Values::NONE,
+        string $parameter2Value = Values::NONE,
+        string $parameter3Name = Values::NONE,
+        string $parameter3Value = Values::NONE,
+        string $parameter4Name = Values::NONE,
+        string $parameter4Value = Values::NONE,
+        string $parameter5Name = Values::NONE,
+        string $parameter5Value = Values::NONE,
+        string $parameter6Name = Values::NONE,
+        string $parameter6Value = Values::NONE,
+        string $parameter7Name = Values::NONE,
+        string $parameter7Value = Values::NONE,
+        string $parameter8Name = Values::NONE,
+        string $parameter8Value = Values::NONE,
+        string $parameter9Name = Values::NONE,
+        string $parameter9Value = Values::NONE,
+        string $parameter10Name = Values::NONE,
+        string $parameter10Value = Values::NONE,
+        string $parameter11Name = Values::NONE,
+        string $parameter11Value = Values::NONE,
+        string $parameter12Name = Values::NONE,
+        string $parameter12Value = Values::NONE,
+        string $parameter13Name = Values::NONE,
+        string $parameter13Value = Values::NONE,
+        string $parameter14Name = Values::NONE,
+        string $parameter14Value = Values::NONE,
+        string $parameter15Name = Values::NONE,
+        string $parameter15Value = Values::NONE,
+        string $parameter16Name = Values::NONE,
+        string $parameter16Value = Values::NONE,
+        string $parameter17Name = Values::NONE,
+        string $parameter17Value = Values::NONE,
+        string $parameter18Name = Values::NONE,
+        string $parameter18Value = Values::NONE,
+        string $parameter19Name = Values::NONE,
+        string $parameter19Value = Values::NONE,
+        string $parameter20Name = Values::NONE,
+        string $parameter20Value = Values::NONE,
+        string $parameter21Name = Values::NONE,
+        string $parameter21Value = Values::NONE,
+        string $parameter22Name = Values::NONE,
+        string $parameter22Value = Values::NONE,
+        string $parameter23Name = Values::NONE,
+        string $parameter23Value = Values::NONE,
+        string $parameter24Name = Values::NONE,
+        string $parameter24Value = Values::NONE,
+        string $parameter25Name = Values::NONE,
+        string $parameter25Value = Values::NONE,
+        string $parameter26Name = Values::NONE,
+        string $parameter26Value = Values::NONE,
+        string $parameter27Name = Values::NONE,
+        string $parameter27Value = Values::NONE,
+        string $parameter28Name = Values::NONE,
+        string $parameter28Value = Values::NONE,
+        string $parameter29Name = Values::NONE,
+        string $parameter29Value = Values::NONE,
+        string $parameter30Name = Values::NONE,
+        string $parameter30Value = Values::NONE,
+        string $parameter31Name = Values::NONE,
+        string $parameter31Value = Values::NONE,
+        string $parameter32Name = Values::NONE,
+        string $parameter32Value = Values::NONE,
+        string $parameter33Name = Values::NONE,
+        string $parameter33Value = Values::NONE,
+        string $parameter34Name = Values::NONE,
+        string $parameter34Value = Values::NONE,
+        string $parameter35Name = Values::NONE,
+        string $parameter35Value = Values::NONE,
+        string $parameter36Name = Values::NONE,
+        string $parameter36Value = Values::NONE,
+        string $parameter37Name = Values::NONE,
+        string $parameter37Value = Values::NONE,
+        string $parameter38Name = Values::NONE,
+        string $parameter38Value = Values::NONE,
+        string $parameter39Name = Values::NONE,
+        string $parameter39Value = Values::NONE,
+        string $parameter40Name = Values::NONE,
+        string $parameter40Value = Values::NONE,
+        string $parameter41Name = Values::NONE,
+        string $parameter41Value = Values::NONE,
+        string $parameter42Name = Values::NONE,
+        string $parameter42Value = Values::NONE,
+        string $parameter43Name = Values::NONE,
+        string $parameter43Value = Values::NONE,
+        string $parameter44Name = Values::NONE,
+        string $parameter44Value = Values::NONE,
+        string $parameter45Name = Values::NONE,
+        string $parameter45Value = Values::NONE,
+        string $parameter46Name = Values::NONE,
+        string $parameter46Value = Values::NONE,
+        string $parameter47Name = Values::NONE,
+        string $parameter47Value = Values::NONE,
+        string $parameter48Name = Values::NONE,
+        string $parameter48Value = Values::NONE,
+        string $parameter49Name = Values::NONE,
+        string $parameter49Value = Values::NONE,
+        string $parameter50Name = Values::NONE,
+        string $parameter50Value = Values::NONE,
+        string $parameter51Name = Values::NONE,
+        string $parameter51Value = Values::NONE,
+        string $parameter52Name = Values::NONE,
+        string $parameter52Value = Values::NONE,
+        string $parameter53Name = Values::NONE,
+        string $parameter53Value = Values::NONE,
+        string $parameter54Name = Values::NONE,
+        string $parameter54Value = Values::NONE,
+        string $parameter55Name = Values::NONE,
+        string $parameter55Value = Values::NONE,
+        string $parameter56Name = Values::NONE,
+        string $parameter56Value = Values::NONE,
+        string $parameter57Name = Values::NONE,
+        string $parameter57Value = Values::NONE,
+        string $parameter58Name = Values::NONE,
+        string $parameter58Value = Values::NONE,
+        string $parameter59Name = Values::NONE,
+        string $parameter59Value = Values::NONE,
+        string $parameter60Name = Values::NONE,
+        string $parameter60Value = Values::NONE,
+        string $parameter61Name = Values::NONE,
+        string $parameter61Value = Values::NONE,
+        string $parameter62Name = Values::NONE,
+        string $parameter62Value = Values::NONE,
+        string $parameter63Name = Values::NONE,
+        string $parameter63Value = Values::NONE,
+        string $parameter64Name = Values::NONE,
+        string $parameter64Value = Values::NONE,
+        string $parameter65Name = Values::NONE,
+        string $parameter65Value = Values::NONE,
+        string $parameter66Name = Values::NONE,
+        string $parameter66Value = Values::NONE,
+        string $parameter67Name = Values::NONE,
+        string $parameter67Value = Values::NONE,
+        string $parameter68Name = Values::NONE,
+        string $parameter68Value = Values::NONE,
+        string $parameter69Name = Values::NONE,
+        string $parameter69Value = Values::NONE,
+        string $parameter70Name = Values::NONE,
+        string $parameter70Value = Values::NONE,
+        string $parameter71Name = Values::NONE,
+        string $parameter71Value = Values::NONE,
+        string $parameter72Name = Values::NONE,
+        string $parameter72Value = Values::NONE,
+        string $parameter73Name = Values::NONE,
+        string $parameter73Value = Values::NONE,
+        string $parameter74Name = Values::NONE,
+        string $parameter74Value = Values::NONE,
+        string $parameter75Name = Values::NONE,
+        string $parameter75Value = Values::NONE,
+        string $parameter76Name = Values::NONE,
+        string $parameter76Value = Values::NONE,
+        string $parameter77Name = Values::NONE,
+        string $parameter77Value = Values::NONE,
+        string $parameter78Name = Values::NONE,
+        string $parameter78Value = Values::NONE,
+        string $parameter79Name = Values::NONE,
+        string $parameter79Value = Values::NONE,
+        string $parameter80Name = Values::NONE,
+        string $parameter80Value = Values::NONE,
+        string $parameter81Name = Values::NONE,
+        string $parameter81Value = Values::NONE,
+        string $parameter82Name = Values::NONE,
+        string $parameter82Value = Values::NONE,
+        string $parameter83Name = Values::NONE,
+        string $parameter83Value = Values::NONE,
+        string $parameter84Name = Values::NONE,
+        string $parameter84Value = Values::NONE,
+        string $parameter85Name = Values::NONE,
+        string $parameter85Value = Values::NONE,
+        string $parameter86Name = Values::NONE,
+        string $parameter86Value = Values::NONE,
+        string $parameter87Name = Values::NONE,
+        string $parameter87Value = Values::NONE,
+        string $parameter88Name = Values::NONE,
+        string $parameter88Value = Values::NONE,
+        string $parameter89Name = Values::NONE,
+        string $parameter89Value = Values::NONE,
+        string $parameter90Name = Values::NONE,
+        string $parameter90Value = Values::NONE,
+        string $parameter91Name = Values::NONE,
+        string $parameter91Value = Values::NONE,
+        string $parameter92Name = Values::NONE,
+        string $parameter92Value = Values::NONE,
+        string $parameter93Name = Values::NONE,
+        string $parameter93Value = Values::NONE,
+        string $parameter94Name = Values::NONE,
+        string $parameter94Value = Values::NONE,
+        string $parameter95Name = Values::NONE,
+        string $parameter95Value = Values::NONE,
+        string $parameter96Name = Values::NONE,
+        string $parameter96Value = Values::NONE,
+        string $parameter97Name = Values::NONE,
+        string $parameter97Value = Values::NONE,
+        string $parameter98Name = Values::NONE,
+        string $parameter98Value = Values::NONE,
+        string $parameter99Name = Values::NONE,
+        string $parameter99Value = Values::NONE
+
+    )
+    {
         $this->options['name'] = $name;
         $this->options['track'] = $track;
         $this->options['statusCallback'] = $statusCallback;
@@ -648,16 +1265,18 @@ class CreateStreamOptions extends Options {
      * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
      * @return $this Fluent Builder
      */
-    public function setName(string $name): self {
+    public function setName(string $name): self
+    {
         $this->options['name'] = $name;
         return $this;
     }
 
     /**
-     * @param string $track 
+     * @param string $track
      * @return $this Fluent Builder
      */
-    public function setTrack(string $track): self {
+    public function setTrack(string $track): self
+    {
         $this->options['track'] = $track;
         return $this;
     }
@@ -668,7 +1287,8 @@ class CreateStreamOptions extends Options {
      * @param string $statusCallback Absolute URL of the status callback.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -679,7 +1299,8 @@ class CreateStreamOptions extends Options {
      * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST).
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self
+    {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -690,7 +1311,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter1Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter1Name(string $parameter1Name): self {
+    public function setParameter1Name(string $parameter1Name): self
+    {
         $this->options['parameter1Name'] = $parameter1Name;
         return $this;
     }
@@ -701,7 +1323,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter1Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter1Value(string $parameter1Value): self {
+    public function setParameter1Value(string $parameter1Value): self
+    {
         $this->options['parameter1Value'] = $parameter1Value;
         return $this;
     }
@@ -712,7 +1335,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter2Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter2Name(string $parameter2Name): self {
+    public function setParameter2Name(string $parameter2Name): self
+    {
         $this->options['parameter2Name'] = $parameter2Name;
         return $this;
     }
@@ -723,7 +1347,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter2Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter2Value(string $parameter2Value): self {
+    public function setParameter2Value(string $parameter2Value): self
+    {
         $this->options['parameter2Value'] = $parameter2Value;
         return $this;
     }
@@ -734,7 +1359,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter3Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter3Name(string $parameter3Name): self {
+    public function setParameter3Name(string $parameter3Name): self
+    {
         $this->options['parameter3Name'] = $parameter3Name;
         return $this;
     }
@@ -745,7 +1371,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter3Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter3Value(string $parameter3Value): self {
+    public function setParameter3Value(string $parameter3Value): self
+    {
         $this->options['parameter3Value'] = $parameter3Value;
         return $this;
     }
@@ -756,7 +1383,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter4Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter4Name(string $parameter4Name): self {
+    public function setParameter4Name(string $parameter4Name): self
+    {
         $this->options['parameter4Name'] = $parameter4Name;
         return $this;
     }
@@ -767,7 +1395,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter4Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter4Value(string $parameter4Value): self {
+    public function setParameter4Value(string $parameter4Value): self
+    {
         $this->options['parameter4Value'] = $parameter4Value;
         return $this;
     }
@@ -778,7 +1407,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter5Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter5Name(string $parameter5Name): self {
+    public function setParameter5Name(string $parameter5Name): self
+    {
         $this->options['parameter5Name'] = $parameter5Name;
         return $this;
     }
@@ -789,7 +1419,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter5Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter5Value(string $parameter5Value): self {
+    public function setParameter5Value(string $parameter5Value): self
+    {
         $this->options['parameter5Value'] = $parameter5Value;
         return $this;
     }
@@ -800,7 +1431,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter6Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter6Name(string $parameter6Name): self {
+    public function setParameter6Name(string $parameter6Name): self
+    {
         $this->options['parameter6Name'] = $parameter6Name;
         return $this;
     }
@@ -811,7 +1443,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter6Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter6Value(string $parameter6Value): self {
+    public function setParameter6Value(string $parameter6Value): self
+    {
         $this->options['parameter6Value'] = $parameter6Value;
         return $this;
     }
@@ -822,7 +1455,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter7Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter7Name(string $parameter7Name): self {
+    public function setParameter7Name(string $parameter7Name): self
+    {
         $this->options['parameter7Name'] = $parameter7Name;
         return $this;
     }
@@ -833,7 +1467,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter7Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter7Value(string $parameter7Value): self {
+    public function setParameter7Value(string $parameter7Value): self
+    {
         $this->options['parameter7Value'] = $parameter7Value;
         return $this;
     }
@@ -844,7 +1479,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter8Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter8Name(string $parameter8Name): self {
+    public function setParameter8Name(string $parameter8Name): self
+    {
         $this->options['parameter8Name'] = $parameter8Name;
         return $this;
     }
@@ -855,7 +1491,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter8Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter8Value(string $parameter8Value): self {
+    public function setParameter8Value(string $parameter8Value): self
+    {
         $this->options['parameter8Value'] = $parameter8Value;
         return $this;
     }
@@ -866,7 +1503,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter9Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter9Name(string $parameter9Name): self {
+    public function setParameter9Name(string $parameter9Name): self
+    {
         $this->options['parameter9Name'] = $parameter9Name;
         return $this;
     }
@@ -877,7 +1515,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter9Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter9Value(string $parameter9Value): self {
+    public function setParameter9Value(string $parameter9Value): self
+    {
         $this->options['parameter9Value'] = $parameter9Value;
         return $this;
     }
@@ -888,7 +1527,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter10Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter10Name(string $parameter10Name): self {
+    public function setParameter10Name(string $parameter10Name): self
+    {
         $this->options['parameter10Name'] = $parameter10Name;
         return $this;
     }
@@ -899,7 +1539,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter10Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter10Value(string $parameter10Value): self {
+    public function setParameter10Value(string $parameter10Value): self
+    {
         $this->options['parameter10Value'] = $parameter10Value;
         return $this;
     }
@@ -910,7 +1551,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter11Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter11Name(string $parameter11Name): self {
+    public function setParameter11Name(string $parameter11Name): self
+    {
         $this->options['parameter11Name'] = $parameter11Name;
         return $this;
     }
@@ -921,7 +1563,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter11Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter11Value(string $parameter11Value): self {
+    public function setParameter11Value(string $parameter11Value): self
+    {
         $this->options['parameter11Value'] = $parameter11Value;
         return $this;
     }
@@ -932,7 +1575,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter12Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter12Name(string $parameter12Name): self {
+    public function setParameter12Name(string $parameter12Name): self
+    {
         $this->options['parameter12Name'] = $parameter12Name;
         return $this;
     }
@@ -943,7 +1587,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter12Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter12Value(string $parameter12Value): self {
+    public function setParameter12Value(string $parameter12Value): self
+    {
         $this->options['parameter12Value'] = $parameter12Value;
         return $this;
     }
@@ -954,7 +1599,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter13Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter13Name(string $parameter13Name): self {
+    public function setParameter13Name(string $parameter13Name): self
+    {
         $this->options['parameter13Name'] = $parameter13Name;
         return $this;
     }
@@ -965,7 +1611,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter13Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter13Value(string $parameter13Value): self {
+    public function setParameter13Value(string $parameter13Value): self
+    {
         $this->options['parameter13Value'] = $parameter13Value;
         return $this;
     }
@@ -976,7 +1623,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter14Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter14Name(string $parameter14Name): self {
+    public function setParameter14Name(string $parameter14Name): self
+    {
         $this->options['parameter14Name'] = $parameter14Name;
         return $this;
     }
@@ -987,7 +1635,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter14Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter14Value(string $parameter14Value): self {
+    public function setParameter14Value(string $parameter14Value): self
+    {
         $this->options['parameter14Value'] = $parameter14Value;
         return $this;
     }
@@ -998,7 +1647,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter15Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter15Name(string $parameter15Name): self {
+    public function setParameter15Name(string $parameter15Name): self
+    {
         $this->options['parameter15Name'] = $parameter15Name;
         return $this;
     }
@@ -1009,7 +1659,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter15Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter15Value(string $parameter15Value): self {
+    public function setParameter15Value(string $parameter15Value): self
+    {
         $this->options['parameter15Value'] = $parameter15Value;
         return $this;
     }
@@ -1020,7 +1671,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter16Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter16Name(string $parameter16Name): self {
+    public function setParameter16Name(string $parameter16Name): self
+    {
         $this->options['parameter16Name'] = $parameter16Name;
         return $this;
     }
@@ -1031,7 +1683,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter16Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter16Value(string $parameter16Value): self {
+    public function setParameter16Value(string $parameter16Value): self
+    {
         $this->options['parameter16Value'] = $parameter16Value;
         return $this;
     }
@@ -1042,7 +1695,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter17Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter17Name(string $parameter17Name): self {
+    public function setParameter17Name(string $parameter17Name): self
+    {
         $this->options['parameter17Name'] = $parameter17Name;
         return $this;
     }
@@ -1053,7 +1707,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter17Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter17Value(string $parameter17Value): self {
+    public function setParameter17Value(string $parameter17Value): self
+    {
         $this->options['parameter17Value'] = $parameter17Value;
         return $this;
     }
@@ -1064,7 +1719,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter18Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter18Name(string $parameter18Name): self {
+    public function setParameter18Name(string $parameter18Name): self
+    {
         $this->options['parameter18Name'] = $parameter18Name;
         return $this;
     }
@@ -1075,7 +1731,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter18Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter18Value(string $parameter18Value): self {
+    public function setParameter18Value(string $parameter18Value): self
+    {
         $this->options['parameter18Value'] = $parameter18Value;
         return $this;
     }
@@ -1086,7 +1743,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter19Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter19Name(string $parameter19Name): self {
+    public function setParameter19Name(string $parameter19Name): self
+    {
         $this->options['parameter19Name'] = $parameter19Name;
         return $this;
     }
@@ -1097,7 +1755,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter19Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter19Value(string $parameter19Value): self {
+    public function setParameter19Value(string $parameter19Value): self
+    {
         $this->options['parameter19Value'] = $parameter19Value;
         return $this;
     }
@@ -1108,7 +1767,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter20Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter20Name(string $parameter20Name): self {
+    public function setParameter20Name(string $parameter20Name): self
+    {
         $this->options['parameter20Name'] = $parameter20Name;
         return $this;
     }
@@ -1119,7 +1779,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter20Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter20Value(string $parameter20Value): self {
+    public function setParameter20Value(string $parameter20Value): self
+    {
         $this->options['parameter20Value'] = $parameter20Value;
         return $this;
     }
@@ -1130,7 +1791,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter21Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter21Name(string $parameter21Name): self {
+    public function setParameter21Name(string $parameter21Name): self
+    {
         $this->options['parameter21Name'] = $parameter21Name;
         return $this;
     }
@@ -1141,7 +1803,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter21Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter21Value(string $parameter21Value): self {
+    public function setParameter21Value(string $parameter21Value): self
+    {
         $this->options['parameter21Value'] = $parameter21Value;
         return $this;
     }
@@ -1152,7 +1815,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter22Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter22Name(string $parameter22Name): self {
+    public function setParameter22Name(string $parameter22Name): self
+    {
         $this->options['parameter22Name'] = $parameter22Name;
         return $this;
     }
@@ -1163,7 +1827,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter22Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter22Value(string $parameter22Value): self {
+    public function setParameter22Value(string $parameter22Value): self
+    {
         $this->options['parameter22Value'] = $parameter22Value;
         return $this;
     }
@@ -1174,7 +1839,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter23Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter23Name(string $parameter23Name): self {
+    public function setParameter23Name(string $parameter23Name): self
+    {
         $this->options['parameter23Name'] = $parameter23Name;
         return $this;
     }
@@ -1185,7 +1851,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter23Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter23Value(string $parameter23Value): self {
+    public function setParameter23Value(string $parameter23Value): self
+    {
         $this->options['parameter23Value'] = $parameter23Value;
         return $this;
     }
@@ -1196,7 +1863,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter24Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter24Name(string $parameter24Name): self {
+    public function setParameter24Name(string $parameter24Name): self
+    {
         $this->options['parameter24Name'] = $parameter24Name;
         return $this;
     }
@@ -1207,7 +1875,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter24Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter24Value(string $parameter24Value): self {
+    public function setParameter24Value(string $parameter24Value): self
+    {
         $this->options['parameter24Value'] = $parameter24Value;
         return $this;
     }
@@ -1218,7 +1887,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter25Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter25Name(string $parameter25Name): self {
+    public function setParameter25Name(string $parameter25Name): self
+    {
         $this->options['parameter25Name'] = $parameter25Name;
         return $this;
     }
@@ -1229,7 +1899,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter25Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter25Value(string $parameter25Value): self {
+    public function setParameter25Value(string $parameter25Value): self
+    {
         $this->options['parameter25Value'] = $parameter25Value;
         return $this;
     }
@@ -1240,7 +1911,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter26Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter26Name(string $parameter26Name): self {
+    public function setParameter26Name(string $parameter26Name): self
+    {
         $this->options['parameter26Name'] = $parameter26Name;
         return $this;
     }
@@ -1251,7 +1923,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter26Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter26Value(string $parameter26Value): self {
+    public function setParameter26Value(string $parameter26Value): self
+    {
         $this->options['parameter26Value'] = $parameter26Value;
         return $this;
     }
@@ -1262,7 +1935,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter27Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter27Name(string $parameter27Name): self {
+    public function setParameter27Name(string $parameter27Name): self
+    {
         $this->options['parameter27Name'] = $parameter27Name;
         return $this;
     }
@@ -1273,7 +1947,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter27Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter27Value(string $parameter27Value): self {
+    public function setParameter27Value(string $parameter27Value): self
+    {
         $this->options['parameter27Value'] = $parameter27Value;
         return $this;
     }
@@ -1284,7 +1959,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter28Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter28Name(string $parameter28Name): self {
+    public function setParameter28Name(string $parameter28Name): self
+    {
         $this->options['parameter28Name'] = $parameter28Name;
         return $this;
     }
@@ -1295,7 +1971,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter28Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter28Value(string $parameter28Value): self {
+    public function setParameter28Value(string $parameter28Value): self
+    {
         $this->options['parameter28Value'] = $parameter28Value;
         return $this;
     }
@@ -1306,7 +1983,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter29Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter29Name(string $parameter29Name): self {
+    public function setParameter29Name(string $parameter29Name): self
+    {
         $this->options['parameter29Name'] = $parameter29Name;
         return $this;
     }
@@ -1317,7 +1995,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter29Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter29Value(string $parameter29Value): self {
+    public function setParameter29Value(string $parameter29Value): self
+    {
         $this->options['parameter29Value'] = $parameter29Value;
         return $this;
     }
@@ -1328,7 +2007,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter30Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter30Name(string $parameter30Name): self {
+    public function setParameter30Name(string $parameter30Name): self
+    {
         $this->options['parameter30Name'] = $parameter30Name;
         return $this;
     }
@@ -1339,7 +2019,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter30Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter30Value(string $parameter30Value): self {
+    public function setParameter30Value(string $parameter30Value): self
+    {
         $this->options['parameter30Value'] = $parameter30Value;
         return $this;
     }
@@ -1350,7 +2031,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter31Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter31Name(string $parameter31Name): self {
+    public function setParameter31Name(string $parameter31Name): self
+    {
         $this->options['parameter31Name'] = $parameter31Name;
         return $this;
     }
@@ -1361,7 +2043,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter31Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter31Value(string $parameter31Value): self {
+    public function setParameter31Value(string $parameter31Value): self
+    {
         $this->options['parameter31Value'] = $parameter31Value;
         return $this;
     }
@@ -1372,7 +2055,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter32Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter32Name(string $parameter32Name): self {
+    public function setParameter32Name(string $parameter32Name): self
+    {
         $this->options['parameter32Name'] = $parameter32Name;
         return $this;
     }
@@ -1383,7 +2067,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter32Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter32Value(string $parameter32Value): self {
+    public function setParameter32Value(string $parameter32Value): self
+    {
         $this->options['parameter32Value'] = $parameter32Value;
         return $this;
     }
@@ -1394,7 +2079,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter33Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter33Name(string $parameter33Name): self {
+    public function setParameter33Name(string $parameter33Name): self
+    {
         $this->options['parameter33Name'] = $parameter33Name;
         return $this;
     }
@@ -1405,7 +2091,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter33Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter33Value(string $parameter33Value): self {
+    public function setParameter33Value(string $parameter33Value): self
+    {
         $this->options['parameter33Value'] = $parameter33Value;
         return $this;
     }
@@ -1416,7 +2103,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter34Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter34Name(string $parameter34Name): self {
+    public function setParameter34Name(string $parameter34Name): self
+    {
         $this->options['parameter34Name'] = $parameter34Name;
         return $this;
     }
@@ -1427,7 +2115,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter34Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter34Value(string $parameter34Value): self {
+    public function setParameter34Value(string $parameter34Value): self
+    {
         $this->options['parameter34Value'] = $parameter34Value;
         return $this;
     }
@@ -1438,7 +2127,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter35Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter35Name(string $parameter35Name): self {
+    public function setParameter35Name(string $parameter35Name): self
+    {
         $this->options['parameter35Name'] = $parameter35Name;
         return $this;
     }
@@ -1449,7 +2139,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter35Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter35Value(string $parameter35Value): self {
+    public function setParameter35Value(string $parameter35Value): self
+    {
         $this->options['parameter35Value'] = $parameter35Value;
         return $this;
     }
@@ -1460,7 +2151,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter36Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter36Name(string $parameter36Name): self {
+    public function setParameter36Name(string $parameter36Name): self
+    {
         $this->options['parameter36Name'] = $parameter36Name;
         return $this;
     }
@@ -1471,7 +2163,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter36Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter36Value(string $parameter36Value): self {
+    public function setParameter36Value(string $parameter36Value): self
+    {
         $this->options['parameter36Value'] = $parameter36Value;
         return $this;
     }
@@ -1482,7 +2175,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter37Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter37Name(string $parameter37Name): self {
+    public function setParameter37Name(string $parameter37Name): self
+    {
         $this->options['parameter37Name'] = $parameter37Name;
         return $this;
     }
@@ -1493,7 +2187,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter37Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter37Value(string $parameter37Value): self {
+    public function setParameter37Value(string $parameter37Value): self
+    {
         $this->options['parameter37Value'] = $parameter37Value;
         return $this;
     }
@@ -1504,7 +2199,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter38Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter38Name(string $parameter38Name): self {
+    public function setParameter38Name(string $parameter38Name): self
+    {
         $this->options['parameter38Name'] = $parameter38Name;
         return $this;
     }
@@ -1515,7 +2211,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter38Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter38Value(string $parameter38Value): self {
+    public function setParameter38Value(string $parameter38Value): self
+    {
         $this->options['parameter38Value'] = $parameter38Value;
         return $this;
     }
@@ -1526,7 +2223,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter39Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter39Name(string $parameter39Name): self {
+    public function setParameter39Name(string $parameter39Name): self
+    {
         $this->options['parameter39Name'] = $parameter39Name;
         return $this;
     }
@@ -1537,7 +2235,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter39Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter39Value(string $parameter39Value): self {
+    public function setParameter39Value(string $parameter39Value): self
+    {
         $this->options['parameter39Value'] = $parameter39Value;
         return $this;
     }
@@ -1548,7 +2247,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter40Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter40Name(string $parameter40Name): self {
+    public function setParameter40Name(string $parameter40Name): self
+    {
         $this->options['parameter40Name'] = $parameter40Name;
         return $this;
     }
@@ -1559,7 +2259,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter40Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter40Value(string $parameter40Value): self {
+    public function setParameter40Value(string $parameter40Value): self
+    {
         $this->options['parameter40Value'] = $parameter40Value;
         return $this;
     }
@@ -1570,7 +2271,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter41Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter41Name(string $parameter41Name): self {
+    public function setParameter41Name(string $parameter41Name): self
+    {
         $this->options['parameter41Name'] = $parameter41Name;
         return $this;
     }
@@ -1581,7 +2283,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter41Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter41Value(string $parameter41Value): self {
+    public function setParameter41Value(string $parameter41Value): self
+    {
         $this->options['parameter41Value'] = $parameter41Value;
         return $this;
     }
@@ -1592,7 +2295,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter42Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter42Name(string $parameter42Name): self {
+    public function setParameter42Name(string $parameter42Name): self
+    {
         $this->options['parameter42Name'] = $parameter42Name;
         return $this;
     }
@@ -1603,7 +2307,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter42Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter42Value(string $parameter42Value): self {
+    public function setParameter42Value(string $parameter42Value): self
+    {
         $this->options['parameter42Value'] = $parameter42Value;
         return $this;
     }
@@ -1614,7 +2319,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter43Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter43Name(string $parameter43Name): self {
+    public function setParameter43Name(string $parameter43Name): self
+    {
         $this->options['parameter43Name'] = $parameter43Name;
         return $this;
     }
@@ -1625,7 +2331,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter43Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter43Value(string $parameter43Value): self {
+    public function setParameter43Value(string $parameter43Value): self
+    {
         $this->options['parameter43Value'] = $parameter43Value;
         return $this;
     }
@@ -1636,7 +2343,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter44Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter44Name(string $parameter44Name): self {
+    public function setParameter44Name(string $parameter44Name): self
+    {
         $this->options['parameter44Name'] = $parameter44Name;
         return $this;
     }
@@ -1647,7 +2355,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter44Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter44Value(string $parameter44Value): self {
+    public function setParameter44Value(string $parameter44Value): self
+    {
         $this->options['parameter44Value'] = $parameter44Value;
         return $this;
     }
@@ -1658,7 +2367,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter45Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter45Name(string $parameter45Name): self {
+    public function setParameter45Name(string $parameter45Name): self
+    {
         $this->options['parameter45Name'] = $parameter45Name;
         return $this;
     }
@@ -1669,7 +2379,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter45Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter45Value(string $parameter45Value): self {
+    public function setParameter45Value(string $parameter45Value): self
+    {
         $this->options['parameter45Value'] = $parameter45Value;
         return $this;
     }
@@ -1680,7 +2391,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter46Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter46Name(string $parameter46Name): self {
+    public function setParameter46Name(string $parameter46Name): self
+    {
         $this->options['parameter46Name'] = $parameter46Name;
         return $this;
     }
@@ -1691,7 +2403,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter46Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter46Value(string $parameter46Value): self {
+    public function setParameter46Value(string $parameter46Value): self
+    {
         $this->options['parameter46Value'] = $parameter46Value;
         return $this;
     }
@@ -1702,7 +2415,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter47Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter47Name(string $parameter47Name): self {
+    public function setParameter47Name(string $parameter47Name): self
+    {
         $this->options['parameter47Name'] = $parameter47Name;
         return $this;
     }
@@ -1713,7 +2427,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter47Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter47Value(string $parameter47Value): self {
+    public function setParameter47Value(string $parameter47Value): self
+    {
         $this->options['parameter47Value'] = $parameter47Value;
         return $this;
     }
@@ -1724,7 +2439,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter48Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter48Name(string $parameter48Name): self {
+    public function setParameter48Name(string $parameter48Name): self
+    {
         $this->options['parameter48Name'] = $parameter48Name;
         return $this;
     }
@@ -1735,7 +2451,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter48Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter48Value(string $parameter48Value): self {
+    public function setParameter48Value(string $parameter48Value): self
+    {
         $this->options['parameter48Value'] = $parameter48Value;
         return $this;
     }
@@ -1746,7 +2463,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter49Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter49Name(string $parameter49Name): self {
+    public function setParameter49Name(string $parameter49Name): self
+    {
         $this->options['parameter49Name'] = $parameter49Name;
         return $this;
     }
@@ -1757,7 +2475,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter49Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter49Value(string $parameter49Value): self {
+    public function setParameter49Value(string $parameter49Value): self
+    {
         $this->options['parameter49Value'] = $parameter49Value;
         return $this;
     }
@@ -1768,7 +2487,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter50Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter50Name(string $parameter50Name): self {
+    public function setParameter50Name(string $parameter50Name): self
+    {
         $this->options['parameter50Name'] = $parameter50Name;
         return $this;
     }
@@ -1779,7 +2499,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter50Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter50Value(string $parameter50Value): self {
+    public function setParameter50Value(string $parameter50Value): self
+    {
         $this->options['parameter50Value'] = $parameter50Value;
         return $this;
     }
@@ -1790,7 +2511,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter51Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter51Name(string $parameter51Name): self {
+    public function setParameter51Name(string $parameter51Name): self
+    {
         $this->options['parameter51Name'] = $parameter51Name;
         return $this;
     }
@@ -1801,7 +2523,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter51Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter51Value(string $parameter51Value): self {
+    public function setParameter51Value(string $parameter51Value): self
+    {
         $this->options['parameter51Value'] = $parameter51Value;
         return $this;
     }
@@ -1812,7 +2535,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter52Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter52Name(string $parameter52Name): self {
+    public function setParameter52Name(string $parameter52Name): self
+    {
         $this->options['parameter52Name'] = $parameter52Name;
         return $this;
     }
@@ -1823,7 +2547,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter52Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter52Value(string $parameter52Value): self {
+    public function setParameter52Value(string $parameter52Value): self
+    {
         $this->options['parameter52Value'] = $parameter52Value;
         return $this;
     }
@@ -1834,7 +2559,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter53Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter53Name(string $parameter53Name): self {
+    public function setParameter53Name(string $parameter53Name): self
+    {
         $this->options['parameter53Name'] = $parameter53Name;
         return $this;
     }
@@ -1845,7 +2571,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter53Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter53Value(string $parameter53Value): self {
+    public function setParameter53Value(string $parameter53Value): self
+    {
         $this->options['parameter53Value'] = $parameter53Value;
         return $this;
     }
@@ -1856,7 +2583,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter54Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter54Name(string $parameter54Name): self {
+    public function setParameter54Name(string $parameter54Name): self
+    {
         $this->options['parameter54Name'] = $parameter54Name;
         return $this;
     }
@@ -1867,7 +2595,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter54Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter54Value(string $parameter54Value): self {
+    public function setParameter54Value(string $parameter54Value): self
+    {
         $this->options['parameter54Value'] = $parameter54Value;
         return $this;
     }
@@ -1878,7 +2607,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter55Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter55Name(string $parameter55Name): self {
+    public function setParameter55Name(string $parameter55Name): self
+    {
         $this->options['parameter55Name'] = $parameter55Name;
         return $this;
     }
@@ -1889,7 +2619,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter55Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter55Value(string $parameter55Value): self {
+    public function setParameter55Value(string $parameter55Value): self
+    {
         $this->options['parameter55Value'] = $parameter55Value;
         return $this;
     }
@@ -1900,7 +2631,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter56Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter56Name(string $parameter56Name): self {
+    public function setParameter56Name(string $parameter56Name): self
+    {
         $this->options['parameter56Name'] = $parameter56Name;
         return $this;
     }
@@ -1911,7 +2643,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter56Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter56Value(string $parameter56Value): self {
+    public function setParameter56Value(string $parameter56Value): self
+    {
         $this->options['parameter56Value'] = $parameter56Value;
         return $this;
     }
@@ -1922,7 +2655,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter57Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter57Name(string $parameter57Name): self {
+    public function setParameter57Name(string $parameter57Name): self
+    {
         $this->options['parameter57Name'] = $parameter57Name;
         return $this;
     }
@@ -1933,7 +2667,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter57Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter57Value(string $parameter57Value): self {
+    public function setParameter57Value(string $parameter57Value): self
+    {
         $this->options['parameter57Value'] = $parameter57Value;
         return $this;
     }
@@ -1944,7 +2679,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter58Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter58Name(string $parameter58Name): self {
+    public function setParameter58Name(string $parameter58Name): self
+    {
         $this->options['parameter58Name'] = $parameter58Name;
         return $this;
     }
@@ -1955,7 +2691,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter58Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter58Value(string $parameter58Value): self {
+    public function setParameter58Value(string $parameter58Value): self
+    {
         $this->options['parameter58Value'] = $parameter58Value;
         return $this;
     }
@@ -1966,7 +2703,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter59Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter59Name(string $parameter59Name): self {
+    public function setParameter59Name(string $parameter59Name): self
+    {
         $this->options['parameter59Name'] = $parameter59Name;
         return $this;
     }
@@ -1977,7 +2715,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter59Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter59Value(string $parameter59Value): self {
+    public function setParameter59Value(string $parameter59Value): self
+    {
         $this->options['parameter59Value'] = $parameter59Value;
         return $this;
     }
@@ -1988,7 +2727,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter60Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter60Name(string $parameter60Name): self {
+    public function setParameter60Name(string $parameter60Name): self
+    {
         $this->options['parameter60Name'] = $parameter60Name;
         return $this;
     }
@@ -1999,7 +2739,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter60Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter60Value(string $parameter60Value): self {
+    public function setParameter60Value(string $parameter60Value): self
+    {
         $this->options['parameter60Value'] = $parameter60Value;
         return $this;
     }
@@ -2010,7 +2751,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter61Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter61Name(string $parameter61Name): self {
+    public function setParameter61Name(string $parameter61Name): self
+    {
         $this->options['parameter61Name'] = $parameter61Name;
         return $this;
     }
@@ -2021,7 +2763,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter61Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter61Value(string $parameter61Value): self {
+    public function setParameter61Value(string $parameter61Value): self
+    {
         $this->options['parameter61Value'] = $parameter61Value;
         return $this;
     }
@@ -2032,7 +2775,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter62Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter62Name(string $parameter62Name): self {
+    public function setParameter62Name(string $parameter62Name): self
+    {
         $this->options['parameter62Name'] = $parameter62Name;
         return $this;
     }
@@ -2043,7 +2787,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter62Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter62Value(string $parameter62Value): self {
+    public function setParameter62Value(string $parameter62Value): self
+    {
         $this->options['parameter62Value'] = $parameter62Value;
         return $this;
     }
@@ -2054,7 +2799,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter63Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter63Name(string $parameter63Name): self {
+    public function setParameter63Name(string $parameter63Name): self
+    {
         $this->options['parameter63Name'] = $parameter63Name;
         return $this;
     }
@@ -2065,7 +2811,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter63Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter63Value(string $parameter63Value): self {
+    public function setParameter63Value(string $parameter63Value): self
+    {
         $this->options['parameter63Value'] = $parameter63Value;
         return $this;
     }
@@ -2076,7 +2823,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter64Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter64Name(string $parameter64Name): self {
+    public function setParameter64Name(string $parameter64Name): self
+    {
         $this->options['parameter64Name'] = $parameter64Name;
         return $this;
     }
@@ -2087,7 +2835,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter64Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter64Value(string $parameter64Value): self {
+    public function setParameter64Value(string $parameter64Value): self
+    {
         $this->options['parameter64Value'] = $parameter64Value;
         return $this;
     }
@@ -2098,7 +2847,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter65Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter65Name(string $parameter65Name): self {
+    public function setParameter65Name(string $parameter65Name): self
+    {
         $this->options['parameter65Name'] = $parameter65Name;
         return $this;
     }
@@ -2109,7 +2859,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter65Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter65Value(string $parameter65Value): self {
+    public function setParameter65Value(string $parameter65Value): self
+    {
         $this->options['parameter65Value'] = $parameter65Value;
         return $this;
     }
@@ -2120,7 +2871,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter66Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter66Name(string $parameter66Name): self {
+    public function setParameter66Name(string $parameter66Name): self
+    {
         $this->options['parameter66Name'] = $parameter66Name;
         return $this;
     }
@@ -2131,7 +2883,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter66Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter66Value(string $parameter66Value): self {
+    public function setParameter66Value(string $parameter66Value): self
+    {
         $this->options['parameter66Value'] = $parameter66Value;
         return $this;
     }
@@ -2142,7 +2895,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter67Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter67Name(string $parameter67Name): self {
+    public function setParameter67Name(string $parameter67Name): self
+    {
         $this->options['parameter67Name'] = $parameter67Name;
         return $this;
     }
@@ -2153,7 +2907,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter67Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter67Value(string $parameter67Value): self {
+    public function setParameter67Value(string $parameter67Value): self
+    {
         $this->options['parameter67Value'] = $parameter67Value;
         return $this;
     }
@@ -2164,7 +2919,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter68Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter68Name(string $parameter68Name): self {
+    public function setParameter68Name(string $parameter68Name): self
+    {
         $this->options['parameter68Name'] = $parameter68Name;
         return $this;
     }
@@ -2175,7 +2931,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter68Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter68Value(string $parameter68Value): self {
+    public function setParameter68Value(string $parameter68Value): self
+    {
         $this->options['parameter68Value'] = $parameter68Value;
         return $this;
     }
@@ -2186,7 +2943,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter69Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter69Name(string $parameter69Name): self {
+    public function setParameter69Name(string $parameter69Name): self
+    {
         $this->options['parameter69Name'] = $parameter69Name;
         return $this;
     }
@@ -2197,7 +2955,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter69Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter69Value(string $parameter69Value): self {
+    public function setParameter69Value(string $parameter69Value): self
+    {
         $this->options['parameter69Value'] = $parameter69Value;
         return $this;
     }
@@ -2208,7 +2967,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter70Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter70Name(string $parameter70Name): self {
+    public function setParameter70Name(string $parameter70Name): self
+    {
         $this->options['parameter70Name'] = $parameter70Name;
         return $this;
     }
@@ -2219,7 +2979,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter70Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter70Value(string $parameter70Value): self {
+    public function setParameter70Value(string $parameter70Value): self
+    {
         $this->options['parameter70Value'] = $parameter70Value;
         return $this;
     }
@@ -2230,7 +2991,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter71Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter71Name(string $parameter71Name): self {
+    public function setParameter71Name(string $parameter71Name): self
+    {
         $this->options['parameter71Name'] = $parameter71Name;
         return $this;
     }
@@ -2241,7 +3003,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter71Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter71Value(string $parameter71Value): self {
+    public function setParameter71Value(string $parameter71Value): self
+    {
         $this->options['parameter71Value'] = $parameter71Value;
         return $this;
     }
@@ -2252,7 +3015,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter72Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter72Name(string $parameter72Name): self {
+    public function setParameter72Name(string $parameter72Name): self
+    {
         $this->options['parameter72Name'] = $parameter72Name;
         return $this;
     }
@@ -2263,7 +3027,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter72Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter72Value(string $parameter72Value): self {
+    public function setParameter72Value(string $parameter72Value): self
+    {
         $this->options['parameter72Value'] = $parameter72Value;
         return $this;
     }
@@ -2274,7 +3039,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter73Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter73Name(string $parameter73Name): self {
+    public function setParameter73Name(string $parameter73Name): self
+    {
         $this->options['parameter73Name'] = $parameter73Name;
         return $this;
     }
@@ -2285,7 +3051,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter73Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter73Value(string $parameter73Value): self {
+    public function setParameter73Value(string $parameter73Value): self
+    {
         $this->options['parameter73Value'] = $parameter73Value;
         return $this;
     }
@@ -2296,7 +3063,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter74Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter74Name(string $parameter74Name): self {
+    public function setParameter74Name(string $parameter74Name): self
+    {
         $this->options['parameter74Name'] = $parameter74Name;
         return $this;
     }
@@ -2307,7 +3075,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter74Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter74Value(string $parameter74Value): self {
+    public function setParameter74Value(string $parameter74Value): self
+    {
         $this->options['parameter74Value'] = $parameter74Value;
         return $this;
     }
@@ -2318,7 +3087,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter75Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter75Name(string $parameter75Name): self {
+    public function setParameter75Name(string $parameter75Name): self
+    {
         $this->options['parameter75Name'] = $parameter75Name;
         return $this;
     }
@@ -2329,7 +3099,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter75Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter75Value(string $parameter75Value): self {
+    public function setParameter75Value(string $parameter75Value): self
+    {
         $this->options['parameter75Value'] = $parameter75Value;
         return $this;
     }
@@ -2340,7 +3111,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter76Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter76Name(string $parameter76Name): self {
+    public function setParameter76Name(string $parameter76Name): self
+    {
         $this->options['parameter76Name'] = $parameter76Name;
         return $this;
     }
@@ -2351,7 +3123,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter76Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter76Value(string $parameter76Value): self {
+    public function setParameter76Value(string $parameter76Value): self
+    {
         $this->options['parameter76Value'] = $parameter76Value;
         return $this;
     }
@@ -2362,7 +3135,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter77Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter77Name(string $parameter77Name): self {
+    public function setParameter77Name(string $parameter77Name): self
+    {
         $this->options['parameter77Name'] = $parameter77Name;
         return $this;
     }
@@ -2373,7 +3147,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter77Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter77Value(string $parameter77Value): self {
+    public function setParameter77Value(string $parameter77Value): self
+    {
         $this->options['parameter77Value'] = $parameter77Value;
         return $this;
     }
@@ -2384,7 +3159,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter78Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter78Name(string $parameter78Name): self {
+    public function setParameter78Name(string $parameter78Name): self
+    {
         $this->options['parameter78Name'] = $parameter78Name;
         return $this;
     }
@@ -2395,7 +3171,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter78Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter78Value(string $parameter78Value): self {
+    public function setParameter78Value(string $parameter78Value): self
+    {
         $this->options['parameter78Value'] = $parameter78Value;
         return $this;
     }
@@ -2406,7 +3183,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter79Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter79Name(string $parameter79Name): self {
+    public function setParameter79Name(string $parameter79Name): self
+    {
         $this->options['parameter79Name'] = $parameter79Name;
         return $this;
     }
@@ -2417,7 +3195,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter79Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter79Value(string $parameter79Value): self {
+    public function setParameter79Value(string $parameter79Value): self
+    {
         $this->options['parameter79Value'] = $parameter79Value;
         return $this;
     }
@@ -2428,7 +3207,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter80Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter80Name(string $parameter80Name): self {
+    public function setParameter80Name(string $parameter80Name): self
+    {
         $this->options['parameter80Name'] = $parameter80Name;
         return $this;
     }
@@ -2439,7 +3219,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter80Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter80Value(string $parameter80Value): self {
+    public function setParameter80Value(string $parameter80Value): self
+    {
         $this->options['parameter80Value'] = $parameter80Value;
         return $this;
     }
@@ -2450,7 +3231,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter81Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter81Name(string $parameter81Name): self {
+    public function setParameter81Name(string $parameter81Name): self
+    {
         $this->options['parameter81Name'] = $parameter81Name;
         return $this;
     }
@@ -2461,7 +3243,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter81Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter81Value(string $parameter81Value): self {
+    public function setParameter81Value(string $parameter81Value): self
+    {
         $this->options['parameter81Value'] = $parameter81Value;
         return $this;
     }
@@ -2472,7 +3255,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter82Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter82Name(string $parameter82Name): self {
+    public function setParameter82Name(string $parameter82Name): self
+    {
         $this->options['parameter82Name'] = $parameter82Name;
         return $this;
     }
@@ -2483,7 +3267,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter82Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter82Value(string $parameter82Value): self {
+    public function setParameter82Value(string $parameter82Value): self
+    {
         $this->options['parameter82Value'] = $parameter82Value;
         return $this;
     }
@@ -2494,7 +3279,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter83Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter83Name(string $parameter83Name): self {
+    public function setParameter83Name(string $parameter83Name): self
+    {
         $this->options['parameter83Name'] = $parameter83Name;
         return $this;
     }
@@ -2505,7 +3291,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter83Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter83Value(string $parameter83Value): self {
+    public function setParameter83Value(string $parameter83Value): self
+    {
         $this->options['parameter83Value'] = $parameter83Value;
         return $this;
     }
@@ -2516,7 +3303,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter84Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter84Name(string $parameter84Name): self {
+    public function setParameter84Name(string $parameter84Name): self
+    {
         $this->options['parameter84Name'] = $parameter84Name;
         return $this;
     }
@@ -2527,7 +3315,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter84Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter84Value(string $parameter84Value): self {
+    public function setParameter84Value(string $parameter84Value): self
+    {
         $this->options['parameter84Value'] = $parameter84Value;
         return $this;
     }
@@ -2538,7 +3327,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter85Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter85Name(string $parameter85Name): self {
+    public function setParameter85Name(string $parameter85Name): self
+    {
         $this->options['parameter85Name'] = $parameter85Name;
         return $this;
     }
@@ -2549,7 +3339,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter85Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter85Value(string $parameter85Value): self {
+    public function setParameter85Value(string $parameter85Value): self
+    {
         $this->options['parameter85Value'] = $parameter85Value;
         return $this;
     }
@@ -2560,7 +3351,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter86Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter86Name(string $parameter86Name): self {
+    public function setParameter86Name(string $parameter86Name): self
+    {
         $this->options['parameter86Name'] = $parameter86Name;
         return $this;
     }
@@ -2571,7 +3363,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter86Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter86Value(string $parameter86Value): self {
+    public function setParameter86Value(string $parameter86Value): self
+    {
         $this->options['parameter86Value'] = $parameter86Value;
         return $this;
     }
@@ -2582,7 +3375,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter87Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter87Name(string $parameter87Name): self {
+    public function setParameter87Name(string $parameter87Name): self
+    {
         $this->options['parameter87Name'] = $parameter87Name;
         return $this;
     }
@@ -2593,7 +3387,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter87Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter87Value(string $parameter87Value): self {
+    public function setParameter87Value(string $parameter87Value): self
+    {
         $this->options['parameter87Value'] = $parameter87Value;
         return $this;
     }
@@ -2604,7 +3399,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter88Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter88Name(string $parameter88Name): self {
+    public function setParameter88Name(string $parameter88Name): self
+    {
         $this->options['parameter88Name'] = $parameter88Name;
         return $this;
     }
@@ -2615,7 +3411,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter88Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter88Value(string $parameter88Value): self {
+    public function setParameter88Value(string $parameter88Value): self
+    {
         $this->options['parameter88Value'] = $parameter88Value;
         return $this;
     }
@@ -2626,7 +3423,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter89Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter89Name(string $parameter89Name): self {
+    public function setParameter89Name(string $parameter89Name): self
+    {
         $this->options['parameter89Name'] = $parameter89Name;
         return $this;
     }
@@ -2637,7 +3435,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter89Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter89Value(string $parameter89Value): self {
+    public function setParameter89Value(string $parameter89Value): self
+    {
         $this->options['parameter89Value'] = $parameter89Value;
         return $this;
     }
@@ -2648,7 +3447,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter90Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter90Name(string $parameter90Name): self {
+    public function setParameter90Name(string $parameter90Name): self
+    {
         $this->options['parameter90Name'] = $parameter90Name;
         return $this;
     }
@@ -2659,7 +3459,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter90Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter90Value(string $parameter90Value): self {
+    public function setParameter90Value(string $parameter90Value): self
+    {
         $this->options['parameter90Value'] = $parameter90Value;
         return $this;
     }
@@ -2670,7 +3471,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter91Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter91Name(string $parameter91Name): self {
+    public function setParameter91Name(string $parameter91Name): self
+    {
         $this->options['parameter91Name'] = $parameter91Name;
         return $this;
     }
@@ -2681,7 +3483,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter91Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter91Value(string $parameter91Value): self {
+    public function setParameter91Value(string $parameter91Value): self
+    {
         $this->options['parameter91Value'] = $parameter91Value;
         return $this;
     }
@@ -2692,7 +3495,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter92Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter92Name(string $parameter92Name): self {
+    public function setParameter92Name(string $parameter92Name): self
+    {
         $this->options['parameter92Name'] = $parameter92Name;
         return $this;
     }
@@ -2703,7 +3507,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter92Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter92Value(string $parameter92Value): self {
+    public function setParameter92Value(string $parameter92Value): self
+    {
         $this->options['parameter92Value'] = $parameter92Value;
         return $this;
     }
@@ -2714,7 +3519,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter93Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter93Name(string $parameter93Name): self {
+    public function setParameter93Name(string $parameter93Name): self
+    {
         $this->options['parameter93Name'] = $parameter93Name;
         return $this;
     }
@@ -2725,7 +3531,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter93Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter93Value(string $parameter93Value): self {
+    public function setParameter93Value(string $parameter93Value): self
+    {
         $this->options['parameter93Value'] = $parameter93Value;
         return $this;
     }
@@ -2736,7 +3543,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter94Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter94Name(string $parameter94Name): self {
+    public function setParameter94Name(string $parameter94Name): self
+    {
         $this->options['parameter94Name'] = $parameter94Name;
         return $this;
     }
@@ -2747,7 +3555,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter94Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter94Value(string $parameter94Value): self {
+    public function setParameter94Value(string $parameter94Value): self
+    {
         $this->options['parameter94Value'] = $parameter94Value;
         return $this;
     }
@@ -2758,7 +3567,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter95Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter95Name(string $parameter95Name): self {
+    public function setParameter95Name(string $parameter95Name): self
+    {
         $this->options['parameter95Name'] = $parameter95Name;
         return $this;
     }
@@ -2769,7 +3579,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter95Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter95Value(string $parameter95Value): self {
+    public function setParameter95Value(string $parameter95Value): self
+    {
         $this->options['parameter95Value'] = $parameter95Value;
         return $this;
     }
@@ -2780,7 +3591,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter96Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter96Name(string $parameter96Name): self {
+    public function setParameter96Name(string $parameter96Name): self
+    {
         $this->options['parameter96Name'] = $parameter96Name;
         return $this;
     }
@@ -2791,7 +3603,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter96Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter96Value(string $parameter96Value): self {
+    public function setParameter96Value(string $parameter96Value): self
+    {
         $this->options['parameter96Value'] = $parameter96Value;
         return $this;
     }
@@ -2802,7 +3615,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter97Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter97Name(string $parameter97Name): self {
+    public function setParameter97Name(string $parameter97Name): self
+    {
         $this->options['parameter97Name'] = $parameter97Name;
         return $this;
     }
@@ -2813,7 +3627,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter97Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter97Value(string $parameter97Value): self {
+    public function setParameter97Value(string $parameter97Value): self
+    {
         $this->options['parameter97Value'] = $parameter97Value;
         return $this;
     }
@@ -2824,7 +3639,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter98Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter98Name(string $parameter98Name): self {
+    public function setParameter98Name(string $parameter98Name): self
+    {
         $this->options['parameter98Name'] = $parameter98Name;
         return $this;
     }
@@ -2835,7 +3651,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter98Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter98Value(string $parameter98Value): self {
+    public function setParameter98Value(string $parameter98Value): self
+    {
         $this->options['parameter98Value'] = $parameter98Value;
         return $this;
     }
@@ -2846,7 +3663,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter99Name Parameter name
      * @return $this Fluent Builder
      */
-    public function setParameter99Name(string $parameter99Name): self {
+    public function setParameter99Name(string $parameter99Name): self
+    {
         $this->options['parameter99Name'] = $parameter99Name;
         return $this;
     }
@@ -2857,7 +3675,8 @@ class CreateStreamOptions extends Options {
      * @param string $parameter99Value Parameter value
      * @return $this Fluent Builder
      */
-    public function setParameter99Value(string $parameter99Value): self {
+    public function setParameter99Value(string $parameter99Value): self
+    {
         $this->options['parameter99Value'] = $parameter99Value;
         return $this;
     }
@@ -2867,7 +3686,8 @@ class CreateStreamOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateStreamOptions ' . $options . ']';
     }

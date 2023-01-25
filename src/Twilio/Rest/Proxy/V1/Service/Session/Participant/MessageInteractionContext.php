@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class MessageInteractionContext extends InstanceContext {
+class MessageInteractionContext extends InstanceContext
+    {
     /**
      * Initialize the MessageInteractionContext
      *
@@ -32,13 +33,33 @@ class MessageInteractionContext extends InstanceContext {
      * @param string $participantSid The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the MessageInteraction resource to fetch.
      */
-    public function __construct(Version $version, $serviceSid , $sessionSid , $participantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sessionSid,
+        $participantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sessionSid' => $sessionSid,  'participantSid' => $participantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sessionSid' =>
+            $sessionSid,
+        'participantSid' =>
+            $participantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Participants/' . \rawurlencode($participantSid) . '/MessageInteractions/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Sessions/' . \rawurlencode($sessionSid)
+        .'/Participants/' . \rawurlencode($participantSid)
+        .'/MessageInteractions/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,25 +68,29 @@ class MessageInteractionContext extends InstanceContext {
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MessageInteractionInstance {
+    public function fetch(): MessageInteractionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new MessageInteractionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sessionSid']
-            , $this->solution['participantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sessionSid'],
+            $this->solution['participantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

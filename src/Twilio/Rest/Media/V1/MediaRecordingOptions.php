@@ -18,32 +18,55 @@ namespace Twilio\Rest\Media\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class MediaRecordingOptions {
+abstract class MediaRecordingOptions
+{
 
 
     /**
-     * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default. 
-     * @param string $status Status to filter by, with possible values `processing`, `completed`, `deleted`, or `failed`. 
-     * @param string $processorSid SID of a MediaProcessor to filter by. 
-     * @param string $sourceSid SID of a MediaRecording source to filter by. 
+     * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
+     * @param string $status Status to filter by, with possible values `processing`, `completed`, `deleted`, or `failed`.
+     * @param string $processorSid SID of a MediaProcessor to filter by.
+     * @param string $sourceSid SID of a MediaRecording source to filter by.
      * @return ReadMediaRecordingOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $status = Values::NONE, string $processorSid = Values::NONE, string $sourceSid = Values::NONE): ReadMediaRecordingOptions {
-        return new ReadMediaRecordingOptions($order, $status, $processorSid, $sourceSid);
+    public static function read(
+        
+        string $order = Values::NONE,
+        string $status = Values::NONE,
+        string $processorSid = Values::NONE,
+        string $sourceSid = Values::NONE
+
+    ): ReadMediaRecordingOptions
+    {
+        return new ReadMediaRecordingOptions(
+            $order,
+            $status,
+            $processorSid,
+            $sourceSid
+        );
     }
 
 }
 
 
 
-class ReadMediaRecordingOptions extends Options {
+class ReadMediaRecordingOptions extends Options
+    {
     /**
      * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
      * @param string $status Status to filter by, with possible values `processing`, `completed`, `deleted`, or `failed`.
      * @param string $processorSid SID of a MediaProcessor to filter by.
      * @param string $sourceSid SID of a MediaRecording source to filter by.
      */
-    public function __construct(string $order = Values::NONE, string $status = Values::NONE, string $processorSid = Values::NONE, string $sourceSid = Values::NONE) {
+    public function __construct(
+        
+        string $order = Values::NONE,
+        string $status = Values::NONE,
+        string $processorSid = Values::NONE,
+        string $sourceSid = Values::NONE
+
+    )
+    {
         $this->options['order'] = $order;
         $this->options['status'] = $status;
         $this->options['processorSid'] = $processorSid;
@@ -56,7 +79,8 @@ class ReadMediaRecordingOptions extends Options {
      * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
      * @return $this Fluent Builder
      */
-    public function setOrder(string $order): self {
+    public function setOrder(string $order): self
+    {
         $this->options['order'] = $order;
         return $this;
     }
@@ -67,7 +91,8 @@ class ReadMediaRecordingOptions extends Options {
      * @param string $status Status to filter by, with possible values `processing`, `completed`, `deleted`, or `failed`.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -78,7 +103,8 @@ class ReadMediaRecordingOptions extends Options {
      * @param string $processorSid SID of a MediaProcessor to filter by.
      * @return $this Fluent Builder
      */
-    public function setProcessorSid(string $processorSid): self {
+    public function setProcessorSid(string $processorSid): self
+    {
         $this->options['processorSid'] = $processorSid;
         return $this;
     }
@@ -89,7 +115,8 @@ class ReadMediaRecordingOptions extends Options {
      * @param string $sourceSid SID of a MediaRecording source to filter by.
      * @return $this Fluent Builder
      */
-    public function setSourceSid(string $sourceSid): self {
+    public function setSourceSid(string $sourceSid): self
+    {
         $this->options['sourceSid'] = $sourceSid;
         return $this;
     }
@@ -99,7 +126,8 @@ class ReadMediaRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Media.V1.ReadMediaRecordingOptions ' . $options . ']';
     }

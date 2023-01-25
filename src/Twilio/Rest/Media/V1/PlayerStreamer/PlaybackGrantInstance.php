@@ -32,7 +32,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property array $grant
  */
-class PlaybackGrantInstance extends InstanceResource {
+class PlaybackGrantInstance extends InstanceResource
+{
     /**
      * Initialize the PlaybackGrantInstance
      *
@@ -40,7 +41,8 @@ class PlaybackGrantInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string generated to identify the PlayerStreamer resource associated with this PlaybackGrant
      */
-    public function __construct(Version $version, array $payload, string $sid) {
+    public function __construct(Version $version, array $payload, string $sid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,7 +63,8 @@ class PlaybackGrantInstance extends InstanceResource {
      *
      * @return PlaybackGrantContext Context for this PlaybackGrantInstance
      */
-    protected function proxy(): PlaybackGrantContext {
+    protected function proxy(): PlaybackGrantContext
+    {
         if (!$this->context) {
             $this->context = new PlaybackGrantContext(
                 $this->version,
@@ -79,7 +82,9 @@ class PlaybackGrantInstance extends InstanceResource {
      * @return PlaybackGrantInstance Created PlaybackGrantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): PlaybackGrantInstance {
+    public function create(array $options = []): PlaybackGrantInstance
+    {
+
         return $this->proxy()->create($options);
     }
 
@@ -89,7 +94,9 @@ class PlaybackGrantInstance extends InstanceResource {
      * @return PlaybackGrantInstance Fetched PlaybackGrantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PlaybackGrantInstance {
+    public function fetch(): PlaybackGrantInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +107,8 @@ class PlaybackGrantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -118,7 +126,8 @@ class PlaybackGrantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

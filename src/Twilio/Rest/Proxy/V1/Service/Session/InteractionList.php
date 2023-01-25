@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class InteractionList extends ListResource {
+class InteractionList extends ListResource
+    {
     /**
      * Construct the InteractionList
      *
@@ -30,13 +31,28 @@ class InteractionList extends ListResource {
      * @param string $serviceSid The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete.
      * @param string $sessionSid The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete.
      */
-    public function __construct(Version $version, string $serviceSid , string $sessionSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $sessionSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'sessionSid' =>
+            $sessionSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Interactions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Sessions/' . \rawurlencode($sessionSid)
+        .'/Interactions';
     }
 
     /**
@@ -54,7 +70,8 @@ class InteractionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return InteractionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class InteractionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class InteractionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return InteractionPage Page of InteractionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): InteractionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): InteractionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class InteractionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return InteractionPage Page of InteractionInstance
      */
-    public function getPage(string $targetUrl): InteractionPage {
+    public function getPage(string $targetUrl): InteractionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class InteractionList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Interaction resource to delete.
      */
-    public function getContext(string $sid): InteractionContext {
-        return new InteractionContext($this->version, $this->solution['serviceSid'], $this->solution['sessionSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): InteractionContext
+    {
+        return new InteractionContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['sessionSid'],
+            $sid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class InteractionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Proxy.V1.InteractionList]';
     }
 }

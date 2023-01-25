@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class OriginationUrlContext extends InstanceContext {
+class OriginationUrlContext extends InstanceContext
+    {
     /**
      * Initialize the OriginationUrlContext
      *
@@ -33,13 +34,25 @@ class OriginationUrlContext extends InstanceContext {
      * @param string $trunkSid The SID of the Trunk to associate the resource with.
      * @param string $sid The unique string that we created to identify the OriginationUrl resource to delete.
      */
-    public function __construct(Version $version, $trunkSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $trunkSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['trunkSid' => $trunkSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'trunkSid' =>
+            $trunkSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/OriginationUrls/' . \rawurlencode($sid) . '';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid)
+        .'/OriginationUrls/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +61,12 @@ class OriginationUrlContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the OriginationUrlInstance
@@ -58,16 +74,19 @@ class OriginationUrlContext extends InstanceContext {
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): OriginationUrlInstance {
+    public function fetch(): OriginationUrlInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new OriginationUrlInstance(
             $this->version,
-            $payload
-            , $this->solution['trunkSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['trunkSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the OriginationUrlInstance
@@ -76,33 +95,42 @@ class OriginationUrlContext extends InstanceContext {
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): OriginationUrlInstance {
+    public function update(array $options = []): OriginationUrlInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Weight' => $options['weight'],
-            'Priority' => $options['priority'],
-            'Enabled' => Serialize::booleanToString($options['enabled']),
-            'FriendlyName' => $options['friendlyName'],
-            'SipUrl' => $options['sipUrl'],
+            'Weight' =>
+                $options['weight'],
+            'Priority' =>
+                $options['priority'],
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'SipUrl' =>
+                $options['sipUrl'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new OriginationUrlInstance(
             $this->version,
-            $payload
-            , $this->solution['trunkSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['trunkSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class PlayerStreamerList extends ListResource {
+class PlayerStreamerList extends ListResource
+    {
     /**
      * Construct the PlayerStreamerList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/PlayerStreamers';
     }
@@ -47,23 +51,30 @@ class PlayerStreamerList extends ListResource {
      * @return PlayerStreamerInstance Created PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): PlayerStreamerInstance {
+    public function create(array $options = []): PlayerStreamerInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Video' => Serialize::booleanToString($options['video']),
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'MaxDuration' => $options['maxDuration'],
+            'Video' =>
+                Serialize::booleanToString($options['video']),
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'MaxDuration' =>
+                $options['maxDuration'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PlayerStreamerInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads PlayerStreamerInstance records from the API as a list.
@@ -81,7 +92,8 @@ class PlayerStreamerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return PlayerStreamerInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -104,7 +116,8 @@ class PlayerStreamerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -121,12 +134,20 @@ class PlayerStreamerList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return PlayerStreamerPage Page of PlayerStreamerInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PlayerStreamerPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PlayerStreamerPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
-            'Status' => $options['status'],
+            'Order' =>
+                $options['order'],
+            'Status' =>
+                $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -144,7 +165,8 @@ class PlayerStreamerList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return PlayerStreamerPage Page of PlayerStreamerInstance
      */
-    public function getPage(string $targetUrl): PlayerStreamerPage {
+    public function getPage(string $targetUrl): PlayerStreamerPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -159,8 +181,15 @@ class PlayerStreamerList extends ListResource {
      *
      * @param string $sid The SID of the PlayerStreamer resource to fetch.
      */
-    public function getContext(string $sid): PlayerStreamerContext {
-        return new PlayerStreamerContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): PlayerStreamerContext
+    {
+        return new PlayerStreamerContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -168,7 +197,8 @@ class PlayerStreamerList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Media.V1.PlayerStreamerList]';
     }
 }

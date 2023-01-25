@@ -24,17 +24,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ConnectionPolicyList extends ListResource {
+class ConnectionPolicyList extends ListResource
+    {
     /**
      * Construct the ConnectionPolicyList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/ConnectionPolicies';
     }
@@ -46,20 +50,24 @@ class ConnectionPolicyList extends ListResource {
      * @return ConnectionPolicyInstance Created ConnectionPolicyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ConnectionPolicyInstance {
+    public function create(array $options = []): ConnectionPolicyInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ConnectionPolicyInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads ConnectionPolicyInstance records from the API as a list.
@@ -76,7 +84,8 @@ class ConnectionPolicyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ConnectionPolicyInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -98,7 +107,8 @@ class ConnectionPolicyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -115,7 +125,12 @@ class ConnectionPolicyList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ConnectionPolicyPage Page of ConnectionPolicyInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ConnectionPolicyPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ConnectionPolicyPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -135,7 +150,8 @@ class ConnectionPolicyList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ConnectionPolicyPage Page of ConnectionPolicyInstance
      */
-    public function getPage(string $targetUrl): ConnectionPolicyPage {
+    public function getPage(string $targetUrl): ConnectionPolicyPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -150,8 +166,15 @@ class ConnectionPolicyList extends ListResource {
      *
      * @param string $sid The unique string that we created to identify the Connection Policy resource to delete.
      */
-    public function getContext(string $sid): ConnectionPolicyContext {
-        return new ConnectionPolicyContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): ConnectionPolicyContext
+    {
+        return new ConnectionPolicyContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -159,7 +182,8 @@ class ConnectionPolicyList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1.ConnectionPolicyList]';
     }
 }

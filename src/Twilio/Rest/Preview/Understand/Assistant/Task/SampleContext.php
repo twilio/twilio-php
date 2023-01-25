@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SampleContext extends InstanceContext {
+class SampleContext extends InstanceContext
+    {
     /**
      * Initialize the SampleContext
      *
@@ -33,13 +34,29 @@ class SampleContext extends InstanceContext {
      * @param string $taskSid The unique ID of the Task associated with this Sample.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, $assistantSid , $taskSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $taskSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'taskSid' => $taskSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'taskSid' =>
+            $taskSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Samples/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Tasks/' . \rawurlencode($taskSid)
+        .'/Samples/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +65,12 @@ class SampleContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the SampleInstance
@@ -58,17 +78,20 @@ class SampleContext extends InstanceContext {
      * @return SampleInstance Fetched SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SampleInstance {
+    public function fetch(): SampleInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SampleInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['taskSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the SampleInstance
@@ -77,32 +100,39 @@ class SampleContext extends InstanceContext {
      * @return SampleInstance Updated SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SampleInstance {
+    public function update(array $options = []): SampleInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Language' => $options['language'],
-            'TaggedText' => $options['taggedText'],
-            'SourceChannel' => $options['sourceChannel'],
+            'Language' =>
+                $options['language'],
+            'TaggedText' =>
+                $options['taggedText'],
+            'SourceChannel' =>
+                $options['sourceChannel'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SampleInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['taskSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

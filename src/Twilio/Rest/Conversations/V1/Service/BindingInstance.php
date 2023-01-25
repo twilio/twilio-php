@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property string[] $messageTypes
  * @property string $url
  */
-class BindingInstance extends InstanceResource {
+class BindingInstance extends InstanceResource
+{
     /**
      * Initialize the BindingInstance
      *
@@ -46,7 +47,8 @@ class BindingInstance extends InstanceResource {
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Binding resource from.
      * @param string $sid The SID of the Binding resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class BindingInstance extends InstanceResource {
      *
      * @return BindingContext Context for this BindingInstance
      */
-    protected function proxy(): BindingContext {
+    protected function proxy(): BindingContext
+    {
         if (!$this->context) {
             $this->context = new BindingContext(
                 $this->version,
@@ -91,7 +94,9 @@ class BindingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class BindingInstance extends InstanceResource {
      * @return BindingInstance Fetched BindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BindingInstance {
+    public function fetch(): BindingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,7 +119,8 @@ class BindingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -130,7 +138,8 @@ class BindingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

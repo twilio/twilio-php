@@ -31,7 +31,8 @@ use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList;
  * @property AssignedAddOnList $assignedAddOns
  * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnContext assignedAddOns(string $sid)
  */
-class IncomingPhoneNumberContext extends InstanceContext {
+class IncomingPhoneNumberContext extends InstanceContext
+    {
     protected $_assignedAddOns;
 
     /**
@@ -41,13 +42,25 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/IncomingPhoneNumbers/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -56,9 +69,12 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the IncomingPhoneNumberInstance
@@ -66,16 +82,19 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): IncomingPhoneNumberInstance {
+    public function fetch(): IncomingPhoneNumberInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new IncomingPhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the IncomingPhoneNumberInstance
@@ -84,54 +103,81 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): IncomingPhoneNumberInstance {
+    public function update(array $options = []): IncomingPhoneNumberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'AccountSid' => $options['accountSid'],
-            'ApiVersion' => $options['apiVersion'],
-            'FriendlyName' => $options['friendlyName'],
-            'SmsApplicationSid' => $options['smsApplicationSid'],
-            'SmsFallbackMethod' => $options['smsFallbackMethod'],
-            'SmsFallbackUrl' => $options['smsFallbackUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'SmsUrl' => $options['smsUrl'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'VoiceApplicationSid' => $options['voiceApplicationSid'],
-            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'EmergencyStatus' => $options['emergencyStatus'],
-            'EmergencyAddressSid' => $options['emergencyAddressSid'],
-            'TrunkSid' => $options['trunkSid'],
-            'VoiceReceiveMode' => $options['voiceReceiveMode'],
-            'IdentitySid' => $options['identitySid'],
-            'AddressSid' => $options['addressSid'],
-            'BundleSid' => $options['bundleSid'],
+            'AccountSid' =>
+                $options['accountSid'],
+            'ApiVersion' =>
+                $options['apiVersion'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'SmsApplicationSid' =>
+                $options['smsApplicationSid'],
+            'SmsFallbackMethod' =>
+                $options['smsFallbackMethod'],
+            'SmsFallbackUrl' =>
+                $options['smsFallbackUrl'],
+            'SmsMethod' =>
+                $options['smsMethod'],
+            'SmsUrl' =>
+                $options['smsUrl'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'VoiceApplicationSid' =>
+                $options['voiceApplicationSid'],
+            'VoiceCallerIdLookup' =>
+                Serialize::booleanToString($options['voiceCallerIdLookup']),
+            'VoiceFallbackMethod' =>
+                $options['voiceFallbackMethod'],
+            'VoiceFallbackUrl' =>
+                $options['voiceFallbackUrl'],
+            'VoiceMethod' =>
+                $options['voiceMethod'],
+            'VoiceUrl' =>
+                $options['voiceUrl'],
+            'EmergencyStatus' =>
+                $options['emergencyStatus'],
+            'EmergencyAddressSid' =>
+                $options['emergencyAddressSid'],
+            'TrunkSid' =>
+                $options['trunkSid'],
+            'VoiceReceiveMode' =>
+                $options['voiceReceiveMode'],
+            'IdentitySid' =>
+                $options['identitySid'],
+            'AddressSid' =>
+                $options['addressSid'],
+            'BundleSid' =>
+                $options['bundleSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new IncomingPhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the assignedAddOns
      */
-    protected function getAssignedAddOns(): AssignedAddOnList {
+    protected function getAssignedAddOns(): AssignedAddOnList
+    {
         if (!$this->_assignedAddOns) {
             $this->_assignedAddOns = new AssignedAddOnList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -145,7 +191,8 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -162,7 +209,8 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -176,7 +224,8 @@ class IncomingPhoneNumberContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

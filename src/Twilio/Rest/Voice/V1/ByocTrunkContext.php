@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class ByocTrunkContext extends InstanceContext {
+class ByocTrunkContext extends InstanceContext
+    {
     /**
      * Initialize the ByocTrunkContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The Twilio-provided string that uniquely identifies the BYOC Trunk resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/ByocTrunks/' . \rawurlencode($sid) . '';
+        $this->uri = '/ByocTrunks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +56,12 @@ class ByocTrunkContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ByocTrunkInstance
@@ -57,15 +69,18 @@ class ByocTrunkContext extends InstanceContext {
      * @return ByocTrunkInstance Fetched ByocTrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ByocTrunkInstance {
+    public function fetch(): ByocTrunkInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ByocTrunkInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ByocTrunkInstance
@@ -74,37 +89,51 @@ class ByocTrunkContext extends InstanceContext {
      * @return ByocTrunkInstance Updated ByocTrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ByocTrunkInstance {
+    public function update(array $options = []): ByocTrunkInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'StatusCallbackUrl' => $options['statusCallbackUrl'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
-            'ConnectionPolicySid' => $options['connectionPolicySid'],
-            'FromDomainSid' => $options['fromDomainSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'VoiceUrl' =>
+                $options['voiceUrl'],
+            'VoiceMethod' =>
+                $options['voiceMethod'],
+            'VoiceFallbackUrl' =>
+                $options['voiceFallbackUrl'],
+            'VoiceFallbackMethod' =>
+                $options['voiceFallbackMethod'],
+            'StatusCallbackUrl' =>
+                $options['statusCallbackUrl'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'CnamLookupEnabled' =>
+                Serialize::booleanToString($options['cnamLookupEnabled']),
+            'ConnectionPolicySid' =>
+                $options['connectionPolicySid'],
+            'FromDomainSid' =>
+                $options['fromDomainSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ByocTrunkInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

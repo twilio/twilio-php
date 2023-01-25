@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class TaskChannelContext extends InstanceContext {
+class TaskChannelContext extends InstanceContext
+    {
     /**
      * Initialize the TaskChannelContext
      *
@@ -33,13 +34,25 @@ class TaskChannelContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace that the new Task Channel belongs to.
      * @param string $sid The SID of the Task Channel resource to delete.
      */
-    public function __construct(Version $version, $workspaceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/TaskChannels/' . \rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/TaskChannels/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +61,12 @@ class TaskChannelContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the TaskChannelInstance
@@ -58,16 +74,19 @@ class TaskChannelContext extends InstanceContext {
      * @return TaskChannelInstance Fetched TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TaskChannelInstance {
+    public function fetch(): TaskChannelInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the TaskChannelInstance
@@ -76,30 +95,36 @@ class TaskChannelContext extends InstanceContext {
      * @return TaskChannelInstance Updated TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TaskChannelInstance {
+    public function update(array $options = []): TaskChannelInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'ChannelOptimizedRouting' => Serialize::booleanToString($options['channelOptimizedRouting']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'ChannelOptimizedRouting' =>
+                Serialize::booleanToString($options['channelOptimizedRouting']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TaskChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

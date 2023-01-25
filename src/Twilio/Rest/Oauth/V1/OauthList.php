@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class OauthList extends ListResource {
+class OauthList extends ListResource
+    {
     /**
      * Construct the OauthList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a OauthContext
      */
-    public function getContext(): OauthContext {
-        return new OauthContext($this->version);
+    public function getContext(
+        
+    ): OauthContext
+    {
+        return new OauthContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class OauthList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.OauthList]';
     }
 }

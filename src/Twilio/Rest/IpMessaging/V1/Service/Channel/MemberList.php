@@ -25,7 +25,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class MemberList extends ListResource {
+class MemberList extends ListResource
+    {
     /**
      * Construct the MemberList
      *
@@ -33,13 +34,28 @@ class MemberList extends ListResource {
      * @param string $serviceSid 
      * @param string $channelSid 
      */
-    public function __construct(Version $version, string $serviceSid , string $channelSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $channelSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'channelSid' => $channelSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'channelSid' =>
+            $channelSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($channelSid) . '/Members';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Channels/' . \rawurlencode($channelSid)
+        .'/Members';
     }
 
     /**
@@ -50,23 +66,28 @@ class MemberList extends ListResource {
      * @return MemberInstance Created MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $identity, array $options = []): MemberInstance {
+    public function create(string $identity, array $options = []): MemberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Identity' => $identity,
-            'RoleSid' => $options['roleSid'],
+            'Identity' =>
+                $identity,
+            'RoleSid' =>
+                $options['roleSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MemberInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['channelSid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
         );
     }
+
 
     /**
      * Reads MemberInstance records from the API as a list.
@@ -84,7 +105,8 @@ class MemberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MemberInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -107,7 +129,8 @@ class MemberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -124,11 +147,18 @@ class MemberList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MemberPage Page of MemberInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MemberPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MemberPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
+            'Identity' =>
+                Serialize::map($options['identity'], function ($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -146,7 +176,8 @@ class MemberList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MemberPage Page of MemberInstance
      */
-    public function getPage(string $targetUrl): MemberPage {
+    public function getPage(string $targetUrl): MemberPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -161,8 +192,17 @@ class MemberList extends ListResource {
      *
      * @param string $sid 
      */
-    public function getContext(string $sid): MemberContext {
-        return new MemberContext($this->version, $this->solution['serviceSid'], $this->solution['channelSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): MemberContext
+    {
+        return new MemberContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
+            $sid
+        );
     }
 
     /**
@@ -170,7 +210,8 @@ class MemberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.IpMessaging.V1.MemberList]';
     }
 }

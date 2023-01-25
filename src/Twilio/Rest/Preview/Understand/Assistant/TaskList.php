@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class TaskList extends ListResource {
+class TaskList extends ListResource
+    {
     /**
      * Construct the TaskList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the Assistant.
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Tasks';
     }
 
     /**
@@ -49,24 +59,31 @@ class TaskList extends ListResource {
      * @return TaskInstance Created TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): TaskInstance {
+    public function create(string $uniqueName, array $options = []): TaskInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $uniqueName,
-            'FriendlyName' => $options['friendlyName'],
-            'Actions' => Serialize::jsonObject($options['actions']),
-            'ActionsUrl' => $options['actionsUrl'],
+            'UniqueName' =>
+                $uniqueName,
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Actions' =>
+                Serialize::jsonObject($options['actions']),
+            'ActionsUrl' =>
+                $options['actionsUrl'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TaskInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Reads TaskInstance records from the API as a list.
@@ -83,7 +100,8 @@ class TaskList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -105,7 +123,8 @@ class TaskList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -122,7 +141,12 @@ class TaskList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TaskPage Page of TaskInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): TaskPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -142,7 +166,8 @@ class TaskList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TaskPage Page of TaskInstance
      */
-    public function getPage(string $targetUrl): TaskPage {
+    public function getPage(string $targetUrl): TaskPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -157,8 +182,16 @@ class TaskList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function getContext(string $sid): TaskContext {
-        return new TaskContext($this->version, $this->solution['assistantSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): TaskContext
+    {
+        return new TaskContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $sid
+        );
     }
 
     /**
@@ -166,7 +199,8 @@ class TaskList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.TaskList]';
     }
 }

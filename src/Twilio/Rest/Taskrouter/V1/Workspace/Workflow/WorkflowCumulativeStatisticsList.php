@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class WorkflowCumulativeStatisticsList extends ListResource {
+class WorkflowCumulativeStatisticsList extends ListResource
+    {
     /**
      * Construct the WorkflowCumulativeStatisticsList
      *
@@ -28,18 +29,38 @@ class WorkflowCumulativeStatisticsList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace with the resource to fetch.
      * @param string $workflowSid Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
      */
-    public function __construct(Version $version, string $workspaceSid , string $workflowSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        ,
+        string $workflowSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        'workflowSid' =>
+            $workflowSid,
+        
+        ];
     }
 
     /**
      * Constructs a WorkflowCumulativeStatisticsContext
      */
-    public function getContext(): WorkflowCumulativeStatisticsContext {
-        return new WorkflowCumulativeStatisticsContext($this->version, $this->solution['workspaceSid'], $this->solution['workflowSid']);
+    public function getContext(
+        
+    ): WorkflowCumulativeStatisticsContext
+    {
+        return new WorkflowCumulativeStatisticsContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $this->solution['workflowSid']
+        );
     }
 
     /**
@@ -47,7 +68,8 @@ class WorkflowCumulativeStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkflowCumulativeStatisticsList]';
     }
 }

@@ -29,7 +29,8 @@ use Twilio\Rest\Api\V2010\Account\Usage\TriggerList;
  * @property TriggerList $triggers
  * @method \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext triggers(string $sid)
  */
-class UsageList extends ListResource {
+class UsageList extends ListResource
+    {
     protected $_records = null;
     protected $_triggers = null;
 
@@ -39,38 +40,48 @@ class UsageList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
     }
 
     /**
      * Access the records
      */
-    protected function getRecords(): RecordList {
+    protected function getRecords(): RecordList
+    {
         if (!$this->_records) {
             $this->_records = new RecordList(
-                $this->version
-                , $this->solution['accountSid']
+                $this->version,
+                $this->solution['accountSid']
+                
             );
         }
-
         return $this->_records;
     }
 
     /**
      * Access the triggers
      */
-    protected function getTriggers(): TriggerList {
+    protected function getTriggers(): TriggerList
+    {
         if (!$this->_triggers) {
             $this->_triggers = new TriggerList(
-                $this->version
-                , $this->solution['accountSid']
+                $this->version,
+                $this->solution['accountSid']
+                
             );
         }
-
         return $this->_triggers;
     }
 
@@ -81,7 +92,8 @@ class UsageList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -98,7 +110,8 @@ class UsageList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -112,7 +125,8 @@ class UsageList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.UsageList]';
     }
 }

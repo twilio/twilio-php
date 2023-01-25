@@ -18,26 +18,46 @@ namespace Twilio\Rest\FlexApi\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WebChannelsOptions {
+abstract class WebChannelsOptions
+{
     /**
-     * @param string $chatFriendlyName The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example. 
-     * @param string $customerFriendlyName The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example. 
-     * @param string $preEngagementData The pre-engagement data. 
+     * @param string $chatFriendlyName The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example.
+     * @param string $customerFriendlyName The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example.
+     * @param string $preEngagementData The pre-engagement data.
      * @return CreateWebChannelsOptions Options builder
      */
-    public static function create(string $chatFriendlyName = Values::NONE, string $customerFriendlyName = Values::NONE, string $preEngagementData = Values::NONE): CreateWebChannelsOptions {
-        return new CreateWebChannelsOptions($chatFriendlyName, $customerFriendlyName, $preEngagementData);
+    public static function create(
+        
+        string $chatFriendlyName = Values::NONE,
+        string $customerFriendlyName = Values::NONE,
+        string $preEngagementData = Values::NONE
+
+    ): CreateWebChannelsOptions
+    {
+        return new CreateWebChannelsOptions(
+            $chatFriendlyName,
+            $customerFriendlyName,
+            $preEngagementData
+        );
     }
 
 }
 
-class CreateWebChannelsOptions extends Options {
+class CreateWebChannelsOptions extends Options
+    {
     /**
      * @param string $chatFriendlyName The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example.
      * @param string $customerFriendlyName The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example.
      * @param string $preEngagementData The pre-engagement data.
      */
-    public function __construct(string $chatFriendlyName = Values::NONE, string $customerFriendlyName = Values::NONE, string $preEngagementData = Values::NONE) {
+    public function __construct(
+        
+        string $chatFriendlyName = Values::NONE,
+        string $customerFriendlyName = Values::NONE,
+        string $preEngagementData = Values::NONE
+
+    )
+    {
         $this->options['chatFriendlyName'] = $chatFriendlyName;
         $this->options['customerFriendlyName'] = $customerFriendlyName;
         $this->options['preEngagementData'] = $preEngagementData;
@@ -49,7 +69,8 @@ class CreateWebChannelsOptions extends Options {
      * @param string $chatFriendlyName The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example.
      * @return $this Fluent Builder
      */
-    public function setChatFriendlyName(string $chatFriendlyName): self {
+    public function setChatFriendlyName(string $chatFriendlyName): self
+    {
         $this->options['chatFriendlyName'] = $chatFriendlyName;
         return $this;
     }
@@ -60,7 +81,8 @@ class CreateWebChannelsOptions extends Options {
      * @param string $customerFriendlyName The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example.
      * @return $this Fluent Builder
      */
-    public function setCustomerFriendlyName(string $customerFriendlyName): self {
+    public function setCustomerFriendlyName(string $customerFriendlyName): self
+    {
         $this->options['customerFriendlyName'] = $customerFriendlyName;
         return $this;
     }
@@ -71,7 +93,8 @@ class CreateWebChannelsOptions extends Options {
      * @param string $preEngagementData The pre-engagement data.
      * @return $this Fluent Builder
      */
-    public function setPreEngagementData(string $preEngagementData): self {
+    public function setPreEngagementData(string $preEngagementData): self
+    {
         $this->options['preEngagementData'] = $preEngagementData;
         return $this;
     }
@@ -81,7 +104,8 @@ class CreateWebChannelsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V2.CreateWebChannelsOptions ' . $options . ']';
     }

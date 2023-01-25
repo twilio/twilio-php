@@ -18,35 +18,78 @@ namespace Twilio\Rest\Insights\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CallSummariesOptions {
+abstract class CallSummariesOptions
+{
     /**
-     * @param string $from  
-     * @param string $to  
-     * @param string $fromCarrier  
-     * @param string $toCarrier  
-     * @param string $fromCountryCode  
-     * @param string $toCountryCode  
-     * @param bool $branded  
-     * @param bool $verifiedCaller  
-     * @param bool $hasTag  
-     * @param string $startTime  
-     * @param string $endTime  
-     * @param string $callType  
-     * @param string $callState  
-     * @param string $direction  
-     * @param string $processingState  
-     * @param string $sortBy  
-     * @param string $subaccount  
-     * @param bool $abnormalSession  
+     * @param string $from 
+     * @param string $to 
+     * @param string $fromCarrier 
+     * @param string $toCarrier 
+     * @param string $fromCountryCode 
+     * @param string $toCountryCode 
+     * @param bool $branded 
+     * @param bool $verifiedCaller 
+     * @param bool $hasTag 
+     * @param string $startTime 
+     * @param string $endTime 
+     * @param string $callType 
+     * @param string $callState 
+     * @param string $direction 
+     * @param string $processingState 
+     * @param string $sortBy 
+     * @param string $subaccount 
+     * @param bool $abnormalSession 
      * @return ReadCallSummariesOptions Options builder
      */
-    public static function read(string $from = Values::NONE, string $to = Values::NONE, string $fromCarrier = Values::NONE, string $toCarrier = Values::NONE, string $fromCountryCode = Values::NONE, string $toCountryCode = Values::NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, string $callType = Values::NONE, string $callState = Values::NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE): ReadCallSummariesOptions {
-        return new ReadCallSummariesOptions($from, $to, $fromCarrier, $toCarrier, $fromCountryCode, $toCountryCode, $branded, $verifiedCaller, $hasTag, $startTime, $endTime, $callType, $callState, $direction, $processingState, $sortBy, $subaccount, $abnormalSession);
+    public static function read(
+        
+        string $from = Values::NONE,
+        string $to = Values::NONE,
+        string $fromCarrier = Values::NONE,
+        string $toCarrier = Values::NONE,
+        string $fromCountryCode = Values::NONE,
+        string $toCountryCode = Values::NONE,
+        bool $branded = Values::NONE,
+        bool $verifiedCaller = Values::NONE,
+        bool $hasTag = Values::NONE,
+        string $startTime = Values::NONE,
+        string $endTime = Values::NONE,
+        string $callType = Values::NONE,
+        string $callState = Values::NONE,
+        string $direction = Values::NONE,
+        string $processingState = Values::NONE,
+        string $sortBy = Values::NONE,
+        string $subaccount = Values::NONE,
+        bool $abnormalSession = Values::NONE
+
+    ): ReadCallSummariesOptions
+    {
+        return new ReadCallSummariesOptions(
+            $from,
+            $to,
+            $fromCarrier,
+            $toCarrier,
+            $fromCountryCode,
+            $toCountryCode,
+            $branded,
+            $verifiedCaller,
+            $hasTag,
+            $startTime,
+            $endTime,
+            $callType,
+            $callState,
+            $direction,
+            $processingState,
+            $sortBy,
+            $subaccount,
+            $abnormalSession
+        );
     }
 
 }
 
-class ReadCallSummariesOptions extends Options {
+class ReadCallSummariesOptions extends Options
+    {
     /**
      * @param string $from 
      * @param string $to 
@@ -67,7 +110,29 @@ class ReadCallSummariesOptions extends Options {
      * @param string $subaccount 
      * @param bool $abnormalSession 
      */
-    public function __construct(string $from = Values::NONE, string $to = Values::NONE, string $fromCarrier = Values::NONE, string $toCarrier = Values::NONE, string $fromCountryCode = Values::NONE, string $toCountryCode = Values::NONE, bool $branded = Values::NONE, bool $verifiedCaller = Values::NONE, bool $hasTag = Values::NONE, string $startTime = Values::NONE, string $endTime = Values::NONE, string $callType = Values::NONE, string $callState = Values::NONE, string $direction = Values::NONE, string $processingState = Values::NONE, string $sortBy = Values::NONE, string $subaccount = Values::NONE, bool $abnormalSession = Values::NONE) {
+    public function __construct(
+        
+        string $from = Values::NONE,
+        string $to = Values::NONE,
+        string $fromCarrier = Values::NONE,
+        string $toCarrier = Values::NONE,
+        string $fromCountryCode = Values::NONE,
+        string $toCountryCode = Values::NONE,
+        bool $branded = Values::NONE,
+        bool $verifiedCaller = Values::NONE,
+        bool $hasTag = Values::NONE,
+        string $startTime = Values::NONE,
+        string $endTime = Values::NONE,
+        string $callType = Values::NONE,
+        string $callState = Values::NONE,
+        string $direction = Values::NONE,
+        string $processingState = Values::NONE,
+        string $sortBy = Values::NONE,
+        string $subaccount = Values::NONE,
+        bool $abnormalSession = Values::NONE
+
+    )
+    {
         $this->options['from'] = $from;
         $this->options['to'] = $to;
         $this->options['fromCarrier'] = $fromCarrier;
@@ -94,7 +159,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $from 
      * @return $this Fluent Builder
      */
-    public function setFrom(string $from): self {
+    public function setFrom(string $from): self
+    {
         $this->options['from'] = $from;
         return $this;
     }
@@ -105,7 +171,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $to 
      * @return $this Fluent Builder
      */
-    public function setTo(string $to): self {
+    public function setTo(string $to): self
+    {
         $this->options['to'] = $to;
         return $this;
     }
@@ -116,7 +183,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $fromCarrier 
      * @return $this Fluent Builder
      */
-    public function setFromCarrier(string $fromCarrier): self {
+    public function setFromCarrier(string $fromCarrier): self
+    {
         $this->options['fromCarrier'] = $fromCarrier;
         return $this;
     }
@@ -127,7 +195,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $toCarrier 
      * @return $this Fluent Builder
      */
-    public function setToCarrier(string $toCarrier): self {
+    public function setToCarrier(string $toCarrier): self
+    {
         $this->options['toCarrier'] = $toCarrier;
         return $this;
     }
@@ -138,7 +207,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $fromCountryCode 
      * @return $this Fluent Builder
      */
-    public function setFromCountryCode(string $fromCountryCode): self {
+    public function setFromCountryCode(string $fromCountryCode): self
+    {
         $this->options['fromCountryCode'] = $fromCountryCode;
         return $this;
     }
@@ -149,7 +219,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $toCountryCode 
      * @return $this Fluent Builder
      */
-    public function setToCountryCode(string $toCountryCode): self {
+    public function setToCountryCode(string $toCountryCode): self
+    {
         $this->options['toCountryCode'] = $toCountryCode;
         return $this;
     }
@@ -160,7 +231,8 @@ class ReadCallSummariesOptions extends Options {
      * @param bool $branded 
      * @return $this Fluent Builder
      */
-    public function setBranded(bool $branded): self {
+    public function setBranded(bool $branded): self
+    {
         $this->options['branded'] = $branded;
         return $this;
     }
@@ -171,7 +243,8 @@ class ReadCallSummariesOptions extends Options {
      * @param bool $verifiedCaller 
      * @return $this Fluent Builder
      */
-    public function setVerifiedCaller(bool $verifiedCaller): self {
+    public function setVerifiedCaller(bool $verifiedCaller): self
+    {
         $this->options['verifiedCaller'] = $verifiedCaller;
         return $this;
     }
@@ -182,7 +255,8 @@ class ReadCallSummariesOptions extends Options {
      * @param bool $hasTag 
      * @return $this Fluent Builder
      */
-    public function setHasTag(bool $hasTag): self {
+    public function setHasTag(bool $hasTag): self
+    {
         $this->options['hasTag'] = $hasTag;
         return $this;
     }
@@ -193,7 +267,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $startTime 
      * @return $this Fluent Builder
      */
-    public function setStartTime(string $startTime): self {
+    public function setStartTime(string $startTime): self
+    {
         $this->options['startTime'] = $startTime;
         return $this;
     }
@@ -204,7 +279,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $endTime 
      * @return $this Fluent Builder
      */
-    public function setEndTime(string $endTime): self {
+    public function setEndTime(string $endTime): self
+    {
         $this->options['endTime'] = $endTime;
         return $this;
     }
@@ -215,7 +291,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $callType 
      * @return $this Fluent Builder
      */
-    public function setCallType(string $callType): self {
+    public function setCallType(string $callType): self
+    {
         $this->options['callType'] = $callType;
         return $this;
     }
@@ -226,7 +303,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $callState 
      * @return $this Fluent Builder
      */
-    public function setCallState(string $callState): self {
+    public function setCallState(string $callState): self
+    {
         $this->options['callState'] = $callState;
         return $this;
     }
@@ -237,7 +315,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $direction 
      * @return $this Fluent Builder
      */
-    public function setDirection(string $direction): self {
+    public function setDirection(string $direction): self
+    {
         $this->options['direction'] = $direction;
         return $this;
     }
@@ -248,7 +327,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $processingState 
      * @return $this Fluent Builder
      */
-    public function setProcessingState(string $processingState): self {
+    public function setProcessingState(string $processingState): self
+    {
         $this->options['processingState'] = $processingState;
         return $this;
     }
@@ -259,7 +339,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $sortBy 
      * @return $this Fluent Builder
      */
-    public function setSortBy(string $sortBy): self {
+    public function setSortBy(string $sortBy): self
+    {
         $this->options['sortBy'] = $sortBy;
         return $this;
     }
@@ -270,7 +351,8 @@ class ReadCallSummariesOptions extends Options {
      * @param string $subaccount 
      * @return $this Fluent Builder
      */
-    public function setSubaccount(string $subaccount): self {
+    public function setSubaccount(string $subaccount): self
+    {
         $this->options['subaccount'] = $subaccount;
         return $this;
     }
@@ -281,7 +363,8 @@ class ReadCallSummariesOptions extends Options {
      * @param bool $abnormalSession 
      * @return $this Fluent Builder
      */
-    public function setAbnormalSession(bool $abnormalSession): self {
+    public function setAbnormalSession(bool $abnormalSession): self
+    {
         $this->options['abnormalSession'] = $abnormalSession;
         return $this;
     }
@@ -291,7 +374,8 @@ class ReadCallSummariesOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.ReadCallSummariesOptions ' . $options . ']';
     }

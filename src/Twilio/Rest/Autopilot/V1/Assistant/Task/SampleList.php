@@ -24,7 +24,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SampleList extends ListResource {
+class SampleList extends ListResource
+    {
     /**
      * Construct the SampleList
      *
@@ -32,13 +33,28 @@ class SampleList extends ListResource {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource.
      * @param string $taskSid The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create.
      */
-    public function __construct(Version $version, string $assistantSid , string $taskSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        ,
+        string $taskSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, 'taskSid' => $taskSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        'taskSid' =>
+            $taskSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Samples';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Tasks/' . \rawurlencode($taskSid)
+        .'/Samples';
     }
 
     /**
@@ -50,24 +66,30 @@ class SampleList extends ListResource {
      * @return SampleInstance Created SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $language, string $taggedText, array $options = []): SampleInstance {
+    public function create(string $language, string $taggedText, array $options = []): SampleInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Language' => $language,
-            'TaggedText' => $taggedText,
-            'SourceChannel' => $options['sourceChannel'],
+            'Language' =>
+                $language,
+            'TaggedText' =>
+                $taggedText,
+            'SourceChannel' =>
+                $options['sourceChannel'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SampleInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['taskSid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid'],
         );
     }
+
 
     /**
      * Reads SampleInstance records from the API as a list.
@@ -85,7 +107,8 @@ class SampleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SampleInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -108,7 +131,8 @@ class SampleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -125,11 +149,18 @@ class SampleList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SamplePage Page of SampleInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SamplePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SamplePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Language' => $options['language'],
+            'Language' =>
+                $options['language'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -147,7 +178,8 @@ class SampleList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SamplePage Page of SampleInstance
      */
-    public function getPage(string $targetUrl): SamplePage {
+    public function getPage(string $targetUrl): SamplePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -162,8 +194,17 @@ class SampleList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Sample resource to delete.
      */
-    public function getContext(string $sid): SampleContext {
-        return new SampleContext($this->version, $this->solution['assistantSid'], $this->solution['taskSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): SampleContext
+    {
+        return new SampleContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $this->solution['taskSid'],
+            $sid
+        );
     }
 
     /**
@@ -171,7 +212,8 @@ class SampleList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.SampleList]';
     }
 }

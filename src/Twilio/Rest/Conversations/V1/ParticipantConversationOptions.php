@@ -18,24 +18,41 @@ namespace Twilio\Rest\Conversations\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ParticipantConversationOptions {
+abstract class ParticipantConversationOptions
+{
     /**
-     * @param string $identity A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters. 
-     * @param string $address A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded. 
+     * @param string $identity A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
+     * @param string $address A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded.
      * @return ReadParticipantConversationOptions Options builder
      */
-    public static function read(string $identity = Values::NONE, string $address = Values::NONE): ReadParticipantConversationOptions {
-        return new ReadParticipantConversationOptions($identity, $address);
+    public static function read(
+        
+        string $identity = Values::NONE,
+        string $address = Values::NONE
+
+    ): ReadParticipantConversationOptions
+    {
+        return new ReadParticipantConversationOptions(
+            $identity,
+            $address
+        );
     }
 
 }
 
-class ReadParticipantConversationOptions extends Options {
+class ReadParticipantConversationOptions extends Options
+    {
     /**
      * @param string $identity A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
      * @param string $address A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded.
      */
-    public function __construct(string $identity = Values::NONE, string $address = Values::NONE) {
+    public function __construct(
+        
+        string $identity = Values::NONE,
+        string $address = Values::NONE
+
+    )
+    {
         $this->options['identity'] = $identity;
         $this->options['address'] = $address;
     }
@@ -46,7 +63,8 @@ class ReadParticipantConversationOptions extends Options {
      * @param string $identity A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
      * @return $this Fluent Builder
      */
-    public function setIdentity(string $identity): self {
+    public function setIdentity(string $identity): self
+    {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -57,7 +75,8 @@ class ReadParticipantConversationOptions extends Options {
      * @param string $address A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded.
      * @return $this Fluent Builder
      */
-    public function setAddress(string $address): self {
+    public function setAddress(string $address): self
+    {
         $this->options['address'] = $address;
         return $this;
     }
@@ -67,7 +86,8 @@ class ReadParticipantConversationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.ReadParticipantConversationOptions ' . $options . ']';
     }

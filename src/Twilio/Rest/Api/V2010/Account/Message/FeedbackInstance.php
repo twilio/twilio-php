@@ -32,7 +32,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $uri
  */
-class FeedbackInstance extends InstanceResource {
+class FeedbackInstance extends InstanceResource
+{
     /**
      * Initialize the FeedbackInstance
      *
@@ -41,7 +42,8 @@ class FeedbackInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $messageSid The SID of the Message resource for which the feedback was provided.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,7 +66,8 @@ class FeedbackInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -82,7 +85,8 @@ class FeedbackInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.FeedbackInstance]';
     }
 }

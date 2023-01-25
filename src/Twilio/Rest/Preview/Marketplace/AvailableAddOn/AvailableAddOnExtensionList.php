@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class AvailableAddOnExtensionList extends ListResource {
+class AvailableAddOnExtensionList extends ListResource
+    {
     /**
      * Construct the AvailableAddOnExtensionList
      *
      * @param Version $version Version that contains the resource
      * @param string $availableAddOnSid The SID of the AvailableAddOn resource with the extension to fetch.
      */
-    public function __construct(Version $version, string $availableAddOnSid ) {
+    public function __construct(
+        Version $version,
+        string $availableAddOnSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['availableAddOnSid' => $availableAddOnSid, ];
+        $this->solution = [
+        'availableAddOnSid' =>
+            $availableAddOnSid,
+        
+        ];
 
-        $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid) . '/Extensions';
+        $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid)
+        .'/Extensions';
     }
 
     /**
@@ -53,7 +63,8 @@ class AvailableAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AvailableAddOnExtensionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class AvailableAddOnExtensionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class AvailableAddOnExtensionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AvailableAddOnExtensionPage Page of AvailableAddOnExtensionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AvailableAddOnExtensionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): AvailableAddOnExtensionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class AvailableAddOnExtensionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AvailableAddOnExtensionPage Page of AvailableAddOnExtensionInstance
      */
-    public function getPage(string $targetUrl): AvailableAddOnExtensionPage {
+    public function getPage(string $targetUrl): AvailableAddOnExtensionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,8 +145,16 @@ class AvailableAddOnExtensionList extends ListResource {
      *
      * @param string $sid The SID of the AvailableAddOn Extension resource to fetch.
      */
-    public function getContext(string $sid): AvailableAddOnExtensionContext {
-        return new AvailableAddOnExtensionContext($this->version, $this->solution['availableAddOnSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): AvailableAddOnExtensionContext
+    {
+        return new AvailableAddOnExtensionContext(
+            $this->version,
+            $this->solution['availableAddOnSid'],
+            $sid
+        );
     }
 
     /**
@@ -136,7 +162,8 @@ class AvailableAddOnExtensionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Marketplace.AvailableAddOnExtensionList]';
     }
 }

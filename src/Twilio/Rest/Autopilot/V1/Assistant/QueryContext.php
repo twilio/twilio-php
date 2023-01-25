@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class QueryContext extends InstanceContext {
+class QueryContext extends InstanceContext
+    {
     /**
      * Initialize the QueryContext
      *
@@ -32,13 +33,25 @@ class QueryContext extends InstanceContext {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Query resource to delete.
      */
-    public function __construct(Version $version, $assistantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Queries/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Queries/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +60,12 @@ class QueryContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the QueryInstance
@@ -57,16 +73,19 @@ class QueryContext extends InstanceContext {
      * @return QueryInstance Fetched QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): QueryInstance {
+    public function fetch(): QueryInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new QueryInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the QueryInstance
@@ -75,30 +94,36 @@ class QueryContext extends InstanceContext {
      * @return QueryInstance Updated QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): QueryInstance {
+    public function update(array $options = []): QueryInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'SampleSid' => $options['sampleSid'],
-            'Status' => $options['status'],
+            'SampleSid' =>
+                $options['sampleSid'],
+            'Status' =>
+                $options['status'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new QueryInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

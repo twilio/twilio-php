@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class VerificationAttemptList extends ListResource {
+class VerificationAttemptList extends ListResource
+    {
     /**
      * Construct the VerificationAttemptList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Attempts';
     }
@@ -55,7 +59,8 @@ class VerificationAttemptList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return VerificationAttemptInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +83,8 @@ class VerificationAttemptList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,18 +101,32 @@ class VerificationAttemptList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return VerificationAttemptPage Page of VerificationAttemptInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): VerificationAttemptPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): VerificationAttemptPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
-            'ChannelData.To' => $options['channelDataTo'],
-            'Country' => $options['country'],
-            'Channel' => $options['channel'],
-            'VerifyServiceSid' => $options['verifyServiceSid'],
-            'VerificationSid' => $options['verificationSid'],
-            'Status' => $options['status'],
+            'DateCreatedAfter' =>
+                Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' =>
+                Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'ChannelData.To' =>
+                $options['channelDataTo'],
+            'Country' =>
+                $options['country'],
+            'Channel' =>
+                $options['channel'],
+            'VerifyServiceSid' =>
+                $options['verifyServiceSid'],
+            'VerificationSid' =>
+                $options['verificationSid'],
+            'Status' =>
+                $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -124,7 +144,8 @@ class VerificationAttemptList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return VerificationAttemptPage Page of VerificationAttemptInstance
      */
-    public function getPage(string $targetUrl): VerificationAttemptPage {
+    public function getPage(string $targetUrl): VerificationAttemptPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,8 +160,15 @@ class VerificationAttemptList extends ListResource {
      *
      * @param string $sid The unique SID identifier of a Verification Attempt
      */
-    public function getContext(string $sid): VerificationAttemptContext {
-        return new VerificationAttemptContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): VerificationAttemptContext
+    {
+        return new VerificationAttemptContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -148,7 +176,8 @@ class VerificationAttemptList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.VerificationAttemptList]';
     }
 }

@@ -18,43 +18,80 @@ namespace Twilio\Rest\Supersim\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SimOptions {
+abstract class SimOptions
+{
 
 
     /**
-     * @param string $status The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`. 
-     * @param string $fleet The SID or unique name of the Fleet to which a list of Sims are assigned. 
-     * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs. 
+     * @param string $status The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.
+     * @param string $fleet The SID or unique name of the Fleet to which a list of Sims are assigned.
+     * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs.
      * @return ReadSimOptions Options builder
      */
-    public static function read(string $status = Values::NONE, string $fleet = Values::NONE, string $iccid = Values::NONE): ReadSimOptions {
-        return new ReadSimOptions($status, $fleet, $iccid);
+    public static function read(
+        
+        string $status = Values::NONE,
+        string $fleet = Values::NONE,
+        string $iccid = Values::NONE
+
+    ): ReadSimOptions
+    {
+        return new ReadSimOptions(
+            $status,
+            $fleet,
+            $iccid
+        );
     }
 
     /**
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. 
-     * @param string $status  
-     * @param string $fleet The SID or unique name of the Fleet to which the SIM resource should be assigned. 
-     * @param string $callbackUrl The URL we should call using the `callback_method` after an asynchronous update has finished. 
-     * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST. 
-     * @param string $accountSid The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new. 
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+     * @param string $status
+     * @param string $fleet The SID or unique name of the Fleet to which the SIM resource should be assigned.
+     * @param string $callbackUrl The URL we should call using the `callback_method` after an asynchronous update has finished.
+     * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
+     * @param string $accountSid The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.
      * @return UpdateSimOptions Options builder
      */
-    public static function update(string $uniqueName = Values::NONE, string $status = Values::NONE, string $fleet = Values::NONE, string $callbackUrl = Values::NONE, string $callbackMethod = Values::NONE, string $accountSid = Values::NONE): UpdateSimOptions {
-        return new UpdateSimOptions($uniqueName, $status, $fleet, $callbackUrl, $callbackMethod, $accountSid);
+    public static function update(
+        
+        string $uniqueName = Values::NONE,
+        string $status = Values::NONE,
+        string $fleet = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $callbackMethod = Values::NONE,
+        string $accountSid = Values::NONE
+
+    ): UpdateSimOptions
+    {
+        return new UpdateSimOptions(
+            $uniqueName,
+            $status,
+            $fleet,
+            $callbackUrl,
+            $callbackMethod,
+            $accountSid
+        );
     }
 
 }
 
 
 
-class ReadSimOptions extends Options {
+class ReadSimOptions extends Options
+    {
     /**
      * @param string $status The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.
      * @param string $fleet The SID or unique name of the Fleet to which a list of Sims are assigned.
      * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs.
      */
-    public function __construct(string $status = Values::NONE, string $fleet = Values::NONE, string $iccid = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $fleet = Values::NONE,
+        string $iccid = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['fleet'] = $fleet;
         $this->options['iccid'] = $iccid;
@@ -66,7 +103,8 @@ class ReadSimOptions extends Options {
      * @param string $status The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -77,7 +115,8 @@ class ReadSimOptions extends Options {
      * @param string $fleet The SID or unique name of the Fleet to which a list of Sims are assigned.
      * @return $this Fluent Builder
      */
-    public function setFleet(string $fleet): self {
+    public function setFleet(string $fleet): self
+    {
         $this->options['fleet'] = $fleet;
         return $this;
     }
@@ -88,7 +127,8 @@ class ReadSimOptions extends Options {
      * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs.
      * @return $this Fluent Builder
      */
-    public function setIccid(string $iccid): self {
+    public function setIccid(string $iccid): self
+    {
         $this->options['iccid'] = $iccid;
         return $this;
     }
@@ -98,22 +138,34 @@ class ReadSimOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Supersim.V1.ReadSimOptions ' . $options . ']';
     }
 }
 
-class UpdateSimOptions extends Options {
+class UpdateSimOptions extends Options
+    {
     /**
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
-     * @param string $status 
+     * @param string $status
      * @param string $fleet The SID or unique name of the Fleet to which the SIM resource should be assigned.
      * @param string $callbackUrl The URL we should call using the `callback_method` after an asynchronous update has finished.
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
      * @param string $accountSid The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.
      */
-    public function __construct(string $uniqueName = Values::NONE, string $status = Values::NONE, string $fleet = Values::NONE, string $callbackUrl = Values::NONE, string $callbackMethod = Values::NONE, string $accountSid = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        string $status = Values::NONE,
+        string $fleet = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $callbackMethod = Values::NONE,
+        string $accountSid = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['status'] = $status;
         $this->options['fleet'] = $fleet;
@@ -128,16 +180,18 @@ class UpdateSimOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -148,7 +202,8 @@ class UpdateSimOptions extends Options {
      * @param string $fleet The SID or unique name of the Fleet to which the SIM resource should be assigned.
      * @return $this Fluent Builder
      */
-    public function setFleet(string $fleet): self {
+    public function setFleet(string $fleet): self
+    {
         $this->options['fleet'] = $fleet;
         return $this;
     }
@@ -159,7 +214,8 @@ class UpdateSimOptions extends Options {
      * @param string $callbackUrl The URL we should call using the `callback_method` after an asynchronous update has finished.
      * @return $this Fluent Builder
      */
-    public function setCallbackUrl(string $callbackUrl): self {
+    public function setCallbackUrl(string $callbackUrl): self
+    {
         $this->options['callbackUrl'] = $callbackUrl;
         return $this;
     }
@@ -170,7 +226,8 @@ class UpdateSimOptions extends Options {
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
      * @return $this Fluent Builder
      */
-    public function setCallbackMethod(string $callbackMethod): self {
+    public function setCallbackMethod(string $callbackMethod): self
+    {
         $this->options['callbackMethod'] = $callbackMethod;
         return $this;
     }
@@ -181,7 +238,8 @@ class UpdateSimOptions extends Options {
      * @param string $accountSid The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.
      * @return $this Fluent Builder
      */
-    public function setAccountSid(string $accountSid): self {
+    public function setAccountSid(string $accountSid): self
+    {
         $this->options['accountSid'] = $accountSid;
         return $this;
     }
@@ -191,7 +249,8 @@ class UpdateSimOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Supersim.V1.UpdateSimOptions ' . $options . ']';
     }

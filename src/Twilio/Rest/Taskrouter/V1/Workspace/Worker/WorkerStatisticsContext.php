@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class WorkerStatisticsContext extends InstanceContext {
+class WorkerStatisticsContext extends InstanceContext
+    {
     /**
      * Initialize the WorkerStatisticsContext
      *
@@ -33,13 +34,25 @@ class WorkerStatisticsContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace with the WorkerChannel to fetch.
      * @param string $workerSid The SID of the Worker with the WorkerChannel to fetch.
      */
-    public function __construct(Version $version, $workspaceSid , $workerSid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $workerSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'workerSid' => $workerSid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'workerSid' =>
+            $workerSid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/' . \rawurlencode($workerSid) . '/Statistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workers/' . \rawurlencode($workerSid)
+        .'/Statistics';
     }
 
     /**
@@ -49,32 +62,40 @@ class WorkerStatisticsContext extends InstanceContext {
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkerStatisticsInstance {
+    public function fetch(array $options = []): WorkerStatisticsInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'Minutes' => $options['minutes'],
-            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
-            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
-            'TaskChannel' => $options['taskChannel'],
+            'Minutes' =>
+                $options['minutes'],
+            'StartDate' =>
+                Serialize::iso8601DateTime($options['startDate']),
+            'EndDate' =>
+                Serialize::iso8601DateTime($options['endDate']),
+            'TaskChannel' =>
+                $options['taskChannel'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkerStatisticsInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['workerSid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['workerSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class VerificationAttemptsSummaryList extends ListResource {
+class VerificationAttemptsSummaryList extends ListResource
+    {
     /**
      * Construct the VerificationAttemptsSummaryList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a VerificationAttemptsSummaryContext
      */
-    public function getContext(): VerificationAttemptsSummaryContext {
-        return new VerificationAttemptsSummaryContext($this->version);
+    public function getContext(
+        
+    ): VerificationAttemptsSummaryContext
+    {
+        return new VerificationAttemptsSummaryContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class VerificationAttemptsSummaryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.VerificationAttemptsSummaryList]';
     }
 }

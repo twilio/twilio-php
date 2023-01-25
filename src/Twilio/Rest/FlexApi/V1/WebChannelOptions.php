@@ -18,36 +18,62 @@ namespace Twilio\Rest\FlexApi\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WebChannelOptions {
+abstract class WebChannelOptions
+{
     /**
-     * @param string $chatUniqueName The chat channel's unique name. 
-     * @param string $preEngagementData The pre-engagement data. 
+     * @param string $chatUniqueName The chat channel's unique name.
+     * @param string $preEngagementData The pre-engagement data.
      * @return CreateWebChannelOptions Options builder
      */
-    public static function create(string $chatUniqueName = Values::NONE, string $preEngagementData = Values::NONE): CreateWebChannelOptions {
-        return new CreateWebChannelOptions($chatUniqueName, $preEngagementData);
+    public static function create(
+        
+        string $chatUniqueName = Values::NONE,
+        string $preEngagementData = Values::NONE
+
+    ): CreateWebChannelOptions
+    {
+        return new CreateWebChannelOptions(
+            $chatUniqueName,
+            $preEngagementData
+        );
     }
 
 
 
 
     /**
-     * @param string $chatStatus  
-     * @param string $postEngagementData The post-engagement data. 
+     * @param string $chatStatus
+     * @param string $postEngagementData The post-engagement data.
      * @return UpdateWebChannelOptions Options builder
      */
-    public static function update(string $chatStatus = Values::NONE, string $postEngagementData = Values::NONE): UpdateWebChannelOptions {
-        return new UpdateWebChannelOptions($chatStatus, $postEngagementData);
+    public static function update(
+        
+        string $chatStatus = Values::NONE,
+        string $postEngagementData = Values::NONE
+
+    ): UpdateWebChannelOptions
+    {
+        return new UpdateWebChannelOptions(
+            $chatStatus,
+            $postEngagementData
+        );
     }
 
 }
 
-class CreateWebChannelOptions extends Options {
+class CreateWebChannelOptions extends Options
+    {
     /**
      * @param string $chatUniqueName The chat channel's unique name.
      * @param string $preEngagementData The pre-engagement data.
      */
-    public function __construct(string $chatUniqueName = Values::NONE, string $preEngagementData = Values::NONE) {
+    public function __construct(
+        
+        string $chatUniqueName = Values::NONE,
+        string $preEngagementData = Values::NONE
+
+    )
+    {
         $this->options['chatUniqueName'] = $chatUniqueName;
         $this->options['preEngagementData'] = $preEngagementData;
     }
@@ -58,7 +84,8 @@ class CreateWebChannelOptions extends Options {
      * @param string $chatUniqueName The chat channel's unique name.
      * @return $this Fluent Builder
      */
-    public function setChatUniqueName(string $chatUniqueName): self {
+    public function setChatUniqueName(string $chatUniqueName): self
+    {
         $this->options['chatUniqueName'] = $chatUniqueName;
         return $this;
     }
@@ -69,7 +96,8 @@ class CreateWebChannelOptions extends Options {
      * @param string $preEngagementData The pre-engagement data.
      * @return $this Fluent Builder
      */
-    public function setPreEngagementData(string $preEngagementData): self {
+    public function setPreEngagementData(string $preEngagementData): self
+    {
         $this->options['preEngagementData'] = $preEngagementData;
         return $this;
     }
@@ -79,7 +107,8 @@ class CreateWebChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateWebChannelOptions ' . $options . ']';
     }
@@ -88,21 +117,29 @@ class CreateWebChannelOptions extends Options {
 
 
 
-class UpdateWebChannelOptions extends Options {
+class UpdateWebChannelOptions extends Options
+    {
     /**
-     * @param string $chatStatus 
+     * @param string $chatStatus
      * @param string $postEngagementData The post-engagement data.
      */
-    public function __construct(string $chatStatus = Values::NONE, string $postEngagementData = Values::NONE) {
+    public function __construct(
+        
+        string $chatStatus = Values::NONE,
+        string $postEngagementData = Values::NONE
+
+    )
+    {
         $this->options['chatStatus'] = $chatStatus;
         $this->options['postEngagementData'] = $postEngagementData;
     }
 
     /**
-     * @param string $chatStatus 
+     * @param string $chatStatus
      * @return $this Fluent Builder
      */
-    public function setChatStatus(string $chatStatus): self {
+    public function setChatStatus(string $chatStatus): self
+    {
         $this->options['chatStatus'] = $chatStatus;
         return $this;
     }
@@ -113,7 +150,8 @@ class UpdateWebChannelOptions extends Options {
      * @param string $postEngagementData The post-engagement data.
      * @return $this Fluent Builder
      */
-    public function setPostEngagementData(string $postEngagementData): self {
+    public function setPostEngagementData(string $postEngagementData): self
+    {
         $this->options['postEngagementData'] = $postEngagementData;
         return $this;
     }
@@ -123,7 +161,8 @@ class UpdateWebChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateWebChannelOptions ' . $options . ']';
     }

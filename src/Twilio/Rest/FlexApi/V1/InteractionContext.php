@@ -28,7 +28,8 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
  * @property InteractionChannelList $channels
  * @method \Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelContext channels(string $sid)
  */
-class InteractionContext extends InstanceContext {
+class InteractionContext extends InstanceContext
+    {
     protected $_channels;
 
     /**
@@ -37,13 +38,21 @@ class InteractionContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Interaction resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Interactions/' . \rawurlencode($sid) . '';
+        $this->uri = '/Interactions/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -52,24 +61,28 @@ class InteractionContext extends InstanceContext {
      * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionInstance {
+    public function fetch(): InteractionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new InteractionInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the channels
      */
-    protected function getChannels(): InteractionChannelList {
+    protected function getChannels(): InteractionChannelList
+    {
         if (!$this->_channels) {
             $this->_channels = new InteractionChannelList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -83,7 +96,8 @@ class InteractionContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -100,7 +114,8 @@ class InteractionContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -114,7 +129,8 @@ class InteractionContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

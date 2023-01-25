@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class PhoneNumberList extends ListResource {
+class PhoneNumberList extends ListResource
+    {
     /**
      * Construct the PhoneNumberList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class PhoneNumberList extends ListResource {
      *
      * @param string $phoneNumber The phone number to lookup in E.164 or national format. Default country code is +1 (North America).
      */
-    public function getContext(string $phoneNumber): PhoneNumberContext {
-        return new PhoneNumberContext($this->version, $phoneNumber);
+    public function getContext(
+        string $phoneNumber
+        
+    ): PhoneNumberContext
+    {
+        return new PhoneNumberContext(
+            $this->version,
+            $phoneNumber
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class PhoneNumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Lookups.V2.PhoneNumberList]';
     }
 }

@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class JobContext extends InstanceContext {
+class JobContext extends InstanceContext
+    {
     /**
      * Initialize the JobContext
      *
      * @param Version $version Version that contains the resource
      * @param string $jobSid The unique string that that we created to identify the Bulk Export job
      */
-    public function __construct(Version $version, $jobSid ) {
+    public function __construct(
+        Version $version,
+        $jobSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['jobSid' => $jobSid,  ];
+        $this->solution = [
+        'jobSid' =>
+            $jobSid,
+        ];
 
-        $this->uri = '/Exports/Jobs/' . \rawurlencode($jobSid) . '';
+        $this->uri = '/Exports/Jobs/' . \rawurlencode($jobSid)
+        .'';
     }
 
     /**
@@ -44,9 +53,12 @@ class JobContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the JobInstance
@@ -54,22 +66,26 @@ class JobContext extends InstanceContext {
      * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): JobInstance {
+    public function fetch(): JobInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new JobInstance(
             $this->version,
-            $payload
-            , $this->solution['jobSid']
+            $payload,
+            $this->solution['jobSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

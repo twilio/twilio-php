@@ -18,44 +18,63 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RecordingOptions {
+abstract class RecordingOptions
+{
 
     /**
-     * @param string $mode  
-     * @param string $trim  
+     * @param string $mode
+     * @param string $trim
      * @return UpdateRecordingOptions Options builder
      */
-    public static function update(string $mode = Values::NONE, string $trim = Values::NONE): UpdateRecordingOptions {
-        return new UpdateRecordingOptions($mode, $trim);
+    public static function update(
+        
+        string $mode = Values::NONE,
+        string $trim = Values::NONE
+
+    ): UpdateRecordingOptions
+    {
+        return new UpdateRecordingOptions(
+            $mode,
+            $trim
+        );
     }
 
 }
 
 
-class UpdateRecordingOptions extends Options {
+class UpdateRecordingOptions extends Options
+    {
     /**
-     * @param string $mode 
-     * @param string $trim 
+     * @param string $mode
+     * @param string $trim
      */
-    public function __construct(string $mode = Values::NONE, string $trim = Values::NONE) {
+    public function __construct(
+        
+        string $mode = Values::NONE,
+        string $trim = Values::NONE
+
+    )
+    {
         $this->options['mode'] = $mode;
         $this->options['trim'] = $trim;
     }
 
     /**
-     * @param string $mode 
+     * @param string $mode
      * @return $this Fluent Builder
      */
-    public function setMode(string $mode): self {
+    public function setMode(string $mode): self
+    {
         $this->options['mode'] = $mode;
         return $this;
     }
 
     /**
-     * @param string $trim 
+     * @param string $trim
      * @return $this Fluent Builder
      */
-    public function setTrim(string $trim): self {
+    public function setTrim(string $trim): self
+    {
         $this->options['trim'] = $trim;
         return $this;
     }
@@ -65,7 +84,8 @@ class UpdateRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trunking.V1.UpdateRecordingOptions ' . $options . ']';
     }

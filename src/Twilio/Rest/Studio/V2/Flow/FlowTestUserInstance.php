@@ -28,7 +28,8 @@ use Twilio\Version;
  * @property string[] $testUsers
  * @property string $url
  */
-class FlowTestUserInstance extends InstanceResource {
+class FlowTestUserInstance extends InstanceResource
+{
     /**
      * Initialize the FlowTestUserInstance
      *
@@ -36,7 +37,8 @@ class FlowTestUserInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid Unique identifier of the flow.
      */
-    public function __construct(Version $version, array $payload, string $sid) {
+    public function __construct(Version $version, array $payload, string $sid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -55,7 +57,8 @@ class FlowTestUserInstance extends InstanceResource {
      *
      * @return FlowTestUserContext Context for this FlowTestUserInstance
      */
-    protected function proxy(): FlowTestUserContext {
+    protected function proxy(): FlowTestUserContext
+    {
         if (!$this->context) {
             $this->context = new FlowTestUserContext(
                 $this->version,
@@ -72,7 +75,9 @@ class FlowTestUserInstance extends InstanceResource {
      * @return FlowTestUserInstance Fetched FlowTestUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlowTestUserInstance {
+    public function fetch(): FlowTestUserInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -83,7 +88,9 @@ class FlowTestUserInstance extends InstanceResource {
      * @return FlowTestUserInstance Updated FlowTestUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $testUsers): FlowTestUserInstance {
+    public function update(array $testUsers): FlowTestUserInstance
+    {
+
         return $this->proxy()->update($testUsers);
     }
 
@@ -94,7 +101,8 @@ class FlowTestUserInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -112,7 +120,8 @@ class FlowTestUserInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -18,38 +18,68 @@ namespace Twilio\Rest\Video\V1\Room;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ParticipantOptions {
+abstract class ParticipantOptions
+{
 
     /**
-     * @param string $status Read only the participants with this status. Can be: `connected` or `disconnected`. For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned. 
-     * @param string $identity Read only the Participants with this [User](https://www.twilio.com/docs/chat/rest/user-resource) `identity` value. 
-     * @param \DateTime $dateCreatedAfter Read only Participants that started after this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format. 
-     * @param \DateTime $dateCreatedBefore Read only Participants that started before this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format. 
+     * @param string $status Read only the participants with this status. Can be: `connected` or `disconnected`. For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.
+     * @param string $identity Read only the Participants with this [User](https://www.twilio.com/docs/chat/rest/user-resource) `identity` value.
+     * @param \DateTime $dateCreatedAfter Read only Participants that started after this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+     * @param \DateTime $dateCreatedBefore Read only Participants that started before this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
      * @return ReadParticipantOptions Options builder
      */
-    public static function read(string $status = Values::NONE, string $identity = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE): ReadParticipantOptions {
-        return new ReadParticipantOptions($status, $identity, $dateCreatedAfter, $dateCreatedBefore);
+    public static function read(
+        
+        string $status = Values::NONE,
+        string $identity = Values::NONE,
+        \DateTime $dateCreatedAfter = Values::NONE,
+        \DateTime $dateCreatedBefore = Values::NONE
+
+    ): ReadParticipantOptions
+    {
+        return new ReadParticipantOptions(
+            $status,
+            $identity,
+            $dateCreatedAfter,
+            $dateCreatedBefore
+        );
     }
 
     /**
-     * @param string $status  
+     * @param string $status
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update(string $status = Values::NONE): UpdateParticipantOptions {
-        return new UpdateParticipantOptions($status);
+    public static function update(
+        
+        string $status = Values::NONE
+
+    ): UpdateParticipantOptions
+    {
+        return new UpdateParticipantOptions(
+            $status
+        );
     }
 
 }
 
 
-class ReadParticipantOptions extends Options {
+class ReadParticipantOptions extends Options
+    {
     /**
      * @param string $status Read only the participants with this status. Can be: `connected` or `disconnected`. For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.
      * @param string $identity Read only the Participants with this [User](https://www.twilio.com/docs/chat/rest/user-resource) `identity` value.
      * @param \DateTime $dateCreatedAfter Read only Participants that started after this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
      * @param \DateTime $dateCreatedBefore Read only Participants that started before this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
      */
-    public function __construct(string $status = Values::NONE, string $identity = Values::NONE, \DateTime $dateCreatedAfter = Values::NONE, \DateTime $dateCreatedBefore = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $identity = Values::NONE,
+        \DateTime $dateCreatedAfter = Values::NONE,
+        \DateTime $dateCreatedBefore = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['identity'] = $identity;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -62,7 +92,8 @@ class ReadParticipantOptions extends Options {
      * @param string $status Read only the participants with this status. Can be: `connected` or `disconnected`. For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -73,7 +104,8 @@ class ReadParticipantOptions extends Options {
      * @param string $identity Read only the Participants with this [User](https://www.twilio.com/docs/chat/rest/user-resource) `identity` value.
      * @return $this Fluent Builder
      */
-    public function setIdentity(string $identity): self {
+    public function setIdentity(string $identity): self
+    {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -84,7 +116,8 @@ class ReadParticipantOptions extends Options {
      * @param \DateTime $dateCreatedAfter Read only Participants that started after this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter(\DateTime $dateCreatedAfter): self {
+    public function setDateCreatedAfter(\DateTime $dateCreatedAfter): self
+    {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -95,7 +128,8 @@ class ReadParticipantOptions extends Options {
      * @param \DateTime $dateCreatedBefore Read only Participants that started before this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore(\DateTime $dateCreatedBefore): self {
+    public function setDateCreatedBefore(\DateTime $dateCreatedBefore): self
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -105,25 +139,33 @@ class ReadParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Video.V1.ReadParticipantOptions ' . $options . ']';
     }
 }
 
-class UpdateParticipantOptions extends Options {
+class UpdateParticipantOptions extends Options
+    {
     /**
-     * @param string $status 
+     * @param string $status
      */
-    public function __construct(string $status = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -133,7 +175,8 @@ class UpdateParticipantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Video.V1.UpdateParticipantOptions ' . $options . ']';
     }

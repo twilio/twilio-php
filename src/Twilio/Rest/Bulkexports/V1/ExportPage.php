@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class ExportPage extends Page {
+class ExportPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class ExportPage extends Page {
      * @param array $payload Payload response from the API
      * @return ExportInstance \Twilio\Rest\Bulkexports\V1\ExportInstance
      */
-    public function buildInstance(array $payload): ExportInstance {
+    public function buildInstance(array $payload): ExportInstance
+    {
         return new ExportInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class ExportPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Bulkexports.V1.ExportPage]';
     }
 }

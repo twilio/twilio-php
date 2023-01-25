@@ -31,7 +31,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class SubscribeRulesInstance extends InstanceResource {
+class SubscribeRulesInstance extends InstanceResource
+{
     /**
      * Initialize the SubscribeRulesInstance
      *
@@ -40,7 +41,8 @@ class SubscribeRulesInstance extends InstanceResource {
      * @param string $roomSid The SID of the Room resource where the subscribe rules to fetch apply.
      * @param string $participantSid The SID of the Participant resource with the subscribe rules to fetch.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class SubscribeRulesInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -80,7 +83,8 @@ class SubscribeRulesInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.SubscribeRulesInstance]';
     }
 }

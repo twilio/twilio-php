@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class SecondaryAuthTokenList extends ListResource {
+class SecondaryAuthTokenList extends ListResource
+    {
     /**
      * Construct the SecondaryAuthTokenList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a SecondaryAuthTokenContext
      */
-    public function getContext(): SecondaryAuthTokenContext {
-        return new SecondaryAuthTokenContext($this->version);
+    public function getContext(
+        
+    ): SecondaryAuthTokenContext
+    {
+        return new SecondaryAuthTokenContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class SecondaryAuthTokenList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Accounts.V1.SecondaryAuthTokenList]';
     }
 }

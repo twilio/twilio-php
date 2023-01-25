@@ -23,17 +23,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class TokenList extends ListResource {
+class TokenList extends ListResource
+    {
     /**
      * Construct the TokenList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/token';
     }
@@ -47,34 +51,46 @@ class TokenList extends ListResource {
      * @return TokenInstance Created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $grantType, string $clientSid, array $options = []): TokenInstance {
+    public function create(string $grantType, string $clientSid, array $options = []): TokenInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'GrantType' => $grantType,
-            'ClientSid' => $clientSid,
-            'ClientSecret' => $options['clientSecret'],
-            'Code' => $options['code'],
-            'CodeVerifier' => $options['codeVerifier'],
-            'DeviceCode' => $options['deviceCode'],
-            'RefreshToken' => $options['refreshToken'],
-            'DeviceId' => $options['deviceId'],
+            'GrantType' =>
+                $grantType,
+            'ClientSid' =>
+                $clientSid,
+            'ClientSecret' =>
+                $options['clientSecret'],
+            'Code' =>
+                $options['code'],
+            'CodeVerifier' =>
+                $options['codeVerifier'],
+            'DeviceCode' =>
+                $options['deviceCode'],
+            'RefreshToken' =>
+                $options['refreshToken'],
+            'DeviceId' =>
+                $options['deviceId'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TokenInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.TokenList]';
     }
 }

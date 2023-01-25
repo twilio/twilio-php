@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class ReservationPage extends Page {
+class ReservationPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class ReservationPage extends Page {
      * @param array $payload Payload response from the API
      * @return ReservationInstance \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationInstance
      */
-    public function buildInstance(array $payload): ReservationInstance {
+    public function buildInstance(array $payload): ReservationInstance
+    {
         return new ReservationInstance($this->version, $payload, $this->solution['workspaceSid'], $this->solution['taskSid']);
     }
 
@@ -45,7 +48,8 @@ class ReservationPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.ReservationPage]';
     }
 }

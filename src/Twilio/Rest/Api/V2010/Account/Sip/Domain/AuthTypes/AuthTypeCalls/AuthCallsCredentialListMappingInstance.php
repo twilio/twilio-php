@@ -31,7 +31,8 @@ use Twilio\Deserialize;
  * @property string $friendlyName
  * @property string $sid
  */
-class AuthCallsCredentialListMappingInstance extends InstanceResource {
+class AuthCallsCredentialListMappingInstance extends InstanceResource
+{
     /**
      * Initialize the AuthCallsCredentialListMappingInstance
      *
@@ -41,7 +42,8 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
      * @param string $domainSid The SID of the SIP domain that will contain the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
      *
      * @return AuthCallsCredentialListMappingContext Context for this AuthCallsCredentialListMappingInstance
      */
-    protected function proxy(): AuthCallsCredentialListMappingContext {
+    protected function proxy(): AuthCallsCredentialListMappingContext
+    {
         if (!$this->context) {
             $this->context = new AuthCallsCredentialListMappingContext(
                 $this->version,
@@ -81,7 +84,9 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -91,7 +96,9 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
      * @return AuthCallsCredentialListMappingInstance Fetched AuthCallsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AuthCallsCredentialListMappingInstance {
+    public function fetch(): AuthCallsCredentialListMappingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -102,7 +109,8 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -120,7 +128,8 @@ class AuthCallsCredentialListMappingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

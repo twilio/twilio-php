@@ -18,25 +18,42 @@ namespace Twilio\Rest\Events\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SubscriptionOptions {
+abstract class SubscriptionOptions
+{
 
 
 
     /**
-     * @param string $sinkSid The SID of the sink that the list of Subscriptions should be filtered by. 
+     * @param string $sinkSid The SID of the sink that the list of Subscriptions should be filtered by.
      * @return ReadSubscriptionOptions Options builder
      */
-    public static function read(string $sinkSid = Values::NONE): ReadSubscriptionOptions {
-        return new ReadSubscriptionOptions($sinkSid);
+    public static function read(
+        
+        string $sinkSid = Values::NONE
+
+    ): ReadSubscriptionOptions
+    {
+        return new ReadSubscriptionOptions(
+            $sinkSid
+        );
     }
 
     /**
-     * @param string $description A human readable description for the Subscription. 
-     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. 
+     * @param string $description A human readable description for the Subscription.
+     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
      * @return UpdateSubscriptionOptions Options builder
      */
-    public static function update(string $description = Values::NONE, string $sinkSid = Values::NONE): UpdateSubscriptionOptions {
-        return new UpdateSubscriptionOptions($description, $sinkSid);
+    public static function update(
+        
+        string $description = Values::NONE,
+        string $sinkSid = Values::NONE
+
+    ): UpdateSubscriptionOptions
+    {
+        return new UpdateSubscriptionOptions(
+            $description,
+            $sinkSid
+        );
     }
 
 }
@@ -44,11 +61,17 @@ abstract class SubscriptionOptions {
 
 
 
-class ReadSubscriptionOptions extends Options {
+class ReadSubscriptionOptions extends Options
+    {
     /**
      * @param string $sinkSid The SID of the sink that the list of Subscriptions should be filtered by.
      */
-    public function __construct(string $sinkSid = Values::NONE) {
+    public function __construct(
+        
+        string $sinkSid = Values::NONE
+
+    )
+    {
         $this->options['sinkSid'] = $sinkSid;
     }
 
@@ -58,7 +81,8 @@ class ReadSubscriptionOptions extends Options {
      * @param string $sinkSid The SID of the sink that the list of Subscriptions should be filtered by.
      * @return $this Fluent Builder
      */
-    public function setSinkSid(string $sinkSid): self {
+    public function setSinkSid(string $sinkSid): self
+    {
         $this->options['sinkSid'] = $sinkSid;
         return $this;
     }
@@ -68,18 +92,26 @@ class ReadSubscriptionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Events.V1.ReadSubscriptionOptions ' . $options . ']';
     }
 }
 
-class UpdateSubscriptionOptions extends Options {
+class UpdateSubscriptionOptions extends Options
+    {
     /**
      * @param string $description A human readable description for the Subscription.
      * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
      */
-    public function __construct(string $description = Values::NONE, string $sinkSid = Values::NONE) {
+    public function __construct(
+        
+        string $description = Values::NONE,
+        string $sinkSid = Values::NONE
+
+    )
+    {
         $this->options['description'] = $description;
         $this->options['sinkSid'] = $sinkSid;
     }
@@ -90,7 +122,8 @@ class UpdateSubscriptionOptions extends Options {
      * @param string $description A human readable description for the Subscription.
      * @return $this Fluent Builder
      */
-    public function setDescription(string $description): self {
+    public function setDescription(string $description): self
+    {
         $this->options['description'] = $description;
         return $this;
     }
@@ -101,7 +134,8 @@ class UpdateSubscriptionOptions extends Options {
      * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
      * @return $this Fluent Builder
      */
-    public function setSinkSid(string $sinkSid): self {
+    public function setSinkSid(string $sinkSid): self
+    {
         $this->options['sinkSid'] = $sinkSid;
         return $this;
     }
@@ -111,7 +145,8 @@ class UpdateSubscriptionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Events.V1.UpdateSubscriptionOptions ' . $options . ']';
     }

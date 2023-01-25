@@ -40,7 +40,8 @@ use Twilio\Deserialize;
  * @property int $index
  * @property string $url
  */
-class MessageInstance extends InstanceResource {
+class MessageInstance extends InstanceResource
+{
     /**
      * Initialize the MessageInstance
      *
@@ -50,7 +51,8 @@ class MessageInstance extends InstanceResource {
      * @param string $channelSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class MessageInstance extends InstanceResource {
      *
      * @return MessageContext Context for this MessageInstance
      */
-    protected function proxy(): MessageContext {
+    protected function proxy(): MessageContext
+    {
         if (!$this->context) {
             $this->context = new MessageContext(
                 $this->version,
@@ -98,7 +101,9 @@ class MessageInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -108,7 +113,9 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MessageInstance {
+    public function fetch(): MessageInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -119,7 +126,9 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): MessageInstance {
+    public function update(array $options = []): MessageInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -130,7 +139,8 @@ class MessageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +158,8 @@ class MessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

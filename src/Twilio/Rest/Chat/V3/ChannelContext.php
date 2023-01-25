@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ChannelContext extends InstanceContext {
+class ChannelContext extends InstanceContext
+    {
     /**
      * Initialize the ChannelContext
      *
@@ -32,13 +33,25 @@ class ChannelContext extends InstanceContext {
      * @param string $serviceSid The unique SID identifier of the Service.
      * @param string $sid A 34 character string that uniquely identifies this Channel.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Channels/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,12 +61,16 @@ class ChannelContext extends InstanceContext {
      * @return ChannelInstance Updated ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ChannelInstance {
+    public function update(array $options = []): ChannelInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Type' => $options['type'],
-            'MessagingServiceSid' => $options['messagingServiceSid'],
+            'Type' =>
+                $options['type'],
+            'MessagingServiceSid' =>
+                $options['messagingServiceSid'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -62,18 +79,20 @@ class ChannelContext extends InstanceContext {
 
         return new ChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

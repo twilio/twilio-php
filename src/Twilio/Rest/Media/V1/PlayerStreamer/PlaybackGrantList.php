@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class PlaybackGrantList extends ListResource {
+class PlaybackGrantList extends ListResource
+    {
     /**
      * Construct the PlaybackGrantList
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string generated to identify the PlayerStreamer resource associated with this PlaybackGrant
      */
-    public function __construct(Version $version, string $sid ) {
+    public function __construct(
+        Version $version,
+        string $sid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid, ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        
+        ];
     }
 
     /**
      * Constructs a PlaybackGrantContext
      */
-    public function getContext(): PlaybackGrantContext {
-        return new PlaybackGrantContext($this->version, $this->solution['sid']);
+    public function getContext(
+        
+    ): PlaybackGrantContext
+    {
+        return new PlaybackGrantContext(
+            $this->version,
+            $this->solution['sid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class PlaybackGrantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Media.V1.PlaybackGrantList]';
     }
 }

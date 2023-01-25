@@ -18,49 +18,92 @@ namespace Twilio\Rest\Conversations\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class UserOptions {
+abstract class UserOptions
+{
     /**
-     * @param string $friendlyName The string that you assigned to describe the resource. 
-     * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned. 
-     * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user. 
-     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header 
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
+     * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return CreateUserOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): CreateUserOptions {
-        return new CreateUserOptions($friendlyName, $attributes, $roleSid, $xTwilioWebhookEnabled);
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $roleSid = Values::NONE,
+        string $xTwilioWebhookEnabled = Values::NONE
+
+    ): CreateUserOptions
+    {
+        return new CreateUserOptions(
+            $friendlyName,
+            $attributes,
+            $roleSid,
+            $xTwilioWebhookEnabled
+        );
     }
 
     /**
-     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header 
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return DeleteUserOptions Options builder
      */
-    public static function delete(string $xTwilioWebhookEnabled = Values::NONE): DeleteUserOptions {
-        return new DeleteUserOptions($xTwilioWebhookEnabled);
+    public static function delete(
+        
+        string $xTwilioWebhookEnabled = Values::NONE
+
+    ): DeleteUserOptions
+    {
+        return new DeleteUserOptions(
+            $xTwilioWebhookEnabled
+        );
     }
 
 
 
     /**
-     * @param string $friendlyName The string that you assigned to describe the resource. 
-     * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned. 
-     * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user. 
-     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header 
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
+     * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
+     * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return UpdateUserOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE): UpdateUserOptions {
-        return new UpdateUserOptions($friendlyName, $attributes, $roleSid, $xTwilioWebhookEnabled);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $roleSid = Values::NONE,
+        string $xTwilioWebhookEnabled = Values::NONE
+
+    ): UpdateUserOptions
+    {
+        return new UpdateUserOptions(
+            $friendlyName,
+            $attributes,
+            $roleSid,
+            $xTwilioWebhookEnabled
+        );
     }
 
 }
 
-class CreateUserOptions extends Options {
+class CreateUserOptions extends Options
+    {
     /**
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
      * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
-    public function __construct(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $roleSid = Values::NONE,
+        string $xTwilioWebhookEnabled = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['roleSid'] = $roleSid;
@@ -73,7 +116,8 @@ class CreateUserOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -84,7 +128,8 @@ class CreateUserOptions extends Options {
      * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -95,7 +140,8 @@ class CreateUserOptions extends Options {
      * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
      * @return $this Fluent Builder
      */
-    public function setRoleSid(string $roleSid): self {
+    public function setRoleSid(string $roleSid): self
+    {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -106,7 +152,8 @@ class CreateUserOptions extends Options {
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return $this Fluent Builder
      */
-    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self
+    {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
         return $this;
     }
@@ -116,17 +163,24 @@ class CreateUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.CreateUserOptions ' . $options . ']';
     }
 }
 
-class DeleteUserOptions extends Options {
+class DeleteUserOptions extends Options
+    {
     /**
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
-    public function __construct(string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $xTwilioWebhookEnabled = Values::NONE
+
+    )
+    {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -136,7 +190,8 @@ class DeleteUserOptions extends Options {
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return $this Fluent Builder
      */
-    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self
+    {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
         return $this;
     }
@@ -146,7 +201,8 @@ class DeleteUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.DeleteUserOptions ' . $options . ']';
     }
@@ -154,14 +210,23 @@ class DeleteUserOptions extends Options {
 
 
 
-class UpdateUserOptions extends Options {
+class UpdateUserOptions extends Options
+    {
     /**
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
      * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
-    public function __construct(string $friendlyName = Values::NONE, string $attributes = Values::NONE, string $roleSid = Values::NONE, string $xTwilioWebhookEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $attributes = Values::NONE,
+        string $roleSid = Values::NONE,
+        string $xTwilioWebhookEnabled = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['roleSid'] = $roleSid;
@@ -174,7 +239,8 @@ class UpdateUserOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -185,7 +251,8 @@ class UpdateUserOptions extends Options {
      * @param string $attributes The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -196,7 +263,8 @@ class UpdateUserOptions extends Options {
      * @param string $roleSid The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
      * @return $this Fluent Builder
      */
-    public function setRoleSid(string $roleSid): self {
+    public function setRoleSid(string $roleSid): self
+    {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -207,7 +275,8 @@ class UpdateUserOptions extends Options {
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return $this Fluent Builder
      */
-    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self {
+    public function setXTwilioWebhookEnabled(string $xTwilioWebhookEnabled): self
+    {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
         return $this;
     }
@@ -217,7 +286,8 @@ class UpdateUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.UpdateUserOptions ' . $options . ']';
     }

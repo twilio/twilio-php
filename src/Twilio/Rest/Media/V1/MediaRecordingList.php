@@ -23,17 +23,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class MediaRecordingList extends ListResource {
+class MediaRecordingList extends ListResource
+    {
     /**
      * Construct the MediaRecordingList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/MediaRecordings';
     }
@@ -54,7 +58,8 @@ class MediaRecordingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MediaRecordingInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -77,7 +82,8 @@ class MediaRecordingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -94,14 +100,24 @@ class MediaRecordingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MediaRecordingPage Page of MediaRecordingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaRecordingPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MediaRecordingPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
-            'Status' => $options['status'],
-            'ProcessorSid' => $options['processorSid'],
-            'SourceSid' => $options['sourceSid'],
+            'Order' =>
+                $options['order'],
+            'Status' =>
+                $options['status'],
+            'ProcessorSid' =>
+                $options['processorSid'],
+            'SourceSid' =>
+                $options['sourceSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -119,7 +135,8 @@ class MediaRecordingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MediaRecordingPage Page of MediaRecordingInstance
      */
-    public function getPage(string $targetUrl): MediaRecordingPage {
+    public function getPage(string $targetUrl): MediaRecordingPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,8 +151,15 @@ class MediaRecordingList extends ListResource {
      *
      * @param string $sid The SID of the MediaRecording resource to delete.
      */
-    public function getContext(string $sid): MediaRecordingContext {
-        return new MediaRecordingContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): MediaRecordingContext
+    {
+        return new MediaRecordingContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -143,7 +167,8 @@ class MediaRecordingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Media.V1.MediaRecordingList]';
     }
 }

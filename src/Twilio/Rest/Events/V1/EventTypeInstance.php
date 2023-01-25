@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property array $links
  */
-class EventTypeInstance extends InstanceResource {
+class EventTypeInstance extends InstanceResource
+{
     /**
      * Initialize the EventTypeInstance
      *
@@ -41,7 +42,8 @@ class EventTypeInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $type A string that uniquely identifies this Event Type.
      */
-    public function __construct(Version $version, array $payload, string $type = null) {
+    public function __construct(Version $version, array $payload, string $type = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,7 +66,8 @@ class EventTypeInstance extends InstanceResource {
      *
      * @return EventTypeContext Context for this EventTypeInstance
      */
-    protected function proxy(): EventTypeContext {
+    protected function proxy(): EventTypeContext
+    {
         if (!$this->context) {
             $this->context = new EventTypeContext(
                 $this->version,
@@ -81,7 +84,9 @@ class EventTypeInstance extends InstanceResource {
      * @return EventTypeInstance Fetched EventTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EventTypeInstance {
+    public function fetch(): EventTypeInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -92,7 +97,8 @@ class EventTypeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -110,7 +116,8 @@ class EventTypeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

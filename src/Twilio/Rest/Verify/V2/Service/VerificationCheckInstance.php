@@ -38,7 +38,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property array[] $snaAttemptsErrorCodes
  */
-class VerificationCheckInstance extends InstanceResource {
+class VerificationCheckInstance extends InstanceResource
+{
     /**
      * Initialize the VerificationCheckInstance
      *
@@ -46,7 +47,8 @@ class VerificationCheckInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -75,7 +77,8 @@ class VerificationCheckInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -93,7 +96,8 @@ class VerificationCheckInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.VerificationCheckInstance]';
     }
 }

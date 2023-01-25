@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string $createdBy
  * @property string $url
  */
-class InviteInstance extends InstanceResource {
+class InviteInstance extends InstanceResource
+{
     /**
      * Initialize the InviteInstance
      *
@@ -46,7 +47,8 @@ class InviteInstance extends InstanceResource {
      * @param string $channelSid The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to.
      * @param string $sid The Twilio-provided string that uniquely identifies the Invite resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class InviteInstance extends InstanceResource {
      *
      * @return InviteContext Context for this InviteInstance
      */
-    protected function proxy(): InviteContext {
+    protected function proxy(): InviteContext
+    {
         if (!$this->context) {
             $this->context = new InviteContext(
                 $this->version,
@@ -91,7 +94,9 @@ class InviteInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class InviteInstance extends InstanceResource {
      * @return InviteInstance Fetched InviteInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InviteInstance {
+    public function fetch(): InviteInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,7 +119,8 @@ class InviteInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -130,7 +138,8 @@ class InviteInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

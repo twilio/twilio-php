@@ -18,26 +18,43 @@ namespace Twilio\Rest\Proxy\V1\Service\Session\Participant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class MessageInteractionOptions {
+abstract class MessageInteractionOptions
+{
     /**
-     * @param string $body The message to send to the participant 
-     * @param string[] $mediaUrl Reserved. Not currently supported. 
+     * @param string $body The message to send to the participant
+     * @param string[] $mediaUrl Reserved. Not currently supported.
      * @return CreateMessageInteractionOptions Options builder
      */
-    public static function create(string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE): CreateMessageInteractionOptions {
-        return new CreateMessageInteractionOptions($body, $mediaUrl);
+    public static function create(
+        
+        string $body = Values::NONE,
+        array $mediaUrl = Values::ARRAY_NONE
+
+    ): CreateMessageInteractionOptions
+    {
+        return new CreateMessageInteractionOptions(
+            $body,
+            $mediaUrl
+        );
     }
 
 
 
 }
 
-class CreateMessageInteractionOptions extends Options {
+class CreateMessageInteractionOptions extends Options
+    {
     /**
      * @param string $body The message to send to the participant
      * @param string[] $mediaUrl Reserved. Not currently supported.
      */
-    public function __construct(string $body = Values::NONE, array $mediaUrl = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        string $body = Values::NONE,
+        array $mediaUrl = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['body'] = $body;
         $this->options['mediaUrl'] = $mediaUrl;
     }
@@ -48,7 +65,8 @@ class CreateMessageInteractionOptions extends Options {
      * @param string $body The message to send to the participant
      * @return $this Fluent Builder
      */
-    public function setBody(string $body): self {
+    public function setBody(string $body): self
+    {
         $this->options['body'] = $body;
         return $this;
     }
@@ -59,7 +77,8 @@ class CreateMessageInteractionOptions extends Options {
      * @param string[] $mediaUrl Reserved. Not currently supported.
      * @return $this Fluent Builder
      */
-    public function setMediaUrl(array $mediaUrl): self {
+    public function setMediaUrl(array $mediaUrl): self
+    {
         $this->options['mediaUrl'] = $mediaUrl;
         return $this;
     }
@@ -69,7 +88,8 @@ class CreateMessageInteractionOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Proxy.V1.CreateMessageInteractionOptions ' . $options . ']';
     }

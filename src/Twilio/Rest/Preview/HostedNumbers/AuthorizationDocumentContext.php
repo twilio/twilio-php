@@ -30,7 +30,8 @@ use Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumbe
 /**
  * @property DependentHostedNumberOrderList $dependentHostedNumberOrders
  */
-class AuthorizationDocumentContext extends InstanceContext {
+class AuthorizationDocumentContext extends InstanceContext
+    {
     protected $_dependentHostedNumberOrders;
 
     /**
@@ -39,13 +40,21 @@ class AuthorizationDocumentContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this AuthorizationDocument.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/AuthorizationDocuments/' . \rawurlencode($sid) . '';
+        $this->uri = '/AuthorizationDocuments/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -54,15 +63,18 @@ class AuthorizationDocumentContext extends InstanceContext {
      * @return AuthorizationDocumentInstance Fetched AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AuthorizationDocumentInstance {
+    public function fetch(): AuthorizationDocumentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AuthorizationDocumentInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the AuthorizationDocumentInstance
@@ -71,36 +83,47 @@ class AuthorizationDocumentContext extends InstanceContext {
      * @return AuthorizationDocumentInstance Updated AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AuthorizationDocumentInstance {
+    public function update(array $options = []): AuthorizationDocumentInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'HostedNumberOrderSids' => Serialize::map($options['hostedNumberOrderSids'], function($e) { return $e; }),
-            'AddressSid' => $options['addressSid'],
-            'Email' => $options['email'],
-            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
-            'Status' => $options['status'],
-            'ContactTitle' => $options['contactTitle'],
-            'ContactPhoneNumber' => $options['contactPhoneNumber'],
+            'HostedNumberOrderSids' =>
+                Serialize::map($options['hostedNumberOrderSids'], function ($e) { return $e; }),
+            'AddressSid' =>
+                $options['addressSid'],
+            'Email' =>
+                $options['email'],
+            'CcEmails' =>
+                Serialize::map($options['ccEmails'], function ($e) { return $e; }),
+            'Status' =>
+                $options['status'],
+            'ContactTitle' =>
+                $options['contactTitle'],
+            'ContactPhoneNumber' =>
+                $options['contactPhoneNumber'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AuthorizationDocumentInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the dependentHostedNumberOrders
      */
-    protected function getDependentHostedNumberOrders(): DependentHostedNumberOrderList {
+    protected function getDependentHostedNumberOrders(): DependentHostedNumberOrderList
+    {
         if (!$this->_dependentHostedNumberOrders) {
             $this->_dependentHostedNumberOrders = new DependentHostedNumberOrderList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -114,7 +137,8 @@ class AuthorizationDocumentContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -131,7 +155,8 @@ class AuthorizationDocumentContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -145,7 +170,8 @@ class AuthorizationDocumentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

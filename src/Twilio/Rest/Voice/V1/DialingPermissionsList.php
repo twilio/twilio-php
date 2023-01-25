@@ -32,7 +32,8 @@ use Twilio\Rest\Voice\V1\DialingPermissions\SettingsList;
  * @method \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext countries(string $isoCode)
  * @method \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext settings()
  */
-class DialingPermissionsList extends ListResource {
+class DialingPermissionsList extends ListResource
+    {
     protected $_bulkCountryUpdates = null;
     protected $_countries = null;
     protected $_settings = null;
@@ -42,49 +43,52 @@ class DialingPermissionsList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Access the bulkCountryUpdates
      */
-    protected function getBulkCountryUpdates(): BulkCountryUpdateList {
+    protected function getBulkCountryUpdates(): BulkCountryUpdateList
+    {
         if (!$this->_bulkCountryUpdates) {
             $this->_bulkCountryUpdates = new BulkCountryUpdateList(
                 $this->version
             );
         }
-
         return $this->_bulkCountryUpdates;
     }
 
     /**
      * Access the countries
      */
-    protected function getCountries(): CountryList {
+    protected function getCountries(): CountryList
+    {
         if (!$this->_countries) {
             $this->_countries = new CountryList(
                 $this->version
             );
         }
-
         return $this->_countries;
     }
 
     /**
      * Access the settings
      */
-    protected function getSettings(): SettingsList {
+    protected function getSettings(): SettingsList
+    {
         if (!$this->_settings) {
             $this->_settings = new SettingsList(
                 $this->version
             );
         }
-
         return $this->_settings;
     }
 
@@ -95,7 +99,8 @@ class DialingPermissionsList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -112,7 +117,8 @@ class DialingPermissionsList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -126,7 +132,8 @@ class DialingPermissionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1.DialingPermissionsList]';
     }
 }

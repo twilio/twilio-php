@@ -36,7 +36,8 @@ use Twilio\Version;
  * @property string $jobQueuePosition
  * @property string $estimatedCompletionTime
  */
-class ExportCustomJobInstance extends InstanceResource {
+class ExportCustomJobInstance extends InstanceResource
+{
     /**
      * Initialize the ExportCustomJobInstance
      *
@@ -44,7 +45,8 @@ class ExportCustomJobInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages or Calls, Conferences, and Participants
      */
-    public function __construct(Version $version, array $payload, string $resourceType) {
+    public function __construct(Version $version, array $payload, string $resourceType)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class ExportCustomJobInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -90,7 +93,8 @@ class ExportCustomJobInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Bulkexports.V1.ExportCustomJobInstance]';
     }
 }

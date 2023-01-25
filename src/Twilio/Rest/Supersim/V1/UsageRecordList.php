@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class UsageRecordList extends ListResource {
+class UsageRecordList extends ListResource
+    {
     /**
      * Construct the UsageRecordList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/UsageRecords';
     }
@@ -55,7 +59,8 @@ class UsageRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UsageRecordInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +83,8 @@ class UsageRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,18 +101,32 @@ class UsageRecordList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UsageRecordPage Page of UsageRecordInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UsageRecordPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): UsageRecordPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Sim' => $options['sim'],
-            'Fleet' => $options['fleet'],
-            'Network' => $options['network'],
-            'IsoCountry' => $options['isoCountry'],
-            'Group' => $options['group'],
-            'Granularity' => $options['granularity'],
-            'StartTime' => Serialize::iso8601DateTime($options['startTime']),
-            'EndTime' => Serialize::iso8601DateTime($options['endTime']),
+            'Sim' =>
+                $options['sim'],
+            'Fleet' =>
+                $options['fleet'],
+            'Network' =>
+                $options['network'],
+            'IsoCountry' =>
+                $options['isoCountry'],
+            'Group' =>
+                $options['group'],
+            'Granularity' =>
+                $options['granularity'],
+            'StartTime' =>
+                Serialize::iso8601DateTime($options['startTime']),
+            'EndTime' =>
+                Serialize::iso8601DateTime($options['endTime']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -124,7 +144,8 @@ class UsageRecordList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UsageRecordPage Page of UsageRecordInstance
      */
-    public function getPage(string $targetUrl): UsageRecordPage {
+    public function getPage(string $targetUrl): UsageRecordPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -139,7 +160,8 @@ class UsageRecordList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.UsageRecordList]';
     }
 }

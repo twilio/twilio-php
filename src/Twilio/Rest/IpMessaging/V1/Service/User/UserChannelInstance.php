@@ -33,7 +33,8 @@ use Twilio\Version;
  * @property int $unreadMessagesCount
  * @property array $links
  */
-class UserChannelInstance extends InstanceResource {
+class UserChannelInstance extends InstanceResource
+{
     /**
      * Initialize the UserChannelInstance
      *
@@ -42,7 +43,8 @@ class UserChannelInstance extends InstanceResource {
      * @param string $serviceSid 
      * @param string $userSid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class UserChannelInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -85,7 +88,8 @@ class UserChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.IpMessaging.V1.UserChannelInstance]';
     }
 }

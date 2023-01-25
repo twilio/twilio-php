@@ -30,14 +30,16 @@ use Twilio\Version;
  * @property string[] $channels
  * @property array $translations
  */
-class TemplateInstance extends InstanceResource {
+class TemplateInstance extends InstanceResource
+{
     /**
      * Initialize the TemplateInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +61,8 @@ class TemplateInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -77,7 +80,8 @@ class TemplateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.TemplateInstance]';
     }
 }

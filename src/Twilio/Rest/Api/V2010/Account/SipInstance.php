@@ -22,7 +22,8 @@ use Twilio\InstanceResource;
 use Twilio\Version;
 
 
-class SipInstance extends InstanceResource {
+class SipInstance extends InstanceResource
+{
     /**
      * Initialize the SipInstance
      *
@@ -30,7 +31,8 @@ class SipInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.
      */
-    public function __construct(Version $version, array $payload, string $accountSid) {
+    public function __construct(Version $version, array $payload, string $accountSid)
+    {
         parent::__construct($version);
 
         $this->solution = ['accountSid' => $accountSid, ];
@@ -43,7 +45,8 @@ class SipInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -61,7 +64,8 @@ class SipInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.SipInstance]';
     }
 }

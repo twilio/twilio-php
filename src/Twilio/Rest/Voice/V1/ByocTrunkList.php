@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ByocTrunkList extends ListResource {
+class ByocTrunkList extends ListResource
+    {
     /**
      * Construct the ByocTrunkList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/ByocTrunks';
     }
@@ -47,29 +51,42 @@ class ByocTrunkList extends ListResource {
      * @return ByocTrunkInstance Created ByocTrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ByocTrunkInstance {
+    public function create(array $options = []): ByocTrunkInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'StatusCallbackUrl' => $options['statusCallbackUrl'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
-            'ConnectionPolicySid' => $options['connectionPolicySid'],
-            'FromDomainSid' => $options['fromDomainSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'VoiceUrl' =>
+                $options['voiceUrl'],
+            'VoiceMethod' =>
+                $options['voiceMethod'],
+            'VoiceFallbackUrl' =>
+                $options['voiceFallbackUrl'],
+            'VoiceFallbackMethod' =>
+                $options['voiceFallbackMethod'],
+            'StatusCallbackUrl' =>
+                $options['statusCallbackUrl'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'CnamLookupEnabled' =>
+                Serialize::booleanToString($options['cnamLookupEnabled']),
+            'ConnectionPolicySid' =>
+                $options['connectionPolicySid'],
+            'FromDomainSid' =>
+                $options['fromDomainSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ByocTrunkInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads ByocTrunkInstance records from the API as a list.
@@ -86,7 +103,8 @@ class ByocTrunkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ByocTrunkInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -108,7 +126,8 @@ class ByocTrunkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -125,7 +144,12 @@ class ByocTrunkList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ByocTrunkPage Page of ByocTrunkInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ByocTrunkPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ByocTrunkPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -145,7 +169,8 @@ class ByocTrunkList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ByocTrunkPage Page of ByocTrunkInstance
      */
-    public function getPage(string $targetUrl): ByocTrunkPage {
+    public function getPage(string $targetUrl): ByocTrunkPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -160,8 +185,15 @@ class ByocTrunkList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the BYOC Trunk resource to delete.
      */
-    public function getContext(string $sid): ByocTrunkContext {
-        return new ByocTrunkContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): ByocTrunkContext
+    {
+        return new ByocTrunkContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -169,7 +201,8 @@ class ByocTrunkList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1.ByocTrunkList]';
     }
 }

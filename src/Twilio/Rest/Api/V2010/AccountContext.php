@@ -92,7 +92,8 @@ use Twilio\Rest\Api\V2010\Account\NewSigningKeyList;
  * @method \Twilio\Rest\Api\V2010\Account\NotificationContext notifications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\MessageContext messages(string $sid)
  */
-class AccountContext extends InstanceContext {
+class AccountContext extends InstanceContext
+    {
     protected $_recordings;
     protected $_usage;
     protected $_messages;
@@ -124,13 +125,21 @@ class AccountContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The Account Sid that uniquely identifies the account to fetch
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -139,15 +148,18 @@ class AccountContext extends InstanceContext {
      * @return AccountInstance Fetched AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AccountInstance {
+    public function fetch(): AccountInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AccountInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the AccountInstance
@@ -156,31 +168,37 @@ class AccountContext extends InstanceContext {
      * @return AccountInstance Updated AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AccountInstance {
+    public function update(array $options = []): AccountInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'Status' => $options['status'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Status' =>
+                $options['status'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AccountInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RecordingList {
+    protected function getRecordings(): RecordingList
+    {
         if (!$this->_recordings) {
             $this->_recordings = new RecordingList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -190,11 +208,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the usage
      */
-    protected function getUsage(): UsageList {
+    protected function getUsage(): UsageList
+    {
         if (!$this->_usage) {
             $this->_usage = new UsageList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -204,11 +223,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the messages
      */
-    protected function getMessages(): MessageList {
+    protected function getMessages(): MessageList
+    {
         if (!$this->_messages) {
             $this->_messages = new MessageList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -218,11 +238,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the keys
      */
-    protected function getKeys(): KeyList {
+    protected function getKeys(): KeyList
+    {
         if (!$this->_keys) {
             $this->_keys = new KeyList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -232,11 +253,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the newKeys
      */
-    protected function getNewKeys(): NewKeyList {
+    protected function getNewKeys(): NewKeyList
+    {
         if (!$this->_newKeys) {
             $this->_newKeys = new NewKeyList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -246,11 +268,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the applications
      */
-    protected function getApplications(): ApplicationList {
+    protected function getApplications(): ApplicationList
+    {
         if (!$this->_applications) {
             $this->_applications = new ApplicationList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -260,11 +283,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the incomingPhoneNumbers
      */
-    protected function getIncomingPhoneNumbers(): IncomingPhoneNumberList {
+    protected function getIncomingPhoneNumbers(): IncomingPhoneNumberList
+    {
         if (!$this->_incomingPhoneNumbers) {
             $this->_incomingPhoneNumbers = new IncomingPhoneNumberList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -274,11 +298,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the conferences
      */
-    protected function getConferences(): ConferenceList {
+    protected function getConferences(): ConferenceList
+    {
         if (!$this->_conferences) {
             $this->_conferences = new ConferenceList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -288,11 +313,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the calls
      */
-    protected function getCalls(): CallList {
+    protected function getCalls(): CallList
+    {
         if (!$this->_calls) {
             $this->_calls = new CallList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -302,11 +328,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the outgoingCallerIds
      */
-    protected function getOutgoingCallerIds(): OutgoingCallerIdList {
+    protected function getOutgoingCallerIds(): OutgoingCallerIdList
+    {
         if (!$this->_outgoingCallerIds) {
             $this->_outgoingCallerIds = new OutgoingCallerIdList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -316,11 +343,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the validationRequests
      */
-    protected function getValidationRequests(): ValidationRequestList {
+    protected function getValidationRequests(): ValidationRequestList
+    {
         if (!$this->_validationRequests) {
             $this->_validationRequests = new ValidationRequestList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -330,11 +358,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the transcriptions
      */
-    protected function getTranscriptions(): TranscriptionList {
+    protected function getTranscriptions(): TranscriptionList
+    {
         if (!$this->_transcriptions) {
             $this->_transcriptions = new TranscriptionList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -344,11 +373,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the connectApps
      */
-    protected function getConnectApps(): ConnectAppList {
+    protected function getConnectApps(): ConnectAppList
+    {
         if (!$this->_connectApps) {
             $this->_connectApps = new ConnectAppList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -358,11 +388,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the authorizedConnectApps
      */
-    protected function getAuthorizedConnectApps(): AuthorizedConnectAppList {
+    protected function getAuthorizedConnectApps(): AuthorizedConnectAppList
+    {
         if (!$this->_authorizedConnectApps) {
             $this->_authorizedConnectApps = new AuthorizedConnectAppList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -372,11 +403,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the tokens
      */
-    protected function getTokens(): TokenList {
+    protected function getTokens(): TokenList
+    {
         if (!$this->_tokens) {
             $this->_tokens = new TokenList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -386,11 +418,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the balance
      */
-    protected function getBalance(): BalanceList {
+    protected function getBalance(): BalanceList
+    {
         if (!$this->_balance) {
             $this->_balance = new BalanceList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -400,11 +433,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the sip
      */
-    protected function getSip(): SipList {
+    protected function getSip(): SipList
+    {
         if (!$this->_sip) {
             $this->_sip = new SipList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -414,11 +448,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the notifications
      */
-    protected function getNotifications(): NotificationList {
+    protected function getNotifications(): NotificationList
+    {
         if (!$this->_notifications) {
             $this->_notifications = new NotificationList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -428,11 +463,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the availablePhoneNumbers
      */
-    protected function getAvailablePhoneNumbers(): AvailablePhoneNumberCountryList {
+    protected function getAvailablePhoneNumbers(): AvailablePhoneNumberCountryList
+    {
         if (!$this->_availablePhoneNumbers) {
             $this->_availablePhoneNumbers = new AvailablePhoneNumberCountryList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -442,11 +478,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the addresses
      */
-    protected function getAddresses(): AddressList {
+    protected function getAddresses(): AddressList
+    {
         if (!$this->_addresses) {
             $this->_addresses = new AddressList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -456,11 +493,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the queues
      */
-    protected function getQueues(): QueueList {
+    protected function getQueues(): QueueList
+    {
         if (!$this->_queues) {
             $this->_queues = new QueueList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -470,11 +508,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the shortCodes
      */
-    protected function getShortCodes(): ShortCodeList {
+    protected function getShortCodes(): ShortCodeList
+    {
         if (!$this->_shortCodes) {
             $this->_shortCodes = new ShortCodeList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -484,11 +523,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the signingKeys
      */
-    protected function getSigningKeys(): SigningKeyList {
+    protected function getSigningKeys(): SigningKeyList
+    {
         if (!$this->_signingKeys) {
             $this->_signingKeys = new SigningKeyList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -498,11 +538,12 @@ class AccountContext extends InstanceContext {
     /**
      * Access the newSigningKeys
      */
-    protected function getNewSigningKeys(): NewSigningKeyList {
+    protected function getNewSigningKeys(): NewSigningKeyList
+    {
         if (!$this->_newSigningKeys) {
             $this->_newSigningKeys = new NewSigningKeyList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -516,7 +557,8 @@ class AccountContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -533,7 +575,8 @@ class AccountContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -547,7 +590,8 @@ class AccountContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

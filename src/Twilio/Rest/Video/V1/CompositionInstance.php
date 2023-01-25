@@ -47,7 +47,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property array $links
  */
-class CompositionInstance extends InstanceResource {
+class CompositionInstance extends InstanceResource
+{
     /**
      * Initialize the CompositionInstance
      *
@@ -55,7 +56,8 @@ class CompositionInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Composition resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -92,7 +94,8 @@ class CompositionInstance extends InstanceResource {
      *
      * @return CompositionContext Context for this CompositionInstance
      */
-    protected function proxy(): CompositionContext {
+    protected function proxy(): CompositionContext
+    {
         if (!$this->context) {
             $this->context = new CompositionContext(
                 $this->version,
@@ -109,7 +112,9 @@ class CompositionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -119,7 +124,9 @@ class CompositionInstance extends InstanceResource {
      * @return CompositionInstance Fetched CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CompositionInstance {
+    public function fetch(): CompositionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -130,7 +137,8 @@ class CompositionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +156,8 @@ class CompositionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

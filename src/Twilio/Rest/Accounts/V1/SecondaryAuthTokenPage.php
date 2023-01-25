@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SecondaryAuthTokenPage extends Page {
+class SecondaryAuthTokenPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class SecondaryAuthTokenPage extends Page {
      * @param array $payload Payload response from the API
      * @return SecondaryAuthTokenInstance \Twilio\Rest\Accounts\V1\SecondaryAuthTokenInstance
      */
-    public function buildInstance(array $payload): SecondaryAuthTokenInstance {
+    public function buildInstance(array $payload): SecondaryAuthTokenInstance
+    {
         return new SecondaryAuthTokenInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class SecondaryAuthTokenPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Accounts.V1.SecondaryAuthTokenPage]';
     }
 }

@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class ApplicationList extends ListResource {
+class ApplicationList extends ListResource
+    {
     /**
      * Construct the ApplicationList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Applications.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Applications.json';
     }
 
     /**
@@ -48,35 +58,55 @@ class ApplicationList extends ListResource {
      * @return ApplicationInstance Created ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ApplicationInstance {
+    public function create(array $options = []): ApplicationInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'ApiVersion' => $options['apiVersion'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
-            'SmsUrl' => $options['smsUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'SmsFallbackUrl' => $options['smsFallbackUrl'],
-            'SmsFallbackMethod' => $options['smsFallbackMethod'],
-            'SmsStatusCallback' => $options['smsStatusCallback'],
-            'MessageStatusCallback' => $options['messageStatusCallback'],
-            'FriendlyName' => $options['friendlyName'],
+            'ApiVersion' =>
+                $options['apiVersion'],
+            'VoiceUrl' =>
+                $options['voiceUrl'],
+            'VoiceMethod' =>
+                $options['voiceMethod'],
+            'VoiceFallbackUrl' =>
+                $options['voiceFallbackUrl'],
+            'VoiceFallbackMethod' =>
+                $options['voiceFallbackMethod'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'VoiceCallerIdLookup' =>
+                Serialize::booleanToString($options['voiceCallerIdLookup']),
+            'SmsUrl' =>
+                $options['smsUrl'],
+            'SmsMethod' =>
+                $options['smsMethod'],
+            'SmsFallbackUrl' =>
+                $options['smsFallbackUrl'],
+            'SmsFallbackMethod' =>
+                $options['smsFallbackMethod'],
+            'SmsStatusCallback' =>
+                $options['smsStatusCallback'],
+            'MessageStatusCallback' =>
+                $options['messageStatusCallback'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'PublicApplicationConnectEnabled' =>
+                Serialize::booleanToString($options['publicApplicationConnectEnabled']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ApplicationInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Reads ApplicationInstance records from the API as a list.
@@ -94,7 +124,8 @@ class ApplicationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ApplicationInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -117,7 +148,8 @@ class ApplicationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -134,11 +166,18 @@ class ApplicationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ApplicationPage Page of ApplicationInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ApplicationPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ApplicationPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'FriendlyName' => $options['friendlyName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -156,7 +195,8 @@ class ApplicationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ApplicationPage Page of ApplicationInstance
      */
-    public function getPage(string $targetUrl): ApplicationPage {
+    public function getPage(string $targetUrl): ApplicationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -171,8 +211,16 @@ class ApplicationList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Application resource to delete.
      */
-    public function getContext(string $sid): ApplicationContext {
-        return new ApplicationContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ApplicationContext
+    {
+        return new ApplicationContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -180,7 +228,8 @@ class ApplicationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.ApplicationList]';
     }
 }

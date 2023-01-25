@@ -18,25 +18,42 @@ namespace Twilio\Rest\Media\V1\PlayerStreamer;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class PlaybackGrantOptions {
+abstract class PlaybackGrantOptions
+{
     /**
-     * @param int $ttl The time to live of the PlaybackGrant. Default value is 15 seconds. Maximum value is 60 seconds. 
-     * @param string $accessControlAllowOrigin The full origin URL where the livestream can be streamed. If this is not provided, it can be streamed from any domain. 
+     * @param int $ttl The time to live of the PlaybackGrant. Default value is 15 seconds. Maximum value is 60 seconds.
+     * @param string $accessControlAllowOrigin The full origin URL where the livestream can be streamed. If this is not provided, it can be streamed from any domain.
      * @return CreatePlaybackGrantOptions Options builder
      */
-    public static function create(int $ttl = Values::NONE, string $accessControlAllowOrigin = Values::NONE): CreatePlaybackGrantOptions {
-        return new CreatePlaybackGrantOptions($ttl, $accessControlAllowOrigin);
+    public static function create(
+        
+        int $ttl = Values::NONE,
+        string $accessControlAllowOrigin = Values::NONE
+
+    ): CreatePlaybackGrantOptions
+    {
+        return new CreatePlaybackGrantOptions(
+            $ttl,
+            $accessControlAllowOrigin
+        );
     }
 
 
 }
 
-class CreatePlaybackGrantOptions extends Options {
+class CreatePlaybackGrantOptions extends Options
+    {
     /**
      * @param int $ttl The time to live of the PlaybackGrant. Default value is 15 seconds. Maximum value is 60 seconds.
      * @param string $accessControlAllowOrigin The full origin URL where the livestream can be streamed. If this is not provided, it can be streamed from any domain.
      */
-    public function __construct(int $ttl = Values::NONE, string $accessControlAllowOrigin = Values::NONE) {
+    public function __construct(
+        
+        int $ttl = Values::NONE,
+        string $accessControlAllowOrigin = Values::NONE
+
+    )
+    {
         $this->options['ttl'] = $ttl;
         $this->options['accessControlAllowOrigin'] = $accessControlAllowOrigin;
     }
@@ -47,7 +64,8 @@ class CreatePlaybackGrantOptions extends Options {
      * @param int $ttl The time to live of the PlaybackGrant. Default value is 15 seconds. Maximum value is 60 seconds.
      * @return $this Fluent Builder
      */
-    public function setTtl(int $ttl): self {
+    public function setTtl(int $ttl): self
+    {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -58,7 +76,8 @@ class CreatePlaybackGrantOptions extends Options {
      * @param string $accessControlAllowOrigin The full origin URL where the livestream can be streamed. If this is not provided, it can be streamed from any domain.
      * @return $this Fluent Builder
      */
-    public function setAccessControlAllowOrigin(string $accessControlAllowOrigin): self {
+    public function setAccessControlAllowOrigin(string $accessControlAllowOrigin): self
+    {
         $this->options['accessControlAllowOrigin'] = $accessControlAllowOrigin;
         return $this;
     }
@@ -68,7 +87,8 @@ class CreatePlaybackGrantOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Media.V1.CreatePlaybackGrantOptions ' . $options . ']';
     }

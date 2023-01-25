@@ -18,43 +18,76 @@ namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class MessageOptions {
+abstract class MessageOptions
+{
     /**
-     * @param string $from  
-     * @param string $attributes  
+     * @param string $from 
+     * @param string $attributes 
      * @return CreateMessageOptions Options builder
      */
-    public static function create(string $from = Values::NONE, string $attributes = Values::NONE): CreateMessageOptions {
-        return new CreateMessageOptions($from, $attributes);
+    public static function create(
+        
+        string $from = Values::NONE,
+        string $attributes = Values::NONE
+
+    ): CreateMessageOptions
+    {
+        return new CreateMessageOptions(
+            $from,
+            $attributes
+        );
     }
 
 
 
     /**
-     * @param string $order  
+     * @param string $order 
      * @return ReadMessageOptions Options builder
      */
-    public static function read(string $order = Values::NONE): ReadMessageOptions {
-        return new ReadMessageOptions($order);
+    public static function read(
+        
+        string $order = Values::NONE
+
+    ): ReadMessageOptions
+    {
+        return new ReadMessageOptions(
+            $order
+        );
     }
 
     /**
-     * @param string $body  
-     * @param string $attributes  
+     * @param string $body 
+     * @param string $attributes 
      * @return UpdateMessageOptions Options builder
      */
-    public static function update(string $body = Values::NONE, string $attributes = Values::NONE): UpdateMessageOptions {
-        return new UpdateMessageOptions($body, $attributes);
+    public static function update(
+        
+        string $body = Values::NONE,
+        string $attributes = Values::NONE
+
+    ): UpdateMessageOptions
+    {
+        return new UpdateMessageOptions(
+            $body,
+            $attributes
+        );
     }
 
 }
 
-class CreateMessageOptions extends Options {
+class CreateMessageOptions extends Options
+    {
     /**
      * @param string $from 
      * @param string $attributes 
      */
-    public function __construct(string $from = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(
+        
+        string $from = Values::NONE,
+        string $attributes = Values::NONE
+
+    )
+    {
         $this->options['from'] = $from;
         $this->options['attributes'] = $attributes;
     }
@@ -65,7 +98,8 @@ class CreateMessageOptions extends Options {
      * @param string $from 
      * @return $this Fluent Builder
      */
-    public function setFrom(string $from): self {
+    public function setFrom(string $from): self
+    {
         $this->options['from'] = $from;
         return $this;
     }
@@ -76,7 +110,8 @@ class CreateMessageOptions extends Options {
      * @param string $attributes 
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -86,7 +121,8 @@ class CreateMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.CreateMessageOptions ' . $options . ']';
     }
@@ -94,11 +130,17 @@ class CreateMessageOptions extends Options {
 
 
 
-class ReadMessageOptions extends Options {
+class ReadMessageOptions extends Options
+    {
     /**
      * @param string $order 
      */
-    public function __construct(string $order = Values::NONE) {
+    public function __construct(
+        
+        string $order = Values::NONE
+
+    )
+    {
         $this->options['order'] = $order;
     }
 
@@ -108,7 +150,8 @@ class ReadMessageOptions extends Options {
      * @param string $order 
      * @return $this Fluent Builder
      */
-    public function setOrder(string $order): self {
+    public function setOrder(string $order): self
+    {
         $this->options['order'] = $order;
         return $this;
     }
@@ -118,18 +161,26 @@ class ReadMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.ReadMessageOptions ' . $options . ']';
     }
 }
 
-class UpdateMessageOptions extends Options {
+class UpdateMessageOptions extends Options
+    {
     /**
      * @param string $body 
      * @param string $attributes 
      */
-    public function __construct(string $body = Values::NONE, string $attributes = Values::NONE) {
+    public function __construct(
+        
+        string $body = Values::NONE,
+        string $attributes = Values::NONE
+
+    )
+    {
         $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
     }
@@ -140,7 +191,8 @@ class UpdateMessageOptions extends Options {
      * @param string $body 
      * @return $this Fluent Builder
      */
-    public function setBody(string $body): self {
+    public function setBody(string $body): self
+    {
         $this->options['body'] = $body;
         return $this;
     }
@@ -151,7 +203,8 @@ class UpdateMessageOptions extends Options {
      * @param string $attributes 
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -161,7 +214,8 @@ class UpdateMessageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.UpdateMessageOptions ' . $options . ']';
     }

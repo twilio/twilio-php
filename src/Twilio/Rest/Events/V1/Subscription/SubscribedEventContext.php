@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SubscribedEventContext extends InstanceContext {
+class SubscribedEventContext extends InstanceContext
+    {
     /**
      * Initialize the SubscribedEventContext
      *
@@ -32,13 +33,25 @@ class SubscribedEventContext extends InstanceContext {
      * @param string $subscriptionSid The unique SID identifier of the Subscription.
      * @param string $type Type of event being subscribed to.
      */
-    public function __construct(Version $version, $subscriptionSid , $type ) {
+    public function __construct(
+        Version $version,
+        $subscriptionSid,
+        $type
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['subscriptionSid' => $subscriptionSid,  'type' => $type,  ];
+        $this->solution = [
+        'subscriptionSid' =>
+            $subscriptionSid,
+        'type' =>
+            $type,
+        ];
 
-        $this->uri = '/Subscriptions/' . \rawurlencode($subscriptionSid) . '/SubscribedEvents/' . \rawurlencode($type) . '';
+        $this->uri = '/Subscriptions/' . \rawurlencode($subscriptionSid)
+        .'/SubscribedEvents/' . \rawurlencode($type)
+        .'';
     }
 
     /**
@@ -47,9 +60,12 @@ class SubscribedEventContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the SubscribedEventInstance
@@ -57,16 +73,19 @@ class SubscribedEventContext extends InstanceContext {
      * @return SubscribedEventInstance Fetched SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SubscribedEventInstance {
+    public function fetch(): SubscribedEventInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SubscribedEventInstance(
             $this->version,
-            $payload
-            , $this->solution['subscriptionSid']
-            , $this->solution['type']
+            $payload,
+            $this->solution['subscriptionSid'],
+            $this->solution['type'],
         );
     }
+
 
     /**
      * Update the SubscribedEventInstance
@@ -75,29 +94,34 @@ class SubscribedEventContext extends InstanceContext {
      * @return SubscribedEventInstance Updated SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SubscribedEventInstance {
+    public function update(array $options = []): SubscribedEventInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'SchemaVersion' => $options['schemaVersion'],
+            'SchemaVersion' =>
+                $options['schemaVersion'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SubscribedEventInstance(
             $this->version,
-            $payload
-            , $this->solution['subscriptionSid']
-            , $this->solution['type']
+            $payload,
+            $this->solution['subscriptionSid'],
+            $this->solution['type'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

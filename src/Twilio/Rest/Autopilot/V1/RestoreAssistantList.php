@@ -22,17 +22,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class RestoreAssistantList extends ListResource {
+class RestoreAssistantList extends ListResource
+    {
     /**
      * Construct the RestoreAssistantList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Assistants/Restore';
     }
@@ -44,25 +48,30 @@ class RestoreAssistantList extends ListResource {
      * @return RestoreAssistantInstance Updated RestoreAssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $assistant): RestoreAssistantInstance {
+    public function update(string $assistant): RestoreAssistantInstance
+    {
+
         $data = Values::of([
-            'Assistant' => $assistant,
+            'Assistant' =>
+                $assistant,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RestoreAssistantInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.RestoreAssistantList]';
     }
 }

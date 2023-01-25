@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class DataSessionList extends ListResource {
+class DataSessionList extends ListResource
+    {
     /**
      * Construct the DataSessionList
      *
      * @param Version $version Version that contains the resource
      * @param string $simSid The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read.
      */
-    public function __construct(Version $version, string $simSid ) {
+    public function __construct(
+        Version $version,
+        string $simSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['simSid' => $simSid, ];
+        $this->solution = [
+        'simSid' =>
+            $simSid,
+        
+        ];
 
-        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/DataSessions';
+        $this->uri = '/Sims/' . \rawurlencode($simSid)
+        .'/DataSessions';
     }
 
     /**
@@ -53,7 +63,8 @@ class DataSessionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DataSessionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class DataSessionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class DataSessionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DataSessionPage Page of DataSessionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DataSessionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): DataSessionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class DataSessionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DataSessionPage Page of DataSessionInstance
      */
-    public function getPage(string $targetUrl): DataSessionPage {
+    public function getPage(string $targetUrl): DataSessionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,7 +145,8 @@ class DataSessionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Wireless.V1.DataSessionList]';
     }
 }

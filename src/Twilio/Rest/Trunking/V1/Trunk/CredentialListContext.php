@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class CredentialListContext extends InstanceContext {
+class CredentialListContext extends InstanceContext
+    {
     /**
      * Initialize the CredentialListContext
      *
@@ -30,13 +31,25 @@ class CredentialListContext extends InstanceContext {
      * @param string $trunkSid The SID of the Trunk to associate the credential list with.
      * @param string $sid The unique string that we created to identify the CredentialList resource to delete.
      */
-    public function __construct(Version $version, $trunkSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $trunkSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['trunkSid' => $trunkSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'trunkSid' =>
+            $trunkSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/CredentialLists/' . \rawurlencode($sid) . '';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid)
+        .'/CredentialLists/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class CredentialListContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the CredentialListInstance
@@ -55,23 +71,27 @@ class CredentialListContext extends InstanceContext {
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CredentialListInstance {
+    public function fetch(): CredentialListInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new CredentialListInstance(
             $this->version,
-            $payload
-            , $this->solution['trunkSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['trunkSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

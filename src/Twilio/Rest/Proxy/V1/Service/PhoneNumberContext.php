@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class PhoneNumberContext extends InstanceContext {
+class PhoneNumberContext extends InstanceContext
+    {
     /**
      * Initialize the PhoneNumberContext
      *
@@ -33,13 +34,25 @@ class PhoneNumberContext extends InstanceContext {
      * @param string $serviceSid The SID parent [Service](https://www.twilio.com/docs/proxy/api/service) resource of the new PhoneNumber resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the PhoneNumber resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/PhoneNumbers/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/PhoneNumbers/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +61,12 @@ class PhoneNumberContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the PhoneNumberInstance
@@ -58,16 +74,19 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PhoneNumberInstance {
+    public function fetch(): PhoneNumberInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new PhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the PhoneNumberInstance
@@ -76,29 +95,34 @@ class PhoneNumberContext extends InstanceContext {
      * @return PhoneNumberInstance Updated PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): PhoneNumberInstance {
+    public function update(array $options = []): PhoneNumberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'IsReserved' => Serialize::booleanToString($options['isReserved']),
+            'IsReserved' =>
+                Serialize::booleanToString($options['isReserved']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new PhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

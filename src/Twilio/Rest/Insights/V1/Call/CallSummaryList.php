@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class CallSummaryList extends ListResource {
+class CallSummaryList extends ListResource
+    {
     /**
      * Construct the CallSummaryList
      *
      * @param Version $version Version that contains the resource
      * @param string $callSid 
      */
-    public function __construct(Version $version, string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['callSid' => $callSid, ];
+        $this->solution = [
+        'callSid' =>
+            $callSid,
+        
+        ];
     }
 
     /**
      * Constructs a CallSummaryContext
      */
-    public function getContext(): CallSummaryContext {
-        return new CallSummaryContext($this->version, $this->solution['callSid']);
+    public function getContext(
+        
+    ): CallSummaryContext
+    {
+        return new CallSummaryContext(
+            $this->version,
+            $this->solution['callSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class CallSummaryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.CallSummaryList]';
     }
 }

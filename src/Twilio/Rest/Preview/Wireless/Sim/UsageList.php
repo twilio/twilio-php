@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class UsageList extends ListResource {
+class UsageList extends ListResource
+    {
     /**
      * Construct the UsageList
      *
      * @param Version $version Version that contains the resource
      * @param string $simSid 
      */
-    public function __construct(Version $version, string $simSid ) {
+    public function __construct(
+        Version $version,
+        string $simSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['simSid' => $simSid, ];
+        $this->solution = [
+        'simSid' =>
+            $simSid,
+        
+        ];
     }
 
     /**
      * Constructs a UsageContext
      */
-    public function getContext(): UsageContext {
-        return new UsageContext($this->version, $this->solution['simSid']);
+    public function getContext(
+        
+    ): UsageContext
+    {
+        return new UsageContext(
+            $this->version,
+            $this->solution['simSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class UsageList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Wireless.UsageList]';
     }
 }

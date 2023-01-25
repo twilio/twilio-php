@@ -30,7 +30,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
  * @property ReservationList $reservations
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationContext reservations(string $sid)
  */
-class TaskContext extends InstanceContext {
+class TaskContext extends InstanceContext
+    {
     protected $_reservations;
 
     /**
@@ -40,13 +41,25 @@ class TaskContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace that the new Task belongs to.
      * @param string $sid The SID of the Task resource to delete.
      */
-    public function __construct(Version $version, $workspaceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Tasks/' . \rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Tasks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -56,7 +69,9 @@ class TaskContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         $options = new Values($options);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
@@ -64,22 +79,26 @@ class TaskContext extends InstanceContext {
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
+
     /**
      * Fetch the TaskInstance
      *
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TaskInstance {
+    public function fetch(): TaskInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the TaskInstance
@@ -88,15 +107,22 @@ class TaskContext extends InstanceContext {
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TaskInstance {
+    public function update(array $options = []): TaskInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Attributes' => $options['attributes'],
-            'AssignmentStatus' => $options['assignmentStatus'],
-            'Reason' => $options['reason'],
-            'Priority' => $options['priority'],
-            'TaskChannel' => $options['taskChannel'],
+            'Attributes' =>
+                $options['attributes'],
+            'AssignmentStatus' =>
+                $options['assignmentStatus'],
+            'Reason' =>
+                $options['reason'],
+            'Priority' =>
+                $options['priority'],
+            'TaskChannel' =>
+                $options['taskChannel'],
         ]);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
@@ -105,21 +131,23 @@ class TaskContext extends InstanceContext {
 
         return new TaskInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the reservations
      */
-    protected function getReservations(): ReservationList {
+    protected function getReservations(): ReservationList
+    {
         if (!$this->_reservations) {
             $this->_reservations = new ReservationList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -133,7 +161,8 @@ class TaskContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -150,7 +179,8 @@ class TaskContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -164,7 +194,8 @@ class TaskContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

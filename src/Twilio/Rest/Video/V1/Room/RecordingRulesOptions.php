@@ -18,24 +18,38 @@ namespace Twilio\Rest\Video\V1\Room;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RecordingRulesOptions {
+abstract class RecordingRulesOptions
+{
 
     /**
-     * @param array $rules A JSON-encoded array of recording rules. 
+     * @param array $rules A JSON-encoded array of recording rules.
      * @return UpdateRecordingRulesOptions Options builder
      */
-    public static function update(array $rules = Values::ARRAY_NONE): UpdateRecordingRulesOptions {
-        return new UpdateRecordingRulesOptions($rules);
+    public static function update(
+        
+        array $rules = Values::ARRAY_NONE
+
+    ): UpdateRecordingRulesOptions
+    {
+        return new UpdateRecordingRulesOptions(
+            $rules
+        );
     }
 
 }
 
 
-class UpdateRecordingRulesOptions extends Options {
+class UpdateRecordingRulesOptions extends Options
+    {
     /**
      * @param array $rules A JSON-encoded array of recording rules.
      */
-    public function __construct(array $rules = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $rules = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['rules'] = $rules;
     }
 
@@ -45,7 +59,8 @@ class UpdateRecordingRulesOptions extends Options {
      * @param array $rules A JSON-encoded array of recording rules.
      * @return $this Fluent Builder
      */
-    public function setRules(array $rules): self {
+    public function setRules(array $rules): self
+    {
         $this->options['rules'] = $rules;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateRecordingRulesOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Video.V1.UpdateRecordingRulesOptions ' . $options . ']';
     }

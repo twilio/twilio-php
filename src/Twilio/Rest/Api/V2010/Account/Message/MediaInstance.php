@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property string $sid
  * @property string $uri
  */
-class MediaInstance extends InstanceResource {
+class MediaInstance extends InstanceResource
+{
     /**
      * Initialize the MediaInstance
      *
@@ -43,7 +44,8 @@ class MediaInstance extends InstanceResource {
      * @param string $messageSid The SID of the Message resource that this Media resource belongs to.
      * @param string $sid The Twilio-provided string that uniquely identifies the Media resource to delete
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,7 +68,8 @@ class MediaInstance extends InstanceResource {
      *
      * @return MediaContext Context for this MediaInstance
      */
-    protected function proxy(): MediaContext {
+    protected function proxy(): MediaContext
+    {
         if (!$this->context) {
             $this->context = new MediaContext(
                 $this->version,
@@ -85,7 +88,9 @@ class MediaInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -95,7 +100,9 @@ class MediaInstance extends InstanceResource {
      * @return MediaInstance Fetched MediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MediaInstance {
+    public function fetch(): MediaInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -106,7 +113,8 @@ class MediaInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -124,7 +132,8 @@ class MediaInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

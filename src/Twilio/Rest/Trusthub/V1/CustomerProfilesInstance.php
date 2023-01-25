@@ -42,7 +42,8 @@ use Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEvaluationsList;
  * @property string $url
  * @property array $links
  */
-class CustomerProfilesInstance extends InstanceResource {
+class CustomerProfilesInstance extends InstanceResource
+{
     protected $_customerProfilesChannelEndpointAssignment;
     protected $_customerProfilesEntityAssignments;
     protected $_customerProfilesEvaluations;
@@ -54,7 +55,8 @@ class CustomerProfilesInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that we created to identify the Customer-Profile resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -82,7 +84,8 @@ class CustomerProfilesInstance extends InstanceResource {
      *
      * @return CustomerProfilesContext Context for this CustomerProfilesInstance
      */
-    protected function proxy(): CustomerProfilesContext {
+    protected function proxy(): CustomerProfilesContext
+    {
         if (!$this->context) {
             $this->context = new CustomerProfilesContext(
                 $this->version,
@@ -99,7 +102,9 @@ class CustomerProfilesInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -109,7 +114,9 @@ class CustomerProfilesInstance extends InstanceResource {
      * @return CustomerProfilesInstance Fetched CustomerProfilesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CustomerProfilesInstance {
+    public function fetch(): CustomerProfilesInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -120,28 +127,33 @@ class CustomerProfilesInstance extends InstanceResource {
      * @return CustomerProfilesInstance Updated CustomerProfilesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): CustomerProfilesInstance {
+    public function update(array $options = []): CustomerProfilesInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the customerProfilesChannelEndpointAssignment
      */
-    protected function getCustomerProfilesChannelEndpointAssignment(): CustomerProfilesChannelEndpointAssignmentList {
+    protected function getCustomerProfilesChannelEndpointAssignment(): CustomerProfilesChannelEndpointAssignmentList
+    {
         return $this->proxy()->customerProfilesChannelEndpointAssignment;
     }
 
     /**
      * Access the customerProfilesEntityAssignments
      */
-    protected function getCustomerProfilesEntityAssignments(): CustomerProfilesEntityAssignmentsList {
+    protected function getCustomerProfilesEntityAssignments(): CustomerProfilesEntityAssignmentsList
+    {
         return $this->proxy()->customerProfilesEntityAssignments;
     }
 
     /**
      * Access the customerProfilesEvaluations
      */
-    protected function getCustomerProfilesEvaluations(): CustomerProfilesEvaluationsList {
+    protected function getCustomerProfilesEvaluations(): CustomerProfilesEvaluationsList
+    {
         return $this->proxy()->customerProfilesEvaluations;
     }
 
@@ -152,7 +164,8 @@ class CustomerProfilesInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -170,7 +183,8 @@ class CustomerProfilesInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

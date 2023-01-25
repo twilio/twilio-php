@@ -18,37 +18,68 @@ namespace Twilio\Rest\Supersim\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class EsimProfileOptions {
+abstract class EsimProfileOptions
+{
     /**
-     * @param string $callbackUrl The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`. 
-     * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST. 
-     * @param string $eid Identifier of the eUICC that will claim the eSIM Profile. 
+     * @param string $callbackUrl The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.
+     * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
+     * @param string $eid Identifier of the eUICC that will claim the eSIM Profile.
      * @return CreateEsimProfileOptions Options builder
      */
-    public static function create(string $callbackUrl = Values::NONE, string $callbackMethod = Values::NONE, string $eid = Values::NONE): CreateEsimProfileOptions {
-        return new CreateEsimProfileOptions($callbackUrl, $callbackMethod, $eid);
+    public static function create(
+        
+        string $callbackUrl = Values::NONE,
+        string $callbackMethod = Values::NONE,
+        string $eid = Values::NONE
+
+    ): CreateEsimProfileOptions
+    {
+        return new CreateEsimProfileOptions(
+            $callbackUrl,
+            $callbackMethod,
+            $eid
+        );
     }
 
 
     /**
-     * @param string $eid List the eSIM Profiles that have been associated with an EId. 
-     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. 
-     * @param string $status List the eSIM Profiles that are in a given status. 
+     * @param string $eid List the eSIM Profiles that have been associated with an EId.
+     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
+     * @param string $status List the eSIM Profiles that are in a given status.
      * @return ReadEsimProfileOptions Options builder
      */
-    public static function read(string $eid = Values::NONE, string $simSid = Values::NONE, string $status = Values::NONE): ReadEsimProfileOptions {
-        return new ReadEsimProfileOptions($eid, $simSid, $status);
+    public static function read(
+        
+        string $eid = Values::NONE,
+        string $simSid = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadEsimProfileOptions
+    {
+        return new ReadEsimProfileOptions(
+            $eid,
+            $simSid,
+            $status
+        );
     }
 
 }
 
-class CreateEsimProfileOptions extends Options {
+class CreateEsimProfileOptions extends Options
+    {
     /**
      * @param string $callbackUrl The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
      * @param string $eid Identifier of the eUICC that will claim the eSIM Profile.
      */
-    public function __construct(string $callbackUrl = Values::NONE, string $callbackMethod = Values::NONE, string $eid = Values::NONE) {
+    public function __construct(
+        
+        string $callbackUrl = Values::NONE,
+        string $callbackMethod = Values::NONE,
+        string $eid = Values::NONE
+
+    )
+    {
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['eid'] = $eid;
@@ -60,7 +91,8 @@ class CreateEsimProfileOptions extends Options {
      * @param string $callbackUrl The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.
      * @return $this Fluent Builder
      */
-    public function setCallbackUrl(string $callbackUrl): self {
+    public function setCallbackUrl(string $callbackUrl): self
+    {
         $this->options['callbackUrl'] = $callbackUrl;
         return $this;
     }
@@ -71,7 +103,8 @@ class CreateEsimProfileOptions extends Options {
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
      * @return $this Fluent Builder
      */
-    public function setCallbackMethod(string $callbackMethod): self {
+    public function setCallbackMethod(string $callbackMethod): self
+    {
         $this->options['callbackMethod'] = $callbackMethod;
         return $this;
     }
@@ -82,7 +115,8 @@ class CreateEsimProfileOptions extends Options {
      * @param string $eid Identifier of the eUICC that will claim the eSIM Profile.
      * @return $this Fluent Builder
      */
-    public function setEid(string $eid): self {
+    public function setEid(string $eid): self
+    {
         $this->options['eid'] = $eid;
         return $this;
     }
@@ -92,20 +126,29 @@ class CreateEsimProfileOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Supersim.V1.CreateEsimProfileOptions ' . $options . ']';
     }
 }
 
 
-class ReadEsimProfileOptions extends Options {
+class ReadEsimProfileOptions extends Options
+    {
     /**
      * @param string $eid List the eSIM Profiles that have been associated with an EId.
      * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
      * @param string $status List the eSIM Profiles that are in a given status.
      */
-    public function __construct(string $eid = Values::NONE, string $simSid = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $eid = Values::NONE,
+        string $simSid = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['eid'] = $eid;
         $this->options['simSid'] = $simSid;
         $this->options['status'] = $status;
@@ -117,7 +160,8 @@ class ReadEsimProfileOptions extends Options {
      * @param string $eid List the eSIM Profiles that have been associated with an EId.
      * @return $this Fluent Builder
      */
-    public function setEid(string $eid): self {
+    public function setEid(string $eid): self
+    {
         $this->options['eid'] = $eid;
         return $this;
     }
@@ -128,7 +172,8 @@ class ReadEsimProfileOptions extends Options {
      * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
      * @return $this Fluent Builder
      */
-    public function setSimSid(string $simSid): self {
+    public function setSimSid(string $simSid): self
+    {
         $this->options['simSid'] = $simSid;
         return $this;
     }
@@ -139,7 +184,8 @@ class ReadEsimProfileOptions extends Options {
      * @param string $status List the eSIM Profiles that are in a given status.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -149,7 +195,8 @@ class ReadEsimProfileOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Supersim.V1.ReadEsimProfileOptions ' . $options . ']';
     }

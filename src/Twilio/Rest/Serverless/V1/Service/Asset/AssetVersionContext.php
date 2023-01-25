@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AssetVersionContext extends InstanceContext {
+class AssetVersionContext extends InstanceContext
+    {
     /**
      * Initialize the AssetVersionContext
      *
@@ -31,13 +32,29 @@ class AssetVersionContext extends InstanceContext {
      * @param string $assetSid The SID of the Asset resource that is the parent of the Asset Version resource to fetch.
      * @param string $sid The SID of the Asset Version resource to fetch.
      */
-    public function __construct(Version $version, $serviceSid , $assetSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $assetSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'assetSid' => $assetSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'assetSid' =>
+            $assetSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets/' . \rawurlencode($assetSid) . '/Versions/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Assets/' . \rawurlencode($assetSid)
+        .'/Versions/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,24 +63,28 @@ class AssetVersionContext extends InstanceContext {
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssetVersionInstance {
+    public function fetch(): AssetVersionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssetVersionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['assetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['assetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

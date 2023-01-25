@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property string $sid
  * @property string $uri
  */
-class CredentialListMappingInstance extends InstanceResource {
+class CredentialListMappingInstance extends InstanceResource
+{
     /**
      * Initialize the CredentialListMappingInstance
      *
@@ -43,7 +44,8 @@ class CredentialListMappingInstance extends InstanceResource {
      * @param string $domainSid A 34 character string that uniquely identifies the SIP Domain for which the CredentialList resource will be mapped.
      * @param string $sid A 34 character string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,7 +68,8 @@ class CredentialListMappingInstance extends InstanceResource {
      *
      * @return CredentialListMappingContext Context for this CredentialListMappingInstance
      */
-    protected function proxy(): CredentialListMappingContext {
+    protected function proxy(): CredentialListMappingContext
+    {
         if (!$this->context) {
             $this->context = new CredentialListMappingContext(
                 $this->version,
@@ -85,7 +88,9 @@ class CredentialListMappingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -95,7 +100,9 @@ class CredentialListMappingInstance extends InstanceResource {
      * @return CredentialListMappingInstance Fetched CredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CredentialListMappingInstance {
+    public function fetch(): CredentialListMappingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -106,7 +113,8 @@ class CredentialListMappingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -124,7 +132,8 @@ class CredentialListMappingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

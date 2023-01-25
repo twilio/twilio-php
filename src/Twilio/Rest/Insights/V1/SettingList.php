@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class SettingList extends ListResource {
+class SettingList extends ListResource
+    {
     /**
      * Construct the SettingList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a SettingContext
      */
-    public function getContext(): SettingContext {
-        return new SettingContext($this->version);
+    public function getContext(
+        
+    ): SettingContext
+    {
+        return new SettingContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class SettingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.SettingList]';
     }
 }

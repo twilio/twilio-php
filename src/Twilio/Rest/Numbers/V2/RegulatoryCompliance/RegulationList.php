@@ -23,17 +23,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class RegulationList extends ListResource {
+class RegulationList extends ListResource
+    {
     /**
      * Construct the RegulationList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/RegulatoryCompliance/Regulations';
     }
@@ -54,7 +58,8 @@ class RegulationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RegulationInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -77,7 +82,8 @@ class RegulationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -94,13 +100,22 @@ class RegulationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RegulationPage Page of RegulationInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RegulationPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): RegulationPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'EndUserType' => $options['endUserType'],
-            'IsoCountry' => $options['isoCountry'],
-            'NumberType' => $options['numberType'],
+            'EndUserType' =>
+                $options['endUserType'],
+            'IsoCountry' =>
+                $options['isoCountry'],
+            'NumberType' =>
+                $options['numberType'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -118,7 +133,8 @@ class RegulationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RegulationPage Page of RegulationInstance
      */
-    public function getPage(string $targetUrl): RegulationPage {
+    public function getPage(string $targetUrl): RegulationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -133,8 +149,15 @@ class RegulationList extends ListResource {
      *
      * @param string $sid The unique string that identifies the Regulation resource.
      */
-    public function getContext(string $sid): RegulationContext {
-        return new RegulationContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): RegulationContext
+    {
+        return new RegulationContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -142,7 +165,8 @@ class RegulationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.RegulationList]';
     }
 }

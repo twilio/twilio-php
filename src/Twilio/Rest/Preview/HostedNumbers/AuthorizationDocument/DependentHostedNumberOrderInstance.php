@@ -49,7 +49,8 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property string $verificationCode
  * @property string[] $verificationCallSids
  */
-class DependentHostedNumberOrderInstance extends InstanceResource {
+class DependentHostedNumberOrderInstance extends InstanceResource
+{
     /**
      * Initialize the DependentHostedNumberOrderInstance
      *
@@ -57,7 +58,8 @@ class DependentHostedNumberOrderInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $signingDocumentSid 
      */
-    public function __construct(Version $version, array $payload, string $signingDocumentSid) {
+    public function __construct(Version $version, array $payload, string $signingDocumentSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -96,7 +98,8 @@ class DependentHostedNumberOrderInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -114,7 +117,8 @@ class DependentHostedNumberOrderInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.HostedNumbers.DependentHostedNumberOrderInstance]';
     }
 }

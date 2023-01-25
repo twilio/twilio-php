@@ -31,14 +31,16 @@ use Twilio\Version;
  * @property string $email
  * @property string $url
  */
-class UserInfoInstance extends InstanceResource {
+class UserInfoInstance extends InstanceResource
+{
     /**
      * Initialize the UserInfoInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class UserInfoInstance extends InstanceResource {
      *
      * @return UserInfoContext Context for this UserInfoInstance
      */
-    protected function proxy(): UserInfoContext {
+    protected function proxy(): UserInfoContext
+    {
         if (!$this->context) {
             $this->context = new UserInfoContext(
                 $this->version
@@ -76,7 +79,9 @@ class UserInfoInstance extends InstanceResource {
      * @return UserInfoInstance Fetched UserInfoInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserInfoInstance {
+    public function fetch(): UserInfoInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -87,7 +92,8 @@ class UserInfoInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -105,7 +111,8 @@ class UserInfoInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

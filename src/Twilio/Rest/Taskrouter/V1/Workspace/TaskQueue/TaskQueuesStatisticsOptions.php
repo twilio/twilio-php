@@ -18,23 +18,42 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TaskQueuesStatisticsOptions {
+abstract class TaskQueuesStatisticsOptions
+{
     /**
-     * @param \DateTime $endDate Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time. 
-     * @param string $friendlyName The `friendly_name` of the TaskQueue statistics to read. 
-     * @param int $minutes Only calculate statistics since this many minutes in the past. The default is 15 minutes. 
-     * @param \DateTime $startDate Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. 
-     * @param string $taskChannel Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. 
-     * @param string $splitByWaitTime A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. 
+     * @param \DateTime $endDate Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.
+     * @param string $friendlyName The `friendly_name` of the TaskQueue statistics to read.
+     * @param int $minutes Only calculate statistics since this many minutes in the past. The default is 15 minutes.
+     * @param \DateTime $startDate Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+     * @param string $taskChannel Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
+     * @param string $splitByWaitTime A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed.
      * @return ReadTaskQueuesStatisticsOptions Options builder
      */
-    public static function read(\DateTime $endDate = Values::NONE, string $friendlyName = Values::NONE, int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, string $taskChannel = Values::NONE, string $splitByWaitTime = Values::NONE): ReadTaskQueuesStatisticsOptions {
-        return new ReadTaskQueuesStatisticsOptions($endDate, $friendlyName, $minutes, $startDate, $taskChannel, $splitByWaitTime);
+    public static function read(
+        
+        \DateTime $endDate = Values::NONE,
+        string $friendlyName = Values::NONE,
+        int $minutes = Values::NONE,
+        \DateTime $startDate = Values::NONE,
+        string $taskChannel = Values::NONE,
+        string $splitByWaitTime = Values::NONE
+
+    ): ReadTaskQueuesStatisticsOptions
+    {
+        return new ReadTaskQueuesStatisticsOptions(
+            $endDate,
+            $friendlyName,
+            $minutes,
+            $startDate,
+            $taskChannel,
+            $splitByWaitTime
+        );
     }
 
 }
 
-class ReadTaskQueuesStatisticsOptions extends Options {
+class ReadTaskQueuesStatisticsOptions extends Options
+    {
     /**
      * @param \DateTime $endDate Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.
      * @param string $friendlyName The `friendly_name` of the TaskQueue statistics to read.
@@ -43,7 +62,17 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param string $taskChannel Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
      * @param string $splitByWaitTime A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed.
      */
-    public function __construct(\DateTime $endDate = Values::NONE, string $friendlyName = Values::NONE, int $minutes = Values::NONE, \DateTime $startDate = Values::NONE, string $taskChannel = Values::NONE, string $splitByWaitTime = Values::NONE) {
+    public function __construct(
+        
+        \DateTime $endDate = Values::NONE,
+        string $friendlyName = Values::NONE,
+        int $minutes = Values::NONE,
+        \DateTime $startDate = Values::NONE,
+        string $taskChannel = Values::NONE,
+        string $splitByWaitTime = Values::NONE
+
+    )
+    {
         $this->options['endDate'] = $endDate;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['minutes'] = $minutes;
@@ -58,7 +87,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param \DateTime $endDate Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.
      * @return $this Fluent Builder
      */
-    public function setEndDate(\DateTime $endDate): self {
+    public function setEndDate(\DateTime $endDate): self
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
@@ -69,7 +99,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param string $friendlyName The `friendly_name` of the TaskQueue statistics to read.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -80,7 +111,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param int $minutes Only calculate statistics since this many minutes in the past. The default is 15 minutes.
      * @return $this Fluent Builder
      */
-    public function setMinutes(int $minutes): self {
+    public function setMinutes(int $minutes): self
+    {
         $this->options['minutes'] = $minutes;
         return $this;
     }
@@ -91,7 +123,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param \DateTime $startDate Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
      * @return $this Fluent Builder
      */
-    public function setStartDate(\DateTime $startDate): self {
+    public function setStartDate(\DateTime $startDate): self
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
@@ -102,7 +135,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param string $taskChannel Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
      * @return $this Fluent Builder
      */
-    public function setTaskChannel(string $taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self
+    {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -113,7 +147,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param string $splitByWaitTime A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed.
      * @return $this Fluent Builder
      */
-    public function setSplitByWaitTime(string $splitByWaitTime): self {
+    public function setSplitByWaitTime(string $splitByWaitTime): self
+    {
         $this->options['splitByWaitTime'] = $splitByWaitTime;
         return $this;
     }
@@ -123,7 +158,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.ReadTaskQueuesStatisticsOptions ' . $options . ']';
     }

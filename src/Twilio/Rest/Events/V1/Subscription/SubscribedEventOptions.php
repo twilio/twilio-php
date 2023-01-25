@@ -18,33 +18,54 @@ namespace Twilio\Rest\Events\V1\Subscription;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SubscribedEventOptions {
+abstract class SubscribedEventOptions
+{
     /**
-     * @param int $schemaVersion The schema version that the subscription should use. 
+     * @param int $schemaVersion The schema version that the subscription should use.
      * @return CreateSubscribedEventOptions Options builder
      */
-    public static function create(int $schemaVersion = Values::NONE): CreateSubscribedEventOptions {
-        return new CreateSubscribedEventOptions($schemaVersion);
+    public static function create(
+        
+        int $schemaVersion = Values::NONE
+
+    ): CreateSubscribedEventOptions
+    {
+        return new CreateSubscribedEventOptions(
+            $schemaVersion
+        );
     }
 
 
 
 
     /**
-     * @param int $schemaVersion The schema version that the subscription should use. 
+     * @param int $schemaVersion The schema version that the subscription should use.
      * @return UpdateSubscribedEventOptions Options builder
      */
-    public static function update(int $schemaVersion = Values::NONE): UpdateSubscribedEventOptions {
-        return new UpdateSubscribedEventOptions($schemaVersion);
+    public static function update(
+        
+        int $schemaVersion = Values::NONE
+
+    ): UpdateSubscribedEventOptions
+    {
+        return new UpdateSubscribedEventOptions(
+            $schemaVersion
+        );
     }
 
 }
 
-class CreateSubscribedEventOptions extends Options {
+class CreateSubscribedEventOptions extends Options
+    {
     /**
      * @param int $schemaVersion The schema version that the subscription should use.
      */
-    public function __construct(int $schemaVersion = Values::NONE) {
+    public function __construct(
+        
+        int $schemaVersion = Values::NONE
+
+    )
+    {
         $this->options['schemaVersion'] = $schemaVersion;
     }
 
@@ -54,7 +75,8 @@ class CreateSubscribedEventOptions extends Options {
      * @param int $schemaVersion The schema version that the subscription should use.
      * @return $this Fluent Builder
      */
-    public function setSchemaVersion(int $schemaVersion): self {
+    public function setSchemaVersion(int $schemaVersion): self
+    {
         $this->options['schemaVersion'] = $schemaVersion;
         return $this;
     }
@@ -64,7 +86,8 @@ class CreateSubscribedEventOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Events.V1.CreateSubscribedEventOptions ' . $options . ']';
     }
@@ -73,11 +96,17 @@ class CreateSubscribedEventOptions extends Options {
 
 
 
-class UpdateSubscribedEventOptions extends Options {
+class UpdateSubscribedEventOptions extends Options
+    {
     /**
      * @param int $schemaVersion The schema version that the subscription should use.
      */
-    public function __construct(int $schemaVersion = Values::NONE) {
+    public function __construct(
+        
+        int $schemaVersion = Values::NONE
+
+    )
+    {
         $this->options['schemaVersion'] = $schemaVersion;
     }
 
@@ -87,7 +116,8 @@ class UpdateSubscribedEventOptions extends Options {
      * @param int $schemaVersion The schema version that the subscription should use.
      * @return $this Fluent Builder
      */
-    public function setSchemaVersion(int $schemaVersion): self {
+    public function setSchemaVersion(int $schemaVersion): self
+    {
         $this->options['schemaVersion'] = $schemaVersion;
         return $this;
     }
@@ -97,7 +127,8 @@ class UpdateSubscribedEventOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Events.V1.UpdateSubscribedEventOptions ' . $options . ']';
     }

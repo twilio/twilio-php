@@ -22,7 +22,8 @@ use Twilio\InstanceResource;
 use Twilio\Version;
 
 
-class AuthTypeRegistrationsInstance extends InstanceResource {
+class AuthTypeRegistrationsInstance extends InstanceResource
+{
     /**
      * Initialize the AuthTypeRegistrationsInstance
      *
@@ -31,7 +32,8 @@ class AuthTypeRegistrationsInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch.
      * @param string $domainSid The SID of the SIP domain that contains the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid)
+    {
         parent::__construct($version);
 
         $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
@@ -44,7 +46,8 @@ class AuthTypeRegistrationsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -62,7 +65,8 @@ class AuthTypeRegistrationsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AuthTypeRegistrationsInstance]';
     }
 }

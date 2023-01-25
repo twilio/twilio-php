@@ -21,17 +21,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class UsecaseList extends ListResource {
+class UsecaseList extends ListResource
+    {
     /**
      * Construct the UsecaseList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Services/Usecases';
     }
@@ -42,21 +46,25 @@ class UsecaseList extends ListResource {
      * @return UsecaseInstance Fetched UsecaseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UsecaseInstance {
+    public function fetch(): UsecaseInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new UsecaseInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.UsecaseList]';
     }
 }

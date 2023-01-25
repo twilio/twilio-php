@@ -18,48 +18,94 @@ namespace Twilio\Rest\IpMessaging\V2\Service\Channel;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WebhookOptions {
+abstract class WebhookOptions
+{
     /**
-     * @param string $configurationUrl  
-     * @param string $configurationMethod  
-     * @param string[] $configurationFilters  
-     * @param string[] $configurationTriggers  
-     * @param string $configurationFlowSid  
-     * @param int $configurationRetryCount  
+     * @param string $configurationUrl 
+     * @param string $configurationMethod
+     * @param string[] $configurationFilters 
+     * @param string[] $configurationTriggers 
+     * @param string $configurationFlowSid 
+     * @param int $configurationRetryCount 
      * @return CreateWebhookOptions Options builder
      */
-    public static function create(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE): CreateWebhookOptions {
-        return new CreateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationRetryCount);
+    public static function create(
+        
+        string $configurationUrl = Values::NONE,
+        string $configurationMethod = Values::NONE,
+        array $configurationFilters = Values::ARRAY_NONE,
+        array $configurationTriggers = Values::ARRAY_NONE,
+        string $configurationFlowSid = Values::NONE,
+        int $configurationRetryCount = Values::NONE
+
+    ): CreateWebhookOptions
+    {
+        return new CreateWebhookOptions(
+            $configurationUrl,
+            $configurationMethod,
+            $configurationFilters,
+            $configurationTriggers,
+            $configurationFlowSid,
+            $configurationRetryCount
+        );
     }
 
 
 
 
     /**
-     * @param string $configurationUrl  
-     * @param string $configurationMethod  
-     * @param string[] $configurationFilters  
-     * @param string[] $configurationTriggers  
-     * @param string $configurationFlowSid  
-     * @param int $configurationRetryCount  
+     * @param string $configurationUrl 
+     * @param string $configurationMethod
+     * @param string[] $configurationFilters 
+     * @param string[] $configurationTriggers 
+     * @param string $configurationFlowSid 
+     * @param int $configurationRetryCount 
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE): UpdateWebhookOptions {
-        return new UpdateWebhookOptions($configurationUrl, $configurationMethod, $configurationFilters, $configurationTriggers, $configurationFlowSid, $configurationRetryCount);
+    public static function update(
+        
+        string $configurationUrl = Values::NONE,
+        string $configurationMethod = Values::NONE,
+        array $configurationFilters = Values::ARRAY_NONE,
+        array $configurationTriggers = Values::ARRAY_NONE,
+        string $configurationFlowSid = Values::NONE,
+        int $configurationRetryCount = Values::NONE
+
+    ): UpdateWebhookOptions
+    {
+        return new UpdateWebhookOptions(
+            $configurationUrl,
+            $configurationMethod,
+            $configurationFilters,
+            $configurationTriggers,
+            $configurationFlowSid,
+            $configurationRetryCount
+        );
     }
 
 }
 
-class CreateWebhookOptions extends Options {
+class CreateWebhookOptions extends Options
+    {
     /**
      * @param string $configurationUrl 
-     * @param string $configurationMethod 
+     * @param string $configurationMethod
      * @param string[] $configurationFilters 
      * @param string[] $configurationTriggers 
      * @param string $configurationFlowSid 
      * @param int $configurationRetryCount 
      */
-    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE) {
+    public function __construct(
+        
+        string $configurationUrl = Values::NONE,
+        string $configurationMethod = Values::NONE,
+        array $configurationFilters = Values::ARRAY_NONE,
+        array $configurationTriggers = Values::ARRAY_NONE,
+        string $configurationFlowSid = Values::NONE,
+        int $configurationRetryCount = Values::NONE
+
+    )
+    {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -74,16 +120,18 @@ class CreateWebhookOptions extends Options {
      * @param string $configurationUrl 
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl(string $configurationUrl): self {
+    public function setConfigurationUrl(string $configurationUrl): self
+    {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
 
     /**
-     * @param string $configurationMethod 
+     * @param string $configurationMethod
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod(string $configurationMethod): self {
+    public function setConfigurationMethod(string $configurationMethod): self
+    {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -94,7 +142,8 @@ class CreateWebhookOptions extends Options {
      * @param string[] $configurationFilters 
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters(array $configurationFilters): self {
+    public function setConfigurationFilters(array $configurationFilters): self
+    {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -105,7 +154,8 @@ class CreateWebhookOptions extends Options {
      * @param string[] $configurationTriggers 
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers(array $configurationTriggers): self {
+    public function setConfigurationTriggers(array $configurationTriggers): self
+    {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -116,7 +166,8 @@ class CreateWebhookOptions extends Options {
      * @param string $configurationFlowSid 
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid(string $configurationFlowSid): self {
+    public function setConfigurationFlowSid(string $configurationFlowSid): self
+    {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -127,7 +178,8 @@ class CreateWebhookOptions extends Options {
      * @param int $configurationRetryCount 
      * @return $this Fluent Builder
      */
-    public function setConfigurationRetryCount(int $configurationRetryCount): self {
+    public function setConfigurationRetryCount(int $configurationRetryCount): self
+    {
         $this->options['configurationRetryCount'] = $configurationRetryCount;
         return $this;
     }
@@ -137,7 +189,8 @@ class CreateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V2.CreateWebhookOptions ' . $options . ']';
     }
@@ -146,16 +199,27 @@ class CreateWebhookOptions extends Options {
 
 
 
-class UpdateWebhookOptions extends Options {
+class UpdateWebhookOptions extends Options
+    {
     /**
      * @param string $configurationUrl 
-     * @param string $configurationMethod 
+     * @param string $configurationMethod
      * @param string[] $configurationFilters 
      * @param string[] $configurationTriggers 
      * @param string $configurationFlowSid 
      * @param int $configurationRetryCount 
      */
-    public function __construct(string $configurationUrl = Values::NONE, string $configurationMethod = Values::NONE, array $configurationFilters = Values::ARRAY_NONE, array $configurationTriggers = Values::ARRAY_NONE, string $configurationFlowSid = Values::NONE, int $configurationRetryCount = Values::NONE) {
+    public function __construct(
+        
+        string $configurationUrl = Values::NONE,
+        string $configurationMethod = Values::NONE,
+        array $configurationFilters = Values::ARRAY_NONE,
+        array $configurationTriggers = Values::ARRAY_NONE,
+        string $configurationFlowSid = Values::NONE,
+        int $configurationRetryCount = Values::NONE
+
+    )
+    {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -170,16 +234,18 @@ class UpdateWebhookOptions extends Options {
      * @param string $configurationUrl 
      * @return $this Fluent Builder
      */
-    public function setConfigurationUrl(string $configurationUrl): self {
+    public function setConfigurationUrl(string $configurationUrl): self
+    {
         $this->options['configurationUrl'] = $configurationUrl;
         return $this;
     }
 
     /**
-     * @param string $configurationMethod 
+     * @param string $configurationMethod
      * @return $this Fluent Builder
      */
-    public function setConfigurationMethod(string $configurationMethod): self {
+    public function setConfigurationMethod(string $configurationMethod): self
+    {
         $this->options['configurationMethod'] = $configurationMethod;
         return $this;
     }
@@ -190,7 +256,8 @@ class UpdateWebhookOptions extends Options {
      * @param string[] $configurationFilters 
      * @return $this Fluent Builder
      */
-    public function setConfigurationFilters(array $configurationFilters): self {
+    public function setConfigurationFilters(array $configurationFilters): self
+    {
         $this->options['configurationFilters'] = $configurationFilters;
         return $this;
     }
@@ -201,7 +268,8 @@ class UpdateWebhookOptions extends Options {
      * @param string[] $configurationTriggers 
      * @return $this Fluent Builder
      */
-    public function setConfigurationTriggers(array $configurationTriggers): self {
+    public function setConfigurationTriggers(array $configurationTriggers): self
+    {
         $this->options['configurationTriggers'] = $configurationTriggers;
         return $this;
     }
@@ -212,7 +280,8 @@ class UpdateWebhookOptions extends Options {
      * @param string $configurationFlowSid 
      * @return $this Fluent Builder
      */
-    public function setConfigurationFlowSid(string $configurationFlowSid): self {
+    public function setConfigurationFlowSid(string $configurationFlowSid): self
+    {
         $this->options['configurationFlowSid'] = $configurationFlowSid;
         return $this;
     }
@@ -223,7 +292,8 @@ class UpdateWebhookOptions extends Options {
      * @param int $configurationRetryCount 
      * @return $this Fluent Builder
      */
-    public function setConfigurationRetryCount(int $configurationRetryCount): self {
+    public function setConfigurationRetryCount(int $configurationRetryCount): self
+    {
         $this->options['configurationRetryCount'] = $configurationRetryCount;
         return $this;
     }
@@ -233,7 +303,8 @@ class UpdateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V2.UpdateWebhookOptions ' . $options . ']';
     }

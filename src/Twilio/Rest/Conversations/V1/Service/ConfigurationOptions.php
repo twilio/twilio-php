@@ -18,30 +18,53 @@ namespace Twilio\Rest\Conversations\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ConfigurationOptions {
+abstract class ConfigurationOptions
+{
 
     /**
-     * @param string $defaultConversationCreatorRoleSid The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. 
-     * @param string $defaultConversationRoleSid The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. 
-     * @param string $defaultChatServiceRoleSid The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. 
-     * @param bool $reachabilityEnabled Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`. 
+     * @param string $defaultConversationCreatorRoleSid The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+     * @param string $defaultConversationRoleSid The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+     * @param string $defaultChatServiceRoleSid The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+     * @param bool $reachabilityEnabled Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`.
      * @return UpdateConfigurationOptions Options builder
      */
-    public static function update(string $defaultConversationCreatorRoleSid = Values::NONE, string $defaultConversationRoleSid = Values::NONE, string $defaultChatServiceRoleSid = Values::NONE, bool $reachabilityEnabled = Values::NONE): UpdateConfigurationOptions {
-        return new UpdateConfigurationOptions($defaultConversationCreatorRoleSid, $defaultConversationRoleSid, $defaultChatServiceRoleSid, $reachabilityEnabled);
+    public static function update(
+        
+        string $defaultConversationCreatorRoleSid = Values::NONE,
+        string $defaultConversationRoleSid = Values::NONE,
+        string $defaultChatServiceRoleSid = Values::NONE,
+        bool $reachabilityEnabled = Values::NONE
+
+    ): UpdateConfigurationOptions
+    {
+        return new UpdateConfigurationOptions(
+            $defaultConversationCreatorRoleSid,
+            $defaultConversationRoleSid,
+            $defaultChatServiceRoleSid,
+            $reachabilityEnabled
+        );
     }
 
 }
 
 
-class UpdateConfigurationOptions extends Options {
+class UpdateConfigurationOptions extends Options
+    {
     /**
      * @param string $defaultConversationCreatorRoleSid The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      * @param string $defaultConversationRoleSid The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      * @param string $defaultChatServiceRoleSid The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      * @param bool $reachabilityEnabled Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`.
      */
-    public function __construct(string $defaultConversationCreatorRoleSid = Values::NONE, string $defaultConversationRoleSid = Values::NONE, string $defaultChatServiceRoleSid = Values::NONE, bool $reachabilityEnabled = Values::NONE) {
+    public function __construct(
+        
+        string $defaultConversationCreatorRoleSid = Values::NONE,
+        string $defaultConversationRoleSid = Values::NONE,
+        string $defaultChatServiceRoleSid = Values::NONE,
+        bool $reachabilityEnabled = Values::NONE
+
+    )
+    {
         $this->options['defaultConversationCreatorRoleSid'] = $defaultConversationCreatorRoleSid;
         $this->options['defaultConversationRoleSid'] = $defaultConversationRoleSid;
         $this->options['defaultChatServiceRoleSid'] = $defaultChatServiceRoleSid;
@@ -54,7 +77,8 @@ class UpdateConfigurationOptions extends Options {
      * @param string $defaultConversationCreatorRoleSid The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      * @return $this Fluent Builder
      */
-    public function setDefaultConversationCreatorRoleSid(string $defaultConversationCreatorRoleSid): self {
+    public function setDefaultConversationCreatorRoleSid(string $defaultConversationCreatorRoleSid): self
+    {
         $this->options['defaultConversationCreatorRoleSid'] = $defaultConversationCreatorRoleSid;
         return $this;
     }
@@ -65,7 +89,8 @@ class UpdateConfigurationOptions extends Options {
      * @param string $defaultConversationRoleSid The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      * @return $this Fluent Builder
      */
-    public function setDefaultConversationRoleSid(string $defaultConversationRoleSid): self {
+    public function setDefaultConversationRoleSid(string $defaultConversationRoleSid): self
+    {
         $this->options['defaultConversationRoleSid'] = $defaultConversationRoleSid;
         return $this;
     }
@@ -76,7 +101,8 @@ class UpdateConfigurationOptions extends Options {
      * @param string $defaultChatServiceRoleSid The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
      * @return $this Fluent Builder
      */
-    public function setDefaultChatServiceRoleSid(string $defaultChatServiceRoleSid): self {
+    public function setDefaultChatServiceRoleSid(string $defaultChatServiceRoleSid): self
+    {
         $this->options['defaultChatServiceRoleSid'] = $defaultChatServiceRoleSid;
         return $this;
     }
@@ -87,7 +113,8 @@ class UpdateConfigurationOptions extends Options {
      * @param bool $reachabilityEnabled Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`.
      * @return $this Fluent Builder
      */
-    public function setReachabilityEnabled(bool $reachabilityEnabled): self {
+    public function setReachabilityEnabled(bool $reachabilityEnabled): self
+    {
         $this->options['reachabilityEnabled'] = $reachabilityEnabled;
         return $this;
     }
@@ -97,7 +124,8 @@ class UpdateConfigurationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.UpdateConfigurationOptions ' . $options . ']';
     }

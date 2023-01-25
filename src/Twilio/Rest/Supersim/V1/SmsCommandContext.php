@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SmsCommandContext extends InstanceContext {
+class SmsCommandContext extends InstanceContext
+    {
     /**
      * Initialize the SmsCommandContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the SMS Command resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/SmsCommands/' . \rawurlencode($sid) . '';
+        $this->uri = '/SmsCommands/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -44,22 +53,26 @@ class SmsCommandContext extends InstanceContext {
      * @return SmsCommandInstance Fetched SmsCommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SmsCommandInstance {
+    public function fetch(): SmsCommandInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SmsCommandInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

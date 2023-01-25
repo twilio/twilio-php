@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SiprecPage extends Page {
+class SiprecPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class SiprecPage extends Page {
      * @param array $payload Payload response from the API
      * @return SiprecInstance \Twilio\Rest\Api\V2010\Account\Call\SiprecInstance
      */
-    public function buildInstance(array $payload): SiprecInstance {
+    public function buildInstance(array $payload): SiprecInstance
+    {
         return new SiprecInstance($this->version, $payload, $this->solution['accountSid'], $this->solution['callSid']);
     }
 
@@ -45,7 +48,8 @@ class SiprecPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.SiprecPage]';
     }
 }

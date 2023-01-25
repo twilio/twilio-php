@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class EnvironmentList extends ListResource {
+class EnvironmentList extends ListResource
+    {
     /**
      * Construct the EnvironmentList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to create the Environment resource under.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Environments';
     }
 
     /**
@@ -48,22 +58,27 @@ class EnvironmentList extends ListResource {
      * @return EnvironmentInstance Created EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): EnvironmentInstance {
+    public function create(string $uniqueName, array $options = []): EnvironmentInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $uniqueName,
-            'DomainSuffix' => $options['domainSuffix'],
+            'UniqueName' =>
+                $uniqueName,
+            'DomainSuffix' =>
+                $options['domainSuffix'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new EnvironmentInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Reads EnvironmentInstance records from the API as a list.
@@ -80,7 +95,8 @@ class EnvironmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EnvironmentInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -102,7 +118,8 @@ class EnvironmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -119,7 +136,12 @@ class EnvironmentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return EnvironmentPage Page of EnvironmentInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EnvironmentPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): EnvironmentPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -139,7 +161,8 @@ class EnvironmentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return EnvironmentPage Page of EnvironmentInstance
      */
-    public function getPage(string $targetUrl): EnvironmentPage {
+    public function getPage(string $targetUrl): EnvironmentPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,8 +177,16 @@ class EnvironmentList extends ListResource {
      *
      * @param string $sid The SID of the Environment resource to delete.
      */
-    public function getContext(string $sid): EnvironmentContext {
-        return new EnvironmentContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): EnvironmentContext
+    {
+        return new EnvironmentContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -163,7 +194,8 @@ class EnvironmentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Serverless.V1.EnvironmentList]';
     }
 }

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class DailyPage extends Page {
+class DailyPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class DailyPage extends Page {
      * @param array $payload Payload response from the API
      * @return DailyInstance \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyInstance
      */
-    public function buildInstance(array $payload): DailyInstance {
+    public function buildInstance(array $payload): DailyInstance
+    {
         return new DailyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
@@ -45,7 +48,8 @@ class DailyPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.DailyPage]';
     }
 }

@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class ParticipantContext extends InstanceContext {
+class ParticipantContext extends InstanceContext
+    {
     /**
      * Initialize the ParticipantContext
      *
@@ -33,13 +34,25 @@ class ParticipantContext extends InstanceContext {
      * @param string $conversationSid The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, $conversationSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $conversationSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['conversationSid' => $conversationSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'conversationSid' =>
+            $conversationSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid) . '/Participants/' . \rawurlencode($sid) . '';
+        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        .'/Participants/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -49,7 +62,9 @@ class ParticipantContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         $options = new Values($options);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -57,22 +72,26 @@ class ParticipantContext extends InstanceContext {
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
+
     /**
      * Fetch the ParticipantInstance
      *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
+    public function fetch(): ParticipantInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['conversationSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['conversationSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ParticipantInstance
@@ -81,19 +100,30 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ParticipantInstance {
+    public function update(array $options = []): ParticipantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'Attributes' => $options['attributes'],
-            'RoleSid' => $options['roleSid'],
-            'MessagingBinding.ProxyAddress' => $options['messagingBindingProxyAddress'],
-            'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
-            'Identity' => $options['identity'],
-            'LastReadMessageIndex' => $options['lastReadMessageIndex'],
-            'LastReadTimestamp' => $options['lastReadTimestamp'],
+            'DateCreated' =>
+                Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' =>
+                Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' =>
+                $options['attributes'],
+            'RoleSid' =>
+                $options['roleSid'],
+            'MessagingBinding.ProxyAddress' =>
+                $options['messagingBindingProxyAddress'],
+            'MessagingBinding.ProjectedAddress' =>
+                $options['messagingBindingProjectedAddress'],
+            'Identity' =>
+                $options['identity'],
+            'LastReadMessageIndex' =>
+                $options['lastReadMessageIndex'],
+            'LastReadTimestamp' =>
+                $options['lastReadTimestamp'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -102,18 +132,20 @@ class ParticipantContext extends InstanceContext {
 
         return new ParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['conversationSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['conversationSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

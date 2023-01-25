@@ -50,7 +50,8 @@ use Twilio\Rest\Preview\Wireless\Sim\UsageList;
  * @property string $url
  * @property array $links
  */
-class SimInstance extends InstanceResource {
+class SimInstance extends InstanceResource
+{
     protected $_usage;
 
     /**
@@ -60,7 +61,8 @@ class SimInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -98,7 +100,8 @@ class SimInstance extends InstanceResource {
      *
      * @return SimContext Context for this SimInstance
      */
-    protected function proxy(): SimContext {
+    protected function proxy(): SimContext
+    {
         if (!$this->context) {
             $this->context = new SimContext(
                 $this->version,
@@ -115,7 +118,9 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SimInstance {
+    public function fetch(): SimInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -126,14 +131,17 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SimInstance {
+    public function update(array $options = []): SimInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the usage
      */
-    protected function getUsage(): UsageList {
+    protected function getUsage(): UsageList
+    {
         return $this->proxy()->usage;
     }
 
@@ -144,7 +152,8 @@ class SimInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -162,7 +171,8 @@ class SimInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

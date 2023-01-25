@@ -33,7 +33,8 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInvi
  * @property InteractionChannelInviteList $invites
  * @method \Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantContext participants(string $sid)
  */
-class InteractionChannelContext extends InstanceContext {
+class InteractionChannelContext extends InstanceContext
+    {
     protected $_participants;
     protected $_invites;
 
@@ -44,13 +45,25 @@ class InteractionChannelContext extends InstanceContext {
      * @param string $interactionSid The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
      * @param string $sid The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
      */
-    public function __construct(Version $version, $interactionSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $interactionSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['interactionSid' => $interactionSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'interactionSid' =>
+            $interactionSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Interactions/' . \rawurlencode($interactionSid) . '/Channels/' . \rawurlencode($sid) . '';
+        $this->uri = '/Interactions/' . \rawurlencode($interactionSid)
+        .'/Channels/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -59,52 +72,61 @@ class InteractionChannelContext extends InstanceContext {
      * @return InteractionChannelInstance Fetched InteractionChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionChannelInstance {
+    public function fetch(): InteractionChannelInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new InteractionChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['interactionSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['interactionSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the InteractionChannelInstance
      *
-     * @param string $status 
+     * @param string $status
      * @param array|Options $options Optional Arguments
      * @return InteractionChannelInstance Updated InteractionChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status, array $options = []): InteractionChannelInstance {
+    public function update(string $status, array $options = []): InteractionChannelInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Status' => $status,
-            'Routing' => Serialize::jsonObject($options['routing']),
+            'Status' =>
+                $status,
+            'Routing' =>
+                Serialize::jsonObject($options['routing']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new InteractionChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['interactionSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['interactionSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the participants
      */
-    protected function getParticipants(): InteractionChannelParticipantList {
+    protected function getParticipants(): InteractionChannelParticipantList
+    {
         if (!$this->_participants) {
             $this->_participants = new InteractionChannelParticipantList(
-                $this->version
-                , $this->solution['interactionSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['interactionSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -114,12 +136,13 @@ class InteractionChannelContext extends InstanceContext {
     /**
      * Access the invites
      */
-    protected function getInvites(): InteractionChannelInviteList {
+    protected function getInvites(): InteractionChannelInviteList
+    {
         if (!$this->_invites) {
             $this->_invites = new InteractionChannelInviteList(
-                $this->version
-                , $this->solution['interactionSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['interactionSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -133,7 +156,8 @@ class InteractionChannelContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -150,7 +174,8 @@ class InteractionChannelContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -164,7 +189,8 @@ class InteractionChannelContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

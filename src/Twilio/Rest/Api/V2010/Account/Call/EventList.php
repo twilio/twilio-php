@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class EventList extends ListResource {
+class EventList extends ListResource
+    {
     /**
      * Construct the EventList
      *
@@ -30,13 +31,28 @@ class EventList extends ListResource {
      * @param string $accountSid The unique SID identifier of the Account.
      * @param string $callSid The unique SID identifier of the Call.
      */
-    public function __construct(Version $version, string $accountSid , string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'callSid' =>
+            $callSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Events.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/Events.json';
     }
 
     /**
@@ -54,7 +70,8 @@ class EventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EventInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class EventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class EventList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return EventPage Page of EventInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EventPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): EventPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class EventList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return EventPage Page of EventInstance
      */
-    public function getPage(string $targetUrl): EventPage {
+    public function getPage(string $targetUrl): EventPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,7 +152,8 @@ class EventList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.EventList]';
     }
 }

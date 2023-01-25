@@ -22,20 +22,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SimIpAddressList extends ListResource {
+class SimIpAddressList extends ListResource
+    {
     /**
      * Construct the SimIpAddressList
      *
      * @param Version $version Version that contains the resource
      * @param string $simSid The SID of the Super SIM to list IP Addresses for.
      */
-    public function __construct(Version $version, string $simSid ) {
+    public function __construct(
+        Version $version,
+        string $simSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['simSid' => $simSid, ];
+        $this->solution = [
+        'simSid' =>
+            $simSid,
+        
+        ];
 
-        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/IpAddresses';
+        $this->uri = '/Sims/' . \rawurlencode($simSid)
+        .'/IpAddresses';
     }
 
     /**
@@ -53,7 +63,8 @@ class SimIpAddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SimIpAddressInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -75,7 +86,8 @@ class SimIpAddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -92,7 +104,12 @@ class SimIpAddressList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SimIpAddressPage Page of SimIpAddressInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SimIpAddressPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SimIpAddressPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -112,7 +129,8 @@ class SimIpAddressList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SimIpAddressPage Page of SimIpAddressInstance
      */
-    public function getPage(string $targetUrl): SimIpAddressPage {
+    public function getPage(string $targetUrl): SimIpAddressPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -127,7 +145,8 @@ class SimIpAddressList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.SimIpAddressList]';
     }
 }

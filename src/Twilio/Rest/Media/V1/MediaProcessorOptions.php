@@ -18,39 +18,71 @@ namespace Twilio\Rest\Media\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class MediaProcessorOptions {
+abstract class MediaProcessorOptions
+{
     /**
-     * @param array $extensionEnvironment User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this. 
-     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details. 
-     * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. 
-     * @param int $maxDuration The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming. 
+     * @param array $extensionEnvironment User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this.
+     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details.
+     * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
+     * @param int $maxDuration The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming.
      * @return CreateMediaProcessorOptions Options builder
      */
-    public static function create(array $extensionEnvironment = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxDuration = Values::NONE): CreateMediaProcessorOptions {
-        return new CreateMediaProcessorOptions($extensionEnvironment, $statusCallback, $statusCallbackMethod, $maxDuration);
+    public static function create(
+        
+        array $extensionEnvironment = Values::ARRAY_NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE,
+        int $maxDuration = Values::NONE
+
+    ): CreateMediaProcessorOptions
+    {
+        return new CreateMediaProcessorOptions(
+            $extensionEnvironment,
+            $statusCallback,
+            $statusCallbackMethod,
+            $maxDuration
+        );
     }
 
 
     /**
-     * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default. 
-     * @param string $status Status to filter by, with possible values `started`, `ended` or `failed`. 
+     * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
+     * @param string $status Status to filter by, with possible values `started`, `ended` or `failed`.
      * @return ReadMediaProcessorOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $status = Values::NONE): ReadMediaProcessorOptions {
-        return new ReadMediaProcessorOptions($order, $status);
+    public static function read(
+        
+        string $order = Values::NONE,
+        string $status = Values::NONE
+
+    ): ReadMediaProcessorOptions
+    {
+        return new ReadMediaProcessorOptions(
+            $order,
+            $status
+        );
     }
 
 
 }
 
-class CreateMediaProcessorOptions extends Options {
+class CreateMediaProcessorOptions extends Options
+    {
     /**
      * @param array $extensionEnvironment User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this.
      * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details.
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
      * @param int $maxDuration The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming.
      */
-    public function __construct(array $extensionEnvironment = Values::ARRAY_NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, int $maxDuration = Values::NONE) {
+    public function __construct(
+        
+        array $extensionEnvironment = Values::ARRAY_NONE,
+        string $statusCallback = Values::NONE,
+        string $statusCallbackMethod = Values::NONE,
+        int $maxDuration = Values::NONE
+
+    )
+    {
         $this->options['extensionEnvironment'] = $extensionEnvironment;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
@@ -63,7 +95,8 @@ class CreateMediaProcessorOptions extends Options {
      * @param array $extensionEnvironment User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this.
      * @return $this Fluent Builder
      */
-    public function setExtensionEnvironment(array $extensionEnvironment): self {
+    public function setExtensionEnvironment(array $extensionEnvironment): self
+    {
         $this->options['extensionEnvironment'] = $extensionEnvironment;
         return $this;
     }
@@ -74,7 +107,8 @@ class CreateMediaProcessorOptions extends Options {
      * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -85,7 +119,8 @@ class CreateMediaProcessorOptions extends Options {
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod(string $statusCallbackMethod): self {
+    public function setStatusCallbackMethod(string $statusCallbackMethod): self
+    {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
@@ -96,7 +131,8 @@ class CreateMediaProcessorOptions extends Options {
      * @param int $maxDuration The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming.
      * @return $this Fluent Builder
      */
-    public function setMaxDuration(int $maxDuration): self {
+    public function setMaxDuration(int $maxDuration): self
+    {
         $this->options['maxDuration'] = $maxDuration;
         return $this;
     }
@@ -106,19 +142,27 @@ class CreateMediaProcessorOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Media.V1.CreateMediaProcessorOptions ' . $options . ']';
     }
 }
 
 
-class ReadMediaProcessorOptions extends Options {
+class ReadMediaProcessorOptions extends Options
+    {
     /**
      * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
      * @param string $status Status to filter by, with possible values `started`, `ended` or `failed`.
      */
-    public function __construct(string $order = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $order = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['order'] = $order;
         $this->options['status'] = $status;
     }
@@ -129,7 +173,8 @@ class ReadMediaProcessorOptions extends Options {
      * @param string $order The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default.
      * @return $this Fluent Builder
      */
-    public function setOrder(string $order): self {
+    public function setOrder(string $order): self
+    {
         $this->options['order'] = $order;
         return $this;
     }
@@ -140,7 +185,8 @@ class ReadMediaProcessorOptions extends Options {
      * @param string $status Status to filter by, with possible values `started`, `ended` or `failed`.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -150,7 +196,8 @@ class ReadMediaProcessorOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Media.V1.ReadMediaProcessorOptions ' . $options . ']';
     }

@@ -40,7 +40,8 @@ use Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList;
  * @property \DateTime $dateUpdated
  * @property array $links
  */
-class FleetInstance extends InstanceResource {
+class FleetInstance extends InstanceResource
+{
     protected $_certificates;
     protected $_devices;
     protected $_keys;
@@ -53,7 +54,8 @@ class FleetInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Fleet resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -78,7 +80,8 @@ class FleetInstance extends InstanceResource {
      *
      * @return FleetContext Context for this FleetInstance
      */
-    protected function proxy(): FleetContext {
+    protected function proxy(): FleetContext
+    {
         if (!$this->context) {
             $this->context = new FleetContext(
                 $this->version,
@@ -95,7 +98,9 @@ class FleetInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -105,7 +110,9 @@ class FleetInstance extends InstanceResource {
      * @return FleetInstance Fetched FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FleetInstance {
+    public function fetch(): FleetInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -116,35 +123,41 @@ class FleetInstance extends InstanceResource {
      * @return FleetInstance Updated FleetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FleetInstance {
+    public function update(array $options = []): FleetInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the certificates
      */
-    protected function getCertificates(): CertificateList {
+    protected function getCertificates(): CertificateList
+    {
         return $this->proxy()->certificates;
     }
 
     /**
      * Access the devices
      */
-    protected function getDevices(): DeviceList {
+    protected function getDevices(): DeviceList
+    {
         return $this->proxy()->devices;
     }
 
     /**
      * Access the keys
      */
-    protected function getKeys(): KeyList {
+    protected function getKeys(): KeyList
+    {
         return $this->proxy()->keys;
     }
 
     /**
      * Access the deployments
      */
-    protected function getDeployments(): DeploymentList {
+    protected function getDeployments(): DeploymentList
+    {
         return $this->proxy()->deployments;
     }
 
@@ -155,7 +168,8 @@ class FleetInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -173,7 +187,8 @@ class FleetInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

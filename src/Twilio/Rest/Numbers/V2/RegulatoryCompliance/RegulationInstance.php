@@ -32,7 +32,8 @@ use Twilio\Version;
  * @property array $requirements
  * @property string $url
  */
-class RegulationInstance extends InstanceResource {
+class RegulationInstance extends InstanceResource
+{
     /**
      * Initialize the RegulationInstance
      *
@@ -40,7 +41,8 @@ class RegulationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the Regulation resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class RegulationInstance extends InstanceResource {
      *
      * @return RegulationContext Context for this RegulationInstance
      */
-    protected function proxy(): RegulationContext {
+    protected function proxy(): RegulationContext
+    {
         if (!$this->context) {
             $this->context = new RegulationContext(
                 $this->version,
@@ -80,7 +83,9 @@ class RegulationInstance extends InstanceResource {
      * @return RegulationInstance Fetched RegulationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RegulationInstance {
+    public function fetch(): RegulationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -91,7 +96,8 @@ class RegulationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -109,7 +115,8 @@ class RegulationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

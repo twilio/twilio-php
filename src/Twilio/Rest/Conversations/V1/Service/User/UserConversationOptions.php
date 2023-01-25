@@ -18,18 +18,30 @@ namespace Twilio\Rest\Conversations\V1\Service\User;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class UserConversationOptions {
+abstract class UserConversationOptions
+{
 
 
 
     /**
-     * @param string $notificationLevel  
-     * @param \DateTime $lastReadTimestamp The date of the last message read in conversation by the user, given in ISO 8601 format. 
-     * @param int $lastReadMessageIndex The index of the last Message in the Conversation that the Participant has read. 
+     * @param string $notificationLevel
+     * @param \DateTime $lastReadTimestamp The date of the last message read in conversation by the user, given in ISO 8601 format.
+     * @param int $lastReadMessageIndex The index of the last Message in the Conversation that the Participant has read.
      * @return UpdateUserConversationOptions Options builder
      */
-    public static function update(string $notificationLevel = Values::NONE, \DateTime $lastReadTimestamp = Values::NONE, int $lastReadMessageIndex = Values::NONE): UpdateUserConversationOptions {
-        return new UpdateUserConversationOptions($notificationLevel, $lastReadTimestamp, $lastReadMessageIndex);
+    public static function update(
+        
+        string $notificationLevel = Values::NONE,
+        \DateTime $lastReadTimestamp = Values::NONE,
+        int $lastReadMessageIndex = Values::NONE
+
+    ): UpdateUserConversationOptions
+    {
+        return new UpdateUserConversationOptions(
+            $notificationLevel,
+            $lastReadTimestamp,
+            $lastReadMessageIndex
+        );
     }
 
 }
@@ -37,23 +49,32 @@ abstract class UserConversationOptions {
 
 
 
-class UpdateUserConversationOptions extends Options {
+class UpdateUserConversationOptions extends Options
+    {
     /**
-     * @param string $notificationLevel 
+     * @param string $notificationLevel
      * @param \DateTime $lastReadTimestamp The date of the last message read in conversation by the user, given in ISO 8601 format.
      * @param int $lastReadMessageIndex The index of the last Message in the Conversation that the Participant has read.
      */
-    public function __construct(string $notificationLevel = Values::NONE, \DateTime $lastReadTimestamp = Values::NONE, int $lastReadMessageIndex = Values::NONE) {
+    public function __construct(
+        
+        string $notificationLevel = Values::NONE,
+        \DateTime $lastReadTimestamp = Values::NONE,
+        int $lastReadMessageIndex = Values::NONE
+
+    )
+    {
         $this->options['notificationLevel'] = $notificationLevel;
         $this->options['lastReadTimestamp'] = $lastReadTimestamp;
         $this->options['lastReadMessageIndex'] = $lastReadMessageIndex;
     }
 
     /**
-     * @param string $notificationLevel 
+     * @param string $notificationLevel
      * @return $this Fluent Builder
      */
-    public function setNotificationLevel(string $notificationLevel): self {
+    public function setNotificationLevel(string $notificationLevel): self
+    {
         $this->options['notificationLevel'] = $notificationLevel;
         return $this;
     }
@@ -64,7 +85,8 @@ class UpdateUserConversationOptions extends Options {
      * @param \DateTime $lastReadTimestamp The date of the last message read in conversation by the user, given in ISO 8601 format.
      * @return $this Fluent Builder
      */
-    public function setLastReadTimestamp(\DateTime $lastReadTimestamp): self {
+    public function setLastReadTimestamp(\DateTime $lastReadTimestamp): self
+    {
         $this->options['lastReadTimestamp'] = $lastReadTimestamp;
         return $this;
     }
@@ -75,7 +97,8 @@ class UpdateUserConversationOptions extends Options {
      * @param int $lastReadMessageIndex The index of the last Message in the Conversation that the Participant has read.
      * @return $this Fluent Builder
      */
-    public function setLastReadMessageIndex(int $lastReadMessageIndex): self {
+    public function setLastReadMessageIndex(int $lastReadMessageIndex): self
+    {
         $this->options['lastReadMessageIndex'] = $lastReadMessageIndex;
         return $this;
     }
@@ -85,7 +108,8 @@ class UpdateUserConversationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.UpdateUserConversationOptions ' . $options . ']';
     }

@@ -49,7 +49,8 @@ use Twilio\Deserialize;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkflowCumulativeStatisticsInstance extends InstanceResource {
+class WorkflowCumulativeStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkflowCumulativeStatisticsInstance
      *
@@ -58,7 +59,8 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace with the resource to fetch.
      * @param string $workflowSid Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $workflowSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $workflowSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -96,7 +98,8 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return WorkflowCumulativeStatisticsContext Context for this WorkflowCumulativeStatisticsInstance
      */
-    protected function proxy(): WorkflowCumulativeStatisticsContext {
+    protected function proxy(): WorkflowCumulativeStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new WorkflowCumulativeStatisticsContext(
                 $this->version,
@@ -115,7 +118,9 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
      * @return WorkflowCumulativeStatisticsInstance Fetched WorkflowCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkflowCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkflowCumulativeStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -126,7 +131,8 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,7 +150,8 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

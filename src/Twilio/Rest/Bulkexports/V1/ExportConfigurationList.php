@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class ExportConfigurationList extends ListResource {
+class ExportConfigurationList extends ListResource
+    {
     /**
      * Construct the ExportConfigurationList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class ExportConfigurationList extends ListResource {
      *
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      */
-    public function getContext(string $resourceType): ExportConfigurationContext {
-        return new ExportConfigurationContext($this->version, $resourceType);
+    public function getContext(
+        string $resourceType
+        
+    ): ExportConfigurationContext
+    {
+        return new ExportConfigurationContext(
+            $this->version,
+            $resourceType
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class ExportConfigurationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Bulkexports.V1.ExportConfigurationList]';
     }
 }

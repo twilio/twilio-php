@@ -38,7 +38,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class FlowRevisionInstance extends InstanceResource {
+class FlowRevisionInstance extends InstanceResource
+{
     /**
      * Initialize the FlowRevisionInstance
      *
@@ -47,7 +48,8 @@ class FlowRevisionInstance extends InstanceResource {
      * @param string $sid The SID of the Flow resource to fetch.
      * @param string $revision Specific Revision number or can be `LatestPublished` and `LatestRevision`.
      */
-    public function __construct(Version $version, array $payload, string $sid, string $revision = null) {
+    public function __construct(Version $version, array $payload, string $sid, string $revision = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -75,7 +77,8 @@ class FlowRevisionInstance extends InstanceResource {
      *
      * @return FlowRevisionContext Context for this FlowRevisionInstance
      */
-    protected function proxy(): FlowRevisionContext {
+    protected function proxy(): FlowRevisionContext
+    {
         if (!$this->context) {
             $this->context = new FlowRevisionContext(
                 $this->version,
@@ -93,7 +96,9 @@ class FlowRevisionInstance extends InstanceResource {
      * @return FlowRevisionInstance Fetched FlowRevisionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlowRevisionInstance {
+    public function fetch(): FlowRevisionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,7 +109,8 @@ class FlowRevisionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +128,8 @@ class FlowRevisionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

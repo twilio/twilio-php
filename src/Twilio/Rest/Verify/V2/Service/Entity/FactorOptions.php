@@ -18,32 +18,11 @@ namespace Twilio\Rest\Verify\V2\Service\Entity;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class FactorOptions {
+abstract class FactorOptions
+{
 
 
 
-    /**
-     * @param string $authPayload The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code. 
-     * @param string $friendlyName The new friendly name of this Factor. It can be up to 64 characters. 
-     * @param string $configNotificationToken For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long. 
-     * @param string $configSdkVersion The Verify Push SDK version used to configure the factor 
-     * @param int $configTimeStep Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive 
-     * @param int $configSkew The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive 
-     * @param int $configCodeLength Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive 
-     * @param string $configAlg  
-     * @param string $configNotificationPlatform The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.  Required when `factor_type` is `push`. 
-     * @return UpdateFactorOptions Options builder
-     */
-    public static function update(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE, string $configNotificationPlatform = Values::NONE): UpdateFactorOptions {
-        return new UpdateFactorOptions($authPayload, $friendlyName, $configNotificationToken, $configSdkVersion, $configTimeStep, $configSkew, $configCodeLength, $configAlg, $configNotificationPlatform);
-    }
-
-}
-
-
-
-
-class UpdateFactorOptions extends Options {
     /**
      * @param string $authPayload The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.
      * @param string $friendlyName The new friendly name of this Factor. It can be up to 64 characters.
@@ -52,10 +31,69 @@ class UpdateFactorOptions extends Options {
      * @param int $configTimeStep Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive
      * @param int $configSkew The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive
      * @param int $configCodeLength Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive
-     * @param string $configAlg 
+     * @param string $configAlg
+     * @param string $configNotificationPlatform The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.  Required when `factor_type` is `push`.
+     * @return UpdateFactorOptions Options builder
+     */
+    public static function update(
+        
+        string $authPayload = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $configNotificationToken = Values::NONE,
+        string $configSdkVersion = Values::NONE,
+        int $configTimeStep = Values::NONE,
+        int $configSkew = Values::NONE,
+        int $configCodeLength = Values::NONE,
+        string $configAlg = Values::NONE,
+        string $configNotificationPlatform = Values::NONE
+
+    ): UpdateFactorOptions
+    {
+        return new UpdateFactorOptions(
+            $authPayload,
+            $friendlyName,
+            $configNotificationToken,
+            $configSdkVersion,
+            $configTimeStep,
+            $configSkew,
+            $configCodeLength,
+            $configAlg,
+            $configNotificationPlatform
+        );
+    }
+
+}
+
+
+
+
+class UpdateFactorOptions extends Options
+    {
+    /**
+     * @param string $authPayload The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.
+     * @param string $friendlyName The new friendly name of this Factor. It can be up to 64 characters.
+     * @param string $configNotificationToken For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
+     * @param string $configSdkVersion The Verify Push SDK version used to configure the factor
+     * @param int $configTimeStep Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive
+     * @param int $configSkew The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive
+     * @param int $configCodeLength Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive
+     * @param string $configAlg
      * @param string $configNotificationPlatform The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.  Required when `factor_type` is `push`.
      */
-    public function __construct(string $authPayload = Values::NONE, string $friendlyName = Values::NONE, string $configNotificationToken = Values::NONE, string $configSdkVersion = Values::NONE, int $configTimeStep = Values::NONE, int $configSkew = Values::NONE, int $configCodeLength = Values::NONE, string $configAlg = Values::NONE, string $configNotificationPlatform = Values::NONE) {
+    public function __construct(
+        
+        string $authPayload = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $configNotificationToken = Values::NONE,
+        string $configSdkVersion = Values::NONE,
+        int $configTimeStep = Values::NONE,
+        int $configSkew = Values::NONE,
+        int $configCodeLength = Values::NONE,
+        string $configAlg = Values::NONE,
+        string $configNotificationPlatform = Values::NONE
+
+    )
+    {
         $this->options['authPayload'] = $authPayload;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['configNotificationToken'] = $configNotificationToken;
@@ -73,7 +111,8 @@ class UpdateFactorOptions extends Options {
      * @param string $authPayload The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.
      * @return $this Fluent Builder
      */
-    public function setAuthPayload(string $authPayload): self {
+    public function setAuthPayload(string $authPayload): self
+    {
         $this->options['authPayload'] = $authPayload;
         return $this;
     }
@@ -84,7 +123,8 @@ class UpdateFactorOptions extends Options {
      * @param string $friendlyName The new friendly name of this Factor. It can be up to 64 characters.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -95,7 +135,8 @@ class UpdateFactorOptions extends Options {
      * @param string $configNotificationToken For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
      * @return $this Fluent Builder
      */
-    public function setConfigNotificationToken(string $configNotificationToken): self {
+    public function setConfigNotificationToken(string $configNotificationToken): self
+    {
         $this->options['configNotificationToken'] = $configNotificationToken;
         return $this;
     }
@@ -106,7 +147,8 @@ class UpdateFactorOptions extends Options {
      * @param string $configSdkVersion The Verify Push SDK version used to configure the factor
      * @return $this Fluent Builder
      */
-    public function setConfigSdkVersion(string $configSdkVersion): self {
+    public function setConfigSdkVersion(string $configSdkVersion): self
+    {
         $this->options['configSdkVersion'] = $configSdkVersion;
         return $this;
     }
@@ -117,7 +159,8 @@ class UpdateFactorOptions extends Options {
      * @param int $configTimeStep Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive
      * @return $this Fluent Builder
      */
-    public function setConfigTimeStep(int $configTimeStep): self {
+    public function setConfigTimeStep(int $configTimeStep): self
+    {
         $this->options['configTimeStep'] = $configTimeStep;
         return $this;
     }
@@ -128,7 +171,8 @@ class UpdateFactorOptions extends Options {
      * @param int $configSkew The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive
      * @return $this Fluent Builder
      */
-    public function setConfigSkew(int $configSkew): self {
+    public function setConfigSkew(int $configSkew): self
+    {
         $this->options['configSkew'] = $configSkew;
         return $this;
     }
@@ -139,16 +183,18 @@ class UpdateFactorOptions extends Options {
      * @param int $configCodeLength Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive
      * @return $this Fluent Builder
      */
-    public function setConfigCodeLength(int $configCodeLength): self {
+    public function setConfigCodeLength(int $configCodeLength): self
+    {
         $this->options['configCodeLength'] = $configCodeLength;
         return $this;
     }
 
     /**
-     * @param string $configAlg 
+     * @param string $configAlg
      * @return $this Fluent Builder
      */
-    public function setConfigAlg(string $configAlg): self {
+    public function setConfigAlg(string $configAlg): self
+    {
         $this->options['configAlg'] = $configAlg;
         return $this;
     }
@@ -159,7 +205,8 @@ class UpdateFactorOptions extends Options {
      * @param string $configNotificationPlatform The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.  Required when `factor_type` is `push`.
      * @return $this Fluent Builder
      */
-    public function setConfigNotificationPlatform(string $configNotificationPlatform): self {
+    public function setConfigNotificationPlatform(string $configNotificationPlatform): self
+    {
         $this->options['configNotificationPlatform'] = $configNotificationPlatform;
         return $this;
     }
@@ -169,7 +216,8 @@ class UpdateFactorOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.UpdateFactorOptions ' . $options . ']';
     }

@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class StyleSheetList extends ListResource {
+class StyleSheetList extends ListResource
+    {
     /**
      * Construct the StyleSheetList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the Assistant
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
     }
 
     /**
      * Constructs a StyleSheetContext
      */
-    public function getContext(): StyleSheetContext {
-        return new StyleSheetContext($this->version, $this->solution['assistantSid']);
+    public function getContext(
+        
+    ): StyleSheetContext
+    {
+        return new StyleSheetContext(
+            $this->version,
+            $this->solution['assistantSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class StyleSheetList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.StyleSheetList]';
     }
 }

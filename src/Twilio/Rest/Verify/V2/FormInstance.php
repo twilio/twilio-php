@@ -29,7 +29,8 @@ use Twilio\Version;
  * @property array $formMeta
  * @property string $url
  */
-class FormInstance extends InstanceResource {
+class FormInstance extends InstanceResource
+{
     /**
      * Initialize the FormInstance
      *
@@ -37,7 +38,8 @@ class FormInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $formType The Type of this Form. Currently only `form-push` is supported.
      */
-    public function __construct(Version $version, array $payload, string $formType = null) {
+    public function __construct(Version $version, array $payload, string $formType = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -57,7 +59,8 @@ class FormInstance extends InstanceResource {
      *
      * @return FormContext Context for this FormInstance
      */
-    protected function proxy(): FormContext {
+    protected function proxy(): FormContext
+    {
         if (!$this->context) {
             $this->context = new FormContext(
                 $this->version,
@@ -74,7 +77,9 @@ class FormInstance extends InstanceResource {
      * @return FormInstance Fetched FormInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FormInstance {
+    public function fetch(): FormInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -85,7 +90,8 @@ class FormInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -103,7 +109,8 @@ class FormInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

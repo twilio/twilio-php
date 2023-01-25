@@ -23,17 +23,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class EventTypeList extends ListResource {
+class EventTypeList extends ListResource
+    {
     /**
      * Construct the EventTypeList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Types';
     }
@@ -54,7 +58,8 @@ class EventTypeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EventTypeInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -77,7 +82,8 @@ class EventTypeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -94,11 +100,18 @@ class EventTypeList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return EventTypePage Page of EventTypeInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EventTypePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): EventTypePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'SchemaId' => $options['schemaId'],
+            'SchemaId' =>
+                $options['schemaId'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -116,7 +129,8 @@ class EventTypeList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return EventTypePage Page of EventTypeInstance
      */
-    public function getPage(string $targetUrl): EventTypePage {
+    public function getPage(string $targetUrl): EventTypePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -131,8 +145,15 @@ class EventTypeList extends ListResource {
      *
      * @param string $type A string that uniquely identifies this Event Type.
      */
-    public function getContext(string $type): EventTypeContext {
-        return new EventTypeContext($this->version, $type);
+    public function getContext(
+        string $type
+        
+    ): EventTypeContext
+    {
+        return new EventTypeContext(
+            $this->version,
+            $type
+        );
     }
 
     /**
@@ -140,7 +161,8 @@ class EventTypeList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.EventTypeList]';
     }
 }

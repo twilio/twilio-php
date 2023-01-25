@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AccessTokenContext extends InstanceContext {
+class AccessTokenContext extends InstanceContext
+    {
     /**
      * Initialize the AccessTokenContext
      *
@@ -30,13 +31,25 @@ class AccessTokenContext extends InstanceContext {
      * @param string $serviceSid The unique SID identifier of the Service.
      * @param string $sid A 34 character string that uniquely identifies this Access Token.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/AccessTokens/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/AccessTokens/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class AccessTokenContext extends InstanceContext {
      * @return AccessTokenInstance Fetched AccessTokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AccessTokenInstance {
+    public function fetch(): AccessTokenInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AccessTokenInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

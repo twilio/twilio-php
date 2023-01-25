@@ -18,52 +18,105 @@ namespace Twilio\Rest\Proxy\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ServiceOptions {
+abstract class ServiceOptions
+{
     /**
-     * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value. 
-     * @param string $callbackUrl The URL we should call when the interaction status changes. 
-     * @param string $geoMatchLevel  
-     * @param string $numberSelectionBehavior  
-     * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues. 
-     * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information. 
-     * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship. 
+     * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
+     * @param string $callbackUrl The URL we should call when the interaction status changes.
+     * @param string $geoMatchLevel
+     * @param string $numberSelectionBehavior
+     * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
+     * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
+     * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
      * @return CreateServiceOptions Options builder
      */
-    public static function create(int $defaultTtl = Values::NONE, string $callbackUrl = Values::NONE, string $geoMatchLevel = Values::NONE, string $numberSelectionBehavior = Values::NONE, string $interceptCallbackUrl = Values::NONE, string $outOfSessionCallbackUrl = Values::NONE, string $chatInstanceSid = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl, $chatInstanceSid);
+    public static function create(
+        
+        int $defaultTtl = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $geoMatchLevel = Values::NONE,
+        string $numberSelectionBehavior = Values::NONE,
+        string $interceptCallbackUrl = Values::NONE,
+        string $outOfSessionCallbackUrl = Values::NONE,
+        string $chatInstanceSid = Values::NONE
+
+    ): CreateServiceOptions
+    {
+        return new CreateServiceOptions(
+            $defaultTtl,
+            $callbackUrl,
+            $geoMatchLevel,
+            $numberSelectionBehavior,
+            $interceptCallbackUrl,
+            $outOfSessionCallbackUrl,
+            $chatInstanceSid
+        );
     }
 
 
 
 
     /**
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.** 
-     * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value. 
-     * @param string $callbackUrl The URL we should call when the interaction status changes. 
-     * @param string $geoMatchLevel  
-     * @param string $numberSelectionBehavior  
-     * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues. 
-     * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information. 
-     * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship. 
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
+     * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
+     * @param string $callbackUrl The URL we should call when the interaction status changes.
+     * @param string $geoMatchLevel
+     * @param string $numberSelectionBehavior
+     * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
+     * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
+     * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $uniqueName = Values::NONE, int $defaultTtl = Values::NONE, string $callbackUrl = Values::NONE, string $geoMatchLevel = Values::NONE, string $numberSelectionBehavior = Values::NONE, string $interceptCallbackUrl = Values::NONE, string $outOfSessionCallbackUrl = Values::NONE, string $chatInstanceSid = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($uniqueName, $defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl, $chatInstanceSid);
+    public static function update(
+        
+        string $uniqueName = Values::NONE,
+        int $defaultTtl = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $geoMatchLevel = Values::NONE,
+        string $numberSelectionBehavior = Values::NONE,
+        string $interceptCallbackUrl = Values::NONE,
+        string $outOfSessionCallbackUrl = Values::NONE,
+        string $chatInstanceSid = Values::NONE
+
+    ): UpdateServiceOptions
+    {
+        return new UpdateServiceOptions(
+            $uniqueName,
+            $defaultTtl,
+            $callbackUrl,
+            $geoMatchLevel,
+            $numberSelectionBehavior,
+            $interceptCallbackUrl,
+            $outOfSessionCallbackUrl,
+            $chatInstanceSid
+        );
     }
 
 }
 
-class CreateServiceOptions extends Options {
+class CreateServiceOptions extends Options
+    {
     /**
      * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
      * @param string $callbackUrl The URL we should call when the interaction status changes.
-     * @param string $geoMatchLevel 
-     * @param string $numberSelectionBehavior 
+     * @param string $geoMatchLevel
+     * @param string $numberSelectionBehavior
      * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
      * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
      * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
      */
-    public function __construct(int $defaultTtl = Values::NONE, string $callbackUrl = Values::NONE, string $geoMatchLevel = Values::NONE, string $numberSelectionBehavior = Values::NONE, string $interceptCallbackUrl = Values::NONE, string $outOfSessionCallbackUrl = Values::NONE, string $chatInstanceSid = Values::NONE) {
+    public function __construct(
+        
+        int $defaultTtl = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $geoMatchLevel = Values::NONE,
+        string $numberSelectionBehavior = Values::NONE,
+        string $interceptCallbackUrl = Values::NONE,
+        string $outOfSessionCallbackUrl = Values::NONE,
+        string $chatInstanceSid = Values::NONE
+
+    )
+    {
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['geoMatchLevel'] = $geoMatchLevel;
@@ -79,7 +132,8 @@ class CreateServiceOptions extends Options {
      * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
      * @return $this Fluent Builder
      */
-    public function setDefaultTtl(int $defaultTtl): self {
+    public function setDefaultTtl(int $defaultTtl): self
+    {
         $this->options['defaultTtl'] = $defaultTtl;
         return $this;
     }
@@ -90,25 +144,28 @@ class CreateServiceOptions extends Options {
      * @param string $callbackUrl The URL we should call when the interaction status changes.
      * @return $this Fluent Builder
      */
-    public function setCallbackUrl(string $callbackUrl): self {
+    public function setCallbackUrl(string $callbackUrl): self
+    {
         $this->options['callbackUrl'] = $callbackUrl;
         return $this;
     }
 
     /**
-     * @param string $geoMatchLevel 
+     * @param string $geoMatchLevel
      * @return $this Fluent Builder
      */
-    public function setGeoMatchLevel(string $geoMatchLevel): self {
+    public function setGeoMatchLevel(string $geoMatchLevel): self
+    {
         $this->options['geoMatchLevel'] = $geoMatchLevel;
         return $this;
     }
 
     /**
-     * @param string $numberSelectionBehavior 
+     * @param string $numberSelectionBehavior
      * @return $this Fluent Builder
      */
-    public function setNumberSelectionBehavior(string $numberSelectionBehavior): self {
+    public function setNumberSelectionBehavior(string $numberSelectionBehavior): self
+    {
         $this->options['numberSelectionBehavior'] = $numberSelectionBehavior;
         return $this;
     }
@@ -119,7 +176,8 @@ class CreateServiceOptions extends Options {
      * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
      * @return $this Fluent Builder
      */
-    public function setInterceptCallbackUrl(string $interceptCallbackUrl): self {
+    public function setInterceptCallbackUrl(string $interceptCallbackUrl): self
+    {
         $this->options['interceptCallbackUrl'] = $interceptCallbackUrl;
         return $this;
     }
@@ -130,7 +188,8 @@ class CreateServiceOptions extends Options {
      * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
      * @return $this Fluent Builder
      */
-    public function setOutOfSessionCallbackUrl(string $outOfSessionCallbackUrl): self {
+    public function setOutOfSessionCallbackUrl(string $outOfSessionCallbackUrl): self
+    {
         $this->options['outOfSessionCallbackUrl'] = $outOfSessionCallbackUrl;
         return $this;
     }
@@ -141,7 +200,8 @@ class CreateServiceOptions extends Options {
      * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
      * @return $this Fluent Builder
      */
-    public function setChatInstanceSid(string $chatInstanceSid): self {
+    public function setChatInstanceSid(string $chatInstanceSid): self
+    {
         $this->options['chatInstanceSid'] = $chatInstanceSid;
         return $this;
     }
@@ -151,7 +211,8 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Proxy.V1.CreateServiceOptions ' . $options . ']';
     }
@@ -160,18 +221,31 @@ class CreateServiceOptions extends Options {
 
 
 
-class UpdateServiceOptions extends Options {
+class UpdateServiceOptions extends Options
+    {
     /**
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
      * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
      * @param string $callbackUrl The URL we should call when the interaction status changes.
-     * @param string $geoMatchLevel 
-     * @param string $numberSelectionBehavior 
+     * @param string $geoMatchLevel
+     * @param string $numberSelectionBehavior
      * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
      * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
      * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
      */
-    public function __construct(string $uniqueName = Values::NONE, int $defaultTtl = Values::NONE, string $callbackUrl = Values::NONE, string $geoMatchLevel = Values::NONE, string $numberSelectionBehavior = Values::NONE, string $interceptCallbackUrl = Values::NONE, string $outOfSessionCallbackUrl = Values::NONE, string $chatInstanceSid = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        int $defaultTtl = Values::NONE,
+        string $callbackUrl = Values::NONE,
+        string $geoMatchLevel = Values::NONE,
+        string $numberSelectionBehavior = Values::NONE,
+        string $interceptCallbackUrl = Values::NONE,
+        string $outOfSessionCallbackUrl = Values::NONE,
+        string $chatInstanceSid = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
@@ -188,7 +262,8 @@ class UpdateServiceOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -199,7 +274,8 @@ class UpdateServiceOptions extends Options {
      * @param int $defaultTtl The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
      * @return $this Fluent Builder
      */
-    public function setDefaultTtl(int $defaultTtl): self {
+    public function setDefaultTtl(int $defaultTtl): self
+    {
         $this->options['defaultTtl'] = $defaultTtl;
         return $this;
     }
@@ -210,25 +286,28 @@ class UpdateServiceOptions extends Options {
      * @param string $callbackUrl The URL we should call when the interaction status changes.
      * @return $this Fluent Builder
      */
-    public function setCallbackUrl(string $callbackUrl): self {
+    public function setCallbackUrl(string $callbackUrl): self
+    {
         $this->options['callbackUrl'] = $callbackUrl;
         return $this;
     }
 
     /**
-     * @param string $geoMatchLevel 
+     * @param string $geoMatchLevel
      * @return $this Fluent Builder
      */
-    public function setGeoMatchLevel(string $geoMatchLevel): self {
+    public function setGeoMatchLevel(string $geoMatchLevel): self
+    {
         $this->options['geoMatchLevel'] = $geoMatchLevel;
         return $this;
     }
 
     /**
-     * @param string $numberSelectionBehavior 
+     * @param string $numberSelectionBehavior
      * @return $this Fluent Builder
      */
-    public function setNumberSelectionBehavior(string $numberSelectionBehavior): self {
+    public function setNumberSelectionBehavior(string $numberSelectionBehavior): self
+    {
         $this->options['numberSelectionBehavior'] = $numberSelectionBehavior;
         return $this;
     }
@@ -239,7 +318,8 @@ class UpdateServiceOptions extends Options {
      * @param string $interceptCallbackUrl The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
      * @return $this Fluent Builder
      */
-    public function setInterceptCallbackUrl(string $interceptCallbackUrl): self {
+    public function setInterceptCallbackUrl(string $interceptCallbackUrl): self
+    {
         $this->options['interceptCallbackUrl'] = $interceptCallbackUrl;
         return $this;
     }
@@ -250,7 +330,8 @@ class UpdateServiceOptions extends Options {
      * @param string $outOfSessionCallbackUrl The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
      * @return $this Fluent Builder
      */
-    public function setOutOfSessionCallbackUrl(string $outOfSessionCallbackUrl): self {
+    public function setOutOfSessionCallbackUrl(string $outOfSessionCallbackUrl): self
+    {
         $this->options['outOfSessionCallbackUrl'] = $outOfSessionCallbackUrl;
         return $this;
     }
@@ -261,7 +342,8 @@ class UpdateServiceOptions extends Options {
      * @param string $chatInstanceSid The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
      * @return $this Fluent Builder
      */
-    public function setChatInstanceSid(string $chatInstanceSid): self {
+    public function setChatInstanceSid(string $chatInstanceSid): self
+    {
         $this->options['chatInstanceSid'] = $chatInstanceSid;
         return $this;
     }
@@ -271,7 +353,8 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Proxy.V1.UpdateServiceOptions ' . $options . ']';
     }

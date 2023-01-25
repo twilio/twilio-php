@@ -53,7 +53,8 @@ use Twilio\Rest\Wireless\V1\Sim\UsageRecordList;
  * @property array $links
  * @property string $ipAddress
  */
-class SimInstance extends InstanceResource {
+class SimInstance extends InstanceResource
+{
     protected $_dataSessions;
     protected $_usageRecords;
 
@@ -64,7 +65,8 @@ class SimInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID or the `unique_name` of the Sim resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -104,7 +106,8 @@ class SimInstance extends InstanceResource {
      *
      * @return SimContext Context for this SimInstance
      */
-    protected function proxy(): SimContext {
+    protected function proxy(): SimContext
+    {
         if (!$this->context) {
             $this->context = new SimContext(
                 $this->version,
@@ -121,7 +124,9 @@ class SimInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -131,7 +136,9 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SimInstance {
+    public function fetch(): SimInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -142,21 +149,25 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SimInstance {
+    public function update(array $options = []): SimInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the dataSessions
      */
-    protected function getDataSessions(): DataSessionList {
+    protected function getDataSessions(): DataSessionList
+    {
         return $this->proxy()->dataSessions;
     }
 
     /**
      * Access the usageRecords
      */
-    protected function getUsageRecords(): UsageRecordList {
+    protected function getUsageRecords(): UsageRecordList
+    {
         return $this->proxy()->usageRecords;
     }
 
@@ -167,7 +178,8 @@ class SimInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -185,7 +197,8 @@ class SimInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

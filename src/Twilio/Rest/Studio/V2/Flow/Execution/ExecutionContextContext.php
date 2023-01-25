@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ExecutionContextContext extends InstanceContext {
+class ExecutionContextContext extends InstanceContext
+    {
     /**
      * Initialize the ExecutionContextContext
      *
@@ -30,13 +31,25 @@ class ExecutionContextContext extends InstanceContext {
      * @param string $flowSid The SID of the Flow with the Execution context to fetch.
      * @param string $executionSid The SID of the Execution context to fetch.
      */
-    public function __construct(Version $version, $flowSid , $executionSid ) {
+    public function __construct(
+        Version $version,
+        $flowSid,
+        $executionSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid,  'executionSid' => $executionSid,  ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        'executionSid' =>
+            $executionSid,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($executionSid) . '/Context';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid)
+        .'/Executions/' . \rawurlencode($executionSid)
+        .'/Context';
     }
 
     /**
@@ -45,23 +58,27 @@ class ExecutionContextContext extends InstanceContext {
      * @return ExecutionContextInstance Fetched ExecutionContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ExecutionContextInstance {
+    public function fetch(): ExecutionContextInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExecutionContextInstance(
             $this->version,
-            $payload
-            , $this->solution['flowSid']
-            , $this->solution['executionSid']
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['executionSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

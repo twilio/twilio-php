@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class AuthorizationDocumentList extends ListResource {
+class AuthorizationDocumentList extends ListResource
+    {
     /**
      * Construct the AuthorizationDocumentList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/AuthorizationDocuments';
     }
@@ -52,25 +56,34 @@ class AuthorizationDocumentList extends ListResource {
      * @return AuthorizationDocumentInstance Created AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $hostedNumberOrderSids, string $addressSid, string $email, string $contactTitle, string $contactPhoneNumber, array $options = []): AuthorizationDocumentInstance {
+    public function create(array $hostedNumberOrderSids, string $addressSid, string $email, string $contactTitle, string $contactPhoneNumber, array $options = []): AuthorizationDocumentInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'HostedNumberOrderSids' => Serialize::map($hostedNumberOrderSids,function($e) { return $e; }),
-            'AddressSid' => $addressSid,
-            'Email' => $email,
-            'ContactTitle' => $contactTitle,
-            'ContactPhoneNumber' => $contactPhoneNumber,
-            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
+            'HostedNumberOrderSids' =>
+                Serialize::map($hostedNumberOrderSids,function ($e) { return $e; }),
+            'AddressSid' =>
+                $addressSid,
+            'Email' =>
+                $email,
+            'ContactTitle' =>
+                $contactTitle,
+            'ContactPhoneNumber' =>
+                $contactPhoneNumber,
+            'CcEmails' =>
+                Serialize::map($options['ccEmails'], function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new AuthorizationDocumentInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads AuthorizationDocumentInstance records from the API as a list.
@@ -88,7 +101,8 @@ class AuthorizationDocumentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AuthorizationDocumentInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -111,7 +125,8 @@ class AuthorizationDocumentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -128,12 +143,20 @@ class AuthorizationDocumentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return AuthorizationDocumentPage Page of AuthorizationDocumentInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): AuthorizationDocumentPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): AuthorizationDocumentPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Email' => $options['email'],
-            'Status' => $options['status'],
+            'Email' =>
+                $options['email'],
+            'Status' =>
+                $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -151,7 +174,8 @@ class AuthorizationDocumentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return AuthorizationDocumentPage Page of AuthorizationDocumentInstance
      */
-    public function getPage(string $targetUrl): AuthorizationDocumentPage {
+    public function getPage(string $targetUrl): AuthorizationDocumentPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -166,8 +190,15 @@ class AuthorizationDocumentList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this AuthorizationDocument.
      */
-    public function getContext(string $sid): AuthorizationDocumentContext {
-        return new AuthorizationDocumentContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): AuthorizationDocumentContext
+    {
+        return new AuthorizationDocumentContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -175,7 +206,8 @@ class AuthorizationDocumentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.HostedNumbers.AuthorizationDocumentList]';
     }
 }

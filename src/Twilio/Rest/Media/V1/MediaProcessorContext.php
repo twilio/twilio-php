@@ -23,20 +23,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class MediaProcessorContext extends InstanceContext {
+class MediaProcessorContext extends InstanceContext
+    {
     /**
      * Initialize the MediaProcessorContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the MediaProcessor resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/MediaProcessors/' . \rawurlencode($sid) . '';
+        $this->uri = '/MediaProcessors/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,43 +54,51 @@ class MediaProcessorContext extends InstanceContext {
      * @return MediaProcessorInstance Fetched MediaProcessorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MediaProcessorInstance {
+    public function fetch(): MediaProcessorInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new MediaProcessorInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the MediaProcessorInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return MediaProcessorInstance Updated MediaProcessorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): MediaProcessorInstance {
+    public function update(string $status): MediaProcessorInstance
+    {
+
         $data = Values::of([
-            'Status' => $status,
+            'Status' =>
+                $status,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MediaProcessorInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

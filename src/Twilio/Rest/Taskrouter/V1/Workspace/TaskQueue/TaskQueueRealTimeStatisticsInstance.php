@@ -40,7 +40,8 @@ use Twilio\Version;
  * @property string $workspaceSid
  * @property string $url
  */
-class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
+class TaskQueueRealTimeStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the TaskQueueRealTimeStatisticsInstance
      *
@@ -49,7 +50,8 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace with the TaskQueue to fetch.
      * @param string $taskQueueSid The SID of the TaskQueue for which to fetch statistics.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskQueueSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskQueueSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
      *
      * @return TaskQueueRealTimeStatisticsContext Context for this TaskQueueRealTimeStatisticsInstance
      */
-    protected function proxy(): TaskQueueRealTimeStatisticsContext {
+    protected function proxy(): TaskQueueRealTimeStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new TaskQueueRealTimeStatisticsContext(
                 $this->version,
@@ -98,7 +101,9 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
      * @return TaskQueueRealTimeStatisticsInstance Fetched TaskQueueRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): TaskQueueRealTimeStatisticsInstance {
+    public function fetch(array $options = []): TaskQueueRealTimeStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -109,7 +114,8 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -127,7 +133,8 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

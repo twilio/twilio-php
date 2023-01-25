@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class FieldValueContext extends InstanceContext {
+class FieldValueContext extends InstanceContext
+    {
     /**
      * Initialize the FieldValueContext
      *
@@ -31,13 +32,29 @@ class FieldValueContext extends InstanceContext {
      * @param string $fieldTypeSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, $assistantSid , $fieldTypeSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $fieldTypeSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'fieldTypeSid' => $fieldTypeSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'fieldTypeSid' =>
+            $fieldTypeSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($fieldTypeSid) . '/FieldValues/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/FieldTypes/' . \rawurlencode($fieldTypeSid)
+        .'/FieldValues/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,9 +63,12 @@ class FieldValueContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the FieldValueInstance
@@ -56,24 +76,28 @@ class FieldValueContext extends InstanceContext {
      * @return FieldValueInstance Fetched FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FieldValueInstance {
+    public function fetch(): FieldValueInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FieldValueInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['fieldTypeSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['fieldTypeSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

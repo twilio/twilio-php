@@ -40,7 +40,8 @@ use Twilio\Deserialize;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkerChannelInstance extends InstanceResource {
+class WorkerChannelInstance extends InstanceResource
+{
     /**
      * Initialize the WorkerChannelInstance
      *
@@ -50,7 +51,8 @@ class WorkerChannelInstance extends InstanceResource {
      * @param string $workerSid The SID of the Worker with the WorkerChannel to fetch.
      * @param string $sid The SID of the WorkerChannel to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $workerSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $workerSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class WorkerChannelInstance extends InstanceResource {
      *
      * @return WorkerChannelContext Context for this WorkerChannelInstance
      */
-    protected function proxy(): WorkerChannelContext {
+    protected function proxy(): WorkerChannelContext
+    {
         if (!$this->context) {
             $this->context = new WorkerChannelContext(
                 $this->version,
@@ -98,7 +101,9 @@ class WorkerChannelInstance extends InstanceResource {
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WorkerChannelInstance {
+    public function fetch(): WorkerChannelInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,7 +114,9 @@ class WorkerChannelInstance extends InstanceResource {
      * @return WorkerChannelInstance Updated WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkerChannelInstance {
+    public function update(array $options = []): WorkerChannelInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -120,7 +127,8 @@ class WorkerChannelInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +146,8 @@ class WorkerChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

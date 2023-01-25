@@ -37,7 +37,8 @@ use Twilio\Rest\Preview\Sync\Service\SyncMapList;
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMapContext syncMaps(string $sid)
  * @method \Twilio\Rest\Preview\Sync\Service\DocumentContext documents(string $sid)
  */
-class ServiceContext extends InstanceContext {
+class ServiceContext extends InstanceContext
+    {
     protected $_syncLists;
     protected $_documents;
     protected $_syncMaps;
@@ -48,13 +49,21 @@ class ServiceContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid 
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -63,9 +72,12 @@ class ServiceContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ServiceInstance
@@ -73,15 +85,18 @@ class ServiceContext extends InstanceContext {
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ServiceInstance {
+    public function fetch(): ServiceInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ServiceInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ServiceInstance
@@ -90,33 +105,41 @@ class ServiceContext extends InstanceContext {
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ServiceInstance {
+    public function update(array $options = []): ServiceInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'WebhookUrl' => $options['webhookUrl'],
-            'FriendlyName' => $options['friendlyName'],
-            'ReachabilityWebhooksEnabled' => Serialize::booleanToString($options['reachabilityWebhooksEnabled']),
-            'AclEnabled' => Serialize::booleanToString($options['aclEnabled']),
+            'WebhookUrl' =>
+                $options['webhookUrl'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'ReachabilityWebhooksEnabled' =>
+                Serialize::booleanToString($options['reachabilityWebhooksEnabled']),
+            'AclEnabled' =>
+                Serialize::booleanToString($options['aclEnabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ServiceInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the syncLists
      */
-    protected function getSyncLists(): SyncListList {
+    protected function getSyncLists(): SyncListList
+    {
         if (!$this->_syncLists) {
             $this->_syncLists = new SyncListList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -126,11 +149,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the documents
      */
-    protected function getDocuments(): DocumentList {
+    protected function getDocuments(): DocumentList
+    {
         if (!$this->_documents) {
             $this->_documents = new DocumentList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -140,11 +164,12 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the syncMaps
      */
-    protected function getSyncMaps(): SyncMapList {
+    protected function getSyncMaps(): SyncMapList
+    {
         if (!$this->_syncMaps) {
             $this->_syncMaps = new SyncMapList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -158,7 +183,8 @@ class ServiceContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -175,7 +201,8 @@ class ServiceContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -189,7 +216,8 @@ class ServiceContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

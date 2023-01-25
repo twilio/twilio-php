@@ -36,7 +36,8 @@ use Twilio\Rest\Events\V1\Subscription\SubscribedEventList;
  * @property string $url
  * @property array $links
  */
-class SubscriptionInstance extends InstanceResource {
+class SubscriptionInstance extends InstanceResource
+{
     protected $_subscribedEvents;
 
     /**
@@ -46,7 +47,8 @@ class SubscriptionInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this Subscription.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class SubscriptionInstance extends InstanceResource {
      *
      * @return SubscriptionContext Context for this SubscriptionInstance
      */
-    protected function proxy(): SubscriptionContext {
+    protected function proxy(): SubscriptionContext
+    {
         if (!$this->context) {
             $this->context = new SubscriptionContext(
                 $this->version,
@@ -87,7 +90,9 @@ class SubscriptionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -97,7 +102,9 @@ class SubscriptionInstance extends InstanceResource {
      * @return SubscriptionInstance Fetched SubscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SubscriptionInstance {
+    public function fetch(): SubscriptionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -108,14 +115,17 @@ class SubscriptionInstance extends InstanceResource {
      * @return SubscriptionInstance Updated SubscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SubscriptionInstance {
+    public function update(array $options = []): SubscriptionInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the subscribedEvents
      */
-    protected function getSubscribedEvents(): SubscribedEventList {
+    protected function getSubscribedEvents(): SubscribedEventList
+    {
         return $this->proxy()->subscribedEvents;
     }
 
@@ -126,7 +136,8 @@ class SubscriptionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,7 +155,8 @@ class SubscriptionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

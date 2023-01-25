@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property array $channelData
  * @property string $url
  */
-class VerificationAttemptInstance extends InstanceResource {
+class VerificationAttemptInstance extends InstanceResource
+{
     /**
      * Initialize the VerificationAttemptInstance
      *
@@ -45,7 +46,8 @@ class VerificationAttemptInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique SID identifier of a Verification Attempt
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class VerificationAttemptInstance extends InstanceResource {
      *
      * @return VerificationAttemptContext Context for this VerificationAttemptInstance
      */
-    protected function proxy(): VerificationAttemptContext {
+    protected function proxy(): VerificationAttemptContext
+    {
         if (!$this->context) {
             $this->context = new VerificationAttemptContext(
                 $this->version,
@@ -89,7 +92,9 @@ class VerificationAttemptInstance extends InstanceResource {
      * @return VerificationAttemptInstance Fetched VerificationAttemptInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VerificationAttemptInstance {
+    public function fetch(): VerificationAttemptInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +105,8 @@ class VerificationAttemptInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -118,7 +124,8 @@ class VerificationAttemptInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class LogContext extends InstanceContext {
+class LogContext extends InstanceContext
+    {
     /**
      * Initialize the LogContext
      *
@@ -31,13 +32,29 @@ class LogContext extends InstanceContext {
      * @param string $environmentSid The SID of the environment with the Log resource to fetch.
      * @param string $sid The SID of the Log resource to fetch.
      */
-    public function __construct(Version $version, $serviceSid , $environmentSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $environmentSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'environmentSid' => $environmentSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'environmentSid' =>
+            $environmentSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Logs/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Environments/' . \rawurlencode($environmentSid)
+        .'/Logs/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,24 +63,28 @@ class LogContext extends InstanceContext {
      * @return LogInstance Fetched LogInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): LogInstance {
+    public function fetch(): LogInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new LogInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['environmentSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['environmentSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

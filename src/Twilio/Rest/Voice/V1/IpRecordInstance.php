@@ -35,7 +35,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class IpRecordInstance extends InstanceResource {
+class IpRecordInstance extends InstanceResource
+{
     /**
      * Initialize the IpRecordInstance
      *
@@ -43,7 +44,8 @@ class IpRecordInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the IP Record resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class IpRecordInstance extends InstanceResource {
      *
      * @return IpRecordContext Context for this IpRecordInstance
      */
-    protected function proxy(): IpRecordContext {
+    protected function proxy(): IpRecordContext
+    {
         if (!$this->context) {
             $this->context = new IpRecordContext(
                 $this->version,
@@ -84,7 +87,9 @@ class IpRecordInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -94,7 +99,9 @@ class IpRecordInstance extends InstanceResource {
      * @return IpRecordInstance Fetched IpRecordInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): IpRecordInstance {
+    public function fetch(): IpRecordInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -105,7 +112,9 @@ class IpRecordInstance extends InstanceResource {
      * @return IpRecordInstance Updated IpRecordInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): IpRecordInstance {
+    public function update(array $options = []): IpRecordInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +125,8 @@ class IpRecordInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +144,8 @@ class IpRecordInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -30,7 +30,8 @@ use Twilio\Deserialize;
  * @property string $sid
  * @property \DateTime $dateCreated
  */
-class UserDefinedMessageInstance extends InstanceResource {
+class UserDefinedMessageInstance extends InstanceResource
+{
     /**
      * Initialize the UserDefinedMessageInstance
      *
@@ -39,7 +40,8 @@ class UserDefinedMessageInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message.
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class UserDefinedMessageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -78,7 +81,8 @@ class UserDefinedMessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.UserDefinedMessageInstance]';
     }
 }

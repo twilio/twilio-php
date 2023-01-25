@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class SessionList extends ListResource {
+class SessionList extends ListResource
+    {
     /**
      * Construct the SessionList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Sessions';
     }
 
     /**
@@ -48,26 +58,35 @@ class SessionList extends ListResource {
      * @return SessionInstance Created SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): SessionInstance {
+    public function create(array $options = []): SessionInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
-            'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
-            'Ttl' => $options['ttl'],
-            'Mode' => $options['mode'],
-            'Status' => $options['status'],
-            'Participants' => Serialize::map($options['participants'], function($e) { return Serialize::jsonObject($e); }),
+            'UniqueName' =>
+                $options['uniqueName'],
+            'DateExpiry' =>
+                Serialize::iso8601DateTime($options['dateExpiry']),
+            'Ttl' =>
+                $options['ttl'],
+            'Mode' =>
+                $options['mode'],
+            'Status' =>
+                $options['status'],
+            'Participants' =>
+                Serialize::map($options['participants'], function ($e) { return Serialize::jsonObject($e); }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SessionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Reads SessionInstance records from the API as a list.
@@ -84,7 +103,8 @@ class SessionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SessionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,7 +126,8 @@ class SessionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -123,7 +144,12 @@ class SessionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SessionPage Page of SessionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SessionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SessionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -143,7 +169,8 @@ class SessionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SessionPage Page of SessionInstance
      */
-    public function getPage(string $targetUrl): SessionPage {
+    public function getPage(string $targetUrl): SessionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -158,8 +185,16 @@ class SessionList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Session resource to delete.
      */
-    public function getContext(string $sid): SessionContext {
-        return new SessionContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): SessionContext
+    {
+        return new SessionContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -167,7 +202,8 @@ class SessionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Proxy.V1.SessionList]';
     }
 }

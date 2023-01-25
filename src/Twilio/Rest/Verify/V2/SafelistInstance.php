@@ -28,7 +28,8 @@ use Twilio\Version;
  * @property string $phoneNumber
  * @property string $url
  */
-class SafelistInstance extends InstanceResource {
+class SafelistInstance extends InstanceResource
+{
     /**
      * Initialize the SafelistInstance
      *
@@ -36,7 +37,8 @@ class SafelistInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      */
-    public function __construct(Version $version, array $payload, string $phoneNumber = null) {
+    public function __construct(Version $version, array $payload, string $phoneNumber = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -55,7 +57,8 @@ class SafelistInstance extends InstanceResource {
      *
      * @return SafelistContext Context for this SafelistInstance
      */
-    protected function proxy(): SafelistContext {
+    protected function proxy(): SafelistContext
+    {
         if (!$this->context) {
             $this->context = new SafelistContext(
                 $this->version,
@@ -72,7 +75,9 @@ class SafelistInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -82,7 +87,9 @@ class SafelistInstance extends InstanceResource {
      * @return SafelistInstance Fetched SafelistInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SafelistInstance {
+    public function fetch(): SafelistInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -93,7 +100,8 @@ class SafelistInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -111,7 +119,8 @@ class SafelistInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

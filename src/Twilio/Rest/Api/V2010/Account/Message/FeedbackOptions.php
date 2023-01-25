@@ -18,30 +18,45 @@ namespace Twilio\Rest\Api\V2010\Account\Message;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class FeedbackOptions {
+abstract class FeedbackOptions
+{
     /**
-     * @param string $outcome  
+     * @param string $outcome
      * @return CreateFeedbackOptions Options builder
      */
-    public static function create(string $outcome = Values::NONE): CreateFeedbackOptions {
-        return new CreateFeedbackOptions($outcome);
+    public static function create(
+        
+        string $outcome = Values::NONE
+
+    ): CreateFeedbackOptions
+    {
+        return new CreateFeedbackOptions(
+            $outcome
+        );
     }
 
 }
 
-class CreateFeedbackOptions extends Options {
+class CreateFeedbackOptions extends Options
+    {
     /**
-     * @param string $outcome 
+     * @param string $outcome
      */
-    public function __construct(string $outcome = Values::NONE) {
+    public function __construct(
+        
+        string $outcome = Values::NONE
+
+    )
+    {
         $this->options['outcome'] = $outcome;
     }
 
     /**
-     * @param string $outcome 
+     * @param string $outcome
      * @return $this Fluent Builder
      */
-    public function setOutcome(string $outcome): self {
+    public function setOutcome(string $outcome): self
+    {
         $this->options['outcome'] = $outcome;
         return $this;
     }
@@ -51,7 +66,8 @@ class CreateFeedbackOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateFeedbackOptions ' . $options . ']';
     }

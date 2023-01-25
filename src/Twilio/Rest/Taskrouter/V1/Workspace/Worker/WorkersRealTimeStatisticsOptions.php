@@ -18,22 +18,36 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WorkersRealTimeStatisticsOptions {
+abstract class WorkersRealTimeStatisticsOptions
+{
     /**
-     * @param string $taskChannel Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. 
+     * @param string $taskChannel Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
      * @return FetchWorkersRealTimeStatisticsOptions Options builder
      */
-    public static function fetch(string $taskChannel = Values::NONE): FetchWorkersRealTimeStatisticsOptions {
-        return new FetchWorkersRealTimeStatisticsOptions($taskChannel);
+    public static function fetch(
+        
+        string $taskChannel = Values::NONE
+
+    ): FetchWorkersRealTimeStatisticsOptions
+    {
+        return new FetchWorkersRealTimeStatisticsOptions(
+            $taskChannel
+        );
     }
 
 }
 
-class FetchWorkersRealTimeStatisticsOptions extends Options {
+class FetchWorkersRealTimeStatisticsOptions extends Options
+    {
     /**
      * @param string $taskChannel Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
      */
-    public function __construct(string $taskChannel = Values::NONE) {
+    public function __construct(
+        
+        string $taskChannel = Values::NONE
+
+    )
+    {
         $this->options['taskChannel'] = $taskChannel;
     }
 
@@ -43,7 +57,8 @@ class FetchWorkersRealTimeStatisticsOptions extends Options {
      * @param string $taskChannel Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
      * @return $this Fluent Builder
      */
-    public function setTaskChannel(string $taskChannel): self {
+    public function setTaskChannel(string $taskChannel): self
+    {
         $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
@@ -53,7 +68,8 @@ class FetchWorkersRealTimeStatisticsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.FetchWorkersRealTimeStatisticsOptions ' . $options . ']';
     }

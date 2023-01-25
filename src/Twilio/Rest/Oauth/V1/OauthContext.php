@@ -22,17 +22,22 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class OauthContext extends InstanceContext {
+class OauthContext extends InstanceContext
+    {
     /**
      * Initialize the OauthContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/certs';
     }
@@ -43,21 +48,25 @@ class OauthContext extends InstanceContext {
      * @return OauthInstance Fetched OauthInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): OauthInstance {
+    public function fetch(): OauthInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new OauthInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

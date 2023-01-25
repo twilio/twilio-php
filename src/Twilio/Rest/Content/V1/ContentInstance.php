@@ -37,7 +37,8 @@ use Twilio\Rest\Content\V1\Content\ApprovalFetchList;
  * @property string $url
  * @property array $links
  */
-class ContentInstance extends InstanceResource {
+class ContentInstance extends InstanceResource
+{
     protected $_approvalFetch;
 
     /**
@@ -47,7 +48,8 @@ class ContentInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the Content resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class ContentInstance extends InstanceResource {
      *
      * @return ContentContext Context for this ContentInstance
      */
-    protected function proxy(): ContentContext {
+    protected function proxy(): ContentContext
+    {
         if (!$this->context) {
             $this->context = new ContentContext(
                 $this->version,
@@ -90,7 +93,9 @@ class ContentInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,14 +105,17 @@ class ContentInstance extends InstanceResource {
      * @return ContentInstance Fetched ContentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ContentInstance {
+    public function fetch(): ContentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the approvalFetch
      */
-    protected function getApprovalFetch(): ApprovalFetchList {
+    protected function getApprovalFetch(): ApprovalFetchList
+    {
         return $this->proxy()->approvalFetch;
     }
 
@@ -118,7 +126,8 @@ class ContentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -136,7 +145,8 @@ class ContentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

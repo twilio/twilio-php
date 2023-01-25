@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string $kind
  * @property string $url
  */
-class SubscribedTrackInstance extends InstanceResource {
+class SubscribedTrackInstance extends InstanceResource
+{
     /**
      * Initialize the SubscribedTrackInstance
      *
@@ -46,7 +47,8 @@ class SubscribedTrackInstance extends InstanceResource {
      * @param string $participantSid The SID of the participant that subscribes to the Track resource to fetch.
      * @param string $sid The SID of the RoomParticipantSubscribedTrack resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class SubscribedTrackInstance extends InstanceResource {
      *
      * @return SubscribedTrackContext Context for this SubscribedTrackInstance
      */
-    protected function proxy(): SubscribedTrackContext {
+    protected function proxy(): SubscribedTrackContext
+    {
         if (!$this->context) {
             $this->context = new SubscribedTrackContext(
                 $this->version,
@@ -91,7 +94,9 @@ class SubscribedTrackInstance extends InstanceResource {
      * @return SubscribedTrackInstance Fetched SubscribedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SubscribedTrackInstance {
+    public function fetch(): SubscribedTrackInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -102,7 +107,8 @@ class SubscribedTrackInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -120,7 +126,8 @@ class SubscribedTrackInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

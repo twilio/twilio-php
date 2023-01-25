@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class StepList extends ListResource {
+class StepList extends ListResource
+    {
     /**
      * Construct the StepList
      *
@@ -30,13 +31,28 @@ class StepList extends ListResource {
      * @param string $flowSid The SID of the Flow with the Step to fetch.
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      */
-    public function __construct(Version $version, string $flowSid , string $engagementSid ) {
+    public function __construct(
+        Version $version,
+        string $flowSid
+        ,
+        string $engagementSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid, 'engagementSid' => $engagementSid, ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        
+        'engagementSid' =>
+            $engagementSid,
+        
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($engagementSid) . '/Steps';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid)
+        .'/Engagements/' . \rawurlencode($engagementSid)
+        .'/Steps';
     }
 
     /**
@@ -54,7 +70,8 @@ class StepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return StepInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class StepList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class StepList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return StepPage Page of StepInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): StepPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): StepPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class StepList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return StepPage Page of StepInstance
      */
-    public function getPage(string $targetUrl): StepPage {
+    public function getPage(string $targetUrl): StepPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class StepList extends ListResource {
      *
      * @param string $sid The SID of the Step resource to fetch.
      */
-    public function getContext(string $sid): StepContext {
-        return new StepContext($this->version, $this->solution['flowSid'], $this->solution['engagementSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): StepContext
+    {
+        return new StepContext(
+            $this->version,
+            $this->solution['flowSid'],
+            $this->solution['engagementSid'],
+            $sid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class StepList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Studio.V1.StepList]';
     }
 }

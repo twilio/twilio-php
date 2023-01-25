@@ -18,32 +18,53 @@ namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class InviteOptions {
+abstract class InviteOptions
+{
     /**
-     * @param string $roleSid  
+     * @param string $roleSid 
      * @return CreateInviteOptions Options builder
      */
-    public static function create(string $roleSid = Values::NONE): CreateInviteOptions {
-        return new CreateInviteOptions($roleSid);
+    public static function create(
+        
+        string $roleSid = Values::NONE
+
+    ): CreateInviteOptions
+    {
+        return new CreateInviteOptions(
+            $roleSid
+        );
     }
 
 
 
     /**
-     * @param string[] $identity  
+     * @param string[] $identity 
      * @return ReadInviteOptions Options builder
      */
-    public static function read(array $identity = Values::ARRAY_NONE): ReadInviteOptions {
-        return new ReadInviteOptions($identity);
+    public static function read(
+        
+        array $identity = Values::ARRAY_NONE
+
+    ): ReadInviteOptions
+    {
+        return new ReadInviteOptions(
+            $identity
+        );
     }
 
 }
 
-class CreateInviteOptions extends Options {
+class CreateInviteOptions extends Options
+    {
     /**
      * @param string $roleSid 
      */
-    public function __construct(string $roleSid = Values::NONE) {
+    public function __construct(
+        
+        string $roleSid = Values::NONE
+
+    )
+    {
         $this->options['roleSid'] = $roleSid;
     }
 
@@ -53,7 +74,8 @@ class CreateInviteOptions extends Options {
      * @param string $roleSid 
      * @return $this Fluent Builder
      */
-    public function setRoleSid(string $roleSid): self {
+    public function setRoleSid(string $roleSid): self
+    {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -63,7 +85,8 @@ class CreateInviteOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.CreateInviteOptions ' . $options . ']';
     }
@@ -71,11 +94,17 @@ class CreateInviteOptions extends Options {
 
 
 
-class ReadInviteOptions extends Options {
+class ReadInviteOptions extends Options
+    {
     /**
      * @param string[] $identity 
      */
-    public function __construct(array $identity = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $identity = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['identity'] = $identity;
     }
 
@@ -85,7 +114,8 @@ class ReadInviteOptions extends Options {
      * @param string[] $identity 
      * @return $this Fluent Builder
      */
-    public function setIdentity(array $identity): self {
+    public function setIdentity(array $identity): self
+    {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -95,7 +125,8 @@ class ReadInviteOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V1.ReadInviteOptions ' . $options . ']';
     }

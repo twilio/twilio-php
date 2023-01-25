@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class HostedNumberOrderList extends ListResource {
+class HostedNumberOrderList extends ListResource
+    {
     /**
      * Construct the HostedNumberOrderList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/HostedNumberOrders';
     }
@@ -49,36 +53,56 @@ class HostedNumberOrderList extends ListResource {
      * @return HostedNumberOrderInstance Created HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $phoneNumber, bool $smsCapability, array $options = []): HostedNumberOrderInstance {
+    public function create(string $phoneNumber, bool $smsCapability, array $options = []): HostedNumberOrderInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'PhoneNumber' => $phoneNumber,
-            'SmsCapability' => Serialize::booleanToString($smsCapability),
-            'AccountSid' => $options['accountSid'],
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
-            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
-            'SmsUrl' => $options['smsUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'SmsFallbackUrl' => $options['smsFallbackUrl'],
-            'SmsFallbackMethod' => $options['smsFallbackMethod'],
-            'StatusCallbackUrl' => $options['statusCallbackUrl'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'SmsApplicationSid' => $options['smsApplicationSid'],
-            'AddressSid' => $options['addressSid'],
-            'Email' => $options['email'],
-            'VerificationType' => $options['verificationType'],
-            'VerificationDocumentSid' => $options['verificationDocumentSid'],
+            'PhoneNumber' =>
+                $phoneNumber,
+            'SmsCapability' =>
+                Serialize::booleanToString($smsCapability),
+            'AccountSid' =>
+                $options['accountSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'CcEmails' =>
+                Serialize::map($options['ccEmails'], function ($e) { return $e; }),
+            'SmsUrl' =>
+                $options['smsUrl'],
+            'SmsMethod' =>
+                $options['smsMethod'],
+            'SmsFallbackUrl' =>
+                $options['smsFallbackUrl'],
+            'SmsFallbackMethod' =>
+                $options['smsFallbackMethod'],
+            'StatusCallbackUrl' =>
+                $options['statusCallbackUrl'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'SmsApplicationSid' =>
+                $options['smsApplicationSid'],
+            'AddressSid' =>
+                $options['addressSid'],
+            'Email' =>
+                $options['email'],
+            'VerificationType' =>
+                $options['verificationType'],
+            'VerificationDocumentSid' =>
+                $options['verificationDocumentSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new HostedNumberOrderInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads HostedNumberOrderInstance records from the API as a list.
@@ -96,7 +120,8 @@ class HostedNumberOrderList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return HostedNumberOrderInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -119,7 +144,8 @@ class HostedNumberOrderList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -136,15 +162,26 @@ class HostedNumberOrderList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return HostedNumberOrderPage Page of HostedNumberOrderInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): HostedNumberOrderPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): HostedNumberOrderPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Status' => $options['status'],
-            'PhoneNumber' => $options['phoneNumber'],
-            'IncomingPhoneNumberSid' => $options['incomingPhoneNumberSid'],
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
+            'Status' =>
+                $options['status'],
+            'PhoneNumber' =>
+                $options['phoneNumber'],
+            'IncomingPhoneNumberSid' =>
+                $options['incomingPhoneNumberSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -162,7 +199,8 @@ class HostedNumberOrderList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return HostedNumberOrderPage Page of HostedNumberOrderInstance
      */
-    public function getPage(string $targetUrl): HostedNumberOrderPage {
+    public function getPage(string $targetUrl): HostedNumberOrderPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -177,8 +215,15 @@ class HostedNumberOrderList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this HostedNumberOrder.
      */
-    public function getContext(string $sid): HostedNumberOrderContext {
-        return new HostedNumberOrderContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): HostedNumberOrderContext
+    {
+        return new HostedNumberOrderContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -186,7 +231,8 @@ class HostedNumberOrderList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.HostedNumbers.HostedNumberOrderList]';
     }
 }

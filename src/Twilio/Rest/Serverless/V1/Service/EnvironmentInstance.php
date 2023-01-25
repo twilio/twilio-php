@@ -40,7 +40,8 @@ use Twilio\Rest\Serverless\V1\Service\Environment\VariableList;
  * @property string $url
  * @property array $links
  */
-class EnvironmentInstance extends InstanceResource {
+class EnvironmentInstance extends InstanceResource
+{
     protected $_logs;
     protected $_deployments;
     protected $_variables;
@@ -53,7 +54,8 @@ class EnvironmentInstance extends InstanceResource {
      * @param string $serviceSid The SID of the Service to create the Environment resource under.
      * @param string $sid The SID of the Environment resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -80,7 +82,8 @@ class EnvironmentInstance extends InstanceResource {
      *
      * @return EnvironmentContext Context for this EnvironmentInstance
      */
-    protected function proxy(): EnvironmentContext {
+    protected function proxy(): EnvironmentContext
+    {
         if (!$this->context) {
             $this->context = new EnvironmentContext(
                 $this->version,
@@ -98,7 +101,9 @@ class EnvironmentInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -108,28 +113,33 @@ class EnvironmentInstance extends InstanceResource {
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EnvironmentInstance {
+    public function fetch(): EnvironmentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the logs
      */
-    protected function getLogs(): LogList {
+    protected function getLogs(): LogList
+    {
         return $this->proxy()->logs;
     }
 
     /**
      * Access the deployments
      */
-    protected function getDeployments(): DeploymentList {
+    protected function getDeployments(): DeploymentList
+    {
         return $this->proxy()->deployments;
     }
 
     /**
      * Access the variables
      */
-    protected function getVariables(): VariableList {
+    protected function getVariables(): VariableList
+    {
         return $this->proxy()->variables;
     }
 
@@ -140,7 +150,8 @@ class EnvironmentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -158,7 +169,8 @@ class EnvironmentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

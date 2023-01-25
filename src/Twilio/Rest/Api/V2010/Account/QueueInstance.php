@@ -37,7 +37,8 @@ use Twilio\Rest\Api\V2010\Account\Queue\MemberList;
  * @property \DateTime $dateCreated
  * @property int $maxSize
  */
-class QueueInstance extends InstanceResource {
+class QueueInstance extends InstanceResource
+{
     protected $_members;
 
     /**
@@ -48,7 +49,8 @@ class QueueInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Queue resource to delete
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class QueueInstance extends InstanceResource {
      *
      * @return QueueContext Context for this QueueInstance
      */
-    protected function proxy(): QueueContext {
+    protected function proxy(): QueueContext
+    {
         if (!$this->context) {
             $this->context = new QueueContext(
                 $this->version,
@@ -91,7 +94,9 @@ class QueueInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class QueueInstance extends InstanceResource {
      * @return QueueInstance Fetched QueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): QueueInstance {
+    public function fetch(): QueueInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,14 +119,17 @@ class QueueInstance extends InstanceResource {
      * @return QueueInstance Updated QueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): QueueInstance {
+    public function update(array $options = []): QueueInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the members
      */
-    protected function getMembers(): MemberList {
+    protected function getMembers(): MemberList
+    {
         return $this->proxy()->members;
     }
 
@@ -130,7 +140,8 @@ class QueueInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +159,8 @@ class QueueInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

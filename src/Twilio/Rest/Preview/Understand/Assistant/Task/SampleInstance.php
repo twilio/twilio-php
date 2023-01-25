@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property string $sourceChannel
  */
-class SampleInstance extends InstanceResource {
+class SampleInstance extends InstanceResource
+{
     /**
      * Initialize the SampleInstance
      *
@@ -47,7 +48,8 @@ class SampleInstance extends InstanceResource {
      * @param string $taskSid The unique ID of the Task associated with this Sample.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $assistantSid, string $taskSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $taskSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class SampleInstance extends InstanceResource {
      *
      * @return SampleContext Context for this SampleInstance
      */
-    protected function proxy(): SampleContext {
+    protected function proxy(): SampleContext
+    {
         if (!$this->context) {
             $this->context = new SampleContext(
                 $this->version,
@@ -92,7 +95,9 @@ class SampleInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -102,7 +107,9 @@ class SampleInstance extends InstanceResource {
      * @return SampleInstance Fetched SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SampleInstance {
+    public function fetch(): SampleInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -113,7 +120,9 @@ class SampleInstance extends InstanceResource {
      * @return SampleInstance Updated SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SampleInstance {
+    public function update(array $options = []): SampleInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -124,7 +133,8 @@ class SampleInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +152,8 @@ class SampleInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

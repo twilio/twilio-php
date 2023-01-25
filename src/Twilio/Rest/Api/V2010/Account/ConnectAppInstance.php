@@ -37,7 +37,8 @@ use Twilio\Version;
  * @property string $sid
  * @property string $uri
  */
-class ConnectAppInstance extends InstanceResource {
+class ConnectAppInstance extends InstanceResource
+{
     /**
      * Initialize the ConnectAppInstance
      *
@@ -46,7 +47,8 @@ class ConnectAppInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resource to fetch.
      * @param string $sid The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class ConnectAppInstance extends InstanceResource {
      *
      * @return ConnectAppContext Context for this ConnectAppInstance
      */
-    protected function proxy(): ConnectAppContext {
+    protected function proxy(): ConnectAppContext
+    {
         if (!$this->context) {
             $this->context = new ConnectAppContext(
                 $this->version,
@@ -91,7 +94,9 @@ class ConnectAppInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class ConnectAppInstance extends InstanceResource {
      * @return ConnectAppInstance Fetched ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConnectAppInstance {
+    public function fetch(): ConnectAppInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,7 +119,9 @@ class ConnectAppInstance extends InstanceResource {
      * @return ConnectAppInstance Updated ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConnectAppInstance {
+    public function update(array $options = []): ConnectAppInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -123,7 +132,8 @@ class ConnectAppInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -141,7 +151,8 @@ class ConnectAppInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -37,7 +37,8 @@ use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
  * @method \Twilio\Rest\Conversations\V1\Service\Conversation\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Conversations\V1\Service\Conversation\WebhookContext webhooks(string $sid)
  */
-class ConversationContext extends InstanceContext {
+class ConversationContext extends InstanceContext
+    {
     protected $_webhooks;
     protected $_participants;
     protected $_messages;
@@ -49,13 +50,25 @@ class ConversationContext extends InstanceContext {
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.
      * @param string $sid A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.
      */
-    public function __construct(Version $version, $chatServiceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $chatServiceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['chatServiceSid' => $chatServiceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'chatServiceSid' =>
+            $chatServiceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($chatServiceSid) . '/Conversations/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($chatServiceSid)
+        .'/Conversations/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -65,7 +78,9 @@ class ConversationContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         $options = new Values($options);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -73,22 +88,26 @@ class ConversationContext extends InstanceContext {
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
+
     /**
      * Fetch the ConversationInstance
      *
      * @return ConversationInstance Fetched ConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConversationInstance {
+    public function fetch(): ConversationInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ConversationInstance(
             $this->version,
-            $payload
-            , $this->solution['chatServiceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['chatServiceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ConversationInstance
@@ -97,19 +116,30 @@ class ConversationContext extends InstanceContext {
      * @return ConversationInstance Updated ConversationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConversationInstance {
+    public function update(array $options = []): ConversationInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'Attributes' => $options['attributes'],
-            'MessagingServiceSid' => $options['messagingServiceSid'],
-            'State' => $options['state'],
-            'Timers.Inactive' => $options['timersInactive'],
-            'Timers.Closed' => $options['timersClosed'],
-            'UniqueName' => $options['uniqueName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'DateCreated' =>
+                Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' =>
+                Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' =>
+                $options['attributes'],
+            'MessagingServiceSid' =>
+                $options['messagingServiceSid'],
+            'State' =>
+                $options['state'],
+            'Timers.Inactive' =>
+                $options['timersInactive'],
+            'Timers.Closed' =>
+                $options['timersClosed'],
+            'UniqueName' =>
+                $options['uniqueName'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
@@ -118,21 +148,23 @@ class ConversationContext extends InstanceContext {
 
         return new ConversationInstance(
             $this->version,
-            $payload
-            , $this->solution['chatServiceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['chatServiceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the webhooks
      */
-    protected function getWebhooks(): WebhookList {
+    protected function getWebhooks(): WebhookList
+    {
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList(
-                $this->version
-                , $this->solution['chatServiceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['chatServiceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -142,12 +174,13 @@ class ConversationContext extends InstanceContext {
     /**
      * Access the participants
      */
-    protected function getParticipants(): ParticipantList {
+    protected function getParticipants(): ParticipantList
+    {
         if (!$this->_participants) {
             $this->_participants = new ParticipantList(
-                $this->version
-                , $this->solution['chatServiceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['chatServiceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -157,12 +190,13 @@ class ConversationContext extends InstanceContext {
     /**
      * Access the messages
      */
-    protected function getMessages(): MessageList {
+    protected function getMessages(): MessageList
+    {
         if (!$this->_messages) {
             $this->_messages = new MessageList(
-                $this->version
-                , $this->solution['chatServiceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['chatServiceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -176,7 +210,8 @@ class ConversationContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -193,7 +228,8 @@ class ConversationContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -207,7 +243,8 @@ class ConversationContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class AvailableAddOnExtensionPage extends Page {
+class AvailableAddOnExtensionPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class AvailableAddOnExtensionPage extends Page {
      * @param array $payload Payload response from the API
      * @return AvailableAddOnExtensionInstance \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionInstance
      */
-    public function buildInstance(array $payload): AvailableAddOnExtensionInstance {
+    public function buildInstance(array $payload): AvailableAddOnExtensionInstance
+    {
         return new AvailableAddOnExtensionInstance($this->version, $payload, $this->solution['availableAddOnSid']);
     }
 
@@ -45,7 +48,8 @@ class AvailableAddOnExtensionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Marketplace.AvailableAddOnExtensionPage]';
     }
 }

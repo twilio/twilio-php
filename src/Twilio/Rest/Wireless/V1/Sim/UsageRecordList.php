@@ -24,20 +24,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class UsageRecordList extends ListResource {
+class UsageRecordList extends ListResource
+    {
     /**
      * Construct the UsageRecordList
      *
      * @param Version $version Version that contains the resource
      * @param string $simSid The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from.
      */
-    public function __construct(Version $version, string $simSid ) {
+    public function __construct(
+        Version $version,
+        string $simSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['simSid' => $simSid, ];
+        $this->solution = [
+        'simSid' =>
+            $simSid,
+        
+        ];
 
-        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/UsageRecords';
+        $this->uri = '/Sims/' . \rawurlencode($simSid)
+        .'/UsageRecords';
     }
 
     /**
@@ -56,7 +66,8 @@ class UsageRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UsageRecordInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +90,8 @@ class UsageRecordList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,13 +108,22 @@ class UsageRecordList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return UsageRecordPage Page of UsageRecordInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): UsageRecordPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): UsageRecordPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'End' => Serialize::iso8601DateTime($options['end']),
-            'Start' => Serialize::iso8601DateTime($options['start']),
-            'Granularity' => $options['granularity'],
+            'End' =>
+                Serialize::iso8601DateTime($options['end']),
+            'Start' =>
+                Serialize::iso8601DateTime($options['start']),
+            'Granularity' =>
+                $options['granularity'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -120,7 +141,8 @@ class UsageRecordList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return UsageRecordPage Page of UsageRecordInstance
      */
-    public function getPage(string $targetUrl): UsageRecordPage {
+    public function getPage(string $targetUrl): UsageRecordPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -135,7 +157,8 @@ class UsageRecordList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Wireless.V1.UsageRecordList]';
     }
 }

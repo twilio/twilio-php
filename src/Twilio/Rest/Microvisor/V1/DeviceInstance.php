@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property array $links
  */
-class DeviceInstance extends InstanceResource {
+class DeviceInstance extends InstanceResource
+{
     /**
      * Initialize the DeviceInstance
      *
@@ -44,7 +45,8 @@ class DeviceInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid A 34-character string that uniquely identifies this Device.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -69,7 +71,8 @@ class DeviceInstance extends InstanceResource {
      *
      * @return DeviceContext Context for this DeviceInstance
      */
-    protected function proxy(): DeviceContext {
+    protected function proxy(): DeviceContext
+    {
         if (!$this->context) {
             $this->context = new DeviceContext(
                 $this->version,
@@ -86,7 +89,9 @@ class DeviceInstance extends InstanceResource {
      * @return DeviceInstance Fetched DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DeviceInstance {
+    public function fetch(): DeviceInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -97,7 +102,9 @@ class DeviceInstance extends InstanceResource {
      * @return DeviceInstance Updated DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): DeviceInstance {
+    public function update(array $options = []): DeviceInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -108,7 +115,8 @@ class DeviceInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -126,7 +134,8 @@ class DeviceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

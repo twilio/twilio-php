@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class VerificationCheckList extends ListResource {
+class VerificationCheckList extends ListResource
+    {
     /**
      * Construct the VerificationCheckList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/VerificationCheck';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/VerificationCheck';
     }
 
     /**
@@ -46,32 +56,41 @@ class VerificationCheckList extends ListResource {
      * @return VerificationCheckInstance Created VerificationCheckInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): VerificationCheckInstance {
+    public function create(array $options = []): VerificationCheckInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Code' => $options['code'],
-            'To' => $options['to'],
-            'VerificationSid' => $options['verificationSid'],
-            'Amount' => $options['amount'],
-            'Payee' => $options['payee'],
+            'Code' =>
+                $options['code'],
+            'To' =>
+                $options['to'],
+            'VerificationSid' =>
+                $options['verificationSid'],
+            'Amount' =>
+                $options['amount'],
+            'Payee' =>
+                $options['payee'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new VerificationCheckInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.VerificationCheckList]';
     }
 }

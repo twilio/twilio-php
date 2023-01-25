@@ -39,7 +39,8 @@ use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
  * @property \DateTime $dateUpdated
  * @property string $createdBy
  */
-class DocumentInstance extends InstanceResource {
+class DocumentInstance extends InstanceResource
+{
     protected $_documentPermissions;
 
     /**
@@ -50,7 +51,8 @@ class DocumentInstance extends InstanceResource {
      * @param string $serviceSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -77,7 +79,8 @@ class DocumentInstance extends InstanceResource {
      *
      * @return DocumentContext Context for this DocumentInstance
      */
-    protected function proxy(): DocumentContext {
+    protected function proxy(): DocumentContext
+    {
         if (!$this->context) {
             $this->context = new DocumentContext(
                 $this->version,
@@ -95,7 +98,9 @@ class DocumentInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -105,7 +110,9 @@ class DocumentInstance extends InstanceResource {
      * @return DocumentInstance Fetched DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DocumentInstance {
+    public function fetch(): DocumentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -117,14 +124,17 @@ class DocumentInstance extends InstanceResource {
      * @return DocumentInstance Updated DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data, array $options = []): DocumentInstance {
+    public function update(array $data, array $options = []): DocumentInstance
+    {
+
         return $this->proxy()->update($data, $options);
     }
 
     /**
      * Access the documentPermissions
      */
-    protected function getDocumentPermissions(): DocumentPermissionList {
+    protected function getDocumentPermissions(): DocumentPermissionList
+    {
         return $this->proxy()->documentPermissions;
     }
 
@@ -135,7 +145,8 @@ class DocumentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -153,7 +164,8 @@ class DocumentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

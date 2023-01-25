@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class BundleList extends ListResource {
+class BundleList extends ListResource
+    {
     /**
      * Construct the BundleList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/RegulatoryCompliance/Bundles';
     }
@@ -49,26 +53,36 @@ class BundleList extends ListResource {
      * @return BundleInstance Created BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $email, array $options = []): BundleInstance {
+    public function create(string $friendlyName, string $email, array $options = []): BundleInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'Email' => $email,
-            'StatusCallback' => $options['statusCallback'],
-            'RegulationSid' => $options['regulationSid'],
-            'IsoCountry' => $options['isoCountry'],
-            'EndUserType' => $options['endUserType'],
-            'NumberType' => $options['numberType'],
+            'FriendlyName' =>
+                $friendlyName,
+            'Email' =>
+                $email,
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'RegulationSid' =>
+                $options['regulationSid'],
+            'IsoCountry' =>
+                $options['isoCountry'],
+            'EndUserType' =>
+                $options['endUserType'],
+            'NumberType' =>
+                $options['numberType'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BundleInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads BundleInstance records from the API as a list.
@@ -86,7 +100,8 @@ class BundleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BundleInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -109,7 +124,8 @@ class BundleList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -126,21 +142,38 @@ class BundleList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return BundlePage Page of BundleInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BundlePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): BundlePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Status' => $options['status'],
-            'FriendlyName' => $options['friendlyName'],
-            'RegulationSid' => $options['regulationSid'],
-            'IsoCountry' => $options['isoCountry'],
-            'NumberType' => $options['numberType'],
-            'HasValidUntilDate' => Serialize::booleanToString($options['hasValidUntilDate']),
-            'SortBy' => $options['sortBy'],
-            'SortDirection' => $options['sortDirection'],
-            'ValidUntilDate<' => Serialize::iso8601DateTime($options['validUntilDateBefore']),
-            'ValidUntilDate' => Serialize::iso8601DateTime($options['validUntilDate']),
-            'ValidUntilDate>' => Serialize::iso8601DateTime($options['validUntilDateAfter']),
+            'Status' =>
+                $options['status'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'RegulationSid' =>
+                $options['regulationSid'],
+            'IsoCountry' =>
+                $options['isoCountry'],
+            'NumberType' =>
+                $options['numberType'],
+            'HasValidUntilDate' =>
+                Serialize::booleanToString($options['hasValidUntilDate']),
+            'SortBy' =>
+                $options['sortBy'],
+            'SortDirection' =>
+                $options['sortDirection'],
+            'ValidUntilDate<' =>
+                Serialize::iso8601DateTime($options['validUntilDateBefore']),
+            'ValidUntilDate' =>
+                Serialize::iso8601DateTime($options['validUntilDate']),
+            'ValidUntilDate>' =>
+                Serialize::iso8601DateTime($options['validUntilDateAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -158,7 +191,8 @@ class BundleList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return BundlePage Page of BundleInstance
      */
-    public function getPage(string $targetUrl): BundlePage {
+    public function getPage(string $targetUrl): BundlePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -173,8 +207,15 @@ class BundleList extends ListResource {
      *
      * @param string $sid The unique string that we created to identify the Bundle resource.
      */
-    public function getContext(string $sid): BundleContext {
-        return new BundleContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): BundleContext
+    {
+        return new BundleContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -182,7 +223,8 @@ class BundleList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.BundleList]';
     }
 }

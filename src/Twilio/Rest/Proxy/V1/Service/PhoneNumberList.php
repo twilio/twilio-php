@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class PhoneNumberList extends ListResource {
+class PhoneNumberList extends ListResource
+    {
     /**
      * Construct the PhoneNumberList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID parent [Service](https://www.twilio.com/docs/proxy/api/service) resource of the new PhoneNumber resource.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/PhoneNumbers';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/PhoneNumbers';
     }
 
     /**
@@ -48,23 +58,29 @@ class PhoneNumberList extends ListResource {
      * @return PhoneNumberInstance Created PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): PhoneNumberInstance {
+    public function create(array $options = []): PhoneNumberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Sid' => $options['sid'],
-            'PhoneNumber' => $options['phoneNumber'],
-            'IsReserved' => Serialize::booleanToString($options['isReserved']),
+            'Sid' =>
+                $options['sid'],
+            'PhoneNumber' =>
+                $options['phoneNumber'],
+            'IsReserved' =>
+                Serialize::booleanToString($options['isReserved']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new PhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Reads PhoneNumberInstance records from the API as a list.
@@ -81,7 +97,8 @@ class PhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return PhoneNumberInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -103,7 +120,8 @@ class PhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -120,7 +138,12 @@ class PhoneNumberList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return PhoneNumberPage Page of PhoneNumberInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): PhoneNumberPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PhoneNumberPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -140,7 +163,8 @@ class PhoneNumberList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return PhoneNumberPage Page of PhoneNumberInstance
      */
-    public function getPage(string $targetUrl): PhoneNumberPage {
+    public function getPage(string $targetUrl): PhoneNumberPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -155,8 +179,16 @@ class PhoneNumberList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the PhoneNumber resource to delete.
      */
-    public function getContext(string $sid): PhoneNumberContext {
-        return new PhoneNumberContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): PhoneNumberContext
+    {
+        return new PhoneNumberContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -164,7 +196,8 @@ class PhoneNumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Proxy.V1.PhoneNumberList]';
     }
 }

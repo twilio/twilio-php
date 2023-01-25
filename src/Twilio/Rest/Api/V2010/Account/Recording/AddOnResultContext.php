@@ -28,7 +28,8 @@ use Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList;
  * @property PayloadList $payloads
  * @method \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext payloads(string $sid)
  */
-class AddOnResultContext extends InstanceContext {
+class AddOnResultContext extends InstanceContext
+    {
     protected $_payloads;
 
     /**
@@ -39,13 +40,29 @@ class AddOnResultContext extends InstanceContext {
      * @param string $referenceSid The SID of the recording to which the result to delete belongs.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $referenceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $referenceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'referenceSid' => $referenceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'referenceSid' =>
+            $referenceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Recordings/' . \rawurlencode($referenceSid)
+        .'/AddOnResults/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -54,9 +71,12 @@ class AddOnResultContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the AddOnResultInstance
@@ -64,28 +84,32 @@ class AddOnResultContext extends InstanceContext {
      * @return AddOnResultInstance Fetched AddOnResultInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AddOnResultInstance {
+    public function fetch(): AddOnResultInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AddOnResultInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['referenceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['referenceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the payloads
      */
-    protected function getPayloads(): PayloadList {
+    protected function getPayloads(): PayloadList
+    {
         if (!$this->_payloads) {
             $this->_payloads = new PayloadList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['referenceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['referenceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -99,7 +123,8 @@ class AddOnResultContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -116,7 +141,8 @@ class AddOnResultContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -130,7 +156,8 @@ class AddOnResultContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

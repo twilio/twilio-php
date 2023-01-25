@@ -18,43 +18,80 @@ namespace Twilio\Rest\Preview\DeployedDevices\Fleet;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class DeviceOptions {
+abstract class DeviceOptions
+{
     /**
-     * @param string $uniqueName Provides a unique and addressable name to be assigned to this Device, to be used in addition to SID, up to 128 characters long. 
-     * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long. 
-     * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long. 
-     * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with. 
-     * @param bool $enabled  
+     * @param string $uniqueName Provides a unique and addressable name to be assigned to this Device, to be used in addition to SID, up to 128 characters long.
+     * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
+     * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
+     * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
+     * @param bool $enabled 
      * @return CreateDeviceOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, string $identity = Values::NONE, string $deploymentSid = Values::NONE, bool $enabled = Values::NONE): CreateDeviceOptions {
-        return new CreateDeviceOptions($uniqueName, $friendlyName, $identity, $deploymentSid, $enabled);
+    public static function create(
+        
+        string $uniqueName = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $identity = Values::NONE,
+        string $deploymentSid = Values::NONE,
+        bool $enabled = Values::NONE
+
+    ): CreateDeviceOptions
+    {
+        return new CreateDeviceOptions(
+            $uniqueName,
+            $friendlyName,
+            $identity,
+            $deploymentSid,
+            $enabled
+        );
     }
 
 
 
     /**
-     * @param string $deploymentSid Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with. 
+     * @param string $deploymentSid Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with.
      * @return ReadDeviceOptions Options builder
      */
-    public static function read(string $deploymentSid = Values::NONE): ReadDeviceOptions {
-        return new ReadDeviceOptions($deploymentSid);
+    public static function read(
+        
+        string $deploymentSid = Values::NONE
+
+    ): ReadDeviceOptions
+    {
+        return new ReadDeviceOptions(
+            $deploymentSid
+        );
     }
 
     /**
-     * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long. 
-     * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long. 
-     * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with. 
-     * @param bool $enabled  
+     * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
+     * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
+     * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
+     * @param bool $enabled 
      * @return UpdateDeviceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $identity = Values::NONE, string $deploymentSid = Values::NONE, bool $enabled = Values::NONE): UpdateDeviceOptions {
-        return new UpdateDeviceOptions($friendlyName, $identity, $deploymentSid, $enabled);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $identity = Values::NONE,
+        string $deploymentSid = Values::NONE,
+        bool $enabled = Values::NONE
+
+    ): UpdateDeviceOptions
+    {
+        return new UpdateDeviceOptions(
+            $friendlyName,
+            $identity,
+            $deploymentSid,
+            $enabled
+        );
     }
 
 }
 
-class CreateDeviceOptions extends Options {
+class CreateDeviceOptions extends Options
+    {
     /**
      * @param string $uniqueName Provides a unique and addressable name to be assigned to this Device, to be used in addition to SID, up to 128 characters long.
      * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
@@ -62,7 +99,16 @@ class CreateDeviceOptions extends Options {
      * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
      * @param bool $enabled 
      */
-    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, string $identity = Values::NONE, string $deploymentSid = Values::NONE, bool $enabled = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $identity = Values::NONE,
+        string $deploymentSid = Values::NONE,
+        bool $enabled = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['identity'] = $identity;
@@ -76,7 +122,8 @@ class CreateDeviceOptions extends Options {
      * @param string $uniqueName Provides a unique and addressable name to be assigned to this Device, to be used in addition to SID, up to 128 characters long.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -87,7 +134,8 @@ class CreateDeviceOptions extends Options {
      * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -98,7 +146,8 @@ class CreateDeviceOptions extends Options {
      * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setIdentity(string $identity): self {
+    public function setIdentity(string $identity): self
+    {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -109,7 +158,8 @@ class CreateDeviceOptions extends Options {
      * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
      * @return $this Fluent Builder
      */
-    public function setDeploymentSid(string $deploymentSid): self {
+    public function setDeploymentSid(string $deploymentSid): self
+    {
         $this->options['deploymentSid'] = $deploymentSid;
         return $this;
     }
@@ -120,7 +170,8 @@ class CreateDeviceOptions extends Options {
      * @param bool $enabled 
      * @return $this Fluent Builder
      */
-    public function setEnabled(bool $enabled): self {
+    public function setEnabled(bool $enabled): self
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -130,7 +181,8 @@ class CreateDeviceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.CreateDeviceOptions ' . $options . ']';
     }
@@ -138,11 +190,17 @@ class CreateDeviceOptions extends Options {
 
 
 
-class ReadDeviceOptions extends Options {
+class ReadDeviceOptions extends Options
+    {
     /**
      * @param string $deploymentSid Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with.
      */
-    public function __construct(string $deploymentSid = Values::NONE) {
+    public function __construct(
+        
+        string $deploymentSid = Values::NONE
+
+    )
+    {
         $this->options['deploymentSid'] = $deploymentSid;
     }
 
@@ -152,7 +210,8 @@ class ReadDeviceOptions extends Options {
      * @param string $deploymentSid Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with.
      * @return $this Fluent Builder
      */
-    public function setDeploymentSid(string $deploymentSid): self {
+    public function setDeploymentSid(string $deploymentSid): self
+    {
         $this->options['deploymentSid'] = $deploymentSid;
         return $this;
     }
@@ -162,20 +221,30 @@ class ReadDeviceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.ReadDeviceOptions ' . $options . ']';
     }
 }
 
-class UpdateDeviceOptions extends Options {
+class UpdateDeviceOptions extends Options
+    {
     /**
      * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
      * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
      * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
      * @param bool $enabled 
      */
-    public function __construct(string $friendlyName = Values::NONE, string $identity = Values::NONE, string $deploymentSid = Values::NONE, bool $enabled = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $identity = Values::NONE,
+        string $deploymentSid = Values::NONE,
+        bool $enabled = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['identity'] = $identity;
         $this->options['deploymentSid'] = $deploymentSid;
@@ -188,7 +257,8 @@ class UpdateDeviceOptions extends Options {
      * @param string $friendlyName Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -199,7 +269,8 @@ class UpdateDeviceOptions extends Options {
      * @param string $identity Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
      * @return $this Fluent Builder
      */
-    public function setIdentity(string $identity): self {
+    public function setIdentity(string $identity): self
+    {
         $this->options['identity'] = $identity;
         return $this;
     }
@@ -210,7 +281,8 @@ class UpdateDeviceOptions extends Options {
      * @param string $deploymentSid Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
      * @return $this Fluent Builder
      */
-    public function setDeploymentSid(string $deploymentSid): self {
+    public function setDeploymentSid(string $deploymentSid): self
+    {
         $this->options['deploymentSid'] = $deploymentSid;
         return $this;
     }
@@ -221,7 +293,8 @@ class UpdateDeviceOptions extends Options {
      * @param bool $enabled 
      * @return $this Fluent Builder
      */
-    public function setEnabled(bool $enabled): self {
+    public function setEnabled(bool $enabled): self
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -231,7 +304,8 @@ class UpdateDeviceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.DeployedDevices.UpdateDeviceOptions ' . $options . ']';
     }

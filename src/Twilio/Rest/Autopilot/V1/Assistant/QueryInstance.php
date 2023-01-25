@@ -41,7 +41,8 @@ use Twilio\Deserialize;
  * @property string $sourceChannel
  * @property string $dialogueSid
  */
-class QueryInstance extends InstanceResource {
+class QueryInstance extends InstanceResource
+{
     /**
      * Initialize the QueryInstance
      *
@@ -50,7 +51,8 @@ class QueryInstance extends InstanceResource {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Query resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -80,7 +82,8 @@ class QueryInstance extends InstanceResource {
      *
      * @return QueryContext Context for this QueryInstance
      */
-    protected function proxy(): QueryContext {
+    protected function proxy(): QueryContext
+    {
         if (!$this->context) {
             $this->context = new QueryContext(
                 $this->version,
@@ -98,7 +101,9 @@ class QueryInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -108,7 +113,9 @@ class QueryInstance extends InstanceResource {
      * @return QueryInstance Fetched QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): QueryInstance {
+    public function fetch(): QueryInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -119,7 +126,9 @@ class QueryInstance extends InstanceResource {
      * @return QueryInstance Updated QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): QueryInstance {
+    public function update(array $options = []): QueryInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -130,7 +139,8 @@ class QueryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +158,8 @@ class QueryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

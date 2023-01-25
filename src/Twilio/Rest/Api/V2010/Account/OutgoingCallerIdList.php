@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class OutgoingCallerIdList extends ListResource {
+class OutgoingCallerIdList extends ListResource
+    {
     /**
      * Construct the OutgoingCallerIdList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to delete.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/OutgoingCallerIds.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/OutgoingCallerIds.json';
     }
 
     /**
@@ -55,7 +65,8 @@ class OutgoingCallerIdList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return OutgoingCallerIdInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +89,8 @@ class OutgoingCallerIdList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,12 +107,20 @@ class OutgoingCallerIdList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return OutgoingCallerIdPage Page of OutgoingCallerIdInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): OutgoingCallerIdPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): OutgoingCallerIdPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'PhoneNumber' => $options['phoneNumber'],
-            'FriendlyName' => $options['friendlyName'],
+            'PhoneNumber' =>
+                $options['phoneNumber'],
+            'FriendlyName' =>
+                $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -118,7 +138,8 @@ class OutgoingCallerIdList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return OutgoingCallerIdPage Page of OutgoingCallerIdInstance
      */
-    public function getPage(string $targetUrl): OutgoingCallerIdPage {
+    public function getPage(string $targetUrl): OutgoingCallerIdPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -133,8 +154,16 @@ class OutgoingCallerIdList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to delete.
      */
-    public function getContext(string $sid): OutgoingCallerIdContext {
-        return new OutgoingCallerIdContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): OutgoingCallerIdContext
+    {
+        return new OutgoingCallerIdContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -142,7 +171,8 @@ class OutgoingCallerIdList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.OutgoingCallerIdList]';
     }
 }

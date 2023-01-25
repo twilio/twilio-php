@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class JobList extends ListResource {
+class JobList extends ListResource
+    {
     /**
      * Construct the JobList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class JobList extends ListResource {
      *
      * @param string $jobSid The unique string that that we created to identify the Bulk Export job
      */
-    public function getContext(string $jobSid): JobContext {
-        return new JobContext($this->version, $jobSid);
+    public function getContext(
+        string $jobSid
+        
+    ): JobContext
+    {
+        return new JobContext(
+            $this->version,
+            $jobSid
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class JobList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Bulkexports.V1.JobList]';
     }
 }

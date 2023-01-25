@@ -47,7 +47,8 @@ use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
  * @property bool $mock
  * @property array $links
  */
-class BrandRegistrationInstance extends InstanceResource {
+class BrandRegistrationInstance extends InstanceResource
+{
     protected $_brandVettings;
 
     /**
@@ -57,7 +58,8 @@ class BrandRegistrationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Brand Registration resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +95,8 @@ class BrandRegistrationInstance extends InstanceResource {
      *
      * @return BrandRegistrationContext Context for this BrandRegistrationInstance
      */
-    protected function proxy(): BrandRegistrationContext {
+    protected function proxy(): BrandRegistrationContext
+    {
         if (!$this->context) {
             $this->context = new BrandRegistrationContext(
                 $this->version,
@@ -110,7 +113,9 @@ class BrandRegistrationInstance extends InstanceResource {
      * @return BrandRegistrationInstance Fetched BrandRegistrationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BrandRegistrationInstance {
+    public function fetch(): BrandRegistrationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -120,14 +125,17 @@ class BrandRegistrationInstance extends InstanceResource {
      * @return BrandRegistrationInstance Updated BrandRegistrationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(): BrandRegistrationInstance {
+    public function update(): BrandRegistrationInstance
+    {
+
         return $this->proxy()->update();
     }
 
     /**
      * Access the brandVettings
      */
-    protected function getBrandVettings(): BrandVettingList {
+    protected function getBrandVettings(): BrandVettingList
+    {
         return $this->proxy()->brandVettings;
     }
 
@@ -138,7 +146,8 @@ class BrandRegistrationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -156,7 +165,8 @@ class BrandRegistrationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

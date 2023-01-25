@@ -22,17 +22,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SafelistList extends ListResource {
+class SafelistList extends ListResource
+    {
     /**
      * Construct the SafelistList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/SafeList/Numbers';
     }
@@ -44,26 +48,37 @@ class SafelistList extends ListResource {
      * @return SafelistInstance Created SafelistInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $phoneNumber): SafelistInstance {
+    public function create(string $phoneNumber): SafelistInstance
+    {
+
         $data = Values::of([
-            'PhoneNumber' => $phoneNumber,
+            'PhoneNumber' =>
+                $phoneNumber,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SafelistInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Constructs a SafelistContext
      *
      * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      */
-    public function getContext(string $phoneNumber): SafelistContext {
-        return new SafelistContext($this->version, $phoneNumber);
+    public function getContext(
+        string $phoneNumber
+        
+    ): SafelistContext
+    {
+        return new SafelistContext(
+            $this->version,
+            $phoneNumber
+        );
     }
 
     /**
@@ -71,7 +86,8 @@ class SafelistList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.SafelistList]';
     }
 }

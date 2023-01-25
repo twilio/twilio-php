@@ -24,7 +24,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class InstalledAddOnExtensionContext extends InstanceContext {
+class InstalledAddOnExtensionContext extends InstanceContext
+    {
     /**
      * Initialize the InstalledAddOnExtensionContext
      *
@@ -32,13 +33,25 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      * @param string $installedAddOnSid The SID of the InstalledAddOn resource with the extension to fetch.
      * @param string $sid The SID of the InstalledAddOn Extension resource to fetch.
      */
-    public function __construct(Version $version, $installedAddOnSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $installedAddOnSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['installedAddOnSid' => $installedAddOnSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'installedAddOnSid' =>
+            $installedAddOnSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/InstalledAddOns/' . \rawurlencode($installedAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '';
+        $this->uri = '/InstalledAddOns/' . \rawurlencode($installedAddOnSid)
+        .'/Extensions/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,16 +60,19 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      * @return InstalledAddOnExtensionInstance Fetched InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InstalledAddOnExtensionInstance {
+    public function fetch(): InstalledAddOnExtensionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new InstalledAddOnExtensionInstance(
             $this->version,
-            $payload
-            , $this->solution['installedAddOnSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['installedAddOnSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the InstalledAddOnExtensionInstance
@@ -65,27 +81,32 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      * @return InstalledAddOnExtensionInstance Updated InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(bool $enabled): InstalledAddOnExtensionInstance {
+    public function update(bool $enabled): InstalledAddOnExtensionInstance
+    {
+
         $data = Values::of([
-            'Enabled' => Serialize::booleanToString($enabled),
+            'Enabled' =>
+                Serialize::booleanToString($enabled),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new InstalledAddOnExtensionInstance(
             $this->version,
-            $payload
-            , $this->solution['installedAddOnSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['installedAddOnSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

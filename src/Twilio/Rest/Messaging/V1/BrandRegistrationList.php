@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class BrandRegistrationList extends ListResource {
+class BrandRegistrationList extends ListResource
+    {
     /**
      * Construct the BrandRegistrationList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/a2p/BrandRegistrations';
     }
@@ -49,24 +53,32 @@ class BrandRegistrationList extends ListResource {
      * @return BrandRegistrationInstance Created BrandRegistrationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): BrandRegistrationInstance {
+    public function create(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): BrandRegistrationInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'CustomerProfileBundleSid' => $customerProfileBundleSid,
-            'A2PProfileBundleSid' => $a2PProfileBundleSid,
-            'BrandType' => $options['brandType'],
-            'Mock' => Serialize::booleanToString($options['mock']),
-            'SkipAutomaticSecVet' => Serialize::booleanToString($options['skipAutomaticSecVet']),
+            'CustomerProfileBundleSid' =>
+                $customerProfileBundleSid,
+            'A2PProfileBundleSid' =>
+                $a2PProfileBundleSid,
+            'BrandType' =>
+                $options['brandType'],
+            'Mock' =>
+                Serialize::booleanToString($options['mock']),
+            'SkipAutomaticSecVet' =>
+                Serialize::booleanToString($options['skipAutomaticSecVet']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new BrandRegistrationInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads BrandRegistrationInstance records from the API as a list.
@@ -83,7 +95,8 @@ class BrandRegistrationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BrandRegistrationInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -105,7 +118,8 @@ class BrandRegistrationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -122,7 +136,12 @@ class BrandRegistrationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return BrandRegistrationPage Page of BrandRegistrationInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BrandRegistrationPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): BrandRegistrationPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -142,7 +161,8 @@ class BrandRegistrationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return BrandRegistrationPage Page of BrandRegistrationInstance
      */
-    public function getPage(string $targetUrl): BrandRegistrationPage {
+    public function getPage(string $targetUrl): BrandRegistrationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -157,8 +177,15 @@ class BrandRegistrationList extends ListResource {
      *
      * @param string $sid The SID of the Brand Registration resource to fetch.
      */
-    public function getContext(string $sid): BrandRegistrationContext {
-        return new BrandRegistrationContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): BrandRegistrationContext
+    {
+        return new BrandRegistrationContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -166,7 +193,8 @@ class BrandRegistrationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.BrandRegistrationList]';
     }
 }

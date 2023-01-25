@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class UserInfoList extends ListResource {
+class UserInfoList extends ListResource
+    {
     /**
      * Construct the UserInfoList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a UserInfoContext
      */
-    public function getContext(): UserInfoContext {
-        return new UserInfoContext($this->version);
+    public function getContext(
+        
+    ): UserInfoContext
+    {
+        return new UserInfoContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class UserInfoList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.UserInfoList]';
     }
 }

@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class TemplatePage extends Page {
+class TemplatePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class TemplatePage extends Page {
      * @param array $payload Payload response from the API
      * @return TemplateInstance \Twilio\Rest\Verify\V2\TemplateInstance
      */
-    public function buildInstance(array $payload): TemplateInstance {
+    public function buildInstance(array $payload): TemplateInstance
+    {
         return new TemplateInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class TemplatePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.TemplatePage]';
     }
 }

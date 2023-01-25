@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class UserList extends ListResource {
+class UserList extends ListResource
+    {
     /**
      * Construct the UserList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class UserList extends ListResource {
      *
      * @param string $sid The SID of the User resource to fetch. This value can be either the `sid` or the `identity` of the User resource to fetch.
      */
-    public function getContext(string $sid): UserContext {
-        return new UserContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): UserContext
+    {
+        return new UserContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class UserList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FrontlineApi.V1.UserList]';
     }
 }

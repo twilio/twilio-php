@@ -32,7 +32,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class SourceIpMappingInstance extends InstanceResource {
+class SourceIpMappingInstance extends InstanceResource
+{
     /**
      * Initialize the SourceIpMappingInstance
      *
@@ -40,7 +41,8 @@ class SourceIpMappingInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the IP Record resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class SourceIpMappingInstance extends InstanceResource {
      *
      * @return SourceIpMappingContext Context for this SourceIpMappingInstance
      */
-    protected function proxy(): SourceIpMappingContext {
+    protected function proxy(): SourceIpMappingContext
+    {
         if (!$this->context) {
             $this->context = new SourceIpMappingContext(
                 $this->version,
@@ -79,7 +82,9 @@ class SourceIpMappingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -89,7 +94,9 @@ class SourceIpMappingInstance extends InstanceResource {
      * @return SourceIpMappingInstance Fetched SourceIpMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SourceIpMappingInstance {
+    public function fetch(): SourceIpMappingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +107,9 @@ class SourceIpMappingInstance extends InstanceResource {
      * @return SourceIpMappingInstance Updated SourceIpMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $sipDomainSid): SourceIpMappingInstance {
+    public function update(string $sipDomainSid): SourceIpMappingInstance
+    {
+
         return $this->proxy()->update($sipDomainSid);
     }
 
@@ -111,7 +120,8 @@ class SourceIpMappingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -129,7 +139,8 @@ class SourceIpMappingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

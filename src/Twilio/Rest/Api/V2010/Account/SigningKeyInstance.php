@@ -31,7 +31,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class SigningKeyInstance extends InstanceResource {
+class SigningKeyInstance extends InstanceResource
+{
     /**
      * Initialize the SigningKeyInstance
      *
@@ -40,7 +41,8 @@ class SigningKeyInstance extends InstanceResource {
      * @param string $accountSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class SigningKeyInstance extends InstanceResource {
      *
      * @return SigningKeyContext Context for this SigningKeyInstance
      */
-    protected function proxy(): SigningKeyContext {
+    protected function proxy(): SigningKeyContext
+    {
         if (!$this->context) {
             $this->context = new SigningKeyContext(
                 $this->version,
@@ -78,7 +81,9 @@ class SigningKeyInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -88,7 +93,9 @@ class SigningKeyInstance extends InstanceResource {
      * @return SigningKeyInstance Fetched SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SigningKeyInstance {
+    public function fetch(): SigningKeyInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -99,7 +106,9 @@ class SigningKeyInstance extends InstanceResource {
      * @return SigningKeyInstance Updated SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SigningKeyInstance {
+    public function update(array $options = []): SigningKeyInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -110,7 +119,8 @@ class SigningKeyInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -128,7 +138,8 @@ class SigningKeyInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class EndUserContext extends InstanceContext {
+class EndUserContext extends InstanceContext
+    {
     /**
      * Initialize the EndUserContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The unique string created by Twilio to identify the End User resource.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/RegulatoryCompliance/EndUsers/' . \rawurlencode($sid) . '';
+        $this->uri = '/RegulatoryCompliance/EndUsers/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +56,12 @@ class EndUserContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the EndUserInstance
@@ -57,15 +69,18 @@ class EndUserContext extends InstanceContext {
      * @return EndUserInstance Fetched EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EndUserInstance {
+    public function fetch(): EndUserInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new EndUserInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the EndUserInstance
@@ -74,29 +89,35 @@ class EndUserContext extends InstanceContext {
      * @return EndUserInstance Updated EndUserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): EndUserInstance {
+    public function update(array $options = []): EndUserInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'Attributes' => Serialize::jsonObject($options['attributes']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Attributes' =>
+                Serialize::jsonObject($options['attributes']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new EndUserInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

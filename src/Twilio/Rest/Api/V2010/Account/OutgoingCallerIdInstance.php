@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property string $phoneNumber
  * @property string $uri
  */
-class OutgoingCallerIdInstance extends InstanceResource {
+class OutgoingCallerIdInstance extends InstanceResource
+{
     /**
      * Initialize the OutgoingCallerIdInstance
      *
@@ -43,7 +44,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,7 +68,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
      *
      * @return OutgoingCallerIdContext Context for this OutgoingCallerIdInstance
      */
-    protected function proxy(): OutgoingCallerIdContext {
+    protected function proxy(): OutgoingCallerIdContext
+    {
         if (!$this->context) {
             $this->context = new OutgoingCallerIdContext(
                 $this->version,
@@ -84,7 +87,9 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -94,7 +99,9 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): OutgoingCallerIdInstance {
+    public function fetch(): OutgoingCallerIdInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -105,7 +112,9 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): OutgoingCallerIdInstance {
+    public function update(array $options = []): OutgoingCallerIdInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -116,7 +125,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +144,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

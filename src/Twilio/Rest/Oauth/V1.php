@@ -32,7 +32,8 @@ use Twilio\Version;
  * @property TokenList $token
  * @property UserInfoList $userInfo
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_deviceCode;
     protected $_oauth;
     protected $_openidDiscovery;
@@ -44,40 +45,46 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getDeviceCode(): DeviceCodeList {
+    protected function getDeviceCode(): DeviceCodeList
+    {
         if (!$this->_deviceCode) {
             $this->_deviceCode = new DeviceCodeList($this);
         }
         return $this->_deviceCode;
     }
 
-    protected function getOauth(): OauthList {
+    protected function getOauth(): OauthList
+    {
         if (!$this->_oauth) {
             $this->_oauth = new OauthList($this);
         }
         return $this->_oauth;
     }
 
-    protected function getOpenidDiscovery(): OpenidDiscoveryList {
+    protected function getOpenidDiscovery(): OpenidDiscoveryList
+    {
         if (!$this->_openidDiscovery) {
             $this->_openidDiscovery = new OpenidDiscoveryList($this);
         }
         return $this->_openidDiscovery;
     }
 
-    protected function getToken(): TokenList {
+    protected function getToken(): TokenList
+    {
         if (!$this->_token) {
             $this->_token = new TokenList($this);
         }
         return $this->_token;
     }
 
-    protected function getUserInfo(): UserInfoList {
+    protected function getUserInfo(): UserInfoList
+    {
         if (!$this->_userInfo) {
             $this->_userInfo = new UserInfoList($this);
         }
@@ -91,7 +98,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -108,7 +116,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -122,7 +131,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1]';
     }
 }

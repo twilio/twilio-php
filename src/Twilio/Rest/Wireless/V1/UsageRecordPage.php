@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class UsageRecordPage extends Page {
+class UsageRecordPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class UsageRecordPage extends Page {
      * @param array $payload Payload response from the API
      * @return UsageRecordInstance \Twilio\Rest\Wireless\V1\UsageRecordInstance
      */
-    public function buildInstance(array $payload): UsageRecordInstance {
+    public function buildInstance(array $payload): UsageRecordInstance
+    {
         return new UsageRecordInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class UsageRecordPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Wireless.V1.UsageRecordPage]';
     }
 }

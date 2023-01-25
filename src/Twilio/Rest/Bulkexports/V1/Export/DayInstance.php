@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property string $resourceType
  */
-class DayInstance extends InstanceResource {
+class DayInstance extends InstanceResource
+{
     /**
      * Initialize the DayInstance
      *
@@ -40,7 +41,8 @@ class DayInstance extends InstanceResource {
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      * @param string $day The ISO 8601 format date of the resources in the file, for a UTC day
      */
-    public function __construct(Version $version, array $payload, string $resourceType, string $day = null) {
+    public function __construct(Version $version, array $payload, string $resourceType, string $day = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class DayInstance extends InstanceResource {
      *
      * @return DayContext Context for this DayInstance
      */
-    protected function proxy(): DayContext {
+    protected function proxy(): DayContext
+    {
         if (!$this->context) {
             $this->context = new DayContext(
                 $this->version,
@@ -80,7 +83,9 @@ class DayInstance extends InstanceResource {
      * @return DayInstance Fetched DayInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DayInstance {
+    public function fetch(): DayInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -91,7 +96,8 @@ class DayInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -109,7 +115,8 @@ class DayInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

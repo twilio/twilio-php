@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property int $qualityScore
  * @property string $sid
  */
-class FeedbackInstance extends InstanceResource {
+class FeedbackInstance extends InstanceResource
+{
     /**
      * Initialize the FeedbackInstance
      *
@@ -42,7 +43,8 @@ class FeedbackInstance extends InstanceResource {
      * @param string $accountSid The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
      * @param string $callSid The call sid that uniquely identifies the call
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,7 +66,8 @@ class FeedbackInstance extends InstanceResource {
      *
      * @return FeedbackContext Context for this FeedbackInstance
      */
-    protected function proxy(): FeedbackContext {
+    protected function proxy(): FeedbackContext
+    {
         if (!$this->context) {
             $this->context = new FeedbackContext(
                 $this->version,
@@ -82,7 +85,9 @@ class FeedbackInstance extends InstanceResource {
      * @return FeedbackInstance Fetched FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FeedbackInstance {
+    public function fetch(): FeedbackInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -93,7 +98,9 @@ class FeedbackInstance extends InstanceResource {
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FeedbackInstance {
+    public function update(array $options = []): FeedbackInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -104,7 +111,8 @@ class FeedbackInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +130,8 @@ class FeedbackInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

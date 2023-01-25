@@ -34,7 +34,8 @@ use Twilio\Rest\Video\V1\Room\RoomRecordingList;
  * @method \Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
  */
-class RoomContext extends InstanceContext {
+class RoomContext extends InstanceContext
+    {
     protected $_recordingRules;
     protected $_participants;
     protected $_recordings;
@@ -45,13 +46,21 @@ class RoomContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Room resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($sid) . '';
+        $this->uri = '/Rooms/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -60,45 +69,53 @@ class RoomContext extends InstanceContext {
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RoomInstance {
+    public function fetch(): RoomInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new RoomInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the RoomInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): RoomInstance {
+    public function update(string $status): RoomInstance
+    {
+
         $data = Values::of([
-            'Status' => $status,
+            'Status' =>
+                $status,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RoomInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the recordingRules
      */
-    protected function getRecordingRules(): RecordingRulesList {
+    protected function getRecordingRules(): RecordingRulesList
+    {
         if (!$this->_recordingRules) {
             $this->_recordingRules = new RecordingRulesList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -108,11 +125,12 @@ class RoomContext extends InstanceContext {
     /**
      * Access the participants
      */
-    protected function getParticipants(): ParticipantList {
+    protected function getParticipants(): ParticipantList
+    {
         if (!$this->_participants) {
             $this->_participants = new ParticipantList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -122,11 +140,12 @@ class RoomContext extends InstanceContext {
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RoomRecordingList {
+    protected function getRecordings(): RoomRecordingList
+    {
         if (!$this->_recordings) {
             $this->_recordings = new RoomRecordingList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -140,7 +159,8 @@ class RoomContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -157,7 +177,8 @@ class RoomContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -171,7 +192,8 @@ class RoomContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

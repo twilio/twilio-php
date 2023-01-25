@@ -18,34 +18,57 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class QueueOptions {
+abstract class QueueOptions
+{
     /**
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. 
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      * @return CreateQueueOptions Options builder
      */
-    public static function create(int $maxSize = Values::NONE): CreateQueueOptions {
-        return new CreateQueueOptions($maxSize);
+    public static function create(
+        
+        int $maxSize = Values::NONE
+
+    ): CreateQueueOptions
+    {
+        return new CreateQueueOptions(
+            $maxSize
+        );
     }
 
 
 
 
     /**
-     * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long. 
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. 
+     * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      * @return UpdateQueueOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, int $maxSize = Values::NONE): UpdateQueueOptions {
-        return new UpdateQueueOptions($friendlyName, $maxSize);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        int $maxSize = Values::NONE
+
+    ): UpdateQueueOptions
+    {
+        return new UpdateQueueOptions(
+            $friendlyName,
+            $maxSize
+        );
     }
 
 }
 
-class CreateQueueOptions extends Options {
+class CreateQueueOptions extends Options
+    {
     /**
      * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      */
-    public function __construct(int $maxSize = Values::NONE) {
+    public function __construct(
+        
+        int $maxSize = Values::NONE
+
+    )
+    {
         $this->options['maxSize'] = $maxSize;
     }
 
@@ -55,7 +78,8 @@ class CreateQueueOptions extends Options {
      * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      * @return $this Fluent Builder
      */
-    public function setMaxSize(int $maxSize): self {
+    public function setMaxSize(int $maxSize): self
+    {
         $this->options['maxSize'] = $maxSize;
         return $this;
     }
@@ -65,7 +89,8 @@ class CreateQueueOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateQueueOptions ' . $options . ']';
     }
@@ -74,12 +99,19 @@ class CreateQueueOptions extends Options {
 
 
 
-class UpdateQueueOptions extends Options {
+class UpdateQueueOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
      * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      */
-    public function __construct(string $friendlyName = Values::NONE, int $maxSize = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        int $maxSize = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['maxSize'] = $maxSize;
     }
@@ -90,7 +122,8 @@ class UpdateQueueOptions extends Options {
      * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -101,7 +134,8 @@ class UpdateQueueOptions extends Options {
      * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      * @return $this Fluent Builder
      */
-    public function setMaxSize(int $maxSize): self {
+    public function setMaxSize(int $maxSize): self
+    {
         $this->options['maxSize'] = $maxSize;
         return $this;
     }
@@ -111,7 +145,8 @@ class UpdateQueueOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.UpdateQueueOptions ' . $options . ']';
     }

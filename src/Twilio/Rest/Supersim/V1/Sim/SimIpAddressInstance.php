@@ -27,7 +27,8 @@ use Twilio\Version;
  * @property string $ipAddress
  * @property string $ipAddressVersion
  */
-class SimIpAddressInstance extends InstanceResource {
+class SimIpAddressInstance extends InstanceResource
+{
     /**
      * Initialize the SimIpAddressInstance
      *
@@ -35,7 +36,8 @@ class SimIpAddressInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $simSid The SID of the Super SIM to list IP Addresses for.
      */
-    public function __construct(Version $version, array $payload, string $simSid) {
+    public function __construct(Version $version, array $payload, string $simSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -54,7 +56,8 @@ class SimIpAddressInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -72,7 +75,8 @@ class SimIpAddressInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.SimIpAddressInstance]';
     }
 }

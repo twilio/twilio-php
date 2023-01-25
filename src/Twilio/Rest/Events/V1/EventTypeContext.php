@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class EventTypeContext extends InstanceContext {
+class EventTypeContext extends InstanceContext
+    {
     /**
      * Initialize the EventTypeContext
      *
      * @param Version $version Version that contains the resource
      * @param string $type A string that uniquely identifies this Event Type.
      */
-    public function __construct(Version $version, $type ) {
+    public function __construct(
+        Version $version,
+        $type
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['type' => $type,  ];
+        $this->solution = [
+        'type' =>
+            $type,
+        ];
 
-        $this->uri = '/Types/' . \rawurlencode($type) . '';
+        $this->uri = '/Types/' . \rawurlencode($type)
+        .'';
     }
 
     /**
@@ -44,22 +53,26 @@ class EventTypeContext extends InstanceContext {
      * @return EventTypeInstance Fetched EventTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EventTypeInstance {
+    public function fetch(): EventTypeInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new EventTypeInstance(
             $this->version,
-            $payload
-            , $this->solution['type']
+            $payload,
+            $this->solution['type'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

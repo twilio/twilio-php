@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class WorkspaceStatisticsList extends ListResource {
+class WorkspaceStatisticsList extends ListResource
+    {
     /**
      * Construct the WorkspaceStatisticsList
      *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace to fetch.
      */
-    public function __construct(Version $version, string $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        ];
     }
 
     /**
      * Constructs a WorkspaceStatisticsContext
      */
-    public function getContext(): WorkspaceStatisticsContext {
-        return new WorkspaceStatisticsContext($this->version, $this->solution['workspaceSid']);
+    public function getContext(
+        
+    ): WorkspaceStatisticsContext
+    {
+        return new WorkspaceStatisticsContext(
+            $this->version,
+            $this->solution['workspaceSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class WorkspaceStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkspaceStatisticsList]';
     }
 }

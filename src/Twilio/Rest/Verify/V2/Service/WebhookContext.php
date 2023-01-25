@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class WebhookContext extends InstanceContext {
+class WebhookContext extends InstanceContext
+    {
     /**
      * Initialize the WebhookContext
      *
@@ -33,13 +34,25 @@ class WebhookContext extends InstanceContext {
      * @param string $serviceSid The unique SID identifier of the Service.
      * @param string $sid The Twilio-provided string that uniquely identifies the Webhook resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Webhooks/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Webhooks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +61,12 @@ class WebhookContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the WebhookInstance
@@ -58,16 +74,19 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): WebhookInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebhookInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the WebhookInstance
@@ -76,33 +95,42 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'EventTypes' => Serialize::map($options['eventTypes'], function($e) { return $e; }),
-            'WebhookUrl' => $options['webhookUrl'],
-            'Status' => $options['status'],
-            'Version' => $options['version'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'EventTypes' =>
+                Serialize::map($options['eventTypes'], function ($e) { return $e; }),
+            'WebhookUrl' =>
+                $options['webhookUrl'],
+            'Status' =>
+                $options['status'],
+            'Version' =>
+                $options['version'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebhookInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

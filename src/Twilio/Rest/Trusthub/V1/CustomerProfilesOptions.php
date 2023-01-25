@@ -18,45 +18,83 @@ namespace Twilio\Rest\Trusthub\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CustomerProfilesOptions {
+abstract class CustomerProfilesOptions
+{
     /**
-     * @param string $statusCallback The URL we call to inform your application of status changes. 
+     * @param string $statusCallback The URL we call to inform your application of status changes.
      * @return CreateCustomerProfilesOptions Options builder
      */
-    public static function create(string $statusCallback = Values::NONE): CreateCustomerProfilesOptions {
-        return new CreateCustomerProfilesOptions($statusCallback);
+    public static function create(
+        
+        string $statusCallback = Values::NONE
+
+    ): CreateCustomerProfilesOptions
+    {
+        return new CreateCustomerProfilesOptions(
+            $statusCallback
+        );
     }
 
 
 
     /**
-     * @param string $status The verification status of the Customer-Profile resource. 
-     * @param string $friendlyName The string that you assigned to describe the resource. 
-     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource. 
+     * @param string $status The verification status of the Customer-Profile resource.
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
      * @return ReadCustomerProfilesOptions Options builder
      */
-    public static function read(string $status = Values::NONE, string $friendlyName = Values::NONE, string $policySid = Values::NONE): ReadCustomerProfilesOptions {
-        return new ReadCustomerProfilesOptions($status, $friendlyName, $policySid);
+    public static function read(
+        
+        string $status = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $policySid = Values::NONE
+
+    ): ReadCustomerProfilesOptions
+    {
+        return new ReadCustomerProfilesOptions(
+            $status,
+            $friendlyName,
+            $policySid
+        );
     }
 
     /**
-     * @param string $status  
-     * @param string $statusCallback The URL we call to inform your application of status changes. 
-     * @param string $friendlyName The string that you assigned to describe the resource. 
-     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status. 
+     * @param string $status
+     * @param string $statusCallback The URL we call to inform your application of status changes.
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
      * @return UpdateCustomerProfilesOptions Options builder
      */
-    public static function update(string $status = Values::NONE, string $statusCallback = Values::NONE, string $friendlyName = Values::NONE, string $email = Values::NONE): UpdateCustomerProfilesOptions {
-        return new UpdateCustomerProfilesOptions($status, $statusCallback, $friendlyName, $email);
+    public static function update(
+        
+        string $status = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $email = Values::NONE
+
+    ): UpdateCustomerProfilesOptions
+    {
+        return new UpdateCustomerProfilesOptions(
+            $status,
+            $statusCallback,
+            $friendlyName,
+            $email
+        );
     }
 
 }
 
-class CreateCustomerProfilesOptions extends Options {
+class CreateCustomerProfilesOptions extends Options
+    {
     /**
      * @param string $statusCallback The URL we call to inform your application of status changes.
      */
-    public function __construct(string $statusCallback = Values::NONE) {
+    public function __construct(
+        
+        string $statusCallback = Values::NONE
+
+    )
+    {
         $this->options['statusCallback'] = $statusCallback;
     }
 
@@ -66,7 +104,8 @@ class CreateCustomerProfilesOptions extends Options {
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -76,7 +115,8 @@ class CreateCustomerProfilesOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trusthub.V1.CreateCustomerProfilesOptions ' . $options . ']';
     }
@@ -84,13 +124,21 @@ class CreateCustomerProfilesOptions extends Options {
 
 
 
-class ReadCustomerProfilesOptions extends Options {
+class ReadCustomerProfilesOptions extends Options
+    {
     /**
      * @param string $status The verification status of the Customer-Profile resource.
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
      */
-    public function __construct(string $status = Values::NONE, string $friendlyName = Values::NONE, string $policySid = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $policySid = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['policySid'] = $policySid;
@@ -102,7 +150,8 @@ class ReadCustomerProfilesOptions extends Options {
      * @param string $status The verification status of the Customer-Profile resource.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -113,7 +162,8 @@ class ReadCustomerProfilesOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -124,7 +174,8 @@ class ReadCustomerProfilesOptions extends Options {
      * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
      * @return $this Fluent Builder
      */
-    public function setPolicySid(string $policySid): self {
+    public function setPolicySid(string $policySid): self
+    {
         $this->options['policySid'] = $policySid;
         return $this;
     }
@@ -134,20 +185,30 @@ class ReadCustomerProfilesOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trusthub.V1.ReadCustomerProfilesOptions ' . $options . ']';
     }
 }
 
-class UpdateCustomerProfilesOptions extends Options {
+class UpdateCustomerProfilesOptions extends Options
+    {
     /**
-     * @param string $status 
+     * @param string $status
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
      */
-    public function __construct(string $status = Values::NONE, string $statusCallback = Values::NONE, string $friendlyName = Values::NONE, string $email = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $email = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['friendlyName'] = $friendlyName;
@@ -155,10 +216,11 @@ class UpdateCustomerProfilesOptions extends Options {
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -169,7 +231,8 @@ class UpdateCustomerProfilesOptions extends Options {
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -180,7 +243,8 @@ class UpdateCustomerProfilesOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -191,7 +255,8 @@ class UpdateCustomerProfilesOptions extends Options {
      * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
      * @return $this Fluent Builder
      */
-    public function setEmail(string $email): self {
+    public function setEmail(string $email): self
+    {
         $this->options['email'] = $email;
         return $this;
     }
@@ -201,7 +266,8 @@ class UpdateCustomerProfilesOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trusthub.V1.UpdateCustomerProfilesOptions ' . $options . ']';
     }

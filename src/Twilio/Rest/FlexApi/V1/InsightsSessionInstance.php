@@ -31,14 +31,16 @@ use Twilio\Version;
  * @property string $baseUrl
  * @property string $url
  */
-class GoodDataInstance extends InstanceResource {
+class InsightsSessionInstance extends InstanceResource
+{
     /**
-     * Initialize the GoodDataInstance
+     * Initialize the InsightsSessionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -57,11 +59,12 @@ class GoodDataInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return GoodDataContext Context for this GoodDataInstance
+     * @return InsightsSessionContext Context for this InsightsSessionInstance
      */
-    protected function proxy(): GoodDataContext {
+    protected function proxy(): InsightsSessionContext
+    {
         if (!$this->context) {
-            $this->context = new GoodDataContext(
+            $this->context = new InsightsSessionContext(
                 $this->version
             );
         }
@@ -70,13 +73,15 @@ class GoodDataInstance extends InstanceResource {
     }
 
     /**
-     * Create the GoodDataInstance
+     * Create the InsightsSessionInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return GoodDataInstance Created GoodDataInstance
+     * @return InsightsSessionInstance Created InsightsSessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): GoodDataInstance {
+    public function create(array $options = []): InsightsSessionInstance
+    {
+
         return $this->proxy()->create($options);
     }
 
@@ -87,7 +92,8 @@ class GoodDataInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -105,12 +111,13 @@ class GoodDataInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.GoodDataInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsSessionInstance ' . \implode(' ', $context) . ']';
     }
 }
 

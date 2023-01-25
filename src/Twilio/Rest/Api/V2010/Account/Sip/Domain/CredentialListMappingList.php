@@ -23,7 +23,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class CredentialListMappingList extends ListResource {
+class CredentialListMappingList extends ListResource
+    {
     /**
      * Construct the CredentialListMappingList
      *
@@ -31,13 +32,28 @@ class CredentialListMappingList extends ListResource {
      * @param string $accountSid The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
      * @param string $domainSid A 34 character string that uniquely identifies the SIP Domain for which the CredentialList resource will be mapped.
      */
-    public function __construct(Version $version, string $accountSid , string $domainSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $domainSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'domainSid' =>
+            $domainSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/CredentialListMappings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SIP/Domains/' . \rawurlencode($domainSid)
+        .'/CredentialListMappings.json';
     }
 
     /**
@@ -47,20 +63,24 @@ class CredentialListMappingList extends ListResource {
      * @return CredentialListMappingInstance Created CredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $credentialListSid): CredentialListMappingInstance {
+    public function create(string $credentialListSid): CredentialListMappingInstance
+    {
+
         $data = Values::of([
-            'CredentialListSid' => $credentialListSid,
+            'CredentialListSid' =>
+                $credentialListSid,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CredentialListMappingInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['domainSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['domainSid'],
         );
     }
+
 
     /**
      * Reads CredentialListMappingInstance records from the API as a list.
@@ -77,7 +97,8 @@ class CredentialListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialListMappingInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -99,7 +120,8 @@ class CredentialListMappingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -116,7 +138,12 @@ class CredentialListMappingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CredentialListMappingPage Page of CredentialListMappingInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListMappingPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CredentialListMappingPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -136,7 +163,8 @@ class CredentialListMappingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CredentialListMappingPage Page of CredentialListMappingInstance
      */
-    public function getPage(string $targetUrl): CredentialListMappingPage {
+    public function getPage(string $targetUrl): CredentialListMappingPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -151,8 +179,17 @@ class CredentialListMappingList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies the resource to delete.
      */
-    public function getContext(string $sid): CredentialListMappingContext {
-        return new CredentialListMappingContext($this->version, $this->solution['accountSid'], $this->solution['domainSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): CredentialListMappingContext
+    {
+        return new CredentialListMappingContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['domainSid'],
+            $sid
+        );
     }
 
     /**
@@ -160,7 +197,8 @@ class CredentialListMappingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.CredentialListMappingList]';
     }
 }

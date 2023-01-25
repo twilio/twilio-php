@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ArchivedCallContext extends InstanceContext {
+class ArchivedCallContext extends InstanceContext
+    {
     /**
      * Initialize the ArchivedCallContext
      *
@@ -30,13 +31,25 @@ class ArchivedCallContext extends InstanceContext {
      * @param \DateTime $date The date of the Call in UTC.
      * @param string $sid The Twilio-provided Call SID that uniquely identifies the Call resource to delete
      */
-    public function __construct(Version $version, $date , $sid ) {
+    public function __construct(
+        Version $version,
+        $date,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['date' => $date,  'sid' => $sid,  ];
+        $this->solution = [
+        'date' =>
+            $date,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Archives/' . \rawurlencode($date->format('Y-m-d')) . '/Calls/' . \rawurlencode($sid) . '';
+        $this->uri = '/Archives/' . \rawurlencode($date->format('Y-m-d'))
+        .'/Calls/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,16 +58,20 @@ class ArchivedCallContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

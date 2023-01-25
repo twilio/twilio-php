@@ -18,22 +18,36 @@ namespace Twilio\Rest\Messaging\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class DeactivationsOptions {
+abstract class DeactivationsOptions
+{
     /**
-     * @param \DateTime $date The request will return a list of all United States Phone Numbers that were deactivated on the day specified by this parameter. This date should be specified in YYYY-MM-DD format. 
+     * @param \DateTime $date The request will return a list of all United States Phone Numbers that were deactivated on the day specified by this parameter. This date should be specified in YYYY-MM-DD format.
      * @return FetchDeactivationsOptions Options builder
      */
-    public static function fetch(\DateTime $date = Values::NONE): FetchDeactivationsOptions {
-        return new FetchDeactivationsOptions($date);
+    public static function fetch(
+        
+        \DateTime $date = Values::NONE
+
+    ): FetchDeactivationsOptions
+    {
+        return new FetchDeactivationsOptions(
+            $date
+        );
     }
 
 }
 
-class FetchDeactivationsOptions extends Options {
+class FetchDeactivationsOptions extends Options
+    {
     /**
      * @param \DateTime $date The request will return a list of all United States Phone Numbers that were deactivated on the day specified by this parameter. This date should be specified in YYYY-MM-DD format.
      */
-    public function __construct(\DateTime $date = Values::NONE) {
+    public function __construct(
+        
+        \DateTime $date = Values::NONE
+
+    )
+    {
         $this->options['date'] = $date;
     }
 
@@ -43,7 +57,8 @@ class FetchDeactivationsOptions extends Options {
      * @param \DateTime $date The request will return a list of all United States Phone Numbers that were deactivated on the day specified by this parameter. This date should be specified in YYYY-MM-DD format.
      * @return $this Fluent Builder
      */
-    public function setDate(\DateTime $date): self {
+    public function setDate(\DateTime $date): self
+    {
         $this->options['date'] = $date;
         return $this;
     }
@@ -53,7 +68,8 @@ class FetchDeactivationsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Messaging.V1.FetchDeactivationsOptions ' . $options . ']';
     }

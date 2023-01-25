@@ -43,7 +43,8 @@ use Twilio\Rest\IpMessaging\V2\Service\User\UserChannelList;
  * @property array $links
  * @property string $url
  */
-class UserInstance extends InstanceResource {
+class UserInstance extends InstanceResource
+{
     protected $_userBindings;
     protected $_userChannels;
 
@@ -55,7 +56,8 @@ class UserInstance extends InstanceResource {
      * @param string $serviceSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +87,8 @@ class UserInstance extends InstanceResource {
      *
      * @return UserContext Context for this UserInstance
      */
-    protected function proxy(): UserContext {
+    protected function proxy(): UserContext
+    {
         if (!$this->context) {
             $this->context = new UserContext(
                 $this->version,
@@ -103,7 +106,9 @@ class UserInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -113,7 +118,9 @@ class UserInstance extends InstanceResource {
      * @return UserInstance Fetched UserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserInstance {
+    public function fetch(): UserInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -124,21 +131,25 @@ class UserInstance extends InstanceResource {
      * @return UserInstance Updated UserInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): UserInstance {
+    public function update(array $options = []): UserInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the userBindings
      */
-    protected function getUserBindings(): UserBindingList {
+    protected function getUserBindings(): UserBindingList
+    {
         return $this->proxy()->userBindings;
     }
 
     /**
      * Access the userChannels
      */
-    protected function getUserChannels(): UserChannelList {
+    protected function getUserChannels(): UserChannelList
+    {
         return $this->proxy()->userChannels;
     }
 
@@ -149,7 +160,8 @@ class UserInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -167,7 +179,8 @@ class UserInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

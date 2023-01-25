@@ -31,7 +31,8 @@ use Twilio\Rest\Supersim\V1\Sim\SimIpAddressList;
  * @property BillingPeriodList $billingPeriods
  * @property SimIpAddressList $simIpAddresses
  */
-class SimContext extends InstanceContext {
+class SimContext extends InstanceContext
+    {
     protected $_billingPeriods;
     protected $_simIpAddresses;
 
@@ -41,13 +42,21 @@ class SimContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Sim resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Sims/' . \rawurlencode($sid) . '';
+        $this->uri = '/Sims/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -56,15 +65,18 @@ class SimContext extends InstanceContext {
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SimInstance {
+    public function fetch(): SimInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SimInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the SimInstance
@@ -73,35 +85,45 @@ class SimContext extends InstanceContext {
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SimInstance {
+    public function update(array $options = []): SimInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
-            'Status' => $options['status'],
-            'Fleet' => $options['fleet'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'CallbackMethod' => $options['callbackMethod'],
-            'AccountSid' => $options['accountSid'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'Status' =>
+                $options['status'],
+            'Fleet' =>
+                $options['fleet'],
+            'CallbackUrl' =>
+                $options['callbackUrl'],
+            'CallbackMethod' =>
+                $options['callbackMethod'],
+            'AccountSid' =>
+                $options['accountSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SimInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the billingPeriods
      */
-    protected function getBillingPeriods(): BillingPeriodList {
+    protected function getBillingPeriods(): BillingPeriodList
+    {
         if (!$this->_billingPeriods) {
             $this->_billingPeriods = new BillingPeriodList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -111,11 +133,12 @@ class SimContext extends InstanceContext {
     /**
      * Access the simIpAddresses
      */
-    protected function getSimIpAddresses(): SimIpAddressList {
+    protected function getSimIpAddresses(): SimIpAddressList
+    {
         if (!$this->_simIpAddresses) {
             $this->_simIpAddresses = new SimIpAddressList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -129,7 +152,8 @@ class SimContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -146,7 +170,8 @@ class SimContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -160,7 +185,8 @@ class SimContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

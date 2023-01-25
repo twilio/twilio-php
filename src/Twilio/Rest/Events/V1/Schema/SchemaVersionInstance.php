@@ -31,7 +31,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property string $raw
  */
-class SchemaVersionInstance extends InstanceResource {
+class SchemaVersionInstance extends InstanceResource
+{
     /**
      * Initialize the SchemaVersionInstance
      *
@@ -40,7 +41,8 @@ class SchemaVersionInstance extends InstanceResource {
      * @param string $id The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
      * @param int $schemaVersion The version of the schema
      */
-    public function __construct(Version $version, array $payload, string $id, int $schemaVersion = null) {
+    public function __construct(Version $version, array $payload, string $id, int $schemaVersion = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,7 +63,8 @@ class SchemaVersionInstance extends InstanceResource {
      *
      * @return SchemaVersionContext Context for this SchemaVersionInstance
      */
-    protected function proxy(): SchemaVersionContext {
+    protected function proxy(): SchemaVersionContext
+    {
         if (!$this->context) {
             $this->context = new SchemaVersionContext(
                 $this->version,
@@ -79,7 +82,9 @@ class SchemaVersionInstance extends InstanceResource {
      * @return SchemaVersionInstance Fetched SchemaVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SchemaVersionInstance {
+    public function fetch(): SchemaVersionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -90,7 +95,8 @@ class SchemaVersionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -108,7 +114,8 @@ class SchemaVersionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

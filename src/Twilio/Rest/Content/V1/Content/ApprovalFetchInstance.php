@@ -29,7 +29,8 @@ use Twilio\Version;
  * @property array $whatsapp
  * @property string $url
  */
-class ApprovalFetchInstance extends InstanceResource {
+class ApprovalFetchInstance extends InstanceResource
+{
     /**
      * Initialize the ApprovalFetchInstance
      *
@@ -37,7 +38,8 @@ class ApprovalFetchInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid) {
+    public function __construct(Version $version, array $payload, string $sid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -57,7 +59,8 @@ class ApprovalFetchInstance extends InstanceResource {
      *
      * @return ApprovalFetchContext Context for this ApprovalFetchInstance
      */
-    protected function proxy(): ApprovalFetchContext {
+    protected function proxy(): ApprovalFetchContext
+    {
         if (!$this->context) {
             $this->context = new ApprovalFetchContext(
                 $this->version,
@@ -74,7 +77,9 @@ class ApprovalFetchInstance extends InstanceResource {
      * @return ApprovalFetchInstance Fetched ApprovalFetchInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ApprovalFetchInstance {
+    public function fetch(): ApprovalFetchInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -85,7 +90,8 @@ class ApprovalFetchInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -103,7 +109,8 @@ class ApprovalFetchInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -27,14 +27,16 @@ use Twilio\Version;
  * @property array $keys
  * @property string $url
  */
-class OauthInstance extends InstanceResource {
+class OauthInstance extends InstanceResource
+{
     /**
      * Initialize the OauthInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -52,7 +54,8 @@ class OauthInstance extends InstanceResource {
      *
      * @return OauthContext Context for this OauthInstance
      */
-    protected function proxy(): OauthContext {
+    protected function proxy(): OauthContext
+    {
         if (!$this->context) {
             $this->context = new OauthContext(
                 $this->version
@@ -68,7 +71,9 @@ class OauthInstance extends InstanceResource {
      * @return OauthInstance Fetched OauthInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): OauthInstance {
+    public function fetch(): OauthInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -79,7 +84,8 @@ class OauthInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -97,7 +103,8 @@ class OauthInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

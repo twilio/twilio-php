@@ -30,7 +30,8 @@ use Twilio\Version;
  * @property string $taskQueueSid
  * @property string $workspaceSid
  */
-class TaskQueuesStatisticsInstance extends InstanceResource {
+class TaskQueuesStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the TaskQueuesStatisticsInstance
      *
@@ -38,7 +39,8 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace with the TaskQueues to read.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -78,7 +81,8 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.TaskQueuesStatisticsInstance]';
     }
 }

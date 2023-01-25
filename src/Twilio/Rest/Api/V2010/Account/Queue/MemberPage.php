@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class MemberPage extends Page {
+class MemberPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class MemberPage extends Page {
      * @param array $payload Payload response from the API
      * @return MemberInstance \Twilio\Rest\Api\V2010\Account\Queue\MemberInstance
      */
-    public function buildInstance(array $payload): MemberInstance {
+    public function buildInstance(array $payload): MemberInstance
+    {
         return new MemberInstance($this->version, $payload, $this->solution['accountSid'], $this->solution['queueSid']);
     }
 
@@ -45,7 +48,8 @@ class MemberPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.MemberPage]';
     }
 }

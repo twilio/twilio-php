@@ -46,8 +46,10 @@ use Twilio\Deserialize;
  * @property string $voiceFallbackUrl
  * @property string $voiceMethod
  * @property string $voiceUrl
+ * @property bool $publicApplicationConnectEnabled
  */
-class ApplicationInstance extends InstanceResource {
+class ApplicationInstance extends InstanceResource
+{
     /**
      * Initialize the ApplicationInstance
      *
@@ -56,7 +58,8 @@ class ApplicationInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the Application resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,6 +84,7 @@ class ApplicationInstance extends InstanceResource {
             'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
             'voiceMethod' => Values::array_get($payload, 'voice_method'),
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
+            'publicApplicationConnectEnabled' => Values::array_get($payload, 'public_application_connect_enabled'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];
@@ -92,7 +96,8 @@ class ApplicationInstance extends InstanceResource {
      *
      * @return ApplicationContext Context for this ApplicationInstance
      */
-    protected function proxy(): ApplicationContext {
+    protected function proxy(): ApplicationContext
+    {
         if (!$this->context) {
             $this->context = new ApplicationContext(
                 $this->version,
@@ -110,7 +115,9 @@ class ApplicationInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -120,7 +127,9 @@ class ApplicationInstance extends InstanceResource {
      * @return ApplicationInstance Fetched ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ApplicationInstance {
+    public function fetch(): ApplicationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -131,7 +140,9 @@ class ApplicationInstance extends InstanceResource {
      * @return ApplicationInstance Updated ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ApplicationInstance {
+    public function update(array $options = []): ApplicationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -142,7 +153,8 @@ class ApplicationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -160,7 +172,8 @@ class ApplicationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

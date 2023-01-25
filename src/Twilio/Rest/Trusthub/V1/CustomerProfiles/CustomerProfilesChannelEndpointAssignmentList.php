@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
+class CustomerProfilesChannelEndpointAssignmentList extends ListResource
+    {
     /**
      * Construct the CustomerProfilesChannelEndpointAssignmentList
      *
      * @param Version $version Version that contains the resource
      * @param string $customerProfileSid The unique string that we created to identify the CustomerProfile resource.
      */
-    public function __construct(Version $version, string $customerProfileSid ) {
+    public function __construct(
+        Version $version,
+        string $customerProfileSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['customerProfileSid' => $customerProfileSid, ];
+        $this->solution = [
+        'customerProfileSid' =>
+            $customerProfileSid,
+        
+        ];
 
-        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid) . '/ChannelEndpointAssignments';
+        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid)
+        .'/ChannelEndpointAssignments';
     }
 
     /**
@@ -48,20 +58,25 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      * @return CustomerProfilesChannelEndpointAssignmentInstance Created CustomerProfilesChannelEndpointAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $channelEndpointType, string $channelEndpointSid): CustomerProfilesChannelEndpointAssignmentInstance {
+    public function create(string $channelEndpointType, string $channelEndpointSid): CustomerProfilesChannelEndpointAssignmentInstance
+    {
+
         $data = Values::of([
-            'ChannelEndpointType' => $channelEndpointType,
-            'ChannelEndpointSid' => $channelEndpointSid,
+            'ChannelEndpointType' =>
+                $channelEndpointType,
+            'ChannelEndpointSid' =>
+                $channelEndpointSid,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CustomerProfilesChannelEndpointAssignmentInstance(
             $this->version,
-            $payload
-            , $this->solution['customerProfileSid']
+            $payload,
+            $this->solution['customerProfileSid'],
         );
     }
+
 
     /**
      * Reads CustomerProfilesChannelEndpointAssignmentInstance records from the API as a list.
@@ -79,7 +94,8 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CustomerProfilesChannelEndpointAssignmentInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -102,7 +118,8 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -119,12 +136,20 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CustomerProfilesChannelEndpointAssignmentPage Page of CustomerProfilesChannelEndpointAssignmentInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CustomerProfilesChannelEndpointAssignmentPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CustomerProfilesChannelEndpointAssignmentPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'ChannelEndpointSid' => $options['channelEndpointSid'],
-            'ChannelEndpointSids' => $options['channelEndpointSids'],
+            'ChannelEndpointSid' =>
+                $options['channelEndpointSid'],
+            'ChannelEndpointSids' =>
+                $options['channelEndpointSids'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -142,7 +167,8 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CustomerProfilesChannelEndpointAssignmentPage Page of CustomerProfilesChannelEndpointAssignmentInstance
      */
-    public function getPage(string $targetUrl): CustomerProfilesChannelEndpointAssignmentPage {
+    public function getPage(string $targetUrl): CustomerProfilesChannelEndpointAssignmentPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -157,8 +183,16 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      *
      * @param string $sid The unique string that we created to identify the resource.
      */
-    public function getContext(string $sid): CustomerProfilesChannelEndpointAssignmentContext {
-        return new CustomerProfilesChannelEndpointAssignmentContext($this->version, $this->solution['customerProfileSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): CustomerProfilesChannelEndpointAssignmentContext
+    {
+        return new CustomerProfilesChannelEndpointAssignmentContext(
+            $this->version,
+            $this->solution['customerProfileSid'],
+            $sid
+        );
     }
 
     /**
@@ -166,7 +200,8 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Trusthub.V1.CustomerProfilesChannelEndpointAssignmentList]';
     }
 }

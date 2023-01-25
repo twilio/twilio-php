@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class WebhookList extends ListResource {
+class WebhookList extends ListResource
+    {
     /**
      * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Webhooks';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Webhooks';
     }
 
     /**
@@ -50,24 +60,31 @@ class WebhookList extends ListResource {
      * @return WebhookInstance Created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, string $events, string $webhookUrl, array $options = []): WebhookInstance {
+    public function create(string $uniqueName, string $events, string $webhookUrl, array $options = []): WebhookInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $uniqueName,
-            'Events' => $events,
-            'WebhookUrl' => $webhookUrl,
-            'WebhookMethod' => $options['webhookMethod'],
+            'UniqueName' =>
+                $uniqueName,
+            'Events' =>
+                $events,
+            'WebhookUrl' =>
+                $webhookUrl,
+            'WebhookMethod' =>
+                $options['webhookMethod'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WebhookInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Reads WebhookInstance records from the API as a list.
@@ -84,7 +101,8 @@ class WebhookList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WebhookInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,7 +124,8 @@ class WebhookList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -123,7 +142,12 @@ class WebhookList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return WebhookPage Page of WebhookInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WebhookPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): WebhookPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -143,7 +167,8 @@ class WebhookList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return WebhookPage Page of WebhookInstance
      */
-    public function getPage(string $targetUrl): WebhookPage {
+    public function getPage(string $targetUrl): WebhookPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -158,8 +183,16 @@ class WebhookList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Webhook resource to delete.
      */
-    public function getContext(string $sid): WebhookContext {
-        return new WebhookContext($this->version, $this->solution['assistantSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): WebhookContext
+    {
+        return new WebhookContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $sid
+        );
     }
 
     /**
@@ -167,7 +200,8 @@ class WebhookList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.WebhookList]';
     }
 }

@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class FunctionVersionContentList extends ListResource {
+class FunctionVersionContentList extends ListResource
+    {
     /**
      * Construct the FunctionVersionContentList
      *
@@ -29,18 +30,44 @@ class FunctionVersionContentList extends ListResource {
      * @param string $functionSid The SID of the Function that is the parent of the Function Version content to fetch.
      * @param string $sid The SID of the Function Version content to fetch.
      */
-    public function __construct(Version $version, string $serviceSid , string $functionSid , string $sid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $functionSid
+        ,
+        string $sid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'functionSid' => $functionSid, 'sid' => $sid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'functionSid' =>
+            $functionSid,
+        
+        'sid' =>
+            $sid,
+        
+        ];
     }
 
     /**
      * Constructs a FunctionVersionContentContext
      */
-    public function getContext(): FunctionVersionContentContext {
-        return new FunctionVersionContentContext($this->version, $this->solution['serviceSid'], $this->solution['functionSid'], $this->solution['sid']);
+    public function getContext(
+        
+    ): FunctionVersionContentContext
+    {
+        return new FunctionVersionContentContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['functionSid'],
+            $this->solution['sid']
+        );
     }
 
     /**
@@ -48,7 +75,8 @@ class FunctionVersionContentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Serverless.V1.FunctionVersionContentList]';
     }
 }

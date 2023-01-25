@@ -51,7 +51,8 @@ use Twilio\Rest\Chat\V1\Service\UserList;
  * @property string $url
  * @property array $links
  */
-class ServiceInstance extends InstanceResource {
+class ServiceInstance extends InstanceResource
+{
     protected $_channels;
     protected $_roles;
     protected $_users;
@@ -63,7 +64,8 @@ class ServiceInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the Service resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -100,7 +102,8 @@ class ServiceInstance extends InstanceResource {
      *
      * @return ServiceContext Context for this ServiceInstance
      */
-    protected function proxy(): ServiceContext {
+    protected function proxy(): ServiceContext
+    {
         if (!$this->context) {
             $this->context = new ServiceContext(
                 $this->version,
@@ -117,7 +120,9 @@ class ServiceInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -127,7 +132,9 @@ class ServiceInstance extends InstanceResource {
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ServiceInstance {
+    public function fetch(): ServiceInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -138,28 +145,33 @@ class ServiceInstance extends InstanceResource {
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ServiceInstance {
+    public function update(array $options = []): ServiceInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the channels
      */
-    protected function getChannels(): ChannelList {
+    protected function getChannels(): ChannelList
+    {
         return $this->proxy()->channels;
     }
 
     /**
      * Access the roles
      */
-    protected function getRoles(): RoleList {
+    protected function getRoles(): RoleList
+    {
         return $this->proxy()->roles;
     }
 
     /**
      * Access the users
      */
-    protected function getUsers(): UserList {
+    protected function getUsers(): UserList
+    {
         return $this->proxy()->users;
     }
 
@@ -170,7 +182,8 @@ class ServiceInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -188,7 +201,8 @@ class ServiceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class FunctionVersionList extends ListResource {
+class FunctionVersionList extends ListResource
+    {
     /**
      * Construct the FunctionVersionList
      *
@@ -30,13 +31,28 @@ class FunctionVersionList extends ListResource {
      * @param string $serviceSid The SID of the Service to fetch the Function Version resource from.
      * @param string $functionSid The SID of the function that is the parent of the Function Version resource to fetch.
      */
-    public function __construct(Version $version, string $serviceSid , string $functionSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $functionSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'functionSid' => $functionSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'functionSid' =>
+            $functionSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Functions/' . \rawurlencode($functionSid) . '/Versions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Functions/' . \rawurlencode($functionSid)
+        .'/Versions';
     }
 
     /**
@@ -54,7 +70,8 @@ class FunctionVersionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FunctionVersionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class FunctionVersionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class FunctionVersionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FunctionVersionPage Page of FunctionVersionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FunctionVersionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): FunctionVersionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class FunctionVersionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FunctionVersionPage Page of FunctionVersionInstance
      */
-    public function getPage(string $targetUrl): FunctionVersionPage {
+    public function getPage(string $targetUrl): FunctionVersionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class FunctionVersionList extends ListResource {
      *
      * @param string $sid The SID of the Function Version resource to fetch.
      */
-    public function getContext(string $sid): FunctionVersionContext {
-        return new FunctionVersionContext($this->version, $this->solution['serviceSid'], $this->solution['functionSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): FunctionVersionContext
+    {
+        return new FunctionVersionContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['functionSid'],
+            $sid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class FunctionVersionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Serverless.V1.FunctionVersionList]';
     }
 }

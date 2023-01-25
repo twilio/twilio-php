@@ -18,24 +18,41 @@ namespace Twilio\Rest\Insights\V1\Call;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class MetricOptions {
+abstract class MetricOptions
+{
     /**
-     * @param string $edge  
-     * @param string $direction  
+     * @param string $edge 
+     * @param string $direction 
      * @return ReadMetricOptions Options builder
      */
-    public static function read(string $edge = Values::NONE, string $direction = Values::NONE): ReadMetricOptions {
-        return new ReadMetricOptions($edge, $direction);
+    public static function read(
+        
+        string $edge = Values::NONE,
+        string $direction = Values::NONE
+
+    ): ReadMetricOptions
+    {
+        return new ReadMetricOptions(
+            $edge,
+            $direction
+        );
     }
 
 }
 
-class ReadMetricOptions extends Options {
+class ReadMetricOptions extends Options
+    {
     /**
      * @param string $edge 
      * @param string $direction 
      */
-    public function __construct(string $edge = Values::NONE, string $direction = Values::NONE) {
+    public function __construct(
+        
+        string $edge = Values::NONE,
+        string $direction = Values::NONE
+
+    )
+    {
         $this->options['edge'] = $edge;
         $this->options['direction'] = $direction;
     }
@@ -46,7 +63,8 @@ class ReadMetricOptions extends Options {
      * @param string $edge 
      * @return $this Fluent Builder
      */
-    public function setEdge(string $edge): self {
+    public function setEdge(string $edge): self
+    {
         $this->options['edge'] = $edge;
         return $this;
     }
@@ -57,7 +75,8 @@ class ReadMetricOptions extends Options {
      * @param string $direction 
      * @return $this Fluent Builder
      */
-    public function setDirection(string $direction): self {
+    public function setDirection(string $direction): self
+    {
         $this->options['direction'] = $direction;
         return $this;
     }
@@ -67,7 +86,8 @@ class ReadMetricOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.ReadMetricOptions ' . $options . ']';
     }

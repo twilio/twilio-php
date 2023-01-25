@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property int $buildDuration
  * @property int $errorCode
  */
-class ModelBuildInstance extends InstanceResource {
+class ModelBuildInstance extends InstanceResource
+{
     /**
      * Initialize the ModelBuildInstance
      *
@@ -46,7 +47,8 @@ class ModelBuildInstance extends InstanceResource {
      * @param string $assistantSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -72,7 +74,8 @@ class ModelBuildInstance extends InstanceResource {
      *
      * @return ModelBuildContext Context for this ModelBuildInstance
      */
-    protected function proxy(): ModelBuildContext {
+    protected function proxy(): ModelBuildContext
+    {
         if (!$this->context) {
             $this->context = new ModelBuildContext(
                 $this->version,
@@ -90,7 +93,9 @@ class ModelBuildInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,7 +105,9 @@ class ModelBuildInstance extends InstanceResource {
      * @return ModelBuildInstance Fetched ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ModelBuildInstance {
+    public function fetch(): ModelBuildInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -111,7 +118,9 @@ class ModelBuildInstance extends InstanceResource {
      * @return ModelBuildInstance Updated ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ModelBuildInstance {
+    public function update(array $options = []): ModelBuildInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -122,7 +131,8 @@ class ModelBuildInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -140,7 +150,8 @@ class ModelBuildInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

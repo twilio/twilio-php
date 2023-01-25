@@ -18,28 +18,48 @@ namespace Twilio\Rest\Bulkexports\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ExportConfigurationOptions {
+abstract class ExportConfigurationOptions
+{
 
     /**
-     * @param bool $enabled If true, Twilio will automatically generate every day's file when the day is over. 
-     * @param string $webhookUrl Stores the URL destination for the method specified in webhook_method. 
-     * @param string $webhookMethod Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url 
+     * @param bool $enabled If true, Twilio will automatically generate every day's file when the day is over.
+     * @param string $webhookUrl Stores the URL destination for the method specified in webhook_method.
+     * @param string $webhookMethod Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url
      * @return UpdateExportConfigurationOptions Options builder
      */
-    public static function update(bool $enabled = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE): UpdateExportConfigurationOptions {
-        return new UpdateExportConfigurationOptions($enabled, $webhookUrl, $webhookMethod);
+    public static function update(
+        
+        bool $enabled = Values::NONE,
+        string $webhookUrl = Values::NONE,
+        string $webhookMethod = Values::NONE
+
+    ): UpdateExportConfigurationOptions
+    {
+        return new UpdateExportConfigurationOptions(
+            $enabled,
+            $webhookUrl,
+            $webhookMethod
+        );
     }
 
 }
 
 
-class UpdateExportConfigurationOptions extends Options {
+class UpdateExportConfigurationOptions extends Options
+    {
     /**
      * @param bool $enabled If true, Twilio will automatically generate every day's file when the day is over.
      * @param string $webhookUrl Stores the URL destination for the method specified in webhook_method.
      * @param string $webhookMethod Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url
      */
-    public function __construct(bool $enabled = Values::NONE, string $webhookUrl = Values::NONE, string $webhookMethod = Values::NONE) {
+    public function __construct(
+        
+        bool $enabled = Values::NONE,
+        string $webhookUrl = Values::NONE,
+        string $webhookMethod = Values::NONE
+
+    )
+    {
         $this->options['enabled'] = $enabled;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['webhookMethod'] = $webhookMethod;
@@ -51,7 +71,8 @@ class UpdateExportConfigurationOptions extends Options {
      * @param bool $enabled If true, Twilio will automatically generate every day's file when the day is over.
      * @return $this Fluent Builder
      */
-    public function setEnabled(bool $enabled): self {
+    public function setEnabled(bool $enabled): self
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
@@ -62,7 +83,8 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookUrl Stores the URL destination for the method specified in webhook_method.
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl(string $webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self
+    {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
@@ -73,7 +95,8 @@ class UpdateExportConfigurationOptions extends Options {
      * @param string $webhookMethod Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url
      * @return $this Fluent Builder
      */
-    public function setWebhookMethod(string $webhookMethod): self {
+    public function setWebhookMethod(string $webhookMethod): self
+    {
         $this->options['webhookMethod'] = $webhookMethod;
         return $this;
     }
@@ -83,7 +106,8 @@ class UpdateExportConfigurationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Bulkexports.V1.UpdateExportConfigurationOptions ' . $options . ']';
     }

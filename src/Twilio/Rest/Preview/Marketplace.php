@@ -28,7 +28,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  */
-class Marketplace extends Version {
+class Marketplace extends Version
+{
     protected $_availableAddOns;
     protected $_installedAddOns;
 
@@ -37,19 +38,22 @@ class Marketplace extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'marketplace';
     }
 
-    protected function getAvailableAddOns(): AvailableAddOnList {
+    protected function getAvailableAddOns(): AvailableAddOnList
+    {
         if (!$this->_availableAddOns) {
             $this->_availableAddOns = new AvailableAddOnList($this);
         }
         return $this->_availableAddOns;
     }
 
-    protected function getInstalledAddOns(): InstalledAddOnList {
+    protected function getInstalledAddOns(): InstalledAddOnList
+    {
         if (!$this->_installedAddOns) {
             $this->_installedAddOns = new InstalledAddOnList($this);
         }
@@ -63,7 +67,8 @@ class Marketplace extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -80,7 +85,8 @@ class Marketplace extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -94,7 +100,8 @@ class Marketplace extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Marketplace]';
     }
 }

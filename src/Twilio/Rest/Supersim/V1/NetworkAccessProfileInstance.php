@@ -35,7 +35,8 @@ use Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkList
  * @property string $url
  * @property array $links
  */
-class NetworkAccessProfileInstance extends InstanceResource {
+class NetworkAccessProfileInstance extends InstanceResource
+{
     protected $_networks;
 
     /**
@@ -45,7 +46,8 @@ class NetworkAccessProfileInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Network Access Profile resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +70,8 @@ class NetworkAccessProfileInstance extends InstanceResource {
      *
      * @return NetworkAccessProfileContext Context for this NetworkAccessProfileInstance
      */
-    protected function proxy(): NetworkAccessProfileContext {
+    protected function proxy(): NetworkAccessProfileContext
+    {
         if (!$this->context) {
             $this->context = new NetworkAccessProfileContext(
                 $this->version,
@@ -85,7 +88,9 @@ class NetworkAccessProfileInstance extends InstanceResource {
      * @return NetworkAccessProfileInstance Fetched NetworkAccessProfileInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NetworkAccessProfileInstance {
+    public function fetch(): NetworkAccessProfileInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -96,14 +101,17 @@ class NetworkAccessProfileInstance extends InstanceResource {
      * @return NetworkAccessProfileInstance Updated NetworkAccessProfileInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): NetworkAccessProfileInstance {
+    public function update(array $options = []): NetworkAccessProfileInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the networks
      */
-    protected function getNetworks(): NetworkAccessProfileNetworkList {
+    protected function getNetworks(): NetworkAccessProfileNetworkList
+    {
         return $this->proxy()->networks;
     }
 
@@ -114,7 +122,8 @@ class NetworkAccessProfileInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -132,7 +141,8 @@ class NetworkAccessProfileInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

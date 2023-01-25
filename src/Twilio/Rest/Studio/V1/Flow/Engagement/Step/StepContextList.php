@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class StepContextList extends ListResource {
+class StepContextList extends ListResource
+    {
     /**
      * Construct the StepContextList
      *
@@ -29,18 +30,44 @@ class StepContextList extends ListResource {
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      * @param string $stepSid The SID of the Step to fetch
      */
-    public function __construct(Version $version, string $flowSid , string $engagementSid , string $stepSid ) {
+    public function __construct(
+        Version $version,
+        string $flowSid
+        ,
+        string $engagementSid
+        ,
+        string $stepSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['flowSid' => $flowSid, 'engagementSid' => $engagementSid, 'stepSid' => $stepSid, ];
+        $this->solution = [
+        'flowSid' =>
+            $flowSid,
+        
+        'engagementSid' =>
+            $engagementSid,
+        
+        'stepSid' =>
+            $stepSid,
+        
+        ];
     }
 
     /**
      * Constructs a StepContextContext
      */
-    public function getContext(): StepContextContext {
-        return new StepContextContext($this->version, $this->solution['flowSid'], $this->solution['engagementSid'], $this->solution['stepSid']);
+    public function getContext(
+        
+    ): StepContextContext
+    {
+        return new StepContextContext(
+            $this->version,
+            $this->solution['flowSid'],
+            $this->solution['engagementSid'],
+            $this->solution['stepSid']
+        );
     }
 
     /**
@@ -48,7 +75,8 @@ class StepContextList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Studio.V1.StepContextList]';
     }
 }

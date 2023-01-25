@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class AuthTypeCallsPage extends Page {
+class AuthTypeCallsPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class AuthTypeCallsPage extends Page {
      * @param array $payload Payload response from the API
      * @return AuthTypeCallsInstance \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsInstance
      */
-    public function buildInstance(array $payload): AuthTypeCallsInstance {
+    public function buildInstance(array $payload): AuthTypeCallsInstance
+    {
         return new AuthTypeCallsInstance($this->version, $payload, $this->solution['accountSid'], $this->solution['domainSid']);
     }
 
@@ -45,7 +48,8 @@ class AuthTypeCallsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AuthTypeCallsPage]';
     }
 }

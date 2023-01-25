@@ -37,7 +37,8 @@ use Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList;
  * @property string $uniqueName
  * @property string $url
  */
-class FieldTypeInstance extends InstanceResource {
+class FieldTypeInstance extends InstanceResource
+{
     protected $_fieldValues;
 
     /**
@@ -48,7 +49,8 @@ class FieldTypeInstance extends InstanceResource {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the FieldType resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $assistantSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class FieldTypeInstance extends InstanceResource {
      *
      * @return FieldTypeContext Context for this FieldTypeInstance
      */
-    protected function proxy(): FieldTypeContext {
+    protected function proxy(): FieldTypeContext
+    {
         if (!$this->context) {
             $this->context = new FieldTypeContext(
                 $this->version,
@@ -91,7 +94,9 @@ class FieldTypeInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class FieldTypeInstance extends InstanceResource {
      * @return FieldTypeInstance Fetched FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FieldTypeInstance {
+    public function fetch(): FieldTypeInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,14 +119,17 @@ class FieldTypeInstance extends InstanceResource {
      * @return FieldTypeInstance Updated FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FieldTypeInstance {
+    public function update(array $options = []): FieldTypeInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the fieldValues
      */
-    protected function getFieldValues(): FieldValueList {
+    protected function getFieldValues(): FieldValueList
+    {
         return $this->proxy()->fieldValues;
     }
 
@@ -130,7 +140,8 @@ class FieldTypeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +159,8 @@ class FieldTypeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

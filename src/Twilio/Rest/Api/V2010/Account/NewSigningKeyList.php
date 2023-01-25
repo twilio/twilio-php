@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class NewSigningKeyList extends ListResource {
+class NewSigningKeyList extends ListResource
+    {
     /**
      * Construct the NewSigningKeyList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SigningKeys.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SigningKeys.json';
     }
 
     /**
@@ -46,28 +56,33 @@ class NewSigningKeyList extends ListResource {
      * @return NewSigningKeyInstance Created NewSigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): NewSigningKeyInstance {
+    public function create(array $options = []): NewSigningKeyInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new NewSigningKeyInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.NewSigningKeyList]';
     }
 }

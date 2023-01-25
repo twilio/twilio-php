@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AlphaSenderContext extends InstanceContext {
+class AlphaSenderContext extends InstanceContext
+    {
     /**
      * Initialize the AlphaSenderContext
      *
@@ -30,13 +31,25 @@ class AlphaSenderContext extends InstanceContext {
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.
      * @param string $sid The SID of the AlphaSender resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/AlphaSenders/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/AlphaSenders/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class AlphaSenderContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the AlphaSenderInstance
@@ -55,23 +71,27 @@ class AlphaSenderContext extends InstanceContext {
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AlphaSenderInstance {
+    public function fetch(): AlphaSenderInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AlphaSenderInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

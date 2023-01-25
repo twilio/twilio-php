@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class WebhookContext extends InstanceContext {
+class WebhookContext extends InstanceContext
+    {
     /**
      * Initialize the WebhookContext
      *
      * @param Version $version Version that contains the resource
      * @param string $chatServiceSid The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
      */
-    public function __construct(Version $version, $chatServiceSid ) {
+    public function __construct(
+        Version $version,
+        $chatServiceSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['chatServiceSid' => $chatServiceSid,  ];
+        $this->solution = [
+        'chatServiceSid' =>
+            $chatServiceSid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($chatServiceSid) . '/Configuration/Webhooks';
+        $this->uri = '/Services/' . \rawurlencode($chatServiceSid)
+        .'/Configuration/Webhooks';
     }
 
     /**
@@ -47,15 +56,18 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): WebhookInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebhookInstance(
             $this->version,
-            $payload
-            , $this->solution['chatServiceSid']
+            $payload,
+            $this->solution['chatServiceSid'],
         );
     }
+
 
     /**
      * Update the WebhookInstance
@@ -64,31 +76,39 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'PreWebhookUrl' => $options['preWebhookUrl'],
-            'PostWebhookUrl' => $options['postWebhookUrl'],
-            'Filters' => Serialize::map($options['filters'], function($e) { return $e; }),
-            'Method' => $options['method'],
+            'PreWebhookUrl' =>
+                $options['preWebhookUrl'],
+            'PostWebhookUrl' =>
+                $options['postWebhookUrl'],
+            'Filters' =>
+                Serialize::map($options['filters'], function ($e) { return $e; }),
+            'Method' =>
+                $options['method'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebhookInstance(
             $this->version,
-            $payload
-            , $this->solution['chatServiceSid']
+            $payload,
+            $this->solution['chatServiceSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

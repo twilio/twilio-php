@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class MediaProcessorList extends ListResource {
+class MediaProcessorList extends ListResource
+    {
     /**
      * Construct the MediaProcessorList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/MediaProcessors';
     }
@@ -49,25 +53,34 @@ class MediaProcessorList extends ListResource {
      * @return MediaProcessorInstance Created MediaProcessorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $extension, string $extensionContext, array $options = []): MediaProcessorInstance {
+    public function create(string $extension, string $extensionContext, array $options = []): MediaProcessorInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Extension' => $extension,
-            'ExtensionContext' => $extensionContext,
-            'ExtensionEnvironment' => Serialize::jsonObject($options['extensionEnvironment']),
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'MaxDuration' => $options['maxDuration'],
+            'Extension' =>
+                $extension,
+            'ExtensionContext' =>
+                $extensionContext,
+            'ExtensionEnvironment' =>
+                Serialize::jsonObject($options['extensionEnvironment']),
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'MaxDuration' =>
+                $options['maxDuration'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MediaProcessorInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads MediaProcessorInstance records from the API as a list.
@@ -85,7 +98,8 @@ class MediaProcessorList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MediaProcessorInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -108,7 +122,8 @@ class MediaProcessorList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -125,12 +140,20 @@ class MediaProcessorList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MediaProcessorPage Page of MediaProcessorInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaProcessorPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MediaProcessorPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
-            'Status' => $options['status'],
+            'Order' =>
+                $options['order'],
+            'Status' =>
+                $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -148,7 +171,8 @@ class MediaProcessorList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MediaProcessorPage Page of MediaProcessorInstance
      */
-    public function getPage(string $targetUrl): MediaProcessorPage {
+    public function getPage(string $targetUrl): MediaProcessorPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -163,8 +187,15 @@ class MediaProcessorList extends ListResource {
      *
      * @param string $sid The SID of the MediaProcessor resource to fetch.
      */
-    public function getContext(string $sid): MediaProcessorContext {
-        return new MediaProcessorContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): MediaProcessorContext
+    {
+        return new MediaProcessorContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -172,7 +203,8 @@ class MediaProcessorList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Media.V1.MediaProcessorList]';
     }
 }

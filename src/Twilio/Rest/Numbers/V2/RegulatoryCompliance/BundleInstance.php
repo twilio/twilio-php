@@ -43,7 +43,8 @@ use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
  * @property string $url
  * @property array $links
  */
-class BundleInstance extends InstanceResource {
+class BundleInstance extends InstanceResource
+{
     protected $_bundleCopies;
     protected $_replaceItems;
     protected $_evaluations;
@@ -56,7 +57,8 @@ class BundleInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that we created to identify the Bundle resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -84,7 +86,8 @@ class BundleInstance extends InstanceResource {
      *
      * @return BundleContext Context for this BundleInstance
      */
-    protected function proxy(): BundleContext {
+    protected function proxy(): BundleContext
+    {
         if (!$this->context) {
             $this->context = new BundleContext(
                 $this->version,
@@ -101,7 +104,9 @@ class BundleInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -111,7 +116,9 @@ class BundleInstance extends InstanceResource {
      * @return BundleInstance Fetched BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BundleInstance {
+    public function fetch(): BundleInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -122,35 +129,41 @@ class BundleInstance extends InstanceResource {
      * @return BundleInstance Updated BundleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): BundleInstance {
+    public function update(array $options = []): BundleInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the bundleCopies
      */
-    protected function getBundleCopies(): BundleCopyList {
+    protected function getBundleCopies(): BundleCopyList
+    {
         return $this->proxy()->bundleCopies;
     }
 
     /**
      * Access the replaceItems
      */
-    protected function getReplaceItems(): ReplaceItemsList {
+    protected function getReplaceItems(): ReplaceItemsList
+    {
         return $this->proxy()->replaceItems;
     }
 
     /**
      * Access the evaluations
      */
-    protected function getEvaluations(): EvaluationList {
+    protected function getEvaluations(): EvaluationList
+    {
         return $this->proxy()->evaluations;
     }
 
     /**
      * Access the itemAssignments
      */
-    protected function getItemAssignments(): ItemAssignmentList {
+    protected function getItemAssignments(): ItemAssignmentList
+    {
         return $this->proxy()->itemAssignments;
     }
 
@@ -161,7 +174,8 @@ class BundleInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -179,7 +193,8 @@ class BundleInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

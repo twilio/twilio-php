@@ -28,7 +28,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Monitor\V1\AlertContext alerts(string $sid)
  * @method \Twilio\Rest\Monitor\V1\EventContext events(string $sid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_alerts;
     protected $_events;
 
@@ -37,19 +38,22 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getAlerts(): AlertList {
+    protected function getAlerts(): AlertList
+    {
         if (!$this->_alerts) {
             $this->_alerts = new AlertList($this);
         }
         return $this->_alerts;
     }
 
-    protected function getEvents(): EventList {
+    protected function getEvents(): EventList
+    {
         if (!$this->_events) {
             $this->_events = new EventList($this);
         }
@@ -63,7 +67,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -80,7 +85,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -94,7 +100,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Monitor.V1]';
     }
 }

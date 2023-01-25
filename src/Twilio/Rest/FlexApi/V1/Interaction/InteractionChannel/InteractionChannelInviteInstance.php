@@ -30,7 +30,8 @@ use Twilio\Version;
  * @property array $routing
  * @property string $url
  */
-class InteractionChannelInviteInstance extends InstanceResource {
+class InteractionChannelInviteInstance extends InstanceResource
+{
     /**
      * Initialize the InteractionChannelInviteInstance
      *
@@ -39,7 +40,8 @@ class InteractionChannelInviteInstance extends InstanceResource {
      * @param string $interactionSid The Interaction SID for this Channel.
      * @param string $channelSid The Channel SID for this Invite.
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid) {
+    public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,7 +63,8 @@ class InteractionChannelInviteInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -79,7 +82,8 @@ class InteractionChannelInviteInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1.InteractionChannelInviteInstance]';
     }
 }

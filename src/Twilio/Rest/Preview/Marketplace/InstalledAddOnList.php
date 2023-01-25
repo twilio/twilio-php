@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class InstalledAddOnList extends ListResource {
+class InstalledAddOnList extends ListResource
+    {
     /**
      * Construct the InstalledAddOnList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/InstalledAddOns';
     }
@@ -49,23 +53,30 @@ class InstalledAddOnList extends ListResource {
      * @return InstalledAddOnInstance Created InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): InstalledAddOnInstance {
+    public function create(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): InstalledAddOnInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'AvailableAddOnSid' => $availableAddOnSid,
-            'AcceptTermsOfService' => Serialize::booleanToString($acceptTermsOfService),
-            'Configuration' => Serialize::jsonObject($options['configuration']),
-            'UniqueName' => $options['uniqueName'],
+            'AvailableAddOnSid' =>
+                $availableAddOnSid,
+            'AcceptTermsOfService' =>
+                Serialize::booleanToString($acceptTermsOfService),
+            'Configuration' =>
+                Serialize::jsonObject($options['configuration']),
+            'UniqueName' =>
+                $options['uniqueName'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new InstalledAddOnInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads InstalledAddOnInstance records from the API as a list.
@@ -82,7 +93,8 @@ class InstalledAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return InstalledAddOnInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -104,7 +116,8 @@ class InstalledAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -121,7 +134,12 @@ class InstalledAddOnList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return InstalledAddOnPage Page of InstalledAddOnInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): InstalledAddOnPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): InstalledAddOnPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -141,7 +159,8 @@ class InstalledAddOnList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return InstalledAddOnPage Page of InstalledAddOnInstance
      */
-    public function getPage(string $targetUrl): InstalledAddOnPage {
+    public function getPage(string $targetUrl): InstalledAddOnPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -156,8 +175,15 @@ class InstalledAddOnList extends ListResource {
      *
      * @param string $sid The SID of the InstalledAddOn resource to delete.
      */
-    public function getContext(string $sid): InstalledAddOnContext {
-        return new InstalledAddOnContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): InstalledAddOnContext
+    {
+        return new InstalledAddOnContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -165,7 +191,8 @@ class InstalledAddOnList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Marketplace.InstalledAddOnList]';
     }
 }

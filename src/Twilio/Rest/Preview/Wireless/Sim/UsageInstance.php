@@ -35,7 +35,8 @@ use Twilio\Version;
  * @property array $dataCosts
  * @property string $url
  */
-class UsageInstance extends InstanceResource {
+class UsageInstance extends InstanceResource
+{
     /**
      * Initialize the UsageInstance
      *
@@ -43,7 +44,8 @@ class UsageInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $simSid 
      */
-    public function __construct(Version $version, array $payload, string $simSid) {
+    public function __construct(Version $version, array $payload, string $simSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +70,8 @@ class UsageInstance extends InstanceResource {
      *
      * @return UsageContext Context for this UsageInstance
      */
-    protected function proxy(): UsageContext {
+    protected function proxy(): UsageContext
+    {
         if (!$this->context) {
             $this->context = new UsageContext(
                 $this->version,
@@ -86,7 +89,9 @@ class UsageInstance extends InstanceResource {
      * @return UsageInstance Fetched UsageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): UsageInstance {
+    public function fetch(array $options = []): UsageInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -97,7 +102,8 @@ class UsageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -115,7 +121,8 @@ class UsageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

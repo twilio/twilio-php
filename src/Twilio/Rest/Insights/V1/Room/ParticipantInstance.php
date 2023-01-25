@@ -43,7 +43,8 @@ use Twilio\Deserialize;
  * @property array $publisherInfo
  * @property string $url
  */
-class ParticipantInstance extends InstanceResource {
+class ParticipantInstance extends InstanceResource
+{
     /**
      * Initialize the ParticipantInstance
      *
@@ -52,7 +53,8 @@ class ParticipantInstance extends InstanceResource {
      * @param string $roomSid The SID of the Room resource.
      * @param string $participantSid The SID of the Participant resource.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid = null) {
+    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +87,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return ParticipantContext Context for this ParticipantInstance
      */
-    protected function proxy(): ParticipantContext {
+    protected function proxy(): ParticipantContext
+    {
         if (!$this->context) {
             $this->context = new ParticipantContext(
                 $this->version,
@@ -103,7 +106,9 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
+    public function fetch(): ParticipantInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -114,7 +119,8 @@ class ParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -132,7 +138,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

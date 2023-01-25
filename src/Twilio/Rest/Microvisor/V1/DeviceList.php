@@ -22,17 +22,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class DeviceList extends ListResource {
+class DeviceList extends ListResource
+    {
     /**
      * Construct the DeviceList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Devices';
     }
@@ -52,7 +56,8 @@ class DeviceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DeviceInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -74,7 +79,8 @@ class DeviceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -91,7 +97,12 @@ class DeviceList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DevicePage Page of DeviceInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DevicePage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): DevicePage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -111,7 +122,8 @@ class DeviceList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DevicePage Page of DeviceInstance
      */
-    public function getPage(string $targetUrl): DevicePage {
+    public function getPage(string $targetUrl): DevicePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,8 +138,15 @@ class DeviceList extends ListResource {
      *
      * @param string $sid A 34-character string that uniquely identifies this Device.
      */
-    public function getContext(string $sid): DeviceContext {
-        return new DeviceContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): DeviceContext
+    {
+        return new DeviceContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -135,7 +154,8 @@ class DeviceList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Microvisor.V1.DeviceList]';
     }
 }

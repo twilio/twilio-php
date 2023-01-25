@@ -34,14 +34,16 @@ use Twilio\Version;
  * @property bool $encryptionEnabled
  * @property string $url
  */
-class CompositionSettingsInstance extends InstanceResource {
+class CompositionSettingsInstance extends InstanceResource
+{
     /**
      * Initialize the CompositionSettingsInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -65,7 +67,8 @@ class CompositionSettingsInstance extends InstanceResource {
      *
      * @return CompositionSettingsContext Context for this CompositionSettingsInstance
      */
-    protected function proxy(): CompositionSettingsContext {
+    protected function proxy(): CompositionSettingsContext
+    {
         if (!$this->context) {
             $this->context = new CompositionSettingsContext(
                 $this->version
@@ -83,7 +86,9 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return CompositionSettingsInstance Created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): CompositionSettingsInstance {
+    public function create(string $friendlyName, array $options = []): CompositionSettingsInstance
+    {
+
         return $this->proxy()->create($friendlyName, $options);
     }
 
@@ -93,7 +98,9 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CompositionSettingsInstance {
+    public function fetch(): CompositionSettingsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,7 +111,8 @@ class CompositionSettingsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +130,8 @@ class CompositionSettingsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

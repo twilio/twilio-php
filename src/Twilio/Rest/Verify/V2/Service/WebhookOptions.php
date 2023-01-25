@@ -18,57 +18,91 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WebhookOptions {
+abstract class WebhookOptions
+{
     /**
-     * @param string $status  
-     * @param string $version  
+     * @param string $status
+     * @param string $version
      * @return CreateWebhookOptions Options builder
      */
-    public static function create(string $status = Values::NONE, string $version = Values::NONE): CreateWebhookOptions {
-        return new CreateWebhookOptions($status, $version);
+    public static function create(
+        
+        string $status = Values::NONE,
+        string $version = Values::NONE
+
+    ): CreateWebhookOptions
+    {
+        return new CreateWebhookOptions(
+            $status,
+            $version
+        );
     }
 
 
 
 
     /**
-     * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.** 
-     * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied` 
-     * @param string $webhookUrl The URL associated with this Webhook. 
-     * @param string $status  
-     * @param string $version  
+     * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.**
+     * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`
+     * @param string $webhookUrl The URL associated with this Webhook.
+     * @param string $status
+     * @param string $version
      * @return UpdateWebhookOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, array $eventTypes = Values::ARRAY_NONE, string $webhookUrl = Values::NONE, string $status = Values::NONE, string $version = Values::NONE): UpdateWebhookOptions {
-        return new UpdateWebhookOptions($friendlyName, $eventTypes, $webhookUrl, $status, $version);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        array $eventTypes = Values::ARRAY_NONE,
+        string $webhookUrl = Values::NONE,
+        string $status = Values::NONE,
+        string $version = Values::NONE
+
+    ): UpdateWebhookOptions
+    {
+        return new UpdateWebhookOptions(
+            $friendlyName,
+            $eventTypes,
+            $webhookUrl,
+            $status,
+            $version
+        );
     }
 
 }
 
-class CreateWebhookOptions extends Options {
+class CreateWebhookOptions extends Options
+    {
     /**
-     * @param string $status 
-     * @param string $version 
+     * @param string $status
+     * @param string $version
      */
-    public function __construct(string $status = Values::NONE, string $version = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $version = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['version'] = $version;
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
 
     /**
-     * @param string $version 
+     * @param string $version
      * @return $this Fluent Builder
      */
-    public function setVersion(string $version): self {
+    public function setVersion(string $version): self
+    {
         $this->options['version'] = $version;
         return $this;
     }
@@ -78,7 +112,8 @@ class CreateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.CreateWebhookOptions ' . $options . ']';
     }
@@ -87,15 +122,25 @@ class CreateWebhookOptions extends Options {
 
 
 
-class UpdateWebhookOptions extends Options {
+class UpdateWebhookOptions extends Options
+    {
     /**
      * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.**
      * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`
      * @param string $webhookUrl The URL associated with this Webhook.
-     * @param string $status 
-     * @param string $version 
+     * @param string $status
+     * @param string $version
      */
-    public function __construct(string $friendlyName = Values::NONE, array $eventTypes = Values::ARRAY_NONE, string $webhookUrl = Values::NONE, string $status = Values::NONE, string $version = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        array $eventTypes = Values::ARRAY_NONE,
+        string $webhookUrl = Values::NONE,
+        string $status = Values::NONE,
+        string $version = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['eventTypes'] = $eventTypes;
         $this->options['webhookUrl'] = $webhookUrl;
@@ -109,7 +154,8 @@ class UpdateWebhookOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.**
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -120,7 +166,8 @@ class UpdateWebhookOptions extends Options {
      * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`
      * @return $this Fluent Builder
      */
-    public function setEventTypes(array $eventTypes): self {
+    public function setEventTypes(array $eventTypes): self
+    {
         $this->options['eventTypes'] = $eventTypes;
         return $this;
     }
@@ -131,25 +178,28 @@ class UpdateWebhookOptions extends Options {
      * @param string $webhookUrl The URL associated with this Webhook.
      * @return $this Fluent Builder
      */
-    public function setWebhookUrl(string $webhookUrl): self {
+    public function setWebhookUrl(string $webhookUrl): self
+    {
         $this->options['webhookUrl'] = $webhookUrl;
         return $this;
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
 
     /**
-     * @param string $version 
+     * @param string $version
      * @return $this Fluent Builder
      */
-    public function setVersion(string $version): self {
+    public function setVersion(string $version): self
+    {
         $this->options['version'] = $version;
         return $this;
     }
@@ -159,7 +209,8 @@ class UpdateWebhookOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.UpdateWebhookOptions ' . $options . ']';
     }

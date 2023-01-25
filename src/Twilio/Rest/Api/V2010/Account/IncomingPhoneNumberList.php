@@ -34,7 +34,8 @@ use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileList;
  * @property LocalList $local
  * @property MobileList $mobile
  */
-class IncomingPhoneNumberList extends ListResource {
+class IncomingPhoneNumberList extends ListResource
+    {
     protected $_tollFree = null;
     protected $_local = null;
     protected $_mobile = null;
@@ -45,13 +46,22 @@ class IncomingPhoneNumberList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/IncomingPhoneNumbers.json';
     }
 
     /**
@@ -61,44 +71,71 @@ class IncomingPhoneNumberList extends ListResource {
      * @return IncomingPhoneNumberInstance Created IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): IncomingPhoneNumberInstance {
+    public function create(array $options = []): IncomingPhoneNumberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'ApiVersion' => $options['apiVersion'],
-            'FriendlyName' => $options['friendlyName'],
-            'SmsApplicationSid' => $options['smsApplicationSid'],
-            'SmsFallbackMethod' => $options['smsFallbackMethod'],
-            'SmsFallbackUrl' => $options['smsFallbackUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'SmsUrl' => $options['smsUrl'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'VoiceApplicationSid' => $options['voiceApplicationSid'],
-            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'EmergencyStatus' => $options['emergencyStatus'],
-            'EmergencyAddressSid' => $options['emergencyAddressSid'],
-            'TrunkSid' => $options['trunkSid'],
-            'IdentitySid' => $options['identitySid'],
-            'AddressSid' => $options['addressSid'],
-            'VoiceReceiveMode' => $options['voiceReceiveMode'],
-            'BundleSid' => $options['bundleSid'],
-            'PhoneNumber' => $options['phoneNumber'],
-            'AreaCode' => $options['areaCode'],
+            'ApiVersion' =>
+                $options['apiVersion'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'SmsApplicationSid' =>
+                $options['smsApplicationSid'],
+            'SmsFallbackMethod' =>
+                $options['smsFallbackMethod'],
+            'SmsFallbackUrl' =>
+                $options['smsFallbackUrl'],
+            'SmsMethod' =>
+                $options['smsMethod'],
+            'SmsUrl' =>
+                $options['smsUrl'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'VoiceApplicationSid' =>
+                $options['voiceApplicationSid'],
+            'VoiceCallerIdLookup' =>
+                Serialize::booleanToString($options['voiceCallerIdLookup']),
+            'VoiceFallbackMethod' =>
+                $options['voiceFallbackMethod'],
+            'VoiceFallbackUrl' =>
+                $options['voiceFallbackUrl'],
+            'VoiceMethod' =>
+                $options['voiceMethod'],
+            'VoiceUrl' =>
+                $options['voiceUrl'],
+            'EmergencyStatus' =>
+                $options['emergencyStatus'],
+            'EmergencyAddressSid' =>
+                $options['emergencyAddressSid'],
+            'TrunkSid' =>
+                $options['trunkSid'],
+            'IdentitySid' =>
+                $options['identitySid'],
+            'AddressSid' =>
+                $options['addressSid'],
+            'VoiceReceiveMode' =>
+                $options['voiceReceiveMode'],
+            'BundleSid' =>
+                $options['bundleSid'],
+            'PhoneNumber' =>
+                $options['phoneNumber'],
+            'AreaCode' =>
+                $options['areaCode'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new IncomingPhoneNumberInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Reads IncomingPhoneNumberInstance records from the API as a list.
@@ -116,7 +153,8 @@ class IncomingPhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return IncomingPhoneNumberInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -139,7 +177,8 @@ class IncomingPhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -156,14 +195,24 @@ class IncomingPhoneNumberList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return IncomingPhoneNumberPage Page of IncomingPhoneNumberInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): IncomingPhoneNumberPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): IncomingPhoneNumberPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Beta' => Serialize::booleanToString($options['beta']),
-            'FriendlyName' => $options['friendlyName'],
-            'PhoneNumber' => $options['phoneNumber'],
-            'Origin' => $options['origin'],
+            'Beta' =>
+                Serialize::booleanToString($options['beta']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'PhoneNumber' =>
+                $options['phoneNumber'],
+            'Origin' =>
+                $options['origin'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -181,7 +230,8 @@ class IncomingPhoneNumberList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return IncomingPhoneNumberPage Page of IncomingPhoneNumberInstance
      */
-    public function getPage(string $targetUrl): IncomingPhoneNumberPage {
+    public function getPage(string $targetUrl): IncomingPhoneNumberPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -196,49 +246,60 @@ class IncomingPhoneNumberList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to delete.
      */
-    public function getContext(string $sid): IncomingPhoneNumberContext {
-        return new IncomingPhoneNumberContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): IncomingPhoneNumberContext
+    {
+        return new IncomingPhoneNumberContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
      * Access the tollFree
      */
-    protected function getTollFree(): TollFreeList {
+    protected function getTollFree(): TollFreeList
+    {
         if (!$this->_tollFree) {
             $this->_tollFree = new TollFreeList(
-                $this->version
-                , $this->solution['accountSid']
+                $this->version,
+                $this->solution['accountSid']
+                
             );
         }
-
         return $this->_tollFree;
     }
 
     /**
      * Access the local
      */
-    protected function getLocal(): LocalList {
+    protected function getLocal(): LocalList
+    {
         if (!$this->_local) {
             $this->_local = new LocalList(
-                $this->version
-                , $this->solution['accountSid']
+                $this->version,
+                $this->solution['accountSid']
+                
             );
         }
-
         return $this->_local;
     }
 
     /**
      * Access the mobile
      */
-    protected function getMobile(): MobileList {
+    protected function getMobile(): MobileList
+    {
         if (!$this->_mobile) {
             $this->_mobile = new MobileList(
-                $this->version
-                , $this->solution['accountSid']
+                $this->version,
+                $this->solution['accountSid']
+                
             );
         }
-
         return $this->_mobile;
     }
 
@@ -249,7 +310,8 @@ class IncomingPhoneNumberList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -266,7 +328,8 @@ class IncomingPhoneNumberList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -280,7 +343,8 @@ class IncomingPhoneNumberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.IncomingPhoneNumberList]';
     }
 }

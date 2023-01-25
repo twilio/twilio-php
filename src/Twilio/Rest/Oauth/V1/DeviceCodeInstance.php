@@ -31,14 +31,16 @@ use Twilio\Version;
  * @property int $expiresIn
  * @property int $interval
  */
-class DeviceCodeInstance extends InstanceResource {
+class DeviceCodeInstance extends InstanceResource
+{
     /**
      * Initialize the DeviceCodeInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,7 +63,8 @@ class DeviceCodeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -79,7 +82,8 @@ class DeviceCodeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.DeviceCodeInstance]';
     }
 }

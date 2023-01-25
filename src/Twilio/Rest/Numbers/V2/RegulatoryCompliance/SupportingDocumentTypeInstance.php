@@ -30,7 +30,8 @@ use Twilio\Version;
  * @property array[] $fields
  * @property string $url
  */
-class SupportingDocumentTypeInstance extends InstanceResource {
+class SupportingDocumentTypeInstance extends InstanceResource
+{
     /**
      * Initialize the SupportingDocumentTypeInstance
      *
@@ -38,7 +39,8 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the Supporting Document Type resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +61,8 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      *
      * @return SupportingDocumentTypeContext Context for this SupportingDocumentTypeInstance
      */
-    protected function proxy(): SupportingDocumentTypeContext {
+    protected function proxy(): SupportingDocumentTypeContext
+    {
         if (!$this->context) {
             $this->context = new SupportingDocumentTypeContext(
                 $this->version,
@@ -76,7 +79,9 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      * @return SupportingDocumentTypeInstance Fetched SupportingDocumentTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SupportingDocumentTypeInstance {
+    public function fetch(): SupportingDocumentTypeInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -87,7 +92,8 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -105,7 +111,8 @@ class SupportingDocumentTypeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class HostedNumberOrderContext extends InstanceContext {
+class HostedNumberOrderContext extends InstanceContext
+    {
     /**
      * Initialize the HostedNumberOrderContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this HostedNumberOrder.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/HostedNumberOrders/' . \rawurlencode($sid) . '';
+        $this->uri = '/HostedNumberOrders/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +56,12 @@ class HostedNumberOrderContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the HostedNumberOrderInstance
@@ -57,15 +69,18 @@ class HostedNumberOrderContext extends InstanceContext {
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): HostedNumberOrderInstance {
+    public function fetch(): HostedNumberOrderInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new HostedNumberOrderInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the HostedNumberOrderInstance
@@ -74,37 +89,51 @@ class HostedNumberOrderContext extends InstanceContext {
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): HostedNumberOrderInstance {
+    public function update(array $options = []): HostedNumberOrderInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
-            'Email' => $options['email'],
-            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
-            'Status' => $options['status'],
-            'VerificationCode' => $options['verificationCode'],
-            'VerificationType' => $options['verificationType'],
-            'VerificationDocumentSid' => $options['verificationDocumentSid'],
-            'Extension' => $options['extension'],
-            'CallDelay' => $options['callDelay'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'Email' =>
+                $options['email'],
+            'CcEmails' =>
+                Serialize::map($options['ccEmails'], function ($e) { return $e; }),
+            'Status' =>
+                $options['status'],
+            'VerificationCode' =>
+                $options['verificationCode'],
+            'VerificationType' =>
+                $options['verificationType'],
+            'VerificationDocumentSid' =>
+                $options['verificationDocumentSid'],
+            'Extension' =>
+                $options['extension'],
+            'CallDelay' =>
+                $options['callDelay'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new HostedNumberOrderInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

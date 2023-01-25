@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class OpenidDiscoveryPage extends Page {
+class OpenidDiscoveryPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class OpenidDiscoveryPage extends Page {
      * @param array $payload Payload response from the API
      * @return OpenidDiscoveryInstance \Twilio\Rest\Oauth\V1\OpenidDiscoveryInstance
      */
-    public function buildInstance(array $payload): OpenidDiscoveryInstance {
+    public function buildInstance(array $payload): OpenidDiscoveryInstance
+    {
         return new OpenidDiscoveryInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class OpenidDiscoveryPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.OpenidDiscoveryPage]';
     }
 }

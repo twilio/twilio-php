@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class QueryList extends ListResource {
+class QueryList extends ListResource
+    {
     /**
      * Construct the QueryList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Queries';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Queries';
     }
 
     /**
@@ -49,24 +59,31 @@ class QueryList extends ListResource {
      * @return QueryInstance Created QueryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $language, string $query, array $options = []): QueryInstance {
+    public function create(string $language, string $query, array $options = []): QueryInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Language' => $language,
-            'Query' => $query,
-            'Tasks' => $options['tasks'],
-            'ModelBuild' => $options['modelBuild'],
+            'Language' =>
+                $language,
+            'Query' =>
+                $query,
+            'Tasks' =>
+                $options['tasks'],
+            'ModelBuild' =>
+                $options['modelBuild'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new QueryInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Reads QueryInstance records from the API as a list.
@@ -84,7 +101,8 @@ class QueryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return QueryInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -107,7 +125,8 @@ class QueryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -124,14 +143,24 @@ class QueryList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return QueryPage Page of QueryInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): QueryPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): QueryPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Language' => $options['language'],
-            'ModelBuild' => $options['modelBuild'],
-            'Status' => $options['status'],
-            'DialogueSid' => $options['dialogueSid'],
+            'Language' =>
+                $options['language'],
+            'ModelBuild' =>
+                $options['modelBuild'],
+            'Status' =>
+                $options['status'],
+            'DialogueSid' =>
+                $options['dialogueSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -149,7 +178,8 @@ class QueryList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return QueryPage Page of QueryInstance
      */
-    public function getPage(string $targetUrl): QueryPage {
+    public function getPage(string $targetUrl): QueryPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -164,8 +194,16 @@ class QueryList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Query resource to delete.
      */
-    public function getContext(string $sid): QueryContext {
-        return new QueryContext($this->version, $this->solution['assistantSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): QueryContext
+    {
+        return new QueryContext(
+            $this->version,
+            $this->solution['assistantSid'],
+            $sid
+        );
     }
 
     /**
@@ -173,7 +211,8 @@ class QueryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.QueryList]';
     }
 }

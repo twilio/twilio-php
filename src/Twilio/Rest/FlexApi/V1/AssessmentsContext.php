@@ -22,17 +22,22 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AssessmentsContext extends InstanceContext {
+class AssessmentsContext extends InstanceContext
+    {
     /**
      * Initialize the AssessmentsContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Accounts/Assessments';
     }
@@ -43,21 +48,25 @@ class AssessmentsContext extends InstanceContext {
      * @return AssessmentsInstance Created AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): AssessmentsInstance {
+    public function create(): AssessmentsInstance
+    {
+
         $payload = $this->version->create('POST', $this->uri);
 
         return new AssessmentsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

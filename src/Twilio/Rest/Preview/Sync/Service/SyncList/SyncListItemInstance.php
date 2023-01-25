@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $createdBy
  */
-class SyncListItemInstance extends InstanceResource {
+class SyncListItemInstance extends InstanceResource
+{
     /**
      * Initialize the SyncListItemInstance
      *
@@ -47,7 +48,8 @@ class SyncListItemInstance extends InstanceResource {
      * @param string $listSid 
      * @param int $index 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, int $index = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, int $index = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class SyncListItemInstance extends InstanceResource {
      *
      * @return SyncListItemContext Context for this SyncListItemInstance
      */
-    protected function proxy(): SyncListItemContext {
+    protected function proxy(): SyncListItemContext
+    {
         if (!$this->context) {
             $this->context = new SyncListItemContext(
                 $this->version,
@@ -93,7 +96,9 @@ class SyncListItemInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         return $this->proxy()->delete($options);
     }
 
@@ -103,7 +108,9 @@ class SyncListItemInstance extends InstanceResource {
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncListItemInstance {
+    public function fetch(): SyncListItemInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -115,7 +122,9 @@ class SyncListItemInstance extends InstanceResource {
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data, array $options = []): SyncListItemInstance {
+    public function update(array $data, array $options = []): SyncListItemInstance
+    {
+
         return $this->proxy()->update($data, $options);
     }
 
@@ -126,7 +135,8 @@ class SyncListItemInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,7 +154,8 @@ class SyncListItemInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

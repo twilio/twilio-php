@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class MediaList extends ListResource {
+class MediaList extends ListResource
+    {
     /**
      * Construct the MediaList
      *
@@ -32,13 +33,28 @@ class MediaList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete.
      * @param string $messageSid The SID of the Message resource that this Media resource belongs to.
      */
-    public function __construct(Version $version, string $accountSid , string $messageSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $messageSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'messageSid' => $messageSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'messageSid' =>
+            $messageSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Messages/' . \rawurlencode($messageSid) . '/Media.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Messages/' . \rawurlencode($messageSid)
+        .'/Media.json';
     }
 
     /**
@@ -57,7 +73,8 @@ class MediaList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MediaInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -80,7 +97,8 @@ class MediaList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -97,13 +115,22 @@ class MediaList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MediaPage Page of MediaInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MediaPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MediaPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'DateCreated<' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateCreated>' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreated<' =>
+                Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'DateCreated' =>
+                Serialize::iso8601DateTime($options['dateCreated']),
+            'DateCreated>' =>
+                Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -121,7 +148,8 @@ class MediaList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MediaPage Page of MediaInstance
      */
-    public function getPage(string $targetUrl): MediaPage {
+    public function getPage(string $targetUrl): MediaPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -136,8 +164,17 @@ class MediaList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Media resource to delete
      */
-    public function getContext(string $sid): MediaContext {
-        return new MediaContext($this->version, $this->solution['accountSid'], $this->solution['messageSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): MediaContext
+    {
+        return new MediaContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['messageSid'],
+            $sid
+        );
     }
 
     /**
@@ -145,7 +182,8 @@ class MediaList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.MediaList]';
     }
 }

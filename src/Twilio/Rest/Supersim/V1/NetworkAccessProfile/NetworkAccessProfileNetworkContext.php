@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class NetworkAccessProfileNetworkContext extends InstanceContext {
+class NetworkAccessProfileNetworkContext extends InstanceContext
+    {
     /**
      * Initialize the NetworkAccessProfileNetworkContext
      *
@@ -30,13 +31,25 @@ class NetworkAccessProfileNetworkContext extends InstanceContext {
      * @param string $networkAccessProfileSid The unique string that identifies the Network Access Profile resource.
      * @param string $sid The SID of the Network resource to be removed from the Network Access Profile resource.
      */
-    public function __construct(Version $version, $networkAccessProfileSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $networkAccessProfileSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['networkAccessProfileSid' => $networkAccessProfileSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'networkAccessProfileSid' =>
+            $networkAccessProfileSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/NetworkAccessProfiles/' . \rawurlencode($networkAccessProfileSid) . '/Networks/' . \rawurlencode($sid) . '';
+        $this->uri = '/NetworkAccessProfiles/' . \rawurlencode($networkAccessProfileSid)
+        .'/Networks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class NetworkAccessProfileNetworkContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the NetworkAccessProfileNetworkInstance
@@ -55,23 +71,27 @@ class NetworkAccessProfileNetworkContext extends InstanceContext {
      * @return NetworkAccessProfileNetworkInstance Fetched NetworkAccessProfileNetworkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NetworkAccessProfileNetworkInstance {
+    public function fetch(): NetworkAccessProfileNetworkInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new NetworkAccessProfileNetworkInstance(
             $this->version,
-            $payload
-            , $this->solution['networkAccessProfileSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['networkAccessProfileSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -31,7 +31,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property string $uri
  */
-class UserDefinedMessageSubscriptionInstance extends InstanceResource {
+class UserDefinedMessageSubscriptionInstance extends InstanceResource
+{
     /**
      * Initialize the UserDefinedMessageSubscriptionInstance
      *
@@ -41,7 +42,8 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource {
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages.
      * @param string $sid The SID that uniquely identifies this User Defined Message Subscription.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource {
      *
      * @return UserDefinedMessageSubscriptionContext Context for this UserDefinedMessageSubscriptionInstance
      */
-    protected function proxy(): UserDefinedMessageSubscriptionContext {
+    protected function proxy(): UserDefinedMessageSubscriptionContext
+    {
         if (!$this->context) {
             $this->context = new UserDefinedMessageSubscriptionContext(
                 $this->version,
@@ -81,7 +84,9 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -92,7 +97,8 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -110,7 +116,8 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

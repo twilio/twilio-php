@@ -18,29 +18,56 @@ namespace Twilio\Rest\Insights\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ConferenceOptions {
+abstract class ConferenceOptions
+{
 
     /**
-     * @param string $conferenceSid The SID of the conference. 
-     * @param string $friendlyName Custom label for the conference resource, up to 64 characters. 
-     * @param string $status Conference status. 
-     * @param string $createdAfter Conferences created after the provided timestamp specified in ISO 8601 format 
-     * @param string $createdBefore Conferences created before the provided timestamp specified in ISO 8601 format. 
-     * @param string $mixerRegion Twilio region where the conference media was mixed. 
-     * @param string $tags Tags applied by Twilio for common potential configuration, quality, or performance issues. 
-     * @param string $subaccount Account SID for the subaccount whose resources you wish to retrieve. 
-     * @param string $detectedIssues Potential configuration, behavior, or performance issues detected during the conference. 
-     * @param string $endReason Conference end reason; e.g. last participant left, modified by API, etc. 
+     * @param string $conferenceSid The SID of the conference.
+     * @param string $friendlyName Custom label for the conference resource, up to 64 characters.
+     * @param string $status Conference status.
+     * @param string $createdAfter Conferences created after the provided timestamp specified in ISO 8601 format
+     * @param string $createdBefore Conferences created before the provided timestamp specified in ISO 8601 format.
+     * @param string $mixerRegion Twilio region where the conference media was mixed.
+     * @param string $tags Tags applied by Twilio for common potential configuration, quality, or performance issues.
+     * @param string $subaccount Account SID for the subaccount whose resources you wish to retrieve.
+     * @param string $detectedIssues Potential configuration, behavior, or performance issues detected during the conference.
+     * @param string $endReason Conference end reason; e.g. last participant left, modified by API, etc.
      * @return ReadConferenceOptions Options builder
      */
-    public static function read(string $conferenceSid = Values::NONE, string $friendlyName = Values::NONE, string $status = Values::NONE, string $createdAfter = Values::NONE, string $createdBefore = Values::NONE, string $mixerRegion = Values::NONE, string $tags = Values::NONE, string $subaccount = Values::NONE, string $detectedIssues = Values::NONE, string $endReason = Values::NONE): ReadConferenceOptions {
-        return new ReadConferenceOptions($conferenceSid, $friendlyName, $status, $createdAfter, $createdBefore, $mixerRegion, $tags, $subaccount, $detectedIssues, $endReason);
+    public static function read(
+        
+        string $conferenceSid = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $status = Values::NONE,
+        string $createdAfter = Values::NONE,
+        string $createdBefore = Values::NONE,
+        string $mixerRegion = Values::NONE,
+        string $tags = Values::NONE,
+        string $subaccount = Values::NONE,
+        string $detectedIssues = Values::NONE,
+        string $endReason = Values::NONE
+
+    ): ReadConferenceOptions
+    {
+        return new ReadConferenceOptions(
+            $conferenceSid,
+            $friendlyName,
+            $status,
+            $createdAfter,
+            $createdBefore,
+            $mixerRegion,
+            $tags,
+            $subaccount,
+            $detectedIssues,
+            $endReason
+        );
     }
 
 }
 
 
-class ReadConferenceOptions extends Options {
+class ReadConferenceOptions extends Options
+    {
     /**
      * @param string $conferenceSid The SID of the conference.
      * @param string $friendlyName Custom label for the conference resource, up to 64 characters.
@@ -53,7 +80,21 @@ class ReadConferenceOptions extends Options {
      * @param string $detectedIssues Potential configuration, behavior, or performance issues detected during the conference.
      * @param string $endReason Conference end reason; e.g. last participant left, modified by API, etc.
      */
-    public function __construct(string $conferenceSid = Values::NONE, string $friendlyName = Values::NONE, string $status = Values::NONE, string $createdAfter = Values::NONE, string $createdBefore = Values::NONE, string $mixerRegion = Values::NONE, string $tags = Values::NONE, string $subaccount = Values::NONE, string $detectedIssues = Values::NONE, string $endReason = Values::NONE) {
+    public function __construct(
+        
+        string $conferenceSid = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $status = Values::NONE,
+        string $createdAfter = Values::NONE,
+        string $createdBefore = Values::NONE,
+        string $mixerRegion = Values::NONE,
+        string $tags = Values::NONE,
+        string $subaccount = Values::NONE,
+        string $detectedIssues = Values::NONE,
+        string $endReason = Values::NONE
+
+    )
+    {
         $this->options['conferenceSid'] = $conferenceSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['status'] = $status;
@@ -72,7 +113,8 @@ class ReadConferenceOptions extends Options {
      * @param string $conferenceSid The SID of the conference.
      * @return $this Fluent Builder
      */
-    public function setConferenceSid(string $conferenceSid): self {
+    public function setConferenceSid(string $conferenceSid): self
+    {
         $this->options['conferenceSid'] = $conferenceSid;
         return $this;
     }
@@ -83,7 +125,8 @@ class ReadConferenceOptions extends Options {
      * @param string $friendlyName Custom label for the conference resource, up to 64 characters.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -94,7 +137,8 @@ class ReadConferenceOptions extends Options {
      * @param string $status Conference status.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -105,7 +149,8 @@ class ReadConferenceOptions extends Options {
      * @param string $createdAfter Conferences created after the provided timestamp specified in ISO 8601 format
      * @return $this Fluent Builder
      */
-    public function setCreatedAfter(string $createdAfter): self {
+    public function setCreatedAfter(string $createdAfter): self
+    {
         $this->options['createdAfter'] = $createdAfter;
         return $this;
     }
@@ -116,7 +161,8 @@ class ReadConferenceOptions extends Options {
      * @param string $createdBefore Conferences created before the provided timestamp specified in ISO 8601 format.
      * @return $this Fluent Builder
      */
-    public function setCreatedBefore(string $createdBefore): self {
+    public function setCreatedBefore(string $createdBefore): self
+    {
         $this->options['createdBefore'] = $createdBefore;
         return $this;
     }
@@ -127,7 +173,8 @@ class ReadConferenceOptions extends Options {
      * @param string $mixerRegion Twilio region where the conference media was mixed.
      * @return $this Fluent Builder
      */
-    public function setMixerRegion(string $mixerRegion): self {
+    public function setMixerRegion(string $mixerRegion): self
+    {
         $this->options['mixerRegion'] = $mixerRegion;
         return $this;
     }
@@ -138,7 +185,8 @@ class ReadConferenceOptions extends Options {
      * @param string $tags Tags applied by Twilio for common potential configuration, quality, or performance issues.
      * @return $this Fluent Builder
      */
-    public function setTags(string $tags): self {
+    public function setTags(string $tags): self
+    {
         $this->options['tags'] = $tags;
         return $this;
     }
@@ -149,7 +197,8 @@ class ReadConferenceOptions extends Options {
      * @param string $subaccount Account SID for the subaccount whose resources you wish to retrieve.
      * @return $this Fluent Builder
      */
-    public function setSubaccount(string $subaccount): self {
+    public function setSubaccount(string $subaccount): self
+    {
         $this->options['subaccount'] = $subaccount;
         return $this;
     }
@@ -160,7 +209,8 @@ class ReadConferenceOptions extends Options {
      * @param string $detectedIssues Potential configuration, behavior, or performance issues detected during the conference.
      * @return $this Fluent Builder
      */
-    public function setDetectedIssues(string $detectedIssues): self {
+    public function setDetectedIssues(string $detectedIssues): self
+    {
         $this->options['detectedIssues'] = $detectedIssues;
         return $this;
     }
@@ -171,7 +221,8 @@ class ReadConferenceOptions extends Options {
      * @param string $endReason Conference end reason; e.g. last participant left, modified by API, etc.
      * @return $this Fluent Builder
      */
-    public function setEndReason(string $endReason): self {
+    public function setEndReason(string $endReason): self
+    {
         $this->options['endReason'] = $endReason;
         return $this;
     }
@@ -181,7 +232,8 @@ class ReadConferenceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.ReadConferenceOptions ' . $options . ']';
     }

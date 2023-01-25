@@ -18,22 +18,36 @@ namespace Twilio\Rest\FlexApi\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ConfigurationOptions {
+abstract class ConfigurationOptions
+{
     /**
-     * @param string $uiVersion The Pinned UI version of the Configuration resource to fetch. 
+     * @param string $uiVersion The Pinned UI version of the Configuration resource to fetch.
      * @return FetchConfigurationOptions Options builder
      */
-    public static function fetch(string $uiVersion = Values::NONE): FetchConfigurationOptions {
-        return new FetchConfigurationOptions($uiVersion);
+    public static function fetch(
+        
+        string $uiVersion = Values::NONE
+
+    ): FetchConfigurationOptions
+    {
+        return new FetchConfigurationOptions(
+            $uiVersion
+        );
     }
 
 }
 
-class FetchConfigurationOptions extends Options {
+class FetchConfigurationOptions extends Options
+    {
     /**
      * @param string $uiVersion The Pinned UI version of the Configuration resource to fetch.
      */
-    public function __construct(string $uiVersion = Values::NONE) {
+    public function __construct(
+        
+        string $uiVersion = Values::NONE
+
+    )
+    {
         $this->options['uiVersion'] = $uiVersion;
     }
 
@@ -43,7 +57,8 @@ class FetchConfigurationOptions extends Options {
      * @param string $uiVersion The Pinned UI version of the Configuration resource to fetch.
      * @return $this Fluent Builder
      */
-    public function setUiVersion(string $uiVersion): self {
+    public function setUiVersion(string $uiVersion): self
+    {
         $this->options['uiVersion'] = $uiVersion;
         return $this;
     }
@@ -53,7 +68,8 @@ class FetchConfigurationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.FetchConfigurationOptions ' . $options . ']';
     }

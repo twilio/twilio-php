@@ -22,14 +22,16 @@ use Twilio\InstanceResource;
 use Twilio\Version;
 
 
-class RegulatoryComplianceInstance extends InstanceResource {
+class RegulatoryComplianceInstance extends InstanceResource
+{
     /**
      * Initialize the RegulatoryComplianceInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         $this->solution = [];
@@ -42,7 +44,8 @@ class RegulatoryComplianceInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -60,7 +63,8 @@ class RegulatoryComplianceInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.RegulatoryComplianceInstance]';
     }
 }

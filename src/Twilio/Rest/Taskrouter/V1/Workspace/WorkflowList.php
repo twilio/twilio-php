@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class WorkflowList extends ListResource {
+class WorkflowList extends ListResource
+    {
     /**
      * Construct the WorkflowList
      *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that the new Workflow to create belongs to.
      */
-    public function __construct(Version $version, string $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workflows';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workflows';
     }
 
     /**
@@ -49,25 +59,33 @@ class WorkflowList extends ListResource {
      * @return WorkflowInstance Created WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $configuration, array $options = []): WorkflowInstance {
+    public function create(string $friendlyName, string $configuration, array $options = []): WorkflowInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'Configuration' => $configuration,
-            'AssignmentCallbackUrl' => $options['assignmentCallbackUrl'],
-            'FallbackAssignmentCallbackUrl' => $options['fallbackAssignmentCallbackUrl'],
-            'TaskReservationTimeout' => $options['taskReservationTimeout'],
+            'FriendlyName' =>
+                $friendlyName,
+            'Configuration' =>
+                $configuration,
+            'AssignmentCallbackUrl' =>
+                $options['assignmentCallbackUrl'],
+            'FallbackAssignmentCallbackUrl' =>
+                $options['fallbackAssignmentCallbackUrl'],
+            'TaskReservationTimeout' =>
+                $options['taskReservationTimeout'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WorkflowInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
+            $payload,
+            $this->solution['workspaceSid'],
         );
     }
+
 
     /**
      * Reads WorkflowInstance records from the API as a list.
@@ -85,7 +103,8 @@ class WorkflowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WorkflowInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -108,7 +127,8 @@ class WorkflowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -125,11 +145,18 @@ class WorkflowList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return WorkflowPage Page of WorkflowInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkflowPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): WorkflowPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'FriendlyName' => $options['friendlyName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -147,7 +174,8 @@ class WorkflowList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return WorkflowPage Page of WorkflowInstance
      */
-    public function getPage(string $targetUrl): WorkflowPage {
+    public function getPage(string $targetUrl): WorkflowPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -162,8 +190,16 @@ class WorkflowList extends ListResource {
      *
      * @param string $sid The SID of the Workflow resource to delete.
      */
-    public function getContext(string $sid): WorkflowContext {
-        return new WorkflowContext($this->version, $this->solution['workspaceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): WorkflowContext
+    {
+        return new WorkflowContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $sid
+        );
     }
 
     /**
@@ -171,7 +207,8 @@ class WorkflowList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkflowList]';
     }
 }

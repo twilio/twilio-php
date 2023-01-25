@@ -38,7 +38,8 @@ use Twilio\Rest\Video\V1\Room\Participant\AnonymizeList;
  * @method \Twilio\Rest\Video\V1\Room\Participant\AnonymizeContext anonymize()
  * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
  */
-class ParticipantContext extends InstanceContext {
+class ParticipantContext extends InstanceContext
+    {
     protected $_subscribeRules;
     protected $_subscribedTracks;
     protected $_publishedTracks;
@@ -51,13 +52,25 @@ class ParticipantContext extends InstanceContext {
      * @param string $roomSid The SID of the room with the Participant resource to fetch.
      * @param string $sid The SID of the RoomParticipant resource to fetch.
      */
-    public function __construct(Version $version, $roomSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $roomSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['roomSid' => $roomSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'roomSid' =>
+            $roomSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($sid) . '';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid)
+        .'/Participants/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -66,16 +79,19 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
+    public function fetch(): ParticipantInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['roomSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ParticipantInstance
@@ -84,32 +100,37 @@ class ParticipantContext extends InstanceContext {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ParticipantInstance {
+    public function update(array $options = []): ParticipantInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Status' => $options['status'],
+            'Status' =>
+                $options['status'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['roomSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the subscribeRules
      */
-    protected function getSubscribeRules(): SubscribeRulesList {
+    protected function getSubscribeRules(): SubscribeRulesList
+    {
         if (!$this->_subscribeRules) {
             $this->_subscribeRules = new SubscribeRulesList(
-                $this->version
-                , $this->solution['roomSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -119,12 +140,13 @@ class ParticipantContext extends InstanceContext {
     /**
      * Access the subscribedTracks
      */
-    protected function getSubscribedTracks(): SubscribedTrackList {
+    protected function getSubscribedTracks(): SubscribedTrackList
+    {
         if (!$this->_subscribedTracks) {
             $this->_subscribedTracks = new SubscribedTrackList(
-                $this->version
-                , $this->solution['roomSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -134,12 +156,13 @@ class ParticipantContext extends InstanceContext {
     /**
      * Access the publishedTracks
      */
-    protected function getPublishedTracks(): PublishedTrackList {
+    protected function getPublishedTracks(): PublishedTrackList
+    {
         if (!$this->_publishedTracks) {
             $this->_publishedTracks = new PublishedTrackList(
-                $this->version
-                , $this->solution['roomSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -149,12 +172,13 @@ class ParticipantContext extends InstanceContext {
     /**
      * Access the anonymize
      */
-    protected function getAnonymize(): AnonymizeList {
+    protected function getAnonymize(): AnonymizeList
+    {
         if (!$this->_anonymize) {
             $this->_anonymize = new AnonymizeList(
-                $this->version
-                , $this->solution['roomSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -168,7 +192,8 @@ class ParticipantContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -185,7 +210,8 @@ class ParticipantContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -199,7 +225,8 @@ class ParticipantContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

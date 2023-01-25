@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class VariableInstance extends InstanceResource {
+class VariableInstance extends InstanceResource
+{
     /**
      * Initialize the VariableInstance
      *
@@ -46,7 +47,8 @@ class VariableInstance extends InstanceResource {
      * @param string $environmentSid The SID of the Environment in which the Variable resource exists.
      * @param string $sid The SID of the Variable resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -71,7 +73,8 @@ class VariableInstance extends InstanceResource {
      *
      * @return VariableContext Context for this VariableInstance
      */
-    protected function proxy(): VariableContext {
+    protected function proxy(): VariableContext
+    {
         if (!$this->context) {
             $this->context = new VariableContext(
                 $this->version,
@@ -90,7 +93,9 @@ class VariableInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,7 +105,9 @@ class VariableInstance extends InstanceResource {
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VariableInstance {
+    public function fetch(): VariableInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -111,7 +118,9 @@ class VariableInstance extends InstanceResource {
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): VariableInstance {
+    public function update(array $options = []): VariableInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -122,7 +131,8 @@ class VariableInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -140,7 +150,8 @@ class VariableInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

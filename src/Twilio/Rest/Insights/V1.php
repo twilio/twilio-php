@@ -35,7 +35,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Insights\V1\ConferenceContext conferences(string $conferenceSid)
  * @method \Twilio\Rest\Insights\V1\RoomContext rooms(string $roomSid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_calls;
     protected $_callSummaries;
     protected $_conferences;
@@ -47,40 +48,46 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getCalls(): CallList {
+    protected function getCalls(): CallList
+    {
         if (!$this->_calls) {
             $this->_calls = new CallList($this);
         }
         return $this->_calls;
     }
 
-    protected function getCallSummaries(): CallSummariesList {
+    protected function getCallSummaries(): CallSummariesList
+    {
         if (!$this->_callSummaries) {
             $this->_callSummaries = new CallSummariesList($this);
         }
         return $this->_callSummaries;
     }
 
-    protected function getConferences(): ConferenceList {
+    protected function getConferences(): ConferenceList
+    {
         if (!$this->_conferences) {
             $this->_conferences = new ConferenceList($this);
         }
         return $this->_conferences;
     }
 
-    protected function getRooms(): RoomList {
+    protected function getRooms(): RoomList
+    {
         if (!$this->_rooms) {
             $this->_rooms = new RoomList($this);
         }
         return $this->_rooms;
     }
 
-    protected function getSettings(): SettingList {
+    protected function getSettings(): SettingList
+    {
         if (!$this->_settings) {
             $this->_settings = new SettingList($this);
         }
@@ -94,7 +101,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -111,7 +119,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -125,7 +134,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1]';
     }
 }

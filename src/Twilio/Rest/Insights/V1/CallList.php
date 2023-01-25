@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class CallList extends ListResource {
+class CallList extends ListResource
+    {
     /**
      * Construct the CallList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class CallList extends ListResource {
      *
      * @param string $sid 
      */
-    public function getContext(string $sid): CallContext {
-        return new CallContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): CallContext
+    {
+        return new CallContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class CallList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.CallList]';
     }
 }

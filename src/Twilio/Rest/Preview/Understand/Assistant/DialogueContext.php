@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class DialogueContext extends InstanceContext {
+class DialogueContext extends InstanceContext
+    {
     /**
      * Initialize the DialogueContext
      *
@@ -30,13 +31,25 @@ class DialogueContext extends InstanceContext {
      * @param string $assistantSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, $assistantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Dialogues/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Dialogues/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class DialogueContext extends InstanceContext {
      * @return DialogueInstance Fetched DialogueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DialogueInstance {
+    public function fetch(): DialogueInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DialogueInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

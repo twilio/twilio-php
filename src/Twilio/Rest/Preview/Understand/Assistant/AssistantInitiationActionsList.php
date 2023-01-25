@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class AssistantInitiationActionsList extends ListResource {
+class AssistantInitiationActionsList extends ListResource
+    {
     /**
      * Construct the AssistantInitiationActionsList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid 
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
     }
 
     /**
      * Constructs a AssistantInitiationActionsContext
      */
-    public function getContext(): AssistantInitiationActionsContext {
-        return new AssistantInitiationActionsContext($this->version, $this->solution['assistantSid']);
+    public function getContext(
+        
+    ): AssistantInitiationActionsContext
+    {
+        return new AssistantInitiationActionsContext(
+            $this->version,
+            $this->solution['assistantSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class AssistantInitiationActionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.AssistantInitiationActionsList]';
     }
 }

@@ -38,7 +38,8 @@ use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddO
  * @property string $uri
  * @property array $subresourceUris
  */
-class AssignedAddOnInstance extends InstanceResource {
+class AssignedAddOnInstance extends InstanceResource
+{
     protected $_extensions;
 
     /**
@@ -50,7 +51,8 @@ class AssignedAddOnInstance extends InstanceResource {
      * @param string $resourceSid The SID of the Phone Number to assign the Add-on.
      * @param string $sid The Twilio-provided string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -77,7 +79,8 @@ class AssignedAddOnInstance extends InstanceResource {
      *
      * @return AssignedAddOnContext Context for this AssignedAddOnInstance
      */
-    protected function proxy(): AssignedAddOnContext {
+    protected function proxy(): AssignedAddOnContext
+    {
         if (!$this->context) {
             $this->context = new AssignedAddOnContext(
                 $this->version,
@@ -96,7 +99,9 @@ class AssignedAddOnInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -106,14 +111,17 @@ class AssignedAddOnInstance extends InstanceResource {
      * @return AssignedAddOnInstance Fetched AssignedAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssignedAddOnInstance {
+    public function fetch(): AssignedAddOnInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the extensions
      */
-    protected function getExtensions(): AssignedAddOnExtensionList {
+    protected function getExtensions(): AssignedAddOnExtensionList
+    {
         return $this->proxy()->extensions;
     }
 
@@ -124,7 +132,8 @@ class AssignedAddOnInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +151,8 @@ class AssignedAddOnInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

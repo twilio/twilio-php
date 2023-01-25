@@ -22,7 +22,8 @@ use Twilio\InstanceResource;
 use Twilio\Version;
 
 
-class ArchivedCallInstance extends InstanceResource {
+class ArchivedCallInstance extends InstanceResource
+{
     /**
      * Initialize the ArchivedCallInstance
      *
@@ -31,7 +32,8 @@ class ArchivedCallInstance extends InstanceResource {
      * @param \DateTime $date The date of the Call in UTC.
      * @param string $sid The Twilio-provided Call SID that uniquely identifies the Call resource to delete
      */
-    public function __construct(Version $version, array $payload, \DateTime $date = null, string $sid = null) {
+    public function __construct(Version $version, array $payload, \DateTime $date = null, string $sid = null)
+    {
         parent::__construct($version);
 
         $this->solution = ['date' => $date ?: $this->properties['date'], 'sid' => $sid ?: $this->properties['sid'], ];
@@ -43,7 +45,8 @@ class ArchivedCallInstance extends InstanceResource {
      *
      * @return ArchivedCallContext Context for this ArchivedCallInstance
      */
-    protected function proxy(): ArchivedCallContext {
+    protected function proxy(): ArchivedCallContext
+    {
         if (!$this->context) {
             $this->context = new ArchivedCallContext(
                 $this->version,
@@ -61,7 +64,9 @@ class ArchivedCallInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -72,7 +77,8 @@ class ArchivedCallInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -90,7 +96,8 @@ class ArchivedCallInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

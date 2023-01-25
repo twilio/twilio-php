@@ -30,7 +30,8 @@ use Twilio\Rest\Bulkexports\V1\Export\DayList;
  * @property DayList $days
  * @method \Twilio\Rest\Bulkexports\V1\Export\DayContext days(string $day)
  */
-class ExportContext extends InstanceContext {
+class ExportContext extends InstanceContext
+    {
     protected $_exportCustomJobs;
     protected $_days;
 
@@ -40,13 +41,21 @@ class ExportContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      */
-    public function __construct(Version $version, $resourceType ) {
+    public function __construct(
+        Version $version,
+        $resourceType
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['resourceType' => $resourceType,  ];
+        $this->solution = [
+        'resourceType' =>
+            $resourceType,
+        ];
 
-        $this->uri = '/Exports/' . \rawurlencode($resourceType) . '';
+        $this->uri = '/Exports/' . \rawurlencode($resourceType)
+        .'';
     }
 
     /**
@@ -55,24 +64,28 @@ class ExportContext extends InstanceContext {
      * @return ExportInstance Fetched ExportInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ExportInstance {
+    public function fetch(): ExportInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ExportInstance(
             $this->version,
-            $payload
-            , $this->solution['resourceType']
+            $payload,
+            $this->solution['resourceType'],
         );
     }
+
 
     /**
      * Access the exportCustomJobs
      */
-    protected function getExportCustomJobs(): ExportCustomJobList {
+    protected function getExportCustomJobs(): ExportCustomJobList
+    {
         if (!$this->_exportCustomJobs) {
             $this->_exportCustomJobs = new ExportCustomJobList(
-                $this->version
-                , $this->solution['resourceType']
+                $this->version,
+                $this->solution['resourceType'],
             );
         }
 
@@ -82,11 +95,12 @@ class ExportContext extends InstanceContext {
     /**
      * Access the days
      */
-    protected function getDays(): DayList {
+    protected function getDays(): DayList
+    {
         if (!$this->_days) {
             $this->_days = new DayList(
-                $this->version
-                , $this->solution['resourceType']
+                $this->version,
+                $this->solution['resourceType'],
             );
         }
 
@@ -100,7 +114,8 @@ class ExportContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -117,7 +132,8 @@ class ExportContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -131,7 +147,8 @@ class ExportContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

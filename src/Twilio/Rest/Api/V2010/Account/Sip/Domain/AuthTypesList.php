@@ -28,7 +28,8 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList
  * @property AuthTypeCallsList $calls
  * @property AuthTypeRegistrationsList $registrations
  */
-class AuthTypesList extends ListResource {
+class AuthTypesList extends ListResource
+    {
     protected $_calls = null;
     protected $_registrations = null;
 
@@ -39,40 +40,57 @@ class AuthTypesList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch.
      * @param string $domainSid The SID of the SIP domain that contains the resource to fetch.
      */
-    public function __construct(Version $version, string $accountSid , string $domainSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $domainSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'domainSid' =>
+            $domainSid,
+        
+        ];
     }
 
     /**
      * Access the calls
      */
-    protected function getCalls(): AuthTypeCallsList {
+    protected function getCalls(): AuthTypeCallsList
+    {
         if (!$this->_calls) {
             $this->_calls = new AuthTypeCallsList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['domainSid']
+                $this->version,
+                $this->solution['accountSid']
+                ,
+                $this->solution['domainSid']
+                
             );
         }
-
         return $this->_calls;
     }
 
     /**
      * Access the registrations
      */
-    protected function getRegistrations(): AuthTypeRegistrationsList {
+    protected function getRegistrations(): AuthTypeRegistrationsList
+    {
         if (!$this->_registrations) {
             $this->_registrations = new AuthTypeRegistrationsList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['domainSid']
+                $this->version,
+                $this->solution['accountSid']
+                ,
+                $this->solution['domainSid']
+                
             );
         }
-
         return $this->_registrations;
     }
 
@@ -83,7 +101,8 @@ class AuthTypesList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -100,7 +119,8 @@ class AuthTypesList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -114,7 +134,8 @@ class AuthTypesList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AuthTypesList]';
     }
 }

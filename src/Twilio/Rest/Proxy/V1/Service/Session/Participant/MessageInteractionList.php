@@ -25,7 +25,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class MessageInteractionList extends ListResource {
+class MessageInteractionList extends ListResource
+    {
     /**
      * Construct the MessageInteractionList
      *
@@ -34,13 +35,34 @@ class MessageInteractionList extends ListResource {
      * @param string $sessionSid The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.
      * @param string $participantSid The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
      */
-    public function __construct(Version $version, string $serviceSid , string $sessionSid , string $participantSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $sessionSid
+        ,
+        string $participantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, 'participantSid' => $participantSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'sessionSid' =>
+            $sessionSid,
+        
+        'participantSid' =>
+            $participantSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Participants/' . \rawurlencode($participantSid) . '/MessageInteractions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Sessions/' . \rawurlencode($sessionSid)
+        .'/Participants/' . \rawurlencode($participantSid)
+        .'/MessageInteractions';
     }
 
     /**
@@ -50,24 +72,29 @@ class MessageInteractionList extends ListResource {
      * @return MessageInteractionInstance Created MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): MessageInteractionInstance {
+    public function create(array $options = []): MessageInteractionInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Body' => $options['body'],
-            'MediaUrl' => Serialize::map($options['mediaUrl'], function($e) { return $e; }),
+            'Body' =>
+                $options['body'],
+            'MediaUrl' =>
+                Serialize::map($options['mediaUrl'], function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MessageInteractionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sessionSid']
-            , $this->solution['participantSid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sessionSid'],
+            $this->solution['participantSid'],
         );
     }
+
 
     /**
      * Reads MessageInteractionInstance records from the API as a list.
@@ -84,7 +111,8 @@ class MessageInteractionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MessageInteractionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,7 +134,8 @@ class MessageInteractionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -123,7 +152,12 @@ class MessageInteractionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MessageInteractionPage Page of MessageInteractionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessageInteractionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MessageInteractionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -143,7 +177,8 @@ class MessageInteractionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MessageInteractionPage Page of MessageInteractionInstance
      */
-    public function getPage(string $targetUrl): MessageInteractionPage {
+    public function getPage(string $targetUrl): MessageInteractionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -158,8 +193,18 @@ class MessageInteractionList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the MessageInteraction resource to fetch.
      */
-    public function getContext(string $sid): MessageInteractionContext {
-        return new MessageInteractionContext($this->version, $this->solution['serviceSid'], $this->solution['sessionSid'], $this->solution['participantSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): MessageInteractionContext
+    {
+        return new MessageInteractionContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['sessionSid'],
+            $this->solution['participantSid'],
+            $sid
+        );
     }
 
     /**
@@ -167,7 +212,8 @@ class MessageInteractionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Proxy.V1.MessageInteractionList]';
     }
 }

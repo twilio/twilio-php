@@ -20,17 +20,21 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class DomainCertsList extends ListResource {
+class DomainCertsList extends ListResource
+    {
     /**
      * Construct the DomainCertsList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -38,8 +42,15 @@ class DomainCertsList extends ListResource {
      *
      * @param string $domainSid Unique string used to identify the domain that this certificate should be associated with.
      */
-    public function getContext(string $domainSid): DomainCertsContext {
-        return new DomainCertsContext($this->version, $domainSid);
+    public function getContext(
+        string $domainSid
+        
+    ): DomainCertsContext
+    {
+        return new DomainCertsContext(
+            $this->version,
+            $domainSid
+        );
     }
 
     /**
@@ -47,7 +58,8 @@ class DomainCertsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.DomainCertsList]';
     }
 }

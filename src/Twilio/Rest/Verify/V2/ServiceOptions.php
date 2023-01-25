@@ -18,60 +18,138 @@ namespace Twilio\Rest\Verify\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ServiceOptions {
+abstract class ServiceOptions
+{
     /**
-     * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. 
-     * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number. 
-     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. 
-     * @param bool $dtmfInputRequired Whether to ask the user to press a number before delivering the verify code in a phone call. 
-     * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages. 
-     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification. 
-     * @param bool $doNotShareWarningEnabled Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code` 
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers. 
-     * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead. 
-     * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource) 
-     * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource) 
-     * @param string $totpIssuer Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI. Defaults to the service friendly name if not provided. 
-     * @param int $totpTimeStep Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds 
-     * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 
-     * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 
-     * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. 
+     * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number before delivering the verify code in a phone call.
+     * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
+     * @param bool $doNotShareWarningEnabled Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead.
+     * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     * @param string $totpIssuer Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI. Defaults to the service friendly name if not provided.
+     * @param int $totpTimeStep Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds
+     * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
+     * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
+     * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
      * @return CreateServiceOptions Options builder
      */
-    public static function create(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE): CreateServiceOptions {
-        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid, $totpIssuer, $totpTimeStep, $totpCodeLength, $totpSkew, $defaultTemplateSid);
+    public static function create(
+        
+        int $codeLength = Values::NONE,
+        bool $lookupEnabled = Values::NONE,
+        bool $skipSmsToLandlines = Values::NONE,
+        bool $dtmfInputRequired = Values::NONE,
+        string $ttsName = Values::NONE,
+        bool $psd2Enabled = Values::NONE,
+        bool $doNotShareWarningEnabled = Values::NONE,
+        bool $customCodeEnabled = Values::NONE,
+        bool $pushIncludeDate = Values::NONE,
+        string $pushApnCredentialSid = Values::NONE,
+        string $pushFcmCredentialSid = Values::NONE,
+        string $totpIssuer = Values::NONE,
+        int $totpTimeStep = Values::NONE,
+        int $totpCodeLength = Values::NONE,
+        int $totpSkew = Values::NONE,
+        string $defaultTemplateSid = Values::NONE
+
+    ): CreateServiceOptions
+    {
+        return new CreateServiceOptions(
+            $codeLength,
+            $lookupEnabled,
+            $skipSmsToLandlines,
+            $dtmfInputRequired,
+            $ttsName,
+            $psd2Enabled,
+            $doNotShareWarningEnabled,
+            $customCodeEnabled,
+            $pushIncludeDate,
+            $pushApnCredentialSid,
+            $pushFcmCredentialSid,
+            $totpIssuer,
+            $totpTimeStep,
+            $totpCodeLength,
+            $totpSkew,
+            $defaultTemplateSid
+        );
     }
 
 
 
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** 
-     * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. 
-     * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number. 
-     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. 
-     * @param bool $dtmfInputRequired Whether to ask the user to press a number before delivering the verify code in a phone call. 
-     * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages. 
-     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification. 
-     * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.** 
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers. 
-     * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. 
-     * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource) 
-     * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource) 
-     * @param string $totpIssuer Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI. 
-     * @param int $totpTimeStep Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds 
-     * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 
-     * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 
-     * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. 
+     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
+     * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number before delivering the verify code in a phone call.
+     * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
+     * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter.
+     * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
+     * @param string $totpIssuer Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI.
+     * @param int $totpTimeStep Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds
+     * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
+     * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
+     * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE): UpdateServiceOptions {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled, $doNotShareWarningEnabled, $customCodeEnabled, $pushIncludeDate, $pushApnCredentialSid, $pushFcmCredentialSid, $totpIssuer, $totpTimeStep, $totpCodeLength, $totpSkew, $defaultTemplateSid);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        int $codeLength = Values::NONE,
+        bool $lookupEnabled = Values::NONE,
+        bool $skipSmsToLandlines = Values::NONE,
+        bool $dtmfInputRequired = Values::NONE,
+        string $ttsName = Values::NONE,
+        bool $psd2Enabled = Values::NONE,
+        bool $doNotShareWarningEnabled = Values::NONE,
+        bool $customCodeEnabled = Values::NONE,
+        bool $pushIncludeDate = Values::NONE,
+        string $pushApnCredentialSid = Values::NONE,
+        string $pushFcmCredentialSid = Values::NONE,
+        string $totpIssuer = Values::NONE,
+        int $totpTimeStep = Values::NONE,
+        int $totpCodeLength = Values::NONE,
+        int $totpSkew = Values::NONE,
+        string $defaultTemplateSid = Values::NONE
+
+    ): UpdateServiceOptions
+    {
+        return new UpdateServiceOptions(
+            $friendlyName,
+            $codeLength,
+            $lookupEnabled,
+            $skipSmsToLandlines,
+            $dtmfInputRequired,
+            $ttsName,
+            $psd2Enabled,
+            $doNotShareWarningEnabled,
+            $customCodeEnabled,
+            $pushIncludeDate,
+            $pushApnCredentialSid,
+            $pushFcmCredentialSid,
+            $totpIssuer,
+            $totpTimeStep,
+            $totpCodeLength,
+            $totpSkew,
+            $defaultTemplateSid
+        );
     }
 
 }
 
-class CreateServiceOptions extends Options {
+class CreateServiceOptions extends Options
+    {
     /**
      * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
@@ -90,7 +168,27 @@ class CreateServiceOptions extends Options {
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
      */
-    public function __construct(int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE) {
+    public function __construct(
+        
+        int $codeLength = Values::NONE,
+        bool $lookupEnabled = Values::NONE,
+        bool $skipSmsToLandlines = Values::NONE,
+        bool $dtmfInputRequired = Values::NONE,
+        string $ttsName = Values::NONE,
+        bool $psd2Enabled = Values::NONE,
+        bool $doNotShareWarningEnabled = Values::NONE,
+        bool $customCodeEnabled = Values::NONE,
+        bool $pushIncludeDate = Values::NONE,
+        string $pushApnCredentialSid = Values::NONE,
+        string $pushFcmCredentialSid = Values::NONE,
+        string $totpIssuer = Values::NONE,
+        int $totpTimeStep = Values::NONE,
+        int $totpCodeLength = Values::NONE,
+        int $totpSkew = Values::NONE,
+        string $defaultTemplateSid = Values::NONE
+
+    )
+    {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
@@ -115,7 +213,8 @@ class CreateServiceOptions extends Options {
      * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * @return $this Fluent Builder
      */
-    public function setCodeLength(int $codeLength): self {
+    public function setCodeLength(int $codeLength): self
+    {
         $this->options['codeLength'] = $codeLength;
         return $this;
     }
@@ -126,7 +225,8 @@ class CreateServiceOptions extends Options {
      * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
      * @return $this Fluent Builder
      */
-    public function setLookupEnabled(bool $lookupEnabled): self {
+    public function setLookupEnabled(bool $lookupEnabled): self
+    {
         $this->options['lookupEnabled'] = $lookupEnabled;
         return $this;
     }
@@ -137,7 +237,8 @@ class CreateServiceOptions extends Options {
      * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
      * @return $this Fluent Builder
      */
-    public function setSkipSmsToLandlines(bool $skipSmsToLandlines): self {
+    public function setSkipSmsToLandlines(bool $skipSmsToLandlines): self
+    {
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
         return $this;
     }
@@ -148,7 +249,8 @@ class CreateServiceOptions extends Options {
      * @param bool $dtmfInputRequired Whether to ask the user to press a number before delivering the verify code in a phone call.
      * @return $this Fluent Builder
      */
-    public function setDtmfInputRequired(bool $dtmfInputRequired): self {
+    public function setDtmfInputRequired(bool $dtmfInputRequired): self
+    {
         $this->options['dtmfInputRequired'] = $dtmfInputRequired;
         return $this;
     }
@@ -159,7 +261,8 @@ class CreateServiceOptions extends Options {
      * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
      * @return $this Fluent Builder
      */
-    public function setTtsName(string $ttsName): self {
+    public function setTtsName(string $ttsName): self
+    {
         $this->options['ttsName'] = $ttsName;
         return $this;
     }
@@ -170,7 +273,8 @@ class CreateServiceOptions extends Options {
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
      * @return $this Fluent Builder
      */
-    public function setPsd2Enabled(bool $psd2Enabled): self {
+    public function setPsd2Enabled(bool $psd2Enabled): self
+    {
         $this->options['psd2Enabled'] = $psd2Enabled;
         return $this;
     }
@@ -181,7 +285,8 @@ class CreateServiceOptions extends Options {
      * @param bool $doNotShareWarningEnabled Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`
      * @return $this Fluent Builder
      */
-    public function setDoNotShareWarningEnabled(bool $doNotShareWarningEnabled): self {
+    public function setDoNotShareWarningEnabled(bool $doNotShareWarningEnabled): self
+    {
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
         return $this;
     }
@@ -192,7 +297,8 @@ class CreateServiceOptions extends Options {
      * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
      * @return $this Fluent Builder
      */
-    public function setCustomCodeEnabled(bool $customCodeEnabled): self {
+    public function setCustomCodeEnabled(bool $customCodeEnabled): self
+    {
         $this->options['customCodeEnabled'] = $customCodeEnabled;
         return $this;
     }
@@ -203,7 +309,8 @@ class CreateServiceOptions extends Options {
      * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead.
      * @return $this Fluent Builder
      */
-    public function setPushIncludeDate(bool $pushIncludeDate): self {
+    public function setPushIncludeDate(bool $pushIncludeDate): self
+    {
         $this->options['pushIncludeDate'] = $pushIncludeDate;
         return $this;
     }
@@ -214,7 +321,8 @@ class CreateServiceOptions extends Options {
      * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @return $this Fluent Builder
      */
-    public function setPushApnCredentialSid(string $pushApnCredentialSid): self {
+    public function setPushApnCredentialSid(string $pushApnCredentialSid): self
+    {
         $this->options['pushApnCredentialSid'] = $pushApnCredentialSid;
         return $this;
     }
@@ -225,7 +333,8 @@ class CreateServiceOptions extends Options {
      * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @return $this Fluent Builder
      */
-    public function setPushFcmCredentialSid(string $pushFcmCredentialSid): self {
+    public function setPushFcmCredentialSid(string $pushFcmCredentialSid): self
+    {
         $this->options['pushFcmCredentialSid'] = $pushFcmCredentialSid;
         return $this;
     }
@@ -236,7 +345,8 @@ class CreateServiceOptions extends Options {
      * @param string $totpIssuer Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI. Defaults to the service friendly name if not provided.
      * @return $this Fluent Builder
      */
-    public function setTotpIssuer(string $totpIssuer): self {
+    public function setTotpIssuer(string $totpIssuer): self
+    {
         $this->options['totpIssuer'] = $totpIssuer;
         return $this;
     }
@@ -247,7 +357,8 @@ class CreateServiceOptions extends Options {
      * @param int $totpTimeStep Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds
      * @return $this Fluent Builder
      */
-    public function setTotpTimeStep(int $totpTimeStep): self {
+    public function setTotpTimeStep(int $totpTimeStep): self
+    {
         $this->options['totpTimeStep'] = $totpTimeStep;
         return $this;
     }
@@ -258,7 +369,8 @@ class CreateServiceOptions extends Options {
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @return $this Fluent Builder
      */
-    public function setTotpCodeLength(int $totpCodeLength): self {
+    public function setTotpCodeLength(int $totpCodeLength): self
+    {
         $this->options['totpCodeLength'] = $totpCodeLength;
         return $this;
     }
@@ -269,7 +381,8 @@ class CreateServiceOptions extends Options {
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @return $this Fluent Builder
      */
-    public function setTotpSkew(int $totpSkew): self {
+    public function setTotpSkew(int $totpSkew): self
+    {
         $this->options['totpSkew'] = $totpSkew;
         return $this;
     }
@@ -280,7 +393,8 @@ class CreateServiceOptions extends Options {
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
      * @return $this Fluent Builder
      */
-    public function setDefaultTemplateSid(string $defaultTemplateSid): self {
+    public function setDefaultTemplateSid(string $defaultTemplateSid): self
+    {
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
         return $this;
     }
@@ -290,7 +404,8 @@ class CreateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.CreateServiceOptions ' . $options . ']';
     }
@@ -299,7 +414,8 @@ class CreateServiceOptions extends Options {
 
 
 
-class UpdateServiceOptions extends Options {
+class UpdateServiceOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
      * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
@@ -319,7 +435,28 @@ class UpdateServiceOptions extends Options {
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
      */
-    public function __construct(string $friendlyName = Values::NONE, int $codeLength = Values::NONE, bool $lookupEnabled = Values::NONE, bool $skipSmsToLandlines = Values::NONE, bool $dtmfInputRequired = Values::NONE, string $ttsName = Values::NONE, bool $psd2Enabled = Values::NONE, bool $doNotShareWarningEnabled = Values::NONE, bool $customCodeEnabled = Values::NONE, bool $pushIncludeDate = Values::NONE, string $pushApnCredentialSid = Values::NONE, string $pushFcmCredentialSid = Values::NONE, string $totpIssuer = Values::NONE, int $totpTimeStep = Values::NONE, int $totpCodeLength = Values::NONE, int $totpSkew = Values::NONE, string $defaultTemplateSid = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        int $codeLength = Values::NONE,
+        bool $lookupEnabled = Values::NONE,
+        bool $skipSmsToLandlines = Values::NONE,
+        bool $dtmfInputRequired = Values::NONE,
+        string $ttsName = Values::NONE,
+        bool $psd2Enabled = Values::NONE,
+        bool $doNotShareWarningEnabled = Values::NONE,
+        bool $customCodeEnabled = Values::NONE,
+        bool $pushIncludeDate = Values::NONE,
+        string $pushApnCredentialSid = Values::NONE,
+        string $pushFcmCredentialSid = Values::NONE,
+        string $totpIssuer = Values::NONE,
+        int $totpTimeStep = Values::NONE,
+        int $totpCodeLength = Values::NONE,
+        int $totpSkew = Values::NONE,
+        string $defaultTemplateSid = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
@@ -345,7 +482,8 @@ class UpdateServiceOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -356,7 +494,8 @@ class UpdateServiceOptions extends Options {
      * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * @return $this Fluent Builder
      */
-    public function setCodeLength(int $codeLength): self {
+    public function setCodeLength(int $codeLength): self
+    {
         $this->options['codeLength'] = $codeLength;
         return $this;
     }
@@ -367,7 +506,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
      * @return $this Fluent Builder
      */
-    public function setLookupEnabled(bool $lookupEnabled): self {
+    public function setLookupEnabled(bool $lookupEnabled): self
+    {
         $this->options['lookupEnabled'] = $lookupEnabled;
         return $this;
     }
@@ -378,7 +518,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
      * @return $this Fluent Builder
      */
-    public function setSkipSmsToLandlines(bool $skipSmsToLandlines): self {
+    public function setSkipSmsToLandlines(bool $skipSmsToLandlines): self
+    {
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
         return $this;
     }
@@ -389,7 +530,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $dtmfInputRequired Whether to ask the user to press a number before delivering the verify code in a phone call.
      * @return $this Fluent Builder
      */
-    public function setDtmfInputRequired(bool $dtmfInputRequired): self {
+    public function setDtmfInputRequired(bool $dtmfInputRequired): self
+    {
         $this->options['dtmfInputRequired'] = $dtmfInputRequired;
         return $this;
     }
@@ -400,7 +542,8 @@ class UpdateServiceOptions extends Options {
      * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
      * @return $this Fluent Builder
      */
-    public function setTtsName(string $ttsName): self {
+    public function setTtsName(string $ttsName): self
+    {
         $this->options['ttsName'] = $ttsName;
         return $this;
     }
@@ -411,7 +554,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
      * @return $this Fluent Builder
      */
-    public function setPsd2Enabled(bool $psd2Enabled): self {
+    public function setPsd2Enabled(bool $psd2Enabled): self
+    {
         $this->options['psd2Enabled'] = $psd2Enabled;
         return $this;
     }
@@ -422,7 +566,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**
      * @return $this Fluent Builder
      */
-    public function setDoNotShareWarningEnabled(bool $doNotShareWarningEnabled): self {
+    public function setDoNotShareWarningEnabled(bool $doNotShareWarningEnabled): self
+    {
         $this->options['doNotShareWarningEnabled'] = $doNotShareWarningEnabled;
         return $this;
     }
@@ -433,7 +578,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
      * @return $this Fluent Builder
      */
-    public function setCustomCodeEnabled(bool $customCodeEnabled): self {
+    public function setCustomCodeEnabled(bool $customCodeEnabled): self
+    {
         $this->options['customCodeEnabled'] = $customCodeEnabled;
         return $this;
     }
@@ -444,7 +590,8 @@ class UpdateServiceOptions extends Options {
      * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter.
      * @return $this Fluent Builder
      */
-    public function setPushIncludeDate(bool $pushIncludeDate): self {
+    public function setPushIncludeDate(bool $pushIncludeDate): self
+    {
         $this->options['pushIncludeDate'] = $pushIncludeDate;
         return $this;
     }
@@ -455,7 +602,8 @@ class UpdateServiceOptions extends Options {
      * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @return $this Fluent Builder
      */
-    public function setPushApnCredentialSid(string $pushApnCredentialSid): self {
+    public function setPushApnCredentialSid(string $pushApnCredentialSid): self
+    {
         $this->options['pushApnCredentialSid'] = $pushApnCredentialSid;
         return $this;
     }
@@ -466,7 +614,8 @@ class UpdateServiceOptions extends Options {
      * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @return $this Fluent Builder
      */
-    public function setPushFcmCredentialSid(string $pushFcmCredentialSid): self {
+    public function setPushFcmCredentialSid(string $pushFcmCredentialSid): self
+    {
         $this->options['pushFcmCredentialSid'] = $pushFcmCredentialSid;
         return $this;
     }
@@ -477,7 +626,8 @@ class UpdateServiceOptions extends Options {
      * @param string $totpIssuer Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI.
      * @return $this Fluent Builder
      */
-    public function setTotpIssuer(string $totpIssuer): self {
+    public function setTotpIssuer(string $totpIssuer): self
+    {
         $this->options['totpIssuer'] = $totpIssuer;
         return $this;
     }
@@ -488,7 +638,8 @@ class UpdateServiceOptions extends Options {
      * @param int $totpTimeStep Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds
      * @return $this Fluent Builder
      */
-    public function setTotpTimeStep(int $totpTimeStep): self {
+    public function setTotpTimeStep(int $totpTimeStep): self
+    {
         $this->options['totpTimeStep'] = $totpTimeStep;
         return $this;
     }
@@ -499,7 +650,8 @@ class UpdateServiceOptions extends Options {
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @return $this Fluent Builder
      */
-    public function setTotpCodeLength(int $totpCodeLength): self {
+    public function setTotpCodeLength(int $totpCodeLength): self
+    {
         $this->options['totpCodeLength'] = $totpCodeLength;
         return $this;
     }
@@ -510,7 +662,8 @@ class UpdateServiceOptions extends Options {
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @return $this Fluent Builder
      */
-    public function setTotpSkew(int $totpSkew): self {
+    public function setTotpSkew(int $totpSkew): self
+    {
         $this->options['totpSkew'] = $totpSkew;
         return $this;
     }
@@ -521,7 +674,8 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
      * @return $this Fluent Builder
      */
-    public function setDefaultTemplateSid(string $defaultTemplateSid): self {
+    public function setDefaultTemplateSid(string $defaultTemplateSid): self
+    {
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
         return $this;
     }
@@ -531,7 +685,8 @@ class UpdateServiceOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.UpdateServiceOptions ' . $options . ']';
     }

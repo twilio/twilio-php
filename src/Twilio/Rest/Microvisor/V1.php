@@ -28,7 +28,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Microvisor\V1\AppContext apps(string $sid)
  * @method \Twilio\Rest\Microvisor\V1\DeviceContext devices(string $sid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_apps;
     protected $_devices;
 
@@ -37,19 +38,22 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getApps(): AppList {
+    protected function getApps(): AppList
+    {
         if (!$this->_apps) {
             $this->_apps = new AppList($this);
         }
         return $this->_apps;
     }
 
-    protected function getDevices(): DeviceList {
+    protected function getDevices(): DeviceList
+    {
         if (!$this->_devices) {
             $this->_devices = new DeviceList($this);
         }
@@ -63,7 +67,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -80,7 +85,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -94,7 +100,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Microvisor.V1]';
     }
 }

@@ -18,22 +18,36 @@ namespace Twilio\Rest\Verify\V2\Service\Entity\Challenge;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class NotificationOptions {
+abstract class NotificationOptions
+{
     /**
-     * @param int $ttl How long, in seconds, the notification is valid. Can be an integer between 0 and 300. Default is 300. Delivery is attempted until the TTL elapses, even if the device is offline. 0 means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. 
+     * @param int $ttl How long, in seconds, the notification is valid. Can be an integer between 0 and 300. Default is 300. Delivery is attempted until the TTL elapses, even if the device is offline. 0 means that the notification delivery is attempted immediately, only once, and is not stored for future delivery.
      * @return CreateNotificationOptions Options builder
      */
-    public static function create(int $ttl = Values::NONE): CreateNotificationOptions {
-        return new CreateNotificationOptions($ttl);
+    public static function create(
+        
+        int $ttl = Values::NONE
+
+    ): CreateNotificationOptions
+    {
+        return new CreateNotificationOptions(
+            $ttl
+        );
     }
 
 }
 
-class CreateNotificationOptions extends Options {
+class CreateNotificationOptions extends Options
+    {
     /**
      * @param int $ttl How long, in seconds, the notification is valid. Can be an integer between 0 and 300. Default is 300. Delivery is attempted until the TTL elapses, even if the device is offline. 0 means that the notification delivery is attempted immediately, only once, and is not stored for future delivery.
      */
-    public function __construct(int $ttl = Values::NONE) {
+    public function __construct(
+        
+        int $ttl = Values::NONE
+
+    )
+    {
         $this->options['ttl'] = $ttl;
     }
 
@@ -43,7 +57,8 @@ class CreateNotificationOptions extends Options {
      * @param int $ttl How long, in seconds, the notification is valid. Can be an integer between 0 and 300. Default is 300. Delivery is attempted until the TTL elapses, even if the device is offline. 0 means that the notification delivery is attempted immediately, only once, and is not stored for future delivery.
      * @return $this Fluent Builder
      */
-    public function setTtl(int $ttl): self {
+    public function setTtl(int $ttl): self
+    {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -53,7 +68,8 @@ class CreateNotificationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.CreateNotificationOptions ' . $options . ']';
     }

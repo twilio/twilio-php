@@ -18,34 +18,57 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TaskChannelOptions {
+abstract class TaskChannelOptions
+{
     /**
-     * @param bool $channelOptimizedRouting Whether the Task Channel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized. 
+     * @param bool $channelOptimizedRouting Whether the Task Channel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      * @return CreateTaskChannelOptions Options builder
      */
-    public static function create(bool $channelOptimizedRouting = Values::NONE): CreateTaskChannelOptions {
-        return new CreateTaskChannelOptions($channelOptimizedRouting);
+    public static function create(
+        
+        bool $channelOptimizedRouting = Values::NONE
+
+    ): CreateTaskChannelOptions
+    {
+        return new CreateTaskChannelOptions(
+            $channelOptimizedRouting
+        );
     }
 
 
 
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long. 
-     * @param bool $channelOptimizedRouting Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized. 
+     * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
+     * @param bool $channelOptimizedRouting Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      * @return UpdateTaskChannelOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, bool $channelOptimizedRouting = Values::NONE): UpdateTaskChannelOptions {
-        return new UpdateTaskChannelOptions($friendlyName, $channelOptimizedRouting);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        bool $channelOptimizedRouting = Values::NONE
+
+    ): UpdateTaskChannelOptions
+    {
+        return new UpdateTaskChannelOptions(
+            $friendlyName,
+            $channelOptimizedRouting
+        );
     }
 
 }
 
-class CreateTaskChannelOptions extends Options {
+class CreateTaskChannelOptions extends Options
+    {
     /**
      * @param bool $channelOptimizedRouting Whether the Task Channel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      */
-    public function __construct(bool $channelOptimizedRouting = Values::NONE) {
+    public function __construct(
+        
+        bool $channelOptimizedRouting = Values::NONE
+
+    )
+    {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
     }
 
@@ -55,7 +78,8 @@ class CreateTaskChannelOptions extends Options {
      * @param bool $channelOptimizedRouting Whether the Task Channel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      * @return $this Fluent Builder
      */
-    public function setChannelOptimizedRouting(bool $channelOptimizedRouting): self {
+    public function setChannelOptimizedRouting(bool $channelOptimizedRouting): self
+    {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
         return $this;
     }
@@ -65,7 +89,8 @@ class CreateTaskChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.CreateTaskChannelOptions ' . $options . ']';
     }
@@ -74,12 +99,19 @@ class CreateTaskChannelOptions extends Options {
 
 
 
-class UpdateTaskChannelOptions extends Options {
+class UpdateTaskChannelOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
      * @param bool $channelOptimizedRouting Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      */
-    public function __construct(string $friendlyName = Values::NONE, bool $channelOptimizedRouting = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        bool $channelOptimizedRouting = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
     }
@@ -90,7 +122,8 @@ class UpdateTaskChannelOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -101,7 +134,8 @@ class UpdateTaskChannelOptions extends Options {
      * @param bool $channelOptimizedRouting Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.
      * @return $this Fluent Builder
      */
-    public function setChannelOptimizedRouting(bool $channelOptimizedRouting): self {
+    public function setChannelOptimizedRouting(bool $channelOptimizedRouting): self
+    {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
         return $this;
     }
@@ -111,7 +145,8 @@ class UpdateTaskChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateTaskChannelOptions ' . $options . ']';
     }

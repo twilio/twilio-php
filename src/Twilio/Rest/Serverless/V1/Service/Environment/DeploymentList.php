@@ -24,7 +24,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class DeploymentList extends ListResource {
+class DeploymentList extends ListResource
+    {
     /**
      * Construct the DeploymentList
      *
@@ -32,13 +33,28 @@ class DeploymentList extends ListResource {
      * @param string $serviceSid The SID of the Service to create the Deployment resource under.
      * @param string $environmentSid The SID of the Environment for the Deployment.
      */
-    public function __construct(Version $version, string $serviceSid , string $environmentSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $environmentSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'environmentSid' =>
+            $environmentSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Deployments';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Environments/' . \rawurlencode($environmentSid)
+        .'/Deployments';
     }
 
     /**
@@ -48,22 +64,26 @@ class DeploymentList extends ListResource {
      * @return DeploymentInstance Created DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): DeploymentInstance {
+    public function create(array $options = []): DeploymentInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'BuildSid' => $options['buildSid'],
+            'BuildSid' =>
+                $options['buildSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new DeploymentInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['environmentSid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['environmentSid'],
         );
     }
+
 
     /**
      * Reads DeploymentInstance records from the API as a list.
@@ -80,7 +100,8 @@ class DeploymentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DeploymentInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -102,7 +123,8 @@ class DeploymentList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -119,7 +141,12 @@ class DeploymentList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return DeploymentPage Page of DeploymentInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): DeploymentPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): DeploymentPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -139,7 +166,8 @@ class DeploymentList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return DeploymentPage Page of DeploymentInstance
      */
-    public function getPage(string $targetUrl): DeploymentPage {
+    public function getPage(string $targetUrl): DeploymentPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,8 +182,17 @@ class DeploymentList extends ListResource {
      *
      * @param string $sid The SID that identifies the Deployment resource to fetch.
      */
-    public function getContext(string $sid): DeploymentContext {
-        return new DeploymentContext($this->version, $this->solution['serviceSid'], $this->solution['environmentSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): DeploymentContext
+    {
+        return new DeploymentContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['environmentSid'],
+            $sid
+        );
     }
 
     /**
@@ -163,7 +200,8 @@ class DeploymentList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Serverless.V1.DeploymentList]';
     }
 }

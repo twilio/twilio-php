@@ -23,7 +23,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ReservationList extends ListResource {
+class ReservationList extends ListResource
+    {
     /**
      * Construct the ReservationList
      *
@@ -31,13 +32,28 @@ class ReservationList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace with the TaskReservation resource to fetch.
      * @param string $taskSid The SID of the reserved Task resource with the TaskReservation resource to fetch.
      */
-    public function __construct(Version $version, string $workspaceSid , string $taskSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        ,
+        string $taskSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, 'taskSid' => $taskSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        'taskSid' =>
+            $taskSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Reservations';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Tasks/' . \rawurlencode($taskSid)
+        .'/Reservations';
     }
 
     /**
@@ -56,7 +72,8 @@ class ReservationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ReservationInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +96,8 @@ class ReservationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,12 +114,20 @@ class ReservationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ReservationPage Page of ReservationInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ReservationPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ReservationPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'ReservationStatus' => $options['reservationStatus'],
-            'WorkerSid' => $options['workerSid'],
+            'ReservationStatus' =>
+                $options['reservationStatus'],
+            'WorkerSid' =>
+                $options['workerSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -119,7 +145,8 @@ class ReservationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ReservationPage Page of ReservationInstance
      */
-    public function getPage(string $targetUrl): ReservationPage {
+    public function getPage(string $targetUrl): ReservationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,8 +161,17 @@ class ReservationList extends ListResource {
      *
      * @param string $sid The SID of the TaskReservation resource to fetch.
      */
-    public function getContext(string $sid): ReservationContext {
-        return new ReservationContext($this->version, $this->solution['workspaceSid'], $this->solution['taskSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ReservationContext
+    {
+        return new ReservationContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $this->solution['taskSid'],
+            $sid
+        );
     }
 
     /**
@@ -143,7 +179,8 @@ class ReservationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.ReservationList]';
     }
 }

@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class IpAddressContext extends InstanceContext {
+class IpAddressContext extends InstanceContext
+    {
     /**
      * Initialize the IpAddressContext
      *
@@ -33,13 +34,29 @@ class IpAddressContext extends InstanceContext {
      * @param string $ipAccessControlListSid The IpAccessControlList Sid with which to associate the created IpAddress resource.
      * @param string $sid A 34 character string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $ipAccessControlListSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $ipAccessControlListSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'ipAccessControlListSid' => $ipAccessControlListSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'ipAccessControlListSid' =>
+            $ipAccessControlListSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . \rawurlencode($ipAccessControlListSid) . '/IpAddresses/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SIP/IpAccessControlLists/' . \rawurlencode($ipAccessControlListSid)
+        .'/IpAddresses/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -48,9 +65,12 @@ class IpAddressContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the IpAddressInstance
@@ -58,17 +78,20 @@ class IpAddressContext extends InstanceContext {
      * @return IpAddressInstance Fetched IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): IpAddressInstance {
+    public function fetch(): IpAddressInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new IpAddressInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['ipAccessControlListSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['ipAccessControlListSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the IpAddressInstance
@@ -77,32 +100,39 @@ class IpAddressContext extends InstanceContext {
      * @return IpAddressInstance Updated IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): IpAddressInstance {
+    public function update(array $options = []): IpAddressInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'IpAddress' => $options['ipAddress'],
-            'FriendlyName' => $options['friendlyName'],
-            'CidrPrefixLength' => $options['cidrPrefixLength'],
+            'IpAddress' =>
+                $options['ipAddress'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'CidrPrefixLength' =>
+                $options['cidrPrefixLength'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new IpAddressInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['ipAccessControlListSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['ipAccessControlListSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

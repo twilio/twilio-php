@@ -30,7 +30,8 @@ use Twilio\Rest\Conversations\V1\Service\Configuration\WebhookList;
  * @method \Twilio\Rest\Conversations\V1\Service\Configuration\NotificationContext notifications()
  * @method \Twilio\Rest\Conversations\V1\Service\Configuration\WebhookContext webhooks()
  */
-class ConfigurationList extends ListResource {
+class ConfigurationList extends ListResource
+    {
     protected $_notifications = null;
     protected $_webhooks = null;
 
@@ -40,45 +41,61 @@ class ConfigurationList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $chatServiceSid The SID of the Service configuration resource to fetch.
      */
-    public function __construct(Version $version, string $chatServiceSid ) {
+    public function __construct(
+        Version $version,
+        string $chatServiceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['chatServiceSid' => $chatServiceSid, ];
+        $this->solution = [
+        'chatServiceSid' =>
+            $chatServiceSid,
+        
+        ];
     }
 
     /**
      * Constructs a ConfigurationContext
      */
-    public function getContext(): ConfigurationContext {
-        return new ConfigurationContext($this->version, $this->solution['chatServiceSid']);
+    public function getContext(
+        
+    ): ConfigurationContext
+    {
+        return new ConfigurationContext(
+            $this->version,
+            $this->solution['chatServiceSid']
+        );
     }
 
     /**
      * Access the notifications
      */
-    protected function getNotifications(): NotificationList {
+    protected function getNotifications(): NotificationList
+    {
         if (!$this->_notifications) {
             $this->_notifications = new NotificationList(
-                $this->version
-                , $this->solution['chatServiceSid']
+                $this->version,
+                $this->solution['chatServiceSid']
+                
             );
         }
-
         return $this->_notifications;
     }
 
     /**
      * Access the webhooks
      */
-    protected function getWebhooks(): WebhookList {
+    protected function getWebhooks(): WebhookList
+    {
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList(
-                $this->version
-                , $this->solution['chatServiceSid']
+                $this->version,
+                $this->solution['chatServiceSid']
+                
             );
         }
-
         return $this->_webhooks;
     }
 
@@ -89,7 +106,8 @@ class ConfigurationList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -106,7 +124,8 @@ class ConfigurationList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -120,7 +139,8 @@ class ConfigurationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.ConfigurationList]';
     }
 }

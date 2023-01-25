@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SyncListPermissionList extends ListResource {
+class SyncListPermissionList extends ListResource
+    {
     /**
      * Construct the SyncListPermissionList
      *
@@ -30,13 +31,28 @@ class SyncListPermissionList extends ListResource {
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to delete.
      * @param string $listSid The SID of the Sync List with the Sync List Permission resource to delete. Can be the Sync List resource's `sid` or its `unique_name`.
      */
-    public function __construct(Version $version, string $serviceSid , string $listSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $listSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'listSid' => $listSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'listSid' =>
+            $listSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Permissions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Lists/' . \rawurlencode($listSid)
+        .'/Permissions';
     }
 
     /**
@@ -54,7 +70,8 @@ class SyncListPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncListPermissionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class SyncListPermissionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class SyncListPermissionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncListPermissionPage Page of SyncListPermissionInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncListPermissionPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SyncListPermissionPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class SyncListPermissionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncListPermissionPage Page of SyncListPermissionInstance
      */
-    public function getPage(string $targetUrl): SyncListPermissionPage {
+    public function getPage(string $targetUrl): SyncListPermissionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class SyncListPermissionList extends ListResource {
      *
      * @param string $identity The application-defined string that uniquely identifies the User's Sync List Permission resource to delete.
      */
-    public function getContext(string $identity): SyncListPermissionContext {
-        return new SyncListPermissionContext($this->version, $this->solution['serviceSid'], $this->solution['listSid'], $identity);
+    public function getContext(
+        string $identity
+        
+    ): SyncListPermissionContext
+    {
+        return new SyncListPermissionContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['listSid'],
+            $identity
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class SyncListPermissionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Sync.V1.SyncListPermissionList]';
     }
 }

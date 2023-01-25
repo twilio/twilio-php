@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class SinkList extends ListResource {
+class SinkList extends ListResource
+    {
     /**
      * Construct the SinkList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Sinks';
     }
@@ -45,24 +49,30 @@ class SinkList extends ListResource {
      *
      * @param string $description A human readable description for the Sink **This value should not contain PII.**
      * @param array $sinkConfiguration The information required for Twilio to connect to the provided Sink encoded as JSON.
-     * @param string $sinkType 
+     * @param string $sinkType
      * @return SinkInstance Created SinkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $description, array $sinkConfiguration, string $sinkType): SinkInstance {
+    public function create(string $description, array $sinkConfiguration, string $sinkType): SinkInstance
+    {
+
         $data = Values::of([
-            'Description' => $description,
-            'SinkConfiguration' => Serialize::jsonObject($sinkConfiguration),
-            'SinkType' => $sinkType,
+            'Description' =>
+                $description,
+            'SinkConfiguration' =>
+                Serialize::jsonObject($sinkConfiguration),
+            'SinkType' =>
+                $sinkType,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SinkInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads SinkInstance records from the API as a list.
@@ -80,7 +90,8 @@ class SinkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SinkInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -103,7 +114,8 @@ class SinkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -120,12 +132,20 @@ class SinkList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SinkPage Page of SinkInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SinkPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SinkPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'InUse' => Serialize::booleanToString($options['inUse']),
-            'Status' => $options['status'],
+            'InUse' =>
+                Serialize::booleanToString($options['inUse']),
+            'Status' =>
+                $options['status'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -143,7 +163,8 @@ class SinkList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SinkPage Page of SinkInstance
      */
-    public function getPage(string $targetUrl): SinkPage {
+    public function getPage(string $targetUrl): SinkPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -158,8 +179,15 @@ class SinkList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this Sink.
      */
-    public function getContext(string $sid): SinkContext {
-        return new SinkContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): SinkContext
+    {
+        return new SinkContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -167,7 +195,8 @@ class SinkList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.SinkList]';
     }
 }

@@ -37,7 +37,8 @@ use Twilio\Rest\Events\V1\Sink\SinkValidateList;
  * @property string $url
  * @property array $links
  */
-class SinkInstance extends InstanceResource {
+class SinkInstance extends InstanceResource
+{
     protected $_sinkTest;
     protected $_sinkValidate;
 
@@ -48,7 +49,8 @@ class SinkInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this Sink.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class SinkInstance extends InstanceResource {
      *
      * @return SinkContext Context for this SinkInstance
      */
-    protected function proxy(): SinkContext {
+    protected function proxy(): SinkContext
+    {
         if (!$this->context) {
             $this->context = new SinkContext(
                 $this->version,
@@ -90,7 +93,9 @@ class SinkInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,7 +105,9 @@ class SinkInstance extends InstanceResource {
      * @return SinkInstance Fetched SinkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SinkInstance {
+    public function fetch(): SinkInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -111,21 +118,25 @@ class SinkInstance extends InstanceResource {
      * @return SinkInstance Updated SinkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $description): SinkInstance {
+    public function update(string $description): SinkInstance
+    {
+
         return $this->proxy()->update($description);
     }
 
     /**
      * Access the sinkTest
      */
-    protected function getSinkTest(): SinkTestList {
+    protected function getSinkTest(): SinkTestList
+    {
         return $this->proxy()->sinkTest;
     }
 
     /**
      * Access the sinkValidate
      */
-    protected function getSinkValidate(): SinkValidateList {
+    protected function getSinkValidate(): SinkValidateList
+    {
         return $this->proxy()->sinkValidate;
     }
 
@@ -136,7 +147,8 @@ class SinkInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -154,7 +166,8 @@ class SinkInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class FlexFlowContext extends InstanceContext {
+class FlexFlowContext extends InstanceContext
+    {
     /**
      * Initialize the FlexFlowContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Flex Flow resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/FlexFlows/' . \rawurlencode($sid) . '';
+        $this->uri = '/FlexFlows/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +56,12 @@ class FlexFlowContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the FlexFlowInstance
@@ -57,15 +69,18 @@ class FlexFlowContext extends InstanceContext {
      * @return FlexFlowInstance Fetched FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlexFlowInstance {
+    public function fetch(): FlexFlowInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlexFlowInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the FlexFlowInstance
@@ -74,44 +89,65 @@ class FlexFlowContext extends InstanceContext {
      * @return FlexFlowInstance Updated FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FlexFlowInstance {
+    public function update(array $options = []): FlexFlowInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'ChatServiceSid' => $options['chatServiceSid'],
-            'ChannelType' => $options['channelType'],
-            'ContactIdentity' => $options['contactIdentity'],
-            'Enabled' => Serialize::booleanToString($options['enabled']),
-            'IntegrationType' => $options['integrationType'],
-            'Integration.FlowSid' => $options['integrationFlowSid'],
-            'Integration.Url' => $options['integrationUrl'],
-            'Integration.WorkspaceSid' => $options['integrationWorkspaceSid'],
-            'Integration.WorkflowSid' => $options['integrationWorkflowSid'],
-            'Integration.Channel' => $options['integrationChannel'],
-            'Integration.Timeout' => $options['integrationTimeout'],
-            'Integration.Priority' => $options['integrationPriority'],
-            'Integration.CreationOnMessage' => Serialize::booleanToString($options['integrationCreationOnMessage']),
-            'LongLived' => Serialize::booleanToString($options['longLived']),
-            'JanitorEnabled' => Serialize::booleanToString($options['janitorEnabled']),
-            'Integration.RetryCount' => $options['integrationRetryCount'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'ChatServiceSid' =>
+                $options['chatServiceSid'],
+            'ChannelType' =>
+                $options['channelType'],
+            'ContactIdentity' =>
+                $options['contactIdentity'],
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
+            'IntegrationType' =>
+                $options['integrationType'],
+            'Integration.FlowSid' =>
+                $options['integrationFlowSid'],
+            'Integration.Url' =>
+                $options['integrationUrl'],
+            'Integration.WorkspaceSid' =>
+                $options['integrationWorkspaceSid'],
+            'Integration.WorkflowSid' =>
+                $options['integrationWorkflowSid'],
+            'Integration.Channel' =>
+                $options['integrationChannel'],
+            'Integration.Timeout' =>
+                $options['integrationTimeout'],
+            'Integration.Priority' =>
+                $options['integrationPriority'],
+            'Integration.CreationOnMessage' =>
+                Serialize::booleanToString($options['integrationCreationOnMessage']),
+            'LongLived' =>
+                Serialize::booleanToString($options['longLived']),
+            'JanitorEnabled' =>
+                Serialize::booleanToString($options['janitorEnabled']),
+            'Integration.RetryCount' =>
+                $options['integrationRetryCount'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlexFlowInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

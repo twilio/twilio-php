@@ -18,29 +18,60 @@ namespace Twilio\Rest\Lookups\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class PhoneNumberOptions {
+abstract class PhoneNumberOptions
+{
     /**
-     * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match. 
-     * @param string $countryCode The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. 
-     * @param string $firstName User’s first name. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $lastName User’s last name. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $addressLine1 User’s first address line. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $addressLine2 User’s second address line. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $city User’s city. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $state User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $postalCode User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $addressCountryCode User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $nationalId User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests. 
-     * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests. 
+     * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match.
+     * @param string $countryCode The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format.
+     * @param string $firstName User’s first name. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $lastName User’s last name. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $addressLine1 User’s first address line. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $addressLine2 User’s second address line. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $city User’s city. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $state User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $postalCode User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $addressCountryCode User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $nationalId User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests.
+     * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests.
      * @return FetchPhoneNumberOptions Options builder
      */
-    public static function fetch(string $fields = Values::NONE, string $countryCode = Values::NONE, string $firstName = Values::NONE, string $lastName = Values::NONE, string $addressLine1 = Values::NONE, string $addressLine2 = Values::NONE, string $city = Values::NONE, string $state = Values::NONE, string $postalCode = Values::NONE, string $addressCountryCode = Values::NONE, string $nationalId = Values::NONE, string $dateOfBirth = Values::NONE): FetchPhoneNumberOptions {
-        return new FetchPhoneNumberOptions($fields, $countryCode, $firstName, $lastName, $addressLine1, $addressLine2, $city, $state, $postalCode, $addressCountryCode, $nationalId, $dateOfBirth);
+    public static function fetch(
+        
+        string $fields = Values::NONE,
+        string $countryCode = Values::NONE,
+        string $firstName = Values::NONE,
+        string $lastName = Values::NONE,
+        string $addressLine1 = Values::NONE,
+        string $addressLine2 = Values::NONE,
+        string $city = Values::NONE,
+        string $state = Values::NONE,
+        string $postalCode = Values::NONE,
+        string $addressCountryCode = Values::NONE,
+        string $nationalId = Values::NONE,
+        string $dateOfBirth = Values::NONE
+
+    ): FetchPhoneNumberOptions
+    {
+        return new FetchPhoneNumberOptions(
+            $fields,
+            $countryCode,
+            $firstName,
+            $lastName,
+            $addressLine1,
+            $addressLine2,
+            $city,
+            $state,
+            $postalCode,
+            $addressCountryCode,
+            $nationalId,
+            $dateOfBirth
+        );
     }
 
 }
 
-class FetchPhoneNumberOptions extends Options {
+class FetchPhoneNumberOptions extends Options
+    {
     /**
      * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match.
      * @param string $countryCode The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format.
@@ -55,7 +86,23 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $nationalId User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests.
      * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests.
      */
-    public function __construct(string $fields = Values::NONE, string $countryCode = Values::NONE, string $firstName = Values::NONE, string $lastName = Values::NONE, string $addressLine1 = Values::NONE, string $addressLine2 = Values::NONE, string $city = Values::NONE, string $state = Values::NONE, string $postalCode = Values::NONE, string $addressCountryCode = Values::NONE, string $nationalId = Values::NONE, string $dateOfBirth = Values::NONE) {
+    public function __construct(
+        
+        string $fields = Values::NONE,
+        string $countryCode = Values::NONE,
+        string $firstName = Values::NONE,
+        string $lastName = Values::NONE,
+        string $addressLine1 = Values::NONE,
+        string $addressLine2 = Values::NONE,
+        string $city = Values::NONE,
+        string $state = Values::NONE,
+        string $postalCode = Values::NONE,
+        string $addressCountryCode = Values::NONE,
+        string $nationalId = Values::NONE,
+        string $dateOfBirth = Values::NONE
+
+    )
+    {
         $this->options['fields'] = $fields;
         $this->options['countryCode'] = $countryCode;
         $this->options['firstName'] = $firstName;
@@ -76,7 +123,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match.
      * @return $this Fluent Builder
      */
-    public function setFields(string $fields): self {
+    public function setFields(string $fields): self
+    {
         $this->options['fields'] = $fields;
         return $this;
     }
@@ -87,7 +135,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $countryCode The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format.
      * @return $this Fluent Builder
      */
-    public function setCountryCode(string $countryCode): self {
+    public function setCountryCode(string $countryCode): self
+    {
         $this->options['countryCode'] = $countryCode;
         return $this;
     }
@@ -98,7 +147,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $firstName User’s first name. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setFirstName(string $firstName): self {
+    public function setFirstName(string $firstName): self
+    {
         $this->options['firstName'] = $firstName;
         return $this;
     }
@@ -109,7 +159,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $lastName User’s last name. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setLastName(string $lastName): self {
+    public function setLastName(string $lastName): self
+    {
         $this->options['lastName'] = $lastName;
         return $this;
     }
@@ -120,7 +171,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addressLine1 User’s first address line. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setAddressLine1(string $addressLine1): self {
+    public function setAddressLine1(string $addressLine1): self
+    {
         $this->options['addressLine1'] = $addressLine1;
         return $this;
     }
@@ -131,7 +183,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addressLine2 User’s second address line. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setAddressLine2(string $addressLine2): self {
+    public function setAddressLine2(string $addressLine2): self
+    {
         $this->options['addressLine2'] = $addressLine2;
         return $this;
     }
@@ -142,7 +195,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $city User’s city. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setCity(string $city): self {
+    public function setCity(string $city): self
+    {
         $this->options['city'] = $city;
         return $this;
     }
@@ -153,7 +207,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $state User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setState(string $state): self {
+    public function setState(string $state): self
+    {
         $this->options['state'] = $state;
         return $this;
     }
@@ -164,7 +219,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $postalCode User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setPostalCode(string $postalCode): self {
+    public function setPostalCode(string $postalCode): self
+    {
         $this->options['postalCode'] = $postalCode;
         return $this;
     }
@@ -175,7 +231,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $addressCountryCode User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setAddressCountryCode(string $addressCountryCode): self {
+    public function setAddressCountryCode(string $addressCountryCode): self
+    {
         $this->options['addressCountryCode'] = $addressCountryCode;
         return $this;
     }
@@ -186,7 +243,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $nationalId User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setNationalId(string $nationalId): self {
+    public function setNationalId(string $nationalId): self
+    {
         $this->options['nationalId'] = $nationalId;
         return $this;
     }
@@ -197,7 +255,8 @@ class FetchPhoneNumberOptions extends Options {
      * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests.
      * @return $this Fluent Builder
      */
-    public function setDateOfBirth(string $dateOfBirth): self {
+    public function setDateOfBirth(string $dateOfBirth): self
+    {
         $this->options['dateOfBirth'] = $dateOfBirth;
         return $this;
     }
@@ -207,7 +266,8 @@ class FetchPhoneNumberOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Lookups.V2.FetchPhoneNumberOptions ' . $options . ']';
     }

@@ -18,26 +18,43 @@ namespace Twilio\Rest\Routes\V2;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SipDomainOptions {
+abstract class SipDomainOptions
+{
 
     /**
-     * @param string $voiceRegion  
-     * @param string $friendlyName  
+     * @param string $voiceRegion 
+     * @param string $friendlyName 
      * @return UpdateSipDomainOptions Options builder
      */
-    public static function update(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE): UpdateSipDomainOptions {
-        return new UpdateSipDomainOptions($voiceRegion, $friendlyName);
+    public static function update(
+        
+        string $voiceRegion = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): UpdateSipDomainOptions
+    {
+        return new UpdateSipDomainOptions(
+            $voiceRegion,
+            $friendlyName
+        );
     }
 
 }
 
 
-class UpdateSipDomainOptions extends Options {
+class UpdateSipDomainOptions extends Options
+    {
     /**
      * @param string $voiceRegion 
      * @param string $friendlyName 
      */
-    public function __construct(string $voiceRegion = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $voiceRegion = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['voiceRegion'] = $voiceRegion;
         $this->options['friendlyName'] = $friendlyName;
     }
@@ -48,7 +65,8 @@ class UpdateSipDomainOptions extends Options {
      * @param string $voiceRegion 
      * @return $this Fluent Builder
      */
-    public function setVoiceRegion(string $voiceRegion): self {
+    public function setVoiceRegion(string $voiceRegion): self
+    {
         $this->options['voiceRegion'] = $voiceRegion;
         return $this;
     }
@@ -59,7 +77,8 @@ class UpdateSipDomainOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -69,7 +88,8 @@ class UpdateSipDomainOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Routes.V2.UpdateSipDomainOptions ' . $options . ']';
     }

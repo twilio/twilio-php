@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property string $ttl
  * @property string $username
  */
-class TokenInstance extends InstanceResource {
+class TokenInstance extends InstanceResource
+{
     /**
      * Initialize the TokenInstance
      *
@@ -41,7 +42,8 @@ class TokenInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, array $payload, string $accountSid) {
+    public function __construct(Version $version, array $payload, string $accountSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -65,7 +67,8 @@ class TokenInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -83,7 +86,8 @@ class TokenInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.TokenInstance]';
     }
 }

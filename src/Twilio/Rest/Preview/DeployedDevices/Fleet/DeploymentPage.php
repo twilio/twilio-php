@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class DeploymentPage extends Page {
+class DeploymentPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class DeploymentPage extends Page {
      * @param array $payload Payload response from the API
      * @return DeploymentInstance \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentInstance
      */
-    public function buildInstance(array $payload): DeploymentInstance {
+    public function buildInstance(array $payload): DeploymentInstance
+    {
         return new DeploymentInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
@@ -45,7 +48,8 @@ class DeploymentPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.DeployedDevices.DeploymentPage]';
     }
 }

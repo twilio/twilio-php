@@ -43,7 +43,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList;
  * @property string $url
  * @property array $links
  */
-class WorkflowInstance extends InstanceResource {
+class WorkflowInstance extends InstanceResource
+{
     protected $_statistics;
     protected $_cumulativeStatistics;
     protected $_realTimeStatistics;
@@ -56,7 +57,8 @@ class WorkflowInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace that the new Workflow to create belongs to.
      * @param string $sid The SID of the Workflow resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +87,8 @@ class WorkflowInstance extends InstanceResource {
      *
      * @return WorkflowContext Context for this WorkflowInstance
      */
-    protected function proxy(): WorkflowContext {
+    protected function proxy(): WorkflowContext
+    {
         if (!$this->context) {
             $this->context = new WorkflowContext(
                 $this->version,
@@ -103,7 +106,9 @@ class WorkflowInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -113,7 +118,9 @@ class WorkflowInstance extends InstanceResource {
      * @return WorkflowInstance Fetched WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WorkflowInstance {
+    public function fetch(): WorkflowInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -124,28 +131,33 @@ class WorkflowInstance extends InstanceResource {
      * @return WorkflowInstance Updated WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkflowInstance {
+    public function update(array $options = []): WorkflowInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): WorkflowStatisticsList {
+    protected function getStatistics(): WorkflowStatisticsList
+    {
         return $this->proxy()->statistics;
     }
 
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): WorkflowCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): WorkflowCumulativeStatisticsList
+    {
         return $this->proxy()->cumulativeStatistics;
     }
 
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): WorkflowRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): WorkflowRealTimeStatisticsList
+    {
         return $this->proxy()->realTimeStatistics;
     }
 
@@ -156,7 +168,8 @@ class WorkflowInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -174,7 +187,8 @@ class WorkflowInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

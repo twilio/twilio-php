@@ -25,20 +25,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class MessageList extends ListResource {
+class MessageList extends ListResource
+    {
     /**
      * Construct the MessageList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Messages.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Messages.json';
     }
 
     /**
@@ -49,42 +59,67 @@ class MessageList extends ListResource {
      * @return MessageInstance Created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $to, array $options = []): MessageInstance {
+    public function create(string $to, array $options = []): MessageInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'To' => $to,
-            'StatusCallback' => $options['statusCallback'],
-            'ApplicationSid' => $options['applicationSid'],
-            'MaxPrice' => $options['maxPrice'],
-            'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
-            'Attempt' => $options['attempt'],
-            'ValidityPeriod' => $options['validityPeriod'],
-            'ForceDelivery' => Serialize::booleanToString($options['forceDelivery']),
-            'ContentRetention' => $options['contentRetention'],
-            'AddressRetention' => $options['addressRetention'],
-            'SmartEncoded' => Serialize::booleanToString($options['smartEncoded']),
-            'PersistentAction' => Serialize::map($options['persistentAction'], function($e) { return $e; }),
-            'ShortenUrls' => Serialize::booleanToString($options['shortenUrls']),
-            'ScheduleType' => $options['scheduleType'],
-            'SendAt' => Serialize::iso8601DateTime($options['sendAt']),
-            'SendAsMms' => Serialize::booleanToString($options['sendAsMms']),
-            'ContentSid' => $options['contentSid'],
-            'ContentVariables' => $options['contentVariables'],
-            'From' => $options['from'],
-            'MessagingServiceSid' => $options['messagingServiceSid'],
-            'Body' => $options['body'],
-            'MediaUrl' => Serialize::map($options['mediaUrl'], function($e) { return $e; }),
+            'To' =>
+                $to,
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'ApplicationSid' =>
+                $options['applicationSid'],
+            'MaxPrice' =>
+                $options['maxPrice'],
+            'ProvideFeedback' =>
+                Serialize::booleanToString($options['provideFeedback']),
+            'Attempt' =>
+                $options['attempt'],
+            'ValidityPeriod' =>
+                $options['validityPeriod'],
+            'ForceDelivery' =>
+                Serialize::booleanToString($options['forceDelivery']),
+            'ContentRetention' =>
+                $options['contentRetention'],
+            'AddressRetention' =>
+                $options['addressRetention'],
+            'SmartEncoded' =>
+                Serialize::booleanToString($options['smartEncoded']),
+            'PersistentAction' =>
+                Serialize::map($options['persistentAction'], function ($e) { return $e; }),
+            'ShortenUrls' =>
+                Serialize::booleanToString($options['shortenUrls']),
+            'ScheduleType' =>
+                $options['scheduleType'],
+            'SendAt' =>
+                Serialize::iso8601DateTime($options['sendAt']),
+            'SendAsMms' =>
+                Serialize::booleanToString($options['sendAsMms']),
+            'ContentSid' =>
+                $options['contentSid'],
+            'ContentVariables' =>
+                $options['contentVariables'],
+            'From' =>
+                $options['from'],
+            'MessagingServiceSid' =>
+                $options['messagingServiceSid'],
+            'Body' =>
+                $options['body'],
+            'MediaUrl' =>
+                Serialize::map($options['mediaUrl'], function ($e) { return $e; }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new MessageInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Reads MessageInstance records from the API as a list.
@@ -102,7 +137,8 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MessageInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -125,7 +161,8 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -142,15 +179,26 @@ class MessageList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MessagePage Page of MessageInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MessagePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'To' => $options['to'],
-            'From' => $options['from'],
-            'DateSent<' => Serialize::iso8601DateTime($options['dateSentBefore']),
-            'DateSent' => Serialize::iso8601DateTime($options['dateSent']),
-            'DateSent>' => Serialize::iso8601DateTime($options['dateSentAfter']),
+            'To' =>
+                $options['to'],
+            'From' =>
+                $options['from'],
+            'DateSent<' =>
+                Serialize::iso8601DateTime($options['dateSentBefore']),
+            'DateSent' =>
+                Serialize::iso8601DateTime($options['dateSent']),
+            'DateSent>' =>
+                Serialize::iso8601DateTime($options['dateSentAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -168,7 +216,8 @@ class MessageList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MessagePage Page of MessageInstance
      */
-    public function getPage(string $targetUrl): MessagePage {
+    public function getPage(string $targetUrl): MessagePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -183,8 +232,16 @@ class MessageList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Message resource to delete.
      */
-    public function getContext(string $sid): MessageContext {
-        return new MessageContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): MessageContext
+    {
+        return new MessageContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -192,7 +249,8 @@ class MessageList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.MessageList]';
     }
 }

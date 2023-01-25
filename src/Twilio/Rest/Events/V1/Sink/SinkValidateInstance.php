@@ -26,7 +26,8 @@ use Twilio\Version;
 /**
  * @property string $result
  */
-class SinkValidateInstance extends InstanceResource {
+class SinkValidateInstance extends InstanceResource
+{
     /**
      * Initialize the SinkValidateInstance
      *
@@ -34,7 +35,8 @@ class SinkValidateInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies the Sink being validated.
      */
-    public function __construct(Version $version, array $payload, string $sid) {
+    public function __construct(Version $version, array $payload, string $sid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -52,7 +54,8 @@ class SinkValidateInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -70,7 +73,8 @@ class SinkValidateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.SinkValidateInstance]';
     }
 }

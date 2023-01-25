@@ -45,7 +45,8 @@ use Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList;
  * @property string $url
  * @property array $links
  */
-class ChannelInstance extends InstanceResource {
+class ChannelInstance extends InstanceResource
+{
     protected $_members;
     protected $_invites;
     protected $_webhooks;
@@ -59,7 +60,8 @@ class ChannelInstance extends InstanceResource {
      * @param string $serviceSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -89,7 +91,8 @@ class ChannelInstance extends InstanceResource {
      *
      * @return ChannelContext Context for this ChannelInstance
      */
-    protected function proxy(): ChannelContext {
+    protected function proxy(): ChannelContext
+    {
         if (!$this->context) {
             $this->context = new ChannelContext(
                 $this->version,
@@ -108,7 +111,9 @@ class ChannelInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         return $this->proxy()->delete($options);
     }
 
@@ -118,7 +123,9 @@ class ChannelInstance extends InstanceResource {
      * @return ChannelInstance Fetched ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ChannelInstance {
+    public function fetch(): ChannelInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -129,35 +136,41 @@ class ChannelInstance extends InstanceResource {
      * @return ChannelInstance Updated ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ChannelInstance {
+    public function update(array $options = []): ChannelInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the members
      */
-    protected function getMembers(): MemberList {
+    protected function getMembers(): MemberList
+    {
         return $this->proxy()->members;
     }
 
     /**
      * Access the invites
      */
-    protected function getInvites(): InviteList {
+    protected function getInvites(): InviteList
+    {
         return $this->proxy()->invites;
     }
 
     /**
      * Access the webhooks
      */
-    protected function getWebhooks(): WebhookList {
+    protected function getWebhooks(): WebhookList
+    {
         return $this->proxy()->webhooks;
     }
 
     /**
      * Access the messages
      */
-    protected function getMessages(): MessageList {
+    protected function getMessages(): MessageList
+    {
         return $this->proxy()->messages;
     }
 
@@ -168,7 +181,8 @@ class ChannelInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -186,7 +200,8 @@ class ChannelInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

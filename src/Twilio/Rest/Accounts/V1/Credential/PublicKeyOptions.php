@@ -18,35 +18,59 @@ namespace Twilio\Rest\Accounts\V1\Credential;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class PublicKeyOptions {
+abstract class PublicKeyOptions
+{
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
-     * @param string $accountSid The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request 
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $accountSid The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request
      * @return CreatePublicKeyOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, string $accountSid = Values::NONE): CreatePublicKeyOptions {
-        return new CreatePublicKeyOptions($friendlyName, $accountSid);
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $accountSid = Values::NONE
+
+    ): CreatePublicKeyOptions
+    {
+        return new CreatePublicKeyOptions(
+            $friendlyName,
+            $accountSid
+        );
     }
 
 
 
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return UpdatePublicKeyOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE): UpdatePublicKeyOptions {
-        return new UpdatePublicKeyOptions($friendlyName);
+    public static function update(
+        
+        string $friendlyName = Values::NONE
+
+    ): UpdatePublicKeyOptions
+    {
+        return new UpdatePublicKeyOptions(
+            $friendlyName
+        );
     }
 
 }
 
-class CreatePublicKeyOptions extends Options {
+class CreatePublicKeyOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $accountSid The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request
      */
-    public function __construct(string $friendlyName = Values::NONE, string $accountSid = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $accountSid = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['accountSid'] = $accountSid;
     }
@@ -57,7 +81,8 @@ class CreatePublicKeyOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -68,7 +93,8 @@ class CreatePublicKeyOptions extends Options {
      * @param string $accountSid The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request
      * @return $this Fluent Builder
      */
-    public function setAccountSid(string $accountSid): self {
+    public function setAccountSid(string $accountSid): self
+    {
         $this->options['accountSid'] = $accountSid;
         return $this;
     }
@@ -78,7 +104,8 @@ class CreatePublicKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Accounts.V1.CreatePublicKeyOptions ' . $options . ']';
     }
@@ -87,11 +114,17 @@ class CreatePublicKeyOptions extends Options {
 
 
 
-class UpdatePublicKeyOptions extends Options {
+class UpdatePublicKeyOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -101,7 +134,8 @@ class UpdatePublicKeyOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -111,7 +145,8 @@ class UpdatePublicKeyOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Accounts.V1.UpdatePublicKeyOptions ' . $options . ']';
     }

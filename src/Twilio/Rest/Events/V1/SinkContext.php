@@ -30,7 +30,8 @@ use Twilio\Rest\Events\V1\Sink\SinkValidateList;
  * @property SinkTestList $sinkTest
  * @property SinkValidateList $sinkValidate
  */
-class SinkContext extends InstanceContext {
+class SinkContext extends InstanceContext
+    {
     protected $_sinkTest;
     protected $_sinkValidate;
 
@@ -40,13 +41,21 @@ class SinkContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this Sink.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Sinks/' . \rawurlencode($sid) . '';
+        $this->uri = '/Sinks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -55,9 +64,12 @@ class SinkContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the SinkInstance
@@ -65,15 +77,18 @@ class SinkContext extends InstanceContext {
      * @return SinkInstance Fetched SinkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SinkInstance {
+    public function fetch(): SinkInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SinkInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the SinkInstance
@@ -82,28 +97,33 @@ class SinkContext extends InstanceContext {
      * @return SinkInstance Updated SinkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $description): SinkInstance {
+    public function update(string $description): SinkInstance
+    {
+
         $data = Values::of([
-            'Description' => $description,
+            'Description' =>
+                $description,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SinkInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the sinkTest
      */
-    protected function getSinkTest(): SinkTestList {
+    protected function getSinkTest(): SinkTestList
+    {
         if (!$this->_sinkTest) {
             $this->_sinkTest = new SinkTestList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -113,11 +133,12 @@ class SinkContext extends InstanceContext {
     /**
      * Access the sinkValidate
      */
-    protected function getSinkValidate(): SinkValidateList {
+    protected function getSinkValidate(): SinkValidateList
+    {
         if (!$this->_sinkValidate) {
             $this->_sinkValidate = new SinkValidateList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -131,7 +152,8 @@ class SinkContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -148,7 +170,8 @@ class SinkContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -162,7 +185,8 @@ class SinkContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -18,69 +18,150 @@ namespace Twilio\Rest\FlexApi\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class FlexFlowOptions {
+abstract class FlexFlowOptions
+{
     /**
-     * @param string $contactIdentity The channel contact's Identity. 
-     * @param bool $enabled Whether the new Flex Flow is enabled. 
-     * @param string $integrationType  
-     * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`. 
-     * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`. 
-     * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`. 
-     * @param string $integrationWorkflowSid The Workflow SID for a new Task. Required when `integrationType` is `task`. 
-     * @param string $integrationChannel The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`. 
-     * @param int $integrationTimeout The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise. 
-     * @param int $integrationPriority The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise. 
-     * @param bool $integrationCreationOnMessage In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging. 
-     * @param bool $longLived When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`. 
-     * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`. 
-     * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise. 
+     * @param string $contactIdentity The channel contact's Identity.
+     * @param bool $enabled Whether the new Flex Flow is enabled.
+     * @param string $integrationType
+     * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`.
+     * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`.
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`.
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task. Required when `integrationType` is `task`.
+     * @param string $integrationChannel The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`.
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise.
+     * @param int $integrationPriority The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise.
+     * @param bool $integrationCreationOnMessage In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging.
+     * @param bool $longLived When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
+     * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
+     * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      * @return CreateFlexFlowOptions Options builder
      */
-    public static function create(string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE): CreateFlexFlowOptions {
-        return new CreateFlexFlowOptions($contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled, $integrationRetryCount);
+    public static function create(
+        
+        string $contactIdentity = Values::NONE,
+        bool $enabled = Values::NONE,
+        string $integrationType = Values::NONE,
+        string $integrationFlowSid = Values::NONE,
+        string $integrationUrl = Values::NONE,
+        string $integrationWorkspaceSid = Values::NONE,
+        string $integrationWorkflowSid = Values::NONE,
+        string $integrationChannel = Values::NONE,
+        int $integrationTimeout = Values::NONE,
+        int $integrationPriority = Values::NONE,
+        bool $integrationCreationOnMessage = Values::NONE,
+        bool $longLived = Values::NONE,
+        bool $janitorEnabled = Values::NONE,
+        int $integrationRetryCount = Values::NONE
+
+    ): CreateFlexFlowOptions
+    {
+        return new CreateFlexFlowOptions(
+            $contactIdentity,
+            $enabled,
+            $integrationType,
+            $integrationFlowSid,
+            $integrationUrl,
+            $integrationWorkspaceSid,
+            $integrationWorkflowSid,
+            $integrationChannel,
+            $integrationTimeout,
+            $integrationPriority,
+            $integrationCreationOnMessage,
+            $longLived,
+            $janitorEnabled,
+            $integrationRetryCount
+        );
     }
 
 
 
     /**
-     * @param string $friendlyName The `friendly_name` of the Flex Flow resources to read. 
+     * @param string $friendlyName The `friendly_name` of the Flex Flow resources to read.
      * @return ReadFlexFlowOptions Options builder
      */
-    public static function read(string $friendlyName = Values::NONE): ReadFlexFlowOptions {
-        return new ReadFlexFlowOptions($friendlyName);
+    public static function read(
+        
+        string $friendlyName = Values::NONE
+
+    ): ReadFlexFlowOptions
+    {
+        return new ReadFlexFlowOptions(
+            $friendlyName
+        );
     }
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the Flex Flow resource. 
-     * @param string $chatServiceSid The SID of the chat service. 
-     * @param string $channelType  
-     * @param string $contactIdentity The channel contact's Identity. 
-     * @param bool $enabled Whether the new Flex Flow is enabled. 
-     * @param string $integrationType  
-     * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`. 
-     * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`. 
-     * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`. 
-     * @param string $integrationWorkflowSid The Workflow SID for a new Task. Required when `integrationType` is `task`. 
-     * @param string $integrationChannel The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`. 
-     * @param int $integrationTimeout The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise. 
-     * @param int $integrationPriority The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise. 
-     * @param bool $integrationCreationOnMessage In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging. 
-     * @param bool $longLived When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`. 
-     * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`. 
-     * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise. 
+     * @param string $friendlyName A descriptive string that you create to describe the Flex Flow resource.
+     * @param string $chatServiceSid The SID of the chat service.
+     * @param string $channelType
+     * @param string $contactIdentity The channel contact's Identity.
+     * @param bool $enabled Whether the new Flex Flow is enabled.
+     * @param string $integrationType
+     * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`.
+     * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`.
+     * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`.
+     * @param string $integrationWorkflowSid The Workflow SID for a new Task. Required when `integrationType` is `task`.
+     * @param string $integrationChannel The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`.
+     * @param int $integrationTimeout The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise.
+     * @param int $integrationPriority The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise.
+     * @param bool $integrationCreationOnMessage In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging.
+     * @param bool $longLived When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
+     * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
+     * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      * @return UpdateFlexFlowOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $chatServiceSid = Values::NONE, string $channelType = Values::NONE, string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE): UpdateFlexFlowOptions {
-        return new UpdateFlexFlowOptions($friendlyName, $chatServiceSid, $channelType, $contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled, $integrationRetryCount);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $chatServiceSid = Values::NONE,
+        string $channelType = Values::NONE,
+        string $contactIdentity = Values::NONE,
+        bool $enabled = Values::NONE,
+        string $integrationType = Values::NONE,
+        string $integrationFlowSid = Values::NONE,
+        string $integrationUrl = Values::NONE,
+        string $integrationWorkspaceSid = Values::NONE,
+        string $integrationWorkflowSid = Values::NONE,
+        string $integrationChannel = Values::NONE,
+        int $integrationTimeout = Values::NONE,
+        int $integrationPriority = Values::NONE,
+        bool $integrationCreationOnMessage = Values::NONE,
+        bool $longLived = Values::NONE,
+        bool $janitorEnabled = Values::NONE,
+        int $integrationRetryCount = Values::NONE
+
+    ): UpdateFlexFlowOptions
+    {
+        return new UpdateFlexFlowOptions(
+            $friendlyName,
+            $chatServiceSid,
+            $channelType,
+            $contactIdentity,
+            $enabled,
+            $integrationType,
+            $integrationFlowSid,
+            $integrationUrl,
+            $integrationWorkspaceSid,
+            $integrationWorkflowSid,
+            $integrationChannel,
+            $integrationTimeout,
+            $integrationPriority,
+            $integrationCreationOnMessage,
+            $longLived,
+            $janitorEnabled,
+            $integrationRetryCount
+        );
     }
 
 }
 
-class CreateFlexFlowOptions extends Options {
+class CreateFlexFlowOptions extends Options
+    {
     /**
      * @param string $contactIdentity The channel contact's Identity.
      * @param bool $enabled Whether the new Flex Flow is enabled.
-     * @param string $integrationType 
+     * @param string $integrationType
      * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`.
      * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`.
      * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`.
@@ -93,7 +174,25 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      */
-    public function __construct(string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE) {
+    public function __construct(
+        
+        string $contactIdentity = Values::NONE,
+        bool $enabled = Values::NONE,
+        string $integrationType = Values::NONE,
+        string $integrationFlowSid = Values::NONE,
+        string $integrationUrl = Values::NONE,
+        string $integrationWorkspaceSid = Values::NONE,
+        string $integrationWorkflowSid = Values::NONE,
+        string $integrationChannel = Values::NONE,
+        int $integrationTimeout = Values::NONE,
+        int $integrationPriority = Values::NONE,
+        bool $integrationCreationOnMessage = Values::NONE,
+        bool $longLived = Values::NONE,
+        bool $janitorEnabled = Values::NONE,
+        int $integrationRetryCount = Values::NONE
+
+    )
+    {
         $this->options['contactIdentity'] = $contactIdentity;
         $this->options['enabled'] = $enabled;
         $this->options['integrationType'] = $integrationType;
@@ -116,7 +215,8 @@ class CreateFlexFlowOptions extends Options {
      * @param string $contactIdentity The channel contact's Identity.
      * @return $this Fluent Builder
      */
-    public function setContactIdentity(string $contactIdentity): self {
+    public function setContactIdentity(string $contactIdentity): self
+    {
         $this->options['contactIdentity'] = $contactIdentity;
         return $this;
     }
@@ -127,16 +227,18 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $enabled Whether the new Flex Flow is enabled.
      * @return $this Fluent Builder
      */
-    public function setEnabled(bool $enabled): self {
+    public function setEnabled(bool $enabled): self
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
 
     /**
-     * @param string $integrationType 
+     * @param string $integrationType
      * @return $this Fluent Builder
      */
-    public function setIntegrationType(string $integrationType): self {
+    public function setIntegrationType(string $integrationType): self
+    {
         $this->options['integrationType'] = $integrationType;
         return $this;
     }
@@ -147,7 +249,8 @@ class CreateFlexFlowOptions extends Options {
      * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationFlowSid(string $integrationFlowSid): self {
+    public function setIntegrationFlowSid(string $integrationFlowSid): self
+    {
         $this->options['integrationFlowSid'] = $integrationFlowSid;
         return $this;
     }
@@ -158,7 +261,8 @@ class CreateFlexFlowOptions extends Options {
      * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationUrl(string $integrationUrl): self {
+    public function setIntegrationUrl(string $integrationUrl): self
+    {
         $this->options['integrationUrl'] = $integrationUrl;
         return $this;
     }
@@ -169,7 +273,8 @@ class CreateFlexFlowOptions extends Options {
      * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationWorkspaceSid(string $integrationWorkspaceSid): self {
+    public function setIntegrationWorkspaceSid(string $integrationWorkspaceSid): self
+    {
         $this->options['integrationWorkspaceSid'] = $integrationWorkspaceSid;
         return $this;
     }
@@ -180,7 +285,8 @@ class CreateFlexFlowOptions extends Options {
      * @param string $integrationWorkflowSid The Workflow SID for a new Task. Required when `integrationType` is `task`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationWorkflowSid(string $integrationWorkflowSid): self {
+    public function setIntegrationWorkflowSid(string $integrationWorkflowSid): self
+    {
         $this->options['integrationWorkflowSid'] = $integrationWorkflowSid;
         return $this;
     }
@@ -191,7 +297,8 @@ class CreateFlexFlowOptions extends Options {
      * @param string $integrationChannel The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationChannel(string $integrationChannel): self {
+    public function setIntegrationChannel(string $integrationChannel): self
+    {
         $this->options['integrationChannel'] = $integrationChannel;
         return $this;
     }
@@ -202,7 +309,8 @@ class CreateFlexFlowOptions extends Options {
      * @param int $integrationTimeout The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise.
      * @return $this Fluent Builder
      */
-    public function setIntegrationTimeout(int $integrationTimeout): self {
+    public function setIntegrationTimeout(int $integrationTimeout): self
+    {
         $this->options['integrationTimeout'] = $integrationTimeout;
         return $this;
     }
@@ -213,7 +321,8 @@ class CreateFlexFlowOptions extends Options {
      * @param int $integrationPriority The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise.
      * @return $this Fluent Builder
      */
-    public function setIntegrationPriority(int $integrationPriority): self {
+    public function setIntegrationPriority(int $integrationPriority): self
+    {
         $this->options['integrationPriority'] = $integrationPriority;
         return $this;
     }
@@ -224,7 +333,8 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $integrationCreationOnMessage In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging.
      * @return $this Fluent Builder
      */
-    public function setIntegrationCreationOnMessage(bool $integrationCreationOnMessage): self {
+    public function setIntegrationCreationOnMessage(bool $integrationCreationOnMessage): self
+    {
         $this->options['integrationCreationOnMessage'] = $integrationCreationOnMessage;
         return $this;
     }
@@ -235,7 +345,8 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $longLived When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
      * @return $this Fluent Builder
      */
-    public function setLongLived(bool $longLived): self {
+    public function setLongLived(bool $longLived): self
+    {
         $this->options['longLived'] = $longLived;
         return $this;
     }
@@ -246,7 +357,8 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      * @return $this Fluent Builder
      */
-    public function setJanitorEnabled(bool $janitorEnabled): self {
+    public function setJanitorEnabled(bool $janitorEnabled): self
+    {
         $this->options['janitorEnabled'] = $janitorEnabled;
         return $this;
     }
@@ -257,7 +369,8 @@ class CreateFlexFlowOptions extends Options {
      * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      * @return $this Fluent Builder
      */
-    public function setIntegrationRetryCount(int $integrationRetryCount): self {
+    public function setIntegrationRetryCount(int $integrationRetryCount): self
+    {
         $this->options['integrationRetryCount'] = $integrationRetryCount;
         return $this;
     }
@@ -267,7 +380,8 @@ class CreateFlexFlowOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateFlexFlowOptions ' . $options . ']';
     }
@@ -275,11 +389,17 @@ class CreateFlexFlowOptions extends Options {
 
 
 
-class ReadFlexFlowOptions extends Options {
+class ReadFlexFlowOptions extends Options
+    {
     /**
      * @param string $friendlyName The `friendly_name` of the Flex Flow resources to read.
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -289,7 +409,8 @@ class ReadFlexFlowOptions extends Options {
      * @param string $friendlyName The `friendly_name` of the Flex Flow resources to read.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -299,20 +420,22 @@ class ReadFlexFlowOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.ReadFlexFlowOptions ' . $options . ']';
     }
 }
 
-class UpdateFlexFlowOptions extends Options {
+class UpdateFlexFlowOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the Flex Flow resource.
      * @param string $chatServiceSid The SID of the chat service.
-     * @param string $channelType 
+     * @param string $channelType
      * @param string $contactIdentity The channel contact's Identity.
      * @param bool $enabled Whether the new Flex Flow is enabled.
-     * @param string $integrationType 
+     * @param string $integrationType
      * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`.
      * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`.
      * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`.
@@ -325,7 +448,28 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $chatServiceSid = Values::NONE, string $channelType = Values::NONE, string $contactIdentity = Values::NONE, bool $enabled = Values::NONE, string $integrationType = Values::NONE, string $integrationFlowSid = Values::NONE, string $integrationUrl = Values::NONE, string $integrationWorkspaceSid = Values::NONE, string $integrationWorkflowSid = Values::NONE, string $integrationChannel = Values::NONE, int $integrationTimeout = Values::NONE, int $integrationPriority = Values::NONE, bool $integrationCreationOnMessage = Values::NONE, bool $longLived = Values::NONE, bool $janitorEnabled = Values::NONE, int $integrationRetryCount = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $chatServiceSid = Values::NONE,
+        string $channelType = Values::NONE,
+        string $contactIdentity = Values::NONE,
+        bool $enabled = Values::NONE,
+        string $integrationType = Values::NONE,
+        string $integrationFlowSid = Values::NONE,
+        string $integrationUrl = Values::NONE,
+        string $integrationWorkspaceSid = Values::NONE,
+        string $integrationWorkflowSid = Values::NONE,
+        string $integrationChannel = Values::NONE,
+        int $integrationTimeout = Values::NONE,
+        int $integrationPriority = Values::NONE,
+        bool $integrationCreationOnMessage = Values::NONE,
+        bool $longLived = Values::NONE,
+        bool $janitorEnabled = Values::NONE,
+        int $integrationRetryCount = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['chatServiceSid'] = $chatServiceSid;
         $this->options['channelType'] = $channelType;
@@ -351,7 +495,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the Flex Flow resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -362,16 +507,18 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $chatServiceSid The SID of the chat service.
      * @return $this Fluent Builder
      */
-    public function setChatServiceSid(string $chatServiceSid): self {
+    public function setChatServiceSid(string $chatServiceSid): self
+    {
         $this->options['chatServiceSid'] = $chatServiceSid;
         return $this;
     }
 
     /**
-     * @param string $channelType 
+     * @param string $channelType
      * @return $this Fluent Builder
      */
-    public function setChannelType(string $channelType): self {
+    public function setChannelType(string $channelType): self
+    {
         $this->options['channelType'] = $channelType;
         return $this;
     }
@@ -382,7 +529,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $contactIdentity The channel contact's Identity.
      * @return $this Fluent Builder
      */
-    public function setContactIdentity(string $contactIdentity): self {
+    public function setContactIdentity(string $contactIdentity): self
+    {
         $this->options['contactIdentity'] = $contactIdentity;
         return $this;
     }
@@ -393,16 +541,18 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $enabled Whether the new Flex Flow is enabled.
      * @return $this Fluent Builder
      */
-    public function setEnabled(bool $enabled): self {
+    public function setEnabled(bool $enabled): self
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
 
     /**
-     * @param string $integrationType 
+     * @param string $integrationType
      * @return $this Fluent Builder
      */
-    public function setIntegrationType(string $integrationType): self {
+    public function setIntegrationType(string $integrationType): self
+    {
         $this->options['integrationType'] = $integrationType;
         return $this;
     }
@@ -413,7 +563,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $integrationFlowSid The SID of the Studio Flow. Required when `integrationType` is `studio`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationFlowSid(string $integrationFlowSid): self {
+    public function setIntegrationFlowSid(string $integrationFlowSid): self
+    {
         $this->options['integrationFlowSid'] = $integrationFlowSid;
         return $this;
     }
@@ -424,7 +575,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $integrationUrl The URL of the external webhook. Required when `integrationType` is `external`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationUrl(string $integrationUrl): self {
+    public function setIntegrationUrl(string $integrationUrl): self
+    {
         $this->options['integrationUrl'] = $integrationUrl;
         return $this;
     }
@@ -435,7 +587,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $integrationWorkspaceSid The Workspace SID for a new Task. Required when `integrationType` is `task`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationWorkspaceSid(string $integrationWorkspaceSid): self {
+    public function setIntegrationWorkspaceSid(string $integrationWorkspaceSid): self
+    {
         $this->options['integrationWorkspaceSid'] = $integrationWorkspaceSid;
         return $this;
     }
@@ -446,7 +599,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $integrationWorkflowSid The Workflow SID for a new Task. Required when `integrationType` is `task`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationWorkflowSid(string $integrationWorkflowSid): self {
+    public function setIntegrationWorkflowSid(string $integrationWorkflowSid): self
+    {
         $this->options['integrationWorkflowSid'] = $integrationWorkflowSid;
         return $this;
     }
@@ -457,7 +611,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param string $integrationChannel The Task Channel SID (TCXXXX) or unique name (e.g., `sms`) to use for the Task that will be created. Applicable and required when `integrationType` is `task`. The default value is `default`.
      * @return $this Fluent Builder
      */
-    public function setIntegrationChannel(string $integrationChannel): self {
+    public function setIntegrationChannel(string $integrationChannel): self
+    {
         $this->options['integrationChannel'] = $integrationChannel;
         return $this;
     }
@@ -468,7 +623,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param int $integrationTimeout The Task timeout in seconds for a new Task. Default is 86,400 seconds (24 hours). Optional when `integrationType` is `task`, not applicable otherwise.
      * @return $this Fluent Builder
      */
-    public function setIntegrationTimeout(int $integrationTimeout): self {
+    public function setIntegrationTimeout(int $integrationTimeout): self
+    {
         $this->options['integrationTimeout'] = $integrationTimeout;
         return $this;
     }
@@ -479,7 +635,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param int $integrationPriority The Task priority of a new Task. The default priority is 0. Optional when `integrationType` is `task`, not applicable otherwise.
      * @return $this Fluent Builder
      */
-    public function setIntegrationPriority(int $integrationPriority): self {
+    public function setIntegrationPriority(int $integrationPriority): self
+    {
         $this->options['integrationPriority'] = $integrationPriority;
         return $this;
     }
@@ -490,7 +647,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $integrationCreationOnMessage In the context of outbound messaging, defines whether to create a Task immediately (and therefore reserve the conversation to current agent), or delay Task creation until the customer sends the first response. Set to false to create immediately, true to delay Task creation. This setting is only applicable for outbound messaging.
      * @return $this Fluent Builder
      */
-    public function setIntegrationCreationOnMessage(bool $integrationCreationOnMessage): self {
+    public function setIntegrationCreationOnMessage(bool $integrationCreationOnMessage): self
+    {
         $this->options['integrationCreationOnMessage'] = $integrationCreationOnMessage;
         return $this;
     }
@@ -501,7 +659,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $longLived When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
      * @return $this Fluent Builder
      */
-    public function setLongLived(bool $longLived): self {
+    public function setLongLived(bool $longLived): self
+    {
         $this->options['longLived'] = $longLived;
         return $this;
     }
@@ -512,7 +671,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $janitorEnabled When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
      * @return $this Fluent Builder
      */
-    public function setJanitorEnabled(bool $janitorEnabled): self {
+    public function setJanitorEnabled(bool $janitorEnabled): self
+    {
         $this->options['janitorEnabled'] = $janitorEnabled;
         return $this;
     }
@@ -523,7 +683,8 @@ class UpdateFlexFlowOptions extends Options {
      * @param int $integrationRetryCount The number of times to retry the Studio Flow or webhook in case of failure. Takes integer values from 0 to 3 with the default being 3. Optional when `integrationType` is `studio` or `external`, not applicable otherwise.
      * @return $this Fluent Builder
      */
-    public function setIntegrationRetryCount(int $integrationRetryCount): self {
+    public function setIntegrationRetryCount(int $integrationRetryCount): self
+    {
         $this->options['integrationRetryCount'] = $integrationRetryCount;
         return $this;
     }
@@ -533,7 +694,8 @@ class UpdateFlexFlowOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateFlexFlowOptions ' . $options . ']';
     }

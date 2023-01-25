@@ -22,17 +22,22 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class UserInfoContext extends InstanceContext {
+class UserInfoContext extends InstanceContext
+    {
     /**
      * Initialize the UserInfoContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/userinfo';
     }
@@ -43,21 +48,25 @@ class UserInfoContext extends InstanceContext {
      * @return UserInfoInstance Fetched UserInfoInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserInfoInstance {
+    public function fetch(): UserInfoInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new UserInfoInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

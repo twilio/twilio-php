@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ConferenceParticipantList extends ListResource {
+class ConferenceParticipantList extends ListResource
+    {
     /**
      * Construct the ConferenceParticipantList
      *
      * @param Version $version Version that contains the resource
      * @param string $conferenceSid The unique SID identifier of the Conference.
      */
-    public function __construct(Version $version, string $conferenceSid ) {
+    public function __construct(
+        Version $version,
+        string $conferenceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['conferenceSid' => $conferenceSid, ];
+        $this->solution = [
+        'conferenceSid' =>
+            $conferenceSid,
+        
+        ];
 
-        $this->uri = '/Conferences/' . \rawurlencode($conferenceSid) . '/Participants';
+        $this->uri = '/Conferences/' . \rawurlencode($conferenceSid)
+        .'/Participants';
     }
 
     /**
@@ -55,7 +65,8 @@ class ConferenceParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ConferenceParticipantInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +89,8 @@ class ConferenceParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,13 +107,22 @@ class ConferenceParticipantList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ConferenceParticipantPage Page of ConferenceParticipantInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ConferenceParticipantPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ConferenceParticipantPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'ParticipantSid' => $options['participantSid'],
-            'Label' => $options['label'],
-            'Events' => $options['events'],
+            'ParticipantSid' =>
+                $options['participantSid'],
+            'Label' =>
+                $options['label'],
+            'Events' =>
+                $options['events'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -119,7 +140,8 @@ class ConferenceParticipantList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ConferenceParticipantPage Page of ConferenceParticipantInstance
      */
-    public function getPage(string $targetUrl): ConferenceParticipantPage {
+    public function getPage(string $targetUrl): ConferenceParticipantPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,8 +156,16 @@ class ConferenceParticipantList extends ListResource {
      *
      * @param string $participantSid The unique SID identifier of the Participant.
      */
-    public function getContext(string $participantSid): ConferenceParticipantContext {
-        return new ConferenceParticipantContext($this->version, $this->solution['conferenceSid'], $participantSid);
+    public function getContext(
+        string $participantSid
+        
+    ): ConferenceParticipantContext
+    {
+        return new ConferenceParticipantContext(
+            $this->version,
+            $this->solution['conferenceSid'],
+            $participantSid
+        );
     }
 
     /**
@@ -143,7 +173,8 @@ class ConferenceParticipantList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.ConferenceParticipantList]';
     }
 }

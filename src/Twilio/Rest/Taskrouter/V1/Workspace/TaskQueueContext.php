@@ -36,7 +36,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsLis
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext statistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsContext realTimeStatistics()
  */
-class TaskQueueContext extends InstanceContext {
+class TaskQueueContext extends InstanceContext
+    {
     protected $_cumulativeStatistics;
     protected $_statistics;
     protected $_realTimeStatistics;
@@ -48,13 +49,25 @@ class TaskQueueContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace that the new TaskQueue belongs to.
      * @param string $sid The SID of the TaskQueue resource to delete.
      */
-    public function __construct(Version $version, $workspaceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/TaskQueues/' . \rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/TaskQueues/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -63,9 +76,12 @@ class TaskQueueContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the TaskQueueInstance
@@ -73,16 +89,19 @@ class TaskQueueContext extends InstanceContext {
      * @return TaskQueueInstance Fetched TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TaskQueueInstance {
+    public function fetch(): TaskQueueInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskQueueInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the TaskQueueInstance
@@ -91,37 +110,47 @@ class TaskQueueContext extends InstanceContext {
      * @return TaskQueueInstance Updated TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TaskQueueInstance {
+    public function update(array $options = []): TaskQueueInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'TargetWorkers' => $options['targetWorkers'],
-            'ReservationActivitySid' => $options['reservationActivitySid'],
-            'AssignmentActivitySid' => $options['assignmentActivitySid'],
-            'MaxReservedWorkers' => $options['maxReservedWorkers'],
-            'TaskOrder' => $options['taskOrder'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'TargetWorkers' =>
+                $options['targetWorkers'],
+            'ReservationActivitySid' =>
+                $options['reservationActivitySid'],
+            'AssignmentActivitySid' =>
+                $options['assignmentActivitySid'],
+            'MaxReservedWorkers' =>
+                $options['maxReservedWorkers'],
+            'TaskOrder' =>
+                $options['taskOrder'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TaskQueueInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): TaskQueueCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): TaskQueueCumulativeStatisticsList
+    {
         if (!$this->_cumulativeStatistics) {
             $this->_cumulativeStatistics = new TaskQueueCumulativeStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -131,12 +160,13 @@ class TaskQueueContext extends InstanceContext {
     /**
      * Access the statistics
      */
-    protected function getStatistics(): TaskQueueStatisticsList {
+    protected function getStatistics(): TaskQueueStatisticsList
+    {
         if (!$this->_statistics) {
             $this->_statistics = new TaskQueueStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -146,12 +176,13 @@ class TaskQueueContext extends InstanceContext {
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): TaskQueueRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): TaskQueueRealTimeStatisticsList
+    {
         if (!$this->_realTimeStatistics) {
             $this->_realTimeStatistics = new TaskQueueRealTimeStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -165,7 +196,8 @@ class TaskQueueContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -182,7 +214,8 @@ class TaskQueueContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -196,7 +229,8 @@ class TaskQueueContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

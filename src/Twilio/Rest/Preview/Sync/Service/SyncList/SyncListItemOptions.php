@@ -18,43 +18,75 @@ namespace Twilio\Rest\Preview\Sync\Service\SyncList;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SyncListItemOptions {
+abstract class SyncListItemOptions
+{
 
     /**
-     * @param string $ifMatch The If-Match HTTP request header 
+     * @param string $ifMatch The If-Match HTTP request header
      * @return DeleteSyncListItemOptions Options builder
      */
-    public static function delete(string $ifMatch = Values::NONE): DeleteSyncListItemOptions {
-        return new DeleteSyncListItemOptions($ifMatch);
+    public static function delete(
+        
+        string $ifMatch = Values::NONE
+
+    ): DeleteSyncListItemOptions
+    {
+        return new DeleteSyncListItemOptions(
+            $ifMatch
+        );
     }
 
 
     /**
-     * @param string $order  
-     * @param string $from  
-     * @param string $bounds  
+     * @param string $order 
+     * @param string $from 
+     * @param string $bounds 
      * @return ReadSyncListItemOptions Options builder
      */
-    public static function read(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE): ReadSyncListItemOptions {
-        return new ReadSyncListItemOptions($order, $from, $bounds);
+    public static function read(
+        
+        string $order = Values::NONE,
+        string $from = Values::NONE,
+        string $bounds = Values::NONE
+
+    ): ReadSyncListItemOptions
+    {
+        return new ReadSyncListItemOptions(
+            $order,
+            $from,
+            $bounds
+        );
     }
 
     /**
-     * @param string $ifMatch The If-Match HTTP request header 
+     * @param string $ifMatch The If-Match HTTP request header
      * @return UpdateSyncListItemOptions Options builder
      */
-    public static function update(string $ifMatch = Values::NONE): UpdateSyncListItemOptions {
-        return new UpdateSyncListItemOptions($ifMatch);
+    public static function update(
+        
+        string $ifMatch = Values::NONE
+
+    ): UpdateSyncListItemOptions
+    {
+        return new UpdateSyncListItemOptions(
+            $ifMatch
+        );
     }
 
 }
 
 
-class DeleteSyncListItemOptions extends Options {
+class DeleteSyncListItemOptions extends Options
+    {
     /**
      * @param string $ifMatch The If-Match HTTP request header
      */
-    public function __construct(string $ifMatch = Values::NONE) {
+    public function __construct(
+        
+        string $ifMatch = Values::NONE
+
+    )
+    {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -64,7 +96,8 @@ class DeleteSyncListItemOptions extends Options {
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder
      */
-    public function setIfMatch(string $ifMatch): self {
+    public function setIfMatch(string $ifMatch): self
+    {
         $this->options['ifMatch'] = $ifMatch;
         return $this;
     }
@@ -74,20 +107,29 @@ class DeleteSyncListItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.DeleteSyncListItemOptions ' . $options . ']';
     }
 }
 
 
-class ReadSyncListItemOptions extends Options {
+class ReadSyncListItemOptions extends Options
+    {
     /**
      * @param string $order 
      * @param string $from 
      * @param string $bounds 
      */
-    public function __construct(string $order = Values::NONE, string $from = Values::NONE, string $bounds = Values::NONE) {
+    public function __construct(
+        
+        string $order = Values::NONE,
+        string $from = Values::NONE,
+        string $bounds = Values::NONE
+
+    )
+    {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
@@ -99,7 +141,8 @@ class ReadSyncListItemOptions extends Options {
      * @param string $order 
      * @return $this Fluent Builder
      */
-    public function setOrder(string $order): self {
+    public function setOrder(string $order): self
+    {
         $this->options['order'] = $order;
         return $this;
     }
@@ -110,7 +153,8 @@ class ReadSyncListItemOptions extends Options {
      * @param string $from 
      * @return $this Fluent Builder
      */
-    public function setFrom(string $from): self {
+    public function setFrom(string $from): self
+    {
         $this->options['from'] = $from;
         return $this;
     }
@@ -121,7 +165,8 @@ class ReadSyncListItemOptions extends Options {
      * @param string $bounds 
      * @return $this Fluent Builder
      */
-    public function setBounds(string $bounds): self {
+    public function setBounds(string $bounds): self
+    {
         $this->options['bounds'] = $bounds;
         return $this;
     }
@@ -131,17 +176,24 @@ class ReadSyncListItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.ReadSyncListItemOptions ' . $options . ']';
     }
 }
 
-class UpdateSyncListItemOptions extends Options {
+class UpdateSyncListItemOptions extends Options
+    {
     /**
      * @param string $ifMatch The If-Match HTTP request header
      */
-    public function __construct(string $ifMatch = Values::NONE) {
+    public function __construct(
+        
+        string $ifMatch = Values::NONE
+
+    )
+    {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -151,7 +203,8 @@ class UpdateSyncListItemOptions extends Options {
      * @param string $ifMatch The If-Match HTTP request header
      * @return $this Fluent Builder
      */
-    public function setIfMatch(string $ifMatch): self {
+    public function setIfMatch(string $ifMatch): self
+    {
         $this->options['ifMatch'] = $ifMatch;
         return $this;
     }
@@ -161,7 +214,8 @@ class UpdateSyncListItemOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Sync.UpdateSyncListItemOptions ' . $options . ']';
     }

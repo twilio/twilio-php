@@ -27,7 +27,8 @@ use Twilio\Rest\Bulkexports\V1\Export\JobList;
  * @property JobList $jobs
  * @method \Twilio\Rest\Bulkexports\V1\Export\JobContext jobs(string $jobSid)
  */
-class ExportList extends ListResource {
+class ExportList extends ListResource
+    {
     protected $_jobs = null;
 
     /**
@@ -35,11 +36,14 @@ class ExportList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
@@ -47,20 +51,27 @@ class ExportList extends ListResource {
      *
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      */
-    public function getContext(string $resourceType): ExportContext {
-        return new ExportContext($this->version, $resourceType);
+    public function getContext(
+        string $resourceType
+        
+    ): ExportContext
+    {
+        return new ExportContext(
+            $this->version,
+            $resourceType
+        );
     }
 
     /**
      * Access the jobs
      */
-    protected function getJobs(): JobList {
+    protected function getJobs(): JobList
+    {
         if (!$this->_jobs) {
             $this->_jobs = new JobList(
                 $this->version
             );
         }
-
         return $this->_jobs;
     }
 
@@ -71,7 +82,8 @@ class ExportList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -88,7 +100,8 @@ class ExportList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -102,7 +115,8 @@ class ExportList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Bulkexports.V1.ExportList]';
     }
 }

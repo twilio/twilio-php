@@ -18,24 +18,38 @@ namespace Twilio\Rest\Preview\Understand\Assistant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AssistantFallbackActionsOptions {
+abstract class AssistantFallbackActionsOptions
+{
 
     /**
-     * @param array $fallbackActions  
+     * @param array $fallbackActions 
      * @return UpdateAssistantFallbackActionsOptions Options builder
      */
-    public static function update(array $fallbackActions = Values::ARRAY_NONE): UpdateAssistantFallbackActionsOptions {
-        return new UpdateAssistantFallbackActionsOptions($fallbackActions);
+    public static function update(
+        
+        array $fallbackActions = Values::ARRAY_NONE
+
+    ): UpdateAssistantFallbackActionsOptions
+    {
+        return new UpdateAssistantFallbackActionsOptions(
+            $fallbackActions
+        );
     }
 
 }
 
 
-class UpdateAssistantFallbackActionsOptions extends Options {
+class UpdateAssistantFallbackActionsOptions extends Options
+    {
     /**
      * @param array $fallbackActions 
      */
-    public function __construct(array $fallbackActions = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $fallbackActions = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['fallbackActions'] = $fallbackActions;
     }
 
@@ -45,7 +59,8 @@ class UpdateAssistantFallbackActionsOptions extends Options {
      * @param array $fallbackActions 
      * @return $this Fluent Builder
      */
-    public function setFallbackActions(array $fallbackActions): self {
+    public function setFallbackActions(array $fallbackActions): self
+    {
         $this->options['fallbackActions'] = $fallbackActions;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateAssistantFallbackActionsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Understand.UpdateAssistantFallbackActionsOptions ' . $options . ']';
     }

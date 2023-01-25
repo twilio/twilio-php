@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class MessagePage extends Page {
+class MessagePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class MessagePage extends Page {
      * @param array $payload Payload response from the API
      * @return MessageInstance \Twilio\Rest\Chat\V1\Service\Channel\MessageInstance
      */
-    public function buildInstance(array $payload): MessageInstance {
+    public function buildInstance(array $payload): MessageInstance
+    {
         return new MessageInstance($this->version, $payload, $this->solution['serviceSid'], $this->solution['channelSid']);
     }
 
@@ -45,7 +48,8 @@ class MessagePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Chat.V1.MessagePage]';
     }
 }

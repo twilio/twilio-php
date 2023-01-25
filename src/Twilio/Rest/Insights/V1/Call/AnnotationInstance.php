@@ -36,7 +36,8 @@ use Twilio\Version;
  * @property string $incident
  * @property string $url
  */
-class AnnotationInstance extends InstanceResource {
+class AnnotationInstance extends InstanceResource
+{
     /**
      * Initialize the AnnotationInstance
      *
@@ -44,7 +45,8 @@ class AnnotationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $callSid The unique SID identifier of the Call.
      */
-    public function __construct(Version $version, array $payload, string $callSid) {
+    public function __construct(Version $version, array $payload, string $callSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class AnnotationInstance extends InstanceResource {
      *
      * @return AnnotationContext Context for this AnnotationInstance
      */
-    protected function proxy(): AnnotationContext {
+    protected function proxy(): AnnotationContext
+    {
         if (!$this->context) {
             $this->context = new AnnotationContext(
                 $this->version,
@@ -87,7 +90,9 @@ class AnnotationInstance extends InstanceResource {
      * @return AnnotationInstance Fetched AnnotationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AnnotationInstance {
+    public function fetch(): AnnotationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -98,7 +103,9 @@ class AnnotationInstance extends InstanceResource {
      * @return AnnotationInstance Updated AnnotationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AnnotationInstance {
+    public function update(array $options = []): AnnotationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -109,7 +116,8 @@ class AnnotationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -127,7 +135,8 @@ class AnnotationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

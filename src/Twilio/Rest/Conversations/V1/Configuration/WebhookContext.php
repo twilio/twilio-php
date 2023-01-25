@@ -25,17 +25,22 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class WebhookContext extends InstanceContext {
+class WebhookContext extends InstanceContext
+    {
     /**
      * Initialize the WebhookContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Configuration/Webhooks';
     }
@@ -46,14 +51,17 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): WebhookInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebhookInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Update the WebhookInstance
@@ -62,31 +70,40 @@ class WebhookContext extends InstanceContext {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Method' => $options['method'],
-            'Filters' => Serialize::map($options['filters'], function($e) { return $e; }),
-            'PreWebhookUrl' => $options['preWebhookUrl'],
-            'PostWebhookUrl' => $options['postWebhookUrl'],
-            'Target' => $options['target'],
+            'Method' =>
+                $options['method'],
+            'Filters' =>
+                Serialize::map($options['filters'], function ($e) { return $e; }),
+            'PreWebhookUrl' =>
+                $options['preWebhookUrl'],
+            'PostWebhookUrl' =>
+                $options['postWebhookUrl'],
+            'Target' =>
+                $options['target'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebhookInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

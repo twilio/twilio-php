@@ -18,24 +18,41 @@ namespace Twilio\Rest\Insights\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RoomOptions {
+abstract class RoomOptions
+{
 
     /**
-     * @param string $roomType Type of room. Can be `go`, `peer_to_peer`, `group`, or `group_small`. 
-     * @param string $codec Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`. 
-     * @param string $roomName Room friendly name. 
-     * @param \DateTime $createdAfter Only read rooms that started on or after this ISO 8601 timestamp. 
-     * @param \DateTime $createdBefore Only read rooms that started before this ISO 8601 timestamp. 
+     * @param string $roomType Type of room. Can be `go`, `peer_to_peer`, `group`, or `group_small`.
+     * @param string $codec Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`.
+     * @param string $roomName Room friendly name.
+     * @param \DateTime $createdAfter Only read rooms that started on or after this ISO 8601 timestamp.
+     * @param \DateTime $createdBefore Only read rooms that started before this ISO 8601 timestamp.
      * @return ReadRoomOptions Options builder
      */
-    public static function read(array $roomType = Values::ARRAY_NONE, array $codec = Values::ARRAY_NONE, string $roomName = Values::NONE, \DateTime $createdAfter = Values::NONE, \DateTime $createdBefore = Values::NONE): ReadRoomOptions {
-        return new ReadRoomOptions($roomType, $codec, $roomName, $createdAfter, $createdBefore);
+    public static function read(
+        
+        array $roomType = Values::ARRAY_NONE,
+        array $codec = Values::ARRAY_NONE,
+        string $roomName = Values::NONE,
+        \DateTime $createdAfter = Values::NONE,
+        \DateTime $createdBefore = Values::NONE
+
+    ): ReadRoomOptions
+    {
+        return new ReadRoomOptions(
+            $roomType,
+            $codec,
+            $roomName,
+            $createdAfter,
+            $createdBefore
+        );
     }
 
 }
 
 
-class ReadRoomOptions extends Options {
+class ReadRoomOptions extends Options
+    {
     /**
      * @param string $roomType Type of room. Can be `go`, `peer_to_peer`, `group`, or `group_small`.
      * @param string $codec Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`.
@@ -43,7 +60,16 @@ class ReadRoomOptions extends Options {
      * @param \DateTime $createdAfter Only read rooms that started on or after this ISO 8601 timestamp.
      * @param \DateTime $createdBefore Only read rooms that started before this ISO 8601 timestamp.
      */
-    public function __construct(array $roomType = Values::ARRAY_NONE, array $codec = Values::ARRAY_NONE, string $roomName = Values::NONE, \DateTime $createdAfter = Values::NONE, \DateTime $createdBefore = Values::NONE) {
+    public function __construct(
+        
+        array $roomType = Values::ARRAY_NONE,
+        array $codec = Values::ARRAY_NONE,
+        string $roomName = Values::NONE,
+        \DateTime $createdAfter = Values::NONE,
+        \DateTime $createdBefore = Values::NONE
+
+    )
+    {
         $this->options['roomType'] = $roomType;
         $this->options['codec'] = $codec;
         $this->options['roomName'] = $roomName;
@@ -57,7 +83,8 @@ class ReadRoomOptions extends Options {
      * @param string $roomType Type of room. Can be `go`, `peer_to_peer`, `group`, or `group_small`.
      * @return $this Fluent Builder
      */
-    public function setRoomType(array $roomType): self {
+    public function setRoomType(array $roomType): self
+    {
         $this->options['roomType'] = $roomType;
         return $this;
     }
@@ -68,7 +95,8 @@ class ReadRoomOptions extends Options {
      * @param string $codec Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`.
      * @return $this Fluent Builder
      */
-    public function setCodec(array $codec): self {
+    public function setCodec(array $codec): self
+    {
         $this->options['codec'] = $codec;
         return $this;
     }
@@ -79,7 +107,8 @@ class ReadRoomOptions extends Options {
      * @param string $roomName Room friendly name.
      * @return $this Fluent Builder
      */
-    public function setRoomName(string $roomName): self {
+    public function setRoomName(string $roomName): self
+    {
         $this->options['roomName'] = $roomName;
         return $this;
     }
@@ -90,7 +119,8 @@ class ReadRoomOptions extends Options {
      * @param \DateTime $createdAfter Only read rooms that started on or after this ISO 8601 timestamp.
      * @return $this Fluent Builder
      */
-    public function setCreatedAfter(\DateTime $createdAfter): self {
+    public function setCreatedAfter(\DateTime $createdAfter): self
+    {
         $this->options['createdAfter'] = $createdAfter;
         return $this;
     }
@@ -101,7 +131,8 @@ class ReadRoomOptions extends Options {
      * @param \DateTime $createdBefore Only read rooms that started before this ISO 8601 timestamp.
      * @return $this Fluent Builder
      */
-    public function setCreatedBefore(\DateTime $createdBefore): self {
+    public function setCreatedBefore(\DateTime $createdBefore): self
+    {
         $this->options['createdBefore'] = $createdBefore;
         return $this;
     }
@@ -111,7 +142,8 @@ class ReadRoomOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.ReadRoomOptions ' . $options . ']';
     }

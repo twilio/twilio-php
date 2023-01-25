@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ChannelContext extends InstanceContext {
+class ChannelContext extends InstanceContext
+    {
     /**
      * Initialize the ChannelContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Flex chat channel resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Channels/' . \rawurlencode($sid) . '';
+        $this->uri = '/Channels/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -44,9 +53,12 @@ class ChannelContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ChannelInstance
@@ -54,22 +66,26 @@ class ChannelContext extends InstanceContext {
      * @return ChannelInstance Fetched ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ChannelInstance {
+    public function fetch(): ChannelInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

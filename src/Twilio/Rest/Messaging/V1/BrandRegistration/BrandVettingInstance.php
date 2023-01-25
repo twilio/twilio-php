@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property string $vettingProvider
  * @property string $url
  */
-class BrandVettingInstance extends InstanceResource {
+class BrandVettingInstance extends InstanceResource
+{
     /**
      * Initialize the BrandVettingInstance
      *
@@ -45,7 +46,8 @@ class BrandVettingInstance extends InstanceResource {
      * @param string $brandSid The SID of the Brand Registration resource of the vettings to create .
      * @param string $brandVettingSid The Twilio SID of the third-party vetting record.
      */
-    public function __construct(Version $version, array $payload, string $brandSid, string $brandVettingSid = null) {
+    public function __construct(Version $version, array $payload, string $brandSid, string $brandVettingSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -71,7 +73,8 @@ class BrandVettingInstance extends InstanceResource {
      *
      * @return BrandVettingContext Context for this BrandVettingInstance
      */
-    protected function proxy(): BrandVettingContext {
+    protected function proxy(): BrandVettingContext
+    {
         if (!$this->context) {
             $this->context = new BrandVettingContext(
                 $this->version,
@@ -89,7 +92,9 @@ class BrandVettingInstance extends InstanceResource {
      * @return BrandVettingInstance Fetched BrandVettingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BrandVettingInstance {
+    public function fetch(): BrandVettingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +105,8 @@ class BrandVettingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -118,7 +124,8 @@ class BrandVettingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

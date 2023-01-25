@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property string $url
  */
-class EvaluationInstance extends InstanceResource {
+class EvaluationInstance extends InstanceResource
+{
     /**
      * Initialize the EvaluationInstance
      *
@@ -43,7 +44,8 @@ class EvaluationInstance extends InstanceResource {
      * @param string $bundleSid The unique string that identifies the Bundle resource.
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function __construct(Version $version, array $payload, string $bundleSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $bundleSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class EvaluationInstance extends InstanceResource {
      *
      * @return EvaluationContext Context for this EvaluationInstance
      */
-    protected function proxy(): EvaluationContext {
+    protected function proxy(): EvaluationContext
+    {
         if (!$this->context) {
             $this->context = new EvaluationContext(
                 $this->version,
@@ -85,7 +88,9 @@ class EvaluationInstance extends InstanceResource {
      * @return EvaluationInstance Fetched EvaluationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EvaluationInstance {
+    public function fetch(): EvaluationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -96,7 +101,8 @@ class EvaluationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -114,7 +120,8 @@ class EvaluationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

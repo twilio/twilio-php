@@ -22,17 +22,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class FlowList extends ListResource {
+class FlowList extends ListResource
+    {
     /**
      * Construct the FlowList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Flows';
     }
@@ -52,7 +56,8 @@ class FlowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return FlowInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -74,7 +79,8 @@ class FlowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -91,7 +97,12 @@ class FlowList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return FlowPage Page of FlowInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): FlowPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): FlowPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -111,7 +122,8 @@ class FlowList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return FlowPage Page of FlowInstance
      */
-    public function getPage(string $targetUrl): FlowPage {
+    public function getPage(string $targetUrl): FlowPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -126,8 +138,15 @@ class FlowList extends ListResource {
      *
      * @param string $sid The SID of the Flow resource to delete.
      */
-    public function getContext(string $sid): FlowContext {
-        return new FlowContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): FlowContext
+    {
+        return new FlowContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -135,7 +154,8 @@ class FlowList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Studio.V1.FlowList]';
     }
 }

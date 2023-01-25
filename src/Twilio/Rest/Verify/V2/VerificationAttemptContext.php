@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class VerificationAttemptContext extends InstanceContext {
+class VerificationAttemptContext extends InstanceContext
+    {
     /**
      * Initialize the VerificationAttemptContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The unique SID identifier of a Verification Attempt
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Attempts/' . \rawurlencode($sid) . '';
+        $this->uri = '/Attempts/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -44,22 +53,26 @@ class VerificationAttemptContext extends InstanceContext {
      * @return VerificationAttemptInstance Fetched VerificationAttemptInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VerificationAttemptInstance {
+    public function fetch(): VerificationAttemptInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new VerificationAttemptInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

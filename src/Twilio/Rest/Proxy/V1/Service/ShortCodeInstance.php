@@ -38,7 +38,8 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property string $url
  * @property bool $isReserved
  */
-class ShortCodeInstance extends InstanceResource {
+class ShortCodeInstance extends InstanceResource
+{
     /**
      * Initialize the ShortCodeInstance
      *
@@ -47,7 +48,8 @@ class ShortCodeInstance extends InstanceResource {
      * @param string $serviceSid The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the ShortCode resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class ShortCodeInstance extends InstanceResource {
      *
      * @return ShortCodeContext Context for this ShortCodeInstance
      */
-    protected function proxy(): ShortCodeContext {
+    protected function proxy(): ShortCodeContext
+    {
         if (!$this->context) {
             $this->context = new ShortCodeContext(
                 $this->version,
@@ -91,7 +94,9 @@ class ShortCodeInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class ShortCodeInstance extends InstanceResource {
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ShortCodeInstance {
+    public function fetch(): ShortCodeInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,7 +119,9 @@ class ShortCodeInstance extends InstanceResource {
      * @return ShortCodeInstance Updated ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ShortCodeInstance {
+    public function update(array $options = []): ShortCodeInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -123,7 +132,8 @@ class ShortCodeInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -141,7 +151,8 @@ class ShortCodeInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class SubscribeRulesList extends ListResource {
+class SubscribeRulesList extends ListResource
+    {
     /**
      * Construct the SubscribeRulesList
      *
@@ -32,13 +33,28 @@ class SubscribeRulesList extends ListResource {
      * @param string $roomSid The SID of the Room resource where the subscribe rules to fetch apply.
      * @param string $participantSid The SID of the Participant resource with the subscribe rules to fetch.
      */
-    public function __construct(Version $version, string $roomSid , string $participantSid ) {
+    public function __construct(
+        Version $version,
+        string $roomSid
+        ,
+        string $participantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['roomSid' => $roomSid, 'participantSid' => $participantSid, ];
+        $this->solution = [
+        'roomSid' =>
+            $roomSid,
+        
+        'participantSid' =>
+            $participantSid,
+        
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/SubscribeRules';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid)
+        .'/Participants/' . \rawurlencode($participantSid)
+        .'/SubscribeRules';
     }
 
     /**
@@ -47,16 +63,19 @@ class SubscribeRulesList extends ListResource {
      * @return SubscribeRulesInstance Fetched SubscribeRulesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SubscribeRulesInstance {
+    public function fetch(): SubscribeRulesInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SubscribeRulesInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
-            , $this->solution['participantSid']
+            $payload,
+            $this->solution['roomSid'],
+            $this->solution['participantSid'],
         );
     }
+
 
     /**
      * Update the SubscribeRulesInstance
@@ -65,29 +84,34 @@ class SubscribeRulesList extends ListResource {
      * @return SubscribeRulesInstance Updated SubscribeRulesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SubscribeRulesInstance {
+    public function update(array $options = []): SubscribeRulesInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Rules' => Serialize::jsonObject($options['rules']),
+            'Rules' =>
+                Serialize::jsonObject($options['rules']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SubscribeRulesInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
-            , $this->solution['participantSid']
+            $payload,
+            $this->solution['roomSid'],
+            $this->solution['participantSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.SubscribeRulesList]';
     }
 }

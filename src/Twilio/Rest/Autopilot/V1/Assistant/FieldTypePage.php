@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class FieldTypePage extends Page {
+class FieldTypePage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class FieldTypePage extends Page {
      * @param array $payload Payload response from the API
      * @return FieldTypeInstance \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeInstance
      */
-    public function buildInstance(array $payload): FieldTypeInstance {
+    public function buildInstance(array $payload): FieldTypeInstance
+    {
         return new FieldTypeInstance($this->version, $payload, $this->solution['assistantSid']);
     }
 
@@ -45,7 +48,8 @@ class FieldTypePage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Autopilot.V1.FieldTypePage]';
     }
 }

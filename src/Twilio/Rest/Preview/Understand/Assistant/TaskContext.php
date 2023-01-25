@@ -40,7 +40,8 @@ use Twilio\Rest\Preview\Understand\Assistant\Task\TaskStatisticsList;
  * @method \Twilio\Rest\Preview\Understand\Assistant\Task\SampleContext samples(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\Task\FieldContext fields(string $sid)
  */
-class TaskContext extends InstanceContext {
+class TaskContext extends InstanceContext
+    {
     protected $_samples;
     protected $_fields;
     protected $_taskActions;
@@ -53,13 +54,25 @@ class TaskContext extends InstanceContext {
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, $assistantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/Tasks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -68,9 +81,12 @@ class TaskContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the TaskInstance
@@ -78,16 +94,19 @@ class TaskContext extends InstanceContext {
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TaskInstance {
+    public function fetch(): TaskInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new TaskInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the TaskInstance
@@ -96,35 +115,43 @@ class TaskContext extends InstanceContext {
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TaskInstance {
+    public function update(array $options = []): TaskInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
-            'Actions' => Serialize::jsonObject($options['actions']),
-            'ActionsUrl' => $options['actionsUrl'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
+            'Actions' =>
+                Serialize::jsonObject($options['actions']),
+            'ActionsUrl' =>
+                $options['actionsUrl'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new TaskInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the samples
      */
-    protected function getSamples(): SampleList {
+    protected function getSamples(): SampleList
+    {
         if (!$this->_samples) {
             $this->_samples = new SampleList(
-                $this->version
-                , $this->solution['assistantSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -134,12 +161,13 @@ class TaskContext extends InstanceContext {
     /**
      * Access the fields
      */
-    protected function getFields(): FieldList {
+    protected function getFields(): FieldList
+    {
         if (!$this->_fields) {
             $this->_fields = new FieldList(
-                $this->version
-                , $this->solution['assistantSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -149,12 +177,13 @@ class TaskContext extends InstanceContext {
     /**
      * Access the taskActions
      */
-    protected function getTaskActions(): TaskActionsList {
+    protected function getTaskActions(): TaskActionsList
+    {
         if (!$this->_taskActions) {
             $this->_taskActions = new TaskActionsList(
-                $this->version
-                , $this->solution['assistantSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -164,12 +193,13 @@ class TaskContext extends InstanceContext {
     /**
      * Access the statistics
      */
-    protected function getStatistics(): TaskStatisticsList {
+    protected function getStatistics(): TaskStatisticsList
+    {
         if (!$this->_statistics) {
             $this->_statistics = new TaskStatisticsList(
-                $this->version
-                , $this->solution['assistantSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -183,7 +213,8 @@ class TaskContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -200,7 +231,8 @@ class TaskContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -214,7 +246,8 @@ class TaskContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -19,16 +19,30 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-abstract class BuildOptions {
+abstract class BuildOptions
+{
     /**
-     * @param string[] $assetVersions The list of Asset Version resource SIDs to include in the Build. 
-     * @param string[] $functionVersions The list of the Function Version resource SIDs to include in the Build. 
-     * @param string $dependencies A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency. 
-     * @param string $runtime The Runtime version that will be used to run the Build resource when it is deployed. 
+     * @param string[] $assetVersions The list of Asset Version resource SIDs to include in the Build.
+     * @param string[] $functionVersions The list of the Function Version resource SIDs to include in the Build.
+     * @param string $dependencies A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency.
+     * @param string $runtime The Runtime version that will be used to run the Build resource when it is deployed.
      * @return CreateBuildOptions Options builder
      */
-    public static function create(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE, string $runtime = Values::NONE): CreateBuildOptions {
-        return new CreateBuildOptions($assetVersions, $functionVersions, $dependencies, $runtime);
+    public static function create(
+        
+        array $assetVersions = Values::ARRAY_NONE,
+        array $functionVersions = Values::ARRAY_NONE,
+        string $dependencies = Values::NONE,
+        string $runtime = Values::NONE
+
+    ): CreateBuildOptions
+    {
+        return new CreateBuildOptions(
+            $assetVersions,
+            $functionVersions,
+            $dependencies,
+            $runtime
+        );
     }
 
 
@@ -36,14 +50,23 @@ abstract class BuildOptions {
 
 }
 
-class CreateBuildOptions extends Options {
+class CreateBuildOptions extends Options
+    {
     /**
      * @param string[] $assetVersions The list of Asset Version resource SIDs to include in the Build.
      * @param string[] $functionVersions The list of the Function Version resource SIDs to include in the Build.
      * @param string $dependencies A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency.
      * @param string $runtime The Runtime version that will be used to run the Build resource when it is deployed.
      */
-    public function __construct(array $assetVersions = Values::ARRAY_NONE, array $functionVersions = Values::ARRAY_NONE, string $dependencies = Values::NONE, string $runtime = Values::NONE) {
+    public function __construct(
+        
+        array $assetVersions = Values::ARRAY_NONE,
+        array $functionVersions = Values::ARRAY_NONE,
+        string $dependencies = Values::NONE,
+        string $runtime = Values::NONE
+
+    )
+    {
         $this->options['assetVersions'] = $assetVersions;
         $this->options['functionVersions'] = $functionVersions;
         $this->options['dependencies'] = $dependencies;
@@ -56,7 +79,8 @@ class CreateBuildOptions extends Options {
      * @param string[] $assetVersions The list of Asset Version resource SIDs to include in the Build.
      * @return $this Fluent Builder
      */
-    public function setAssetVersions(array $assetVersions): self {
+    public function setAssetVersions(array $assetVersions): self
+    {
         $this->options['assetVersions'] = $assetVersions;
         return $this;
     }
@@ -67,7 +91,8 @@ class CreateBuildOptions extends Options {
      * @param string[] $functionVersions The list of the Function Version resource SIDs to include in the Build.
      * @return $this Fluent Builder
      */
-    public function setFunctionVersions(array $functionVersions): self {
+    public function setFunctionVersions(array $functionVersions): self
+    {
         $this->options['functionVersions'] = $functionVersions;
         return $this;
     }
@@ -78,7 +103,8 @@ class CreateBuildOptions extends Options {
      * @param string $dependencies A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency.
      * @return $this Fluent Builder
      */
-    public function setDependencies(string $dependencies): self {
+    public function setDependencies(string $dependencies): self
+    {
         $this->options['dependencies'] = $dependencies;
         return $this;
     }
@@ -89,7 +115,8 @@ class CreateBuildOptions extends Options {
      * @param string $runtime The Runtime version that will be used to run the Build resource when it is deployed.
      * @return $this Fluent Builder
      */
-    public function setRuntime(string $runtime): self {
+    public function setRuntime(string $runtime): self
+    {
         $this->options['runtime'] = $runtime;
         return $this;
     }
@@ -99,7 +126,8 @@ class CreateBuildOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Serverless.V1.CreateBuildOptions ' . $options . ']';
     }

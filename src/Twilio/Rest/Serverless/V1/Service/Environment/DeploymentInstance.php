@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class DeploymentInstance extends InstanceResource {
+class DeploymentInstance extends InstanceResource
+{
     /**
      * Initialize the DeploymentInstance
      *
@@ -44,7 +45,8 @@ class DeploymentInstance extends InstanceResource {
      * @param string $environmentSid The SID of the Environment for the Deployment.
      * @param string $sid The SID that identifies the Deployment resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +70,8 @@ class DeploymentInstance extends InstanceResource {
      *
      * @return DeploymentContext Context for this DeploymentInstance
      */
-    protected function proxy(): DeploymentContext {
+    protected function proxy(): DeploymentContext
+    {
         if (!$this->context) {
             $this->context = new DeploymentContext(
                 $this->version,
@@ -87,7 +90,9 @@ class DeploymentInstance extends InstanceResource {
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DeploymentInstance {
+    public function fetch(): DeploymentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -98,7 +103,8 @@ class DeploymentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -116,7 +122,8 @@ class DeploymentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

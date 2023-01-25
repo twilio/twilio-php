@@ -31,7 +31,8 @@ use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList;
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemContext syncMapItems(string $key)
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext syncMapPermissions(string $identity)
  */
-class SyncMapContext extends InstanceContext {
+class SyncMapContext extends InstanceContext
+    {
     protected $_syncMapItems;
     protected $_syncMapPermissions;
 
@@ -42,13 +43,25 @@ class SyncMapContext extends InstanceContext {
      * @param string $serviceSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Maps/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -57,9 +70,12 @@ class SyncMapContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the SyncMapInstance
@@ -67,26 +83,30 @@ class SyncMapContext extends InstanceContext {
      * @return SyncMapInstance Fetched SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncMapInstance {
+    public function fetch(): SyncMapInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SyncMapInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the syncMapItems
      */
-    protected function getSyncMapItems(): SyncMapItemList {
+    protected function getSyncMapItems(): SyncMapItemList
+    {
         if (!$this->_syncMapItems) {
             $this->_syncMapItems = new SyncMapItemList(
-                $this->version
-                , $this->solution['serviceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -96,12 +116,13 @@ class SyncMapContext extends InstanceContext {
     /**
      * Access the syncMapPermissions
      */
-    protected function getSyncMapPermissions(): SyncMapPermissionList {
+    protected function getSyncMapPermissions(): SyncMapPermissionList
+    {
         if (!$this->_syncMapPermissions) {
             $this->_syncMapPermissions = new SyncMapPermissionList(
-                $this->version
-                , $this->solution['serviceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -115,7 +136,8 @@ class SyncMapContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -132,7 +154,8 @@ class SyncMapContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -146,7 +169,8 @@ class SyncMapContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

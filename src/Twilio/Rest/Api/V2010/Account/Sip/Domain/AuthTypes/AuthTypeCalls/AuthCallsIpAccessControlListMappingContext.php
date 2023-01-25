@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AuthCallsIpAccessControlListMappingContext extends InstanceContext {
+class AuthCallsIpAccessControlListMappingContext extends InstanceContext
+    {
     /**
      * Initialize the AuthCallsIpAccessControlListMappingContext
      *
@@ -31,13 +32,29 @@ class AuthCallsIpAccessControlListMappingContext extends InstanceContext {
      * @param string $domainSid The SID of the SIP domain that will contain the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $domainSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $domainSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'domainSid' => $domainSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'domainSid' =>
+            $domainSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/Auth/Calls/IpAccessControlListMappings/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SIP/Domains/' . \rawurlencode($domainSid)
+        .'/Auth/Calls/IpAccessControlListMappings/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -46,9 +63,12 @@ class AuthCallsIpAccessControlListMappingContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the AuthCallsIpAccessControlListMappingInstance
@@ -56,24 +76,28 @@ class AuthCallsIpAccessControlListMappingContext extends InstanceContext {
      * @return AuthCallsIpAccessControlListMappingInstance Fetched AuthCallsIpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AuthCallsIpAccessControlListMappingInstance {
+    public function fetch(): AuthCallsIpAccessControlListMappingInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AuthCallsIpAccessControlListMappingInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['domainSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['domainSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

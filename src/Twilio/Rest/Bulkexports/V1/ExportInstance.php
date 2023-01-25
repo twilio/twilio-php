@@ -30,7 +30,8 @@ use Twilio\Rest\Bulkexports\V1\Export\DayList;
  * @property string $url
  * @property array $links
  */
-class ExportInstance extends InstanceResource {
+class ExportInstance extends InstanceResource
+{
     protected $_exportCustomJobs;
     protected $_days;
 
@@ -41,7 +42,8 @@ class ExportInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      */
-    public function __construct(Version $version, array $payload, string $resourceType = null) {
+    public function __construct(Version $version, array $payload, string $resourceType = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class ExportInstance extends InstanceResource {
      *
      * @return ExportContext Context for this ExportInstance
      */
-    protected function proxy(): ExportContext {
+    protected function proxy(): ExportContext
+    {
         if (!$this->context) {
             $this->context = new ExportContext(
                 $this->version,
@@ -77,21 +80,25 @@ class ExportInstance extends InstanceResource {
      * @return ExportInstance Fetched ExportInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ExportInstance {
+    public function fetch(): ExportInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the exportCustomJobs
      */
-    protected function getExportCustomJobs(): ExportCustomJobList {
+    protected function getExportCustomJobs(): ExportCustomJobList
+    {
         return $this->proxy()->exportCustomJobs;
     }
 
     /**
      * Access the days
      */
-    protected function getDays(): DayList {
+    protected function getDays(): DayList
+    {
         return $this->proxy()->days;
     }
 
@@ -102,7 +109,8 @@ class ExportInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -120,7 +128,8 @@ class ExportInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

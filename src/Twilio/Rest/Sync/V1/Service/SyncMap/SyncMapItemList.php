@@ -25,7 +25,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class SyncMapItemList extends ListResource {
+class SyncMapItemList extends ListResource
+    {
     /**
      * Construct the SyncMapItemList
      *
@@ -33,13 +34,28 @@ class SyncMapItemList extends ListResource {
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Map Item in.
      * @param string $mapSid The SID of the Sync Map to add the new Map Item to. Can be the Sync Map resource's `sid` or its `unique_name`.
      */
-    public function __construct(Version $version, string $serviceSid , string $mapSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        ,
+        string $mapSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, 'mapSid' => $mapSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        'mapSid' =>
+            $mapSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Maps/' . \rawurlencode($mapSid) . '/Items';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Maps/' . \rawurlencode($mapSid)
+        .'/Items';
     }
 
     /**
@@ -51,26 +67,34 @@ class SyncMapItemList extends ListResource {
      * @return SyncMapItemInstance Created SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $key, array $data, array $options = []): SyncMapItemInstance {
+    public function create(string $key, array $data, array $options = []): SyncMapItemInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Key' => $key,
-            'Data' => Serialize::jsonObject($data),
-            'Ttl' => $options['ttl'],
-            'ItemTtl' => $options['itemTtl'],
-            'CollectionTtl' => $options['collectionTtl'],
+            'Key' =>
+                $key,
+            'Data' =>
+                Serialize::jsonObject($data),
+            'Ttl' =>
+                $options['ttl'],
+            'ItemTtl' =>
+                $options['itemTtl'],
+            'CollectionTtl' =>
+                $options['collectionTtl'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SyncMapItemInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['mapSid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['mapSid'],
         );
     }
+
 
     /**
      * Reads SyncMapItemInstance records from the API as a list.
@@ -88,7 +112,8 @@ class SyncMapItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapItemInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -111,7 +136,8 @@ class SyncMapItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -128,13 +154,22 @@ class SyncMapItemList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SyncMapItemPage Page of SyncMapItemInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SyncMapItemPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SyncMapItemPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
-            'From' => $options['from'],
-            'Bounds' => $options['bounds'],
+            'Order' =>
+                $options['order'],
+            'From' =>
+                $options['from'],
+            'Bounds' =>
+                $options['bounds'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -152,7 +187,8 @@ class SyncMapItemList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SyncMapItemPage Page of SyncMapItemInstance
      */
-    public function getPage(string $targetUrl): SyncMapItemPage {
+    public function getPage(string $targetUrl): SyncMapItemPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -167,8 +203,17 @@ class SyncMapItemList extends ListResource {
      *
      * @param string $key The `key` value of the Sync Map Item resource to delete.
      */
-    public function getContext(string $key): SyncMapItemContext {
-        return new SyncMapItemContext($this->version, $this->solution['serviceSid'], $this->solution['mapSid'], $key);
+    public function getContext(
+        string $key
+        
+    ): SyncMapItemContext
+    {
+        return new SyncMapItemContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['mapSid'],
+            $key
+        );
     }
 
     /**
@@ -176,7 +221,8 @@ class SyncMapItemList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Sync.V1.SyncMapItemList]';
     }
 }

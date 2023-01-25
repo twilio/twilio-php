@@ -18,38 +18,67 @@ namespace Twilio\Rest\Sync\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SyncMapOptions {
+abstract class SyncMapOptions
+{
     /**
-     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource. 
-     * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored. 
-     * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted. 
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource.
+     * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
+     * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted.
      * @return CreateSyncMapOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, int $ttl = Values::NONE, int $collectionTtl = Values::NONE): CreateSyncMapOptions {
-        return new CreateSyncMapOptions($uniqueName, $ttl, $collectionTtl);
+    public static function create(
+        
+        string $uniqueName = Values::NONE,
+        int $ttl = Values::NONE,
+        int $collectionTtl = Values::NONE
+
+    ): CreateSyncMapOptions
+    {
+        return new CreateSyncMapOptions(
+            $uniqueName,
+            $ttl,
+            $collectionTtl
+        );
     }
 
 
 
 
     /**
-     * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored. 
-     * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted. 
+     * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
+     * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted.
      * @return UpdateSyncMapOptions Options builder
      */
-    public static function update(int $ttl = Values::NONE, int $collectionTtl = Values::NONE): UpdateSyncMapOptions {
-        return new UpdateSyncMapOptions($ttl, $collectionTtl);
+    public static function update(
+        
+        int $ttl = Values::NONE,
+        int $collectionTtl = Values::NONE
+
+    ): UpdateSyncMapOptions
+    {
+        return new UpdateSyncMapOptions(
+            $ttl,
+            $collectionTtl
+        );
     }
 
 }
 
-class CreateSyncMapOptions extends Options {
+class CreateSyncMapOptions extends Options
+    {
     /**
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource.
      * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
      * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted.
      */
-    public function __construct(string $uniqueName = Values::NONE, int $ttl = Values::NONE, int $collectionTtl = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        int $ttl = Values::NONE,
+        int $collectionTtl = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
         $this->options['collectionTtl'] = $collectionTtl;
@@ -61,7 +90,8 @@ class CreateSyncMapOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource.
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -72,7 +102,8 @@ class CreateSyncMapOptions extends Options {
      * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
      * @return $this Fluent Builder
      */
-    public function setTtl(int $ttl): self {
+    public function setTtl(int $ttl): self
+    {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -83,7 +114,8 @@ class CreateSyncMapOptions extends Options {
      * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted.
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl(int $collectionTtl): self {
+    public function setCollectionTtl(int $collectionTtl): self
+    {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -93,7 +125,8 @@ class CreateSyncMapOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Sync.V1.CreateSyncMapOptions ' . $options . ']';
     }
@@ -102,12 +135,19 @@ class CreateSyncMapOptions extends Options {
 
 
 
-class UpdateSyncMapOptions extends Options {
+class UpdateSyncMapOptions extends Options
+    {
     /**
      * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
      * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted.
      */
-    public function __construct(int $ttl = Values::NONE, int $collectionTtl = Values::NONE) {
+    public function __construct(
+        
+        int $ttl = Values::NONE,
+        int $collectionTtl = Values::NONE
+
+    )
+    {
         $this->options['ttl'] = $ttl;
         $this->options['collectionTtl'] = $collectionTtl;
     }
@@ -118,7 +158,8 @@ class UpdateSyncMapOptions extends Options {
      * @param int $ttl An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
      * @return $this Fluent Builder
      */
-    public function setTtl(int $ttl): self {
+    public function setTtl(int $ttl): self
+    {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -129,7 +170,8 @@ class UpdateSyncMapOptions extends Options {
      * @param int $collectionTtl How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Map expires (time-to-live) and is deleted.
      * @return $this Fluent Builder
      */
-    public function setCollectionTtl(int $collectionTtl): self {
+    public function setCollectionTtl(int $collectionTtl): self
+    {
         $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
@@ -139,7 +181,8 @@ class UpdateSyncMapOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Sync.V1.UpdateSyncMapOptions ' . $options . ']';
     }

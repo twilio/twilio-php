@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class DeviceContext extends InstanceContext {
+class DeviceContext extends InstanceContext
+    {
     /**
      * Initialize the DeviceContext
      *
@@ -33,13 +34,25 @@ class DeviceContext extends InstanceContext {
      * @param string $fleetSid 
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Device resource.
      */
-    public function __construct(Version $version, $fleetSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $fleetSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['fleetSid' => $fleetSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'fleetSid' =>
+            $fleetSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Devices/' . \rawurlencode($sid) . '';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid)
+        .'/Devices/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +61,12 @@ class DeviceContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the DeviceInstance
@@ -58,16 +74,19 @@ class DeviceContext extends InstanceContext {
      * @return DeviceInstance Fetched DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DeviceInstance {
+    public function fetch(): DeviceInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DeviceInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the DeviceInstance
@@ -76,32 +95,40 @@ class DeviceContext extends InstanceContext {
      * @return DeviceInstance Updated DeviceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): DeviceInstance {
+    public function update(array $options = []): DeviceInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'Identity' => $options['identity'],
-            'DeploymentSid' => $options['deploymentSid'],
-            'Enabled' => Serialize::booleanToString($options['enabled']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Identity' =>
+                $options['identity'],
+            'DeploymentSid' =>
+                $options['deploymentSid'],
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DeviceInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

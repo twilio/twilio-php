@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class WebhookList extends ListResource {
+class WebhookList extends ListResource
+    {
     /**
      * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a WebhookContext
      */
-    public function getContext(): WebhookContext {
-        return new WebhookContext($this->version);
+    public function getContext(
+        
+    ): WebhookContext
+    {
+        return new WebhookContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class WebhookList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.WebhookList]';
     }
 }

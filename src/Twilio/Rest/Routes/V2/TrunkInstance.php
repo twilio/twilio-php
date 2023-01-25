@@ -35,7 +35,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class TrunkInstance extends InstanceResource {
+class TrunkInstance extends InstanceResource
+{
     /**
      * Initialize the TrunkInstance
      *
@@ -43,7 +44,8 @@ class TrunkInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sipTrunkDomain The absolute URL of the SIP Trunk
      */
-    public function __construct(Version $version, array $payload, string $sipTrunkDomain = null) {
+    public function __construct(Version $version, array $payload, string $sipTrunkDomain = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class TrunkInstance extends InstanceResource {
      *
      * @return TrunkContext Context for this TrunkInstance
      */
-    protected function proxy(): TrunkContext {
+    protected function proxy(): TrunkContext
+    {
         if (!$this->context) {
             $this->context = new TrunkContext(
                 $this->version,
@@ -84,7 +87,9 @@ class TrunkInstance extends InstanceResource {
      * @return TrunkInstance Fetched TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrunkInstance {
+    public function fetch(): TrunkInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -95,7 +100,9 @@ class TrunkInstance extends InstanceResource {
      * @return TrunkInstance Updated TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TrunkInstance {
+    public function update(array $options = []): TrunkInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -106,7 +113,8 @@ class TrunkInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -124,7 +132,8 @@ class TrunkInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

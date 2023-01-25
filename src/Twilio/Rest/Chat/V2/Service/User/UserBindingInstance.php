@@ -38,7 +38,8 @@ use Twilio\Deserialize;
  * @property string[] $messageTypes
  * @property string $url
  */
-class UserBindingInstance extends InstanceResource {
+class UserBindingInstance extends InstanceResource
+{
     /**
      * Initialize the UserBindingInstance
      *
@@ -48,7 +49,8 @@ class UserBindingInstance extends InstanceResource {
      * @param string $userSid The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
      * @param string $sid The SID of the User Binding resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +78,8 @@ class UserBindingInstance extends InstanceResource {
      *
      * @return UserBindingContext Context for this UserBindingInstance
      */
-    protected function proxy(): UserBindingContext {
+    protected function proxy(): UserBindingContext
+    {
         if (!$this->context) {
             $this->context = new UserBindingContext(
                 $this->version,
@@ -95,7 +98,9 @@ class UserBindingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -105,7 +110,9 @@ class UserBindingInstance extends InstanceResource {
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): UserBindingInstance {
+    public function fetch(): UserBindingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -116,7 +123,8 @@ class UserBindingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,7 +142,8 @@ class UserBindingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

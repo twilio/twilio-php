@@ -42,7 +42,8 @@ use Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsList;
  * @property string $url
  * @property array $links
  */
-class TrustProductsInstance extends InstanceResource {
+class TrustProductsInstance extends InstanceResource
+{
     protected $_trustProductsChannelEndpointAssignment;
     protected $_trustProductsEvaluations;
     protected $_trustProductsEntityAssignments;
@@ -54,7 +55,8 @@ class TrustProductsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that we created to identify the Customer-Profile resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -82,7 +84,8 @@ class TrustProductsInstance extends InstanceResource {
      *
      * @return TrustProductsContext Context for this TrustProductsInstance
      */
-    protected function proxy(): TrustProductsContext {
+    protected function proxy(): TrustProductsContext
+    {
         if (!$this->context) {
             $this->context = new TrustProductsContext(
                 $this->version,
@@ -99,7 +102,9 @@ class TrustProductsInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -109,7 +114,9 @@ class TrustProductsInstance extends InstanceResource {
      * @return TrustProductsInstance Fetched TrustProductsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrustProductsInstance {
+    public function fetch(): TrustProductsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -120,28 +127,33 @@ class TrustProductsInstance extends InstanceResource {
      * @return TrustProductsInstance Updated TrustProductsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TrustProductsInstance {
+    public function update(array $options = []): TrustProductsInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the trustProductsChannelEndpointAssignment
      */
-    protected function getTrustProductsChannelEndpointAssignment(): TrustProductsChannelEndpointAssignmentList {
+    protected function getTrustProductsChannelEndpointAssignment(): TrustProductsChannelEndpointAssignmentList
+    {
         return $this->proxy()->trustProductsChannelEndpointAssignment;
     }
 
     /**
      * Access the trustProductsEvaluations
      */
-    protected function getTrustProductsEvaluations(): TrustProductsEvaluationsList {
+    protected function getTrustProductsEvaluations(): TrustProductsEvaluationsList
+    {
         return $this->proxy()->trustProductsEvaluations;
     }
 
     /**
      * Access the trustProductsEntityAssignments
      */
-    protected function getTrustProductsEntityAssignments(): TrustProductsEntityAssignmentsList {
+    protected function getTrustProductsEntityAssignments(): TrustProductsEntityAssignmentsList
+    {
         return $this->proxy()->trustProductsEntityAssignments;
     }
 
@@ -152,7 +164,8 @@ class TrustProductsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -170,7 +183,8 @@ class TrustProductsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AvailableAddOnExtensionContext extends InstanceContext {
+class AvailableAddOnExtensionContext extends InstanceContext
+    {
     /**
      * Initialize the AvailableAddOnExtensionContext
      *
@@ -30,13 +31,25 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      * @param string $availableAddOnSid The SID of the AvailableAddOn resource with the extension to fetch.
      * @param string $sid The SID of the AvailableAddOn Extension resource to fetch.
      */
-    public function __construct(Version $version, $availableAddOnSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $availableAddOnSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['availableAddOnSid' => $availableAddOnSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'availableAddOnSid' =>
+            $availableAddOnSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '';
+        $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid)
+        .'/Extensions/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      * @return AvailableAddOnExtensionInstance Fetched AvailableAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AvailableAddOnExtensionInstance {
+    public function fetch(): AvailableAddOnExtensionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AvailableAddOnExtensionInstance(
             $this->version,
-            $payload
-            , $this->solution['availableAddOnSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['availableAddOnSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

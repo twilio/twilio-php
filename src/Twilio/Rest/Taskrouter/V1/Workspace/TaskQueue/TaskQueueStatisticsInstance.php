@@ -32,7 +32,8 @@ use Twilio\Version;
  * @property string $workspaceSid
  * @property string $url
  */
-class TaskQueueStatisticsInstance extends InstanceResource {
+class TaskQueueStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the TaskQueueStatisticsInstance
      *
@@ -41,7 +42,8 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace with the TaskQueue to fetch.
      * @param string $taskQueueSid The SID of the TaskQueue for which to fetch statistics.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskQueueSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskQueueSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      *
      * @return TaskQueueStatisticsContext Context for this TaskQueueStatisticsInstance
      */
-    protected function proxy(): TaskQueueStatisticsContext {
+    protected function proxy(): TaskQueueStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new TaskQueueStatisticsContext(
                 $this->version,
@@ -82,7 +85,9 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): TaskQueueStatisticsInstance {
+    public function fetch(array $options = []): TaskQueueStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -93,7 +98,8 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -111,7 +117,8 @@ class TaskQueueStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class CommandList extends ListResource {
+class CommandList extends ListResource
+    {
     /**
      * Construct the CommandList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Commands';
     }
@@ -48,26 +52,36 @@ class CommandList extends ListResource {
      * @return CommandInstance Created CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $command, array $options = []): CommandInstance {
+    public function create(string $command, array $options = []): CommandInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Command' => $command,
-            'Sim' => $options['sim'],
-            'CallbackMethod' => $options['callbackMethod'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'CommandMode' => $options['commandMode'],
-            'IncludeSid' => $options['includeSid'],
-            'DeliveryReceiptRequested' => Serialize::booleanToString($options['deliveryReceiptRequested']),
+            'Command' =>
+                $command,
+            'Sim' =>
+                $options['sim'],
+            'CallbackMethod' =>
+                $options['callbackMethod'],
+            'CallbackUrl' =>
+                $options['callbackUrl'],
+            'CommandMode' =>
+                $options['commandMode'],
+            'IncludeSid' =>
+                $options['includeSid'],
+            'DeliveryReceiptRequested' =>
+                Serialize::booleanToString($options['deliveryReceiptRequested']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CommandInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads CommandInstance records from the API as a list.
@@ -85,7 +99,8 @@ class CommandList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CommandInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -108,7 +123,8 @@ class CommandList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -125,14 +141,24 @@ class CommandList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CommandPage Page of CommandInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CommandPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CommandPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Sim' => $options['sim'],
-            'Status' => $options['status'],
-            'Direction' => $options['direction'],
-            'Transport' => $options['transport'],
+            'Sim' =>
+                $options['sim'],
+            'Status' =>
+                $options['status'],
+            'Direction' =>
+                $options['direction'],
+            'Transport' =>
+                $options['transport'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -150,7 +176,8 @@ class CommandList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CommandPage Page of CommandInstance
      */
-    public function getPage(string $targetUrl): CommandPage {
+    public function getPage(string $targetUrl): CommandPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -165,8 +192,15 @@ class CommandList extends ListResource {
      *
      * @param string $sid The SID of the Command resource to delete.
      */
-    public function getContext(string $sid): CommandContext {
-        return new CommandContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): CommandContext
+    {
+        return new CommandContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -174,7 +208,8 @@ class CommandList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Wireless.V1.CommandList]';
     }
 }

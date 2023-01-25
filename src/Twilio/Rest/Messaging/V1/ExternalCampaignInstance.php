@@ -31,14 +31,16 @@ use Twilio\Deserialize;
  * @property string $messagingServiceSid
  * @property \DateTime $dateCreated
  */
-class ExternalCampaignInstance extends InstanceResource {
+class ExternalCampaignInstance extends InstanceResource
+{
     /**
      * Initialize the ExternalCampaignInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class ExternalCampaignInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -78,7 +81,8 @@ class ExternalCampaignInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.ExternalCampaignInstance]';
     }
 }

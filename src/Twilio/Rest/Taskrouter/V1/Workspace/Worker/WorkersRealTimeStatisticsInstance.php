@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkersRealTimeStatisticsInstance extends InstanceResource {
+class WorkersRealTimeStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkersRealTimeStatisticsInstance
      *
@@ -39,7 +40,8 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace with the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      *
      * @return WorkersRealTimeStatisticsContext Context for this WorkersRealTimeStatisticsInstance
      */
-    protected function proxy(): WorkersRealTimeStatisticsContext {
+    protected function proxy(): WorkersRealTimeStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new WorkersRealTimeStatisticsContext(
                 $this->version,
@@ -78,7 +81,9 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      * @return WorkersRealTimeStatisticsInstance Fetched WorkersRealTimeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkersRealTimeStatisticsInstance {
+    public function fetch(array $options = []): WorkersRealTimeStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -89,7 +94,8 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -107,7 +113,8 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -35,7 +35,8 @@ use Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetList;
  * @property string $url
  * @property array $links
  */
-class ConnectionPolicyInstance extends InstanceResource {
+class ConnectionPolicyInstance extends InstanceResource
+{
     protected $_targets;
 
     /**
@@ -45,7 +46,8 @@ class ConnectionPolicyInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that we created to identify the Connection Policy resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +70,8 @@ class ConnectionPolicyInstance extends InstanceResource {
      *
      * @return ConnectionPolicyContext Context for this ConnectionPolicyInstance
      */
-    protected function proxy(): ConnectionPolicyContext {
+    protected function proxy(): ConnectionPolicyContext
+    {
         if (!$this->context) {
             $this->context = new ConnectionPolicyContext(
                 $this->version,
@@ -85,7 +88,9 @@ class ConnectionPolicyInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -95,7 +100,9 @@ class ConnectionPolicyInstance extends InstanceResource {
      * @return ConnectionPolicyInstance Fetched ConnectionPolicyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConnectionPolicyInstance {
+    public function fetch(): ConnectionPolicyInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -106,14 +113,17 @@ class ConnectionPolicyInstance extends InstanceResource {
      * @return ConnectionPolicyInstance Updated ConnectionPolicyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConnectionPolicyInstance {
+    public function update(array $options = []): ConnectionPolicyInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the targets
      */
-    protected function getTargets(): ConnectionPolicyTargetList {
+    protected function getTargets(): ConnectionPolicyTargetList
+    {
         return $this->proxy()->targets;
     }
 
@@ -124,7 +134,8 @@ class ConnectionPolicyInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +153,8 @@ class ConnectionPolicyInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

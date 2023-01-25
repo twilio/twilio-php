@@ -43,7 +43,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class RatePlanInstance extends InstanceResource {
+class RatePlanInstance extends InstanceResource
+{
     /**
      * Initialize the RatePlanInstance
      *
@@ -51,7 +52,8 @@ class RatePlanInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the RatePlan resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -83,7 +85,8 @@ class RatePlanInstance extends InstanceResource {
      *
      * @return RatePlanContext Context for this RatePlanInstance
      */
-    protected function proxy(): RatePlanContext {
+    protected function proxy(): RatePlanContext
+    {
         if (!$this->context) {
             $this->context = new RatePlanContext(
                 $this->version,
@@ -100,7 +103,9 @@ class RatePlanInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -110,7 +115,9 @@ class RatePlanInstance extends InstanceResource {
      * @return RatePlanInstance Fetched RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RatePlanInstance {
+    public function fetch(): RatePlanInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -121,7 +128,9 @@ class RatePlanInstance extends InstanceResource {
      * @return RatePlanInstance Updated RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): RatePlanInstance {
+    public function update(array $options = []): RatePlanInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -132,7 +141,8 @@ class RatePlanInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -150,7 +160,8 @@ class RatePlanInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

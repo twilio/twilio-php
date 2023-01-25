@@ -30,7 +30,8 @@ use Twilio\Version;
  * @property string $url
  * @property array $data
  */
-class DefaultsInstance extends InstanceResource {
+class DefaultsInstance extends InstanceResource
+{
     /**
      * Initialize the DefaultsInstance
      *
@@ -38,7 +39,8 @@ class DefaultsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $assistantSid) {
+    public function __construct(Version $version, array $payload, string $assistantSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -58,7 +60,8 @@ class DefaultsInstance extends InstanceResource {
      *
      * @return DefaultsContext Context for this DefaultsInstance
      */
-    protected function proxy(): DefaultsContext {
+    protected function proxy(): DefaultsContext
+    {
         if (!$this->context) {
             $this->context = new DefaultsContext(
                 $this->version,
@@ -75,7 +78,9 @@ class DefaultsInstance extends InstanceResource {
      * @return DefaultsInstance Fetched DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DefaultsInstance {
+    public function fetch(): DefaultsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -86,7 +91,9 @@ class DefaultsInstance extends InstanceResource {
      * @return DefaultsInstance Updated DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): DefaultsInstance {
+    public function update(array $options = []): DefaultsInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -97,7 +104,8 @@ class DefaultsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -115,7 +123,8 @@ class DefaultsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

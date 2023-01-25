@@ -45,7 +45,8 @@ use Twilio\Deserialize;
  * @property int $errorCode
  * @property string $track
  */
-class RecordingInstance extends InstanceResource {
+class RecordingInstance extends InstanceResource
+{
     /**
      * Initialize the RecordingInstance
      *
@@ -55,7 +56,8 @@ class RecordingInstance extends InstanceResource {
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -89,7 +91,8 @@ class RecordingInstance extends InstanceResource {
      *
      * @return RecordingContext Context for this RecordingInstance
      */
-    protected function proxy(): RecordingContext {
+    protected function proxy(): RecordingContext
+    {
         if (!$this->context) {
             $this->context = new RecordingContext(
                 $this->version,
@@ -108,7 +111,9 @@ class RecordingInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -118,19 +123,23 @@ class RecordingInstance extends InstanceResource {
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RecordingInstance {
+    public function fetch(): RecordingInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the RecordingInstance
      *
-     * @param string $status 
+     * @param string $status
      * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status, array $options = []): RecordingInstance {
+    public function update(string $status, array $options = []): RecordingInstance
+    {
+
         return $this->proxy()->update($status, $options);
     }
 
@@ -141,7 +150,8 @@ class RecordingInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -159,7 +169,8 @@ class RecordingInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

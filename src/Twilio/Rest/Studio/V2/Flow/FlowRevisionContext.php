@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class FlowRevisionContext extends InstanceContext {
+class FlowRevisionContext extends InstanceContext
+    {
     /**
      * Initialize the FlowRevisionContext
      *
@@ -30,13 +31,25 @@ class FlowRevisionContext extends InstanceContext {
      * @param string $sid The SID of the Flow resource to fetch.
      * @param string $revision Specific Revision number or can be `LatestPublished` and `LatestRevision`.
      */
-    public function __construct(Version $version, $sid , $revision ) {
+    public function __construct(
+        Version $version,
+        $sid,
+        $revision
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  'revision' => $revision,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        'revision' =>
+            $revision,
+        ];
 
-        $this->uri = '/Flows/' . \rawurlencode($sid) . '/Revisions/' . \rawurlencode($revision) . '';
+        $this->uri = '/Flows/' . \rawurlencode($sid)
+        .'/Revisions/' . \rawurlencode($revision)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class FlowRevisionContext extends InstanceContext {
      * @return FlowRevisionInstance Fetched FlowRevisionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlowRevisionInstance {
+    public function fetch(): FlowRevisionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FlowRevisionInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
-            , $this->solution['revision']
+            $payload,
+            $this->solution['sid'],
+            $this->solution['revision'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

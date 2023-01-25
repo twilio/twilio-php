@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class PayloadContext extends InstanceContext {
+class PayloadContext extends InstanceContext
+    {
     /**
      * Initialize the PayloadContext
      *
@@ -32,13 +33,33 @@ class PayloadContext extends InstanceContext {
      * @param string $addOnResultSid The SID of the AddOnResult to which the payloads to delete belongs.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete.
      */
-    public function __construct(Version $version, $accountSid , $referenceSid , $addOnResultSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $referenceSid,
+        $addOnResultSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'referenceSid' => $referenceSid,  'addOnResultSid' => $addOnResultSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'referenceSid' =>
+            $referenceSid,
+        'addOnResultSid' =>
+            $addOnResultSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults/' . \rawurlencode($addOnResultSid) . '/Payloads/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Recordings/' . \rawurlencode($referenceSid)
+        .'/AddOnResults/' . \rawurlencode($addOnResultSid)
+        .'/Payloads/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -47,9 +68,12 @@ class PayloadContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the PayloadInstance
@@ -57,25 +81,29 @@ class PayloadContext extends InstanceContext {
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PayloadInstance {
+    public function fetch(): PayloadInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new PayloadInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['referenceSid']
-            , $this->solution['addOnResultSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['referenceSid'],
+            $this->solution['addOnResultSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class DeliveryReceiptInstance extends InstanceResource {
+class DeliveryReceiptInstance extends InstanceResource
+{
     /**
      * Initialize the DeliveryReceiptInstance
      *
@@ -47,7 +48,8 @@ class DeliveryReceiptInstance extends InstanceResource {
      * @param string $messageSid The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $conversationSid, string $messageSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $conversationSid, string $messageSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,7 +76,8 @@ class DeliveryReceiptInstance extends InstanceResource {
      *
      * @return DeliveryReceiptContext Context for this DeliveryReceiptInstance
      */
-    protected function proxy(): DeliveryReceiptContext {
+    protected function proxy(): DeliveryReceiptContext
+    {
         if (!$this->context) {
             $this->context = new DeliveryReceiptContext(
                 $this->version,
@@ -93,7 +96,9 @@ class DeliveryReceiptInstance extends InstanceResource {
      * @return DeliveryReceiptInstance Fetched DeliveryReceiptInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DeliveryReceiptInstance {
+    public function fetch(): DeliveryReceiptInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,7 +109,8 @@ class DeliveryReceiptInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,7 +128,8 @@ class DeliveryReceiptInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

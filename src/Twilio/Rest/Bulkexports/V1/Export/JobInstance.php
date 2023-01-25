@@ -37,7 +37,8 @@ use Twilio\Version;
  * @property string $jobQueuePosition
  * @property string $estimatedCompletionTime
  */
-class JobInstance extends InstanceResource {
+class JobInstance extends InstanceResource
+{
     /**
      * Initialize the JobInstance
      *
@@ -45,7 +46,8 @@ class JobInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $jobSid The unique string that that we created to identify the Bulk Export job
      */
-    public function __construct(Version $version, array $payload, string $jobSid = null) {
+    public function __construct(Version $version, array $payload, string $jobSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class JobInstance extends InstanceResource {
      *
      * @return JobContext Context for this JobInstance
      */
-    protected function proxy(): JobContext {
+    protected function proxy(): JobContext
+    {
         if (!$this->context) {
             $this->context = new JobContext(
                 $this->version,
@@ -90,7 +93,9 @@ class JobInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,7 +105,9 @@ class JobInstance extends InstanceResource {
      * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): JobInstance {
+    public function fetch(): JobInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -111,7 +118,8 @@ class JobInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -129,7 +137,8 @@ class JobInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class ApprovalFetchList extends ListResource {
+class ApprovalFetchList extends ListResource
+    {
     /**
      * Construct the ApprovalFetchList
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
      */
-    public function __construct(Version $version, string $sid ) {
+    public function __construct(
+        Version $version,
+        string $sid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid, ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        
+        ];
     }
 
     /**
      * Constructs a ApprovalFetchContext
      */
-    public function getContext(): ApprovalFetchContext {
-        return new ApprovalFetchContext($this->version, $this->solution['sid']);
+    public function getContext(
+        
+    ): ApprovalFetchContext
+    {
+        return new ApprovalFetchContext(
+            $this->version,
+            $this->solution['sid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class ApprovalFetchList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Content.V1.ApprovalFetchList]';
     }
 }

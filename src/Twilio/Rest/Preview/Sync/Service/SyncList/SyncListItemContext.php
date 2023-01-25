@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class SyncListItemContext extends InstanceContext {
+class SyncListItemContext extends InstanceContext
+    {
     /**
      * Initialize the SyncListItemContext
      *
@@ -34,13 +35,29 @@ class SyncListItemContext extends InstanceContext {
      * @param string $listSid 
      * @param int $index 
      */
-    public function __construct(Version $version, $serviceSid , $listSid , $index ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $listSid,
+        $index
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'listSid' => $listSid,  'index' => $index,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'listSid' =>
+            $listSid,
+        'index' =>
+            $index,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Items/' . \rawurlencode($index) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Lists/' . \rawurlencode($listSid)
+        .'/Items/' . \rawurlencode($index)
+        .'';
     }
 
     /**
@@ -50,7 +67,9 @@ class SyncListItemContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         $options = new Values($options);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
@@ -58,23 +77,27 @@ class SyncListItemContext extends InstanceContext {
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
+
     /**
      * Fetch the SyncListItemInstance
      *
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncListItemInstance {
+    public function fetch(): SyncListItemInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SyncListItemInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['listSid']
-            , $this->solution['index']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['listSid'],
+            $this->solution['index'],
         );
     }
+
 
     /**
      * Update the SyncListItemInstance
@@ -84,11 +107,14 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $data, array $options = []): SyncListItemInstance {
+    public function update(array $data, array $options = []): SyncListItemInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Data' => Serialize::jsonObject($data),
+            'Data' =>
+                Serialize::jsonObject($data),
         ]);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
@@ -97,19 +123,21 @@ class SyncListItemContext extends InstanceContext {
 
         return new SyncListItemInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['listSid']
-            , $this->solution['index']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['listSid'],
+            $this->solution['index'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

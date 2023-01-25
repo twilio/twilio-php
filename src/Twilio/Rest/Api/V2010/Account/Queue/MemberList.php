@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class MemberList extends ListResource {
+class MemberList extends ListResource
+    {
     /**
      * Construct the MemberList
      *
@@ -30,13 +31,28 @@ class MemberList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to fetch.
      * @param string $queueSid The SID of the Queue in which to find the members to fetch.
      */
-    public function __construct(Version $version, string $accountSid , string $queueSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $queueSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'queueSid' => $queueSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'queueSid' =>
+            $queueSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Queues/' . \rawurlencode($queueSid) . '/Members.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Queues/' . \rawurlencode($queueSid)
+        .'/Members.json';
     }
 
     /**
@@ -54,7 +70,8 @@ class MemberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MemberInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class MemberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class MemberList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return MemberPage Page of MemberInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MemberPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MemberPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class MemberList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return MemberPage Page of MemberInstance
      */
-    public function getPage(string $targetUrl): MemberPage {
+    public function getPage(string $targetUrl): MemberPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class MemberList extends ListResource {
      *
      * @param string $callSid The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch.
      */
-    public function getContext(string $callSid): MemberContext {
-        return new MemberContext($this->version, $this->solution['accountSid'], $this->solution['queueSid'], $callSid);
+    public function getContext(
+        string $callSid
+        
+    ): MemberContext
+    {
+        return new MemberContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['queueSid'],
+            $callSid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class MemberList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.MemberList]';
     }
 }

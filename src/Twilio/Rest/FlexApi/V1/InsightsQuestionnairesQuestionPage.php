@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class UserRolesPage extends Page {
+class InsightsQuestionnairesQuestionPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -34,10 +36,11 @@ class UserRolesPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return UserRolesInstance \Twilio\Rest\FlexApi\V1\UserRolesInstance
+     * @return InsightsQuestionnairesQuestionInstance \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionInstance
      */
-    public function buildInstance(array $payload): UserRolesInstance {
-        return new UserRolesInstance($this->version, $payload);
+    public function buildInstance(array $payload): InsightsQuestionnairesQuestionInstance
+    {
+        return new InsightsQuestionnairesQuestionInstance($this->version, $payload);
     }
 
     /**
@@ -45,7 +48,8 @@ class UserRolesPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
-        return '[Twilio.FlexApi.V1.UserRolesPage]';
+    public function __toString(): string
+    {
+        return '[Twilio.FlexApi.V1.InsightsQuestionnairesQuestionPage]';
     }
 }

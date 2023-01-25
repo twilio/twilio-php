@@ -30,7 +30,8 @@ use Twilio\Rest\Pricing\V1\Voice\NumberList;
  * @method \Twilio\Rest\Pricing\V1\Voice\CountryContext countries(string $isoCountry)
  * @method \Twilio\Rest\Pricing\V1\Voice\NumberContext numbers(string $number)
  */
-class VoiceList extends ListResource {
+class VoiceList extends ListResource
+    {
     protected $_countries = null;
     protected $_numbers = null;
 
@@ -39,36 +40,39 @@ class VoiceList extends ListResource {
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Access the countries
      */
-    protected function getCountries(): CountryList {
+    protected function getCountries(): CountryList
+    {
         if (!$this->_countries) {
             $this->_countries = new CountryList(
                 $this->version
             );
         }
-
         return $this->_countries;
     }
 
     /**
      * Access the numbers
      */
-    protected function getNumbers(): NumberList {
+    protected function getNumbers(): NumberList
+    {
         if (!$this->_numbers) {
             $this->_numbers = new NumberList(
                 $this->version
             );
         }
-
         return $this->_numbers;
     }
 
@@ -79,7 +83,8 @@ class VoiceList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -96,7 +101,8 @@ class VoiceList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -110,7 +116,8 @@ class VoiceList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Pricing.V1.VoiceList]';
     }
 }

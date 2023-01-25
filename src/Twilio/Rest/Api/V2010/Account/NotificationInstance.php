@@ -43,7 +43,8 @@ use Twilio\Deserialize;
  * @property string $sid
  * @property string $uri
  */
-class NotificationInstance extends InstanceResource {
+class NotificationInstance extends InstanceResource
+{
     /**
      * Initialize the NotificationInstance
      *
@@ -52,7 +53,8 @@ class NotificationInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resource to fetch.
      * @param string $sid The Twilio-provided string that uniquely identifies the Notification resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,7 +87,8 @@ class NotificationInstance extends InstanceResource {
      *
      * @return NotificationContext Context for this NotificationInstance
      */
-    protected function proxy(): NotificationContext {
+    protected function proxy(): NotificationContext
+    {
         if (!$this->context) {
             $this->context = new NotificationContext(
                 $this->version,
@@ -103,7 +106,9 @@ class NotificationInstance extends InstanceResource {
      * @return NotificationInstance Fetched NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NotificationInstance {
+    public function fetch(): NotificationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -114,7 +119,8 @@ class NotificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -132,7 +138,8 @@ class NotificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

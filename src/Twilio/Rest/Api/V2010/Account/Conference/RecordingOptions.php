@@ -18,38 +18,65 @@ namespace Twilio\Rest\Api\V2010\Account\Conference;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RecordingOptions {
+abstract class RecordingOptions
+{
 
 
     /**
-     * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date. 
-     * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date. 
-     * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date. 
+     * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * @return ReadRecordingOptions Options builder
      */
-    public static function read(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE): ReadRecordingOptions {
-        return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter);
+    public static function read(
+        
+        string $dateCreatedBefore = Values::NONE,
+        string $dateCreated = Values::NONE,
+        string $dateCreatedAfter = Values::NONE
+
+    ): ReadRecordingOptions
+    {
+        return new ReadRecordingOptions(
+            $dateCreatedBefore,
+            $dateCreated,
+            $dateCreatedAfter
+        );
     }
 
     /**
-     * @param string $pauseBehavior Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`. 
+     * @param string $pauseBehavior Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
      * @return UpdateRecordingOptions Options builder
      */
-    public static function update(string $pauseBehavior = Values::NONE): UpdateRecordingOptions {
-        return new UpdateRecordingOptions($pauseBehavior);
+    public static function update(
+        
+        string $pauseBehavior = Values::NONE
+
+    ): UpdateRecordingOptions
+    {
+        return new UpdateRecordingOptions(
+            $pauseBehavior
+        );
     }
 
 }
 
 
 
-class ReadRecordingOptions extends Options {
+class ReadRecordingOptions extends Options
+    {
     /**
      * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      */
-    public function __construct(string $dateCreatedBefore = Values::NONE, string $dateCreated = Values::NONE, string $dateCreatedAfter = Values::NONE) {
+    public function __construct(
+        
+        string $dateCreatedBefore = Values::NONE,
+        string $dateCreated = Values::NONE,
+        string $dateCreatedAfter = Values::NONE
+
+    )
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -61,7 +88,8 @@ class ReadRecordingOptions extends Options {
      * @param string $dateCreatedBefore The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore(string $dateCreatedBefore): self {
+    public function setDateCreatedBefore(string $dateCreatedBefore): self
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
@@ -72,7 +100,8 @@ class ReadRecordingOptions extends Options {
      * @param string $dateCreated The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * @return $this Fluent Builder
      */
-    public function setDateCreated(string $dateCreated): self {
+    public function setDateCreated(string $dateCreated): self
+    {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
@@ -83,7 +112,8 @@ class ReadRecordingOptions extends Options {
      * @param string $dateCreatedAfter The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter(string $dateCreatedAfter): self {
+    public function setDateCreatedAfter(string $dateCreatedAfter): self
+    {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
@@ -93,17 +123,24 @@ class ReadRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.ReadRecordingOptions ' . $options . ']';
     }
 }
 
-class UpdateRecordingOptions extends Options {
+class UpdateRecordingOptions extends Options
+    {
     /**
      * @param string $pauseBehavior Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
      */
-    public function __construct(string $pauseBehavior = Values::NONE) {
+    public function __construct(
+        
+        string $pauseBehavior = Values::NONE
+
+    )
+    {
         $this->options['pauseBehavior'] = $pauseBehavior;
     }
 
@@ -113,7 +150,8 @@ class UpdateRecordingOptions extends Options {
      * @param string $pauseBehavior Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
      * @return $this Fluent Builder
      */
-    public function setPauseBehavior(string $pauseBehavior): self {
+    public function setPauseBehavior(string $pauseBehavior): self
+    {
         $this->options['pauseBehavior'] = $pauseBehavior;
         return $this;
     }
@@ -123,7 +161,8 @@ class UpdateRecordingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.UpdateRecordingOptions ' . $options . ']';
     }

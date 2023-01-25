@@ -30,7 +30,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
-class RecordingRulesInstance extends InstanceResource {
+class RecordingRulesInstance extends InstanceResource
+{
     /**
      * Initialize the RecordingRulesInstance
      *
@@ -38,7 +39,8 @@ class RecordingRulesInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $roomSid The SID of the Room resource where the recording rules to fetch apply.
      */
-    public function __construct(Version $version, array $payload, string $roomSid) {
+    public function __construct(Version $version, array $payload, string $roomSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +61,8 @@ class RecordingRulesInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -77,7 +80,8 @@ class RecordingRulesInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.RecordingRulesInstance]';
     }
 }

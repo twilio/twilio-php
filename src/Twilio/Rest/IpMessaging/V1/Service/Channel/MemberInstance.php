@@ -38,7 +38,8 @@ use Twilio\Deserialize;
  * @property \DateTime $lastConsumptionTimestamp
  * @property string $url
  */
-class MemberInstance extends InstanceResource {
+class MemberInstance extends InstanceResource
+{
     /**
      * Initialize the MemberInstance
      *
@@ -48,7 +49,8 @@ class MemberInstance extends InstanceResource {
      * @param string $channelSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -75,7 +77,8 @@ class MemberInstance extends InstanceResource {
      *
      * @return MemberContext Context for this MemberInstance
      */
-    protected function proxy(): MemberContext {
+    protected function proxy(): MemberContext
+    {
         if (!$this->context) {
             $this->context = new MemberContext(
                 $this->version,
@@ -94,7 +97,9 @@ class MemberInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -104,7 +109,9 @@ class MemberInstance extends InstanceResource {
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MemberInstance {
+    public function fetch(): MemberInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -115,7 +122,9 @@ class MemberInstance extends InstanceResource {
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): MemberInstance {
+    public function update(array $options = []): MemberInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -126,7 +135,8 @@ class MemberInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,7 +154,8 @@ class MemberInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

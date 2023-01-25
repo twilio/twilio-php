@@ -40,7 +40,8 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property bool $beta
  * @property PhoneNumberCapabilities $capabilities
  */
-class MachineToMachineInstance extends InstanceResource {
+class MachineToMachineInstance extends InstanceResource
+{
     /**
      * Initialize the MachineToMachineInstance
      *
@@ -49,7 +50,8 @@ class MachineToMachineInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
      * @param string $countryCode The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $countryCode) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $countryCode)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class MachineToMachineInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -97,7 +100,8 @@ class MachineToMachineInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.MachineToMachineInstance]';
     }
 }

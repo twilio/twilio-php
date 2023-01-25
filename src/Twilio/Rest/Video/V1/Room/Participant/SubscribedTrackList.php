@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SubscribedTrackList extends ListResource {
+class SubscribedTrackList extends ListResource
+    {
     /**
      * Construct the SubscribedTrackList
      *
@@ -30,13 +31,28 @@ class SubscribedTrackList extends ListResource {
      * @param string $roomSid The SID of the Room where the Track resource to fetch is subscribed.
      * @param string $participantSid The SID of the participant that subscribes to the Track resource to fetch.
      */
-    public function __construct(Version $version, string $roomSid , string $participantSid ) {
+    public function __construct(
+        Version $version,
+        string $roomSid
+        ,
+        string $participantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['roomSid' => $roomSid, 'participantSid' => $participantSid, ];
+        $this->solution = [
+        'roomSid' =>
+            $roomSid,
+        
+        'participantSid' =>
+            $participantSid,
+        
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/SubscribedTracks';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid)
+        .'/Participants/' . \rawurlencode($participantSid)
+        .'/SubscribedTracks';
     }
 
     /**
@@ -54,7 +70,8 @@ class SubscribedTrackList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SubscribedTrackInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class SubscribedTrackList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class SubscribedTrackList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SubscribedTrackPage Page of SubscribedTrackInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SubscribedTrackPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SubscribedTrackPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class SubscribedTrackList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SubscribedTrackPage Page of SubscribedTrackInstance
      */
-    public function getPage(string $targetUrl): SubscribedTrackPage {
+    public function getPage(string $targetUrl): SubscribedTrackPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class SubscribedTrackList extends ListResource {
      *
      * @param string $sid The SID of the RoomParticipantSubscribedTrack resource to fetch.
      */
-    public function getContext(string $sid): SubscribedTrackContext {
-        return new SubscribedTrackContext($this->version, $this->solution['roomSid'], $this->solution['participantSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): SubscribedTrackContext
+    {
+        return new SubscribedTrackContext(
+            $this->version,
+            $this->solution['roomSid'],
+            $this->solution['participantSid'],
+            $sid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class SubscribedTrackList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.SubscribedTrackList]';
     }
 }

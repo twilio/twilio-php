@@ -26,14 +26,16 @@ use Twilio\Version;
 /**
  * @property bool $valid
  */
-class FlowValidateInstance extends InstanceResource {
+class FlowValidateInstance extends InstanceResource
+{
     /**
      * Initialize the FlowValidateInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -51,7 +53,8 @@ class FlowValidateInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -69,7 +72,8 @@ class FlowValidateInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Studio.V2.FlowValidateInstance]';
     }
 }

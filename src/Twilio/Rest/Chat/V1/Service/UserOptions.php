@@ -18,39 +18,70 @@ namespace Twilio\Rest\Chat\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class UserOptions {
+abstract class UserOptions
+{
     /**
-     * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User. 
-     * @param string $attributes A valid JSON string that contains application-specific data. 
-     * @param string $friendlyName A descriptive string that you create to describe the new resource. This value is often used for display purposes. 
+     * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User.
+     * @param string $attributes A valid JSON string that contains application-specific data.
+     * @param string $friendlyName A descriptive string that you create to describe the new resource. This value is often used for display purposes.
      * @return CreateUserOptions Options builder
      */
-    public static function create(string $roleSid = Values::NONE, string $attributes = Values::NONE, string $friendlyName = Values::NONE): CreateUserOptions {
-        return new CreateUserOptions($roleSid, $attributes, $friendlyName);
+    public static function create(
+        
+        string $roleSid = Values::NONE,
+        string $attributes = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): CreateUserOptions
+    {
+        return new CreateUserOptions(
+            $roleSid,
+            $attributes,
+            $friendlyName
+        );
     }
 
 
 
 
     /**
-     * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user. 
-     * @param string $attributes A valid JSON string that contains application-specific data. 
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It is often used for display purposes. 
+     * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user.
+     * @param string $attributes A valid JSON string that contains application-specific data.
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It is often used for display purposes.
      * @return UpdateUserOptions Options builder
      */
-    public static function update(string $roleSid = Values::NONE, string $attributes = Values::NONE, string $friendlyName = Values::NONE): UpdateUserOptions {
-        return new UpdateUserOptions($roleSid, $attributes, $friendlyName);
+    public static function update(
+        
+        string $roleSid = Values::NONE,
+        string $attributes = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): UpdateUserOptions
+    {
+        return new UpdateUserOptions(
+            $roleSid,
+            $attributes,
+            $friendlyName
+        );
     }
 
 }
 
-class CreateUserOptions extends Options {
+class CreateUserOptions extends Options
+    {
     /**
      * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User.
      * @param string $attributes A valid JSON string that contains application-specific data.
      * @param string $friendlyName A descriptive string that you create to describe the new resource. This value is often used for display purposes.
      */
-    public function __construct(string $roleSid = Values::NONE, string $attributes = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $roleSid = Values::NONE,
+        string $attributes = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['roleSid'] = $roleSid;
         $this->options['attributes'] = $attributes;
         $this->options['friendlyName'] = $friendlyName;
@@ -62,7 +93,8 @@ class CreateUserOptions extends Options {
      * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User.
      * @return $this Fluent Builder
      */
-    public function setRoleSid(string $roleSid): self {
+    public function setRoleSid(string $roleSid): self
+    {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -73,7 +105,8 @@ class CreateUserOptions extends Options {
      * @param string $attributes A valid JSON string that contains application-specific data.
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -84,7 +117,8 @@ class CreateUserOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the new resource. This value is often used for display purposes.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -94,7 +128,8 @@ class CreateUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V1.CreateUserOptions ' . $options . ']';
     }
@@ -103,13 +138,21 @@ class CreateUserOptions extends Options {
 
 
 
-class UpdateUserOptions extends Options {
+class UpdateUserOptions extends Options
+    {
     /**
      * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user.
      * @param string $attributes A valid JSON string that contains application-specific data.
      * @param string $friendlyName A descriptive string that you create to describe the resource. It is often used for display purposes.
      */
-    public function __construct(string $roleSid = Values::NONE, string $attributes = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $roleSid = Values::NONE,
+        string $attributes = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['roleSid'] = $roleSid;
         $this->options['attributes'] = $attributes;
         $this->options['friendlyName'] = $friendlyName;
@@ -121,7 +164,8 @@ class UpdateUserOptions extends Options {
      * @param string $roleSid The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user.
      * @return $this Fluent Builder
      */
-    public function setRoleSid(string $roleSid): self {
+    public function setRoleSid(string $roleSid): self
+    {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
@@ -132,7 +176,8 @@ class UpdateUserOptions extends Options {
      * @param string $attributes A valid JSON string that contains application-specific data.
      * @return $this Fluent Builder
      */
-    public function setAttributes(string $attributes): self {
+    public function setAttributes(string $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -143,7 +188,8 @@ class UpdateUserOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It is often used for display purposes.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -153,7 +199,8 @@ class UpdateUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V1.UpdateUserOptions ' . $options . ']';
     }

@@ -23,7 +23,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class UserDefinedMessageList extends ListResource {
+class UserDefinedMessageList extends ListResource
+    {
     /**
      * Construct the UserDefinedMessageList
      *
@@ -31,13 +32,28 @@ class UserDefinedMessageList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message.
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with.
      */
-    public function __construct(Version $version, string $accountSid , string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'callSid' =>
+            $callSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/UserDefinedMessages.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/UserDefinedMessages.json';
     }
 
     /**
@@ -48,30 +64,36 @@ class UserDefinedMessageList extends ListResource {
      * @return UserDefinedMessageInstance Created UserDefinedMessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $content, array $options = []): UserDefinedMessageInstance {
+    public function create(string $content, array $options = []): UserDefinedMessageInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Content' => $content,
-            'IdempotencyKey' => $options['idempotencyKey'],
+            'Content' =>
+                $content,
+            'IdempotencyKey' =>
+                $options['idempotencyKey'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new UserDefinedMessageInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.UserDefinedMessageList]';
     }
 }

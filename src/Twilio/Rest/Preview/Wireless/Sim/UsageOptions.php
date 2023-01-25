@@ -18,24 +18,41 @@ namespace Twilio\Rest\Preview\Wireless\Sim;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class UsageOptions {
+abstract class UsageOptions
+{
     /**
-     * @param string $end  
-     * @param string $start  
+     * @param string $end 
+     * @param string $start 
      * @return FetchUsageOptions Options builder
      */
-    public static function fetch(string $end = Values::NONE, string $start = Values::NONE): FetchUsageOptions {
-        return new FetchUsageOptions($end, $start);
+    public static function fetch(
+        
+        string $end = Values::NONE,
+        string $start = Values::NONE
+
+    ): FetchUsageOptions
+    {
+        return new FetchUsageOptions(
+            $end,
+            $start
+        );
     }
 
 }
 
-class FetchUsageOptions extends Options {
+class FetchUsageOptions extends Options
+    {
     /**
      * @param string $end 
      * @param string $start 
      */
-    public function __construct(string $end = Values::NONE, string $start = Values::NONE) {
+    public function __construct(
+        
+        string $end = Values::NONE,
+        string $start = Values::NONE
+
+    )
+    {
         $this->options['end'] = $end;
         $this->options['start'] = $start;
     }
@@ -46,7 +63,8 @@ class FetchUsageOptions extends Options {
      * @param string $end 
      * @return $this Fluent Builder
      */
-    public function setEnd(string $end): self {
+    public function setEnd(string $end): self
+    {
         $this->options['end'] = $end;
         return $this;
     }
@@ -57,7 +75,8 @@ class FetchUsageOptions extends Options {
      * @param string $start 
      * @return $this Fluent Builder
      */
-    public function setStart(string $start): self {
+    public function setStart(string $start): self
+    {
         $this->options['start'] = $start;
         return $this;
     }
@@ -67,7 +86,8 @@ class FetchUsageOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Wireless.FetchUsageOptions ' . $options . ']';
     }

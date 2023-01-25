@@ -18,25 +18,42 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AccessTokenOptions {
+abstract class AccessTokenOptions
+{
     /**
-     * @param string $factorFriendlyName The friendly name of the factor that is going to be created with this access token 
-     * @param int $ttl How long, in seconds, the access token is valid. Can be an integer between 60 and 300. Default is 60. 
+     * @param string $factorFriendlyName The friendly name of the factor that is going to be created with this access token
+     * @param int $ttl How long, in seconds, the access token is valid. Can be an integer between 60 and 300. Default is 60.
      * @return CreateAccessTokenOptions Options builder
      */
-    public static function create(string $factorFriendlyName = Values::NONE, int $ttl = Values::NONE): CreateAccessTokenOptions {
-        return new CreateAccessTokenOptions($factorFriendlyName, $ttl);
+    public static function create(
+        
+        string $factorFriendlyName = Values::NONE,
+        int $ttl = Values::NONE
+
+    ): CreateAccessTokenOptions
+    {
+        return new CreateAccessTokenOptions(
+            $factorFriendlyName,
+            $ttl
+        );
     }
 
 
 }
 
-class CreateAccessTokenOptions extends Options {
+class CreateAccessTokenOptions extends Options
+    {
     /**
      * @param string $factorFriendlyName The friendly name of the factor that is going to be created with this access token
      * @param int $ttl How long, in seconds, the access token is valid. Can be an integer between 60 and 300. Default is 60.
      */
-    public function __construct(string $factorFriendlyName = Values::NONE, int $ttl = Values::NONE) {
+    public function __construct(
+        
+        string $factorFriendlyName = Values::NONE,
+        int $ttl = Values::NONE
+
+    )
+    {
         $this->options['factorFriendlyName'] = $factorFriendlyName;
         $this->options['ttl'] = $ttl;
     }
@@ -47,7 +64,8 @@ class CreateAccessTokenOptions extends Options {
      * @param string $factorFriendlyName The friendly name of the factor that is going to be created with this access token
      * @return $this Fluent Builder
      */
-    public function setFactorFriendlyName(string $factorFriendlyName): self {
+    public function setFactorFriendlyName(string $factorFriendlyName): self
+    {
         $this->options['factorFriendlyName'] = $factorFriendlyName;
         return $this;
     }
@@ -58,7 +76,8 @@ class CreateAccessTokenOptions extends Options {
      * @param int $ttl How long, in seconds, the access token is valid. Can be an integer between 60 and 300. Default is 60.
      * @return $this Fluent Builder
      */
-    public function setTtl(int $ttl): self {
+    public function setTtl(int $ttl): self
+    {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -68,7 +87,8 @@ class CreateAccessTokenOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Verify.V2.CreateAccessTokenOptions ' . $options . ']';
     }

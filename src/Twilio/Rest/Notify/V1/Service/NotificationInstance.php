@@ -46,7 +46,8 @@ use Twilio\Deserialize;
  * @property array $facebookMessenger
  * @property array $alexa
  */
-class NotificationInstance extends InstanceResource {
+class NotificationInstance extends InstanceResource
+{
     /**
      * Initialize the NotificationInstance
      *
@@ -54,7 +55,8 @@ class NotificationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to create the resource under.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -91,7 +93,8 @@ class NotificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -109,7 +112,8 @@ class NotificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Notify.V1.NotificationInstance]';
     }
 }

@@ -27,7 +27,8 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\Aut
  * @property AuthRegistrationsCredentialListMappingList $credentialListMappings
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingContext credentialListMappings(string $sid)
  */
-class AuthTypeRegistrationsList extends ListResource {
+class AuthTypeRegistrationsList extends ListResource
+    {
     protected $_credentialListMappings = null;
 
     /**
@@ -37,25 +38,40 @@ class AuthTypeRegistrationsList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch.
      * @param string $domainSid The SID of the SIP domain that contains the resource to fetch.
      */
-    public function __construct(Version $version, string $accountSid , string $domainSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $domainSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'domainSid' =>
+            $domainSid,
+        
+        ];
     }
 
     /**
      * Access the credentialListMappings
      */
-    protected function getCredentialListMappings(): AuthRegistrationsCredentialListMappingList {
+    protected function getCredentialListMappings(): AuthRegistrationsCredentialListMappingList
+    {
         if (!$this->_credentialListMappings) {
             $this->_credentialListMappings = new AuthRegistrationsCredentialListMappingList(
-                $this->version
-                , $this->solution['accountSid']
-                , $this->solution['domainSid']
+                $this->version,
+                $this->solution['accountSid']
+                ,
+                $this->solution['domainSid']
+                
             );
         }
-
         return $this->_credentialListMappings;
     }
 
@@ -66,7 +82,8 @@ class AuthTypeRegistrationsList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -83,7 +100,8 @@ class AuthTypeRegistrationsList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -97,7 +115,8 @@ class AuthTypeRegistrationsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AuthTypeRegistrationsList]';
     }
 }

@@ -25,17 +25,22 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class DeactivationsContext extends InstanceContext {
+class DeactivationsContext extends InstanceContext
+    {
     /**
      * Initialize the DeactivationsContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Deactivations';
     }
@@ -47,27 +52,32 @@ class DeactivationsContext extends InstanceContext {
      * @return DeactivationsInstance Fetched DeactivationsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): DeactivationsInstance {
+    public function fetch(array $options = []): DeactivationsInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'Date' => Serialize::iso8601Date($options['date']),
+            'Date' =>
+                Serialize::iso8601Date($options['date']),
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new DeactivationsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -25,7 +25,8 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class RecordingList extends ListResource {
+class RecordingList extends ListResource
+    {
     /**
      * Construct the RecordingList
      *
@@ -33,13 +34,28 @@ class RecordingList extends ListResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
      */
-    public function __construct(Version $version, string $accountSid , string $callSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        ,
+        string $callSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'callSid' => $callSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        'callSid' =>
+            $callSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Recordings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/Recordings.json';
     }
 
     /**
@@ -49,27 +65,36 @@ class RecordingList extends ListResource {
      * @return RecordingInstance Created RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): RecordingInstance {
+    public function create(array $options = []): RecordingInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
-            'RecordingStatusCallback' => $options['recordingStatusCallback'],
-            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
-            'Trim' => $options['trim'],
-            'RecordingChannels' => $options['recordingChannels'],
-            'RecordingTrack' => $options['recordingTrack'],
+            'RecordingStatusCallbackEvent' =>
+                Serialize::map($options['recordingStatusCallbackEvent'], function ($e) { return $e; }),
+            'RecordingStatusCallback' =>
+                $options['recordingStatusCallback'],
+            'RecordingStatusCallbackMethod' =>
+                $options['recordingStatusCallbackMethod'],
+            'Trim' =>
+                $options['trim'],
+            'RecordingChannels' =>
+                $options['recordingChannels'],
+            'RecordingTrack' =>
+                $options['recordingTrack'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RecordingInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Reads RecordingInstance records from the API as a list.
@@ -87,7 +112,8 @@ class RecordingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RecordingInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -110,7 +136,8 @@ class RecordingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -127,13 +154,22 @@ class RecordingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RecordingPage Page of RecordingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RecordingPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): RecordingPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'DateCreated<' => Serialize::iso8601Date($options['dateCreatedBefore']),
-            'DateCreated' => Serialize::iso8601Date($options['dateCreated']),
-            'DateCreated>' => Serialize::iso8601Date($options['dateCreatedAfter']),
+            'DateCreated<' =>
+                Serialize::iso8601Date($options['dateCreatedBefore']),
+            'DateCreated' =>
+                Serialize::iso8601Date($options['dateCreated']),
+            'DateCreated>' =>
+                Serialize::iso8601Date($options['dateCreatedAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -151,7 +187,8 @@ class RecordingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RecordingPage Page of RecordingInstance
      */
-    public function getPage(string $targetUrl): RecordingPage {
+    public function getPage(string $targetUrl): RecordingPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -166,8 +203,17 @@ class RecordingList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording resource to delete.
      */
-    public function getContext(string $sid): RecordingContext {
-        return new RecordingContext($this->version, $this->solution['accountSid'], $this->solution['callSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): RecordingContext
+    {
+        return new RecordingContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
+            $sid
+        );
     }
 
     /**
@@ -175,7 +221,8 @@ class RecordingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.RecordingList]';
     }
 }

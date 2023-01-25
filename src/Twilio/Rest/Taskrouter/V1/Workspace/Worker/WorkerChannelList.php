@@ -22,7 +22,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class WorkerChannelList extends ListResource {
+class WorkerChannelList extends ListResource
+    {
     /**
      * Construct the WorkerChannelList
      *
@@ -30,13 +31,28 @@ class WorkerChannelList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace with the WorkerChannel to fetch.
      * @param string $workerSid The SID of the Worker with the WorkerChannel to fetch.
      */
-    public function __construct(Version $version, string $workspaceSid , string $workerSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        ,
+        string $workerSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, 'workerSid' => $workerSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        'workerSid' =>
+            $workerSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/' . \rawurlencode($workerSid) . '/Channels';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workers/' . \rawurlencode($workerSid)
+        .'/Channels';
     }
 
     /**
@@ -54,7 +70,8 @@ class WorkerChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WorkerChannelInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -76,7 +93,8 @@ class WorkerChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -93,7 +111,12 @@ class WorkerChannelList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return WorkerChannelPage Page of WorkerChannelInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkerChannelPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): WorkerChannelPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -113,7 +136,8 @@ class WorkerChannelList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return WorkerChannelPage Page of WorkerChannelInstance
      */
-    public function getPage(string $targetUrl): WorkerChannelPage {
+    public function getPage(string $targetUrl): WorkerChannelPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -128,8 +152,17 @@ class WorkerChannelList extends ListResource {
      *
      * @param string $sid The SID of the WorkerChannel to fetch.
      */
-    public function getContext(string $sid): WorkerChannelContext {
-        return new WorkerChannelContext($this->version, $this->solution['workspaceSid'], $this->solution['workerSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): WorkerChannelContext
+    {
+        return new WorkerChannelContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $this->solution['workerSid'],
+            $sid
+        );
     }
 
     /**
@@ -137,7 +170,8 @@ class WorkerChannelList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkerChannelList]';
     }
 }

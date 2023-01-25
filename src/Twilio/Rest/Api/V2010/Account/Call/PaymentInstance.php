@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $uri
  */
-class PaymentInstance extends InstanceResource {
+class PaymentInstance extends InstanceResource
+{
     /**
      * Initialize the PaymentInstance
      *
@@ -43,7 +44,8 @@ class PaymentInstance extends InstanceResource {
      * @param string $callSid The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF.
      * @param string $sid The SID of Payments session that needs to be updated.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -65,7 +67,8 @@ class PaymentInstance extends InstanceResource {
      *
      * @return PaymentContext Context for this PaymentInstance
      */
-    protected function proxy(): PaymentContext {
+    protected function proxy(): PaymentContext
+    {
         if (!$this->context) {
             $this->context = new PaymentContext(
                 $this->version,
@@ -87,7 +90,9 @@ class PaymentInstance extends InstanceResource {
      * @return PaymentInstance Updated PaymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance {
+    public function update(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance
+    {
+
         return $this->proxy()->update($idempotencyKey, $statusCallback, $options);
     }
 
@@ -98,7 +103,8 @@ class PaymentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -116,7 +122,8 @@ class PaymentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

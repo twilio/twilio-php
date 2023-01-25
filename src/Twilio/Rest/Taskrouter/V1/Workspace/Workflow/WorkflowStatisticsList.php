@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class WorkflowStatisticsList extends ListResource {
+class WorkflowStatisticsList extends ListResource
+    {
     /**
      * Construct the WorkflowStatisticsList
      *
@@ -28,18 +29,38 @@ class WorkflowStatisticsList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace with the Workflow to fetch.
      * @param string $workflowSid Returns the list of Tasks that are being controlled by the Workflow with the specified SID value.
      */
-    public function __construct(Version $version, string $workspaceSid , string $workflowSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        ,
+        string $workflowSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        'workflowSid' =>
+            $workflowSid,
+        
+        ];
     }
 
     /**
      * Constructs a WorkflowStatisticsContext
      */
-    public function getContext(): WorkflowStatisticsContext {
-        return new WorkflowStatisticsContext($this->version, $this->solution['workspaceSid'], $this->solution['workflowSid']);
+    public function getContext(
+        
+    ): WorkflowStatisticsContext
+    {
+        return new WorkflowStatisticsContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $this->solution['workflowSid']
+        );
     }
 
     /**
@@ -47,7 +68,8 @@ class WorkflowStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkflowStatisticsList]';
     }
 }

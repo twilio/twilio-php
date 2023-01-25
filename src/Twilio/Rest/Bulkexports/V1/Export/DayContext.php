@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class DayContext extends InstanceContext {
+class DayContext extends InstanceContext
+    {
     /**
      * Initialize the DayContext
      *
@@ -30,13 +31,25 @@ class DayContext extends InstanceContext {
      * @param string $resourceType The type of communication – Messages, Calls, Conferences, and Participants
      * @param string $day The ISO 8601 format date of the resources in the file, for a UTC day
      */
-    public function __construct(Version $version, $resourceType , $day ) {
+    public function __construct(
+        Version $version,
+        $resourceType,
+        $day
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['resourceType' => $resourceType,  'day' => $day,  ];
+        $this->solution = [
+        'resourceType' =>
+            $resourceType,
+        'day' =>
+            $day,
+        ];
 
-        $this->uri = '/Exports/' . \rawurlencode($resourceType) . '/Days/' . \rawurlencode($day) . '';
+        $this->uri = '/Exports/' . \rawurlencode($resourceType)
+        .'/Days/' . \rawurlencode($day)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class DayContext extends InstanceContext {
      * @return DayInstance Fetched DayInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DayInstance {
+    public function fetch(): DayInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DayInstance(
             $this->version,
-            $payload
-            , $this->solution['resourceType']
-            , $this->solution['day']
+            $payload,
+            $this->solution['resourceType'],
+            $this->solution['day'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -39,7 +39,8 @@ use Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList;
  * @property \DateTime $dateUpdated
  * @property string $createdBy
  */
-class SyncStreamInstance extends InstanceResource {
+class SyncStreamInstance extends InstanceResource
+{
     protected $_streamMessages;
 
     /**
@@ -50,7 +51,8 @@ class SyncStreamInstance extends InstanceResource {
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream in.
      * @param string $sid The SID of the Stream resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +78,8 @@ class SyncStreamInstance extends InstanceResource {
      *
      * @return SyncStreamContext Context for this SyncStreamInstance
      */
-    protected function proxy(): SyncStreamContext {
+    protected function proxy(): SyncStreamContext
+    {
         if (!$this->context) {
             $this->context = new SyncStreamContext(
                 $this->version,
@@ -94,7 +97,9 @@ class SyncStreamInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -104,7 +109,9 @@ class SyncStreamInstance extends InstanceResource {
      * @return SyncStreamInstance Fetched SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SyncStreamInstance {
+    public function fetch(): SyncStreamInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -115,14 +122,17 @@ class SyncStreamInstance extends InstanceResource {
      * @return SyncStreamInstance Updated SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SyncStreamInstance {
+    public function update(array $options = []): SyncStreamInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the streamMessages
      */
-    protected function getStreamMessages(): StreamMessageList {
+    protected function getStreamMessages(): StreamMessageList
+    {
         return $this->proxy()->streamMessages;
     }
 
@@ -133,7 +143,8 @@ class SyncStreamInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -151,7 +162,8 @@ class SyncStreamInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

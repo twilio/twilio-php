@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class DomainCertsPage extends Page {
+class DomainCertsPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class DomainCertsPage extends Page {
      * @param array $payload Payload response from the API
      * @return DomainCertsInstance \Twilio\Rest\Messaging\V1\DomainCertsInstance
      */
-    public function buildInstance(array $payload): DomainCertsInstance {
+    public function buildInstance(array $payload): DomainCertsInstance
+    {
         return new DomainCertsInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class DomainCertsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.DomainCertsPage]';
     }
 }

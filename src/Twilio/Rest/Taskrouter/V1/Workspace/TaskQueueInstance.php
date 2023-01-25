@@ -45,7 +45,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsLis
  * @property string $workspaceSid
  * @property array $links
  */
-class TaskQueueInstance extends InstanceResource {
+class TaskQueueInstance extends InstanceResource
+{
     protected $_cumulativeStatistics;
     protected $_statistics;
     protected $_realTimeStatistics;
@@ -58,7 +59,8 @@ class TaskQueueInstance extends InstanceResource {
      * @param string $workspaceSid The SID of the Workspace that the new TaskQueue belongs to.
      * @param string $sid The SID of the TaskQueue resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -89,7 +91,8 @@ class TaskQueueInstance extends InstanceResource {
      *
      * @return TaskQueueContext Context for this TaskQueueInstance
      */
-    protected function proxy(): TaskQueueContext {
+    protected function proxy(): TaskQueueContext
+    {
         if (!$this->context) {
             $this->context = new TaskQueueContext(
                 $this->version,
@@ -107,7 +110,9 @@ class TaskQueueInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -117,7 +122,9 @@ class TaskQueueInstance extends InstanceResource {
      * @return TaskQueueInstance Fetched TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TaskQueueInstance {
+    public function fetch(): TaskQueueInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -128,28 +135,33 @@ class TaskQueueInstance extends InstanceResource {
      * @return TaskQueueInstance Updated TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TaskQueueInstance {
+    public function update(array $options = []): TaskQueueInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): TaskQueueCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): TaskQueueCumulativeStatisticsList
+    {
         return $this->proxy()->cumulativeStatistics;
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): TaskQueueStatisticsList {
+    protected function getStatistics(): TaskQueueStatisticsList
+    {
         return $this->proxy()->statistics;
     }
 
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): TaskQueueRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): TaskQueueRealTimeStatisticsList
+    {
         return $this->proxy()->realTimeStatistics;
     }
 
@@ -160,7 +172,8 @@ class TaskQueueInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -178,7 +191,8 @@ class TaskQueueInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

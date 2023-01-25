@@ -18,46 +18,85 @@ namespace Twilio\Rest\Autopilot\V1\Assistant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class QueryOptions {
+abstract class QueryOptions
+{
     /**
-     * @param string $tasks The list of tasks to limit the new query to. Tasks are expressed as a comma-separated list of task `unique_name` values. For example, `task-unique_name-1, task-unique_name-2`. Listing specific tasks is useful to constrain the paths that a user can take. 
-     * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried. 
+     * @param string $tasks The list of tasks to limit the new query to. Tasks are expressed as a comma-separated list of task `unique_name` values. For example, `task-unique_name-1, task-unique_name-2`. Listing specific tasks is useful to constrain the paths that a user can take.
+     * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      * @return CreateQueryOptions Options builder
      */
-    public static function create(string $tasks = Values::NONE, string $modelBuild = Values::NONE): CreateQueryOptions {
-        return new CreateQueryOptions($tasks, $modelBuild);
+    public static function create(
+        
+        string $tasks = Values::NONE,
+        string $modelBuild = Values::NONE
+
+    ): CreateQueryOptions
+    {
+        return new CreateQueryOptions(
+            $tasks,
+            $modelBuild
+        );
     }
 
 
 
     /**
-     * @param string $language The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`. 
-     * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried. 
-     * @param string $status The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded` 
-     * @param string $dialogueSid The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). 
+     * @param string $language The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.
+     * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * @param string $status The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded`
+     * @param string $dialogueSid The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
      * @return ReadQueryOptions Options builder
      */
-    public static function read(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE, string $dialogueSid = Values::NONE): ReadQueryOptions {
-        return new ReadQueryOptions($language, $modelBuild, $status, $dialogueSid);
+    public static function read(
+        
+        string $language = Values::NONE,
+        string $modelBuild = Values::NONE,
+        string $status = Values::NONE,
+        string $dialogueSid = Values::NONE
+
+    ): ReadQueryOptions
+    {
+        return new ReadQueryOptions(
+            $language,
+            $modelBuild,
+            $status,
+            $dialogueSid
+        );
     }
 
     /**
-     * @param string $sampleSid The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query. 
-     * @param string $status The new status of the resource. Can be: `pending-review`, `reviewed`, or `discarded` 
+     * @param string $sampleSid The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query.
+     * @param string $status The new status of the resource. Can be: `pending-review`, `reviewed`, or `discarded`
      * @return UpdateQueryOptions Options builder
      */
-    public static function update(string $sampleSid = Values::NONE, string $status = Values::NONE): UpdateQueryOptions {
-        return new UpdateQueryOptions($sampleSid, $status);
+    public static function update(
+        
+        string $sampleSid = Values::NONE,
+        string $status = Values::NONE
+
+    ): UpdateQueryOptions
+    {
+        return new UpdateQueryOptions(
+            $sampleSid,
+            $status
+        );
     }
 
 }
 
-class CreateQueryOptions extends Options {
+class CreateQueryOptions extends Options
+    {
     /**
      * @param string $tasks The list of tasks to limit the new query to. Tasks are expressed as a comma-separated list of task `unique_name` values. For example, `task-unique_name-1, task-unique_name-2`. Listing specific tasks is useful to constrain the paths that a user can take.
      * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      */
-    public function __construct(string $tasks = Values::NONE, string $modelBuild = Values::NONE) {
+    public function __construct(
+        
+        string $tasks = Values::NONE,
+        string $modelBuild = Values::NONE
+
+    )
+    {
         $this->options['tasks'] = $tasks;
         $this->options['modelBuild'] = $modelBuild;
     }
@@ -68,7 +107,8 @@ class CreateQueryOptions extends Options {
      * @param string $tasks The list of tasks to limit the new query to. Tasks are expressed as a comma-separated list of task `unique_name` values. For example, `task-unique_name-1, task-unique_name-2`. Listing specific tasks is useful to constrain the paths that a user can take.
      * @return $this Fluent Builder
      */
-    public function setTasks(string $tasks): self {
+    public function setTasks(string $tasks): self
+    {
         $this->options['tasks'] = $tasks;
         return $this;
     }
@@ -79,7 +119,8 @@ class CreateQueryOptions extends Options {
      * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild(string $modelBuild): self {
+    public function setModelBuild(string $modelBuild): self
+    {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -89,7 +130,8 @@ class CreateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Autopilot.V1.CreateQueryOptions ' . $options . ']';
     }
@@ -97,14 +139,23 @@ class CreateQueryOptions extends Options {
 
 
 
-class ReadQueryOptions extends Options {
+class ReadQueryOptions extends Options
+    {
     /**
      * @param string $language The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.
      * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      * @param string $status The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded`
      * @param string $dialogueSid The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
      */
-    public function __construct(string $language = Values::NONE, string $modelBuild = Values::NONE, string $status = Values::NONE, string $dialogueSid = Values::NONE) {
+    public function __construct(
+        
+        string $language = Values::NONE,
+        string $modelBuild = Values::NONE,
+        string $status = Values::NONE,
+        string $dialogueSid = Values::NONE
+
+    )
+    {
         $this->options['language'] = $language;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['status'] = $status;
@@ -117,7 +168,8 @@ class ReadQueryOptions extends Options {
      * @param string $language The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.
      * @return $this Fluent Builder
      */
-    public function setLanguage(string $language): self {
+    public function setLanguage(string $language): self
+    {
         $this->options['language'] = $language;
         return $this;
     }
@@ -128,7 +180,8 @@ class ReadQueryOptions extends Options {
      * @param string $modelBuild The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      * @return $this Fluent Builder
      */
-    public function setModelBuild(string $modelBuild): self {
+    public function setModelBuild(string $modelBuild): self
+    {
         $this->options['modelBuild'] = $modelBuild;
         return $this;
     }
@@ -139,7 +192,8 @@ class ReadQueryOptions extends Options {
      * @param string $status The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded`
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -150,7 +204,8 @@ class ReadQueryOptions extends Options {
      * @param string $dialogueSid The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
      * @return $this Fluent Builder
      */
-    public function setDialogueSid(string $dialogueSid): self {
+    public function setDialogueSid(string $dialogueSid): self
+    {
         $this->options['dialogueSid'] = $dialogueSid;
         return $this;
     }
@@ -160,18 +215,26 @@ class ReadQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Autopilot.V1.ReadQueryOptions ' . $options . ']';
     }
 }
 
-class UpdateQueryOptions extends Options {
+class UpdateQueryOptions extends Options
+    {
     /**
      * @param string $sampleSid The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query.
      * @param string $status The new status of the resource. Can be: `pending-review`, `reviewed`, or `discarded`
      */
-    public function __construct(string $sampleSid = Values::NONE, string $status = Values::NONE) {
+    public function __construct(
+        
+        string $sampleSid = Values::NONE,
+        string $status = Values::NONE
+
+    )
+    {
         $this->options['sampleSid'] = $sampleSid;
         $this->options['status'] = $status;
     }
@@ -182,7 +245,8 @@ class UpdateQueryOptions extends Options {
      * @param string $sampleSid The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query.
      * @return $this Fluent Builder
      */
-    public function setSampleSid(string $sampleSid): self {
+    public function setSampleSid(string $sampleSid): self
+    {
         $this->options['sampleSid'] = $sampleSid;
         return $this;
     }
@@ -193,7 +257,8 @@ class UpdateQueryOptions extends Options {
      * @param string $status The new status of the resource. Can be: `pending-review`, `reviewed`, or `discarded`
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -203,7 +268,8 @@ class UpdateQueryOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Autopilot.V1.UpdateQueryOptions ' . $options . ']';
     }

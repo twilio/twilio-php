@@ -30,7 +30,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsList;
  * @property WorkersStatisticsList $statistics
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext statistics()
  */
-class WorkerList extends ListResource {
+class WorkerList extends ListResource
+    {
     protected $_statistics = null;
 
     /**
@@ -39,13 +40,22 @@ class WorkerList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace that the new Worker belongs to.
      */
-    public function __construct(Version $version, string $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workers';
     }
 
     /**
@@ -56,23 +66,29 @@ class WorkerList extends ListResource {
      * @return WorkerInstance Created WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): WorkerInstance {
+    public function create(string $friendlyName, array $options = []): WorkerInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'ActivitySid' => $options['activitySid'],
-            'Attributes' => $options['attributes'],
+            'FriendlyName' =>
+                $friendlyName,
+            'ActivitySid' =>
+                $options['activitySid'],
+            'Attributes' =>
+                $options['attributes'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new WorkerInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
+            $payload,
+            $this->solution['workspaceSid'],
         );
     }
+
 
     /**
      * Reads WorkerInstance records from the API as a list.
@@ -90,7 +106,8 @@ class WorkerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WorkerInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -113,7 +130,8 @@ class WorkerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -130,18 +148,32 @@ class WorkerList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return WorkerPage Page of WorkerInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): WorkerPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): WorkerPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'ActivityName' => $options['activityName'],
-            'ActivitySid' => $options['activitySid'],
-            'Available' => $options['available'],
-            'FriendlyName' => $options['friendlyName'],
-            'TargetWorkersExpression' => $options['targetWorkersExpression'],
-            'TaskQueueName' => $options['taskQueueName'],
-            'TaskQueueSid' => $options['taskQueueSid'],
-            'Ordering' => $options['ordering'],
+            'ActivityName' =>
+                $options['activityName'],
+            'ActivitySid' =>
+                $options['activitySid'],
+            'Available' =>
+                $options['available'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'TargetWorkersExpression' =>
+                $options['targetWorkersExpression'],
+            'TaskQueueName' =>
+                $options['taskQueueName'],
+            'TaskQueueSid' =>
+                $options['taskQueueSid'],
+            'Ordering' =>
+                $options['ordering'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -159,7 +191,8 @@ class WorkerList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return WorkerPage Page of WorkerInstance
      */
-    public function getPage(string $targetUrl): WorkerPage {
+    public function getPage(string $targetUrl): WorkerPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -174,21 +207,30 @@ class WorkerList extends ListResource {
      *
      * @param string $sid The SID of the Worker resource to delete.
      */
-    public function getContext(string $sid): WorkerContext {
-        return new WorkerContext($this->version, $this->solution['workspaceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): WorkerContext
+    {
+        return new WorkerContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $sid
+        );
     }
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): WorkersStatisticsList {
+    protected function getStatistics(): WorkersStatisticsList
+    {
         if (!$this->_statistics) {
             $this->_statistics = new WorkersStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
+                $this->version,
+                $this->solution['workspaceSid']
+                
             );
         }
-
         return $this->_statistics;
     }
 
@@ -199,7 +241,8 @@ class WorkerList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -216,7 +259,8 @@ class WorkerList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -230,7 +274,8 @@ class WorkerList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkerList]';
     }
 }

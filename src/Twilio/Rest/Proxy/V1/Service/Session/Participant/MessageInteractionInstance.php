@@ -46,7 +46,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class MessageInteractionInstance extends InstanceResource {
+class MessageInteractionInstance extends InstanceResource
+{
     /**
      * Initialize the MessageInteractionInstance
      *
@@ -57,7 +58,8 @@ class MessageInteractionInstance extends InstanceResource {
      * @param string $participantSid The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the MessageInteraction resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $participantSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $participantSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +95,8 @@ class MessageInteractionInstance extends InstanceResource {
      *
      * @return MessageInteractionContext Context for this MessageInteractionInstance
      */
-    protected function proxy(): MessageInteractionContext {
+    protected function proxy(): MessageInteractionContext
+    {
         if (!$this->context) {
             $this->context = new MessageInteractionContext(
                 $this->version,
@@ -113,7 +116,9 @@ class MessageInteractionInstance extends InstanceResource {
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MessageInteractionInstance {
+    public function fetch(): MessageInteractionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -124,7 +129,8 @@ class MessageInteractionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -142,7 +148,8 @@ class MessageInteractionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class MemberContext extends InstanceContext {
+class MemberContext extends InstanceContext
+    {
     /**
      * Initialize the MemberContext
      *
@@ -33,13 +34,29 @@ class MemberContext extends InstanceContext {
      * @param string $channelSid The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new member belongs to. Can be the Channel resource's `sid` or `unique_name`.
      * @param string $sid The Twilio-provided string that uniquely identifies the Member resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $channelSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $channelSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'channelSid' => $channelSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'channelSid' =>
+            $channelSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($channelSid) . '/Members/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Channels/' . \rawurlencode($channelSid)
+        .'/Members/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +65,12 @@ class MemberContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the MemberInstance
@@ -58,17 +78,20 @@ class MemberContext extends InstanceContext {
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MemberInstance {
+    public function fetch(): MemberInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new MemberInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['channelSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the MemberInstance
@@ -77,31 +100,37 @@ class MemberContext extends InstanceContext {
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): MemberInstance {
+    public function update(array $options = []): MemberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'RoleSid' => $options['roleSid'],
-            'LastConsumedMessageIndex' => $options['lastConsumedMessageIndex'],
+            'RoleSid' =>
+                $options['roleSid'],
+            'LastConsumedMessageIndex' =>
+                $options['lastConsumedMessageIndex'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MemberInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['channelSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

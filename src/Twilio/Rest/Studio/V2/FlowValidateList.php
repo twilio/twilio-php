@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class FlowValidateList extends ListResource {
+class FlowValidateList extends ListResource
+    {
     /**
      * Construct the FlowValidateList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Flows/Validate';
     }
@@ -43,36 +47,44 @@ class FlowValidateList extends ListResource {
      * Update the FlowValidateInstance
      *
      * @param string $friendlyName The string that you assigned to describe the Flow.
-     * @param string $status 
+     * @param string $status
      * @param array $definition JSON representation of flow definition.
      * @param array|Options $options Optional Arguments
      * @return FlowValidateInstance Updated FlowValidateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $friendlyName, string $status, array $definition, array $options = []): FlowValidateInstance {
+    public function update(string $friendlyName, string $status, array $definition, array $options = []): FlowValidateInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'Status' => $status,
-            'Definition' => Serialize::jsonObject($definition),
-            'CommitMessage' => $options['commitMessage'],
+            'FriendlyName' =>
+                $friendlyName,
+            'Status' =>
+                $status,
+            'Definition' =>
+                Serialize::jsonObject($definition),
+            'CommitMessage' =>
+                $options['commitMessage'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FlowValidateInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Studio.V2.FlowValidateList]';
     }
 }

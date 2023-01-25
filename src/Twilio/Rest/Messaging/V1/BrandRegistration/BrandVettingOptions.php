@@ -18,31 +18,52 @@ namespace Twilio\Rest\Messaging\V1\BrandRegistration;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class BrandVettingOptions {
+abstract class BrandVettingOptions
+{
     /**
-     * @param string $vettingId The unique ID of the vetting 
+     * @param string $vettingId The unique ID of the vetting
      * @return CreateBrandVettingOptions Options builder
      */
-    public static function create(string $vettingId = Values::NONE): CreateBrandVettingOptions {
-        return new CreateBrandVettingOptions($vettingId);
+    public static function create(
+        
+        string $vettingId = Values::NONE
+
+    ): CreateBrandVettingOptions
+    {
+        return new CreateBrandVettingOptions(
+            $vettingId
+        );
     }
 
 
     /**
-     * @param string $vettingProvider The third-party provider of the vettings to read 
+     * @param string $vettingProvider The third-party provider of the vettings to read
      * @return ReadBrandVettingOptions Options builder
      */
-    public static function read(string $vettingProvider = Values::NONE): ReadBrandVettingOptions {
-        return new ReadBrandVettingOptions($vettingProvider);
+    public static function read(
+        
+        string $vettingProvider = Values::NONE
+
+    ): ReadBrandVettingOptions
+    {
+        return new ReadBrandVettingOptions(
+            $vettingProvider
+        );
     }
 
 }
 
-class CreateBrandVettingOptions extends Options {
+class CreateBrandVettingOptions extends Options
+    {
     /**
      * @param string $vettingId The unique ID of the vetting
      */
-    public function __construct(string $vettingId = Values::NONE) {
+    public function __construct(
+        
+        string $vettingId = Values::NONE
+
+    )
+    {
         $this->options['vettingId'] = $vettingId;
     }
 
@@ -52,7 +73,8 @@ class CreateBrandVettingOptions extends Options {
      * @param string $vettingId The unique ID of the vetting
      * @return $this Fluent Builder
      */
-    public function setVettingId(string $vettingId): self {
+    public function setVettingId(string $vettingId): self
+    {
         $this->options['vettingId'] = $vettingId;
         return $this;
     }
@@ -62,18 +84,25 @@ class CreateBrandVettingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Messaging.V1.CreateBrandVettingOptions ' . $options . ']';
     }
 }
 
 
-class ReadBrandVettingOptions extends Options {
+class ReadBrandVettingOptions extends Options
+    {
     /**
      * @param string $vettingProvider The third-party provider of the vettings to read
      */
-    public function __construct(string $vettingProvider = Values::NONE) {
+    public function __construct(
+        
+        string $vettingProvider = Values::NONE
+
+    )
+    {
         $this->options['vettingProvider'] = $vettingProvider;
     }
 
@@ -83,7 +112,8 @@ class ReadBrandVettingOptions extends Options {
      * @param string $vettingProvider The third-party provider of the vettings to read
      * @return $this Fluent Builder
      */
-    public function setVettingProvider(string $vettingProvider): self {
+    public function setVettingProvider(string $vettingProvider): self
+    {
         $this->options['vettingProvider'] = $vettingProvider;
         return $this;
     }
@@ -93,7 +123,8 @@ class ReadBrandVettingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Messaging.V1.ReadBrandVettingOptions ' . $options . ']';
     }

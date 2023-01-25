@@ -24,7 +24,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class DocumentPermissionContext extends InstanceContext {
+class DocumentPermissionContext extends InstanceContext
+    {
     /**
      * Initialize the DocumentPermissionContext
      *
@@ -33,13 +34,29 @@ class DocumentPermissionContext extends InstanceContext {
      * @param string $documentSid The SID of the Sync Document with the Document Permission resource to delete. Can be the Document resource's `sid` or its `unique_name`.
      * @param string $identity The application-defined string that uniquely identifies the User's Document Permission resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $documentSid , $identity ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $documentSid,
+        $identity
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'documentSid' => $documentSid,  'identity' => $identity,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'documentSid' =>
+            $documentSid,
+        'identity' =>
+            $identity,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($documentSid) . '/Permissions/' . \rawurlencode($identity) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Documents/' . \rawurlencode($documentSid)
+        .'/Permissions/' . \rawurlencode($identity)
+        .'';
     }
 
     /**
@@ -48,9 +65,12 @@ class DocumentPermissionContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the DocumentPermissionInstance
@@ -58,17 +78,20 @@ class DocumentPermissionContext extends InstanceContext {
      * @return DocumentPermissionInstance Fetched DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DocumentPermissionInstance {
+    public function fetch(): DocumentPermissionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new DocumentPermissionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['documentSid']
-            , $this->solution['identity']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['documentSid'],
+            $this->solution['identity'],
         );
     }
+
 
     /**
      * Update the DocumentPermissionInstance
@@ -79,30 +102,37 @@ class DocumentPermissionContext extends InstanceContext {
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(bool $read, bool $write, bool $manage): DocumentPermissionInstance {
+    public function update(bool $read, bool $write, bool $manage): DocumentPermissionInstance
+    {
+
         $data = Values::of([
-            'Read' => Serialize::booleanToString($read),
-            'Write' => Serialize::booleanToString($write),
-            'Manage' => Serialize::booleanToString($manage),
+            'Read' =>
+                Serialize::booleanToString($read),
+            'Write' =>
+                Serialize::booleanToString($write),
+            'Manage' =>
+                Serialize::booleanToString($manage),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DocumentPermissionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['documentSid']
-            , $this->solution['identity']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['documentSid'],
+            $this->solution['identity'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

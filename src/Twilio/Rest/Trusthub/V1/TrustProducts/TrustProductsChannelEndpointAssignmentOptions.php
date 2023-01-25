@@ -18,17 +18,27 @@ namespace Twilio\Rest\Trusthub\V1\TrustProducts;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TrustProductsChannelEndpointAssignmentOptions {
+abstract class TrustProductsChannelEndpointAssignmentOptions
+{
 
 
 
     /**
-     * @param string $channelEndpointSid The SID of an channel endpoint 
-     * @param string $channelEndpointSids comma separated list of channel endpoint sids 
+     * @param string $channelEndpointSid The SID of an channel endpoint
+     * @param string $channelEndpointSids comma separated list of channel endpoint sids
      * @return ReadTrustProductsChannelEndpointAssignmentOptions Options builder
      */
-    public static function read(string $channelEndpointSid = Values::NONE, string $channelEndpointSids = Values::NONE): ReadTrustProductsChannelEndpointAssignmentOptions {
-        return new ReadTrustProductsChannelEndpointAssignmentOptions($channelEndpointSid, $channelEndpointSids);
+    public static function read(
+        
+        string $channelEndpointSid = Values::NONE,
+        string $channelEndpointSids = Values::NONE
+
+    ): ReadTrustProductsChannelEndpointAssignmentOptions
+    {
+        return new ReadTrustProductsChannelEndpointAssignmentOptions(
+            $channelEndpointSid,
+            $channelEndpointSids
+        );
     }
 
 }
@@ -36,12 +46,19 @@ abstract class TrustProductsChannelEndpointAssignmentOptions {
 
 
 
-class ReadTrustProductsChannelEndpointAssignmentOptions extends Options {
+class ReadTrustProductsChannelEndpointAssignmentOptions extends Options
+    {
     /**
      * @param string $channelEndpointSid The SID of an channel endpoint
      * @param string $channelEndpointSids comma separated list of channel endpoint sids
      */
-    public function __construct(string $channelEndpointSid = Values::NONE, string $channelEndpointSids = Values::NONE) {
+    public function __construct(
+        
+        string $channelEndpointSid = Values::NONE,
+        string $channelEndpointSids = Values::NONE
+
+    )
+    {
         $this->options['channelEndpointSid'] = $channelEndpointSid;
         $this->options['channelEndpointSids'] = $channelEndpointSids;
     }
@@ -52,7 +69,8 @@ class ReadTrustProductsChannelEndpointAssignmentOptions extends Options {
      * @param string $channelEndpointSid The SID of an channel endpoint
      * @return $this Fluent Builder
      */
-    public function setChannelEndpointSid(string $channelEndpointSid): self {
+    public function setChannelEndpointSid(string $channelEndpointSid): self
+    {
         $this->options['channelEndpointSid'] = $channelEndpointSid;
         return $this;
     }
@@ -63,7 +81,8 @@ class ReadTrustProductsChannelEndpointAssignmentOptions extends Options {
      * @param string $channelEndpointSids comma separated list of channel endpoint sids
      * @return $this Fluent Builder
      */
-    public function setChannelEndpointSids(string $channelEndpointSids): self {
+    public function setChannelEndpointSids(string $channelEndpointSids): self
+    {
         $this->options['channelEndpointSids'] = $channelEndpointSids;
         return $this;
     }
@@ -73,7 +92,8 @@ class ReadTrustProductsChannelEndpointAssignmentOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trusthub.V1.ReadTrustProductsChannelEndpointAssignmentOptions ' . $options . ']';
     }

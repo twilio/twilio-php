@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class AnnotationContext extends InstanceContext {
+class AnnotationContext extends InstanceContext
+    {
     /**
      * Initialize the AnnotationContext
      *
      * @param Version $version Version that contains the resource
      * @param string $callSid The unique SID identifier of the Call.
      */
-    public function __construct(Version $version, $callSid ) {
+    public function __construct(
+        Version $version,
+        $callSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['callSid' => $callSid,  ];
+        $this->solution = [
+        'callSid' =>
+            $callSid,
+        ];
 
-        $this->uri = '/Voice/' . \rawurlencode($callSid) . '/Annotation';
+        $this->uri = '/Voice/' . \rawurlencode($callSid)
+        .'/Annotation';
     }
 
     /**
@@ -47,15 +56,18 @@ class AnnotationContext extends InstanceContext {
      * @return AnnotationInstance Fetched AnnotationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AnnotationInstance {
+    public function fetch(): AnnotationInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AnnotationInstance(
             $this->version,
-            $payload
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Update the AnnotationInstance
@@ -64,34 +76,45 @@ class AnnotationContext extends InstanceContext {
      * @return AnnotationInstance Updated AnnotationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AnnotationInstance {
+    public function update(array $options = []): AnnotationInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'AnsweredBy' => $options['answeredBy'],
-            'ConnectivityIssue' => $options['connectivityIssue'],
-            'QualityIssues' => $options['qualityIssues'],
-            'Spam' => Serialize::booleanToString($options['spam']),
-            'CallScore' => $options['callScore'],
-            'Comment' => $options['comment'],
-            'Incident' => $options['incident'],
+            'AnsweredBy' =>
+                $options['answeredBy'],
+            'ConnectivityIssue' =>
+                $options['connectivityIssue'],
+            'QualityIssues' =>
+                $options['qualityIssues'],
+            'Spam' =>
+                Serialize::booleanToString($options['spam']),
+            'CallScore' =>
+                $options['callScore'],
+            'Comment' =>
+                $options['comment'],
+            'Incident' =>
+                $options['incident'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AnnotationInstance(
             $this->version,
-            $payload
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

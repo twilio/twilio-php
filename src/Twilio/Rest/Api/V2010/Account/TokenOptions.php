@@ -18,22 +18,36 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TokenOptions {
+abstract class TokenOptions
+{
     /**
-     * @param int $ttl The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours). 
+     * @param int $ttl The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
      * @return CreateTokenOptions Options builder
      */
-    public static function create(int $ttl = Values::NONE): CreateTokenOptions {
-        return new CreateTokenOptions($ttl);
+    public static function create(
+        
+        int $ttl = Values::NONE
+
+    ): CreateTokenOptions
+    {
+        return new CreateTokenOptions(
+            $ttl
+        );
     }
 
 }
 
-class CreateTokenOptions extends Options {
+class CreateTokenOptions extends Options
+    {
     /**
      * @param int $ttl The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
      */
-    public function __construct(int $ttl = Values::NONE) {
+    public function __construct(
+        
+        int $ttl = Values::NONE
+
+    )
+    {
         $this->options['ttl'] = $ttl;
     }
 
@@ -43,7 +57,8 @@ class CreateTokenOptions extends Options {
      * @param int $ttl The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
      * @return $this Fluent Builder
      */
-    public function setTtl(int $ttl): self {
+    public function setTtl(int $ttl): self
+    {
         $this->options['ttl'] = $ttl;
         return $this;
     }
@@ -53,7 +68,8 @@ class CreateTokenOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateTokenOptions ' . $options . ']';
     }

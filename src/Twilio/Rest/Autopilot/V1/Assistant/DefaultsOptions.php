@@ -18,24 +18,38 @@ namespace Twilio\Rest\Autopilot\V1\Assistant;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class DefaultsOptions {
+abstract class DefaultsOptions
+{
 
     /**
-     * @param array $defaults A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations. 
+     * @param array $defaults A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations.
      * @return UpdateDefaultsOptions Options builder
      */
-    public static function update(array $defaults = Values::ARRAY_NONE): UpdateDefaultsOptions {
-        return new UpdateDefaultsOptions($defaults);
+    public static function update(
+        
+        array $defaults = Values::ARRAY_NONE
+
+    ): UpdateDefaultsOptions
+    {
+        return new UpdateDefaultsOptions(
+            $defaults
+        );
     }
 
 }
 
 
-class UpdateDefaultsOptions extends Options {
+class UpdateDefaultsOptions extends Options
+    {
     /**
      * @param array $defaults A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations.
      */
-    public function __construct(array $defaults = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $defaults = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['defaults'] = $defaults;
     }
 
@@ -45,7 +59,8 @@ class UpdateDefaultsOptions extends Options {
      * @param array $defaults A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations.
      * @return $this Fluent Builder
      */
-    public function setDefaults(array $defaults): self {
+    public function setDefaults(array $defaults): self
+    {
         $this->options['defaults'] = $defaults;
         return $this;
     }
@@ -55,7 +70,8 @@ class UpdateDefaultsOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Autopilot.V1.UpdateDefaultsOptions ' . $options . ']';
     }

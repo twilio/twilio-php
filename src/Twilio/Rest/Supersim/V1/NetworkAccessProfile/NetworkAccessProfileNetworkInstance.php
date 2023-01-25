@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property array[] $identifiers
  * @property string $url
  */
-class NetworkAccessProfileNetworkInstance extends InstanceResource {
+class NetworkAccessProfileNetworkInstance extends InstanceResource
+{
     /**
      * Initialize the NetworkAccessProfileNetworkInstance
      *
@@ -40,7 +41,8 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource {
      * @param string $networkAccessProfileSid The unique string that identifies the Network Access Profile resource.
      * @param string $sid The SID of the Network resource to be removed from the Network Access Profile resource.
      */
-    public function __construct(Version $version, array $payload, string $networkAccessProfileSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $networkAccessProfileSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource {
      *
      * @return NetworkAccessProfileNetworkContext Context for this NetworkAccessProfileNetworkInstance
      */
-    protected function proxy(): NetworkAccessProfileNetworkContext {
+    protected function proxy(): NetworkAccessProfileNetworkContext
+    {
         if (!$this->context) {
             $this->context = new NetworkAccessProfileNetworkContext(
                 $this->version,
@@ -80,7 +83,9 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -90,7 +95,9 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource {
      * @return NetworkAccessProfileNetworkInstance Fetched NetworkAccessProfileNetworkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NetworkAccessProfileNetworkInstance {
+    public function fetch(): NetworkAccessProfileNetworkInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -101,7 +108,8 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -119,7 +127,8 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

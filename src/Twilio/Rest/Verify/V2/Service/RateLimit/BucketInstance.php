@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class BucketInstance extends InstanceResource {
+class BucketInstance extends InstanceResource
+{
     /**
      * Initialize the BucketInstance
      *
@@ -46,7 +47,8 @@ class BucketInstance extends InstanceResource {
      * @param string $rateLimitSid The Twilio-provided string that uniquely identifies the Rate Limit resource.
      * @param string $sid A 34 character string that uniquely identifies this Bucket.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $rateLimitSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $rateLimitSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -71,7 +73,8 @@ class BucketInstance extends InstanceResource {
      *
      * @return BucketContext Context for this BucketInstance
      */
-    protected function proxy(): BucketContext {
+    protected function proxy(): BucketContext
+    {
         if (!$this->context) {
             $this->context = new BucketContext(
                 $this->version,
@@ -90,7 +93,9 @@ class BucketInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -100,7 +105,9 @@ class BucketInstance extends InstanceResource {
      * @return BucketInstance Fetched BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): BucketInstance {
+    public function fetch(): BucketInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -111,7 +118,9 @@ class BucketInstance extends InstanceResource {
      * @return BucketInstance Updated BucketInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): BucketInstance {
+    public function update(array $options = []): BucketInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -122,7 +131,8 @@ class BucketInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -140,7 +150,8 @@ class BucketInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

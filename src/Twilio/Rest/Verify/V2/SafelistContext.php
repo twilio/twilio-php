@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SafelistContext extends InstanceContext {
+class SafelistContext extends InstanceContext
+    {
     /**
      * Initialize the SafelistContext
      *
      * @param Version $version Version that contains the resource
      * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      */
-    public function __construct(Version $version, $phoneNumber ) {
+    public function __construct(
+        Version $version,
+        $phoneNumber
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['phoneNumber' => $phoneNumber,  ];
+        $this->solution = [
+        'phoneNumber' =>
+            $phoneNumber,
+        ];
 
-        $this->uri = '/SafeList/Numbers/' . \rawurlencode($phoneNumber) . '';
+        $this->uri = '/SafeList/Numbers/' . \rawurlencode($phoneNumber)
+        .'';
     }
 
     /**
@@ -44,9 +53,12 @@ class SafelistContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the SafelistInstance
@@ -54,22 +66,26 @@ class SafelistContext extends InstanceContext {
      * @return SafelistInstance Fetched SafelistInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SafelistInstance {
+    public function fetch(): SafelistInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SafelistInstance(
             $this->version,
-            $payload
-            , $this->solution['phoneNumber']
+            $payload,
+            $this->solution['phoneNumber'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

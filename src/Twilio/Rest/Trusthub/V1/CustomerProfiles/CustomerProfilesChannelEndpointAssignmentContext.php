@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class CustomerProfilesChannelEndpointAssignmentContext extends InstanceContext {
+class CustomerProfilesChannelEndpointAssignmentContext extends InstanceContext
+    {
     /**
      * Initialize the CustomerProfilesChannelEndpointAssignmentContext
      *
@@ -30,13 +31,25 @@ class CustomerProfilesChannelEndpointAssignmentContext extends InstanceContext {
      * @param string $customerProfileSid The unique string that we created to identify the CustomerProfile resource.
      * @param string $sid The unique string that we created to identify the resource.
      */
-    public function __construct(Version $version, $customerProfileSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $customerProfileSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['customerProfileSid' => $customerProfileSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'customerProfileSid' =>
+            $customerProfileSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid) . '/ChannelEndpointAssignments/' . \rawurlencode($sid) . '';
+        $this->uri = '/CustomerProfiles/' . \rawurlencode($customerProfileSid)
+        .'/ChannelEndpointAssignments/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,9 +58,12 @@ class CustomerProfilesChannelEndpointAssignmentContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the CustomerProfilesChannelEndpointAssignmentInstance
@@ -55,23 +71,27 @@ class CustomerProfilesChannelEndpointAssignmentContext extends InstanceContext {
      * @return CustomerProfilesChannelEndpointAssignmentInstance Fetched CustomerProfilesChannelEndpointAssignmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CustomerProfilesChannelEndpointAssignmentInstance {
+    public function fetch(): CustomerProfilesChannelEndpointAssignmentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new CustomerProfilesChannelEndpointAssignmentInstance(
             $this->version,
-            $payload
-            , $this->solution['customerProfileSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['customerProfileSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

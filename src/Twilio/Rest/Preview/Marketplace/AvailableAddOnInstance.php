@@ -33,7 +33,8 @@ use Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList;
  * @property string $url
  * @property array $links
  */
-class AvailableAddOnInstance extends InstanceResource {
+class AvailableAddOnInstance extends InstanceResource
+{
     protected $_extensions;
 
     /**
@@ -43,7 +44,8 @@ class AvailableAddOnInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the AvailableAddOn resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,7 +68,8 @@ class AvailableAddOnInstance extends InstanceResource {
      *
      * @return AvailableAddOnContext Context for this AvailableAddOnInstance
      */
-    protected function proxy(): AvailableAddOnContext {
+    protected function proxy(): AvailableAddOnContext
+    {
         if (!$this->context) {
             $this->context = new AvailableAddOnContext(
                 $this->version,
@@ -83,14 +86,17 @@ class AvailableAddOnInstance extends InstanceResource {
      * @return AvailableAddOnInstance Fetched AvailableAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AvailableAddOnInstance {
+    public function fetch(): AvailableAddOnInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the extensions
      */
-    protected function getExtensions(): AvailableAddOnExtensionList {
+    protected function getExtensions(): AvailableAddOnExtensionList
+    {
         return $this->proxy()->extensions;
     }
 
@@ -101,7 +107,8 @@ class AvailableAddOnInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -119,7 +126,8 @@ class AvailableAddOnInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

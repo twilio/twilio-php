@@ -18,56 +18,113 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AddressOptions {
+abstract class AddressOptions
+{
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long. 
-     * @param bool $emergencyEnabled Whether to enable emergency calling on the new address. Can be: `true` or `false`. 
-     * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. 
-     * @param string $streetSecondary The additional number and street address of the address. 
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long.
+     * @param bool $emergencyEnabled Whether to enable emergency calling on the new address. Can be: `true` or `false`.
+     * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+     * @param string $streetSecondary The additional number and street address of the address.
      * @return CreateAddressOptions Options builder
      */
-    public static function create(string $friendlyName = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE): CreateAddressOptions {
-        return new CreateAddressOptions($friendlyName, $emergencyEnabled, $autoCorrectAddress, $streetSecondary);
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        bool $emergencyEnabled = Values::NONE,
+        bool $autoCorrectAddress = Values::NONE,
+        string $streetSecondary = Values::NONE
+
+    ): CreateAddressOptions
+    {
+        return new CreateAddressOptions(
+            $friendlyName,
+            $emergencyEnabled,
+            $autoCorrectAddress,
+            $streetSecondary
+        );
     }
 
 
 
     /**
-     * @param string $customerName The `customer_name` of the Address resources to read. 
-     * @param string $friendlyName The string that identifies the Address resources to read. 
-     * @param string $isoCountry The ISO country code of the Address resources to read. 
+     * @param string $customerName The `customer_name` of the Address resources to read.
+     * @param string $friendlyName The string that identifies the Address resources to read.
+     * @param string $isoCountry The ISO country code of the Address resources to read.
      * @return ReadAddressOptions Options builder
      */
-    public static function read(string $customerName = Values::NONE, string $friendlyName = Values::NONE, string $isoCountry = Values::NONE): ReadAddressOptions {
-        return new ReadAddressOptions($customerName, $friendlyName, $isoCountry);
+    public static function read(
+        
+        string $customerName = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $isoCountry = Values::NONE
+
+    ): ReadAddressOptions
+    {
+        return new ReadAddressOptions(
+            $customerName,
+            $friendlyName,
+            $isoCountry
+        );
     }
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long. 
-     * @param string $customerName The name to associate with the address. 
-     * @param string $street The number and street address of the address. 
-     * @param string $city The city of the address. 
-     * @param string $region The state or region of the address. 
-     * @param string $postalCode The postal code of the address. 
-     * @param bool $emergencyEnabled Whether to enable emergency calling on the address. Can be: `true` or `false`. 
-     * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. 
-     * @param string $streetSecondary The additional number and street address of the address. 
+     * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long.
+     * @param string $customerName The name to associate with the address.
+     * @param string $street The number and street address of the address.
+     * @param string $city The city of the address.
+     * @param string $region The state or region of the address.
+     * @param string $postalCode The postal code of the address.
+     * @param bool $emergencyEnabled Whether to enable emergency calling on the address. Can be: `true` or `false`.
+     * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+     * @param string $streetSecondary The additional number and street address of the address.
      * @return UpdateAddressOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $customerName = Values::NONE, string $street = Values::NONE, string $city = Values::NONE, string $region = Values::NONE, string $postalCode = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE): UpdateAddressOptions {
-        return new UpdateAddressOptions($friendlyName, $customerName, $street, $city, $region, $postalCode, $emergencyEnabled, $autoCorrectAddress, $streetSecondary);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $customerName = Values::NONE,
+        string $street = Values::NONE,
+        string $city = Values::NONE,
+        string $region = Values::NONE,
+        string $postalCode = Values::NONE,
+        bool $emergencyEnabled = Values::NONE,
+        bool $autoCorrectAddress = Values::NONE,
+        string $streetSecondary = Values::NONE
+
+    ): UpdateAddressOptions
+    {
+        return new UpdateAddressOptions(
+            $friendlyName,
+            $customerName,
+            $street,
+            $city,
+            $region,
+            $postalCode,
+            $emergencyEnabled,
+            $autoCorrectAddress,
+            $streetSecondary
+        );
     }
 
 }
 
-class CreateAddressOptions extends Options {
+class CreateAddressOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long.
      * @param bool $emergencyEnabled Whether to enable emergency calling on the new address. Can be: `true` or `false`.
      * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
      * @param string $streetSecondary The additional number and street address of the address.
      */
-    public function __construct(string $friendlyName = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        bool $emergencyEnabled = Values::NONE,
+        bool $autoCorrectAddress = Values::NONE,
+        string $streetSecondary = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
@@ -80,7 +137,8 @@ class CreateAddressOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -91,7 +149,8 @@ class CreateAddressOptions extends Options {
      * @param bool $emergencyEnabled Whether to enable emergency calling on the new address. Can be: `true` or `false`.
      * @return $this Fluent Builder
      */
-    public function setEmergencyEnabled(bool $emergencyEnabled): self {
+    public function setEmergencyEnabled(bool $emergencyEnabled): self
+    {
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
@@ -102,7 +161,8 @@ class CreateAddressOptions extends Options {
      * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
      * @return $this Fluent Builder
      */
-    public function setAutoCorrectAddress(bool $autoCorrectAddress): self {
+    public function setAutoCorrectAddress(bool $autoCorrectAddress): self
+    {
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
         return $this;
     }
@@ -113,7 +173,8 @@ class CreateAddressOptions extends Options {
      * @param string $streetSecondary The additional number and street address of the address.
      * @return $this Fluent Builder
      */
-    public function setStreetSecondary(string $streetSecondary): self {
+    public function setStreetSecondary(string $streetSecondary): self
+    {
         $this->options['streetSecondary'] = $streetSecondary;
         return $this;
     }
@@ -123,7 +184,8 @@ class CreateAddressOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.CreateAddressOptions ' . $options . ']';
     }
@@ -131,13 +193,21 @@ class CreateAddressOptions extends Options {
 
 
 
-class ReadAddressOptions extends Options {
+class ReadAddressOptions extends Options
+    {
     /**
      * @param string $customerName The `customer_name` of the Address resources to read.
      * @param string $friendlyName The string that identifies the Address resources to read.
      * @param string $isoCountry The ISO country code of the Address resources to read.
      */
-    public function __construct(string $customerName = Values::NONE, string $friendlyName = Values::NONE, string $isoCountry = Values::NONE) {
+    public function __construct(
+        
+        string $customerName = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $isoCountry = Values::NONE
+
+    )
+    {
         $this->options['customerName'] = $customerName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['isoCountry'] = $isoCountry;
@@ -149,7 +219,8 @@ class ReadAddressOptions extends Options {
      * @param string $customerName The `customer_name` of the Address resources to read.
      * @return $this Fluent Builder
      */
-    public function setCustomerName(string $customerName): self {
+    public function setCustomerName(string $customerName): self
+    {
         $this->options['customerName'] = $customerName;
         return $this;
     }
@@ -160,7 +231,8 @@ class ReadAddressOptions extends Options {
      * @param string $friendlyName The string that identifies the Address resources to read.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -171,7 +243,8 @@ class ReadAddressOptions extends Options {
      * @param string $isoCountry The ISO country code of the Address resources to read.
      * @return $this Fluent Builder
      */
-    public function setIsoCountry(string $isoCountry): self {
+    public function setIsoCountry(string $isoCountry): self
+    {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
@@ -181,13 +254,15 @@ class ReadAddressOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.ReadAddressOptions ' . $options . ']';
     }
 }
 
-class UpdateAddressOptions extends Options {
+class UpdateAddressOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long.
      * @param string $customerName The name to associate with the address.
@@ -199,7 +274,20 @@ class UpdateAddressOptions extends Options {
      * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
      * @param string $streetSecondary The additional number and street address of the address.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $customerName = Values::NONE, string $street = Values::NONE, string $city = Values::NONE, string $region = Values::NONE, string $postalCode = Values::NONE, bool $emergencyEnabled = Values::NONE, bool $autoCorrectAddress = Values::NONE, string $streetSecondary = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $customerName = Values::NONE,
+        string $street = Values::NONE,
+        string $city = Values::NONE,
+        string $region = Values::NONE,
+        string $postalCode = Values::NONE,
+        bool $emergencyEnabled = Values::NONE,
+        bool $autoCorrectAddress = Values::NONE,
+        string $streetSecondary = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['customerName'] = $customerName;
         $this->options['street'] = $street;
@@ -217,7 +305,8 @@ class UpdateAddressOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -228,7 +317,8 @@ class UpdateAddressOptions extends Options {
      * @param string $customerName The name to associate with the address.
      * @return $this Fluent Builder
      */
-    public function setCustomerName(string $customerName): self {
+    public function setCustomerName(string $customerName): self
+    {
         $this->options['customerName'] = $customerName;
         return $this;
     }
@@ -239,7 +329,8 @@ class UpdateAddressOptions extends Options {
      * @param string $street The number and street address of the address.
      * @return $this Fluent Builder
      */
-    public function setStreet(string $street): self {
+    public function setStreet(string $street): self
+    {
         $this->options['street'] = $street;
         return $this;
     }
@@ -250,7 +341,8 @@ class UpdateAddressOptions extends Options {
      * @param string $city The city of the address.
      * @return $this Fluent Builder
      */
-    public function setCity(string $city): self {
+    public function setCity(string $city): self
+    {
         $this->options['city'] = $city;
         return $this;
     }
@@ -261,7 +353,8 @@ class UpdateAddressOptions extends Options {
      * @param string $region The state or region of the address.
      * @return $this Fluent Builder
      */
-    public function setRegion(string $region): self {
+    public function setRegion(string $region): self
+    {
         $this->options['region'] = $region;
         return $this;
     }
@@ -272,7 +365,8 @@ class UpdateAddressOptions extends Options {
      * @param string $postalCode The postal code of the address.
      * @return $this Fluent Builder
      */
-    public function setPostalCode(string $postalCode): self {
+    public function setPostalCode(string $postalCode): self
+    {
         $this->options['postalCode'] = $postalCode;
         return $this;
     }
@@ -283,7 +377,8 @@ class UpdateAddressOptions extends Options {
      * @param bool $emergencyEnabled Whether to enable emergency calling on the address. Can be: `true` or `false`.
      * @return $this Fluent Builder
      */
-    public function setEmergencyEnabled(bool $emergencyEnabled): self {
+    public function setEmergencyEnabled(bool $emergencyEnabled): self
+    {
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
@@ -294,7 +389,8 @@ class UpdateAddressOptions extends Options {
      * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
      * @return $this Fluent Builder
      */
-    public function setAutoCorrectAddress(bool $autoCorrectAddress): self {
+    public function setAutoCorrectAddress(bool $autoCorrectAddress): self
+    {
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
         return $this;
     }
@@ -305,7 +401,8 @@ class UpdateAddressOptions extends Options {
      * @param string $streetSecondary The additional number and street address of the address.
      * @return $this Fluent Builder
      */
-    public function setStreetSecondary(string $streetSecondary): self {
+    public function setStreetSecondary(string $streetSecondary): self
+    {
         $this->options['streetSecondary'] = $streetSecondary;
         return $this;
     }
@@ -315,7 +412,8 @@ class UpdateAddressOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Api.V2010.UpdateAddressOptions ' . $options . ']';
     }

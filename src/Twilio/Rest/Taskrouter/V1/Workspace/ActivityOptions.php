@@ -18,41 +18,71 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ActivityOptions {
+abstract class ActivityOptions
+{
     /**
-     * @param bool $available Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not. The value cannot be changed after the Activity is created. 
+     * @param bool $available Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not. The value cannot be changed after the Activity is created.
      * @return CreateActivityOptions Options builder
      */
-    public static function create(bool $available = Values::NONE): CreateActivityOptions {
-        return new CreateActivityOptions($available);
+    public static function create(
+        
+        bool $available = Values::NONE
+
+    ): CreateActivityOptions
+    {
+        return new CreateActivityOptions(
+            $available
+        );
     }
 
 
 
     /**
-     * @param string $friendlyName The `friendly_name` of the Activity resources to read. 
-     * @param string $available Whether return only Activity resources that are available or unavailable. A value of `true` returns only available activities. Values of '1' or `yes` also indicate `true`. All other values represent `false` and return activities that are unavailable. 
+     * @param string $friendlyName The `friendly_name` of the Activity resources to read.
+     * @param string $available Whether return only Activity resources that are available or unavailable. A value of `true` returns only available activities. Values of '1' or `yes` also indicate `true`. All other values represent `false` and return activities that are unavailable.
      * @return ReadActivityOptions Options builder
      */
-    public static function read(string $friendlyName = Values::NONE, string $available = Values::NONE): ReadActivityOptions {
-        return new ReadActivityOptions($friendlyName, $available);
+    public static function read(
+        
+        string $friendlyName = Values::NONE,
+        string $available = Values::NONE
+
+    ): ReadActivityOptions
+    {
+        return new ReadActivityOptions(
+            $friendlyName,
+            $available
+        );
     }
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`. 
+     * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.
      * @return UpdateActivityOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE): UpdateActivityOptions {
-        return new UpdateActivityOptions($friendlyName);
+    public static function update(
+        
+        string $friendlyName = Values::NONE
+
+    ): UpdateActivityOptions
+    {
+        return new UpdateActivityOptions(
+            $friendlyName
+        );
     }
 
 }
 
-class CreateActivityOptions extends Options {
+class CreateActivityOptions extends Options
+    {
     /**
      * @param bool $available Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not. The value cannot be changed after the Activity is created.
      */
-    public function __construct(bool $available = Values::NONE) {
+    public function __construct(
+        
+        bool $available = Values::NONE
+
+    )
+    {
         $this->options['available'] = $available;
     }
 
@@ -62,7 +92,8 @@ class CreateActivityOptions extends Options {
      * @param bool $available Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not. The value cannot be changed after the Activity is created.
      * @return $this Fluent Builder
      */
-    public function setAvailable(bool $available): self {
+    public function setAvailable(bool $available): self
+    {
         $this->options['available'] = $available;
         return $this;
     }
@@ -72,7 +103,8 @@ class CreateActivityOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.CreateActivityOptions ' . $options . ']';
     }
@@ -80,12 +112,19 @@ class CreateActivityOptions extends Options {
 
 
 
-class ReadActivityOptions extends Options {
+class ReadActivityOptions extends Options
+    {
     /**
      * @param string $friendlyName The `friendly_name` of the Activity resources to read.
      * @param string $available Whether return only Activity resources that are available or unavailable. A value of `true` returns only available activities. Values of '1' or `yes` also indicate `true`. All other values represent `false` and return activities that are unavailable.
      */
-    public function __construct(string $friendlyName = Values::NONE, string $available = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $available = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['available'] = $available;
     }
@@ -96,7 +135,8 @@ class ReadActivityOptions extends Options {
      * @param string $friendlyName The `friendly_name` of the Activity resources to read.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -107,7 +147,8 @@ class ReadActivityOptions extends Options {
      * @param string $available Whether return only Activity resources that are available or unavailable. A value of `true` returns only available activities. Values of '1' or `yes` also indicate `true`. All other values represent `false` and return activities that are unavailable.
      * @return $this Fluent Builder
      */
-    public function setAvailable(string $available): self {
+    public function setAvailable(string $available): self
+    {
         $this->options['available'] = $available;
         return $this;
     }
@@ -117,17 +158,24 @@ class ReadActivityOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.ReadActivityOptions ' . $options . ']';
     }
 }
 
-class UpdateActivityOptions extends Options {
+class UpdateActivityOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.
      */
-    public function __construct(string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -137,7 +185,8 @@ class UpdateActivityOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -147,7 +196,8 @@ class UpdateActivityOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateActivityOptions ' . $options . ']';
     }

@@ -18,18 +18,30 @@ namespace Twilio\Rest\IpMessaging\V2\Service\User;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class UserChannelOptions {
+abstract class UserChannelOptions
+{
 
 
 
     /**
-     * @param string $notificationLevel  
-     * @param int $lastConsumedMessageIndex  
-     * @param \DateTime $lastConsumptionTimestamp  
+     * @param string $notificationLevel
+     * @param int $lastConsumedMessageIndex 
+     * @param \DateTime $lastConsumptionTimestamp 
      * @return UpdateUserChannelOptions Options builder
      */
-    public static function update(string $notificationLevel = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE): UpdateUserChannelOptions {
-        return new UpdateUserChannelOptions($notificationLevel, $lastConsumedMessageIndex, $lastConsumptionTimestamp);
+    public static function update(
+        
+        string $notificationLevel = Values::NONE,
+        int $lastConsumedMessageIndex = Values::NONE,
+        \DateTime $lastConsumptionTimestamp = Values::NONE
+
+    ): UpdateUserChannelOptions
+    {
+        return new UpdateUserChannelOptions(
+            $notificationLevel,
+            $lastConsumedMessageIndex,
+            $lastConsumptionTimestamp
+        );
     }
 
 }
@@ -37,23 +49,32 @@ abstract class UserChannelOptions {
 
 
 
-class UpdateUserChannelOptions extends Options {
+class UpdateUserChannelOptions extends Options
+    {
     /**
-     * @param string $notificationLevel 
+     * @param string $notificationLevel
      * @param int $lastConsumedMessageIndex 
      * @param \DateTime $lastConsumptionTimestamp 
      */
-    public function __construct(string $notificationLevel = Values::NONE, int $lastConsumedMessageIndex = Values::NONE, \DateTime $lastConsumptionTimestamp = Values::NONE) {
+    public function __construct(
+        
+        string $notificationLevel = Values::NONE,
+        int $lastConsumedMessageIndex = Values::NONE,
+        \DateTime $lastConsumptionTimestamp = Values::NONE
+
+    )
+    {
         $this->options['notificationLevel'] = $notificationLevel;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
     }
 
     /**
-     * @param string $notificationLevel 
+     * @param string $notificationLevel
      * @return $this Fluent Builder
      */
-    public function setNotificationLevel(string $notificationLevel): self {
+    public function setNotificationLevel(string $notificationLevel): self
+    {
         $this->options['notificationLevel'] = $notificationLevel;
         return $this;
     }
@@ -64,7 +85,8 @@ class UpdateUserChannelOptions extends Options {
      * @param int $lastConsumedMessageIndex 
      * @return $this Fluent Builder
      */
-    public function setLastConsumedMessageIndex(int $lastConsumedMessageIndex): self {
+    public function setLastConsumedMessageIndex(int $lastConsumedMessageIndex): self
+    {
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         return $this;
     }
@@ -75,7 +97,8 @@ class UpdateUserChannelOptions extends Options {
      * @param \DateTime $lastConsumptionTimestamp 
      * @return $this Fluent Builder
      */
-    public function setLastConsumptionTimestamp(\DateTime $lastConsumptionTimestamp): self {
+    public function setLastConsumptionTimestamp(\DateTime $lastConsumptionTimestamp): self
+    {
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         return $this;
     }
@@ -85,7 +108,8 @@ class UpdateUserChannelOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.IpMessaging.V2.UpdateUserChannelOptions ' . $options . ']';
     }

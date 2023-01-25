@@ -18,22 +18,36 @@ namespace Twilio\Rest\Messaging\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class UsAppToPersonUsecaseOptions {
+abstract class UsAppToPersonUsecaseOptions
+{
     /**
-     * @param string $brandRegistrationSid The unique string to identify the A2P brand. 
+     * @param string $brandRegistrationSid The unique string to identify the A2P brand.
      * @return FetchUsAppToPersonUsecaseOptions Options builder
      */
-    public static function fetch(string $brandRegistrationSid = Values::NONE): FetchUsAppToPersonUsecaseOptions {
-        return new FetchUsAppToPersonUsecaseOptions($brandRegistrationSid);
+    public static function fetch(
+        
+        string $brandRegistrationSid = Values::NONE
+
+    ): FetchUsAppToPersonUsecaseOptions
+    {
+        return new FetchUsAppToPersonUsecaseOptions(
+            $brandRegistrationSid
+        );
     }
 
 }
 
-class FetchUsAppToPersonUsecaseOptions extends Options {
+class FetchUsAppToPersonUsecaseOptions extends Options
+    {
     /**
      * @param string $brandRegistrationSid The unique string to identify the A2P brand.
      */
-    public function __construct(string $brandRegistrationSid = Values::NONE) {
+    public function __construct(
+        
+        string $brandRegistrationSid = Values::NONE
+
+    )
+    {
         $this->options['brandRegistrationSid'] = $brandRegistrationSid;
     }
 
@@ -43,7 +57,8 @@ class FetchUsAppToPersonUsecaseOptions extends Options {
      * @param string $brandRegistrationSid The unique string to identify the A2P brand.
      * @return $this Fluent Builder
      */
-    public function setBrandRegistrationSid(string $brandRegistrationSid): self {
+    public function setBrandRegistrationSid(string $brandRegistrationSid): self
+    {
         $this->options['brandRegistrationSid'] = $brandRegistrationSid;
         return $this;
     }
@@ -53,7 +68,8 @@ class FetchUsAppToPersonUsecaseOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Messaging.V1.FetchUsAppToPersonUsecaseOptions ' . $options . ']';
     }

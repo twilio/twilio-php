@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class TriggerList extends ListResource {
+class TriggerList extends ListResource
+    {
     /**
      * Construct the TriggerList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Usage/Triggers.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Usage/Triggers.json';
     }
 
     /**
@@ -45,32 +55,42 @@ class TriggerList extends ListResource {
      *
      * @param string $callbackUrl The URL we should call using `callback_method` when the trigger fires.
      * @param string $triggerValue The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
-     * @param string $usageCategory 
+     * @param string $usageCategory
      * @param array|Options $options Optional Arguments
      * @return TriggerInstance Created TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): TriggerInstance {
+    public function create(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): TriggerInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'CallbackUrl' => $callbackUrl,
-            'TriggerValue' => $triggerValue,
-            'UsageCategory' => $usageCategory,
-            'CallbackMethod' => $options['callbackMethod'],
-            'FriendlyName' => $options['friendlyName'],
-            'Recurring' => $options['recurring'],
-            'TriggerBy' => $options['triggerBy'],
+            'CallbackUrl' =>
+                $callbackUrl,
+            'TriggerValue' =>
+                $triggerValue,
+            'UsageCategory' =>
+                $usageCategory,
+            'CallbackMethod' =>
+                $options['callbackMethod'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Recurring' =>
+                $options['recurring'],
+            'TriggerBy' =>
+                $options['triggerBy'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new TriggerInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Reads TriggerInstance records from the API as a list.
@@ -88,7 +108,8 @@ class TriggerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TriggerInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -111,7 +132,8 @@ class TriggerList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -128,13 +150,22 @@ class TriggerList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TriggerPage Page of TriggerInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TriggerPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): TriggerPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Recurring' => $options['recurring'],
-            'TriggerBy' => $options['triggerBy'],
-            'UsageCategory' => $options['usageCategory'],
+            'Recurring' =>
+                $options['recurring'],
+            'TriggerBy' =>
+                $options['triggerBy'],
+            'UsageCategory' =>
+                $options['usageCategory'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -152,7 +183,8 @@ class TriggerList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TriggerPage Page of TriggerInstance
      */
-    public function getPage(string $targetUrl): TriggerPage {
+    public function getPage(string $targetUrl): TriggerPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -167,8 +199,16 @@ class TriggerList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the UsageTrigger resource to delete.
      */
-    public function getContext(string $sid): TriggerContext {
-        return new TriggerContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): TriggerContext
+    {
+        return new TriggerContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -176,7 +216,8 @@ class TriggerList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.TriggerList]';
     }
 }

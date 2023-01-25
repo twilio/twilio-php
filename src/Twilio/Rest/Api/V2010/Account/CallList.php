@@ -31,7 +31,8 @@ use Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList;
  * @property FeedbackSummaryList $feedbackSummaries
  * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext feedbackSummaries(string $sid)
  */
-class CallList extends ListResource {
+class CallList extends ListResource
+    {
     protected $_feedbackSummaries = null;
 
     /**
@@ -40,13 +41,22 @@ class CallList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls.json';
     }
 
     /**
@@ -58,55 +68,93 @@ class CallList extends ListResource {
      * @return CallInstance Created CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $to, string $from, array $options = []): CallInstance {
+    public function create(string $to, string $from, array $options = []): CallInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'To' => $to,
-            'From' => $from,
-            'Method' => $options['method'],
-            'FallbackUrl' => $options['fallbackUrl'],
-            'FallbackMethod' => $options['fallbackMethod'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'SendDigits' => $options['sendDigits'],
-            'Timeout' => $options['timeout'],
-            'Record' => Serialize::booleanToString($options['record']),
-            'RecordingChannels' => $options['recordingChannels'],
-            'RecordingStatusCallback' => $options['recordingStatusCallback'],
-            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
-            'SipAuthUsername' => $options['sipAuthUsername'],
-            'SipAuthPassword' => $options['sipAuthPassword'],
-            'MachineDetection' => $options['machineDetection'],
-            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
-            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
-            'Trim' => $options['trim'],
-            'CallerId' => $options['callerId'],
-            'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
-            'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
-            'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
-            'AsyncAmd' => $options['asyncAmd'],
-            'AsyncAmdStatusCallback' => $options['asyncAmdStatusCallback'],
-            'AsyncAmdStatusCallbackMethod' => $options['asyncAmdStatusCallbackMethod'],
-            'Byoc' => $options['byoc'],
-            'CallReason' => $options['callReason'],
-            'CallToken' => $options['callToken'],
-            'RecordingTrack' => $options['recordingTrack'],
-            'TimeLimit' => $options['timeLimit'],
-            'Url' => $options['url'],
-            'Twiml' => $options['twiml'],
-            'ApplicationSid' => $options['applicationSid'],
+            'To' =>
+                $to,
+            'From' =>
+                $from,
+            'Method' =>
+                $options['method'],
+            'FallbackUrl' =>
+                $options['fallbackUrl'],
+            'FallbackMethod' =>
+                $options['fallbackMethod'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackEvent' =>
+                Serialize::map($options['statusCallbackEvent'], function ($e) { return $e; }),
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'SendDigits' =>
+                $options['sendDigits'],
+            'Timeout' =>
+                $options['timeout'],
+            'Record' =>
+                Serialize::booleanToString($options['record']),
+            'RecordingChannels' =>
+                $options['recordingChannels'],
+            'RecordingStatusCallback' =>
+                $options['recordingStatusCallback'],
+            'RecordingStatusCallbackMethod' =>
+                $options['recordingStatusCallbackMethod'],
+            'SipAuthUsername' =>
+                $options['sipAuthUsername'],
+            'SipAuthPassword' =>
+                $options['sipAuthPassword'],
+            'MachineDetection' =>
+                $options['machineDetection'],
+            'MachineDetectionTimeout' =>
+                $options['machineDetectionTimeout'],
+            'RecordingStatusCallbackEvent' =>
+                Serialize::map($options['recordingStatusCallbackEvent'], function ($e) { return $e; }),
+            'Trim' =>
+                $options['trim'],
+            'CallerId' =>
+                $options['callerId'],
+            'MachineDetectionSpeechThreshold' =>
+                $options['machineDetectionSpeechThreshold'],
+            'MachineDetectionSpeechEndThreshold' =>
+                $options['machineDetectionSpeechEndThreshold'],
+            'MachineDetectionSilenceTimeout' =>
+                $options['machineDetectionSilenceTimeout'],
+            'AsyncAmd' =>
+                $options['asyncAmd'],
+            'AsyncAmdStatusCallback' =>
+                $options['asyncAmdStatusCallback'],
+            'AsyncAmdStatusCallbackMethod' =>
+                $options['asyncAmdStatusCallbackMethod'],
+            'Byoc' =>
+                $options['byoc'],
+            'CallReason' =>
+                $options['callReason'],
+            'CallToken' =>
+                $options['callToken'],
+            'RecordingTrack' =>
+                $options['recordingTrack'],
+            'TimeLimit' =>
+                $options['timeLimit'],
+            'Url' =>
+                $options['url'],
+            'Twiml' =>
+                $options['twiml'],
+            'ApplicationSid' =>
+                $options['applicationSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CallInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
+            $payload,
+            $this->solution['accountSid'],
         );
     }
+
 
     /**
      * Reads CallInstance records from the API as a list.
@@ -124,7 +172,8 @@ class CallList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CallInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -147,7 +196,8 @@ class CallList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -164,20 +214,36 @@ class CallList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CallPage Page of CallInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CallPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CallPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'To' => $options['to'],
-            'From' => $options['from'],
-            'ParentCallSid' => $options['parentCallSid'],
-            'Status' => $options['status'],
-            'StartTime<' => Serialize::iso8601DateTime($options['startTimeBefore']),
-            'StartTime' => Serialize::iso8601DateTime($options['startTime']),
-            'StartTime>' => Serialize::iso8601DateTime($options['startTimeAfter']),
-            'EndTime<' => Serialize::iso8601DateTime($options['endTimeBefore']),
-            'EndTime' => Serialize::iso8601DateTime($options['endTime']),
-            'EndTime>' => Serialize::iso8601DateTime($options['endTimeAfter']),
+            'To' =>
+                $options['to'],
+            'From' =>
+                $options['from'],
+            'ParentCallSid' =>
+                $options['parentCallSid'],
+            'Status' =>
+                $options['status'],
+            'StartTime<' =>
+                Serialize::iso8601DateTime($options['startTimeBefore']),
+            'StartTime' =>
+                Serialize::iso8601DateTime($options['startTime']),
+            'StartTime>' =>
+                Serialize::iso8601DateTime($options['startTimeAfter']),
+            'EndTime<' =>
+                Serialize::iso8601DateTime($options['endTimeBefore']),
+            'EndTime' =>
+                Serialize::iso8601DateTime($options['endTime']),
+            'EndTime>' =>
+                Serialize::iso8601DateTime($options['endTimeAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -195,7 +261,8 @@ class CallList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CallPage Page of CallInstance
      */
-    public function getPage(string $targetUrl): CallPage {
+    public function getPage(string $targetUrl): CallPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -210,21 +277,30 @@ class CallList extends ListResource {
      *
      * @param string $sid The Twilio-provided Call SID that uniquely identifies the Call resource to delete
      */
-    public function getContext(string $sid): CallContext {
-        return new CallContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): CallContext
+    {
+        return new CallContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
      * Access the feedbackSummaries
      */
-    protected function getFeedbackSummaries(): FeedbackSummaryList {
+    protected function getFeedbackSummaries(): FeedbackSummaryList
+    {
         if (!$this->_feedbackSummaries) {
             $this->_feedbackSummaries = new FeedbackSummaryList(
-                $this->version
-                , $this->solution['accountSid']
+                $this->version,
+                $this->solution['accountSid']
+                
             );
         }
-
         return $this->_feedbackSummaries;
     }
 
@@ -235,7 +311,8 @@ class CallList extends ListResource {
      * @return \Twilio\ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -252,7 +329,8 @@ class CallList extends ListResource {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -266,7 +344,8 @@ class CallList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.CallList]';
     }
 }

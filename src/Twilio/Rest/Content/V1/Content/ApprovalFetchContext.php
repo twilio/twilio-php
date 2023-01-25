@@ -22,20 +22,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ApprovalFetchContext extends InstanceContext {
+class ApprovalFetchContext extends InstanceContext
+    {
     /**
      * Initialize the ApprovalFetchContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Content/' . \rawurlencode($sid) . '/ApprovalRequests';
+        $this->uri = '/Content/' . \rawurlencode($sid)
+        .'/ApprovalRequests';
     }
 
     /**
@@ -44,22 +53,26 @@ class ApprovalFetchContext extends InstanceContext {
      * @return ApprovalFetchInstance Fetched ApprovalFetchInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ApprovalFetchInstance {
+    public function fetch(): ApprovalFetchInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ApprovalFetchInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

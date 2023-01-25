@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ConferenceParticipantContext extends InstanceContext {
+class ConferenceParticipantContext extends InstanceContext
+    {
     /**
      * Initialize the ConferenceParticipantContext
      *
@@ -32,13 +33,25 @@ class ConferenceParticipantContext extends InstanceContext {
      * @param string $conferenceSid The unique SID identifier of the Conference.
      * @param string $participantSid The unique SID identifier of the Participant.
      */
-    public function __construct(Version $version, $conferenceSid , $participantSid ) {
+    public function __construct(
+        Version $version,
+        $conferenceSid,
+        $participantSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['conferenceSid' => $conferenceSid,  'participantSid' => $participantSid,  ];
+        $this->solution = [
+        'conferenceSid' =>
+            $conferenceSid,
+        'participantSid' =>
+            $participantSid,
+        ];
 
-        $this->uri = '/Conferences/' . \rawurlencode($conferenceSid) . '/Participants/' . \rawurlencode($participantSid) . '';
+        $this->uri = '/Conferences/' . \rawurlencode($conferenceSid)
+        .'/Participants/' . \rawurlencode($participantSid)
+        .'';
     }
 
     /**
@@ -48,30 +61,36 @@ class ConferenceParticipantContext extends InstanceContext {
      * @return ConferenceParticipantInstance Fetched ConferenceParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): ConferenceParticipantInstance {
+    public function fetch(array $options = []): ConferenceParticipantInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'Events' => $options['events'],
-            'Metrics' => $options['metrics'],
+            'Events' =>
+                $options['events'],
+            'Metrics' =>
+                $options['metrics'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new ConferenceParticipantInstance(
             $this->version,
-            $payload
-            , $this->solution['conferenceSid']
-            , $this->solution['participantSid']
+            $payload,
+            $this->solution['conferenceSid'],
+            $this->solution['participantSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

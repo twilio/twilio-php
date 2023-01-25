@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class SimIpAddressPage extends Page {
+class SimIpAddressPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class SimIpAddressPage extends Page {
      * @param array $payload Payload response from the API
      * @return SimIpAddressInstance \Twilio\Rest\Supersim\V1\Sim\SimIpAddressInstance
      */
-    public function buildInstance(array $payload): SimIpAddressInstance {
+    public function buildInstance(array $payload): SimIpAddressInstance
+    {
         return new SimIpAddressInstance($this->version, $payload, $this->solution['simSid']);
     }
 
@@ -45,7 +48,8 @@ class SimIpAddressPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Supersim.V1.SimIpAddressPage]';
     }
 }

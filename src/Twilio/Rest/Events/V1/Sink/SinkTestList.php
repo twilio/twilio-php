@@ -21,20 +21,30 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class SinkTestList extends ListResource {
+class SinkTestList extends ListResource
+    {
     /**
      * Construct the SinkTestList
      *
      * @param Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies the Sink to be Tested.
      */
-    public function __construct(Version $version, string $sid ) {
+    public function __construct(
+        Version $version,
+        string $sid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid, ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        
+        ];
 
-        $this->uri = '/Sinks/' . \rawurlencode($sid) . '/Test';
+        $this->uri = '/Sinks/' . \rawurlencode($sid)
+        .'/Test';
     }
 
     /**
@@ -43,22 +53,26 @@ class SinkTestList extends ListResource {
      * @return SinkTestInstance Created SinkTestInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): SinkTestInstance {
+    public function create(): SinkTestInstance
+    {
+
         $payload = $this->version->create('POST', $this->uri);
 
         return new SinkTestInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.SinkTestList]';
     }
 }

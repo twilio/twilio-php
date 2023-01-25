@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class StreamContext extends InstanceContext {
+class StreamContext extends InstanceContext
+    {
     /**
      * Initialize the StreamContext
      *
@@ -33,44 +34,65 @@ class StreamContext extends InstanceContext {
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with.
      * @param string $sid The SID of the Stream resource, or the `name` used when creating the resource
      */
-    public function __construct(Version $version, $accountSid , $callSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $callSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'callSid' => $callSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'callSid' =>
+            $callSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Streams/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Calls/' . \rawurlencode($callSid)
+        .'/Streams/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
      * Update the StreamInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return StreamInstance Updated StreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): StreamInstance {
+    public function update(string $status): StreamInstance
+    {
+
         $data = Values::of([
-            'Status' => $status,
+            'Status' =>
+                $status,
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new StreamInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['callSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['callSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

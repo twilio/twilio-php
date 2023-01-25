@@ -37,7 +37,8 @@ use Twilio\Rest\Verify\V2\Service\RateLimit\BucketList;
  * @property string $url
  * @property array $links
  */
-class RateLimitInstance extends InstanceResource {
+class RateLimitInstance extends InstanceResource
+{
     protected $_buckets;
 
     /**
@@ -48,7 +49,8 @@ class RateLimitInstance extends InstanceResource {
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.
      * @param string $sid The Twilio-provided string that uniquely identifies the Rate Limit resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,7 +75,8 @@ class RateLimitInstance extends InstanceResource {
      *
      * @return RateLimitContext Context for this RateLimitInstance
      */
-    protected function proxy(): RateLimitContext {
+    protected function proxy(): RateLimitContext
+    {
         if (!$this->context) {
             $this->context = new RateLimitContext(
                 $this->version,
@@ -91,7 +94,9 @@ class RateLimitInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class RateLimitInstance extends InstanceResource {
      * @return RateLimitInstance Fetched RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RateLimitInstance {
+    public function fetch(): RateLimitInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,14 +119,17 @@ class RateLimitInstance extends InstanceResource {
      * @return RateLimitInstance Updated RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): RateLimitInstance {
+    public function update(array $options = []): RateLimitInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the buckets
      */
-    protected function getBuckets(): BucketList {
+    protected function getBuckets(): BucketList
+    {
         return $this->proxy()->buckets;
     }
 
@@ -130,7 +140,8 @@ class RateLimitInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +159,8 @@ class RateLimitInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

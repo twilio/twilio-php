@@ -31,7 +31,8 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
  * @property string $url
  * @property array $links
  */
-class InteractionInstance extends InstanceResource {
+class InteractionInstance extends InstanceResource
+{
     protected $_channels;
 
     /**
@@ -41,7 +42,8 @@ class InteractionInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Interaction resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -62,7 +64,8 @@ class InteractionInstance extends InstanceResource {
      *
      * @return InteractionContext Context for this InteractionInstance
      */
-    protected function proxy(): InteractionContext {
+    protected function proxy(): InteractionContext
+    {
         if (!$this->context) {
             $this->context = new InteractionContext(
                 $this->version,
@@ -79,14 +82,17 @@ class InteractionInstance extends InstanceResource {
      * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionInstance {
+    public function fetch(): InteractionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Access the channels
      */
-    protected function getChannels(): InteractionChannelList {
+    protected function getChannels(): InteractionChannelList
+    {
         return $this->proxy()->channels;
     }
 
@@ -97,7 +103,8 @@ class InteractionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -115,7 +122,8 @@ class InteractionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

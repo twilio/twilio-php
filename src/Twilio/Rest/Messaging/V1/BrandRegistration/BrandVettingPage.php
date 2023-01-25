@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class BrandVettingPage extends Page {
+class BrandVettingPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class BrandVettingPage extends Page {
      * @param array $payload Payload response from the API
      * @return BrandVettingInstance \Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingInstance
      */
-    public function buildInstance(array $payload): BrandVettingInstance {
+    public function buildInstance(array $payload): BrandVettingInstance
+    {
         return new BrandVettingInstance($this->version, $payload, $this->solution['brandSid']);
     }
 
@@ -45,7 +48,8 @@ class BrandVettingPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.BrandVettingPage]';
     }
 }

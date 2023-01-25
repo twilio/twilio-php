@@ -28,7 +28,8 @@ use Twilio\Rest\Content\V1\Content\ApprovalFetchList;
  * @property ApprovalFetchList $approvalFetch
  * @method \Twilio\Rest\Content\V1\Content\ApprovalFetchContext approvalFetch()
  */
-class ContentContext extends InstanceContext {
+class ContentContext extends InstanceContext
+    {
     protected $_approvalFetch;
 
     /**
@@ -37,13 +38,21 @@ class ContentContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The Twilio-provided string that uniquely identifies the Content resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Content/' . \rawurlencode($sid) . '';
+        $this->uri = '/Content/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -52,9 +61,12 @@ class ContentContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ContentInstance
@@ -62,24 +74,28 @@ class ContentContext extends InstanceContext {
      * @return ContentInstance Fetched ContentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ContentInstance {
+    public function fetch(): ContentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ContentInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the approvalFetch
      */
-    protected function getApprovalFetch(): ApprovalFetchList {
+    protected function getApprovalFetch(): ApprovalFetchList
+    {
         if (!$this->_approvalFetch) {
             $this->_approvalFetch = new ApprovalFetchList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -93,7 +109,8 @@ class ContentContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -110,7 +127,8 @@ class ContentContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -124,7 +142,8 @@ class ContentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

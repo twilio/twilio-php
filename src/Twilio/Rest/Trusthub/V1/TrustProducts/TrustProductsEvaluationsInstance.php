@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateCreated
  * @property string $url
  */
-class TrustProductsEvaluationsInstance extends InstanceResource {
+class TrustProductsEvaluationsInstance extends InstanceResource
+{
     /**
      * Initialize the TrustProductsEvaluationsInstance
      *
@@ -43,7 +44,8 @@ class TrustProductsEvaluationsInstance extends InstanceResource {
      * @param string $trustProductSid The unique string that we created to identify the trust_product resource.
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function __construct(Version $version, array $payload, string $trustProductSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $trustProductSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,7 +69,8 @@ class TrustProductsEvaluationsInstance extends InstanceResource {
      *
      * @return TrustProductsEvaluationsContext Context for this TrustProductsEvaluationsInstance
      */
-    protected function proxy(): TrustProductsEvaluationsContext {
+    protected function proxy(): TrustProductsEvaluationsContext
+    {
         if (!$this->context) {
             $this->context = new TrustProductsEvaluationsContext(
                 $this->version,
@@ -85,7 +88,9 @@ class TrustProductsEvaluationsInstance extends InstanceResource {
      * @return TrustProductsEvaluationsInstance Fetched TrustProductsEvaluationsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): TrustProductsEvaluationsInstance {
+    public function fetch(): TrustProductsEvaluationsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -96,7 +101,8 @@ class TrustProductsEvaluationsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -114,7 +120,8 @@ class TrustProductsEvaluationsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

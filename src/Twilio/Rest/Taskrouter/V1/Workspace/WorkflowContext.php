@@ -36,7 +36,8 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsContext cumulativeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsContext realTimeStatistics()
  */
-class WorkflowContext extends InstanceContext {
+class WorkflowContext extends InstanceContext
+    {
     protected $_statistics;
     protected $_cumulativeStatistics;
     protected $_realTimeStatistics;
@@ -48,13 +49,25 @@ class WorkflowContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace that the new Workflow to create belongs to.
      * @param string $sid The SID of the Workflow resource to delete.
      */
-    public function __construct(Version $version, $workspaceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workflows/' . \rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workflows/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -63,9 +76,12 @@ class WorkflowContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the WorkflowInstance
@@ -73,16 +89,19 @@ class WorkflowContext extends InstanceContext {
      * @return WorkflowInstance Fetched WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WorkflowInstance {
+    public function fetch(): WorkflowInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new WorkflowInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the WorkflowInstance
@@ -91,37 +110,47 @@ class WorkflowContext extends InstanceContext {
      * @return WorkflowInstance Updated WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkflowInstance {
+    public function update(array $options = []): WorkflowInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'AssignmentCallbackUrl' => $options['assignmentCallbackUrl'],
-            'FallbackAssignmentCallbackUrl' => $options['fallbackAssignmentCallbackUrl'],
-            'Configuration' => $options['configuration'],
-            'TaskReservationTimeout' => $options['taskReservationTimeout'],
-            'ReEvaluateTasks' => $options['reEvaluateTasks'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'AssignmentCallbackUrl' =>
+                $options['assignmentCallbackUrl'],
+            'FallbackAssignmentCallbackUrl' =>
+                $options['fallbackAssignmentCallbackUrl'],
+            'Configuration' =>
+                $options['configuration'],
+            'TaskReservationTimeout' =>
+                $options['taskReservationTimeout'],
+            'ReEvaluateTasks' =>
+                $options['reEvaluateTasks'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WorkflowInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the statistics
      */
-    protected function getStatistics(): WorkflowStatisticsList {
+    protected function getStatistics(): WorkflowStatisticsList
+    {
         if (!$this->_statistics) {
             $this->_statistics = new WorkflowStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -131,12 +160,13 @@ class WorkflowContext extends InstanceContext {
     /**
      * Access the cumulativeStatistics
      */
-    protected function getCumulativeStatistics(): WorkflowCumulativeStatisticsList {
+    protected function getCumulativeStatistics(): WorkflowCumulativeStatisticsList
+    {
         if (!$this->_cumulativeStatistics) {
             $this->_cumulativeStatistics = new WorkflowCumulativeStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -146,12 +176,13 @@ class WorkflowContext extends InstanceContext {
     /**
      * Access the realTimeStatistics
      */
-    protected function getRealTimeStatistics(): WorkflowRealTimeStatisticsList {
+    protected function getRealTimeStatistics(): WorkflowRealTimeStatisticsList
+    {
         if (!$this->_realTimeStatistics) {
             $this->_realTimeStatistics = new WorkflowRealTimeStatisticsList(
-                $this->version
-                , $this->solution['workspaceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -165,7 +196,8 @@ class WorkflowContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -182,7 +214,8 @@ class WorkflowContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -196,7 +229,8 @@ class WorkflowContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

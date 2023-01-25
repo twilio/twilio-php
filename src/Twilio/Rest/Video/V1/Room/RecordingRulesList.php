@@ -24,20 +24,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class RecordingRulesList extends ListResource {
+class RecordingRulesList extends ListResource
+    {
     /**
      * Construct the RecordingRulesList
      *
      * @param Version $version Version that contains the resource
      * @param string $roomSid The SID of the Room resource where the recording rules to fetch apply.
      */
-    public function __construct(Version $version, string $roomSid ) {
+    public function __construct(
+        Version $version,
+        string $roomSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['roomSid' => $roomSid, ];
+        $this->solution = [
+        'roomSid' =>
+            $roomSid,
+        
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/RecordingRules';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid)
+        .'/RecordingRules';
     }
 
     /**
@@ -46,15 +56,18 @@ class RecordingRulesList extends ListResource {
      * @return RecordingRulesInstance Fetched RecordingRulesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RecordingRulesInstance {
+    public function fetch(): RecordingRulesInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new RecordingRulesInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
+            $payload,
+            $this->solution['roomSid'],
         );
     }
+
 
     /**
      * Update the RecordingRulesInstance
@@ -63,28 +76,33 @@ class RecordingRulesList extends ListResource {
      * @return RecordingRulesInstance Updated RecordingRulesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): RecordingRulesInstance {
+    public function update(array $options = []): RecordingRulesInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Rules' => Serialize::jsonObject($options['rules']),
+            'Rules' =>
+                Serialize::jsonObject($options['rules']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new RecordingRulesInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
+            $payload,
+            $this->solution['roomSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.RecordingRulesList]';
     }
 }

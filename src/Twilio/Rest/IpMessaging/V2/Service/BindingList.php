@@ -24,20 +24,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class BindingList extends ListResource {
+class BindingList extends ListResource
+    {
     /**
      * Construct the BindingList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid 
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Bindings';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Bindings';
     }
 
     /**
@@ -56,7 +66,8 @@ class BindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BindingInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +90,8 @@ class BindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,12 +108,20 @@ class BindingList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return BindingPage Page of BindingInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): BindingPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): BindingPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'BindingType' => $options['bindingType'],
-            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
+            'BindingType' =>
+                $options['bindingType'],
+            'Identity' =>
+                Serialize::map($options['identity'], function ($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -119,7 +139,8 @@ class BindingList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return BindingPage Page of BindingInstance
      */
-    public function getPage(string $targetUrl): BindingPage {
+    public function getPage(string $targetUrl): BindingPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -134,8 +155,16 @@ class BindingList extends ListResource {
      *
      * @param string $sid 
      */
-    public function getContext(string $sid): BindingContext {
-        return new BindingContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): BindingContext
+    {
+        return new BindingContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -143,7 +172,8 @@ class BindingList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.IpMessaging.V2.BindingList]';
     }
 }

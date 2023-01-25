@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class CountryList extends ListResource {
+class CountryList extends ListResource
+    {
     /**
      * Construct the CountryList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/DialingPermissions/Countries';
     }
@@ -55,7 +59,8 @@ class CountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CountryInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +83,8 @@ class CountryList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,16 +101,28 @@ class CountryList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CountryPage Page of CountryInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CountryPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CountryPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'IsoCode' => $options['isoCode'],
-            'Continent' => $options['continent'],
-            'CountryCode' => $options['countryCode'],
-            'LowRiskNumbersEnabled' => Serialize::booleanToString($options['lowRiskNumbersEnabled']),
-            'HighRiskSpecialNumbersEnabled' => Serialize::booleanToString($options['highRiskSpecialNumbersEnabled']),
-            'HighRiskTollfraudNumbersEnabled' => Serialize::booleanToString($options['highRiskTollfraudNumbersEnabled']),
+            'IsoCode' =>
+                $options['isoCode'],
+            'Continent' =>
+                $options['continent'],
+            'CountryCode' =>
+                $options['countryCode'],
+            'LowRiskNumbersEnabled' =>
+                Serialize::booleanToString($options['lowRiskNumbersEnabled']),
+            'HighRiskSpecialNumbersEnabled' =>
+                Serialize::booleanToString($options['highRiskSpecialNumbersEnabled']),
+            'HighRiskTollfraudNumbersEnabled' =>
+                Serialize::booleanToString($options['highRiskTollfraudNumbersEnabled']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -122,7 +140,8 @@ class CountryList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CountryPage Page of CountryInstance
      */
-    public function getPage(string $targetUrl): CountryPage {
+    public function getPage(string $targetUrl): CountryPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -137,8 +156,15 @@ class CountryList extends ListResource {
      *
      * @param string $isoCode The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the DialingPermissions Country resource to fetch
      */
-    public function getContext(string $isoCode): CountryContext {
-        return new CountryContext($this->version, $isoCode);
+    public function getContext(
+        string $isoCode
+        
+    ): CountryContext
+    {
+        return new CountryContext(
+            $this->version,
+            $isoCode
+        );
     }
 
     /**
@@ -146,7 +172,8 @@ class CountryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1.CountryList]';
     }
 }

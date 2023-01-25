@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class SubscribedEventList extends ListResource {
+class SubscribedEventList extends ListResource
+    {
     /**
      * Construct the SubscribedEventList
      *
      * @param Version $version Version that contains the resource
      * @param string $subscriptionSid The unique SID identifier of the Subscription.
      */
-    public function __construct(Version $version, string $subscriptionSid ) {
+    public function __construct(
+        Version $version,
+        string $subscriptionSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['subscriptionSid' => $subscriptionSid, ];
+        $this->solution = [
+        'subscriptionSid' =>
+            $subscriptionSid,
+        
+        ];
 
-        $this->uri = '/Subscriptions/' . \rawurlencode($subscriptionSid) . '/SubscribedEvents';
+        $this->uri = '/Subscriptions/' . \rawurlencode($subscriptionSid)
+        .'/SubscribedEvents';
     }
 
     /**
@@ -48,22 +58,27 @@ class SubscribedEventList extends ListResource {
      * @return SubscribedEventInstance Created SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $type, array $options = []): SubscribedEventInstance {
+    public function create(string $type, array $options = []): SubscribedEventInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Type' => $type,
-            'SchemaVersion' => $options['schemaVersion'],
+            'Type' =>
+                $type,
+            'SchemaVersion' =>
+                $options['schemaVersion'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SubscribedEventInstance(
             $this->version,
-            $payload
-            , $this->solution['subscriptionSid']
+            $payload,
+            $this->solution['subscriptionSid'],
         );
     }
+
 
     /**
      * Reads SubscribedEventInstance records from the API as a list.
@@ -80,7 +95,8 @@ class SubscribedEventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SubscribedEventInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -102,7 +118,8 @@ class SubscribedEventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -119,7 +136,12 @@ class SubscribedEventList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SubscribedEventPage Page of SubscribedEventInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SubscribedEventPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SubscribedEventPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -139,7 +161,8 @@ class SubscribedEventList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SubscribedEventPage Page of SubscribedEventInstance
      */
-    public function getPage(string $targetUrl): SubscribedEventPage {
+    public function getPage(string $targetUrl): SubscribedEventPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,8 +177,16 @@ class SubscribedEventList extends ListResource {
      *
      * @param string $type Type of event being subscribed to.
      */
-    public function getContext(string $type): SubscribedEventContext {
-        return new SubscribedEventContext($this->version, $this->solution['subscriptionSid'], $type);
+    public function getContext(
+        string $type
+        
+    ): SubscribedEventContext
+    {
+        return new SubscribedEventContext(
+            $this->version,
+            $this->solution['subscriptionSid'],
+            $type
+        );
     }
 
     /**
@@ -163,7 +194,8 @@ class SubscribedEventList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.SubscribedEventList]';
     }
 }

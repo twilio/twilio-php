@@ -36,7 +36,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class AddressConfigurationInstance extends InstanceResource {
+class AddressConfigurationInstance extends InstanceResource
+{
     /**
      * Initialize the AddressConfigurationInstance
      *
@@ -44,7 +45,8 @@ class AddressConfigurationInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -69,7 +71,8 @@ class AddressConfigurationInstance extends InstanceResource {
      *
      * @return AddressConfigurationContext Context for this AddressConfigurationInstance
      */
-    protected function proxy(): AddressConfigurationContext {
+    protected function proxy(): AddressConfigurationContext
+    {
         if (!$this->context) {
             $this->context = new AddressConfigurationContext(
                 $this->version,
@@ -86,7 +89,9 @@ class AddressConfigurationInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -96,7 +101,9 @@ class AddressConfigurationInstance extends InstanceResource {
      * @return AddressConfigurationInstance Fetched AddressConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AddressConfigurationInstance {
+    public function fetch(): AddressConfigurationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -107,7 +114,9 @@ class AddressConfigurationInstance extends InstanceResource {
      * @return AddressConfigurationInstance Updated AddressConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AddressConfigurationInstance {
+    public function update(array $options = []): AddressConfigurationInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -118,7 +127,8 @@ class AddressConfigurationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -136,7 +146,8 @@ class AddressConfigurationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

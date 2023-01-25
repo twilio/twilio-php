@@ -18,17 +18,25 @@ namespace Twilio\Rest\Proxy\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ShortCodeOptions {
+abstract class ShortCodeOptions
+{
 
 
 
 
     /**
-     * @param bool $isReserved Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information. 
+     * @param bool $isReserved Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.
      * @return UpdateShortCodeOptions Options builder
      */
-    public static function update(bool $isReserved = Values::NONE): UpdateShortCodeOptions {
-        return new UpdateShortCodeOptions($isReserved);
+    public static function update(
+        
+        bool $isReserved = Values::NONE
+
+    ): UpdateShortCodeOptions
+    {
+        return new UpdateShortCodeOptions(
+            $isReserved
+        );
     }
 
 }
@@ -37,11 +45,17 @@ abstract class ShortCodeOptions {
 
 
 
-class UpdateShortCodeOptions extends Options {
+class UpdateShortCodeOptions extends Options
+    {
     /**
      * @param bool $isReserved Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.
      */
-    public function __construct(bool $isReserved = Values::NONE) {
+    public function __construct(
+        
+        bool $isReserved = Values::NONE
+
+    )
+    {
         $this->options['isReserved'] = $isReserved;
     }
 
@@ -51,7 +65,8 @@ class UpdateShortCodeOptions extends Options {
      * @param bool $isReserved Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.
      * @return $this Fluent Builder
      */
-    public function setIsReserved(bool $isReserved): self {
+    public function setIsReserved(bool $isReserved): self
+    {
         $this->options['isReserved'] = $isReserved;
         return $this;
     }
@@ -61,7 +76,8 @@ class UpdateShortCodeOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Proxy.V1.UpdateShortCodeOptions ' . $options . ']';
     }

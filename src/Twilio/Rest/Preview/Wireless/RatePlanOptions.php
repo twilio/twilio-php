@@ -18,39 +18,75 @@ namespace Twilio\Rest\Preview\Wireless;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RatePlanOptions {
+abstract class RatePlanOptions
+{
     /**
-     * @param string $uniqueName  
-     * @param string $friendlyName  
-     * @param bool $dataEnabled  
-     * @param int $dataLimit  
-     * @param string $dataMetering  
-     * @param bool $messagingEnabled  
-     * @param bool $voiceEnabled  
-     * @param bool $commandsEnabled  
-     * @param bool $nationalRoamingEnabled  
-     * @param string[] $internationalRoaming  
+     * @param string $uniqueName 
+     * @param string $friendlyName 
+     * @param bool $dataEnabled 
+     * @param int $dataLimit 
+     * @param string $dataMetering 
+     * @param bool $messagingEnabled 
+     * @param bool $voiceEnabled 
+     * @param bool $commandsEnabled 
+     * @param bool $nationalRoamingEnabled 
+     * @param string[] $internationalRoaming 
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, array $internationalRoaming = Values::ARRAY_NONE): CreateRatePlanOptions {
-        return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $commandsEnabled, $nationalRoamingEnabled, $internationalRoaming);
+    public static function create(
+        
+        string $uniqueName = Values::NONE,
+        string $friendlyName = Values::NONE,
+        bool $dataEnabled = Values::NONE,
+        int $dataLimit = Values::NONE,
+        string $dataMetering = Values::NONE,
+        bool $messagingEnabled = Values::NONE,
+        bool $voiceEnabled = Values::NONE,
+        bool $commandsEnabled = Values::NONE,
+        bool $nationalRoamingEnabled = Values::NONE,
+        array $internationalRoaming = Values::ARRAY_NONE
+
+    ): CreateRatePlanOptions
+    {
+        return new CreateRatePlanOptions(
+            $uniqueName,
+            $friendlyName,
+            $dataEnabled,
+            $dataLimit,
+            $dataMetering,
+            $messagingEnabled,
+            $voiceEnabled,
+            $commandsEnabled,
+            $nationalRoamingEnabled,
+            $internationalRoaming
+        );
     }
 
 
 
 
     /**
-     * @param string $uniqueName  
-     * @param string $friendlyName  
+     * @param string $uniqueName 
+     * @param string $friendlyName 
      * @return UpdateRatePlanOptions Options builder
      */
-    public static function update(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE): UpdateRatePlanOptions {
-        return new UpdateRatePlanOptions($uniqueName, $friendlyName);
+    public static function update(
+        
+        string $uniqueName = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    ): UpdateRatePlanOptions
+    {
+        return new UpdateRatePlanOptions(
+            $uniqueName,
+            $friendlyName
+        );
     }
 
 }
 
-class CreateRatePlanOptions extends Options {
+class CreateRatePlanOptions extends Options
+    {
     /**
      * @param string $uniqueName 
      * @param string $friendlyName 
@@ -63,7 +99,21 @@ class CreateRatePlanOptions extends Options {
      * @param bool $nationalRoamingEnabled 
      * @param string[] $internationalRoaming 
      */
-    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE, bool $dataEnabled = Values::NONE, int $dataLimit = Values::NONE, string $dataMetering = Values::NONE, bool $messagingEnabled = Values::NONE, bool $voiceEnabled = Values::NONE, bool $commandsEnabled = Values::NONE, bool $nationalRoamingEnabled = Values::NONE, array $internationalRoaming = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        string $friendlyName = Values::NONE,
+        bool $dataEnabled = Values::NONE,
+        int $dataLimit = Values::NONE,
+        string $dataMetering = Values::NONE,
+        bool $messagingEnabled = Values::NONE,
+        bool $voiceEnabled = Values::NONE,
+        bool $commandsEnabled = Values::NONE,
+        bool $nationalRoamingEnabled = Values::NONE,
+        array $internationalRoaming = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dataEnabled'] = $dataEnabled;
@@ -82,7 +132,8 @@ class CreateRatePlanOptions extends Options {
      * @param string $uniqueName 
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -93,7 +144,8 @@ class CreateRatePlanOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -104,7 +156,8 @@ class CreateRatePlanOptions extends Options {
      * @param bool $dataEnabled 
      * @return $this Fluent Builder
      */
-    public function setDataEnabled(bool $dataEnabled): self {
+    public function setDataEnabled(bool $dataEnabled): self
+    {
         $this->options['dataEnabled'] = $dataEnabled;
         return $this;
     }
@@ -115,7 +168,8 @@ class CreateRatePlanOptions extends Options {
      * @param int $dataLimit 
      * @return $this Fluent Builder
      */
-    public function setDataLimit(int $dataLimit): self {
+    public function setDataLimit(int $dataLimit): self
+    {
         $this->options['dataLimit'] = $dataLimit;
         return $this;
     }
@@ -126,7 +180,8 @@ class CreateRatePlanOptions extends Options {
      * @param string $dataMetering 
      * @return $this Fluent Builder
      */
-    public function setDataMetering(string $dataMetering): self {
+    public function setDataMetering(string $dataMetering): self
+    {
         $this->options['dataMetering'] = $dataMetering;
         return $this;
     }
@@ -137,7 +192,8 @@ class CreateRatePlanOptions extends Options {
      * @param bool $messagingEnabled 
      * @return $this Fluent Builder
      */
-    public function setMessagingEnabled(bool $messagingEnabled): self {
+    public function setMessagingEnabled(bool $messagingEnabled): self
+    {
         $this->options['messagingEnabled'] = $messagingEnabled;
         return $this;
     }
@@ -148,7 +204,8 @@ class CreateRatePlanOptions extends Options {
      * @param bool $voiceEnabled 
      * @return $this Fluent Builder
      */
-    public function setVoiceEnabled(bool $voiceEnabled): self {
+    public function setVoiceEnabled(bool $voiceEnabled): self
+    {
         $this->options['voiceEnabled'] = $voiceEnabled;
         return $this;
     }
@@ -159,7 +216,8 @@ class CreateRatePlanOptions extends Options {
      * @param bool $commandsEnabled 
      * @return $this Fluent Builder
      */
-    public function setCommandsEnabled(bool $commandsEnabled): self {
+    public function setCommandsEnabled(bool $commandsEnabled): self
+    {
         $this->options['commandsEnabled'] = $commandsEnabled;
         return $this;
     }
@@ -170,7 +228,8 @@ class CreateRatePlanOptions extends Options {
      * @param bool $nationalRoamingEnabled 
      * @return $this Fluent Builder
      */
-    public function setNationalRoamingEnabled(bool $nationalRoamingEnabled): self {
+    public function setNationalRoamingEnabled(bool $nationalRoamingEnabled): self
+    {
         $this->options['nationalRoamingEnabled'] = $nationalRoamingEnabled;
         return $this;
     }
@@ -181,7 +240,8 @@ class CreateRatePlanOptions extends Options {
      * @param string[] $internationalRoaming 
      * @return $this Fluent Builder
      */
-    public function setInternationalRoaming(array $internationalRoaming): self {
+    public function setInternationalRoaming(array $internationalRoaming): self
+    {
         $this->options['internationalRoaming'] = $internationalRoaming;
         return $this;
     }
@@ -191,7 +251,8 @@ class CreateRatePlanOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Wireless.CreateRatePlanOptions ' . $options . ']';
     }
@@ -200,12 +261,19 @@ class CreateRatePlanOptions extends Options {
 
 
 
-class UpdateRatePlanOptions extends Options {
+class UpdateRatePlanOptions extends Options
+    {
     /**
      * @param string $uniqueName 
      * @param string $friendlyName 
      */
-    public function __construct(string $uniqueName = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(
+        
+        string $uniqueName = Values::NONE,
+        string $friendlyName = Values::NONE
+
+    )
+    {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
     }
@@ -216,7 +284,8 @@ class UpdateRatePlanOptions extends Options {
      * @param string $uniqueName 
      * @return $this Fluent Builder
      */
-    public function setUniqueName(string $uniqueName): self {
+    public function setUniqueName(string $uniqueName): self
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
@@ -227,7 +296,8 @@ class UpdateRatePlanOptions extends Options {
      * @param string $friendlyName 
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -237,7 +307,8 @@ class UpdateRatePlanOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Preview.Wireless.UpdateRatePlanOptions ' . $options . ']';
     }

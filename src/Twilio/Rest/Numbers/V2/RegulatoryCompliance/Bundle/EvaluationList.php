@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class EvaluationList extends ListResource {
+class EvaluationList extends ListResource
+    {
     /**
      * Construct the EvaluationList
      *
      * @param Version $version Version that contains the resource
      * @param string $bundleSid The unique string that identifies the Bundle resource.
      */
-    public function __construct(Version $version, string $bundleSid ) {
+    public function __construct(
+        Version $version,
+        string $bundleSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['bundleSid' => $bundleSid, ];
+        $this->solution = [
+        'bundleSid' =>
+            $bundleSid,
+        
+        ];
 
-        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($bundleSid) . '/Evaluations';
+        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($bundleSid)
+        .'/Evaluations';
     }
 
     /**
@@ -45,15 +55,18 @@ class EvaluationList extends ListResource {
      * @return EvaluationInstance Created EvaluationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): EvaluationInstance {
+    public function create(): EvaluationInstance
+    {
+
         $payload = $this->version->create('POST', $this->uri);
 
         return new EvaluationInstance(
             $this->version,
-            $payload
-            , $this->solution['bundleSid']
+            $payload,
+            $this->solution['bundleSid'],
         );
     }
+
 
     /**
      * Reads EvaluationInstance records from the API as a list.
@@ -70,7 +83,8 @@ class EvaluationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EvaluationInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -92,7 +106,8 @@ class EvaluationList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -109,7 +124,12 @@ class EvaluationList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return EvaluationPage Page of EvaluationInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): EvaluationPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): EvaluationPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -129,7 +149,8 @@ class EvaluationList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return EvaluationPage Page of EvaluationInstance
      */
-    public function getPage(string $targetUrl): EvaluationPage {
+    public function getPage(string $targetUrl): EvaluationPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -144,8 +165,16 @@ class EvaluationList extends ListResource {
      *
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function getContext(string $sid): EvaluationContext {
-        return new EvaluationContext($this->version, $this->solution['bundleSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): EvaluationContext
+    {
+        return new EvaluationContext(
+            $this->version,
+            $this->solution['bundleSid'],
+            $sid
+        );
     }
 
     /**
@@ -153,7 +182,8 @@ class EvaluationList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.EvaluationList]';
     }
 }

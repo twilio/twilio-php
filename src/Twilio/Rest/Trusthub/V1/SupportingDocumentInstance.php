@@ -37,7 +37,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class SupportingDocumentInstance extends InstanceResource {
+class SupportingDocumentInstance extends InstanceResource
+{
     /**
      * Initialize the SupportingDocumentInstance
      *
@@ -45,7 +46,8 @@ class SupportingDocumentInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string created by Twilio to identify the Supporting Document resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -71,7 +73,8 @@ class SupportingDocumentInstance extends InstanceResource {
      *
      * @return SupportingDocumentContext Context for this SupportingDocumentInstance
      */
-    protected function proxy(): SupportingDocumentContext {
+    protected function proxy(): SupportingDocumentContext
+    {
         if (!$this->context) {
             $this->context = new SupportingDocumentContext(
                 $this->version,
@@ -88,7 +91,9 @@ class SupportingDocumentInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -98,7 +103,9 @@ class SupportingDocumentInstance extends InstanceResource {
      * @return SupportingDocumentInstance Fetched SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SupportingDocumentInstance {
+    public function fetch(): SupportingDocumentInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -109,7 +116,9 @@ class SupportingDocumentInstance extends InstanceResource {
      * @return SupportingDocumentInstance Updated SupportingDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SupportingDocumentInstance {
+    public function update(array $options = []): SupportingDocumentInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -120,7 +129,8 @@ class SupportingDocumentInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,7 +148,8 @@ class SupportingDocumentInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

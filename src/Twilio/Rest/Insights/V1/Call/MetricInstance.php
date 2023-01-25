@@ -34,7 +34,8 @@ use Twilio\Version;
  * @property array $sdkEdge
  * @property array $clientEdge
  */
-class MetricInstance extends InstanceResource {
+class MetricInstance extends InstanceResource
+{
     /**
      * Initialize the MetricInstance
      *
@@ -42,7 +43,8 @@ class MetricInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $callSid 
      */
-    public function __construct(Version $version, array $payload, string $callSid) {
+    public function __construct(Version $version, array $payload, string $callSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,7 +70,8 @@ class MetricInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -86,7 +89,8 @@ class MetricInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Insights.V1.MetricInstance]';
     }
 }

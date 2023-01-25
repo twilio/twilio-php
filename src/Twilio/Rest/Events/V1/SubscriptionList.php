@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class SubscriptionList extends ListResource {
+class SubscriptionList extends ListResource
+    {
     /**
      * Construct the SubscriptionList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Subscriptions';
     }
@@ -49,20 +53,26 @@ class SubscriptionList extends ListResource {
      * @return SubscriptionInstance Created SubscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $description, string $sinkSid, array $types): SubscriptionInstance {
+    public function create(string $description, string $sinkSid, array $types): SubscriptionInstance
+    {
+
         $data = Values::of([
-            'Description' => $description,
-            'SinkSid' => $sinkSid,
-            'Types' => Serialize::map($types,function($e) { return Serialize::jsonObject($e); }),
+            'Description' =>
+                $description,
+            'SinkSid' =>
+                $sinkSid,
+            'Types' =>
+                Serialize::map($types,function ($e) { return Serialize::jsonObject($e); }),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new SubscriptionInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads SubscriptionInstance records from the API as a list.
@@ -80,7 +90,8 @@ class SubscriptionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SubscriptionInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -103,7 +114,8 @@ class SubscriptionList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -120,11 +132,18 @@ class SubscriptionList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return SubscriptionPage Page of SubscriptionInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): SubscriptionPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): SubscriptionPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'SinkSid' => $options['sinkSid'],
+            'SinkSid' =>
+                $options['sinkSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -142,7 +161,8 @@ class SubscriptionList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return SubscriptionPage Page of SubscriptionInstance
      */
-    public function getPage(string $targetUrl): SubscriptionPage {
+    public function getPage(string $targetUrl): SubscriptionPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -157,8 +177,15 @@ class SubscriptionList extends ListResource {
      *
      * @param string $sid A 34 character string that uniquely identifies this Subscription.
      */
-    public function getContext(string $sid): SubscriptionContext {
-        return new SubscriptionContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): SubscriptionContext
+    {
+        return new SubscriptionContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -166,7 +193,8 @@ class SubscriptionList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Events.V1.SubscriptionList]';
     }
 }

@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class CertificateContext extends InstanceContext {
+class CertificateContext extends InstanceContext
+    {
     /**
      * Initialize the CertificateContext
      *
@@ -32,13 +33,25 @@ class CertificateContext extends InstanceContext {
      * @param string $fleetSid 
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Certificate credential resource.
      */
-    public function __construct(Version $version, $fleetSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $fleetSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['fleetSid' => $fleetSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'fleetSid' =>
+            $fleetSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Certificates/' . \rawurlencode($sid) . '';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid)
+        .'/Certificates/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +60,12 @@ class CertificateContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the CertificateInstance
@@ -57,16 +73,19 @@ class CertificateContext extends InstanceContext {
      * @return CertificateInstance Fetched CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CertificateInstance {
+    public function fetch(): CertificateInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new CertificateInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the CertificateInstance
@@ -75,30 +94,36 @@ class CertificateContext extends InstanceContext {
      * @return CertificateInstance Updated CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): CertificateInstance {
+    public function update(array $options = []): CertificateInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'DeviceSid' => $options['deviceSid'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'DeviceSid' =>
+                $options['deviceSid'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new CertificateInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

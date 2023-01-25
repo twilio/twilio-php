@@ -38,7 +38,8 @@ use Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList;
  * @property string $url
  * @property array $links
  */
-class InstalledAddOnInstance extends InstanceResource {
+class InstalledAddOnInstance extends InstanceResource
+{
     protected $_extensions;
 
     /**
@@ -48,7 +49,8 @@ class InstalledAddOnInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the InstalledAddOn resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,7 +76,8 @@ class InstalledAddOnInstance extends InstanceResource {
      *
      * @return InstalledAddOnContext Context for this InstalledAddOnInstance
      */
-    protected function proxy(): InstalledAddOnContext {
+    protected function proxy(): InstalledAddOnContext
+    {
         if (!$this->context) {
             $this->context = new InstalledAddOnContext(
                 $this->version,
@@ -91,7 +94,9 @@ class InstalledAddOnInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -101,7 +106,9 @@ class InstalledAddOnInstance extends InstanceResource {
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InstalledAddOnInstance {
+    public function fetch(): InstalledAddOnInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -112,14 +119,17 @@ class InstalledAddOnInstance extends InstanceResource {
      * @return InstalledAddOnInstance Updated InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): InstalledAddOnInstance {
+    public function update(array $options = []): InstalledAddOnInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the extensions
      */
-    protected function getExtensions(): InstalledAddOnExtensionList {
+    protected function getExtensions(): InstalledAddOnExtensionList
+    {
         return $this->proxy()->extensions;
     }
 
@@ -130,7 +140,8 @@ class InstalledAddOnInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +159,8 @@ class InstalledAddOnInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

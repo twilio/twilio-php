@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class InteractionContext extends InstanceContext {
+class InteractionContext extends InstanceContext
+    {
     /**
      * Initialize the InteractionContext
      *
@@ -31,13 +32,29 @@ class InteractionContext extends InstanceContext {
      * @param string $sessionSid The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Interaction resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $sessionSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sessionSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sessionSid' => $sessionSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sessionSid' =>
+            $sessionSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Interactions/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Sessions/' . \rawurlencode($sessionSid)
+        .'/Interactions/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,9 +63,12 @@ class InteractionContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the InteractionInstance
@@ -56,24 +76,28 @@ class InteractionContext extends InstanceContext {
      * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionInstance {
+    public function fetch(): InteractionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new InteractionInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sessionSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sessionSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

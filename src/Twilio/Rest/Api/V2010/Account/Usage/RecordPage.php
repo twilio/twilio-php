@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class RecordPage extends Page {
+class RecordPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class RecordPage extends Page {
      * @param array $payload Payload response from the API
      * @return RecordInstance \Twilio\Rest\Api\V2010\Account\Usage\RecordInstance
      */
-    public function buildInstance(array $payload): RecordInstance {
+    public function buildInstance(array $payload): RecordInstance
+    {
         return new RecordInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
@@ -45,7 +48,8 @@ class RecordPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.RecordPage]';
     }
 }

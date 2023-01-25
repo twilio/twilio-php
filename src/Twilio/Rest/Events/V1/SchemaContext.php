@@ -28,7 +28,8 @@ use Twilio\Rest\Events\V1\Schema\SchemaVersionList;
  * @property SchemaVersionList $versions
  * @method \Twilio\Rest\Events\V1\Schema\SchemaVersionContext versions(string $schemaVersion)
  */
-class SchemaContext extends InstanceContext {
+class SchemaContext extends InstanceContext
+    {
     protected $_versions;
 
     /**
@@ -37,13 +38,21 @@ class SchemaContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $id The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
      */
-    public function __construct(Version $version, $id ) {
+    public function __construct(
+        Version $version,
+        $id
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['id' => $id,  ];
+        $this->solution = [
+        'id' =>
+            $id,
+        ];
 
-        $this->uri = '/Schemas/' . \rawurlencode($id) . '';
+        $this->uri = '/Schemas/' . \rawurlencode($id)
+        .'';
     }
 
     /**
@@ -52,24 +61,28 @@ class SchemaContext extends InstanceContext {
      * @return SchemaInstance Fetched SchemaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SchemaInstance {
+    public function fetch(): SchemaInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SchemaInstance(
             $this->version,
-            $payload
-            , $this->solution['id']
+            $payload,
+            $this->solution['id'],
         );
     }
+
 
     /**
      * Access the versions
      */
-    protected function getVersions(): SchemaVersionList {
+    protected function getVersions(): SchemaVersionList
+    {
         if (!$this->_versions) {
             $this->_versions = new SchemaVersionList(
-                $this->version
-                , $this->solution['id']
+                $this->version,
+                $this->solution['id'],
             );
         }
 
@@ -83,7 +96,8 @@ class SchemaContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -100,7 +114,8 @@ class SchemaContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -114,7 +129,8 @@ class SchemaContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

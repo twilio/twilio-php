@@ -33,14 +33,16 @@ use Twilio\Version;
  * @property string $target
  * @property string $url
  */
-class WebhookInstance extends InstanceResource {
+class WebhookInstance extends InstanceResource
+{
     /**
      * Initialize the WebhookInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class WebhookInstance extends InstanceResource {
      *
      * @return WebhookContext Context for this WebhookInstance
      */
-    protected function proxy(): WebhookContext {
+    protected function proxy(): WebhookContext
+    {
         if (!$this->context) {
             $this->context = new WebhookContext(
                 $this->version
@@ -79,7 +82,9 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebhookInstance {
+    public function fetch(): WebhookInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -90,7 +95,9 @@ class WebhookInstance extends InstanceResource {
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebhookInstance {
+    public function update(array $options = []): WebhookInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -101,7 +108,8 @@ class WebhookInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -119,7 +127,8 @@ class WebhookInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

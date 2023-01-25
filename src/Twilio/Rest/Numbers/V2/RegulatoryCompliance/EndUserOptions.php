@@ -18,34 +18,57 @@ namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class EndUserOptions {
+abstract class EndUserOptions
+{
     /**
-     * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types. 
+     * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types.
      * @return CreateEndUserOptions Options builder
      */
-    public static function create(array $attributes = Values::ARRAY_NONE): CreateEndUserOptions {
-        return new CreateEndUserOptions($attributes);
+    public static function create(
+        
+        array $attributes = Values::ARRAY_NONE
+
+    ): CreateEndUserOptions
+    {
+        return new CreateEndUserOptions(
+            $attributes
+        );
     }
 
 
 
 
     /**
-     * @param string $friendlyName The string that you assigned to describe the resource. 
-     * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types. 
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types.
      * @return UpdateEndUserOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, array $attributes = Values::ARRAY_NONE): UpdateEndUserOptions {
-        return new UpdateEndUserOptions($friendlyName, $attributes);
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        array $attributes = Values::ARRAY_NONE
+
+    ): UpdateEndUserOptions
+    {
+        return new UpdateEndUserOptions(
+            $friendlyName,
+            $attributes
+        );
     }
 
 }
 
-class CreateEndUserOptions extends Options {
+class CreateEndUserOptions extends Options
+    {
     /**
      * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types.
      */
-    public function __construct(array $attributes = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        array $attributes = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['attributes'] = $attributes;
     }
 
@@ -55,7 +78,8 @@ class CreateEndUserOptions extends Options {
      * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types.
      * @return $this Fluent Builder
      */
-    public function setAttributes(array $attributes): self {
+    public function setAttributes(array $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -65,7 +89,8 @@ class CreateEndUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.CreateEndUserOptions ' . $options . ']';
     }
@@ -74,12 +99,19 @@ class CreateEndUserOptions extends Options {
 
 
 
-class UpdateEndUserOptions extends Options {
+class UpdateEndUserOptions extends Options
+    {
     /**
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types.
      */
-    public function __construct(string $friendlyName = Values::NONE, array $attributes = Values::ARRAY_NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        array $attributes = Values::ARRAY_NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
     }
@@ -90,7 +122,8 @@ class UpdateEndUserOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -101,7 +134,8 @@ class UpdateEndUserOptions extends Options {
      * @param array $attributes The set of parameters that are the attributes of the End User resource which are derived End User Types.
      * @return $this Fluent Builder
      */
-    public function setAttributes(array $attributes): self {
+    public function setAttributes(array $attributes): self
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
@@ -111,7 +145,8 @@ class UpdateEndUserOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.UpdateEndUserOptions ' . $options . ']';
     }

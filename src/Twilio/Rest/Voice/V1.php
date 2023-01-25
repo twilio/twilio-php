@@ -39,7 +39,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Voice\V1\IpRecordContext ipRecords(string $sid)
  * @method \Twilio\Rest\Voice\V1\SourceIpMappingContext sourceIpMappings(string $sid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_archivedCalls;
     protected $_byocTrunks;
     protected $_connectionPolicies;
@@ -52,47 +53,54 @@ class V1 extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
-    protected function getArchivedCalls(): ArchivedCallList {
+    protected function getArchivedCalls(): ArchivedCallList
+    {
         if (!$this->_archivedCalls) {
             $this->_archivedCalls = new ArchivedCallList($this);
         }
         return $this->_archivedCalls;
     }
 
-    protected function getByocTrunks(): ByocTrunkList {
+    protected function getByocTrunks(): ByocTrunkList
+    {
         if (!$this->_byocTrunks) {
             $this->_byocTrunks = new ByocTrunkList($this);
         }
         return $this->_byocTrunks;
     }
 
-    protected function getConnectionPolicies(): ConnectionPolicyList {
+    protected function getConnectionPolicies(): ConnectionPolicyList
+    {
         if (!$this->_connectionPolicies) {
             $this->_connectionPolicies = new ConnectionPolicyList($this);
         }
         return $this->_connectionPolicies;
     }
 
-    protected function getDialingPermissions(): DialingPermissionsList {
+    protected function getDialingPermissions(): DialingPermissionsList
+    {
         if (!$this->_dialingPermissions) {
             $this->_dialingPermissions = new DialingPermissionsList($this);
         }
         return $this->_dialingPermissions;
     }
 
-    protected function getIpRecords(): IpRecordList {
+    protected function getIpRecords(): IpRecordList
+    {
         if (!$this->_ipRecords) {
             $this->_ipRecords = new IpRecordList($this);
         }
         return $this->_ipRecords;
     }
 
-    protected function getSourceIpMappings(): SourceIpMappingList {
+    protected function getSourceIpMappings(): SourceIpMappingList
+    {
         if (!$this->_sourceIpMappings) {
             $this->_sourceIpMappings = new SourceIpMappingList($this);
         }
@@ -106,7 +114,8 @@ class V1 extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -123,7 +132,8 @@ class V1 extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -137,7 +147,8 @@ class V1 extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Voice.V1]';
     }
 }

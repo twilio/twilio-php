@@ -34,7 +34,8 @@ use Twilio\Deserialize;
  * @property string $url
  * @property bool $validated
  */
-class DomainCertsInstance extends InstanceResource {
+class DomainCertsInstance extends InstanceResource
+{
     /**
      * Initialize the DomainCertsInstance
      *
@@ -42,7 +43,8 @@ class DomainCertsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $domainSid Unique string used to identify the domain that this certificate should be associated with.
      */
-    public function __construct(Version $version, array $payload, string $domainSid = null) {
+    public function __construct(Version $version, array $payload, string $domainSid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,7 +68,8 @@ class DomainCertsInstance extends InstanceResource {
      *
      * @return DomainCertsContext Context for this DomainCertsInstance
      */
-    protected function proxy(): DomainCertsContext {
+    protected function proxy(): DomainCertsContext
+    {
         if (!$this->context) {
             $this->context = new DomainCertsContext(
                 $this->version,
@@ -83,7 +86,9 @@ class DomainCertsInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -93,7 +98,9 @@ class DomainCertsInstance extends InstanceResource {
      * @return DomainCertsInstance Fetched DomainCertsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DomainCertsInstance {
+    public function fetch(): DomainCertsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,7 +111,9 @@ class DomainCertsInstance extends InstanceResource {
      * @return DomainCertsInstance Updated DomainCertsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $tlsCert): DomainCertsInstance {
+    public function update(string $tlsCert): DomainCertsInstance
+    {
+
         return $this->proxy()->update($tlsCert);
     }
 
@@ -115,7 +124,8 @@ class DomainCertsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -133,7 +143,8 @@ class DomainCertsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

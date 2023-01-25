@@ -25,17 +25,21 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class CompositionHookList extends ListResource {
+class CompositionHookList extends ListResource
+    {
     /**
      * Construct the CompositionHookList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/CompositionHooks';
     }
@@ -48,29 +52,42 @@ class CompositionHookList extends ListResource {
      * @return CompositionHookInstance Created CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): CompositionHookInstance {
+    public function create(string $friendlyName, array $options = []): CompositionHookInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $friendlyName,
-            'Enabled' => Serialize::booleanToString($options['enabled']),
-            'VideoLayout' => Serialize::jsonObject($options['videoLayout']),
-            'AudioSources' => Serialize::map($options['audioSources'], function($e) { return $e; }),
-            'AudioSourcesExcluded' => Serialize::map($options['audioSourcesExcluded'], function($e) { return $e; }),
-            'Resolution' => $options['resolution'],
-            'Format' => $options['format'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'Trim' => Serialize::booleanToString($options['trim']),
+            'FriendlyName' =>
+                $friendlyName,
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
+            'VideoLayout' =>
+                Serialize::jsonObject($options['videoLayout']),
+            'AudioSources' =>
+                Serialize::map($options['audioSources'], function ($e) { return $e; }),
+            'AudioSourcesExcluded' =>
+                Serialize::map($options['audioSourcesExcluded'], function ($e) { return $e; }),
+            'Resolution' =>
+                $options['resolution'],
+            'Format' =>
+                $options['format'],
+            'StatusCallback' =>
+                $options['statusCallback'],
+            'StatusCallbackMethod' =>
+                $options['statusCallbackMethod'],
+            'Trim' =>
+                Serialize::booleanToString($options['trim']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CompositionHookInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Reads CompositionHookInstance records from the API as a list.
@@ -88,7 +105,8 @@ class CompositionHookList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CompositionHookInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -111,7 +129,8 @@ class CompositionHookList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -128,14 +147,24 @@ class CompositionHookList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CompositionHookPage Page of CompositionHookInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CompositionHookPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CompositionHookPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'Enabled' => Serialize::booleanToString($options['enabled']),
-            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
-            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
-            'FriendlyName' => $options['friendlyName'],
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
+            'DateCreatedAfter' =>
+                Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' =>
+                Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'FriendlyName' =>
+                $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -153,7 +182,8 @@ class CompositionHookList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CompositionHookPage Page of CompositionHookInstance
      */
-    public function getPage(string $targetUrl): CompositionHookPage {
+    public function getPage(string $targetUrl): CompositionHookPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -168,8 +198,15 @@ class CompositionHookList extends ListResource {
      *
      * @param string $sid The SID of the CompositionHook resource to delete.
      */
-    public function getContext(string $sid): CompositionHookContext {
-        return new CompositionHookContext($this->version, $sid);
+    public function getContext(
+        string $sid
+        
+    ): CompositionHookContext
+    {
+        return new CompositionHookContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -177,7 +214,8 @@ class CompositionHookList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Video.V1.CompositionHookList]';
     }
 }

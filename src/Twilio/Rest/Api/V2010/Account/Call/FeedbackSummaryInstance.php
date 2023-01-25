@@ -40,7 +40,8 @@ use Twilio\Deserialize;
  * @property \DateTime $startDate
  * @property string $status
  */
-class FeedbackSummaryInstance extends InstanceResource {
+class FeedbackSummaryInstance extends InstanceResource
+{
     /**
      * Initialize the FeedbackSummaryInstance
      *
@@ -49,7 +50,8 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @param string $accountSid The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class FeedbackSummaryInstance extends InstanceResource {
      *
      * @return FeedbackSummaryContext Context for this FeedbackSummaryInstance
      */
-    protected function proxy(): FeedbackSummaryContext {
+    protected function proxy(): FeedbackSummaryContext
+    {
         if (!$this->context) {
             $this->context = new FeedbackSummaryContext(
                 $this->version,
@@ -97,7 +100,9 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -107,7 +112,9 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @return FeedbackSummaryInstance Fetched FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FeedbackSummaryInstance {
+    public function fetch(): FeedbackSummaryInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -118,7 +125,8 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -136,7 +144,8 @@ class FeedbackSummaryInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

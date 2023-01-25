@@ -31,7 +31,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
  */
-class Wireless extends Version {
+class Wireless extends Version
+{
     protected $_commands;
     protected $_ratePlans;
     protected $_sims;
@@ -41,26 +42,30 @@ class Wireless extends Version {
      *
      * @param Domain $domain Domain that contains the version
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'wireless';
     }
 
-    protected function getCommands(): CommandList {
+    protected function getCommands(): CommandList
+    {
         if (!$this->_commands) {
             $this->_commands = new CommandList($this);
         }
         return $this->_commands;
     }
 
-    protected function getRatePlans(): RatePlanList {
+    protected function getRatePlans(): RatePlanList
+    {
         if (!$this->_ratePlans) {
             $this->_ratePlans = new RatePlanList($this);
         }
         return $this->_ratePlans;
     }
 
-    protected function getSims(): SimList {
+    protected function getSims(): SimList
+    {
         if (!$this->_sims) {
             $this->_sims = new SimList($this);
         }
@@ -74,7 +79,8 @@ class Wireless extends Version {
      * @return \Twilio\ListResource The requested resource
      * @throws TwilioException For unknown resource
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         $method = 'get' . \ucfirst($name);
         if (\method_exists($this, $method)) {
             return $this->$method();
@@ -91,7 +97,8 @@ class Wireless extends Version {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -105,7 +112,8 @@ class Wireless extends Version {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Wireless]';
     }
 }

@@ -23,20 +23,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ShortCodeList extends ListResource {
+class ShortCodeList extends ListResource
+    {
     /**
      * Construct the ShortCodeList
      *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to fetch.
      */
-    public function __construct(Version $version, string $accountSid ) {
+    public function __construct(
+        Version $version,
+        string $accountSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SMS/ShortCodes.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/SMS/ShortCodes.json';
     }
 
     /**
@@ -55,7 +65,8 @@ class ShortCodeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ShortCodeInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -78,7 +89,8 @@ class ShortCodeList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -95,12 +107,20 @@ class ShortCodeList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return ShortCodePage Page of ShortCodeInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): ShortCodePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): ShortCodePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'ShortCode' => $options['shortCode'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'ShortCode' =>
+                $options['shortCode'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -118,7 +138,8 @@ class ShortCodeList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return ShortCodePage Page of ShortCodeInstance
      */
-    public function getPage(string $targetUrl): ShortCodePage {
+    public function getPage(string $targetUrl): ShortCodePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -133,8 +154,16 @@ class ShortCodeList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the ShortCode resource to fetch
      */
-    public function getContext(string $sid): ShortCodeContext {
-        return new ShortCodeContext($this->version, $this->solution['accountSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): ShortCodeContext
+    {
+        return new ShortCodeContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $sid
+        );
     }
 
     /**
@@ -142,7 +171,8 @@ class ShortCodeList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.ShortCodeList]';
     }
 }

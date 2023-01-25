@@ -31,14 +31,16 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class AuthTokenPromotionInstance extends InstanceResource {
+class AuthTokenPromotionInstance extends InstanceResource
+{
     /**
      * Initialize the AuthTokenPromotionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +61,8 @@ class AuthTokenPromotionInstance extends InstanceResource {
      *
      * @return AuthTokenPromotionContext Context for this AuthTokenPromotionInstance
      */
-    protected function proxy(): AuthTokenPromotionContext {
+    protected function proxy(): AuthTokenPromotionContext
+    {
         if (!$this->context) {
             $this->context = new AuthTokenPromotionContext(
                 $this->version
@@ -75,7 +78,9 @@ class AuthTokenPromotionInstance extends InstanceResource {
      * @return AuthTokenPromotionInstance Updated AuthTokenPromotionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(): AuthTokenPromotionInstance {
+    public function update(): AuthTokenPromotionInstance
+    {
+
         return $this->proxy()->update();
     }
 
@@ -86,7 +91,8 @@ class AuthTokenPromotionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -104,7 +110,8 @@ class AuthTokenPromotionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

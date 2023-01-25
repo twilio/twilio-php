@@ -34,7 +34,8 @@ use Twilio\Version;
  * @property string $uri
  * @property bool $enabled
  */
-class AssignedAddOnExtensionInstance extends InstanceResource {
+class AssignedAddOnExtensionInstance extends InstanceResource
+{
     /**
      * Initialize the AssignedAddOnExtensionInstance
      *
@@ -45,7 +46,8 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      * @param string $assignedAddOnSid The SID that uniquely identifies the assigned Add-on installation.
      * @param string $sid The Twilio-provided string that uniquely identifies the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $assignedAddOnSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $assignedAddOnSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -70,7 +72,8 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      *
      * @return AssignedAddOnExtensionContext Context for this AssignedAddOnExtensionInstance
      */
-    protected function proxy(): AssignedAddOnExtensionContext {
+    protected function proxy(): AssignedAddOnExtensionContext
+    {
         if (!$this->context) {
             $this->context = new AssignedAddOnExtensionContext(
                 $this->version,
@@ -90,7 +93,9 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssignedAddOnExtensionInstance {
+    public function fetch(): AssignedAddOnExtensionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -101,7 +106,8 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -119,7 +125,8 @@ class AssignedAddOnExtensionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

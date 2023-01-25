@@ -30,7 +30,8 @@ use Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkList
  * @property NetworkAccessProfileNetworkList $networks
  * @method \Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkContext networks(string $sid)
  */
-class NetworkAccessProfileContext extends InstanceContext {
+class NetworkAccessProfileContext extends InstanceContext
+    {
     protected $_networks;
 
     /**
@@ -39,13 +40,21 @@ class NetworkAccessProfileContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the Network Access Profile resource to fetch.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/NetworkAccessProfiles/' . \rawurlencode($sid) . '';
+        $this->uri = '/NetworkAccessProfiles/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -54,15 +63,18 @@ class NetworkAccessProfileContext extends InstanceContext {
      * @return NetworkAccessProfileInstance Fetched NetworkAccessProfileInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): NetworkAccessProfileInstance {
+    public function fetch(): NetworkAccessProfileInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new NetworkAccessProfileInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the NetworkAccessProfileInstance
@@ -71,30 +83,35 @@ class NetworkAccessProfileContext extends InstanceContext {
      * @return NetworkAccessProfileInstance Updated NetworkAccessProfileInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): NetworkAccessProfileInstance {
+    public function update(array $options = []): NetworkAccessProfileInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
+            'UniqueName' =>
+                $options['uniqueName'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new NetworkAccessProfileInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the networks
      */
-    protected function getNetworks(): NetworkAccessProfileNetworkList {
+    protected function getNetworks(): NetworkAccessProfileNetworkList
+    {
         if (!$this->_networks) {
             $this->_networks = new NetworkAccessProfileNetworkList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -108,7 +125,8 @@ class NetworkAccessProfileContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -125,7 +143,8 @@ class NetworkAccessProfileContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -139,7 +158,8 @@ class NetworkAccessProfileContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

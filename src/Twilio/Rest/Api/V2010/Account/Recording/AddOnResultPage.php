@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class AddOnResultPage extends Page {
+class AddOnResultPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class AddOnResultPage extends Page {
      * @param array $payload Payload response from the API
      * @return AddOnResultInstance \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultInstance
      */
-    public function buildInstance(array $payload): AddOnResultInstance {
+    public function buildInstance(array $payload): AddOnResultInstance
+    {
         return new AddOnResultInstance($this->version, $payload, $this->solution['accountSid'], $this->solution['referenceSid']);
     }
 
@@ -45,7 +48,8 @@ class AddOnResultPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.AddOnResultPage]';
     }
 }

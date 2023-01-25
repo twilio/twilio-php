@@ -18,32 +18,57 @@ namespace Twilio\Rest\Insights\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class SettingOptions {
+abstract class SettingOptions
+{
     /**
-     * @param string $subaccountSid  
+     * @param string $subaccountSid 
      * @return FetchSettingOptions Options builder
      */
-    public static function fetch(string $subaccountSid = Values::NONE): FetchSettingOptions {
-        return new FetchSettingOptions($subaccountSid);
+    public static function fetch(
+        
+        string $subaccountSid = Values::NONE
+
+    ): FetchSettingOptions
+    {
+        return new FetchSettingOptions(
+            $subaccountSid
+        );
     }
 
     /**
-     * @param bool $advancedFeatures  
-     * @param bool $voiceTrace  
-     * @param string $subaccountSid  
+     * @param bool $advancedFeatures 
+     * @param bool $voiceTrace 
+     * @param string $subaccountSid 
      * @return UpdateSettingOptions Options builder
      */
-    public static function update(bool $advancedFeatures = Values::NONE, bool $voiceTrace = Values::NONE, string $subaccountSid = Values::NONE): UpdateSettingOptions {
-        return new UpdateSettingOptions($advancedFeatures, $voiceTrace, $subaccountSid);
+    public static function update(
+        
+        bool $advancedFeatures = Values::NONE,
+        bool $voiceTrace = Values::NONE,
+        string $subaccountSid = Values::NONE
+
+    ): UpdateSettingOptions
+    {
+        return new UpdateSettingOptions(
+            $advancedFeatures,
+            $voiceTrace,
+            $subaccountSid
+        );
     }
 
 }
 
-class FetchSettingOptions extends Options {
+class FetchSettingOptions extends Options
+    {
     /**
      * @param string $subaccountSid 
      */
-    public function __construct(string $subaccountSid = Values::NONE) {
+    public function __construct(
+        
+        string $subaccountSid = Values::NONE
+
+    )
+    {
         $this->options['subaccountSid'] = $subaccountSid;
     }
 
@@ -53,7 +78,8 @@ class FetchSettingOptions extends Options {
      * @param string $subaccountSid 
      * @return $this Fluent Builder
      */
-    public function setSubaccountSid(string $subaccountSid): self {
+    public function setSubaccountSid(string $subaccountSid): self
+    {
         $this->options['subaccountSid'] = $subaccountSid;
         return $this;
     }
@@ -63,19 +89,28 @@ class FetchSettingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.FetchSettingOptions ' . $options . ']';
     }
 }
 
-class UpdateSettingOptions extends Options {
+class UpdateSettingOptions extends Options
+    {
     /**
      * @param bool $advancedFeatures 
      * @param bool $voiceTrace 
      * @param string $subaccountSid 
      */
-    public function __construct(bool $advancedFeatures = Values::NONE, bool $voiceTrace = Values::NONE, string $subaccountSid = Values::NONE) {
+    public function __construct(
+        
+        bool $advancedFeatures = Values::NONE,
+        bool $voiceTrace = Values::NONE,
+        string $subaccountSid = Values::NONE
+
+    )
+    {
         $this->options['advancedFeatures'] = $advancedFeatures;
         $this->options['voiceTrace'] = $voiceTrace;
         $this->options['subaccountSid'] = $subaccountSid;
@@ -87,7 +122,8 @@ class UpdateSettingOptions extends Options {
      * @param bool $advancedFeatures 
      * @return $this Fluent Builder
      */
-    public function setAdvancedFeatures(bool $advancedFeatures): self {
+    public function setAdvancedFeatures(bool $advancedFeatures): self
+    {
         $this->options['advancedFeatures'] = $advancedFeatures;
         return $this;
     }
@@ -98,7 +134,8 @@ class UpdateSettingOptions extends Options {
      * @param bool $voiceTrace 
      * @return $this Fluent Builder
      */
-    public function setVoiceTrace(bool $voiceTrace): self {
+    public function setVoiceTrace(bool $voiceTrace): self
+    {
         $this->options['voiceTrace'] = $voiceTrace;
         return $this;
     }
@@ -109,7 +146,8 @@ class UpdateSettingOptions extends Options {
      * @param string $subaccountSid 
      * @return $this Fluent Builder
      */
-    public function setSubaccountSid(string $subaccountSid): self {
+    public function setSubaccountSid(string $subaccountSid): self
+    {
         $this->options['subaccountSid'] = $subaccountSid;
         return $this;
     }
@@ -119,7 +157,8 @@ class UpdateSettingOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Insights.V1.UpdateSettingOptions ' . $options . ']';
     }

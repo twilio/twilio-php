@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkersStatisticsInstance extends InstanceResource {
+class WorkersStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkersStatisticsInstance
      *
@@ -39,7 +40,8 @@ class WorkersStatisticsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace with the Worker to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class WorkersStatisticsInstance extends InstanceResource {
      *
      * @return WorkersStatisticsContext Context for this WorkersStatisticsInstance
      */
-    protected function proxy(): WorkersStatisticsContext {
+    protected function proxy(): WorkersStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new WorkersStatisticsContext(
                 $this->version,
@@ -78,7 +81,9 @@ class WorkersStatisticsInstance extends InstanceResource {
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkersStatisticsInstance {
+    public function fetch(array $options = []): WorkersStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -89,7 +94,8 @@ class WorkersStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -107,7 +113,8 @@ class WorkersStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

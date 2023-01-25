@@ -20,24 +20,33 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class OpenidDiscoveryList extends ListResource {
+class OpenidDiscoveryList extends ListResource
+    {
     /**
      * Construct the OpenidDiscoveryList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
     }
 
     /**
      * Constructs a OpenidDiscoveryContext
      */
-    public function getContext(): OpenidDiscoveryContext {
-        return new OpenidDiscoveryContext($this->version);
+    public function getContext(
+        
+    ): OpenidDiscoveryContext
+    {
+        return new OpenidDiscoveryContext(
+            $this->version
+        );
     }
 
     /**
@@ -45,7 +54,8 @@ class OpenidDiscoveryList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Oauth.V1.OpenidDiscoveryList]';
     }
 }

@@ -31,7 +31,8 @@ use Twilio\Version;
  * @property string $subscriptionSid
  * @property string $url
  */
-class SubscribedEventInstance extends InstanceResource {
+class SubscribedEventInstance extends InstanceResource
+{
     /**
      * Initialize the SubscribedEventInstance
      *
@@ -40,7 +41,8 @@ class SubscribedEventInstance extends InstanceResource {
      * @param string $subscriptionSid The unique SID identifier of the Subscription.
      * @param string $type Type of event being subscribed to.
      */
-    public function __construct(Version $version, array $payload, string $subscriptionSid, string $type = null) {
+    public function __construct(Version $version, array $payload, string $subscriptionSid, string $type = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,7 +63,8 @@ class SubscribedEventInstance extends InstanceResource {
      *
      * @return SubscribedEventContext Context for this SubscribedEventInstance
      */
-    protected function proxy(): SubscribedEventContext {
+    protected function proxy(): SubscribedEventContext
+    {
         if (!$this->context) {
             $this->context = new SubscribedEventContext(
                 $this->version,
@@ -79,7 +82,9 @@ class SubscribedEventInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -89,7 +94,9 @@ class SubscribedEventInstance extends InstanceResource {
      * @return SubscribedEventInstance Fetched SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SubscribedEventInstance {
+    public function fetch(): SubscribedEventInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -100,7 +107,9 @@ class SubscribedEventInstance extends InstanceResource {
      * @return SubscribedEventInstance Updated SubscribedEventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SubscribedEventInstance {
+    public function update(array $options = []): SubscribedEventInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -111,7 +120,8 @@ class SubscribedEventInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -129,7 +139,8 @@ class SubscribedEventInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

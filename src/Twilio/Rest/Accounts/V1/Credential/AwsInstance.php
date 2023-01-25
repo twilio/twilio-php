@@ -33,7 +33,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class AwsInstance extends InstanceResource {
+class AwsInstance extends InstanceResource
+{
     /**
      * Initialize the AwsInstance
      *
@@ -41,7 +42,8 @@ class AwsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the AWS resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,7 +65,8 @@ class AwsInstance extends InstanceResource {
      *
      * @return AwsContext Context for this AwsInstance
      */
-    protected function proxy(): AwsContext {
+    protected function proxy(): AwsContext
+    {
         if (!$this->context) {
             $this->context = new AwsContext(
                 $this->version,
@@ -80,7 +83,9 @@ class AwsInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -90,7 +95,9 @@ class AwsInstance extends InstanceResource {
      * @return AwsInstance Fetched AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AwsInstance {
+    public function fetch(): AwsInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -101,7 +108,9 @@ class AwsInstance extends InstanceResource {
      * @return AwsInstance Updated AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AwsInstance {
+    public function update(array $options = []): AwsInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -112,7 +121,8 @@ class AwsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -130,7 +140,8 @@ class AwsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

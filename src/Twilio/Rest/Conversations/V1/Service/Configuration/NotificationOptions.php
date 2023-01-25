@@ -18,32 +18,65 @@ namespace Twilio\Rest\Conversations\V1\Service\Configuration;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class NotificationOptions {
+abstract class NotificationOptions
+{
 
     /**
-     * @param bool $logEnabled Weather the notification logging is enabled. 
-     * @param bool $newMessageEnabled Whether to send a notification when a new message is added to a conversation. The default is `false`. 
-     * @param string $newMessageTemplate The template to use to create the notification text displayed when a new message is added to a conversation and `new_message.enabled` is `true`. 
-     * @param string $newMessageSound The name of the sound to play when a new message is added to a conversation and `new_message.enabled` is `true`. 
-     * @param bool $newMessageBadgeCountEnabled Whether the new message badge is enabled. The default is `false`. 
-     * @param bool $addedToConversationEnabled Whether to send a notification when a participant is added to a conversation. The default is `false`. 
-     * @param string $addedToConversationTemplate The template to use to create the notification text displayed when a participant is added to a conversation and `added_to_conversation.enabled` is `true`. 
-     * @param string $addedToConversationSound The name of the sound to play when a participant is added to a conversation and `added_to_conversation.enabled` is `true`. 
-     * @param bool $removedFromConversationEnabled Whether to send a notification to a user when they are removed from a conversation. The default is `false`. 
-     * @param string $removedFromConversationTemplate The template to use to create the notification text displayed to a user when they are removed from a conversation and `removed_from_conversation.enabled` is `true`. 
-     * @param string $removedFromConversationSound The name of the sound to play to a user when they are removed from a conversation and `removed_from_conversation.enabled` is `true`. 
-     * @param bool $newMessageWithMediaEnabled Whether to send a notification when a new message with media/file attachments is added to a conversation. The default is `false`. 
-     * @param string $newMessageWithMediaTemplate The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation and `new_message.attachments.enabled` is `true`. 
+     * @param bool $logEnabled Weather the notification logging is enabled.
+     * @param bool $newMessageEnabled Whether to send a notification when a new message is added to a conversation. The default is `false`.
+     * @param string $newMessageTemplate The template to use to create the notification text displayed when a new message is added to a conversation and `new_message.enabled` is `true`.
+     * @param string $newMessageSound The name of the sound to play when a new message is added to a conversation and `new_message.enabled` is `true`.
+     * @param bool $newMessageBadgeCountEnabled Whether the new message badge is enabled. The default is `false`.
+     * @param bool $addedToConversationEnabled Whether to send a notification when a participant is added to a conversation. The default is `false`.
+     * @param string $addedToConversationTemplate The template to use to create the notification text displayed when a participant is added to a conversation and `added_to_conversation.enabled` is `true`.
+     * @param string $addedToConversationSound The name of the sound to play when a participant is added to a conversation and `added_to_conversation.enabled` is `true`.
+     * @param bool $removedFromConversationEnabled Whether to send a notification to a user when they are removed from a conversation. The default is `false`.
+     * @param string $removedFromConversationTemplate The template to use to create the notification text displayed to a user when they are removed from a conversation and `removed_from_conversation.enabled` is `true`.
+     * @param string $removedFromConversationSound The name of the sound to play to a user when they are removed from a conversation and `removed_from_conversation.enabled` is `true`.
+     * @param bool $newMessageWithMediaEnabled Whether to send a notification when a new message with media/file attachments is added to a conversation. The default is `false`.
+     * @param string $newMessageWithMediaTemplate The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation and `new_message.attachments.enabled` is `true`.
      * @return UpdateNotificationOptions Options builder
      */
-    public static function update(bool $logEnabled = Values::NONE, bool $newMessageEnabled = Values::NONE, string $newMessageTemplate = Values::NONE, string $newMessageSound = Values::NONE, bool $newMessageBadgeCountEnabled = Values::NONE, bool $addedToConversationEnabled = Values::NONE, string $addedToConversationTemplate = Values::NONE, string $addedToConversationSound = Values::NONE, bool $removedFromConversationEnabled = Values::NONE, string $removedFromConversationTemplate = Values::NONE, string $removedFromConversationSound = Values::NONE, bool $newMessageWithMediaEnabled = Values::NONE, string $newMessageWithMediaTemplate = Values::NONE): UpdateNotificationOptions {
-        return new UpdateNotificationOptions($logEnabled, $newMessageEnabled, $newMessageTemplate, $newMessageSound, $newMessageBadgeCountEnabled, $addedToConversationEnabled, $addedToConversationTemplate, $addedToConversationSound, $removedFromConversationEnabled, $removedFromConversationTemplate, $removedFromConversationSound, $newMessageWithMediaEnabled, $newMessageWithMediaTemplate);
+    public static function update(
+        
+        bool $logEnabled = Values::NONE,
+        bool $newMessageEnabled = Values::NONE,
+        string $newMessageTemplate = Values::NONE,
+        string $newMessageSound = Values::NONE,
+        bool $newMessageBadgeCountEnabled = Values::NONE,
+        bool $addedToConversationEnabled = Values::NONE,
+        string $addedToConversationTemplate = Values::NONE,
+        string $addedToConversationSound = Values::NONE,
+        bool $removedFromConversationEnabled = Values::NONE,
+        string $removedFromConversationTemplate = Values::NONE,
+        string $removedFromConversationSound = Values::NONE,
+        bool $newMessageWithMediaEnabled = Values::NONE,
+        string $newMessageWithMediaTemplate = Values::NONE
+
+    ): UpdateNotificationOptions
+    {
+        return new UpdateNotificationOptions(
+            $logEnabled,
+            $newMessageEnabled,
+            $newMessageTemplate,
+            $newMessageSound,
+            $newMessageBadgeCountEnabled,
+            $addedToConversationEnabled,
+            $addedToConversationTemplate,
+            $addedToConversationSound,
+            $removedFromConversationEnabled,
+            $removedFromConversationTemplate,
+            $removedFromConversationSound,
+            $newMessageWithMediaEnabled,
+            $newMessageWithMediaTemplate
+        );
     }
 
 }
 
 
-class UpdateNotificationOptions extends Options {
+class UpdateNotificationOptions extends Options
+    {
     /**
      * @param bool $logEnabled Weather the notification logging is enabled.
      * @param bool $newMessageEnabled Whether to send a notification when a new message is added to a conversation. The default is `false`.
@@ -59,7 +92,24 @@ class UpdateNotificationOptions extends Options {
      * @param bool $newMessageWithMediaEnabled Whether to send a notification when a new message with media/file attachments is added to a conversation. The default is `false`.
      * @param string $newMessageWithMediaTemplate The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation and `new_message.attachments.enabled` is `true`.
      */
-    public function __construct(bool $logEnabled = Values::NONE, bool $newMessageEnabled = Values::NONE, string $newMessageTemplate = Values::NONE, string $newMessageSound = Values::NONE, bool $newMessageBadgeCountEnabled = Values::NONE, bool $addedToConversationEnabled = Values::NONE, string $addedToConversationTemplate = Values::NONE, string $addedToConversationSound = Values::NONE, bool $removedFromConversationEnabled = Values::NONE, string $removedFromConversationTemplate = Values::NONE, string $removedFromConversationSound = Values::NONE, bool $newMessageWithMediaEnabled = Values::NONE, string $newMessageWithMediaTemplate = Values::NONE) {
+    public function __construct(
+        
+        bool $logEnabled = Values::NONE,
+        bool $newMessageEnabled = Values::NONE,
+        string $newMessageTemplate = Values::NONE,
+        string $newMessageSound = Values::NONE,
+        bool $newMessageBadgeCountEnabled = Values::NONE,
+        bool $addedToConversationEnabled = Values::NONE,
+        string $addedToConversationTemplate = Values::NONE,
+        string $addedToConversationSound = Values::NONE,
+        bool $removedFromConversationEnabled = Values::NONE,
+        string $removedFromConversationTemplate = Values::NONE,
+        string $removedFromConversationSound = Values::NONE,
+        bool $newMessageWithMediaEnabled = Values::NONE,
+        string $newMessageWithMediaTemplate = Values::NONE
+
+    )
+    {
         $this->options['logEnabled'] = $logEnabled;
         $this->options['newMessageEnabled'] = $newMessageEnabled;
         $this->options['newMessageTemplate'] = $newMessageTemplate;
@@ -81,7 +131,8 @@ class UpdateNotificationOptions extends Options {
      * @param bool $logEnabled Weather the notification logging is enabled.
      * @return $this Fluent Builder
      */
-    public function setLogEnabled(bool $logEnabled): self {
+    public function setLogEnabled(bool $logEnabled): self
+    {
         $this->options['logEnabled'] = $logEnabled;
         return $this;
     }
@@ -92,7 +143,8 @@ class UpdateNotificationOptions extends Options {
      * @param bool $newMessageEnabled Whether to send a notification when a new message is added to a conversation. The default is `false`.
      * @return $this Fluent Builder
      */
-    public function setNewMessageEnabled(bool $newMessageEnabled): self {
+    public function setNewMessageEnabled(bool $newMessageEnabled): self
+    {
         $this->options['newMessageEnabled'] = $newMessageEnabled;
         return $this;
     }
@@ -103,7 +155,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $newMessageTemplate The template to use to create the notification text displayed when a new message is added to a conversation and `new_message.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setNewMessageTemplate(string $newMessageTemplate): self {
+    public function setNewMessageTemplate(string $newMessageTemplate): self
+    {
         $this->options['newMessageTemplate'] = $newMessageTemplate;
         return $this;
     }
@@ -114,7 +167,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $newMessageSound The name of the sound to play when a new message is added to a conversation and `new_message.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setNewMessageSound(string $newMessageSound): self {
+    public function setNewMessageSound(string $newMessageSound): self
+    {
         $this->options['newMessageSound'] = $newMessageSound;
         return $this;
     }
@@ -125,7 +179,8 @@ class UpdateNotificationOptions extends Options {
      * @param bool $newMessageBadgeCountEnabled Whether the new message badge is enabled. The default is `false`.
      * @return $this Fluent Builder
      */
-    public function setNewMessageBadgeCountEnabled(bool $newMessageBadgeCountEnabled): self {
+    public function setNewMessageBadgeCountEnabled(bool $newMessageBadgeCountEnabled): self
+    {
         $this->options['newMessageBadgeCountEnabled'] = $newMessageBadgeCountEnabled;
         return $this;
     }
@@ -136,7 +191,8 @@ class UpdateNotificationOptions extends Options {
      * @param bool $addedToConversationEnabled Whether to send a notification when a participant is added to a conversation. The default is `false`.
      * @return $this Fluent Builder
      */
-    public function setAddedToConversationEnabled(bool $addedToConversationEnabled): self {
+    public function setAddedToConversationEnabled(bool $addedToConversationEnabled): self
+    {
         $this->options['addedToConversationEnabled'] = $addedToConversationEnabled;
         return $this;
     }
@@ -147,7 +203,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $addedToConversationTemplate The template to use to create the notification text displayed when a participant is added to a conversation and `added_to_conversation.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setAddedToConversationTemplate(string $addedToConversationTemplate): self {
+    public function setAddedToConversationTemplate(string $addedToConversationTemplate): self
+    {
         $this->options['addedToConversationTemplate'] = $addedToConversationTemplate;
         return $this;
     }
@@ -158,7 +215,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $addedToConversationSound The name of the sound to play when a participant is added to a conversation and `added_to_conversation.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setAddedToConversationSound(string $addedToConversationSound): self {
+    public function setAddedToConversationSound(string $addedToConversationSound): self
+    {
         $this->options['addedToConversationSound'] = $addedToConversationSound;
         return $this;
     }
@@ -169,7 +227,8 @@ class UpdateNotificationOptions extends Options {
      * @param bool $removedFromConversationEnabled Whether to send a notification to a user when they are removed from a conversation. The default is `false`.
      * @return $this Fluent Builder
      */
-    public function setRemovedFromConversationEnabled(bool $removedFromConversationEnabled): self {
+    public function setRemovedFromConversationEnabled(bool $removedFromConversationEnabled): self
+    {
         $this->options['removedFromConversationEnabled'] = $removedFromConversationEnabled;
         return $this;
     }
@@ -180,7 +239,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $removedFromConversationTemplate The template to use to create the notification text displayed to a user when they are removed from a conversation and `removed_from_conversation.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setRemovedFromConversationTemplate(string $removedFromConversationTemplate): self {
+    public function setRemovedFromConversationTemplate(string $removedFromConversationTemplate): self
+    {
         $this->options['removedFromConversationTemplate'] = $removedFromConversationTemplate;
         return $this;
     }
@@ -191,7 +251,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $removedFromConversationSound The name of the sound to play to a user when they are removed from a conversation and `removed_from_conversation.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setRemovedFromConversationSound(string $removedFromConversationSound): self {
+    public function setRemovedFromConversationSound(string $removedFromConversationSound): self
+    {
         $this->options['removedFromConversationSound'] = $removedFromConversationSound;
         return $this;
     }
@@ -202,7 +263,8 @@ class UpdateNotificationOptions extends Options {
      * @param bool $newMessageWithMediaEnabled Whether to send a notification when a new message with media/file attachments is added to a conversation. The default is `false`.
      * @return $this Fluent Builder
      */
-    public function setNewMessageWithMediaEnabled(bool $newMessageWithMediaEnabled): self {
+    public function setNewMessageWithMediaEnabled(bool $newMessageWithMediaEnabled): self
+    {
         $this->options['newMessageWithMediaEnabled'] = $newMessageWithMediaEnabled;
         return $this;
     }
@@ -213,7 +275,8 @@ class UpdateNotificationOptions extends Options {
      * @param string $newMessageWithMediaTemplate The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation and `new_message.attachments.enabled` is `true`.
      * @return $this Fluent Builder
      */
-    public function setNewMessageWithMediaTemplate(string $newMessageWithMediaTemplate): self {
+    public function setNewMessageWithMediaTemplate(string $newMessageWithMediaTemplate): self
+    {
         $this->options['newMessageWithMediaTemplate'] = $newMessageWithMediaTemplate;
         return $this;
     }
@@ -223,7 +286,8 @@ class UpdateNotificationOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V1.UpdateNotificationOptions ' . $options . ']';
     }

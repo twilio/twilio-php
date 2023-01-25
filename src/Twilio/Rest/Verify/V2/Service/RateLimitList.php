@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class RateLimitList extends ListResource {
+class RateLimitList extends ListResource
+    {
     /**
      * Construct the RateLimitList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.
      */
-    public function __construct(Version $version, string $serviceSid ) {
+    public function __construct(
+        Version $version,
+        string $serviceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid, ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/RateLimits';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/RateLimits';
     }
 
     /**
@@ -48,22 +58,27 @@ class RateLimitList extends ListResource {
      * @return RateLimitInstance Created RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): RateLimitInstance {
+    public function create(string $uniqueName, array $options = []): RateLimitInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $uniqueName,
-            'Description' => $options['description'],
+            'UniqueName' =>
+                $uniqueName,
+            'Description' =>
+                $options['description'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new RateLimitInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
+            $payload,
+            $this->solution['serviceSid'],
         );
     }
+
 
     /**
      * Reads RateLimitInstance records from the API as a list.
@@ -80,7 +95,8 @@ class RateLimitList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RateLimitInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array {
+    public function read(int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -102,7 +118,8 @@ class RateLimitList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream {
+    public function stream(int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -119,7 +136,12 @@ class RateLimitList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return RateLimitPage Page of RateLimitInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): RateLimitPage {
+    public function page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): RateLimitPage
+    {
 
         $params = Values::of([
             'PageToken' => $pageToken,
@@ -139,7 +161,8 @@ class RateLimitList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return RateLimitPage Page of RateLimitInstance
      */
-    public function getPage(string $targetUrl): RateLimitPage {
+    public function getPage(string $targetUrl): RateLimitPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,8 +177,16 @@ class RateLimitList extends ListResource {
      *
      * @param string $sid The Twilio-provided string that uniquely identifies the Rate Limit resource to fetch.
      */
-    public function getContext(string $sid): RateLimitContext {
-        return new RateLimitContext($this->version, $this->solution['serviceSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): RateLimitContext
+    {
+        return new RateLimitContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $sid
+        );
     }
 
     /**
@@ -163,7 +194,8 @@ class RateLimitList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Verify.V2.RateLimitList]';
     }
 }

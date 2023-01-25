@@ -24,20 +24,30 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class TaskQueuesStatisticsList extends ListResource {
+class TaskQueuesStatisticsList extends ListResource
+    {
     /**
      * Construct the TaskQueuesStatisticsList
      *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The SID of the Workspace with the TaskQueues to read.
      */
-    public function __construct(Version $version, string $workspaceSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/TaskQueues/Statistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/TaskQueues/Statistics';
     }
 
     /**
@@ -56,7 +66,8 @@ class TaskQueuesStatisticsList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskQueuesStatisticsInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -79,7 +90,8 @@ class TaskQueuesStatisticsList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -96,16 +108,28 @@ class TaskQueuesStatisticsList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return TaskQueuesStatisticsPage Page of TaskQueuesStatisticsInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): TaskQueuesStatisticsPage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): TaskQueuesStatisticsPage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
-            'FriendlyName' => $options['friendlyName'],
-            'Minutes' => $options['minutes'],
-            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
-            'TaskChannel' => $options['taskChannel'],
-            'SplitByWaitTime' => $options['splitByWaitTime'],
+            'EndDate' =>
+                Serialize::iso8601DateTime($options['endDate']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Minutes' =>
+                $options['minutes'],
+            'StartDate' =>
+                Serialize::iso8601DateTime($options['startDate']),
+            'TaskChannel' =>
+                $options['taskChannel'],
+            'SplitByWaitTime' =>
+                $options['splitByWaitTime'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -123,7 +147,8 @@ class TaskQueuesStatisticsList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return TaskQueuesStatisticsPage Page of TaskQueuesStatisticsInstance
      */
-    public function getPage(string $targetUrl): TaskQueuesStatisticsPage {
+    public function getPage(string $targetUrl): TaskQueuesStatisticsPage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -138,7 +163,8 @@ class TaskQueuesStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.TaskQueuesStatisticsList]';
     }
 }

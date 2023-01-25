@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class FunctionPage extends Page {
+class FunctionPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class FunctionPage extends Page {
      * @param array $payload Payload response from the API
      * @return FunctionInstance \Twilio\Rest\Serverless\V1\Service\FunctionInstance
      */
-    public function buildInstance(array $payload): FunctionInstance {
+    public function buildInstance(array $payload): FunctionInstance
+    {
         return new FunctionInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
@@ -45,7 +48,8 @@ class FunctionPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Serverless.V1.FunctionPage]';
     }
 }

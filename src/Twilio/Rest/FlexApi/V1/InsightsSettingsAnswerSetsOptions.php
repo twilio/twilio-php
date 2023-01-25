@@ -18,22 +18,36 @@ namespace Twilio\Rest\FlexApi\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class GoodDataOptions {
+abstract class InsightsSettingsAnswerSetsOptions
+{
     /**
-     * @param string $token The Token HTTP request header 
-     * @return CreateGoodDataOptions Options builder
+     * @param string $token The Token HTTP request header
+     * @return FetchInsightsSettingsAnswerSetsOptions Options builder
      */
-    public static function create(string $token = Values::NONE): CreateGoodDataOptions {
-        return new CreateGoodDataOptions($token);
+    public static function fetch(
+        
+        string $token = Values::NONE
+
+    ): FetchInsightsSettingsAnswerSetsOptions
+    {
+        return new FetchInsightsSettingsAnswerSetsOptions(
+            $token
+        );
     }
 
 }
 
-class CreateGoodDataOptions extends Options {
+class FetchInsightsSettingsAnswerSetsOptions extends Options
+    {
     /**
      * @param string $token The Token HTTP request header
      */
-    public function __construct(string $token = Values::NONE) {
+    public function __construct(
+        
+        string $token = Values::NONE
+
+    )
+    {
         $this->options['token'] = $token;
     }
 
@@ -43,7 +57,8 @@ class CreateGoodDataOptions extends Options {
      * @param string $token The Token HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self {
+    public function setToken(string $token): self
+    {
         $this->options['token'] = $token;
         return $this;
     }
@@ -53,9 +68,10 @@ class CreateGoodDataOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.FlexApi.V1.CreateGoodDataOptions ' . $options . ']';
+        return '[Twilio.FlexApi.V1.FetchInsightsSettingsAnswerSetsOptions ' . $options . ']';
     }
 }
 

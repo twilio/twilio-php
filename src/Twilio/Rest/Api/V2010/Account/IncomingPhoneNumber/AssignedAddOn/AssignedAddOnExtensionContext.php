@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class AssignedAddOnExtensionContext extends InstanceContext {
+class AssignedAddOnExtensionContext extends InstanceContext
+    {
     /**
      * Initialize the AssignedAddOnExtensionContext
      *
@@ -32,13 +33,33 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      * @param string $assignedAddOnSid The SID that uniquely identifies the assigned Add-on installation.
      * @param string $sid The Twilio-provided string that uniquely identifies the resource to fetch.
      */
-    public function __construct(Version $version, $accountSid , $resourceSid , $assignedAddOnSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $resourceSid,
+        $assignedAddOnSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'resourceSid' => $resourceSid,  'assignedAddOnSid' => $assignedAddOnSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'resourceSid' =>
+            $resourceSid,
+        'assignedAddOnSid' =>
+            $assignedAddOnSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . \rawurlencode($resourceSid) . '/AssignedAddOns/' . \rawurlencode($assignedAddOnSid) . '/Extensions/' . \rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/IncomingPhoneNumbers/' . \rawurlencode($resourceSid)
+        .'/AssignedAddOns/' . \rawurlencode($assignedAddOnSid)
+        .'/Extensions/' . \rawurlencode($sid)
+        .'.json';
     }
 
     /**
@@ -47,25 +68,29 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssignedAddOnExtensionInstance {
+    public function fetch(): AssignedAddOnExtensionInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssignedAddOnExtensionInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['resourceSid']
-            , $this->solution['assignedAddOnSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['resourceSid'],
+            $this->solution['assignedAddOnSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

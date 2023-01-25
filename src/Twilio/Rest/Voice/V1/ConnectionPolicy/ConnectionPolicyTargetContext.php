@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class ConnectionPolicyTargetContext extends InstanceContext {
+class ConnectionPolicyTargetContext extends InstanceContext
+    {
     /**
      * Initialize the ConnectionPolicyTargetContext
      *
@@ -33,13 +34,25 @@ class ConnectionPolicyTargetContext extends InstanceContext {
      * @param string $connectionPolicySid The SID of the Connection Policy that owns the Target.
      * @param string $sid The unique string that we created to identify the Target resource to delete.
      */
-    public function __construct(Version $version, $connectionPolicySid , $sid ) {
+    public function __construct(
+        Version $version,
+        $connectionPolicySid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['connectionPolicySid' => $connectionPolicySid,  'sid' => $sid,  ];
+        $this->solution = [
+        'connectionPolicySid' =>
+            $connectionPolicySid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/ConnectionPolicies/' . \rawurlencode($connectionPolicySid) . '/Targets/' . \rawurlencode($sid) . '';
+        $this->uri = '/ConnectionPolicies/' . \rawurlencode($connectionPolicySid)
+        .'/Targets/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -48,9 +61,12 @@ class ConnectionPolicyTargetContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ConnectionPolicyTargetInstance
@@ -58,16 +74,19 @@ class ConnectionPolicyTargetContext extends InstanceContext {
      * @return ConnectionPolicyTargetInstance Fetched ConnectionPolicyTargetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConnectionPolicyTargetInstance {
+    public function fetch(): ConnectionPolicyTargetInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ConnectionPolicyTargetInstance(
             $this->version,
-            $payload
-            , $this->solution['connectionPolicySid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['connectionPolicySid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ConnectionPolicyTargetInstance
@@ -76,33 +95,42 @@ class ConnectionPolicyTargetContext extends InstanceContext {
      * @return ConnectionPolicyTargetInstance Updated ConnectionPolicyTargetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ConnectionPolicyTargetInstance {
+    public function update(array $options = []): ConnectionPolicyTargetInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'Target' => $options['target'],
-            'Priority' => $options['priority'],
-            'Weight' => $options['weight'],
-            'Enabled' => Serialize::booleanToString($options['enabled']),
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'Target' =>
+                $options['target'],
+            'Priority' =>
+                $options['priority'],
+            'Weight' =>
+                $options['weight'],
+            'Enabled' =>
+                Serialize::booleanToString($options['enabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ConnectionPolicyTargetInstance(
             $this->version,
-            $payload
-            , $this->solution['connectionPolicySid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['connectionPolicySid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

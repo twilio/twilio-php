@@ -22,17 +22,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class ExternalCampaignList extends ListResource {
+class ExternalCampaignList extends ListResource
+    {
     /**
      * Construct the ExternalCampaignList
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version)
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Services/PreregisteredUsa2p';
     }
@@ -45,26 +49,32 @@ class ExternalCampaignList extends ListResource {
      * @return ExternalCampaignInstance Created ExternalCampaignInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $campaignId, string $messagingServiceSid): ExternalCampaignInstance {
+    public function create(string $campaignId, string $messagingServiceSid): ExternalCampaignInstance
+    {
+
         $data = Values::of([
-            'CampaignId' => $campaignId,
-            'MessagingServiceSid' => $messagingServiceSid,
+            'CampaignId' =>
+                $campaignId,
+            'MessagingServiceSid' =>
+                $messagingServiceSid,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new ExternalCampaignInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Messaging.V1.ExternalCampaignList]';
     }
 }

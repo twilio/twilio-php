@@ -18,18 +18,28 @@ namespace Twilio\Rest\Serverless\V1\Service\Environment;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class VariableOptions {
+abstract class VariableOptions
+{
 
 
 
 
     /**
-     * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters. 
-     * @param string $value A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size. 
+     * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
+     * @param string $value A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.
      * @return UpdateVariableOptions Options builder
      */
-    public static function update(string $key = Values::NONE, string $value = Values::NONE): UpdateVariableOptions {
-        return new UpdateVariableOptions($key, $value);
+    public static function update(
+        
+        string $key = Values::NONE,
+        string $value = Values::NONE
+
+    ): UpdateVariableOptions
+    {
+        return new UpdateVariableOptions(
+            $key,
+            $value
+        );
     }
 
 }
@@ -38,12 +48,19 @@ abstract class VariableOptions {
 
 
 
-class UpdateVariableOptions extends Options {
+class UpdateVariableOptions extends Options
+    {
     /**
      * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
      * @param string $value A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.
      */
-    public function __construct(string $key = Values::NONE, string $value = Values::NONE) {
+    public function __construct(
+        
+        string $key = Values::NONE,
+        string $value = Values::NONE
+
+    )
+    {
         $this->options['key'] = $key;
         $this->options['value'] = $value;
     }
@@ -54,7 +71,8 @@ class UpdateVariableOptions extends Options {
      * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
      * @return $this Fluent Builder
      */
-    public function setKey(string $key): self {
+    public function setKey(string $key): self
+    {
         $this->options['key'] = $key;
         return $this;
     }
@@ -65,7 +83,8 @@ class UpdateVariableOptions extends Options {
      * @param string $value A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.
      * @return $this Fluent Builder
      */
-    public function setValue(string $value): self {
+    public function setValue(string $value): self
+    {
         $this->options['value'] = $value;
         return $this;
     }
@@ -75,7 +94,8 @@ class UpdateVariableOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Serverless.V1.UpdateVariableOptions ' . $options . ']';
     }

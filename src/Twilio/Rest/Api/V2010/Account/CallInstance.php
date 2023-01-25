@@ -62,7 +62,8 @@ use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
  * @property string $uri
  * @property array $subresourceUris
  */
-class CallInstance extends InstanceResource {
+class CallInstance extends InstanceResource
+{
     protected $_recordings;
     protected $_userDefinedMessageSubscriptions;
     protected $_events;
@@ -81,7 +82,8 @@ class CallInstance extends InstanceResource {
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
      * @param string $sid The Twilio-provided Call SID that uniquely identifies the Call resource to delete
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -123,7 +125,8 @@ class CallInstance extends InstanceResource {
      *
      * @return CallContext Context for this CallInstance
      */
-    protected function proxy(): CallContext {
+    protected function proxy(): CallContext
+    {
         if (!$this->context) {
             $this->context = new CallContext(
                 $this->version,
@@ -141,7 +144,9 @@ class CallInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -151,7 +156,9 @@ class CallInstance extends InstanceResource {
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CallInstance {
+    public function fetch(): CallInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -162,70 +169,81 @@ class CallInstance extends InstanceResource {
      * @return CallInstance Updated CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): CallInstance {
+    public function update(array $options = []): CallInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RecordingList {
+    protected function getRecordings(): RecordingList
+    {
         return $this->proxy()->recordings;
     }
 
     /**
      * Access the userDefinedMessageSubscriptions
      */
-    protected function getUserDefinedMessageSubscriptions(): UserDefinedMessageSubscriptionList {
+    protected function getUserDefinedMessageSubscriptions(): UserDefinedMessageSubscriptionList
+    {
         return $this->proxy()->userDefinedMessageSubscriptions;
     }
 
     /**
      * Access the events
      */
-    protected function getEvents(): EventList {
+    protected function getEvents(): EventList
+    {
         return $this->proxy()->events;
     }
 
     /**
      * Access the notifications
      */
-    protected function getNotifications(): NotificationList {
+    protected function getNotifications(): NotificationList
+    {
         return $this->proxy()->notifications;
     }
 
     /**
      * Access the userDefinedMessages
      */
-    protected function getUserDefinedMessages(): UserDefinedMessageList {
+    protected function getUserDefinedMessages(): UserDefinedMessageList
+    {
         return $this->proxy()->userDefinedMessages;
     }
 
     /**
      * Access the siprec
      */
-    protected function getSiprec(): SiprecList {
+    protected function getSiprec(): SiprecList
+    {
         return $this->proxy()->siprec;
     }
 
     /**
      * Access the streams
      */
-    protected function getStreams(): StreamList {
+    protected function getStreams(): StreamList
+    {
         return $this->proxy()->streams;
     }
 
     /**
      * Access the payments
      */
-    protected function getPayments(): PaymentList {
+    protected function getPayments(): PaymentList
+    {
         return $this->proxy()->payments;
     }
 
     /**
      * Access the feedback
      */
-    protected function getFeedback(): FeedbackList {
+    protected function getFeedback(): FeedbackList
+    {
         return $this->proxy()->feedback;
     }
 
@@ -236,7 +254,8 @@ class CallInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -254,7 +273,8 @@ class CallInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

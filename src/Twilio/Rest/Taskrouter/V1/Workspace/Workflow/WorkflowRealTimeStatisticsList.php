@@ -20,7 +20,8 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class WorkflowRealTimeStatisticsList extends ListResource {
+class WorkflowRealTimeStatisticsList extends ListResource
+    {
     /**
      * Construct the WorkflowRealTimeStatisticsList
      *
@@ -28,18 +29,38 @@ class WorkflowRealTimeStatisticsList extends ListResource {
      * @param string $workspaceSid The SID of the Workspace with the Workflow to fetch.
      * @param string $workflowSid Returns the list of Tasks that are being controlled by the Workflow with the specified SID value.
      */
-    public function __construct(Version $version, string $workspaceSid , string $workflowSid ) {
+    public function __construct(
+        Version $version,
+        string $workspaceSid
+        ,
+        string $workflowSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        
+        'workflowSid' =>
+            $workflowSid,
+        
+        ];
     }
 
     /**
      * Constructs a WorkflowRealTimeStatisticsContext
      */
-    public function getContext(): WorkflowRealTimeStatisticsContext {
-        return new WorkflowRealTimeStatisticsContext($this->version, $this->solution['workspaceSid'], $this->solution['workflowSid']);
+    public function getContext(
+        
+    ): WorkflowRealTimeStatisticsContext
+    {
+        return new WorkflowRealTimeStatisticsContext(
+            $this->version,
+            $this->solution['workspaceSid'],
+            $this->solution['workflowSid']
+        );
     }
 
     /**
@@ -47,7 +68,8 @@ class WorkflowRealTimeStatisticsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkflowRealTimeStatisticsList]';
     }
 }

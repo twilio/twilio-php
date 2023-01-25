@@ -28,7 +28,8 @@ use Twilio\Rest\Insights\V1\Conference\ConferenceParticipantList;
  * @property ConferenceParticipantList $conferenceParticipants
  * @method \Twilio\Rest\Insights\V1\Conference\ConferenceParticipantContext conferenceParticipants(string $participantSid)
  */
-class ConferenceContext extends InstanceContext {
+class ConferenceContext extends InstanceContext
+    {
     protected $_conferenceParticipants;
 
     /**
@@ -37,13 +38,21 @@ class ConferenceContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $conferenceSid The unique SID identifier of the Conference.
      */
-    public function __construct(Version $version, $conferenceSid ) {
+    public function __construct(
+        Version $version,
+        $conferenceSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['conferenceSid' => $conferenceSid,  ];
+        $this->solution = [
+        'conferenceSid' =>
+            $conferenceSid,
+        ];
 
-        $this->uri = '/Conferences/' . \rawurlencode($conferenceSid) . '';
+        $this->uri = '/Conferences/' . \rawurlencode($conferenceSid)
+        .'';
     }
 
     /**
@@ -52,24 +61,28 @@ class ConferenceContext extends InstanceContext {
      * @return ConferenceInstance Fetched ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ConferenceInstance {
+    public function fetch(): ConferenceInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ConferenceInstance(
             $this->version,
-            $payload
-            , $this->solution['conferenceSid']
+            $payload,
+            $this->solution['conferenceSid'],
         );
     }
+
 
     /**
      * Access the conferenceParticipants
      */
-    protected function getConferenceParticipants(): ConferenceParticipantList {
+    protected function getConferenceParticipants(): ConferenceParticipantList
+    {
         if (!$this->_conferenceParticipants) {
             $this->_conferenceParticipants = new ConferenceParticipantList(
-                $this->version
-                , $this->solution['conferenceSid']
+                $this->version,
+                $this->solution['conferenceSid'],
             );
         }
 
@@ -83,7 +96,8 @@ class ConferenceContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -100,7 +114,8 @@ class ConferenceContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -114,7 +129,8 @@ class ConferenceContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

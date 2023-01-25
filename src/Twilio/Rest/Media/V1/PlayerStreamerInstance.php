@@ -39,7 +39,8 @@ use Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantList;
  * @property string $endedReason
  * @property int $maxDuration
  */
-class PlayerStreamerInstance extends InstanceResource {
+class PlayerStreamerInstance extends InstanceResource
+{
     protected $_playbackGrant;
 
     /**
@@ -49,7 +50,8 @@ class PlayerStreamerInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the PlayerStreamer resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -77,7 +79,8 @@ class PlayerStreamerInstance extends InstanceResource {
      *
      * @return PlayerStreamerContext Context for this PlayerStreamerInstance
      */
-    protected function proxy(): PlayerStreamerContext {
+    protected function proxy(): PlayerStreamerContext
+    {
         if (!$this->context) {
             $this->context = new PlayerStreamerContext(
                 $this->version,
@@ -94,25 +97,30 @@ class PlayerStreamerInstance extends InstanceResource {
      * @return PlayerStreamerInstance Fetched PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PlayerStreamerInstance {
+    public function fetch(): PlayerStreamerInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the PlayerStreamerInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return PlayerStreamerInstance Updated PlayerStreamerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): PlayerStreamerInstance {
+    public function update(string $status): PlayerStreamerInstance
+    {
+
         return $this->proxy()->update($status);
     }
 
     /**
      * Access the playbackGrant
      */
-    protected function getPlaybackGrant(): PlaybackGrantList {
+    protected function getPlaybackGrant(): PlaybackGrantList
+    {
         return $this->proxy()->playbackGrant;
     }
 
@@ -123,7 +131,8 @@ class PlayerStreamerInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -141,7 +150,8 @@ class PlayerStreamerInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

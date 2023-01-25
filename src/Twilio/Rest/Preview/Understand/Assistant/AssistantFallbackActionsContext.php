@@ -25,20 +25,29 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class AssistantFallbackActionsContext extends InstanceContext {
+class AssistantFallbackActionsContext extends InstanceContext
+    {
     /**
      * Initialize the AssistantFallbackActionsContext
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid 
      */
-    public function __construct(Version $version, $assistantSid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FallbackActions';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/FallbackActions';
     }
 
     /**
@@ -47,15 +56,18 @@ class AssistantFallbackActionsContext extends InstanceContext {
      * @return AssistantFallbackActionsInstance Fetched AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AssistantFallbackActionsInstance {
+    public function fetch(): AssistantFallbackActionsInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new AssistantFallbackActionsInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Update the AssistantFallbackActionsInstance
@@ -64,28 +76,33 @@ class AssistantFallbackActionsContext extends InstanceContext {
      * @return AssistantFallbackActionsInstance Updated AssistantFallbackActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AssistantFallbackActionsInstance {
+    public function update(array $options = []): AssistantFallbackActionsInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FallbackActions' => Serialize::jsonObject($options['fallbackActions']),
+            'FallbackActions' =>
+                Serialize::jsonObject($options['fallbackActions']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AssistantFallbackActionsInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
+            $payload,
+            $this->solution['assistantSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

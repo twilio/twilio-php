@@ -18,61 +18,127 @@ namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class BundleOptions {
-    /**
-     * @param string $statusCallback The URL we call to inform your application of status changes. 
-     * @param string $regulationSid The unique string of a regulation that is associated to the Bundle resource. 
-     * @param string $isoCountry The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. 
-     * @param string $endUserType  
-     * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`. 
-     * @return CreateBundleOptions Options builder
-     */
-    public static function create(string $statusCallback = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $endUserType = Values::NONE, string $numberType = Values::NONE): CreateBundleOptions {
-        return new CreateBundleOptions($statusCallback, $regulationSid, $isoCountry, $endUserType, $numberType);
-    }
-
-
-
-    /**
-     * @param string $status The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details. 
-     * @param string $friendlyName The string that you assigned to describe the resource. The column can contain 255 variable characters. 
-     * @param string $regulationSid The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource. 
-     * @param string $isoCountry The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. 
-     * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `tollfree`. 
-     * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle until a specified expiration date. 
-     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to `date-created`. 
-     * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`. 
-     * @param string $validUntilDateBefore Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. 
-     * @param string $validUntilDate Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. 
-     * @param string $validUntilDateAfter Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. 
-     * @return ReadBundleOptions Options builder
-     */
-    public static function read(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE, bool $hasValidUntilDate = Values::NONE, string $sortBy = Values::NONE, string $sortDirection = Values::NONE, string $validUntilDateBefore = Values::NONE, string $validUntilDate = Values::NONE, string $validUntilDateAfter = Values::NONE): ReadBundleOptions {
-        return new ReadBundleOptions($status, $friendlyName, $regulationSid, $isoCountry, $numberType, $hasValidUntilDate, $sortBy, $sortDirection, $validUntilDateBefore, $validUntilDate, $validUntilDateAfter);
-    }
-
-    /**
-     * @param string $status  
-     * @param string $statusCallback The URL we call to inform your application of status changes. 
-     * @param string $friendlyName The string that you assigned to describe the resource. 
-     * @param string $email The email address that will receive updates when the Bundle resource changes status. 
-     * @return UpdateBundleOptions Options builder
-     */
-    public static function update(string $status = Values::NONE, string $statusCallback = Values::NONE, string $friendlyName = Values::NONE, string $email = Values::NONE): UpdateBundleOptions {
-        return new UpdateBundleOptions($status, $statusCallback, $friendlyName, $email);
-    }
-
-}
-
-class CreateBundleOptions extends Options {
+abstract class BundleOptions
+{
     /**
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @param string $regulationSid The unique string of a regulation that is associated to the Bundle resource.
      * @param string $isoCountry The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
-     * @param string $endUserType 
+     * @param string $endUserType
+     * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`.
+     * @return CreateBundleOptions Options builder
+     */
+    public static function create(
+        
+        string $statusCallback = Values::NONE,
+        string $regulationSid = Values::NONE,
+        string $isoCountry = Values::NONE,
+        string $endUserType = Values::NONE,
+        string $numberType = Values::NONE
+
+    ): CreateBundleOptions
+    {
+        return new CreateBundleOptions(
+            $statusCallback,
+            $regulationSid,
+            $isoCountry,
+            $endUserType,
+            $numberType
+        );
+    }
+
+
+
+    /**
+     * @param string $status The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details.
+     * @param string $friendlyName The string that you assigned to describe the resource. The column can contain 255 variable characters.
+     * @param string $regulationSid The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource.
+     * @param string $isoCountry The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
+     * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `tollfree`.
+     * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle until a specified expiration date.
+     * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to `date-created`.
+     * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
+     * @param string $validUntilDateBefore Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
+     * @param string $validUntilDate Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
+     * @param string $validUntilDateAfter Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
+     * @return ReadBundleOptions Options builder
+     */
+    public static function read(
+        
+        string $status = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $regulationSid = Values::NONE,
+        string $isoCountry = Values::NONE,
+        string $numberType = Values::NONE,
+        bool $hasValidUntilDate = Values::NONE,
+        string $sortBy = Values::NONE,
+        string $sortDirection = Values::NONE,
+        string $validUntilDateBefore = Values::NONE,
+        string $validUntilDate = Values::NONE,
+        string $validUntilDateAfter = Values::NONE
+
+    ): ReadBundleOptions
+    {
+        return new ReadBundleOptions(
+            $status,
+            $friendlyName,
+            $regulationSid,
+            $isoCountry,
+            $numberType,
+            $hasValidUntilDate,
+            $sortBy,
+            $sortDirection,
+            $validUntilDateBefore,
+            $validUntilDate,
+            $validUntilDateAfter
+        );
+    }
+
+    /**
+     * @param string $status
+     * @param string $statusCallback The URL we call to inform your application of status changes.
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Bundle resource changes status.
+     * @return UpdateBundleOptions Options builder
+     */
+    public static function update(
+        
+        string $status = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $email = Values::NONE
+
+    ): UpdateBundleOptions
+    {
+        return new UpdateBundleOptions(
+            $status,
+            $statusCallback,
+            $friendlyName,
+            $email
+        );
+    }
+
+}
+
+class CreateBundleOptions extends Options
+    {
+    /**
+     * @param string $statusCallback The URL we call to inform your application of status changes.
+     * @param string $regulationSid The unique string of a regulation that is associated to the Bundle resource.
+     * @param string $isoCountry The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
+     * @param string $endUserType
      * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`.
      */
-    public function __construct(string $statusCallback = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $endUserType = Values::NONE, string $numberType = Values::NONE) {
+    public function __construct(
+        
+        string $statusCallback = Values::NONE,
+        string $regulationSid = Values::NONE,
+        string $isoCountry = Values::NONE,
+        string $endUserType = Values::NONE,
+        string $numberType = Values::NONE
+
+    )
+    {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['regulationSid'] = $regulationSid;
         $this->options['isoCountry'] = $isoCountry;
@@ -86,7 +152,8 @@ class CreateBundleOptions extends Options {
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -97,7 +164,8 @@ class CreateBundleOptions extends Options {
      * @param string $regulationSid The unique string of a regulation that is associated to the Bundle resource.
      * @return $this Fluent Builder
      */
-    public function setRegulationSid(string $regulationSid): self {
+    public function setRegulationSid(string $regulationSid): self
+    {
         $this->options['regulationSid'] = $regulationSid;
         return $this;
     }
@@ -108,16 +176,18 @@ class CreateBundleOptions extends Options {
      * @param string $isoCountry The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
      * @return $this Fluent Builder
      */
-    public function setIsoCountry(string $isoCountry): self {
+    public function setIsoCountry(string $isoCountry): self
+    {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
 
     /**
-     * @param string $endUserType 
+     * @param string $endUserType
      * @return $this Fluent Builder
      */
-    public function setEndUserType(string $endUserType): self {
+    public function setEndUserType(string $endUserType): self
+    {
         $this->options['endUserType'] = $endUserType;
         return $this;
     }
@@ -128,7 +198,8 @@ class CreateBundleOptions extends Options {
      * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`.
      * @return $this Fluent Builder
      */
-    public function setNumberType(string $numberType): self {
+    public function setNumberType(string $numberType): self
+    {
         $this->options['numberType'] = $numberType;
         return $this;
     }
@@ -138,7 +209,8 @@ class CreateBundleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.CreateBundleOptions ' . $options . ']';
     }
@@ -146,7 +218,8 @@ class CreateBundleOptions extends Options {
 
 
 
-class ReadBundleOptions extends Options {
+class ReadBundleOptions extends Options
+    {
     /**
      * @param string $status The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details.
      * @param string $friendlyName The string that you assigned to describe the resource. The column can contain 255 variable characters.
@@ -160,7 +233,22 @@ class ReadBundleOptions extends Options {
      * @param string $validUntilDate Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
      * @param string $validUntilDateAfter Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
      */
-    public function __construct(string $status = Values::NONE, string $friendlyName = Values::NONE, string $regulationSid = Values::NONE, string $isoCountry = Values::NONE, string $numberType = Values::NONE, bool $hasValidUntilDate = Values::NONE, string $sortBy = Values::NONE, string $sortDirection = Values::NONE, string $validUntilDateBefore = Values::NONE, string $validUntilDate = Values::NONE, string $validUntilDateAfter = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $regulationSid = Values::NONE,
+        string $isoCountry = Values::NONE,
+        string $numberType = Values::NONE,
+        bool $hasValidUntilDate = Values::NONE,
+        string $sortBy = Values::NONE,
+        string $sortDirection = Values::NONE,
+        string $validUntilDateBefore = Values::NONE,
+        string $validUntilDate = Values::NONE,
+        string $validUntilDateAfter = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['regulationSid'] = $regulationSid;
@@ -180,7 +268,8 @@ class ReadBundleOptions extends Options {
      * @param string $status The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details.
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -191,7 +280,8 @@ class ReadBundleOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource. The column can contain 255 variable characters.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -202,7 +292,8 @@ class ReadBundleOptions extends Options {
      * @param string $regulationSid The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource.
      * @return $this Fluent Builder
      */
-    public function setRegulationSid(string $regulationSid): self {
+    public function setRegulationSid(string $regulationSid): self
+    {
         $this->options['regulationSid'] = $regulationSid;
         return $this;
     }
@@ -213,7 +304,8 @@ class ReadBundleOptions extends Options {
      * @param string $isoCountry The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request.
      * @return $this Fluent Builder
      */
-    public function setIsoCountry(string $isoCountry): self {
+    public function setIsoCountry(string $isoCountry): self
+    {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
@@ -224,7 +316,8 @@ class ReadBundleOptions extends Options {
      * @param string $numberType The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `tollfree`.
      * @return $this Fluent Builder
      */
-    public function setNumberType(string $numberType): self {
+    public function setNumberType(string $numberType): self
+    {
         $this->options['numberType'] = $numberType;
         return $this;
     }
@@ -235,7 +328,8 @@ class ReadBundleOptions extends Options {
      * @param bool $hasValidUntilDate Indicates that the Bundle is a valid Bundle until a specified expiration date.
      * @return $this Fluent Builder
      */
-    public function setHasValidUntilDate(bool $hasValidUntilDate): self {
+    public function setHasValidUntilDate(bool $hasValidUntilDate): self
+    {
         $this->options['hasValidUntilDate'] = $hasValidUntilDate;
         return $this;
     }
@@ -246,7 +340,8 @@ class ReadBundleOptions extends Options {
      * @param string $sortBy Can be `valid-until` or `date-updated`. Defaults to `date-created`.
      * @return $this Fluent Builder
      */
-    public function setSortBy(string $sortBy): self {
+    public function setSortBy(string $sortBy): self
+    {
         $this->options['sortBy'] = $sortBy;
         return $this;
     }
@@ -257,7 +352,8 @@ class ReadBundleOptions extends Options {
      * @param string $sortDirection Default is `DESC`. Can be `ASC` or `DESC`.
      * @return $this Fluent Builder
      */
-    public function setSortDirection(string $sortDirection): self {
+    public function setSortDirection(string $sortDirection): self
+    {
         $this->options['sortDirection'] = $sortDirection;
         return $this;
     }
@@ -268,7 +364,8 @@ class ReadBundleOptions extends Options {
      * @param string $validUntilDateBefore Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
      * @return $this Fluent Builder
      */
-    public function setValidUntilDateBefore(string $validUntilDateBefore): self {
+    public function setValidUntilDateBefore(string $validUntilDateBefore): self
+    {
         $this->options['validUntilDateBefore'] = $validUntilDateBefore;
         return $this;
     }
@@ -279,7 +376,8 @@ class ReadBundleOptions extends Options {
      * @param string $validUntilDate Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
      * @return $this Fluent Builder
      */
-    public function setValidUntilDate(string $validUntilDate): self {
+    public function setValidUntilDate(string $validUntilDate): self
+    {
         $this->options['validUntilDate'] = $validUntilDate;
         return $this;
     }
@@ -290,7 +388,8 @@ class ReadBundleOptions extends Options {
      * @param string $validUntilDateAfter Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format.
      * @return $this Fluent Builder
      */
-    public function setValidUntilDateAfter(string $validUntilDateAfter): self {
+    public function setValidUntilDateAfter(string $validUntilDateAfter): self
+    {
         $this->options['validUntilDateAfter'] = $validUntilDateAfter;
         return $this;
     }
@@ -300,20 +399,30 @@ class ReadBundleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.ReadBundleOptions ' . $options . ']';
     }
 }
 
-class UpdateBundleOptions extends Options {
+class UpdateBundleOptions extends Options
+    {
     /**
-     * @param string $status 
+     * @param string $status
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $email The email address that will receive updates when the Bundle resource changes status.
      */
-    public function __construct(string $status = Values::NONE, string $statusCallback = Values::NONE, string $friendlyName = Values::NONE, string $email = Values::NONE) {
+    public function __construct(
+        
+        string $status = Values::NONE,
+        string $statusCallback = Values::NONE,
+        string $friendlyName = Values::NONE,
+        string $email = Values::NONE
+
+    )
+    {
         $this->options['status'] = $status;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['friendlyName'] = $friendlyName;
@@ -321,10 +430,11 @@ class UpdateBundleOptions extends Options {
     }
 
     /**
-     * @param string $status 
+     * @param string $status
      * @return $this Fluent Builder
      */
-    public function setStatus(string $status): self {
+    public function setStatus(string $status): self
+    {
         $this->options['status'] = $status;
         return $this;
     }
@@ -335,7 +445,8 @@ class UpdateBundleOptions extends Options {
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @return $this Fluent Builder
      */
-    public function setStatusCallback(string $statusCallback): self {
+    public function setStatusCallback(string $statusCallback): self
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
@@ -346,7 +457,8 @@ class UpdateBundleOptions extends Options {
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -357,7 +469,8 @@ class UpdateBundleOptions extends Options {
      * @param string $email The email address that will receive updates when the Bundle resource changes status.
      * @return $this Fluent Builder
      */
-    public function setEmail(string $email): self {
+    public function setEmail(string $email): self
+    {
         $this->options['email'] = $email;
         return $this;
     }
@@ -367,7 +480,8 @@ class UpdateBundleOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.UpdateBundleOptions ' . $options . ']';
     }

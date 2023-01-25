@@ -40,7 +40,8 @@ use Twilio\Deserialize;
  * @property int $lastReadMessageIndex
  * @property string $lastReadTimestamp
  */
-class ParticipantInstance extends InstanceResource {
+class ParticipantInstance extends InstanceResource
+{
     /**
      * Initialize the ParticipantInstance
      *
@@ -50,7 +51,8 @@ class ParticipantInstance extends InstanceResource {
      * @param string $conversationSid The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $conversationSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $chatServiceSid, string $conversationSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -79,7 +81,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return ParticipantContext Context for this ParticipantInstance
      */
-    protected function proxy(): ParticipantContext {
+    protected function proxy(): ParticipantContext
+    {
         if (!$this->context) {
             $this->context = new ParticipantContext(
                 $this->version,
@@ -99,7 +102,9 @@ class ParticipantInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(array $options = []): bool {
+    public function delete(array $options = []): bool
+    {
+
         return $this->proxy()->delete($options);
     }
 
@@ -109,7 +114,9 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ParticipantInstance {
+    public function fetch(): ParticipantInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -120,7 +127,9 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ParticipantInstance {
+    public function update(array $options = []): ParticipantInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
@@ -131,7 +140,8 @@ class ParticipantInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -149,7 +159,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -41,7 +41,8 @@ use Twilio\Deserialize;
  * @property array $sna
  * @property string $url
  */
-class VerificationInstance extends InstanceResource {
+class VerificationInstance extends InstanceResource
+{
     /**
      * Initialize the VerificationInstance
      *
@@ -50,7 +51,8 @@ class VerificationInstance extends InstanceResource {
      * @param string $serviceSid The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under.
      * @param string $sid The Twilio-provided string that uniquely identifies the Verification resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,7 +83,8 @@ class VerificationInstance extends InstanceResource {
      *
      * @return VerificationContext Context for this VerificationInstance
      */
-    protected function proxy(): VerificationContext {
+    protected function proxy(): VerificationContext
+    {
         if (!$this->context) {
             $this->context = new VerificationContext(
                 $this->version,
@@ -99,18 +102,22 @@ class VerificationInstance extends InstanceResource {
      * @return VerificationInstance Fetched VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): VerificationInstance {
+    public function fetch(): VerificationInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the VerificationInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return VerificationInstance Updated VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): VerificationInstance {
+    public function update(string $status): VerificationInstance
+    {
+
         return $this->proxy()->update($status);
     }
 
@@ -121,7 +128,8 @@ class VerificationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -139,7 +147,8 @@ class VerificationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

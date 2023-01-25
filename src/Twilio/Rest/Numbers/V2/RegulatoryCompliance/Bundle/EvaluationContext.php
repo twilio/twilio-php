@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class EvaluationContext extends InstanceContext {
+class EvaluationContext extends InstanceContext
+    {
     /**
      * Initialize the EvaluationContext
      *
@@ -30,13 +31,25 @@ class EvaluationContext extends InstanceContext {
      * @param string $bundleSid The unique string that identifies the Bundle resource.
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function __construct(Version $version, $bundleSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $bundleSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['bundleSid' => $bundleSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'bundleSid' =>
+            $bundleSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($bundleSid) . '/Evaluations/' . \rawurlencode($sid) . '';
+        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($bundleSid)
+        .'/Evaluations/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -45,23 +58,27 @@ class EvaluationContext extends InstanceContext {
      * @return EvaluationInstance Fetched EvaluationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EvaluationInstance {
+    public function fetch(): EvaluationInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new EvaluationInstance(
             $this->version,
-            $payload
-            , $this->solution['bundleSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['bundleSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

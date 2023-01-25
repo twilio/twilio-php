@@ -42,14 +42,16 @@ use Twilio\Deserialize;
  * @property array $conversationTimers
  * @property array $links
  */
-class ParticipantConversationInstance extends InstanceResource {
+class ParticipantConversationInstance extends InstanceResource
+{
     /**
      * Initialize the ParticipantConversationInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -82,7 +84,8 @@ class ParticipantConversationInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -100,7 +103,8 @@ class ParticipantConversationInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Conversations.V1.ParticipantConversationInstance]';
     }
 }

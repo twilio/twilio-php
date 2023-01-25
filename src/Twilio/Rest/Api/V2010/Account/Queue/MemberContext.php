@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class MemberContext extends InstanceContext {
+class MemberContext extends InstanceContext
+    {
     /**
      * Initialize the MemberContext
      *
@@ -33,13 +34,29 @@ class MemberContext extends InstanceContext {
      * @param string $queueSid The SID of the Queue in which to find the members to fetch.
      * @param string $callSid The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch.
      */
-    public function __construct(Version $version, $accountSid , $queueSid , $callSid ) {
+    public function __construct(
+        Version $version,
+        $accountSid,
+        $queueSid,
+        $callSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid,  'queueSid' => $queueSid,  'callSid' => $callSid,  ];
+        $this->solution = [
+        'accountSid' =>
+            $accountSid,
+        'queueSid' =>
+            $queueSid,
+        'callSid' =>
+            $callSid,
+        ];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Queues/' . \rawurlencode($queueSid) . '/Members/' . \rawurlencode($callSid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid)
+        .'/Queues/' . \rawurlencode($queueSid)
+        .'/Members/' . \rawurlencode($callSid)
+        .'.json';
     }
 
     /**
@@ -48,17 +65,20 @@ class MemberContext extends InstanceContext {
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): MemberInstance {
+    public function fetch(): MemberInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new MemberInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['queueSid']
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['queueSid'],
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Update the MemberInstance
@@ -68,31 +88,37 @@ class MemberContext extends InstanceContext {
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $url, array $options = []): MemberInstance {
+    public function update(string $url, array $options = []): MemberInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'Url' => $url,
-            'Method' => $options['method'],
+            'Url' =>
+                $url,
+            'Method' =>
+                $options['method'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new MemberInstance(
             $this->version,
-            $payload
-            , $this->solution['accountSid']
-            , $this->solution['queueSid']
-            , $this->solution['callSid']
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['queueSid'],
+            $this->solution['callSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

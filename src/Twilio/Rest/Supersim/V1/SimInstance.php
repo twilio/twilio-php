@@ -39,7 +39,8 @@ use Twilio\Rest\Supersim\V1\Sim\SimIpAddressList;
  * @property string $url
  * @property array $links
  */
-class SimInstance extends InstanceResource {
+class SimInstance extends InstanceResource
+{
     protected $_billingPeriods;
     protected $_simIpAddresses;
 
@@ -50,7 +51,8 @@ class SimInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Sim resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,7 +78,8 @@ class SimInstance extends InstanceResource {
      *
      * @return SimContext Context for this SimInstance
      */
-    protected function proxy(): SimContext {
+    protected function proxy(): SimContext
+    {
         if (!$this->context) {
             $this->context = new SimContext(
                 $this->version,
@@ -93,7 +96,9 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SimInstance {
+    public function fetch(): SimInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -104,21 +109,25 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SimInstance {
+    public function update(array $options = []): SimInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the billingPeriods
      */
-    protected function getBillingPeriods(): BillingPeriodList {
+    protected function getBillingPeriods(): BillingPeriodList
+    {
         return $this->proxy()->billingPeriods;
     }
 
     /**
      * Access the simIpAddresses
      */
-    protected function getSimIpAddresses(): SimIpAddressList {
+    protected function getSimIpAddresses(): SimIpAddressList
+    {
         return $this->proxy()->simIpAddresses;
     }
 
@@ -129,7 +138,8 @@ class SimInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -147,7 +157,8 @@ class SimInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

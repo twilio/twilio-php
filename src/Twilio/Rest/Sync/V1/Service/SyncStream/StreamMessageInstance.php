@@ -28,7 +28,8 @@ use Twilio\Version;
  * @property string $sid
  * @property array $data
  */
-class StreamMessageInstance extends InstanceResource {
+class StreamMessageInstance extends InstanceResource
+{
     /**
      * Initialize the StreamMessageInstance
      *
@@ -37,7 +38,8 @@ class StreamMessageInstance extends InstanceResource {
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream Message in.
      * @param string $streamSid The SID of the Sync Stream to create the new Stream Message resource for.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $streamSid) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $streamSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -56,7 +58,8 @@ class StreamMessageInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -74,7 +77,8 @@ class StreamMessageInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Sync.V1.StreamMessageInstance]';
     }
 }

@@ -30,7 +30,8 @@ use Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueList;
  * @property FieldValueList $fieldValues
  * @method \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueContext fieldValues(string $sid)
  */
-class FieldTypeContext extends InstanceContext {
+class FieldTypeContext extends InstanceContext
+    {
     protected $_fieldValues;
 
     /**
@@ -40,13 +41,25 @@ class FieldTypeContext extends InstanceContext {
      * @param string $assistantSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, $assistantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/FieldTypes/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -55,9 +68,12 @@ class FieldTypeContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the FieldTypeInstance
@@ -65,16 +81,19 @@ class FieldTypeContext extends InstanceContext {
      * @return FieldTypeInstance Fetched FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FieldTypeInstance {
+    public function fetch(): FieldTypeInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new FieldTypeInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the FieldTypeInstance
@@ -83,33 +102,39 @@ class FieldTypeContext extends InstanceContext {
      * @return FieldTypeInstance Updated FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FieldTypeInstance {
+    public function update(array $options = []): FieldTypeInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'UniqueName' =>
+                $options['uniqueName'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new FieldTypeInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the fieldValues
      */
-    protected function getFieldValues(): FieldValueList {
+    protected function getFieldValues(): FieldValueList
+    {
         if (!$this->_fieldValues) {
             $this->_fieldValues = new FieldValueList(
-                $this->version
-                , $this->solution['assistantSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -123,7 +148,8 @@ class FieldTypeContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -140,7 +166,8 @@ class FieldTypeContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -154,7 +181,8 @@ class FieldTypeContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

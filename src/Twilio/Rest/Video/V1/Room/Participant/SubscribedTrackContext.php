@@ -22,7 +22,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class SubscribedTrackContext extends InstanceContext {
+class SubscribedTrackContext extends InstanceContext
+    {
     /**
      * Initialize the SubscribedTrackContext
      *
@@ -31,13 +32,29 @@ class SubscribedTrackContext extends InstanceContext {
      * @param string $participantSid The SID of the participant that subscribes to the Track resource to fetch.
      * @param string $sid The SID of the RoomParticipantSubscribedTrack resource to fetch.
      */
-    public function __construct(Version $version, $roomSid , $participantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $roomSid,
+        $participantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['roomSid' => $roomSid,  'participantSid' => $participantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'roomSid' =>
+            $roomSid,
+        'participantSid' =>
+            $participantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/SubscribedTracks/' . \rawurlencode($sid) . '';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid)
+        .'/Participants/' . \rawurlencode($participantSid)
+        .'/SubscribedTracks/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,24 +63,28 @@ class SubscribedTrackContext extends InstanceContext {
      * @return SubscribedTrackInstance Fetched SubscribedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SubscribedTrackInstance {
+    public function fetch(): SubscribedTrackInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SubscribedTrackInstance(
             $this->version,
-            $payload
-            , $this->solution['roomSid']
-            , $this->solution['participantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['roomSid'],
+            $this->solution['participantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

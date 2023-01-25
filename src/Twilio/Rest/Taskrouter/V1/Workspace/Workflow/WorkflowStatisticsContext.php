@@ -25,7 +25,8 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class WorkflowStatisticsContext extends InstanceContext {
+class WorkflowStatisticsContext extends InstanceContext
+    {
     /**
      * Initialize the WorkflowStatisticsContext
      *
@@ -33,13 +34,25 @@ class WorkflowStatisticsContext extends InstanceContext {
      * @param string $workspaceSid The SID of the Workspace with the Workflow to fetch.
      * @param string $workflowSid Returns the list of Tasks that are being controlled by the Workflow with the specified SID value.
      */
-    public function __construct(Version $version, $workspaceSid , $workflowSid ) {
+    public function __construct(
+        Version $version,
+        $workspaceSid,
+        $workflowSid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['workspaceSid' => $workspaceSid,  'workflowSid' => $workflowSid,  ];
+        $this->solution = [
+        'workspaceSid' =>
+            $workspaceSid,
+        'workflowSid' =>
+            $workflowSid,
+        ];
 
-        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workflows/' . \rawurlencode($workflowSid) . '/Statistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid)
+        .'/Workflows/' . \rawurlencode($workflowSid)
+        .'/Statistics';
     }
 
     /**
@@ -49,33 +62,42 @@ class WorkflowStatisticsContext extends InstanceContext {
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkflowStatisticsInstance {
+    public function fetch(array $options = []): WorkflowStatisticsInstance
+    {
+
         $options = new Values($options);
 
         $params = Values::of([
-            'Minutes' => $options['minutes'],
-            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
-            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
-            'TaskChannel' => $options['taskChannel'],
-            'SplitByWaitTime' => $options['splitByWaitTime'],
+            'Minutes' =>
+                $options['minutes'],
+            'StartDate' =>
+                Serialize::iso8601DateTime($options['startDate']),
+            'EndDate' =>
+                Serialize::iso8601DateTime($options['endDate']),
+            'TaskChannel' =>
+                $options['taskChannel'],
+            'SplitByWaitTime' =>
+                $options['splitByWaitTime'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new WorkflowStatisticsInstance(
             $this->version,
-            $payload
-            , $this->solution['workspaceSid']
-            , $this->solution['workflowSid']
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['workflowSid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

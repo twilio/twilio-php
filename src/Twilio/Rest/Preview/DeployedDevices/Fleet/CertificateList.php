@@ -24,20 +24,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class CertificateList extends ListResource {
+class CertificateList extends ListResource
+    {
     /**
      * Construct the CertificateList
      *
      * @param Version $version Version that contains the resource
      * @param string $fleetSid 
      */
-    public function __construct(Version $version, string $fleetSid ) {
+    public function __construct(
+        Version $version,
+        string $fleetSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['fleetSid' => $fleetSid, ];
+        $this->solution = [
+        'fleetSid' =>
+            $fleetSid,
+        
+        ];
 
-        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Certificates';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid)
+        .'/Certificates';
     }
 
     /**
@@ -48,23 +58,29 @@ class CertificateList extends ListResource {
      * @return CertificateInstance Created CertificateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $certificateData, array $options = []): CertificateInstance {
+    public function create(string $certificateData, array $options = []): CertificateInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'CertificateData' => $certificateData,
-            'FriendlyName' => $options['friendlyName'],
-            'DeviceSid' => $options['deviceSid'],
+            'CertificateData' =>
+                $certificateData,
+            'FriendlyName' =>
+                $options['friendlyName'],
+            'DeviceSid' =>
+                $options['deviceSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
 
         return new CertificateInstance(
             $this->version,
-            $payload
-            , $this->solution['fleetSid']
+            $payload,
+            $this->solution['fleetSid'],
         );
     }
+
 
     /**
      * Reads CertificateInstance records from the API as a list.
@@ -82,7 +98,8 @@ class CertificateList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CertificateInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array {
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -105,7 +122,8 @@ class CertificateList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream {
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($options, $limits['pageSize']);
@@ -122,11 +140,18 @@ class CertificateList extends ListResource {
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return CertificatePage Page of CertificateInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CertificatePage {
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): CertificatePage
+    {
         $options = new Values($options);
 
         $params = Values::of([
-            'DeviceSid' => $options['deviceSid'],
+            'DeviceSid' =>
+                $options['deviceSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -144,7 +169,8 @@ class CertificateList extends ListResource {
      * @param string $targetUrl API-generated URL for the requested results page
      * @return CertificatePage Page of CertificateInstance
      */
-    public function getPage(string $targetUrl): CertificatePage {
+    public function getPage(string $targetUrl): CertificatePage
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -159,8 +185,16 @@ class CertificateList extends ListResource {
      *
      * @param string $sid Provides a 34 character string that uniquely identifies the requested Certificate credential resource.
      */
-    public function getContext(string $sid): CertificateContext {
-        return new CertificateContext($this->version, $this->solution['fleetSid'], $sid);
+    public function getContext(
+        string $sid
+        
+    ): CertificateContext
+    {
+        return new CertificateContext(
+            $this->version,
+            $this->solution['fleetSid'],
+            $sid
+        );
     }
 
     /**
@@ -168,7 +202,8 @@ class CertificateList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.DeployedDevices.CertificateList]';
     }
 }

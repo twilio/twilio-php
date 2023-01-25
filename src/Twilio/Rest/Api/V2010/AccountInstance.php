@@ -61,7 +61,8 @@ use Twilio\Rest\Api\V2010\Account\NewSigningKeyList;
  * @property string $type
  * @property string $uri
  */
-class AccountInstance extends InstanceResource {
+class AccountInstance extends InstanceResource
+{
     protected $_recordings;
     protected $_usage;
     protected $_messages;
@@ -94,7 +95,8 @@ class AccountInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $sid The Account Sid that uniquely identifies the account to fetch
      */
-    public function __construct(Version $version, array $payload, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -120,7 +122,8 @@ class AccountInstance extends InstanceResource {
      *
      * @return AccountContext Context for this AccountInstance
      */
-    protected function proxy(): AccountContext {
+    protected function proxy(): AccountContext
+    {
         if (!$this->context) {
             $this->context = new AccountContext(
                 $this->version,
@@ -137,7 +140,9 @@ class AccountInstance extends InstanceResource {
      * @return AccountInstance Fetched AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): AccountInstance {
+    public function fetch(): AccountInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -148,175 +153,201 @@ class AccountInstance extends InstanceResource {
      * @return AccountInstance Updated AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AccountInstance {
+    public function update(array $options = []): AccountInstance
+    {
+
         return $this->proxy()->update($options);
     }
 
     /**
      * Access the recordings
      */
-    protected function getRecordings(): RecordingList {
+    protected function getRecordings(): RecordingList
+    {
         return $this->proxy()->recordings;
     }
 
     /**
      * Access the usage
      */
-    protected function getUsage(): UsageList {
+    protected function getUsage(): UsageList
+    {
         return $this->proxy()->usage;
     }
 
     /**
      * Access the messages
      */
-    protected function getMessages(): MessageList {
+    protected function getMessages(): MessageList
+    {
         return $this->proxy()->messages;
     }
 
     /**
      * Access the keys
      */
-    protected function getKeys(): KeyList {
+    protected function getKeys(): KeyList
+    {
         return $this->proxy()->keys;
     }
 
     /**
      * Access the newKeys
      */
-    protected function getNewKeys(): NewKeyList {
+    protected function getNewKeys(): NewKeyList
+    {
         return $this->proxy()->newKeys;
     }
 
     /**
      * Access the applications
      */
-    protected function getApplications(): ApplicationList {
+    protected function getApplications(): ApplicationList
+    {
         return $this->proxy()->applications;
     }
 
     /**
      * Access the incomingPhoneNumbers
      */
-    protected function getIncomingPhoneNumbers(): IncomingPhoneNumberList {
+    protected function getIncomingPhoneNumbers(): IncomingPhoneNumberList
+    {
         return $this->proxy()->incomingPhoneNumbers;
     }
 
     /**
      * Access the conferences
      */
-    protected function getConferences(): ConferenceList {
+    protected function getConferences(): ConferenceList
+    {
         return $this->proxy()->conferences;
     }
 
     /**
      * Access the calls
      */
-    protected function getCalls(): CallList {
+    protected function getCalls(): CallList
+    {
         return $this->proxy()->calls;
     }
 
     /**
      * Access the outgoingCallerIds
      */
-    protected function getOutgoingCallerIds(): OutgoingCallerIdList {
+    protected function getOutgoingCallerIds(): OutgoingCallerIdList
+    {
         return $this->proxy()->outgoingCallerIds;
     }
 
     /**
      * Access the validationRequests
      */
-    protected function getValidationRequests(): ValidationRequestList {
+    protected function getValidationRequests(): ValidationRequestList
+    {
         return $this->proxy()->validationRequests;
     }
 
     /**
      * Access the transcriptions
      */
-    protected function getTranscriptions(): TranscriptionList {
+    protected function getTranscriptions(): TranscriptionList
+    {
         return $this->proxy()->transcriptions;
     }
 
     /**
      * Access the connectApps
      */
-    protected function getConnectApps(): ConnectAppList {
+    protected function getConnectApps(): ConnectAppList
+    {
         return $this->proxy()->connectApps;
     }
 
     /**
      * Access the authorizedConnectApps
      */
-    protected function getAuthorizedConnectApps(): AuthorizedConnectAppList {
+    protected function getAuthorizedConnectApps(): AuthorizedConnectAppList
+    {
         return $this->proxy()->authorizedConnectApps;
     }
 
     /**
      * Access the tokens
      */
-    protected function getTokens(): TokenList {
+    protected function getTokens(): TokenList
+    {
         return $this->proxy()->tokens;
     }
 
     /**
      * Access the balance
      */
-    protected function getBalance(): BalanceList {
+    protected function getBalance(): BalanceList
+    {
         return $this->proxy()->balance;
     }
 
     /**
      * Access the sip
      */
-    protected function getSip(): SipList {
+    protected function getSip(): SipList
+    {
         return $this->proxy()->sip;
     }
 
     /**
      * Access the notifications
      */
-    protected function getNotifications(): NotificationList {
+    protected function getNotifications(): NotificationList
+    {
         return $this->proxy()->notifications;
     }
 
     /**
      * Access the availablePhoneNumbers
      */
-    protected function getAvailablePhoneNumbers(): AvailablePhoneNumberCountryList {
+    protected function getAvailablePhoneNumbers(): AvailablePhoneNumberCountryList
+    {
         return $this->proxy()->availablePhoneNumbers;
     }
 
     /**
      * Access the addresses
      */
-    protected function getAddresses(): AddressList {
+    protected function getAddresses(): AddressList
+    {
         return $this->proxy()->addresses;
     }
 
     /**
      * Access the queues
      */
-    protected function getQueues(): QueueList {
+    protected function getQueues(): QueueList
+    {
         return $this->proxy()->queues;
     }
 
     /**
      * Access the shortCodes
      */
-    protected function getShortCodes(): ShortCodeList {
+    protected function getShortCodes(): ShortCodeList
+    {
         return $this->proxy()->shortCodes;
     }
 
     /**
      * Access the signingKeys
      */
-    protected function getSigningKeys(): SigningKeyList {
+    protected function getSigningKeys(): SigningKeyList
+    {
         return $this->proxy()->signingKeys;
     }
 
     /**
      * Access the newSigningKeys
      */
-    protected function getNewSigningKeys(): NewSigningKeyList {
+    protected function getNewSigningKeys(): NewSigningKeyList
+    {
         return $this->proxy()->newSigningKeys;
     }
 
@@ -327,7 +358,8 @@ class AccountInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -345,7 +377,8 @@ class AccountInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

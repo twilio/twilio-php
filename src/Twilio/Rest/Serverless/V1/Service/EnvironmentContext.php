@@ -34,7 +34,8 @@ use Twilio\Rest\Serverless\V1\Service\Environment\VariableList;
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext variables(string $sid)
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentContext deployments(string $sid)
  */
-class EnvironmentContext extends InstanceContext {
+class EnvironmentContext extends InstanceContext
+    {
     protected $_logs;
     protected $_deployments;
     protected $_variables;
@@ -46,13 +47,25 @@ class EnvironmentContext extends InstanceContext {
      * @param string $serviceSid The SID of the Service to create the Environment resource under.
      * @param string $sid The SID of the Environment resource to delete.
      */
-    public function __construct(Version $version, $serviceSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $serviceSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['serviceSid' => $serviceSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'serviceSid' =>
+            $serviceSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid)
+        .'/Environments/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -61,9 +74,12 @@ class EnvironmentContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the EnvironmentInstance
@@ -71,26 +87,30 @@ class EnvironmentContext extends InstanceContext {
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EnvironmentInstance {
+    public function fetch(): EnvironmentInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new EnvironmentInstance(
             $this->version,
-            $payload
-            , $this->solution['serviceSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the logs
      */
-    protected function getLogs(): LogList {
+    protected function getLogs(): LogList
+    {
         if (!$this->_logs) {
             $this->_logs = new LogList(
-                $this->version
-                , $this->solution['serviceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -100,12 +120,13 @@ class EnvironmentContext extends InstanceContext {
     /**
      * Access the deployments
      */
-    protected function getDeployments(): DeploymentList {
+    protected function getDeployments(): DeploymentList
+    {
         if (!$this->_deployments) {
             $this->_deployments = new DeploymentList(
-                $this->version
-                , $this->solution['serviceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -115,12 +136,13 @@ class EnvironmentContext extends InstanceContext {
     /**
      * Access the variables
      */
-    protected function getVariables(): VariableList {
+    protected function getVariables(): VariableList
+    {
         if (!$this->_variables) {
             $this->_variables = new VariableList(
-                $this->version
-                , $this->solution['serviceSid']
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid'],
             );
         }
 
@@ -134,7 +156,8 @@ class EnvironmentContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -151,7 +174,8 @@ class EnvironmentContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -165,7 +189,8 @@ class EnvironmentContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

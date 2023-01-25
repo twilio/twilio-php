@@ -18,54 +18,110 @@ namespace Twilio\Rest\Trunking\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TrunkOptions {
-    /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
-     * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information. 
-     * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information. 
-     * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`. 
-     * @param string $transferMode  
-     * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information. 
-     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information. 
-     * @param string $transferCallerId  
-     * @return CreateTrunkOptions Options builder
-     */
-    public static function create(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE): CreateTrunkOptions {
-        return new CreateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled, $transferCallerId);
-    }
-
-
-
-
-    /**
-     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long. 
-     * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information. 
-     * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information. 
-     * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`. 
-     * @param string $transferMode  
-     * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information. 
-     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information. 
-     * @param string $transferCallerId  
-     * @return UpdateTrunkOptions Options builder
-     */
-    public static function update(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE): UpdateTrunkOptions {
-        return new UpdateTrunkOptions($friendlyName, $domainName, $disasterRecoveryUrl, $disasterRecoveryMethod, $transferMode, $secure, $cnamLookupEnabled, $transferCallerId);
-    }
-
-}
-
-class CreateTrunkOptions extends Options {
+abstract class TrunkOptions
+{
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
      * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
      * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`.
-     * @param string $transferMode 
+     * @param string $transferMode
      * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
-     * @param string $transferCallerId 
+     * @param string $transferCallerId
+     * @return CreateTrunkOptions Options builder
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE) {
+    public static function create(
+        
+        string $friendlyName = Values::NONE,
+        string $domainName = Values::NONE,
+        string $disasterRecoveryUrl = Values::NONE,
+        string $disasterRecoveryMethod = Values::NONE,
+        string $transferMode = Values::NONE,
+        bool $secure = Values::NONE,
+        bool $cnamLookupEnabled = Values::NONE,
+        string $transferCallerId = Values::NONE
+
+    ): CreateTrunkOptions
+    {
+        return new CreateTrunkOptions(
+            $friendlyName,
+            $domainName,
+            $disasterRecoveryUrl,
+            $disasterRecoveryMethod,
+            $transferMode,
+            $secure,
+            $cnamLookupEnabled,
+            $transferCallerId
+        );
+    }
+
+
+
+
+    /**
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
+     * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
+     * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`.
+     * @param string $transferMode
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
+     * @param string $transferCallerId
+     * @return UpdateTrunkOptions Options builder
+     */
+    public static function update(
+        
+        string $friendlyName = Values::NONE,
+        string $domainName = Values::NONE,
+        string $disasterRecoveryUrl = Values::NONE,
+        string $disasterRecoveryMethod = Values::NONE,
+        string $transferMode = Values::NONE,
+        bool $secure = Values::NONE,
+        bool $cnamLookupEnabled = Values::NONE,
+        string $transferCallerId = Values::NONE
+
+    ): UpdateTrunkOptions
+    {
+        return new UpdateTrunkOptions(
+            $friendlyName,
+            $domainName,
+            $disasterRecoveryUrl,
+            $disasterRecoveryMethod,
+            $transferMode,
+            $secure,
+            $cnamLookupEnabled,
+            $transferCallerId
+        );
+    }
+
+}
+
+class CreateTrunkOptions extends Options
+    {
+    /**
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
+     * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
+     * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`.
+     * @param string $transferMode
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
+     * @param string $transferCallerId
+     */
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $domainName = Values::NONE,
+        string $disasterRecoveryUrl = Values::NONE,
+        string $disasterRecoveryMethod = Values::NONE,
+        string $transferMode = Values::NONE,
+        bool $secure = Values::NONE,
+        bool $cnamLookupEnabled = Values::NONE,
+        string $transferCallerId = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -82,7 +138,8 @@ class CreateTrunkOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -93,7 +150,8 @@ class CreateTrunkOptions extends Options {
      * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
      * @return $this Fluent Builder
      */
-    public function setDomainName(string $domainName): self {
+    public function setDomainName(string $domainName): self
+    {
         $this->options['domainName'] = $domainName;
         return $this;
     }
@@ -104,7 +162,8 @@ class CreateTrunkOptions extends Options {
      * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryUrl(string $disasterRecoveryUrl): self {
+    public function setDisasterRecoveryUrl(string $disasterRecoveryUrl): self
+    {
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         return $this;
     }
@@ -115,16 +174,18 @@ class CreateTrunkOptions extends Options {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`.
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self {
+    public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self
+    {
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
         return $this;
     }
 
     /**
-     * @param string $transferMode 
+     * @param string $transferMode
      * @return $this Fluent Builder
      */
-    public function setTransferMode(string $transferMode): self {
+    public function setTransferMode(string $transferMode): self
+    {
         $this->options['transferMode'] = $transferMode;
         return $this;
     }
@@ -135,7 +196,8 @@ class CreateTrunkOptions extends Options {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
      * @return $this Fluent Builder
      */
-    public function setSecure(bool $secure): self {
+    public function setSecure(bool $secure): self
+    {
         $this->options['secure'] = $secure;
         return $this;
     }
@@ -146,16 +208,18 @@ class CreateTrunkOptions extends Options {
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
      * @return $this Fluent Builder
      */
-    public function setCnamLookupEnabled(bool $cnamLookupEnabled): self {
+    public function setCnamLookupEnabled(bool $cnamLookupEnabled): self
+    {
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
         return $this;
     }
 
     /**
-     * @param string $transferCallerId 
+     * @param string $transferCallerId
      * @return $this Fluent Builder
      */
-    public function setTransferCallerId(string $transferCallerId): self {
+    public function setTransferCallerId(string $transferCallerId): self
+    {
         $this->options['transferCallerId'] = $transferCallerId;
         return $this;
     }
@@ -165,7 +229,8 @@ class CreateTrunkOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trunking.V1.CreateTrunkOptions ' . $options . ']';
     }
@@ -174,18 +239,31 @@ class CreateTrunkOptions extends Options {
 
 
 
-class UpdateTrunkOptions extends Options {
+class UpdateTrunkOptions extends Options
+    {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
      * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
      * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`.
-     * @param string $transferMode 
+     * @param string $transferMode
      * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
-     * @param string $transferCallerId 
+     * @param string $transferCallerId
      */
-    public function __construct(string $friendlyName = Values::NONE, string $domainName = Values::NONE, string $disasterRecoveryUrl = Values::NONE, string $disasterRecoveryMethod = Values::NONE, string $transferMode = Values::NONE, bool $secure = Values::NONE, bool $cnamLookupEnabled = Values::NONE, string $transferCallerId = Values::NONE) {
+    public function __construct(
+        
+        string $friendlyName = Values::NONE,
+        string $domainName = Values::NONE,
+        string $disasterRecoveryUrl = Values::NONE,
+        string $disasterRecoveryMethod = Values::NONE,
+        string $transferMode = Values::NONE,
+        bool $secure = Values::NONE,
+        bool $cnamLookupEnabled = Values::NONE,
+        string $transferCallerId = Values::NONE
+
+    )
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -202,7 +280,8 @@ class UpdateTrunkOptions extends Options {
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName(string $friendlyName): self {
+    public function setFriendlyName(string $friendlyName): self
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
@@ -213,7 +292,8 @@ class UpdateTrunkOptions extends Options {
      * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
      * @return $this Fluent Builder
      */
-    public function setDomainName(string $domainName): self {
+    public function setDomainName(string $domainName): self
+    {
         $this->options['domainName'] = $domainName;
         return $this;
     }
@@ -224,7 +304,8 @@ class UpdateTrunkOptions extends Options {
      * @param string $disasterRecoveryUrl The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryUrl(string $disasterRecoveryUrl): self {
+    public function setDisasterRecoveryUrl(string $disasterRecoveryUrl): self
+    {
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
         return $this;
     }
@@ -235,16 +316,18 @@ class UpdateTrunkOptions extends Options {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`.
      * @return $this Fluent Builder
      */
-    public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self {
+    public function setDisasterRecoveryMethod(string $disasterRecoveryMethod): self
+    {
         $this->options['disasterRecoveryMethod'] = $disasterRecoveryMethod;
         return $this;
     }
 
     /**
-     * @param string $transferMode 
+     * @param string $transferMode
      * @return $this Fluent Builder
      */
-    public function setTransferMode(string $transferMode): self {
+    public function setTransferMode(string $transferMode): self
+    {
         $this->options['transferMode'] = $transferMode;
         return $this;
     }
@@ -255,7 +338,8 @@ class UpdateTrunkOptions extends Options {
      * @param bool $secure Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
      * @return $this Fluent Builder
      */
-    public function setSecure(bool $secure): self {
+    public function setSecure(bool $secure): self
+    {
         $this->options['secure'] = $secure;
         return $this;
     }
@@ -266,16 +350,18 @@ class UpdateTrunkOptions extends Options {
      * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
      * @return $this Fluent Builder
      */
-    public function setCnamLookupEnabled(bool $cnamLookupEnabled): self {
+    public function setCnamLookupEnabled(bool $cnamLookupEnabled): self
+    {
         $this->options['cnamLookupEnabled'] = $cnamLookupEnabled;
         return $this;
     }
 
     /**
-     * @param string $transferCallerId 
+     * @param string $transferCallerId
      * @return $this Fluent Builder
      */
-    public function setTransferCallerId(string $transferCallerId): self {
+    public function setTransferCallerId(string $transferCallerId): self
+    {
         $this->options['transferCallerId'] = $transferCallerId;
         return $this;
     }
@@ -285,7 +371,8 @@ class UpdateTrunkOptions extends Options {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trunking.V1.UpdateTrunkOptions ' . $options . ']';
     }

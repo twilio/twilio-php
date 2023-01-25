@@ -31,14 +31,16 @@ use Twilio\Deserialize;
  * @property string $secondaryAuthToken
  * @property string $url
  */
-class SecondaryAuthTokenInstance extends InstanceResource {
+class SecondaryAuthTokenInstance extends InstanceResource
+{
     /**
      * Initialize the SecondaryAuthTokenInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -59,7 +61,8 @@ class SecondaryAuthTokenInstance extends InstanceResource {
      *
      * @return SecondaryAuthTokenContext Context for this SecondaryAuthTokenInstance
      */
-    protected function proxy(): SecondaryAuthTokenContext {
+    protected function proxy(): SecondaryAuthTokenContext
+    {
         if (!$this->context) {
             $this->context = new SecondaryAuthTokenContext(
                 $this->version
@@ -75,7 +78,9 @@ class SecondaryAuthTokenInstance extends InstanceResource {
      * @return SecondaryAuthTokenInstance Created SecondaryAuthTokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): SecondaryAuthTokenInstance {
+    public function create(): SecondaryAuthTokenInstance
+    {
+
         return $this->proxy()->create();
     }
 
@@ -85,7 +90,9 @@ class SecondaryAuthTokenInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -96,7 +103,8 @@ class SecondaryAuthTokenInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -114,7 +122,8 @@ class SecondaryAuthTokenInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

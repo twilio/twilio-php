@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class ReplaceItemsPage extends Page {
+class ReplaceItemsPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class ReplaceItemsPage extends Page {
      * @param array $payload Payload response from the API
      * @return ReplaceItemsInstance \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ReplaceItemsInstance
      */
-    public function buildInstance(array $payload): ReplaceItemsInstance {
+    public function buildInstance(array $payload): ReplaceItemsInstance
+    {
         return new ReplaceItemsInstance($this->version, $payload, $this->solution['bundleSid']);
     }
 
@@ -45,7 +48,8 @@ class ReplaceItemsPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Numbers.V2.ReplaceItemsPage]';
     }
 }

@@ -25,17 +25,22 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class SettingsContext extends InstanceContext {
+class SettingsContext extends InstanceContext
+    {
     /**
      * Initialize the SettingsContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Settings';
     }
@@ -46,14 +51,17 @@ class SettingsContext extends InstanceContext {
      * @return SettingsInstance Fetched SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): SettingsInstance {
+    public function fetch(): SettingsInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new SettingsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Update the SettingsInstance
@@ -62,27 +70,32 @@ class SettingsContext extends InstanceContext {
      * @return SettingsInstance Updated SettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SettingsInstance {
+    public function update(array $options = []): SettingsInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'DialingPermissionsInheritance' => Serialize::booleanToString($options['dialingPermissionsInheritance']),
+            'DialingPermissionsInheritance' =>
+                Serialize::booleanToString($options['dialingPermissionsInheritance']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new SettingsInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

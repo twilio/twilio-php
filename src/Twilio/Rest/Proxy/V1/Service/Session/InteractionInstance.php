@@ -45,7 +45,8 @@ use Twilio\Deserialize;
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class InteractionInstance extends InstanceResource {
+class InteractionInstance extends InstanceResource
+{
     /**
      * Initialize the InteractionInstance
      *
@@ -55,7 +56,8 @@ class InteractionInstance extends InstanceResource {
      * @param string $sessionSid The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Interaction resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -90,7 +92,8 @@ class InteractionInstance extends InstanceResource {
      *
      * @return InteractionContext Context for this InteractionInstance
      */
-    protected function proxy(): InteractionContext {
+    protected function proxy(): InteractionContext
+    {
         if (!$this->context) {
             $this->context = new InteractionContext(
                 $this->version,
@@ -109,7 +112,9 @@ class InteractionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -119,7 +124,9 @@ class InteractionInstance extends InstanceResource {
      * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionInstance {
+    public function fetch(): InteractionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -130,7 +137,8 @@ class InteractionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -148,7 +156,8 @@ class InteractionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

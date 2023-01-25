@@ -35,7 +35,8 @@ use Twilio\Rest\Insights\V1\Call\AnnotationList;
  * @method \Twilio\Rest\Insights\V1\Call\CallSummaryContext summary()
  * @method \Twilio\Rest\Insights\V1\Call\AnnotationContext annotation()
  */
-class CallContext extends InstanceContext {
+class CallContext extends InstanceContext
+    {
     protected $_metrics;
     protected $_events;
     protected $_summary;
@@ -47,13 +48,21 @@ class CallContext extends InstanceContext {
      * @param Version $version Version that contains the resource
      * @param string $sid 
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Voice/' . \rawurlencode($sid) . '';
+        $this->uri = '/Voice/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -62,24 +71,28 @@ class CallContext extends InstanceContext {
      * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): CallInstance {
+    public function fetch(): CallInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new CallInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Access the metrics
      */
-    protected function getMetrics(): MetricList {
+    protected function getMetrics(): MetricList
+    {
         if (!$this->_metrics) {
             $this->_metrics = new MetricList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -89,11 +102,12 @@ class CallContext extends InstanceContext {
     /**
      * Access the events
      */
-    protected function getEvents(): EventList {
+    protected function getEvents(): EventList
+    {
         if (!$this->_events) {
             $this->_events = new EventList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -103,11 +117,12 @@ class CallContext extends InstanceContext {
     /**
      * Access the summary
      */
-    protected function getSummary(): CallSummaryList {
+    protected function getSummary(): CallSummaryList
+    {
         if (!$this->_summary) {
             $this->_summary = new CallSummaryList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -117,11 +132,12 @@ class CallContext extends InstanceContext {
     /**
      * Access the annotation
      */
-    protected function getAnnotation(): AnnotationList {
+    protected function getAnnotation(): AnnotationList
+    {
         if (!$this->_annotation) {
             $this->_annotation = new AnnotationList(
-                $this->version
-                , $this->solution['sid']
+                $this->version,
+                $this->solution['sid'],
             );
         }
 
@@ -135,7 +151,8 @@ class CallContext extends InstanceContext {
      * @return ListResource The requested subresource
      * @throws TwilioException For unknown subresources
      */
-    public function __get(string $name): ListResource {
+    public function __get(string $name): ListResource
+    {
         if (\property_exists($this, '_' . $name)) {
             $method = 'get' . \ucfirst($name);
             return $this->$method();
@@ -152,7 +169,8 @@ class CallContext extends InstanceContext {
      * @return InstanceContext The requested resource context
      * @throws TwilioException For unknown resource
      */
-    public function __call(string $name, array $arguments): InstanceContext {
+    public function __call(string $name, array $arguments): InstanceContext
+    {
         $property = $this->$name;
         if (\method_exists($property, 'getContext')) {
             return \call_user_func_array(array($property, 'getContext'), $arguments);
@@ -166,7 +184,8 @@ class CallContext extends InstanceContext {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

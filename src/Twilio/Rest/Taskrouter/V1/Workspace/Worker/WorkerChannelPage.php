@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class WorkerChannelPage extends Page {
+class WorkerChannelPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class WorkerChannelPage extends Page {
      * @param array $payload Payload response from the API
      * @return WorkerChannelInstance \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance
      */
-    public function buildInstance(array $payload): WorkerChannelInstance {
+    public function buildInstance(array $payload): WorkerChannelInstance
+    {
         return new WorkerChannelInstance($this->version, $payload, $this->solution['workspaceSid'], $this->solution['workerSid']);
     }
 
@@ -45,7 +48,8 @@ class WorkerChannelPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Taskrouter.V1.WorkerChannelPage]';
     }
 }

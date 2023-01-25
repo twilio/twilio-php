@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class FlexFlowPage extends Page {
+class FlexFlowPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class FlexFlowPage extends Page {
      * @param array $payload Payload response from the API
      * @return FlexFlowInstance \Twilio\Rest\FlexApi\V1\FlexFlowInstance
      */
-    public function buildInstance(array $payload): FlexFlowInstance {
+    public function buildInstance(array $payload): FlexFlowInstance
+    {
         return new FlexFlowInstance($this->version, $payload);
     }
 
@@ -45,7 +48,8 @@ class FlexFlowPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.FlexApi.V1.FlexFlowPage]';
     }
 }

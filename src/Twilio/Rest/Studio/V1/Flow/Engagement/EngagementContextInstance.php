@@ -30,7 +30,8 @@ use Twilio\Version;
  * @property string $flowSid
  * @property string $url
  */
-class EngagementContextInstance extends InstanceResource {
+class EngagementContextInstance extends InstanceResource
+{
     /**
      * Initialize the EngagementContextInstance
      *
@@ -39,7 +40,8 @@ class EngagementContextInstance extends InstanceResource {
      * @param string $flowSid The SID of the Flow.
      * @param string $engagementSid The SID of the Engagement.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -60,7 +62,8 @@ class EngagementContextInstance extends InstanceResource {
      *
      * @return EngagementContextContext Context for this EngagementContextInstance
      */
-    protected function proxy(): EngagementContextContext {
+    protected function proxy(): EngagementContextContext
+    {
         if (!$this->context) {
             $this->context = new EngagementContextContext(
                 $this->version,
@@ -78,7 +81,9 @@ class EngagementContextInstance extends InstanceResource {
      * @return EngagementContextInstance Fetched EngagementContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): EngagementContextInstance {
+    public function fetch(): EngagementContextInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
@@ -89,7 +94,8 @@ class EngagementContextInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -107,7 +113,8 @@ class EngagementContextInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

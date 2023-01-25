@@ -24,20 +24,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class WebChannelContext extends InstanceContext {
+class WebChannelContext extends InstanceContext
+    {
     /**
      * Initialize the WebChannelContext
      *
      * @param Version $version Version that contains the resource
      * @param string $sid The SID of the WebChannel resource to delete.
      */
-    public function __construct(Version $version, $sid ) {
+    public function __construct(
+        Version $version,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['sid' => $sid,  ];
+        $this->solution = [
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/WebChannels/' . \rawurlencode($sid) . '';
+        $this->uri = '/WebChannels/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -46,9 +55,12 @@ class WebChannelContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the WebChannelInstance
@@ -56,15 +68,18 @@ class WebChannelContext extends InstanceContext {
      * @return WebChannelInstance Fetched WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): WebChannelInstance {
+    public function fetch(): WebChannelInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new WebChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the WebChannelInstance
@@ -73,29 +88,35 @@ class WebChannelContext extends InstanceContext {
      * @return WebChannelInstance Updated WebChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebChannelInstance {
+    public function update(array $options = []): WebChannelInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'ChatStatus' => $options['chatStatus'],
-            'PostEngagementData' => $options['postEngagementData'],
+            'ChatStatus' =>
+                $options['chatStatus'],
+            'PostEngagementData' =>
+                $options['postEngagementData'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new WebChannelInstance(
             $this->version,
-            $payload
-            , $this->solution['sid']
+            $payload,
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

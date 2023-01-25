@@ -48,7 +48,8 @@ use Twilio\Deserialize;
  * @property string $workspaceSid
  * @property string $url
  */
-class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
+class WorkspaceCumulativeStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkspaceCumulativeStatisticsInstance
      *
@@ -56,7 +57,8 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The SID of the Workspace to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid) {
+    public function __construct(Version $version, array $payload, string $workspaceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -93,7 +95,8 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return WorkspaceCumulativeStatisticsContext Context for this WorkspaceCumulativeStatisticsInstance
      */
-    protected function proxy(): WorkspaceCumulativeStatisticsContext {
+    protected function proxy(): WorkspaceCumulativeStatisticsContext
+    {
         if (!$this->context) {
             $this->context = new WorkspaceCumulativeStatisticsContext(
                 $this->version,
@@ -111,7 +114,9 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      * @return WorkspaceCumulativeStatisticsInstance Fetched WorkspaceCumulativeStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkspaceCumulativeStatisticsInstance {
+    public function fetch(array $options = []): WorkspaceCumulativeStatisticsInstance
+    {
+
         return $this->proxy()->fetch($options);
     }
 
@@ -122,7 +127,8 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -140,7 +146,8 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

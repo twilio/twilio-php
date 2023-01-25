@@ -24,7 +24,8 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ModelBuildContext extends InstanceContext {
+class ModelBuildContext extends InstanceContext
+    {
     /**
      * Initialize the ModelBuildContext
      *
@@ -32,13 +33,25 @@ class ModelBuildContext extends InstanceContext {
      * @param string $assistantSid The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the ModelBuild resource to delete.
      */
-    public function __construct(Version $version, $assistantSid , $sid ) {
+    public function __construct(
+        Version $version,
+        $assistantSid,
+        $sid
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid,  'sid' => $sid,  ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        'sid' =>
+            $sid,
+        ];
 
-        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/ModelBuilds/' . \rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid)
+        .'/ModelBuilds/' . \rawurlencode($sid)
+        .'';
     }
 
     /**
@@ -47,9 +60,12 @@ class ModelBuildContext extends InstanceContext {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->version->delete('DELETE', $this->uri);
     }
+
 
     /**
      * Fetch the ModelBuildInstance
@@ -57,16 +73,19 @@ class ModelBuildContext extends InstanceContext {
      * @return ModelBuildInstance Fetched ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ModelBuildInstance {
+    public function fetch(): ModelBuildInstance
+    {
+
         $payload = $this->version->fetch('GET', $this->uri);
 
         return new ModelBuildInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Update the ModelBuildInstance
@@ -75,29 +94,34 @@ class ModelBuildContext extends InstanceContext {
      * @return ModelBuildInstance Updated ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ModelBuildInstance {
+    public function update(array $options = []): ModelBuildInstance
+    {
+
         $options = new Values($options);
 
         $data = Values::of([
-            'UniqueName' => $options['uniqueName'],
+            'UniqueName' =>
+                $options['uniqueName'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new ModelBuildInstance(
             $this->version,
-            $payload
-            , $this->solution['assistantSid']
-            , $this->solution['sid']
+            $payload,
+            $this->solution['assistantSid'],
+            $this->solution['sid'],
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

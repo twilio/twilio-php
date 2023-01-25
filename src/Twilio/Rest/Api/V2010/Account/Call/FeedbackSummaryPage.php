@@ -19,13 +19,15 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class FeedbackSummaryPage extends Page {
+class FeedbackSummaryPage extends Page
+    {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
      * @param array $solution The context solution
      */
-    public function __construct(Version $version, Response $response, array $solution) {
+    public function __construct(Version $version, Response $response, array $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
@@ -36,7 +38,8 @@ class FeedbackSummaryPage extends Page {
      * @param array $payload Payload response from the API
      * @return FeedbackSummaryInstance \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryInstance
      */
-    public function buildInstance(array $payload): FeedbackSummaryInstance {
+    public function buildInstance(array $payload): FeedbackSummaryInstance
+    {
         return new FeedbackSummaryInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
@@ -45,7 +48,8 @@ class FeedbackSummaryPage extends Page {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Api.V2010.FeedbackSummaryPage]';
     }
 }

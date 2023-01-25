@@ -39,7 +39,8 @@ use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList;
  * @property string $url
  * @property array $links
  */
-class ExecutionInstance extends InstanceResource {
+class ExecutionInstance extends InstanceResource
+{
     protected $_steps;
     protected $_executionContext;
 
@@ -51,7 +52,8 @@ class ExecutionInstance extends InstanceResource {
      * @param string $flowSid The SID of the Excecution's Flow.
      * @param string $sid The SID of the Execution resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $sid = null) {
+    public function __construct(Version $version, array $payload, string $flowSid, string $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -78,7 +80,8 @@ class ExecutionInstance extends InstanceResource {
      *
      * @return ExecutionContext Context for this ExecutionInstance
      */
-    protected function proxy(): ExecutionContext {
+    protected function proxy(): ExecutionContext
+    {
         if (!$this->context) {
             $this->context = new ExecutionContext(
                 $this->version,
@@ -96,7 +99,9 @@ class ExecutionInstance extends InstanceResource {
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool {
+    public function delete(): bool
+    {
+
         return $this->proxy()->delete();
     }
 
@@ -106,32 +111,38 @@ class ExecutionInstance extends InstanceResource {
      * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ExecutionInstance {
+    public function fetch(): ExecutionInstance
+    {
+
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the ExecutionInstance
      *
-     * @param string $status 
+     * @param string $status
      * @return ExecutionInstance Updated ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status): ExecutionInstance {
+    public function update(string $status): ExecutionInstance
+    {
+
         return $this->proxy()->update($status);
     }
 
     /**
      * Access the steps
      */
-    protected function getSteps(): ExecutionStepList {
+    protected function getSteps(): ExecutionStepList
+    {
         return $this->proxy()->steps;
     }
 
     /**
      * Access the executionContext
      */
-    protected function getExecutionContext(): ExecutionContextList {
+    protected function getExecutionContext(): ExecutionContextList
+    {
         return $this->proxy()->executionContext;
     }
 
@@ -142,7 +153,8 @@ class ExecutionInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -160,7 +172,8 @@ class ExecutionInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

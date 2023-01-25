@@ -20,25 +20,40 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class AssistantFallbackActionsList extends ListResource {
+class AssistantFallbackActionsList extends ListResource
+    {
     /**
      * Construct the AssistantFallbackActionsList
      *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid 
      */
-    public function __construct(Version $version, string $assistantSid ) {
+    public function __construct(
+        Version $version,
+        string $assistantSid
+        )
+        {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['assistantSid' => $assistantSid, ];
+        $this->solution = [
+        'assistantSid' =>
+            $assistantSid,
+        
+        ];
     }
 
     /**
      * Constructs a AssistantFallbackActionsContext
      */
-    public function getContext(): AssistantFallbackActionsContext {
-        return new AssistantFallbackActionsContext($this->version, $this->solution['assistantSid']);
+    public function getContext(
+        
+    ): AssistantFallbackActionsContext
+    {
+        return new AssistantFallbackActionsContext(
+            $this->version,
+            $this->solution['assistantSid']
+        );
     }
 
     /**
@@ -46,7 +61,8 @@ class AssistantFallbackActionsList extends ListResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return '[Twilio.Preview.Understand.AssistantFallbackActionsList]';
     }
 }

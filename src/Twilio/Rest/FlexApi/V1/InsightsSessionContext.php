@@ -24,51 +24,60 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class GoodDataContext extends InstanceContext {
+class InsightsSessionContext extends InstanceContext
+    {
     /**
-     * Initialize the GoodDataContext
+     * Initialize the InsightsSessionContext
      *
      * @param Version $version Version that contains the resource
      */
-    public function __construct(Version $version) {
+    public function __construct(
+        Version $version
+    )
+    {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = [
+        ];
 
         $this->uri = '/Insights/Session';
     }
 
     /**
-     * Create the GoodDataInstance
+     * Create the InsightsSessionInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return GoodDataInstance Created GoodDataInstance
+     * @return InsightsSessionInstance Created InsightsSessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): GoodDataInstance {
+    public function create(array $options = []): InsightsSessionInstance
+    {
+
         $options = new Values($options);
 
         $headers = Values::of(['Token' => $options['token']]);
 
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
-        return new GoodDataInstance(
+        return new InsightsSessionInstance(
             $this->version,
-            $payload
+            $payload,
         );
     }
+
 
     /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.GoodDataContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsSessionContext ' . \implode(' ', $context) . ']';
     }
 }

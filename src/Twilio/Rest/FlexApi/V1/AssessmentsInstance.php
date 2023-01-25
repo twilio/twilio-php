@@ -26,14 +26,16 @@ use Twilio\Version;
 /**
  * @property string $url
  */
-class AssessmentsInstance extends InstanceResource {
+class AssessmentsInstance extends InstanceResource
+{
     /**
      * Initialize the AssessmentsInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -50,7 +52,8 @@ class AssessmentsInstance extends InstanceResource {
      *
      * @return AssessmentsContext Context for this AssessmentsInstance
      */
-    protected function proxy(): AssessmentsContext {
+    protected function proxy(): AssessmentsContext
+    {
         if (!$this->context) {
             $this->context = new AssessmentsContext(
                 $this->version
@@ -66,7 +69,9 @@ class AssessmentsInstance extends InstanceResource {
      * @return AssessmentsInstance Created AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): AssessmentsInstance {
+    public function create(): AssessmentsInstance
+    {
+
         return $this->proxy()->create();
     }
 
@@ -77,7 +82,8 @@ class AssessmentsInstance extends InstanceResource {
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
         if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -95,7 +101,8 @@ class AssessmentsInstance extends InstanceResource {
      *
      * @return string Machine friendly representation
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         $context = [];
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
