@@ -76,7 +76,8 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                     "customer_profile": "https://trusthub.twilio.com/v1/CustomerProfiles/BU3344409f7e067e279523808d267e2d85",
                     "trust_product": "https://trusthub.twilio.com/v1/TrustProducts/BU3344409f7e067e279523808d267e2d88",
                     "channel_endpoint_assignment": "https://trusthub.twilio.com/v1/TrustProducts/BU3344409f7e067e279523808d267e2d88/ChannelEndpointAssignments/RA3344409f7e067e279523808d267e2d89"
-                }
+                },
+                "external_reference_id": "abc123xyz567"
             }
             '
         ));
@@ -156,7 +157,8 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                             "customer_profile": "https://trusthub.twilio.com/v1/CustomerProfiles/BU3344409f7e067e279523808d267e2d85",
                             "trust_product": "https://trusthub.twilio.com/v1/TrustProducts/BU3344409f7e067e279523808d267e2d88",
                             "channel_endpoint_assignment": "https://trusthub.twilio.com/v1/TrustProducts/BU3344409f7e067e279523808d267e2d88/ChannelEndpointAssignments/RA3344409f7e067e279523808d267e2d89"
-                        }
+                        },
+                        "external_reference_id": "abc123xyz567"
                     }
                 ]
             }
@@ -238,7 +240,8 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                 "additional_information": "info",
                 "tollfree_phone_number_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "resource_links": {},
-                "url": "https://messaging.twilio.com/v1/Tollfree/Verifications/HHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://messaging.twilio.com/v1/Tollfree/Verifications/HHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "external_reference_id": "abc123xyz567"
             }
             '
         ));
@@ -303,7 +306,8 @@ class TollfreeVerificationTest extends HolodeckTestCase {
                 "additional_information": "info",
                 "tollfree_phone_number_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "resource_links": {},
-                "url": "https://messaging.twilio.com/v1/Tollfree/Verifications/HHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://messaging.twilio.com/v1/Tollfree/Verifications/HHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "external_reference_id": null
             }
             '
         ));

@@ -36,10 +36,13 @@ abstract class ApplicationOptions {
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
      * @param string $friendlyName A string to describe the new resource
+     * @param bool $publicApplicationConnectEnabled Whether to allow other Twilio
+     *                                              accounts to dial this
+     *                                              application
      * @return CreateApplicationOptions Options builder
      */
-    public static function create(string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE, string $friendlyName = Values::NONE): CreateApplicationOptions {
-        return new CreateApplicationOptions($apiVersion, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $statusCallback, $statusCallbackMethod, $voiceCallerIdLookup, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $smsStatusCallback, $messageStatusCallback, $friendlyName);
+    public static function create(string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE, string $friendlyName = Values::NONE, bool $publicApplicationConnectEnabled = Values::NONE): CreateApplicationOptions {
+        return new CreateApplicationOptions($apiVersion, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $statusCallback, $statusCallbackMethod, $voiceCallerIdLookup, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $smsStatusCallback, $messageStatusCallback, $friendlyName, $publicApplicationConnectEnabled);
     }
 
     /**
@@ -75,10 +78,13 @@ abstract class ApplicationOptions {
      *                                  compatibility.
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
+     * @param bool $publicApplicationConnectEnabled Whether to allow other Twilio
+     *                                              accounts to dial this
+     *                                              application
      * @return UpdateApplicationOptions Options builder
      */
-    public static function update(string $friendlyName = Values::NONE, string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE): UpdateApplicationOptions {
-        return new UpdateApplicationOptions($friendlyName, $apiVersion, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $statusCallback, $statusCallbackMethod, $voiceCallerIdLookup, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $smsStatusCallback, $messageStatusCallback);
+    public static function update(string $friendlyName = Values::NONE, string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE, bool $publicApplicationConnectEnabled = Values::NONE): UpdateApplicationOptions {
+        return new UpdateApplicationOptions($friendlyName, $apiVersion, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $statusCallback, $statusCallbackMethod, $voiceCallerIdLookup, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $smsStatusCallback, $messageStatusCallback, $publicApplicationConnectEnabled);
     }
 }
 
@@ -106,8 +112,11 @@ class CreateApplicationOptions extends Options {
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
      * @param string $friendlyName A string to describe the new resource
+     * @param bool $publicApplicationConnectEnabled Whether to allow other Twilio
+     *                                              accounts to dial this
+     *                                              application
      */
-    public function __construct(string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE, string $friendlyName = Values::NONE) {
+    public function __construct(string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE, string $friendlyName = Values::NONE, bool $publicApplicationConnectEnabled = Values::NONE) {
         $this->options['apiVersion'] = $apiVersion;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -123,6 +132,7 @@ class CreateApplicationOptions extends Options {
         $this->options['smsStatusCallback'] = $smsStatusCallback;
         $this->options['messageStatusCallback'] = $messageStatusCallback;
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['publicApplicationConnectEnabled'] = $publicApplicationConnectEnabled;
     }
 
     /**
@@ -298,6 +308,19 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
+     * Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`.
+     *
+     * @param bool $publicApplicationConnectEnabled Whether to allow other Twilio
+     *                                              accounts to dial this
+     *                                              application
+     * @return $this Fluent Builder
+     */
+    public function setPublicApplicationConnectEnabled(bool $publicApplicationConnectEnabled): self {
+        $this->options['publicApplicationConnectEnabled'] = $publicApplicationConnectEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -365,8 +388,11 @@ class UpdateApplicationOptions extends Options {
      *                                  compatibility.
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
+     * @param bool $publicApplicationConnectEnabled Whether to allow other Twilio
+     *                                              accounts to dial this
+     *                                              application
      */
-    public function __construct(string $friendlyName = Values::NONE, string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE) {
+    public function __construct(string $friendlyName = Values::NONE, string $apiVersion = Values::NONE, string $voiceUrl = Values::NONE, string $voiceMethod = Values::NONE, string $voiceFallbackUrl = Values::NONE, string $voiceFallbackMethod = Values::NONE, string $statusCallback = Values::NONE, string $statusCallbackMethod = Values::NONE, bool $voiceCallerIdLookup = Values::NONE, string $smsUrl = Values::NONE, string $smsMethod = Values::NONE, string $smsFallbackUrl = Values::NONE, string $smsFallbackMethod = Values::NONE, string $smsStatusCallback = Values::NONE, string $messageStatusCallback = Values::NONE, bool $publicApplicationConnectEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['voiceUrl'] = $voiceUrl;
@@ -382,6 +408,7 @@ class UpdateApplicationOptions extends Options {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
         $this->options['smsStatusCallback'] = $smsStatusCallback;
         $this->options['messageStatusCallback'] = $messageStatusCallback;
+        $this->options['publicApplicationConnectEnabled'] = $publicApplicationConnectEnabled;
     }
 
     /**
@@ -554,6 +581,19 @@ class UpdateApplicationOptions extends Options {
      */
     public function setMessageStatusCallback(string $messageStatusCallback): self {
         $this->options['messageStatusCallback'] = $messageStatusCallback;
+        return $this;
+    }
+
+    /**
+     * Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`.
+     *
+     * @param bool $publicApplicationConnectEnabled Whether to allow other Twilio
+     *                                              accounts to dial this
+     *                                              application
+     * @return $this Fluent Builder
+     */
+    public function setPublicApplicationConnectEnabled(bool $publicApplicationConnectEnabled): self {
+        $this->options['publicApplicationConnectEnabled'] = $publicApplicationConnectEnabled;
         return $this;
     }
 

@@ -59,6 +59,7 @@ class ApplicationList extends ListResource {
             'SmsStatusCallback' => $options['smsStatusCallback'],
             'MessageStatusCallback' => $options['messageStatusCallback'],
             'FriendlyName' => $options['friendlyName'],
+            'PublicApplicationConnectEnabled' => Serialize::booleanToString($options['publicApplicationConnectEnabled']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

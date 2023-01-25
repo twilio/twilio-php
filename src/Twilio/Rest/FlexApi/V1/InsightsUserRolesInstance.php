@@ -19,9 +19,9 @@ use Twilio\Version;
  * @property string[] $roles
  * @property string $url
  */
-class UserRolesInstance extends InstanceResource {
+class InsightsUserRolesInstance extends InstanceResource {
     /**
-     * Initialize the UserRolesInstance
+     * Initialize the InsightsUserRolesInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -42,24 +42,24 @@ class UserRolesInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return UserRolesContext Context for this UserRolesInstance
+     * @return InsightsUserRolesContext Context for this InsightsUserRolesInstance
      */
-    protected function proxy(): UserRolesContext {
+    protected function proxy(): InsightsUserRolesContext {
         if (!$this->context) {
-            $this->context = new UserRolesContext($this->version);
+            $this->context = new InsightsUserRolesContext($this->version);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch the UserRolesInstance
+     * Fetch the InsightsUserRolesInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return UserRolesInstance Fetched UserRolesInstance
+     * @return InsightsUserRolesInstance Fetched InsightsUserRolesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): UserRolesInstance {
+    public function fetch(array $options = []): InsightsUserRolesInstance {
         return $this->proxy()->fetch($options);
     }
 
@@ -93,6 +93,6 @@ class UserRolesInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.UserRolesInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsUserRolesInstance ' . \implode(' ', $context) . ']';
     }
 }

@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2023-01-25] Version 6.44.2
+---------------------------
+**Api**
+- Add `public_application_connect_enabled` param to Application resource
+
+**Messaging**
+- Add new tollfree verification API property (ExternalReferenceId)]
+
+**Verify**
+- Add `device_ip` parameter and channel `auto` for sna/sms orchestration
+
+**Twiml**
+- Add support for `<Application>` noun and `<ApplicationSid>` noun, nested `<Parameter>` to `<Hangup>` and `<Leave>` verb
+
+
 [2023-01-11] Version 6.44.1
 ---------------------------
 **Conversations**

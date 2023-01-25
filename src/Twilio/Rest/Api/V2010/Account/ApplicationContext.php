@@ -87,6 +87,7 @@ class ApplicationContext extends InstanceContext {
             'SmsFallbackMethod' => $options['smsFallbackMethod'],
             'SmsStatusCallback' => $options['smsStatusCallback'],
             'MessageStatusCallback' => $options['messageStatusCallback'],
+            'PublicApplicationConnectEnabled' => Serialize::booleanToString($options['publicApplicationConnectEnabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

@@ -15,9 +15,9 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class UserRolesContext extends InstanceContext {
+class InsightsUserRolesContext extends InstanceContext {
     /**
-     * Initialize the UserRolesContext
+     * Initialize the InsightsUserRolesContext
      *
      * @param Version $version Version that contains the resource
      */
@@ -31,20 +31,20 @@ class UserRolesContext extends InstanceContext {
     }
 
     /**
-     * Fetch the UserRolesInstance
+     * Fetch the InsightsUserRolesInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return UserRolesInstance Fetched UserRolesInstance
+     * @return InsightsUserRolesInstance Fetched InsightsUserRolesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): UserRolesInstance {
+    public function fetch(array $options = []): InsightsUserRolesInstance {
         $options = new Values($options);
 
         $headers = Values::of(['Token' => $options['token'], ]);
 
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
-        return new UserRolesInstance($this->version, $payload);
+        return new InsightsUserRolesInstance($this->version, $payload);
     }
 
     /**
@@ -57,6 +57,6 @@ class UserRolesContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.UserRolesContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsUserRolesContext ' . \implode(' ', $context) . ']';
     }
 }

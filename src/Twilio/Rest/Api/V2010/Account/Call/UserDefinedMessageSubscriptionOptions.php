@@ -51,7 +51,7 @@ class CreateUserDefinedMessageSubscriptionOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`.
+     * The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. Default is `POST`.
      *
      * @param string $method HTTP method used with the callback.
      * @return $this Fluent Builder

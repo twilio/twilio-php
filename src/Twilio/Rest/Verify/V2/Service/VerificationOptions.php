@@ -33,10 +33,11 @@ abstract class VerificationOptions {
      * @param string $templateCustomSubstitutions The values of the special
      *                                            variables declared on the message
      *                                            template.
+     * @param string $deviceIp The IP address of the client's device.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE): CreateVerificationOptions {
-        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash, $templateSid, $templateCustomSubstitutions);
+    public static function create(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE, string $deviceIp = Values::NONE): CreateVerificationOptions {
+        return new CreateVerificationOptions($customFriendlyName, $customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration, $appHash, $templateSid, $templateCustomSubstitutions, $deviceIp);
     }
 }
 
@@ -61,8 +62,9 @@ class CreateVerificationOptions extends Options {
      * @param string $templateCustomSubstitutions The values of the special
      *                                            variables declared on the message
      *                                            template.
+     * @param string $deviceIp The IP address of the client's device.
      */
-    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE) {
+    public function __construct(string $customFriendlyName = Values::NONE, string $customMessage = Values::NONE, string $sendDigits = Values::NONE, string $locale = Values::NONE, string $customCode = Values::NONE, string $amount = Values::NONE, string $payee = Values::NONE, array $rateLimits = Values::ARRAY_NONE, array $channelConfiguration = Values::ARRAY_NONE, string $appHash = Values::NONE, string $templateSid = Values::NONE, string $templateCustomSubstitutions = Values::NONE, string $deviceIp = Values::NONE) {
         $this->options['customFriendlyName'] = $customFriendlyName;
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
@@ -75,6 +77,7 @@ class CreateVerificationOptions extends Options {
         $this->options['appHash'] = $appHash;
         $this->options['templateSid'] = $templateSid;
         $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
+        $this->options['deviceIp'] = $deviceIp;
     }
 
     /**
@@ -213,6 +216,17 @@ class CreateVerificationOptions extends Options {
      */
     public function setTemplateCustomSubstitutions(string $templateCustomSubstitutions): self {
         $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
+        return $this;
+    }
+
+    /**
+     * The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     *
+     * @param string $deviceIp The IP address of the client's device.
+     * @return $this Fluent Builder
+     */
+    public function setDeviceIp(string $deviceIp): self {
+        $this->options['deviceIp'] = $deviceIp;
         return $this;
     }
 

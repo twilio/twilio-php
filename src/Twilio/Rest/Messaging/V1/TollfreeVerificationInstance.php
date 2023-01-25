@@ -50,6 +50,7 @@ use Twilio\Version;
  * @property string $status
  * @property string $url
  * @property array $resourceLinks
+ * @property string $externalReferenceId
  */
 class TollfreeVerificationInstance extends InstanceResource {
     /**
@@ -95,6 +96,7 @@ class TollfreeVerificationInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'url' => Values::array_get($payload, 'url'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
+            'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

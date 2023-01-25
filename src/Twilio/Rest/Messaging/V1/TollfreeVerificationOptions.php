@@ -56,10 +56,13 @@ abstract class TollfreeVerificationOptions {
      * @param string $businessContactPhone The phone number of the contact for the
      *                                     business or organization using the
      *                                     Tollfree number
+     * @param string $externalReferenceId An optional external reference ID
+     *                                    supplied by customer and echoed back on
+     *                                    status retrieval
      * @return CreateTollfreeVerificationOptions Options builder
      */
-    public static function create(string $customerProfileSid = Values::NONE, string $businessStreetAddress = Values::NONE, string $businessStreetAddress2 = Values::NONE, string $businessCity = Values::NONE, string $businessStateProvinceRegion = Values::NONE, string $businessPostalCode = Values::NONE, string $businessCountry = Values::NONE, string $additionalInformation = Values::NONE, string $businessContactFirstName = Values::NONE, string $businessContactLastName = Values::NONE, string $businessContactEmail = Values::NONE, string $businessContactPhone = Values::NONE): CreateTollfreeVerificationOptions {
-        return new CreateTollfreeVerificationOptions($customerProfileSid, $businessStreetAddress, $businessStreetAddress2, $businessCity, $businessStateProvinceRegion, $businessPostalCode, $businessCountry, $additionalInformation, $businessContactFirstName, $businessContactLastName, $businessContactEmail, $businessContactPhone);
+    public static function create(string $customerProfileSid = Values::NONE, string $businessStreetAddress = Values::NONE, string $businessStreetAddress2 = Values::NONE, string $businessCity = Values::NONE, string $businessStateProvinceRegion = Values::NONE, string $businessPostalCode = Values::NONE, string $businessCountry = Values::NONE, string $additionalInformation = Values::NONE, string $businessContactFirstName = Values::NONE, string $businessContactLastName = Values::NONE, string $businessContactEmail = Values::NONE, string $businessContactPhone = Values::NONE, string $externalReferenceId = Values::NONE): CreateTollfreeVerificationOptions {
+        return new CreateTollfreeVerificationOptions($customerProfileSid, $businessStreetAddress, $businessStreetAddress2, $businessCity, $businessStateProvinceRegion, $businessPostalCode, $businessCountry, $additionalInformation, $businessContactFirstName, $businessContactLastName, $businessContactEmail, $businessContactPhone, $externalReferenceId);
     }
 
     /**
@@ -193,8 +196,11 @@ class CreateTollfreeVerificationOptions extends Options {
      * @param string $businessContactPhone The phone number of the contact for the
      *                                     business or organization using the
      *                                     Tollfree number
+     * @param string $externalReferenceId An optional external reference ID
+     *                                    supplied by customer and echoed back on
+     *                                    status retrieval
      */
-    public function __construct(string $customerProfileSid = Values::NONE, string $businessStreetAddress = Values::NONE, string $businessStreetAddress2 = Values::NONE, string $businessCity = Values::NONE, string $businessStateProvinceRegion = Values::NONE, string $businessPostalCode = Values::NONE, string $businessCountry = Values::NONE, string $additionalInformation = Values::NONE, string $businessContactFirstName = Values::NONE, string $businessContactLastName = Values::NONE, string $businessContactEmail = Values::NONE, string $businessContactPhone = Values::NONE) {
+    public function __construct(string $customerProfileSid = Values::NONE, string $businessStreetAddress = Values::NONE, string $businessStreetAddress2 = Values::NONE, string $businessCity = Values::NONE, string $businessStateProvinceRegion = Values::NONE, string $businessPostalCode = Values::NONE, string $businessCountry = Values::NONE, string $additionalInformation = Values::NONE, string $businessContactFirstName = Values::NONE, string $businessContactLastName = Values::NONE, string $businessContactEmail = Values::NONE, string $businessContactPhone = Values::NONE, string $externalReferenceId = Values::NONE) {
         $this->options['customerProfileSid'] = $customerProfileSid;
         $this->options['businessStreetAddress'] = $businessStreetAddress;
         $this->options['businessStreetAddress2'] = $businessStreetAddress2;
@@ -207,6 +213,7 @@ class CreateTollfreeVerificationOptions extends Options {
         $this->options['businessContactLastName'] = $businessContactLastName;
         $this->options['businessContactEmail'] = $businessContactEmail;
         $this->options['businessContactPhone'] = $businessContactPhone;
+        $this->options['externalReferenceId'] = $externalReferenceId;
     }
 
     /**
@@ -354,6 +361,19 @@ class CreateTollfreeVerificationOptions extends Options {
      */
     public function setBusinessContactPhone(string $businessContactPhone): self {
         $this->options['businessContactPhone'] = $businessContactPhone;
+        return $this;
+    }
+
+    /**
+     * An optional external reference ID supplied by customer and echoed back on status retrieval.
+     *
+     * @param string $externalReferenceId An optional external reference ID
+     *                                    supplied by customer and echoed back on
+     *                                    status retrieval
+     * @return $this Fluent Builder
+     */
+    public function setExternalReferenceId(string $externalReferenceId): self {
+        $this->options['externalReferenceId'] = $externalReferenceId;
         return $this;
     }
 

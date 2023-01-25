@@ -15,9 +15,9 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class GoodDataContext extends InstanceContext {
+class InsightsSessionContext extends InstanceContext {
     /**
-     * Initialize the GoodDataContext
+     * Initialize the InsightsSessionContext
      *
      * @param Version $version Version that contains the resource
      */
@@ -31,20 +31,20 @@ class GoodDataContext extends InstanceContext {
     }
 
     /**
-     * Create the GoodDataInstance
+     * Create the InsightsSessionInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return GoodDataInstance Created GoodDataInstance
+     * @return InsightsSessionInstance Created InsightsSessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): GoodDataInstance {
+    public function create(array $options = []): InsightsSessionInstance {
         $options = new Values($options);
 
         $headers = Values::of(['Token' => $options['token'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
-        return new GoodDataInstance($this->version, $payload);
+        return new InsightsSessionInstance($this->version, $payload);
     }
 
     /**
@@ -57,6 +57,6 @@ class GoodDataContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.GoodDataContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsSessionContext ' . \implode(' ', $context) . ']';
     }
 }

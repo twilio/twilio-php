@@ -13,7 +13,10 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class UserRolesPage extends Page {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class InsightsSettingsAnswerSetsPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,10 +31,10 @@ class UserRolesPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return UserRolesInstance \Twilio\Rest\FlexApi\V1\UserRolesInstance
+     * @return InsightsSettingsAnswerSetsInstance \Twilio\Rest\FlexApi\V1\InsightsSettingsAnswerSetsInstance
      */
-    public function buildInstance(array $payload): UserRolesInstance {
-        return new UserRolesInstance($this->version, $payload);
+    public function buildInstance(array $payload): InsightsSettingsAnswerSetsInstance {
+        return new InsightsSettingsAnswerSetsInstance($this->version, $payload);
     }
 
     /**
@@ -40,6 +43,6 @@ class UserRolesPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.FlexApi.V1.UserRolesPage]';
+        return '[Twilio.FlexApi.V1.InsightsSettingsAnswerSetsPage]';
     }
 }

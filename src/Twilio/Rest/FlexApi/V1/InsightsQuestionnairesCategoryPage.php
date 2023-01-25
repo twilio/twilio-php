@@ -13,7 +13,10 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class GoodDataPage extends Page {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class InsightsQuestionnairesCategoryPage extends Page {
     /**
      * @param Version $version Version that contains the resource
      * @param Response $response Response from the API
@@ -28,10 +31,10 @@ class GoodDataPage extends Page {
 
     /**
      * @param array $payload Payload response from the API
-     * @return GoodDataInstance \Twilio\Rest\FlexApi\V1\GoodDataInstance
+     * @return InsightsQuestionnairesCategoryInstance \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryInstance
      */
-    public function buildInstance(array $payload): GoodDataInstance {
-        return new GoodDataInstance($this->version, $payload);
+    public function buildInstance(array $payload): InsightsQuestionnairesCategoryInstance {
+        return new InsightsQuestionnairesCategoryInstance($this->version, $payload);
     }
 
     /**
@@ -40,6 +43,6 @@ class GoodDataPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.FlexApi.V1.GoodDataPage]';
+        return '[Twilio.FlexApi.V1.InsightsQuestionnairesCategoryPage]';
     }
 }

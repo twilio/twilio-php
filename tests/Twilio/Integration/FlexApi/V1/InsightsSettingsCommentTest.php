@@ -15,14 +15,14 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class UserRolesTest extends HolodeckTestCase {
+class InsightsSettingsCommentTest extends HolodeckTestCase {
     public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         $options = ['token' => "token", ];
 
         try {
-            $this->twilio->flexApi->v1->userRoles()->fetch($options);
+            $this->twilio->flexApi->v1->insightsSettingsComment->fetch($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -30,27 +30,33 @@ class UserRolesTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://flex-api.twilio.com/v1/Insights/UserRoles',
+            'https://flex-api.twilio.com/v1/Insights/QM/Settings/CommentTags',
             [],
             [],
             $headers
         ));
     }
 
-    public function testFetchResponse(): void {
+    public function testReadResponse(): void {
         $this->holodeck->mock(new Response(
             200,
             '
             {
-                "roles": [
-                    "wfo.full_access"
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "comments": [
+                    {
+                        "default": false,
+                        "id": "4c5ba39a-e192-4c5d-a41c-b765a833665b",
+                        "name": "Good",
+                        "sort": 0
+                    }
                 ],
-                "url": "https://flex-api.twilio.com/v1/Insights/UserRoles"
+                "url": "https://flex-api.twilio.com/v1/Insights/QM/Settings/CommentTags"
             }
             '
         ));
 
-        $actual = $this->twilio->flexApi->v1->userRoles()->fetch();
+        $actual = $this->twilio->flexApi->v1->insightsSettingsComment->fetch();
 
         $this->assertNotNull($actual);
     }

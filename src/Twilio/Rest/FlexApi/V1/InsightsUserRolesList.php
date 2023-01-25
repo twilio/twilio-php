@@ -12,9 +12,9 @@ namespace Twilio\Rest\FlexApi\V1;
 use Twilio\ListResource;
 use Twilio\Version;
 
-class UserRolesList extends ListResource {
+class InsightsUserRolesList extends ListResource {
     /**
-     * Construct the UserRolesList
+     * Construct the InsightsUserRolesList
      *
      * @param Version $version Version that contains the resource
      */
@@ -26,10 +26,10 @@ class UserRolesList extends ListResource {
     }
 
     /**
-     * Constructs a UserRolesContext
+     * Constructs a InsightsUserRolesContext
      */
-    public function getContext(): UserRolesContext {
-        return new UserRolesContext($this->version);
+    public function getContext(): InsightsUserRolesContext {
+        return new InsightsUserRolesContext($this->version);
     }
 
     /**
@@ -38,6 +38,6 @@ class UserRolesList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.FlexApi.V1.UserRolesList]';
+        return '[Twilio.FlexApi.V1.InsightsUserRolesList]';
     }
 }

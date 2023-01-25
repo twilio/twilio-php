@@ -60,6 +60,7 @@ class WorkspaceTest extends HolodeckTestCase {
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_operating_unit_sid": "OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -114,6 +115,7 @@ class WorkspaceTest extends HolodeckTestCase {
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_operating_unit_sid": "OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -179,6 +181,7 @@ class WorkspaceTest extends HolodeckTestCase {
                         "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "timeout_activity_name": "Offline",
                         "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "default_operating_unit_sid": "OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ]
@@ -263,6 +266,7 @@ class WorkspaceTest extends HolodeckTestCase {
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_operating_unit_sid": "OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '

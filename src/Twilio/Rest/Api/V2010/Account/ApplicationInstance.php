@@ -37,6 +37,7 @@ use Twilio\Version;
  * @property string $voiceFallbackUrl
  * @property string $voiceMethod
  * @property string $voiceUrl
+ * @property bool $publicApplicationConnectEnabled
  */
 class ApplicationInstance extends InstanceResource {
     /**
@@ -72,6 +73,7 @@ class ApplicationInstance extends InstanceResource {
             'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
             'voiceMethod' => Values::array_get($payload, 'voice_method'),
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
+            'publicApplicationConnectEnabled' => Values::array_get($payload, 'public_application_connect_enabled'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

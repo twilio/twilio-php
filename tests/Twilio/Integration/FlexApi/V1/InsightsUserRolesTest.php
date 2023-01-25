@@ -15,43 +15,42 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class GoodDataTest extends HolodeckTestCase {
-    public function testCreateRequest(): void {
+class InsightsUserRolesTest extends HolodeckTestCase {
+    public function testFetchRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
         $options = ['token' => "token", ];
 
         try {
-            $this->twilio->flexApi->v1->goodData()->create($options);
+            $this->twilio->flexApi->v1->insightsUserRoles()->fetch($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $headers = ['Token' => "token", ];
 
         $this->assertRequest(new Request(
-            'post',
-            'https://flex-api.twilio.com/v1/Insights/Session',
+            'get',
+            'https://flex-api.twilio.com/v1/Insights/UserRoles',
             [],
             [],
             $headers
         ));
     }
 
-    public function testCreateResponse(): void {
+    public function testFetchResponse(): void {
         $this->holodeck->mock(new Response(
-            201,
+            200,
             '
             {
-                "session_expiry": "2022-09-27T09:28:01Z",
-                "workspace_id": "clbi1eelh1x8z4.......ijpnyu",
-                "session_id": "-----BEGIN PGP MESSAGE-----\n\nwcBMA11tX1FL13rp\u2026\u2026kHXd\n=vOBk\n-----END PGP MESSAGE-----\n",
-                "base_url": "https://analytics.ytica.com/",
-                "url": "https://flex-api.twilio.com/v1/Insights/Session"
+                "roles": [
+                    "wfo.full_access"
+                ],
+                "url": "https://flex-api.twilio.com/v1/Insights/UserRoles"
             }
             '
         ));
 
-        $actual = $this->twilio->flexApi->v1->goodData()->create();
+        $actual = $this->twilio->flexApi->v1->insightsUserRoles()->fetch();
 
         $this->assertNotNull($actual);
     }

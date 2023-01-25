@@ -18,4 +18,14 @@ class Hangup extends TwiML {
     public function __construct() {
         parent::__construct('Hangup', null);
     }
+
+    /**
+     * Add Parameter child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Parameter Child element.
+     */
+    public function parameter($attributes = []): Parameter {
+        return $this->nest(new Parameter($attributes));
+    }
 }
