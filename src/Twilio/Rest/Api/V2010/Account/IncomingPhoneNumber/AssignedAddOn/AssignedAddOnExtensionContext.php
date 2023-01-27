@@ -39,8 +39,7 @@ class AssignedAddOnExtensionContext extends InstanceContext
         $resourceSid,
         $assignedAddOnSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +78,7 @@ class AssignedAddOnExtensionContext extends InstanceContext
             $this->solution['accountSid'],
             $this->solution['resourceSid'],
             $this->solution['assignedAddOnSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

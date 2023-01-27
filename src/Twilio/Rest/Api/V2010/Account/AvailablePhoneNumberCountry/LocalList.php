@@ -35,11 +35,9 @@ class LocalList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $countryCode
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

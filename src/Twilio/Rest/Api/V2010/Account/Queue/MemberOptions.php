@@ -50,8 +50,7 @@ class UpdateMemberOptions extends Options
         
         string $method = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['method'] = $method;
     }
 

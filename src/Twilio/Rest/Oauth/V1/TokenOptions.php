@@ -71,8 +71,7 @@ class CreateTokenOptions extends Options
         string $refreshToken = Values::NONE,
         string $deviceId = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['clientSecret'] = $clientSecret;
         $this->options['code'] = $code;
         $this->options['codeVerifier'] = $codeVerifier;

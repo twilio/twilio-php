@@ -67,8 +67,7 @@ class CreateQueueOptions extends Options
         
         int $maxSize = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['maxSize'] = $maxSize;
     }
 
@@ -110,8 +109,7 @@ class UpdateQueueOptions extends Options
         string $friendlyName = Values::NONE,
         int $maxSize = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['maxSize'] = $maxSize;
     }

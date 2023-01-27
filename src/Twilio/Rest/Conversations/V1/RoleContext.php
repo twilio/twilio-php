@@ -35,8 +35,7 @@ class RoleContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class RoleContext extends InstanceContext
         return new RoleInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -101,7 +100,7 @@ class RoleContext extends InstanceContext
         return new RoleInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

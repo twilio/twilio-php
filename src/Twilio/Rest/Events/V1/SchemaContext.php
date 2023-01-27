@@ -41,8 +41,7 @@ class SchemaContext extends InstanceContext
     public function __construct(
         Version $version,
         $id
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class SchemaContext extends InstanceContext
         return new SchemaInstance(
             $this->version,
             $payload,
-            $this->solution['id'],
+            $this->solution['id']
         );
     }
 
@@ -82,7 +81,7 @@ class SchemaContext extends InstanceContext
         if (!$this->_versions) {
             $this->_versions = new SchemaVersionList(
                 $this->version,
-                $this->solution['id'],
+                $this->solution['id']
             );
         }
 

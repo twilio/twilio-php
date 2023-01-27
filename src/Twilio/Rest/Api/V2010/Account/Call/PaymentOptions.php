@@ -129,8 +129,7 @@ class CreatePaymentOptions extends Options
         string $tokenType = Values::NONE,
         string $validCardTypes = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['bankAccountType'] = $bankAccountType;
         $this->options['chargeAmount'] = $chargeAmount;
         $this->options['currency'] = $currency;
@@ -332,8 +331,7 @@ class UpdatePaymentOptions extends Options
         string $capture = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['capture'] = $capture;
         $this->options['status'] = $status;
     }

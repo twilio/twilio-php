@@ -81,8 +81,7 @@ class CreatePlayerStreamerOptions extends Options
         string $statusCallbackMethod = Values::NONE,
         int $maxDuration = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['video'] = $video;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
@@ -161,8 +160,7 @@ class ReadPlayerStreamerOptions extends Options
         string $order = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['order'] = $order;
         $this->options['status'] = $status;
     }

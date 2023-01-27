@@ -49,8 +49,7 @@ class IncomingPhoneNumberList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -132,7 +131,7 @@ class IncomingPhoneNumberList extends ListResource
         return new IncomingPhoneNumberInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 
@@ -267,7 +266,6 @@ class IncomingPhoneNumberList extends ListResource
             $this->_tollFree = new TollFreeList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_tollFree;
@@ -282,7 +280,6 @@ class IncomingPhoneNumberList extends ListResource
             $this->_local = new LocalList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_local;
@@ -297,7 +294,6 @@ class IncomingPhoneNumberList extends ListResource
             $this->_mobile = new MobileList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_mobile;

@@ -42,11 +42,9 @@ class AuthTypesList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $domainSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -68,10 +66,8 @@ class AuthTypesList extends ListResource
         if (!$this->_calls) {
             $this->_calls = new AuthTypeCallsList(
                 $this->version,
-                $this->solution['accountSid']
-                ,
+                $this->solution['accountSid'],
                 $this->solution['domainSid']
-                
             );
         }
         return $this->_calls;
@@ -85,10 +81,8 @@ class AuthTypesList extends ListResource
         if (!$this->_registrations) {
             $this->_registrations = new AuthTypeRegistrationsList(
                 $this->version,
-                $this->solution['accountSid']
-                ,
+                $this->solution['accountSid'],
                 $this->solution['domainSid']
-                
             );
         }
         return $this->_registrations;

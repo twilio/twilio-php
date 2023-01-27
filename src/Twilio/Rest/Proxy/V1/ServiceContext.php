@@ -51,8 +51,7 @@ class ServiceContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -133,7 +132,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -146,7 +145,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_phoneNumbers) {
             $this->_phoneNumbers = new PhoneNumberList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -161,7 +160,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_shortCodes) {
             $this->_shortCodes = new ShortCodeList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -176,7 +175,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_sessions) {
             $this->_sessions = new SessionList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

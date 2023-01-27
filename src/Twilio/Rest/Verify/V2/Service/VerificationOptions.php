@@ -108,8 +108,7 @@ class CreateVerificationOptions extends Options
         string $templateCustomSubstitutions = Values::NONE,
         string $deviceIp = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['customFriendlyName'] = $customFriendlyName;
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;

@@ -35,8 +35,7 @@ class RoleList extends ListResource
     public function __construct(
         Version $version,
         string $chatServiceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class RoleList extends ListResource
         return new RoleInstance(
             $this->version,
             $payload,
-            $this->solution['chatServiceSid'],
+            $this->solution['chatServiceSid']
         );
     }
 

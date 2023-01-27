@@ -42,8 +42,7 @@ class PlayerStreamerContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -70,7 +69,7 @@ class PlayerStreamerContext extends InstanceContext
         return new PlayerStreamerInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -95,7 +94,7 @@ class PlayerStreamerContext extends InstanceContext
         return new PlayerStreamerInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -108,7 +107,7 @@ class PlayerStreamerContext extends InstanceContext
         if (!$this->_playbackGrant) {
             $this->_playbackGrant = new PlaybackGrantList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -31,8 +31,7 @@ class CallSummaryList extends ListResource
     public function __construct(
         Version $version,
         string $callSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

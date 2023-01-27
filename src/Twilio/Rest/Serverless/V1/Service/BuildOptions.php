@@ -65,8 +65,7 @@ class CreateBuildOptions extends Options
         string $dependencies = Values::NONE,
         string $runtime = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['assetVersions'] = $assetVersions;
         $this->options['functionVersions'] = $functionVersions;
         $this->options['dependencies'] = $dependencies;

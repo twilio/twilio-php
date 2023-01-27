@@ -88,8 +88,7 @@ class CreateServiceOptions extends Options
         bool $reachabilityWebhooksEnabled = Values::NONE,
         bool $aclEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
@@ -174,8 +173,7 @@ class UpdateServiceOptions extends Options
         bool $reachabilityWebhooksEnabled = Values::NONE,
         bool $aclEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;

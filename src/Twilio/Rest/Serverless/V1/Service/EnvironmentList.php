@@ -35,8 +35,7 @@ class EnvironmentList extends ListResource
     public function __construct(
         Version $version,
         string $serviceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -75,7 +74,7 @@ class EnvironmentList extends ListResource
         return new EnvironmentInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
+            $this->solution['serviceSid']
         );
     }
 

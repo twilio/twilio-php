@@ -33,8 +33,7 @@ class ChannelContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -74,7 +73,7 @@ class ChannelContext extends InstanceContext
         return new ChannelInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

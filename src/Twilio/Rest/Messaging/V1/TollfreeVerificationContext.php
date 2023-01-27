@@ -36,8 +36,7 @@ class TollfreeVerificationContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class TollfreeVerificationContext extends InstanceContext
         return new TollfreeVerificationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -129,7 +128,7 @@ class TollfreeVerificationContext extends InstanceContext
         return new TollfreeVerificationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -36,8 +36,7 @@ class TaskChannelList extends ListResource
     public function __construct(
         Version $version,
         string $workspaceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +78,7 @@ class TaskChannelList extends ListResource
         return new TaskChannelInstance(
             $this->version,
             $payload,
-            $this->solution['workspaceSid'],
+            $this->solution['workspaceSid']
         );
     }
 

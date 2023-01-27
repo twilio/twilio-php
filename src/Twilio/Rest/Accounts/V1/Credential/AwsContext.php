@@ -35,8 +35,7 @@ class AwsContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class AwsContext extends InstanceContext
         return new AwsInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -103,7 +102,7 @@ class AwsContext extends InstanceContext
         return new AwsInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

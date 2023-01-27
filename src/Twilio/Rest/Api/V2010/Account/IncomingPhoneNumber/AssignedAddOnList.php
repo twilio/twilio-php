@@ -34,11 +34,9 @@ class AssignedAddOnList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $resourceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +75,7 @@ class AssignedAddOnList extends ListResource
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['resourceSid'],
+            $this->solution['resourceSid']
         );
     }
 

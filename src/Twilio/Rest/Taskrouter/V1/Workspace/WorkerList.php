@@ -43,8 +43,7 @@ class WorkerList extends ListResource
     public function __construct(
         Version $version,
         string $workspaceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -85,7 +84,7 @@ class WorkerList extends ListResource
         return new WorkerInstance(
             $this->version,
             $payload,
-            $this->solution['workspaceSid'],
+            $this->solution['workspaceSid']
         );
     }
 
@@ -228,7 +227,6 @@ class WorkerList extends ListResource
             $this->_statistics = new WorkersStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid']
-                
             );
         }
         return $this->_statistics;

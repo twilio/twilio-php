@@ -35,8 +35,7 @@ class BindingContext extends InstanceContext
         Version $version,
         $chatServiceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class BindingContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['chatServiceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

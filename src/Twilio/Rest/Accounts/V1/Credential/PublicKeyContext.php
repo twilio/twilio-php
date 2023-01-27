@@ -35,8 +35,7 @@ class PublicKeyContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class PublicKeyContext extends InstanceContext
         return new PublicKeyInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -103,7 +102,7 @@ class PublicKeyContext extends InstanceContext
         return new PublicKeyInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

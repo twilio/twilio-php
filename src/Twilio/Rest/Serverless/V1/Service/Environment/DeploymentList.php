@@ -35,11 +35,9 @@ class DeploymentList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $environmentSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +78,7 @@ class DeploymentList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['environmentSid'],
+            $this->solution['environmentSid']
         );
     }
 

@@ -31,8 +31,7 @@ class RecordingList extends ListResource
     public function __construct(
         Version $version,
         string $trunkSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

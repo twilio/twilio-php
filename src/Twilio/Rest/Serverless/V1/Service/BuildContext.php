@@ -43,8 +43,7 @@ class BuildContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class BuildContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -102,7 +101,7 @@ class BuildContext extends InstanceContext
             $this->_buildStatus = new BuildStatusList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

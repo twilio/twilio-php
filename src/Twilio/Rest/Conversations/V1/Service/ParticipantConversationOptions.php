@@ -51,8 +51,7 @@ class ReadParticipantConversationOptions extends Options
         string $identity = Values::NONE,
         string $address = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['identity'] = $identity;
         $this->options['address'] = $address;
     }

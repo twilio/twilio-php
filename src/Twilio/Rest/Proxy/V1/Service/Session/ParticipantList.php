@@ -35,11 +35,9 @@ class ParticipantList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $sessionSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -87,7 +85,7 @@ class ParticipantList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sessionSid'],
+            $this->solution['sessionSid']
         );
     }
 

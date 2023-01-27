@@ -61,8 +61,7 @@ class FetchWorkerStatisticsOptions extends Options
         \DateTime $endDate = Values::NONE,
         string $taskChannel = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;

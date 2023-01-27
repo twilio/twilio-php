@@ -73,8 +73,7 @@ class ReadEventOptions extends Options
         \DateTime $startDate = Values::NONE,
         \DateTime $endDate = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['actorSid'] = $actorSid;
         $this->options['eventType'] = $eventType;
         $this->options['resourceSid'] = $resourceSid;

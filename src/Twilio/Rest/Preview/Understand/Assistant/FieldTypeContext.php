@@ -45,8 +45,7 @@ class FieldTypeContext extends InstanceContext
         Version $version,
         $assistantSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -90,7 +89,7 @@ class FieldTypeContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -120,7 +119,7 @@ class FieldTypeContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -134,7 +133,7 @@ class FieldTypeContext extends InstanceContext
             $this->_fieldValues = new FieldValueList(
                 $this->version,
                 $this->solution['assistantSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

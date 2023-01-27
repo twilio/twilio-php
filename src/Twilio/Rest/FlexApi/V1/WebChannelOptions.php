@@ -72,8 +72,7 @@ class CreateWebChannelOptions extends Options
         string $chatUniqueName = Values::NONE,
         string $preEngagementData = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['chatUniqueName'] = $chatUniqueName;
         $this->options['preEngagementData'] = $preEngagementData;
     }
@@ -128,8 +127,7 @@ class UpdateWebChannelOptions extends Options
         string $chatStatus = Values::NONE,
         string $postEngagementData = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['chatStatus'] = $chatStatus;
         $this->options['postEngagementData'] = $postEngagementData;
     }

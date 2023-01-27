@@ -81,8 +81,7 @@ class CreateWebhookOptions extends Options
         string $status = Values::NONE,
         string $version = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['version'] = $version;
     }
@@ -139,8 +138,7 @@ class UpdateWebhookOptions extends Options
         string $status = Values::NONE,
         string $version = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['eventTypes'] = $eventTypes;
         $this->options['webhookUrl'] = $webhookUrl;

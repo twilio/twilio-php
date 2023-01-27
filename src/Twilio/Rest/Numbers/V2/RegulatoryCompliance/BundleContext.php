@@ -53,8 +53,7 @@ class BundleContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -94,7 +93,7 @@ class BundleContext extends InstanceContext
         return new BundleInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -127,7 +126,7 @@ class BundleContext extends InstanceContext
         return new BundleInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -140,7 +139,7 @@ class BundleContext extends InstanceContext
         if (!$this->_bundleCopies) {
             $this->_bundleCopies = new BundleCopyList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -155,7 +154,7 @@ class BundleContext extends InstanceContext
         if (!$this->_replaceItems) {
             $this->_replaceItems = new ReplaceItemsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -170,7 +169,7 @@ class BundleContext extends InstanceContext
         if (!$this->_evaluations) {
             $this->_evaluations = new EvaluationList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -185,7 +184,7 @@ class BundleContext extends InstanceContext
         if (!$this->_itemAssignments) {
             $this->_itemAssignments = new ItemAssignmentList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

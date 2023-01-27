@@ -31,8 +31,7 @@ class OauthContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +54,7 @@ class OauthContext extends InstanceContext
 
         return new OauthInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

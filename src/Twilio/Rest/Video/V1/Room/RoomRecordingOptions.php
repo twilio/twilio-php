@@ -65,8 +65,7 @@ class ReadRoomRecordingOptions extends Options
         \DateTime $dateCreatedAfter = Values::NONE,
         \DateTime $dateCreatedBefore = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;

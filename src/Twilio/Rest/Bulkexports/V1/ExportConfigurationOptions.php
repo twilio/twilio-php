@@ -58,8 +58,7 @@ class UpdateExportConfigurationOptions extends Options
         string $webhookUrl = Values::NONE,
         string $webhookMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['enabled'] = $enabled;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['webhookMethod'] = $webhookMethod;

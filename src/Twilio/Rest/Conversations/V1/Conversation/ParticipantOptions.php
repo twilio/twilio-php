@@ -145,8 +145,7 @@ class CreateParticipantOptions extends Options
         string $roleSid = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['identity'] = $identity;
         $this->options['messagingBindingAddress'] = $messagingBindingAddress;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
@@ -287,8 +286,7 @@ class DeleteParticipantOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -345,8 +343,7 @@ class UpdateParticipantOptions extends Options
         string $lastReadTimestamp = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;

@@ -35,8 +35,7 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
     public function __construct(
         Version $version,
         $categoryId
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
         return new InsightsQuestionnairesCategoryInstance(
             $this->version,
             $payload,
-            $this->solution['categoryId'],
+            $this->solution['categoryId']
         );
     }
 

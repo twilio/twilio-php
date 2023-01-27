@@ -39,8 +39,7 @@ class PaymentContext extends InstanceContext
         $accountSid,
         $callSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -91,7 +90,7 @@ class PaymentContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['callSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

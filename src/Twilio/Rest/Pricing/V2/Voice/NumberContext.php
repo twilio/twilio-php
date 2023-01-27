@@ -35,8 +35,7 @@ class NumberContext extends InstanceContext
     public function __construct(
         Version $version,
         $destinationNumber
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +70,7 @@ class NumberContext extends InstanceContext
         return new NumberInstance(
             $this->version,
             $payload,
-            $this->solution['destinationNumber'],
+            $this->solution['destinationNumber']
         );
     }
 

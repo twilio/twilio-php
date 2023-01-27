@@ -70,8 +70,7 @@ class CreateSyncStreamOptions extends Options
         string $uniqueName = Values::NONE,
         int $ttl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
     }
@@ -124,8 +123,7 @@ class UpdateSyncStreamOptions extends Options
         
         int $ttl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ttl'] = $ttl;
     }
 

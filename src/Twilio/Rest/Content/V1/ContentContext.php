@@ -41,8 +41,7 @@ class ContentContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class ContentContext extends InstanceContext
         return new ContentInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -95,7 +94,7 @@ class ContentContext extends InstanceContext
         if (!$this->_approvalFetch) {
             $this->_approvalFetch = new ApprovalFetchList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

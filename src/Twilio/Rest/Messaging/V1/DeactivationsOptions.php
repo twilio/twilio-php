@@ -46,8 +46,7 @@ class FetchDeactivationsOptions extends Options
         
         \DateTime $date = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['date'] = $date;
     }
 

@@ -67,8 +67,7 @@ class CreateTaskChannelOptions extends Options
         
         bool $channelOptimizedRouting = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
     }
 
@@ -110,8 +109,7 @@ class UpdateTaskChannelOptions extends Options
         string $friendlyName = Values::NONE,
         bool $channelOptimizedRouting = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
     }

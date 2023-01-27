@@ -72,8 +72,7 @@ class CreateInstalledAddOnOptions extends Options
         array $configuration = Values::ARRAY_NONE,
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['configuration'] = $configuration;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -128,8 +127,7 @@ class UpdateInstalledAddOnOptions extends Options
         array $configuration = Values::ARRAY_NONE,
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['configuration'] = $configuration;
         $this->options['uniqueName'] = $uniqueName;
     }

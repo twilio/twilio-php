@@ -33,8 +33,7 @@ class InteractionChannelList extends ListResource
     public function __construct(
         Version $version,
         string $interactionSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

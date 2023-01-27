@@ -35,8 +35,7 @@ class CallSummaryContext extends InstanceContext
     public function __construct(
         Version $version,
         $callSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +70,7 @@ class CallSummaryContext extends InstanceContext
         return new CallSummaryInstance(
             $this->version,
             $payload,
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 

@@ -35,8 +35,7 @@ class TrustProductsChannelEndpointAssignmentList extends ListResource
     public function __construct(
         Version $version,
         string $trustProductSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class TrustProductsChannelEndpointAssignmentList extends ListResource
         return new TrustProductsChannelEndpointAssignmentInstance(
             $this->version,
             $payload,
-            $this->solution['trustProductSid'],
+            $this->solution['trustProductSid']
         );
     }
 

@@ -78,8 +78,7 @@ class FetchRecordingOptions extends Options
         
         bool $includeSoftDeleted = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['includeSoftDeleted'] = $includeSoftDeleted;
     }
 
@@ -126,8 +125,7 @@ class ReadRecordingOptions extends Options
         string $conferenceSid = Values::NONE,
         bool $includeSoftDeleted = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;

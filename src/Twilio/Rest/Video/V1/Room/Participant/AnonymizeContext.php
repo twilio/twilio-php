@@ -35,8 +35,7 @@ class AnonymizeContext extends InstanceContext
         Version $version,
         $roomSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class AnonymizeContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

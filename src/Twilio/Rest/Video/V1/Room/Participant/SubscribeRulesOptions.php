@@ -48,8 +48,7 @@ class UpdateSubscribeRulesOptions extends Options
         
         array $rules = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['rules'] = $rules;
     }
 

@@ -104,8 +104,7 @@ class ReadConferenceOptions extends Options
         string $friendlyName = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -237,8 +236,7 @@ class UpdateConferenceOptions extends Options
         string $announceUrl = Values::NONE,
         string $announceMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['announceUrl'] = $announceUrl;
         $this->options['announceMethod'] = $announceMethod;

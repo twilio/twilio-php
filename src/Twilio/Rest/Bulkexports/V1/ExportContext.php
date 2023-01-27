@@ -44,8 +44,7 @@ class ExportContext extends InstanceContext
     public function __construct(
         Version $version,
         $resourceType
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -72,7 +71,7 @@ class ExportContext extends InstanceContext
         return new ExportInstance(
             $this->version,
             $payload,
-            $this->solution['resourceType'],
+            $this->solution['resourceType']
         );
     }
 
@@ -85,7 +84,7 @@ class ExportContext extends InstanceContext
         if (!$this->_exportCustomJobs) {
             $this->_exportCustomJobs = new ExportCustomJobList(
                 $this->version,
-                $this->solution['resourceType'],
+                $this->solution['resourceType']
             );
         }
 
@@ -100,7 +99,7 @@ class ExportContext extends InstanceContext
         if (!$this->_days) {
             $this->_days = new DayList(
                 $this->version,
-                $this->solution['resourceType'],
+                $this->solution['resourceType']
             );
         }
 

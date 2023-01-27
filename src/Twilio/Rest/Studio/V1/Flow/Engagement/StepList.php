@@ -33,11 +33,9 @@ class StepList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $flowSid
-        ,
+        string $flowSid,
         string $engagementSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

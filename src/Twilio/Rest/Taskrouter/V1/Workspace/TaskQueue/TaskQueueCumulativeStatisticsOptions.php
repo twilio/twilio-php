@@ -66,8 +66,7 @@ class FetchTaskQueueCumulativeStatisticsOptions extends Options
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['endDate'] = $endDate;
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;

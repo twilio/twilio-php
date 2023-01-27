@@ -48,8 +48,7 @@ class MessageContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -93,7 +92,7 @@ class MessageContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -123,7 +122,7 @@ class MessageContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -137,7 +136,7 @@ class MessageContext extends InstanceContext
             $this->_feedback = new FeedbackList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -153,7 +152,7 @@ class MessageContext extends InstanceContext
             $this->_media = new MediaList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

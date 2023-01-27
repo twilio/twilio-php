@@ -109,8 +109,7 @@ class CreateRecordingOptions extends Options
         string $recordingChannels = Values::NONE,
         string $recordingTrack = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
@@ -218,8 +217,7 @@ class ReadRecordingOptions extends Options
         string $dateCreated = Values::NONE,
         string $dateCreatedAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -282,8 +280,7 @@ class UpdateRecordingOptions extends Options
         
         string $pauseBehavior = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['pauseBehavior'] = $pauseBehavior;
     }
 

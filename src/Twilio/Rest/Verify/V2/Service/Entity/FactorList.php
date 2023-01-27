@@ -33,11 +33,9 @@ class FactorList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $identity
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

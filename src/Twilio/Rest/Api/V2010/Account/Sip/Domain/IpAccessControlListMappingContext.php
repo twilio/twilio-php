@@ -37,8 +37,7 @@ class IpAccessControlListMappingContext extends InstanceContext
         $accountSid,
         $domainSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class IpAccessControlListMappingContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['domainSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

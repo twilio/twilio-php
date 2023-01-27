@@ -31,8 +31,7 @@ class UserInfoContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +54,7 @@ class UserInfoContext extends InstanceContext
 
         return new UserInfoInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

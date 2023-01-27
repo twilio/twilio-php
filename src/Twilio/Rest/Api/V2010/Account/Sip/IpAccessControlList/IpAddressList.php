@@ -35,11 +35,9 @@ class IpAddressList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $ipAccessControlListSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +84,7 @@ class IpAddressList extends ListResource
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['ipAccessControlListSid'],
+            $this->solution['ipAccessControlListSid']
         );
     }
 

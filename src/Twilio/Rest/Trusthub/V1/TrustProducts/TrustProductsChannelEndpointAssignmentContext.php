@@ -35,8 +35,7 @@ class TrustProductsChannelEndpointAssignmentContext extends InstanceContext
         Version $version,
         $trustProductSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class TrustProductsChannelEndpointAssignmentContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['trustProductSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

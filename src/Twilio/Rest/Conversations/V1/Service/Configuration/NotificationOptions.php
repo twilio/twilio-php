@@ -108,8 +108,7 @@ class UpdateNotificationOptions extends Options
         bool $newMessageWithMediaEnabled = Values::NONE,
         string $newMessageWithMediaTemplate = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['logEnabled'] = $logEnabled;
         $this->options['newMessageEnabled'] = $newMessageEnabled;
         $this->options['newMessageTemplate'] = $newMessageTemplate;

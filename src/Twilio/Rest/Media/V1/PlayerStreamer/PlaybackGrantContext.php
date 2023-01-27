@@ -35,8 +35,7 @@ class PlaybackGrantContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class PlaybackGrantContext extends InstanceContext
         return new PlaybackGrantInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -92,7 +91,7 @@ class PlaybackGrantContext extends InstanceContext
         return new PlaybackGrantInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

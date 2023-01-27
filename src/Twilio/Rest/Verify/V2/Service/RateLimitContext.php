@@ -45,8 +45,7 @@ class RateLimitContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -90,7 +89,7 @@ class RateLimitContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -118,7 +117,7 @@ class RateLimitContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -132,7 +131,7 @@ class RateLimitContext extends InstanceContext
             $this->_buckets = new BucketList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

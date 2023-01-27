@@ -57,8 +57,7 @@ class CreateExportCustomJobOptions extends Options
         string $webhookMethod = Values::NONE,
         string $email = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['webhookMethod'] = $webhookMethod;
         $this->options['email'] = $email;

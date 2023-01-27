@@ -45,8 +45,7 @@ class SyncStreamContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -90,7 +89,7 @@ class SyncStreamContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -118,7 +117,7 @@ class SyncStreamContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -132,7 +131,7 @@ class SyncStreamContext extends InstanceContext
             $this->_streamMessages = new StreamMessageList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

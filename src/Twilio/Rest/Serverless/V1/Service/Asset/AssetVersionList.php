@@ -33,11 +33,9 @@ class AssetVersionList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $assetSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

@@ -33,8 +33,7 @@ class NetworkContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class NetworkContext extends InstanceContext
         return new NetworkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

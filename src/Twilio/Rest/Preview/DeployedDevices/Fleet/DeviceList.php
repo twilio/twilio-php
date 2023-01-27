@@ -36,8 +36,7 @@ class DeviceList extends ListResource
     public function __construct(
         Version $version,
         string $fleetSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +80,7 @@ class DeviceList extends ListResource
         return new DeviceInstance(
             $this->version,
             $payload,
-            $this->solution['fleetSid'],
+            $this->solution['fleetSid']
         );
     }
 

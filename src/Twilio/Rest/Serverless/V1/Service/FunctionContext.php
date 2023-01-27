@@ -44,8 +44,7 @@ class FunctionContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -89,7 +88,7 @@ class FunctionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -115,7 +114,7 @@ class FunctionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -129,7 +128,7 @@ class FunctionContext extends InstanceContext
             $this->_functionVersions = new FunctionVersionList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -72,8 +72,7 @@ class FetchConferenceParticipantOptions extends Options
         string $events = Values::NONE,
         string $metrics = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['events'] = $events;
         $this->options['metrics'] = $metrics;
     }
@@ -127,8 +126,7 @@ class ReadConferenceParticipantOptions extends Options
         string $label = Values::NONE,
         string $events = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['participantSid'] = $participantSid;
         $this->options['label'] = $label;
         $this->options['events'] = $events;

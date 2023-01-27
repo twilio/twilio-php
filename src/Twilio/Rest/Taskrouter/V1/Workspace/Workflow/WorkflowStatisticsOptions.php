@@ -66,8 +66,7 @@ class FetchWorkflowStatisticsOptions extends Options
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;

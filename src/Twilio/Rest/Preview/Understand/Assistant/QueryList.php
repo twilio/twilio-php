@@ -35,8 +35,7 @@ class QueryList extends ListResource
     public function __construct(
         Version $version,
         string $assistantSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class QueryList extends ListResource
         return new QueryInstance(
             $this->version,
             $payload,
-            $this->solution['assistantSid'],
+            $this->solution['assistantSid']
         );
     }
 

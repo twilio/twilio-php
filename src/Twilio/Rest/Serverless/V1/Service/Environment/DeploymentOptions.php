@@ -48,8 +48,7 @@ class CreateDeploymentOptions extends Options
         
         string $buildSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['buildSid'] = $buildSid;
     }
 

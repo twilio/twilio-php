@@ -47,8 +47,7 @@ class ServiceContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -141,7 +140,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -154,7 +153,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_notifications) {
             $this->_notifications = new NotificationList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -169,7 +168,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_bindings) {
             $this->_bindings = new BindingList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -58,8 +58,7 @@ class ReadSinkOptions extends Options
         bool $inUse = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['inUse'] = $inUse;
         $this->options['status'] = $status;
     }

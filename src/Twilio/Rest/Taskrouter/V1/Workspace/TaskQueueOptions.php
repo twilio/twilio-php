@@ -122,8 +122,7 @@ class CreateTaskQueueOptions extends Options
         string $reservationActivitySid = Values::NONE,
         string $assignmentActivitySid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['targetWorkers'] = $targetWorkers;
         $this->options['maxReservedWorkers'] = $maxReservedWorkers;
         $this->options['taskOrder'] = $taskOrder;
@@ -218,8 +217,7 @@ class ReadTaskQueueOptions extends Options
         string $workerSid = Values::NONE,
         string $ordering = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['evaluateWorkerAttributes'] = $evaluateWorkerAttributes;
         $this->options['workerSid'] = $workerSid;
@@ -305,8 +303,7 @@ class UpdateTaskQueueOptions extends Options
         int $maxReservedWorkers = Values::NONE,
         string $taskOrder = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['targetWorkers'] = $targetWorkers;
         $this->options['reservationActivitySid'] = $reservationActivitySid;

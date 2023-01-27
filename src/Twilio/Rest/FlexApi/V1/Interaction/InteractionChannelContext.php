@@ -49,8 +49,7 @@ class InteractionChannelContext extends InstanceContext
         Version $version,
         $interactionSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +80,7 @@ class InteractionChannelContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['interactionSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -112,7 +111,7 @@ class InteractionChannelContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['interactionSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -126,7 +125,7 @@ class InteractionChannelContext extends InstanceContext
             $this->_participants = new InteractionChannelParticipantList(
                 $this->version,
                 $this->solution['interactionSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -142,7 +141,7 @@ class InteractionChannelContext extends InstanceContext
             $this->_invites = new InteractionChannelInviteList(
                 $this->version,
                 $this->solution['interactionSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

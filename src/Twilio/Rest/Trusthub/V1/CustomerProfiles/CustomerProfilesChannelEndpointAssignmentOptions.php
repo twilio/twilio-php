@@ -57,8 +57,7 @@ class ReadCustomerProfilesChannelEndpointAssignmentOptions extends Options
         string $channelEndpointSid = Values::NONE,
         string $channelEndpointSids = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['channelEndpointSid'] = $channelEndpointSid;
         $this->options['channelEndpointSids'] = $channelEndpointSids;
     }

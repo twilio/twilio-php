@@ -37,13 +37,10 @@ class MessageInteractionList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
-        string $sessionSid
-        ,
+        string $serviceSid,
+        string $sessionSid,
         string $participantSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -91,7 +88,7 @@ class MessageInteractionList extends ListResource
             $payload,
             $this->solution['serviceSid'],
             $this->solution['sessionSid'],
-            $this->solution['participantSid'],
+            $this->solution['participantSid']
         );
     }
 

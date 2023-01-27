@@ -67,8 +67,7 @@ class ServiceContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -108,7 +107,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -167,7 +166,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -180,7 +179,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_entities) {
             $this->_entities = new EntityList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -195,7 +194,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_verificationChecks) {
             $this->_verificationChecks = new VerificationCheckList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -210,7 +209,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_verifications) {
             $this->_verifications = new VerificationList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -225,7 +224,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_accessTokens) {
             $this->_accessTokens = new AccessTokenList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -240,7 +239,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_rateLimits) {
             $this->_rateLimits = new RateLimitList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -255,7 +254,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -270,7 +269,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_messagingConfigurations) {
             $this->_messagingConfigurations = new MessagingConfigurationList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

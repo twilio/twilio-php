@@ -33,8 +33,8 @@ class SinkList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +69,7 @@ class SinkList extends ListResource
 
         return new SinkInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

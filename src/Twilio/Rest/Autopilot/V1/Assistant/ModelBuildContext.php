@@ -37,8 +37,7 @@ class ModelBuildContext extends InstanceContext
         Version $version,
         $assistantSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class ModelBuildContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -110,7 +109,7 @@ class ModelBuildContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

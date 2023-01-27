@@ -33,8 +33,7 @@ class JobContext extends InstanceContext
     public function __construct(
         Version $version,
         $jobSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -74,7 +73,7 @@ class JobContext extends InstanceContext
         return new JobInstance(
             $this->version,
             $payload,
-            $this->solution['jobSid'],
+            $this->solution['jobSid']
         );
     }
 

@@ -62,8 +62,7 @@ class CreateBrandVettingOptions extends Options
         
         string $vettingId = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['vettingId'] = $vettingId;
     }
 
@@ -101,8 +100,7 @@ class ReadBrandVettingOptions extends Options
         
         string $vettingProvider = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['vettingProvider'] = $vettingProvider;
     }
 

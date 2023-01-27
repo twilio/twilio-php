@@ -33,8 +33,8 @@ class RatePlanList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -85,7 +85,7 @@ class RatePlanList extends ListResource
 
         return new RatePlanInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

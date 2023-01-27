@@ -117,8 +117,7 @@ class CreateRatePlanOptions extends Options
         int $nationalRoamingDataLimit = Values::NONE,
         int $internationalRoamingDataLimit = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dataEnabled'] = $dataEnabled;
@@ -290,8 +289,7 @@ class UpdateRatePlanOptions extends Options
         string $uniqueName = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
     }

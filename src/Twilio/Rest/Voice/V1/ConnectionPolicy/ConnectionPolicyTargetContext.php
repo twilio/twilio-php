@@ -38,8 +38,7 @@ class ConnectionPolicyTargetContext extends InstanceContext
         Version $version,
         $connectionPolicySid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -83,7 +82,7 @@ class ConnectionPolicyTargetContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['connectionPolicySid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -119,7 +118,7 @@ class ConnectionPolicyTargetContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['connectionPolicySid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -35,8 +35,7 @@ class SipDomainContext extends InstanceContext
     public function __construct(
         Version $version,
         $sipDomain
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -63,7 +62,7 @@ class SipDomainContext extends InstanceContext
         return new SipDomainInstance(
             $this->version,
             $payload,
-            $this->solution['sipDomain'],
+            $this->solution['sipDomain']
         );
     }
 
@@ -92,7 +91,7 @@ class SipDomainContext extends InstanceContext
         return new SipDomainInstance(
             $this->version,
             $payload,
-            $this->solution['sipDomain'],
+            $this->solution['sipDomain']
         );
     }
 

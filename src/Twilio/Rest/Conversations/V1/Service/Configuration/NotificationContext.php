@@ -36,8 +36,7 @@ class NotificationContext extends InstanceContext
     public function __construct(
         Version $version,
         $chatServiceSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class NotificationContext extends InstanceContext
         return new NotificationInstance(
             $this->version,
             $payload,
-            $this->solution['chatServiceSid'],
+            $this->solution['chatServiceSid']
         );
     }
 
@@ -115,7 +114,7 @@ class NotificationContext extends InstanceContext
         return new NotificationInstance(
             $this->version,
             $payload,
-            $this->solution['chatServiceSid'],
+            $this->solution['chatServiceSid']
         );
     }
 

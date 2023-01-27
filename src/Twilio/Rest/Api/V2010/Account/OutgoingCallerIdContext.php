@@ -37,8 +37,7 @@ class OutgoingCallerIdContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class OutgoingCallerIdContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -110,7 +109,7 @@ class OutgoingCallerIdContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

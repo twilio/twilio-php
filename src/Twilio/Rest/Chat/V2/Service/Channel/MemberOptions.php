@@ -140,8 +140,7 @@ class CreateMemberOptions extends Options
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
@@ -256,8 +255,7 @@ class DeleteMemberOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -295,8 +293,7 @@ class ReadMemberOptions extends Options
         
         array $identity = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['identity'] = $identity;
     }
 
@@ -345,8 +342,7 @@ class UpdateMemberOptions extends Options
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;

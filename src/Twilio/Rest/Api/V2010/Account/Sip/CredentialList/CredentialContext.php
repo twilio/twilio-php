@@ -39,8 +39,7 @@ class CredentialContext extends InstanceContext
         $accountSid,
         $credentialListSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class CredentialContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['credentialListSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -117,7 +116,7 @@ class CredentialContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['credentialListSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

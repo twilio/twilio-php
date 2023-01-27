@@ -52,8 +52,7 @@ class CreatePlaybackGrantOptions extends Options
         int $ttl = Values::NONE,
         string $accessControlAllowOrigin = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ttl'] = $ttl;
         $this->options['accessControlAllowOrigin'] = $accessControlAllowOrigin;
     }

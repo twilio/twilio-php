@@ -53,8 +53,7 @@ class UpdateSipDomainOptions extends Options
         string $voiceRegion = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['voiceRegion'] = $voiceRegion;
         $this->options['friendlyName'] = $friendlyName;
     }

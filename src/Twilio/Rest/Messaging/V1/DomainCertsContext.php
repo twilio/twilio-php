@@ -34,8 +34,7 @@ class DomainCertsContext extends InstanceContext
     public function __construct(
         Version $version,
         $domainSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -75,7 +74,7 @@ class DomainCertsContext extends InstanceContext
         return new DomainCertsInstance(
             $this->version,
             $payload,
-            $this->solution['domainSid'],
+            $this->solution['domainSid']
         );
     }
 
@@ -100,7 +99,7 @@ class DomainCertsContext extends InstanceContext
         return new DomainCertsInstance(
             $this->version,
             $payload,
-            $this->solution['domainSid'],
+            $this->solution['domainSid']
         );
     }
 

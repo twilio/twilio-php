@@ -40,8 +40,7 @@ class CountryContext extends InstanceContext
     public function __construct(
         Version $version,
         $isoCode
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -68,7 +67,7 @@ class CountryContext extends InstanceContext
         return new CountryInstance(
             $this->version,
             $payload,
-            $this->solution['isoCode'],
+            $this->solution['isoCode']
         );
     }
 
@@ -81,7 +80,7 @@ class CountryContext extends InstanceContext
         if (!$this->_highriskSpecialPrefixes) {
             $this->_highriskSpecialPrefixes = new HighriskSpecialPrefixList(
                 $this->version,
-                $this->solution['isoCode'],
+                $this->solution['isoCode']
             );
         }
 

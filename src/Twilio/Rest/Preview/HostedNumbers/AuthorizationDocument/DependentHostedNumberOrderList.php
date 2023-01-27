@@ -34,8 +34,7 @@ class DependentHostedNumberOrderList extends ListResource
     public function __construct(
         Version $version,
         string $signingDocumentSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

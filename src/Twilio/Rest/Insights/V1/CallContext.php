@@ -51,8 +51,7 @@ class CallContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +78,7 @@ class CallContext extends InstanceContext
         return new CallInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -92,7 +91,7 @@ class CallContext extends InstanceContext
         if (!$this->_metrics) {
             $this->_metrics = new MetricList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -107,7 +106,7 @@ class CallContext extends InstanceContext
         if (!$this->_events) {
             $this->_events = new EventList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -122,7 +121,7 @@ class CallContext extends InstanceContext
         if (!$this->_summary) {
             $this->_summary = new CallSummaryList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -137,7 +136,7 @@ class CallContext extends InstanceContext
         if (!$this->_annotation) {
             $this->_annotation = new AnnotationList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

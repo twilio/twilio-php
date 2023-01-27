@@ -1053,8 +1053,7 @@ class CreateStreamOptions extends Options
         string $parameter99Name = Values::NONE,
         string $parameter99Value = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['name'] = $name;
         $this->options['track'] = $track;
         $this->options['statusCallback'] = $statusCallback;

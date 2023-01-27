@@ -35,8 +35,7 @@ class RoomRecordingList extends ListResource
     public function __construct(
         Version $version,
         string $roomSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

@@ -70,8 +70,7 @@ class CreateIpAddressOptions extends Options
         
         int $cidrPrefixLength = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;
     }
 
@@ -115,8 +114,7 @@ class UpdateIpAddressOptions extends Options
         string $friendlyName = Values::NONE,
         int $cidrPrefixLength = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ipAddress'] = $ipAddress;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;

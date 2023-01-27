@@ -37,8 +37,7 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $workflowSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['workflowSid'],
+            $this->solution['workflowSid']
         );
     }
 

@@ -78,8 +78,7 @@ class UpdateAnnotationOptions extends Options
         string $comment = Values::NONE,
         string $incident = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['answeredBy'] = $answeredBy;
         $this->options['connectivityIssue'] = $connectivityIssue;
         $this->options['qualityIssues'] = $qualityIssues;

@@ -39,8 +39,7 @@ class BucketContext extends InstanceContext
         $serviceSid,
         $rateLimitSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class BucketContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['rateLimitSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -119,7 +118,7 @@ class BucketContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['rateLimitSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

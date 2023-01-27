@@ -40,8 +40,7 @@ class WorkerChannelContext extends InstanceContext
         $workspaceSid,
         $workerSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class WorkerChannelContext extends InstanceContext
             $payload,
             $this->solution['workspaceSid'],
             $this->solution['workerSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -107,7 +106,7 @@ class WorkerChannelContext extends InstanceContext
             $payload,
             $this->solution['workspaceSid'],
             $this->solution['workerSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

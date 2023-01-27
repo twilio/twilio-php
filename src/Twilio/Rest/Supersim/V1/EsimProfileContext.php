@@ -33,8 +33,7 @@ class EsimProfileContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class EsimProfileContext extends InstanceContext
         return new EsimProfileInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -36,8 +36,7 @@ class AnnotationContext extends InstanceContext
     public function __construct(
         Version $version,
         $callSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class AnnotationContext extends InstanceContext
         return new AnnotationInstance(
             $this->version,
             $payload,
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 
@@ -103,7 +102,7 @@ class AnnotationContext extends InstanceContext
         return new AnnotationInstance(
             $this->version,
             $payload,
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 

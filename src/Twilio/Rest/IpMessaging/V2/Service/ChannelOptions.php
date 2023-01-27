@@ -145,8 +145,7 @@ class CreateChannelOptions extends Options
         string $createdBy = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -272,8 +271,7 @@ class DeleteChannelOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -311,8 +309,7 @@ class ReadChannelOptions extends Options
         
         array $type = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['type'] = $type;
     }
 
@@ -361,8 +358,7 @@ class UpdateChannelOptions extends Options
         string $createdBy = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;

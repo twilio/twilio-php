@@ -56,8 +56,7 @@ class ServiceContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -97,7 +96,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -128,7 +127,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -141,7 +140,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_functions) {
             $this->_functions = new FunctionList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -156,7 +155,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_builds) {
             $this->_builds = new BuildList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -171,7 +170,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_environments) {
             $this->_environments = new EnvironmentList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -186,7 +185,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_assets) {
             $this->_assets = new AssetList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

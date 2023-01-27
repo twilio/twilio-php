@@ -36,8 +36,7 @@ class MobileList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -118,7 +117,7 @@ class MobileList extends ListResource
         return new MobileInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

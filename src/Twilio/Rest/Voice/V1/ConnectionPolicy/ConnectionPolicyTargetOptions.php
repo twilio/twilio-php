@@ -91,8 +91,7 @@ class CreateConnectionPolicyTargetOptions extends Options
         int $weight = Values::NONE,
         bool $enabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['priority'] = $priority;
         $this->options['weight'] = $weight;
@@ -179,8 +178,7 @@ class UpdateConnectionPolicyTargetOptions extends Options
         int $weight = Values::NONE,
         bool $enabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['target'] = $target;
         $this->options['priority'] = $priority;

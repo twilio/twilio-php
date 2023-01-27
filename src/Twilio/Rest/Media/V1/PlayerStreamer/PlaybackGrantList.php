@@ -31,8 +31,7 @@ class PlaybackGrantList extends ListResource
     public function __construct(
         Version $version,
         string $sid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

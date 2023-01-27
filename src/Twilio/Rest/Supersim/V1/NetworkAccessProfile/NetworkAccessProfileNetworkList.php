@@ -34,8 +34,7 @@ class NetworkAccessProfileNetworkList extends ListResource
     public function __construct(
         Version $version,
         string $networkAccessProfileSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class NetworkAccessProfileNetworkList extends ListResource
         return new NetworkAccessProfileNetworkInstance(
             $this->version,
             $payload,
-            $this->solution['networkAccessProfileSid'],
+            $this->solution['networkAccessProfileSid']
         );
     }
 

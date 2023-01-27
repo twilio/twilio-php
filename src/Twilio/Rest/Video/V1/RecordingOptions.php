@@ -75,8 +75,7 @@ class ReadRecordingOptions extends Options
         \DateTime $dateCreatedBefore = Values::NONE,
         string $mediaType = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['groupingSid'] = $groupingSid;

@@ -32,8 +32,8 @@ class IpRecordList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +69,7 @@ class IpRecordList extends ListResource
 
         return new IpRecordInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

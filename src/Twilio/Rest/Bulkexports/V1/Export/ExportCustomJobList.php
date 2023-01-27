@@ -35,8 +35,7 @@ class ExportCustomJobList extends ListResource
     public function __construct(
         Version $version,
         string $resourceType
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -85,7 +84,7 @@ class ExportCustomJobList extends ListResource
         return new ExportCustomJobInstance(
             $this->version,
             $payload,
-            $this->solution['resourceType'],
+            $this->solution['resourceType']
         );
     }
 

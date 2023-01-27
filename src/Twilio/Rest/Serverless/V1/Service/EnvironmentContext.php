@@ -51,8 +51,7 @@ class EnvironmentContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -96,7 +95,7 @@ class EnvironmentContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -110,7 +109,7 @@ class EnvironmentContext extends InstanceContext
             $this->_logs = new LogList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -126,7 +125,7 @@ class EnvironmentContext extends InstanceContext
             $this->_deployments = new DeploymentList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -142,7 +141,7 @@ class EnvironmentContext extends InstanceContext
             $this->_variables = new VariableList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -95,8 +95,7 @@ class CreateQueryOptions extends Options
         string $tasks = Values::NONE,
         string $modelBuild = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['tasks'] = $tasks;
         $this->options['modelBuild'] = $modelBuild;
     }
@@ -154,8 +153,7 @@ class ReadQueryOptions extends Options
         string $status = Values::NONE,
         string $dialogueSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['language'] = $language;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['status'] = $status;
@@ -233,8 +231,7 @@ class UpdateQueryOptions extends Options
         string $sampleSid = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sampleSid'] = $sampleSid;
         $this->options['status'] = $status;
     }

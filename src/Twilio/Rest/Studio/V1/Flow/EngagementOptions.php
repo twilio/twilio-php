@@ -49,8 +49,7 @@ class CreateEngagementOptions extends Options
         
         array $parameters = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['parameters'] = $parameters;
     }
 

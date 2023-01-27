@@ -32,8 +32,7 @@ class BalanceList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class BalanceList extends ListResource
         return new BalanceInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

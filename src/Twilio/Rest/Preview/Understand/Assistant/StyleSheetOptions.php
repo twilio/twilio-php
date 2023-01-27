@@ -48,8 +48,7 @@ class UpdateStyleSheetOptions extends Options
         
         array $styleSheet = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['styleSheet'] = $styleSheet;
     }
 

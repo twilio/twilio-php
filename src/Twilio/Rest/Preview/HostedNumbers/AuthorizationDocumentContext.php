@@ -43,8 +43,7 @@ class AuthorizationDocumentContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +70,7 @@ class AuthorizationDocumentContext extends InstanceContext
         return new AuthorizationDocumentInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -110,7 +109,7 @@ class AuthorizationDocumentContext extends InstanceContext
         return new AuthorizationDocumentInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -123,7 +122,7 @@ class AuthorizationDocumentContext extends InstanceContext
         if (!$this->_dependentHostedNumberOrders) {
             $this->_dependentHostedNumberOrders = new DependentHostedNumberOrderList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

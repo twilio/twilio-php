@@ -48,8 +48,7 @@ class ReadEventTypeOptions extends Options
         
         string $schemaId = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['schemaId'] = $schemaId;
     }
 

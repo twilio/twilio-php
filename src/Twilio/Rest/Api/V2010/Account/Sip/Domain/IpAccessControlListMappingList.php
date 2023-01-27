@@ -34,11 +34,9 @@ class IpAccessControlListMappingList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $domainSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +75,7 @@ class IpAccessControlListMappingList extends ListResource
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['domainSid'],
+            $this->solution['domainSid']
         );
     }
 

@@ -38,8 +38,7 @@ class SiprecContext extends InstanceContext
         $accountSid,
         $callSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class SiprecContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['callSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

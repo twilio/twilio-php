@@ -35,8 +35,7 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource
     public function __construct(
         Version $version,
         string $customerProfileSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource
         return new CustomerProfilesChannelEndpointAssignmentInstance(
             $this->version,
             $payload,
-            $this->solution['customerProfileSid'],
+            $this->solution['customerProfileSid']
         );
     }
 

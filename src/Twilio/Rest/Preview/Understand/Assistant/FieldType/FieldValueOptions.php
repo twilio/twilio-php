@@ -63,8 +63,7 @@ class CreateFieldValueOptions extends Options
         
         string $synonymOf = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['synonymOf'] = $synonymOf;
     }
 
@@ -103,8 +102,7 @@ class ReadFieldValueOptions extends Options
         
         string $language = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['language'] = $language;
     }
 

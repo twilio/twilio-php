@@ -61,8 +61,7 @@ class FetchPhoneNumberOptions extends Options
         array $addOns = Values::ARRAY_NONE,
         string $addOnsData = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['countryCode'] = $countryCode;
         $this->options['type'] = $type;
         $this->options['addOns'] = $addOns;

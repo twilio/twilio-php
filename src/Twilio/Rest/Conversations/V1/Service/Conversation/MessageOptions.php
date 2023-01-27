@@ -147,8 +147,7 @@ class CreateMessageOptions extends Options
         string $contentVariables = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;
@@ -289,8 +288,7 @@ class DeleteMessageOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -328,8 +326,7 @@ class ReadMessageOptions extends Options
         
         string $order = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['order'] = $order;
     }
 
@@ -376,8 +373,7 @@ class UpdateMessageOptions extends Options
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;

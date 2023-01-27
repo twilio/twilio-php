@@ -35,8 +35,7 @@ class NetworkAccessProfileNetworkContext extends InstanceContext
         Version $version,
         $networkAccessProfileSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class NetworkAccessProfileNetworkContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['networkAccessProfileSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -37,8 +37,7 @@ class ShortCodeContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class ShortCodeContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -107,7 +106,7 @@ class ShortCodeContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

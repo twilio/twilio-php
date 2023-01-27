@@ -123,8 +123,7 @@ class CreateAddressOptions extends Options
         bool $autoCorrectAddress = Values::NONE,
         string $streetSecondary = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         $this->options['autoCorrectAddress'] = $autoCorrectAddress;
@@ -206,8 +205,7 @@ class ReadAddressOptions extends Options
         string $friendlyName = Values::NONE,
         string $isoCountry = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['customerName'] = $customerName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['isoCountry'] = $isoCountry;
@@ -286,8 +284,7 @@ class UpdateAddressOptions extends Options
         bool $autoCorrectAddress = Values::NONE,
         string $streetSecondary = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['customerName'] = $customerName;
         $this->options['street'] = $street;

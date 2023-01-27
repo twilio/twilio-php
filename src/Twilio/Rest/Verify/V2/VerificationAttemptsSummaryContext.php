@@ -34,8 +34,7 @@ class VerificationAttemptsSummaryContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class VerificationAttemptsSummaryContext extends InstanceContext
 
         return new VerificationAttemptsSummaryInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

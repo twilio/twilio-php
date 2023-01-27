@@ -35,8 +35,7 @@ class UsAppToPersonContext extends InstanceContext
         Version $version,
         $messagingServiceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class UsAppToPersonContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['messagingServiceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

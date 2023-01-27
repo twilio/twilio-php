@@ -69,8 +69,7 @@ class CreateModelBuildOptions extends Options
         string $statusCallback = Values::NONE,
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['uniqueName'] = $uniqueName;
     }
@@ -123,8 +122,7 @@ class UpdateModelBuildOptions extends Options
         
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
     }
 

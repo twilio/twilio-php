@@ -39,8 +39,7 @@ class IpAddressContext extends InstanceContext
         $accountSid,
         $ipAccessControlListSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class IpAddressContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['ipAccessControlListSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -121,7 +120,7 @@ class IpAddressContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['ipAccessControlListSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

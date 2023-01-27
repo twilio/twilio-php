@@ -36,8 +36,7 @@ class CompositionHookContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class CompositionHookContext extends InstanceContext
         return new CompositionHookInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -123,7 +122,7 @@ class CompositionHookContext extends InstanceContext
         return new CompositionHookInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

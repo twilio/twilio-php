@@ -36,8 +36,7 @@ class AddressList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -97,7 +96,7 @@ class AddressList extends ListResource
         return new AddressInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

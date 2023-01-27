@@ -87,8 +87,7 @@ class CreateBindingOptions extends Options
         string $credentialSid = Values::NONE,
         string $endpoint = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['tag'] = $tag;
         $this->options['notificationProtocolVersion'] = $notificationProtocolVersion;
         $this->options['credentialSid'] = $credentialSid;
@@ -172,8 +171,7 @@ class ReadBindingOptions extends Options
         array $identity = Values::ARRAY_NONE,
         array $tag = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
         $this->options['identity'] = $identity;

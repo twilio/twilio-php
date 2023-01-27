@@ -35,8 +35,7 @@ class BrandVettingContext extends InstanceContext
         Version $version,
         $brandSid,
         $brandVettingSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class BrandVettingContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['brandSid'],
-            $this->solution['brandVettingSid'],
+            $this->solution['brandVettingSid']
         );
     }
 

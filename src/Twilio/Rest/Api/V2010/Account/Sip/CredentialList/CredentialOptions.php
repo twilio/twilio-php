@@ -54,8 +54,7 @@ class UpdateCredentialOptions extends Options
         
         string $password = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['password'] = $password;
     }
 

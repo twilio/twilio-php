@@ -68,8 +68,7 @@ class UpdateWebhookOptions extends Options
         string $postWebhookUrl = Values::NONE,
         string $target = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['method'] = $method;
         $this->options['filters'] = $filters;
         $this->options['preWebhookUrl'] = $preWebhookUrl;

@@ -86,8 +86,7 @@ class CreateMessageOptions extends Options
         string $from = Values::NONE,
         string $attributes = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['from'] = $from;
         $this->options['attributes'] = $attributes;
     }
@@ -139,8 +138,7 @@ class ReadMessageOptions extends Options
         
         string $order = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['order'] = $order;
     }
 
@@ -179,8 +177,7 @@ class UpdateMessageOptions extends Options
         string $body = Values::NONE,
         string $attributes = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
     }

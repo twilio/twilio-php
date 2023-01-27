@@ -151,8 +151,7 @@ class CreateTaskOptions extends Options
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['timeout'] = $timeout;
         $this->options['priority'] = $priority;
         $this->options['taskChannel'] = $taskChannel;
@@ -241,8 +240,7 @@ class DeleteTaskOptions extends Options
         
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -296,8 +294,7 @@ class ReadTaskOptions extends Options
         string $ordering = Values::NONE,
         bool $hasAddons = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['priority'] = $priority;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['workflowSid'] = $workflowSid;
@@ -448,8 +445,7 @@ class UpdateTaskOptions extends Options
         string $taskChannel = Values::NONE,
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['attributes'] = $attributes;
         $this->options['assignmentStatus'] = $assignmentStatus;
         $this->options['reason'] = $reason;

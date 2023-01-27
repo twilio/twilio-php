@@ -191,8 +191,7 @@ class CreateFlexFlowOptions extends Options
         bool $janitorEnabled = Values::NONE,
         int $integrationRetryCount = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['contactIdentity'] = $contactIdentity;
         $this->options['enabled'] = $enabled;
         $this->options['integrationType'] = $integrationType;
@@ -398,8 +397,7 @@ class ReadFlexFlowOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -468,8 +466,7 @@ class UpdateFlexFlowOptions extends Options
         bool $janitorEnabled = Values::NONE,
         int $integrationRetryCount = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['chatServiceSid'] = $chatServiceSid;
         $this->options['channelType'] = $channelType;

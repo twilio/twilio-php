@@ -33,8 +33,7 @@ class CommandContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -74,7 +73,7 @@ class CommandContext extends InstanceContext
         return new CommandInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

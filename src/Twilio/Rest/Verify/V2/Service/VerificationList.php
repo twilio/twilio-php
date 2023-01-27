@@ -35,8 +35,7 @@ class VerificationList extends ListResource
     public function __construct(
         Version $version,
         string $serviceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -102,7 +101,7 @@ class VerificationList extends ListResource
         return new VerificationInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
+            $this->solution['serviceSid']
         );
     }
 

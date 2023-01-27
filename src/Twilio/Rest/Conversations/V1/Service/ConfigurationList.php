@@ -44,8 +44,7 @@ class ConfigurationList extends ListResource
     public function __construct(
         Version $version,
         string $chatServiceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -78,7 +77,6 @@ class ConfigurationList extends ListResource
             $this->_notifications = new NotificationList(
                 $this->version,
                 $this->solution['chatServiceSid']
-                
             );
         }
         return $this->_notifications;
@@ -93,7 +91,6 @@ class ConfigurationList extends ListResource
             $this->_webhooks = new WebhookList(
                 $this->version,
                 $this->solution['chatServiceSid']
-                
             );
         }
         return $this->_webhooks;

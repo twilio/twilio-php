@@ -93,8 +93,7 @@ class CreateCustomerProfilesOptions extends Options
         
         string $statusCallback = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['statusCallback'] = $statusCallback;
     }
 
@@ -137,8 +136,7 @@ class ReadCustomerProfilesOptions extends Options
         string $friendlyName = Values::NONE,
         string $policySid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['policySid'] = $policySid;
@@ -207,8 +205,7 @@ class UpdateCustomerProfilesOptions extends Options
         string $friendlyName = Values::NONE,
         string $email = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['friendlyName'] = $friendlyName;

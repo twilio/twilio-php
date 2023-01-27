@@ -33,8 +33,7 @@ class CountryContext extends InstanceContext
     public function __construct(
         Version $version,
         $isoCountry
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class CountryContext extends InstanceContext
         return new CountryInstance(
             $this->version,
             $payload,
-            $this->solution['isoCountry'],
+            $this->solution['isoCountry']
         );
     }
 

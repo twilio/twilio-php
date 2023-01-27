@@ -204,8 +204,7 @@ class UpdateServiceOptions extends Options
         int $postWebhookRetryCount = Values::NONE,
         bool $notificationsLogEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;

@@ -51,8 +51,7 @@ class CustomerProfilesContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class CustomerProfilesContext extends InstanceContext
         return new CustomerProfilesInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -125,7 +124,7 @@ class CustomerProfilesContext extends InstanceContext
         return new CustomerProfilesInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -138,7 +137,7 @@ class CustomerProfilesContext extends InstanceContext
         if (!$this->_customerProfilesChannelEndpointAssignment) {
             $this->_customerProfilesChannelEndpointAssignment = new CustomerProfilesChannelEndpointAssignmentList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -153,7 +152,7 @@ class CustomerProfilesContext extends InstanceContext
         if (!$this->_customerProfilesEntityAssignments) {
             $this->_customerProfilesEntityAssignments = new CustomerProfilesEntityAssignmentsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -168,7 +167,7 @@ class CustomerProfilesContext extends InstanceContext
         if (!$this->_customerProfilesEvaluations) {
             $this->_customerProfilesEvaluations = new CustomerProfilesEvaluationsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

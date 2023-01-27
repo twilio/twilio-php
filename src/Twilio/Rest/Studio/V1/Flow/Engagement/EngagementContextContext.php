@@ -35,8 +35,7 @@ class EngagementContextContext extends InstanceContext
         Version $version,
         $flowSid,
         $engagementSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class EngagementContextContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['flowSid'],
-            $this->solution['engagementSid'],
+            $this->solution['engagementSid']
         );
     }
 

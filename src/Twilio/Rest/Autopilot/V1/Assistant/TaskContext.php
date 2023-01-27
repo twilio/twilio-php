@@ -58,8 +58,7 @@ class TaskContext extends InstanceContext
         Version $version,
         $assistantSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -103,7 +102,7 @@ class TaskContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -137,7 +136,7 @@ class TaskContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -151,7 +150,7 @@ class TaskContext extends InstanceContext
             $this->_samples = new SampleList(
                 $this->version,
                 $this->solution['assistantSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -167,7 +166,7 @@ class TaskContext extends InstanceContext
             $this->_fields = new FieldList(
                 $this->version,
                 $this->solution['assistantSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -183,7 +182,7 @@ class TaskContext extends InstanceContext
             $this->_taskActions = new TaskActionsList(
                 $this->version,
                 $this->solution['assistantSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -199,7 +198,7 @@ class TaskContext extends InstanceContext
             $this->_statistics = new TaskStatisticsList(
                 $this->version,
                 $this->solution['assistantSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

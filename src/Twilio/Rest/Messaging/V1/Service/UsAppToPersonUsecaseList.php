@@ -34,8 +34,7 @@ class UsAppToPersonUsecaseList extends ListResource
     public function __construct(
         Version $version,
         string $messagingServiceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +70,7 @@ class UsAppToPersonUsecaseList extends ListResource
         return new UsAppToPersonUsecaseInstance(
             $this->version,
             $payload,
-            $this->solution['messagingServiceSid'],
+            $this->solution['messagingServiceSid']
         );
     }
 

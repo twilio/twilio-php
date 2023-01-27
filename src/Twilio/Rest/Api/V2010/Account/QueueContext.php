@@ -45,8 +45,7 @@ class QueueContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -90,7 +89,7 @@ class QueueContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -120,7 +119,7 @@ class QueueContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -134,7 +133,7 @@ class QueueContext extends InstanceContext
             $this->_members = new MemberList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

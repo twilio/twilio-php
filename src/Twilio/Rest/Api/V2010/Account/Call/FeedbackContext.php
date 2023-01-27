@@ -37,8 +37,7 @@ class FeedbackContext extends InstanceContext
         Version $version,
         $accountSid,
         $callSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class FeedbackContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 
@@ -99,7 +98,7 @@ class FeedbackContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 

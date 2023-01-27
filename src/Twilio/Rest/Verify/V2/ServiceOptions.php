@@ -187,8 +187,7 @@ class CreateServiceOptions extends Options
         int $totpSkew = Values::NONE,
         string $defaultTemplateSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
@@ -455,8 +454,7 @@ class UpdateServiceOptions extends Options
         int $totpSkew = Values::NONE,
         string $defaultTemplateSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;

@@ -36,8 +36,7 @@ class EngagementList extends ListResource
     public function __construct(
         Version $version,
         string $flowSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +78,7 @@ class EngagementList extends ListResource
         return new EngagementInstance(
             $this->version,
             $payload,
-            $this->solution['flowSid'],
+            $this->solution['flowSid']
         );
     }
 

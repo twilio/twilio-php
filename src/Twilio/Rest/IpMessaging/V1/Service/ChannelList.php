@@ -35,8 +35,7 @@ class ChannelList extends ListResource
     public function __construct(
         Version $version,
         string $serviceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -78,7 +77,7 @@ class ChannelList extends ListResource
         return new ChannelInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
+            $this->solution['serviceSid']
         );
     }
 

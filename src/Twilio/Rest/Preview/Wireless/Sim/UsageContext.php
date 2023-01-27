@@ -35,8 +35,7 @@ class UsageContext extends InstanceContext
     public function __construct(
         Version $version,
         $simSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class UsageContext extends InstanceContext
         return new UsageInstance(
             $this->version,
             $payload,
-            $this->solution['simSid'],
+            $this->solution['simSid']
         );
     }
 

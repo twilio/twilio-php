@@ -179,8 +179,7 @@ class CreateServiceOptions extends Options
         string $usecase = Values::NONE,
         bool $useInboundWebhookOnNumber = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
         $this->options['fallbackUrl'] = $fallbackUrl;
@@ -430,8 +429,7 @@ class UpdateServiceOptions extends Options
         string $usecase = Values::NONE,
         bool $useInboundWebhookOnNumber = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;

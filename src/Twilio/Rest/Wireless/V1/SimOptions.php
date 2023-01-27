@@ -136,8 +136,7 @@ class ReadSimOptions extends Options
         string $eId = Values::NONE,
         string $simRegistrationCode = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['iccid'] = $iccid;
         $this->options['ratePlan'] = $ratePlan;
@@ -260,8 +259,7 @@ class UpdateSimOptions extends Options
         string $resetStatus = Values::NONE,
         string $accountSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;

@@ -34,8 +34,7 @@ class CompositionSettingsContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class CompositionSettingsContext extends InstanceContext
 
         return new CompositionSettingsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 
@@ -95,7 +94,7 @@ class CompositionSettingsContext extends InstanceContext
 
         return new CompositionSettingsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

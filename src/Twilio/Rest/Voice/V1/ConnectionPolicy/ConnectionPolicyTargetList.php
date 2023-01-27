@@ -36,8 +36,7 @@ class ConnectionPolicyTargetList extends ListResource
     public function __construct(
         Version $version,
         string $connectionPolicySid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class ConnectionPolicyTargetList extends ListResource
         return new ConnectionPolicyTargetInstance(
             $this->version,
             $payload,
-            $this->solution['connectionPolicySid'],
+            $this->solution['connectionPolicySid']
         );
     }
 

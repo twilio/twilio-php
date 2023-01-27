@@ -33,8 +33,7 @@ class SchemaVersionList extends ListResource
     public function __construct(
         Version $version,
         string $id
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

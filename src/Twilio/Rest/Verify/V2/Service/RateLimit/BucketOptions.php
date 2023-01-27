@@ -59,8 +59,7 @@ class UpdateBucketOptions extends Options
         int $max = Values::NONE,
         int $interval = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['max'] = $max;
         $this->options['interval'] = $interval;
     }

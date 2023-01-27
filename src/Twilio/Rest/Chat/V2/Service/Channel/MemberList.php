@@ -36,11 +36,9 @@ class MemberList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $channelSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -96,7 +94,7 @@ class MemberList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['channelSid'],
+            $this->solution['channelSid']
         );
     }
 

@@ -38,8 +38,7 @@ class TaskChannelContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -83,7 +82,7 @@ class TaskChannelContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -113,7 +112,7 @@ class TaskChannelContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

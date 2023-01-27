@@ -73,8 +73,7 @@ class CreateSmsCommandOptions extends Options
         string $callbackMethod = Values::NONE,
         string $callbackUrl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
     }
@@ -129,8 +128,7 @@ class ReadSmsCommandOptions extends Options
         string $status = Values::NONE,
         string $direction = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sim'] = $sim;
         $this->options['status'] = $status;
         $this->options['direction'] = $direction;

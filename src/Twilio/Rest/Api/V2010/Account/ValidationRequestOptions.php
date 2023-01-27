@@ -66,8 +66,7 @@ class CreateValidationRequestOptions extends Options
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['callDelay'] = $callDelay;
         $this->options['extension'] = $extension;

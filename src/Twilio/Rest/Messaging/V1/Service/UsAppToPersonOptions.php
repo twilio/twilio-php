@@ -74,8 +74,7 @@ class CreateUsAppToPersonOptions extends Options
         array $optOutKeywords = Values::ARRAY_NONE,
         array $helpKeywords = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['optInMessage'] = $optInMessage;
         $this->options['optOutMessage'] = $optOutMessage;
         $this->options['helpMessage'] = $helpMessage;

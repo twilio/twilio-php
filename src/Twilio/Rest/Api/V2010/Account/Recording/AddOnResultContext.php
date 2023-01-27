@@ -45,8 +45,7 @@ class AddOnResultContext extends InstanceContext
         $accountSid,
         $referenceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -94,7 +93,7 @@ class AddOnResultContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['referenceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -109,7 +108,7 @@ class AddOnResultContext extends InstanceContext
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['referenceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -45,8 +45,7 @@ class SimContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class SimContext extends InstanceContext
         return new SimInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -110,7 +109,7 @@ class SimContext extends InstanceContext
         return new SimInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -123,7 +122,7 @@ class SimContext extends InstanceContext
         if (!$this->_billingPeriods) {
             $this->_billingPeriods = new BillingPeriodList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -138,7 +137,7 @@ class SimContext extends InstanceContext
         if (!$this->_simIpAddresses) {
             $this->_simIpAddresses = new SimIpAddressList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -39,8 +39,7 @@ class MessageContext extends InstanceContext
         $serviceSid,
         $channelSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class MessageContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['channelSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -119,7 +118,7 @@ class MessageContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['channelSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -81,8 +81,7 @@ class ReadUsageRecordOptions extends Options
         \DateTime $startTime = Values::NONE,
         \DateTime $endTime = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sim'] = $sim;
         $this->options['fleet'] = $fleet;
         $this->options['network'] = $network;

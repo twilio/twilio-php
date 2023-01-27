@@ -48,8 +48,7 @@ class UpdateAssistantFallbackActionsOptions extends Options
         
         array $fallbackActions = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['fallbackActions'] = $fallbackActions;
     }
 

@@ -37,8 +37,7 @@ class PublishedTrackContext extends InstanceContext
         $roomSid,
         $participantSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class PublishedTrackContext extends InstanceContext
             $payload,
             $this->solution['roomSid'],
             $this->solution['participantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

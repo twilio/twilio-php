@@ -62,8 +62,7 @@ class WorkerContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -112,7 +111,7 @@ class WorkerContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -148,7 +147,7 @@ class WorkerContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -162,7 +161,7 @@ class WorkerContext extends InstanceContext
             $this->_workerChannels = new WorkerChannelList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -178,7 +177,7 @@ class WorkerContext extends InstanceContext
             $this->_reservations = new ReservationList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -194,7 +193,7 @@ class WorkerContext extends InstanceContext
             $this->_realTimeStatistics = new WorkersRealTimeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -210,7 +209,7 @@ class WorkerContext extends InstanceContext
             $this->_statistics = new WorkerStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -226,7 +225,7 @@ class WorkerContext extends InstanceContext
             $this->_cumulativeStatistics = new WorkersCumulativeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

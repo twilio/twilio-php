@@ -32,13 +32,10 @@ class FunctionVersionContentList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
-        string $functionSid
-        ,
+        string $serviceSid,
+        string $functionSid,
         string $sid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

@@ -49,8 +49,7 @@ class CreateEnvironmentOptions extends Options
         
         string $domainSuffix = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['domainSuffix'] = $domainSuffix;
     }
 

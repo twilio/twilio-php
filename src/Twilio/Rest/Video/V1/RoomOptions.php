@@ -142,8 +142,7 @@ class CreateRoomOptions extends Options
         int $unusedRoomTimeout = Values::NONE,
         bool $largeRoom = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
@@ -367,8 +366,7 @@ class ReadRoomOptions extends Options
         \DateTime $dateCreatedAfter = Values::NONE,
         \DateTime $dateCreatedBefore = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;

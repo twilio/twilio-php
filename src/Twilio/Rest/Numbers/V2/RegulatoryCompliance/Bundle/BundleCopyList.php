@@ -35,8 +35,7 @@ class BundleCopyList extends ListResource
     public function __construct(
         Version $version,
         string $bundleSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -72,7 +71,7 @@ class BundleCopyList extends ListResource
         return new BundleCopyInstance(
             $this->version,
             $payload,
-            $this->solution['bundleSid'],
+            $this->solution['bundleSid']
         );
     }
 

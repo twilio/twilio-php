@@ -175,8 +175,7 @@ class CreateTollFreeOptions extends Options
         string $voiceReceiveMode = Values::NONE,
         string $bundleSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['smsApplicationSid'] = $smsApplicationSid;
@@ -488,8 +487,7 @@ class ReadTollFreeOptions extends Options
         string $phoneNumber = Values::NONE,
         string $origin = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['beta'] = $beta;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['phoneNumber'] = $phoneNumber;

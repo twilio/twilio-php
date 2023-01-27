@@ -155,8 +155,7 @@ class CreateDomainOptions extends Options
         string $byocTrunkSid = Values::NONE,
         string $emergencyCallerSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -363,8 +362,7 @@ class UpdateDomainOptions extends Options
         string $byocTrunkSid = Values::NONE,
         string $emergencyCallerSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;

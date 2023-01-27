@@ -35,11 +35,9 @@ class InteractionChannelParticipantList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $interactionSid
-        ,
+        string $interactionSid,
         string $channelSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +79,7 @@ class InteractionChannelParticipantList extends ListResource
             $this->version,
             $payload,
             $this->solution['interactionSid'],
-            $this->solution['channelSid'],
+            $this->solution['channelSid']
         );
     }
 

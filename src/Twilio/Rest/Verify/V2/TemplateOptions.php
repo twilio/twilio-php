@@ -46,8 +46,7 @@ class ReadTemplateOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 

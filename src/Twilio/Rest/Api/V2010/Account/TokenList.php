@@ -34,8 +34,7 @@ class TokenList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +70,7 @@ class TokenList extends ListResource
         return new TokenInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

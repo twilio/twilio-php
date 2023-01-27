@@ -35,8 +35,7 @@ class CertificateList extends ListResource
     public function __construct(
         Version $version,
         string $fleetSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class CertificateList extends ListResource
         return new CertificateInstance(
             $this->version,
             $payload,
-            $this->solution['fleetSid'],
+            $this->solution['fleetSid']
         );
     }
 

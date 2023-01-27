@@ -39,8 +39,7 @@ class FactorContext extends InstanceContext
         $serviceSid,
         $identity,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class FactorContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -133,7 +132,7 @@ class FactorContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

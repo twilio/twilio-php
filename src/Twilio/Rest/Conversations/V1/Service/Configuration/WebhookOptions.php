@@ -63,8 +63,7 @@ class UpdateWebhookOptions extends Options
         array $filters = Values::ARRAY_NONE,
         string $method = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['preWebhookUrl'] = $preWebhookUrl;
         $this->options['postWebhookUrl'] = $postWebhookUrl;
         $this->options['filters'] = $filters;

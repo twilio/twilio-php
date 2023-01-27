@@ -53,8 +53,7 @@ class UpdateRecordingOptions extends Options
         string $mode = Values::NONE,
         string $trim = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['mode'] = $mode;
         $this->options['trim'] = $trim;
     }

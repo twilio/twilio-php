@@ -52,8 +52,7 @@ class CreateUserDefinedMessageSubscriptionOptions extends Options
         string $idempotencyKey = Values::NONE,
         string $method = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['idempotencyKey'] = $idempotencyKey;
         $this->options['method'] = $method;
     }

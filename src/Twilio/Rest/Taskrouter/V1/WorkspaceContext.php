@@ -80,8 +80,7 @@ class WorkspaceContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -121,7 +120,7 @@ class WorkspaceContext extends InstanceContext
         return new WorkspaceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -160,7 +159,7 @@ class WorkspaceContext extends InstanceContext
         return new WorkspaceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -173,7 +172,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_taskQueues) {
             $this->_taskQueues = new TaskQueueList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -188,7 +187,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_events) {
             $this->_events = new EventList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -203,7 +202,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_taskChannels) {
             $this->_taskChannels = new TaskChannelList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -218,7 +217,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_activities) {
             $this->_activities = new ActivityList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -233,7 +232,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_workers) {
             $this->_workers = new WorkerList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -248,7 +247,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_workflows) {
             $this->_workflows = new WorkflowList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -263,7 +262,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_tasks) {
             $this->_tasks = new TaskList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -278,7 +277,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_cumulativeStatistics) {
             $this->_cumulativeStatistics = new WorkspaceCumulativeStatisticsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -293,7 +292,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_realTimeStatistics) {
             $this->_realTimeStatistics = new WorkspaceRealTimeStatisticsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -308,7 +307,7 @@ class WorkspaceContext extends InstanceContext
         if (!$this->_statistics) {
             $this->_statistics = new WorkspaceStatisticsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

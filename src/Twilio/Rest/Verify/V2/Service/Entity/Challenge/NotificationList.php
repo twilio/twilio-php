@@ -35,13 +35,10 @@ class NotificationList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
-        string $identity
-        ,
+        string $serviceSid,
+        string $identity,
         string $challengeSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -87,7 +84,7 @@ class NotificationList extends ListResource
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['challengeSid'],
+            $this->solution['challengeSid']
         );
     }
 

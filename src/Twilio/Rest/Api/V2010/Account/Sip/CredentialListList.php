@@ -35,8 +35,7 @@ class CredentialListList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -70,7 +69,7 @@ class CredentialListList extends ListResource
         return new CredentialListInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

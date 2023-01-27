@@ -66,8 +66,7 @@ class ReadDependentHostedNumberOrderOptions extends Options
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['incomingPhoneNumberSid'] = $incomingPhoneNumberSid;

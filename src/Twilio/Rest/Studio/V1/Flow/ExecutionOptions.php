@@ -67,8 +67,7 @@ class CreateExecutionOptions extends Options
         
         array $parameters = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['parameters'] = $parameters;
     }
 
@@ -109,8 +108,7 @@ class ReadExecutionOptions extends Options
         \DateTime $dateCreatedFrom = Values::NONE,
         \DateTime $dateCreatedTo = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreatedFrom'] = $dateCreatedFrom;
         $this->options['dateCreatedTo'] = $dateCreatedTo;
     }

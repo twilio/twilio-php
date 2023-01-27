@@ -46,8 +46,7 @@ class IncomingPhoneNumberContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -91,7 +90,7 @@ class IncomingPhoneNumberContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -163,7 +162,7 @@ class IncomingPhoneNumberContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -177,7 +176,7 @@ class IncomingPhoneNumberContext extends InstanceContext
             $this->_assignedAddOns = new AssignedAddOnList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

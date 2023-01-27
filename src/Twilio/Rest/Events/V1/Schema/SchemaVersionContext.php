@@ -35,8 +35,7 @@ class SchemaVersionContext extends InstanceContext
         Version $version,
         $id,
         $schemaVersion
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class SchemaVersionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['id'],
-            $this->solution['schemaVersion'],
+            $this->solution['schemaVersion']
         );
     }
 

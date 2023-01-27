@@ -35,11 +35,9 @@ class SampleList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $assistantSid
-        ,
+        string $assistantSid,
         string $taskSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +84,7 @@ class SampleList extends ListResource
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['taskSid'],
+            $this->solution['taskSid']
         );
     }
 

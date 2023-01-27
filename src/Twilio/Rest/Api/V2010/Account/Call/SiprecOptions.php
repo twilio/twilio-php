@@ -1057,8 +1057,7 @@ class CreateSiprecOptions extends Options
         string $parameter99Name = Values::NONE,
         string $parameter99Value = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['name'] = $name;
         $this->options['connectorName'] = $connectorName;
         $this->options['track'] = $track;

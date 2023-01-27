@@ -227,8 +227,7 @@ class ReadReservationOptions extends Options
         string $reservationStatus = Values::NONE,
         string $workerSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['reservationStatus'] = $reservationStatus;
         $this->options['workerSid'] = $workerSid;
     }
@@ -384,8 +383,7 @@ class UpdateReservationOptions extends Options
         bool $beepOnCustomerEntrance = Values::NONE,
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['reservationStatus'] = $reservationStatus;
         $this->options['workerActivitySid'] = $workerActivitySid;
         $this->options['instruction'] = $instruction;

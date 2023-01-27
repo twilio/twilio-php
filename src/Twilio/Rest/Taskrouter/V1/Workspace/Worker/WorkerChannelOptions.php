@@ -55,8 +55,7 @@ class UpdateWorkerChannelOptions extends Options
         int $capacity = Values::NONE,
         bool $available = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['capacity'] = $capacity;
         $this->options['available'] = $available;
     }

@@ -81,8 +81,7 @@ class CreateActivityOptions extends Options
         
         bool $available = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['available'] = $available;
     }
 
@@ -123,8 +122,7 @@ class ReadActivityOptions extends Options
         string $friendlyName = Values::NONE,
         string $available = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['available'] = $available;
     }
@@ -174,8 +172,7 @@ class UpdateActivityOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 

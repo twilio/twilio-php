@@ -33,8 +33,7 @@ class PoliciesContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class PoliciesContext extends InstanceContext
         return new PoliciesInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

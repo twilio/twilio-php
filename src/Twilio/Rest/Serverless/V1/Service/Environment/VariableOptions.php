@@ -59,8 +59,7 @@ class UpdateVariableOptions extends Options
         string $key = Values::NONE,
         string $value = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['key'] = $key;
         $this->options['value'] = $value;
     }

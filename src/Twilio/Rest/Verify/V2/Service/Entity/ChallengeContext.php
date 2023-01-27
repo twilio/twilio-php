@@ -47,8 +47,7 @@ class ChallengeContext extends InstanceContext
         $serviceSid,
         $identity,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -83,7 +82,7 @@ class ChallengeContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -114,7 +113,7 @@ class ChallengeContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['identity'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -129,7 +128,7 @@ class ChallengeContext extends InstanceContext
                 $this->version,
                 $this->solution['serviceSid'],
                 $this->solution['identity'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

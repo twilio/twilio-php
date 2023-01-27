@@ -130,8 +130,7 @@ class CreateFleetOptions extends Options
         string $smsCommandsUrl = Values::NONE,
         string $smsCommandsMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dataEnabled'] = $dataEnabled;
         $this->options['dataLimit'] = $dataLimit;
@@ -260,8 +259,7 @@ class ReadFleetOptions extends Options
         
         string $networkAccessProfile = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['networkAccessProfile'] = $networkAccessProfile;
     }
 
@@ -310,8 +308,7 @@ class UpdateFleetOptions extends Options
         string $smsCommandsMethod = Values::NONE,
         int $dataLimit = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['networkAccessProfile'] = $networkAccessProfile;
         $this->options['ipCommandsUrl'] = $ipCommandsUrl;

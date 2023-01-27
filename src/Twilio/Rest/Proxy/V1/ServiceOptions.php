@@ -115,8 +115,7 @@ class CreateServiceOptions extends Options
         string $outOfSessionCallbackUrl = Values::NONE,
         string $chatInstanceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['geoMatchLevel'] = $geoMatchLevel;
@@ -244,8 +243,7 @@ class UpdateServiceOptions extends Options
         string $outOfSessionCallbackUrl = Values::NONE,
         string $chatInstanceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;

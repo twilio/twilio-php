@@ -33,8 +33,8 @@ class TrunkList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +79,7 @@ class TrunkList extends ListResource
 
         return new TrunkInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

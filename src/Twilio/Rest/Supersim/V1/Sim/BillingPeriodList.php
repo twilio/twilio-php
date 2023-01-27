@@ -33,8 +33,7 @@ class BillingPeriodList extends ListResource
     public function __construct(
         Version $version,
         string $simSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

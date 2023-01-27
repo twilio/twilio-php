@@ -66,8 +66,7 @@ class CreateVerificationCheckOptions extends Options
         string $amount = Values::NONE,
         string $payee = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['code'] = $code;
         $this->options['to'] = $to;
         $this->options['verificationSid'] = $verificationSid;

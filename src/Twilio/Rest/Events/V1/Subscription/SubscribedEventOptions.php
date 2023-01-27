@@ -64,8 +64,7 @@ class CreateSubscribedEventOptions extends Options
         
         int $schemaVersion = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['schemaVersion'] = $schemaVersion;
     }
 
@@ -105,8 +104,7 @@ class UpdateSubscribedEventOptions extends Options
         
         int $schemaVersion = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['schemaVersion'] = $schemaVersion;
     }
 

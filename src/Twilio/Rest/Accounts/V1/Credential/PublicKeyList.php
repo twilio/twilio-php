@@ -32,8 +32,8 @@ class PublicKeyList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +69,7 @@ class PublicKeyList extends ListResource
 
         return new PublicKeyInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

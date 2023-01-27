@@ -83,8 +83,7 @@ class CreateAccountOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -124,8 +123,7 @@ class ReadAccountOptions extends Options
         string $friendlyName = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['status'] = $status;
     }
@@ -177,8 +175,7 @@ class UpdateAccountOptions extends Options
         string $friendlyName = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['status'] = $status;
     }

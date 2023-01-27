@@ -150,8 +150,7 @@ class CreateConversationOptions extends Options
         string $timersClosed = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateCreated'] = $dateCreated;
@@ -303,8 +302,7 @@ class DeleteConversationOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -361,8 +359,7 @@ class UpdateConversationOptions extends Options
         string $uniqueName = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;

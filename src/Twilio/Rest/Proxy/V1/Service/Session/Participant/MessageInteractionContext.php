@@ -39,8 +39,7 @@ class MessageInteractionContext extends InstanceContext
         $sessionSid,
         $participantSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +78,7 @@ class MessageInteractionContext extends InstanceContext
             $this->solution['serviceSid'],
             $this->solution['sessionSid'],
             $this->solution['participantSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

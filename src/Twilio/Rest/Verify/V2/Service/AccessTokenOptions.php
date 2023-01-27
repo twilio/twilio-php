@@ -52,8 +52,7 @@ class CreateAccessTokenOptions extends Options
         string $factorFriendlyName = Values::NONE,
         int $ttl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['factorFriendlyName'] = $factorFriendlyName;
         $this->options['ttl'] = $ttl;
     }

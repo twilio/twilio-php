@@ -36,8 +36,7 @@ class WorkspaceStatisticsContext extends InstanceContext
     public function __construct(
         Version $version,
         $workspaceSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class WorkspaceStatisticsContext extends InstanceContext
         return new WorkspaceStatisticsInstance(
             $this->version,
             $payload,
-            $this->solution['workspaceSid'],
+            $this->solution['workspaceSid']
         );
     }
 

@@ -46,8 +46,7 @@ class FetchConfigurationOptions extends Options
         
         string $uiVersion = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uiVersion'] = $uiVersion;
     }
 

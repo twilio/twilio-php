@@ -37,8 +37,7 @@ class FieldContext extends InstanceContext
         $assistantSid,
         $taskSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class FieldContext extends InstanceContext
             $payload,
             $this->solution['assistantSid'],
             $this->solution['taskSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

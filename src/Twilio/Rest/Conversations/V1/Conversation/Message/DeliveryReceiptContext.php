@@ -37,8 +37,7 @@ class DeliveryReceiptContext extends InstanceContext
         $conversationSid,
         $messageSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class DeliveryReceiptContext extends InstanceContext
             $payload,
             $this->solution['conversationSid'],
             $this->solution['messageSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -102,8 +102,7 @@ class CreateUserOptions extends Options
         string $roleSid = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['roleSid'] = $roleSid;
@@ -179,8 +178,7 @@ class DeleteUserOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -225,8 +223,7 @@ class UpdateUserOptions extends Options
         string $roleSid = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['roleSid'] = $roleSid;

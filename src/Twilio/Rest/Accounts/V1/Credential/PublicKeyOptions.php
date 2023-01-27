@@ -69,8 +69,7 @@ class CreatePublicKeyOptions extends Options
         string $friendlyName = Values::NONE,
         string $accountSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['accountSid'] = $accountSid;
     }
@@ -123,8 +122,7 @@ class UpdatePublicKeyOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 

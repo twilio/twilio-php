@@ -55,8 +55,7 @@ class FleetContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -96,7 +95,7 @@ class FleetContext extends InstanceContext
         return new FleetInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -125,7 +124,7 @@ class FleetContext extends InstanceContext
         return new FleetInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -138,7 +137,7 @@ class FleetContext extends InstanceContext
         if (!$this->_certificates) {
             $this->_certificates = new CertificateList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -153,7 +152,7 @@ class FleetContext extends InstanceContext
         if (!$this->_devices) {
             $this->_devices = new DeviceList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -168,7 +167,7 @@ class FleetContext extends InstanceContext
         if (!$this->_keys) {
             $this->_keys = new KeyList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -183,7 +182,7 @@ class FleetContext extends InstanceContext
         if (!$this->_deployments) {
             $this->_deployments = new DeploymentList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

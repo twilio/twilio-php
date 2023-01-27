@@ -319,8 +319,7 @@ class UpdateServiceOptions extends Options
         int $limitsChannelMembers = Values::NONE,
         int $limitsUserChannels = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;

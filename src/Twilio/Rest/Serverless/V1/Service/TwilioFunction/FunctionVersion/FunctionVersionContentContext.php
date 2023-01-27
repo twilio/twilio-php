@@ -37,8 +37,7 @@ class FunctionVersionContentContext extends InstanceContext
         $serviceSid,
         $functionSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class FunctionVersionContentContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['functionSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

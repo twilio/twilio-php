@@ -70,8 +70,7 @@ class ReadOutgoingCallerIdOptions extends Options
         string $phoneNumber = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['friendlyName'] = $friendlyName;
     }
@@ -121,8 +120,7 @@ class UpdateOutgoingCallerIdOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 

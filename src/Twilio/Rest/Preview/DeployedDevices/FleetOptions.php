@@ -67,8 +67,7 @@ class CreateFleetOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -110,8 +109,7 @@ class UpdateFleetOptions extends Options
         string $friendlyName = Values::NONE,
         string $defaultDeploymentSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultDeploymentSid'] = $defaultDeploymentSid;
     }

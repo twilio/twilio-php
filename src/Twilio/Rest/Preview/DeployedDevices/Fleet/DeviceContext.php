@@ -38,8 +38,7 @@ class DeviceContext extends InstanceContext
         Version $version,
         $fleetSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -83,7 +82,7 @@ class DeviceContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['fleetSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -117,7 +116,7 @@ class DeviceContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['fleetSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -41,8 +41,7 @@ class ConferenceContext extends InstanceContext
     public function __construct(
         Version $version,
         $conferenceSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class ConferenceContext extends InstanceContext
         return new ConferenceInstance(
             $this->version,
             $payload,
-            $this->solution['conferenceSid'],
+            $this->solution['conferenceSid']
         );
     }
 
@@ -82,7 +81,7 @@ class ConferenceContext extends InstanceContext
         if (!$this->_conferenceParticipants) {
             $this->_conferenceParticipants = new ConferenceParticipantList(
                 $this->version,
-                $this->solution['conferenceSid'],
+                $this->solution['conferenceSid']
             );
         }
 

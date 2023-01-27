@@ -98,8 +98,7 @@ class CreateAuthorizationDocumentOptions extends Options
         
         array $ccEmails = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['ccEmails'] = $ccEmails;
     }
 
@@ -139,8 +138,7 @@ class ReadAuthorizationDocumentOptions extends Options
         string $email = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['email'] = $email;
         $this->options['status'] = $status;
     }
@@ -202,8 +200,7 @@ class UpdateAuthorizationDocumentOptions extends Options
         string $contactTitle = Values::NONE,
         string $contactPhoneNumber = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['hostedNumberOrderSids'] = $hostedNumberOrderSids;
         $this->options['addressSid'] = $addressSid;
         $this->options['email'] = $email;

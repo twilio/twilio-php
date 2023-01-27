@@ -36,11 +36,9 @@ class SyncMapItemList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $mapSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -91,7 +89,7 @@ class SyncMapItemList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['mapSid'],
+            $this->solution['mapSid']
         );
     }
 

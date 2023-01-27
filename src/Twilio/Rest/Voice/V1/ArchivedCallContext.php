@@ -35,8 +35,7 @@ class ArchivedCallContext extends InstanceContext
         Version $version,
         $date,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution

@@ -67,8 +67,7 @@ class CreateFieldTypeOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -110,8 +109,7 @@ class UpdateFieldTypeOptions extends Options
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
     }

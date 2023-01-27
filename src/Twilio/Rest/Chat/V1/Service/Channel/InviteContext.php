@@ -37,8 +37,7 @@ class InviteContext extends InstanceContext
         $serviceSid,
         $channelSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class InviteContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['channelSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

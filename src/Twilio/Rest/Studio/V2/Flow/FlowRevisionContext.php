@@ -35,8 +35,7 @@ class FlowRevisionContext extends InstanceContext
         Version $version,
         $sid,
         $revision
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class FlowRevisionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['sid'],
-            $this->solution['revision'],
+            $this->solution['revision']
         );
     }
 

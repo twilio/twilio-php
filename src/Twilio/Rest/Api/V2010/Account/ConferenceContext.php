@@ -49,8 +49,7 @@ class ConferenceContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +80,7 @@ class ConferenceContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -113,7 +112,7 @@ class ConferenceContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -127,7 +126,7 @@ class ConferenceContext extends InstanceContext
             $this->_participants = new ParticipantList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -143,7 +142,7 @@ class ConferenceContext extends InstanceContext
             $this->_recordings = new RecordingList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

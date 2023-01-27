@@ -32,8 +32,8 @@ class InsightsQuestionnairesQuestionList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +79,7 @@ class InsightsQuestionnairesQuestionList extends ListResource
 
         return new InsightsQuestionnairesQuestionInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

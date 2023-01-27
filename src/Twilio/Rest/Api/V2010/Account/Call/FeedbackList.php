@@ -31,11 +31,9 @@ class FeedbackList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $callSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

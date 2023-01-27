@@ -70,8 +70,7 @@ class ReadSubscriptionOptions extends Options
         
         string $sinkSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sinkSid'] = $sinkSid;
     }
 
@@ -110,8 +109,7 @@ class UpdateSubscriptionOptions extends Options
         string $description = Values::NONE,
         string $sinkSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['description'] = $description;
         $this->options['sinkSid'] = $sinkSid;
     }

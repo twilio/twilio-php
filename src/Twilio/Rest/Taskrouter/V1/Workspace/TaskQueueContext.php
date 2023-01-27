@@ -53,8 +53,7 @@ class TaskQueueContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -98,7 +97,7 @@ class TaskQueueContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -136,7 +135,7 @@ class TaskQueueContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -150,7 +149,7 @@ class TaskQueueContext extends InstanceContext
             $this->_cumulativeStatistics = new TaskQueueCumulativeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -166,7 +165,7 @@ class TaskQueueContext extends InstanceContext
             $this->_statistics = new TaskQueueStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -182,7 +181,7 @@ class TaskQueueContext extends InstanceContext
             $this->_realTimeStatistics = new TaskQueueRealTimeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

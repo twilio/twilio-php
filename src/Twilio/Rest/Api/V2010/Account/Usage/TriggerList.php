@@ -35,8 +35,7 @@ class TriggerList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -87,7 +86,7 @@ class TriggerList extends ListResource
         return new TriggerInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

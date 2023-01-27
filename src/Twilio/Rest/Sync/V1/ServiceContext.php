@@ -56,8 +56,7 @@ class ServiceContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -97,7 +96,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -136,7 +135,7 @@ class ServiceContext extends InstanceContext
         return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -149,7 +148,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_syncLists) {
             $this->_syncLists = new SyncListList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -164,7 +163,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_syncStreams) {
             $this->_syncStreams = new SyncStreamList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -179,7 +178,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_documents) {
             $this->_documents = new DocumentList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -194,7 +193,7 @@ class ServiceContext extends InstanceContext
         if (!$this->_syncMaps) {
             $this->_syncMaps = new SyncMapList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

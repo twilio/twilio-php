@@ -62,8 +62,7 @@ class UpdateUserChannelOptions extends Options
         int $lastConsumedMessageIndex = Values::NONE,
         \DateTime $lastConsumptionTimestamp = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['notificationLevel'] = $notificationLevel;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;

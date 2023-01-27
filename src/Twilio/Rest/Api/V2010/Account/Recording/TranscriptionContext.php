@@ -37,8 +37,7 @@ class TranscriptionContext extends InstanceContext
         $accountSid,
         $recordingSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class TranscriptionContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['recordingSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

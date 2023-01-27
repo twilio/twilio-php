@@ -31,8 +31,7 @@ class AssessmentsContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -55,7 +54,7 @@ class AssessmentsContext extends InstanceContext
 
         return new AssessmentsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

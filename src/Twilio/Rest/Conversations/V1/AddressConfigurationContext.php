@@ -36,8 +36,7 @@ class AddressConfigurationContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class AddressConfigurationContext extends InstanceContext
         return new AddressConfigurationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -120,7 +119,7 @@ class AddressConfigurationContext extends InstanceContext
         return new AddressConfigurationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

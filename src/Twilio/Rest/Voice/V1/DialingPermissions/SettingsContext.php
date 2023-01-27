@@ -34,8 +34,7 @@ class SettingsContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -58,7 +57,7 @@ class SettingsContext extends InstanceContext
 
         return new SettingsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 
@@ -84,7 +83,7 @@ class SettingsContext extends InstanceContext
 
         return new SettingsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

@@ -37,8 +37,7 @@ class AssetVersionContext extends InstanceContext
         $serviceSid,
         $assetSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class AssetVersionContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['assetSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

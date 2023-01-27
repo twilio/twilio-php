@@ -34,13 +34,10 @@ class DeliveryReceiptList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $chatServiceSid
-        ,
-        string $conversationSid
-        ,
+        string $chatServiceSid,
+        string $conversationSid,
         string $messageSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

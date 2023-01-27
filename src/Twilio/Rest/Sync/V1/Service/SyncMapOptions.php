@@ -77,8 +77,7 @@ class CreateSyncMapOptions extends Options
         int $ttl = Values::NONE,
         int $collectionTtl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
         $this->options['collectionTtl'] = $collectionTtl;
@@ -146,8 +145,7 @@ class UpdateSyncMapOptions extends Options
         int $ttl = Values::NONE,
         int $collectionTtl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ttl'] = $ttl;
         $this->options['collectionTtl'] = $collectionTtl;
     }

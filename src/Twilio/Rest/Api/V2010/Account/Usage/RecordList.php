@@ -64,8 +64,7 @@ class RecordList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -192,7 +191,6 @@ class RecordList extends ListResource
             $this->_lastMonth = new LastMonthList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_lastMonth;
@@ -207,7 +205,6 @@ class RecordList extends ListResource
             $this->_today = new TodayList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_today;
@@ -222,7 +219,6 @@ class RecordList extends ListResource
             $this->_yearly = new YearlyList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_yearly;
@@ -237,7 +233,6 @@ class RecordList extends ListResource
             $this->_thisMonth = new ThisMonthList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_thisMonth;
@@ -252,7 +247,6 @@ class RecordList extends ListResource
             $this->_daily = new DailyList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_daily;
@@ -267,7 +261,6 @@ class RecordList extends ListResource
             $this->_allTime = new AllTimeList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_allTime;
@@ -282,7 +275,6 @@ class RecordList extends ListResource
             $this->_yesterday = new YesterdayList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_yesterday;
@@ -297,7 +289,6 @@ class RecordList extends ListResource
             $this->_monthly = new MonthlyList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_monthly;

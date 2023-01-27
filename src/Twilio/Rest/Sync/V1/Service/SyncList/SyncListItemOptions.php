@@ -120,8 +120,7 @@ class CreateSyncListItemOptions extends Options
         int $itemTtl = Values::NONE,
         int $collectionTtl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;
         $this->options['collectionTtl'] = $collectionTtl;
@@ -184,8 +183,7 @@ class DeleteSyncListItemOptions extends Options
         
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -227,8 +225,7 @@ class ReadSyncListItemOptions extends Options
         string $from = Values::NONE,
         string $bounds = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
@@ -299,8 +296,7 @@ class UpdateSyncListItemOptions extends Options
         int $collectionTtl = Values::NONE,
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
         $this->options['itemTtl'] = $itemTtl;

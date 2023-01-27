@@ -70,8 +70,7 @@ class CreateFlowOptions extends Options
         
         string $commitMessage = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['commitMessage'] = $commitMessage;
     }
 
@@ -115,8 +114,7 @@ class UpdateFlowOptions extends Options
         array $definition = Values::ARRAY_NONE,
         string $commitMessage = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['definition'] = $definition;
         $this->options['commitMessage'] = $commitMessage;

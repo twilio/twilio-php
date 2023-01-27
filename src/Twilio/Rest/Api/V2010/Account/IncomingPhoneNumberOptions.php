@@ -268,8 +268,7 @@ class CreateIncomingPhoneNumberOptions extends Options
         string $voiceReceiveMode = Values::NONE,
         string $bundleSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['areaCode'] = $areaCode;
         $this->options['apiVersion'] = $apiVersion;
@@ -609,8 +608,7 @@ class ReadIncomingPhoneNumberOptions extends Options
         string $phoneNumber = Values::NONE,
         string $origin = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['beta'] = $beta;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['phoneNumber'] = $phoneNumber;
@@ -730,8 +728,7 @@ class UpdateIncomingPhoneNumberOptions extends Options
         string $addressSid = Values::NONE,
         string $bundleSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['accountSid'] = $accountSid;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;

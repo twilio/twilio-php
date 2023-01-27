@@ -107,8 +107,7 @@ class CreateDeviceOptions extends Options
         string $deploymentSid = Values::NONE,
         bool $enabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['identity'] = $identity;
@@ -199,8 +198,7 @@ class ReadDeviceOptions extends Options
         
         string $deploymentSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['deploymentSid'] = $deploymentSid;
     }
 
@@ -243,8 +241,7 @@ class UpdateDeviceOptions extends Options
         string $deploymentSid = Values::NONE,
         bool $enabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['identity'] = $identity;
         $this->options['deploymentSid'] = $deploymentSid;

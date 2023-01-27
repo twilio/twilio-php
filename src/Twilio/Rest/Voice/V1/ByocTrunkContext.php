@@ -36,8 +36,7 @@ class ByocTrunkContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class ByocTrunkContext extends InstanceContext
         return new ByocTrunkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -122,7 +121,7 @@ class ByocTrunkContext extends InstanceContext
         return new ByocTrunkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -81,8 +81,7 @@ class CreateIpCommandOptions extends Options
         string $callbackUrl = Values::NONE,
         string $callbackMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['payloadType'] = $payloadType;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['callbackMethod'] = $callbackMethod;
@@ -150,8 +149,7 @@ class ReadIpCommandOptions extends Options
         string $status = Values::NONE,
         string $direction = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sim'] = $sim;
         $this->options['simIccid'] = $simIccid;
         $this->options['status'] = $status;

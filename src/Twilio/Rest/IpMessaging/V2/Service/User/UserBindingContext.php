@@ -37,8 +37,7 @@ class UserBindingContext extends InstanceContext
         $serviceSid,
         $userSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class UserBindingContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['userSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

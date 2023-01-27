@@ -34,8 +34,7 @@ class EvaluationList extends ListResource
     public function __construct(
         Version $version,
         string $bundleSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -63,7 +62,7 @@ class EvaluationList extends ListResource
         return new EvaluationInstance(
             $this->version,
             $payload,
-            $this->solution['bundleSid'],
+            $this->solution['bundleSid']
         );
     }
 

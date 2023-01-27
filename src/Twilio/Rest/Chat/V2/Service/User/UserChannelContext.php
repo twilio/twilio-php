@@ -40,8 +40,7 @@ class UserChannelContext extends InstanceContext
         $serviceSid,
         $userSid,
         $channelSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -94,7 +93,7 @@ class UserChannelContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['userSid'],
-            $this->solution['channelSid'],
+            $this->solution['channelSid']
         );
     }
 
@@ -127,7 +126,7 @@ class UserChannelContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['userSid'],
-            $this->solution['channelSid'],
+            $this->solution['channelSid']
         );
     }
 

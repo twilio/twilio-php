@@ -96,8 +96,7 @@ class CreateCommandOptions extends Options
         string $commandMode = Values::NONE,
         string $includeSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['device'] = $device;
         $this->options['sim'] = $sim;
         $this->options['callbackMethod'] = $callbackMethod;
@@ -206,8 +205,7 @@ class ReadCommandOptions extends Options
         string $status = Values::NONE,
         string $direction = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['device'] = $device;
         $this->options['sim'] = $sim;
         $this->options['status'] = $status;

@@ -49,8 +49,7 @@ class RoomContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class RoomContext extends InstanceContext
         return new RoomInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -102,7 +101,7 @@ class RoomContext extends InstanceContext
         return new RoomInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -115,7 +114,7 @@ class RoomContext extends InstanceContext
         if (!$this->_recordingRules) {
             $this->_recordingRules = new RecordingRulesList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -130,7 +129,7 @@ class RoomContext extends InstanceContext
         if (!$this->_participants) {
             $this->_participants = new ParticipantList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -145,7 +144,7 @@ class RoomContext extends InstanceContext
         if (!$this->_recordings) {
             $this->_recordings = new RoomRecordingList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

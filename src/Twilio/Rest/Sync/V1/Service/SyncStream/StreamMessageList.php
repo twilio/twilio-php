@@ -35,11 +35,9 @@ class StreamMessageList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $streamSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -78,7 +76,7 @@ class StreamMessageList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['streamSid'],
+            $this->solution['streamSid']
         );
     }
 

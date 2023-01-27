@@ -136,8 +136,7 @@ class CreateByocTrunkOptions extends Options
         string $connectionPolicySid = Values::NONE,
         string $fromDomainSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -312,8 +311,7 @@ class UpdateByocTrunkOptions extends Options
         string $connectionPolicySid = Values::NONE,
         string $fromDomainSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;

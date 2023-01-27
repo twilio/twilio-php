@@ -34,8 +34,7 @@ class TrustProductsEntityAssignmentsList extends ListResource
     public function __construct(
         Version $version,
         string $trustProductSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class TrustProductsEntityAssignmentsList extends ListResource
         return new TrustProductsEntityAssignmentsInstance(
             $this->version,
             $payload,
-            $this->solution['trustProductSid'],
+            $this->solution['trustProductSid']
         );
     }
 

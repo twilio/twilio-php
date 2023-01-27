@@ -33,8 +33,7 @@ class FormContext extends InstanceContext
     public function __construct(
         Version $version,
         $formType
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class FormContext extends InstanceContext
         return new FormInstance(
             $this->version,
             $payload,
-            $this->solution['formType'],
+            $this->solution['formType']
         );
     }
 

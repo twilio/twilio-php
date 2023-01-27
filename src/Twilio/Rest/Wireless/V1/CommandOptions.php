@@ -97,8 +97,7 @@ class CreateCommandOptions extends Options
         string $includeSid = Values::NONE,
         bool $deliveryReceiptRequested = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sim'] = $sim;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
@@ -206,8 +205,7 @@ class ReadCommandOptions extends Options
         string $direction = Values::NONE,
         string $transport = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sim'] = $sim;
         $this->options['status'] = $status;
         $this->options['direction'] = $direction;

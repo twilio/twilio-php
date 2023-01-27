@@ -93,8 +93,7 @@ class ReadConferenceOptions extends Options
         string $detectedIssues = Values::NONE,
         string $endReason = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['conferenceSid'] = $conferenceSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['status'] = $status;

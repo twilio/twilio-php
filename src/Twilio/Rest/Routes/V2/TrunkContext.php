@@ -35,8 +35,7 @@ class TrunkContext extends InstanceContext
     public function __construct(
         Version $version,
         $sipTrunkDomain
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -63,7 +62,7 @@ class TrunkContext extends InstanceContext
         return new TrunkInstance(
             $this->version,
             $payload,
-            $this->solution['sipTrunkDomain'],
+            $this->solution['sipTrunkDomain']
         );
     }
 
@@ -92,7 +91,7 @@ class TrunkContext extends InstanceContext
         return new TrunkInstance(
             $this->version,
             $payload,
-            $this->solution['sipTrunkDomain'],
+            $this->solution['sipTrunkDomain']
         );
     }
 

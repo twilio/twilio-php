@@ -142,8 +142,7 @@ class CreateAddressConfigurationOptions extends Options
         string $autoCreationStudioFlowSid = Values::NONE,
         int $autoCreationStudioRetryCount = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['autoCreationEnabled'] = $autoCreationEnabled;
         $this->options['autoCreationType'] = $autoCreationType;
@@ -282,8 +281,7 @@ class ReadAddressConfigurationOptions extends Options
         
         string $type = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['type'] = $type;
     }
 
@@ -336,8 +334,7 @@ class UpdateAddressConfigurationOptions extends Options
         string $autoCreationStudioFlowSid = Values::NONE,
         int $autoCreationStudioRetryCount = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['autoCreationEnabled'] = $autoCreationEnabled;
         $this->options['autoCreationType'] = $autoCreationType;

@@ -34,8 +34,7 @@ class ConferenceParticipantList extends ListResource
     public function __construct(
         Version $version,
         string $conferenceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

@@ -39,8 +39,7 @@ class SyncMapPermissionContext extends InstanceContext
         $serviceSid,
         $mapSid,
         $identity
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class SyncMapPermissionContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['mapSid'],
-            $this->solution['identity'],
+            $this->solution['identity']
         );
     }
 
@@ -121,7 +120,7 @@ class SyncMapPermissionContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['mapSid'],
-            $this->solution['identity'],
+            $this->solution['identity']
         );
     }
 

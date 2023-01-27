@@ -74,8 +74,7 @@ class CreateChannelOptions extends Options
         string $taskAttributes = Values::NONE,
         bool $longLived = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['target'] = $target;
         $this->options['chatUniqueName'] = $chatUniqueName;
         $this->options['preEngagementData'] = $preEngagementData;

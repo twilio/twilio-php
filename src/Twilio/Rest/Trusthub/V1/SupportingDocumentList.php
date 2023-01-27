@@ -33,8 +33,8 @@ class SupportingDocumentList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +71,7 @@ class SupportingDocumentList extends ListResource
 
         return new SupportingDocumentInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

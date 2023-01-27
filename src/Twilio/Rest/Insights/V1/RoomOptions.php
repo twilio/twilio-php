@@ -68,8 +68,7 @@ class ReadRoomOptions extends Options
         \DateTime $createdAfter = Values::NONE,
         \DateTime $createdBefore = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roomType'] = $roomType;
         $this->options['codec'] = $codec;
         $this->options['roomName'] = $roomName;

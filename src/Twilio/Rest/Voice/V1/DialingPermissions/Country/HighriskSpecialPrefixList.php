@@ -33,8 +33,7 @@ class HighriskSpecialPrefixList extends ListResource
     public function __construct(
         Version $version,
         string $isoCode
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

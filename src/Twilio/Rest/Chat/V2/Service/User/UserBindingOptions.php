@@ -50,8 +50,7 @@ class ReadUserBindingOptions extends Options
         
         array $bindingType = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['bindingType'] = $bindingType;
     }
 

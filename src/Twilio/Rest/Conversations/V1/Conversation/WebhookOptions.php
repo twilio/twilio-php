@@ -101,8 +101,7 @@ class CreateWebhookOptions extends Options
         string $configurationFlowSid = Values::NONE,
         int $configurationReplayAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;
@@ -213,8 +212,7 @@ class UpdateWebhookOptions extends Options
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['configurationUrl'] = $configurationUrl;
         $this->options['configurationMethod'] = $configurationMethod;
         $this->options['configurationFilters'] = $configurationFilters;

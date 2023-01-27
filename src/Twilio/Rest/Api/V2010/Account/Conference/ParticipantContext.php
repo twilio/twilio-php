@@ -40,8 +40,7 @@ class ParticipantContext extends InstanceContext
         $accountSid,
         $conferenceSid,
         $callSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -89,7 +88,7 @@ class ParticipantContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['conferenceSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 
@@ -140,7 +139,7 @@ class ParticipantContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['conferenceSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 

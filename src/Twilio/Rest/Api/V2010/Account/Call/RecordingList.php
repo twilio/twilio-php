@@ -36,11 +36,9 @@ class RecordingList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $callSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -91,7 +89,7 @@ class RecordingList extends ListResource
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 

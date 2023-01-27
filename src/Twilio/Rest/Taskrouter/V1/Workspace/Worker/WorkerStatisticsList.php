@@ -31,11 +31,9 @@ class WorkerStatisticsList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $workspaceSid
-        ,
+        string $workspaceSid,
         string $workerSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

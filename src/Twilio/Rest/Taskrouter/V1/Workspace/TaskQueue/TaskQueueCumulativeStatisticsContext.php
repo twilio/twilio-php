@@ -38,8 +38,7 @@ class TaskQueueCumulativeStatisticsContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $taskQueueSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class TaskQueueCumulativeStatisticsContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['taskQueueSid'],
+            $this->solution['taskQueueSid']
         );
     }
 

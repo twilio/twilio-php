@@ -36,8 +36,7 @@ class ParticipantList extends ListResource
     public function __construct(
         Version $version,
         string $conversationSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -89,7 +88,7 @@ class ParticipantList extends ListResource
         return new ParticipantInstance(
             $this->version,
             $payload,
-            $this->solution['conversationSid'],
+            $this->solution['conversationSid']
         );
     }
 

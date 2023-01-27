@@ -116,8 +116,7 @@ class CreateWorkspaceOptions extends Options
         string $template = Values::NONE,
         string $prioritizeQueueOrder = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         $this->options['eventsFilter'] = $eventsFilter;
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
@@ -206,8 +205,7 @@ class ReadWorkspaceOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -256,8 +254,7 @@ class UpdateWorkspaceOptions extends Options
         string $timeoutActivitySid = Values::NONE,
         string $prioritizeQueueOrder = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['defaultActivitySid'] = $defaultActivitySid;
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         $this->options['eventsFilter'] = $eventsFilter;

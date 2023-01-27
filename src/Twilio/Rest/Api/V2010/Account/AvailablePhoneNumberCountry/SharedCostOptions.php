@@ -131,8 +131,7 @@ class ReadSharedCostOptions extends Options
         string $inLocality = Values::NONE,
         bool $faxEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['areaCode'] = $areaCode;
         $this->options['contains'] = $contains;
         $this->options['smsEnabled'] = $smsEnabled;

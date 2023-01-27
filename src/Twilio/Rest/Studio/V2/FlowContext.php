@@ -52,8 +52,7 @@ class FlowContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -93,7 +92,7 @@ class FlowContext extends InstanceContext
         return new FlowInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -127,7 +126,7 @@ class FlowContext extends InstanceContext
         return new FlowInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -140,7 +139,7 @@ class FlowContext extends InstanceContext
         if (!$this->_executions) {
             $this->_executions = new ExecutionList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -155,7 +154,7 @@ class FlowContext extends InstanceContext
         if (!$this->_revisions) {
             $this->_revisions = new FlowRevisionList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -170,7 +169,7 @@ class FlowContext extends InstanceContext
         if (!$this->_testUsers) {
             $this->_testUsers = new FlowTestUserList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

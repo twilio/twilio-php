@@ -131,8 +131,7 @@ class CreateNotificationOptions extends Options
         array $toBinding = Values::ARRAY_NONE,
         string $deliveryCallbackUrl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;

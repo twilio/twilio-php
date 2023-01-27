@@ -130,8 +130,7 @@ class CreateWorkerOptions extends Options
         string $activitySid = Values::NONE,
         string $attributes = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['activitySid'] = $activitySid;
         $this->options['attributes'] = $attributes;
     }
@@ -181,8 +180,7 @@ class DeleteWorkerOptions extends Options
         
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -234,8 +232,7 @@ class ReadWorkerOptions extends Options
         string $taskQueueSid = Values::NONE,
         string $ordering = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['activityName'] = $activityName;
         $this->options['activitySid'] = $activitySid;
         $this->options['available'] = $available;
@@ -371,8 +368,7 @@ class UpdateWorkerOptions extends Options
         bool $rejectPendingReservations = Values::NONE,
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['activitySid'] = $activitySid;
         $this->options['attributes'] = $attributes;
         $this->options['friendlyName'] = $friendlyName;

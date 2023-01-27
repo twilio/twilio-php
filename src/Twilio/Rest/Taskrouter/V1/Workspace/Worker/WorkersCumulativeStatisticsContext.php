@@ -36,8 +36,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext
     public function __construct(
         Version $version,
         $workspaceSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -78,7 +77,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext
         return new WorkersCumulativeStatisticsInstance(
             $this->version,
             $payload,
-            $this->solution['workspaceSid'],
+            $this->solution['workspaceSid']
         );
     }
 

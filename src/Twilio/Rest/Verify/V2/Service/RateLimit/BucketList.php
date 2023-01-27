@@ -34,11 +34,9 @@ class BucketList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $rateLimitSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +78,7 @@ class BucketList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['rateLimitSid'],
+            $this->solution['rateLimitSid']
         );
     }
 

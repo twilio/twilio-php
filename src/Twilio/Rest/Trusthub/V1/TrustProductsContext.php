@@ -51,8 +51,7 @@ class TrustProductsContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class TrustProductsContext extends InstanceContext
         return new TrustProductsInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -125,7 +124,7 @@ class TrustProductsContext extends InstanceContext
         return new TrustProductsInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -138,7 +137,7 @@ class TrustProductsContext extends InstanceContext
         if (!$this->_trustProductsChannelEndpointAssignment) {
             $this->_trustProductsChannelEndpointAssignment = new TrustProductsChannelEndpointAssignmentList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -153,7 +152,7 @@ class TrustProductsContext extends InstanceContext
         if (!$this->_trustProductsEvaluations) {
             $this->_trustProductsEvaluations = new TrustProductsEvaluationsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -168,7 +167,7 @@ class TrustProductsContext extends InstanceContext
         if (!$this->_trustProductsEntityAssignments) {
             $this->_trustProductsEntityAssignments = new TrustProductsEntityAssignmentsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

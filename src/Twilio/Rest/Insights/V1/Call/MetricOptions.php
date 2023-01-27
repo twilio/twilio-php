@@ -51,8 +51,7 @@ class ReadMetricOptions extends Options
         string $edge = Values::NONE,
         string $direction = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['edge'] = $edge;
         $this->options['direction'] = $direction;
     }

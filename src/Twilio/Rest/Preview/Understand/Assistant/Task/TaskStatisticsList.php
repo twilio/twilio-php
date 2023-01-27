@@ -31,11 +31,9 @@ class TaskStatisticsList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $assistantSid
-        ,
+        string $assistantSid,
         string $taskSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

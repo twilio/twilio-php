@@ -35,8 +35,7 @@ class EventList extends ListResource
     public function __construct(
         Version $version,
         string $workspaceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

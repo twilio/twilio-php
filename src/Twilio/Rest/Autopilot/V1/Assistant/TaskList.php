@@ -36,8 +36,7 @@ class TaskList extends ListResource
     public function __construct(
         Version $version,
         string $assistantSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class TaskList extends ListResource
         return new TaskInstance(
             $this->version,
             $payload,
-            $this->solution['assistantSid'],
+            $this->solution['assistantSid']
         );
     }
 

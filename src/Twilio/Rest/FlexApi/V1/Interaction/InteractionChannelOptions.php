@@ -50,8 +50,7 @@ class UpdateInteractionChannelOptions extends Options
         
         array $routing = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['routing'] = $routing;
     }
 

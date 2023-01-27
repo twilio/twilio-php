@@ -37,8 +37,7 @@ class DeploymentContext extends InstanceContext
         Version $version,
         $fleetSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class DeploymentContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['fleetSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -112,7 +111,7 @@ class DeploymentContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['fleetSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

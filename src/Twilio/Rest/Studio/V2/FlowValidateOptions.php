@@ -46,8 +46,7 @@ class UpdateFlowValidateOptions extends Options
         
         string $commitMessage = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['commitMessage'] = $commitMessage;
     }
 

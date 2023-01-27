@@ -105,8 +105,7 @@ class CreateTriggerOptions extends Options
         string $recurring = Values::NONE,
         string $triggerBy = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['recurring'] = $recurring;
@@ -184,8 +183,7 @@ class ReadTriggerOptions extends Options
         string $triggerBy = Values::NONE,
         string $usageCategory = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['recurring'] = $recurring;
         $this->options['triggerBy'] = $triggerBy;
         $this->options['usageCategory'] = $usageCategory;
@@ -252,8 +250,7 @@ class UpdateTriggerOptions extends Options
         string $callbackUrl = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['friendlyName'] = $friendlyName;

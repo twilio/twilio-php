@@ -48,8 +48,7 @@ class ExecutionContext extends InstanceContext
         Version $version,
         $flowSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -93,7 +92,7 @@ class ExecutionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['flowSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -119,7 +118,7 @@ class ExecutionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['flowSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -133,7 +132,7 @@ class ExecutionContext extends InstanceContext
             $this->_steps = new ExecutionStepList(
                 $this->version,
                 $this->solution['flowSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -149,7 +148,7 @@ class ExecutionContext extends InstanceContext
             $this->_executionContext = new ExecutionContextList(
                 $this->version,
                 $this->solution['flowSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

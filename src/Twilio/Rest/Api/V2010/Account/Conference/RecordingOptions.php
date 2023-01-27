@@ -75,8 +75,7 @@ class ReadRecordingOptions extends Options
         string $dateCreated = Values::NONE,
         string $dateCreatedAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -139,8 +138,7 @@ class UpdateRecordingOptions extends Options
         
         string $pauseBehavior = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['pauseBehavior'] = $pauseBehavior;
     }
 

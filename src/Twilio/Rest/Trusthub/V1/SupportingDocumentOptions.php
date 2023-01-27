@@ -67,8 +67,7 @@ class CreateSupportingDocumentOptions extends Options
         
         array $attributes = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['attributes'] = $attributes;
     }
 
@@ -110,8 +109,7 @@ class UpdateSupportingDocumentOptions extends Options
         string $friendlyName = Values::NONE,
         array $attributes = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
     }

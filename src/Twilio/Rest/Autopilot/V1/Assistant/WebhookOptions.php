@@ -73,8 +73,7 @@ class CreateWebhookOptions extends Options
         
         string $webhookMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['webhookMethod'] = $webhookMethod;
     }
 
@@ -120,8 +119,7 @@ class UpdateWebhookOptions extends Options
         string $webhookUrl = Values::NONE,
         string $webhookMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['events'] = $events;
         $this->options['webhookUrl'] = $webhookUrl;

@@ -72,8 +72,7 @@ class CreateDeploymentOptions extends Options
         string $friendlyName = Values::NONE,
         string $syncServiceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['syncServiceSid'] = $syncServiceSid;
     }
@@ -128,8 +127,7 @@ class UpdateDeploymentOptions extends Options
         string $friendlyName = Values::NONE,
         string $syncServiceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['syncServiceSid'] = $syncServiceSid;
     }

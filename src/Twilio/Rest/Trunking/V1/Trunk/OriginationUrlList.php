@@ -35,8 +35,7 @@ class OriginationUrlList extends ListResource
     public function __construct(
         Version $version,
         string $trunkSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class OriginationUrlList extends ListResource
         return new OriginationUrlInstance(
             $this->version,
             $payload,
-            $this->solution['trunkSid'],
+            $this->solution['trunkSid']
         );
     }
 

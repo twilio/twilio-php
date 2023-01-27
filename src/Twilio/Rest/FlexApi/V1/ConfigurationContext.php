@@ -33,8 +33,7 @@ class ConfigurationContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -65,7 +64,7 @@ class ConfigurationContext extends InstanceContext
 
         return new ConfigurationInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

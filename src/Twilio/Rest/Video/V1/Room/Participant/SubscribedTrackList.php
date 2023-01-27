@@ -33,11 +33,9 @@ class SubscribedTrackList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $roomSid
-        ,
+        string $roomSid,
         string $participantSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

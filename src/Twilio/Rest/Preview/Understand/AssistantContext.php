@@ -72,8 +72,7 @@ class AssistantContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -113,7 +112,7 @@ class AssistantContext extends InstanceContext
         return new AssistantInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -154,7 +153,7 @@ class AssistantContext extends InstanceContext
         return new AssistantInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -167,7 +166,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_fieldTypes) {
             $this->_fieldTypes = new FieldTypeList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -182,7 +181,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_queries) {
             $this->_queries = new QueryList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -197,7 +196,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_tasks) {
             $this->_tasks = new TaskList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -212,7 +211,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_modelBuilds) {
             $this->_modelBuilds = new ModelBuildList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -227,7 +226,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_assistantFallbackActions) {
             $this->_assistantFallbackActions = new AssistantFallbackActionsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -242,7 +241,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_assistantInitiationActions) {
             $this->_assistantInitiationActions = new AssistantInitiationActionsList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -257,7 +256,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_styleSheet) {
             $this->_styleSheet = new StyleSheetList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -272,7 +271,7 @@ class AssistantContext extends InstanceContext
         if (!$this->_dialogues) {
             $this->_dialogues = new DialogueList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

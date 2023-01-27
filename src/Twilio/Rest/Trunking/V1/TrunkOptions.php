@@ -120,8 +120,7 @@ class CreateTrunkOptions extends Options
         bool $cnamLookupEnabled = Values::NONE,
         string $transferCallerId = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;
@@ -262,8 +261,7 @@ class UpdateTrunkOptions extends Options
         bool $cnamLookupEnabled = Values::NONE,
         string $transferCallerId = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['domainName'] = $domainName;
         $this->options['disasterRecoveryUrl'] = $disasterRecoveryUrl;

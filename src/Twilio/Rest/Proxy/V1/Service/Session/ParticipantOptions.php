@@ -59,8 +59,7 @@ class CreateParticipantOptions extends Options
         string $proxyIdentifier = Values::NONE,
         string $proxyIdentifierSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['proxyIdentifier'] = $proxyIdentifier;
         $this->options['proxyIdentifierSid'] = $proxyIdentifierSid;

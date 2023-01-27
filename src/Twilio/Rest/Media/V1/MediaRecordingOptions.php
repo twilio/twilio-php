@@ -65,8 +65,7 @@ class ReadMediaRecordingOptions extends Options
         string $processorSid = Values::NONE,
         string $sourceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['order'] = $order;
         $this->options['status'] = $status;
         $this->options['processorSid'] = $processorSid;

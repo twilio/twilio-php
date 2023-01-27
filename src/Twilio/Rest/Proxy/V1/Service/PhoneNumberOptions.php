@@ -74,8 +74,7 @@ class CreatePhoneNumberOptions extends Options
         string $phoneNumber = Values::NONE,
         bool $isReserved = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sid'] = $sid;
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['isReserved'] = $isReserved;
@@ -141,8 +140,7 @@ class UpdatePhoneNumberOptions extends Options
         
         bool $isReserved = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['isReserved'] = $isReserved;
     }
 

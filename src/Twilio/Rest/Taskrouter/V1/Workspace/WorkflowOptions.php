@@ -103,8 +103,7 @@ class CreateWorkflowOptions extends Options
         string $fallbackAssignmentCallbackUrl = Values::NONE,
         int $taskReservationTimeout = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
@@ -169,8 +168,7 @@ class ReadWorkflowOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -217,8 +215,7 @@ class UpdateWorkflowOptions extends Options
         int $taskReservationTimeout = Values::NONE,
         string $reEvaluateTasks = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;

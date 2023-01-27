@@ -54,8 +54,7 @@ class UpdateShortCodeOptions extends Options
         
         bool $isReserved = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['isReserved'] = $isReserved;
     }
 

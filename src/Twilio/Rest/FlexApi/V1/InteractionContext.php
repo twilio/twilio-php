@@ -41,8 +41,7 @@ class InteractionContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class InteractionContext extends InstanceContext
         return new InteractionInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -82,7 +81,7 @@ class InteractionContext extends InstanceContext
         if (!$this->_channels) {
             $this->_channels = new InteractionChannelList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -53,8 +53,7 @@ class WorkflowContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -98,7 +97,7 @@ class WorkflowContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -136,7 +135,7 @@ class WorkflowContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -150,7 +149,7 @@ class WorkflowContext extends InstanceContext
             $this->_statistics = new WorkflowStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -166,7 +165,7 @@ class WorkflowContext extends InstanceContext
             $this->_cumulativeStatistics = new WorkflowCumulativeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -182,7 +181,7 @@ class WorkflowContext extends InstanceContext
             $this->_realTimeStatistics = new WorkflowRealTimeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

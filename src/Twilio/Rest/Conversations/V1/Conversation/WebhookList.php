@@ -36,8 +36,7 @@ class WebhookList extends ListResource
     public function __construct(
         Version $version,
         string $conversationSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class WebhookList extends ListResource
         return new WebhookInstance(
             $this->version,
             $payload,
-            $this->solution['conversationSid'],
+            $this->solution['conversationSid']
         );
     }
 

@@ -34,13 +34,10 @@ class AssignedAddOnExtensionList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
-        string $resourceSid
-        ,
+        string $accountSid,
+        string $resourceSid,
         string $assignedAddOnSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

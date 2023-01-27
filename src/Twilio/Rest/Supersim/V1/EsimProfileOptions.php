@@ -78,8 +78,7 @@ class CreateEsimProfileOptions extends Options
         string $callbackMethod = Values::NONE,
         string $eid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['eid'] = $eid;
@@ -147,8 +146,7 @@ class ReadEsimProfileOptions extends Options
         string $simSid = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['eid'] = $eid;
         $this->options['simSid'] = $simSid;
         $this->options['status'] = $status;

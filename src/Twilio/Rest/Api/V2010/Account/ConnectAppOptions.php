@@ -87,8 +87,7 @@ class UpdateConnectAppOptions extends Options
         string $homepageUrl = Values::NONE,
         array $permissions = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['authorizeRedirectUrl'] = $authorizeRedirectUrl;
         $this->options['companyName'] = $companyName;
         $this->options['deauthorizeCallbackMethod'] = $deauthorizeCallbackMethod;

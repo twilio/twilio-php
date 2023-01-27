@@ -198,8 +198,7 @@ class CreateApplicationOptions extends Options
         string $friendlyName = Values::NONE,
         bool $publicApplicationConnectEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['apiVersion'] = $apiVersion;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -433,8 +432,7 @@ class ReadApplicationOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -501,8 +499,7 @@ class UpdateApplicationOptions extends Options
         string $messageStatusCallback = Values::NONE,
         bool $publicApplicationConnectEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['voiceUrl'] = $voiceUrl;

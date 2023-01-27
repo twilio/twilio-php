@@ -182,8 +182,7 @@ class CreateServiceOptions extends Options
         string $deliveryCallbackUrl = Values::NONE,
         bool $deliveryCallbackEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -391,8 +390,7 @@ class ReadServiceOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
@@ -455,8 +453,7 @@ class UpdateServiceOptions extends Options
         string $deliveryCallbackUrl = Values::NONE,
         bool $deliveryCallbackEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;

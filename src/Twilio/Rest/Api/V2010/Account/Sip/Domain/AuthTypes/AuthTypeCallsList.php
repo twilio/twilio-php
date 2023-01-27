@@ -44,11 +44,9 @@ class AuthTypeCallsList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $domainSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -70,10 +68,8 @@ class AuthTypeCallsList extends ListResource
         if (!$this->_ipAccessControlListMappings) {
             $this->_ipAccessControlListMappings = new AuthCallsIpAccessControlListMappingList(
                 $this->version,
-                $this->solution['accountSid']
-                ,
+                $this->solution['accountSid'],
                 $this->solution['domainSid']
-                
             );
         }
         return $this->_ipAccessControlListMappings;
@@ -87,10 +83,8 @@ class AuthTypeCallsList extends ListResource
         if (!$this->_credentialListMappings) {
             $this->_credentialListMappings = new AuthCallsCredentialListMappingList(
                 $this->version,
-                $this->solution['accountSid']
-                ,
+                $this->solution['accountSid'],
                 $this->solution['domainSid']
-                
             );
         }
         return $this->_credentialListMappings;

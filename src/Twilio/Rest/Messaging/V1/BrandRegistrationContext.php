@@ -41,8 +41,7 @@ class BrandRegistrationContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class BrandRegistrationContext extends InstanceContext
         return new BrandRegistrationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -88,7 +87,7 @@ class BrandRegistrationContext extends InstanceContext
         return new BrandRegistrationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -101,7 +100,7 @@ class BrandRegistrationContext extends InstanceContext
         if (!$this->_brandVettings) {
             $this->_brandVettings = new BrandVettingList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

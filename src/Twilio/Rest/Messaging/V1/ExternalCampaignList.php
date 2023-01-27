@@ -30,8 +30,8 @@ class ExternalCampaignList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -63,7 +63,7 @@ class ExternalCampaignList extends ListResource
 
         return new ExternalCampaignInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

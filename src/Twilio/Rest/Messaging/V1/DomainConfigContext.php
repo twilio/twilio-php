@@ -36,8 +36,7 @@ class DomainConfigContext extends InstanceContext
     public function __construct(
         Version $version,
         $domainSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class DomainConfigContext extends InstanceContext
         return new DomainConfigInstance(
             $this->version,
             $payload,
-            $this->solution['domainSid'],
+            $this->solution['domainSid']
         );
     }
 
@@ -98,7 +97,7 @@ class DomainConfigContext extends InstanceContext
         return new DomainConfigInstance(
             $this->version,
             $payload,
-            $this->solution['domainSid'],
+            $this->solution['domainSid']
         );
     }
 

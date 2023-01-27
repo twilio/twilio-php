@@ -83,8 +83,7 @@ class CreateTaskOptions extends Options
         array $actions = Values::ARRAY_NONE,
         string $actionsUrl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['actions'] = $actions;
         $this->options['actionsUrl'] = $actionsUrl;
@@ -156,8 +155,7 @@ class UpdateTaskOptions extends Options
         array $actions = Values::ARRAY_NONE,
         string $actionsUrl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['actions'] = $actions;

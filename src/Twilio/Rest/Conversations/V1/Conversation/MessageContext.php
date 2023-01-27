@@ -46,8 +46,7 @@ class MessageContext extends InstanceContext
         Version $version,
         $conversationSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -96,7 +95,7 @@ class MessageContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['conversationSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -134,7 +133,7 @@ class MessageContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['conversationSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -148,7 +147,7 @@ class MessageContext extends InstanceContext
             $this->_deliveryReceipts = new DeliveryReceiptList(
                 $this->version,
                 $this->solution['conversationSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -193,8 +193,7 @@ class CreateMessageOptions extends Options
         string $contentSid = Values::NONE,
         string $contentVariables = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -495,8 +494,7 @@ class ReadMessageOptions extends Options
         string $dateSent = Values::NONE,
         string $dateSentAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['to'] = $to;
         $this->options['from'] = $from;
         $this->options['dateSentBefore'] = $dateSentBefore;
@@ -587,8 +585,7 @@ class UpdateMessageOptions extends Options
         string $body = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['body'] = $body;
         $this->options['status'] = $status;
     }

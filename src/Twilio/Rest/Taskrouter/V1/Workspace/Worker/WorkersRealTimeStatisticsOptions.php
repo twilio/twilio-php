@@ -46,8 +46,7 @@ class FetchWorkersRealTimeStatisticsOptions extends Options
         
         string $taskChannel = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['taskChannel'] = $taskChannel;
     }
 

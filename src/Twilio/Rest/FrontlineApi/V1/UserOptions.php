@@ -63,8 +63,7 @@ class UpdateUserOptions extends Options
         string $state = Values::NONE,
         bool $isAvailable = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['avatar'] = $avatar;
         $this->options['state'] = $state;

@@ -42,8 +42,7 @@ class TaskQueueList extends ListResource
     public function __construct(
         Version $version,
         string $workspaceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -90,7 +89,7 @@ class TaskQueueList extends ListResource
         return new TaskQueueInstance(
             $this->version,
             $payload,
-            $this->solution['workspaceSid'],
+            $this->solution['workspaceSid']
         );
     }
 
@@ -225,7 +224,6 @@ class TaskQueueList extends ListResource
             $this->_statistics = new TaskQueuesStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid']
-                
             );
         }
         return $this->_statistics;

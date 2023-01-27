@@ -36,8 +36,7 @@ class ExportConfigurationContext extends InstanceContext
     public function __construct(
         Version $version,
         $resourceType
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class ExportConfigurationContext extends InstanceContext
         return new ExportConfigurationInstance(
             $this->version,
             $payload,
-            $this->solution['resourceType'],
+            $this->solution['resourceType']
         );
     }
 
@@ -95,7 +94,7 @@ class ExportConfigurationContext extends InstanceContext
         return new ExportConfigurationInstance(
             $this->version,
             $payload,
-            $this->solution['resourceType'],
+            $this->solution['resourceType']
         );
     }
 

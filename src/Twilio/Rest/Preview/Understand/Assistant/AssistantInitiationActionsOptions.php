@@ -48,8 +48,7 @@ class UpdateAssistantInitiationActionsOptions extends Options
         
         array $initiationActions = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['initiationActions'] = $initiationActions;
     }
 

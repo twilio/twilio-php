@@ -63,8 +63,7 @@ class UpdateConfigurationOptions extends Options
         string $defaultInactiveTimer = Values::NONE,
         string $defaultClosedTimer = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['defaultChatServiceSid'] = $defaultChatServiceSid;
         $this->options['defaultMessagingServiceSid'] = $defaultMessagingServiceSid;
         $this->options['defaultInactiveTimer'] = $defaultInactiveTimer;

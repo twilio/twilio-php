@@ -58,8 +58,7 @@ class ReadLogOptions extends Options
         \DateTime $startDate = Values::NONE,
         \DateTime $endDate = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['functionSid'] = $functionSid;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;

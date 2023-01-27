@@ -35,8 +35,7 @@ class KeyList extends ListResource
     public function __construct(
         Version $version,
         string $fleetSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -74,7 +73,7 @@ class KeyList extends ListResource
         return new KeyInstance(
             $this->version,
             $payload,
-            $this->solution['fleetSid'],
+            $this->solution['fleetSid']
         );
     }
 

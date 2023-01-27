@@ -40,8 +40,7 @@ class ReservationContext extends InstanceContext
         $workspaceSid,
         $workerSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class ReservationContext extends InstanceContext
             $payload,
             $this->solution['workspaceSid'],
             $this->solution['workerSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -207,7 +206,7 @@ class ReservationContext extends InstanceContext
             $payload,
             $this->solution['workspaceSid'],
             $this->solution['workerSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

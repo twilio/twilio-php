@@ -56,8 +56,7 @@ class ReadUsageRecordOptions extends Options
         \DateTime $start = Values::NONE,
         string $granularity = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['end'] = $end;
         $this->options['start'] = $start;
         $this->options['granularity'] = $granularity;

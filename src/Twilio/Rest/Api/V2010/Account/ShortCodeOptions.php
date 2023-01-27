@@ -83,8 +83,7 @@ class ReadShortCodeOptions extends Options
         string $friendlyName = Values::NONE,
         string $shortCode = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['shortCode'] = $shortCode;
     }
@@ -144,8 +143,7 @@ class UpdateShortCodeOptions extends Options
         string $smsFallbackUrl = Values::NONE,
         string $smsFallbackMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['smsUrl'] = $smsUrl;

@@ -34,13 +34,10 @@ class PayloadList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
-        string $referenceSid
-        ,
+        string $accountSid,
+        string $referenceSid,
         string $addOnResultSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

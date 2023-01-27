@@ -289,8 +289,7 @@ class CreateCallOptions extends Options
         string $recordingTrack = Values::NONE,
         int $timeLimit = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['url'] = $url;
         $this->options['twiml'] = $twiml;
         $this->options['applicationSid'] = $applicationSid;
@@ -763,8 +762,7 @@ class ReadCallOptions extends Options
         string $endTime = Values::NONE,
         string $endTimeAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['to'] = $to;
         $this->options['from'] = $from;
         $this->options['parentCallSid'] = $parentCallSid;
@@ -934,8 +932,7 @@ class UpdateCallOptions extends Options
         string $twiml = Values::NONE,
         int $timeLimit = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['url'] = $url;
         $this->options['method'] = $method;
         $this->options['status'] = $status;

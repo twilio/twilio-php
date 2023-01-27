@@ -37,8 +37,7 @@ class DeploymentContext extends InstanceContext
         $serviceSid,
         $environmentSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class DeploymentContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['environmentSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

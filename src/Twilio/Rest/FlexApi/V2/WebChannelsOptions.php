@@ -56,8 +56,7 @@ class CreateWebChannelsOptions extends Options
         string $customerFriendlyName = Values::NONE,
         string $preEngagementData = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['chatFriendlyName'] = $chatFriendlyName;
         $this->options['customerFriendlyName'] = $customerFriendlyName;
         $this->options['preEngagementData'] = $preEngagementData;

@@ -69,8 +69,7 @@ class DeleteUserChannelOptions extends Options
         
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -113,8 +112,7 @@ class UpdateUserChannelOptions extends Options
         int $lastConsumedMessageIndex = Values::NONE,
         \DateTime $lastConsumptionTimestamp = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['notificationLevel'] = $notificationLevel;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;

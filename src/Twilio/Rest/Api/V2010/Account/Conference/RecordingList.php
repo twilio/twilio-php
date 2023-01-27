@@ -35,11 +35,9 @@ class RecordingList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $conferenceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

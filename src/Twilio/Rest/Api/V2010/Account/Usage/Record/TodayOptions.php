@@ -61,8 +61,7 @@ class ReadTodayOptions extends Options
         \DateTime $endDate = Values::NONE,
         bool $includeSubaccounts = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['category'] = $category;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;

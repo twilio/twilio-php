@@ -69,8 +69,7 @@ class CreateDocumentOptions extends Options
         string $uniqueName = Values::NONE,
         array $data = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['data'] = $data;
     }
@@ -123,8 +122,7 @@ class UpdateDocumentOptions extends Options
         
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ifMatch'] = $ifMatch;
     }
 

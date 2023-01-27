@@ -107,8 +107,7 @@ class CreateCompositionOptions extends Options
         string $statusCallbackMethod = Values::NONE,
         bool $trim = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
@@ -242,8 +241,7 @@ class ReadCompositionOptions extends Options
         \DateTime $dateCreatedBefore = Values::NONE,
         string $roomSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;

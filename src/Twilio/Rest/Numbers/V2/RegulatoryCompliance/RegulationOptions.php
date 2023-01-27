@@ -58,8 +58,7 @@ class ReadRegulationOptions extends Options
         string $isoCountry = Values::NONE,
         string $numberType = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['endUserType'] = $endUserType;
         $this->options['isoCountry'] = $isoCountry;
         $this->options['numberType'] = $numberType;

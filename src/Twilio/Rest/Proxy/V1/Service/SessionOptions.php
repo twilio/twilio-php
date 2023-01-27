@@ -95,8 +95,7 @@ class CreateSessionOptions extends Options
         string $status = Values::NONE,
         array $participants = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
@@ -201,8 +200,7 @@ class UpdateSessionOptions extends Options
         int $ttl = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
         $this->options['status'] = $status;

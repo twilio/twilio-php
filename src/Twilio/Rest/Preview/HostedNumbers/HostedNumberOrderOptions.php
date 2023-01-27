@@ -187,8 +187,7 @@ class CreateHostedNumberOrderOptions extends Options
         string $verificationType = Values::NONE,
         string $verificationDocumentSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['accountSid'] = $accountSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
@@ -415,8 +414,7 @@ class ReadHostedNumberOrderOptions extends Options
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['incomingPhoneNumberSid'] = $incomingPhoneNumberSid;
@@ -523,8 +521,7 @@ class UpdateHostedNumberOrderOptions extends Options
         string $extension = Values::NONE,
         int $callDelay = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['email'] = $email;

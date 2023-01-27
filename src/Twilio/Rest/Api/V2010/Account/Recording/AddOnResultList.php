@@ -33,11 +33,9 @@ class AddOnResultList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $referenceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

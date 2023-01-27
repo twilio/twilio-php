@@ -46,8 +46,7 @@ class CreateDeviceCodeOptions extends Options
         
         array $audiences = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['audiences'] = $audiences;
     }
 

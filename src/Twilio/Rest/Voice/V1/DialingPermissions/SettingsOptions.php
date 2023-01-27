@@ -48,8 +48,7 @@ class UpdateSettingsOptions extends Options
         
         bool $dialingPermissionsInheritance = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
     }
 

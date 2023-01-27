@@ -35,8 +35,7 @@ class BrandVettingList extends ListResource
     public function __construct(
         Version $version,
         string $brandSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -75,7 +74,7 @@ class BrandVettingList extends ListResource
         return new BrandVettingInstance(
             $this->version,
             $payload,
-            $this->solution['brandSid'],
+            $this->solution['brandSid']
         );
     }
 

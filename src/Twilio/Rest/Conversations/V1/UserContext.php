@@ -43,8 +43,7 @@ class UserContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -89,7 +88,7 @@ class UserContext extends InstanceContext
         return new UserInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -122,7 +121,7 @@ class UserContext extends InstanceContext
         return new UserInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -135,7 +134,7 @@ class UserContext extends InstanceContext
         if (!$this->_userConversations) {
             $this->_userConversations = new UserConversationList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

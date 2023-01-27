@@ -80,8 +80,7 @@ class CreateUserOptions extends Options
         string $attributes = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
         $this->options['attributes'] = $attributes;
         $this->options['friendlyName'] = $friendlyName;
@@ -151,8 +150,7 @@ class UpdateUserOptions extends Options
         string $attributes = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
         $this->options['attributes'] = $attributes;
         $this->options['friendlyName'] = $friendlyName;

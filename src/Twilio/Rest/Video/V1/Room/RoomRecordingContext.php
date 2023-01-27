@@ -35,8 +35,7 @@ class RoomRecordingContext extends InstanceContext
         Version $version,
         $roomSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class RoomRecordingContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

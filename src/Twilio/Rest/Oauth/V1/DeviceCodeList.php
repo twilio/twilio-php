@@ -32,8 +32,8 @@ class DeviceCodeList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -70,7 +70,7 @@ class DeviceCodeList extends ListResource
 
         return new DeviceCodeInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

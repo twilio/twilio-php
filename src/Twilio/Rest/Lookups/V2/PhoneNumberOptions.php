@@ -101,8 +101,7 @@ class FetchPhoneNumberOptions extends Options
         string $nationalId = Values::NONE,
         string $dateOfBirth = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['fields'] = $fields;
         $this->options['countryCode'] = $countryCode;
         $this->options['firstName'] = $firstName;

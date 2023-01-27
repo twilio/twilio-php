@@ -46,8 +46,7 @@ class ReadEventOptions extends Options
         
         string $edge = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['edge'] = $edge;
     }
 

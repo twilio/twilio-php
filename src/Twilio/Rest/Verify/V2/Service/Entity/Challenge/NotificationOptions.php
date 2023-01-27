@@ -46,8 +46,7 @@ class CreateNotificationOptions extends Options
         
         int $ttl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ttl'] = $ttl;
     }
 

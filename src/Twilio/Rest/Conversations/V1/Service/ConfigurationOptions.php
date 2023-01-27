@@ -63,8 +63,7 @@ class UpdateConfigurationOptions extends Options
         string $defaultChatServiceRoleSid = Values::NONE,
         bool $reachabilityEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['defaultConversationCreatorRoleSid'] = $defaultConversationCreatorRoleSid;
         $this->options['defaultConversationRoleSid'] = $defaultConversationRoleSid;
         $this->options['defaultChatServiceRoleSid'] = $defaultChatServiceRoleSid;

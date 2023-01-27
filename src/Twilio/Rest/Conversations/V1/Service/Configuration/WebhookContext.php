@@ -36,8 +36,7 @@ class WebhookContext extends InstanceContext
     public function __construct(
         Version $version,
         $chatServiceSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class WebhookContext extends InstanceContext
         return new WebhookInstance(
             $this->version,
             $payload,
-            $this->solution['chatServiceSid'],
+            $this->solution['chatServiceSid']
         );
     }
 
@@ -97,7 +96,7 @@ class WebhookContext extends InstanceContext
         return new WebhookInstance(
             $this->version,
             $payload,
-            $this->solution['chatServiceSid'],
+            $this->solution['chatServiceSid']
         );
     }
 

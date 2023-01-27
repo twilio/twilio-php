@@ -32,8 +32,8 @@ class SimList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -65,7 +65,7 @@ class SimList extends ListResource
 
         return new SimInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

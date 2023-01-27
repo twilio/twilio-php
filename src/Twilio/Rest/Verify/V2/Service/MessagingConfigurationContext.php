@@ -36,8 +36,7 @@ class MessagingConfigurationContext extends InstanceContext
         Version $version,
         $serviceSid,
         $country
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +80,7 @@ class MessagingConfigurationContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['country'],
+            $this->solution['country']
         );
     }
 
@@ -107,7 +106,7 @@ class MessagingConfigurationContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['country'],
+            $this->solution['country']
         );
     }
 

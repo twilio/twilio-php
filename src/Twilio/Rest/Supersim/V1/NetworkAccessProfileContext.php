@@ -43,8 +43,7 @@ class NetworkAccessProfileContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -71,7 +70,7 @@ class NetworkAccessProfileContext extends InstanceContext
         return new NetworkAccessProfileInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -98,7 +97,7 @@ class NetworkAccessProfileContext extends InstanceContext
         return new NetworkAccessProfileInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -111,7 +110,7 @@ class NetworkAccessProfileContext extends InstanceContext
         if (!$this->_networks) {
             $this->_networks = new NetworkAccessProfileNetworkList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

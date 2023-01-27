@@ -51,8 +51,7 @@ class FetchUsageOptions extends Options
         string $end = Values::NONE,
         string $start = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['end'] = $end;
         $this->options['start'] = $start;
     }

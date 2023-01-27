@@ -46,8 +46,7 @@ class FetchUsAppToPersonUsecaseOptions extends Options
         
         string $brandRegistrationSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['brandRegistrationSid'] = $brandRegistrationSid;
     }
 

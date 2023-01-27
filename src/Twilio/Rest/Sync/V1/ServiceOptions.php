@@ -112,8 +112,7 @@ class CreateServiceOptions extends Options
         int $reachabilityDebouncingWindow = Values::NONE,
         bool $webhooksFromRestEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
@@ -243,8 +242,7 @@ class UpdateServiceOptions extends Options
         int $reachabilityDebouncingWindow = Values::NONE,
         bool $webhooksFromRestEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;

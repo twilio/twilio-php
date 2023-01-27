@@ -35,8 +35,7 @@ class IpAccessControlListContext extends InstanceContext
         Version $version,
         $trunkSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class IpAccessControlListContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['trunkSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

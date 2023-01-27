@@ -46,8 +46,7 @@ class FetchInsightsSettingsAnswerSetsOptions extends Options
         
         string $token = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['token'] = $token;
     }
 

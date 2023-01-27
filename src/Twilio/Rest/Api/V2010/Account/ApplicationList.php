@@ -36,8 +36,7 @@ class ApplicationList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -103,7 +102,7 @@ class ApplicationList extends ListResource
         return new ApplicationInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['accountSid']
         );
     }
 

@@ -48,8 +48,7 @@ class SipList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,6 @@ class SipList extends ListResource
             $this->_domains = new DomainList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_domains;
@@ -84,7 +82,6 @@ class SipList extends ListResource
             $this->_credentialLists = new CredentialListList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_credentialLists;
@@ -99,7 +96,6 @@ class SipList extends ListResource
             $this->_ipAccessControlLists = new IpAccessControlListList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_ipAccessControlLists;

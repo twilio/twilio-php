@@ -59,8 +59,7 @@ class CreateBrandRegistrationOptions extends Options
         bool $mock = Values::NONE,
         bool $skipAutomaticSecVet = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['brandType'] = $brandType;
         $this->options['mock'] = $mock;
         $this->options['skipAutomaticSecVet'] = $skipAutomaticSecVet;

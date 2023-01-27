@@ -34,8 +34,7 @@ class DeactivationsContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -66,7 +65,7 @@ class DeactivationsContext extends InstanceContext
 
         return new DeactivationsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

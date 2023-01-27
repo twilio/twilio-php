@@ -37,8 +37,7 @@ class InstalledAddOnExtensionContext extends InstanceContext
         Version $version,
         $installedAddOnSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class InstalledAddOnExtensionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['installedAddOnSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -95,7 +94,7 @@ class InstalledAddOnExtensionContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['installedAddOnSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

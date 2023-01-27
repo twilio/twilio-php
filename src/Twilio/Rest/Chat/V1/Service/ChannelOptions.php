@@ -99,8 +99,7 @@ class CreateChannelOptions extends Options
         string $attributes = Values::NONE,
         string $type = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -176,8 +175,7 @@ class ReadChannelOptions extends Options
         
         array $type = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['type'] = $type;
     }
 
@@ -218,8 +216,7 @@ class UpdateChannelOptions extends Options
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;

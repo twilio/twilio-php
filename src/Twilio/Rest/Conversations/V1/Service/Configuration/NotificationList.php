@@ -31,8 +31,7 @@ class NotificationList extends ListResource
     public function __construct(
         Version $version,
         string $chatServiceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

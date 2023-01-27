@@ -53,8 +53,7 @@ class DomainContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -98,7 +97,7 @@ class DomainContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -150,7 +149,7 @@ class DomainContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -164,7 +163,7 @@ class DomainContext extends InstanceContext
             $this->_credentialListMappings = new CredentialListMappingList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -180,7 +179,7 @@ class DomainContext extends InstanceContext
             $this->_ipAccessControlListMappings = new IpAccessControlListMappingList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -196,7 +195,7 @@ class DomainContext extends InstanceContext
             $this->_auth = new AuthTypesList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

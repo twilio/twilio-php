@@ -106,8 +106,7 @@ class CreateChallengeOptions extends Options
         array $hiddenDetails = Values::ARRAY_NONE,
         string $authPayload = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['expirationDate'] = $expirationDate;
         $this->options['detailsMessage'] = $detailsMessage;
         $this->options['detailsFields'] = $detailsFields;
@@ -201,8 +200,7 @@ class ReadChallengeOptions extends Options
         string $status = Values::NONE,
         string $order = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['factorSid'] = $factorSid;
         $this->options['status'] = $status;
         $this->options['order'] = $order;
@@ -267,8 +265,7 @@ class UpdateChallengeOptions extends Options
         string $authPayload = Values::NONE,
         array $metadata = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['authPayload'] = $authPayload;
         $this->options['metadata'] = $metadata;
     }

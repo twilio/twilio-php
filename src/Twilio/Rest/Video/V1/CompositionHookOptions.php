@@ -151,8 +151,7 @@ class CreateCompositionHookOptions extends Options
         string $statusCallbackMethod = Values::NONE,
         bool $trim = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
@@ -299,8 +298,7 @@ class ReadCompositionHookOptions extends Options
         \DateTime $dateCreatedBefore = Values::NONE,
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['enabled'] = $enabled;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
@@ -392,8 +390,7 @@ class UpdateCompositionHookOptions extends Options
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['enabled'] = $enabled;
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;

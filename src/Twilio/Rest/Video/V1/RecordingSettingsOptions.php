@@ -67,8 +67,7 @@ class CreateRecordingSettingsOptions extends Options
         bool $awsStorageEnabled = Values::NONE,
         bool $encryptionEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['awsCredentialsSid'] = $awsCredentialsSid;
         $this->options['encryptionKeySid'] = $encryptionKeySid;
         $this->options['awsS3Url'] = $awsS3Url;

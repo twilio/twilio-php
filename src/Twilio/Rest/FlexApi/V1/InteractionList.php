@@ -31,8 +31,8 @@ class InteractionList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +64,7 @@ class InteractionList extends ListResource
 
         return new InteractionInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

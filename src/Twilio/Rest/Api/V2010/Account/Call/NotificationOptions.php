@@ -63,8 +63,7 @@ class ReadNotificationOptions extends Options
         string $messageDate = Values::NONE,
         string $messageDateAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['log'] = $log;
         $this->options['messageDateBefore'] = $messageDateBefore;
         $this->options['messageDate'] = $messageDate;

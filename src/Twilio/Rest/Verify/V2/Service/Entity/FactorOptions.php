@@ -92,8 +92,7 @@ class UpdateFactorOptions extends Options
         string $configAlg = Values::NONE,
         string $configNotificationPlatform = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['authPayload'] = $authPayload;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['configNotificationToken'] = $configNotificationToken;

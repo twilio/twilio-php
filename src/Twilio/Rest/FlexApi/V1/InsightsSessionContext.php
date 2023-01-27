@@ -33,8 +33,7 @@ class InsightsSessionContext extends InstanceContext
      */
     public function __construct(
         Version $version
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -62,7 +61,7 @@ class InsightsSessionContext extends InstanceContext
 
         return new InsightsSessionInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

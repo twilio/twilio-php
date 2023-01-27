@@ -84,8 +84,7 @@ class CreateSampleOptions extends Options
         
         string $sourceChannel = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sourceChannel'] = $sourceChannel;
     }
 
@@ -124,8 +123,7 @@ class ReadSampleOptions extends Options
         
         string $language = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['language'] = $language;
     }
 
@@ -166,8 +164,7 @@ class UpdateSampleOptions extends Options
         string $taggedText = Values::NONE,
         string $sourceChannel = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['language'] = $language;
         $this->options['taggedText'] = $taggedText;
         $this->options['sourceChannel'] = $sourceChannel;

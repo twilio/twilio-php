@@ -104,8 +104,7 @@ class CreateCredentialOptions extends Options
         string $apiKey = Values::NONE,
         string $secret = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['certificate'] = $certificate;
         $this->options['privateKey'] = $privateKey;
@@ -220,8 +219,7 @@ class UpdateCredentialOptions extends Options
         string $apiKey = Values::NONE,
         string $secret = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['certificate'] = $certificate;
         $this->options['privateKey'] = $privateKey;

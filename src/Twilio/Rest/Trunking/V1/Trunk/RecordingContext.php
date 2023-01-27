@@ -35,8 +35,7 @@ class RecordingContext extends InstanceContext
     public function __construct(
         Version $version,
         $trunkSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -63,7 +62,7 @@ class RecordingContext extends InstanceContext
         return new RecordingInstance(
             $this->version,
             $payload,
-            $this->solution['trunkSid'],
+            $this->solution['trunkSid']
         );
     }
 
@@ -92,7 +91,7 @@ class RecordingContext extends InstanceContext
         return new RecordingInstance(
             $this->version,
             $payload,
-            $this->solution['trunkSid'],
+            $this->solution['trunkSid']
         );
     }
 

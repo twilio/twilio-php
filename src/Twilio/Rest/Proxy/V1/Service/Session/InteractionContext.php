@@ -37,8 +37,7 @@ class InteractionContext extends InstanceContext
         $serviceSid,
         $sessionSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class InteractionContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['sessionSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

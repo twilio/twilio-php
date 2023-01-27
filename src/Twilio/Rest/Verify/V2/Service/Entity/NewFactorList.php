@@ -35,11 +35,9 @@ class NewFactorList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $identity
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -108,7 +106,7 @@ class NewFactorList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['identity'],
+            $this->solution['identity']
         );
     }
 

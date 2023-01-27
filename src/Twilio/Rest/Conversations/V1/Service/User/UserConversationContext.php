@@ -40,8 +40,7 @@ class UserConversationContext extends InstanceContext
         $chatServiceSid,
         $userSid,
         $conversationSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -89,7 +88,7 @@ class UserConversationContext extends InstanceContext
             $payload,
             $this->solution['chatServiceSid'],
             $this->solution['userSid'],
-            $this->solution['conversationSid'],
+            $this->solution['conversationSid']
         );
     }
 
@@ -122,7 +121,7 @@ class UserConversationContext extends InstanceContext
             $payload,
             $this->solution['chatServiceSid'],
             $this->solution['userSid'],
-            $this->solution['conversationSid'],
+            $this->solution['conversationSid']
         );
     }
 

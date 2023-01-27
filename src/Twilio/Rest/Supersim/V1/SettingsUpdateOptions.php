@@ -51,8 +51,7 @@ class ReadSettingsUpdateOptions extends Options
         string $sim = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['sim'] = $sim;
         $this->options['status'] = $status;
     }

@@ -48,8 +48,7 @@ class UpdateDefaultsOptions extends Options
         
         array $defaults = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['defaults'] = $defaults;
     }
 

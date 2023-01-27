@@ -56,8 +56,7 @@ class UpdateChannelOptions extends Options
         string $messagingServiceSid = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['type'] = $type;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;

@@ -33,8 +33,7 @@ class AvailableAddOnExtensionList extends ListResource
     public function __construct(
         Version $version,
         string $availableAddOnSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

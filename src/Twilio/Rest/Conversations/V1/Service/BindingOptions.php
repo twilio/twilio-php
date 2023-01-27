@@ -55,8 +55,7 @@ class ReadBindingOptions extends Options
         array $bindingType = Values::ARRAY_NONE,
         array $identity = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['bindingType'] = $bindingType;
         $this->options['identity'] = $identity;
     }

@@ -34,11 +34,9 @@ class FeedbackList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $messageSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +77,7 @@ class FeedbackList extends ListResource
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['messageSid'],
+            $this->solution['messageSid']
         );
     }
 

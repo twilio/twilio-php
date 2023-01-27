@@ -71,8 +71,7 @@ class ReadTaskQueuesStatisticsOptions extends Options
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['endDate'] = $endDate;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['minutes'] = $minutes;

@@ -101,8 +101,7 @@ class CreateNewFactorOptions extends Options
         string $configAlg = Values::NONE,
         array $metadata = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['bindingAlg'] = $bindingAlg;
         $this->options['bindingPublicKey'] = $bindingPublicKey;
         $this->options['configAppId'] = $configAppId;

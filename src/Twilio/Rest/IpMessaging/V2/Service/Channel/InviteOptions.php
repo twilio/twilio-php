@@ -63,8 +63,7 @@ class CreateInviteOptions extends Options
         
         string $roleSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
     }
 
@@ -103,8 +102,7 @@ class ReadInviteOptions extends Options
         
         array $identity = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['identity'] = $identity;
     }
 

@@ -75,8 +75,7 @@ class CallContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -120,7 +119,7 @@ class CallContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -164,7 +163,7 @@ class CallContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -178,7 +177,7 @@ class CallContext extends InstanceContext
             $this->_recordings = new RecordingList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -194,7 +193,7 @@ class CallContext extends InstanceContext
             $this->_userDefinedMessageSubscriptions = new UserDefinedMessageSubscriptionList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -210,7 +209,7 @@ class CallContext extends InstanceContext
             $this->_events = new EventList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -226,7 +225,7 @@ class CallContext extends InstanceContext
             $this->_notifications = new NotificationList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -242,7 +241,7 @@ class CallContext extends InstanceContext
             $this->_userDefinedMessages = new UserDefinedMessageList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -258,7 +257,7 @@ class CallContext extends InstanceContext
             $this->_siprec = new SiprecList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -274,7 +273,7 @@ class CallContext extends InstanceContext
             $this->_streams = new StreamList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -290,7 +289,7 @@ class CallContext extends InstanceContext
             $this->_payments = new PaymentList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -306,7 +305,7 @@ class CallContext extends InstanceContext
             $this->_feedback = new FeedbackList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

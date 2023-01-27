@@ -37,8 +37,7 @@ class MediaContext extends InstanceContext
         $accountSid,
         $messageSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +85,7 @@ class MediaContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['messageSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

@@ -41,8 +41,7 @@ class RoomContext extends InstanceContext
     public function __construct(
         Version $version,
         $roomSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class RoomContext extends InstanceContext
         return new RoomInstance(
             $this->version,
             $payload,
-            $this->solution['roomSid'],
+            $this->solution['roomSid']
         );
     }
 
@@ -82,7 +81,7 @@ class RoomContext extends InstanceContext
         if (!$this->_participants) {
             $this->_participants = new ParticipantList(
                 $this->version,
-                $this->solution['roomSid'],
+                $this->solution['roomSid']
             );
         }
 

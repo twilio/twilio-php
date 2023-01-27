@@ -47,8 +47,7 @@ class EngagementContext extends InstanceContext
         Version $version,
         $flowSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class EngagementContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['flowSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -106,7 +105,7 @@ class EngagementContext extends InstanceContext
             $this->_steps = new StepList(
                 $this->version,
                 $this->solution['flowSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -122,7 +121,7 @@ class EngagementContext extends InstanceContext
             $this->_engagementContext = new EngagementContextList(
                 $this->version,
                 $this->solution['flowSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

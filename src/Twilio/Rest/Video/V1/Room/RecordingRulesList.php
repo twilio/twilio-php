@@ -35,8 +35,7 @@ class RecordingRulesList extends ListResource
     public function __construct(
         Version $version,
         string $roomSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class RecordingRulesList extends ListResource
         return new RecordingRulesInstance(
             $this->version,
             $payload,
-            $this->solution['roomSid'],
+            $this->solution['roomSid']
         );
     }
 
@@ -91,7 +90,7 @@ class RecordingRulesList extends ListResource
         return new RecordingRulesInstance(
             $this->version,
             $payload,
-            $this->solution['roomSid'],
+            $this->solution['roomSid']
         );
     }
 

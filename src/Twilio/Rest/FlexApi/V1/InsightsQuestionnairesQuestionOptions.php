@@ -79,8 +79,7 @@ class CreateInsightsQuestionnairesQuestionOptions extends Options
         
         string $token = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['token'] = $token;
     }
 
@@ -117,8 +116,7 @@ class DeleteInsightsQuestionnairesQuestionOptions extends Options
         
         string $token = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['token'] = $token;
     }
 
@@ -157,8 +155,7 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options
         string $categoryId = Values::NONE,
         string $token = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['categoryId'] = $categoryId;
         $this->options['token'] = $token;
     }

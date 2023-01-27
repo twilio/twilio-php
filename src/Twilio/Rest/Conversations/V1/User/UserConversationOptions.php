@@ -62,8 +62,7 @@ class UpdateUserConversationOptions extends Options
         \DateTime $lastReadTimestamp = Values::NONE,
         int $lastReadMessageIndex = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['notificationLevel'] = $notificationLevel;
         $this->options['lastReadTimestamp'] = $lastReadTimestamp;
         $this->options['lastReadMessageIndex'] = $lastReadMessageIndex;

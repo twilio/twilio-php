@@ -86,8 +86,7 @@ class CreateKeyOptions extends Options
         string $friendlyName = Values::NONE,
         string $deviceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }
@@ -139,8 +138,7 @@ class ReadKeyOptions extends Options
         
         string $deviceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['deviceSid'] = $deviceSid;
     }
 
@@ -179,8 +177,7 @@ class UpdateKeyOptions extends Options
         string $friendlyName = Values::NONE,
         string $deviceSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['deviceSid'] = $deviceSid;
     }

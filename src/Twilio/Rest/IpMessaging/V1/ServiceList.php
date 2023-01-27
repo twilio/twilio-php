@@ -31,8 +31,8 @@ class ServiceList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +61,7 @@ class ServiceList extends ListResource
 
         return new ServiceInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

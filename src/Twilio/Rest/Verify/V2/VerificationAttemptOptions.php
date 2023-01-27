@@ -83,8 +83,7 @@ class ReadVerificationAttemptOptions extends Options
         string $verificationSid = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['channelDataTo'] = $channelDataTo;

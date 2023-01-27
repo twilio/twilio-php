@@ -36,8 +36,7 @@ class ConversationList extends ListResource
     public function __construct(
         Version $version,
         string $chatServiceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -91,7 +90,7 @@ class ConversationList extends ListResource
         return new ConversationInstance(
             $this->version,
             $payload,
-            $this->solution['chatServiceSid'],
+            $this->solution['chatServiceSid']
         );
     }
 

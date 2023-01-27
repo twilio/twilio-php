@@ -35,8 +35,7 @@ class WebChannelContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -76,7 +75,7 @@ class WebChannelContext extends InstanceContext
         return new WebChannelInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -105,7 +104,7 @@ class WebChannelContext extends InstanceContext
         return new WebChannelInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

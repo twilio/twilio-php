@@ -67,8 +67,7 @@ class FetchSettingOptions extends Options
         
         string $subaccountSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['subaccountSid'] = $subaccountSid;
     }
 
@@ -109,8 +108,7 @@ class UpdateSettingOptions extends Options
         bool $voiceTrace = Values::NONE,
         string $subaccountSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['advancedFeatures'] = $advancedFeatures;
         $this->options['voiceTrace'] = $voiceTrace;
         $this->options['subaccountSid'] = $subaccountSid;

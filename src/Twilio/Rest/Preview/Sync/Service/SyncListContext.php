@@ -47,8 +47,7 @@ class SyncListContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class SyncListContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -106,7 +105,7 @@ class SyncListContext extends InstanceContext
             $this->_syncListPermissions = new SyncListPermissionList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -122,7 +121,7 @@ class SyncListContext extends InstanceContext
             $this->_syncListItems = new SyncListItemList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -58,8 +58,7 @@ class CreateFeedbackSummaryOptions extends Options
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['includeSubaccounts'] = $includeSubaccounts;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;

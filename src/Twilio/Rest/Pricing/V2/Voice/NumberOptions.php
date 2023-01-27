@@ -46,8 +46,7 @@ class FetchNumberOptions extends Options
         
         string $originationNumber = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['originationNumber'] = $originationNumber;
     }
 

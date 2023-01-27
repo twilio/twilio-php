@@ -34,11 +34,9 @@ class UserBindingList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $userSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

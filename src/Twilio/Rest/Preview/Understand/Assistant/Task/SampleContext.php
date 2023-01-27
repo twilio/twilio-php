@@ -39,8 +39,7 @@ class SampleContext extends InstanceContext
         $assistantSid,
         $taskSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class SampleContext extends InstanceContext
             $payload,
             $this->solution['assistantSid'],
             $this->solution['taskSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -121,7 +120,7 @@ class SampleContext extends InstanceContext
             $payload,
             $this->solution['assistantSid'],
             $this->solution['taskSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

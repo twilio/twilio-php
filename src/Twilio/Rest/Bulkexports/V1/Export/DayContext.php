@@ -35,8 +35,7 @@ class DayContext extends InstanceContext
         Version $version,
         $resourceType,
         $day
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class DayContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['resourceType'],
-            $this->solution['day'],
+            $this->solution['day']
         );
     }
 

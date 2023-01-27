@@ -35,8 +35,7 @@ class FlowTestUserContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -63,7 +62,7 @@ class FlowTestUserContext extends InstanceContext
         return new FlowTestUserInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -88,7 +87,7 @@ class FlowTestUserContext extends InstanceContext
         return new FlowTestUserInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

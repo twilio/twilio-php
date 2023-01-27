@@ -34,8 +34,7 @@ class ItemAssignmentList extends ListResource
     public function __construct(
         Version $version,
         string $bundleSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class ItemAssignmentList extends ListResource
         return new ItemAssignmentInstance(
             $this->version,
             $payload,
-            $this->solution['bundleSid'],
+            $this->solution['bundleSid']
         );
     }
 

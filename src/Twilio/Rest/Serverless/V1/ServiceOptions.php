@@ -75,8 +75,7 @@ class CreateServiceOptions extends Options
         bool $includeCredentials = Values::NONE,
         bool $uiEditable = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['includeCredentials'] = $includeCredentials;
         $this->options['uiEditable'] = $uiEditable;
     }
@@ -133,8 +132,7 @@ class UpdateServiceOptions extends Options
         string $friendlyName = Values::NONE,
         bool $uiEditable = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['includeCredentials'] = $includeCredentials;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uiEditable'] = $uiEditable;

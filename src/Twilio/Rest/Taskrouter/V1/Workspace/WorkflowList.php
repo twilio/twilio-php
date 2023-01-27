@@ -35,8 +35,7 @@ class WorkflowList extends ListResource
     public function __construct(
         Version $version,
         string $workspaceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class WorkflowList extends ListResource
         return new WorkflowInstance(
             $this->version,
             $payload,
-            $this->solution['workspaceSid'],
+            $this->solution['workspaceSid']
         );
     }
 

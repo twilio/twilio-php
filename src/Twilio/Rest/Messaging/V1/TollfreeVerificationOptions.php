@@ -197,8 +197,7 @@ class CreateTollfreeVerificationOptions extends Options
         string $businessContactPhone = Values::NONE,
         string $externalReferenceId = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['customerProfileSid'] = $customerProfileSid;
         $this->options['businessStreetAddress'] = $businessStreetAddress;
         $this->options['businessStreetAddress2'] = $businessStreetAddress2;
@@ -394,8 +393,7 @@ class ReadTollfreeVerificationOptions extends Options
         string $tollfreePhoneNumberSid = Values::NONE,
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['tollfreePhoneNumberSid'] = $tollfreePhoneNumberSid;
         $this->options['status'] = $status;
     }
@@ -483,8 +481,7 @@ class UpdateTollfreeVerificationOptions extends Options
         string $businessContactEmail = Values::NONE,
         string $businessContactPhone = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['businessName'] = $businessName;
         $this->options['businessWebsite'] = $businessWebsite;
         $this->options['notificationEmail'] = $notificationEmail;

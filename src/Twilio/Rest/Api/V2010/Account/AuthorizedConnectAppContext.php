@@ -35,8 +35,7 @@ class AuthorizedConnectAppContext extends InstanceContext
         Version $version,
         $accountSid,
         $connectAppSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class AuthorizedConnectAppContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['connectAppSid'],
+            $this->solution['connectAppSid']
         );
     }
 

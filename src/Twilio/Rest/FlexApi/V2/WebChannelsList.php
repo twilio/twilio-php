@@ -31,8 +31,8 @@ class WebChannelsList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -70,7 +70,7 @@ class WebChannelsList extends ListResource
 
         return new WebChannelsInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

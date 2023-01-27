@@ -60,8 +60,7 @@ class TrunkContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -101,7 +100,7 @@ class TrunkContext extends InstanceContext
         return new TrunkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -142,7 +141,7 @@ class TrunkContext extends InstanceContext
         return new TrunkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -155,7 +154,7 @@ class TrunkContext extends InstanceContext
         if (!$this->_ipAccessControlLists) {
             $this->_ipAccessControlLists = new IpAccessControlListList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -170,7 +169,7 @@ class TrunkContext extends InstanceContext
         if (!$this->_phoneNumbers) {
             $this->_phoneNumbers = new PhoneNumberList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -185,7 +184,7 @@ class TrunkContext extends InstanceContext
         if (!$this->_credentialsLists) {
             $this->_credentialsLists = new CredentialListList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -200,7 +199,7 @@ class TrunkContext extends InstanceContext
         if (!$this->_originationUrls) {
             $this->_originationUrls = new OriginationUrlList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -215,7 +214,7 @@ class TrunkContext extends InstanceContext
         if (!$this->_recordings) {
             $this->_recordings = new RecordingList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -33,8 +33,8 @@ class BundleList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -79,7 +79,7 @@ class BundleList extends ListResource
 
         return new BundleInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

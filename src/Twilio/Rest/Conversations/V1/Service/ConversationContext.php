@@ -54,8 +54,7 @@ class ConversationContext extends InstanceContext
         Version $version,
         $chatServiceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -104,7 +103,7 @@ class ConversationContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['chatServiceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -150,7 +149,7 @@ class ConversationContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['chatServiceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -164,7 +163,7 @@ class ConversationContext extends InstanceContext
             $this->_webhooks = new WebhookList(
                 $this->version,
                 $this->solution['chatServiceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -180,7 +179,7 @@ class ConversationContext extends InstanceContext
             $this->_participants = new ParticipantList(
                 $this->version,
                 $this->solution['chatServiceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -196,7 +195,7 @@ class ConversationContext extends InstanceContext
             $this->_messages = new MessageList(
                 $this->version,
                 $this->solution['chatServiceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

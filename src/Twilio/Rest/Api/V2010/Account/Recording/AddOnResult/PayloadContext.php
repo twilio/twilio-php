@@ -39,8 +39,7 @@ class PayloadContext extends InstanceContext
         $referenceSid,
         $addOnResultSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class PayloadContext extends InstanceContext
             $this->solution['accountSid'],
             $this->solution['referenceSid'],
             $this->solution['addOnResultSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

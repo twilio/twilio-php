@@ -38,8 +38,7 @@ class InteractionChannelParticipantContext extends InstanceContext
         $interactionSid,
         $channelSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class InteractionChannelParticipantContext extends InstanceContext
             $payload,
             $this->solution['interactionSid'],
             $this->solution['channelSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

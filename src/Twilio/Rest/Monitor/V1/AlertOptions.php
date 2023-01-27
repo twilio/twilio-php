@@ -58,8 +58,7 @@ class ReadAlertOptions extends Options
         \DateTime $startDate = Values::NONE,
         \DateTime $endDate = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['logLevel'] = $logLevel;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;

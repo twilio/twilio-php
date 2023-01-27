@@ -50,8 +50,7 @@ class RecordingContext extends InstanceContext
         Version $version,
         $accountSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -103,7 +102,7 @@ class RecordingContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -117,7 +116,7 @@ class RecordingContext extends InstanceContext
             $this->_addOnResults = new AddOnResultList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -133,7 +132,7 @@ class RecordingContext extends InstanceContext
             $this->_transcriptions = new TranscriptionList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

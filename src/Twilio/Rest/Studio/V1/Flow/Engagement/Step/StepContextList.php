@@ -32,13 +32,10 @@ class StepContextList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $flowSid
-        ,
-        string $engagementSid
-        ,
+        string $flowSid,
+        string $engagementSid,
         string $stepSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

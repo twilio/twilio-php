@@ -35,8 +35,7 @@ class ItemAssignmentContext extends InstanceContext
         Version $version,
         $bundleSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class ItemAssignmentContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['bundleSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

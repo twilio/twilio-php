@@ -35,11 +35,9 @@ class MessageList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $channelSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -85,7 +83,7 @@ class MessageList extends ListResource
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['channelSid'],
+            $this->solution['channelSid']
         );
     }
 

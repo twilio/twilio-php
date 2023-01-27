@@ -46,8 +46,7 @@ class CreateFeedbackOptions extends Options
         
         string $outcome = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['outcome'] = $outcome;
     }
 

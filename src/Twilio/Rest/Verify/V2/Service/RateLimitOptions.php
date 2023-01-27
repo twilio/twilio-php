@@ -64,8 +64,7 @@ class CreateRateLimitOptions extends Options
         
         string $description = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['description'] = $description;
     }
 
@@ -105,8 +104,7 @@ class UpdateRateLimitOptions extends Options
         
         string $description = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['description'] = $description;
     }
 

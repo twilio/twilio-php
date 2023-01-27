@@ -34,8 +34,7 @@ class MessagingConfigurationList extends ListResource
     public function __construct(
         Version $version,
         string $serviceSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -72,7 +71,7 @@ class MessagingConfigurationList extends ListResource
         return new MessagingConfigurationInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
+            $this->solution['serviceSid']
         );
     }
 

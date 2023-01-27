@@ -34,8 +34,7 @@ class CustomerProfilesEvaluationsList extends ListResource
     public function __construct(
         Version $version,
         string $customerProfileSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -69,7 +68,7 @@ class CustomerProfilesEvaluationsList extends ListResource
         return new CustomerProfilesEvaluationsInstance(
             $this->version,
             $payload,
-            $this->solution['customerProfileSid'],
+            $this->solution['customerProfileSid']
         );
     }
 

@@ -48,8 +48,7 @@ class UpdateTaskActionsOptions extends Options
         
         array $actions = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['actions'] = $actions;
     }
 

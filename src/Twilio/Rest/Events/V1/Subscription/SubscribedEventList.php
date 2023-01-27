@@ -35,8 +35,7 @@ class SubscribedEventList extends ListResource
     public function __construct(
         Version $version,
         string $subscriptionSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -75,7 +74,7 @@ class SubscribedEventList extends ListResource
         return new SubscribedEventInstance(
             $this->version,
             $payload,
-            $this->solution['subscriptionSid'],
+            $this->solution['subscriptionSid']
         );
     }
 

@@ -40,8 +40,7 @@ class SyncMapItemContext extends InstanceContext
         $serviceSid,
         $mapSid,
         $key
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -94,7 +93,7 @@ class SyncMapItemContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['mapSid'],
-            $this->solution['key'],
+            $this->solution['key']
         );
     }
 
@@ -126,7 +125,7 @@ class SyncMapItemContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['mapSid'],
-            $this->solution['key'],
+            $this->solution['key']
         );
     }
 

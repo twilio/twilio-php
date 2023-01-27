@@ -39,8 +39,7 @@ class MemberContext extends InstanceContext
         $accountSid,
         $queueSid,
         $callSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -75,7 +74,7 @@ class MemberContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['queueSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 
@@ -107,7 +106,7 @@ class MemberContext extends InstanceContext
             $payload,
             $this->solution['accountSid'],
             $this->solution['queueSid'],
-            $this->solution['callSid'],
+            $this->solution['callSid']
         );
     }
 

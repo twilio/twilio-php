@@ -35,11 +35,9 @@ class LogList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $environmentSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

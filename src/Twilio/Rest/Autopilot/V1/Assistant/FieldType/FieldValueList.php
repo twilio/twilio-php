@@ -35,11 +35,9 @@ class FieldValueList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $assistantSid
-        ,
+        string $assistantSid,
         string $fieldTypeSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -86,7 +84,7 @@ class FieldValueList extends ListResource
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['fieldTypeSid'],
+            $this->solution['fieldTypeSid']
         );
     }
 

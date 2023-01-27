@@ -68,8 +68,7 @@ class CreateNetworkAccessProfileOptions extends Options
         string $uniqueName = Values::NONE,
         array $networks = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['networks'] = $networks;
     }
@@ -121,8 +120,7 @@ class UpdateNetworkAccessProfileOptions extends Options
         
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
     }
 

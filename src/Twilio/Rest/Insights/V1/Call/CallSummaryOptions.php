@@ -46,8 +46,7 @@ class FetchCallSummaryOptions extends Options
         
         string $processingState = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['processingState'] = $processingState;
     }
 

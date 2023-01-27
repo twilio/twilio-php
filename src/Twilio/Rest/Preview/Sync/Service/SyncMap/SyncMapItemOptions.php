@@ -85,8 +85,7 @@ class DeleteSyncMapItemOptions extends Options
         
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -128,8 +127,7 @@ class ReadSyncMapItemOptions extends Options
         string $from = Values::NONE,
         string $bounds = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['order'] = $order;
         $this->options['from'] = $from;
         $this->options['bounds'] = $bounds;
@@ -192,8 +190,7 @@ class UpdateSyncMapItemOptions extends Options
         
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['ifMatch'] = $ifMatch;
     }
 

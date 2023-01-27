@@ -37,8 +37,7 @@ class ExecutionStepContextContext extends InstanceContext
         $flowSid,
         $executionSid,
         $stepSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -73,7 +72,7 @@ class ExecutionStepContextContext extends InstanceContext
             $payload,
             $this->solution['flowSid'],
             $this->solution['executionSid'],
-            $this->solution['stepSid'],
+            $this->solution['stepSid']
         );
     }
 

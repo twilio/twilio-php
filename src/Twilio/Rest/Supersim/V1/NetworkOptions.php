@@ -58,8 +58,7 @@ class ReadNetworkOptions extends Options
         string $mcc = Values::NONE,
         string $mnc = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['isoCountry'] = $isoCountry;
         $this->options['mcc'] = $mcc;
         $this->options['mnc'] = $mnc;

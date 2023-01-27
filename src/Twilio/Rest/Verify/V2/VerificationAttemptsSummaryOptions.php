@@ -71,8 +71,7 @@ class FetchVerificationAttemptsSummaryOptions extends Options
         string $channel = Values::NONE,
         string $destinationPrefix = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['verifyServiceSid'] = $verifyServiceSid;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;

@@ -33,11 +33,9 @@ class SyncListPermissionList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $serviceSid
-        ,
+        string $serviceSid,
         string $listSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

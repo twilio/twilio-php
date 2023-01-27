@@ -35,8 +35,7 @@ class EventContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class EventContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

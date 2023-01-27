@@ -332,8 +332,7 @@ class CreateParticipantOptions extends Options
         string $amdStatusCallback = Values::NONE,
         string $amdStatusCallbackMethod = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
@@ -935,8 +934,7 @@ class ReadParticipantOptions extends Options
         bool $hold = Values::NONE,
         bool $coaching = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['muted'] = $muted;
         $this->options['hold'] = $hold;
         $this->options['coaching'] = $coaching;
@@ -1021,8 +1019,7 @@ class UpdateParticipantOptions extends Options
         bool $coaching = Values::NONE,
         string $callSidToCoach = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['muted'] = $muted;
         $this->options['hold'] = $hold;
         $this->options['holdUrl'] = $holdUrl;

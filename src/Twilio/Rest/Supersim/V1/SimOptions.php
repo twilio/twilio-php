@@ -90,8 +90,7 @@ class ReadSimOptions extends Options
         string $fleet = Values::NONE,
         string $iccid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['fleet'] = $fleet;
         $this->options['iccid'] = $iccid;
@@ -164,8 +163,7 @@ class UpdateSimOptions extends Options
         string $callbackMethod = Values::NONE,
         string $accountSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['status'] = $status;
         $this->options['fleet'] = $fleet;

@@ -33,8 +33,7 @@ class SupportingDocumentTypeContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class SupportingDocumentTypeContext extends InstanceContext
         return new SupportingDocumentTypeInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

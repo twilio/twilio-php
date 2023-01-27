@@ -43,8 +43,7 @@ class UsageList extends ListResource
     public function __construct(
         Version $version,
         string $accountSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,6 @@ class UsageList extends ListResource
             $this->_records = new RecordList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_records;
@@ -79,7 +77,6 @@ class UsageList extends ListResource
             $this->_triggers = new TriggerList(
                 $this->version,
                 $this->solution['accountSid']
-                
             );
         }
         return $this->_triggers;

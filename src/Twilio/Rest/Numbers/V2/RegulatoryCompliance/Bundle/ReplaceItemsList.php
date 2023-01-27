@@ -33,8 +33,7 @@ class ReplaceItemsList extends ListResource
     public function __construct(
         Version $version,
         string $bundleSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -68,7 +67,7 @@ class ReplaceItemsList extends ListResource
         return new ReplaceItemsInstance(
             $this->version,
             $payload,
-            $this->solution['bundleSid'],
+            $this->solution['bundleSid']
         );
     }
 

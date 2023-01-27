@@ -69,8 +69,7 @@ class CreateIpRecordOptions extends Options
         string $friendlyName = Values::NONE,
         int $cidrPrefixLength = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;
     }
@@ -123,8 +122,7 @@ class UpdateIpRecordOptions extends Options
         
         string $friendlyName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
     }
 

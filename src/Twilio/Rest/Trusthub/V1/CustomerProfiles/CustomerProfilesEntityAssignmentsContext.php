@@ -35,8 +35,7 @@ class CustomerProfilesEntityAssignmentsContext extends InstanceContext
         Version $version,
         $customerProfileSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -80,7 +79,7 @@ class CustomerProfilesEntityAssignmentsContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['customerProfileSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

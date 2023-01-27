@@ -43,8 +43,7 @@ class SubscriptionContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -84,7 +83,7 @@ class SubscriptionContext extends InstanceContext
         return new SubscriptionInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -113,7 +112,7 @@ class SubscriptionContext extends InstanceContext
         return new SubscriptionInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -126,7 +125,7 @@ class SubscriptionContext extends InstanceContext
         if (!$this->_subscribedEvents) {
             $this->_subscribedEvents = new SubscribedEventList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

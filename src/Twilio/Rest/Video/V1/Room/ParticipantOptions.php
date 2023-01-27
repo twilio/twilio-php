@@ -78,8 +78,7 @@ class ReadParticipantOptions extends Options
         \DateTime $dateCreatedAfter = Values::NONE,
         \DateTime $dateCreatedBefore = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['identity'] = $identity;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -155,8 +154,7 @@ class UpdateParticipantOptions extends Options
         
         string $status = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
     }
 

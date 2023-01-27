@@ -37,8 +37,7 @@ class UserDefinedMessageSubscriptionContext extends InstanceContext
         $accountSid,
         $callSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution

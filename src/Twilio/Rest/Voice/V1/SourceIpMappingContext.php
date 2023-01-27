@@ -34,8 +34,7 @@ class SourceIpMappingContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -75,7 +74,7 @@ class SourceIpMappingContext extends InstanceContext
         return new SourceIpMappingInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -100,7 +99,7 @@ class SourceIpMappingContext extends InstanceContext
         return new SourceIpMappingInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

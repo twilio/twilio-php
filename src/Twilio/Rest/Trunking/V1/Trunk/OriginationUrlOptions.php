@@ -74,8 +74,7 @@ class UpdateOriginationUrlOptions extends Options
         string $friendlyName = Values::NONE,
         string $sipUrl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['weight'] = $weight;
         $this->options['priority'] = $priority;
         $this->options['enabled'] = $enabled;

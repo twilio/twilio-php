@@ -45,8 +45,7 @@ class UserContext extends InstanceContext
         Version $version,
         $chatServiceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -95,7 +94,7 @@ class UserContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['chatServiceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -129,7 +128,7 @@ class UserContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['chatServiceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -143,7 +142,7 @@ class UserContext extends InstanceContext
             $this->_userConversations = new UserConversationList(
                 $this->version,
                 $this->solution['chatServiceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

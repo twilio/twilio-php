@@ -30,8 +30,8 @@ class SafelistList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -60,7 +60,7 @@ class SafelistList extends ListResource
 
         return new SafelistInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

@@ -32,8 +32,7 @@ class SinkTestList extends ListResource
     public function __construct(
         Version $version,
         string $sid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class SinkTestList extends ListResource
         return new SinkTestInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

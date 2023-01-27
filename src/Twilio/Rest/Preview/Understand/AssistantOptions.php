@@ -120,8 +120,7 @@ class CreateAssistantOptions extends Options
         array $initiationActions = Values::ARRAY_NONE,
         array $styleSheet = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
@@ -266,8 +265,7 @@ class UpdateAssistantOptions extends Options
         array $initiationActions = Values::ARRAY_NONE,
         array $styleSheet = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;

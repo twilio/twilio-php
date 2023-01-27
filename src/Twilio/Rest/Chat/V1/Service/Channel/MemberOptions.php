@@ -81,8 +81,7 @@ class CreateMemberOptions extends Options
         
         string $roleSid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
     }
 
@@ -121,8 +120,7 @@ class ReadMemberOptions extends Options
         
         array $identity = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['identity'] = $identity;
     }
 
@@ -161,8 +159,7 @@ class UpdateMemberOptions extends Options
         string $roleSid = Values::NONE,
         int $lastConsumedMessageIndex = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
     }

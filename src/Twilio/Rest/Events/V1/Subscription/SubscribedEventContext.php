@@ -37,8 +37,7 @@ class SubscribedEventContext extends InstanceContext
         Version $version,
         $subscriptionSid,
         $type
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -82,7 +81,7 @@ class SubscribedEventContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['subscriptionSid'],
-            $this->solution['type'],
+            $this->solution['type']
         );
     }
 
@@ -110,7 +109,7 @@ class SubscribedEventContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['subscriptionSid'],
-            $this->solution['type'],
+            $this->solution['type']
         );
     }
 

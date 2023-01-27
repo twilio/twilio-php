@@ -60,8 +60,7 @@ class UpdateDeviceOptions extends Options
         string $targetApp = Values::NONE,
         bool $loggingEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['targetApp'] = $targetApp;
         $this->options['loggingEnabled'] = $loggingEnabled;

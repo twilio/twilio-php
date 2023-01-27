@@ -45,8 +45,7 @@ class TaskContext extends InstanceContext
         Version $version,
         $workspaceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -95,7 +94,7 @@ class TaskContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -133,7 +132,7 @@ class TaskContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['workspaceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -147,7 +146,7 @@ class TaskContext extends InstanceContext
             $this->_reservations = new ReservationList(
                 $this->version,
                 $this->solution['workspaceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

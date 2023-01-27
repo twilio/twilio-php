@@ -56,8 +56,7 @@ class ParticipantContext extends InstanceContext
         Version $version,
         $roomSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -88,7 +87,7 @@ class ParticipantContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -116,7 +115,7 @@ class ParticipantContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -130,7 +129,7 @@ class ParticipantContext extends InstanceContext
             $this->_subscribeRules = new SubscribeRulesList(
                 $this->version,
                 $this->solution['roomSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -146,7 +145,7 @@ class ParticipantContext extends InstanceContext
             $this->_subscribedTracks = new SubscribedTrackList(
                 $this->version,
                 $this->solution['roomSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -162,7 +161,7 @@ class ParticipantContext extends InstanceContext
             $this->_publishedTracks = new PublishedTrackList(
                 $this->version,
                 $this->solution['roomSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -178,7 +177,7 @@ class ParticipantContext extends InstanceContext
             $this->_anonymize = new AnonymizeList(
                 $this->version,
                 $this->solution['roomSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

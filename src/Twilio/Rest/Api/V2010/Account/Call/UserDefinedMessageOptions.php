@@ -46,8 +46,7 @@ class CreateUserDefinedMessageOptions extends Options
         
         string $idempotencyKey = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['idempotencyKey'] = $idempotencyKey;
     }
 

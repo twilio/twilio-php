@@ -49,8 +49,7 @@ class CreateSyncListOptions extends Options
         
         string $uniqueName = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
     }
 

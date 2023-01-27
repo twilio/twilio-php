@@ -33,8 +33,8 @@ class FlexFlowList extends ListResource
      * @param Version $version Version that contains the resource
      */
     public function __construct(
-        Version $version)
-        {
+        Version $version
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -100,7 +100,7 @@ class FlexFlowList extends ListResource
 
         return new FlexFlowInstance(
             $this->version,
-            $payload,
+            $payload
         );
     }
 

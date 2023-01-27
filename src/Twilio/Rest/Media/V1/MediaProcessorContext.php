@@ -34,8 +34,7 @@ class MediaProcessorContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -62,7 +61,7 @@ class MediaProcessorContext extends InstanceContext
         return new MediaProcessorInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -87,7 +86,7 @@ class MediaProcessorContext extends InstanceContext
         return new MediaProcessorInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

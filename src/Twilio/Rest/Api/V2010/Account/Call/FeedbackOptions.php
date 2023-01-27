@@ -53,8 +53,7 @@ class UpdateFeedbackOptions extends Options
         int $qualityScore = Values::NONE,
         array $issue = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['qualityScore'] = $qualityScore;
         $this->options['issue'] = $issue;
     }

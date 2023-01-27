@@ -45,8 +45,7 @@ class StepContext extends InstanceContext
         $flowSid,
         $engagementSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -81,7 +80,7 @@ class StepContext extends InstanceContext
             $payload,
             $this->solution['flowSid'],
             $this->solution['engagementSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -96,7 +95,7 @@ class StepContext extends InstanceContext
                 $this->version,
                 $this->solution['flowSid'],
                 $this->solution['engagementSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

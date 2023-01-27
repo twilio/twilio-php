@@ -73,8 +73,7 @@ class ReadCountryOptions extends Options
         bool $highRiskSpecialNumbersEnabled = Values::NONE,
         bool $highRiskTollfraudNumbersEnabled = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['isoCode'] = $isoCode;
         $this->options['continent'] = $continent;
         $this->options['countryCode'] = $countryCode;

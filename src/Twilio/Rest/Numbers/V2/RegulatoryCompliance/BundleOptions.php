@@ -137,8 +137,7 @@ class CreateBundleOptions extends Options
         string $endUserType = Values::NONE,
         string $numberType = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['regulationSid'] = $regulationSid;
         $this->options['isoCountry'] = $isoCountry;
@@ -247,8 +246,7 @@ class ReadBundleOptions extends Options
         string $validUntilDate = Values::NONE,
         string $validUntilDateAfter = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['regulationSid'] = $regulationSid;
@@ -421,8 +419,7 @@ class UpdateBundleOptions extends Options
         string $friendlyName = Values::NONE,
         string $email = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['status'] = $status;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['friendlyName'] = $friendlyName;

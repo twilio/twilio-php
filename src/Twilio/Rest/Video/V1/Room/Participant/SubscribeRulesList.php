@@ -35,11 +35,9 @@ class SubscribeRulesList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $roomSid
-        ,
+        string $roomSid,
         string $participantSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -72,7 +70,7 @@ class SubscribeRulesList extends ListResource
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['participantSid'],
+            $this->solution['participantSid']
         );
     }
 
@@ -100,7 +98,7 @@ class SubscribeRulesList extends ListResource
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['participantSid'],
+            $this->solution['participantSid']
         );
     }
 

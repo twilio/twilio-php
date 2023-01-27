@@ -35,8 +35,7 @@ class CustomerProfilesEvaluationsContext extends InstanceContext
         Version $version,
         $customerProfileSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -67,7 +66,7 @@ class CustomerProfilesEvaluationsContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['customerProfileSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

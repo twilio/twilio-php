@@ -40,8 +40,7 @@ class SyncListItemContext extends InstanceContext
         $serviceSid,
         $listSid,
         $index
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -94,7 +93,7 @@ class SyncListItemContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['listSid'],
-            $this->solution['index'],
+            $this->solution['index']
         );
     }
 
@@ -131,7 +130,7 @@ class SyncListItemContext extends InstanceContext
             $payload,
             $this->solution['serviceSid'],
             $this->solution['listSid'],
-            $this->solution['index'],
+            $this->solution['index']
         );
     }
 

@@ -33,8 +33,7 @@ class SafelistContext extends InstanceContext
     public function __construct(
         Version $version,
         $phoneNumber
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -74,7 +73,7 @@ class SafelistContext extends InstanceContext
         return new SafelistInstance(
             $this->version,
             $payload,
-            $this->solution['phoneNumber'],
+            $this->solution['phoneNumber']
         );
     }
 

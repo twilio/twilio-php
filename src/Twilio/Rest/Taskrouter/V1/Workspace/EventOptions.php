@@ -98,8 +98,7 @@ class ReadEventOptions extends Options
         string $taskChannel = Values::NONE,
         string $sid = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['endDate'] = $endDate;
         $this->options['eventType'] = $eventType;
         $this->options['minutes'] = $minutes;

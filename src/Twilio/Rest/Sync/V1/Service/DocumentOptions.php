@@ -80,8 +80,7 @@ class CreateDocumentOptions extends Options
         array $data = Values::ARRAY_NONE,
         int $ttl = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
@@ -151,8 +150,7 @@ class UpdateDocumentOptions extends Options
         int $ttl = Values::NONE,
         string $ifMatch = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
         $this->options['ifMatch'] = $ifMatch;

@@ -44,8 +44,7 @@ class SinkContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -85,7 +84,7 @@ class SinkContext extends InstanceContext
         return new SinkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -110,7 +109,7 @@ class SinkContext extends InstanceContext
         return new SinkInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -123,7 +122,7 @@ class SinkContext extends InstanceContext
         if (!$this->_sinkTest) {
             $this->_sinkTest = new SinkTestList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -138,7 +137,7 @@ class SinkContext extends InstanceContext
         if (!$this->_sinkValidate) {
             $this->_sinkValidate = new SinkValidateList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

@@ -131,8 +131,7 @@ class ReadCallSummariesOptions extends Options
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['from'] = $from;
         $this->options['to'] = $to;
         $this->options['fromCarrier'] = $fromCarrier;

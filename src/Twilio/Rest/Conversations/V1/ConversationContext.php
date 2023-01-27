@@ -52,8 +52,7 @@ class ConversationContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -98,7 +97,7 @@ class ConversationContext extends InstanceContext
         return new ConversationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -143,7 +142,7 @@ class ConversationContext extends InstanceContext
         return new ConversationInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -156,7 +155,7 @@ class ConversationContext extends InstanceContext
         if (!$this->_participants) {
             $this->_participants = new ParticipantList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -171,7 +170,7 @@ class ConversationContext extends InstanceContext
         if (!$this->_webhooks) {
             $this->_webhooks = new WebhookList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -186,7 +185,7 @@ class ConversationContext extends InstanceContext
         if (!$this->_messages) {
             $this->_messages = new MessageList(
                 $this->version,
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

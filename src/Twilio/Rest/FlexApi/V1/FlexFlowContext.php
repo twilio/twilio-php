@@ -36,8 +36,7 @@ class FlexFlowContext extends InstanceContext
     public function __construct(
         Version $version,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -77,7 +76,7 @@ class FlexFlowContext extends InstanceContext
         return new FlexFlowInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -136,7 +135,7 @@ class FlexFlowContext extends InstanceContext
         return new FlexFlowInstance(
             $this->version,
             $payload,
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 

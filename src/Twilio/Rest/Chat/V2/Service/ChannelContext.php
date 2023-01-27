@@ -58,8 +58,7 @@ class ChannelContext extends InstanceContext
         Version $version,
         $serviceSid,
         $sid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -108,7 +107,7 @@ class ChannelContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -148,7 +147,7 @@ class ChannelContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['sid'],
+            $this->solution['sid']
         );
     }
 
@@ -162,7 +161,7 @@ class ChannelContext extends InstanceContext
             $this->_members = new MemberList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -178,7 +177,7 @@ class ChannelContext extends InstanceContext
             $this->_invites = new InviteList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -194,7 +193,7 @@ class ChannelContext extends InstanceContext
             $this->_webhooks = new WebhookList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 
@@ -210,7 +209,7 @@ class ChannelContext extends InstanceContext
             $this->_messages = new MessageList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['sid'],
+                $this->solution['sid']
             );
         }
 

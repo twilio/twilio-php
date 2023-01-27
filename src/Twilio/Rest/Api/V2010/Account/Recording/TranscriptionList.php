@@ -33,11 +33,9 @@ class TranscriptionList extends ListResource
      */
     public function __construct(
         Version $version,
-        string $accountSid
-        ,
+        string $accountSid,
         string $recordingSid
-        )
-        {
+    ) {
         parent::__construct($version);
 
         // Path Solution

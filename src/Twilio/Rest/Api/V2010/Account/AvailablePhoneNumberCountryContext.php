@@ -60,8 +60,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
         Version $version,
         $accountSid,
         $countryCode
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -92,7 +91,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['countryCode'],
+            $this->solution['countryCode']
         );
     }
 
@@ -106,7 +105,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_voip = new VoipList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 
@@ -122,7 +121,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_national = new NationalList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 
@@ -138,7 +137,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_mobile = new MobileList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 
@@ -154,7 +153,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_machineToMachine = new MachineToMachineList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 
@@ -170,7 +169,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_tollFree = new TollFreeList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 
@@ -186,7 +185,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_sharedCost = new SharedCostList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 
@@ -202,7 +201,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
             $this->_local = new LocalList(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['countryCode'],
+                $this->solution['countryCode']
             );
         }
 

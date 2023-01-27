@@ -58,8 +58,7 @@ class UpdateDomainConfigOptions extends Options
         string $callbackUrl = Values::NONE,
         string $messagingServiceSidsAction = Values::NONE
 
-    )
-    {
+    ) {
         $this->options['fallbackUrl'] = $fallbackUrl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['messagingServiceSidsAction'] = $messagingServiceSidsAction;

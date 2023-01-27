@@ -53,8 +53,7 @@ class CreateMessageInteractionOptions extends Options
         string $body = Values::NONE,
         array $mediaUrl = Values::ARRAY_NONE
 
-    )
-    {
+    ) {
         $this->options['body'] = $body;
         $this->options['mediaUrl'] = $mediaUrl;
     }

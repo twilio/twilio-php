@@ -38,8 +38,7 @@ class TaskActionsContext extends InstanceContext
         Version $version,
         $assistantSid,
         $taskSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -70,7 +69,7 @@ class TaskActionsContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['taskSid'],
+            $this->solution['taskSid']
         );
     }
 
@@ -98,7 +97,7 @@ class TaskActionsContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['assistantSid'],
-            $this->solution['taskSid'],
+            $this->solution['taskSid']
         );
     }
 

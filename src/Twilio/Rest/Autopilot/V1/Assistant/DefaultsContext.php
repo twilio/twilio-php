@@ -36,8 +36,7 @@ class DefaultsContext extends InstanceContext
     public function __construct(
         Version $version,
         $assistantSid
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -64,7 +63,7 @@ class DefaultsContext extends InstanceContext
         return new DefaultsInstance(
             $this->version,
             $payload,
-            $this->solution['assistantSid'],
+            $this->solution['assistantSid']
         );
     }
 
@@ -91,7 +90,7 @@ class DefaultsContext extends InstanceContext
         return new DefaultsInstance(
             $this->version,
             $payload,
-            $this->solution['assistantSid'],
+            $this->solution['assistantSid']
         );
     }
 

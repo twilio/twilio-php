@@ -50,8 +50,7 @@ class EntityContext extends InstanceContext
         Version $version,
         $serviceSid,
         $identity
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -95,7 +94,7 @@ class EntityContext extends InstanceContext
             $this->version,
             $payload,
             $this->solution['serviceSid'],
-            $this->solution['identity'],
+            $this->solution['identity']
         );
     }
 
@@ -109,7 +108,7 @@ class EntityContext extends InstanceContext
             $this->_factors = new FactorList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['identity'],
+                $this->solution['identity']
             );
         }
 
@@ -125,7 +124,7 @@ class EntityContext extends InstanceContext
             $this->_newFactors = new NewFactorList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['identity'],
+                $this->solution['identity']
             );
         }
 
@@ -141,7 +140,7 @@ class EntityContext extends InstanceContext
             $this->_challenges = new ChallengeList(
                 $this->version,
                 $this->solution['serviceSid'],
-                $this->solution['identity'],
+                $this->solution['identity']
             );
         }
 

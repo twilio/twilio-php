@@ -33,8 +33,7 @@ class EventTypeContext extends InstanceContext
     public function __construct(
         Version $version,
         $type
-    )
-    {
+    ) {
         parent::__construct($version);
 
         // Path Solution
@@ -61,7 +60,7 @@ class EventTypeContext extends InstanceContext
         return new EventTypeInstance(
             $this->version,
             $payload,
-            $this->solution['type'],
+            $this->solution['type']
         );
     }
 
