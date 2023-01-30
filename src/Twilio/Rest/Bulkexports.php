@@ -4,7 +4,7 @@ namespace Twilio\Rest;
 
 use Twilio\Rest\Bulkexports\V1;
 
-class Bulkexports extends BulkExportsBase {
+class Bulkexports extends BulkexportsBase {
 
     /**
      * @deprecated Use v1->exports instead.
