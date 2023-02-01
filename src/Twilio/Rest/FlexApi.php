@@ -75,22 +75,6 @@ class FlexApi extends FlexApiBase {
     }
 
     /**
-     * @deprecated Use v1->goodData instead.
-     */
-    protected function getGoodData(): \Twilio\Rest\FlexApi\V1\GoodDataList {
-        echo "goodData is deprecated. Use v1->goodData instead.";
-        return $this->v1->goodData;
-    }
-
-    /**
-     * @deprecated Use v1->goodData() instead.
-     */
-    protected function contextGoodData(): \Twilio\Rest\FlexApi\V1\GoodDataContext {
-        echo "goodData() is deprecated. Use v1->goodData() instead.";
-        return $this->v1->goodData();
-    }
-
-    /**
      * @deprecated Use v1->interaction instead.
      */
     protected function getInteraction(): \Twilio\Rest\FlexApi\V1\InteractionList {
@@ -105,22 +89,6 @@ class FlexApi extends FlexApiBase {
     protected function contextInteraction(string $sid): \Twilio\Rest\FlexApi\V1\InteractionContext {
         echo "interaction(\$sid) is deprecated. Use v1->interaction(\$sid) instead.";
         return $this->v1->interaction($sid);
-    }
-
-    /**
-     * @deprecated Use v1->userRoles instead.
-     */
-    protected function getUserRoles(): \Twilio\Rest\FlexApi\V1\UserRolesList {
-        echo "userRoles is deprecated. Use v1->userRoles instead.";
-        return $this->v1->userRoles;
-    }
-
-    /**
-     * @deprecated Use v1->userRoles() instead.
-     */
-    protected function contextUserRoles(): \Twilio\Rest\FlexApi\V1\UserRolesContext {
-        echo "userRoles() is deprecated. Use v1->userRoles() instead.";
-        return $this->v1->userRoles();
     }
 
     /**
