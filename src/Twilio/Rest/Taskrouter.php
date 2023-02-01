@@ -3,7 +3,7 @@
 namespace Twilio\Rest;
 
 use Twilio\Rest\Taskrouter\V1;
-class Taskrouter extends TaskRouterBase {
+class Taskrouter extends TaskrouterBase {
 
     /**
      * @deprecated Use v1->workspaces instead.
