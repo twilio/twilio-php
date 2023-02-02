@@ -6,9 +6,11 @@ namespace Twilio\Tests\Unit;
 
 use Twilio\Values;
 
-class ValuesTest extends UnitTest {
+class ValuesTest extends UnitTest
+{
 
-    public function testDirectKeyAccess(): void {
+    public function testDirectKeyAccess(): void
+    {
         $values = new Values([
             'a' => 1,
             'b' => 2,
@@ -20,7 +22,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(3, $values['c']);
     }
 
-    public function testCaseInsensitiveAccess(): void {
+    public function testCaseInsensitiveAccess(): void
+    {
         $values = new Values([
             'lowercase' => 1,
             'UPPERCASE' => 2,
@@ -40,7 +43,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(3, $values['MixedCase']);
     }
 
-    public function testUnknownKeySentinel(): void {
+    public function testUnknownKeySentinel(): void
+    {
         $values = new Values([
             'known' => 1,
         ]);
@@ -49,7 +53,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(Values::NONE, $values['unknown']);
     }
 
-    public function testUnknownValuesRemoved(): void {
+    public function testUnknownValuesRemoved(): void
+    {
         $values = new Values([
             'known' => 1,
         ]);
@@ -62,7 +67,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(['Known' => 1], $data);
     }
 
-    public function testArrayValues(): void {
+    public function testArrayValues(): void
+    {
         $values = new Values([
             'a' => [1],
         ]);
@@ -73,5 +79,29 @@ class ValuesTest extends UnitTest {
         ]);
 
         $this->assertEquals(['a' => [1]], $data);
+    }
+
+    public function testDefaultValues(): void
+    {
+        $res = $this->testPassingValues();
+        $this->assertEquals(0, $res['intVal']);
+        $this->assertEquals(false, $res['boolVal']);
+        $this->assertEquals('Twilio\\Values\\NONE', $res['stringVal']);
+        $this->assertEquals(null, $res['dateTimeVal']);
+    }
+
+    private function testPassingValues(
+        int $intVal = Values::INT_NONE,
+        bool $boolVal = Values::BOOL_NONE,
+        string $stringVal = Values::NONE,
+        \DateTime $dateTimeVal = null
+    ): array
+    {
+        $arr = [];
+        $arr["intVal"] = $intVal;
+        $arr["boolVal"] = $boolVal;
+        $arr["stringVal"] = $stringVal;
+        $arr["dateTimeVal"] = $dateTimeVal;
+        return $arr;
     }
 }

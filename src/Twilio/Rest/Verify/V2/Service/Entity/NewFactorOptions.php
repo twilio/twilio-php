@@ -44,9 +44,9 @@ abstract class NewFactorOptions
         string $configNotificationToken = Values::NONE,
         string $configSdkVersion = Values::NONE,
         string $bindingSecret = Values::NONE,
-        int $configTimeStep = Values::NONE,
-        int $configSkew = Values::NONE,
-        int $configCodeLength = Values::NONE,
+        int $configTimeStep = Values::INT_NONE,
+        int $configSkew = Values::INT_NONE,
+        int $configCodeLength = Values::INT_NONE,
         string $configAlg = Values::NONE,
         array $metadata = Values::ARRAY_NONE
 
@@ -95,9 +95,9 @@ class CreateNewFactorOptions extends Options
         string $configNotificationToken = Values::NONE,
         string $configSdkVersion = Values::NONE,
         string $bindingSecret = Values::NONE,
-        int $configTimeStep = Values::NONE,
-        int $configSkew = Values::NONE,
-        int $configCodeLength = Values::NONE,
+        int $configTimeStep = Values::INT_NONE,
+        int $configSkew = Values::INT_NONE,
+        int $configCodeLength = Values::INT_NONE,
         string $configAlg = Values::NONE,
         array $metadata = Values::ARRAY_NONE
 

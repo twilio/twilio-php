@@ -33,8 +33,8 @@ abstract class RecordingSettingsOptions
         string $awsCredentialsSid = Values::NONE,
         string $encryptionKeySid = Values::NONE,
         string $awsS3Url = Values::NONE,
-        bool $awsStorageEnabled = Values::NONE,
-        bool $encryptionEnabled = Values::NONE
+        bool $awsStorageEnabled = Values::BOOL_NONE,
+        bool $encryptionEnabled = Values::BOOL_NONE
 
     ): CreateRecordingSettingsOptions
     {
@@ -64,8 +64,8 @@ class CreateRecordingSettingsOptions extends Options
         string $awsCredentialsSid = Values::NONE,
         string $encryptionKeySid = Values::NONE,
         string $awsS3Url = Values::NONE,
-        bool $awsStorageEnabled = Values::NONE,
-        bool $encryptionEnabled = Values::NONE
+        bool $awsStorageEnabled = Values::BOOL_NONE,
+        bool $encryptionEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['awsCredentialsSid'] = $awsCredentialsSid;

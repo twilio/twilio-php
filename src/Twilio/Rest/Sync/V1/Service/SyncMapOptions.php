@@ -29,8 +29,8 @@ abstract class SyncMapOptions
     public static function create(
         
         string $uniqueName = Values::NONE,
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ): CreateSyncMapOptions
     {
@@ -51,8 +51,8 @@ abstract class SyncMapOptions
      */
     public static function update(
         
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ): UpdateSyncMapOptions
     {
@@ -74,8 +74,8 @@ class CreateSyncMapOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;
@@ -142,8 +142,8 @@ class UpdateSyncMapOptions extends Options
      */
     public function __construct(
         
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ) {
         $this->options['ttl'] = $ttl;

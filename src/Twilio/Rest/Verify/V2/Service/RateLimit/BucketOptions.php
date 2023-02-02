@@ -31,8 +31,8 @@ abstract class BucketOptions
      */
     public static function update(
         
-        int $max = Values::NONE,
-        int $interval = Values::NONE
+        int $max = Values::INT_NONE,
+        int $interval = Values::INT_NONE
 
     ): UpdateBucketOptions
     {
@@ -56,8 +56,8 @@ class UpdateBucketOptions extends Options
      */
     public function __construct(
         
-        int $max = Values::NONE,
-        int $interval = Values::NONE
+        int $max = Values::INT_NONE,
+        int $interval = Values::INT_NONE
 
     ) {
         $this->options['max'] = $max;

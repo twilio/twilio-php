@@ -34,7 +34,7 @@ abstract class DeviceOptions
         string $friendlyName = Values::NONE,
         string $identity = Values::NONE,
         string $deploymentSid = Values::NONE,
-        bool $enabled = Values::NONE
+        bool $enabled = Values::BOOL_NONE
 
     ): CreateDeviceOptions
     {
@@ -76,7 +76,7 @@ abstract class DeviceOptions
         string $friendlyName = Values::NONE,
         string $identity = Values::NONE,
         string $deploymentSid = Values::NONE,
-        bool $enabled = Values::NONE
+        bool $enabled = Values::BOOL_NONE
 
     ): UpdateDeviceOptions
     {
@@ -105,7 +105,7 @@ class CreateDeviceOptions extends Options
         string $friendlyName = Values::NONE,
         string $identity = Values::NONE,
         string $deploymentSid = Values::NONE,
-        bool $enabled = Values::NONE
+        bool $enabled = Values::BOOL_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;
@@ -239,7 +239,7 @@ class UpdateDeviceOptions extends Options
         string $friendlyName = Values::NONE,
         string $identity = Values::NONE,
         string $deploymentSid = Values::NONE,
-        bool $enabled = Values::NONE
+        bool $enabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

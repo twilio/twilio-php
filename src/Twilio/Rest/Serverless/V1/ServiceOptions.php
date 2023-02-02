@@ -27,8 +27,8 @@ abstract class ServiceOptions
      */
     public static function create(
         
-        bool $includeCredentials = Values::NONE,
-        bool $uiEditable = Values::NONE
+        bool $includeCredentials = Values::BOOL_NONE,
+        bool $uiEditable = Values::BOOL_NONE
 
     ): CreateServiceOptions
     {
@@ -49,9 +49,9 @@ abstract class ServiceOptions
      */
     public static function update(
         
-        bool $includeCredentials = Values::NONE,
+        bool $includeCredentials = Values::BOOL_NONE,
         string $friendlyName = Values::NONE,
-        bool $uiEditable = Values::NONE
+        bool $uiEditable = Values::BOOL_NONE
 
     ): UpdateServiceOptions
     {
@@ -72,8 +72,8 @@ class CreateServiceOptions extends Options
      */
     public function __construct(
         
-        bool $includeCredentials = Values::NONE,
-        bool $uiEditable = Values::NONE
+        bool $includeCredentials = Values::BOOL_NONE,
+        bool $uiEditable = Values::BOOL_NONE
 
     ) {
         $this->options['includeCredentials'] = $includeCredentials;
@@ -128,9 +128,9 @@ class UpdateServiceOptions extends Options
      */
     public function __construct(
         
-        bool $includeCredentials = Values::NONE,
+        bool $includeCredentials = Values::BOOL_NONE,
         string $friendlyName = Values::NONE,
-        bool $uiEditable = Values::NONE
+        bool $uiEditable = Values::BOOL_NONE
 
     ) {
         $this->options['includeCredentials'] = $includeCredentials;

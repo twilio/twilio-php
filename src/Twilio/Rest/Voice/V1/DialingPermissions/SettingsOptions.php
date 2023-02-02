@@ -27,7 +27,7 @@ abstract class SettingsOptions
      */
     public static function update(
         
-        bool $dialingPermissionsInheritance = Values::NONE
+        bool $dialingPermissionsInheritance = Values::BOOL_NONE
 
     ): UpdateSettingsOptions
     {
@@ -46,7 +46,7 @@ class UpdateSettingsOptions extends Options
      */
     public function __construct(
         
-        bool $dialingPermissionsInheritance = Values::NONE
+        bool $dialingPermissionsInheritance = Values::BOOL_NONE
 
     ) {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;

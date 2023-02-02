@@ -29,8 +29,8 @@ abstract class BrandRegistrationOptions
     public static function create(
         
         string $brandType = Values::NONE,
-        bool $mock = Values::NONE,
-        bool $skipAutomaticSecVet = Values::NONE
+        bool $mock = Values::BOOL_NONE,
+        bool $skipAutomaticSecVet = Values::BOOL_NONE
 
     ): CreateBrandRegistrationOptions
     {
@@ -56,8 +56,8 @@ class CreateBrandRegistrationOptions extends Options
     public function __construct(
         
         string $brandType = Values::NONE,
-        bool $mock = Values::NONE,
-        bool $skipAutomaticSecVet = Values::NONE
+        bool $mock = Values::BOOL_NONE,
+        bool $skipAutomaticSecVet = Values::BOOL_NONE
 
     ) {
         $this->options['brandType'] = $brandType;

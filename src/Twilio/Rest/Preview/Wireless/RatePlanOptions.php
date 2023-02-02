@@ -37,13 +37,13 @@ abstract class RatePlanOptions
         
         string $uniqueName = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $dataEnabled = Values::NONE,
-        int $dataLimit = Values::NONE,
+        bool $dataEnabled = Values::BOOL_NONE,
+        int $dataLimit = Values::INT_NONE,
         string $dataMetering = Values::NONE,
-        bool $messagingEnabled = Values::NONE,
-        bool $voiceEnabled = Values::NONE,
-        bool $commandsEnabled = Values::NONE,
-        bool $nationalRoamingEnabled = Values::NONE,
+        bool $messagingEnabled = Values::BOOL_NONE,
+        bool $voiceEnabled = Values::BOOL_NONE,
+        bool $commandsEnabled = Values::BOOL_NONE,
+        bool $nationalRoamingEnabled = Values::BOOL_NONE,
         array $internationalRoaming = Values::ARRAY_NONE
 
     ): CreateRatePlanOptions
@@ -103,13 +103,13 @@ class CreateRatePlanOptions extends Options
         
         string $uniqueName = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $dataEnabled = Values::NONE,
-        int $dataLimit = Values::NONE,
+        bool $dataEnabled = Values::BOOL_NONE,
+        int $dataLimit = Values::INT_NONE,
         string $dataMetering = Values::NONE,
-        bool $messagingEnabled = Values::NONE,
-        bool $voiceEnabled = Values::NONE,
-        bool $commandsEnabled = Values::NONE,
-        bool $nationalRoamingEnabled = Values::NONE,
+        bool $messagingEnabled = Values::BOOL_NONE,
+        bool $voiceEnabled = Values::BOOL_NONE,
+        bool $commandsEnabled = Values::BOOL_NONE,
+        bool $nationalRoamingEnabled = Values::BOOL_NONE,
         array $internationalRoaming = Values::ARRAY_NONE
 
     ) {

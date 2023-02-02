@@ -45,16 +45,16 @@ abstract class ServiceOptions
         string $fallbackUrl = Values::NONE,
         string $fallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
-        bool $stickySender = Values::NONE,
-        bool $mmsConverter = Values::NONE,
-        bool $smartEncoding = Values::NONE,
+        bool $stickySender = Values::BOOL_NONE,
+        bool $mmsConverter = Values::BOOL_NONE,
+        bool $smartEncoding = Values::BOOL_NONE,
         string $scanMessageContent = Values::NONE,
-        bool $fallbackToLongCode = Values::NONE,
-        bool $areaCodeGeomatch = Values::NONE,
-        int $validityPeriod = Values::NONE,
-        bool $synchronousValidation = Values::NONE,
+        bool $fallbackToLongCode = Values::BOOL_NONE,
+        bool $areaCodeGeomatch = Values::BOOL_NONE,
+        int $validityPeriod = Values::INT_NONE,
+        bool $synchronousValidation = Values::BOOL_NONE,
         string $usecase = Values::NONE,
-        bool $useInboundWebhookOnNumber = Values::NONE
+        bool $useInboundWebhookOnNumber = Values::BOOL_NONE
 
     ): CreateServiceOptions
     {
@@ -107,16 +107,16 @@ abstract class ServiceOptions
         string $fallbackUrl = Values::NONE,
         string $fallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
-        bool $stickySender = Values::NONE,
-        bool $mmsConverter = Values::NONE,
-        bool $smartEncoding = Values::NONE,
+        bool $stickySender = Values::BOOL_NONE,
+        bool $mmsConverter = Values::BOOL_NONE,
+        bool $smartEncoding = Values::BOOL_NONE,
         string $scanMessageContent = Values::NONE,
-        bool $fallbackToLongCode = Values::NONE,
-        bool $areaCodeGeomatch = Values::NONE,
-        int $validityPeriod = Values::NONE,
-        bool $synchronousValidation = Values::NONE,
+        bool $fallbackToLongCode = Values::BOOL_NONE,
+        bool $areaCodeGeomatch = Values::BOOL_NONE,
+        int $validityPeriod = Values::INT_NONE,
+        bool $synchronousValidation = Values::BOOL_NONE,
         string $usecase = Values::NONE,
-        bool $useInboundWebhookOnNumber = Values::NONE
+        bool $useInboundWebhookOnNumber = Values::BOOL_NONE
 
     ): UpdateServiceOptions
     {
@@ -168,16 +168,16 @@ class CreateServiceOptions extends Options
         string $fallbackUrl = Values::NONE,
         string $fallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
-        bool $stickySender = Values::NONE,
-        bool $mmsConverter = Values::NONE,
-        bool $smartEncoding = Values::NONE,
+        bool $stickySender = Values::BOOL_NONE,
+        bool $mmsConverter = Values::BOOL_NONE,
+        bool $smartEncoding = Values::BOOL_NONE,
         string $scanMessageContent = Values::NONE,
-        bool $fallbackToLongCode = Values::NONE,
-        bool $areaCodeGeomatch = Values::NONE,
-        int $validityPeriod = Values::NONE,
-        bool $synchronousValidation = Values::NONE,
+        bool $fallbackToLongCode = Values::BOOL_NONE,
+        bool $areaCodeGeomatch = Values::BOOL_NONE,
+        int $validityPeriod = Values::INT_NONE,
+        bool $synchronousValidation = Values::BOOL_NONE,
         string $usecase = Values::NONE,
-        bool $useInboundWebhookOnNumber = Values::NONE
+        bool $useInboundWebhookOnNumber = Values::BOOL_NONE
 
     ) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
@@ -418,16 +418,16 @@ class UpdateServiceOptions extends Options
         string $fallbackUrl = Values::NONE,
         string $fallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
-        bool $stickySender = Values::NONE,
-        bool $mmsConverter = Values::NONE,
-        bool $smartEncoding = Values::NONE,
+        bool $stickySender = Values::BOOL_NONE,
+        bool $mmsConverter = Values::BOOL_NONE,
+        bool $smartEncoding = Values::BOOL_NONE,
         string $scanMessageContent = Values::NONE,
-        bool $fallbackToLongCode = Values::NONE,
-        bool $areaCodeGeomatch = Values::NONE,
-        int $validityPeriod = Values::NONE,
-        bool $synchronousValidation = Values::NONE,
+        bool $fallbackToLongCode = Values::BOOL_NONE,
+        bool $areaCodeGeomatch = Values::BOOL_NONE,
+        int $validityPeriod = Values::INT_NONE,
+        bool $synchronousValidation = Values::BOOL_NONE,
         string $usecase = Values::NONE,
-        bool $useInboundWebhookOnNumber = Values::NONE
+        bool $useInboundWebhookOnNumber = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

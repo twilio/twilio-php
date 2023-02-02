@@ -39,8 +39,8 @@ abstract class UsageRecordOptions
         string $isoCountry = Values::NONE,
         string $group = Values::NONE,
         string $granularity = Values::NONE,
-        \DateTime $startTime = Values::NONE,
-        \DateTime $endTime = Values::NONE
+        \DateTime $startTime = null,
+        \DateTime $endTime = null
 
     ): ReadUsageRecordOptions
     {
@@ -78,8 +78,8 @@ class ReadUsageRecordOptions extends Options
         string $isoCountry = Values::NONE,
         string $group = Values::NONE,
         string $granularity = Values::NONE,
-        \DateTime $startTime = Values::NONE,
-        \DateTime $endTime = Values::NONE
+        \DateTime $startTime = null,
+        \DateTime $endTime = null
 
     ) {
         $this->options['sim'] = $sim;

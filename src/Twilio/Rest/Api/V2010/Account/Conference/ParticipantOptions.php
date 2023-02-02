@@ -73,16 +73,16 @@ abstract class ParticipantOptions
         string $statusCallbackMethod = Values::NONE,
         array $statusCallbackEvent = Values::ARRAY_NONE,
         string $label = Values::NONE,
-        int $timeout = Values::NONE,
-        bool $record = Values::NONE,
-        bool $muted = Values::NONE,
+        int $timeout = Values::INT_NONE,
+        bool $record = Values::BOOL_NONE,
+        bool $muted = Values::BOOL_NONE,
         string $beep = Values::NONE,
-        bool $startConferenceOnEnter = Values::NONE,
-        bool $endConferenceOnExit = Values::NONE,
+        bool $startConferenceOnEnter = Values::BOOL_NONE,
+        bool $endConferenceOnExit = Values::BOOL_NONE,
         string $waitUrl = Values::NONE,
         string $waitMethod = Values::NONE,
-        bool $earlyMedia = Values::NONE,
-        int $maxParticipants = Values::NONE,
+        bool $earlyMedia = Values::BOOL_NONE,
+        int $maxParticipants = Values::INT_NONE,
         string $conferenceRecord = Values::NONE,
         string $conferenceTrim = Values::NONE,
         string $conferenceStatusCallback = Values::NONE,
@@ -98,19 +98,19 @@ abstract class ParticipantOptions
         string $conferenceRecordingStatusCallbackMethod = Values::NONE,
         array $recordingStatusCallbackEvent = Values::ARRAY_NONE,
         array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE,
-        bool $coaching = Values::NONE,
+        bool $coaching = Values::BOOL_NONE,
         string $callSidToCoach = Values::NONE,
         string $jitterBufferSize = Values::NONE,
         string $byoc = Values::NONE,
         string $callerId = Values::NONE,
         string $callReason = Values::NONE,
         string $recordingTrack = Values::NONE,
-        int $timeLimit = Values::NONE,
+        int $timeLimit = Values::INT_NONE,
         string $machineDetection = Values::NONE,
-        int $machineDetectionTimeout = Values::NONE,
-        int $machineDetectionSpeechThreshold = Values::NONE,
-        int $machineDetectionSpeechEndThreshold = Values::NONE,
-        int $machineDetectionSilenceTimeout = Values::NONE,
+        int $machineDetectionTimeout = Values::INT_NONE,
+        int $machineDetectionSpeechThreshold = Values::INT_NONE,
+        int $machineDetectionSpeechEndThreshold = Values::INT_NONE,
+        int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $amdStatusCallback = Values::NONE,
         string $amdStatusCallbackMethod = Values::NONE
 
@@ -174,9 +174,9 @@ abstract class ParticipantOptions
      */
     public static function read(
         
-        bool $muted = Values::NONE,
-        bool $hold = Values::NONE,
-        bool $coaching = Values::NONE
+        bool $muted = Values::BOOL_NONE,
+        bool $hold = Values::BOOL_NONE,
+        bool $coaching = Values::BOOL_NONE
 
     ): ReadParticipantOptions
     {
@@ -204,17 +204,17 @@ abstract class ParticipantOptions
      */
     public static function update(
         
-        bool $muted = Values::NONE,
-        bool $hold = Values::NONE,
+        bool $muted = Values::BOOL_NONE,
+        bool $hold = Values::BOOL_NONE,
         string $holdUrl = Values::NONE,
         string $holdMethod = Values::NONE,
         string $announceUrl = Values::NONE,
         string $announceMethod = Values::NONE,
         string $waitUrl = Values::NONE,
         string $waitMethod = Values::NONE,
-        bool $beepOnExit = Values::NONE,
-        bool $endConferenceOnExit = Values::NONE,
-        bool $coaching = Values::NONE,
+        bool $beepOnExit = Values::BOOL_NONE,
+        bool $endConferenceOnExit = Values::BOOL_NONE,
+        bool $coaching = Values::BOOL_NONE,
         string $callSidToCoach = Values::NONE
 
     ): UpdateParticipantOptions
@@ -291,16 +291,16 @@ class CreateParticipantOptions extends Options
         string $statusCallbackMethod = Values::NONE,
         array $statusCallbackEvent = Values::ARRAY_NONE,
         string $label = Values::NONE,
-        int $timeout = Values::NONE,
-        bool $record = Values::NONE,
-        bool $muted = Values::NONE,
+        int $timeout = Values::INT_NONE,
+        bool $record = Values::BOOL_NONE,
+        bool $muted = Values::BOOL_NONE,
         string $beep = Values::NONE,
-        bool $startConferenceOnEnter = Values::NONE,
-        bool $endConferenceOnExit = Values::NONE,
+        bool $startConferenceOnEnter = Values::BOOL_NONE,
+        bool $endConferenceOnExit = Values::BOOL_NONE,
         string $waitUrl = Values::NONE,
         string $waitMethod = Values::NONE,
-        bool $earlyMedia = Values::NONE,
-        int $maxParticipants = Values::NONE,
+        bool $earlyMedia = Values::BOOL_NONE,
+        int $maxParticipants = Values::INT_NONE,
         string $conferenceRecord = Values::NONE,
         string $conferenceTrim = Values::NONE,
         string $conferenceStatusCallback = Values::NONE,
@@ -316,19 +316,19 @@ class CreateParticipantOptions extends Options
         string $conferenceRecordingStatusCallbackMethod = Values::NONE,
         array $recordingStatusCallbackEvent = Values::ARRAY_NONE,
         array $conferenceRecordingStatusCallbackEvent = Values::ARRAY_NONE,
-        bool $coaching = Values::NONE,
+        bool $coaching = Values::BOOL_NONE,
         string $callSidToCoach = Values::NONE,
         string $jitterBufferSize = Values::NONE,
         string $byoc = Values::NONE,
         string $callerId = Values::NONE,
         string $callReason = Values::NONE,
         string $recordingTrack = Values::NONE,
-        int $timeLimit = Values::NONE,
+        int $timeLimit = Values::INT_NONE,
         string $machineDetection = Values::NONE,
-        int $machineDetectionTimeout = Values::NONE,
-        int $machineDetectionSpeechThreshold = Values::NONE,
-        int $machineDetectionSpeechEndThreshold = Values::NONE,
-        int $machineDetectionSilenceTimeout = Values::NONE,
+        int $machineDetectionTimeout = Values::INT_NONE,
+        int $machineDetectionSpeechThreshold = Values::INT_NONE,
+        int $machineDetectionSpeechEndThreshold = Values::INT_NONE,
+        int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $amdStatusCallback = Values::NONE,
         string $amdStatusCallbackMethod = Values::NONE
 
@@ -930,9 +930,9 @@ class ReadParticipantOptions extends Options
      */
     public function __construct(
         
-        bool $muted = Values::NONE,
-        bool $hold = Values::NONE,
-        bool $coaching = Values::NONE
+        bool $muted = Values::BOOL_NONE,
+        bool $hold = Values::BOOL_NONE,
+        bool $coaching = Values::BOOL_NONE
 
     ) {
         $this->options['muted'] = $muted;
@@ -1006,17 +1006,17 @@ class UpdateParticipantOptions extends Options
      */
     public function __construct(
         
-        bool $muted = Values::NONE,
-        bool $hold = Values::NONE,
+        bool $muted = Values::BOOL_NONE,
+        bool $hold = Values::BOOL_NONE,
         string $holdUrl = Values::NONE,
         string $holdMethod = Values::NONE,
         string $announceUrl = Values::NONE,
         string $announceMethod = Values::NONE,
         string $waitUrl = Values::NONE,
         string $waitMethod = Values::NONE,
-        bool $beepOnExit = Values::NONE,
-        bool $endConferenceOnExit = Values::NONE,
-        bool $coaching = Values::NONE,
+        bool $beepOnExit = Values::BOOL_NONE,
+        bool $endConferenceOnExit = Values::BOOL_NONE,
+        bool $coaching = Values::BOOL_NONE,
         string $callSidToCoach = Values::NONE
 
     ) {

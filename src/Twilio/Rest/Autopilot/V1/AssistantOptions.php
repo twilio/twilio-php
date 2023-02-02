@@ -33,7 +33,7 @@ abstract class AssistantOptions
     public static function create(
         
         string $friendlyName = Values::NONE,
-        bool $logQueries = Values::NONE,
+        bool $logQueries = Values::BOOL_NONE,
         string $uniqueName = Values::NONE,
         string $callbackUrl = Values::NONE,
         string $callbackEvents = Values::NONE,
@@ -70,7 +70,7 @@ abstract class AssistantOptions
     public static function update(
         
         string $friendlyName = Values::NONE,
-        bool $logQueries = Values::NONE,
+        bool $logQueries = Values::BOOL_NONE,
         string $uniqueName = Values::NONE,
         string $callbackUrl = Values::NONE,
         string $callbackEvents = Values::NONE,
@@ -108,7 +108,7 @@ class CreateAssistantOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        bool $logQueries = Values::NONE,
+        bool $logQueries = Values::BOOL_NONE,
         string $uniqueName = Values::NONE,
         string $callbackUrl = Values::NONE,
         string $callbackEvents = Values::NONE,
@@ -239,7 +239,7 @@ class UpdateAssistantOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        bool $logQueries = Values::NONE,
+        bool $logQueries = Values::BOOL_NONE,
         string $uniqueName = Values::NONE,
         string $callbackUrl = Values::NONE,
         string $callbackEvents = Values::NONE,

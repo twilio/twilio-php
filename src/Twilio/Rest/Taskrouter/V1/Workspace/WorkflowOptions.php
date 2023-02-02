@@ -30,7 +30,7 @@ abstract class WorkflowOptions
         
         string $assignmentCallbackUrl = Values::NONE,
         string $fallbackAssignmentCallbackUrl = Values::NONE,
-        int $taskReservationTimeout = Values::NONE
+        int $taskReservationTimeout = Values::INT_NONE
 
     ): CreateWorkflowOptions
     {
@@ -73,7 +73,7 @@ abstract class WorkflowOptions
         string $assignmentCallbackUrl = Values::NONE,
         string $fallbackAssignmentCallbackUrl = Values::NONE,
         string $configuration = Values::NONE,
-        int $taskReservationTimeout = Values::NONE,
+        int $taskReservationTimeout = Values::INT_NONE,
         string $reEvaluateTasks = Values::NONE
 
     ): UpdateWorkflowOptions
@@ -101,7 +101,7 @@ class CreateWorkflowOptions extends Options
         
         string $assignmentCallbackUrl = Values::NONE,
         string $fallbackAssignmentCallbackUrl = Values::NONE,
-        int $taskReservationTimeout = Values::NONE
+        int $taskReservationTimeout = Values::INT_NONE
 
     ) {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
@@ -212,7 +212,7 @@ class UpdateWorkflowOptions extends Options
         string $assignmentCallbackUrl = Values::NONE,
         string $fallbackAssignmentCallbackUrl = Values::NONE,
         string $configuration = Values::NONE,
-        int $taskReservationTimeout = Values::NONE,
+        int $taskReservationTimeout = Values::INT_NONE,
         string $reEvaluateTasks = Values::NONE
 
     ) {

@@ -42,7 +42,7 @@ abstract class ByocTrunkOptions
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallbackUrl = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $connectionPolicySid = Values::NONE,
         string $fromDomainSid = Values::NONE
 
@@ -87,7 +87,7 @@ abstract class ByocTrunkOptions
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallbackUrl = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $connectionPolicySid = Values::NONE,
         string $fromDomainSid = Values::NONE
 
@@ -132,7 +132,7 @@ class CreateByocTrunkOptions extends Options
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallbackUrl = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $connectionPolicySid = Values::NONE,
         string $fromDomainSid = Values::NONE
 
@@ -307,7 +307,7 @@ class UpdateByocTrunkOptions extends Options
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallbackUrl = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $connectionPolicySid = Values::NONE,
         string $fromDomainSid = Values::NONE
 

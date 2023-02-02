@@ -32,8 +32,8 @@ abstract class UserChannelOptions
     public static function update(
         
         string $notificationLevel = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE,
-        \DateTime $lastConsumptionTimestamp = Values::NONE
+        int $lastConsumedMessageIndex = Values::INT_NONE,
+        \DateTime $lastConsumptionTimestamp = null
 
     ): UpdateUserChannelOptions
     {
@@ -59,8 +59,8 @@ class UpdateUserChannelOptions extends Options
     public function __construct(
         
         string $notificationLevel = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE,
-        \DateTime $lastConsumptionTimestamp = Values::NONE
+        int $lastConsumedMessageIndex = Values::INT_NONE,
+        \DateTime $lastConsumptionTimestamp = null
 
     ) {
         $this->options['notificationLevel'] = $notificationLevel;

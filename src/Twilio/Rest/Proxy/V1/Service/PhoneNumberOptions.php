@@ -30,7 +30,7 @@ abstract class PhoneNumberOptions
         
         string $sid = Values::NONE,
         string $phoneNumber = Values::NONE,
-        bool $isReserved = Values::NONE
+        bool $isReserved = Values::BOOL_NONE
 
     ): CreatePhoneNumberOptions
     {
@@ -50,7 +50,7 @@ abstract class PhoneNumberOptions
      */
     public static function update(
         
-        bool $isReserved = Values::NONE
+        bool $isReserved = Values::BOOL_NONE
 
     ): UpdatePhoneNumberOptions
     {
@@ -72,7 +72,7 @@ class CreatePhoneNumberOptions extends Options
         
         string $sid = Values::NONE,
         string $phoneNumber = Values::NONE,
-        bool $isReserved = Values::NONE
+        bool $isReserved = Values::BOOL_NONE
 
     ) {
         $this->options['sid'] = $sid;
@@ -138,7 +138,7 @@ class UpdatePhoneNumberOptions extends Options
      */
     public function __construct(
         
-        bool $isReserved = Values::NONE
+        bool $isReserved = Values::BOOL_NONE
 
     ) {
         $this->options['isReserved'] = $isReserved;

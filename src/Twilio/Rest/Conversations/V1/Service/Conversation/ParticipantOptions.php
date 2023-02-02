@@ -37,8 +37,8 @@ abstract class ParticipantOptions
         string $identity = Values::NONE,
         string $messagingBindingAddress = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $messagingBindingProjectedAddress = Values::NONE,
         string $roleSid = Values::NONE,
@@ -91,14 +91,14 @@ abstract class ParticipantOptions
      */
     public static function update(
         
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $identity = Values::NONE,
         string $attributes = Values::NONE,
         string $roleSid = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
         string $messagingBindingProjectedAddress = Values::NONE,
-        int $lastReadMessageIndex = Values::NONE,
+        int $lastReadMessageIndex = Values::INT_NONE,
         string $lastReadTimestamp = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -138,8 +138,8 @@ class CreateParticipantOptions extends Options
         string $identity = Values::NONE,
         string $messagingBindingAddress = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $messagingBindingProjectedAddress = Values::NONE,
         string $roleSid = Values::NONE,
@@ -332,14 +332,14 @@ class UpdateParticipantOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $identity = Values::NONE,
         string $attributes = Values::NONE,
         string $roleSid = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
         string $messagingBindingProjectedAddress = Values::NONE,
-        int $lastReadMessageIndex = Values::NONE,
+        int $lastReadMessageIndex = Values::INT_NONE,
         string $lastReadTimestamp = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 

@@ -29,8 +29,8 @@ abstract class WorkerChannelOptions
      */
     public static function update(
         
-        int $capacity = Values::NONE,
-        bool $available = Values::NONE
+        int $capacity = Values::INT_NONE,
+        bool $available = Values::BOOL_NONE
 
     ): UpdateWorkerChannelOptions
     {
@@ -52,8 +52,8 @@ class UpdateWorkerChannelOptions extends Options
      */
     public function __construct(
         
-        int $capacity = Values::NONE,
-        bool $available = Values::NONE
+        int $capacity = Values::INT_NONE,
+        bool $available = Values::BOOL_NONE
 
     ) {
         $this->options['capacity'] = $capacity;

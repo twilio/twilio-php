@@ -32,7 +32,7 @@ abstract class ServiceOptions
      */
     public static function create(
         
-        int $defaultTtl = Values::NONE,
+        int $defaultTtl = Values::INT_NONE,
         string $callbackUrl = Values::NONE,
         string $geoMatchLevel = Values::NONE,
         string $numberSelectionBehavior = Values::NONE,
@@ -70,7 +70,7 @@ abstract class ServiceOptions
     public static function update(
         
         string $uniqueName = Values::NONE,
-        int $defaultTtl = Values::NONE,
+        int $defaultTtl = Values::INT_NONE,
         string $callbackUrl = Values::NONE,
         string $geoMatchLevel = Values::NONE,
         string $numberSelectionBehavior = Values::NONE,
@@ -107,7 +107,7 @@ class CreateServiceOptions extends Options
      */
     public function __construct(
         
-        int $defaultTtl = Values::NONE,
+        int $defaultTtl = Values::INT_NONE,
         string $callbackUrl = Values::NONE,
         string $geoMatchLevel = Values::NONE,
         string $numberSelectionBehavior = Values::NONE,
@@ -235,7 +235,7 @@ class UpdateServiceOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        int $defaultTtl = Values::NONE,
+        int $defaultTtl = Values::INT_NONE,
         string $callbackUrl = Values::NONE,
         string $geoMatchLevel = Values::NONE,
         string $numberSelectionBehavior = Values::NONE,

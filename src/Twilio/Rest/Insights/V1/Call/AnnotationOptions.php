@@ -36,8 +36,8 @@ abstract class AnnotationOptions
         string $answeredBy = Values::NONE,
         string $connectivityIssue = Values::NONE,
         string $qualityIssues = Values::NONE,
-        bool $spam = Values::NONE,
-        int $callScore = Values::NONE,
+        bool $spam = Values::BOOL_NONE,
+        int $callScore = Values::INT_NONE,
         string $comment = Values::NONE,
         string $incident = Values::NONE
 
@@ -73,8 +73,8 @@ class UpdateAnnotationOptions extends Options
         string $answeredBy = Values::NONE,
         string $connectivityIssue = Values::NONE,
         string $qualityIssues = Values::NONE,
-        bool $spam = Values::NONE,
-        int $callScore = Values::NONE,
+        bool $spam = Values::BOOL_NONE,
+        int $callScore = Values::INT_NONE,
         string $comment = Values::NONE,
         string $incident = Values::NONE
 

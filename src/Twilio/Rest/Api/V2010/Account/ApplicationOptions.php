@@ -48,7 +48,7 @@ abstract class ApplicationOptions
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $voiceCallerIdLookup = Values::NONE,
+        bool $voiceCallerIdLookup = Values::BOOL_NONE,
         string $smsUrl = Values::NONE,
         string $smsMethod = Values::NONE,
         string $smsFallbackUrl = Values::NONE,
@@ -56,7 +56,7 @@ abstract class ApplicationOptions
         string $smsStatusCallback = Values::NONE,
         string $messageStatusCallback = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $publicApplicationConnectEnabled = Values::NONE
+        bool $publicApplicationConnectEnabled = Values::BOOL_NONE
 
     ): CreateApplicationOptions
     {
@@ -126,14 +126,14 @@ abstract class ApplicationOptions
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $voiceCallerIdLookup = Values::NONE,
+        bool $voiceCallerIdLookup = Values::BOOL_NONE,
         string $smsUrl = Values::NONE,
         string $smsMethod = Values::NONE,
         string $smsFallbackUrl = Values::NONE,
         string $smsFallbackMethod = Values::NONE,
         string $smsStatusCallback = Values::NONE,
         string $messageStatusCallback = Values::NONE,
-        bool $publicApplicationConnectEnabled = Values::NONE
+        bool $publicApplicationConnectEnabled = Values::BOOL_NONE
 
     ): UpdateApplicationOptions
     {
@@ -188,7 +188,7 @@ class CreateApplicationOptions extends Options
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $voiceCallerIdLookup = Values::NONE,
+        bool $voiceCallerIdLookup = Values::BOOL_NONE,
         string $smsUrl = Values::NONE,
         string $smsMethod = Values::NONE,
         string $smsFallbackUrl = Values::NONE,
@@ -196,7 +196,7 @@ class CreateApplicationOptions extends Options
         string $smsStatusCallback = Values::NONE,
         string $messageStatusCallback = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $publicApplicationConnectEnabled = Values::NONE
+        bool $publicApplicationConnectEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['apiVersion'] = $apiVersion;
@@ -490,14 +490,14 @@ class UpdateApplicationOptions extends Options
         string $voiceFallbackMethod = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $voiceCallerIdLookup = Values::NONE,
+        bool $voiceCallerIdLookup = Values::BOOL_NONE,
         string $smsUrl = Values::NONE,
         string $smsMethod = Values::NONE,
         string $smsFallbackUrl = Values::NONE,
         string $smsFallbackMethod = Values::NONE,
         string $smsStatusCallback = Values::NONE,
         string $messageStatusCallback = Values::NONE,
-        bool $publicApplicationConnectEnabled = Values::NONE
+        bool $publicApplicationConnectEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

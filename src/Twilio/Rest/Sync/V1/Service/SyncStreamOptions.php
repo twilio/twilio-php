@@ -29,7 +29,7 @@ abstract class SyncStreamOptions
     public static function create(
         
         string $uniqueName = Values::NONE,
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ): CreateSyncStreamOptions
     {
@@ -48,7 +48,7 @@ abstract class SyncStreamOptions
      */
     public static function update(
         
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ): UpdateSyncStreamOptions
     {
@@ -68,7 +68,7 @@ class CreateSyncStreamOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;
@@ -121,7 +121,7 @@ class UpdateSyncStreamOptions extends Options
      */
     public function __construct(
         
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ) {
         $this->options['ttl'] = $ttl;

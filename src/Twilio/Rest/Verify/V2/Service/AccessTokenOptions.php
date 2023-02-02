@@ -28,7 +28,7 @@ abstract class AccessTokenOptions
     public static function create(
         
         string $factorFriendlyName = Values::NONE,
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ): CreateAccessTokenOptions
     {
@@ -50,7 +50,7 @@ class CreateAccessTokenOptions extends Options
     public function __construct(
         
         string $factorFriendlyName = Values::NONE,
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ) {
         $this->options['factorFriendlyName'] = $factorFriendlyName;

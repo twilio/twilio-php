@@ -60,7 +60,7 @@ abstract class MemberOptions
     public static function update(
         
         string $roleSid = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE
+        int $lastConsumedMessageIndex = Values::INT_NONE
 
     ): UpdateMemberOptions
     {
@@ -157,7 +157,7 @@ class UpdateMemberOptions extends Options
     public function __construct(
         
         string $roleSid = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE
+        int $lastConsumedMessageIndex = Values::INT_NONE
 
     ) {
         $this->options['roleSid'] = $roleSid;

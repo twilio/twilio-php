@@ -30,8 +30,8 @@ abstract class AddressOptions
     public static function create(
         
         string $friendlyName = Values::NONE,
-        bool $emergencyEnabled = Values::NONE,
-        bool $autoCorrectAddress = Values::NONE,
+        bool $emergencyEnabled = Values::BOOL_NONE,
+        bool $autoCorrectAddress = Values::BOOL_NONE,
         string $streetSecondary = Values::NONE
 
     ): CreateAddressOptions
@@ -87,8 +87,8 @@ abstract class AddressOptions
         string $city = Values::NONE,
         string $region = Values::NONE,
         string $postalCode = Values::NONE,
-        bool $emergencyEnabled = Values::NONE,
-        bool $autoCorrectAddress = Values::NONE,
+        bool $emergencyEnabled = Values::BOOL_NONE,
+        bool $autoCorrectAddress = Values::BOOL_NONE,
         string $streetSecondary = Values::NONE
 
     ): UpdateAddressOptions
@@ -119,8 +119,8 @@ class CreateAddressOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        bool $emergencyEnabled = Values::NONE,
-        bool $autoCorrectAddress = Values::NONE,
+        bool $emergencyEnabled = Values::BOOL_NONE,
+        bool $autoCorrectAddress = Values::BOOL_NONE,
         string $streetSecondary = Values::NONE
 
     ) {
@@ -280,8 +280,8 @@ class UpdateAddressOptions extends Options
         string $city = Values::NONE,
         string $region = Values::NONE,
         string $postalCode = Values::NONE,
-        bool $emergencyEnabled = Values::NONE,
-        bool $autoCorrectAddress = Values::NONE,
+        bool $emergencyEnabled = Values::BOOL_NONE,
+        bool $autoCorrectAddress = Values::BOOL_NONE,
         string $streetSecondary = Values::NONE
 
     ) {

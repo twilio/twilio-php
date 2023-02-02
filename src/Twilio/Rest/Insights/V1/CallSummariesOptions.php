@@ -49,9 +49,9 @@ abstract class CallSummariesOptions
         string $toCarrier = Values::NONE,
         string $fromCountryCode = Values::NONE,
         string $toCountryCode = Values::NONE,
-        bool $branded = Values::NONE,
-        bool $verifiedCaller = Values::NONE,
-        bool $hasTag = Values::NONE,
+        bool $branded = Values::BOOL_NONE,
+        bool $verifiedCaller = Values::BOOL_NONE,
+        bool $hasTag = Values::BOOL_NONE,
         string $startTime = Values::NONE,
         string $endTime = Values::NONE,
         string $callType = Values::NONE,
@@ -60,7 +60,7 @@ abstract class CallSummariesOptions
         string $processingState = Values::NONE,
         string $sortBy = Values::NONE,
         string $subaccount = Values::NONE,
-        bool $abnormalSession = Values::NONE
+        bool $abnormalSession = Values::BOOL_NONE
 
     ): ReadCallSummariesOptions
     {
@@ -118,9 +118,9 @@ class ReadCallSummariesOptions extends Options
         string $toCarrier = Values::NONE,
         string $fromCountryCode = Values::NONE,
         string $toCountryCode = Values::NONE,
-        bool $branded = Values::NONE,
-        bool $verifiedCaller = Values::NONE,
-        bool $hasTag = Values::NONE,
+        bool $branded = Values::BOOL_NONE,
+        bool $verifiedCaller = Values::BOOL_NONE,
+        bool $hasTag = Values::BOOL_NONE,
         string $startTime = Values::NONE,
         string $endTime = Values::NONE,
         string $callType = Values::NONE,
@@ -129,7 +129,7 @@ class ReadCallSummariesOptions extends Options
         string $processingState = Values::NONE,
         string $sortBy = Values::NONE,
         string $subaccount = Values::NONE,
-        bool $abnormalSession = Values::NONE
+        bool $abnormalSession = Values::BOOL_NONE
 
     ) {
         $this->options['from'] = $from;

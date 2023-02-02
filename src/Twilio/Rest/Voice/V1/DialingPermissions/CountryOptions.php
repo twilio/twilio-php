@@ -35,9 +35,9 @@ abstract class CountryOptions
         string $isoCode = Values::NONE,
         string $continent = Values::NONE,
         string $countryCode = Values::NONE,
-        bool $lowRiskNumbersEnabled = Values::NONE,
-        bool $highRiskSpecialNumbersEnabled = Values::NONE,
-        bool $highRiskTollfraudNumbersEnabled = Values::NONE
+        bool $lowRiskNumbersEnabled = Values::BOOL_NONE,
+        bool $highRiskSpecialNumbersEnabled = Values::BOOL_NONE,
+        bool $highRiskTollfraudNumbersEnabled = Values::BOOL_NONE
 
     ): ReadCountryOptions
     {
@@ -69,9 +69,9 @@ class ReadCountryOptions extends Options
         string $isoCode = Values::NONE,
         string $continent = Values::NONE,
         string $countryCode = Values::NONE,
-        bool $lowRiskNumbersEnabled = Values::NONE,
-        bool $highRiskSpecialNumbersEnabled = Values::NONE,
-        bool $highRiskTollfraudNumbersEnabled = Values::NONE
+        bool $lowRiskNumbersEnabled = Values::BOOL_NONE,
+        bool $highRiskSpecialNumbersEnabled = Values::BOOL_NONE,
+        bool $highRiskTollfraudNumbersEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['isoCode'] = $isoCode;
