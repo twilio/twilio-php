@@ -28,9 +28,9 @@ abstract class SyncMapItemOptions
      */
     public static function create(
         
-        int $ttl = Values::NONE,
-        int $itemTtl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $itemTtl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ): CreateSyncMapItemOptions
     {
@@ -89,9 +89,9 @@ abstract class SyncMapItemOptions
     public static function update(
         
         array $data = Values::ARRAY_NONE,
-        int $ttl = Values::NONE,
-        int $itemTtl = Values::NONE,
-        int $collectionTtl = Values::NONE,
+        int $ttl = Values::INT_NONE,
+        int $itemTtl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE,
         string $ifMatch = Values::NONE
 
     ): UpdateSyncMapItemOptions
@@ -116,9 +116,9 @@ class CreateSyncMapItemOptions extends Options
      */
     public function __construct(
         
-        int $ttl = Values::NONE,
-        int $itemTtl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $itemTtl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ) {
         $this->options['ttl'] = $ttl;
@@ -291,9 +291,9 @@ class UpdateSyncMapItemOptions extends Options
     public function __construct(
         
         array $data = Values::ARRAY_NONE,
-        int $ttl = Values::NONE,
-        int $itemTtl = Values::NONE,
-        int $collectionTtl = Values::NONE,
+        int $ttl = Values::INT_NONE,
+        int $itemTtl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE,
         string $ifMatch = Values::NONE
 
     ) {

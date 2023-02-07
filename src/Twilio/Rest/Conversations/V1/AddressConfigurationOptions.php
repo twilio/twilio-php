@@ -35,14 +35,14 @@ abstract class AddressConfigurationOptions
     public static function create(
         
         string $friendlyName = Values::NONE,
-        bool $autoCreationEnabled = Values::NONE,
+        bool $autoCreationEnabled = Values::BOOL_NONE,
         string $autoCreationType = Values::NONE,
         string $autoCreationConversationServiceSid = Values::NONE,
         string $autoCreationWebhookUrl = Values::NONE,
         string $autoCreationWebhookMethod = Values::NONE,
         array $autoCreationWebhookFilters = Values::ARRAY_NONE,
         string $autoCreationStudioFlowSid = Values::NONE,
-        int $autoCreationStudioRetryCount = Values::NONE
+        int $autoCreationStudioRetryCount = Values::INT_NONE
 
     ): CreateAddressConfigurationOptions
     {
@@ -91,14 +91,14 @@ abstract class AddressConfigurationOptions
     public static function update(
         
         string $friendlyName = Values::NONE,
-        bool $autoCreationEnabled = Values::NONE,
+        bool $autoCreationEnabled = Values::BOOL_NONE,
         string $autoCreationType = Values::NONE,
         string $autoCreationConversationServiceSid = Values::NONE,
         string $autoCreationWebhookUrl = Values::NONE,
         string $autoCreationWebhookMethod = Values::NONE,
         array $autoCreationWebhookFilters = Values::ARRAY_NONE,
         string $autoCreationStudioFlowSid = Values::NONE,
-        int $autoCreationStudioRetryCount = Values::NONE
+        int $autoCreationStudioRetryCount = Values::INT_NONE
 
     ): UpdateAddressConfigurationOptions
     {
@@ -133,14 +133,14 @@ class CreateAddressConfigurationOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        bool $autoCreationEnabled = Values::NONE,
+        bool $autoCreationEnabled = Values::BOOL_NONE,
         string $autoCreationType = Values::NONE,
         string $autoCreationConversationServiceSid = Values::NONE,
         string $autoCreationWebhookUrl = Values::NONE,
         string $autoCreationWebhookMethod = Values::NONE,
         array $autoCreationWebhookFilters = Values::ARRAY_NONE,
         string $autoCreationStudioFlowSid = Values::NONE,
-        int $autoCreationStudioRetryCount = Values::NONE
+        int $autoCreationStudioRetryCount = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -325,14 +325,14 @@ class UpdateAddressConfigurationOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        bool $autoCreationEnabled = Values::NONE,
+        bool $autoCreationEnabled = Values::BOOL_NONE,
         string $autoCreationType = Values::NONE,
         string $autoCreationConversationServiceSid = Values::NONE,
         string $autoCreationWebhookUrl = Values::NONE,
         string $autoCreationWebhookMethod = Values::NONE,
         array $autoCreationWebhookFilters = Values::ARRAY_NONE,
         string $autoCreationStudioFlowSid = Values::NONE,
-        int $autoCreationStudioRetryCount = Values::NONE
+        int $autoCreationStudioRetryCount = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

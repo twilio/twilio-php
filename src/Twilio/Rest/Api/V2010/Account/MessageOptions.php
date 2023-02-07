@@ -53,18 +53,18 @@ abstract class MessageOptions
         string $statusCallback = Values::NONE,
         string $applicationSid = Values::NONE,
         string $maxPrice = Values::NONE,
-        bool $provideFeedback = Values::NONE,
-        int $attempt = Values::NONE,
-        int $validityPeriod = Values::NONE,
-        bool $forceDelivery = Values::NONE,
+        bool $provideFeedback = Values::BOOL_NONE,
+        int $attempt = Values::INT_NONE,
+        int $validityPeriod = Values::INT_NONE,
+        bool $forceDelivery = Values::BOOL_NONE,
         string $contentRetention = Values::NONE,
         string $addressRetention = Values::NONE,
-        bool $smartEncoded = Values::NONE,
+        bool $smartEncoded = Values::BOOL_NONE,
         array $persistentAction = Values::ARRAY_NONE,
-        bool $shortenUrls = Values::NONE,
+        bool $shortenUrls = Values::BOOL_NONE,
         string $scheduleType = Values::NONE,
-        \DateTime $sendAt = Values::NONE,
-        bool $sendAsMms = Values::NONE,
+        \DateTime $sendAt = null,
+        bool $sendAsMms = Values::BOOL_NONE,
         string $contentSid = Values::NONE,
         string $contentVariables = Values::NONE
 
@@ -109,9 +109,9 @@ abstract class MessageOptions
         
         string $to = Values::NONE,
         string $from = Values::NONE,
-        string $dateSentBefore = Values::NONE,
-        string $dateSent = Values::NONE,
-        string $dateSentAfter = Values::NONE
+        string $dateSentBefore = null,
+        string $dateSent = null,
+        string $dateSentAfter = null
 
     ): ReadMessageOptions
     {
@@ -178,18 +178,18 @@ class CreateMessageOptions extends Options
         string $statusCallback = Values::NONE,
         string $applicationSid = Values::NONE,
         string $maxPrice = Values::NONE,
-        bool $provideFeedback = Values::NONE,
-        int $attempt = Values::NONE,
-        int $validityPeriod = Values::NONE,
-        bool $forceDelivery = Values::NONE,
+        bool $provideFeedback = Values::BOOL_NONE,
+        int $attempt = Values::INT_NONE,
+        int $validityPeriod = Values::INT_NONE,
+        bool $forceDelivery = Values::BOOL_NONE,
         string $contentRetention = Values::NONE,
         string $addressRetention = Values::NONE,
-        bool $smartEncoded = Values::NONE,
+        bool $smartEncoded = Values::BOOL_NONE,
         array $persistentAction = Values::ARRAY_NONE,
-        bool $shortenUrls = Values::NONE,
+        bool $shortenUrls = Values::BOOL_NONE,
         string $scheduleType = Values::NONE,
-        \DateTime $sendAt = Values::NONE,
-        bool $sendAsMms = Values::NONE,
+        \DateTime $sendAt = null,
+        bool $sendAsMms = Values::BOOL_NONE,
         string $contentSid = Values::NONE,
         string $contentVariables = Values::NONE
 
@@ -490,9 +490,9 @@ class ReadMessageOptions extends Options
         
         string $to = Values::NONE,
         string $from = Values::NONE,
-        string $dateSentBefore = Values::NONE,
-        string $dateSent = Values::NONE,
-        string $dateSentAfter = Values::NONE
+        string $dateSentBefore = null,
+        string $dateSent = null,
+        string $dateSentAfter = null
 
     ) {
         $this->options['to'] = $to;

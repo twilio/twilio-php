@@ -26,7 +26,7 @@ abstract class TaskChannelOptions
      */
     public static function create(
         
-        bool $channelOptimizedRouting = Values::NONE
+        bool $channelOptimizedRouting = Values::BOOL_NONE
 
     ): CreateTaskChannelOptions
     {
@@ -46,7 +46,7 @@ abstract class TaskChannelOptions
     public static function update(
         
         string $friendlyName = Values::NONE,
-        bool $channelOptimizedRouting = Values::NONE
+        bool $channelOptimizedRouting = Values::BOOL_NONE
 
     ): UpdateTaskChannelOptions
     {
@@ -65,7 +65,7 @@ class CreateTaskChannelOptions extends Options
      */
     public function __construct(
         
-        bool $channelOptimizedRouting = Values::NONE
+        bool $channelOptimizedRouting = Values::BOOL_NONE
 
     ) {
         $this->options['channelOptimizedRouting'] = $channelOptimizedRouting;
@@ -107,7 +107,7 @@ class UpdateTaskChannelOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        bool $channelOptimizedRouting = Values::NONE
+        bool $channelOptimizedRouting = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

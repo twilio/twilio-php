@@ -31,10 +31,10 @@ abstract class TaskQueuesStatisticsOptions
      */
     public static function read(
         
-        \DateTime $endDate = Values::NONE,
+        \DateTime $endDate = null,
         string $friendlyName = Values::NONE,
-        int $minutes = Values::NONE,
-        \DateTime $startDate = Values::NONE,
+        int $minutes = Values::INT_NONE,
+        \DateTime $startDate = null,
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 
@@ -64,10 +64,10 @@ class ReadTaskQueuesStatisticsOptions extends Options
      */
     public function __construct(
         
-        \DateTime $endDate = Values::NONE,
+        \DateTime $endDate = null,
         string $friendlyName = Values::NONE,
-        int $minutes = Values::NONE,
-        \DateTime $startDate = Values::NONE,
+        int $minutes = Values::INT_NONE,
+        \DateTime $startDate = null,
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 

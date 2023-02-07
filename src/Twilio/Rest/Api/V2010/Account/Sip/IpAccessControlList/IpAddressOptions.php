@@ -26,7 +26,7 @@ abstract class IpAddressOptions
      */
     public static function create(
         
-        int $cidrPrefixLength = Values::NONE
+        int $cidrPrefixLength = Values::INT_NONE
 
     ): CreateIpAddressOptions
     {
@@ -48,7 +48,7 @@ abstract class IpAddressOptions
         
         string $ipAddress = Values::NONE,
         string $friendlyName = Values::NONE,
-        int $cidrPrefixLength = Values::NONE
+        int $cidrPrefixLength = Values::INT_NONE
 
     ): UpdateIpAddressOptions
     {
@@ -68,7 +68,7 @@ class CreateIpAddressOptions extends Options
      */
     public function __construct(
         
-        int $cidrPrefixLength = Values::NONE
+        int $cidrPrefixLength = Values::INT_NONE
 
     ) {
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;
@@ -112,7 +112,7 @@ class UpdateIpAddressOptions extends Options
         
         string $ipAddress = Values::NONE,
         string $friendlyName = Values::NONE,
-        int $cidrPrefixLength = Values::NONE
+        int $cidrPrefixLength = Values::INT_NONE
 
     ) {
         $this->options['ipAddress'] = $ipAddress;

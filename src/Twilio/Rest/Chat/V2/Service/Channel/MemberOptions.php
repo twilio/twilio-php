@@ -33,10 +33,10 @@ abstract class MemberOptions
     public static function create(
         
         string $roleSid = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE,
-        \DateTime $lastConsumptionTimestamp = Values::NONE,
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        int $lastConsumedMessageIndex = Values::INT_NONE,
+        \DateTime $lastConsumptionTimestamp = null,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -97,10 +97,10 @@ abstract class MemberOptions
     public static function update(
         
         string $roleSid = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE,
-        \DateTime $lastConsumptionTimestamp = Values::NONE,
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        int $lastConsumedMessageIndex = Values::INT_NONE,
+        \DateTime $lastConsumptionTimestamp = null,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -133,10 +133,10 @@ class CreateMemberOptions extends Options
     public function __construct(
         
         string $roleSid = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE,
-        \DateTime $lastConsumptionTimestamp = Values::NONE,
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        int $lastConsumedMessageIndex = Values::INT_NONE,
+        \DateTime $lastConsumptionTimestamp = null,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -335,10 +335,10 @@ class UpdateMemberOptions extends Options
     public function __construct(
         
         string $roleSid = Values::NONE,
-        int $lastConsumedMessageIndex = Values::NONE,
-        \DateTime $lastConsumptionTimestamp = Values::NONE,
-        \DateTime $dateCreated = Values::NONE,
-        \DateTime $dateUpdated = Values::NONE,
+        int $lastConsumedMessageIndex = Values::INT_NONE,
+        \DateTime $lastConsumptionTimestamp = null,
+        \DateTime $dateCreated = null,
+        \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 

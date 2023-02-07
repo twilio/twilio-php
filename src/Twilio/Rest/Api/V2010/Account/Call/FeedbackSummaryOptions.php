@@ -28,7 +28,7 @@ abstract class FeedbackSummaryOptions
      */
     public static function create(
         
-        bool $includeSubaccounts = Values::NONE,
+        bool $includeSubaccounts = Values::BOOL_NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE
 
@@ -54,7 +54,7 @@ class CreateFeedbackSummaryOptions extends Options
      */
     public function __construct(
         
-        bool $includeSubaccounts = Values::NONE,
+        bool $includeSubaccounts = Values::BOOL_NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE
 

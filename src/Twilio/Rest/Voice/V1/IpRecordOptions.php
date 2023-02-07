@@ -28,7 +28,7 @@ abstract class IpRecordOptions
     public static function create(
         
         string $friendlyName = Values::NONE,
-        int $cidrPrefixLength = Values::NONE
+        int $cidrPrefixLength = Values::INT_NONE
 
     ): CreateIpRecordOptions
     {
@@ -67,7 +67,7 @@ class CreateIpRecordOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        int $cidrPrefixLength = Values::NONE
+        int $cidrPrefixLength = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

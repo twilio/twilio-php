@@ -34,7 +34,7 @@ abstract class CompositionHookOptions
      */
     public static function create(
         
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         array $videoLayout = Values::ARRAY_NONE,
         array $audioSources = Values::ARRAY_NONE,
         array $audioSourcesExcluded = Values::ARRAY_NONE,
@@ -42,7 +42,7 @@ abstract class CompositionHookOptions
         string $format = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $trim = Values::NONE
+        bool $trim = Values::BOOL_NONE
 
     ): CreateCompositionHookOptions
     {
@@ -70,9 +70,9 @@ abstract class CompositionHookOptions
      */
     public static function read(
         
-        bool $enabled = Values::NONE,
-        \DateTime $dateCreatedAfter = Values::NONE,
-        \DateTime $dateCreatedBefore = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
+        \DateTime $dateCreatedAfter = null,
+        \DateTime $dateCreatedBefore = null,
         string $friendlyName = Values::NONE
 
     ): ReadCompositionHookOptions
@@ -99,11 +99,11 @@ abstract class CompositionHookOptions
      */
     public static function update(
         
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         array $videoLayout = Values::ARRAY_NONE,
         array $audioSources = Values::ARRAY_NONE,
         array $audioSourcesExcluded = Values::ARRAY_NONE,
-        bool $trim = Values::NONE,
+        bool $trim = Values::BOOL_NONE,
         string $format = Values::NONE,
         string $resolution = Values::NONE,
         string $statusCallback = Values::NONE,
@@ -141,7 +141,7 @@ class CreateCompositionHookOptions extends Options
      */
     public function __construct(
         
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         array $videoLayout = Values::ARRAY_NONE,
         array $audioSources = Values::ARRAY_NONE,
         array $audioSourcesExcluded = Values::ARRAY_NONE,
@@ -149,7 +149,7 @@ class CreateCompositionHookOptions extends Options
         string $format = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $trim = Values::NONE
+        bool $trim = Values::BOOL_NONE
 
     ) {
         $this->options['enabled'] = $enabled;
@@ -293,9 +293,9 @@ class ReadCompositionHookOptions extends Options
      */
     public function __construct(
         
-        bool $enabled = Values::NONE,
-        \DateTime $dateCreatedAfter = Values::NONE,
-        \DateTime $dateCreatedBefore = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
+        \DateTime $dateCreatedAfter = null,
+        \DateTime $dateCreatedBefore = null,
         string $friendlyName = Values::NONE
 
     ) {
@@ -380,11 +380,11 @@ class UpdateCompositionHookOptions extends Options
      */
     public function __construct(
         
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         array $videoLayout = Values::ARRAY_NONE,
         array $audioSources = Values::ARRAY_NONE,
         array $audioSourcesExcluded = Values::ARRAY_NONE,
-        bool $trim = Values::NONE,
+        bool $trim = Values::BOOL_NONE,
         string $format = Values::NONE,
         string $resolution = Values::NONE,
         string $statusCallback = Values::NONE,

@@ -31,8 +31,8 @@ abstract class ServiceOptions
         
         string $friendlyName = Values::NONE,
         string $webhookUrl = Values::NONE,
-        bool $reachabilityWebhooksEnabled = Values::NONE,
-        bool $aclEnabled = Values::NONE
+        bool $reachabilityWebhooksEnabled = Values::BOOL_NONE,
+        bool $aclEnabled = Values::BOOL_NONE
 
     ): CreateServiceOptions
     {
@@ -58,8 +58,8 @@ abstract class ServiceOptions
         
         string $webhookUrl = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $reachabilityWebhooksEnabled = Values::NONE,
-        bool $aclEnabled = Values::NONE
+        bool $reachabilityWebhooksEnabled = Values::BOOL_NONE,
+        bool $aclEnabled = Values::BOOL_NONE
 
     ): UpdateServiceOptions
     {
@@ -85,8 +85,8 @@ class CreateServiceOptions extends Options
         
         string $friendlyName = Values::NONE,
         string $webhookUrl = Values::NONE,
-        bool $reachabilityWebhooksEnabled = Values::NONE,
-        bool $aclEnabled = Values::NONE
+        bool $reachabilityWebhooksEnabled = Values::BOOL_NONE,
+        bool $aclEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -170,8 +170,8 @@ class UpdateServiceOptions extends Options
         
         string $webhookUrl = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $reachabilityWebhooksEnabled = Values::NONE,
-        bool $aclEnabled = Values::NONE
+        bool $reachabilityWebhooksEnabled = Values::BOOL_NONE,
+        bool $aclEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['webhookUrl'] = $webhookUrl;

@@ -27,7 +27,7 @@ abstract class PlaybackGrantOptions
      */
     public static function create(
         
-        int $ttl = Values::NONE,
+        int $ttl = Values::INT_NONE,
         string $accessControlAllowOrigin = Values::NONE
 
     ): CreatePlaybackGrantOptions
@@ -49,7 +49,7 @@ class CreatePlaybackGrantOptions extends Options
      */
     public function __construct(
         
-        int $ttl = Values::NONE,
+        int $ttl = Values::INT_NONE,
         string $accessControlAllowOrigin = Values::NONE
 
     ) {

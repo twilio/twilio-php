@@ -41,21 +41,21 @@ abstract class ServiceOptions
      */
     public static function create(
         
-        int $codeLength = Values::NONE,
-        bool $lookupEnabled = Values::NONE,
-        bool $skipSmsToLandlines = Values::NONE,
-        bool $dtmfInputRequired = Values::NONE,
+        int $codeLength = Values::INT_NONE,
+        bool $lookupEnabled = Values::BOOL_NONE,
+        bool $skipSmsToLandlines = Values::BOOL_NONE,
+        bool $dtmfInputRequired = Values::BOOL_NONE,
         string $ttsName = Values::NONE,
-        bool $psd2Enabled = Values::NONE,
-        bool $doNotShareWarningEnabled = Values::NONE,
-        bool $customCodeEnabled = Values::NONE,
-        bool $pushIncludeDate = Values::NONE,
+        bool $psd2Enabled = Values::BOOL_NONE,
+        bool $doNotShareWarningEnabled = Values::BOOL_NONE,
+        bool $customCodeEnabled = Values::BOOL_NONE,
+        bool $pushIncludeDate = Values::BOOL_NONE,
         string $pushApnCredentialSid = Values::NONE,
         string $pushFcmCredentialSid = Values::NONE,
         string $totpIssuer = Values::NONE,
-        int $totpTimeStep = Values::NONE,
-        int $totpCodeLength = Values::NONE,
-        int $totpSkew = Values::NONE,
+        int $totpTimeStep = Values::INT_NONE,
+        int $totpCodeLength = Values::INT_NONE,
+        int $totpSkew = Values::INT_NONE,
         string $defaultTemplateSid = Values::NONE
 
     ): CreateServiceOptions
@@ -106,21 +106,21 @@ abstract class ServiceOptions
     public static function update(
         
         string $friendlyName = Values::NONE,
-        int $codeLength = Values::NONE,
-        bool $lookupEnabled = Values::NONE,
-        bool $skipSmsToLandlines = Values::NONE,
-        bool $dtmfInputRequired = Values::NONE,
+        int $codeLength = Values::INT_NONE,
+        bool $lookupEnabled = Values::BOOL_NONE,
+        bool $skipSmsToLandlines = Values::BOOL_NONE,
+        bool $dtmfInputRequired = Values::BOOL_NONE,
         string $ttsName = Values::NONE,
-        bool $psd2Enabled = Values::NONE,
-        bool $doNotShareWarningEnabled = Values::NONE,
-        bool $customCodeEnabled = Values::NONE,
-        bool $pushIncludeDate = Values::NONE,
+        bool $psd2Enabled = Values::BOOL_NONE,
+        bool $doNotShareWarningEnabled = Values::BOOL_NONE,
+        bool $customCodeEnabled = Values::BOOL_NONE,
+        bool $pushIncludeDate = Values::BOOL_NONE,
         string $pushApnCredentialSid = Values::NONE,
         string $pushFcmCredentialSid = Values::NONE,
         string $totpIssuer = Values::NONE,
-        int $totpTimeStep = Values::NONE,
-        int $totpCodeLength = Values::NONE,
-        int $totpSkew = Values::NONE,
+        int $totpTimeStep = Values::INT_NONE,
+        int $totpCodeLength = Values::INT_NONE,
+        int $totpSkew = Values::INT_NONE,
         string $defaultTemplateSid = Values::NONE
 
     ): UpdateServiceOptions
@@ -170,21 +170,21 @@ class CreateServiceOptions extends Options
      */
     public function __construct(
         
-        int $codeLength = Values::NONE,
-        bool $lookupEnabled = Values::NONE,
-        bool $skipSmsToLandlines = Values::NONE,
-        bool $dtmfInputRequired = Values::NONE,
+        int $codeLength = Values::INT_NONE,
+        bool $lookupEnabled = Values::BOOL_NONE,
+        bool $skipSmsToLandlines = Values::BOOL_NONE,
+        bool $dtmfInputRequired = Values::BOOL_NONE,
         string $ttsName = Values::NONE,
-        bool $psd2Enabled = Values::NONE,
-        bool $doNotShareWarningEnabled = Values::NONE,
-        bool $customCodeEnabled = Values::NONE,
-        bool $pushIncludeDate = Values::NONE,
+        bool $psd2Enabled = Values::BOOL_NONE,
+        bool $doNotShareWarningEnabled = Values::BOOL_NONE,
+        bool $customCodeEnabled = Values::BOOL_NONE,
+        bool $pushIncludeDate = Values::BOOL_NONE,
         string $pushApnCredentialSid = Values::NONE,
         string $pushFcmCredentialSid = Values::NONE,
         string $totpIssuer = Values::NONE,
-        int $totpTimeStep = Values::NONE,
-        int $totpCodeLength = Values::NONE,
-        int $totpSkew = Values::NONE,
+        int $totpTimeStep = Values::INT_NONE,
+        int $totpCodeLength = Values::INT_NONE,
+        int $totpSkew = Values::INT_NONE,
         string $defaultTemplateSid = Values::NONE
 
     ) {
@@ -437,21 +437,21 @@ class UpdateServiceOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        int $codeLength = Values::NONE,
-        bool $lookupEnabled = Values::NONE,
-        bool $skipSmsToLandlines = Values::NONE,
-        bool $dtmfInputRequired = Values::NONE,
+        int $codeLength = Values::INT_NONE,
+        bool $lookupEnabled = Values::BOOL_NONE,
+        bool $skipSmsToLandlines = Values::BOOL_NONE,
+        bool $dtmfInputRequired = Values::BOOL_NONE,
         string $ttsName = Values::NONE,
-        bool $psd2Enabled = Values::NONE,
-        bool $doNotShareWarningEnabled = Values::NONE,
-        bool $customCodeEnabled = Values::NONE,
-        bool $pushIncludeDate = Values::NONE,
+        bool $psd2Enabled = Values::BOOL_NONE,
+        bool $doNotShareWarningEnabled = Values::BOOL_NONE,
+        bool $customCodeEnabled = Values::BOOL_NONE,
+        bool $pushIncludeDate = Values::BOOL_NONE,
         string $pushApnCredentialSid = Values::NONE,
         string $pushFcmCredentialSid = Values::NONE,
         string $totpIssuer = Values::NONE,
-        int $totpTimeStep = Values::NONE,
-        int $totpCodeLength = Values::NONE,
-        int $totpSkew = Values::NONE,
+        int $totpTimeStep = Values::INT_NONE,
+        int $totpCodeLength = Values::INT_NONE,
+        int $totpSkew = Values::INT_NONE,
         string $defaultTemplateSid = Values::NONE
 
     ) {

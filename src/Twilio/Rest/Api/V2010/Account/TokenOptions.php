@@ -26,7 +26,7 @@ abstract class TokenOptions
      */
     public static function create(
         
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ): CreateTokenOptions
     {
@@ -44,7 +44,7 @@ class CreateTokenOptions extends Options
      */
     public function __construct(
         
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ) {
         $this->options['ttl'] = $ttl;

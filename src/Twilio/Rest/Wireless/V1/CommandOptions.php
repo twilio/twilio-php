@@ -36,7 +36,7 @@ abstract class CommandOptions
         string $callbackUrl = Values::NONE,
         string $commandMode = Values::NONE,
         string $includeSid = Values::NONE,
-        bool $deliveryReceiptRequested = Values::NONE
+        bool $deliveryReceiptRequested = Values::BOOL_NONE
 
     ): CreateCommandOptions
     {
@@ -95,7 +95,7 @@ class CreateCommandOptions extends Options
         string $callbackUrl = Values::NONE,
         string $commandMode = Values::NONE,
         string $includeSid = Values::NONE,
-        bool $deliveryReceiptRequested = Values::NONE
+        bool $deliveryReceiptRequested = Values::BOOL_NONE
 
     ) {
         $this->options['sim'] = $sim;

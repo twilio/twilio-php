@@ -30,7 +30,7 @@ abstract class SinkOptions
      */
     public static function read(
         
-        bool $inUse = Values::NONE,
+        bool $inUse = Values::BOOL_NONE,
         string $status = Values::NONE
 
     ): ReadSinkOptions
@@ -55,7 +55,7 @@ class ReadSinkOptions extends Options
      */
     public function __construct(
         
-        bool $inUse = Values::NONE,
+        bool $inUse = Values::BOOL_NONE,
         string $status = Values::NONE
 
     ) {

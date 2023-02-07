@@ -36,7 +36,7 @@ abstract class WebhookOptions
         array $configurationFilters = Values::ARRAY_NONE,
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE,
-        int $configurationReplayAfter = Values::NONE
+        int $configurationReplayAfter = Values::INT_NONE
 
     ): CreateWebhookOptions
     {
@@ -99,7 +99,7 @@ class CreateWebhookOptions extends Options
         array $configurationFilters = Values::ARRAY_NONE,
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE,
-        int $configurationReplayAfter = Values::NONE
+        int $configurationReplayAfter = Values::INT_NONE
 
     ) {
         $this->options['configurationUrl'] = $configurationUrl;

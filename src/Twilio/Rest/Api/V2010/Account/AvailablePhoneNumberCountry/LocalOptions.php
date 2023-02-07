@@ -43,24 +43,24 @@ abstract class LocalOptions
      */
     public static function read(
         
-        int $areaCode = Values::NONE,
+        int $areaCode = Values::INT_NONE,
         string $contains = Values::NONE,
-        bool $smsEnabled = Values::NONE,
-        bool $mmsEnabled = Values::NONE,
-        bool $voiceEnabled = Values::NONE,
-        bool $excludeAllAddressRequired = Values::NONE,
-        bool $excludeLocalAddressRequired = Values::NONE,
-        bool $excludeForeignAddressRequired = Values::NONE,
-        bool $beta = Values::NONE,
+        bool $smsEnabled = Values::BOOL_NONE,
+        bool $mmsEnabled = Values::BOOL_NONE,
+        bool $voiceEnabled = Values::BOOL_NONE,
+        bool $excludeAllAddressRequired = Values::BOOL_NONE,
+        bool $excludeLocalAddressRequired = Values::BOOL_NONE,
+        bool $excludeForeignAddressRequired = Values::BOOL_NONE,
+        bool $beta = Values::BOOL_NONE,
         string $nearNumber = Values::NONE,
         string $nearLatLong = Values::NONE,
-        int $distance = Values::NONE,
+        int $distance = Values::INT_NONE,
         string $inPostalCode = Values::NONE,
         string $inRegion = Values::NONE,
         string $inRateCenter = Values::NONE,
         string $inLata = Values::NONE,
         string $inLocality = Values::NONE,
-        bool $faxEnabled = Values::NONE
+        bool $faxEnabled = Values::BOOL_NONE
 
     ): ReadLocalOptions
     {
@@ -112,24 +112,24 @@ class ReadLocalOptions extends Options
      */
     public function __construct(
         
-        int $areaCode = Values::NONE,
+        int $areaCode = Values::INT_NONE,
         string $contains = Values::NONE,
-        bool $smsEnabled = Values::NONE,
-        bool $mmsEnabled = Values::NONE,
-        bool $voiceEnabled = Values::NONE,
-        bool $excludeAllAddressRequired = Values::NONE,
-        bool $excludeLocalAddressRequired = Values::NONE,
-        bool $excludeForeignAddressRequired = Values::NONE,
-        bool $beta = Values::NONE,
+        bool $smsEnabled = Values::BOOL_NONE,
+        bool $mmsEnabled = Values::BOOL_NONE,
+        bool $voiceEnabled = Values::BOOL_NONE,
+        bool $excludeAllAddressRequired = Values::BOOL_NONE,
+        bool $excludeLocalAddressRequired = Values::BOOL_NONE,
+        bool $excludeForeignAddressRequired = Values::BOOL_NONE,
+        bool $beta = Values::BOOL_NONE,
         string $nearNumber = Values::NONE,
         string $nearLatLong = Values::NONE,
-        int $distance = Values::NONE,
+        int $distance = Values::INT_NONE,
         string $inPostalCode = Values::NONE,
         string $inRegion = Values::NONE,
         string $inRateCenter = Values::NONE,
         string $inLata = Values::NONE,
         string $inLocality = Values::NONE,
-        bool $faxEnabled = Values::NONE
+        bool $faxEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['areaCode'] = $areaCode;

@@ -32,8 +32,8 @@ abstract class UserConversationOptions
     public static function update(
         
         string $notificationLevel = Values::NONE,
-        \DateTime $lastReadTimestamp = Values::NONE,
-        int $lastReadMessageIndex = Values::NONE
+        \DateTime $lastReadTimestamp = null,
+        int $lastReadMessageIndex = Values::INT_NONE
 
     ): UpdateUserConversationOptions
     {
@@ -59,8 +59,8 @@ class UpdateUserConversationOptions extends Options
     public function __construct(
         
         string $notificationLevel = Values::NONE,
-        \DateTime $lastReadTimestamp = Values::NONE,
-        int $lastReadMessageIndex = Values::NONE
+        \DateTime $lastReadTimestamp = null,
+        int $lastReadMessageIndex = Values::INT_NONE
 
     ) {
         $this->options['notificationLevel'] = $notificationLevel;

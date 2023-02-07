@@ -32,8 +32,8 @@ abstract class SessionOptions
     public static function create(
         
         string $uniqueName = Values::NONE,
-        \DateTime $dateExpiry = Values::NONE,
-        int $ttl = Values::NONE,
+        \DateTime $dateExpiry = null,
+        int $ttl = Values::INT_NONE,
         string $mode = Values::NONE,
         string $status = Values::NONE,
         array $participants = Values::ARRAY_NONE
@@ -61,8 +61,8 @@ abstract class SessionOptions
      */
     public static function update(
         
-        \DateTime $dateExpiry = Values::NONE,
-        int $ttl = Values::NONE,
+        \DateTime $dateExpiry = null,
+        int $ttl = Values::INT_NONE,
         string $status = Values::NONE
 
     ): UpdateSessionOptions
@@ -89,8 +89,8 @@ class CreateSessionOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        \DateTime $dateExpiry = Values::NONE,
-        int $ttl = Values::NONE,
+        \DateTime $dateExpiry = null,
+        int $ttl = Values::INT_NONE,
         string $mode = Values::NONE,
         string $status = Values::NONE,
         array $participants = Values::ARRAY_NONE
@@ -196,8 +196,8 @@ class UpdateSessionOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateExpiry = Values::NONE,
-        int $ttl = Values::NONE,
+        \DateTime $dateExpiry = null,
+        int $ttl = Values::INT_NONE,
         string $status = Values::NONE
 
     ) {

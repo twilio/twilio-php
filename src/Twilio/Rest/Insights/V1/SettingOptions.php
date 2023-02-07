@@ -43,8 +43,8 @@ abstract class SettingOptions
      */
     public static function update(
         
-        bool $advancedFeatures = Values::NONE,
-        bool $voiceTrace = Values::NONE,
+        bool $advancedFeatures = Values::BOOL_NONE,
+        bool $voiceTrace = Values::BOOL_NONE,
         string $subaccountSid = Values::NONE
 
     ): UpdateSettingOptions
@@ -104,8 +104,8 @@ class UpdateSettingOptions extends Options
      */
     public function __construct(
         
-        bool $advancedFeatures = Values::NONE,
-        bool $voiceTrace = Values::NONE,
+        bool $advancedFeatures = Values::BOOL_NONE,
+        bool $voiceTrace = Values::BOOL_NONE,
         string $subaccountSid = Values::NONE
 
     ) {

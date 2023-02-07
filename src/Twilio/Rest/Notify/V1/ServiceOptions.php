@@ -48,11 +48,11 @@ abstract class ServiceOptions
         string $defaultGcmNotificationProtocolVersion = Values::NONE,
         string $fcmCredentialSid = Values::NONE,
         string $defaultFcmNotificationProtocolVersion = Values::NONE,
-        bool $logEnabled = Values::NONE,
+        bool $logEnabled = Values::BOOL_NONE,
         string $alexaSkillId = Values::NONE,
         string $defaultAlexaNotificationProtocolVersion = Values::NONE,
         string $deliveryCallbackUrl = Values::NONE,
-        bool $deliveryCallbackEnabled = Values::NONE
+        bool $deliveryCallbackEnabled = Values::BOOL_NONE
 
     ): CreateServiceOptions
     {
@@ -119,11 +119,11 @@ abstract class ServiceOptions
         string $defaultGcmNotificationProtocolVersion = Values::NONE,
         string $fcmCredentialSid = Values::NONE,
         string $defaultFcmNotificationProtocolVersion = Values::NONE,
-        bool $logEnabled = Values::NONE,
+        bool $logEnabled = Values::BOOL_NONE,
         string $alexaSkillId = Values::NONE,
         string $defaultAlexaNotificationProtocolVersion = Values::NONE,
         string $deliveryCallbackUrl = Values::NONE,
-        bool $deliveryCallbackEnabled = Values::NONE
+        bool $deliveryCallbackEnabled = Values::BOOL_NONE
 
     ): UpdateServiceOptions
     {
@@ -176,11 +176,11 @@ class CreateServiceOptions extends Options
         string $defaultGcmNotificationProtocolVersion = Values::NONE,
         string $fcmCredentialSid = Values::NONE,
         string $defaultFcmNotificationProtocolVersion = Values::NONE,
-        bool $logEnabled = Values::NONE,
+        bool $logEnabled = Values::BOOL_NONE,
         string $alexaSkillId = Values::NONE,
         string $defaultAlexaNotificationProtocolVersion = Values::NONE,
         string $deliveryCallbackUrl = Values::NONE,
-        bool $deliveryCallbackEnabled = Values::NONE
+        bool $deliveryCallbackEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -447,11 +447,11 @@ class UpdateServiceOptions extends Options
         string $defaultGcmNotificationProtocolVersion = Values::NONE,
         string $fcmCredentialSid = Values::NONE,
         string $defaultFcmNotificationProtocolVersion = Values::NONE,
-        bool $logEnabled = Values::NONE,
+        bool $logEnabled = Values::BOOL_NONE,
         string $alexaSkillId = Values::NONE,
         string $defaultAlexaNotificationProtocolVersion = Values::NONE,
         string $deliveryCallbackUrl = Values::NONE,
-        bool $deliveryCallbackEnabled = Values::NONE
+        bool $deliveryCallbackEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

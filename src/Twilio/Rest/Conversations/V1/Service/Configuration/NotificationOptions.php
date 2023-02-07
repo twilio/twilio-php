@@ -39,18 +39,18 @@ abstract class NotificationOptions
      */
     public static function update(
         
-        bool $logEnabled = Values::NONE,
-        bool $newMessageEnabled = Values::NONE,
+        bool $logEnabled = Values::BOOL_NONE,
+        bool $newMessageEnabled = Values::BOOL_NONE,
         string $newMessageTemplate = Values::NONE,
         string $newMessageSound = Values::NONE,
-        bool $newMessageBadgeCountEnabled = Values::NONE,
-        bool $addedToConversationEnabled = Values::NONE,
+        bool $newMessageBadgeCountEnabled = Values::BOOL_NONE,
+        bool $addedToConversationEnabled = Values::BOOL_NONE,
         string $addedToConversationTemplate = Values::NONE,
         string $addedToConversationSound = Values::NONE,
-        bool $removedFromConversationEnabled = Values::NONE,
+        bool $removedFromConversationEnabled = Values::BOOL_NONE,
         string $removedFromConversationTemplate = Values::NONE,
         string $removedFromConversationSound = Values::NONE,
-        bool $newMessageWithMediaEnabled = Values::NONE,
+        bool $newMessageWithMediaEnabled = Values::BOOL_NONE,
         string $newMessageWithMediaTemplate = Values::NONE
 
     ): UpdateNotificationOptions
@@ -94,18 +94,18 @@ class UpdateNotificationOptions extends Options
      */
     public function __construct(
         
-        bool $logEnabled = Values::NONE,
-        bool $newMessageEnabled = Values::NONE,
+        bool $logEnabled = Values::BOOL_NONE,
+        bool $newMessageEnabled = Values::BOOL_NONE,
         string $newMessageTemplate = Values::NONE,
         string $newMessageSound = Values::NONE,
-        bool $newMessageBadgeCountEnabled = Values::NONE,
-        bool $addedToConversationEnabled = Values::NONE,
+        bool $newMessageBadgeCountEnabled = Values::BOOL_NONE,
+        bool $addedToConversationEnabled = Values::BOOL_NONE,
         string $addedToConversationTemplate = Values::NONE,
         string $addedToConversationSound = Values::NONE,
-        bool $removedFromConversationEnabled = Values::NONE,
+        bool $removedFromConversationEnabled = Values::BOOL_NONE,
         string $removedFromConversationTemplate = Values::NONE,
         string $removedFromConversationSound = Values::NONE,
-        bool $newMessageWithMediaEnabled = Values::NONE,
+        bool $newMessageWithMediaEnabled = Values::BOOL_NONE,
         string $newMessageWithMediaTemplate = Values::NONE
 
     ) {

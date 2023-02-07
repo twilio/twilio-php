@@ -87,17 +87,17 @@ abstract class ServiceOptions
         string $defaultServiceRoleSid = Values::NONE,
         string $defaultChannelRoleSid = Values::NONE,
         string $defaultChannelCreatorRoleSid = Values::NONE,
-        bool $readStatusEnabled = Values::NONE,
-        bool $reachabilityEnabled = Values::NONE,
-        int $typingIndicatorTimeout = Values::NONE,
-        int $consumptionReportInterval = Values::NONE,
-        bool $notificationsNewMessageEnabled = Values::NONE,
+        bool $readStatusEnabled = Values::BOOL_NONE,
+        bool $reachabilityEnabled = Values::BOOL_NONE,
+        int $typingIndicatorTimeout = Values::INT_NONE,
+        int $consumptionReportInterval = Values::INT_NONE,
+        bool $notificationsNewMessageEnabled = Values::BOOL_NONE,
         string $notificationsNewMessageTemplate = Values::NONE,
-        bool $notificationsAddedToChannelEnabled = Values::NONE,
+        bool $notificationsAddedToChannelEnabled = Values::BOOL_NONE,
         string $notificationsAddedToChannelTemplate = Values::NONE,
-        bool $notificationsRemovedFromChannelEnabled = Values::NONE,
+        bool $notificationsRemovedFromChannelEnabled = Values::BOOL_NONE,
         string $notificationsRemovedFromChannelTemplate = Values::NONE,
-        bool $notificationsInvitedToChannelEnabled = Values::NONE,
+        bool $notificationsInvitedToChannelEnabled = Values::BOOL_NONE,
         string $notificationsInvitedToChannelTemplate = Values::NONE,
         string $preWebhookUrl = Values::NONE,
         string $postWebhookUrl = Values::NONE,
@@ -135,8 +135,8 @@ abstract class ServiceOptions
         string $webhooksOnMemberAddedMethod = Values::NONE,
         string $webhooksOnMemberRemovedUrl = Values::NONE,
         string $webhooksOnMemberRemovedMethod = Values::NONE,
-        int $limitsChannelMembers = Values::NONE,
-        int $limitsUserChannels = Values::NONE
+        int $limitsChannelMembers = Values::INT_NONE,
+        int $limitsUserChannels = Values::INT_NONE
 
     ): UpdateServiceOptions
     {
@@ -268,17 +268,17 @@ class UpdateServiceOptions extends Options
         string $defaultServiceRoleSid = Values::NONE,
         string $defaultChannelRoleSid = Values::NONE,
         string $defaultChannelCreatorRoleSid = Values::NONE,
-        bool $readStatusEnabled = Values::NONE,
-        bool $reachabilityEnabled = Values::NONE,
-        int $typingIndicatorTimeout = Values::NONE,
-        int $consumptionReportInterval = Values::NONE,
-        bool $notificationsNewMessageEnabled = Values::NONE,
+        bool $readStatusEnabled = Values::BOOL_NONE,
+        bool $reachabilityEnabled = Values::BOOL_NONE,
+        int $typingIndicatorTimeout = Values::INT_NONE,
+        int $consumptionReportInterval = Values::INT_NONE,
+        bool $notificationsNewMessageEnabled = Values::BOOL_NONE,
         string $notificationsNewMessageTemplate = Values::NONE,
-        bool $notificationsAddedToChannelEnabled = Values::NONE,
+        bool $notificationsAddedToChannelEnabled = Values::BOOL_NONE,
         string $notificationsAddedToChannelTemplate = Values::NONE,
-        bool $notificationsRemovedFromChannelEnabled = Values::NONE,
+        bool $notificationsRemovedFromChannelEnabled = Values::BOOL_NONE,
         string $notificationsRemovedFromChannelTemplate = Values::NONE,
-        bool $notificationsInvitedToChannelEnabled = Values::NONE,
+        bool $notificationsInvitedToChannelEnabled = Values::BOOL_NONE,
         string $notificationsInvitedToChannelTemplate = Values::NONE,
         string $preWebhookUrl = Values::NONE,
         string $postWebhookUrl = Values::NONE,
@@ -316,8 +316,8 @@ class UpdateServiceOptions extends Options
         string $webhooksOnMemberAddedMethod = Values::NONE,
         string $webhooksOnMemberRemovedUrl = Values::NONE,
         string $webhooksOnMemberRemovedMethod = Values::NONE,
-        int $limitsChannelMembers = Values::NONE,
-        int $limitsUserChannels = Values::NONE
+        int $limitsChannelMembers = Values::INT_NONE,
+        int $limitsUserChannels = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

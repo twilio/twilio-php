@@ -57,7 +57,7 @@ abstract class LocalOptions
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
         string $voiceApplicationSid = Values::NONE,
-        bool $voiceCallerIdLookup = Values::NONE,
+        bool $voiceCallerIdLookup = Values::BOOL_NONE,
         string $voiceFallbackMethod = Values::NONE,
         string $voiceFallbackUrl = Values::NONE,
         string $voiceMethod = Values::NONE,
@@ -107,7 +107,7 @@ abstract class LocalOptions
      */
     public static function read(
         
-        bool $beta = Values::NONE,
+        bool $beta = Values::BOOL_NONE,
         string $friendlyName = Values::NONE,
         string $phoneNumber = Values::NONE,
         string $origin = Values::NONE
@@ -162,7 +162,7 @@ class CreateLocalOptions extends Options
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
         string $voiceApplicationSid = Values::NONE,
-        bool $voiceCallerIdLookup = Values::NONE,
+        bool $voiceCallerIdLookup = Values::BOOL_NONE,
         string $voiceFallbackMethod = Values::NONE,
         string $voiceFallbackUrl = Values::NONE,
         string $voiceMethod = Values::NONE,
@@ -482,7 +482,7 @@ class ReadLocalOptions extends Options
      */
     public function __construct(
         
-        bool $beta = Values::NONE,
+        bool $beta = Values::BOOL_NONE,
         string $friendlyName = Values::NONE,
         string $phoneNumber = Values::NONE,
         string $origin = Values::NONE

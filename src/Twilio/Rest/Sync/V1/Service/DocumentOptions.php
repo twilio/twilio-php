@@ -30,7 +30,7 @@ abstract class DocumentOptions
         
         string $uniqueName = Values::NONE,
         array $data = Values::ARRAY_NONE,
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ): CreateDocumentOptions
     {
@@ -53,7 +53,7 @@ abstract class DocumentOptions
     public static function update(
         
         array $data = Values::ARRAY_NONE,
-        int $ttl = Values::NONE,
+        int $ttl = Values::INT_NONE,
         string $ifMatch = Values::NONE
 
     ): UpdateDocumentOptions
@@ -78,7 +78,7 @@ class CreateDocumentOptions extends Options
         
         string $uniqueName = Values::NONE,
         array $data = Values::ARRAY_NONE,
-        int $ttl = Values::NONE
+        int $ttl = Values::INT_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;
@@ -147,7 +147,7 @@ class UpdateDocumentOptions extends Options
     public function __construct(
         
         array $data = Values::ARRAY_NONE,
-        int $ttl = Values::NONE,
+        int $ttl = Values::INT_NONE,
         string $ifMatch = Values::NONE
 
     ) {
