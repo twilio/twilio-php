@@ -34,7 +34,7 @@ abstract class CredentialOptions
         string $friendlyName = Values::NONE,
         string $certificate = Values::NONE,
         string $privateKey = Values::NONE,
-        bool $sandbox = Values::NONE,
+        bool $sandbox = Values::BOOL_NONE,
         string $apiKey = Values::NONE,
         string $secret = Values::NONE
 
@@ -69,7 +69,7 @@ abstract class CredentialOptions
         string $friendlyName = Values::NONE,
         string $certificate = Values::NONE,
         string $privateKey = Values::NONE,
-        bool $sandbox = Values::NONE,
+        bool $sandbox = Values::BOOL_NONE,
         string $apiKey = Values::NONE,
         string $secret = Values::NONE
 
@@ -103,7 +103,7 @@ class CreateCredentialOptions extends Options
         string $friendlyName = Values::NONE,
         string $certificate = Values::NONE,
         string $privateKey = Values::NONE,
-        bool $sandbox = Values::NONE,
+        bool $sandbox = Values::BOOL_NONE,
         string $apiKey = Values::NONE,
         string $secret = Values::NONE
 
@@ -220,7 +220,7 @@ class UpdateCredentialOptions extends Options
         string $friendlyName = Values::NONE,
         string $certificate = Values::NONE,
         string $privateKey = Values::NONE,
-        bool $sandbox = Values::NONE,
+        bool $sandbox = Values::BOOL_NONE,
         string $apiKey = Values::NONE,
         string $secret = Values::NONE
 

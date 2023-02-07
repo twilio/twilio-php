@@ -29,8 +29,8 @@ abstract class SyncListOptions
     public static function create(
         
         string $uniqueName = Values::NONE,
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ): CreateSyncListOptions
     {
@@ -51,8 +51,8 @@ abstract class SyncListOptions
      */
     public static function update(
         
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ): UpdateSyncListOptions
     {
@@ -74,8 +74,8 @@ class CreateSyncListOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;
@@ -142,8 +142,8 @@ class UpdateSyncListOptions extends Options
      */
     public function __construct(
         
-        int $ttl = Values::NONE,
-        int $collectionTtl = Values::NONE
+        int $ttl = Values::INT_NONE,
+        int $collectionTtl = Values::INT_NONE
 
     ) {
         $this->options['ttl'] = $ttl;

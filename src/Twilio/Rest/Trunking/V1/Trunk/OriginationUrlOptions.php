@@ -34,9 +34,9 @@ abstract class OriginationUrlOptions
      */
     public static function update(
         
-        int $weight = Values::NONE,
-        int $priority = Values::NONE,
-        bool $enabled = Values::NONE,
+        int $weight = Values::INT_NONE,
+        int $priority = Values::INT_NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $friendlyName = Values::NONE,
         string $sipUrl = Values::NONE
 
@@ -68,9 +68,9 @@ class UpdateOriginationUrlOptions extends Options
      */
     public function __construct(
         
-        int $weight = Values::NONE,
-        int $priority = Values::NONE,
-        bool $enabled = Values::NONE,
+        int $weight = Values::INT_NONE,
+        int $priority = Values::INT_NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $friendlyName = Values::NONE,
         string $sipUrl = Values::NONE
 

@@ -36,7 +36,7 @@ abstract class WebhookOptions
         array $configurationFilters = Values::ARRAY_NONE,
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE,
-        int $configurationRetryCount = Values::NONE
+        int $configurationRetryCount = Values::INT_NONE
 
     ): CreateWebhookOptions
     {
@@ -69,7 +69,7 @@ abstract class WebhookOptions
         array $configurationFilters = Values::ARRAY_NONE,
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE,
-        int $configurationRetryCount = Values::NONE
+        int $configurationRetryCount = Values::INT_NONE
 
     ): UpdateWebhookOptions
     {
@@ -102,7 +102,7 @@ class CreateWebhookOptions extends Options
         array $configurationFilters = Values::ARRAY_NONE,
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE,
-        int $configurationRetryCount = Values::NONE
+        int $configurationRetryCount = Values::INT_NONE
 
     ) {
         $this->options['configurationUrl'] = $configurationUrl;
@@ -215,7 +215,7 @@ class UpdateWebhookOptions extends Options
         array $configurationFilters = Values::ARRAY_NONE,
         array $configurationTriggers = Values::ARRAY_NONE,
         string $configurationFlowSid = Values::NONE,
-        int $configurationRetryCount = Values::NONE
+        int $configurationRetryCount = Values::INT_NONE
 
     ) {
         $this->options['configurationUrl'] = $configurationUrl;

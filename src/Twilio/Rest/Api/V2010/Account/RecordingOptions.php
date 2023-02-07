@@ -27,7 +27,7 @@ abstract class RecordingOptions
      */
     public static function fetch(
         
-        bool $includeSoftDeleted = Values::NONE
+        bool $includeSoftDeleted = Values::BOOL_NONE
 
     ): FetchRecordingOptions
     {
@@ -47,12 +47,12 @@ abstract class RecordingOptions
      */
     public static function read(
         
-        string $dateCreatedBefore = Values::NONE,
-        string $dateCreated = Values::NONE,
-        string $dateCreatedAfter = Values::NONE,
+        string $dateCreatedBefore = null,
+        string $dateCreated = null,
+        string $dateCreatedAfter = null,
         string $callSid = Values::NONE,
         string $conferenceSid = Values::NONE,
-        bool $includeSoftDeleted = Values::NONE
+        bool $includeSoftDeleted = Values::BOOL_NONE
 
     ): ReadRecordingOptions
     {
@@ -76,7 +76,7 @@ class FetchRecordingOptions extends Options
      */
     public function __construct(
         
-        bool $includeSoftDeleted = Values::NONE
+        bool $includeSoftDeleted = Values::BOOL_NONE
 
     ) {
         $this->options['includeSoftDeleted'] = $includeSoftDeleted;
@@ -118,12 +118,12 @@ class ReadRecordingOptions extends Options
      */
     public function __construct(
         
-        string $dateCreatedBefore = Values::NONE,
-        string $dateCreated = Values::NONE,
-        string $dateCreatedAfter = Values::NONE,
+        string $dateCreatedBefore = null,
+        string $dateCreated = null,
+        string $dateCreatedAfter = null,
         string $callSid = Values::NONE,
         string $conferenceSid = Values::NONE,
-        bool $includeSoftDeleted = Values::NONE
+        bool $includeSoftDeleted = Values::BOOL_NONE
 
     ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;

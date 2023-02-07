@@ -29,7 +29,7 @@ abstract class ExportConfigurationOptions
      */
     public static function update(
         
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $webhookUrl = Values::NONE,
         string $webhookMethod = Values::NONE
 
@@ -54,7 +54,7 @@ class UpdateExportConfigurationOptions extends Options
      */
     public function __construct(
         
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $webhookUrl = Values::NONE,
         string $webhookMethod = Values::NONE
 

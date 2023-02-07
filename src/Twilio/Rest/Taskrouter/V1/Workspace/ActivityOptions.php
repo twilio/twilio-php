@@ -26,7 +26,7 @@ abstract class ActivityOptions
      */
     public static function create(
         
-        bool $available = Values::NONE
+        bool $available = Values::BOOL_NONE
 
     ): CreateActivityOptions
     {
@@ -79,7 +79,7 @@ class CreateActivityOptions extends Options
      */
     public function __construct(
         
-        bool $available = Values::NONE
+        bool $available = Values::BOOL_NONE
 
     ) {
         $this->options['available'] = $available;

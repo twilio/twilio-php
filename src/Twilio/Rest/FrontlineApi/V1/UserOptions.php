@@ -33,7 +33,7 @@ abstract class UserOptions
         string $friendlyName = Values::NONE,
         string $avatar = Values::NONE,
         string $state = Values::NONE,
-        bool $isAvailable = Values::NONE
+        bool $isAvailable = Values::BOOL_NONE
 
     ): UpdateUserOptions
     {
@@ -61,7 +61,7 @@ class UpdateUserOptions extends Options
         string $friendlyName = Values::NONE,
         string $avatar = Values::NONE,
         string $state = Values::NONE,
-        bool $isAvailable = Values::NONE
+        bool $isAvailable = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

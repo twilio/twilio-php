@@ -32,7 +32,7 @@ abstract class MediaProcessorOptions
         array $extensionEnvironment = Values::ARRAY_NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        int $maxDuration = Values::NONE
+        int $maxDuration = Values::INT_NONE
 
     ): CreateMediaProcessorOptions
     {
@@ -79,7 +79,7 @@ class CreateMediaProcessorOptions extends Options
         array $extensionEnvironment = Values::ARRAY_NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        int $maxDuration = Values::NONE
+        int $maxDuration = Values::INT_NONE
 
     ) {
         $this->options['extensionEnvironment'] = $extensionEnvironment;

@@ -30,9 +30,9 @@ abstract class ConnectionPolicyTargetOptions
     public static function create(
         
         string $friendlyName = Values::NONE,
-        int $priority = Values::NONE,
-        int $weight = Values::NONE,
-        bool $enabled = Values::NONE
+        int $priority = Values::INT_NONE,
+        int $weight = Values::INT_NONE,
+        bool $enabled = Values::BOOL_NONE
 
     ): CreateConnectionPolicyTargetOptions
     {
@@ -59,9 +59,9 @@ abstract class ConnectionPolicyTargetOptions
         
         string $friendlyName = Values::NONE,
         string $target = Values::NONE,
-        int $priority = Values::NONE,
-        int $weight = Values::NONE,
-        bool $enabled = Values::NONE
+        int $priority = Values::INT_NONE,
+        int $weight = Values::INT_NONE,
+        bool $enabled = Values::BOOL_NONE
 
     ): UpdateConnectionPolicyTargetOptions
     {
@@ -87,9 +87,9 @@ class CreateConnectionPolicyTargetOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        int $priority = Values::NONE,
-        int $weight = Values::NONE,
-        bool $enabled = Values::NONE
+        int $priority = Values::INT_NONE,
+        int $weight = Values::INT_NONE,
+        bool $enabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -174,9 +174,9 @@ class UpdateConnectionPolicyTargetOptions extends Options
         
         string $friendlyName = Values::NONE,
         string $target = Values::NONE,
-        int $priority = Values::NONE,
-        int $weight = Values::NONE,
-        bool $enabled = Values::NONE
+        int $priority = Values::INT_NONE,
+        int $weight = Values::INT_NONE,
+        bool $enabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

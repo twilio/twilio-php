@@ -40,21 +40,21 @@ abstract class RoomOptions
      */
     public static function create(
         
-        bool $enableTurn = Values::NONE,
+        bool $enableTurn = Values::BOOL_NONE,
         string $type = Values::NONE,
         string $uniqueName = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        int $maxParticipants = Values::NONE,
-        bool $recordParticipantsOnConnect = Values::NONE,
+        int $maxParticipants = Values::INT_NONE,
+        bool $recordParticipantsOnConnect = Values::BOOL_NONE,
         array $videoCodecs = Values::ARRAY_NONE,
         string $mediaRegion = Values::NONE,
         array $recordingRules = Values::ARRAY_NONE,
-        bool $audioOnly = Values::NONE,
-        int $maxParticipantDuration = Values::NONE,
-        int $emptyRoomTimeout = Values::NONE,
-        int $unusedRoomTimeout = Values::NONE,
-        bool $largeRoom = Values::NONE
+        bool $audioOnly = Values::BOOL_NONE,
+        int $maxParticipantDuration = Values::INT_NONE,
+        int $emptyRoomTimeout = Values::INT_NONE,
+        int $unusedRoomTimeout = Values::INT_NONE,
+        bool $largeRoom = Values::BOOL_NONE
 
     ): CreateRoomOptions
     {
@@ -89,8 +89,8 @@ abstract class RoomOptions
         
         string $status = Values::NONE,
         string $uniqueName = Values::NONE,
-        \DateTime $dateCreatedAfter = Values::NONE,
-        \DateTime $dateCreatedBefore = Values::NONE
+        \DateTime $dateCreatedAfter = null,
+        \DateTime $dateCreatedBefore = null
 
     ): ReadRoomOptions
     {
@@ -126,21 +126,21 @@ class CreateRoomOptions extends Options
      */
     public function __construct(
         
-        bool $enableTurn = Values::NONE,
+        bool $enableTurn = Values::BOOL_NONE,
         string $type = Values::NONE,
         string $uniqueName = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        int $maxParticipants = Values::NONE,
-        bool $recordParticipantsOnConnect = Values::NONE,
+        int $maxParticipants = Values::INT_NONE,
+        bool $recordParticipantsOnConnect = Values::BOOL_NONE,
         array $videoCodecs = Values::ARRAY_NONE,
         string $mediaRegion = Values::NONE,
         array $recordingRules = Values::ARRAY_NONE,
-        bool $audioOnly = Values::NONE,
-        int $maxParticipantDuration = Values::NONE,
-        int $emptyRoomTimeout = Values::NONE,
-        int $unusedRoomTimeout = Values::NONE,
-        bool $largeRoom = Values::NONE
+        bool $audioOnly = Values::BOOL_NONE,
+        int $maxParticipantDuration = Values::INT_NONE,
+        int $emptyRoomTimeout = Values::INT_NONE,
+        int $unusedRoomTimeout = Values::INT_NONE,
+        bool $largeRoom = Values::BOOL_NONE
 
     ) {
         $this->options['enableTurn'] = $enableTurn;
@@ -363,8 +363,8 @@ class ReadRoomOptions extends Options
         
         string $status = Values::NONE,
         string $uniqueName = Values::NONE,
-        \DateTime $dateCreatedAfter = Values::NONE,
-        \DateTime $dateCreatedBefore = Values::NONE
+        \DateTime $dateCreatedAfter = null,
+        \DateTime $dateCreatedBefore = null
 
     ) {
         $this->options['status'] = $status;

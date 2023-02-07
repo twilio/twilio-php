@@ -31,7 +31,7 @@ abstract class TaskQueueOptions
     public static function create(
         
         string $targetWorkers = Values::NONE,
-        int $maxReservedWorkers = Values::NONE,
+        int $maxReservedWorkers = Values::INT_NONE,
         string $taskOrder = Values::NONE,
         string $reservationActivitySid = Values::NONE,
         string $assignmentActivitySid = Values::NONE
@@ -88,7 +88,7 @@ abstract class TaskQueueOptions
         string $targetWorkers = Values::NONE,
         string $reservationActivitySid = Values::NONE,
         string $assignmentActivitySid = Values::NONE,
-        int $maxReservedWorkers = Values::NONE,
+        int $maxReservedWorkers = Values::INT_NONE,
         string $taskOrder = Values::NONE
 
     ): UpdateTaskQueueOptions
@@ -117,7 +117,7 @@ class CreateTaskQueueOptions extends Options
     public function __construct(
         
         string $targetWorkers = Values::NONE,
-        int $maxReservedWorkers = Values::NONE,
+        int $maxReservedWorkers = Values::INT_NONE,
         string $taskOrder = Values::NONE,
         string $reservationActivitySid = Values::NONE,
         string $assignmentActivitySid = Values::NONE
@@ -300,7 +300,7 @@ class UpdateTaskQueueOptions extends Options
         string $targetWorkers = Values::NONE,
         string $reservationActivitySid = Values::NONE,
         string $assignmentActivitySid = Values::NONE,
-        int $maxReservedWorkers = Values::NONE,
+        int $maxReservedWorkers = Values::INT_NONE,
         string $taskOrder = Values::NONE
 
     ) {

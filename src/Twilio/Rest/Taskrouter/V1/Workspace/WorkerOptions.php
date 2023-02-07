@@ -103,7 +103,7 @@ abstract class WorkerOptions
         string $activitySid = Values::NONE,
         string $attributes = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $rejectPendingReservations = Values::NONE,
+        bool $rejectPendingReservations = Values::BOOL_NONE,
         string $ifMatch = Values::NONE
 
     ): UpdateWorkerOptions
@@ -365,7 +365,7 @@ class UpdateWorkerOptions extends Options
         string $activitySid = Values::NONE,
         string $attributes = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $rejectPendingReservations = Values::NONE,
+        bool $rejectPendingReservations = Values::BOOL_NONE,
         string $ifMatch = Values::NONE
 
     ) {

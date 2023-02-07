@@ -41,9 +41,9 @@ abstract class FactorOptions
         string $friendlyName = Values::NONE,
         string $configNotificationToken = Values::NONE,
         string $configSdkVersion = Values::NONE,
-        int $configTimeStep = Values::NONE,
-        int $configSkew = Values::NONE,
-        int $configCodeLength = Values::NONE,
+        int $configTimeStep = Values::INT_NONE,
+        int $configSkew = Values::INT_NONE,
+        int $configCodeLength = Values::INT_NONE,
         string $configAlg = Values::NONE,
         string $configNotificationPlatform = Values::NONE
 
@@ -86,9 +86,9 @@ class UpdateFactorOptions extends Options
         string $friendlyName = Values::NONE,
         string $configNotificationToken = Values::NONE,
         string $configSdkVersion = Values::NONE,
-        int $configTimeStep = Values::NONE,
-        int $configSkew = Values::NONE,
-        int $configCodeLength = Values::NONE,
+        int $configTimeStep = Values::INT_NONE,
+        int $configSkew = Values::INT_NONE,
+        int $configCodeLength = Values::INT_NONE,
         string $configAlg = Values::NONE,
         string $configNotificationPlatform = Values::NONE
 

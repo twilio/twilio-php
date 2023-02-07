@@ -30,9 +30,9 @@ abstract class MonthlyOptions
     public static function read(
         
         string $category = Values::NONE,
-        \DateTime $startDate = Values::NONE,
-        \DateTime $endDate = Values::NONE,
-        bool $includeSubaccounts = Values::NONE
+        \DateTime $startDate = null,
+        \DateTime $endDate = null,
+        bool $includeSubaccounts = Values::BOOL_NONE
 
     ): ReadMonthlyOptions
     {
@@ -57,9 +57,9 @@ class ReadMonthlyOptions extends Options
     public function __construct(
         
         string $category = Values::NONE,
-        \DateTime $startDate = Values::NONE,
-        \DateTime $endDate = Values::NONE,
-        bool $includeSubaccounts = Values::NONE
+        \DateTime $startDate = null,
+        \DateTime $endDate = null,
+        bool $includeSubaccounts = Values::BOOL_NONE
 
     ) {
         $this->options['category'] = $category;

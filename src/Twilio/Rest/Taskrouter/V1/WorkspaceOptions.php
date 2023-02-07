@@ -32,7 +32,7 @@ abstract class WorkspaceOptions
         
         string $eventCallbackUrl = Values::NONE,
         string $eventsFilter = Values::NONE,
-        bool $multiTaskEnabled = Values::NONE,
+        bool $multiTaskEnabled = Values::BOOL_NONE,
         string $template = Values::NONE,
         string $prioritizeQueueOrder = Values::NONE
 
@@ -80,7 +80,7 @@ abstract class WorkspaceOptions
         string $eventCallbackUrl = Values::NONE,
         string $eventsFilter = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $multiTaskEnabled = Values::NONE,
+        bool $multiTaskEnabled = Values::BOOL_NONE,
         string $timeoutActivitySid = Values::NONE,
         string $prioritizeQueueOrder = Values::NONE
 
@@ -112,7 +112,7 @@ class CreateWorkspaceOptions extends Options
         
         string $eventCallbackUrl = Values::NONE,
         string $eventsFilter = Values::NONE,
-        bool $multiTaskEnabled = Values::NONE,
+        bool $multiTaskEnabled = Values::BOOL_NONE,
         string $template = Values::NONE,
         string $prioritizeQueueOrder = Values::NONE
 
@@ -250,7 +250,7 @@ class UpdateWorkspaceOptions extends Options
         string $eventCallbackUrl = Values::NONE,
         string $eventsFilter = Values::NONE,
         string $friendlyName = Values::NONE,
-        bool $multiTaskEnabled = Values::NONE,
+        bool $multiTaskEnabled = Values::BOOL_NONE,
         string $timeoutActivitySid = Values::NONE,
         string $prioritizeQueueOrder = Values::NONE
 

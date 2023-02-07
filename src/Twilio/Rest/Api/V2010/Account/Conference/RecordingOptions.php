@@ -30,9 +30,9 @@ abstract class RecordingOptions
      */
     public static function read(
         
-        string $dateCreatedBefore = Values::NONE,
-        string $dateCreated = Values::NONE,
-        string $dateCreatedAfter = Values::NONE
+        string $dateCreatedBefore = null,
+        string $dateCreated = null,
+        string $dateCreatedAfter = null
 
     ): ReadRecordingOptions
     {
@@ -71,9 +71,9 @@ class ReadRecordingOptions extends Options
      */
     public function __construct(
         
-        string $dateCreatedBefore = Values::NONE,
-        string $dateCreated = Values::NONE,
-        string $dateCreatedAfter = Values::NONE
+        string $dateCreatedBefore = null,
+        string $dateCreated = null,
+        string $dateCreatedAfter = null
 
     ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;

@@ -44,9 +44,9 @@ abstract class DomainOptions
         string $voiceFallbackMethod = Values::NONE,
         string $voiceStatusCallbackUrl = Values::NONE,
         string $voiceStatusCallbackMethod = Values::NONE,
-        bool $sipRegistration = Values::NONE,
-        bool $emergencyCallingEnabled = Values::NONE,
-        bool $secure = Values::NONE,
+        bool $sipRegistration = Values::BOOL_NONE,
+        bool $emergencyCallingEnabled = Values::BOOL_NONE,
+        bool $secure = Values::BOOL_NONE,
         string $byocTrunkSid = Values::NONE,
         string $emergencyCallerSid = Values::NONE
 
@@ -96,10 +96,10 @@ abstract class DomainOptions
         string $voiceStatusCallbackMethod = Values::NONE,
         string $voiceStatusCallbackUrl = Values::NONE,
         string $voiceUrl = Values::NONE,
-        bool $sipRegistration = Values::NONE,
+        bool $sipRegistration = Values::BOOL_NONE,
         string $domainName = Values::NONE,
-        bool $emergencyCallingEnabled = Values::NONE,
-        bool $secure = Values::NONE,
+        bool $emergencyCallingEnabled = Values::BOOL_NONE,
+        bool $secure = Values::BOOL_NONE,
         string $byocTrunkSid = Values::NONE,
         string $emergencyCallerSid = Values::NONE
 
@@ -149,9 +149,9 @@ class CreateDomainOptions extends Options
         string $voiceFallbackMethod = Values::NONE,
         string $voiceStatusCallbackUrl = Values::NONE,
         string $voiceStatusCallbackMethod = Values::NONE,
-        bool $sipRegistration = Values::NONE,
-        bool $emergencyCallingEnabled = Values::NONE,
-        bool $secure = Values::NONE,
+        bool $sipRegistration = Values::BOOL_NONE,
+        bool $emergencyCallingEnabled = Values::BOOL_NONE,
+        bool $secure = Values::BOOL_NONE,
         string $byocTrunkSid = Values::NONE,
         string $emergencyCallerSid = Values::NONE
 
@@ -355,10 +355,10 @@ class UpdateDomainOptions extends Options
         string $voiceStatusCallbackMethod = Values::NONE,
         string $voiceStatusCallbackUrl = Values::NONE,
         string $voiceUrl = Values::NONE,
-        bool $sipRegistration = Values::NONE,
+        bool $sipRegistration = Values::BOOL_NONE,
         string $domainName = Values::NONE,
-        bool $emergencyCallingEnabled = Values::NONE,
-        bool $secure = Values::NONE,
+        bool $emergencyCallingEnabled = Values::BOOL_NONE,
+        bool $secure = Values::BOOL_NONE,
         string $byocTrunkSid = Values::NONE,
         string $emergencyCallerSid = Values::NONE
 

@@ -26,7 +26,7 @@ abstract class SubscribedEventOptions
      */
     public static function create(
         
-        int $schemaVersion = Values::NONE
+        int $schemaVersion = Values::INT_NONE
 
     ): CreateSubscribedEventOptions
     {
@@ -44,7 +44,7 @@ abstract class SubscribedEventOptions
      */
     public static function update(
         
-        int $schemaVersion = Values::NONE
+        int $schemaVersion = Values::INT_NONE
 
     ): UpdateSubscribedEventOptions
     {
@@ -62,7 +62,7 @@ class CreateSubscribedEventOptions extends Options
      */
     public function __construct(
         
-        int $schemaVersion = Values::NONE
+        int $schemaVersion = Values::INT_NONE
 
     ) {
         $this->options['schemaVersion'] = $schemaVersion;
@@ -102,7 +102,7 @@ class UpdateSubscribedEventOptions extends Options
      */
     public function __construct(
         
-        int $schemaVersion = Values::NONE
+        int $schemaVersion = Values::INT_NONE
 
     ) {
         $this->options['schemaVersion'] = $schemaVersion;

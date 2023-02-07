@@ -38,8 +38,8 @@ abstract class TrunkOptions
         string $disasterRecoveryUrl = Values::NONE,
         string $disasterRecoveryMethod = Values::NONE,
         string $transferMode = Values::NONE,
-        bool $secure = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $secure = Values::BOOL_NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $transferCallerId = Values::NONE
 
     ): CreateTrunkOptions
@@ -77,8 +77,8 @@ abstract class TrunkOptions
         string $disasterRecoveryUrl = Values::NONE,
         string $disasterRecoveryMethod = Values::NONE,
         string $transferMode = Values::NONE,
-        bool $secure = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $secure = Values::BOOL_NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $transferCallerId = Values::NONE
 
     ): UpdateTrunkOptions
@@ -116,8 +116,8 @@ class CreateTrunkOptions extends Options
         string $disasterRecoveryUrl = Values::NONE,
         string $disasterRecoveryMethod = Values::NONE,
         string $transferMode = Values::NONE,
-        bool $secure = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $secure = Values::BOOL_NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $transferCallerId = Values::NONE
 
     ) {
@@ -257,8 +257,8 @@ class UpdateTrunkOptions extends Options
         string $disasterRecoveryUrl = Values::NONE,
         string $disasterRecoveryMethod = Values::NONE,
         string $transferMode = Values::NONE,
-        bool $secure = Values::NONE,
-        bool $cnamLookupEnabled = Values::NONE,
+        bool $secure = Values::BOOL_NONE,
+        bool $cnamLookupEnabled = Values::BOOL_NONE,
         string $transferCallerId = Values::NONE
 
     ) {

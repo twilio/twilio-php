@@ -30,7 +30,7 @@ abstract class ShortCodeOptions
      */
     public static function update(
         
-        bool $isReserved = Values::NONE
+        bool $isReserved = Values::BOOL_NONE
 
     ): UpdateShortCodeOptions
     {
@@ -52,7 +52,7 @@ class UpdateShortCodeOptions extends Options
      */
     public function __construct(
         
-        bool $isReserved = Values::NONE
+        bool $isReserved = Values::BOOL_NONE
 
     ) {
         $this->options['isReserved'] = $isReserved;

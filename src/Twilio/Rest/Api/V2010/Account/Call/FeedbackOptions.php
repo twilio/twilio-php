@@ -28,7 +28,7 @@ abstract class FeedbackOptions
      */
     public static function update(
         
-        int $qualityScore = Values::NONE,
+        int $qualityScore = Values::INT_NONE,
         array $issue = Values::ARRAY_NONE
 
     ): UpdateFeedbackOptions
@@ -50,7 +50,7 @@ class UpdateFeedbackOptions extends Options
      */
     public function __construct(
         
-        int $qualityScore = Values::NONE,
+        int $qualityScore = Values::INT_NONE,
         array $issue = Values::ARRAY_NONE
 
     ) {

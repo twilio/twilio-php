@@ -36,7 +36,7 @@ abstract class ChannelOptions
         string $preEngagementData = Values::NONE,
         string $taskSid = Values::NONE,
         string $taskAttributes = Values::NONE,
-        bool $longLived = Values::NONE
+        bool $longLived = Values::BOOL_NONE
 
     ): CreateChannelOptions
     {
@@ -72,7 +72,7 @@ class CreateChannelOptions extends Options
         string $preEngagementData = Values::NONE,
         string $taskSid = Values::NONE,
         string $taskAttributes = Values::NONE,
-        bool $longLived = Values::NONE
+        bool $longLived = Values::BOOL_NONE
 
     ) {
         $this->options['target'] = $target;

@@ -32,7 +32,7 @@ abstract class DeviceOptions
         
         string $uniqueName = Values::NONE,
         string $targetApp = Values::NONE,
-        bool $loggingEnabled = Values::NONE
+        bool $loggingEnabled = Values::BOOL_NONE
 
     ): UpdateDeviceOptions
     {
@@ -58,7 +58,7 @@ class UpdateDeviceOptions extends Options
         
         string $uniqueName = Values::NONE,
         string $targetApp = Values::NONE,
-        bool $loggingEnabled = Values::NONE
+        bool $loggingEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;

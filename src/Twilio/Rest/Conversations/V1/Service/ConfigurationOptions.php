@@ -33,7 +33,7 @@ abstract class ConfigurationOptions
         string $defaultConversationCreatorRoleSid = Values::NONE,
         string $defaultConversationRoleSid = Values::NONE,
         string $defaultChatServiceRoleSid = Values::NONE,
-        bool $reachabilityEnabled = Values::NONE
+        bool $reachabilityEnabled = Values::BOOL_NONE
 
     ): UpdateConfigurationOptions
     {
@@ -61,7 +61,7 @@ class UpdateConfigurationOptions extends Options
         string $defaultConversationCreatorRoleSid = Values::NONE,
         string $defaultConversationRoleSid = Values::NONE,
         string $defaultChatServiceRoleSid = Values::NONE,
-        bool $reachabilityEnabled = Values::NONE
+        bool $reachabilityEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['defaultConversationCreatorRoleSid'] = $defaultConversationCreatorRoleSid;

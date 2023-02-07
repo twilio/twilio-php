@@ -26,7 +26,7 @@ abstract class QueueOptions
      */
     public static function create(
         
-        int $maxSize = Values::NONE
+        int $maxSize = Values::INT_NONE
 
     ): CreateQueueOptions
     {
@@ -46,7 +46,7 @@ abstract class QueueOptions
     public static function update(
         
         string $friendlyName = Values::NONE,
-        int $maxSize = Values::NONE
+        int $maxSize = Values::INT_NONE
 
     ): UpdateQueueOptions
     {
@@ -65,7 +65,7 @@ class CreateQueueOptions extends Options
      */
     public function __construct(
         
-        int $maxSize = Values::NONE
+        int $maxSize = Values::INT_NONE
 
     ) {
         $this->options['maxSize'] = $maxSize;
@@ -107,7 +107,7 @@ class UpdateQueueOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        int $maxSize = Values::NONE
+        int $maxSize = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

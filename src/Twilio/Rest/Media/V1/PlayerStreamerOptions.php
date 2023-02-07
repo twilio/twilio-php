@@ -29,10 +29,10 @@ abstract class PlayerStreamerOptions
      */
     public static function create(
         
-        bool $video = Values::NONE,
+        bool $video = Values::BOOL_NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        int $maxDuration = Values::NONE
+        int $maxDuration = Values::INT_NONE
 
     ): CreatePlayerStreamerOptions
     {
@@ -76,10 +76,10 @@ class CreatePlayerStreamerOptions extends Options
      */
     public function __construct(
         
-        bool $video = Values::NONE,
+        bool $video = Values::BOOL_NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        int $maxDuration = Values::NONE
+        int $maxDuration = Values::INT_NONE
 
     ) {
         $this->options['video'] = $video;

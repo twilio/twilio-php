@@ -31,7 +31,7 @@ abstract class ValidationRequestOptions
     public static function create(
         
         string $friendlyName = Values::NONE,
-        int $callDelay = Values::NONE,
+        int $callDelay = Values::INT_NONE,
         string $extension = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE
@@ -61,7 +61,7 @@ class CreateValidationRequestOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        int $callDelay = Values::NONE,
+        int $callDelay = Values::INT_NONE,
         string $extension = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE

@@ -130,7 +130,7 @@ abstract class HostedNumberOrderOptions
         string $verificationType = Values::NONE,
         string $verificationDocumentSid = Values::NONE,
         string $extension = Values::NONE,
-        int $callDelay = Values::NONE
+        int $callDelay = Values::INT_NONE
 
     ): UpdateHostedNumberOrderOptions
     {
@@ -519,7 +519,7 @@ class UpdateHostedNumberOrderOptions extends Options
         string $verificationType = Values::NONE,
         string $verificationDocumentSid = Values::NONE,
         string $extension = Values::NONE,
-        int $callDelay = Values::NONE
+        int $callDelay = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;

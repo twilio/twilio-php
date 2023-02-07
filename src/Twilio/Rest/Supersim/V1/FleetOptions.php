@@ -34,11 +34,11 @@ abstract class FleetOptions
     public static function create(
         
         string $uniqueName = Values::NONE,
-        bool $dataEnabled = Values::NONE,
-        int $dataLimit = Values::NONE,
+        bool $dataEnabled = Values::BOOL_NONE,
+        int $dataLimit = Values::INT_NONE,
         string $ipCommandsUrl = Values::NONE,
         string $ipCommandsMethod = Values::NONE,
-        bool $smsCommandsEnabled = Values::NONE,
+        bool $smsCommandsEnabled = Values::BOOL_NONE,
         string $smsCommandsUrl = Values::NONE,
         string $smsCommandsMethod = Values::NONE
 
@@ -90,7 +90,7 @@ abstract class FleetOptions
         string $ipCommandsMethod = Values::NONE,
         string $smsCommandsUrl = Values::NONE,
         string $smsCommandsMethod = Values::NONE,
-        int $dataLimit = Values::NONE
+        int $dataLimit = Values::INT_NONE
 
     ): UpdateFleetOptions
     {
@@ -122,11 +122,11 @@ class CreateFleetOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        bool $dataEnabled = Values::NONE,
-        int $dataLimit = Values::NONE,
+        bool $dataEnabled = Values::BOOL_NONE,
+        int $dataLimit = Values::INT_NONE,
         string $ipCommandsUrl = Values::NONE,
         string $ipCommandsMethod = Values::NONE,
-        bool $smsCommandsEnabled = Values::NONE,
+        bool $smsCommandsEnabled = Values::BOOL_NONE,
         string $smsCommandsUrl = Values::NONE,
         string $smsCommandsMethod = Values::NONE
 
@@ -306,7 +306,7 @@ class UpdateFleetOptions extends Options
         string $ipCommandsMethod = Values::NONE,
         string $smsCommandsUrl = Values::NONE,
         string $smsCommandsMethod = Values::NONE,
-        int $dataLimit = Values::NONE
+        int $dataLimit = Values::INT_NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;

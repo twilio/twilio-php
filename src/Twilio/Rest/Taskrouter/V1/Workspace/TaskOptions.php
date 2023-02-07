@@ -30,8 +30,8 @@ abstract class TaskOptions
      */
     public static function create(
         
-        int $timeout = Values::NONE,
-        int $priority = Values::NONE,
+        int $timeout = Values::INT_NONE,
+        int $priority = Values::INT_NONE,
         string $taskChannel = Values::NONE,
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE
@@ -77,7 +77,7 @@ abstract class TaskOptions
      */
     public static function read(
         
-        int $priority = Values::NONE,
+        int $priority = Values::INT_NONE,
         array $assignmentStatus = Values::ARRAY_NONE,
         string $workflowSid = Values::NONE,
         string $workflowName = Values::NONE,
@@ -85,7 +85,7 @@ abstract class TaskOptions
         string $taskQueueName = Values::NONE,
         string $evaluateTaskAttributes = Values::NONE,
         string $ordering = Values::NONE,
-        bool $hasAddons = Values::NONE
+        bool $hasAddons = Values::BOOL_NONE
 
     ): ReadTaskOptions
     {
@@ -116,7 +116,7 @@ abstract class TaskOptions
         string $attributes = Values::NONE,
         string $assignmentStatus = Values::NONE,
         string $reason = Values::NONE,
-        int $priority = Values::NONE,
+        int $priority = Values::INT_NONE,
         string $taskChannel = Values::NONE,
         string $ifMatch = Values::NONE
 
@@ -145,8 +145,8 @@ class CreateTaskOptions extends Options
      */
     public function __construct(
         
-        int $timeout = Values::NONE,
-        int $priority = Values::NONE,
+        int $timeout = Values::INT_NONE,
+        int $priority = Values::INT_NONE,
         string $taskChannel = Values::NONE,
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE
@@ -284,7 +284,7 @@ class ReadTaskOptions extends Options
      */
     public function __construct(
         
-        int $priority = Values::NONE,
+        int $priority = Values::INT_NONE,
         array $assignmentStatus = Values::ARRAY_NONE,
         string $workflowSid = Values::NONE,
         string $workflowName = Values::NONE,
@@ -292,7 +292,7 @@ class ReadTaskOptions extends Options
         string $taskQueueName = Values::NONE,
         string $evaluateTaskAttributes = Values::NONE,
         string $ordering = Values::NONE,
-        bool $hasAddons = Values::NONE
+        bool $hasAddons = Values::BOOL_NONE
 
     ) {
         $this->options['priority'] = $priority;
@@ -441,7 +441,7 @@ class UpdateTaskOptions extends Options
         string $attributes = Values::NONE,
         string $assignmentStatus = Values::NONE,
         string $reason = Values::NONE,
-        int $priority = Values::NONE,
+        int $priority = Values::INT_NONE,
         string $taskChannel = Values::NONE,
         string $ifMatch = Values::NONE
 

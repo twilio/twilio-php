@@ -70,12 +70,12 @@ abstract class BundleOptions
         string $regulationSid = Values::NONE,
         string $isoCountry = Values::NONE,
         string $numberType = Values::NONE,
-        bool $hasValidUntilDate = Values::NONE,
+        bool $hasValidUntilDate = Values::BOOL_NONE,
         string $sortBy = Values::NONE,
         string $sortDirection = Values::NONE,
-        string $validUntilDateBefore = Values::NONE,
-        string $validUntilDate = Values::NONE,
-        string $validUntilDateAfter = Values::NONE
+        string $validUntilDateBefore = null,
+        string $validUntilDate = null,
+        string $validUntilDateAfter = null
 
     ): ReadBundleOptions
     {
@@ -239,12 +239,12 @@ class ReadBundleOptions extends Options
         string $regulationSid = Values::NONE,
         string $isoCountry = Values::NONE,
         string $numberType = Values::NONE,
-        bool $hasValidUntilDate = Values::NONE,
+        bool $hasValidUntilDate = Values::BOOL_NONE,
         string $sortBy = Values::NONE,
         string $sortDirection = Values::NONE,
-        string $validUntilDateBefore = Values::NONE,
-        string $validUntilDate = Values::NONE,
-        string $validUntilDateAfter = Values::NONE
+        string $validUntilDateBefore = null,
+        string $validUntilDate = null,
+        string $validUntilDateAfter = null
 
     ) {
         $this->options['status'] = $status;

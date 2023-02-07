@@ -40,7 +40,7 @@ abstract class CompositionOptions
         string $format = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $trim = Values::NONE
+        bool $trim = Values::BOOL_NONE
 
     ): CreateCompositionOptions
     {
@@ -68,8 +68,8 @@ abstract class CompositionOptions
     public static function read(
         
         string $status = Values::NONE,
-        \DateTime $dateCreatedAfter = Values::NONE,
-        \DateTime $dateCreatedBefore = Values::NONE,
+        \DateTime $dateCreatedAfter = null,
+        \DateTime $dateCreatedBefore = null,
         string $roomSid = Values::NONE
 
     ): ReadCompositionOptions
@@ -105,7 +105,7 @@ class CreateCompositionOptions extends Options
         string $format = Values::NONE,
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
-        bool $trim = Values::NONE
+        bool $trim = Values::BOOL_NONE
 
     ) {
         $this->options['videoLayout'] = $videoLayout;
@@ -237,8 +237,8 @@ class ReadCompositionOptions extends Options
     public function __construct(
         
         string $status = Values::NONE,
-        \DateTime $dateCreatedAfter = Values::NONE,
-        \DateTime $dateCreatedBefore = Values::NONE,
+        \DateTime $dateCreatedAfter = null,
+        \DateTime $dateCreatedBefore = null,
         string $roomSid = Values::NONE
 
     ) {

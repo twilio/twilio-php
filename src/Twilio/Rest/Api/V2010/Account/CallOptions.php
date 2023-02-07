@@ -68,21 +68,21 @@ abstract class CallOptions
         array $statusCallbackEvent = Values::ARRAY_NONE,
         string $statusCallbackMethod = Values::NONE,
         string $sendDigits = Values::NONE,
-        int $timeout = Values::NONE,
-        bool $record = Values::NONE,
+        int $timeout = Values::INT_NONE,
+        bool $record = Values::BOOL_NONE,
         string $recordingChannels = Values::NONE,
         string $recordingStatusCallback = Values::NONE,
         string $recordingStatusCallbackMethod = Values::NONE,
         string $sipAuthUsername = Values::NONE,
         string $sipAuthPassword = Values::NONE,
         string $machineDetection = Values::NONE,
-        int $machineDetectionTimeout = Values::NONE,
+        int $machineDetectionTimeout = Values::INT_NONE,
         array $recordingStatusCallbackEvent = Values::ARRAY_NONE,
         string $trim = Values::NONE,
         string $callerId = Values::NONE,
-        int $machineDetectionSpeechThreshold = Values::NONE,
-        int $machineDetectionSpeechEndThreshold = Values::NONE,
-        int $machineDetectionSilenceTimeout = Values::NONE,
+        int $machineDetectionSpeechThreshold = Values::INT_NONE,
+        int $machineDetectionSpeechEndThreshold = Values::INT_NONE,
+        int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $asyncAmd = Values::NONE,
         string $asyncAmdStatusCallback = Values::NONE,
         string $asyncAmdStatusCallbackMethod = Values::NONE,
@@ -90,7 +90,7 @@ abstract class CallOptions
         string $callReason = Values::NONE,
         string $callToken = Values::NONE,
         string $recordingTrack = Values::NONE,
-        int $timeLimit = Values::NONE
+        int $timeLimit = Values::INT_NONE
 
     ): CreateCallOptions
     {
@@ -152,12 +152,12 @@ abstract class CallOptions
         string $from = Values::NONE,
         string $parentCallSid = Values::NONE,
         string $status = Values::NONE,
-        string $startTimeBefore = Values::NONE,
-        string $startTime = Values::NONE,
-        string $startTimeAfter = Values::NONE,
-        string $endTimeBefore = Values::NONE,
-        string $endTime = Values::NONE,
-        string $endTimeAfter = Values::NONE
+        string $startTimeBefore = null,
+        string $startTime = null,
+        string $startTimeAfter = null,
+        string $endTimeBefore = null,
+        string $endTime = null,
+        string $endTimeAfter = null
 
     ): ReadCallOptions
     {
@@ -197,7 +197,7 @@ abstract class CallOptions
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
         string $twiml = Values::NONE,
-        int $timeLimit = Values::NONE
+        int $timeLimit = Values::INT_NONE
 
     ): UpdateCallOptions
     {
@@ -265,21 +265,21 @@ class CreateCallOptions extends Options
         array $statusCallbackEvent = Values::ARRAY_NONE,
         string $statusCallbackMethod = Values::NONE,
         string $sendDigits = Values::NONE,
-        int $timeout = Values::NONE,
-        bool $record = Values::NONE,
+        int $timeout = Values::INT_NONE,
+        bool $record = Values::BOOL_NONE,
         string $recordingChannels = Values::NONE,
         string $recordingStatusCallback = Values::NONE,
         string $recordingStatusCallbackMethod = Values::NONE,
         string $sipAuthUsername = Values::NONE,
         string $sipAuthPassword = Values::NONE,
         string $machineDetection = Values::NONE,
-        int $machineDetectionTimeout = Values::NONE,
+        int $machineDetectionTimeout = Values::INT_NONE,
         array $recordingStatusCallbackEvent = Values::ARRAY_NONE,
         string $trim = Values::NONE,
         string $callerId = Values::NONE,
-        int $machineDetectionSpeechThreshold = Values::NONE,
-        int $machineDetectionSpeechEndThreshold = Values::NONE,
-        int $machineDetectionSilenceTimeout = Values::NONE,
+        int $machineDetectionSpeechThreshold = Values::INT_NONE,
+        int $machineDetectionSpeechEndThreshold = Values::INT_NONE,
+        int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $asyncAmd = Values::NONE,
         string $asyncAmdStatusCallback = Values::NONE,
         string $asyncAmdStatusCallbackMethod = Values::NONE,
@@ -287,7 +287,7 @@ class CreateCallOptions extends Options
         string $callReason = Values::NONE,
         string $callToken = Values::NONE,
         string $recordingTrack = Values::NONE,
-        int $timeLimit = Values::NONE
+        int $timeLimit = Values::INT_NONE
 
     ) {
         $this->options['url'] = $url;
@@ -755,12 +755,12 @@ class ReadCallOptions extends Options
         string $from = Values::NONE,
         string $parentCallSid = Values::NONE,
         string $status = Values::NONE,
-        string $startTimeBefore = Values::NONE,
-        string $startTime = Values::NONE,
-        string $startTimeAfter = Values::NONE,
-        string $endTimeBefore = Values::NONE,
-        string $endTime = Values::NONE,
-        string $endTimeAfter = Values::NONE
+        string $startTimeBefore = null,
+        string $startTime = null,
+        string $startTimeAfter = null,
+        string $endTimeBefore = null,
+        string $endTime = null,
+        string $endTimeAfter = null
 
     ) {
         $this->options['to'] = $to;
@@ -930,7 +930,7 @@ class UpdateCallOptions extends Options
         string $statusCallback = Values::NONE,
         string $statusCallbackMethod = Values::NONE,
         string $twiml = Values::NONE,
-        int $timeLimit = Values::NONE
+        int $timeLimit = Values::INT_NONE
 
     ) {
         $this->options['url'] = $url;

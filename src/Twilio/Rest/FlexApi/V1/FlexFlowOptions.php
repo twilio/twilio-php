@@ -40,19 +40,19 @@ abstract class FlexFlowOptions
     public static function create(
         
         string $contactIdentity = Values::NONE,
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $integrationType = Values::NONE,
         string $integrationFlowSid = Values::NONE,
         string $integrationUrl = Values::NONE,
         string $integrationWorkspaceSid = Values::NONE,
         string $integrationWorkflowSid = Values::NONE,
         string $integrationChannel = Values::NONE,
-        int $integrationTimeout = Values::NONE,
-        int $integrationPriority = Values::NONE,
-        bool $integrationCreationOnMessage = Values::NONE,
-        bool $longLived = Values::NONE,
-        bool $janitorEnabled = Values::NONE,
-        int $integrationRetryCount = Values::NONE
+        int $integrationTimeout = Values::INT_NONE,
+        int $integrationPriority = Values::INT_NONE,
+        bool $integrationCreationOnMessage = Values::BOOL_NONE,
+        bool $longLived = Values::BOOL_NONE,
+        bool $janitorEnabled = Values::BOOL_NONE,
+        int $integrationRetryCount = Values::INT_NONE
 
     ): CreateFlexFlowOptions
     {
@@ -117,19 +117,19 @@ abstract class FlexFlowOptions
         string $chatServiceSid = Values::NONE,
         string $channelType = Values::NONE,
         string $contactIdentity = Values::NONE,
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $integrationType = Values::NONE,
         string $integrationFlowSid = Values::NONE,
         string $integrationUrl = Values::NONE,
         string $integrationWorkspaceSid = Values::NONE,
         string $integrationWorkflowSid = Values::NONE,
         string $integrationChannel = Values::NONE,
-        int $integrationTimeout = Values::NONE,
-        int $integrationPriority = Values::NONE,
-        bool $integrationCreationOnMessage = Values::NONE,
-        bool $longLived = Values::NONE,
-        bool $janitorEnabled = Values::NONE,
-        int $integrationRetryCount = Values::NONE
+        int $integrationTimeout = Values::INT_NONE,
+        int $integrationPriority = Values::INT_NONE,
+        bool $integrationCreationOnMessage = Values::BOOL_NONE,
+        bool $longLived = Values::BOOL_NONE,
+        bool $janitorEnabled = Values::BOOL_NONE,
+        int $integrationRetryCount = Values::INT_NONE
 
     ): UpdateFlexFlowOptions
     {
@@ -177,19 +177,19 @@ class CreateFlexFlowOptions extends Options
     public function __construct(
         
         string $contactIdentity = Values::NONE,
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $integrationType = Values::NONE,
         string $integrationFlowSid = Values::NONE,
         string $integrationUrl = Values::NONE,
         string $integrationWorkspaceSid = Values::NONE,
         string $integrationWorkflowSid = Values::NONE,
         string $integrationChannel = Values::NONE,
-        int $integrationTimeout = Values::NONE,
-        int $integrationPriority = Values::NONE,
-        bool $integrationCreationOnMessage = Values::NONE,
-        bool $longLived = Values::NONE,
-        bool $janitorEnabled = Values::NONE,
-        int $integrationRetryCount = Values::NONE
+        int $integrationTimeout = Values::INT_NONE,
+        int $integrationPriority = Values::INT_NONE,
+        bool $integrationCreationOnMessage = Values::BOOL_NONE,
+        bool $longLived = Values::BOOL_NONE,
+        bool $janitorEnabled = Values::BOOL_NONE,
+        int $integrationRetryCount = Values::INT_NONE
 
     ) {
         $this->options['contactIdentity'] = $contactIdentity;
@@ -452,19 +452,19 @@ class UpdateFlexFlowOptions extends Options
         string $chatServiceSid = Values::NONE,
         string $channelType = Values::NONE,
         string $contactIdentity = Values::NONE,
-        bool $enabled = Values::NONE,
+        bool $enabled = Values::BOOL_NONE,
         string $integrationType = Values::NONE,
         string $integrationFlowSid = Values::NONE,
         string $integrationUrl = Values::NONE,
         string $integrationWorkspaceSid = Values::NONE,
         string $integrationWorkflowSid = Values::NONE,
         string $integrationChannel = Values::NONE,
-        int $integrationTimeout = Values::NONE,
-        int $integrationPriority = Values::NONE,
-        bool $integrationCreationOnMessage = Values::NONE,
-        bool $longLived = Values::NONE,
-        bool $janitorEnabled = Values::NONE,
-        int $integrationRetryCount = Values::NONE
+        int $integrationTimeout = Values::INT_NONE,
+        int $integrationPriority = Values::INT_NONE,
+        bool $integrationCreationOnMessage = Values::BOOL_NONE,
+        bool $longLived = Values::BOOL_NONE,
+        bool $janitorEnabled = Values::BOOL_NONE,
+        int $integrationRetryCount = Values::INT_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
