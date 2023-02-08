@@ -25,30 +25,30 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $brandRegistrationSid
- * @property string $messagingServiceSid
- * @property string $description
- * @property string[] $messageSamples
- * @property string $usAppToPersonUsecase
- * @property bool $hasEmbeddedLinks
- * @property bool $hasEmbeddedPhone
- * @property string $campaignStatus
- * @property string $campaignId
- * @property bool $isExternallyRegistered
- * @property array $rateLimits
- * @property string $messageFlow
- * @property string $optInMessage
- * @property string $optOutMessage
- * @property string $helpMessage
- * @property string[] $optInKeywords
- * @property string[] $optOutKeywords
- * @property string[] $helpKeywords
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property bool $mock
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $brandRegistrationSid
+ * @property string|null $messagingServiceSid
+ * @property string|null $description
+ * @property string[]|null $messageSamples
+ * @property string|null $usAppToPersonUsecase
+ * @property bool|null $hasEmbeddedLinks
+ * @property bool|null $hasEmbeddedPhone
+ * @property string|null $campaignStatus
+ * @property string|null $campaignId
+ * @property bool|null $isExternallyRegistered
+ * @property array|null $rateLimits
+ * @property string|null $messageFlow
+ * @property string|null $optInMessage
+ * @property string|null $optOutMessage
+ * @property string|null $helpMessage
+ * @property string[]|null $optInKeywords
+ * @property string[]|null $optOutKeywords
+ * @property string[]|null $helpKeywords
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property bool|null $mock
  */
 class UsAppToPersonInstance extends InstanceResource
 {

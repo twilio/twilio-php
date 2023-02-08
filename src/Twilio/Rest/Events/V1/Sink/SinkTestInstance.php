@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property string $result
+ * @property string|null $result
  */
 class SinkTestInstance extends InstanceResource
 {

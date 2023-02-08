@@ -25,15 +25,15 @@ use Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList;
 
 
 /**
- * @property string $isoCode
- * @property string $name
- * @property string $continent
- * @property string[] $countryCodes
- * @property bool $lowRiskNumbersEnabled
- * @property bool $highRiskSpecialNumbersEnabled
- * @property bool $highRiskTollfraudNumbersEnabled
- * @property string $url
- * @property array $links
+ * @property string|null $isoCode
+ * @property string|null $name
+ * @property string|null $continent
+ * @property string[]|null $countryCodes
+ * @property bool|null $lowRiskNumbersEnabled
+ * @property bool|null $highRiskSpecialNumbersEnabled
+ * @property bool|null $highRiskTollfraudNumbersEnabled
+ * @property string|null $url
+ * @property array|null $links
  */
 class CountryInstance extends InstanceResource
 {

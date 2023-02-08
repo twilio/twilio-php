@@ -25,11 +25,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $workspaceId
- * @property string $sessionExpiry
- * @property string $sessionId
- * @property string $baseUrl
- * @property string $url
+ * @property string|null $workspaceId
+ * @property string|null $sessionExpiry
+ * @property string|null $sessionId
+ * @property string|null $baseUrl
+ * @property string|null $url
  */
 class InsightsSessionInstance extends InstanceResource
 {

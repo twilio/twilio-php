@@ -25,10 +25,10 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property bool $advancedFeatures
- * @property bool $voiceTrace
- * @property string $url
+ * @property string|null $accountSid
+ * @property bool|null $advancedFeatures
+ * @property bool|null $voiceTrace
+ * @property string|null $url
  */
 class SettingInstance extends InstanceResource
 {

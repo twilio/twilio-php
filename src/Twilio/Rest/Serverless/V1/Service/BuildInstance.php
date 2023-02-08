@@ -26,18 +26,18 @@ use Twilio\Rest\Serverless\V1\Service\Build\BuildStatusList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
  * @property string $status
- * @property array[] $assetVersions
- * @property array[] $functionVersions
- * @property array[] $dependencies
+ * @property array[]|null $assetVersions
+ * @property array[]|null $functionVersions
+ * @property array[]|null $dependencies
  * @property string $runtime
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class BuildInstance extends InstanceResource
 {

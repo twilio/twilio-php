@@ -28,17 +28,17 @@ use Twilio\Rest\Serverless\V1\Service\Environment\VariableList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $buildSid
- * @property string $uniqueName
- * @property string $domainSuffix
- * @property string $domainName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $buildSid
+ * @property string|null $uniqueName
+ * @property string|null $domainSuffix
+ * @property string|null $domainName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class EnvironmentInstance extends InstanceResource
 {

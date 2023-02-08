@@ -25,18 +25,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $iccid
- * @property string $simSid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $iccid
+ * @property string|null $simSid
  * @property string $status
- * @property string $eid
- * @property string $smdpPlusAddress
- * @property string $errorCode
- * @property string $errorMessage
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $eid
+ * @property string|null $smdpPlusAddress
+ * @property string|null $errorCode
+ * @property string|null $errorMessage
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class EsimProfileInstance extends InstanceResource
 {

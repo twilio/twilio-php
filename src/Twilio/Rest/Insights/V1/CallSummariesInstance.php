@@ -25,28 +25,28 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $callSid
+ * @property string|null $accountSid
+ * @property string|null $callSid
  * @property string $answeredBy
  * @property string $callType
  * @property string $callState
  * @property string $processingState
- * @property \DateTime $createdTime
- * @property \DateTime $startTime
- * @property \DateTime $endTime
- * @property int $duration
- * @property int $connectDuration
- * @property array $from
- * @property array $to
- * @property array $carrierEdge
- * @property array $clientEdge
- * @property array $sdkEdge
- * @property array $sipEdge
- * @property string[] $tags
- * @property string $url
- * @property array $attributes
- * @property array $properties
- * @property array $trust
+ * @property \DateTime|null $createdTime
+ * @property \DateTime|null $startTime
+ * @property \DateTime|null $endTime
+ * @property int|null $duration
+ * @property int|null $connectDuration
+ * @property array|null $from
+ * @property array|null $to
+ * @property array|null $carrierEdge
+ * @property array|null $clientEdge
+ * @property array|null $sdkEdge
+ * @property array|null $sipEdge
+ * @property string[]|null $tags
+ * @property string|null $url
+ * @property array|null $attributes
+ * @property array|null $properties
+ * @property array|null $trust
  */
 class CallSummariesInstance extends InstanceResource
 {

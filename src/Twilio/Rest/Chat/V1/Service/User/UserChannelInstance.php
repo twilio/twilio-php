@@ -24,14 +24,14 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $channelSid
- * @property string $memberSid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $channelSid
+ * @property string|null $memberSid
  * @property string $status
- * @property int $lastConsumedMessageIndex
- * @property int $unreadMessagesCount
- * @property array $links
+ * @property int|null $lastConsumedMessageIndex
+ * @property int|null $unreadMessagesCount
+ * @property array|null $links
  */
 class UserChannelInstance extends InstanceResource
 {

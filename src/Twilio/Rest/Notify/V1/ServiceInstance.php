@@ -28,26 +28,26 @@ use Twilio\Rest\Notify\V1\Service\BindingList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $apnCredentialSid
- * @property string $gcmCredentialSid
- * @property string $fcmCredentialSid
- * @property string $messagingServiceSid
- * @property string $facebookMessengerPageId
- * @property string $defaultApnNotificationProtocolVersion
- * @property string $defaultGcmNotificationProtocolVersion
- * @property string $defaultFcmNotificationProtocolVersion
- * @property bool $logEnabled
- * @property string $url
- * @property array $links
- * @property string $alexaSkillId
- * @property string $defaultAlexaNotificationProtocolVersion
- * @property string $deliveryCallbackUrl
- * @property bool $deliveryCallbackEnabled
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $apnCredentialSid
+ * @property string|null $gcmCredentialSid
+ * @property string|null $fcmCredentialSid
+ * @property string|null $messagingServiceSid
+ * @property string|null $facebookMessengerPageId
+ * @property string|null $defaultApnNotificationProtocolVersion
+ * @property string|null $defaultGcmNotificationProtocolVersion
+ * @property string|null $defaultFcmNotificationProtocolVersion
+ * @property bool|null $logEnabled
+ * @property string|null $url
+ * @property array|null $links
+ * @property string|null $alexaSkillId
+ * @property string|null $defaultAlexaNotificationProtocolVersion
+ * @property string|null $deliveryCallbackUrl
+ * @property bool|null $deliveryCallbackEnabled
  */
 class ServiceInstance extends InstanceResource
 {

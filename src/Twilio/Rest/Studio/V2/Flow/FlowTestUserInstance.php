@@ -24,9 +24,9 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string[] $testUsers
- * @property string $url
+ * @property string|null $sid
+ * @property string[]|null $testUsers
+ * @property string|null $url
  */
 class FlowTestUserInstance extends InstanceResource
 {

@@ -24,17 +24,17 @@ use Twilio\Version;
 
 
 /**
- * @property string $timestamp
- * @property string $callSid
- * @property string $accountSid
+ * @property string|null $timestamp
+ * @property string|null $callSid
+ * @property string|null $accountSid
  * @property string $edge
- * @property string $group
+ * @property string|null $group
  * @property string $level
- * @property string $name
- * @property array $carrierEdge
- * @property array $sipEdge
- * @property array $sdkEdge
- * @property array $clientEdge
+ * @property string|null $name
+ * @property array|null $carrierEdge
+ * @property array|null $sipEdge
+ * @property array|null $sdkEdge
+ * @property array|null $clientEdge
  */
 class EventInstance extends InstanceResource
 {

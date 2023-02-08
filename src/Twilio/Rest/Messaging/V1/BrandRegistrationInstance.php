@@ -26,26 +26,26 @@ use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $customerProfileBundleSid
- * @property string $a2PProfileBundleSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $brandType
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $customerProfileBundleSid
+ * @property string|null $a2PProfileBundleSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $brandType
  * @property string $status
- * @property string $tcrId
- * @property string $failureReason
- * @property string $url
- * @property int $brandScore
- * @property string[] $brandFeedback
+ * @property string|null $tcrId
+ * @property string|null $failureReason
+ * @property string|null $url
+ * @property int|null $brandScore
+ * @property string[]|null $brandFeedback
  * @property string $identityStatus
- * @property bool $russell3000
- * @property bool $governmentEntity
- * @property string $taxExemptStatus
- * @property bool $skipAutomaticSecVet
- * @property bool $mock
- * @property array $links
+ * @property bool|null $russell3000
+ * @property bool|null $governmentEntity
+ * @property string|null $taxExemptStatus
+ * @property bool|null $skipAutomaticSecVet
+ * @property bool|null $mock
+ * @property array|null $links
  */
 class BrandRegistrationInstance extends InstanceResource
 {

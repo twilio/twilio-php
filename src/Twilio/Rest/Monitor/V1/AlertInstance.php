@@ -25,25 +25,25 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $alertText
- * @property string $apiVersion
- * @property \DateTime $dateCreated
- * @property \DateTime $dateGenerated
- * @property \DateTime $dateUpdated
- * @property string $errorCode
- * @property string $logLevel
- * @property string $moreInfo
- * @property string $requestMethod
- * @property string $requestUrl
- * @property string $requestVariables
- * @property string $resourceSid
- * @property string $responseBody
- * @property string $responseHeaders
- * @property string $sid
- * @property string $url
- * @property string $requestHeaders
- * @property string $serviceSid
+ * @property string|null $accountSid
+ * @property string|null $alertText
+ * @property string|null $apiVersion
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateGenerated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $errorCode
+ * @property string|null $logLevel
+ * @property string|null $moreInfo
+ * @property string|null $requestMethod
+ * @property string|null $requestUrl
+ * @property string|null $requestVariables
+ * @property string|null $resourceSid
+ * @property string|null $responseBody
+ * @property string|null $responseHeaders
+ * @property string|null $sid
+ * @property string|null $url
+ * @property string|null $requestHeaders
+ * @property string|null $serviceSid
  */
 class AlertInstance extends InstanceResource
 {

@@ -25,17 +25,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $verificationSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $verificationSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  * @property string $conversionStatus
  * @property string $channel
- * @property array $price
- * @property array $channelData
- * @property string $url
+ * @property array|null $price
+ * @property array|null $channelData
+ * @property string|null $url
  */
 class VerificationAttemptInstance extends InstanceResource
 {

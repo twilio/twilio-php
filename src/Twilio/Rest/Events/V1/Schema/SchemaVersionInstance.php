@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $id
- * @property int $schemaVersion
- * @property \DateTime $dateCreated
- * @property string $url
- * @property string $raw
+ * @property string|null $id
+ * @property int|null $schemaVersion
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
+ * @property string|null $raw
  */
 class SchemaVersionInstance extends InstanceResource
 {

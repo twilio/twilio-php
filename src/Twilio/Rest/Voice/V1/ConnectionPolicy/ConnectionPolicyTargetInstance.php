@@ -26,17 +26,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $connectionPolicySid
- * @property string $sid
- * @property string $friendlyName
- * @property string $target
- * @property int $priority
- * @property int $weight
- * @property bool $enabled
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $connectionPolicySid
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $target
+ * @property int|null $priority
+ * @property int|null $weight
+ * @property bool|null $enabled
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class ConnectionPolicyTargetInstance extends InstanceResource
 {

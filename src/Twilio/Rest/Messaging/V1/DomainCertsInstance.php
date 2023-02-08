@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $domainSid
- * @property \DateTime $dateUpdated
- * @property \DateTime $dateExpires
- * @property \DateTime $dateCreated
- * @property string $domainName
- * @property string $certificateSid
- * @property string $url
- * @property bool $validated
+ * @property string|null $domainSid
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $dateExpires
+ * @property \DateTime|null $dateCreated
+ * @property string|null $domainName
+ * @property string|null $certificateSid
+ * @property string|null $url
+ * @property bool|null $validated
  */
 class DomainCertsInstance extends InstanceResource
 {

@@ -24,9 +24,9 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $phoneNumber
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $phoneNumber
+ * @property string|null $url
  */
 class SafelistInstance extends InstanceResource
 {

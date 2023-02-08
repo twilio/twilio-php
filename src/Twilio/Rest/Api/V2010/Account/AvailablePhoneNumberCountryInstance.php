@@ -31,11 +31,11 @@ use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList;
 
 
 /**
- * @property string $countryCode
- * @property string $country
- * @property string $uri
- * @property bool $beta
- * @property array $subresourceUris
+ * @property string|null $countryCode
+ * @property string|null $country
+ * @property string|null $uri
+ * @property bool|null $beta
+ * @property array|null $subresourceUris
  */
 class AvailablePhoneNumberCountryInstance extends InstanceResource
 {

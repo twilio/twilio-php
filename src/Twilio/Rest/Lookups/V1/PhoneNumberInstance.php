@@ -25,13 +25,13 @@ use Twilio\Version;
 
 
 /**
- * @property array $callerName
- * @property string $countryCode
- * @property string $phoneNumber
- * @property string $nationalFormat
- * @property array $carrier
- * @property array $addOns
- * @property string $url
+ * @property array|null $callerName
+ * @property string|null $countryCode
+ * @property string|null $phoneNumber
+ * @property string|null $nationalFormat
+ * @property array|null $carrier
+ * @property array|null $addOns
+ * @property string|null $url
  */
 class PhoneNumberInstance extends InstanceResource
 {

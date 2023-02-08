@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property array $cumulative
- * @property array $realtime
- * @property string $taskQueueSid
- * @property string $workspaceSid
+ * @property string|null $accountSid
+ * @property array|null $cumulative
+ * @property array|null $realtime
+ * @property string|null $taskQueueSid
+ * @property string|null $workspaceSid
  */
 class TaskQueuesStatisticsInstance extends InstanceResource
 {

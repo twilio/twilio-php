@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $callSid
- * @property string $friendlyName
- * @property string $phoneNumber
- * @property string $validationCode
+ * @property string|null $accountSid
+ * @property string|null $callSid
+ * @property string|null $friendlyName
+ * @property string|null $phoneNumber
+ * @property string|null $validationCode
  */
 class ValidationRequestInstance extends InstanceResource
 {

@@ -19,15 +19,18 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Content\V1\ContentList;
+use Twilio\Rest\Content\V1\LegacyContentList;
 use Twilio\Version;
 
 /**
  * @property ContentList $contents
+ * @property LegacyContentList $legacyContents
  * @method \Twilio\Rest\Content\V1\ContentContext contents(string $sid)
  */
 class V1 extends Version
 {
     protected $_contents;
+    protected $_legacyContents;
 
     /**
      * Construct the V1 version of Content
@@ -46,6 +49,14 @@ class V1 extends Version
             $this->_contents = new ContentList($this);
         }
         return $this->_contents;
+    }
+
+    protected function getLegacyContents(): LegacyContentList
+    {
+        if (!$this->_legacyContents) {
+            $this->_legacyContents = new LegacyContentList($this);
+        }
+        return $this->_legacyContents;
     }
 
     /**

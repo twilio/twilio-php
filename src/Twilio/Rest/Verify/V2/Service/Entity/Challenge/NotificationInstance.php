@@ -25,15 +25,15 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $entitySid
- * @property string $identity
- * @property string $challengeSid
- * @property string $priority
- * @property int $ttl
- * @property \DateTime $dateCreated
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $entitySid
+ * @property string|null $identity
+ * @property string|null $challengeSid
+ * @property string|null $priority
+ * @property int|null $ttl
+ * @property \DateTime|null $dateCreated
  */
 class NotificationInstance extends InstanceResource
 {

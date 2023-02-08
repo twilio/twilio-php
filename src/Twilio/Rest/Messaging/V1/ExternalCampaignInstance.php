@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $campaignId
- * @property string $messagingServiceSid
- * @property \DateTime $dateCreated
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $campaignId
+ * @property string|null $messagingServiceSid
+ * @property \DateTime|null $dateCreated
  */
 class ExternalCampaignInstance extends InstanceResource
 {

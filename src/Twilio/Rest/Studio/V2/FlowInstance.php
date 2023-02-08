@@ -29,21 +29,21 @@ use Twilio\Rest\Studio\V2\Flow\FlowTestUserList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property array $definition
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property array|null $definition
  * @property string $status
- * @property int $revision
- * @property string $commitMessage
- * @property bool $valid
- * @property array[] $errors
- * @property array[] $warnings
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $webhookUrl
- * @property string $url
- * @property array $links
+ * @property int|null $revision
+ * @property string|null $commitMessage
+ * @property bool|null $valid
+ * @property array[]|null $errors
+ * @property array[]|null $warnings
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $webhookUrl
+ * @property string|null $url
+ * @property array|null $links
  */
 class FlowInstance extends InstanceResource
 {

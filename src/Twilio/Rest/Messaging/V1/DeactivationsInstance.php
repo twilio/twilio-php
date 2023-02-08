@@ -25,7 +25,7 @@ use Twilio\Version;
 
 
 /**
- * @property string $redirectTo
+ * @property string|null $redirectTo
  */
 class DeactivationsInstance extends InstanceResource
 {

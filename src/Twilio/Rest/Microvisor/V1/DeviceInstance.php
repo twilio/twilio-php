@@ -23,21 +23,26 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Rest\Microvisor\V1\Device\DeviceConfigList;
+use Twilio\Rest\Microvisor\V1\Device\DeviceSecretList;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property array $app
- * @property array $logging
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property array|null $app
+ * @property array|null $logging
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class DeviceInstance extends InstanceResource
 {
+    protected $_deviceConfigs;
+    protected $_deviceSecrets;
+
     /**
      * Initialize the DeviceInstance
      *
@@ -106,6 +111,22 @@ class DeviceInstance extends InstanceResource
     {
 
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Access the deviceConfigs
+     */
+    protected function getDeviceConfigs(): DeviceConfigList
+    {
+        return $this->proxy()->deviceConfigs;
+    }
+
+    /**
+     * Access the deviceSecrets
+     */
+    protected function getDeviceSecrets(): DeviceSecretList
+    {
+        return $this->proxy()->deviceSecrets;
     }
 
     /**

@@ -33,24 +33,25 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueBulkRealTimeStatisticsList;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $defaultActivityName
- * @property string $defaultActivitySid
- * @property string $eventCallbackUrl
- * @property string $eventsFilter
- * @property string $friendlyName
- * @property bool $multiTaskEnabled
- * @property string $sid
- * @property string $timeoutActivityName
- * @property string $timeoutActivitySid
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $defaultActivityName
+ * @property string|null $defaultActivitySid
+ * @property string|null $eventCallbackUrl
+ * @property string|null $eventsFilter
+ * @property string|null $friendlyName
+ * @property bool|null $multiTaskEnabled
+ * @property string|null $sid
+ * @property string|null $timeoutActivityName
+ * @property string|null $timeoutActivitySid
  * @property string $prioritizeQueueOrder
- * @property string $url
- * @property array $links
+ * @property string|null $url
+ * @property array|null $links
  */
 class WorkspaceInstance extends InstanceResource
 {
@@ -64,6 +65,7 @@ class WorkspaceInstance extends InstanceResource
     protected $_cumulativeStatistics;
     protected $_realTimeStatistics;
     protected $_statistics;
+    protected $_bulkRealTimeStatistics;
 
     /**
      * Initialize the WorkspaceInstance
@@ -231,6 +233,14 @@ class WorkspaceInstance extends InstanceResource
     protected function getStatistics(): WorkspaceStatisticsList
     {
         return $this->proxy()->statistics;
+    }
+
+    /**
+     * Access the bulkRealTimeStatistics
+     */
+    protected function getBulkRealTimeStatistics(): TaskQueueBulkRealTimeStatisticsList
+    {
+        return $this->proxy()->bulkRealTimeStatistics;
     }
 
     /**

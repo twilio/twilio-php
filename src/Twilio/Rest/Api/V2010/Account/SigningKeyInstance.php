@@ -26,10 +26,10 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class SigningKeyInstance extends InstanceResource
 {

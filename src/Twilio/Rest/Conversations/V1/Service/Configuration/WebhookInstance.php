@@ -25,13 +25,13 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $preWebhookUrl
- * @property string $postWebhookUrl
- * @property string[] $filters
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $preWebhookUrl
+ * @property string|null $postWebhookUrl
+ * @property string[]|null $filters
  * @property string $method
- * @property string $url
+ * @property string|null $url
  */
 class WebhookInstance extends InstanceResource
 {

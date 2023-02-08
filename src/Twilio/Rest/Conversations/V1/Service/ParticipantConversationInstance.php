@@ -25,22 +25,22 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $participantSid
- * @property string $participantUserSid
- * @property string $participantIdentity
- * @property array $participantMessagingBinding
- * @property string $conversationSid
- * @property string $conversationUniqueName
- * @property string $conversationFriendlyName
- * @property string $conversationAttributes
- * @property \DateTime $conversationDateCreated
- * @property \DateTime $conversationDateUpdated
- * @property string $conversationCreatedBy
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $participantSid
+ * @property string|null $participantUserSid
+ * @property string|null $participantIdentity
+ * @property array|null $participantMessagingBinding
+ * @property string|null $conversationSid
+ * @property string|null $conversationUniqueName
+ * @property string|null $conversationFriendlyName
+ * @property string|null $conversationAttributes
+ * @property \DateTime|null $conversationDateCreated
+ * @property \DateTime|null $conversationDateUpdated
+ * @property string|null $conversationCreatedBy
  * @property string $conversationState
- * @property array $conversationTimers
- * @property array $links
+ * @property array|null $conversationTimers
+ * @property array|null $links
  */
 class ParticipantConversationInstance extends InstanceResource
 {

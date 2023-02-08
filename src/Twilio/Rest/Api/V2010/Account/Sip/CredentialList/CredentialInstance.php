@@ -26,13 +26,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $credentialListSid
- * @property string $username
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $uri
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $credentialListSid
+ * @property string|null $username
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $uri
  */
 class CredentialInstance extends InstanceResource
 {

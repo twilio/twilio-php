@@ -25,13 +25,13 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $identity
- * @property string $friendlyName
- * @property string $avatar
+ * @property string|null $sid
+ * @property string|null $identity
+ * @property string|null $friendlyName
+ * @property string|null $avatar
  * @property string $state
- * @property bool $isAvailable
- * @property string $url
+ * @property bool|null $isAvailable
+ * @property string|null $url
  */
 class UserInstance extends InstanceResource
 {

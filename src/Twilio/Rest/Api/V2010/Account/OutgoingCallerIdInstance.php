@@ -26,13 +26,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $accountSid
- * @property string $phoneNumber
- * @property string $uri
+ * @property string|null $sid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $accountSid
+ * @property string|null $phoneNumber
+ * @property string|null $uri
  */
 class OutgoingCallerIdInstance extends InstanceResource
 {

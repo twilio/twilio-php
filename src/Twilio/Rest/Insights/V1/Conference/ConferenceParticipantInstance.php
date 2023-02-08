@@ -26,33 +26,33 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $participantSid
- * @property string $label
- * @property string $conferenceSid
- * @property string $callSid
- * @property string $accountSid
+ * @property string|null $participantSid
+ * @property string|null $label
+ * @property string|null $conferenceSid
+ * @property string|null $callSid
+ * @property string|null $accountSid
  * @property string $callDirection
- * @property string $from
- * @property string $to
+ * @property string|null $from
+ * @property string|null $to
  * @property string $callStatus
- * @property string $countryCode
- * @property bool $isModerator
- * @property \DateTime $joinTime
- * @property \DateTime $leaveTime
- * @property int $durationSeconds
- * @property int $outboundQueueLength
- * @property int $outboundTimeInQueue
+ * @property string|null $countryCode
+ * @property bool|null $isModerator
+ * @property \DateTime|null $joinTime
+ * @property \DateTime|null $leaveTime
+ * @property int|null $durationSeconds
+ * @property int|null $outboundQueueLength
+ * @property int|null $outboundTimeInQueue
  * @property string $jitterBufferSize
- * @property bool $isCoach
- * @property string[] $coachedParticipants
+ * @property bool|null $isCoach
+ * @property string[]|null $coachedParticipants
  * @property string $participantRegion
  * @property string $conferenceRegion
  * @property string $callType
  * @property string $processingState
- * @property array $properties
- * @property array $events
- * @property array $metrics
- * @property string $url
+ * @property array|null $properties
+ * @property array|null $events
+ * @property array|null $metrics
+ * @property string|null $url
  */
 class ConferenceParticipantInstance extends InstanceResource
 {

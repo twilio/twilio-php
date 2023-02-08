@@ -25,13 +25,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $callSid
- * @property string $name
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $callSid
+ * @property string|null $name
  * @property string $status
- * @property \DateTime $dateUpdated
- * @property string $uri
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $uri
  */
 class SiprecInstance extends InstanceResource
 {

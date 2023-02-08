@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $callSid
- * @property string $sid
- * @property \DateTime $dateCreated
- * @property string $uri
+ * @property string|null $accountSid
+ * @property string|null $callSid
+ * @property string|null $sid
+ * @property \DateTime|null $dateCreated
+ * @property string|null $uri
  */
 class UserDefinedMessageSubscriptionInstance extends InstanceResource
 {

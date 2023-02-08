@@ -28,30 +28,30 @@ use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 
 
 /**
- * @property string $sid
+ * @property string|null $sid
  * @property string $status
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $accountSid
- * @property bool $enableTurn
- * @property string $uniqueName
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property \DateTime $endTime
- * @property int $duration
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $accountSid
+ * @property bool|null $enableTurn
+ * @property string|null $uniqueName
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property \DateTime|null $endTime
+ * @property int|null $duration
  * @property string $type
- * @property int $maxParticipants
- * @property int $maxParticipantDuration
- * @property int $maxConcurrentPublishedTracks
- * @property bool $recordParticipantsOnConnect
- * @property string[] $videoCodecs
- * @property string $mediaRegion
- * @property bool $audioOnly
- * @property int $emptyRoomTimeout
- * @property int $unusedRoomTimeout
- * @property bool $largeRoom
- * @property string $url
- * @property array $links
+ * @property int|null $maxParticipants
+ * @property int|null $maxParticipantDuration
+ * @property int|null $maxConcurrentPublishedTracks
+ * @property bool|null $recordParticipantsOnConnect
+ * @property string[]|null $videoCodecs
+ * @property string|null $mediaRegion
+ * @property bool|null $audioOnly
+ * @property int|null $emptyRoomTimeout
+ * @property int|null $unusedRoomTimeout
+ * @property bool|null $largeRoom
+ * @property string|null $url
+ * @property array|null $links
  */
 class RoomInstance extends InstanceResource
 {

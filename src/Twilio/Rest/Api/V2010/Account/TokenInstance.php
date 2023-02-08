@@ -25,13 +25,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string[] $iceServers
- * @property string $password
- * @property string $ttl
- * @property string $username
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string[]|null $iceServers
+ * @property string|null $password
+ * @property string|null $ttl
+ * @property string|null $username
  */
 class TokenInstance extends InstanceResource
 {

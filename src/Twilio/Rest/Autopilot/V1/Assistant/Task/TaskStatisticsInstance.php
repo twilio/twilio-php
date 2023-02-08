@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $assistantSid
- * @property string $taskSid
- * @property int $samplesCount
- * @property int $fieldsCount
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $assistantSid
+ * @property string|null $taskSid
+ * @property int|null $samplesCount
+ * @property int|null $fieldsCount
+ * @property string|null $url
  */
 class TaskStatisticsInstance extends InstanceResource
 {

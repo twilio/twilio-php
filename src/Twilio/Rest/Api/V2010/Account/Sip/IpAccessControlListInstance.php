@@ -26,13 +26,13 @@ use Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property array $subresourceUris
- * @property string $uri
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property array|null $subresourceUris
+ * @property string|null $uri
  */
 class IpAccessControlListInstance extends InstanceResource
 {

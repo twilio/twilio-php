@@ -27,15 +27,15 @@ use Twilio\Rest\Events\V1\Sink\SinkValidateList;
 
 
 /**
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $description
- * @property string $sid
- * @property array $sinkConfiguration
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $description
+ * @property string|null $sid
+ * @property array|null $sinkConfiguration
  * @property string $sinkType
  * @property string $status
- * @property string $url
- * @property array $links
+ * @property string|null $url
+ * @property array|null $links
  */
 class SinkInstance extends InstanceResource
 {

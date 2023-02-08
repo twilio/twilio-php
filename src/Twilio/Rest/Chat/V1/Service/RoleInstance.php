@@ -25,15 +25,15 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $friendlyName
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $friendlyName
  * @property string $type
- * @property string[] $permissions
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string[]|null $permissions
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class RoleInstance extends InstanceResource
 {

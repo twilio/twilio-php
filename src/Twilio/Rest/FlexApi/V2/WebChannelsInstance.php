@@ -24,8 +24,8 @@ use Twilio\Version;
 
 
 /**
- * @property string $conversationSid
- * @property string $identity
+ * @property string|null $conversationSid
+ * @property string|null $identity
  */
 class WebChannelsInstance extends InstanceResource
 {

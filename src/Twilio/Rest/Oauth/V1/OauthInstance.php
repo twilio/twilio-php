@@ -24,8 +24,8 @@ use Twilio\Version;
 
 
 /**
- * @property array $keys
- * @property string $url
+ * @property array|null $keys
+ * @property string|null $url
  */
 class OauthInstance extends InstanceResource
 {

@@ -26,28 +26,28 @@ use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $incomingPhoneNumberSid
- * @property string $addressSid
- * @property string $signingDocumentSid
- * @property string $phoneNumber
- * @property PhoneNumberCapabilities $capabilities
- * @property string $friendlyName
- * @property string $uniqueName
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $incomingPhoneNumberSid
+ * @property string|null $addressSid
+ * @property string|null $signingDocumentSid
+ * @property string|null $phoneNumber
+ * @property PhoneNumberCapabilities|null $capabilities
+ * @property string|null $friendlyName
+ * @property string|null $uniqueName
  * @property string $status
- * @property string $failureReason
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property int $verificationAttempts
- * @property string $email
- * @property string[] $ccEmails
+ * @property string|null $failureReason
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property int|null $verificationAttempts
+ * @property string|null $email
+ * @property string[]|null $ccEmails
  * @property string $verificationType
- * @property string $verificationDocumentSid
- * @property string $extension
- * @property int $callDelay
- * @property string $verificationCode
- * @property string[] $verificationCallSids
+ * @property string|null $verificationDocumentSid
+ * @property string|null $extension
+ * @property int|null $callDelay
+ * @property string|null $verificationCode
+ * @property string[]|null $verificationCallSids
  */
 class DependentHostedNumberOrderInstance extends InstanceResource
 {

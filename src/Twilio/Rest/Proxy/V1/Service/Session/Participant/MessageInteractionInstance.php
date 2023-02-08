@@ -25,26 +25,26 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $sessionSid
- * @property string $serviceSid
- * @property string $accountSid
- * @property string $data
+ * @property string|null $sid
+ * @property string|null $sessionSid
+ * @property string|null $serviceSid
+ * @property string|null $accountSid
+ * @property string|null $data
  * @property string $type
- * @property string $participantSid
- * @property string $inboundParticipantSid
- * @property string $inboundResourceSid
+ * @property string|null $participantSid
+ * @property string|null $inboundParticipantSid
+ * @property string|null $inboundResourceSid
  * @property string $inboundResourceStatus
- * @property string $inboundResourceType
- * @property string $inboundResourceUrl
- * @property string $outboundParticipantSid
- * @property string $outboundResourceSid
+ * @property string|null $inboundResourceType
+ * @property string|null $inboundResourceUrl
+ * @property string|null $outboundParticipantSid
+ * @property string|null $outboundResourceSid
  * @property string $outboundResourceStatus
- * @property string $outboundResourceType
- * @property string $outboundResourceUrl
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $outboundResourceType
+ * @property string|null $outboundResourceUrl
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class MessageInteractionInstance extends InstanceResource
 {

@@ -34,18 +34,18 @@ use Twilio\Rest\Preview\Understand\Assistant\DialogueList;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $latestModelBuildSid
- * @property array $links
- * @property bool $logQueries
- * @property string $sid
- * @property string $uniqueName
- * @property string $url
- * @property string $callbackUrl
- * @property string $callbackEvents
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $latestModelBuildSid
+ * @property array|null $links
+ * @property bool|null $logQueries
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $url
+ * @property string|null $callbackUrl
+ * @property string|null $callbackEvents
  */
 class AssistantInstance extends InstanceResource
 {

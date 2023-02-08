@@ -25,13 +25,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $country
- * @property string $messagingServiceSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $country
+ * @property string|null $messagingServiceSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class MessagingConfigurationInstance extends InstanceResource
 {

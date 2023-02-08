@@ -1,5 +1,22 @@
 twilio-php Changelog
 ====================
+[2023-02-08] Version 7.0.0-rc.3
+-------------------------------
+**Library - Fix**
+- [PR #769](https://github.com/twilio/twilio-php/pull/769): test failures for PhpUnit >=10. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #767](https://github.com/twilio/twilio-php/pull/767): correct indentation and camelCase version. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #768](https://github.com/twilio/twilio-php/pull/768): correct default values for different data types. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #766](https://github.com/twilio/twilio-php/pull/766): drop removed APIs. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #765](https://github.com/twilio/twilio-php/pull/765): correct version. Thanks to [@isha689](https://github.com/isha689)!
+
+**Library - Chore**
+- [PR #763](https://github.com/twilio/twilio-php/pull/763): add examples for calling common apis. Thanks to [@isha689](https://github.com/isha689)!
+
+**Lookups**
+- Add `disposable_phone_number_risk` package to the lookup response
+- Add `sms_pumping_risk` package to the lookup response
+
+
 [2023-01-25] Version 7.0.0-rc.2
 -------------------------------
 **Library - Chore**

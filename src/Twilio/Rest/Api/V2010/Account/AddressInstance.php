@@ -27,22 +27,22 @@ use Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList;
 
 
 /**
- * @property string $accountSid
- * @property string $city
- * @property string $customerName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $isoCountry
- * @property string $postalCode
- * @property string $region
- * @property string $sid
- * @property string $street
- * @property string $uri
- * @property bool $emergencyEnabled
- * @property bool $validated
- * @property bool $verified
- * @property string $streetSecondary
+ * @property string|null $accountSid
+ * @property string|null $city
+ * @property string|null $customerName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $isoCountry
+ * @property string|null $postalCode
+ * @property string|null $region
+ * @property string|null $sid
+ * @property string|null $street
+ * @property string|null $uri
+ * @property bool|null $emergencyEnabled
+ * @property bool|null $validated
+ * @property bool|null $verified
+ * @property string|null $streetSecondary
  */
 class AddressInstance extends InstanceResource
 {

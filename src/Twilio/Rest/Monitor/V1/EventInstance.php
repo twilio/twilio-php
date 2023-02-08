@@ -25,20 +25,20 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $actorSid
- * @property string $actorType
- * @property string $description
- * @property array $eventData
- * @property \DateTime $eventDate
- * @property string $eventType
- * @property string $resourceSid
- * @property string $resourceType
- * @property string $sid
- * @property string $source
- * @property string $sourceIpAddress
- * @property string $url
- * @property array $links
+ * @property string|null $accountSid
+ * @property string|null $actorSid
+ * @property string|null $actorType
+ * @property string|null $description
+ * @property array|null $eventData
+ * @property \DateTime|null $eventDate
+ * @property string|null $eventType
+ * @property string|null $resourceSid
+ * @property string|null $resourceType
+ * @property string|null $sid
+ * @property string|null $source
+ * @property string|null $sourceIpAddress
+ * @property string|null $url
+ * @property array|null $links
  */
 class EventInstance extends InstanceResource
 {

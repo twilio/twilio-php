@@ -25,13 +25,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $trustProductSid
- * @property string $accountSid
- * @property string $channelEndpointType
- * @property string $channelEndpointSid
- * @property \DateTime $dateCreated
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $trustProductSid
+ * @property string|null $accountSid
+ * @property string|null $channelEndpointType
+ * @property string|null $channelEndpointSid
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
  */
 class TrustProductsChannelEndpointAssignmentInstance extends InstanceResource
 {

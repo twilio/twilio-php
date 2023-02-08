@@ -26,18 +26,18 @@ use Twilio\Rest\Studio\V2\Flow\Execution\ExecutionStep\ExecutionStepContextList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $flowSid
- * @property string $executionSid
- * @property string $name
- * @property array $context
- * @property string $transitionedFrom
- * @property string $transitionedTo
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $flowSid
+ * @property string|null $executionSid
+ * @property string|null $name
+ * @property array|null $context
+ * @property string|null $transitionedFrom
+ * @property string|null $transitionedTo
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class ExecutionStepInstance extends InstanceResource
 {

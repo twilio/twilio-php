@@ -24,14 +24,14 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $mapSid
- * @property string $identity
- * @property bool $read
- * @property bool $write
- * @property bool $manage
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $mapSid
+ * @property string|null $identity
+ * @property bool|null $read
+ * @property bool|null $write
+ * @property bool|null $manage
+ * @property string|null $url
  */
 class SyncMapPermissionInstance extends InstanceResource
 {

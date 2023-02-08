@@ -25,27 +25,27 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
+ * @property string|null $accountSid
  * @property string $status
- * @property \DateTime $dateCreated
- * @property \DateTime $dateCompleted
- * @property \DateTime $dateDeleted
- * @property string $sid
- * @property string $roomSid
- * @property string[] $audioSources
- * @property string[] $audioSourcesExcluded
- * @property array $videoLayout
- * @property string $resolution
- * @property bool $trim
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateCompleted
+ * @property \DateTime|null $dateDeleted
+ * @property string|null $sid
+ * @property string|null $roomSid
+ * @property string[]|null $audioSources
+ * @property string[]|null $audioSourcesExcluded
+ * @property array|null $videoLayout
+ * @property string|null $resolution
+ * @property bool|null $trim
  * @property string $format
- * @property int $bitrate
- * @property int $size
- * @property int $duration
- * @property string $mediaExternalLocation
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property string $url
- * @property array $links
+ * @property int|null $bitrate
+ * @property int|null $size
+ * @property int|null $duration
+ * @property string|null $mediaExternalLocation
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property string|null $url
+ * @property array|null $links
  */
 class CompositionInstance extends InstanceResource
 {

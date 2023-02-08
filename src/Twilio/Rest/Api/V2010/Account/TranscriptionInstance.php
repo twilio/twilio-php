@@ -25,19 +25,19 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $duration
- * @property string $price
- * @property string $priceUnit
- * @property string $recordingSid
- * @property string $sid
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $duration
+ * @property string|null $price
+ * @property string|null $priceUnit
+ * @property string|null $recordingSid
+ * @property string|null $sid
  * @property string $status
- * @property string $transcriptionText
- * @property string $type
- * @property string $uri
+ * @property string|null $transcriptionText
+ * @property string|null $type
+ * @property string|null $uri
  */
 class TranscriptionInstance extends InstanceResource
 {

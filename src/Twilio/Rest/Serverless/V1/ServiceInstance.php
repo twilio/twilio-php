@@ -30,17 +30,17 @@ use Twilio\Rest\Serverless\V1\Service\AssetList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $uniqueName
- * @property bool $includeCredentials
- * @property bool $uiEditable
- * @property string $domainBase
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string|null $uniqueName
+ * @property bool|null $includeCredentials
+ * @property bool|null $uiEditable
+ * @property string|null $domainBase
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class ServiceInstance extends InstanceResource
 {

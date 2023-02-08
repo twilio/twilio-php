@@ -25,22 +25,22 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $simSid
- * @property string $accountSid
- * @property string $radioLink
- * @property string $operatorMcc
- * @property string $operatorMnc
- * @property string $operatorCountry
- * @property string $operatorName
- * @property string $cellId
- * @property array $cellLocationEstimate
- * @property int $packetsUploaded
- * @property int $packetsDownloaded
- * @property \DateTime $lastUpdated
- * @property \DateTime $start
- * @property \DateTime $end
- * @property string $imei
+ * @property string|null $sid
+ * @property string|null $simSid
+ * @property string|null $accountSid
+ * @property string|null $radioLink
+ * @property string|null $operatorMcc
+ * @property string|null $operatorMnc
+ * @property string|null $operatorCountry
+ * @property string|null $operatorName
+ * @property string|null $cellId
+ * @property array|null $cellLocationEstimate
+ * @property int|null $packetsUploaded
+ * @property int|null $packetsDownloaded
+ * @property \DateTime|null $lastUpdated
+ * @property \DateTime|null $start
+ * @property \DateTime|null $end
+ * @property string|null $imei
  */
 class DataSessionInstance extends InstanceResource
 {

@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $simSid
- * @property \DateTime $startTime
- * @property \DateTime $endTime
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $simSid
+ * @property \DateTime|null $startTime
+ * @property \DateTime|null $endTime
  * @property string $periodType
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class BillingPeriodInstance extends InstanceResource
 {

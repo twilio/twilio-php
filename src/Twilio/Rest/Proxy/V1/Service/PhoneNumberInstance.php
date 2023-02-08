@@ -27,18 +27,18 @@ use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $phoneNumber
- * @property string $friendlyName
- * @property string $isoCountry
- * @property PhoneNumberCapabilities $capabilities
- * @property string $url
- * @property bool $isReserved
- * @property int $inUse
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $phoneNumber
+ * @property string|null $friendlyName
+ * @property string|null $isoCountry
+ * @property PhoneNumberCapabilities|null $capabilities
+ * @property string|null $url
+ * @property bool|null $isReserved
+ * @property int|null $inUse
  */
 class PhoneNumberInstance extends InstanceResource
 {

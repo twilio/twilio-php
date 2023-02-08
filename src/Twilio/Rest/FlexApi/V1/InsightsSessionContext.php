@@ -55,7 +55,7 @@ class InsightsSessionContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 

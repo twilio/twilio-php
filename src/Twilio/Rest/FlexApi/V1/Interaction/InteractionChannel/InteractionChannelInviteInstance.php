@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $interactionSid
- * @property string $channelSid
- * @property array $routing
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $interactionSid
+ * @property string|null $channelSid
+ * @property array|null $routing
+ * @property string|null $url
  */
 class InteractionChannelInviteInstance extends InstanceResource
 {

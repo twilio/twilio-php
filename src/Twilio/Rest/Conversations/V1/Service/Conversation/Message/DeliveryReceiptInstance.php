@@ -25,18 +25,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $conversationSid
- * @property string $messageSid
- * @property string $sid
- * @property string $channelMessageSid
- * @property string $participantSid
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $conversationSid
+ * @property string|null $messageSid
+ * @property string|null $sid
+ * @property string|null $channelMessageSid
+ * @property string|null $participantSid
  * @property string $status
- * @property int $errorCode
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property int|null $errorCode
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class DeliveryReceiptInstance extends InstanceResource
 {

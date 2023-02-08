@@ -26,24 +26,24 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $conversationSid
- * @property int $unreadMessagesCount
- * @property int $lastReadMessageIndex
- * @property string $participantSid
- * @property string $userSid
- * @property string $friendlyName
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $conversationSid
+ * @property int|null $unreadMessagesCount
+ * @property int|null $lastReadMessageIndex
+ * @property string|null $participantSid
+ * @property string|null $userSid
+ * @property string|null $friendlyName
  * @property string $conversationState
- * @property array $timers
- * @property string $attributes
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $createdBy
+ * @property array|null $timers
+ * @property string|null $attributes
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $createdBy
  * @property string $notificationLevel
- * @property string $uniqueName
- * @property string $url
- * @property array $links
+ * @property string|null $uniqueName
+ * @property string|null $url
+ * @property array|null $links
  */
 class UserConversationInstance extends InstanceResource
 {

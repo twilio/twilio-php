@@ -26,15 +26,15 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $url
- * @property string $friendlyName
- * @property string $fleetSid
- * @property string $accountSid
- * @property string $deviceSid
- * @property string $thumbprint
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string|null $sid
+ * @property string|null $url
+ * @property string|null $friendlyName
+ * @property string|null $fleetSid
+ * @property string|null $accountSid
+ * @property string|null $deviceSid
+ * @property string|null $thumbprint
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class CertificateInstance extends InstanceResource
 {

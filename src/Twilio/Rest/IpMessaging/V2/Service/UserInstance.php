@@ -28,20 +28,20 @@ use Twilio\Rest\IpMessaging\V2\Service\User\UserChannelList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $attributes
- * @property string $friendlyName
- * @property string $roleSid
- * @property string $identity
- * @property bool $isOnline
- * @property bool $isNotifiable
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property int $joinedChannelsCount
- * @property array $links
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $attributes
+ * @property string|null $friendlyName
+ * @property string|null $roleSid
+ * @property string|null $identity
+ * @property bool|null $isOnline
+ * @property bool|null $isNotifiable
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property int|null $joinedChannelsCount
+ * @property array|null $links
+ * @property string|null $url
  */
 class UserInstance extends InstanceResource
 {

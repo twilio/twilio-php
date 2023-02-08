@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property string $prefix
+ * @property string|null $prefix
  */
 class HighriskSpecialPrefixInstance extends InstanceResource
 {

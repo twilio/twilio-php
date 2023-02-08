@@ -26,18 +26,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $serviceSid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string[] $eventTypes
+ * @property string|null $sid
+ * @property string|null $serviceSid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string[]|null $eventTypes
  * @property string $status
  * @property string $version
- * @property string $webhookUrl
+ * @property string|null $webhookUrl
  * @property string $webhookMethod
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class WebhookInstance extends InstanceResource
 {

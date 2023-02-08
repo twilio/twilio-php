@@ -27,19 +27,19 @@ use Twilio\Rest\Conversations\V1\User\UserConversationList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $roleSid
- * @property string $identity
- * @property string $friendlyName
- * @property string $attributes
- * @property bool $isOnline
- * @property bool $isNotifiable
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $roleSid
+ * @property string|null $identity
+ * @property string|null $friendlyName
+ * @property string|null $attributes
+ * @property bool|null $isOnline
+ * @property bool|null $isNotifiable
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class UserInstance extends InstanceResource
 {

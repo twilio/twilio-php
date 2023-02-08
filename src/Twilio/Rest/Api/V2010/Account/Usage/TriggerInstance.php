@@ -26,22 +26,22 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property string $callbackMethod
- * @property string $callbackUrl
- * @property string $currentValue
- * @property \DateTime $dateCreated
- * @property \DateTime $dateFired
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property string|null $callbackMethod
+ * @property string|null $callbackUrl
+ * @property string|null $currentValue
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateFired
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
  * @property string $recurring
- * @property string $sid
+ * @property string|null $sid
  * @property string $triggerBy
- * @property string $triggerValue
- * @property string $uri
+ * @property string|null $triggerValue
+ * @property string|null $uri
  * @property string $usageCategory
- * @property string $usageRecordUri
+ * @property string|null $usageRecordUri
  */
 class TriggerInstance extends InstanceResource
 {

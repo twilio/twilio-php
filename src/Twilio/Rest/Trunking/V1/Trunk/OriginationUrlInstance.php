@@ -26,17 +26,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $sid
- * @property string $trunkSid
- * @property int $weight
- * @property bool $enabled
- * @property string $sipUrl
- * @property string $friendlyName
- * @property int $priority
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $sid
+ * @property string|null $trunkSid
+ * @property int|null $weight
+ * @property bool|null $enabled
+ * @property string|null $sipUrl
+ * @property string|null $friendlyName
+ * @property int|null $priority
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class OriginationUrlInstance extends InstanceResource
 {

@@ -25,14 +25,15 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $questionId
- * @property string $question
- * @property string $description
- * @property array $category
- * @property string $answerSetId
- * @property bool $allowNa
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $questionId
+ * @property string|null $question
+ * @property string|null $description
+ * @property array|null $category
+ * @property string|null $answerSetId
+ * @property bool|null $allowNa
+ * @property int|null $usage
+ * @property string|null $url
  */
 class InsightsQuestionnairesQuestionInstance extends InstanceResource
 {
@@ -56,6 +57,7 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource
             'category' => Values::array_get($payload, 'category'),
             'answerSetId' => Values::array_get($payload, 'answer_set_id'),
             'allowNa' => Values::array_get($payload, 'allow_na'),
+            'usage' => Values::array_get($payload, 'usage'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
@@ -96,18 +98,15 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource
     /**
      * Update the InsightsQuestionnairesQuestionInstance
      *
-     * @param string $question The question.
-     * @param string $description The description for the question.
-     * @param string $answerSetId The answer_set for the question.
      * @param bool $allowNa The flag to enable for disable NA for answer.
      * @param array|Options $options Optional Arguments
      * @return InsightsQuestionnairesQuestionInstance Updated InsightsQuestionnairesQuestionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $question, string $description, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
+    public function update(bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
     {
 
-        return $this->proxy()->update($question, $description, $answerSetId, $allowNa, $options);
+        return $this->proxy()->update($allowNa, $options);
     }
 
     /**

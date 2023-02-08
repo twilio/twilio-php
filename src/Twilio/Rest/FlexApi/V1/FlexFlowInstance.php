@@ -26,20 +26,20 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $sid
- * @property string $friendlyName
- * @property string $chatServiceSid
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $chatServiceSid
  * @property string $channelType
- * @property string $contactIdentity
- * @property bool $enabled
+ * @property string|null $contactIdentity
+ * @property bool|null $enabled
  * @property string $integrationType
- * @property array $integration
- * @property bool $longLived
- * @property bool $janitorEnabled
- * @property string $url
+ * @property array|null $integration
+ * @property bool|null $longLived
+ * @property bool|null $janitorEnabled
+ * @property string|null $url
  */
 class FlexFlowInstance extends InstanceResource
 {

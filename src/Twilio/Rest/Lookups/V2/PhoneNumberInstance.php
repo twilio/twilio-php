@@ -25,19 +25,21 @@ use Twilio\Version;
 
 
 /**
- * @property string $callingCountryCode
- * @property string $countryCode
- * @property string $phoneNumber
- * @property string $nationalFormat
- * @property bool $valid
- * @property string[] $validationErrors
- * @property array $callerName
- * @property array $simSwap
- * @property array $callForwarding
- * @property array $liveActivity
- * @property array $lineTypeIntelligence
- * @property array $identityMatch
- * @property string $url
+ * @property string|null $callingCountryCode
+ * @property string|null $countryCode
+ * @property string|null $phoneNumber
+ * @property string|null $nationalFormat
+ * @property bool|null $valid
+ * @property string[]|null $validationErrors
+ * @property array|null $callerName
+ * @property array|null $simSwap
+ * @property array|null $callForwarding
+ * @property array|null $liveActivity
+ * @property array|null $lineTypeIntelligence
+ * @property array|null $identityMatch
+ * @property array|null $smsPumpingRisk
+ * @property array|null $disposablePhoneNumberRisk
+ * @property string|null $url
  */
 class PhoneNumberInstance extends InstanceResource
 {
@@ -66,6 +68,8 @@ class PhoneNumberInstance extends InstanceResource
             'liveActivity' => Values::array_get($payload, 'live_activity'),
             'lineTypeIntelligence' => Values::array_get($payload, 'line_type_intelligence'),
             'identityMatch' => Values::array_get($payload, 'identity_match'),
+            'smsPumpingRisk' => Values::array_get($payload, 'sms_pumping_risk'),
+            'disposablePhoneNumberRisk' => Values::array_get($payload, 'disposable_phone_number_risk'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

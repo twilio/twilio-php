@@ -25,21 +25,21 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property string $asOf
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property string|null $asOf
  * @property string $category
- * @property string $count
- * @property string $countUnit
- * @property string $description
- * @property \DateTime $endDate
- * @property string $price
- * @property string $priceUnit
- * @property \DateTime $startDate
- * @property array $subresourceUris
- * @property string $uri
- * @property string $usage
- * @property string $usageUnit
+ * @property string|null $count
+ * @property string|null $countUnit
+ * @property string|null $description
+ * @property \DateTime|null $endDate
+ * @property string|null $price
+ * @property string|null $priceUnit
+ * @property \DateTime|null $startDate
+ * @property array|null $subresourceUris
+ * @property string|null $uri
+ * @property string|null $usage
+ * @property string|null $usageUnit
  */
 class YesterdayInstance extends InstanceResource
 {

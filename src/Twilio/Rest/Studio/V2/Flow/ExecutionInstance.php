@@ -27,16 +27,16 @@ use Twilio\Rest\Studio\V2\Flow\Execution\ExecutionContextList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $flowSid
- * @property string $contactChannelAddress
- * @property array $context
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $flowSid
+ * @property string|null $contactChannelAddress
+ * @property array|null $context
  * @property string $status
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class ExecutionInstance extends InstanceResource
 {

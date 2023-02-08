@@ -28,18 +28,18 @@ use Twilio\Rest\Api\V2010\Account\Conference\RecordingList;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $apiVersion
- * @property string $friendlyName
- * @property string $region
- * @property string $sid
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $apiVersion
+ * @property string|null $friendlyName
+ * @property string|null $region
+ * @property string|null $sid
  * @property string $status
- * @property string $uri
- * @property array $subresourceUris
+ * @property string|null $uri
+ * @property array|null $subresourceUris
  * @property string $reasonConferenceEnded
- * @property string $callSidEndingConference
+ * @property string|null $callSidEndingConference
  */
 class ConferenceInstance extends InstanceResource
 {

@@ -26,14 +26,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $sid
- * @property string $friendlyName
- * @property string $ipAddress
- * @property int $cidrPrefixLength
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $ipAddress
+ * @property int|null $cidrPrefixLength
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class IpRecordInstance extends InstanceResource
 {

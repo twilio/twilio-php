@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $redirectTo
- * @property string $day
- * @property int $size
- * @property string $createDate
- * @property string $friendlyName
- * @property string $resourceType
+ * @property string|null $redirectTo
+ * @property string|null $day
+ * @property int|null $size
+ * @property string|null $createDate
+ * @property string|null $friendlyName
+ * @property string|null $resourceType
  */
 class DayInstance extends InstanceResource
 {

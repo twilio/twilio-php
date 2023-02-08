@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $participantSid
- * @property string $roomSid
- * @property string[] $rules
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string|null $participantSid
+ * @property string|null $roomSid
+ * @property string[]|null $rules
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class SubscribeRulesInstance extends InstanceResource
 {

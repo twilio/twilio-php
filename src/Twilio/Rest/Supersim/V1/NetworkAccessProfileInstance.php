@@ -27,13 +27,13 @@ use Twilio\Rest\Supersim\V1\NetworkAccessProfile\NetworkAccessProfileNetworkList
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class NetworkAccessProfileInstance extends InstanceResource
 {

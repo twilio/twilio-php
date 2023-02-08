@@ -25,11 +25,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $assistantSid
- * @property string $taskSid
- * @property string $url
- * @property array $data
+ * @property string|null $accountSid
+ * @property string|null $assistantSid
+ * @property string|null $taskSid
+ * @property string|null $url
+ * @property array|null $data
  */
 class TaskActionsInstance extends InstanceResource
 {

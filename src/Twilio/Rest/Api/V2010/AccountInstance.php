@@ -50,16 +50,16 @@ use Twilio\Rest\Api\V2010\Account\NewSigningKeyList;
 
 
 /**
- * @property string $authToken
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $ownerAccountSid
- * @property string $sid
+ * @property string|null $authToken
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $ownerAccountSid
+ * @property string|null $sid
  * @property string $status
- * @property array $subresourceUris
+ * @property array|null $subresourceUris
  * @property string $type
- * @property string $uri
+ * @property string|null $uri
  */
 class AccountInstance extends InstanceResource
 {

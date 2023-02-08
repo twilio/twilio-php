@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $userSid
- * @property string $firstName
- * @property string $lastName
- * @property string $friendlyName
- * @property string $email
- * @property string $url
+ * @property string|null $userSid
+ * @property string|null $firstName
+ * @property string|null $lastName
+ * @property string|null $friendlyName
+ * @property string|null $email
+ * @property string|null $url
  */
 class UserInfoInstance extends InstanceResource
 {

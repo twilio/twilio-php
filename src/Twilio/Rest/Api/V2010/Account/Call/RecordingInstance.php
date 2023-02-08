@@ -26,24 +26,24 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property string $callSid
- * @property string $conferenceSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $startTime
- * @property string $duration
- * @property string $sid
- * @property string $price
- * @property string $uri
- * @property array $encryptionDetails
- * @property string $priceUnit
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property string|null $callSid
+ * @property string|null $conferenceSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $startTime
+ * @property string|null $duration
+ * @property string|null $sid
+ * @property string|null $price
+ * @property string|null $uri
+ * @property array|null $encryptionDetails
+ * @property string|null $priceUnit
  * @property string $status
- * @property int $channels
+ * @property int|null $channels
  * @property string $source
- * @property int $errorCode
- * @property string $track
+ * @property int|null $errorCode
+ * @property string|null $track
  */
 class RecordingInstance extends InstanceResource
 {

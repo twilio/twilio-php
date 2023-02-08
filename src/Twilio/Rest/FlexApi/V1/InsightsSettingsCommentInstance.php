@@ -24,9 +24,9 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property array $comments
- * @property string $url
+ * @property string|null $accountSid
+ * @property array|null $comments
+ * @property string|null $url
  */
 class InsightsSettingsCommentInstance extends InstanceResource
 {

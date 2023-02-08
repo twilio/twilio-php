@@ -24,18 +24,18 @@ use Twilio\Version;
 
 
 /**
- * @property string $resourceType
- * @property string $friendlyName
- * @property array $details
- * @property string $startDay
- * @property string $endDay
- * @property string $jobSid
- * @property string $webhookUrl
- * @property string $webhookMethod
- * @property string $email
- * @property string $url
- * @property string $jobQueuePosition
- * @property string $estimatedCompletionTime
+ * @property string|null $resourceType
+ * @property string|null $friendlyName
+ * @property array|null $details
+ * @property string|null $startDay
+ * @property string|null $endDay
+ * @property string|null $jobSid
+ * @property string|null $webhookUrl
+ * @property string|null $webhookMethod
+ * @property string|null $email
+ * @property string|null $url
+ * @property string|null $jobQueuePosition
+ * @property string|null $estimatedCompletionTime
  */
 class JobInstance extends InstanceResource
 {

@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $flexFlowSid
- * @property string $sid
- * @property string $userSid
- * @property string $taskSid
- * @property string $url
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string|null $accountSid
+ * @property string|null $flexFlowSid
+ * @property string|null $sid
+ * @property string|null $userSid
+ * @property string|null $taskSid
+ * @property string|null $url
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class ChannelInstance extends InstanceResource
 {

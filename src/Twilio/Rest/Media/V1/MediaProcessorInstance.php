@@ -25,18 +25,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $sid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $extension
- * @property string $extensionContext
+ * @property string|null $accountSid
+ * @property string|null $sid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $extension
+ * @property string|null $extensionContext
  * @property string $status
- * @property string $url
- * @property string $endedReason
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property int $maxDuration
+ * @property string|null $url
+ * @property string|null $endedReason
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property int|null $maxDuration
  */
 class MediaProcessorInstance extends InstanceResource
 {

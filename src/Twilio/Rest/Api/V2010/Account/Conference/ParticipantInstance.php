@@ -26,20 +26,20 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $callSid
- * @property string $label
- * @property string $callSidToCoach
- * @property bool $coaching
- * @property string $conferenceSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property bool $endConferenceOnExit
- * @property bool $muted
- * @property bool $hold
- * @property bool $startConferenceOnEnter
+ * @property string|null $accountSid
+ * @property string|null $callSid
+ * @property string|null $label
+ * @property string|null $callSidToCoach
+ * @property bool|null $coaching
+ * @property string|null $conferenceSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property bool|null $endConferenceOnExit
+ * @property bool|null $muted
+ * @property bool|null $hold
+ * @property bool|null $startConferenceOnEnter
  * @property string $status
- * @property string $uri
+ * @property string|null $uri
  */
 class ParticipantInstance extends InstanceResource
 {

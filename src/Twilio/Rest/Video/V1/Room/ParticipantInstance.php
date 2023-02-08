@@ -30,18 +30,18 @@ use Twilio\Rest\Video\V1\Room\Participant\AnonymizeList;
 
 
 /**
- * @property string $sid
- * @property string $roomSid
- * @property string $accountSid
+ * @property string|null $sid
+ * @property string|null $roomSid
+ * @property string|null $accountSid
  * @property string $status
- * @property string $identity
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $startTime
- * @property \DateTime $endTime
- * @property int $duration
- * @property string $url
- * @property array $links
+ * @property string|null $identity
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $startTime
+ * @property \DateTime|null $endTime
+ * @property int|null $duration
+ * @property string|null $url
+ * @property array|null $links
  */
 class ParticipantInstance extends InstanceResource
 {

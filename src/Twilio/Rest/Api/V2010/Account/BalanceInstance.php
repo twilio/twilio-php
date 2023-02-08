@@ -24,9 +24,9 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $balance
- * @property string $currency
+ * @property string|null $accountSid
+ * @property string|null $balance
+ * @property string|null $currency
  */
 class BalanceInstance extends InstanceResource
 {

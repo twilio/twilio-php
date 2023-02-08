@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $assistantSid
- * @property string $sid
- * @property array $data
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $assistantSid
+ * @property string|null $sid
+ * @property array|null $data
+ * @property string|null $url
  */
 class DialogueInstance extends InstanceResource
 {

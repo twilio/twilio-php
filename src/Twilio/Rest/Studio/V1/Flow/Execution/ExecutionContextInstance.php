@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property array $context
- * @property string $flowSid
- * @property string $executionSid
- * @property string $url
+ * @property string|null $accountSid
+ * @property array|null $context
+ * @property string|null $flowSid
+ * @property string|null $executionSid
+ * @property string|null $url
  */
 class ExecutionContextInstance extends InstanceResource
 {

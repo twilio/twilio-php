@@ -28,26 +28,26 @@ use Twilio\Rest\Api\V2010\Account\Message\MediaList;
 
 
 /**
- * @property string $body
- * @property string $numSegments
+ * @property string|null $body
+ * @property string|null $numSegments
  * @property string $direction
- * @property string $from
- * @property string $to
- * @property \DateTime $dateUpdated
- * @property string $price
- * @property string $errorMessage
- * @property string $uri
- * @property string $accountSid
- * @property string $numMedia
+ * @property string|null $from
+ * @property string|null $to
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $price
+ * @property string|null $errorMessage
+ * @property string|null $uri
+ * @property string|null $accountSid
+ * @property string|null $numMedia
  * @property string $status
- * @property string $messagingServiceSid
- * @property string $sid
- * @property \DateTime $dateSent
- * @property \DateTime $dateCreated
- * @property int $errorCode
- * @property string $priceUnit
- * @property string $apiVersion
- * @property array $subresourceUris
+ * @property string|null $messagingServiceSid
+ * @property string|null $sid
+ * @property \DateTime|null $dateSent
+ * @property \DateTime|null $dateCreated
+ * @property int|null $errorCode
+ * @property string|null $priceUnit
+ * @property string|null $apiVersion
+ * @property array|null $subresourceUris
  */
 class MessageInstance extends InstanceResource
 {

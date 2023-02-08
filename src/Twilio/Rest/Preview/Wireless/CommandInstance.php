@@ -25,17 +25,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $deviceSid
- * @property string $simSid
- * @property string $command
- * @property string $commandMode
- * @property string $status
- * @property string $direction
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $deviceSid
+ * @property string|null $simSid
+ * @property string|null $command
+ * @property string|null $commandMode
+ * @property string|null $status
+ * @property string|null $direction
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class CommandInstance extends InstanceResource
 {

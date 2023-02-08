@@ -25,19 +25,19 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $simSid
- * @property string $simIccid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $simSid
+ * @property string|null $simIccid
  * @property string $status
  * @property string $direction
- * @property string $deviceIp
- * @property int $devicePort
+ * @property string|null $deviceIp
+ * @property int|null $devicePort
  * @property string $payloadType
- * @property string $payload
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $payload
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class IpCommandInstance extends InstanceResource
 {

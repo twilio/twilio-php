@@ -26,21 +26,21 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $friendlyName
- * @property bool $enabled
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $sid
- * @property string[] $audioSources
- * @property string[] $audioSourcesExcluded
- * @property array $videoLayout
- * @property string $resolution
- * @property bool $trim
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property bool|null $enabled
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $sid
+ * @property string[]|null $audioSources
+ * @property string[]|null $audioSourcesExcluded
+ * @property array|null $videoLayout
+ * @property string|null $resolution
+ * @property bool|null $trim
  * @property string $format
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property string $url
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property string|null $url
  */
 class CompositionHookInstance extends InstanceResource
 {

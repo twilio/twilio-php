@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
+ * @property string|null $sid
  * @property string $type
- * @property string $interactionSid
- * @property string $channelSid
- * @property string $url
+ * @property string|null $interactionSid
+ * @property string|null $channelSid
+ * @property string|null $url
  */
 class InteractionChannelParticipantInstance extends InstanceResource
 {

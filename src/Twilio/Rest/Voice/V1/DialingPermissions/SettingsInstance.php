@@ -25,8 +25,8 @@ use Twilio\Version;
 
 
 /**
- * @property bool $dialingPermissionsInheritance
- * @property string $url
+ * @property bool|null $dialingPermissionsInheritance
+ * @property string|null $url
  */
 class SettingsInstance extends InstanceResource
 {

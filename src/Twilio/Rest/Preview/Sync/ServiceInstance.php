@@ -29,16 +29,16 @@ use Twilio\Rest\Preview\Sync\Service\SyncMapList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property string $webhookUrl
- * @property bool $reachabilityWebhooksEnabled
- * @property bool $aclEnabled
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property string|null $webhookUrl
+ * @property bool|null $reachabilityWebhooksEnabled
+ * @property bool|null $aclEnabled
+ * @property array|null $links
  */
 class ServiceInstance extends InstanceResource
 {

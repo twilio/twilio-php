@@ -25,16 +25,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $brandSid
- * @property string $brandVettingSid
- * @property \DateTime $dateUpdated
- * @property \DateTime $dateCreated
- * @property string $vettingId
- * @property string $vettingClass
- * @property string $vettingStatus
+ * @property string|null $accountSid
+ * @property string|null $brandSid
+ * @property string|null $brandVettingSid
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $dateCreated
+ * @property string|null $vettingId
+ * @property string|null $vettingClass
+ * @property string|null $vettingStatus
  * @property string $vettingProvider
- * @property string $url
+ * @property string|null $url
  */
 class BrandVettingInstance extends InstanceResource
 {

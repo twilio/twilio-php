@@ -26,29 +26,29 @@ use Twilio\Rest\Insights\V1\Conference\ConferenceParticipantList;
 
 
 /**
- * @property string $conferenceSid
- * @property string $accountSid
- * @property string $friendlyName
- * @property \DateTime $createTime
- * @property \DateTime $startTime
- * @property \DateTime $endTime
- * @property int $durationSeconds
- * @property int $connectDurationSeconds
+ * @property string|null $conferenceSid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $createTime
+ * @property \DateTime|null $startTime
+ * @property \DateTime|null $endTime
+ * @property int|null $durationSeconds
+ * @property int|null $connectDurationSeconds
  * @property string $status
- * @property int $maxParticipants
- * @property int $maxConcurrentParticipants
- * @property int $uniqueParticipants
+ * @property int|null $maxParticipants
+ * @property int|null $maxConcurrentParticipants
+ * @property int|null $uniqueParticipants
  * @property string $endReason
- * @property string $endedBy
+ * @property string|null $endedBy
  * @property string $mixerRegion
  * @property string $mixerRegionRequested
- * @property bool $recordingEnabled
- * @property array $detectedIssues
- * @property string[] $tags
- * @property array $tagInfo
+ * @property bool|null $recordingEnabled
+ * @property array|null $detectedIssues
+ * @property string[]|null $tags
+ * @property array|null $tagInfo
  * @property string $processingState
- * @property string $url
- * @property array $links
+ * @property string|null $url
+ * @property array|null $links
  */
 class ConferenceInstance extends InstanceResource
 {

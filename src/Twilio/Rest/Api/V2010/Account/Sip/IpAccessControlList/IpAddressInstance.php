@@ -26,15 +26,15 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $ipAddress
- * @property int $cidrPrefixLength
- * @property string $ipAccessControlListSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $uri
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string|null $ipAddress
+ * @property int|null $cidrPrefixLength
+ * @property string|null $ipAccessControlListSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $uri
  */
 class IpAddressInstance extends InstanceResource
 {

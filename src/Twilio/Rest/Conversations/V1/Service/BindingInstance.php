@@ -25,17 +25,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $credentialSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $endpoint
- * @property string $identity
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $credentialSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $endpoint
+ * @property string|null $identity
  * @property string $bindingType
- * @property string[] $messageTypes
- * @property string $url
+ * @property string[]|null $messageTypes
+ * @property string|null $url
  */
 class BindingInstance extends InstanceResource
 {

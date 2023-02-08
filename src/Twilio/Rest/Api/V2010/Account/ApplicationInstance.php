@@ -26,27 +26,27 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $messageStatusCallback
- * @property string $sid
- * @property string $smsFallbackMethod
- * @property string $smsFallbackUrl
- * @property string $smsMethod
- * @property string $smsStatusCallback
- * @property string $smsUrl
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property string $uri
- * @property bool $voiceCallerIdLookup
- * @property string $voiceFallbackMethod
- * @property string $voiceFallbackUrl
- * @property string $voiceMethod
- * @property string $voiceUrl
- * @property bool $publicApplicationConnectEnabled
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $messageStatusCallback
+ * @property string|null $sid
+ * @property string|null $smsFallbackMethod
+ * @property string|null $smsFallbackUrl
+ * @property string|null $smsMethod
+ * @property string|null $smsStatusCallback
+ * @property string|null $smsUrl
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property string|null $uri
+ * @property bool|null $voiceCallerIdLookup
+ * @property string|null $voiceFallbackMethod
+ * @property string|null $voiceFallbackUrl
+ * @property string|null $voiceMethod
+ * @property string|null $voiceUrl
+ * @property bool|null $publicApplicationConnectEnabled
  */
 class ApplicationInstance extends InstanceResource
 {

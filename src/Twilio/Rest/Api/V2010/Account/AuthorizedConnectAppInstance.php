@@ -25,16 +25,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $connectAppCompanyName
- * @property string $connectAppDescription
- * @property string $connectAppFriendlyName
- * @property string $connectAppHomepageUrl
- * @property string $connectAppSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string[] $permissions
- * @property string $uri
+ * @property string|null $accountSid
+ * @property string|null $connectAppCompanyName
+ * @property string|null $connectAppDescription
+ * @property string|null $connectAppFriendlyName
+ * @property string|null $connectAppHomepageUrl
+ * @property string|null $connectAppSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string[]|null $permissions
+ * @property string|null $uri
  */
 class AuthorizedConnectAppInstance extends InstanceResource
 {

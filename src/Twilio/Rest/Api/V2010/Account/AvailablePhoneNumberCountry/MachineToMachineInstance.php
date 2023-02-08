@@ -26,19 +26,19 @@ use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
- * @property string $friendlyName
- * @property string $phoneNumber
- * @property string $lata
- * @property string $locality
- * @property string $rateCenter
- * @property string $latitude
- * @property string $longitude
- * @property string $region
- * @property string $postalCode
- * @property string $isoCountry
- * @property string $addressRequirements
- * @property bool $beta
- * @property PhoneNumberCapabilities $capabilities
+ * @property string|null $friendlyName
+ * @property string|null $phoneNumber
+ * @property string|null $lata
+ * @property string|null $locality
+ * @property string|null $rateCenter
+ * @property string|null $latitude
+ * @property string|null $longitude
+ * @property string|null $region
+ * @property string|null $postalCode
+ * @property string|null $isoCountry
+ * @property string|null $addressRequirements
+ * @property bool|null $beta
+ * @property PhoneNumberCapabilities|null $capabilities
  */
 class MachineToMachineInstance extends InstanceResource
 {

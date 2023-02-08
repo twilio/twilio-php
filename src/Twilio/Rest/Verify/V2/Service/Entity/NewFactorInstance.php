@@ -25,20 +25,20 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $entitySid
- * @property string $identity
- * @property array $binding
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $entitySid
+ * @property string|null $identity
+ * @property array|null $binding
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
  * @property string $status
  * @property string $factorType
- * @property array $config
- * @property array $metadata
- * @property string $url
+ * @property array|null $config
+ * @property array|null $metadata
+ * @property string|null $url
  */
 class NewFactorInstance extends InstanceResource
 {

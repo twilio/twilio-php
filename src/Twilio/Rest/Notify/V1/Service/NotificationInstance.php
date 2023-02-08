@@ -25,26 +25,26 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property \DateTime $dateCreated
- * @property string[] $identities
- * @property string[] $tags
- * @property string[] $segments
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property \DateTime|null $dateCreated
+ * @property string[]|null $identities
+ * @property string[]|null $tags
+ * @property string[]|null $segments
  * @property string $priority
- * @property int $ttl
- * @property string $title
- * @property string $body
- * @property string $sound
- * @property string $action
- * @property array $data
- * @property array $apn
- * @property array $gcm
- * @property array $fcm
- * @property array $sms
- * @property array $facebookMessenger
- * @property array $alexa
+ * @property int|null $ttl
+ * @property string|null $title
+ * @property string|null $body
+ * @property string|null $sound
+ * @property string|null $action
+ * @property array|null $data
+ * @property array|null $apn
+ * @property array|null $gcm
+ * @property array|null $fcm
+ * @property array|null $sms
+ * @property array|null $facebookMessenger
+ * @property array|null $alexa
  */
 class NotificationInstance extends InstanceResource
 {

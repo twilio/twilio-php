@@ -26,18 +26,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $channelSid
- * @property string $serviceSid
- * @property string $identity
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $roleSid
- * @property int $lastConsumedMessageIndex
- * @property \DateTime $lastConsumptionTimestamp
- * @property string $url
- * @property string $attributes
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $channelSid
+ * @property string|null $serviceSid
+ * @property string|null $identity
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $roleSid
+ * @property int|null $lastConsumedMessageIndex
+ * @property \DateTime|null $lastConsumptionTimestamp
+ * @property string|null $url
+ * @property string|null $attributes
  */
 class MemberInstance extends InstanceResource
 {

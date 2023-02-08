@@ -26,13 +26,13 @@ use Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $sid
- * @property array $subresourceUris
- * @property string $uri
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $sid
+ * @property array|null $subresourceUris
+ * @property string|null $uri
  */
 class CredentialListInstance extends InstanceResource
 {

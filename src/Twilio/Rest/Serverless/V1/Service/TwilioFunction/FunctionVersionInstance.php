@@ -26,15 +26,15 @@ use Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion\FunctionVer
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $functionSid
- * @property string $path
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $functionSid
+ * @property string|null $path
  * @property string $visibility
- * @property \DateTime $dateCreated
- * @property string $url
- * @property array $links
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
+ * @property array|null $links
  */
 class FunctionVersionInstance extends InstanceResource
 {

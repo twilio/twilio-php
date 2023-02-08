@@ -24,10 +24,10 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property array $whatsapp
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property array|null $whatsapp
+ * @property string|null $url
  */
 class ApprovalFetchInstance extends InstanceResource
 {

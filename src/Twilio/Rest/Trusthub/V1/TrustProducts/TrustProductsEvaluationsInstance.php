@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $policySid
- * @property string $trustProductSid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $policySid
+ * @property string|null $trustProductSid
  * @property string $status
- * @property array[] $results
- * @property \DateTime $dateCreated
- * @property string $url
+ * @property array[]|null $results
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
  */
 class TrustProductsEvaluationsInstance extends InstanceResource
 {

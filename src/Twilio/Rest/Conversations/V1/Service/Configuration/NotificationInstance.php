@@ -25,13 +25,13 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property array $newMessage
- * @property array $addedToConversation
- * @property array $removedFromConversation
- * @property bool $logEnabled
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property array|null $newMessage
+ * @property array|null $addedToConversation
+ * @property array|null $removedFromConversation
+ * @property bool|null $logEnabled
+ * @property string|null $url
  */
 class NotificationInstance extends InstanceResource
 {

@@ -29,20 +29,20 @@ use Twilio\Rest\Conversations\V1\Conversation\MessageList;
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $messagingServiceSid
- * @property string $sid
- * @property string $friendlyName
- * @property string $uniqueName
- * @property string $attributes
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $messagingServiceSid
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $uniqueName
+ * @property string|null $attributes
  * @property string $state
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property array $timers
- * @property string $url
- * @property array $links
- * @property array $bindings
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property array|null $timers
+ * @property string|null $url
+ * @property array|null $links
+ * @property array|null $bindings
  */
 class ConversationInstance extends InstanceResource
 {

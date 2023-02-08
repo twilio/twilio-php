@@ -31,29 +31,29 @@ use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $inboundRequestUrl
- * @property string $inboundMethod
- * @property string $fallbackUrl
- * @property string $fallbackMethod
- * @property string $statusCallback
- * @property bool $stickySender
- * @property bool $mmsConverter
- * @property bool $smartEncoding
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $inboundRequestUrl
+ * @property string|null $inboundMethod
+ * @property string|null $fallbackUrl
+ * @property string|null $fallbackMethod
+ * @property string|null $statusCallback
+ * @property bool|null $stickySender
+ * @property bool|null $mmsConverter
+ * @property bool|null $smartEncoding
  * @property string $scanMessageContent
- * @property bool $fallbackToLongCode
- * @property bool $areaCodeGeomatch
- * @property bool $synchronousValidation
- * @property int $validityPeriod
- * @property string $url
- * @property array $links
- * @property string $usecase
- * @property bool $usAppToPersonRegistered
- * @property bool $useInboundWebhookOnNumber
+ * @property bool|null $fallbackToLongCode
+ * @property bool|null $areaCodeGeomatch
+ * @property bool|null $synchronousValidation
+ * @property int|null $validityPeriod
+ * @property string|null $url
+ * @property array|null $links
+ * @property string|null $usecase
+ * @property bool|null $usAppToPersonRegistered
+ * @property bool|null $useInboundWebhookOnNumber
  */
 class ServiceInstance extends InstanceResource
 {

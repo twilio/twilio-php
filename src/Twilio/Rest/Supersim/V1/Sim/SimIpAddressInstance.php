@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property string $ipAddress
+ * @property string|null $ipAddress
  * @property string $ipAddressVersion
  */
 class SimIpAddressInstance extends InstanceResource

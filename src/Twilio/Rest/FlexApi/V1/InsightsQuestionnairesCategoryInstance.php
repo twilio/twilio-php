@@ -25,10 +25,10 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $categoryId
- * @property string $name
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $categoryId
+ * @property string|null $name
+ * @property string|null $url
  */
 class InsightsQuestionnairesCategoryInstance extends InstanceResource
 {

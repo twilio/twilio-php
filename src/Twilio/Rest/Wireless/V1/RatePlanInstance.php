@@ -26,22 +26,22 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property string $friendlyName
- * @property bool $dataEnabled
- * @property string $dataMetering
- * @property int $dataLimit
- * @property bool $messagingEnabled
- * @property bool $voiceEnabled
- * @property bool $nationalRoamingEnabled
- * @property int $nationalRoamingDataLimit
- * @property string[] $internationalRoaming
- * @property int $internationalRoamingDataLimit
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property bool|null $dataEnabled
+ * @property string|null $dataMetering
+ * @property int|null $dataLimit
+ * @property bool|null $messagingEnabled
+ * @property bool|null $voiceEnabled
+ * @property bool|null $nationalRoamingEnabled
+ * @property int|null $nationalRoamingDataLimit
+ * @property string[]|null $internationalRoaming
+ * @property int|null $internationalRoamingDataLimit
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class RatePlanInstance extends InstanceResource
 {

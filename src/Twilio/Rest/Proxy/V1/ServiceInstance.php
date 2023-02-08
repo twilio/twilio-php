@@ -29,20 +29,20 @@ use Twilio\Rest\Proxy\V1\Service\SessionList;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property string $chatInstanceSid
- * @property string $callbackUrl
- * @property int $defaultTtl
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property string|null $chatInstanceSid
+ * @property string|null $callbackUrl
+ * @property int|null $defaultTtl
  * @property string $numberSelectionBehavior
  * @property string $geoMatchLevel
- * @property string $interceptCallbackUrl
- * @property string $outOfSessionCallbackUrl
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $interceptCallbackUrl
+ * @property string|null $outOfSessionCallbackUrl
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class ServiceInstance extends InstanceResource
 {

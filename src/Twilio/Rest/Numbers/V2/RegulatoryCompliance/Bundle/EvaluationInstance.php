@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $regulationSid
- * @property string $bundleSid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $regulationSid
+ * @property string|null $bundleSid
  * @property string $status
- * @property array[] $results
- * @property \DateTime $dateCreated
- * @property string $url
+ * @property array[]|null $results
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
  */
 class EvaluationInstance extends InstanceResource
 {

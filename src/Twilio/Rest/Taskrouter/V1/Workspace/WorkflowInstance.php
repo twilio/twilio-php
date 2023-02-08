@@ -29,19 +29,19 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList;
 
 
 /**
- * @property string $accountSid
- * @property string $assignmentCallbackUrl
- * @property string $configuration
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $documentContentType
- * @property string $fallbackAssignmentCallbackUrl
- * @property string $friendlyName
- * @property string $sid
- * @property int $taskReservationTimeout
- * @property string $workspaceSid
- * @property string $url
- * @property array $links
+ * @property string|null $accountSid
+ * @property string|null $assignmentCallbackUrl
+ * @property string|null $configuration
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $documentContentType
+ * @property string|null $fallbackAssignmentCallbackUrl
+ * @property string|null $friendlyName
+ * @property string|null $sid
+ * @property int|null $taskReservationTimeout
+ * @property string|null $workspaceSid
+ * @property string|null $url
+ * @property array|null $links
  */
 class WorkflowInstance extends InstanceResource
 {

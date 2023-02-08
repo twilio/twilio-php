@@ -25,13 +25,13 @@ use Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList;
 
 
 /**
- * @property string $sid
- * @property string $friendlyName
- * @property string $description
- * @property string $pricingType
- * @property array $configurationSchema
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $description
+ * @property string|null $pricingType
+ * @property array|null $configurationSchema
+ * @property string|null $url
+ * @property array|null $links
  */
 class AvailableAddOnInstance extends InstanceResource
 {

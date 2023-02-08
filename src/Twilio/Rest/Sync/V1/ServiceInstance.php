@@ -30,20 +30,20 @@ use Twilio\Rest\Sync\V1\Service\SyncMapList;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property string $webhookUrl
- * @property bool $webhooksFromRestEnabled
- * @property bool $reachabilityWebhooksEnabled
- * @property bool $aclEnabled
- * @property bool $reachabilityDebouncingEnabled
- * @property int $reachabilityDebouncingWindow
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property string|null $webhookUrl
+ * @property bool|null $webhooksFromRestEnabled
+ * @property bool|null $reachabilityWebhooksEnabled
+ * @property bool|null $aclEnabled
+ * @property bool|null $reachabilityDebouncingEnabled
+ * @property int|null $reachabilityDebouncingWindow
+ * @property array|null $links
  */
 class ServiceInstance extends InstanceResource
 {

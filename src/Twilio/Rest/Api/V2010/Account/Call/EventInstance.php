@@ -24,8 +24,8 @@ use Twilio\Version;
 
 
 /**
- * @property array $request
- * @property array $response
+ * @property array|null $request
+ * @property array|null $response
  */
 class EventInstance extends InstanceResource
 {

@@ -27,16 +27,16 @@ use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $shortCode
- * @property string $isoCountry
- * @property PhoneNumberCapabilities $capabilities
- * @property string $url
- * @property bool $isReserved
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $shortCode
+ * @property string|null $isoCountry
+ * @property PhoneNumberCapabilities|null $capabilities
+ * @property string|null $url
+ * @property bool|null $isReserved
  */
 class ShortCodeInstance extends InstanceResource
 {

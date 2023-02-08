@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $deviceCode
- * @property string $userCode
- * @property string $verificationUri
- * @property string $verificationUriComplete
- * @property int $expiresIn
- * @property int $interval
+ * @property string|null $deviceCode
+ * @property string|null $userCode
+ * @property string|null $verificationUri
+ * @property string|null $verificationUriComplete
+ * @property int|null $expiresIn
+ * @property int|null $interval
  */
 class DeviceCodeInstance extends InstanceResource
 {

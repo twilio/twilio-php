@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $networkAccessProfileSid
- * @property string $friendlyName
- * @property string $isoCountry
- * @property array[] $identifiers
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $networkAccessProfileSid
+ * @property string|null $friendlyName
+ * @property string|null $isoCountry
+ * @property array[]|null $identifiers
+ * @property string|null $url
  */
 class NetworkAccessProfileNetworkInstance extends InstanceResource
 {

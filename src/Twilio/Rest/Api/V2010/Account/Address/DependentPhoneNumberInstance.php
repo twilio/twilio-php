@@ -25,32 +25,32 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $phoneNumber
- * @property string $voiceUrl
- * @property string $voiceMethod
- * @property string $voiceFallbackMethod
- * @property string $voiceFallbackUrl
- * @property bool $voiceCallerIdLookup
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $smsFallbackMethod
- * @property string $smsFallbackUrl
- * @property string $smsMethod
- * @property string $smsUrl
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string|null $phoneNumber
+ * @property string|null $voiceUrl
+ * @property string|null $voiceMethod
+ * @property string|null $voiceFallbackMethod
+ * @property string|null $voiceFallbackUrl
+ * @property bool|null $voiceCallerIdLookup
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $smsFallbackMethod
+ * @property string|null $smsFallbackUrl
+ * @property string|null $smsMethod
+ * @property string|null $smsUrl
  * @property string $addressRequirements
- * @property array $capabilities
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property string $apiVersion
- * @property string $smsApplicationSid
- * @property string $voiceApplicationSid
- * @property string $trunkSid
+ * @property array|null $capabilities
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property string|null $apiVersion
+ * @property string|null $smsApplicationSid
+ * @property string|null $voiceApplicationSid
+ * @property string|null $trunkSid
  * @property string $emergencyStatus
- * @property string $emergencyAddressSid
- * @property string $uri
+ * @property string|null $emergencyAddressSid
+ * @property string|null $uri
  */
 class DependentPhoneNumberInstance extends InstanceResource
 {

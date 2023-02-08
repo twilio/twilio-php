@@ -26,17 +26,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $key
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $mapSid
- * @property string $url
- * @property string $revision
- * @property array $data
- * @property \DateTime $dateExpires
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $createdBy
+ * @property string|null $key
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $mapSid
+ * @property string|null $url
+ * @property string|null $revision
+ * @property array|null $data
+ * @property \DateTime|null $dateExpires
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $createdBy
  */
 class SyncMapItemInstance extends InstanceResource
 {

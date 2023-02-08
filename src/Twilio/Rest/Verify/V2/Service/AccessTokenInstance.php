@@ -25,16 +25,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $entityIdentity
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $entityIdentity
  * @property string $factorType
- * @property string $factorFriendlyName
- * @property string $token
- * @property string $url
- * @property int $ttl
- * @property \DateTime $dateCreated
+ * @property string|null $factorFriendlyName
+ * @property string|null $token
+ * @property string|null $url
+ * @property int|null $ttl
+ * @property \DateTime|null $dateCreated
  */
 class AccessTokenInstance extends InstanceResource
 {

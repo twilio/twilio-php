@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $secondaryAuthToken
- * @property string $url
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $secondaryAuthToken
+ * @property string|null $url
  */
 class SecondaryAuthTokenInstance extends InstanceResource
 {

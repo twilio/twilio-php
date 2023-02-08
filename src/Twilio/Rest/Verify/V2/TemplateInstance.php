@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string[] $channels
- * @property array $translations
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string[]|null $channels
+ * @property array|null $translations
  */
 class TemplateInstance extends InstanceResource
 {

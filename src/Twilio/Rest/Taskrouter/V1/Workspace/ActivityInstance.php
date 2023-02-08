@@ -26,15 +26,15 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property bool $available
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $sid
- * @property string $workspaceSid
- * @property string $url
- * @property array $links
+ * @property string|null $accountSid
+ * @property bool|null $available
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $sid
+ * @property string|null $workspaceSid
+ * @property string|null $url
+ * @property array|null $links
  */
 class ActivityInstance extends InstanceResource
 {

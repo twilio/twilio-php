@@ -25,12 +25,12 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $bundleSid
- * @property string $accountSid
- * @property string $objectSid
- * @property \DateTime $dateCreated
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $bundleSid
+ * @property string|null $accountSid
+ * @property string|null $objectSid
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
  */
 class ItemAssignmentInstance extends InstanceResource
 {

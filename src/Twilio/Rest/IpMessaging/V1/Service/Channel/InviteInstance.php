@@ -25,16 +25,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $channelSid
- * @property string $serviceSid
- * @property string $identity
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $roleSid
- * @property string $createdBy
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $channelSid
+ * @property string|null $serviceSid
+ * @property string|null $identity
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $roleSid
+ * @property string|null $createdBy
+ * @property string|null $url
  */
 class InviteInstance extends InstanceResource
 {

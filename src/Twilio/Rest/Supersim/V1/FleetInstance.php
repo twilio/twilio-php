@@ -26,21 +26,21 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $sid
- * @property string $uniqueName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property bool $dataEnabled
- * @property int $dataLimit
+ * @property string|null $accountSid
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property bool|null $dataEnabled
+ * @property int|null $dataLimit
  * @property string $dataMetering
- * @property bool $smsCommandsEnabled
- * @property string $smsCommandsUrl
- * @property string $smsCommandsMethod
- * @property string $networkAccessProfileSid
- * @property string $ipCommandsUrl
- * @property string $ipCommandsMethod
+ * @property bool|null $smsCommandsEnabled
+ * @property string|null $smsCommandsUrl
+ * @property string|null $smsCommandsMethod
+ * @property string|null $networkAccessProfileSid
+ * @property string|null $ipCommandsUrl
+ * @property string|null $ipCommandsMethod
  */
 class FleetInstance extends InstanceResource
 {

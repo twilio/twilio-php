@@ -25,12 +25,12 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $messageSid
+ * @property string|null $accountSid
+ * @property string|null $messageSid
  * @property string $outcome
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $uri
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $uri
  */
 class FeedbackInstance extends InstanceResource
 {

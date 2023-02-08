@@ -25,13 +25,13 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $defaultChatServiceSid
- * @property string $defaultMessagingServiceSid
- * @property string $defaultInactiveTimer
- * @property string $defaultClosedTimer
- * @property string $url
- * @property array $links
+ * @property string|null $accountSid
+ * @property string|null $defaultChatServiceSid
+ * @property string|null $defaultMessagingServiceSid
+ * @property string|null $defaultInactiveTimer
+ * @property string|null $defaultClosedTimer
+ * @property string|null $url
+ * @property array|null $links
  */
 class ConfigurationInstance extends InstanceResource
 {

@@ -26,14 +26,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $domainSid
- * @property string $configSid
- * @property string[] $messagingServiceSids
- * @property string $fallbackUrl
- * @property string $callbackUrl
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $domainSid
+ * @property string|null $configSid
+ * @property string[]|null $messagingServiceSids
+ * @property string|null $fallbackUrl
+ * @property string|null $callbackUrl
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class DomainConfigInstance extends InstanceResource
 {

@@ -29,27 +29,27 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property string $authType
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $domainName
- * @property string $friendlyName
- * @property string $sid
- * @property string $uri
- * @property string $voiceFallbackMethod
- * @property string $voiceFallbackUrl
- * @property string $voiceMethod
- * @property string $voiceStatusCallbackMethod
- * @property string $voiceStatusCallbackUrl
- * @property string $voiceUrl
- * @property array $subresourceUris
- * @property bool $sipRegistration
- * @property bool $emergencyCallingEnabled
- * @property bool $secure
- * @property string $byocTrunkSid
- * @property string $emergencyCallerSid
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property string|null $authType
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $domainName
+ * @property string|null $friendlyName
+ * @property string|null $sid
+ * @property string|null $uri
+ * @property string|null $voiceFallbackMethod
+ * @property string|null $voiceFallbackUrl
+ * @property string|null $voiceMethod
+ * @property string|null $voiceStatusCallbackMethod
+ * @property string|null $voiceStatusCallbackUrl
+ * @property string|null $voiceUrl
+ * @property array|null $subresourceUris
+ * @property bool|null $sipRegistration
+ * @property bool|null $emergencyCallingEnabled
+ * @property bool|null $secure
+ * @property string|null $byocTrunkSid
+ * @property string|null $emergencyCallerSid
  */
 class DomainInstance extends InstanceResource
 {

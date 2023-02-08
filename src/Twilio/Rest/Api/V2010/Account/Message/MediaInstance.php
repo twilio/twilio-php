@@ -25,13 +25,13 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $contentType
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $parentSid
- * @property string $sid
- * @property string $uri
+ * @property string|null $accountSid
+ * @property string|null $contentType
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $parentSid
+ * @property string|null $sid
+ * @property string|null $uri
  */
 class MediaInstance extends InstanceResource
 {

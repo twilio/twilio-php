@@ -26,16 +26,16 @@ use Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
+ * @property string|null $sid
+ * @property string|null $accountSid
  * @property string $status
- * @property string $addOnSid
- * @property string $addOnConfigurationSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $dateCompleted
- * @property string $referenceSid
- * @property array $subresourceUris
+ * @property string|null $addOnSid
+ * @property string|null $addOnConfigurationSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $dateCompleted
+ * @property string|null $referenceSid
+ * @property array|null $subresourceUris
  */
 class AddOnResultInstance extends InstanceResource
 {

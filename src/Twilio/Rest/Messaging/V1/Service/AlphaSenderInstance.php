@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $alphaSender
- * @property string[] $capabilities
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $alphaSender
+ * @property string[]|null $capabilities
+ * @property string|null $url
  */
 class AlphaSenderInstance extends InstanceResource
 {

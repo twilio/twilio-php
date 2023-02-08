@@ -26,16 +26,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $sid
- * @property string $uniqueName
- * @property string $workspaceSid
- * @property bool $channelOptimizedRouting
- * @property string $url
- * @property array $links
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $workspaceSid
+ * @property bool|null $channelOptimizedRouting
+ * @property string|null $url
+ * @property array|null $links
  */
 class TaskChannelInstance extends InstanceResource
 {

@@ -26,18 +26,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $url
- * @property string $uniqueName
- * @property string $friendlyName
- * @property string $fleetSid
- * @property bool $enabled
- * @property string $accountSid
- * @property string $identity
- * @property string $deploymentSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $dateAuthenticated
+ * @property string|null $sid
+ * @property string|null $url
+ * @property string|null $uniqueName
+ * @property string|null $friendlyName
+ * @property string|null $fleetSid
+ * @property bool|null $enabled
+ * @property string|null $accountSid
+ * @property string|null $identity
+ * @property string|null $deploymentSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $dateAuthenticated
  */
 class DeviceInstance extends InstanceResource
 {

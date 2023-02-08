@@ -25,19 +25,19 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property int $callCount
- * @property int $callFeedbackCount
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $endDate
- * @property bool $includeSubaccounts
- * @property array[] $issues
- * @property string $qualityScoreAverage
- * @property string $qualityScoreMedian
- * @property string $qualityScoreStandardDeviation
- * @property string $sid
- * @property \DateTime $startDate
+ * @property string|null $accountSid
+ * @property int|null $callCount
+ * @property int|null $callFeedbackCount
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $endDate
+ * @property bool|null $includeSubaccounts
+ * @property array[]|null $issues
+ * @property string|null $qualityScoreAverage
+ * @property string|null $qualityScoreMedian
+ * @property string|null $qualityScoreStandardDeviation
+ * @property string|null $sid
+ * @property \DateTime|null $startDate
  * @property string $status
  */
 class FeedbackSummaryInstance extends InstanceResource

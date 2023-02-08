@@ -25,16 +25,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $participantSid
- * @property string $publisherSid
- * @property string $roomSid
- * @property string $name
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property bool $enabled
+ * @property string|null $sid
+ * @property string|null $participantSid
+ * @property string|null $publisherSid
+ * @property string|null $roomSid
+ * @property string|null $name
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property bool|null $enabled
  * @property string $kind
- * @property string $url
+ * @property string|null $url
  */
 class SubscribedTrackInstance extends InstanceResource
 {

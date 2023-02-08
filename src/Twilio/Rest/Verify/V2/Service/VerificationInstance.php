@@ -25,21 +25,21 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $serviceSid
- * @property string $accountSid
- * @property string $to
+ * @property string|null $sid
+ * @property string|null $serviceSid
+ * @property string|null $accountSid
+ * @property string|null $to
  * @property string $channel
- * @property string $status
- * @property bool $valid
- * @property array $lookup
- * @property string $amount
- * @property string $payee
- * @property array[] $sendCodeAttempts
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property array $sna
- * @property string $url
+ * @property string|null $status
+ * @property bool|null $valid
+ * @property array|null $lookup
+ * @property string|null $amount
+ * @property string|null $payee
+ * @property array[]|null $sendCodeAttempts
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property array|null $sna
+ * @property string|null $url
  */
 class VerificationInstance extends InstanceResource
 {

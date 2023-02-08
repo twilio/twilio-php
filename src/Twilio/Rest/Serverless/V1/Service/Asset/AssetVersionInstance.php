@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $assetSid
- * @property string $path
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $assetSid
+ * @property string|null $path
  * @property string $visibility
- * @property \DateTime $dateCreated
- * @property string $url
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
  */
 class AssetVersionInstance extends InstanceResource
 {

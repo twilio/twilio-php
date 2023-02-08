@@ -24,13 +24,13 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $friendlyName
- * @property string $isoCountry
- * @property string $numberType
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $isoCountry
+ * @property string|null $numberType
  * @property string $endUserType
- * @property array $requirements
- * @property string $url
+ * @property array|null $requirements
+ * @property string|null $url
  */
 class RegulationInstance extends InstanceResource
 {

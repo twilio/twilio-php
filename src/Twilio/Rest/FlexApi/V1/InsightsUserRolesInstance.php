@@ -25,8 +25,8 @@ use Twilio\Version;
 
 
 /**
- * @property string[] $roles
- * @property string $url
+ * @property string[]|null $roles
+ * @property string|null $url
  */
 class InsightsUserRolesInstance extends InstanceResource
 {

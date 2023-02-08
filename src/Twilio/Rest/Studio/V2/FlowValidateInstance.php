@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property bool $valid
+ * @property bool|null $valid
  */
 class FlowValidateInstance extends InstanceResource
 {

@@ -30,15 +30,15 @@ use Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList;
 
 
 /**
- * @property string $sid
- * @property string $url
- * @property string $uniqueName
- * @property string $friendlyName
- * @property string $accountSid
- * @property string $defaultDeploymentSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $url
+ * @property string|null $uniqueName
+ * @property string|null $friendlyName
+ * @property string|null $accountSid
+ * @property string|null $defaultDeploymentSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property array|null $links
  */
 class FleetInstance extends InstanceResource
 {

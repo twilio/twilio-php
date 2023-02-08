@@ -25,15 +25,15 @@ use Twilio\Version;
 
 
 /**
- * @property string $simSid
- * @property string $simUniqueName
- * @property string $accountSid
- * @property array $period
- * @property array $commandsUsage
- * @property array $commandsCosts
- * @property array $dataUsage
- * @property array $dataCosts
- * @property string $url
+ * @property string|null $simSid
+ * @property string|null $simUniqueName
+ * @property string|null $accountSid
+ * @property array|null $period
+ * @property array|null $commandsUsage
+ * @property array|null $commandsCosts
+ * @property array|null $dataUsage
+ * @property array|null $dataCosts
+ * @property string|null $url
  */
 class UsageInstance extends InstanceResource
 {

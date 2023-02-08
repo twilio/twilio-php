@@ -27,17 +27,17 @@ use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $url
- * @property array $links
- * @property string $revision
- * @property array $data
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $createdBy
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $url
+ * @property array|null $links
+ * @property string|null $revision
+ * @property array|null $data
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $createdBy
  */
 class DocumentInstance extends InstanceResource
 {

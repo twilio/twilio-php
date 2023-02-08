@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
  * @property string $status
- * @property string $url
+ * @property string|null $url
  */
 class BuildStatusInstance extends InstanceResource
 {

@@ -31,23 +31,23 @@ use Twilio\Rest\Trunking\V1\Trunk\RecordingList;
 
 
 /**
- * @property string $accountSid
- * @property string $domainName
- * @property string $disasterRecoveryMethod
- * @property string $disasterRecoveryUrl
- * @property string $friendlyName
- * @property bool $secure
- * @property array $recording
+ * @property string|null $accountSid
+ * @property string|null $domainName
+ * @property string|null $disasterRecoveryMethod
+ * @property string|null $disasterRecoveryUrl
+ * @property string|null $friendlyName
+ * @property bool|null $secure
+ * @property array|null $recording
  * @property string $transferMode
  * @property string $transferCallerId
- * @property bool $cnamLookupEnabled
- * @property string $authType
- * @property string[] $authTypeSet
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $sid
- * @property string $url
- * @property array $links
+ * @property bool|null $cnamLookupEnabled
+ * @property string|null $authType
+ * @property string[]|null $authTypeSet
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $sid
+ * @property string|null $url
+ * @property array|null $links
  */
 class TrunkInstance extends InstanceResource
 {

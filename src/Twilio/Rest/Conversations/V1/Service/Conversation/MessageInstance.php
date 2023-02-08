@@ -27,22 +27,22 @@ use Twilio\Rest\Conversations\V1\Service\Conversation\Message\DeliveryReceiptLis
 
 
 /**
- * @property string $accountSid
- * @property string $chatServiceSid
- * @property string $conversationSid
- * @property string $sid
- * @property int $index
- * @property string $author
- * @property string $body
- * @property array[] $media
- * @property string $attributes
- * @property string $participantSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property array $delivery
- * @property string $url
- * @property array $links
- * @property string $contentSid
+ * @property string|null $accountSid
+ * @property string|null $chatServiceSid
+ * @property string|null $conversationSid
+ * @property string|null $sid
+ * @property int|null $index
+ * @property string|null $author
+ * @property string|null $body
+ * @property array[]|null $media
+ * @property string|null $attributes
+ * @property string|null $participantSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property array|null $delivery
+ * @property string|null $url
+ * @property array|null $links
+ * @property string|null $contentSid
  */
 class MessageInstance extends InstanceResource
 {

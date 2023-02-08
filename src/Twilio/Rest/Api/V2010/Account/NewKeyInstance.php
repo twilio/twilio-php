@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $friendlyName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $secret
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $secret
  */
 class NewKeyInstance extends InstanceResource
 {

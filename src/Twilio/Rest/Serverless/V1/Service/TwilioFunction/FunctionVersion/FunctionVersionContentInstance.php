@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $functionSid
- * @property string $content
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $functionSid
+ * @property string|null $content
+ * @property string|null $url
  */
 class FunctionVersionContentInstance extends InstanceResource
 {

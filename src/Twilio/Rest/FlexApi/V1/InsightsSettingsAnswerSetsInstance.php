@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property array $answerSets
- * @property array $answerSetCategories
- * @property array $notApplicable
- * @property string $url
+ * @property string|null $accountSid
+ * @property array|null $answerSets
+ * @property array|null $answerSetCategories
+ * @property array|null $notApplicable
+ * @property string|null $url
  */
 class InsightsSettingsAnswerSetsInstance extends InstanceResource
 {

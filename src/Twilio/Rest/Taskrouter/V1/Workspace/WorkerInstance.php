@@ -31,19 +31,19 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList;
 
 
 /**
- * @property string $accountSid
- * @property string $activityName
- * @property string $activitySid
- * @property string $attributes
- * @property bool $available
- * @property \DateTime $dateCreated
- * @property \DateTime $dateStatusChanged
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $sid
- * @property string $workspaceSid
- * @property string $url
- * @property array $links
+ * @property string|null $accountSid
+ * @property string|null $activityName
+ * @property string|null $activitySid
+ * @property string|null $attributes
+ * @property bool|null $available
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateStatusChanged
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $sid
+ * @property string|null $workspaceSid
+ * @property string|null $url
+ * @property array|null $links
  */
 class WorkerInstance extends InstanceResource
 {

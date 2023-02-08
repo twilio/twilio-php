@@ -25,16 +25,16 @@ use Twilio\Version;
 
 
 /**
- * @property string $callSid
- * @property string $accountSid
+ * @property string|null $callSid
+ * @property string|null $accountSid
  * @property string $answeredBy
  * @property string $connectivityIssue
- * @property string[] $qualityIssues
- * @property bool $spam
- * @property int $callScore
- * @property string $comment
- * @property string $incident
- * @property string $url
+ * @property string[]|null $qualityIssues
+ * @property bool|null $spam
+ * @property int|null $callScore
+ * @property string|null $comment
+ * @property string|null $incident
+ * @property string|null $url
  */
 class AnnotationInstance extends InstanceResource
 {

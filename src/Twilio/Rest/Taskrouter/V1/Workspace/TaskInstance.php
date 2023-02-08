@@ -27,27 +27,27 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
 
 
 /**
- * @property string $accountSid
- * @property int $age
+ * @property string|null $accountSid
+ * @property int|null $age
  * @property string $assignmentStatus
- * @property string $attributes
- * @property string $addons
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $taskQueueEnteredDate
- * @property int $priority
- * @property string $reason
- * @property string $sid
- * @property string $taskQueueSid
- * @property string $taskQueueFriendlyName
- * @property string $taskChannelSid
- * @property string $taskChannelUniqueName
- * @property int $timeout
- * @property string $workflowSid
- * @property string $workflowFriendlyName
- * @property string $workspaceSid
- * @property string $url
- * @property array $links
+ * @property string|null $attributes
+ * @property string|null $addons
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $taskQueueEnteredDate
+ * @property int|null $priority
+ * @property string|null $reason
+ * @property string|null $sid
+ * @property string|null $taskQueueSid
+ * @property string|null $taskQueueFriendlyName
+ * @property string|null $taskChannelSid
+ * @property string|null $taskChannelUniqueName
+ * @property int|null $timeout
+ * @property string|null $workflowSid
+ * @property string|null $workflowFriendlyName
+ * @property string|null $workspaceSid
+ * @property string|null $url
+ * @property array|null $links
  */
 class TaskInstance extends InstanceResource
 {

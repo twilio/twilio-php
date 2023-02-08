@@ -26,22 +26,22 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $attributes
- * @property string $serviceSid
- * @property string $to
- * @property string $channelSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $lastUpdatedBy
- * @property bool $wasEdited
- * @property string $from
- * @property string $body
- * @property int $index
- * @property string $type
- * @property array $media
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $attributes
+ * @property string|null $serviceSid
+ * @property string|null $to
+ * @property string|null $channelSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $lastUpdatedBy
+ * @property bool|null $wasEdited
+ * @property string|null $from
+ * @property string|null $body
+ * @property int|null $index
+ * @property string|null $type
+ * @property array|null $media
+ * @property string|null $url
  */
 class MessageInstance extends InstanceResource
 {

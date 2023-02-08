@@ -30,16 +30,16 @@ use Twilio\Rest\Preview\Understand\Assistant\Task\TaskStatisticsList;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property array $links
- * @property string $assistantSid
- * @property string $sid
- * @property string $uniqueName
- * @property string $actionsUrl
- * @property string $url
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property array|null $links
+ * @property string|null $assistantSid
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $actionsUrl
+ * @property string|null $url
  */
 class TaskInstance extends InstanceResource
 {

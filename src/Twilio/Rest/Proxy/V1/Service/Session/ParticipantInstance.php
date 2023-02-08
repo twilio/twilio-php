@@ -26,19 +26,19 @@ use Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList;
 
 
 /**
- * @property string $sid
- * @property string $sessionSid
- * @property string $serviceSid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $identifier
- * @property string $proxyIdentifier
- * @property string $proxyIdentifierSid
- * @property \DateTime $dateDeleted
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $sessionSid
+ * @property string|null $serviceSid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string|null $identifier
+ * @property string|null $proxyIdentifier
+ * @property string|null $proxyIdentifierSid
+ * @property \DateTime|null $dateDeleted
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class ParticipantInstance extends InstanceResource
 {

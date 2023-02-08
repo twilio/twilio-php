@@ -21,17 +21,17 @@ use Twilio\Values;
 abstract class InsightsUserRolesOptions
 {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return FetchInsightsUserRolesOptions Options builder
      */
     public static function fetch(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): FetchInsightsUserRolesOptions
     {
         return new FetchInsightsUserRolesOptions(
-            $token
+            $authorization
         );
     }
 
@@ -40,25 +40,25 @@ abstract class InsightsUserRolesOptions
 class FetchInsightsUserRolesOptions extends Options
     {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

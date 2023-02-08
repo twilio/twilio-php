@@ -24,19 +24,19 @@ use Twilio\Version;
 
 
 /**
- * @property string $issuer
- * @property string $authorizationEndpoint
- * @property string $deviceAuthorizationEndpoint
- * @property string $tokenEndpoint
- * @property string $userinfoEndpoint
- * @property string $revocationEndpoint
- * @property string $jwkUri
- * @property string[] $responseTypeSupported
- * @property string[] $subjectTypeSupported
- * @property string[] $idTokenSigningAlgValuesSupported
- * @property string[] $scopesSupported
- * @property string[] $claimsSupported
- * @property string $url
+ * @property string|null $issuer
+ * @property string|null $authorizationEndpoint
+ * @property string|null $deviceAuthorizationEndpoint
+ * @property string|null $tokenEndpoint
+ * @property string|null $userinfoEndpoint
+ * @property string|null $revocationEndpoint
+ * @property string|null $jwkUri
+ * @property string[]|null $responseTypeSupported
+ * @property string[]|null $subjectTypeSupported
+ * @property string[]|null $idTokenSigningAlgValuesSupported
+ * @property string[]|null $scopesSupported
+ * @property string[]|null $claimsSupported
+ * @property string|null $url
  */
 class OpenidDiscoveryInstance extends InstanceResource
 {

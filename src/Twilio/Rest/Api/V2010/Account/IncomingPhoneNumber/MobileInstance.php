@@ -26,40 +26,40 @@ use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
- * @property string $accountSid
- * @property string $addressSid
+ * @property string|null $accountSid
+ * @property string|null $addressSid
  * @property string $addressRequirements
- * @property string $apiVersion
- * @property bool $beta
- * @property PhoneNumberCapabilities $capabilities
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $identitySid
- * @property string $phoneNumber
- * @property string $origin
- * @property string $sid
- * @property string $smsApplicationSid
- * @property string $smsFallbackMethod
- * @property string $smsFallbackUrl
- * @property string $smsMethod
- * @property string $smsUrl
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property string $trunkSid
- * @property string $uri
+ * @property string|null $apiVersion
+ * @property bool|null $beta
+ * @property PhoneNumberCapabilities|null $capabilities
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $identitySid
+ * @property string|null $phoneNumber
+ * @property string|null $origin
+ * @property string|null $sid
+ * @property string|null $smsApplicationSid
+ * @property string|null $smsFallbackMethod
+ * @property string|null $smsFallbackUrl
+ * @property string|null $smsMethod
+ * @property string|null $smsUrl
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property string|null $trunkSid
+ * @property string|null $uri
  * @property string $voiceReceiveMode
- * @property string $voiceApplicationSid
- * @property bool $voiceCallerIdLookup
- * @property string $voiceFallbackMethod
- * @property string $voiceFallbackUrl
- * @property string $voiceMethod
- * @property string $voiceUrl
+ * @property string|null $voiceApplicationSid
+ * @property bool|null $voiceCallerIdLookup
+ * @property string|null $voiceFallbackMethod
+ * @property string|null $voiceFallbackUrl
+ * @property string|null $voiceMethod
+ * @property string|null $voiceUrl
  * @property string $emergencyStatus
- * @property string $emergencyAddressSid
+ * @property string|null $emergencyAddressSid
  * @property string $emergencyAddressStatus
- * @property string $bundleSid
- * @property string $status
+ * @property string|null $bundleSid
+ * @property string|null $status
  */
 class MobileInstance extends InstanceResource
 {

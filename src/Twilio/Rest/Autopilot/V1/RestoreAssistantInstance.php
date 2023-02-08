@@ -25,18 +25,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $sid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $uniqueName
- * @property string $friendlyName
- * @property bool $needsModelBuild
- * @property string $latestModelBuildSid
- * @property bool $logQueries
- * @property string $developmentStage
- * @property string $callbackUrl
- * @property string $callbackEvents
+ * @property string|null $accountSid
+ * @property string|null $sid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $uniqueName
+ * @property string|null $friendlyName
+ * @property bool|null $needsModelBuild
+ * @property string|null $latestModelBuildSid
+ * @property bool|null $logQueries
+ * @property string|null $developmentStage
+ * @property string|null $callbackUrl
+ * @property string|null $callbackEvents
  */
 class RestoreAssistantInstance extends InstanceResource
 {

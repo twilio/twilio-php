@@ -25,18 +25,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property array $definition
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property array|null $definition
  * @property string $status
- * @property int $revision
- * @property string $commitMessage
- * @property bool $valid
- * @property array[] $errors
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property int|null $revision
+ * @property string|null $commitMessage
+ * @property bool|null $valid
+ * @property array[]|null $errors
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class FlowRevisionInstance extends InstanceResource
 {

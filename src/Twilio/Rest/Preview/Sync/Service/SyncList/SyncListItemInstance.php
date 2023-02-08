@@ -26,16 +26,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property int $index
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $listSid
- * @property string $url
- * @property string $revision
- * @property array $data
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $createdBy
+ * @property int|null $index
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $listSid
+ * @property string|null $url
+ * @property string|null $revision
+ * @property array|null $data
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $createdBy
  */
 class SyncListItemInstance extends InstanceResource
 {

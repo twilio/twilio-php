@@ -25,14 +25,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $iccid
- * @property string $simSid
+ * @property string|null $sid
+ * @property string|null $iccid
+ * @property string|null $simSid
  * @property string $status
- * @property array[] $packages
- * @property \DateTime $dateCompleted
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property array[]|null $packages
+ * @property \DateTime|null $dateCompleted
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class SettingsUpdateInstance extends InstanceResource
 {

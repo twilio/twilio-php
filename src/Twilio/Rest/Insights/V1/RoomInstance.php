@@ -26,32 +26,32 @@ use Twilio\Rest\Insights\V1\Room\ParticipantList;
 
 
 /**
- * @property string $accountSid
- * @property string $roomSid
- * @property string $roomName
- * @property \DateTime $createTime
- * @property \DateTime $endTime
+ * @property string|null $accountSid
+ * @property string|null $roomSid
+ * @property string|null $roomName
+ * @property \DateTime|null $createTime
+ * @property \DateTime|null $endTime
  * @property string $roomType
  * @property string $roomStatus
- * @property string $statusCallback
- * @property string $statusCallbackMethod
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
  * @property string $createdMethod
  * @property string $endReason
- * @property int $maxParticipants
- * @property int $uniqueParticipants
- * @property int $uniqueParticipantIdentities
- * @property int $concurrentParticipants
- * @property int $maxConcurrentParticipants
- * @property string[] $codecs
+ * @property int|null $maxParticipants
+ * @property int|null $uniqueParticipants
+ * @property int|null $uniqueParticipantIdentities
+ * @property int|null $concurrentParticipants
+ * @property int|null $maxConcurrentParticipants
+ * @property string[]|null $codecs
  * @property string $mediaRegion
- * @property int $durationSec
- * @property int $totalParticipantDurationSec
- * @property int $totalRecordingDurationSec
+ * @property int|null $durationSec
+ * @property int|null $totalParticipantDurationSec
+ * @property int|null $totalRecordingDurationSec
  * @property string $processingState
- * @property bool $recordingEnabled
+ * @property bool|null $recordingEnabled
  * @property string $edgeLocation
- * @property string $url
- * @property array $links
+ * @property string|null $url
+ * @property array|null $links
  */
 class RoomInstance extends InstanceResource
 {

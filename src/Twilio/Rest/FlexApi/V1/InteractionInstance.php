@@ -25,11 +25,11 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
 
 
 /**
- * @property string $sid
- * @property array $channel
- * @property array $routing
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property array|null $channel
+ * @property array|null $routing
+ * @property string|null $url
+ * @property array|null $links
  */
 class InteractionInstance extends InstanceResource
 {

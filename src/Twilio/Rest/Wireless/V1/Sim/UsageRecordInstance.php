@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $simSid
- * @property string $accountSid
- * @property array $period
- * @property array $commands
- * @property array $data
+ * @property string|null $simSid
+ * @property string|null $accountSid
+ * @property array|null $period
+ * @property array|null $commands
+ * @property array|null $data
  */
 class UsageRecordInstance extends InstanceResource
 {

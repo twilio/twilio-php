@@ -25,12 +25,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property array $cumulative
- * @property array $realtime
- * @property string $workflowSid
- * @property string $workspaceSid
- * @property string $url
+ * @property string|null $accountSid
+ * @property array|null $cumulative
+ * @property array|null $realtime
+ * @property string|null $workflowSid
+ * @property string|null $workspaceSid
+ * @property string|null $url
  */
 class WorkflowStatisticsInstance extends InstanceResource
 {

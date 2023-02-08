@@ -29,21 +29,21 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsLis
 
 
 /**
- * @property string $accountSid
- * @property string $assignmentActivitySid
- * @property string $assignmentActivityName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property int $maxReservedWorkers
- * @property string $reservationActivitySid
- * @property string $reservationActivityName
- * @property string $sid
- * @property string $targetWorkers
+ * @property string|null $accountSid
+ * @property string|null $assignmentActivitySid
+ * @property string|null $assignmentActivityName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property int|null $maxReservedWorkers
+ * @property string|null $reservationActivitySid
+ * @property string|null $reservationActivityName
+ * @property string|null $sid
+ * @property string|null $targetWorkers
  * @property string $taskOrder
- * @property string $url
- * @property string $workspaceSid
- * @property array $links
+ * @property string|null $url
+ * @property string|null $workspaceSid
+ * @property array|null $links
  */
 class TaskQueueInstance extends InstanceResource
 {

@@ -26,14 +26,14 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $phoneNumber
- * @property string $url
- * @property string $sid
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $voiceRegion
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
+ * @property string|null $phoneNumber
+ * @property string|null $url
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string|null $voiceRegion
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  */
 class PhoneNumberInstance extends InstanceResource
 {

@@ -25,11 +25,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accessToken
- * @property string $refreshToken
- * @property string $idToken
- * @property \DateTime $refreshTokenExpiresAt
- * @property \DateTime $accessTokenExpiresAt
+ * @property string|null $accessToken
+ * @property string|null $refreshToken
+ * @property string|null $idToken
+ * @property \DateTime|null $refreshTokenExpiresAt
+ * @property \DateTime|null $accessTokenExpiresAt
  */
 class TokenInstance extends InstanceResource
 {

@@ -26,11 +26,11 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $url
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property array $grant
+ * @property string|null $sid
+ * @property string|null $url
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property array|null $grant
  */
 class PlaybackGrantInstance extends InstanceResource
 {

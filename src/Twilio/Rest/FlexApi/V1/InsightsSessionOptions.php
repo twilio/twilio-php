@@ -21,17 +21,17 @@ use Twilio\Values;
 abstract class InsightsSessionOptions
 {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return CreateInsightsSessionOptions Options builder
      */
     public static function create(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): CreateInsightsSessionOptions
     {
         return new CreateInsightsSessionOptions(
-            $token
+            $authorization
         );
     }
 
@@ -40,25 +40,25 @@ abstract class InsightsSessionOptions
 class CreateInsightsSessionOptions extends Options
     {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

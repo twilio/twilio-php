@@ -27,16 +27,16 @@ use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $url
- * @property array $links
- * @property string $revision
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $createdBy
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $url
+ * @property array|null $links
+ * @property string|null $revision
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $createdBy
  */
 class SyncMapInstance extends InstanceResource
 {

@@ -25,14 +25,14 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
- * @property string $friendlyName
- * @property string $awsCredentialsSid
- * @property string $awsS3Url
- * @property bool $awsStorageEnabled
- * @property string $encryptionKeySid
- * @property bool $encryptionEnabled
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $friendlyName
+ * @property string|null $awsCredentialsSid
+ * @property string|null $awsS3Url
+ * @property bool|null $awsStorageEnabled
+ * @property string|null $encryptionKeySid
+ * @property bool|null $encryptionEnabled
+ * @property string|null $url
  */
 class CompositionSettingsInstance extends InstanceResource
 {

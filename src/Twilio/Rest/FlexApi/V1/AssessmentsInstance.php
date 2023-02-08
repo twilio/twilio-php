@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property string $url
+ * @property string|null $url
  */
 class AssessmentsInstance extends InstanceResource
 {

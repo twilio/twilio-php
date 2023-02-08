@@ -25,23 +25,23 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $participantSid
- * @property string $participantIdentity
- * @property \DateTime $joinTime
- * @property \DateTime $leaveTime
- * @property int $durationSec
- * @property string $accountSid
- * @property string $roomSid
+ * @property string|null $participantSid
+ * @property string|null $participantIdentity
+ * @property \DateTime|null $joinTime
+ * @property \DateTime|null $leaveTime
+ * @property int|null $durationSec
+ * @property string|null $accountSid
+ * @property string|null $roomSid
  * @property string $status
- * @property string[] $codecs
- * @property string $endReason
- * @property int $errorCode
- * @property string $errorCodeUrl
+ * @property string[]|null $codecs
+ * @property string|null $endReason
+ * @property int|null $errorCode
+ * @property string|null $errorCodeUrl
  * @property string $mediaRegion
- * @property array $properties
+ * @property array|null $properties
  * @property string $edgeLocation
- * @property array $publisherInfo
- * @property string $url
+ * @property array|null $publisherInfo
+ * @property string|null $url
  */
 class ParticipantInstance extends InstanceResource
 {

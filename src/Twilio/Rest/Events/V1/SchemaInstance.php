@@ -26,11 +26,11 @@ use Twilio\Rest\Events\V1\Schema\SchemaVersionList;
 
 
 /**
- * @property string $id
- * @property string $url
- * @property array $links
- * @property \DateTime $latestVersionDateCreated
- * @property int $latestVersion
+ * @property string|null $id
+ * @property string|null $url
+ * @property array|null $links
+ * @property \DateTime|null $latestVersionDateCreated
+ * @property int|null $latestVersion
  */
 class SchemaInstance extends InstanceResource
 {

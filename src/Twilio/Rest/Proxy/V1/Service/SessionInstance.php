@@ -28,22 +28,22 @@ use Twilio\Rest\Proxy\V1\Service\Session\InteractionList;
 
 
 /**
- * @property string $sid
- * @property string $serviceSid
- * @property string $accountSid
- * @property \DateTime $dateStarted
- * @property \DateTime $dateEnded
- * @property \DateTime $dateLastInteraction
- * @property \DateTime $dateExpiry
- * @property string $uniqueName
+ * @property string|null $sid
+ * @property string|null $serviceSid
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateStarted
+ * @property \DateTime|null $dateEnded
+ * @property \DateTime|null $dateLastInteraction
+ * @property \DateTime|null $dateExpiry
+ * @property string|null $uniqueName
  * @property string $status
- * @property string $closedReason
- * @property int $ttl
+ * @property string|null $closedReason
+ * @property int|null $ttl
  * @property string $mode
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class SessionInstance extends InstanceResource
 {

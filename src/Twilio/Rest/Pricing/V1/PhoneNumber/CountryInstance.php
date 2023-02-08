@@ -24,11 +24,11 @@ use Twilio\Version;
 
 
 /**
- * @property string $country
- * @property string $isoCountry
- * @property string[] $phoneNumberPrices
- * @property string $priceUnit
- * @property string $url
+ * @property string|null $country
+ * @property string|null $isoCountry
+ * @property string[]|null $phoneNumberPrices
+ * @property string|null $priceUnit
+ * @property string|null $url
  */
 class CountryInstance extends InstanceResource
 {

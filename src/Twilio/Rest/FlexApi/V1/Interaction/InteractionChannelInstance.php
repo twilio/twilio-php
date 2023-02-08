@@ -27,14 +27,14 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInvi
 
 
 /**
- * @property string $sid
- * @property string $interactionSid
+ * @property string|null $sid
+ * @property string|null $interactionSid
  * @property string $type
  * @property string $status
- * @property int $errorCode
- * @property string $errorMessage
- * @property string $url
- * @property array $links
+ * @property int|null $errorCode
+ * @property string|null $errorMessage
+ * @property string|null $url
+ * @property array|null $links
  */
 class InteractionChannelInstance extends InstanceResource
 {

@@ -25,16 +25,16 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $fieldTypeSid
- * @property string $language
- * @property string $assistantSid
- * @property string $sid
- * @property string $value
- * @property string $url
- * @property string $synonymOf
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $fieldTypeSid
+ * @property string|null $language
+ * @property string|null $assistantSid
+ * @property string|null $sid
+ * @property string|null $value
+ * @property string|null $url
+ * @property string|null $synonymOf
  */
 class FieldValueInstance extends InstanceResource
 {

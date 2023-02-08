@@ -26,18 +26,18 @@ use Twilio\Rest\Media\V1\PlayerStreamer\PlaybackGrantList;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property bool $video
- * @property array $links
- * @property string $sid
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property bool|null $video
+ * @property array|null $links
+ * @property string|null $sid
  * @property string $status
- * @property string $url
- * @property string $statusCallback
- * @property string $statusCallbackMethod
+ * @property string|null $url
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
  * @property string $endedReason
- * @property int $maxDuration
+ * @property int|null $maxDuration
  */
 class PlayerStreamerInstance extends InstanceResource
 {

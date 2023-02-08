@@ -26,38 +26,38 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $customerProfileSid
- * @property string $trustProductSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $regulatedItemSid
- * @property string $businessName
- * @property string $businessStreetAddress
- * @property string $businessStreetAddress2
- * @property string $businessCity
- * @property string $businessStateProvinceRegion
- * @property string $businessPostalCode
- * @property string $businessCountry
- * @property string $businessWebsite
- * @property string $businessContactFirstName
- * @property string $businessContactLastName
- * @property string $businessContactEmail
- * @property string $businessContactPhone
- * @property string $notificationEmail
- * @property string[] $useCaseCategories
- * @property string $useCaseSummary
- * @property string $productionMessageSample
- * @property string[] $optInImageUrls
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $customerProfileSid
+ * @property string|null $trustProductSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $regulatedItemSid
+ * @property string|null $businessName
+ * @property string|null $businessStreetAddress
+ * @property string|null $businessStreetAddress2
+ * @property string|null $businessCity
+ * @property string|null $businessStateProvinceRegion
+ * @property string|null $businessPostalCode
+ * @property string|null $businessCountry
+ * @property string|null $businessWebsite
+ * @property string|null $businessContactFirstName
+ * @property string|null $businessContactLastName
+ * @property string|null $businessContactEmail
+ * @property string|null $businessContactPhone
+ * @property string|null $notificationEmail
+ * @property string[]|null $useCaseCategories
+ * @property string|null $useCaseSummary
+ * @property string|null $productionMessageSample
+ * @property string[]|null $optInImageUrls
  * @property string $optInType
- * @property string $messageVolume
- * @property string $additionalInformation
- * @property string $tollfreePhoneNumberSid
+ * @property string|null $messageVolume
+ * @property string|null $additionalInformation
+ * @property string|null $tollfreePhoneNumberSid
  * @property string $status
- * @property string $url
- * @property array $resourceLinks
- * @property string $externalReferenceId
+ * @property string|null $url
+ * @property array|null $resourceLinks
+ * @property string|null $externalReferenceId
  */
 class TollfreeVerificationInstance extends InstanceResource
 {

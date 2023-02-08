@@ -28,9 +28,9 @@ use Twilio\Rest\Insights\V1\Call\AnnotationList;
 
 
 /**
- * @property string $sid
- * @property string $url
- * @property array $links
+ * @property string|null $sid
+ * @property string|null $url
+ * @property array|null $links
  */
 class CallInstance extends InstanceResource
 {

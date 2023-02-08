@@ -28,30 +28,30 @@ use Twilio\Rest\Wireless\V1\Sim\UsageRecordList;
 
 
 /**
- * @property string $sid
- * @property string $uniqueName
- * @property string $accountSid
- * @property string $ratePlanSid
- * @property string $friendlyName
- * @property string $iccid
- * @property string $eId
+ * @property string|null $sid
+ * @property string|null $uniqueName
+ * @property string|null $accountSid
+ * @property string|null $ratePlanSid
+ * @property string|null $friendlyName
+ * @property string|null $iccid
+ * @property string|null $eId
  * @property string $status
  * @property string $resetStatus
- * @property string $commandsCallbackUrl
- * @property string $commandsCallbackMethod
- * @property string $smsFallbackMethod
- * @property string $smsFallbackUrl
- * @property string $smsMethod
- * @property string $smsUrl
- * @property string $voiceFallbackMethod
- * @property string $voiceFallbackUrl
- * @property string $voiceMethod
- * @property string $voiceUrl
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
- * @property string $ipAddress
+ * @property string|null $commandsCallbackUrl
+ * @property string|null $commandsCallbackMethod
+ * @property string|null $smsFallbackMethod
+ * @property string|null $smsFallbackUrl
+ * @property string|null $smsMethod
+ * @property string|null $smsUrl
+ * @property string|null $voiceFallbackMethod
+ * @property string|null $voiceFallbackUrl
+ * @property string|null $voiceMethod
+ * @property string|null $voiceUrl
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
+ * @property string|null $ipAddress
  */
 class SimInstance extends InstanceResource
 {

@@ -26,18 +26,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $apiVersion
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $friendlyName
- * @property string $shortCode
- * @property string $sid
- * @property string $smsFallbackMethod
- * @property string $smsFallbackUrl
- * @property string $smsMethod
- * @property string $smsUrl
- * @property string $uri
+ * @property string|null $accountSid
+ * @property string|null $apiVersion
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $friendlyName
+ * @property string|null $shortCode
+ * @property string|null $sid
+ * @property string|null $smsFallbackMethod
+ * @property string|null $smsFallbackUrl
+ * @property string|null $smsMethod
+ * @property string|null $smsUrl
+ * @property string|null $uri
  */
 class ShortCodeInstance extends InstanceResource
 {

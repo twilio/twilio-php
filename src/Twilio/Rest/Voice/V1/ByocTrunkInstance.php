@@ -26,21 +26,21 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property string $sid
- * @property string $friendlyName
- * @property string $voiceUrl
- * @property string $voiceMethod
- * @property string $voiceFallbackUrl
- * @property string $voiceFallbackMethod
- * @property string $statusCallbackUrl
- * @property string $statusCallbackMethod
- * @property bool $cnamLookupEnabled
- * @property string $connectionPolicySid
- * @property string $fromDomainSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
+ * @property string|null $accountSid
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property string|null $voiceUrl
+ * @property string|null $voiceMethod
+ * @property string|null $voiceFallbackUrl
+ * @property string|null $voiceFallbackMethod
+ * @property string|null $statusCallbackUrl
+ * @property string|null $statusCallbackMethod
+ * @property bool|null $cnamLookupEnabled
+ * @property string|null $connectionPolicySid
+ * @property string|null $fromDomainSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
  */
 class ByocTrunkInstance extends InstanceResource
 {

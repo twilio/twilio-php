@@ -26,20 +26,20 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property array $results
- * @property string $language
- * @property string $modelBuildSid
- * @property string $query
- * @property string $sampleSid
- * @property string $assistantSid
- * @property string $sid
- * @property string $status
- * @property string $url
- * @property string $sourceChannel
- * @property string $dialogueSid
+ * @property string|null $accountSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property array|null $results
+ * @property string|null $language
+ * @property string|null $modelBuildSid
+ * @property string|null $query
+ * @property string|null $sampleSid
+ * @property string|null $assistantSid
+ * @property string|null $sid
+ * @property string|null $status
+ * @property string|null $url
+ * @property string|null $sourceChannel
+ * @property string|null $dialogueSid
  */
 class QueryInstance extends InstanceResource
 {

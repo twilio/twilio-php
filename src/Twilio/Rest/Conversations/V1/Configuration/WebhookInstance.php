@@ -25,13 +25,13 @@ use Twilio\Version;
 
 
 /**
- * @property string $accountSid
+ * @property string|null $accountSid
  * @property string $method
- * @property string[] $filters
- * @property string $preWebhookUrl
- * @property string $postWebhookUrl
+ * @property string[]|null $filters
+ * @property string|null $preWebhookUrl
+ * @property string|null $postWebhookUrl
  * @property string $target
- * @property string $url
+ * @property string|null $url
  */
 class WebhookInstance extends InstanceResource
 {

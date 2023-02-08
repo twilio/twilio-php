@@ -25,9 +25,9 @@ use Twilio\Version;
 
 /**
  * @property string $formType
- * @property array $forms
- * @property array $formMeta
- * @property string $url
+ * @property array|null $forms
+ * @property array|null $formMeta
+ * @property string|null $url
  */
 class FormInstance extends InstanceResource
 {

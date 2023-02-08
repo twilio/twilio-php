@@ -35,32 +35,32 @@ use Twilio\Rest\Api\V2010\Account\Call\FeedbackList;
 
 
 /**
- * @property string $sid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $parentCallSid
- * @property string $accountSid
- * @property string $to
- * @property string $toFormatted
- * @property string $from
- * @property string $fromFormatted
- * @property string $phoneNumberSid
+ * @property string|null $sid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $parentCallSid
+ * @property string|null $accountSid
+ * @property string|null $to
+ * @property string|null $toFormatted
+ * @property string|null $from
+ * @property string|null $fromFormatted
+ * @property string|null $phoneNumberSid
  * @property string $status
- * @property \DateTime $startTime
- * @property \DateTime $endTime
- * @property string $duration
- * @property string $price
- * @property string $priceUnit
- * @property string $direction
- * @property string $answeredBy
- * @property string $apiVersion
- * @property string $forwardedFrom
- * @property string $groupSid
- * @property string $callerName
- * @property string $queueTime
- * @property string $trunkSid
- * @property string $uri
- * @property array $subresourceUris
+ * @property \DateTime|null $startTime
+ * @property \DateTime|null $endTime
+ * @property string|null $duration
+ * @property string|null $price
+ * @property string|null $priceUnit
+ * @property string|null $direction
+ * @property string|null $answeredBy
+ * @property string|null $apiVersion
+ * @property string|null $forwardedFrom
+ * @property string|null $groupSid
+ * @property string|null $callerName
+ * @property string|null $queueTime
+ * @property string|null $trunkSid
+ * @property string|null $uri
+ * @property array|null $subresourceUris
  */
 class CallInstance extends InstanceResource
 {

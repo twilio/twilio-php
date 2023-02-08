@@ -25,11 +25,11 @@ use Twilio\Version;
 
 
 /**
- * @property bool $enabled
- * @property string $webhookUrl
- * @property string $webhookMethod
- * @property string $resourceType
- * @property string $url
+ * @property bool|null $enabled
+ * @property string|null $webhookUrl
+ * @property string|null $webhookMethod
+ * @property string|null $resourceType
+ * @property string|null $url
  */
 class ExportConfigurationInstance extends InstanceResource
 {

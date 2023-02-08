@@ -25,18 +25,18 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $environmentSid
- * @property string $buildSid
- * @property string $deploymentSid
- * @property string $functionSid
- * @property string $requestSid
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $environmentSid
+ * @property string|null $buildSid
+ * @property string|null $deploymentSid
+ * @property string|null $functionSid
+ * @property string|null $requestSid
  * @property string $level
- * @property string $message
- * @property \DateTime $dateCreated
- * @property string $url
+ * @property string|null $message
+ * @property \DateTime|null $dateCreated
+ * @property string|null $url
  */
 class LogInstance extends InstanceResource
 {

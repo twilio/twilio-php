@@ -26,9 +26,9 @@ use Twilio\Rest\Bulkexports\V1\Export\DayList;
 
 
 /**
- * @property string $resourceType
- * @property string $url
- * @property array $links
+ * @property string|null $resourceType
+ * @property string|null $url
+ * @property array|null $links
  */
 class ExportInstance extends InstanceResource
 {

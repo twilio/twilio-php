@@ -27,15 +27,15 @@ use Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumbe
 
 
 /**
- * @property string $sid
- * @property string $addressSid
+ * @property string|null $sid
+ * @property string|null $addressSid
  * @property string $status
- * @property string $email
- * @property string[] $ccEmails
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property string|null $email
+ * @property string[]|null $ccEmails
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class AuthorizationDocumentInstance extends InstanceResource
 {

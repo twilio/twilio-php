@@ -26,17 +26,17 @@ use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddO
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $resourceSid
- * @property string $friendlyName
- * @property string $description
- * @property array $configuration
- * @property string $uniqueName
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $uri
- * @property array $subresourceUris
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $resourceSid
+ * @property string|null $friendlyName
+ * @property string|null $description
+ * @property array|null $configuration
+ * @property string|null $uniqueName
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $uri
+ * @property array|null $subresourceUris
  */
 class AssignedAddOnInstance extends InstanceResource
 {

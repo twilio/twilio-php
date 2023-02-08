@@ -24,10 +24,10 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $friendlyName
- * @property array $requirements
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $friendlyName
+ * @property array|null $requirements
+ * @property string|null $url
  */
 class PoliciesInstance extends InstanceResource
 {

@@ -25,17 +25,17 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $sid
- * @property string $roomSid
- * @property string $accountSid
+ * @property string|null $sid
+ * @property string|null $roomSid
+ * @property string|null $accountSid
  * @property string $status
- * @property string $identity
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $startTime
- * @property \DateTime $endTime
- * @property int $duration
- * @property string $url
+ * @property string|null $identity
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $startTime
+ * @property \DateTime|null $endTime
+ * @property int|null $duration
+ * @property string|null $url
  */
 class AnonymizeInstance extends InstanceResource
 {

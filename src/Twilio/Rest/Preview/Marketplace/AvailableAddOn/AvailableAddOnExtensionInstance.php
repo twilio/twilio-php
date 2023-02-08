@@ -24,12 +24,12 @@ use Twilio\Version;
 
 
 /**
- * @property string $sid
- * @property string $availableAddOnSid
- * @property string $friendlyName
- * @property string $productName
- * @property string $uniqueName
- * @property string $url
+ * @property string|null $sid
+ * @property string|null $availableAddOnSid
+ * @property string|null $friendlyName
+ * @property string|null $productName
+ * @property string|null $uniqueName
+ * @property string|null $url
  */
 class AvailableAddOnExtensionInstance extends InstanceResource
 {

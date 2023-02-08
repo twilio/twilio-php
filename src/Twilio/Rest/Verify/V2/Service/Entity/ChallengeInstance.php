@@ -27,24 +27,24 @@ use Twilio\Rest\Verify\V2\Service\Entity\Challenge\NotificationList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $serviceSid
- * @property string $entitySid
- * @property string $identity
- * @property string $factorSid
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property \DateTime $dateResponded
- * @property \DateTime $expirationDate
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $serviceSid
+ * @property string|null $entitySid
+ * @property string|null $identity
+ * @property string|null $factorSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property \DateTime|null $dateResponded
+ * @property \DateTime|null $expirationDate
  * @property string $status
  * @property string $respondedReason
- * @property array $details
- * @property array $hiddenDetails
- * @property array $metadata
+ * @property array|null $details
+ * @property array|null $hiddenDetails
+ * @property array|null $metadata
  * @property string $factorType
- * @property string $url
- * @property array $links
+ * @property string|null $url
+ * @property array|null $links
  */
 class ChallengeInstance extends InstanceResource
 {

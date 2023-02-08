@@ -30,18 +30,18 @@ use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
 
 
 /**
- * @property string $sid
- * @property string $accountSid
- * @property string $regulationSid
- * @property string $friendlyName
+ * @property string|null $sid
+ * @property string|null $accountSid
+ * @property string|null $regulationSid
+ * @property string|null $friendlyName
  * @property string $status
- * @property \DateTime $validUntil
- * @property string $email
- * @property string $statusCallback
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string $url
- * @property array $links
+ * @property \DateTime|null $validUntil
+ * @property string|null $email
+ * @property string|null $statusCallback
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
+ * @property string|null $url
+ * @property array|null $links
  */
 class BundleInstance extends InstanceResource
 {

@@ -25,24 +25,24 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string $accountSid
+ * @property string|null $accountSid
  * @property string $status
- * @property \DateTime $dateCreated
- * @property string $sid
- * @property string $sourceSid
- * @property int $size
- * @property string $url
+ * @property \DateTime|null $dateCreated
+ * @property string|null $sid
+ * @property string|null $sourceSid
+ * @property int|null $size
+ * @property string|null $url
  * @property string $type
- * @property int $duration
+ * @property int|null $duration
  * @property string $containerFormat
  * @property string $codec
- * @property array $groupingSids
- * @property string $trackName
- * @property int $offset
- * @property string $mediaExternalLocation
- * @property string $statusCallback
- * @property string $statusCallbackMethod
- * @property array $links
+ * @property array|null $groupingSids
+ * @property string|null $trackName
+ * @property int|null $offset
+ * @property string|null $mediaExternalLocation
+ * @property string|null $statusCallback
+ * @property string|null $statusCallbackMethod
+ * @property array|null $links
  */
 class RecordingInstance extends InstanceResource
 {
