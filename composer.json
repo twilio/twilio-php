@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "phpunit/phpunit": ">=7.0"
+        "phpunit/phpunit": ">=7.0 < 10"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
